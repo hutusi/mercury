@@ -1,0 +1,85 @@
+"use client";
+
+import Link from "next/link";
+import { useRef, useState, useTransition } from "react";
+import { ResultSummary } from "@/components/exercise/ResultSummary";
+import { QuestionsForm } from "@/components/exercise/QuestionsForm";
+import type { SanitizedQuestion } from "@/content/types";
+import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attempts";
+import { useT } from "@/lib/i18n/LocaleProvider";
+
+export function ReadingRunner({
+  exerciseId,
+  passage,
+  questions,
+  crossPromo,
+}: {
+  exerciseId: string;
+  passage: string;
+  questions: SanitizedQuestion[];
+  crossPromo?: React.ReactNode;
+}) {
+  const t = useT();
+  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [result, setResult] = useState<GradedExercise | null>(null);
+  const [pending, startTransition] = useTransition();
+  const startedAt = useRef(Date.now());
+
+  function submit() {
+    startTransition(async () => {
+      const graded = await submitExerciseAttempt({
+        kind: "reading",
+        refId: exerciseId,
+        answers,
+        durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
+      });
+      setResult(graded);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  const answeredCount = Object.keys(answers).length;
+
+  if (result) {
+    return (
+      <ResultSummary
+        questions={questions}
+        answers={answers}
+        graded={result.perQuestion}
+        score={result.score}
+        total={result.total}
+      >
+        <div className="flex items-center justify-between">
+          <Link href="/reading" className="text-sm font-medium text-brand-600 hover:underline">
+            ← {t.reading.backToList}
+          </Link>
+        </div>
+        {crossPromo}
+      </ResultSummary>
+    );
+  }
+
+  return (
+    <div className="grid gap-8 lg:grid-cols-2">
+      <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
+        <h2 className="mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+          {t.reading.passage}
+        </h2>
+        <div className="space-y-4 leading-relaxed whitespace-pre-line text-slate-800">
+          {passage}
+        </div>
+      </article>
+
+      <div className="space-y-6">
+        <QuestionsForm questions={questions} answers={answers} onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))} />
+        <button
+          onClick={submit}
+          disabled={pending || answeredCount < questions.length}
+          className="w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          {pending ? t.common.loading : `${t.reading.submitAnswers} (${answeredCount}/${questions.length})`}
+        </button>
+      </div>
+    </div>
+  );
+}
