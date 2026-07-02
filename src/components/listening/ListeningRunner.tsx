@@ -72,7 +72,7 @@ export function ListeningRunner({
                 {line.speaker !== "narrator" && (
                   <span
                     className={`mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold text-white ${
-                      line.speaker === "A" ? "bg-brand-500" : "bg-accent-500"
+                      line.speaker === "A" ? "bg-brand-500" : "bg-amber-500"
                     }`}
                   >
                     {line.speaker}

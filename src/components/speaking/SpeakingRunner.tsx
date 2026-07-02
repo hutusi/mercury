@@ -164,7 +164,7 @@ export function SpeakingRunner({
   return (
     <div className="space-y-4">
       {micError && (
-        <div className="rounded-lg border border-accent-200 bg-accent-50 p-3 text-sm text-accent-700">
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
           {micError}
         </div>
       )}
@@ -188,12 +188,12 @@ export function SpeakingRunner({
       )}
 
       {phase === "prep" && (
-        <div className="rounded-xl border border-accent-200 bg-accent-50 p-8 text-center">
-          <p className="text-sm font-medium text-accent-700">{t.speaking.prep}</p>
-          <p className="mt-2 text-5xl font-bold text-accent-600 tabular-nums">{secondsLeft}</p>
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-8 text-center">
+          <p className="text-sm font-medium text-amber-700">{t.speaking.prep}</p>
+          <p className="mt-2 text-5xl font-bold text-amber-600 tabular-nums">{secondsLeft}</p>
           <button
             onClick={beginRecording}
-            className="mt-5 rounded-lg bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-600"
+            className="mt-5 rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600"
           >
             {t.speaking.skipPrep}
           </button>
@@ -272,7 +272,7 @@ function SelfAssessBlock({
   return (
     <div className="space-y-4">
       {showHint && (
-        <div className="rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm text-accent-700">
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
           <p className="font-semibold">{t.writing.selfAssessTitle}</p>
           <p className="mt-1">{t.writing.selfAssessHint}</p>
         </div>

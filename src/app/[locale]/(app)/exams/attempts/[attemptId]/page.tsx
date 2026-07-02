@@ -43,10 +43,10 @@ export default async function ExamReportPage({
       </div>
 
       {/* Estimate hero */}
-      <div className="rounded-2xl border-2 border-accent-200 bg-gradient-to-br from-accent-50 to-white p-8 text-center">
+      <div className="rounded-2xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-white p-8 text-center">
         {estimate?.kind === "toeic" ? (
           <>
-            <p className="text-sm font-medium text-accent-700">{t.exams.totalEstimate}</p>
+            <p className="text-sm font-medium text-amber-700">{t.exams.totalEstimate}</p>
             <p className="mt-2 text-6xl font-bold text-slate-900">{estimate.total}</p>
             <div className="mt-4 flex justify-center gap-8 text-sm">
               <span>
@@ -61,7 +61,7 @@ export default async function ExamReportPage({
           </>
         ) : estimate?.kind === "ielts" ? (
           <>
-            <p className="text-sm font-medium text-accent-700">{t.exams.bandEstimate}</p>
+            <p className="text-sm font-medium text-amber-700">{t.exams.bandEstimate}</p>
             <p className="mt-2 text-6xl font-bold text-slate-900">{estimate.band.toFixed(1)}</p>
           </>
         ) : null}
@@ -89,7 +89,7 @@ export default async function ExamReportPage({
                 </div>
                 <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-slate-100">
                   <div
-                    className={`h-full rounded-full ${pct >= 60 ? "bg-green-500" : "bg-accent-500"}`}
+                    className={`h-full rounded-full ${pct >= 60 ? "bg-green-500" : "bg-amber-500"}`}
                     style={{ width: `${pct}%` }}
                   />
                 </div>

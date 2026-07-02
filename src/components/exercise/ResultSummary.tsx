@@ -41,7 +41,7 @@ export function ResultSummary({
           <span className="text-xl font-medium text-slate-400"> / {total}</span>
         </p>
         <p
-          className={`mt-2 text-sm font-semibold ${pct >= 60 ? "text-green-600" : "text-accent-600"}`}
+          className={`mt-2 text-sm font-semibold ${pct >= 60 ? "text-green-600" : "text-amber-600"}`}
         >
           {t.common.accuracy} {pct}%
         </p>
@@ -84,7 +84,7 @@ export function ResultSummary({
                 })}
               </div>
               {chosen === undefined && (
-                <p className="mt-2 text-xs font-medium text-accent-600">{t.exams.notAnswered}</p>
+                <p className="mt-2 text-xs font-medium text-amber-600">{t.exams.notAnswered}</p>
               )}
               <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm text-slate-700">
                 <span className="font-semibold text-slate-900">{t.reading.explanation}：</span>

@@ -64,7 +64,7 @@ export function TrackPicker() {
                   className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
                     o.badge === t.onboarding.examBadge
                       ? "bg-brand-50 text-brand-700"
-                      : "bg-accent-100 text-accent-700"
+                      : "bg-amber-100 text-amber-700"
                   }`}
                 >
                   {o.badge}

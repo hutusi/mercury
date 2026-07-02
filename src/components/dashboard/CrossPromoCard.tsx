@@ -9,7 +9,7 @@ export async function CrossPromoCard({ track }: { track: Track }) {
   const isToExam = promo.direction === "businessToExam";
 
   return (
-    <div className="rounded-xl border border-accent-200 bg-accent-50 p-5">
+    <div className="rounded-xl border border-amber-200 bg-amber-50 p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="font-semibold text-slate-900">
@@ -22,7 +22,7 @@ export async function CrossPromoCard({ track }: { track: Track }) {
         </div>
         <Link
           href={promo.href}
-          className="shrink-0 rounded-lg bg-accent-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-600"
+          className="shrink-0 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-600"
         >
           {t.crosspromo.cta} →
         </Link>

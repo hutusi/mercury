@@ -42,7 +42,7 @@ export default async function ExamsPage() {
       </div>
 
       {track === "business" && (
-        <div className="rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm text-accent-700">
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
           <span className="font-semibold">{t.crosspromo.businessToExamTitle}</span> ·{" "}
           {t.crosspromo.businessToExamDesc}
         </div>
@@ -53,17 +53,17 @@ export default async function ExamsPage() {
           <Link
             key={exam.id}
             href={`/exams/${exam.id}`}
-            className="group rounded-xl border-2 border-accent-200 bg-white p-6 shadow-sm transition hover:border-accent-400 hover:shadow-md"
+            className="group rounded-xl border-2 border-amber-200 bg-white p-6 shadow-sm transition hover:border-amber-400 hover:shadow-md"
           >
             <div className="flex items-center justify-between">
-              <span className="rounded-full bg-accent-100 px-3 py-1 text-xs font-bold text-accent-700 uppercase">
+              <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700 uppercase">
                 {exam.track}
               </span>
               <span className="text-xs text-slate-400">
                 {exam.totalQuestions} {t.common.questions}
               </span>
             </div>
-            <h2 className="mt-4 text-lg font-bold text-slate-900 group-hover:text-accent-700">
+            <h2 className="mt-4 text-lg font-bold text-slate-900 group-hover:text-amber-700">
               {exam.titleZh}
             </h2>
             <p className="text-sm text-slate-500">{exam.title}</p>
@@ -100,7 +100,7 @@ export default async function ExamsPage() {
                     </td>
                     <td className="px-4 py-3 font-semibold text-slate-900">
                       {a.status === "in_progress" ? (
-                        <span className="text-accent-600">{t.exams.inProgress}</span>
+                        <span className="text-amber-600">{t.exams.inProgress}</span>
                       ) : (
                         formatEstimate(a.estimate)
                       )}
@@ -109,7 +109,7 @@ export default async function ExamsPage() {
                       {a.status === "in_progress" ? (
                         <Link
                           href={`/exams/${a.examId}/take`}
-                          className="font-medium text-accent-600 hover:underline"
+                          className="font-medium text-amber-600 hover:underline"
                         >
                           {t.exams.resumeExam}
                         </Link>

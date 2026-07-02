@@ -36,7 +36,7 @@ export default async function VocabularyPage() {
   }
 
   const stats = [
-    { label: t.vocab.due, value: dueCount, cls: "text-accent-600" },
+    { label: t.vocab.due, value: dueCount, cls: "text-amber-600" },
     { label: t.vocab.fresh, value: freshCount, cls: "text-brand-600" },
     { label: t.vocab.learned, value: learnedCount, cls: "text-green-600" },
   ];

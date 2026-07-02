@@ -19,9 +19,9 @@ export async function ExamBanner({
         : null;
 
   return (
-    <div className="flex flex-col justify-between rounded-xl border-2 border-accent-300 bg-gradient-to-br from-accent-50 to-white p-5 shadow-sm">
+    <div className="flex flex-col justify-between rounded-xl border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-white p-5 shadow-sm">
       <div>
-        <p className="text-sm font-semibold text-accent-700">
+        <p className="text-sm font-semibold text-amber-700">
           <span aria-hidden>⏱️</span> {t.dashboard.examBanner}
         </p>
         <p className="mt-1 text-xs text-slate-500">{t.dashboard.examBannerDesc}</p>
@@ -33,7 +33,7 @@ export async function ExamBanner({
       </div>
       <Link
         href={resumeExamId ? `/exams/${resumeExamId}/take` : "/exams"}
-        className="mt-3 inline-block rounded-lg bg-accent-500 px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-accent-600"
+        className="mt-3 inline-block rounded-lg bg-amber-500 px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-amber-600"
       >
         {resumeExamId ? t.exams.resumeExam : t.dashboard.startExam}
       </Link>

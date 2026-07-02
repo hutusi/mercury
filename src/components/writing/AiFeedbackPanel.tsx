@@ -47,8 +47,8 @@ export async function AiFeedbackPanel({ feedback }: { feedback: WritingFeedback 
       )}
 
       {feedback.issues.length > 0 && (
-        <section className="rounded-xl border border-accent-200 bg-white p-6 shadow-sm">
-          <h2 className="mb-3 text-sm font-semibold tracking-wide text-accent-600 uppercase">
+        <section className="rounded-xl border border-amber-200 bg-white p-6 shadow-sm">
+          <h2 className="mb-3 text-sm font-semibold tracking-wide text-amber-600 uppercase">
             <span aria-hidden>🔧</span> {t.writing.issues}
           </h2>
           <ul className="space-y-4">

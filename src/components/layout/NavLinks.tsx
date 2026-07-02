@@ -28,11 +28,11 @@ export function NavLinks({ orientation }: { orientation: "vertical" | "horizonta
         ? "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition"
         : "flex shrink-0 items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition";
     if (active) {
-      return `${base} ${highlight ? "bg-accent-100 text-accent-700" : "bg-brand-50 text-brand-700"}`;
+      return `${base} ${highlight ? "bg-amber-100 text-amber-700" : "bg-brand-50 text-brand-700"}`;
     }
     return `${base} ${
       highlight
-        ? "text-accent-700 hover:bg-accent-50"
+        ? "text-amber-700 hover:bg-amber-50"
         : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
     }`;
   };

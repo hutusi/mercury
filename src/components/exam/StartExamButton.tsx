@@ -31,7 +31,7 @@ export function StartExamButton({ examId, resume }: { examId: string; resume: bo
         onClick={start}
         disabled={pending}
         className={`w-full rounded-lg px-6 py-3.5 font-semibold text-white shadow-sm transition disabled:opacity-50 sm:w-auto ${
-          resume ? "bg-accent-500 hover:bg-accent-600" : "bg-brand-600 hover:bg-brand-700"
+          resume ? "bg-amber-500 hover:bg-amber-600" : "bg-brand-600 hover:bg-brand-700"
         }`}
       >
         {pending ? t.common.loading : resume ? t.exams.resumeExam : t.exams.startExam}

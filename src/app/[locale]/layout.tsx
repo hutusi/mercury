@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { dictionaries } from "@/lib/i18n";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { DEFAULT_LOCALE, isLocale, LOCALES } from "@/lib/i18n/routing";
 import "../globals.css";
+
+// Latin glyphs only — zh renders through the CJK system faces in --font-sans.
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -37,9 +42,22 @@ export default async function RootLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale === "zh" ? "zh-CN" : "en"}>
+    // suppressHydrationWarning: next-themes sets the theme class on <html>
+    // before hydration.
+    <html
+      lang={locale === "zh" ? "zh-CN" : "en"}
+      className={inter.variable}
+      suppressHydrationWarning
+    >
       <body>
-        <LocaleProvider locale={locale}>{children}</LocaleProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LocaleProvider locale={locale}>{children}</LocaleProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

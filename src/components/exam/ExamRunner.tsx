@@ -194,7 +194,7 @@ export function ExamRunner({
       </div>
 
       {section.kind === "listening" && (
-        <p className="rounded-lg border border-accent-200 bg-accent-50 p-3 text-sm text-accent-700">
+        <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
           <span aria-hidden>🎧</span> {t.exams.audioOnce}
         </p>
       )}

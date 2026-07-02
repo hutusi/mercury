@@ -12,7 +12,7 @@ export async function SelfAssessPanel({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm text-accent-700">
+      <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
         <p className="font-semibold">{t.writing.selfAssessTitle}</p>
         <p className="mt-1">{t.writing.selfAssessHint}</p>
       </div>

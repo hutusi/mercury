@@ -60,14 +60,14 @@ export default async function ExamIntroPage({ params }: { params: Promise<{ exam
         </ul>
       </section>
 
-      <section className="rounded-xl border border-accent-200 bg-accent-50 p-6">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-accent-700 uppercase">
+      <section className="rounded-xl border border-amber-200 bg-amber-50 p-6">
+        <h2 className="mb-3 text-sm font-semibold tracking-wide text-amber-700 uppercase">
           <span aria-hidden>📋</span> {t.exams.rules}
         </h2>
         <ul className="space-y-2 text-sm text-slate-700">
           {rules.map((rule, i) => (
             <li key={i} className="flex gap-2">
-              <span className="font-bold text-accent-600">{i + 1}.</span>
+              <span className="font-bold text-amber-600">{i + 1}.</span>
               {rule}
             </li>
           ))}

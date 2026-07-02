@@ -70,7 +70,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
 
   const gradeButtons: { grade: ReviewGrade; label: string; cls: string }[] = [
     { grade: 1, label: t.vocab.again, cls: "bg-red-500 hover:bg-red-600" },
-    { grade: 3, label: t.vocab.hard, cls: "bg-accent-500 hover:bg-accent-600" },
+    { grade: 3, label: t.vocab.hard, cls: "bg-amber-500 hover:bg-amber-600" },
     { grade: 4, label: t.vocab.good, cls: "bg-green-500 hover:bg-green-600" },
     { grade: 5, label: t.vocab.easy, cls: "bg-brand-500 hover:bg-brand-600" },
   ];
@@ -91,7 +91,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
         className="block min-h-72 w-full cursor-pointer rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:shadow-md"
       >
         {card.isNew && (
-          <span className="mb-3 inline-block rounded-full bg-accent-100 px-2.5 py-0.5 text-xs font-semibold text-accent-700">
+          <span className="mb-3 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
             {t.vocab.fresh}
           </span>
         )}

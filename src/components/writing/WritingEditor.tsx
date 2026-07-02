@@ -43,7 +43,7 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
         <p className={`text-sm font-medium ${enough ? "text-green-600" : "text-slate-500"}`}>
           {t.writing.wordCount}: {wordCount} / {minWords}
           {!enough && wordCount > 0 && (
-            <span className="ml-2 text-accent-600">{t.writing.tooShort}</span>
+            <span className="ml-2 text-amber-600">{t.writing.tooShort}</span>
           )}
         </p>
         <button
