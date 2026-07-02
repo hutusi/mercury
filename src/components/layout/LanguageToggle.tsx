@@ -1,7 +1,9 @@
 "use client";
 
+import { Languages } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
+import { Button } from "@/components/ui/button";
 import { LOCALE_COOKIE } from "@/lib/i18n/dictionaries";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { swapLocalePath } from "@/lib/i18n/routing";
@@ -24,13 +26,15 @@ export function LanguageToggle() {
   }
 
   return (
-    <button
+    <Button
+      variant="ghost"
+      size="sm"
       onClick={toggle}
       disabled={pending}
       aria-label={locale === "zh" ? "Switch to English" : "切换为中文"}
-      className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:opacity-50"
     >
+      <Languages className="size-4" aria-hidden />
       {locale === "zh" ? "EN" : "中文"}
-    </button>
+    </Button>
   );
 }
