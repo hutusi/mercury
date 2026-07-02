@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { srsCards, vocabWords } from "@/lib/db/schema";

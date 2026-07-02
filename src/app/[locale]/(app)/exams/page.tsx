@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { desc, eq, inArray } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { mockExamAttempts, mockExams, type ExamEstimate } from "@/lib/db/schema";

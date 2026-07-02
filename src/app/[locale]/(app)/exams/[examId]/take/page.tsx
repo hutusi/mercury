@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 import { ExamRunner } from "@/components/exam/ExamRunner";
 import { requireUser } from "@/lib/auth/session";
+import { localeRedirect } from "@/lib/i18n";
 import { db } from "@/lib/db";
 import { mockExamAttempts, mockExams } from "@/lib/db/schema";
 import { sanitizeSections } from "@/lib/exam-utils";
@@ -19,10 +19,10 @@ export default async function TakeExamPage({ params }: { params: Promise<{ examI
       eq(mockExamAttempts.status, "in_progress"),
     ),
   });
-  if (!attempt) redirect(`/exams/${examId}`);
+  if (!attempt) return localeRedirect(`/exams/${examId}`);
 
   const exam = await db.query.mockExams.findFirst({ where: eq(mockExams.id, examId) });
-  if (!exam) redirect("/exams");
+  if (!exam) return localeRedirect("/exams");
 
   return (
     <ExamRunner

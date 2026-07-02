@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, asc, eq, lte } from "drizzle-orm";
 import { StudySession, type StudyCardData } from "@/components/vocab/StudySession";
 import { db } from "@/lib/db";

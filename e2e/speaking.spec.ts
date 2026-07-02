@@ -5,7 +5,7 @@ test("speaking prompt renders with recorder or unsupported gate", async ({ page 
   await registerAndOnboard(page, "toeic");
 
   await page.goto("/speaking");
-  await page.locator('a[href^="/speaking/"]').first().click();
+  await page.locator('a[href^="/zh/speaking/"]').first().click();
 
   // Bilingual prompt is shown.
   await expect(page.getByText(t.speaking.prep, { exact: false }).first()).toBeVisible();

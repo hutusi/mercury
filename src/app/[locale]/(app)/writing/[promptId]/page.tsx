@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { and, desc, eq } from "drizzle-orm";
 import { WritingEditor } from "@/components/writing/WritingEditor";

@@ -7,7 +7,8 @@ import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { saveExamProgress, submitExamSection } from "@/lib/actions/exams";
 import type { AnswerMap, SectionDeadline } from "@/lib/db/schema";
 import type { SanitizedExamSection } from "@/lib/exam-utils";
-import { useT } from "@/lib/i18n/LocaleProvider";
+import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
+import { localePath } from "@/lib/i18n/routing";
 
 const AUTOSAVE_MS = 30_000;
 
@@ -32,6 +33,7 @@ export function ExamRunner({
   initialAnswers: AnswerMap;
 }) {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const storageKey = `mercury-exam-${attemptId}`;
 
@@ -106,7 +108,7 @@ export function ExamRunner({
           } catch {
             // Best-effort cleanup.
           }
-          router.push(`/exams/attempts/${attemptId}`);
+          router.push(localePath(locale, `/exams/attempts/${attemptId}`));
           return;
         }
         setSectionIndex(result.nextSectionIndex);
@@ -121,7 +123,7 @@ export function ExamRunner({
         setSubmitting(false);
       }
     },
-    [attemptId, router, storageKey, t],
+    [attemptId, locale, router, storageKey, t],
   );
 
   // The clock: remaining time derives from the server-issued deadline, never

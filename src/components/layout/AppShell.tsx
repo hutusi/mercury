@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { getDict } from "@/lib/i18n";
 import { LanguageToggle } from "./LanguageToggle";
 import { NavLinks } from "./NavLinks";

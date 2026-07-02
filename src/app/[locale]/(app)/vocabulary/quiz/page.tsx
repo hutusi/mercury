@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { eq, sql } from "drizzle-orm";
 import { QuizRunner, type QuizQuestion } from "@/components/vocab/QuizRunner";
 import { db } from "@/lib/db";

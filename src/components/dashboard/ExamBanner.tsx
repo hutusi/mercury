@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import type { ExamEstimate } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
 

@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { usePathname } from "next/navigation";
 import { useT } from "@/lib/i18n/LocaleProvider";
+import { splitLocalePath } from "@/lib/i18n/routing";
 
 const NAV_ITEMS = [
   { key: "dashboard", href: "/dashboard", icon: "🏠" },
@@ -15,7 +16,8 @@ const NAV_ITEMS = [
 
 export function NavLinks({ orientation }: { orientation: "vertical" | "horizontal" }) {
   const t = useT();
-  const pathname = usePathname();
+  // usePathname() includes the locale segment; compare against the app path.
+  const { rest: pathname } = splitLocalePath(usePathname());
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 

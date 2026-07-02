@@ -1,19 +1,25 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
-import { setLocale } from "@/lib/i18n/actions";
+import { LOCALE_COOKIE } from "@/lib/i18n/dictionaries";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import { swapLocalePath } from "@/lib/i18n/routing";
 
 export function LanguageToggle() {
   const locale = useLocale();
   const router = useRouter();
+  const pathname = usePathname();
   const [pending, startTransition] = useTransition();
 
   function toggle() {
-    startTransition(async () => {
-      await setLocale(locale === "zh" ? "en" : "zh");
-      router.refresh();
+    const next = locale === "zh" ? "en" : "zh";
+    // Persist the preference before navigating. The proxy also syncs the
+    // cookie to the URL, but its Set-Cookie rides the streamed navigation
+    // response — a follow-up unprefixed request could still see the old value.
+    document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
+    startTransition(() => {
+      router.push(swapLocalePath(pathname, next));
     });
   }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { ResultSummary } from "@/components/exercise/ResultSummary";

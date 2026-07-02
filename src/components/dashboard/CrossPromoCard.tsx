@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import type { Track } from "@/content/types";
 import { getCrossPromo } from "@/lib/crosspromo";
 import { getDict } from "@/lib/i18n";

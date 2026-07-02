@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
 import { gradeCard } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";

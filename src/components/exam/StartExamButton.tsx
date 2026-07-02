@@ -3,10 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { startExamAttempt } from "@/lib/actions/exams";
-import { useT } from "@/lib/i18n/LocaleProvider";
+import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
+import { localePath } from "@/lib/i18n/routing";
 
 export function StartExamButton({ examId, resume }: { examId: string; resume: boolean }) {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -16,7 +18,7 @@ export function StartExamButton({ examId, resume }: { examId: string; resume: bo
     startTransition(async () => {
       try {
         await startExamAttempt(examId);
-        router.push(`/exams/${examId}/take`);
+        router.push(localePath(locale, `/exams/${examId}/take`));
       } catch {
         setError(t.exams.submitFailed);
       }

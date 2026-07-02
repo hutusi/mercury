@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import type { Bilingual } from "@/content/types";
 import { submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";

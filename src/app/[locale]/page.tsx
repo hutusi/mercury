@@ -1,12 +1,11 @@
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { LanguageToggle } from "@/components/layout/LanguageToggle";
 import { getSession } from "@/lib/auth/session";
-import { getDict } from "@/lib/i18n";
+import { getDict, localeRedirect } from "@/lib/i18n";
 
 export default async function LandingPage() {
   const session = await getSession();
-  if (session) redirect("/dashboard");
+  if (session) return localeRedirect("/dashboard");
   const t = await getDict();
 
   const features = [

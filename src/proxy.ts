@@ -33,7 +33,8 @@ export function proxy(request: NextRequest) {
   if (!locale) {
     const cookie = request.cookies.get(LOCALE_COOKIE)?.value;
     const preferred = isLocale(cookie) ? cookie : DEFAULT_LOCALE;
-    return NextResponse.redirect(new URL(`/${preferred}${pathname}${search}`, request.url));
+    const prefixed = pathname === "/" ? `/${preferred}` : `/${preferred}${pathname}`;
+    return NextResponse.redirect(new URL(`${prefixed}${search}`, request.url));
   }
 
   if (isProtected(rest) && !getSessionCookie(request)) {
@@ -41,15 +42,24 @@ export function proxy(request: NextRequest) {
   }
 
   if (request.cookies.get(LOCALE_COOKIE)?.value !== locale) {
-    // Mutate the request cookie too so cookies() sees the URL's locale during
+    // Mutate the request cookie so cookies() sees the URL's locale during
     // THIS render, not only on the next request.
     request.cookies.set(LOCALE_COOKIE, locale);
     const response = NextResponse.next({ request });
-    response.cookies.set(LOCALE_COOKIE, locale, {
-      path: "/",
-      maxAge: 60 * 60 * 24 * 365,
-      sameSite: "lax",
-    });
+    // Persist the preference only for document navigations. Router prefetches
+    // are speculative — during a locale switch the outgoing page's links still
+    // point at the old locale and would flip the cookie right back. Next strips
+    // its own Next-Router-Prefetch header before middleware runs, so key off
+    // Sec-Fetch-Dest, which the browser owns: "document" for real navigations,
+    // "empty" for RSC/prefetch fetches (the toggle persists its own choice).
+    const dest = request.headers.get("sec-fetch-dest");
+    if (!dest || dest === "document") {
+      response.cookies.set(LOCALE_COOKIE, locale, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 365,
+        sameSite: "lax",
+      });
+    }
     return response;
   }
 

@@ -1,13 +1,15 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { authClient } from "@/lib/auth/client";
-import { useT } from "@/lib/i18n/LocaleProvider";
+import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
+import { localePath } from "@/lib/i18n/routing";
 
 export default function RegisterPage() {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,7 +27,7 @@ export default function RegisterPage() {
       setPending(false);
       return;
     }
-    router.push("/dashboard");
+    router.push(localePath(locale, "/dashboard"));
     router.refresh();
   }
 

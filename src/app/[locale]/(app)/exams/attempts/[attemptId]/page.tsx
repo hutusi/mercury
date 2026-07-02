@@ -1,12 +1,12 @@
-import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { notFound } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 import { AnswerReview } from "@/components/exam/AnswerReview";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { requireUser } from "@/lib/auth/session";
 import { db } from "@/lib/db";
 import { mockExamAttempts, mockExams } from "@/lib/db/schema";
-import { getDict } from "@/lib/i18n";
+import { getDict, localeRedirect } from "@/lib/i18n";
 
 export default async function ExamReportPage({
   params,
@@ -21,7 +21,7 @@ export default async function ExamReportPage({
     where: and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, user.id)),
   });
   if (!attempt) notFound();
-  if (attempt.status === "in_progress") redirect(`/exams/${attempt.examId}/take`);
+  if (attempt.status === "in_progress") return localeRedirect(`/exams/${attempt.examId}/take`);
 
   const exam = await db.query.mockExams.findFirst({
     where: eq(mockExams.id, attempt.examId),

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 import { StartExamButton } from "@/components/exam/StartExamButton";

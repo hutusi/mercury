@@ -3,10 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useTransition } from "react";
 import { submitWriting } from "@/lib/actions/writing";
-import { useT } from "@/lib/i18n/LocaleProvider";
+import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
+import { localePath } from "@/lib/i18n/routing";
 
 export function WritingEditor({ promptId, minWords }: { promptId: string; minWords: number }) {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const [text, setText] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +22,7 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
     startTransition(async () => {
       try {
         const { submissionId } = await submitWriting({ promptId, text });
-        router.push(`/writing/submissions/${submissionId}`);
+        router.push(localePath(locale, `/writing/submissions/${submissionId}`));
       } catch {
         setError(t.auth.genericError);
       }

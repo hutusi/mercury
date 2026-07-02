@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 
 export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

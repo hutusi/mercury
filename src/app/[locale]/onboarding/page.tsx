@@ -1,11 +1,10 @@
-import { redirect } from "next/navigation";
 import { TrackPicker } from "@/components/dashboard/TrackPicker";
 import { getSession } from "@/lib/auth/session";
-import { getDict } from "@/lib/i18n";
+import { getDict, localeRedirect } from "@/lib/i18n";
 
 export default async function OnboardingPage() {
   const session = await getSession();
-  if (!session) redirect("/login");
+  if (!session) return localeRedirect("/login");
   const t = await getDict();
 
   return (

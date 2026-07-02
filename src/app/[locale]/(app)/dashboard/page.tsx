@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, desc, eq, lte, sql } from "drizzle-orm";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { DueWordsCard } from "@/components/dashboard/DueWordsCard";

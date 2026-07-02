@@ -1,9 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { TrackSchema } from "../../content/types";
 import { requireUser } from "../auth/session";
+import { localeRedirect } from "../i18n";
 import { db } from "../db";
 import { userSettings } from "../db/schema";
 
@@ -27,7 +27,7 @@ async function upsertActiveTrack(userId: string, track: string) {
 export async function completeOnboarding(track: string) {
   const user = await requireUser();
   await upsertActiveTrack(user.id, track);
-  redirect("/dashboard");
+  await localeRedirect("/dashboard");
 }
 
 export async function setActiveTrack(track: string) {
