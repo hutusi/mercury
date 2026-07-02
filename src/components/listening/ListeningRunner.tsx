@@ -23,19 +23,25 @@ export function ListeningRunner({
   const t = useT();
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [result, setResult] = useState<GradedExercise | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(Date.now());
 
   function submit() {
+    setError(null);
     startTransition(async () => {
-      const graded = await submitExerciseAttempt({
-        kind: "listening",
-        refId: exerciseId,
-        answers,
-        durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
-      });
-      setResult(graded);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        const graded = await submitExerciseAttempt({
+          kind: "listening",
+          refId: exerciseId,
+          answers,
+          durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
+        });
+        setResult(graded);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch {
+        setError(t.exams.submitFailed);
+      }
     });
   }
 
@@ -92,6 +98,11 @@ export function ListeningRunner({
         answers={answers}
         onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
       />
+      {error && (
+        <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-center text-sm text-red-700">
+          {error}
+        </p>
+      )}
       <button
         onClick={submit}
         disabled={pending || answeredCount < questions.length}

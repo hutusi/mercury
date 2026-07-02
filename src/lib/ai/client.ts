@@ -30,6 +30,15 @@ function getClient(): Anthropic {
   return (client ??= new Anthropic({ timeout: 60_000, maxRetries: 2 }));
 }
 
+/**
+ * Learner text is untrusted: neutralize angle brackets so it cannot close our
+ * delimiter tags and smuggle instructions into the grading prompt. Full-width
+ * equivalents keep the text readable for the grader.
+ */
+function sanitizeUntrusted(text: string): string {
+  return text.replace(/</g, "＜").replace(/>/g, "＞");
+}
+
 async function requestStructuredFeedback<Schema extends z.ZodType>(
   system: string,
   userContent: string,
@@ -76,7 +85,7 @@ ${req.promptEn}
 </task>
 
 <learner_response word_count="${req.wordCount}">
-${req.userText}
+${sanitizeUntrusted(req.userText)}
 </learner_response>
 
 Grade the learner's response to the task above and produce the structured feedback.`;
@@ -98,7 +107,7 @@ ${req.promptEn}
 </task>
 
 <transcript duration_seconds="${req.durationSeconds}">
-${req.transcript}
+${sanitizeUntrusted(req.transcript)}
 </transcript>
 
 Evaluate the learner's spoken answer (transcribed above) and produce the structured feedback.`;

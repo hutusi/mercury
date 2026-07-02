@@ -311,7 +311,7 @@ export const toeicVocab: VocabWord[] = [
     headword: "customs",
     ipa: "/ˈkʌstəmz/",
     pos: "n.",
-    definitionEn: "The place where luggage is checked when entering a country.",
+    definitionEn: "The government authority that inspects goods and luggage entering a country.",
     translationZh: "海关",
     exampleEn: "After landing, the sales team cleared customs and headed straight to the hotel.",
     exampleZh: "落地后，销售团队通过海关，直接前往酒店。",

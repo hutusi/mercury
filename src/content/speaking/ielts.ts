@@ -89,7 +89,7 @@ As for how I felt — at the beginning, honestly, pretty anxious. I hadn't studi
     titleZh: "第三部分：学习与职业生涯",
     promptEn: `Now let's discuss some more general questions about skills and work. Do you think people today need to keep learning new skills throughout their careers — why or why not? Who should be responsible for this training: employers, or workers themselves? And how has technology changed the way people learn at work?`,
     promptZh: `现在我们来讨论一些关于技能与工作的更宏观的问题。你认为如今人们是否需要在整个职业生涯中不断学习新技能？为什么？培训的责任应该由雇主承担，还是由员工自己承担？技术又是如何改变人们在工作中学习的方式的？`,
-    prepSeconds: 15,
+    prepSeconds: 0,
     speakSeconds: 90,
     modelAnswer: `Do people need to keep learning? Absolutely, and I'd say it's no longer optional. A generation ago you could learn a trade at twenty and use the same skills until retirement, but these days whole job categories appear and disappear within a decade — nobody was a social media manager twenty years ago, for example. So if you stop learning, your skills basically have an expiry date.
 

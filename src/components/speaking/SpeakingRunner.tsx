@@ -231,7 +231,7 @@ export function SpeakingRunner({
               disabled={pending}
               className="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-3 font-medium text-slate-700 transition hover:bg-slate-50 disabled:opacity-50"
             >
-              🔁 {t.reading.tryAgain}
+              🔁 {t.common.tryAgain}
             </button>
             <button
               onClick={submit}

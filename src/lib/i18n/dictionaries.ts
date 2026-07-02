@@ -29,6 +29,7 @@ const zh = {
     estimateNote: "估算成绩，仅供参考",
     comingSoon: "建设中…",
     empty: "暂无内容",
+    tryAgain: "再试一次",
   },
   nav: {
     dashboard: "仪表盘",
@@ -223,6 +224,7 @@ const zh = {
     unanswered: "未答",
     submitSection: "提交本部分",
     confirmSubmitSection: "确认提交本部分？提交后不可返回修改",
+    submitFailed: "提交失败，请检查网络后重试",
     nextSection: "进入下一部分",
     listeningSection: "听力部分",
     readingSection: "阅读部分",
@@ -278,6 +280,7 @@ const en: Dictionary = {
     estimateNote: "Estimated score, for reference only",
     comingSoon: "Coming soon…",
     empty: "Nothing here yet",
+    tryAgain: "Try again",
   },
   nav: {
     dashboard: "Dashboard",
@@ -472,6 +475,7 @@ const en: Dictionary = {
     unanswered: "Unanswered",
     submitSection: "Submit section",
     confirmSubmitSection: "Submit this section? You cannot go back afterwards.",
+    submitFailed: "Submission failed — check your connection and try again",
     nextSection: "Next section",
     listeningSection: "Listening",
     readingSection: "Reading",

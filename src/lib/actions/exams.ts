@@ -92,10 +92,18 @@ export async function saveExamProgress(input: {
     if (validIds.has(qid)) merged[qid] = choice;
   }
 
+  // Guard on status + section so a delayed autosave can't overwrite an
+  // attempt that another request has already advanced or completed.
   await db
     .update(mockExamAttempts)
     .set({ answers: merged })
-    .where(eq(mockExamAttempts.id, attempt.id));
+    .where(
+      and(
+        eq(mockExamAttempts.id, attempt.id),
+        eq(mockExamAttempts.status, "in_progress"),
+        eq(mockExamAttempts.currentSectionIndex, attempt.currentSectionIndex),
+      ),
+    );
 }
 
 const SubmitSectionSchema = z.object({
@@ -167,7 +175,13 @@ export async function submitExamSection(input: {
         currentSectionIndex: attempt.currentSectionIndex + 1,
         sectionDeadlines: deadlines,
       })
-      .where(eq(mockExamAttempts.id, attempt.id));
+      .where(
+        and(
+          eq(mockExamAttempts.id, attempt.id),
+          eq(mockExamAttempts.status, "in_progress"),
+          eq(mockExamAttempts.currentSectionIndex, attempt.currentSectionIndex),
+        ),
+      );
     return { done: false, nextSectionIndex: attempt.currentSectionIndex + 1, deadlines };
   }
 
@@ -184,7 +198,13 @@ export async function submitExamSection(input: {
       estimate,
       completedAt: new Date(),
     })
-    .where(eq(mockExamAttempts.id, attempt.id));
+    .where(
+      and(
+        eq(mockExamAttempts.id, attempt.id),
+        eq(mockExamAttempts.status, "in_progress"),
+        eq(mockExamAttempts.currentSectionIndex, attempt.currentSectionIndex),
+      ),
+    );
   await recordActivity(user.id);
 
   return { done: true, nextSectionIndex: attempt.currentSectionIndex, deadlines: attempt.sectionDeadlines };

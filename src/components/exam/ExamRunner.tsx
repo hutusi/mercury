@@ -41,6 +41,7 @@ export function ExamRunner({
   const [remainingMs, setRemainingMs] = useState<number | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const submittedSections = useRef(new Set<string>());
   const answersRef = useRef(answers);
@@ -59,11 +60,13 @@ export function ExamRunner({
     return Object.fromEntries(Object.entries(answers).filter(([qid]) => ids.has(qid)));
   }, [answers, sectionQuestions]);
 
-  // Refresh-safe mirror of answers.
+  // Refresh-safe mirror of answers. localStorage wins over the server
+  // snapshot: it is written on every click, while the server only has the
+  // last autosave (up to 30s stale).
   useEffect(() => {
     try {
       const stored = localStorage.getItem(storageKey);
-      if (stored) setAnswers((a) => ({ ...JSON.parse(stored), ...a }));
+      if (stored) setAnswers((a) => ({ ...a, ...JSON.parse(stored) }));
     } catch {
       // Ignore corrupted local state.
     }
@@ -84,6 +87,7 @@ export function ExamRunner({
       submittedSections.current.add(sectionId);
       setSubmitting(true);
       setConfirming(false);
+      setSubmitError(null);
       try {
         const result = await submitExamSection({
           attemptId,
@@ -102,11 +106,16 @@ export function ExamRunner({
         setSectionIndex(result.nextSectionIndex);
         setDeadlines(result.deadlines);
         window.scrollTo({ top: 0 });
+      } catch {
+        // Un-mark so the user can retry — the server clamps late answers,
+        // so retrying after expiry is safe and still completes the attempt.
+        submittedSections.current.delete(sectionId);
+        setSubmitError(t.exams.submitFailed);
       } finally {
         setSubmitting(false);
       }
     },
-    [attemptId, router, storageKey],
+    [attemptId, router, storageKey, t],
   );
 
   // The clock: remaining time derives from the server-issued deadline, never
@@ -213,6 +222,11 @@ export function ExamRunner({
       ))}
 
       <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        {submitError && (
+          <p className="mb-3 rounded-lg border border-red-200 bg-red-50 p-3 text-center text-sm text-red-700">
+            {submitError}
+          </p>
+        )}
         {confirming ? (
           <div className="space-y-3 text-center">
             <p className="text-sm font-medium text-slate-800">{t.exams.confirmSubmitSection}</p>
