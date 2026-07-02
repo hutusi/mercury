@@ -151,7 +151,10 @@ export function SpeakingRunner({
         ) : (
           <SelfAssessBlock modelAnswer={modelAnswer} checklist={checklist} showHint />
         )}
-        <Link href="/speaking" className="inline-block text-sm font-medium text-brand-600 hover:underline">
+        <Link
+          href="/speaking"
+          className="inline-block text-sm font-medium text-brand-600 hover:underline"
+        >
           ← {t.common.back}
         </Link>
       </div>

@@ -47,7 +47,8 @@ export const businessVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "General agreement among the members of a group.",
     translationZh: "共识",
-    exampleEn: "After a long discussion, the board reached a consensus on the new pricing strategy.",
+    exampleEn:
+      "After a long discussion, the board reached a consensus on the new pricing strategy.",
     exampleZh: "经过长时间讨论，董事会就新定价策略达成了共识。",
   },
   {
@@ -132,7 +133,8 @@ export const businessVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "Power or advantage used to influence a negotiation.",
     translationZh: "筹码；影响力",
-    exampleEn: "Being the supplier's largest customer gives us considerable leverage in price talks.",
+    exampleEn:
+      "Being the supplier's largest customer gives us considerable leverage in price talks.",
     exampleZh: "作为该供应商最大的客户，我们在价格谈判中拥有相当大的筹码。",
   },
   {
@@ -555,7 +557,8 @@ export const businessVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "Extra value created when two organizations or teams work together.",
     translationZh: "协同效应",
-    exampleEn: "The merger is expected to create significant synergy between the two sales networks.",
+    exampleEn:
+      "The merger is expected to create significant synergy between the two sales networks.",
     exampleZh: "此次合并预计将在两个销售网络之间产生显著的协同效应。",
   },
   {

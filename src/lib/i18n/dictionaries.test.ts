@@ -25,7 +25,10 @@ describe("i18n dictionaries", () => {
       for (const path of leafPaths(dictionaries[locale])) {
         const value = path
           .split(".")
-          .reduce<unknown>((node, key) => (node as Record<string, unknown>)[key], dictionaries[locale]);
+          .reduce<unknown>(
+            (node, key) => (node as Record<string, unknown>)[key],
+            dictionaries[locale],
+          );
         expect(typeof value).toBe("string");
         expect((value as string).length).toBeGreaterThan(0);
       }

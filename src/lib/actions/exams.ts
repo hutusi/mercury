@@ -5,12 +5,7 @@ import { z } from "zod";
 import type { ExamSection } from "../../content/types";
 import { requireUser } from "../auth/session";
 import { db } from "../db";
-import {
-  mockExamAttempts,
-  mockExams,
-  type AnswerMap,
-  type SectionDeadline,
-} from "../db/schema";
+import { mockExamAttempts, mockExams, type AnswerMap, type SectionDeadline } from "../db/schema";
 import { gradeExam } from "../exam-utils";
 import { recordActivity } from "../streak";
 
@@ -131,7 +126,11 @@ export async function submitExamSection(input: {
   });
   if (!attempt) throw new Error("Attempt not found");
   if (attempt.status !== "in_progress") {
-    return { done: true, nextSectionIndex: attempt.currentSectionIndex, deadlines: attempt.sectionDeadlines };
+    return {
+      done: true,
+      nextSectionIndex: attempt.currentSectionIndex,
+      deadlines: attempt.sectionDeadlines,
+    };
   }
 
   const exam = await db.query.mockExams.findFirst({ where: eq(mockExams.id, attempt.examId) });
@@ -207,5 +206,9 @@ export async function submitExamSection(input: {
     );
   await recordActivity(user.id);
 
-  return { done: true, nextSectionIndex: attempt.currentSectionIndex, deadlines: attempt.sectionDeadlines };
+  return {
+    done: true,
+    nextSectionIndex: attempt.currentSectionIndex,
+    deadlines: attempt.sectionDeadlines,
+  };
 }

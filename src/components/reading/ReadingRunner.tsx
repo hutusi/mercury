@@ -71,7 +71,7 @@ export function ReadingRunner({
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
-      <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
+      <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:self-start lg:overflow-y-auto">
         <h2 className="mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase">
           {t.reading.passage}
         </h2>
@@ -81,7 +81,11 @@ export function ReadingRunner({
       </article>
 
       <div className="space-y-6">
-        <QuestionsForm questions={questions} answers={answers} onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))} />
+        <QuestionsForm
+          questions={questions}
+          answers={answers}
+          onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
+        />
         {error && (
           <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-center text-sm text-red-700">
             {error}
@@ -92,7 +96,9 @@ export function ReadingRunner({
           disabled={pending || answeredCount < questions.length}
           className="w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {pending ? t.common.loading : `${t.reading.submitAnswers} (${answeredCount}/${questions.length})`}
+          {pending
+            ? t.common.loading
+            : `${t.reading.submitAnswers} (${answeredCount}/${questions.length})`}
         </button>
       </div>
     </div>

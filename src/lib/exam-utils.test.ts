@@ -44,11 +44,7 @@ describe("gradeExam", () => {
   });
 
   test("perfect mini-IELTS is band 9", () => {
-    const { estimate } = gradeExam(
-      "ielts",
-      ieltsMiniExam.sections,
-      perfectAnswers(ieltsMiniExam),
-    );
+    const { estimate } = gradeExam("ielts", ieltsMiniExam.sections, perfectAnswers(ieltsMiniExam));
     expect(estimate).toEqual({ kind: "ielts", band: 9 });
   });
 

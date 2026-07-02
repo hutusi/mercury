@@ -95,7 +95,7 @@ export const businessListening: ListeningExercise[] = [
         ],
         correctIndex: 2,
         explanationZh:
-          "男士提出升级处理：\"I know their account director from a previous project, so I'll contact him directly this afternoon\"，利用旧识关系直接联系对方客户总监。他要调整的是上线日期而不是周五的会议时间（排除 A）。",
+          '男士提出升级处理："I know their account director from a previous project, so I\'ll contact him directly this afternoon"，利用旧识关系直接联系对方客户总监。他要调整的是上线日期而不是周五的会议时间（排除 A）。',
       },
       {
         id: "q4",
@@ -108,7 +108,7 @@ export const businessListening: ListeningExercise[] = [
         ],
         correctIndex: 0,
         explanationZh:
-          "男士说 \"I'd rather move the launch from the fifteenth to the twenty-second than go live with an untested checkout\"，Elena 表示同意（\"Agreed\"），二人决定将上线推迟一周。他们是自己做出决定后再向委员会汇报，而不是把决定权交给委员会（排除 D）。",
+          '男士说 "I\'d rather move the launch from the fifteenth to the twenty-second than go live with an untested checkout"，Elena 表示同意（"Agreed"），二人决定将上线推迟一周。他们是自己做出决定后再向委员会汇报，而不是把决定权交给委员会（排除 D）。',
       },
     ],
   },
@@ -180,7 +180,7 @@ export const businessListening: ListeningExercise[] = [
         ],
         correctIndex: 2,
         explanationZh:
-          "Sofia 开门见山：\"I want to apologise personally — your shipment of printed boxes has been held up at our factory\"，来电目的是为发货延迟道歉并说明补救方案。产品发布会（launch）是客户自己的活动，用作干扰项（排除 D）。",
+          'Sofia 开门见山："I want to apologise personally — your shipment of printed boxes has been held up at our factory"，来电目的是为发货延迟道歉并说明补救方案。产品发布会（launch）是客户自己的活动，用作干扰项（排除 D）。',
       },
       {
         id: "q2",
@@ -193,7 +193,7 @@ export const businessListening: ListeningExercise[] = [
         ],
         correctIndex: 0,
         explanationZh:
-          "Sofia 解释：\"The delay is in quality inspection, because one batch showed slight colour differences\"——印刷已完成，问题出在质检环节发现一批产品有轻微色差。选项 B 有迷惑性：印刷本身没有出故障，反而已经全部完成。",
+          'Sofia 解释："The delay is in quality inspection, because one batch showed slight colour differences"——印刷已完成，问题出在质检环节发现一批产品有轻微色差。选项 B 有迷惑性：印刷本身没有出故障，反而已经全部完成。',
       },
       {
         id: "q3",
@@ -206,7 +206,7 @@ export const businessListening: ListeningExercise[] = [
         ],
         correctIndex: 3,
         explanationZh:
-          "Sofia 承诺：\"We'll also send the second shipment by express freight at our own cost\"，即剩余 30% 的货物由己方承担快运费用。“30%”指的是第二批货的数量占比而非折扣（排除 C）；能赶上发布会的是第一批 70% 的货，不是第二批（排除 A）。",
+          'Sofia 承诺："We\'ll also send the second shipment by express freight at our own cost"，即剩余 30% 的货物由己方承担快运费用。“30%”指的是第二批货的数量占比而非折扣（排除 C）；能赶上发布会的是第一批 70% 的货，不是第二批（排除 A）。',
       },
       {
         id: "q4",
@@ -219,7 +219,7 @@ export const businessListening: ListeningExercise[] = [
         ],
         correctIndex: 1,
         explanationZh:
-          "Mr. Reyes 提出：\"Could you copy our warehouse manager on the confirmation email?\"——请 Sofia 在书面确认邮件中抄送仓库经理，方便安排收货。copy someone on an email 是商务英语常用表达，意为“抄送某人”，不是打电话给她（排除 A）。",
+          'Mr. Reyes 提出："Could you copy our warehouse manager on the confirmation email?"——请 Sofia 在书面确认邮件中抄送仓库经理，方便安排收货。copy someone on an email 是商务英语常用表达，意为“抄送某人”，不是打电话给她（排除 A）。',
       },
     ],
   },

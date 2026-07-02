@@ -73,7 +73,10 @@ export default async function VocabularyPage() {
 
       <div className="grid grid-cols-3 gap-4">
         {stats.map((s) => (
-          <div key={s.label} className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
+          <div
+            key={s.label}
+            className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm"
+          >
             <p className={`text-3xl font-bold ${s.cls}`}>{s.value}</p>
             <p className="mt-1 text-sm text-slate-500">{s.label}</p>
           </div>

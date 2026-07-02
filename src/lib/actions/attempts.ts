@@ -12,7 +12,11 @@ const SubmitSchema = z.object({
   kind: z.enum(["reading", "listening"]),
   refId: z.string(),
   answers: z.record(z.string(), z.number().int().min(0).max(3)),
-  durationSeconds: z.number().int().nonnegative().max(60 * 60 * 6),
+  durationSeconds: z
+    .number()
+    .int()
+    .nonnegative()
+    .max(60 * 60 * 6),
 });
 
 export interface GradedExercise {

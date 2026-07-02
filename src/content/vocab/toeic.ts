@@ -253,7 +253,8 @@ export const toeicVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "A detailed plan of a journey, including routes and schedules.",
     translationZh: "行程表",
-    exampleEn: "The assistant emailed a detailed itinerary for the three-day business trip to Tokyo.",
+    exampleEn:
+      "The assistant emailed a detailed itinerary for the three-day business trip to Tokyo.",
     exampleZh: "助理通过电子邮件发送了东京三日商务出差的详细行程表。",
   },
   {
@@ -531,7 +532,8 @@ export const toeicVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "A trial period during which a new employee's performance is assessed.",
     translationZh: "试用期",
-    exampleEn: "New hires complete a three-month probation before their contracts become permanent.",
+    exampleEn:
+      "New hires complete a three-month probation before their contracts become permanent.",
     exampleZh: "新员工需完成三个月试用期，之后合同才转为正式。",
   },
   {

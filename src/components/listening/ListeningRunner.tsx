@@ -83,7 +83,10 @@ export function ListeningRunner({
             ))}
           </div>
         </div>
-        <Link href="/listening" className="inline-block text-sm font-medium text-brand-600 hover:underline">
+        <Link
+          href="/listening"
+          className="inline-block text-sm font-medium text-brand-600 hover:underline"
+        >
           ← {t.reading.backToList}
         </Link>
         {crossPromo}
@@ -112,7 +115,9 @@ export function ListeningRunner({
         disabled={pending || answeredCount < questions.length}
         className="w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
       >
-        {pending ? t.common.loading : `${t.listening.submitAnswers} (${answeredCount}/${questions.length})`}
+        {pending
+          ? t.common.loading
+          : `${t.listening.submitAnswers} (${answeredCount}/${questions.length})`}
       </button>
     </div>
   );

@@ -11,7 +11,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "v.",
     definitionEn: "To make something harmful less severe or serious.",
     translationZh: "缓解；减轻",
-    exampleEn: "Governments are investing in flood defenses to mitigate the effects of climate change.",
+    exampleEn:
+      "Governments are investing in flood defenses to mitigate the effects of climate change.",
     exampleZh: "各国政府正投资防洪设施，以减轻气候变化的影响。",
   },
   {
@@ -117,9 +118,11 @@ export const ieltsVocab: VocabWord[] = [
     headword: "carbon footprint",
     ipa: "/ˌkɑːrbən ˈfʊtprɪnt/",
     pos: "n.",
-    definitionEn: "The amount of carbon dioxide produced by a person's or organization's activities.",
+    definitionEn:
+      "The amount of carbon dioxide produced by a person's or organization's activities.",
     translationZh: "碳足迹",
-    exampleEn: "Companies can reduce their carbon footprint by encouraging employees to work remotely.",
+    exampleEn:
+      "Companies can reduce their carbon footprint by encouraging employees to work remotely.",
     exampleZh: "企业可以通过鼓励员工远程办公来减少碳足迹。",
   },
   // education (教育)
@@ -192,7 +195,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "v.",
     definitionEn: "To officially register as a member of a course or school.",
     translationZh: "注册；入学",
-    exampleEn: "A record number of international students enrolled in the engineering program this year.",
+    exampleEn:
+      "A record number of international students enrolled in the engineering program this year.",
     exampleZh: "今年注册工程专业的国际学生人数创下新高。",
   },
   {
@@ -253,7 +257,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "A new idea, method, or invention.",
     translationZh: "创新",
-    exampleEn: "Technological innovation has transformed the way companies communicate with customers.",
+    exampleEn:
+      "Technological innovation has transformed the way companies communicate with customers.",
     exampleZh: "技术创新改变了企业与客户沟通的方式。",
   },
   {
@@ -349,7 +354,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "Computer systems that can perform tasks normally requiring human intelligence.",
     translationZh: "人工智能",
-    exampleEn: "Artificial intelligence is increasingly used to diagnose diseases at an early stage.",
+    exampleEn:
+      "Artificial intelligence is increasingly used to diagnose diseases at an early stage.",
     exampleZh: "人工智能正越来越多地用于疾病的早期诊断。",
   },
   {
@@ -386,7 +392,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "The growth of cities as people move from rural areas.",
     translationZh: "城市化",
-    exampleEn: "Rapid urbanization has created severe housing shortages in many developing countries.",
+    exampleEn:
+      "Rapid urbanization has created severe housing shortages in many developing countries.",
     exampleZh: "快速城市化在许多发展中国家造成了严重的住房短缺。",
   },
   {
@@ -422,7 +429,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "The movement of people from one place to live in another.",
     translationZh: "移民；迁移",
-    exampleEn: "Economic pressures have driven large-scale migration from rural villages to cities.",
+    exampleEn:
+      "Economic pressures have driven large-scale migration from rural villages to cities.",
     exampleZh: "经济压力促使人们大规模从农村迁往城市。",
   },
   {
@@ -434,7 +442,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "A great and unfair difference between people or things.",
     translationZh: "差距；悬殊",
-    exampleEn: "There is a clear disparity in educational resources between urban and rural schools.",
+    exampleEn:
+      "There is a clear disparity in educational resources between urban and rural schools.",
     exampleZh: "城乡学校之间的教育资源存在明显差距。",
   },
   {
@@ -470,7 +479,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "The state of a group staying united and working together.",
     translationZh: "凝聚力",
-    exampleEn: "Community festivals strengthen social cohesion among residents of different backgrounds.",
+    exampleEn:
+      "Community festivals strengthen social cohesion among residents of different backgrounds.",
     exampleZh: "社区节庆活动增强了不同背景居民之间的社会凝聚力。",
   },
   {
@@ -543,7 +553,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "n.",
     definitionEn: "A connection between two things in which one affects the other.",
     translationZh: "相关性",
-    exampleEn: "The study found a strong correlation between reading habits and academic performance.",
+    exampleEn:
+      "The study found a strong correlation between reading habits and academic performance.",
     exampleZh: "研究发现阅读习惯与学业成绩之间存在很强的相关性。",
   },
   {
@@ -555,7 +566,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "adj.",
     definitionEn: "Relating to descriptions and qualities rather than numbers.",
     translationZh: "定性的",
-    exampleEn: "The team conducted qualitative interviews to understand students' attitudes toward homework.",
+    exampleEn:
+      "The team conducted qualitative interviews to understand students' attitudes toward homework.",
     exampleZh: "研究团队通过定性访谈了解学生对家庭作业的态度。",
   },
   {
@@ -567,7 +579,8 @@ export const ieltsVocab: VocabWord[] = [
     pos: "adj.",
     definitionEn: "Relating to numbers and measurable amounts.",
     translationZh: "定量的",
-    exampleEn: "Quantitative data from two thousand questionnaires supported the researchers' conclusions.",
+    exampleEn:
+      "Quantitative data from two thousand questionnaires supported the researchers' conclusions.",
     exampleZh: "来自两千份问卷的定量数据支持了研究人员的结论。",
   },
   {

@@ -45,7 +45,9 @@ async function seed() {
 
   // Exam question ids are answer-map keys — they must be unique per exam.
   for (const exam of exams) {
-    const qids = exam.sections.flatMap((s) => s.groups.flatMap((g) => g.questions.map((q) => q.id)));
+    const qids = exam.sections.flatMap((s) =>
+      s.groups.flatMap((g) => g.questions.map((q) => q.id)),
+    );
     if (new Set(qids).size !== qids.length) {
       throw new Error(`exam ${exam.id}: duplicate question ids`);
     }
@@ -88,10 +90,7 @@ async function seed() {
 
   for (const exam of exams) {
     const row = { ...exam, totalQuestions: examQuestionCount(exam) };
-    await db
-      .insert(mockExams)
-      .values(row)
-      .onConflictDoUpdate({ target: mockExams.id, set: row });
+    await db.insert(mockExams).values(row).onConflictDoUpdate({ target: mockExams.id, set: row });
   }
 
   console.log("Seed complete:");
@@ -100,9 +99,11 @@ async function seed() {
   console.log(`  listening_exercises: ${listening.length}`);
   console.log(`  writing_prompts:     ${writing.length}`);
   console.log(`  speaking_prompts:    ${speaking.length}`);
-  console.log(`  mock_exams:          ${exams.length} (${exams
-    .map((e) => `${e.id}: ${examQuestionCount(e)}Q`)
-    .join(", ")})`);
+  console.log(
+    `  mock_exams:          ${exams.length} (${exams
+      .map((e) => `${e.id}: ${examQuestionCount(e)}Q`)
+      .join(", ")})`,
+  );
 }
 
 seed()

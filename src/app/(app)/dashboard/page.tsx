@@ -22,49 +22,63 @@ export default async function DashboardPage() {
   const { user, track } = await requireTrack();
   const t = await getDict();
 
-  const [streak, dueRows, lastExam, inProgressExam, recentExercises, recentWriting, recentSpeaking, recentExams] =
-    await Promise.all([
-      getStreak(user.id),
-      db
-        .select({ count: sql<number>`count(*)` })
-        .from(srsCards)
-        .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
-        .where(
-          and(
-            eq(srsCards.userId, user.id),
-            eq(vocabWords.track, track),
-            lte(srsCards.dueAt, new Date()),
-          ),
+  const [
+    streak,
+    dueRows,
+    lastExam,
+    inProgressExam,
+    recentExercises,
+    recentWriting,
+    recentSpeaking,
+    recentExams,
+  ] = await Promise.all([
+    getStreak(user.id),
+    db
+      .select({ count: sql<number>`count(*)` })
+      .from(srsCards)
+      .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
+      .where(
+        and(
+          eq(srsCards.userId, user.id),
+          eq(vocabWords.track, track),
+          lte(srsCards.dueAt, new Date()),
         ),
-      db.query.mockExamAttempts.findFirst({
-        where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "completed")),
-        orderBy: desc(mockExamAttempts.completedAt),
-      }),
-      db.query.mockExamAttempts.findFirst({
-        where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "in_progress")),
-        orderBy: desc(mockExamAttempts.startedAt),
-      }),
-      db.query.exerciseAttempts.findMany({
-        where: eq(exerciseAttempts.userId, user.id),
-        orderBy: desc(exerciseAttempts.completedAt),
-        limit: 5,
-      }),
-      db.query.writingSubmissions.findMany({
-        where: and(eq(writingSubmissions.userId, user.id), eq(writingSubmissions.status, "ai_scored")),
-        orderBy: desc(writingSubmissions.createdAt),
-        limit: 5,
-      }),
-      db.query.speakingSubmissions.findMany({
-        where: and(eq(speakingSubmissions.userId, user.id), eq(speakingSubmissions.status, "ai_scored")),
-        orderBy: desc(speakingSubmissions.createdAt),
-        limit: 5,
-      }),
-      db.query.mockExamAttempts.findMany({
-        where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "completed")),
-        orderBy: desc(mockExamAttempts.completedAt),
-        limit: 5,
-      }),
-    ]);
+      ),
+    db.query.mockExamAttempts.findFirst({
+      where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "completed")),
+      orderBy: desc(mockExamAttempts.completedAt),
+    }),
+    db.query.mockExamAttempts.findFirst({
+      where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "in_progress")),
+      orderBy: desc(mockExamAttempts.startedAt),
+    }),
+    db.query.exerciseAttempts.findMany({
+      where: eq(exerciseAttempts.userId, user.id),
+      orderBy: desc(exerciseAttempts.completedAt),
+      limit: 5,
+    }),
+    db.query.writingSubmissions.findMany({
+      where: and(
+        eq(writingSubmissions.userId, user.id),
+        eq(writingSubmissions.status, "ai_scored"),
+      ),
+      orderBy: desc(writingSubmissions.createdAt),
+      limit: 5,
+    }),
+    db.query.speakingSubmissions.findMany({
+      where: and(
+        eq(speakingSubmissions.userId, user.id),
+        eq(speakingSubmissions.status, "ai_scored"),
+      ),
+      orderBy: desc(speakingSubmissions.createdAt),
+      limit: 5,
+    }),
+    db.query.mockExamAttempts.findMany({
+      where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "completed")),
+      orderBy: desc(mockExamAttempts.completedAt),
+      limit: 5,
+    }),
+  ]);
 
   const dueCount = dueRows[0]?.count ?? 0;
 

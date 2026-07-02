@@ -1,10 +1,5 @@
 import { cookies } from "next/headers";
-import {
-  dictionaries,
-  LOCALE_COOKIE,
-  type Dictionary,
-  type Locale,
-} from "./dictionaries";
+import { dictionaries, LOCALE_COOKIE, type Dictionary, type Locale } from "./dictionaries";
 
 /**
  * Locale for the current request, from the mercury_locale cookie.

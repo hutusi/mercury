@@ -20,10 +20,7 @@ describe("estimateToeicSection", () => {
   });
 
   test("total combines both sections", () => {
-    const { total, listening, reading } = estimateToeic(
-      { raw: 12, max: 12 },
-      { raw: 13, max: 13 },
-    );
+    const { total, listening, reading } = estimateToeic({ raw: 12, max: 12 }, { raw: 13, max: 13 });
     expect(listening).toBe(495);
     expect(reading).toBe(495);
     expect(total).toBe(990);

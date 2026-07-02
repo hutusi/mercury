@@ -69,7 +69,7 @@ export const toeicListening: ListeningExercise[] = [
         ],
         correctIndex: 2,
         explanationZh:
-          "男士说 \"the projector in that room is being repaired. It won't be back until Friday\"——A 会议室的投影仪送修，周五才能修好，所以周四不能用。选项 B 有迷惑性：房间本身订到了，问题出在设备而不是重复预订。",
+          '男士说 "the projector in that room is being repaired. It won\'t be back until Friday"——A 会议室的投影仪送修，周五才能修好，所以周四不能用。选项 B 有迷惑性：房间本身订到了，问题出在设备而不是重复预订。',
       },
       {
         id: "q2",
@@ -82,7 +82,7 @@ export const toeicListening: ListeningExercise[] = [
         ],
         correctIndex: 0,
         explanationZh:
-          "女士提议 \"What about the training room on the fifth floor? It holds twenty people and has a brand-new display\"。“八人”是 C 会议室的容量限制，正是放弃该房间的原因，不是解决方案（排除 C）。",
+          '女士提议 "What about the training room on the fifth floor? It holds twenty people and has a brand-new display"。“八人”是 C 会议室的容量限制，正是放弃该房间的原因，不是解决方案（排除 C）。',
       },
       {
         id: "q3",
@@ -95,7 +95,7 @@ export const toeicListening: ListeningExercise[] = [
         ],
         correctIndex: 1,
         explanationZh:
-          "男士解释请 Dana 参加的原因：\"The client may have technical questions about the installation timeline\"，即客户可能会问安装时间表方面的技术问题。打印讲义是女士主动提出自己来做的事，用作干扰项。",
+          '男士解释请 Dana 参加的原因："The client may have technical questions about the installation timeline"，即客户可能会问安装时间表方面的技术问题。打印讲义是女士主动提出自己来做的事，用作干扰项。',
       },
       {
         id: "q4",
@@ -108,7 +108,7 @@ export const toeicListening: ListeningExercise[] = [
         ],
         correctIndex: 3,
         explanationZh:
-          "对话最后女士说 \"I'll send you a calendar invitation right away\"，right away 表明这是她接下来立刻要做的事。查训练室是否可用的人是男士（\"I'll check whether it's available\"）；找 Dana 要等到午饭后，都不是“接下来”的动作。",
+          '对话最后女士说 "I\'ll send you a calendar invitation right away"，right away 表明这是她接下来立刻要做的事。查训练室是否可用的人是男士（"I\'ll check whether it\'s available"）；找 Dana 要等到午饭后，都不是“接下来”的动作。',
       },
     ],
   },
@@ -181,7 +181,7 @@ export const toeicListening: ListeningExercise[] = [
         ],
         correctIndex: 3,
         explanationZh:
-          "广播明确说明原因：\"Due to a mechanical inspection of the original aircraft, this flight will now depart from Gate 32\"，即原飞机需要机械检查。其余选项都是常见的延误原因，但均未在广播中提及。",
+          '广播明确说明原因："Due to a mechanical inspection of the original aircraft, this flight will now depart from Gate 32"，即原飞机需要机械检查。其余选项都是常见的延误原因，但均未在广播中提及。',
       },
       {
         id: "q3",
@@ -194,7 +194,7 @@ export const toeicListening: ListeningExercise[] = [
         ],
         correctIndex: 0,
         explanationZh:
-          "广播提到 \"meal vouchers are available at the Skyway Airlines service desk\"，作为补偿向乘客发放餐券，可在航站楼内任何餐厅或咖啡店使用。其他三项补偿方式都没有出现。",
+          '广播提到 "meal vouchers are available at the Skyway Airlines service desk"，作为补偿向乘客发放餐券，可在航站楼内任何餐厅或咖啡店使用。其他三项补偿方式都没有出现。',
       },
       {
         id: "q4",
@@ -207,7 +207,7 @@ export const toeicListening: ListeningExercise[] = [
         ],
         correctIndex: 2,
         explanationZh:
-          "广播指示转机乘客 \"should speak to a member of staff at the service desk\"，工作人员会为受延误影响的衔接航班重新订票。直接去 32 号登机口是对普通乘客的指引，对转机乘客而言少了改签这一步（排除 A）。",
+          '广播指示转机乘客 "should speak to a member of staff at the service desk"，工作人员会为受延误影响的衔接航班重新订票。直接去 32 号登机口是对普通乘客的指引，对转机乘客而言少了改签这一步（排除 A）。',
       },
     ],
   },

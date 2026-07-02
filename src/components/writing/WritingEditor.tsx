@@ -12,10 +12,7 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
-  const wordCount = useMemo(
-    () => text.trim().split(/\s+/).filter(Boolean).length,
-    [text],
-  );
+  const wordCount = useMemo(() => text.trim().split(/\s+/).filter(Boolean).length, [text]);
   const enough = wordCount >= minWords;
 
   function submit() {

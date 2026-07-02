@@ -17,8 +17,7 @@ export function NavLinks({ orientation }: { orientation: "vertical" | "horizonta
   const t = useT();
   const pathname = usePathname();
 
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   const linkClass = (href: string, highlight = false) => {
     const active = isActive(href);

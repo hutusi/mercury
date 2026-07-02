@@ -40,7 +40,9 @@ export function ResultSummary({
           {score}
           <span className="text-xl font-medium text-slate-400"> / {total}</span>
         </p>
-        <p className={`mt-2 text-sm font-semibold ${pct >= 60 ? "text-green-600" : "text-accent-600"}`}>
+        <p
+          className={`mt-2 text-sm font-semibold ${pct >= 60 ? "text-green-600" : "text-accent-600"}`}
+        >
           {t.common.accuracy} {pct}%
         </p>
       </div>

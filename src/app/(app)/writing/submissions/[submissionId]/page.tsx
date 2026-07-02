@@ -18,10 +18,7 @@ export default async function WritingSubmissionPage({
   const t = await getDict();
 
   const submission = await db.query.writingSubmissions.findFirst({
-    where: and(
-      eq(writingSubmissions.id, submissionId),
-      eq(writingSubmissions.userId, user.id),
-    ),
+    where: and(eq(writingSubmissions.id, submissionId), eq(writingSubmissions.userId, user.id)),
   });
   if (!submission) notFound();
 

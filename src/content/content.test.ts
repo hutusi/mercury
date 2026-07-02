@@ -1,13 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { z } from "zod";
-import {
-  allExams,
-  allListening,
-  allReading,
-  allSpeaking,
-  allVocab,
-  allWriting,
-} from "./index";
+import { allExams, allListening, allReading, allSpeaking, allVocab, allWriting } from "./index";
 import {
   examQuestionCount,
   ListeningExerciseSchema,

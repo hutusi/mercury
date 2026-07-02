@@ -7,10 +7,7 @@ export { computeStreak, localDay } from "./streak-core";
 
 /** Record that the user did something today. Called by every learning action. */
 export async function recordActivity(userId: string): Promise<void> {
-  await db
-    .insert(activityDays)
-    .values({ userId, day: localDay() })
-    .onConflictDoNothing();
+  await db.insert(activityDays).values({ userId, day: localDay() }).onConflictDoNothing();
 }
 
 export async function getStreak(userId: string): Promise<number> {

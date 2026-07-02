@@ -177,8 +177,7 @@ const zh = {
     modelAnswer: "参考范文",
     checklist: "自评清单",
     selfAssessTitle: "自评模式",
-    selfAssessHint:
-      "未配置 AI 服务，已切换为自评模式：对照参考范文与清单逐项检查",
+    selfAssessHint: "未配置 AI 服务，已切换为自评模式：对照参考范文与清单逐项检查",
     pastSubmissions: "历史提交",
     viewFeedback: "查看反馈",
     noSubmissions: "还没有提交记录",

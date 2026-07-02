@@ -90,7 +90,7 @@ export const ieltsListening: ListeningExercise[] = [
         ],
         correctIndex: 2,
         explanationZh:
-          "接待员报价：\"the en-suite is one hundred and eighty-five\"，即带独立卫浴的房间每周 185 英镑。140 英镑是标准间的价格，250 英镑是押金——IELTS Section 1 常用多个数字互相干扰，要听清每个数字对应的对象。",
+          '接待员报价："the en-suite is one hundred and eighty-five"，即带独立卫浴的房间每周 185 英镑。140 英镑是标准间的价格，250 英镑是押金——IELTS Section 1 常用多个数字互相干扰，要听清每个数字对应的对象。',
       },
       {
         id: "q3",
@@ -103,7 +103,7 @@ export const ieltsListening: ListeningExercise[] = [
         ],
         correctIndex: 3,
         explanationZh:
-          "原文说 \"Both prices include electricity, heating, and internet\"，两种房型的租金都包含水电暖网。锅具需要自备（\"You'd just need to bring your own pots and pans\"），选项 A 正好说反。",
+          '原文说 "Both prices include electricity, heating, and internet"，两种房型的租金都包含水电暖网。锅具需要自备（"You\'d just need to bring your own pots and pans"），选项 A 正好说反。',
       },
       {
         id: "q4",
@@ -129,7 +129,7 @@ export const ieltsListening: ListeningExercise[] = [
         ],
         correctIndex: 2,
         explanationZh:
-          "看房时间为每周三和周六下午两点，女士最后确认：\"Perfect, I'll come on Wednesday then\"，所以她会在周三下午两点去看房。周六也是可选时间但她没有选（排除 A）；九月是开学时间，不是看房时间。",
+          '看房时间为每周三和周六下午两点，女士最后确认："Perfect, I\'ll come on Wednesday then"，所以她会在周三下午两点去看房。周六也是可选时间但她没有选（排除 A）；九月是开学时间，不是看房时间。',
       },
     ],
   },
@@ -202,7 +202,7 @@ export const ieltsListening: ListeningExercise[] = [
         ],
         correctIndex: 1,
         explanationZh:
-          "原文说泳池八点关闭是 \"because of lifeguard requirements\"，即出于救生员值守方面的规定。其余选项都是听起来合理的常识性猜测，但讲话中并未提及——IELTS 听力要求以原文为准。",
+          '原文说泳池八点关闭是 "because of lifeguard requirements"，即出于救生员值守方面的规定。其余选项都是听起来合理的常识性猜测，但讲话中并未提及——IELTS 听力要求以原文为准。',
       },
       {
         id: "q3",
@@ -215,7 +215,7 @@ export const ieltsListening: ListeningExercise[] = [
         ],
         correctIndex: 0,
         explanationZh:
-          "讲话人说：\"All full-time students pay a reduced annual fee of ninety pounds\"，学生年费为 90 英镑。200 英镑是校外公众的价格；48 出现在“提前 48 小时开放预订”中，是数字干扰项。",
+          '讲话人说："All full-time students pay a reduced annual fee of ninety pounds"，学生年费为 90 英镑。200 英镑是校外公众的价格；48 出现在“提前 48 小时开放预订”中，是数字干扰项。',
       },
       {
         id: "q4",
@@ -228,7 +228,7 @@ export const ieltsListening: ListeningExercise[] = [
         ],
         correctIndex: 2,
         explanationZh:
-          "原文规定 \"the squash and badminton courts must be booked in advance, either online or at the reception desk\"——壁球场和羽毛球场必须提前预订，线上或前台皆可。会员卡对泳池和健身房是随时免费使用，与球场规则不同。",
+          '原文规定 "the squash and badminton courts must be booked in advance, either online or at the reception desk"——壁球场和羽毛球场必须提前预订，线上或前台皆可。会员卡对泳池和健身房是随时免费使用，与球场规则不同。',
       },
       {
         id: "q5",
@@ -241,7 +241,7 @@ export const ieltsListening: ListeningExercise[] = [
         ],
         correctIndex: 1,
         explanationZh:
-          "讲话人建议：\"I'd recommend signing up at the start of each term rather than waiting\"，因为瑜伽和舞蹈课非常热门。选项 C 的“提前 48 小时”是球场预订规则，不适用于课程报名，属于移花接木的干扰项。",
+          '讲话人建议："I\'d recommend signing up at the start of each term rather than waiting"，因为瑜伽和舞蹈课非常热门。选项 C 的“提前 48 小时”是球场预订规则，不适用于课程报名，属于移花接木的干扰项。',
       },
     ],
   },

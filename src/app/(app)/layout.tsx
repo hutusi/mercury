@@ -4,9 +4,7 @@ import { TrackSwitcher } from "@/components/layout/TrackSwitcher";
 import { getSession } from "@/lib/auth/session";
 import { getSettings } from "@/lib/settings";
 
-export default async function AppLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default async function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const session = await getSession();
   if (!session) redirect("/login");
 

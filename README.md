@@ -42,13 +42,13 @@ Open http://localhost:3000, register an account, pick a track, and start studyin
 
 ## Scripts
 
-| Script | Purpose |
-|---|---|
-| `bun run dev` / `bun run build` / `bun run start` | Next.js dev / production build / serve |
-| `bun run db:push` | Apply the Drizzle schema to SQLite |
-| `bun run db:seed` | Load/refresh seed content (idempotent; runs via tsx because Bun can't load better-sqlite3) |
-| `bun run db:studio` | Browse the database in Drizzle Studio |
-| `bun test` | Unit tests (SRS scheduler, score mapping, exam grading/sanitization) |
+| Script                                            | Purpose                                                                                    |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `bun run dev` / `bun run build` / `bun run start` | Next.js dev / production build / serve                                                     |
+| `bun run db:push`                                 | Apply the Drizzle schema to SQLite                                                         |
+| `bun run db:seed`                                 | Load/refresh seed content (idempotent; runs via tsx because Bun can't load better-sqlite3) |
+| `bun run db:studio`                               | Browse the database in Drizzle Studio                                                      |
+| `bun test`                                        | Unit tests (SRS scheduler, score mapping, exam grading/sanitization)                       |
 
 ## Architecture notes
 

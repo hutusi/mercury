@@ -6,11 +6,7 @@ import { db } from "@/lib/db";
 import { mockExamAttempts, mockExams } from "@/lib/db/schema";
 import { sanitizeSections } from "@/lib/exam-utils";
 
-export default async function TakeExamPage({
-  params,
-}: {
-  params: Promise<{ examId: string }>;
-}) {
+export default async function TakeExamPage({ params }: { params: Promise<{ examId: string }> }) {
   const user = await requireUser();
   const { examId } = await params;
 
