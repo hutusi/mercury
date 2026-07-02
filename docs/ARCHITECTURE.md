@@ -6,15 +6,15 @@ Everything is bilingual by design: learning material is English, scaffolding (tr
 
 ## Stack and runtime split
 
-| Layer     | Choice                                                                    |
-| --------- | ------------------------------------------------------------------------- |
-| Framework | Next.js 16 (App Router, Turbopack) + React 19                             |
-| Language  | TypeScript 6, zod 4 for runtime validation                                |
-| Styling   | Tailwind CSS 4 (`@theme` tokens in `src/app/globals.css`, no config file) |
-| Database  | SQLite via better-sqlite3 + Drizzle ORM                                   |
-| Auth      | better-auth (email/password)                                              |
-| AI        | Claude API (`@anthropic-ai/sdk`), server-side only                        |
-| Speech    | Browser Web Speech API (TTS + STT), no audio hosting                      |
+| Layer     | Choice                                                                                                                                 |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework | Next.js 16 (App Router, Turbopack) + React 19                                                                                          |
+| Language  | TypeScript 6, zod 4 for runtime validation                                                                                             |
+| Styling   | Tailwind CSS 4 (`@theme` tokens in `src/app/globals.css`, no config file); the Lexicon design system — see [docs/DESIGN.md](DESIGN.md) |
+| Database  | SQLite via better-sqlite3 + Drizzle ORM                                                                                                |
+| Auth      | better-auth (email/password)                                                                                                           |
+| AI        | Claude API (`@anthropic-ai/sdk`), server-side only                                                                                     |
+| Speech    | Browser Web Speech API (TTS + STT), no audio hosting                                                                                   |
 
 **Bun is the package manager and script runner; Node is the runtime.** Bun cannot load better-sqlite3 (a napi module — [oven-sh/bun#4290](https://github.com/oven-sh/bun/issues/4290)), so anything that touches the database must run under Node: Next.js itself (`bun run dev` executes Next under Node), the seed script (`bunx tsx src/lib/db/seed.ts`), and Playwright. Bun's own runtime is used only for `bun test`, which is why unit tests must stay DB-free (see [ADR 0001](adr/0001-bun-package-manager-node-runtime.md)).
 
