@@ -1,7 +1,12 @@
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { ArrowRight, Briefcase, Sparkles, Target } from "lucide-react";
 import { LanguageToggle } from "@/components/layout/LanguageToggle";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { Wordmark } from "@/components/layout/AppShell";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { getSession } from "@/lib/auth/session";
 import { getDict, localeRedirect } from "@/lib/i18n";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 
 export default async function LandingPage() {
   const session = await getSession();
@@ -9,53 +14,81 @@ export default async function LandingPage() {
   const t = await getDict();
 
   const features = [
-    { title: t.landing.featureExamTitle, desc: t.landing.featureExamDesc, icon: "🎯" },
-    { title: t.landing.featureBizTitle, desc: t.landing.featureBizDesc, icon: "💼" },
-    { title: t.landing.featureAiTitle, desc: t.landing.featureAiDesc, icon: "✨" },
+    {
+      title: t.landing.featureExamTitle,
+      desc: t.landing.featureExamDesc,
+      icon: Target,
+      iconClass: "bg-primary/10 text-primary",
+    },
+    {
+      title: t.landing.featureBizTitle,
+      desc: t.landing.featureBizDesc,
+      icon: Briefcase,
+      iconClass: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
+    },
+    {
+      title: t.landing.featureAiTitle,
+      desc: t.landing.featureAiDesc,
+      icon: Sparkles,
+      iconClass: "bg-primary/10 text-primary",
+    },
   ];
 
   return (
-    <main className="relative mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center gap-12 px-6 py-16 text-center">
-      <div className="absolute top-6 right-6">
-        <LanguageToggle />
-      </div>
-      <div className="space-y-4">
-        <p className="text-sm font-semibold tracking-widest text-brand-600 uppercase">
-          {t.common.appName}
-        </p>
-        <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-          {t.landing.heroTitle}
-        </h1>
-        <p className="mx-auto max-w-2xl text-lg text-slate-600">{t.landing.heroSubtitle}</p>
-      </div>
-      <div className="flex gap-4">
-        <Link
-          href="/register"
-          className="rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-700"
-        >
-          {t.landing.ctaStart}
-        </Link>
-        <Link
-          href="/login"
-          className="rounded-lg border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-100"
-        >
-          {t.landing.ctaLogin}
-        </Link>
-      </div>
-      <div className="grid w-full gap-6 sm:grid-cols-3">
-        {features.map((f) => (
-          <div
-            key={f.title}
-            className="rounded-xl border border-slate-200 bg-white p-6 text-left shadow-sm"
-          >
-            <div className="text-2xl" aria-hidden>
-              {f.icon}
-            </div>
-            <h2 className="mt-3 font-semibold text-slate-900">{f.title}</h2>
-            <p className="mt-1 text-sm text-slate-600">{f.desc}</p>
-          </div>
-        ))}
-      </div>
-    </main>
+    <div className="relative min-h-screen">
+      {/* Subtle brand wash behind the hero */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-primary/[0.06] to-transparent"
+        aria-hidden
+      />
+
+      <header className="relative flex items-center justify-between px-6 py-5 sm:px-10">
+        <Wordmark />
+        <div className="flex items-center gap-2">
+          <LanguageToggle />
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <main className="relative mx-auto flex max-w-5xl flex-col items-center gap-14 px-6 pt-16 pb-24 text-center sm:pt-24">
+        <div className="space-y-5">
+          <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-6xl">
+            {t.landing.heroTitle}
+          </h1>
+          <p className="mx-auto max-w-2xl text-lg text-pretty text-muted-foreground">
+            {t.landing.heroSubtitle}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Button asChild size="lg" className="h-11 px-6 text-base">
+            <Link href="/register">
+              {t.landing.ctaStart}
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="h-11 px-6 text-base">
+            <Link href="/login">{t.landing.ctaLogin}</Link>
+          </Button>
+        </div>
+
+        <div className="grid w-full gap-4 sm:grid-cols-3">
+          {features.map((f) => (
+            <Card key={f.title} className="text-left">
+              <CardContent>
+                <div
+                  className={`flex size-10 items-center justify-center rounded-lg ${f.iconClass}`}
+                  aria-hidden
+                >
+                  <f.icon className="size-5" />
+                </div>
+                <h2 className="mt-4 font-semibold">{f.title}</h2>
+                <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }

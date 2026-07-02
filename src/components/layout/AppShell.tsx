@@ -5,7 +5,7 @@ import { NavLinks } from "./NavLinks";
 import { SignOutButton } from "./SignOutButton";
 import { ThemeToggle } from "./ThemeToggle";
 
-function Wordmark({ compact = false }: { compact?: boolean }) {
+export function Wordmark({ compact = false }: { compact?: boolean }) {
   return (
     <span className="flex items-center gap-2.5">
       <span
