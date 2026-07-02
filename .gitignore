@@ -12,6 +12,11 @@ next-env.d.ts
 # database
 /data/
 
+# testing
+/.e2e/
+/playwright-report/
+/test-results/
+
 # env
 .env
 .env.local

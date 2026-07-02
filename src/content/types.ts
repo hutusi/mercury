@@ -154,8 +154,7 @@ export type MockExam = z.infer<typeof MockExamSchema>;
 
 export function examQuestionCount(exam: Pick<MockExam, "sections">): number {
   return exam.sections.reduce(
-    (total, section) =>
-      total + section.groups.reduce((n, group) => n + group.questions.length, 0),
+    (total, section) => total + section.groups.reduce((n, group) => n + group.questions.length, 0),
     0,
   );
 }

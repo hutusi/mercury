@@ -22,10 +22,7 @@ export default async function WritingPromptPage({
   if (!prompt) notFound();
 
   const past = await db.query.writingSubmissions.findMany({
-    where: and(
-      eq(writingSubmissions.userId, user.id),
-      eq(writingSubmissions.promptId, promptId),
-    ),
+    where: and(eq(writingSubmissions.userId, user.id), eq(writingSubmissions.promptId, promptId)),
     orderBy: desc(writingSubmissions.createdAt),
     limit: 10,
   });

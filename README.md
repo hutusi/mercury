@@ -42,13 +42,23 @@ Open http://localhost:3000, register an account, pick a track, and start studyin
 
 ## Scripts
 
-| Script | Purpose |
-|---|---|
-| `bun run dev` / `bun run build` / `bun run start` | Next.js dev / production build / serve |
-| `bun run db:push` | Apply the Drizzle schema to SQLite |
-| `bun run db:seed` | Load/refresh seed content (idempotent; runs via tsx because Bun can't load better-sqlite3) |
-| `bun run db:studio` | Browse the database in Drizzle Studio |
-| `bun test` | Unit tests (SRS scheduler, score mapping, exam grading/sanitization) |
+| Script                                            | Purpose                                                                                    |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `bun run dev` / `bun run build` / `bun run start` | Next.js dev / production build / serve                                                     |
+| `bun run lint` / `bun run format`                 | ESLint / Prettier (with Tailwind class sorting)                                            |
+| `bun run typecheck`                               | TypeScript check (`tsc --noEmit`)                                                          |
+| `bun run db:push`                                 | Apply the Drizzle schema to SQLite                                                         |
+| `bun run db:seed`                                 | Load/refresh seed content (idempotent; runs via tsx because Bun can't load better-sqlite3) |
+| `bun run db:studio`                               | Browse the database in Drizzle Studio                                                      |
+| `bun run test`                                    | Unit tests (SRS, scoring, exam grading, content validation, i18n parity, streaks)          |
+| `bun run test:e2e`                                | Playwright end-to-end suite (build first; runs on a scratch DB)                            |
+
+## Documentation
+
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — system design, data model, auth layers, exam integrity, AI degradation
+- [docs/CONTENT.md](docs/CONTENT.md) — how to author and seed learning content
+- [CONTRIBUTING.md](CONTRIBUTING.md) — setup, scripts, verify gate, commit conventions
+- [docs/adr/](docs/adr/) — architecture decision records
 
 ## Architecture notes
 

@@ -44,8 +44,12 @@ export function ExamRunner({
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const submittedSections = useRef(new Set<string>());
+  // Latest-ref pattern: interval callbacks and submit read the current
+  // answers without retriggering their effects.
   const answersRef = useRef(answers);
-  answersRef.current = answers;
+  useEffect(() => {
+    answersRef.current = answers;
+  }, [answers]);
 
   const section = sections[sectionIndex];
   const deadline = deadlines.find((d) => d.sectionId === section?.id);
@@ -62,15 +66,17 @@ export function ExamRunner({
 
   // Refresh-safe mirror of answers. localStorage wins over the server
   // snapshot: it is written on every click, while the server only has the
-  // last autosave (up to 30s stale).
+  // last autosave (up to 30s stale). Must run post-hydration (not as a state
+  // initializer): the server render can't see localStorage, and diverging
+  // during hydration would mismatch.
   useEffect(() => {
     try {
       const stored = localStorage.getItem(storageKey);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration-safe restore from an external store
       if (stored) setAnswers((a) => ({ ...a, ...JSON.parse(stored) }));
     } catch {
       // Ignore corrupted local state.
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageKey]);
 
   useEffect(() => {
@@ -145,7 +151,7 @@ export function ExamRunner({
 
   const answeredCount = Object.keys(sectionAnswers).length;
   const lowTime = remainingMs !== null && remainingMs < 60_000;
-  let questionNumber = 0;
+  const questionNumberById = new Map(sectionQuestions.map((q, i) => [q.id, i + 1]));
 
   return (
     <div className="space-y-6">
@@ -203,8 +209,7 @@ export function ExamRunner({
           )}
           <ol className="space-y-4">
             {group.questions.map((q) => {
-              questionNumber += 1;
-              const number = questionNumber;
+              const number = questionNumberById.get(q.id) ?? 0;
               return (
                 <li key={q.id} id={`q-${q.id}`} className="scroll-mt-40">
                   <QuestionsForm

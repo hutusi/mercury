@@ -22,7 +22,8 @@ export default async function ListeningListPage() {
   const bestByExercise = new Map<string, { score: number; total: number }>();
   for (const a of attempts) {
     const best = bestByExercise.get(a.refId);
-    if (!best || a.score > best.score) bestByExercise.set(a.refId, { score: a.score, total: a.total });
+    if (!best || a.score > best.score)
+      bestByExercise.set(a.refId, { score: a.score, total: a.total });
   }
 
   return (

@@ -14,6 +14,7 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
   const speakerRef = useRef<ScriptSpeaker | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side
     setMounted(true);
     return () => speakerRef.current?.stop();
   }, []);

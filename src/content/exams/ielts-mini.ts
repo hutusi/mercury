@@ -79,7 +79,7 @@ export const ieltsMiniExam: MockExam = {
               ],
               correctIndex: 2,
               explanationZh:
-                "男士开头就说明来意：\"I'd like to ask about hiring a room for a training day my company is running next month\"，即为公司培训日租用场地。",
+                '男士开头就说明来意："I\'d like to ask about hiring a room for a training day my company is running next month"，即为公司培训日租用场地。',
             },
             {
               id: "im-l-q02",
@@ -92,7 +92,7 @@ export const ieltsMiniExam: MockExam = {
               ],
               correctIndex: 0,
               explanationZh:
-                "男士说 \"There'll only be about eighteen of us, so the Garden Room sounds right\"——因为只有约 18 人，所以选择可容纳 25 人的花园厅。",
+                '男士说 "There\'ll only be about eighteen of us, so the Garden Room sounds right"——因为只有约 18 人，所以选择可容纳 25 人的花园厅。',
             },
             {
               id: "im-l-q03",
@@ -100,7 +100,7 @@ export const ieltsMiniExam: MockExam = {
               options: ["£45", "£20", "£63", "£300"],
               correctIndex: 3,
               explanationZh:
-                "接待员说预订全天 \"the rate drops to three hundred pounds\"，男士回答 \"I'll take the full-day rate\"，因此房费为 300 英镑。45 英镑是每小时价格，20 英镑是视频会议设备费。",
+                '接待员说预订全天 "the rate drops to three hundred pounds"，男士回答 "I\'ll take the full-day rate"，因此房费为 300 英镑。45 英镑是每小时价格，20 英镑是视频会议设备费。',
             },
             {
               id: "im-l-q04",
@@ -113,7 +113,7 @@ export const ieltsMiniExam: MockExam = {
               ],
               correctIndex: 1,
               explanationZh:
-                "男士明确拒绝了视频会议设备（\"We won't need that\"），随后询问 \"could we have tea and coffee provided\"，并为 18 人预订了含热饮和饼干的餐饮服务。",
+                '男士明确拒绝了视频会议设备（"We won\'t need that"），随后询问 "could we have tea and coffee provided"，并为 18 人预订了含热饮和饼干的餐饮服务。',
             },
             {
               id: "im-l-q05",
@@ -177,7 +177,7 @@ export const ieltsMiniExam: MockExam = {
               ],
               correctIndex: 3,
               explanationZh:
-                "讲话人说信息帐篷 \"has moved from the harbour entrance to the square outside the town library\"，并补充新位置 \"directly opposite the bus station\"。海港入口是去年的旧址。",
+                '讲话人说信息帐篷 "has moved from the harbour entrance to the square outside the town library"，并补充新位置 "directly opposite the bus station"。海港入口是去年的旧址。',
             },
             {
               id: "im-l-q07",
@@ -185,7 +185,7 @@ export const ieltsMiniExam: MockExam = {
               options: ["9:00", "8:30", "8:00", "9:30"],
               correctIndex: 1,
               explanationZh:
-                "原文说早班志愿者 \"should arrive at eight thirty, half an hour before the gates open\"，即 8:30 到岗，9:00 才开门。",
+                '原文说早班志愿者 "should arrive at eight thirty, half an hour before the gates open"，即 8:30 到岗，9:00 才开门。',
             },
             {
               id: "im-l-q08",
@@ -198,7 +198,7 @@ export const ieltsMiniExam: MockExam = {
               ],
               correctIndex: 2,
               explanationZh:
-                "讲话人明确区分：\"please return the radio at the end of each shift, but the T-shirt is yours to keep\"——对讲机须归还，T 恤可以留下。",
+                '讲话人明确区分："please return the radio at the end of each shift, but the T-shirt is yours to keep"——对讲机须归还，T 恤可以留下。',
             },
             {
               id: "im-l-q09",
@@ -211,7 +211,7 @@ export const ieltsMiniExam: MockExam = {
               ],
               correctIndex: 0,
               explanationZh:
-                "原文说遇到失物应 \"send them to the first-aid cabin, which doubles as the lost-property point\"，即急救小屋兼作失物招领处。",
+                '原文说遇到失物应 "send them to the first-aid cabin, which doubles as the lost-property point"，即急救小屋兼作失物招领处。',
             },
             {
               id: "im-l-q10",
@@ -224,7 +224,7 @@ export const ieltsMiniExam: MockExam = {
               ],
               correctIndex: 2,
               explanationZh:
-                "结尾提到 \"there's a short training video to watch in the site office before your first shift\"，即首个班次前须在现场办公室观看培训视频。",
+                '结尾提到 "there\'s a short training video to watch in the site office before your first shift"，即首个班次前须在现场办公室观看培训视频。',
             },
           ],
         },
@@ -260,7 +260,7 @@ The economics may nonetheless be shifting. The price of LED lighting fell by rou
               ],
               correctIndex: 1,
               explanationZh:
-                "第二段解释：由于种植环境封闭，\"the moisture that plants release is captured and recycled rather than lost to the air\"，植物释放的水分被回收再利用，因此节水可达 95%。",
+                '第二段解释：由于种植环境封闭，"the moisture that plants release is captured and recycled rather than lost to the air"，植物释放的水分被回收再利用，因此节水可达 95%。',
             },
             {
               id: "im-r-q02",
@@ -273,7 +273,7 @@ The economics may nonetheless be shifting. The price of LED lighting fell by rou
               ],
               correctIndex: 3,
               explanationZh:
-                "原文说农场可建在城市内，\"lettuce or herbs may travel only a few kilometres to reach the consumer instead of crossing continents\"，举例说明产品可以就近供应消费者。",
+                '原文说农场可建在城市内，"lettuce or herbs may travel only a few kilometres to reach the consumer instead of crossing continents"，举例说明产品可以就近供应消费者。',
             },
             {
               id: "im-r-q03",
@@ -286,7 +286,7 @@ The economics may nonetheless be shifting. The price of LED lighting fell by rou
               ],
               correctIndex: 0,
               explanationZh:
-                "第三段指出 \"the technology has one significant weakness: energy\"，并说明照明 \"accounts for more than half of a vertical farm's operating costs\"，即人工照明成本是最大短板。",
+                '第三段指出 "the technology has one significant weakness: energy"，并说明照明 "accounts for more than half of a vertical farm\'s operating costs"，即人工照明成本是最大短板。',
             },
             {
               id: "im-r-q04",
@@ -299,7 +299,7 @@ The economics may nonetheless be shifting. The price of LED lighting fell by rou
               ],
               correctIndex: 2,
               explanationZh:
-                "原文说小麦和水稻 \"need months of light to mature, remain far too expensive to grow indoors\"——生长周期长、耗电多，室内种植成本过高。",
+                '原文说小麦和水稻 "need months of light to mature, remain far too expensive to grow indoors"——生长周期长、耗电多，室内种植成本过高。',
             },
             {
               id: "im-r-q05",
@@ -312,7 +312,7 @@ The economics may nonetheless be shifting. The price of LED lighting fell by rou
               ],
               correctIndex: 1,
               explanationZh:
-                "最后一段提到 \"The price of LED lighting fell by roughly 85 per cent between 2010 and 2020\"，LED 价格大幅下降正在改变行业的经济性。",
+                '最后一段提到 "The price of LED lighting fell by roughly 85 per cent between 2010 and 2020"，LED 价格大幅下降正在改变行业的经济性。',
             },
             {
               id: "im-r-q06",
@@ -325,7 +325,7 @@ The economics may nonetheless be shifting. The price of LED lighting fell by rou
               ],
               correctIndex: 3,
               explanationZh:
-                "结尾指出行业的未来 \"lies not in replacing conventional farms but in complementing them\"——在城市生产易腐蔬菜，主粮仍在农村种植，即与传统农业互补而非取代。",
+                '结尾指出行业的未来 "lies not in replacing conventional farms but in complementing them"——在城市生产易腐蔬菜，主粮仍在农村种植，即与传统农业互补而非取代。',
             },
           ],
         },
@@ -352,7 +352,7 @@ Employers have responded not by rebuilding walls but by diversifying space. In s
               ],
               correctIndex: 0,
               explanationZh:
-                "第一段说公司拆除隔墙是因为相信开放式布局能 \"cut property costs and... encourage the spontaneous conversations from which new ideas were believed to emerge\"，即省钱并促进自发交流。",
+                '第一段说公司拆除隔墙是因为相信开放式布局能 "cut property costs and... encourage the spontaneous conversations from which new ideas were believed to emerge"，即省钱并促进自发交流。',
             },
             {
               id: "im-r-q08",
@@ -365,7 +365,7 @@ Employers have responded not by rebuilding walls but by diversifying space. In s
               ],
               correctIndex: 2,
               explanationZh:
-                "研究结果与预期相反：\"face-to-face interaction fell by roughly 70 per cent after the walls came down, while electronic messaging rose sharply\"——面对面交流大减，电子沟通激增。",
+                '研究结果与预期相反："face-to-face interaction fell by roughly 70 per cent after the walls came down, while electronic messaging rose sharply"——面对面交流大减，电子沟通激增。',
             },
             {
               id: "im-r-q09",
@@ -378,7 +378,7 @@ Employers have responded not by rebuilding walls but by diversifying space. In s
               ],
               correctIndex: 1,
               explanationZh:
-                "原文说员工 \"stripped of privacy, withdrew socially and used e-mail... in search of the privacy the office no longer provided\"，即用电子邮件寻回失去的私密空间。",
+                '原文说员工 "stripped of privacy, withdrew socially and used e-mail... in search of the privacy the office no longer provided"，即用电子邮件寻回失去的私密空间。',
             },
             {
               id: "im-r-q10",
@@ -391,7 +391,7 @@ Employers have responded not by rebuilding walls but by diversifying space. In s
               ],
               correctIndex: 0,
               explanationZh:
-                "第三段解释：\"the human brain automatically tries to follow it, whether the listener wants to or not\"——大脑会不由自主地追踪听到的谈话内容，因此比稳定的背景噪音更让人分心。",
+                '第三段解释："the human brain automatically tries to follow it, whether the listener wants to or not"——大脑会不由自主地追踪听到的谈话内容，因此比稳定的背景噪音更让人分心。',
             },
             {
               id: "im-r-q11",
@@ -404,7 +404,7 @@ Employers have responded not by rebuilding walls but by diversifying space. In s
               ],
               correctIndex: 3,
               explanationZh:
-                "第四段说这种模式下 \"employees have no fixed desk; instead, they choose among quiet zones, phone booths, project rooms and social areas according to the task at hand\"，即按任务选择工作区域。",
+                '第四段说这种模式下 "employees have no fixed desk; instead, they choose among quiet zones, phone booths, project rooms and social areas according to the task at hand"，即按任务选择工作区域。',
             },
             {
               id: "im-r-q12",
@@ -417,7 +417,7 @@ Employers have responded not by rebuilding walls but by diversifying space. In s
               ],
               correctIndex: 2,
               explanationZh:
-                "原文说满意度在选择真实存在时上升，\"but falls where quiet spaces are too few for those who need them\"——安静空间不足时满意度下降。",
+                '原文说满意度在选择真实存在时上升，"but falls where quiet spaces are too few for those who need them"——安静空间不足时满意度下降。',
             },
             {
               id: "im-r-q13",
@@ -430,7 +430,7 @@ Employers have responded not by rebuilding walls but by diversifying space. In s
               ],
               correctIndex: 1,
               explanationZh:
-                "结尾总结：没有一种布局适合所有工作，\"what employees appear to need most is not openness, but control over their own environment\"——员工最需要的是对自身环境的掌控权。",
+                '结尾总结：没有一种布局适合所有工作，"what employees appear to need most is not openness, but control over their own environment"——员工最需要的是对自身环境的掌控权。',
             },
           ],
         },

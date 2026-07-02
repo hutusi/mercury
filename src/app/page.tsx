@@ -27,9 +27,7 @@ export default async function LandingPage() {
         <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
           {t.landing.heroTitle}
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-slate-600">
-          {t.landing.heroSubtitle}
-        </p>
+        <p className="mx-auto max-w-2xl text-lg text-slate-600">{t.landing.heroSubtitle}</p>
       </div>
       <div className="flex gap-4">
         <Link

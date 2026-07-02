@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import type { SanitizedQuestion, ScriptLine } from "@/content/types";
@@ -25,7 +25,11 @@ export function ListeningRunner({
   const [result, setResult] = useState<GradedExercise | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef(0);
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   function submit() {
     setError(null);
@@ -79,7 +83,10 @@ export function ListeningRunner({
             ))}
           </div>
         </div>
-        <Link href="/listening" className="inline-block text-sm font-medium text-brand-600 hover:underline">
+        <Link
+          href="/listening"
+          className="inline-block text-sm font-medium text-brand-600 hover:underline"
+        >
           ← {t.reading.backToList}
         </Link>
         {crossPromo}
@@ -108,7 +115,9 @@ export function ListeningRunner({
         disabled={pending || answeredCount < questions.length}
         className="w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
       >
-        {pending ? t.common.loading : `${t.listening.submitAnswers} (${answeredCount}/${questions.length})`}
+        {pending
+          ? t.common.loading
+          : `${t.listening.submitAnswers} (${answeredCount}/${questions.length})`}
       </button>
     </div>
   );

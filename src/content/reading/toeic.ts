@@ -36,7 +36,7 @@ Account Manager, Brightline Office Supplies`,
         ],
         correctIndex: 1,
         explanationZh:
-          "邮件开头明确写道 \"I am writing to inform you that part of your order... will arrive later than scheduled\"，随后提出折扣、免费安装、替换型号等补救方案，因此正确答案是“解释延迟并提出解决方案”。选项 A 具有迷惑性：周五按时到货的只有椅子，并非全部订单。",
+          '邮件开头明确写道 "I am writing to inform you that part of your order... will arrive later than scheduled"，随后提出折扣、免费安装、替换型号等补救方案，因此正确答案是“解释延迟并提出解决方案”。选项 A 具有迷惑性：周五按时到货的只有椅子，并非全部订单。',
       },
       {
         id: "q2",
@@ -49,7 +49,7 @@ Account Manager, Brightline Office Supplies`,
         ],
         correctIndex: 2,
         explanationZh:
-          "原文说 \"The desks are now expected to reach your office on 26 March\"，即升降桌将于 3 月 26 日送达。椅子周五到货，回复期限是周三（Wednesday），这两个日期都是干扰项。",
+          '原文说 "The desks are now expected to reach your office on 26 March"，即升降桌将于 3 月 26 日送达。椅子周五到货，回复期限是周三（Wednesday），这两个日期都是干扰项。',
       },
       {
         id: "q3",
@@ -62,20 +62,15 @@ Account Manager, Brightline Office Supplies`,
         ],
         correctIndex: 3,
         explanationZh:
-          "邮件提到替换型号 \"is available only in white\"，即只有白色一种颜色。它反而能提前在 3 月 19 日送达（排除 C）；15% 折扣和 $300 安装费说的是第一种补偿方案，与替换型号无关。",
+          '邮件提到替换型号 "is available only in white"，即只有白色一种颜色。它反而能提前在 3 月 19 日送达（排除 C）；15% 折扣和 $300 安装费说的是第一种补偿方案，与替换型号无关。',
       },
       {
         id: "q4",
-        stem: "The word \"complimentary\" in paragraph 2 is closest in meaning to",
-        options: [
-          "free of charge",
-          "highly praised",
-          "optional",
-          "professional",
-        ],
+        stem: 'The word "complimentary" in paragraph 2 is closest in meaning to',
+        options: ["free of charge", "highly praised", "optional", "professional"],
         correctIndex: 0,
         explanationZh:
-          "complimentary 在此意为“免费赠送的”，后文 \"a service that normally costs $300\" 说明这项通常收费 $300 的安装服务此次不收费。注意不要与 complimentary 的另一词源含义“赞美的”（选项 B）混淆，商务语境中修饰服务时几乎总是指“免费”。",
+          'complimentary 在此意为“免费赠送的”，后文 "a service that normally costs $300" 说明这项通常收费 $300 的安装服务此次不收费。注意不要与 complimentary 的另一词源含义“赞美的”（选项 B）混淆，商务语境中修饰服务时几乎总是指“免费”。',
       },
     ],
   },
@@ -125,7 +120,7 @@ During the transition period, paper forms will still be accepted until 30 Novemb
         ],
         correctIndex: 0,
         explanationZh:
-          "原文要求 \"Please register for one of the sessions on the company intranet no later than 15 October\"，即 10 月 15 日前在内网报名培训。纸质表格截止日是 11 月 30 日，属于日期干扰项。",
+          '原文要求 "Please register for one of the sessions on the company intranet no later than 15 October"，即 10 月 15 日前在内网报名培训。纸质表格截止日是 11 月 30 日，属于日期干扰项。',
       },
       {
         id: "q3",
@@ -138,7 +133,7 @@ During the transition period, paper forms will still be accepted until 30 Novemb
         ],
         correctIndex: 3,
         explanationZh:
-          "原文写道 \"reimbursements will be processed within one week of approval, compared with the current average of three weeks\"：报销到账时间将从平均三周缩短到一周。“三个工作日”是经理审批的时限，用来构造 A、B 两个干扰项。",
+          '原文写道 "reimbursements will be processed within one week of approval, compared with the current average of three weeks"：报销到账时间将从平均三周缩短到一周。“三个工作日”是经理审批的时限，用来构造 A、B 两个干扰项。',
       },
       {
         id: "q4",
@@ -151,7 +146,7 @@ During the transition period, paper forms will still be accepted until 30 Novemb
         ],
         correctIndex: 1,
         explanationZh:
-          "备忘录说纸质表格只接受到 11 月 30 日，\"After that date, only claims submitted through ClearPath will be processed\"。因此 12 月的报销必须走 ClearPath 系统，选项 D 与原文直接矛盾。",
+          '备忘录说纸质表格只接受到 11 月 30 日，"After that date, only claims submitted through ClearPath will be processed"。因此 12 月的报销必须走 ClearPath 系统，选项 D 与原文直接矛盾。',
       },
     ],
   },
@@ -189,7 +184,7 @@ To apply, send a resume and cover letter to careers@meridianbev.com by 31 August
         ],
         correctIndex: 0,
         explanationZh:
-          "广告明确写道 \"candidates should be willing to travel up to three days per week\"，即每周最多出差三天，可见该职位需要频繁出差。工作地点在吉隆坡，新加坡只是入职培训地点（排除 B）；马来语是 preferred（优先）而非必需（排除 C）。",
+          '广告明确写道 "candidates should be willing to travel up to three days per week"，即每周最多出差三天，可见该职位需要频繁出差。工作地点在吉隆坡，新加坡只是入职培训地点（排除 B）；马来语是 preferred（优先）而非必需（排除 C）。',
       },
       {
         id: "q2",
@@ -202,7 +197,7 @@ To apply, send a resume and cover letter to careers@meridianbev.com by 31 August
         ],
         correctIndex: 3,
         explanationZh:
-          "要求部分写明五年销售经验中须包含 \"a minimum of two years in a supervisory role\"，即至少两年管理经验。学历要求是学士（bachelor's degree）而非硕士；广告并未要求饮料行业背景，公司自身是饮料分销商，这是干扰信息。",
+          '要求部分写明五年销售经验中须包含 "a minimum of two years in a supervisory role"，即至少两年管理经验。学历要求是学士（bachelor\'s degree）而非硕士；广告并未要求饮料行业背景，公司自身是饮料分销商，这是干扰信息。',
       },
       {
         id: "q3",
@@ -215,11 +210,11 @@ To apply, send a resume and cover letter to careers@meridianbev.com by 31 August
         ],
         correctIndex: 1,
         explanationZh:
-          "福利部分提到 \"New managers will also complete a two-week orientation program at our Singapore headquarters before starting in Kuala Lumpur\"，即入职前先在新加坡总部参加两周培训。月度报告和合同谈判是上岗后的日常职责，不是入职前的安排。",
+          '福利部分提到 "New managers will also complete a two-week orientation program at our Singapore headquarters before starting in Kuala Lumpur"，即入职前先在新加坡总部参加两周培训。月度报告和合同谈判是上岗后的日常职责，不是入职前的安排。',
       },
       {
         id: "q4",
-        stem: "The word \"shortlisted\" in the last paragraph is closest in meaning to",
+        stem: 'The word "shortlisted" in the last paragraph is closest in meaning to',
         options: [
           "recently hired",
           "briefly interviewed",
@@ -228,7 +223,7 @@ To apply, send a resume and cover letter to careers@meridianbev.com by 31 August
         ],
         correctIndex: 2,
         explanationZh:
-          "shortlisted 指从全部申请人中“初选入围、进入下一轮”。\"Only shortlisted candidates will be contacted\" 意为只有进入下一轮筛选的候选人才会收到通知。选项 D “列入等候名单”形似但含义相反——waiting list 是暂未入选者。",
+          'shortlisted 指从全部申请人中“初选入围、进入下一轮”。"Only shortlisted candidates will be contacted" 意为只有进入下一轮筛选的候选人才会收到通知。选项 D “列入等候名单”形似但含义相反——waiting list 是暂未入选者。',
       },
     ],
   },

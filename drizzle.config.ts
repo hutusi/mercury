@@ -5,6 +5,6 @@ export default defineConfig({
   schema: "./src/lib/db/schema.ts",
   out: "./drizzle",
   dbCredentials: {
-    url: "./data/mercury.db",
+    url: process.env.MERCURY_DB_PATH ?? "./data/mercury.db",
   },
 });

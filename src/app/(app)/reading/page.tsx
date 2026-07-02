@@ -22,7 +22,8 @@ export default async function ReadingListPage() {
   const bestByExercise = new Map<string, { score: number; total: number }>();
   for (const a of attempts) {
     const best = bestByExercise.get(a.refId);
-    if (!best || a.score > best.score) bestByExercise.set(a.refId, { score: a.score, total: a.total });
+    if (!best || a.score > best.score)
+      bestByExercise.set(a.refId, { score: a.score, total: a.total });
   }
 
   return (
@@ -48,7 +49,8 @@ export default async function ReadingListPage() {
                   {ex.genre}
                 </span>
                 <span className="text-xs text-slate-400">
-                  {ex.questions.length} {t.common.questions} · {ex.suggestedMinutes} {t.common.minutes}
+                  {ex.questions.length} {t.common.questions} · {ex.suggestedMinutes}{" "}
+                  {t.common.minutes}
                 </span>
               </div>
               <h2 className="mt-3 font-semibold text-slate-900 group-hover:text-brand-700">

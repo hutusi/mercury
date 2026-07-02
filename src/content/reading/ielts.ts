@@ -40,7 +40,7 @@ Yet the benefits of greenery are not evenly shared. Wealthier neighbourhoods ten
         ],
         correctIndex: 1,
         explanationZh:
-          "原文写道，该研究发现 \"children who grew up surrounded by vegetation had a significantly lower risk of developing psychiatric disorders in adulthood\"。选项 A 有迷惑性：cleaner air 只是文中列举的候选解释之一，且原文明确说机制 \"are still debated\"（尚有争议），并未确认主因。",
+          '原文写道，该研究发现 "children who grew up surrounded by vegetation had a significantly lower risk of developing psychiatric disorders in adulthood"。选项 A 有迷惑性：cleaner air 只是文中列举的候选解释之一，且原文明确说机制 "are still debated"（尚有争议），并未确认主因。',
       },
       {
         id: "q3",
@@ -53,17 +53,12 @@ Yet the benefits of greenery are not evenly shared. Wealthier neighbourhoods ten
         ],
         correctIndex: 0,
         explanationZh:
-          "第三段指出树木降温的两种方式：树冠遮挡阳光，以及 \"their leaves release water vapour through evapotranspiration\"（叶片通过蒸腾作用释放水汽）。“吸收太阳辐射”是混凝土和沥青致热的原因，方向正好相反；雨水吸收是绿地的另一功能，与降温无关。",
+          '第三段指出树木降温的两种方式：树冠遮挡阳光，以及 "their leaves release water vapour through evapotranspiration"（叶片通过蒸腾作用释放水汽）。“吸收太阳辐射”是混凝土和沥青致热的原因，方向正好相反；雨水吸收是绿地的另一功能，与降温无关。',
       },
       {
         id: "q4",
-        stem: "The word \"displace\" in the final paragraph is closest in meaning to",
-        options: [
-          "disappoint",
-          "impoverish",
-          "replace with newcomers",
-          "force to move away",
-        ],
+        stem: 'The word "displace" in the final paragraph is closest in meaning to',
+        options: ["disappoint", "impoverish", "replace with newcomers", "force to move away"],
         correctIndex: 3,
         explanationZh:
           "displace 在此指“迫使（原居民）迁离”：新公园推高房价和租金，原本应受益的居民反而被迫搬走。选项 C 描述的是结果之一（新住户迁入），但 displace 本身强调的是“被迫离开”这一动作。",
@@ -79,7 +74,7 @@ Yet the benefits of greenery are not evenly shared. Wealthier neighbourhoods ten
         ],
         correctIndex: 1,
         explanationZh:
-          "最后一段用 \"Partly for this reason\" 衔接：正因为大型旗舰项目容易引发绿色士绅化，规划者才转向分散在全城的小型口袋公园，让效益更均匀且不至于大幅推高某一片区的房价。文中并未比较建造成本或访客数量，A、D 属于无中生有。",
+          '最后一段用 "Partly for this reason" 衔接：正因为大型旗舰项目容易引发绿色士绅化，规划者才转向分散在全城的小型口袋公园，让效益更均匀且不至于大幅推高某一片区的房价。文中并未比较建造成本或访客数量，A、D 属于无中生有。',
       },
     ],
   },
@@ -109,7 +104,7 @@ Importantly, the research does not amount to a call for a return to private offi
         ],
         correctIndex: 3,
         explanationZh:
-          "全文围绕一个悖论展开：开放式办公室本为促进交流而设计，但 Bernstein 与 Turban 的研究发现面对面交流反而减少约七成。选项 B 与末段直接矛盾——作者明确说这项研究 \"does not amount to a call for a return to private offices\"。",
+          '全文围绕一个悖论展开：开放式办公室本为促进交流而设计，但 Bernstein 与 Turban 的研究发现面对面交流反而减少约七成。选项 B 与末段直接矛盾——作者明确说这项研究 "does not amount to a call for a return to private offices"。',
       },
       {
         id: "q2",
@@ -122,7 +117,7 @@ Importantly, the research does not amount to a call for a return to private offi
         ],
         correctIndex: 0,
         explanationZh:
-          "原文强调研究方法的严谨之处正在于 \"Rather than asking employees how they communicated, the researchers equipped staff... with wearable sensors\"——不是靠访谈（排除 B），而是用可穿戴传感器客观记录面对面交流。文中提到邮件数量上升，但并未分析邮件内容（排除 D）。",
+          '原文强调研究方法的严谨之处正在于 "Rather than asking employees how they communicated, the researchers equipped staff... with wearable sensors"——不是靠访谈（排除 B），而是用可穿戴传感器客观记录面对面交流。文中提到邮件数量上升，但并未分析邮件内容（排除 D）。',
       },
       {
         id: "q3",
@@ -135,11 +130,11 @@ Importantly, the research does not amount to a call for a return to private offi
         ],
         correctIndex: 1,
         explanationZh:
-          "研究结果是面对面交流下降约 70%，而 \"email and instant messaging rose sharply\"，即电子沟通大幅增加。选项 A 是开放式布局的设计初衷而非实际结果；C、D 与文中描述的“戴上耳机、回避交谈”正好相反。",
+          '研究结果是面对面交流下降约 70%，而 "email and instant messaging rose sharply"，即电子沟通大幅增加。选项 A 是开放式布局的设计初衷而非实际结果；C、D 与文中描述的“戴上耳机、回避交谈”正好相反。',
       },
       {
         id: "q4",
-        stem: "The word \"withdraw\" in paragraph 2 is closest in meaning to",
+        stem: 'The word "withdraw" in paragraph 2 is closest in meaning to',
         options: [
           "resign from their positions",
           "remove their belongings",
@@ -148,7 +143,7 @@ Importantly, the research does not amount to a call for a return to private offi
         ],
         correctIndex: 2,
         explanationZh:
-          "withdraw 在此指员工在失去隐私后“退缩、回避社交接触”，后文 \"protecting their concentration behind headphones and screens\" 是对这种退缩的具体描写。选项 A 利用了 withdraw 可以表示“退出（职位）”的另一义项，但语境不符。",
+          'withdraw 在此指员工在失去隐私后“退缩、回避社交接触”，后文 "protecting their concentration behind headphones and screens" 是对这种退缩的具体描写。选项 A 利用了 withdraw 可以表示“退出（职位）”的另一义项，但语境不符。',
       },
       {
         id: "q5",
@@ -161,7 +156,7 @@ Importantly, the research does not amount to a call for a return to private offi
         ],
         correctIndex: 3,
         explanationZh:
-          "末段直接引述 Bernstein 的观点：\"organisations should measure how employees actually behave rather than assume that a fashionable layout will produce the intended behaviour\"。选项 B 过于绝对——作者并未说时髦设计“总是”失败；文中根本没有讨论居家办公（排除 C）。",
+          '末段直接引述 Bernstein 的观点："organisations should measure how employees actually behave rather than assume that a fashionable layout will produce the intended behaviour"。选项 B 过于绝对——作者并未说时髦设计“总是”失败；文中根本没有讨论居家办公（排除 C）。',
       },
     ],
   },

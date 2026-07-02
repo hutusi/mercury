@@ -37,9 +37,7 @@ export function AnswerReview({
             return { q, number };
           }),
         );
-        const visible = items.filter(
-          ({ q }) => !wrongOnly || answers[q.id] !== q.correctIndex,
-        );
+        const visible = items.filter(({ q }) => !wrongOnly || answers[q.id] !== q.correctIndex);
         if (visible.length === 0) return null;
         return (
           <div key={section.id} className="space-y-3">

@@ -67,7 +67,7 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 2,
               explanationZh:
-                "对话开头女士说 \"the Henderson clients moved their visit... to tomorrow morning\"，随后两人围绕会议室、投影仪和材料展开准备，因此主题是为客户来访做准备。",
+                '对话开头女士说 "the Henderson clients moved their visit... to tomorrow morning"，随后两人围绕会议室、投影仪和材料展开准备，因此主题是为客户来访做准备。',
             },
             {
               id: "tm-l-q02",
@@ -80,7 +80,7 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 0,
               explanationZh:
-                "女士查过预订系统后说主会议室 \"it's reserved for the marketing workshop until noon\"，即被市场部工作坊占用。送修的是五楼小会议室的投影仪，属于干扰项。",
+                '女士查过预订系统后说主会议室 "it\'s reserved for the marketing workshop until noon"，即被市场部工作坊占用。送修的是五楼小会议室的投影仪，属于干扰项。',
             },
             {
               id: "tm-l-q03",
@@ -93,20 +93,15 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 3,
               explanationZh:
-                "男士说 \"I'll borrow the portable one from the IT department this afternoon\"，即去 IT 部门借便携投影仪。成本核算（cost estimates）是女士要做的事。",
+                '男士说 "I\'ll borrow the portable one from the IT department this afternoon"，即去 IT 部门借便携投影仪。成本核算（cost estimates）是女士要做的事。',
             },
             {
               id: "tm-l-q04",
               stem: "What time will the speakers meet tomorrow?",
-              options: [
-                "At six o'clock",
-                "At eight thirty",
-                "At noon",
-                "At ten o'clock",
-              ],
+              options: ["At six o'clock", "At eight thirty", "At noon", "At ten o'clock"],
               correctIndex: 1,
               explanationZh:
-                "对话结尾女士说 \"Let's meet at eight thirty tomorrow to set everything up\"。六点是男士发送幻灯片的时间，中午是工作坊结束的时间，均为干扰项。",
+                '对话结尾女士说 "Let\'s meet at eight thirty tomorrow to set everything up"。六点是男士发送幻灯片的时间，中午是工作坊结束的时间，均为干扰项。',
             },
           ],
         },
@@ -162,7 +157,7 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 1,
               explanationZh:
-                "女士说周三就要搬入新办公室，\"so Friday will be too late\"，希望提前送货。她并没有取消订单或投诉家具损坏。",
+                '女士说周三就要搬入新办公室，"so Friday will be too late"，希望提前送货。她并没有取消订单或投诉家具损坏。',
             },
             {
               id: "tm-l-q06",
@@ -175,7 +170,7 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 3,
               explanationZh:
-                "男士提出 \"I can arrange delivery for Tuesday afternoon instead\"，女士回答 \"Tuesday works even better\"。周五是原定日期，周三上午只是女士最初的提议。",
+                '男士提出 "I can arrange delivery for Tuesday afternoon instead"，女士回答 "Tuesday works even better"。周五是原定日期，周三上午只是女士最初的提议。',
             },
             {
               id: "tm-l-q07",
@@ -201,7 +196,7 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 2,
               explanationZh:
-                "对话结尾女士说 \"I'll e-mail you the loading-dock instructions for the new building right away\"，即马上发送新办公楼的卸货区说明。",
+                '对话结尾女士说 "I\'ll e-mail you the loading-dock instructions for the new building right away"，即马上发送新办公楼的卸货区说明。',
             },
           ],
         },
@@ -253,7 +248,7 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 1,
               explanationZh:
-                "讲话人宣布 \"the renovation of the third-floor break room will finally get under way\"，全文都在说明装修期间的临时安排，因此主题是即将开始的装修工程。",
+                '讲话人宣布 "the renovation of the third-floor break room will finally get under way"，全文都在说明装修期间的临时安排，因此主题是即将开始的装修工程。',
             },
             {
               id: "tm-l-q10",
@@ -261,7 +256,7 @@ export const toeicMiniExam: MockExam = {
               options: ["Three days", "One week", "Two months", "Three weeks"],
               correctIndex: 3,
               explanationZh:
-                "原文明确说 \"The work is expected to last three weeks\"，即工期约三周。",
+                '原文明确说 "The work is expected to last three weeks"，即工期约三周。',
             },
             {
               id: "tm-l-q11",
@@ -274,7 +269,7 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 0,
               explanationZh:
-                "讲话人说员工可使用一楼餐厅，\"which will extend its hours until seven p.m.\"，即营业时间延长到晚上七点。免费咖啡站设在二、四楼电梯旁，与餐厅无关。",
+                '讲话人说员工可使用一楼餐厅，"which will extend its hours until seven p.m."，即营业时间延长到晚上七点。免费咖啡站设在二、四楼电梯旁，与餐厅无关。',
             },
             {
               id: "tm-l-q12",
@@ -287,7 +282,7 @@ export const toeicMiniExam: MockExam = {
               ],
               correctIndex: 2,
               explanationZh:
-                "结尾提到邮件包含全部细节，\"including a floor map of the temporary facilities\"，即临时设施的楼层平面图。",
+                '结尾提到邮件包含全部细节，"including a floor map of the temporary facilities"，即临时设施的楼层平面图。',
             },
           ],
         },
@@ -329,7 +324,7 @@ Events Coordinator, Brightline Conferences`,
               ],
               correctIndex: 3,
               explanationZh:
-                "邮件说明原因是 \"the number of registrations has far exceeded our expectations\"，即报名人数远超预期，因此换到更大的会展中心。",
+                '邮件说明原因是 "the number of registrations has far exceeded our expectations"，即报名人数远超预期，因此换到更大的会展中心。',
             },
             {
               id: "tm-r-q02",
@@ -342,7 +337,7 @@ Events Coordinator, Brightline Conferences`,
               ],
               correctIndex: 0,
               explanationZh:
-                "原文说新场馆的展厅更大，\"all forty vendor booths will now be located in a single space rather than on separate floors\"，即四十个展位集中在同一空间。",
+                '原文说新场馆的展厅更大，"all forty vendor booths will now be located in a single space rather than on separate floors"，即四十个展位集中在同一空间。',
             },
             {
               id: "tm-r-q03",
@@ -355,7 +350,7 @@ Events Coordinator, Brightline Conferences`,
               ],
               correctIndex: 2,
               explanationZh:
-                "邮件要求有饮食需求的与会者 \"please reply to this message no later than October 5\"，即在 10 月 5 日前回复本邮件。",
+                '邮件要求有饮食需求的与会者 "please reply to this message no later than October 5"，即在 10 月 5 日前回复本邮件。',
             },
             {
               id: "tm-r-q04",
@@ -368,7 +363,7 @@ Events Coordinator, Brightline Conferences`,
               ],
               correctIndex: 1,
               explanationZh:
-                "结尾写道 \"A parking voucher for the convention center garage is attached to this e-mail\"，附件是停车券。胸牌需在会场大堂领取。",
+                '结尾写道 "A parking voucher for the convention center garage is attached to this e-mail"，附件是停车券。胸牌需在会场大堂领取。',
             },
           ],
         },
@@ -398,7 +393,7 @@ Paper forms will still be accepted during April, but only claims submitted throu
               ],
               correctIndex: 2,
               explanationZh:
-                "备忘录首句即点明：\"the company will replace its current paper-based expense forms with SwiftClaim, an online reporting system\"，目的是介绍新的报销系统。",
+                '备忘录首句即点明："the company will replace its current paper-based expense forms with SwiftClaim, an online reporting system"，目的是介绍新的报销系统。',
             },
             {
               id: "tm-r-q06",
@@ -411,7 +406,7 @@ Paper forms will still be accepted during April, but only claims submitted throu
               ],
               correctIndex: 0,
               explanationZh:
-                "原文对比说现在报销 \"take up to four weeks\"，而新系统 \"expected to be processed within five business days\"，即报销速度大幅加快。",
+                '原文对比说现在报销 "take up to four weeks"，而新系统 "expected to be processed within five business days"，即报销速度大幅加快。',
             },
             {
               id: "tm-r-q07",
@@ -424,7 +419,7 @@ Paper forms will still be accepted during April, but only claims submitted throu
               ],
               correctIndex: 3,
               explanationZh:
-                "备忘录要求在内网报名，\"as each session is limited to twenty-five participants\"，即每场限 25 人。三场内容相同，只需参加一场，并非强制全员参加。",
+                '备忘录要求在内网报名，"as each session is limited to twenty-five participants"，即每场限 25 人。三场内容相同，只需参加一场，并非强制全员参加。',
             },
             {
               id: "tm-r-q08",
@@ -432,7 +427,7 @@ Paper forms will still be accepted during April, but only claims submitted throu
               options: ["From April 1", "From May 1", "From March 24", "From March 14"],
               correctIndex: 1,
               explanationZh:
-                "原文说四月仍接受纸质表格，\"but only claims submitted through SwiftClaim will be processed from May 1 onward\"，即 5 月 1 日起不再处理纸质报销。",
+                '原文说四月仍接受纸质表格，"but only claims submitted through SwiftClaim will be processed from May 1 onward"，即 5 月 1 日起不再处理纸质报销。',
             },
           ],
         },
@@ -475,7 +470,7 @@ Tours are available Monday through Saturday, from 9 a.m. to 6 p.m. To schedule y
               ],
               correctIndex: 3,
               explanationZh:
-                "广告写明灵活工位 \"from just $19 per day, with no monthly commitment\"，即按天付费、无需按月签约。",
+                '广告写明灵活工位 "from just $19 per day, with no monthly commitment"，即按天付费、无需按月签约。',
             },
             {
               id: "tm-r-q11",
@@ -488,7 +483,7 @@ Tours are available Monday through Saturday, from 9 a.m. to 6 p.m. To schedule y
               ],
               correctIndex: 0,
               explanationZh:
-                "原文说 \"All members receive twenty-four-hour building access\"，即全天候进出大楼的权限；会议室每月仅赠送两小时，并非无限使用。",
+                '原文说 "All members receive twenty-four-hour building access"，即全天候进出大楼的权限；会议室每月仅赠送两小时，并非无限使用。',
             },
             {
               id: "tm-r-q12",
@@ -501,7 +496,7 @@ Tours are available Monday through Saturday, from 9 a.m. to 6 p.m. To schedule y
               ],
               correctIndex: 2,
               explanationZh:
-                "优惠条件是 \"Sign up for a twelve-month private-office lease before June 30 and receive your first month free\"，即 6 月 30 日前签订十二个月私人办公室租约。",
+                '优惠条件是 "Sign up for a twelve-month private-office lease before June 30 and receive your first month free"，即 6 月 30 日前签订十二个月私人办公室租约。',
             },
             {
               id: "tm-r-q13",
@@ -514,7 +509,7 @@ Tours are available Monday through Saturday, from 9 a.m. to 6 p.m. To schedule y
               ],
               correctIndex: 1,
               explanationZh:
-                "广告最后说 \"To schedule yours, call 555-0184 or visit www.greenfieldworkspaces.com\"，选项中只有拨打电话 555-0184 与原文一致。",
+                '广告最后说 "To schedule yours, call 555-0184 or visit www.greenfieldworkspaces.com"，选项中只有拨打电话 555-0184 与原文一致。',
             },
           ],
         },

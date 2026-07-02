@@ -25,7 +25,7 @@ None of these habits requires expensive technology. What they require is the rec
         ],
         correctIndex: 0,
         explanationZh:
-          "文章先描述混合会议中远程参与者被边缘化的问题，再给出三条具体做法（指定主持人、提前发议程、一人一屏），结论是这些做法能实现 meeting equity。选项 C 与原文 \"None of these habits requires expensive technology\" 直接矛盾。",
+          '文章先描述混合会议中远程参与者被边缘化的问题，再给出三条具体做法（指定主持人、提前发议程、一人一屏），结论是这些做法能实现 meeting equity。选项 C 与原文 "None of these habits requires expensive technology" 直接矛盾。',
       },
       {
         id: "q2",
@@ -38,7 +38,7 @@ None of these habits requires expensive technology. What they require is the rec
         ],
         correctIndex: 2,
         explanationZh:
-          "第一段写远程参与者 \"straining to hear side comments and waiting for a pause long enough to speak\"，即听不清旁侧讨论、插不上话。选项 A 恰好说反了——主持人主动邀请远程同事发言是文章推荐的解决办法，不是问题。",
+          '第一段写远程参与者 "straining to hear side comments and waiting for a pause long enough to speak"，即听不清旁侧讨论、插不上话。选项 A 恰好说反了——主持人主动邀请远程同事发言是文章推荐的解决办法，不是问题。',
       },
       {
         id: "q3",
@@ -51,20 +51,15 @@ None of these habits requires expensive technology. What they require is the rec
         ],
         correctIndex: 1,
         explanationZh:
-          "原文解释该政策的效果是 \"puts every face at the same size and every voice at the same volume\"——办公室员工也各自用笔记本入会，让每个人的画面和音量一致，从而实现平等参与。其余选项在文中均未提及。",
+          '原文解释该政策的效果是 "puts every face at the same size and every voice at the same volume"——办公室员工也各自用笔记本入会，让每个人的画面和音量一致，从而实现平等参与。其余选项在文中均未提及。',
       },
       {
         id: "q4",
-        stem: "The word \"equity\" in paragraph 1 is closest in meaning to",
-        options: [
-          "ownership of company shares",
-          "efficiency",
-          "politeness",
-          "fairness",
-        ],
+        stem: 'The word "equity" in paragraph 1 is closest in meaning to',
+        options: ["ownership of company shares", "efficiency", "politeness", "fairness"],
         correctIndex: 3,
         explanationZh:
-          "文中随即给出定义：\"the principle that every participant should have the same ability to see, hear, and contribute\"，即人人机会均等，故 equity 在此指“公平”。选项 A 利用了 equity 在金融语境中“股权”的常见含义，是典型的一词多义陷阱。",
+          '文中随即给出定义："the principle that every participant should have the same ability to see, hear, and contribute"，即人人机会均等，故 equity 在此指“公平”。选项 A 利用了 equity 在金融语境中“股权”的常见含义，是典型的一词多义陷阱。',
       },
     ],
   },
@@ -96,20 +91,15 @@ Looking ahead, we forecast fourth-quarter revenue of $50 to $52 million. We rema
         ],
         correctIndex: 3,
         explanationZh:
-          "报告第一段明确指出增长 \"driven primarily by our subscription software services, which grew 24 percent\"。硬件销售实际下降了 8%（排除 A）；仓库整合是导致利润率收窄的一次性成本，与营收增长无关（排除 B）。",
+          '报告第一段明确指出增长 "driven primarily by our subscription software services, which grew 24 percent"。硬件销售实际下降了 8%（排除 A）；仓库整合是导致利润率收窄的一次性成本，与营收增长无关（排除 B）。',
       },
       {
         id: "q2",
         stem: "Which region recorded the highest revenue growth rate?",
-        options: [
-          "North America",
-          "Asia-Pacific",
-          "Europe",
-          "All regions grew at the same rate",
-        ],
+        options: ["North America", "Asia-Pacific", "Europe", "All regions grew at the same rate"],
         correctIndex: 1,
         explanationZh:
-          "第二段写道 \"Asia-Pacific was again our fastest-growing market, with revenue up 21 percent\"，增速高于欧洲的 9% 和北美的 6%。注意北美是规模最大（largest）的市场，但“最大”不等于“增长最快”，这是本题的干扰点。",
+          '第二段写道 "Asia-Pacific was again our fastest-growing market, with revenue up 21 percent"，增速高于欧洲的 9% 和北美的 6%。注意北美是规模最大（largest）的市场，但“最大”不等于“增长最快”，这是本题的干扰点。',
       },
       {
         id: "q3",
@@ -122,7 +112,7 @@ Looking ahead, we forecast fourth-quarter revenue of $50 to $52 million. We rema
         ],
         correctIndex: 0,
         explanationZh:
-          "第三段给出原因：\"mainly because of elevated logistics costs and one-time expenses related to the consolidation of our two European warehouses\"。日韩本地化版本推动的是亚太营收增长（选项 C 张冠李戴）；第四季度指引是展望内容，与本季利润率无因果关系。",
+          '第三段给出原因："mainly because of elevated logistics costs and one-time expenses related to the consolidation of our two European warehouses"。日韩本地化版本推动的是亚太营收增长（选项 C 张冠李戴）；第四季度指引是展望内容，与本季利润率无因果关系。',
       },
       {
         id: "q4",
@@ -135,7 +125,7 @@ Looking ahead, we forecast fourth-quarter revenue of $50 to $52 million. We rema
         ],
         correctIndex: 2,
         explanationZh:
-          "报告称指引 \"is deliberately cautious, reflecting currency headwinds... and longer procurement cycles\"，即因汇率逆风和客户采购周期拉长而刻意保守。预测区间 $50–52M 高于本季 $48.2M，并非下滑（排除 A）；新加坡配送中心要到明年第二季度才投入运营（排除 B）。",
+          '报告称指引 "is deliberately cautious, reflecting currency headwinds... and longer procurement cycles"，即因汇率逆风和客户采购周期拉长而刻意保守。预测区间 $50–52M 高于本季 $48.2M，并非下滑（排除 A）；新加坡配送中心要到明年第二季度才投入运营（排除 B）。',
       },
     ],
   },
@@ -163,7 +153,7 @@ The practical danger is not the difference itself but the interpretation we atta
         ],
         correctIndex: 1,
         explanationZh:
-          "文章开头的例子就点明 \"Neither is being unprofessional\"——荷兰经理与日本同事都很专业，只是对信息“包装方式”的预设不同；随后用高/低语境理论解释这种差异。选项 A 把风格差异误读成礼貌程度的高下，正是文章反对的思维方式。",
+          '文章开头的例子就点明 "Neither is being unprofessional"——荷兰经理与日本同事都很专业，只是对信息“包装方式”的预设不同；随后用高/低语境理论解释这种差异。选项 A 把风格差异误读成礼貌程度的高下，正是文章反对的思维方式。',
       },
       {
         id: "q2",
@@ -176,11 +166,11 @@ The practical danger is not the difference itself but the interpretation we atta
         ],
         correctIndex: 0,
         explanationZh:
-          "原文说在高语境文化中 \"meaning is carried as much by the situation as by the words themselves: what is left unsaid... can matter more than the literal message\"。选项 B 描述的是低语境文化的特征（意义在语言本身、说话者负责讲清楚），属于概念对调的干扰项。",
+          '原文说在高语境文化中 "meaning is carried as much by the situation as by the words themselves: what is left unsaid... can matter more than the literal message"。选项 B 描述的是低语境文化的特征（意义在语言本身、说话者负责讲清楚），属于概念对调的干扰项。',
       },
       {
         id: "q3",
-        stem: "In the article, what may the phrase \"we will consider it\" actually mean in a high-context culture?",
+        stem: 'In the article, what may the phrase "we will consider it" actually mean in a high-context culture?',
         options: [
           "A request for more time to decide",
           "An enthusiastic acceptance",
@@ -202,7 +192,7 @@ The practical danger is not the difference itself but the interpretation we atta
         ],
         correctIndex: 2,
         explanationZh:
-          "末段指出有经验的管理者 \"make a habit of separating style from substance\"，并通过追问和书面确认来核实实质内容。选项 D 与原文 \"resist the temptation to judge a colleague's competence by how directly...\" 正好相反；文章也没有要求完全照搬对方风格——\"The skill is not to abandon your own style\"（排除 A）。",
+          '末段指出有经验的管理者 "make a habit of separating style from substance"，并通过追问和书面确认来核实实质内容。选项 D 与原文 "resist the temptation to judge a colleague\'s competence by how directly..." 正好相反；文章也没有要求完全照搬对方风格——"The skill is not to abandon your own style"（排除 A）。',
       },
     ],
   },

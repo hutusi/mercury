@@ -81,7 +81,9 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
         <span>
           {index + 1} / {questions.length}
         </span>
-        <span>{question.direction === "en2zh" ? t.vocab.quizPickMeaning : t.vocab.quizPickWord}</span>
+        <span>
+          {question.direction === "en2zh" ? t.vocab.quizPickMeaning : t.vocab.quizPickWord}
+        </span>
       </div>
 
       <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">

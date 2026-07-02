@@ -14,9 +14,7 @@ export default async function OnboardingPage() {
         <p className="text-sm font-semibold tracking-widest text-brand-600 uppercase">
           {t.common.appName}
         </p>
-        <h1 className="mt-2 text-3xl font-bold text-slate-900">
-          {t.onboarding.title}
-        </h1>
+        <h1 className="mt-2 text-3xl font-bold text-slate-900">{t.onboarding.title}</h1>
         <p className="mt-2 text-slate-500">{t.onboarding.subtitle}</p>
       </div>
       <TrackPicker />
