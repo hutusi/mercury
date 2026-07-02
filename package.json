@@ -9,7 +9,7 @@
     "db:push": "drizzle-kit push",
     "db:seed": "bunx tsx src/lib/db/seed.ts",
     "db:studio": "drizzle-kit studio",
-    "test": "bun test"
+    "test": "bun test src"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.109.1",
