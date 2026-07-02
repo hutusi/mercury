@@ -9,6 +9,10 @@ export const LOCALE_COOKIE = "mercury_locale";
  * define exactly the same keys.
  */
 const zh = {
+  meta: {
+    title: "Mercury · 商务英语进阶",
+    description: "为中文母语职场人打造的英语提升平台：托业 / 雅思备考 + 实战商务英语",
+  },
   common: {
     appName: "Mercury",
     loading: "加载中…",
@@ -259,6 +263,11 @@ type DeepString<T> = { [K in keyof T]: T[K] extends object ? DeepString<T[K]> : 
 export type Dictionary = DeepString<typeof zh>;
 
 const en: Dictionary = {
+  meta: {
+    title: "Mercury · Business English, Upgraded",
+    description:
+      "English platform for Chinese-speaking professionals: TOEIC / IELTS prep plus real-world business English",
+  },
   common: {
     appName: "Mercury",
     loading: "Loading…",
