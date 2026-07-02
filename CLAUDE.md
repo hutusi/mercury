@@ -15,7 +15,7 @@ bun run test:e2e           # Playwright (port 3100, scratch DB in .e2e/)
 bun run db:push | db:seed | db:studio
 ```
 
-Full verify gate: `lint && format:check && typecheck && test && build && test:e2e`.
+Full verify gate: `lint && format:check && test && build && typecheck && test:e2e` (typecheck after build — it needs the generated `.next/types`).
 
 ## Architecture (details in docs/ARCHITECTURE.md)
 

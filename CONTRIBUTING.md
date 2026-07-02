@@ -35,9 +35,11 @@ bun run dev       # http://localhost:3000
 Everything must be green before a PR (CI runs the same checks):
 
 ```bash
-bun run lint && bun run format:check && bun run typecheck && \
-bun run test && bun run build && bun run test:e2e
+bun run lint && bun run format:check && bun run test && \
+bun run build && bun run typecheck && bun run test:e2e
 ```
+
+(`typecheck` runs after `build` because Next generates `next-env.d.ts` and `.next/types` during the build — on a clean checkout the other order fails.)
 
 ## Testing guide
 
