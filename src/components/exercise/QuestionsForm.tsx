@@ -9,18 +9,22 @@ export function QuestionsForm({
   answers,
   onAnswer,
   disabled,
+  numbered = true,
 }: {
   questions: SanitizedQuestion[];
   answers: Record<string, number>;
   onAnswer: (questionId: string, optionIndex: number) => void;
   disabled?: boolean;
+  /** Set false when the caller already embeds numbering in the stem. */
+  numbered?: boolean;
 }) {
   return (
     <ol className="space-y-6">
       {questions.map((q, qIndex) => (
         <li key={q.id} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
           <p className="font-medium text-slate-900">
-            {qIndex + 1}. {q.stem}
+            {numbered ? `${qIndex + 1}. ` : ""}
+            {q.stem}
           </p>
           <div className="mt-3 space-y-2">
             {q.options.map((option, i) => {
