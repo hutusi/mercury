@@ -19,20 +19,12 @@ export async function recordActivity(userId: string): Promise<void> {
 }
 
 /**
- * Consecutive-day streak counted back from today, or from yesterday if the
+ * Consecutive-day streak counted back from `today`, or from yesterday if the
  * user hasn't studied yet today (so the streak isn't shown broken mid-day).
+ * Pure: `days` holds YYYY-MM-DD strings.
  */
-export async function getStreak(userId: string): Promise<number> {
-  const rows = await db
-    .select({ day: activityDays.day })
-    .from(activityDays)
-    .where(eq(activityDays.userId, userId))
-    .orderBy(desc(activityDays.day))
-    .limit(366);
-  if (rows.length === 0) return 0;
-
-  const days = new Set(rows.map((r) => r.day));
-  const cursor = new Date();
+export function computeStreak(days: ReadonlySet<string>, today: Date = new Date()): number {
+  const cursor = new Date(today);
   if (!days.has(localDay(cursor))) {
     cursor.setDate(cursor.getDate() - 1);
     if (!days.has(localDay(cursor))) return 0;
@@ -44,4 +36,14 @@ export async function getStreak(userId: string): Promise<number> {
     cursor.setDate(cursor.getDate() - 1);
   }
   return streak;
+}
+
+export async function getStreak(userId: string): Promise<number> {
+  const rows = await db
+    .select({ day: activityDays.day })
+    .from(activityDays)
+    .where(eq(activityDays.userId, userId))
+    .orderBy(desc(activityDays.day))
+    .limit(366);
+  return computeStreak(new Set(rows.map((r) => r.day)));
 }
