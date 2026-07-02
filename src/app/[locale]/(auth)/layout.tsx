@@ -5,7 +5,7 @@ export default function AuthLayout({ children }: Readonly<{ children: React.Reac
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center bg-background px-4">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-primary/[0.06] to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-linear-to-b from-primary/[0.06] to-transparent"
         aria-hidden
       />
       <Link href="/" className="relative mb-8">

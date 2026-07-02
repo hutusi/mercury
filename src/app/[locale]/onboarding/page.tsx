@@ -11,7 +11,7 @@ export default async function OnboardingPage() {
     <div className="relative min-h-screen bg-background">
       {/* Subtle brand wash, matching the landing hero */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-primary/[0.06] to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-linear-to-b from-primary/[0.06] to-transparent"
         aria-hidden
       />
       <main className="relative mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-6 py-12">

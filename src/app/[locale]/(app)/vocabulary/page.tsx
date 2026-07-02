@@ -112,7 +112,9 @@ export default async function VocabularyPage() {
                           ●
                         </span>
                       ) : (
-                        <span className="text-muted-foreground/25">●</span>
+                        <span className="text-muted-foreground/25" aria-label={t.vocab.notLearned}>
+                          ●
+                        </span>
                       )}
                     </td>
                   </tr>

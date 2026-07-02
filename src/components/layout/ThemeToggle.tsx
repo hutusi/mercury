@@ -10,8 +10,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export function ThemeToggle() {
+  const t = useT();
   const { theme, setTheme } = useTheme();
   // Same mounted gate as the speech components: the stored theme is unknown
   // during SSR, so render a neutral placeholder until hydrated.
@@ -23,7 +25,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="ghost" size="icon" aria-label="Theme">
+      <Button variant="ghost" size="icon" aria-label={t.common.theme}>
         <Sun className="size-4" />
       </Button>
     );
@@ -32,7 +34,7 @@ export function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Theme">
+        <Button variant="ghost" size="icon" aria-label={t.common.theme}>
           {theme === "dark" ? (
             <Moon className="size-4" />
           ) : theme === "light" ? (
@@ -44,13 +46,13 @@ export function ThemeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          <Sun className="size-4" /> Light
+          <Sun className="size-4" /> {t.common.themeLight}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <Moon className="size-4" /> Dark
+          <Moon className="size-4" /> {t.common.themeDark}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Monitor className="size-4" /> System
+          <Monitor className="size-4" /> {t.common.themeSystem}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

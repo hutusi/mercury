@@ -21,14 +21,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = dictionaries[isLocale(locale) ? locale : DEFAULT_LOCALE];
+  // No alternates here: a layout-level canonical would claim every page under
+  // [locale] is a duplicate of the locale root. Pages set their own (see the
+  // landing page); the app pages are auth-gated and not indexable anyway.
   return {
     metadataBase: new URL(process.env.BETTER_AUTH_URL ?? "http://localhost:3000"),
     title: t.meta.title,
     description: t.meta.description,
-    alternates: {
-      canonical: `/${locale}`,
-      languages: { "zh-CN": "/zh", en: "/en" },
-    },
   };
 }
 

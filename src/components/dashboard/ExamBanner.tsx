@@ -20,7 +20,7 @@ export async function ExamBanner({
         : null;
 
   return (
-    <div className="flex flex-col justify-between rounded-xl border-2 border-amber-300 bg-gradient-to-br from-amber-500/10 to-transparent p-5 shadow-xs dark:border-amber-400/30">
+    <div className="flex flex-col justify-between rounded-xl border-2 border-amber-300 bg-linear-to-br from-amber-500/10 to-transparent p-5 shadow-xs dark:border-amber-400/30">
       <div>
         <p className="flex items-center gap-1.5 text-sm font-semibold text-amber-700 dark:text-amber-400">
           <Timer className="size-4" aria-hidden />

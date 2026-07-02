@@ -62,6 +62,7 @@ export function TrackPicker() {
             <button
               key={o.track}
               onClick={() => setSelected(o.track)}
+              aria-pressed={active}
               className={`rounded-xl border-2 bg-card p-6 text-left transition ${
                 active
                   ? "border-primary shadow-md ring-2 ring-primary/20"

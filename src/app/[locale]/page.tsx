@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowRight, Briefcase, Sparkles, Target } from "lucide-react";
 import { LanguageToggle } from "@/components/layout/LanguageToggle";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -7,6 +8,20 @@ import { Card, CardContent } from "@/components/ui/card";
 import { getSession } from "@/lib/auth/session";
 import { getDict, localeRedirect } from "@/lib/i18n";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    alternates: {
+      canonical: `/${locale}`,
+      languages: { "zh-CN": "/zh", en: "/en" },
+    },
+  };
+}
 
 export default async function LandingPage() {
   const session = await getSession();
@@ -38,7 +53,7 @@ export default async function LandingPage() {
     <div className="relative min-h-screen">
       {/* Subtle brand wash behind the hero */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-primary/[0.06] to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-linear-to-b from-primary/[0.06] to-transparent"
         aria-hidden
       />
 

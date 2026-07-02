@@ -48,7 +48,7 @@ export default async function ExamReportPage({
       </div>
 
       {/* Estimate hero */}
-      <div className="rounded-2xl border-2 border-amber-200 bg-gradient-to-br from-amber-500/10 to-transparent p-8 text-center dark:border-amber-400/20">
+      <div className="rounded-2xl border-2 border-amber-200 bg-linear-to-br from-amber-500/10 to-transparent p-8 text-center dark:border-amber-400/20">
         {estimate?.kind === "toeic" ? (
           <>
             <p className="text-sm font-medium text-amber-700 dark:text-amber-400">
