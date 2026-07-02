@@ -1,5 +1,6 @@
 "use client";
 
+import { Lock } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
@@ -62,17 +63,19 @@ export function ListeningRunner({
           total={result.total}
         />
         {/* Transcript unlocks only after submission */}
-        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="mb-4 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+        <div className="rounded-xl border bg-card p-6 shadow-xs">
+          <h2 className="mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
             {t.listening.transcript}
           </h2>
           <div className="space-y-3">
             {script.map((line, i) => (
-              <p key={i} className="text-sm leading-relaxed text-slate-800">
+              <p key={i} className="text-sm leading-relaxed text-foreground/80">
                 {line.speaker !== "narrator" && (
                   <span
-                    className={`mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold text-white ${
-                      line.speaker === "A" ? "bg-brand-500" : "bg-amber-500"
+                    className={`mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
+                      line.speaker === "A"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-amber-500 text-white"
                     }`}
                   >
                     {line.speaker}
@@ -85,7 +88,7 @@ export function ListeningRunner({
         </div>
         <Link
           href="/listening"
-          className="inline-block text-sm font-medium text-brand-600 hover:underline"
+          className="inline-block text-sm font-medium text-primary hover:underline"
         >
           ← {t.reading.backToList}
         </Link>
@@ -97,8 +100,11 @@ export function ListeningRunner({
   return (
     <div className="space-y-6">
       <TtsPlayer script={script} />
-      <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-3 text-center text-xs text-slate-500">
-        <span aria-hidden>🔒</span> {t.listening.transcriptLocked}
+      <div className="rounded-xl border border-dashed bg-muted p-3 text-center text-xs text-muted-foreground">
+        <span aria-hidden>
+          <Lock className="inline size-4" />
+        </span>{" "}
+        {t.listening.transcriptLocked}
       </div>
       <QuestionsForm
         questions={questions}
@@ -106,14 +112,14 @@ export function ListeningRunner({
         onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
       />
       {error && (
-        <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-center text-sm text-red-700">
+        <p className="rounded-lg border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
           {error}
         </p>
       )}
       <button
         onClick={submit}
         disabled={pending || answeredCount < questions.length}
-        className="w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
+        className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-40"
       >
         {pending
           ? t.common.loading

@@ -47,24 +47,24 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
   if (result) {
     const pct = Math.round((result.score / result.total) * 100);
     return (
-      <div className="mx-auto max-w-md rounded-xl border border-slate-200 bg-white p-10 text-center shadow-sm">
+      <div className="mx-auto max-w-md rounded-xl border bg-card p-10 text-center shadow-xs">
         <p className="text-4xl" aria-hidden>
           {pct >= 80 ? "🏆" : pct >= 60 ? "👍" : "💪"}
         </p>
-        <h2 className="mt-4 text-xl font-bold text-slate-900">{t.vocab.quizDone}</h2>
-        <p className="mt-2 text-3xl font-bold text-brand-700">
+        <h2 className="mt-4 text-xl font-bold">{t.vocab.quizDone}</h2>
+        <p className="mt-2 text-3xl font-bold text-primary">
           {result.score} / {result.total}
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Link
             href="/vocabulary"
-            className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            className="rounded-lg border bg-card px-4 py-2 text-sm font-medium text-foreground/80 hover:bg-muted"
           >
             {t.common.back}
           </Link>
           <Link
             href="/vocabulary/study"
-            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/80"
           >
             {t.vocab.startStudy}
           </Link>
@@ -77,7 +77,7 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
 
   return (
     <div className="mx-auto max-w-xl space-y-4">
-      <div className="flex items-center justify-between text-sm text-slate-500">
+      <div className="flex items-center justify-between text-sm text-muted-foreground">
         <span>
           {index + 1} / {questions.length}
         </span>
@@ -86,19 +86,21 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
         </span>
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-        <p className="text-3xl font-bold text-slate-900">{question.prompt}</p>
+      <div className="rounded-2xl border bg-card p-8 text-center shadow-xs">
+        <p className="text-3xl font-bold">{question.prompt}</p>
       </div>
 
       <div className="space-y-2">
         {question.options.map((option) => {
           const isCorrect = option.wordId === question.wordId;
           const isPicked = picked === option.wordId;
-          let cls = "border-slate-200 bg-white text-slate-700 hover:border-brand-300";
+          let cls = "border-border bg-card text-foreground/80 hover:border-primary/50";
           if (picked) {
-            if (isCorrect) cls = "border-green-500 bg-green-50 text-green-800 font-semibold";
-            else if (isPicked) cls = "border-red-400 bg-red-50 text-red-700";
-            else cls = "border-slate-200 bg-white text-slate-400";
+            if (isCorrect)
+              cls =
+                "border-green-500 bg-green-500/10 text-green-700 dark:text-green-400 font-semibold";
+            else if (isPicked) cls = "border-destructive/40 bg-destructive/10 text-destructive";
+            else cls = "border-border bg-card text-muted-foreground/70";
           }
           return (
             <button
@@ -117,7 +119,7 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
         <button
           onClick={next}
           disabled={pending}
-          className="w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-50"
+          className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:opacity-50"
         >
           {pending ? t.common.loading : isLast ? t.common.finish : t.common.next}
         </button>

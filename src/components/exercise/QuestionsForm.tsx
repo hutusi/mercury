@@ -21,8 +21,8 @@ export function QuestionsForm({
   return (
     <ol className="space-y-6">
       {questions.map((q, qIndex) => (
-        <li key={q.id} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="font-medium text-slate-900">
+        <li key={q.id} className="rounded-xl border bg-card p-5 shadow-xs">
+          <p className="font-medium">
             {numbered ? `${qIndex + 1}. ` : ""}
             {q.stem}
           </p>
@@ -37,13 +37,15 @@ export function QuestionsForm({
                   onClick={() => onAnswer(q.id, i)}
                   className={`flex w-full items-start gap-3 rounded-lg border px-3 py-2.5 text-left text-sm transition ${
                     selected
-                      ? "border-brand-500 bg-brand-50 text-brand-900"
-                      : "border-slate-200 bg-white text-slate-700 hover:border-brand-300 hover:bg-slate-50"
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border bg-card text-foreground/80 hover:border-primary/50 hover:bg-muted"
                   } disabled:cursor-not-allowed disabled:opacity-60`}
                 >
                   <span
                     className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
-                      selected ? "bg-brand-600 text-white" : "bg-slate-100 text-slate-500"
+                      selected
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
                     }`}
                   >
                     {LETTERS[i]}

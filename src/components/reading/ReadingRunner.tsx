@@ -60,7 +60,7 @@ export function ReadingRunner({
         total={result.total}
       >
         <div className="flex items-center justify-between">
-          <Link href="/reading" className="text-sm font-medium text-brand-600 hover:underline">
+          <Link href="/reading" className="text-sm font-medium text-primary hover:underline">
             ← {t.reading.backToList}
           </Link>
         </div>
@@ -71,11 +71,11 @@ export function ReadingRunner({
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
-      <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:self-start lg:overflow-y-auto">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+      <article className="rounded-xl border bg-card p-6 shadow-xs lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:self-start lg:overflow-y-auto">
+        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
           {t.reading.passage}
         </h2>
-        <div className="space-y-4 leading-relaxed whitespace-pre-line text-slate-800">
+        <div className="space-y-4 leading-relaxed whitespace-pre-line text-foreground/80">
           {passage}
         </div>
       </article>
@@ -87,14 +87,14 @@ export function ReadingRunner({
           onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
         />
         {error && (
-          <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-center text-sm text-red-700">
+          <p className="rounded-lg border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
             {error}
           </p>
         )}
         <button
           onClick={submit}
           disabled={pending || answeredCount < questions.length}
-          className="w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
+          className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {pending
             ? t.common.loading

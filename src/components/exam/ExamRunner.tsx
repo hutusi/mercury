@@ -1,5 +1,6 @@
 "use client";
 
+import { Headphones } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TtsPlayer } from "@/components/listening/TtsPlayer";
@@ -158,18 +159,20 @@ export function ExamRunner({
   return (
     <div className="space-y-6">
       {/* Sticky header: section info + timer + palette */}
-      <div className="sticky top-14 z-10 -mx-4 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6">
+      <div className="sticky top-14 z-10 -mx-4 border-b bg-background/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-semibold text-slate-900">
+            <p className="text-sm font-semibold">
               {sectionIndex + 1}/{sections.length} ·{" "}
               {section.kind === "listening" ? t.exams.listeningSection : t.exams.readingSection}
             </p>
-            <p className="text-xs text-slate-500">{section.titleZh}</p>
+            <p className="text-xs text-muted-foreground">{section.titleZh}</p>
           </div>
           <div
             className={`rounded-lg px-3 py-1.5 font-mono text-lg font-bold tabular-nums ${
-              lowTime ? "animate-pulse bg-red-50 text-red-600" : "bg-slate-100 text-slate-800"
+              lowTime
+                ? "animate-pulse bg-destructive/10 text-destructive"
+                : "bg-muted text-foreground/80"
             }`}
             aria-label={t.exams.timeLeft}
           >
@@ -183,8 +186,8 @@ export function ExamRunner({
               href={`#q-${q.id}`}
               className={`flex h-7 w-7 items-center justify-center rounded text-xs font-semibold transition ${
                 sectionAnswers[q.id] !== undefined
-                  ? "bg-brand-600 text-white"
-                  : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-muted-foreground hover:bg-muted/70"
               }`}
             >
               {i + 1}
@@ -194,8 +197,11 @@ export function ExamRunner({
       </div>
 
       {section.kind === "listening" && (
-        <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
-          <span aria-hidden>🎧</span> {t.exams.audioOnce}
+        <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-300">
+          <span aria-hidden>
+            <Headphones className="inline size-4" />
+          </span>{" "}
+          {t.exams.audioOnce}
         </p>
       )}
 
@@ -203,8 +209,8 @@ export function ExamRunner({
         <div key={group.id} className="space-y-4">
           {group.script && <TtsPlayer script={group.script} />}
           {group.passage && (
-            <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="leading-relaxed whitespace-pre-line text-slate-800">
+            <article className="rounded-xl border bg-card p-6 shadow-xs">
+              <div className="leading-relaxed whitespace-pre-line text-foreground/80">
                 {group.passage}
               </div>
             </article>
@@ -228,29 +234,29 @@ export function ExamRunner({
         </div>
       ))}
 
-      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <div className="rounded-xl border bg-card p-5 shadow-xs">
         {submitError && (
-          <p className="mb-3 rounded-lg border border-red-200 bg-red-50 p-3 text-center text-sm text-red-700">
+          <p className="mb-3 rounded-lg border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
             {submitError}
           </p>
         )}
         {confirming ? (
           <div className="space-y-3 text-center">
-            <p className="text-sm font-medium text-slate-800">{t.exams.confirmSubmitSection}</p>
-            <p className="text-xs text-slate-500">
+            <p className="text-sm font-medium text-foreground/80">{t.exams.confirmSubmitSection}</p>
+            <p className="text-xs text-muted-foreground">
               {t.exams.answered} {answeredCount}/{sectionQuestions.length}
             </p>
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setConfirming(false)}
-                className="rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                className="rounded-lg border bg-card px-5 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted"
               >
                 {t.common.cancel}
               </button>
               <button
                 onClick={() => void doSubmitSection(section.id)}
                 disabled={submitting}
-                className="rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 disabled:opacity-50"
+                className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/80 disabled:opacity-50"
               >
                 {submitting
                   ? t.common.loading
@@ -264,7 +270,7 @@ export function ExamRunner({
           <button
             onClick={() => setConfirming(true)}
             disabled={submitting}
-            className="w-full rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-50"
+            className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:opacity-50"
           >
             {t.exams.submitSection} ({answeredCount}/{sectionQuestions.length})
           </button>
