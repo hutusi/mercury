@@ -1,0 +1,84 @@
+import type { ExamSection, ExamTrack, SanitizedQuestion, ScriptLine } from "../content/types";
+import { estimateIeltsBand, estimateToeic } from "./scoring";
+
+export interface SectionScoreResult {
+  sectionId: string;
+  kind: "listening" | "reading";
+  raw: number;
+  max: number;
+}
+
+export type ExamEstimateResult =
+  | { kind: "toeic"; listening: number; reading: number; total: number }
+  | { kind: "ielts"; band: number };
+
+export function gradeExam(
+  track: ExamTrack,
+  sections: ExamSection[],
+  answers: Record<string, number>,
+): {
+  sectionScores: SectionScoreResult[];
+  rawScore: number;
+  maxScore: number;
+  estimate: ExamEstimateResult;
+} {
+  const sectionScores = sections.map((s) => {
+    let raw = 0;
+    let max = 0;
+    for (const group of s.groups) {
+      for (const q of group.questions) {
+        max += 1;
+        if (answers[q.id] === q.correctIndex) raw += 1;
+      }
+    }
+    return { sectionId: s.id, kind: s.kind, raw, max };
+  });
+  const rawScore = sectionScores.reduce((n, s) => n + s.raw, 0);
+  const maxScore = sectionScores.reduce((n, s) => n + s.max, 0);
+
+  let estimate: ExamEstimateResult;
+  if (track === "toeic") {
+    const sum = (kind: "listening" | "reading") => {
+      const xs = sectionScores.filter((s) => s.kind === kind);
+      return { raw: xs.reduce((n, s) => n + s.raw, 0), max: xs.reduce((n, s) => n + s.max, 0) };
+    };
+    estimate = { kind: "toeic", ...estimateToeic(sum("listening"), sum("reading")) };
+  } else {
+    estimate = { kind: "ielts", band: estimateIeltsBand(rawScore, maxScore) };
+  }
+
+  return { sectionScores, rawScore, maxScore, estimate };
+}
+
+export interface SanitizedExamGroup {
+  id: string;
+  passage?: string;
+  script?: ScriptLine[];
+  questions: SanitizedQuestion[];
+}
+
+export interface SanitizedExamSection {
+  id: string;
+  kind: "listening" | "reading";
+  title: string;
+  titleZh: string;
+  durationSeconds: number;
+  groups: SanitizedExamGroup[];
+}
+
+export function sanitizeSections(sections: ExamSection[]): SanitizedExamSection[] {
+  return sections.map((section) => ({
+    id: section.id,
+    kind: section.kind,
+    title: section.title,
+    titleZh: section.titleZh,
+    durationSeconds: section.durationSeconds,
+    groups: section.groups.map((group) => ({
+      id: group.id,
+      passage: group.passage,
+      // Listening scripts must reach the client for TTS playback; answers never do.
+      script: group.script,
+      questions: group.questions.map(({ id, stem, options }) => ({ id, stem, options })),
+    })),
+  }));
+}
