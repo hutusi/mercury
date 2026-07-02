@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
 import { gradeCard } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -42,24 +42,24 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
 
   if (!card) {
     return (
-      <div className="mx-auto max-w-md rounded-xl border border-slate-200 bg-white p-10 text-center shadow-sm">
+      <div className="mx-auto max-w-md rounded-xl border bg-card p-10 text-center shadow-xs">
         <p className="text-4xl" aria-hidden>
           🎉
         </p>
-        <h2 className="mt-4 text-xl font-bold text-slate-900">{t.vocab.sessionDone}</h2>
-        <p className="mt-2 text-slate-500">
+        <h2 className="mt-4 text-xl font-bold">{t.vocab.sessionDone}</h2>
+        <p className="mt-2 text-muted-foreground">
           {t.vocab.reviewedCount}: {reviewed}
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Link
             href="/vocabulary"
-            className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            className="rounded-lg border bg-card px-4 py-2 text-sm font-medium text-foreground/80 hover:bg-muted"
           >
             {t.common.back}
           </Link>
           <Link
             href="/vocabulary/quiz"
-            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/80"
           >
             {t.vocab.startQuiz}
           </Link>
@@ -70,14 +70,14 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
 
   const gradeButtons: { grade: ReviewGrade; label: string; cls: string }[] = [
     { grade: 1, label: t.vocab.again, cls: "bg-red-500 hover:bg-red-600" },
-    { grade: 3, label: t.vocab.hard, cls: "bg-accent-500 hover:bg-accent-600" },
+    { grade: 3, label: t.vocab.hard, cls: "bg-amber-500 hover:bg-amber-600" },
     { grade: 4, label: t.vocab.good, cls: "bg-green-500 hover:bg-green-600" },
-    { grade: 5, label: t.vocab.easy, cls: "bg-brand-500 hover:bg-brand-600" },
+    { grade: 5, label: t.vocab.easy, cls: "bg-primary hover:bg-primary/80" },
   ];
 
   return (
     <div className="mx-auto max-w-xl space-y-4">
-      <div className="flex items-center justify-between text-sm text-slate-500">
+      <div className="flex items-center justify-between text-sm text-muted-foreground">
         <span>
           {index + 1} / {queue.length}
         </span>
@@ -88,30 +88,28 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
 
       <button
         onClick={() => setFlipped((f) => !f)}
-        className="block min-h-72 w-full cursor-pointer rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:shadow-md"
+        className="block min-h-72 w-full cursor-pointer rounded-2xl border bg-card p-8 text-center shadow-xs transition hover:shadow-md"
       >
         {card.isNew && (
-          <span className="mb-3 inline-block rounded-full bg-accent-100 px-2.5 py-0.5 text-xs font-semibold text-accent-700">
+          <span className="mb-3 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800 dark:bg-amber-400/15 dark:text-amber-300">
             {t.vocab.fresh}
           </span>
         )}
-        <p className="text-4xl font-bold text-slate-900">{card.headword}</p>
-        <p className="mt-2 text-slate-500">
+        <p className="text-4xl font-bold">{card.headword}</p>
+        <p className="mt-2 text-muted-foreground">
           {card.ipa} · {card.pos}
         </p>
         {flipped ? (
-          <div className="mt-6 space-y-4 border-t border-slate-100 pt-6 text-left">
-            <p className="text-center text-2xl font-semibold text-brand-700">
-              {card.translationZh}
-            </p>
-            <p className="text-center text-sm text-slate-600">{card.definitionEn}</p>
-            <div className="rounded-lg bg-slate-50 p-4 text-sm">
-              <p className="font-medium text-slate-800">{card.exampleEn}</p>
-              <p className="mt-1 text-slate-500">{card.exampleZh}</p>
+          <div className="mt-6 space-y-4 border-t pt-6 text-left">
+            <p className="text-center text-2xl font-semibold text-primary">{card.translationZh}</p>
+            <p className="text-center text-sm text-muted-foreground">{card.definitionEn}</p>
+            <div className="rounded-lg bg-muted p-4 text-sm">
+              <p className="font-medium text-foreground/80">{card.exampleEn}</p>
+              <p className="mt-1 text-muted-foreground">{card.exampleZh}</p>
             </div>
           </div>
         ) : (
-          <p className="mt-8 text-sm text-slate-400">{t.vocab.flipHint}</p>
+          <p className="mt-8 text-sm text-muted-foreground/70">{t.vocab.flipHint}</p>
         )}
       </button>
 

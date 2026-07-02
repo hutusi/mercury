@@ -9,6 +9,10 @@ export const LOCALE_COOKIE = "mercury_locale";
  * define exactly the same keys.
  */
 const zh = {
+  meta: {
+    title: "Mercury · 商务英语进阶",
+    description: "为中文母语职场人打造的英语提升平台：托业 / 雅思备考 + 实战商务英语",
+  },
   common: {
     appName: "Mercury",
     loading: "加载中…",
@@ -26,6 +30,10 @@ const zh = {
     score: "得分",
     accuracy: "正确率",
     signOut: "退出登录",
+    theme: "主题",
+    themeLight: "浅色",
+    themeDark: "深色",
+    themeSystem: "跟随系统",
     estimateNote: "估算成绩，仅供参考",
     comingSoon: "建设中…",
     empty: "暂无内容",
@@ -112,6 +120,7 @@ const zh = {
     due: "待复习",
     fresh: "新词",
     learned: "已学",
+    notLearned: "未学",
     study: "记忆卡学习",
     quiz: "词汇小测",
     startStudy: "开始学习",
@@ -259,6 +268,11 @@ type DeepString<T> = { [K in keyof T]: T[K] extends object ? DeepString<T[K]> : 
 export type Dictionary = DeepString<typeof zh>;
 
 const en: Dictionary = {
+  meta: {
+    title: "Mercury · Business English, Upgraded",
+    description:
+      "English platform for Chinese-speaking professionals: TOEIC / IELTS prep plus real-world business English",
+  },
   common: {
     appName: "Mercury",
     loading: "Loading…",
@@ -276,6 +290,10 @@ const en: Dictionary = {
     score: "Score",
     accuracy: "Accuracy",
     signOut: "Sign out",
+    theme: "Theme",
+    themeLight: "Light",
+    themeDark: "Dark",
+    themeSystem: "System",
     estimateNote: "Estimated score, for reference only",
     comingSoon: "Coming soon…",
     empty: "Nothing here yet",
@@ -362,6 +380,7 @@ const en: Dictionary = {
     due: "Due",
     fresh: "New",
     learned: "Learned",
+    notLearned: "Not learned",
     study: "Flashcards",
     quiz: "Quiz",
     startStudy: "Start studying",

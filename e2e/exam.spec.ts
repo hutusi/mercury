@@ -6,7 +6,7 @@ test("mini-TOEIC: both sections, submit, score report", async ({ page }) => {
 
   // Exam list → intro.
   await page.goto("/exams");
-  await page.locator('a[href="/exams/exam-toeic-mini"]').first().click();
+  await page.locator('a[href="/zh/exams/exam-toeic-mini"]').first().click();
   await expect(page.getByText(t.exams.rules)).toBeVisible();
 
   // Start: creates the attempt with a server-issued deadline.

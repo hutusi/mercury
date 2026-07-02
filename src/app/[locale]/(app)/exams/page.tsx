@@ -1,0 +1,143 @@
+import { Timer } from "lucide-react";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { desc, eq, inArray } from "drizzle-orm";
+import { db } from "@/lib/db";
+import { mockExamAttempts, mockExams, type ExamEstimate } from "@/lib/db/schema";
+import { getDict, getLocale } from "@/lib/i18n";
+import { requireTrack } from "@/lib/settings";
+
+function formatEstimate(estimate: ExamEstimate | null): string {
+  if (!estimate) return "—";
+  if (estimate.kind === "toeic") return `TOEIC ${estimate.total}`;
+  return `IELTS ${estimate.band.toFixed(1)}`;
+}
+
+export default async function ExamsPage() {
+  const { user, track } = await requireTrack();
+  const t = await getDict();
+  const locale = await getLocale();
+
+  // Exam-track users see their own exam first; business users see both —
+  // the mini-TOEIC is the reverse funnel's benchmark hook.
+  const exams = await db.query.mockExams.findMany({
+    where:
+      track === "business"
+        ? inArray(mockExams.track, ["toeic", "ielts"])
+        : eq(mockExams.track, track),
+  });
+
+  const attempts = await db.query.mockExamAttempts.findMany({
+    where: eq(mockExamAttempts.userId, user.id),
+    orderBy: desc(mockExamAttempts.startedAt),
+    limit: 20,
+  });
+  const examTitleById = new Map(exams.map((e) => [e.id, e.titleZh]));
+
+  return (
+    <div className="space-y-8">
+      <div>
+        <h1 className="flex items-center gap-3 text-2xl font-bold">
+          <span
+            className="flex size-9 items-center justify-center rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400"
+            aria-hidden
+          >
+            <Timer className="size-5" />
+          </span>
+          {t.nav.exams}
+        </h1>
+        <p className="mt-1 text-muted-foreground">{t.exams.subtitle}</p>
+      </div>
+
+      {track === "business" && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-300">
+          <span className="font-semibold">{t.crosspromo.businessToExamTitle}</span> ·{" "}
+          {t.crosspromo.businessToExamDesc}
+        </div>
+      )}
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        {exams.map((exam) => (
+          <Link
+            key={exam.id}
+            href={`/exams/${exam.id}`}
+            className="group rounded-xl border-2 border-amber-200 bg-card p-6 shadow-xs transition hover:border-amber-400 hover:shadow-md dark:border-amber-400/20 dark:hover:border-amber-400/60"
+          >
+            <div className="flex items-center justify-between">
+              <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900 uppercase dark:bg-amber-400/15 dark:text-amber-300">
+                {exam.track}
+              </span>
+              <span className="text-xs text-muted-foreground/70">
+                {exam.totalQuestions} {t.common.questions}
+              </span>
+            </div>
+            <h2 className="mt-4 text-lg font-bold group-hover:text-amber-700 dark:group-hover:text-amber-400">
+              {exam.titleZh}
+            </h2>
+            <p className="text-sm text-muted-foreground">{exam.title}</p>
+            <p className="mt-3 text-sm text-muted-foreground">{exam.descriptionZh}</p>
+          </Link>
+        ))}
+      </div>
+
+      <section>
+        <h2 className="mb-3 text-lg font-bold">{t.exams.attemptHistory}</h2>
+        {attempts.length === 0 ? (
+          <p className="rounded-xl border bg-card p-8 text-center text-sm text-muted-foreground">
+            {t.exams.noAttempts}
+          </p>
+        ) : (
+          <div className="overflow-hidden rounded-xl border bg-card shadow-xs">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b bg-muted text-left text-xs font-semibold text-muted-foreground uppercase">
+                  <th className="px-4 py-3">{t.exams.attemptDate}</th>
+                  <th className="hidden px-4 py-3 sm:table-cell">{t.nav.exams}</th>
+                  <th className="px-4 py-3">{t.common.score}</th>
+                  <th className="px-4 py-3 text-right" />
+                </tr>
+              </thead>
+              <tbody>
+                {attempts.map((a) => (
+                  <tr key={a.id} className="border-b last:border-0">
+                    <td className="px-4 py-3 text-muted-foreground">
+                      {a.startedAt.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")}
+                    </td>
+                    <td className="hidden px-4 py-3 text-muted-foreground sm:table-cell">
+                      {examTitleById.get(a.examId) ?? a.examId}
+                    </td>
+                    <td className="px-4 py-3 font-semibold">
+                      {a.status === "in_progress" ? (
+                        <span className="text-amber-600 dark:text-amber-400">
+                          {t.exams.inProgress}
+                        </span>
+                      ) : (
+                        formatEstimate(a.estimate)
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      {a.status === "in_progress" ? (
+                        <Link
+                          href={`/exams/${a.examId}/take`}
+                          className="font-medium text-amber-600 hover:underline dark:text-amber-400"
+                        >
+                          {t.exams.resumeExam}
+                        </Link>
+                      ) : (
+                        <Link
+                          href={`/exams/attempts/${a.id}`}
+                          className="font-medium text-primary hover:underline"
+                        >
+                          {t.exams.viewReport}
+                        </Link>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}

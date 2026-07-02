@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
-import { redirect } from "next/navigation";
 import { cache } from "react";
 import type { Track } from "../content/types";
 import { requireUser } from "./auth/session";
+import { localeRedirect } from "./i18n";
 import { db } from "./db";
 import { userSettings } from "./db/schema";
 
@@ -23,6 +23,6 @@ export async function requireTrack(): Promise<{
 }> {
   const user = await requireUser();
   const settings = await getSettings(user.id);
-  if (!settings?.activeTrack) redirect("/onboarding");
+  if (!settings?.activeTrack) return localeRedirect("/onboarding");
   return { user, track: settings.activeTrack, dailyGoal: settings.dailyGoal };
 }

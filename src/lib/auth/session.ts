@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import { cache } from "react";
+import { localeRedirect } from "../i18n";
 import { auth } from "./auth";
 
 /** Authoritative session lookup (hits SQLite). Deduped per request. */
@@ -15,6 +15,6 @@ export const getSession = cache(async () => {
  */
 export async function requireUser() {
   const session = await getSession();
-  if (!session) redirect("/login");
+  if (!session) return localeRedirect("/login");
   return session.user;
 }

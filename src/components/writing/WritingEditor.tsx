@@ -3,10 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useTransition } from "react";
 import { submitWriting } from "@/lib/actions/writing";
-import { useT } from "@/lib/i18n/LocaleProvider";
+import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
+import { localePath } from "@/lib/i18n/routing";
 
 export function WritingEditor({ promptId, minWords }: { promptId: string; minWords: number }) {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const [text, setText] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +22,7 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
     startTransition(async () => {
       try {
         const { submissionId } = await submitWriting({ promptId, text });
-        router.push(`/writing/submissions/${submissionId}`);
+        router.push(localePath(locale, `/writing/submissions/${submissionId}`));
       } catch {
         setError(t.auth.genericError);
       }
@@ -35,26 +37,28 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
         placeholder={t.writing.placeholder}
         rows={14}
         disabled={pending}
-        className="w-full rounded-xl border border-slate-300 bg-white p-4 text-sm leading-relaxed focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none disabled:bg-slate-50"
+        className="w-full rounded-xl border bg-card p-4 text-sm leading-relaxed focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none disabled:bg-muted"
       />
       <div className="flex items-center justify-between">
-        <p className={`text-sm font-medium ${enough ? "text-green-600" : "text-slate-500"}`}>
+        <p
+          className={`text-sm font-medium ${enough ? "text-green-600 dark:text-green-400" : "text-muted-foreground"}`}
+        >
           {t.writing.wordCount}: {wordCount} / {minWords}
           {!enough && wordCount > 0 && (
-            <span className="ml-2 text-accent-600">{t.writing.tooShort}</span>
+            <span className="ml-2 text-amber-600 dark:text-amber-400">{t.writing.tooShort}</span>
           )}
         </p>
         <button
           onClick={submit}
           disabled={pending || !enough}
-          className="rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {pending ? t.writing.submitting : t.writing.submitForFeedback}
         </button>
       </div>
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-destructive">{error}</p>}
       {pending && (
-        <div className="rounded-lg border border-brand-200 bg-brand-50 p-3 text-center text-sm text-brand-700">
+        <div className="rounded-lg border border-primary/20 bg-primary/10 p-3 text-center text-sm text-primary">
           {t.writing.submitting}
         </div>
       )}

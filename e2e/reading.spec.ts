@@ -8,7 +8,7 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
   await expect(page.getByRole("heading", { name: t.nav.reading })).toBeVisible();
 
   // Open the first exercise.
-  await page.locator('a[href^="/reading/"]').first().click();
+  await page.locator('a[href^="/zh/reading/"]').first().click();
   await expect(page.getByText(t.reading.passage)).toBeVisible();
 
   // Submit stays disabled until every question is answered.

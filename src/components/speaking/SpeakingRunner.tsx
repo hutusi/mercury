@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { Ban, Mic } from "lucide-react";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import type { Bilingual } from "@/content/types";
 import { submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
@@ -129,8 +130,11 @@ export function SpeakingRunner({
   if (!sttSupported()) {
     return (
       <div className="space-y-6">
-        <div className="rounded-xl border border-red-200 bg-red-50 p-5 text-sm text-red-700">
-          <span aria-hidden>🚫</span> {t.speaking.unsupported}
+        <div className="rounded-xl border border-destructive/20 bg-destructive/10 p-5 text-sm text-destructive">
+          <span aria-hidden>
+            <Ban className="inline size-4" />
+          </span>{" "}
+          {t.speaking.unsupported}
         </div>
         <SelfAssessBlock modelAnswer={modelAnswer} checklist={checklist} />
       </div>
@@ -140,11 +144,11 @@ export function SpeakingRunner({
   if (phase === "done" && result) {
     return (
       <div className="space-y-6">
-        <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="mb-2 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+        <section className="rounded-xl border bg-card p-5 shadow-xs">
+          <h2 className="mb-2 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
             {t.speaking.transcript}
           </h2>
-          <p className="text-sm leading-relaxed text-slate-800">{finalText}</p>
+          <p className="text-sm leading-relaxed text-foreground/80">{finalText}</p>
         </section>
         {result.status === "ai_scored" && result.feedback ? (
           <SpeakingFeedbackPanel feedback={result.feedback} />
@@ -153,7 +157,7 @@ export function SpeakingRunner({
         )}
         <Link
           href="/speaking"
-          className="inline-block text-sm font-medium text-brand-600 hover:underline"
+          className="inline-block text-sm font-medium text-primary hover:underline"
         >
           ← {t.common.back}
         </Link>
@@ -164,14 +168,14 @@ export function SpeakingRunner({
   return (
     <div className="space-y-4">
       {micError && (
-        <div className="rounded-lg border border-accent-200 bg-accent-50 p-3 text-sm text-accent-700">
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-300">
           {micError}
         </div>
       )}
 
       {phase === "idle" && (
-        <div className="rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-          <p className="text-sm text-slate-500">
+        <div className="rounded-xl border bg-card p-8 text-center shadow-xs">
+          <p className="text-sm text-muted-foreground">
             {t.speaking.prep}: {prepSeconds}
             {t.common.seconds} · {t.speaking.speak}: {speakSeconds}
             {t.common.seconds}
@@ -179,21 +183,28 @@ export function SpeakingRunner({
           <div className="mt-5 flex justify-center gap-3">
             <button
               onClick={beginPrep}
-              className="rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white transition hover:bg-brand-700"
+              className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80"
             >
-              <span aria-hidden>🎤</span> {t.speaking.startPrep}
+              <span aria-hidden>
+                <Mic className="inline size-4" />
+              </span>{" "}
+              {t.speaking.startPrep}
             </button>
           </div>
         </div>
       )}
 
       {phase === "prep" && (
-        <div className="rounded-xl border border-accent-200 bg-accent-50 p-8 text-center">
-          <p className="text-sm font-medium text-accent-700">{t.speaking.prep}</p>
-          <p className="mt-2 text-5xl font-bold text-accent-600 tabular-nums">{secondsLeft}</p>
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-8 text-center dark:border-amber-400/20 dark:bg-amber-400/10">
+          <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
+            {t.speaking.prep}
+          </p>
+          <p className="mt-2 text-5xl font-bold text-amber-600 tabular-nums dark:text-amber-400">
+            {secondsLeft}
+          </p>
           <button
             onClick={beginRecording}
-            className="mt-5 rounded-lg bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-600"
+            className="mt-5 rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600"
           >
             {t.speaking.skipPrep}
           </button>
@@ -201,15 +212,15 @@ export function SpeakingRunner({
       )}
 
       {phase === "recording" && (
-        <div className="rounded-xl border border-red-200 bg-white p-8 text-center shadow-sm">
-          <p className="flex items-center justify-center gap-2 text-sm font-medium text-red-600">
-            <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-red-500" />
+        <div className="rounded-xl border border-destructive/20 bg-card p-8 text-center shadow-xs">
+          <p className="flex items-center justify-center gap-2 text-sm font-medium text-destructive">
+            <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-destructive" />
             {t.speaking.recording}
           </p>
-          <p className="mt-2 text-5xl font-bold text-slate-900 tabular-nums">{secondsLeft}</p>
-          <div className="mx-auto mt-4 min-h-16 max-w-xl rounded-lg bg-slate-50 p-3 text-left text-sm text-slate-700">
+          <p className="mt-2 text-5xl font-bold tabular-nums">{secondsLeft}</p>
+          <div className="mx-auto mt-4 min-h-16 max-w-xl rounded-lg bg-muted p-3 text-left text-sm text-foreground/80">
             {finalText}
-            <span className="text-slate-400">{interimText ? ` ${interimText}` : ""}</span>
+            <span className="text-muted-foreground/70">{interimText ? ` ${interimText}` : ""}</span>
           </div>
           <button
             onClick={stopRecording}
@@ -222,34 +233,34 @@ export function SpeakingRunner({
 
       {phase === "review" && (
         <div className="space-y-4">
-          <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-            <h2 className="mb-2 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+          <section className="rounded-xl border bg-card p-5 shadow-xs">
+            <h2 className="mb-2 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
               {t.speaking.transcript}
             </h2>
             {finalText ? (
-              <p className="text-sm leading-relaxed text-slate-800">{finalText}</p>
+              <p className="text-sm leading-relaxed text-foreground/80">{finalText}</p>
             ) : (
-              <p className="text-sm text-slate-400">{t.speaking.emptyTranscript}</p>
+              <p className="text-sm text-muted-foreground/70">{t.speaking.emptyTranscript}</p>
             )}
           </section>
           <div className="flex gap-3">
             <button
               onClick={beginPrep}
               disabled={pending}
-              className="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-3 font-medium text-slate-700 transition hover:bg-slate-50 disabled:opacity-50"
+              className="flex-1 rounded-lg border bg-card px-4 py-3 font-medium text-foreground/80 transition hover:bg-muted disabled:opacity-50"
             >
               🔁 {t.common.tryAgain}
             </button>
             <button
               onClick={submit}
               disabled={pending || finalText.trim().length < 10}
-              className="flex-1 rounded-lg bg-brand-600 px-4 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
+              className="flex-1 rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {pending ? t.speaking.submitting : t.speaking.submitForFeedback}
             </button>
           </div>
           {pending && (
-            <div className="rounded-lg border border-brand-200 bg-brand-50 p-3 text-center text-sm text-brand-700">
+            <div className="rounded-lg border border-primary/20 bg-primary/10 p-3 text-center text-sm text-primary">
               {t.speaking.submitting}
             </div>
           )}
@@ -272,13 +283,13 @@ function SelfAssessBlock({
   return (
     <div className="space-y-4">
       {showHint && (
-        <div className="rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm text-accent-700">
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-300">
           <p className="font-semibold">{t.writing.selfAssessTitle}</p>
           <p className="mt-1">{t.writing.selfAssessHint}</p>
         </div>
       )}
-      <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+      <section className="rounded-xl border bg-card p-6 shadow-xs">
+        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
           {t.speaking.checklist}
         </h2>
         <ul className="space-y-3">
@@ -287,21 +298,23 @@ function SelfAssessBlock({
               <input
                 type="checkbox"
                 id={`speak-check-${i}`}
-                className="mt-0.5 h-4 w-4 rounded border-slate-300 accent-brand-600"
+                className="mt-0.5 h-4 w-4 rounded border-border accent-primary"
               />
               <label htmlFor={`speak-check-${i}`} className="cursor-pointer">
-                <span className="font-medium text-slate-900">{item.zh}</span>
-                <span className="block text-slate-500">{item.en}</span>
+                <span className="font-medium">{item.zh}</span>
+                <span className="block text-muted-foreground">{item.en}</span>
               </label>
             </li>
           ))}
         </ul>
       </section>
-      <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+      <section className="rounded-xl border bg-card p-6 shadow-xs">
+        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
           {t.speaking.modelAnswer}
         </h2>
-        <p className="text-sm leading-relaxed whitespace-pre-line text-slate-800">{modelAnswer}</p>
+        <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
+          {modelAnswer}
+        </p>
       </section>
     </div>
   );
