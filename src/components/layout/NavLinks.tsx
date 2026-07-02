@@ -30,23 +30,21 @@ export function NavLinks({ orientation }: { orientation: "vertical" | "horizonta
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
+  // Quiet text nav; the active page carries a cinnabar marker on the reading
+  // edge (left in the sidebar, bottom in the mobile strip).
   const linkClass = (href: string, highlight = false) => {
     const active = isActive(href);
     const base =
       orientation === "vertical"
-        ? "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
-        : "flex shrink-0 items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors";
+        ? "flex items-center gap-3 border-l-2 px-3 py-2 text-sm transition-colors"
+        : "flex shrink-0 items-center gap-1.5 border-b-2 px-3 py-1.5 text-sm transition-colors";
     if (active) {
-      return `${base} ${
-        highlight
-          ? "bg-amber-100 text-amber-900 dark:bg-amber-400/15 dark:text-amber-300"
-          : "bg-sidebar-accent text-sidebar-accent-foreground"
-      }`;
+      return `${base} border-cinnabar font-medium ${highlight ? "text-cinnabar" : "text-foreground"}`;
     }
-    return `${base} ${
+    return `${base} border-transparent ${
       highlight
-        ? "text-amber-700 hover:bg-amber-50 dark:text-amber-400 dark:hover:bg-amber-400/10"
-        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+        ? "text-cinnabar hover:text-cinnabar/80"
+        : "text-muted-foreground hover:text-foreground"
     }`;
   };
 
