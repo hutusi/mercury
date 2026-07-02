@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Newsreader } from "next/font/google";
 import { notFound } from "next/navigation";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { dictionaries } from "@/lib/i18n";
@@ -7,8 +7,24 @@ import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { DEFAULT_LOCALE, isLocale, LOCALES } from "@/lib/i18n/routing";
 import "../globals.css";
 
-// Latin glyphs only — zh renders through the CJK system faces in --font-sans.
+// Latin glyphs only — zh renders through the CJK system faces in --font-sans /
+// --font-serif (see globals.css).
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+// Display serif for headwords; italics carry IPA transcriptions.
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-newsreader",
+  axes: ["opsz"],
+});
+// Data face: timers, scores, counts, micro-labels.
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-plex-mono",
+});
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -45,7 +61,7 @@ export default async function RootLayout({
     // before hydration.
     <html
       lang={locale === "zh" ? "zh-CN" : "en"}
-      className={inter.variable}
+      className={`${inter.variable} ${newsreader.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
       <body>
