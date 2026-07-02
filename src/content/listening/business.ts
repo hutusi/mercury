@@ -1,0 +1,226 @@
+import type { ListeningExercise } from "../types";
+
+export const businessListening: ListeningExercise[] = [
+  {
+    id: "biz-l-001",
+    track: "business",
+    title: "Project Status Meeting: Website Redesign",
+    titleZh: "项目状态会议：官网改版",
+    style: "会议 · Meeting",
+    script: [
+      {
+        speaker: "A",
+        text: "Thanks for making time, Elena. Let's run through the website redesign before Friday's steering meeting. Where are we overall?",
+      },
+      {
+        speaker: "B",
+        text: "Mostly on track. The new homepage and the product pages passed user testing last week, and the feedback was very positive.",
+      },
+      {
+        speaker: "A",
+        text: "That's great to hear. What about the checkout flow? That was flagged as a risk last month.",
+      },
+      {
+        speaker: "B",
+        text: "That's the one area I'm worried about. The payment provider still hasn't given us access to their new API, so my team can't finish the integration testing.",
+      },
+      {
+        speaker: "A",
+        text: "How long have we been waiting on them?",
+      },
+      {
+        speaker: "B",
+        text: "About two weeks. I've chased their support team twice, but I keep getting automated replies.",
+      },
+      {
+        speaker: "A",
+        text: "Okay, let me escalate that. I know their account director from a previous project, so I'll contact him directly this afternoon.",
+      },
+      {
+        speaker: "B",
+        text: "That would help a lot. Even so, we should assume at least one more week of delay for testing.",
+      },
+      {
+        speaker: "A",
+        text: "Then let's be realistic with the steering committee. I'd rather move the launch from the fifteenth to the twenty-second than go live with an untested checkout.",
+      },
+      {
+        speaker: "B",
+        text: "Agreed. A broken payment page on day one would be far worse than a short delay.",
+      },
+      {
+        speaker: "A",
+        text: "Right. Could you update the project plan with the new dates and send it to me by tomorrow morning? I'll present it on Friday.",
+      },
+      {
+        speaker: "B",
+        text: "Will do. I'll also prepare a one-page summary of the user testing results, so the committee sees the good news too.",
+      },
+    ],
+    questions: [
+      {
+        id: "q1",
+        stem: "What is the main purpose of the conversation?",
+        options: [
+          "To interview a candidate for the project team",
+          "To review the status of a project before a steering meeting",
+          "To choose a new payment provider",
+          "To analyse the results of a marketing campaign",
+        ],
+        correctIndex: 1,
+        explanationZh:
+          "对话开头点明目的：\"Let's run through the website redesign before Friday's steering meeting\"，即在周五指导委员会会议前梳理项目进展。支付服务商只是项目中的一个阻塞点，两人并没有讨论更换供应商（排除 C）。",
+      },
+      {
+        id: "q2",
+        stem: "What is delaying the checkout integration?",
+        options: [
+          "Negative feedback from user testing",
+          "A shortage of developers on Elena's team",
+          "The budget has not been approved",
+          "The payment provider has not granted access to its API",
+        ],
+        correctIndex: 3,
+        explanationZh:
+          "Elena 说：\"The payment provider still hasn't given us access to their new API, so my team can't finish the integration testing\"——卡点在于支付服务商迟迟不开放 API 权限。用户测试的反馈其实非常正面，选项 A 与原文相反。",
+      },
+      {
+        id: "q3",
+        stem: "What does the man offer to do?",
+        options: [
+          "Postpone the steering meeting to next month",
+          "Help Elena's team write the integration tests",
+          "Contact the payment provider's account director directly",
+          "Reply to the provider's automated messages",
+        ],
+        correctIndex: 2,
+        explanationZh:
+          "男士提出升级处理：\"I know their account director from a previous project, so I'll contact him directly this afternoon\"，利用旧识关系直接联系对方客户总监。他要调整的是上线日期而不是周五的会议时间（排除 A）。",
+      },
+      {
+        id: "q4",
+        stem: "What do the speakers decide about the launch?",
+        options: [
+          "To move it from the fifteenth to the twenty-second",
+          "To launch on time without the checkout page",
+          "To cancel it until the API is redesigned",
+          "To let the steering committee choose the date",
+        ],
+        correctIndex: 0,
+        explanationZh:
+          "男士说 \"I'd rather move the launch from the fifteenth to the twenty-second than go live with an untested checkout\"，Elena 表示同意（\"Agreed\"），二人决定将上线推迟一周。他们是自己做出决定后再向委员会汇报，而不是把决定权交给委员会（排除 D）。",
+      },
+    ],
+  },
+  {
+    id: "biz-l-002",
+    track: "business",
+    title: "Client Call: Following Up on a Delayed Order",
+    titleZh: "客户电话：跟进延迟的订单",
+    style: "电话 · Client call",
+    script: [
+      {
+        speaker: "A",
+        text: "Good morning, this is Sofia Marsh calling from Atlas Packaging. May I speak with Mr. Reyes?",
+      },
+      {
+        speaker: "B",
+        text: "Speaking. Ah, Sofia, good timing. I was actually about to email you about our order.",
+      },
+      {
+        speaker: "A",
+        text: "Yes, that's exactly why I'm calling. I want to apologise personally — your shipment of printed boxes has been held up at our factory.",
+      },
+      {
+        speaker: "B",
+        text: "I see. How serious is the delay? We have a product launch on the tenth, and those boxes are part of the retail display.",
+      },
+      {
+        speaker: "A",
+        text: "I understand the urgency. The good news is that the printing is finished. The delay is in quality inspection, because one batch showed slight colour differences.",
+      },
+      {
+        speaker: "B",
+        text: "Hmm. What does that mean for our delivery date?",
+      },
+      {
+        speaker: "A",
+        text: "The inspected batches can ship tomorrow, which is about seventy percent of your order. The remaining thirty percent would follow three days later.",
+      },
+      {
+        speaker: "B",
+        text: "Seventy percent by this week would actually cover the launch. But I'd need a firm guarantee on the second delivery.",
+      },
+      {
+        speaker: "A",
+        text: "You have my word, and I'll confirm it in writing today. We'll also send the second shipment by express freight at our own cost.",
+      },
+      {
+        speaker: "B",
+        text: "That sounds fair. Could you copy our warehouse manager on the confirmation email? She'll need to plan the receiving schedule.",
+      },
+      {
+        speaker: "A",
+        text: "Of course. Thank you for being so understanding, Mr. Reyes, and again, my apologies for the disruption.",
+      },
+      {
+        speaker: "B",
+        text: "These things happen. As long as everything arrives as promised, we'll be happy to keep working with you.",
+      },
+    ],
+    questions: [
+      {
+        id: "q1",
+        stem: "Why is Sofia calling Mr. Reyes?",
+        options: [
+          "To offer him a discount on a future order",
+          "To ask him to confirm a new order of boxes",
+          "To apologise for a delay to his shipment",
+          "To invite him to a product launch",
+        ],
+        correctIndex: 2,
+        explanationZh:
+          "Sofia 开门见山：\"I want to apologise personally — your shipment of printed boxes has been held up at our factory\"，来电目的是为发货延迟道歉并说明补救方案。产品发布会（launch）是客户自己的活动，用作干扰项（排除 D）。",
+      },
+      {
+        id: "q2",
+        stem: "What caused the delay?",
+        options: [
+          "Colour differences found during quality inspection",
+          "A breakdown of the printing machines",
+          "A shortage of packaging materials",
+          "A mistake in the delivery address",
+        ],
+        correctIndex: 0,
+        explanationZh:
+          "Sofia 解释：\"The delay is in quality inspection, because one batch showed slight colour differences\"——印刷已完成，问题出在质检环节发现一批产品有轻微色差。选项 B 有迷惑性：印刷本身没有出故障，反而已经全部完成。",
+      },
+      {
+        id: "q3",
+        stem: "What does Sofia promise about the second shipment?",
+        options: [
+          "It will arrive before the product launch on the tenth",
+          "It will be replaced by a different box design",
+          "Mr. Reyes will receive a thirty percent discount on it",
+          "It will be sent by express freight at Atlas Packaging's expense",
+        ],
+        correctIndex: 3,
+        explanationZh:
+          "Sofia 承诺：\"We'll also send the second shipment by express freight at our own cost\"，即剩余 30% 的货物由己方承担快运费用。“30%”指的是第二批货的数量占比而非折扣（排除 C）；能赶上发布会的是第一批 70% 的货，不是第二批（排除 A）。",
+      },
+      {
+        id: "q4",
+        stem: "What does Mr. Reyes ask Sofia to do?",
+        options: [
+          "Call his warehouse manager directly",
+          "Include his warehouse manager in the confirmation email",
+          "Postpone the second delivery by three days",
+          "Send new samples before shipping",
+        ],
+        correctIndex: 1,
+        explanationZh:
+          "Mr. Reyes 提出：\"Could you copy our warehouse manager on the confirmation email?\"——请 Sofia 在书面确认邮件中抄送仓库经理，方便安排收货。copy someone on an email 是商务英语常用表达，意为“抄送某人”，不是打电话给她（排除 A）。",
+      },
+    ],
+  },
+];

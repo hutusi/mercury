@@ -1,0 +1,122 @@
+import type { SpeakingPrompt } from "../types";
+
+export const ieltsSpeaking: SpeakingPrompt[] = [
+  {
+    id: "ielts-s-001",
+    track: "ielts",
+    partType: "ielts_part1",
+    title: "Part 1: Your Work",
+    titleZh: "第一部分：你的工作",
+    promptEn: `Let's talk about your work. Answer these questions naturally, as if chatting with the examiner: What do you do? What do you enjoy most about your job? Do you prefer working alone or with other people? Is there anything about your job you would like to change?`,
+    promptZh: `我们来谈谈你的工作。请像与考官闲聊一样自然地回答以下问题：你做什么工作？你最喜欢工作中的哪一点？你更喜欢独立工作还是与他人合作？你的工作中有什么想改变的地方吗？`,
+    prepSeconds: 0,
+    speakSeconds: 60,
+    modelAnswer: `I work as a product manager at a software company — basically I sit between the engineers and the customers and try to keep both sides happy. What I enjoy most is probably the variety; one day I'm interviewing users, the next I'm sketching out a new feature, so I'm never bored. As for working alone or with others, I'd say I prefer a mix, honestly. I need quiet time to think and write, but the best ideas almost always come out of discussions with my team. And if I could change one thing? Fewer meetings, definitely. Some weeks half my calendar is meetings, and I'd love to spend that time actually talking to customers instead.`,
+    checklist: [
+      {
+        en: "Did you answer every question asked, extending each answer by one or two sentences?",
+        zh: "是否回答了所有问题，并把每个回答扩展一到两句？",
+      },
+      {
+        en: "Did you sound conversational and relaxed rather than reciting a memorized speech?",
+        zh: "听起来是否像自然聊天，而不是在背诵事先准备好的稿子？",
+      },
+      {
+        en: "Did you use everyday spoken expressions (basically, honestly, I'd say) and contractions?",
+        zh: "是否使用了日常口语表达（basically、honestly、I'd say）和缩略形式？",
+      },
+      {
+        en: "Did you give reasons or small examples, not just yes/no answers?",
+        zh: "是否给出了原因或小例子，而不是简单地回答是或否？",
+      },
+    ],
+  },
+  {
+    id: "ielts-s-002",
+    track: "ielts",
+    partType: "ielts_part2",
+    title: "Part 2: A New Skill You Learned",
+    titleZh: "第二部分：你学过的一项新技能",
+    promptEn: `Describe a time when you had to learn a new skill for your work or studies.
+You should say:
+- what the skill was
+- why you needed to learn it
+- how you learned it
+and explain how you felt about learning this skill.`,
+    promptZh: `描述一次你为了工作或学习必须掌握一项新技能的经历。
+你应当谈到：
+- 这项技能是什么
+- 你为什么需要学习它
+- 你是如何学习的
+并说明你对学习这项技能的感受。`,
+    prepSeconds: 60,
+    speakSeconds: 120,
+    modelAnswer: `I'd like to talk about the time I had to learn data analysis with spreadsheets — well, more than spreadsheets really, I mean pivot tables, formulas, even a bit of basic SQL.
+
+This was about two years ago, when I moved from a sales role into a sales operations role at my company. Suddenly, instead of just talking to customers, I was expected to report on the whole team's performance — which regions were growing, which products were slowing down — and I quickly realized I couldn't do any of that by hand. My new manager was very data-driven, and in my first week she asked me for a churn analysis. I honestly didn't even know where to start, which was quite embarrassing.
+
+So, how did I learn it? A few ways, actually. I started with short video tutorials in the evenings, maybe half an hour a night, and then I'd practice the next day on real company data, which made it stick much better than the examples in the videos. I also found a colleague in the finance team who was brilliant with this stuff, and I basically traded him coffee for tutoring — we met every Friday for a month.
+
+As for how I felt — at the beginning, honestly, pretty anxious. I hadn't studied anything technical since university, and I kept thinking everyone else found it easy. But once things clicked, it became genuinely satisfying, almost like solving puzzles. And the confidence carried over: now when I face something I don't know, I just assume I can learn it. Looking back, it's probably the most useful thing I've taught myself in my whole career.`,
+    checklist: [
+      {
+        en: "Did you cover all four points on the cue card, including the final 'explain' point?",
+        zh: "是否覆盖了提示卡上的全部四个要点，包括最后的'说明感受'？",
+      },
+      {
+        en: "Did you speak for close to the full two minutes without drying up?",
+        zh: "是否讲满了接近两分钟，而没有中途无话可说？",
+      },
+      {
+        en: "Did you tell it as a story with a timeline (two years ago, in my first week, looking back)?",
+        zh: "是否按时间线讲成一个故事（两年前、第一周、回头看）？",
+      },
+      {
+        en: "Did you describe feelings with varied vocabulary (anxious, embarrassing, satisfying) rather than just 'good' and 'bad'?",
+        zh: "描述感受时是否用了多样的词汇（anxious、embarrassing、satisfying），而不只是 good 和 bad？",
+      },
+      {
+        en: "Did you use your one minute of preparation to note key words for each bullet point?",
+        zh: "是否利用一分钟准备时间为每个要点记下了关键词？",
+      },
+    ],
+  },
+  {
+    id: "ielts-s-003",
+    track: "ielts",
+    partType: "ielts_part3",
+    title: "Part 3: Learning and Working Life",
+    titleZh: "第三部分：学习与职业生涯",
+    promptEn: `Now let's discuss some more general questions about skills and work. Do you think people today need to keep learning new skills throughout their careers — why or why not? Who should be responsible for this training: employers, or workers themselves? And how has technology changed the way people learn at work?`,
+    promptZh: `现在我们来讨论一些关于技能与工作的更宏观的问题。你认为如今人们是否需要在整个职业生涯中不断学习新技能？为什么？培训的责任应该由雇主承担，还是由员工自己承担？技术又是如何改变人们在工作中学习的方式的？`,
+    prepSeconds: 15,
+    speakSeconds: 90,
+    modelAnswer: `Do people need to keep learning? Absolutely, and I'd say it's no longer optional. A generation ago you could learn a trade at twenty and use the same skills until retirement, but these days whole job categories appear and disappear within a decade — nobody was a social media manager twenty years ago, for example. So if you stop learning, your skills basically have an expiry date.
+
+As for who should pay for it, I think it has to be shared, to be honest. Employers benefit directly when their staff improve, so it seems fair that they fund training and give people time for it — companies that don't tend to lose their best people anyway. But workers can't just sit back and wait either, because ultimately your career belongs to you, not to your employer.
+
+And technology has completely transformed this. In the past, training meant traveling to a classroom for a week; now you can learn almost anything from your phone — short videos, online courses, even AI tutors that answer your questions instantly. The flip side, though, is that it demands more self-discipline. When learning is available anytime, it's also very easy to put it off forever.`,
+    checklist: [
+      {
+        en: "Did you move beyond personal stories to discuss society-level trends and reasons?",
+        zh: "是否超越了个人经历，讨论了社会层面的趋势和原因？",
+      },
+      {
+        en: "Did you consider more than one side (e.g. shared responsibility, the downside of online learning)?",
+        zh: "是否考虑了问题的多个方面（如责任共担、在线学习的弊端）？",
+      },
+      {
+        en: "Did you use speculative and comparative language (a generation ago, these days, the flip side)?",
+        zh: "是否使用了推测和对比的表达（a generation ago、these days、the flip side）？",
+      },
+      {
+        en: "Did you justify each opinion with an example or a consequence?",
+        zh: "每个观点是否都用例子或后果加以论证？",
+      },
+      {
+        en: "Did you keep a natural discussion tone rather than delivering a formal lecture?",
+        zh: "是否保持了自然的讨论语气，而不是像发表正式演讲？",
+      },
+    ],
+  },
+];

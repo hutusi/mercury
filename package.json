@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "db:push": "drizzle-kit push",
-    "db:seed": "bun run src/lib/db/seed.ts",
+    "db:seed": "bunx tsx src/lib/db/seed.ts",
     "db:studio": "drizzle-kit studio",
     "test": "bun test"
   },
