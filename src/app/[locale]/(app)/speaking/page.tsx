@@ -1,6 +1,9 @@
-import { Mic } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { Check } from "lucide-react";
 import { desc, eq } from "drizzle-orm";
+import { EmptyState } from "@/components/typography/EmptyState";
+import { EntryHeader } from "@/components/typography/EntryHeader";
+import { EntryList, EntryRow } from "@/components/typography/EntryList";
+import { Badge } from "@/components/ui/badge";
 import { db } from "@/lib/db";
 import { speakingPrompts, speakingSubmissions } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
@@ -27,51 +30,45 @@ export default async function SpeakingListPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="flex items-center gap-3 text-2xl font-bold">
-          <span
-            className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary"
-            aria-hidden
-          >
-            <Mic className="size-5" />
-          </span>
-          {t.nav.speaking}
-        </h1>
-        <p className="mt-1 text-muted-foreground">{t.speaking.subtitle}</p>
-      </div>
+    <div className="space-y-8">
+      <EntryHeader
+        title={t.nav.speaking}
+        ipa={t.entry.speakingIpa}
+        pos={t.entry.speakingPos}
+        gloss={t.speaking.subtitle}
+      />
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <EntryList>
         {prompts.map((p) => {
           const count = countByPrompt.get(p.id) ?? 0;
           return (
-            <Link
+            <EntryRow
               key={p.id}
               href={`/speaking/${p.id}`}
-              className="group rounded-xl border bg-card p-5 shadow-xs transition hover:border-primary/40 hover:shadow-sm"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                  {p.partType.replace(/_/g, " ")}
-                </span>
-                <span className="text-xs text-muted-foreground/70">
-                  {p.prepSeconds > 0 && `${t.speaking.prep} ${p.prepSeconds}${t.common.seconds} · `}
-                  {t.speaking.speak} {p.speakSeconds}
-                  {t.common.seconds}
-                </span>
-              </div>
-              <h2 className="mt-3 font-semibold group-hover:text-primary">{p.title}</h2>
-              <p className="text-sm text-muted-foreground">{p.titleZh}</p>
-              {count > 0 && (
-                <p className="mt-3 text-xs font-medium text-green-600 dark:text-green-400">
-                  {t.writing.pastSubmissions}: {count}
-                </p>
-              )}
-            </Link>
+              meta={<Badge variant="outline">{p.partType.replace(/_/g, " ")}</Badge>}
+              title={p.title}
+              subtitle={p.titleZh}
+              right={
+                <div className="text-right">
+                  <p className="font-mono text-2xs text-muted-foreground">
+                    {p.prepSeconds > 0 &&
+                      `${t.speaking.prep} ${p.prepSeconds}${t.common.seconds} · `}
+                    {t.speaking.speak} {p.speakSeconds}
+                    {t.common.seconds}
+                  </p>
+                  {count > 0 && (
+                    <p className="mt-1 flex items-center justify-end gap-1 font-mono text-xs font-medium text-foreground tabular-nums">
+                      <Check className="size-3.5" aria-hidden />
+                      {t.writing.pastSubmissions}: {count}
+                    </p>
+                  )}
+                </div>
+              }
+            />
           );
         })}
-      </div>
-      {prompts.length === 0 && <p className="text-muted-foreground">{t.common.empty}</p>}
+      </EntryList>
+      {prompts.length === 0 && <EmptyState>{t.common.empty}</EmptyState>}
     </div>
   );
 }

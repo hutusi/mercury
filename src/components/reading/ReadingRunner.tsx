@@ -4,6 +4,8 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
+import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Button } from "@/components/ui/button";
 import type { SanitizedQuestion } from "@/content/types";
 import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attempts";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -60,7 +62,10 @@ export function ReadingRunner({
         total={result.total}
       >
         <div className="flex items-center justify-between">
-          <Link href="/reading" className="text-sm font-medium text-primary hover:underline">
+          <Link
+            href="/reading"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
             ← {t.reading.backToList}
           </Link>
         </div>
@@ -71,11 +76,11 @@ export function ReadingRunner({
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
-      <article className="rounded-xl border bg-card p-6 shadow-xs lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:self-start lg:overflow-y-auto">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+      <article className="border-y border-border py-6 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:self-start lg:overflow-y-auto">
+        <SectionLabel as="h2" className="mb-3">
           {t.reading.passage}
-        </h2>
-        <div className="space-y-4 leading-relaxed whitespace-pre-line text-foreground/80">
+        </SectionLabel>
+        <div className="space-y-4 font-serif leading-relaxed whitespace-pre-line text-foreground/90">
           {passage}
         </div>
       </article>
@@ -87,19 +92,20 @@ export function ReadingRunner({
           onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
         />
         {error && (
-          <p className="rounded-lg border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+          <p className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
             {error}
           </p>
         )}
-        <button
+        <Button
           onClick={submit}
           disabled={pending || answeredCount < questions.length}
-          className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-40"
+          size="lg"
+          className="h-11 w-full disabled:cursor-not-allowed"
         >
           {pending
             ? t.common.loading
             : `${t.reading.submitAnswers} (${answeredCount}/${questions.length})`}
-        </button>
+        </Button>
       </div>
     </div>
   );

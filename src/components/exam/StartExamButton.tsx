@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
+import { Button } from "@/components/ui/button";
 import { startExamAttempt } from "@/lib/actions/exams";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
@@ -27,17 +28,15 @@ export function StartExamButton({ examId, resume }: { examId: string; resume: bo
 
   return (
     <div className="space-y-3">
-      <button
+      <Button
         onClick={start}
         disabled={pending}
-        className={`w-full rounded-lg px-6 py-3.5 font-semibold shadow-xs transition disabled:opacity-50 sm:w-auto ${
-          resume
-            ? "bg-amber-500 text-white hover:bg-amber-600"
-            : "bg-primary text-primary-foreground hover:bg-primary/80"
-        }`}
+        variant="accent"
+        size="lg"
+        className="h-12 w-full px-6 text-base sm:w-auto"
       >
         {pending ? t.common.loading : resume ? t.exams.resumeExam : t.exams.startExam}
-      </button>
+      </Button>
       {error && <p className="text-sm text-destructive">{error}</p>}
     </div>
   );

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 import { AnswerReview } from "@/components/exam/AnswerReview";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
+import { SectionLabel } from "@/components/typography/SectionLabel";
 import { requireUser } from "@/lib/auth/session";
 import { db } from "@/lib/db";
 import { mockExamAttempts, mockExams } from "@/lib/db/schema";
@@ -38,24 +39,26 @@ export default async function ExamReportPage({
       <div>
         <Link
           href="/exams"
-          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" aria-hidden />
           {t.nav.exams}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold">{t.exams.reportTitle}</h1>
+        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">
+          {t.exams.reportTitle}
+        </h1>
         <p className="text-muted-foreground">{exam.titleZh}</p>
       </div>
 
-      {/* Estimate hero */}
-      <div className="rounded-2xl border-2 border-amber-200 bg-linear-to-br from-amber-500/10 to-transparent p-8 text-center dark:border-amber-400/20">
+      {/* Estimate hero — the graded result, ruled in cinnabar */}
+      <div className="border-y border-cinnabar/40 py-10 text-center">
         {estimate?.kind === "toeic" ? (
           <>
-            <p className="text-sm font-medium text-amber-700 dark:text-amber-400">
+            <SectionLabel as="p" className="text-cinnabar">
               {t.exams.totalEstimate}
-            </p>
-            <p className="mt-2 text-6xl font-bold">{estimate.total}</p>
-            <div className="mt-4 flex justify-center gap-8 text-sm">
+            </SectionLabel>
+            <p className="mt-3 font-mono text-7xl font-semibold tabular-nums">{estimate.total}</p>
+            <div className="mt-5 flex justify-center gap-8 font-mono text-sm tabular-nums">
               <span>
                 {t.exams.listeningSection}: <strong>{estimate.listening}</strong> / 495
               </span>
@@ -66,21 +69,23 @@ export default async function ExamReportPage({
           </>
         ) : estimate?.kind === "ielts" ? (
           <>
-            <p className="text-sm font-medium text-amber-700 dark:text-amber-400">
+            <SectionLabel as="p" className="text-cinnabar">
               {t.exams.bandEstimate}
+            </SectionLabel>
+            <p className="mt-3 font-mono text-7xl font-semibold tabular-nums">
+              {estimate.band.toFixed(1)}
             </p>
-            <p className="mt-2 text-6xl font-bold">{estimate.band.toFixed(1)}</p>
           </>
         ) : null}
-        <p className="mt-4 text-xs text-muted-foreground/70">{t.common.estimateNote}</p>
+        <p className="mt-5 text-xs text-muted-foreground/70">{t.common.estimateNote}</p>
       </div>
 
       {/* Section breakdown */}
-      <section className="rounded-xl border bg-card p-6 shadow-xs">
-        <h2 className="mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+      <section>
+        <SectionLabel as="h2" className="mb-4">
           {t.exams.sectionBreakdown}
-        </h2>
-        <div className="space-y-3">
+        </SectionLabel>
+        <div className="space-y-4">
           {sectionScores.map((s) => {
             const pct = s.max > 0 ? Math.round((s.raw / s.max) * 100) : 0;
             return (
@@ -90,13 +95,14 @@ export default async function ExamReportPage({
                     {s.kind === "listening" ? t.exams.listeningSection : t.exams.readingSection} ·{" "}
                     {sectionTitleById.get(s.sectionId)}
                   </span>
-                  <span className="text-muted-foreground">
+                  <span className="font-mono text-muted-foreground tabular-nums">
                     {s.raw}/{s.max} · {pct}%
                   </span>
                 </div>
-                <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-muted">
+                {/* Under 60% the bar takes the red pen. */}
+                <div className="mt-1.5 h-1 overflow-hidden bg-muted">
                   <div
-                    className={`h-full rounded-full ${pct >= 60 ? "bg-green-500" : "bg-amber-500"}`}
+                    className={`h-full ${pct >= 60 ? "bg-primary" : "bg-cinnabar"}`}
                     style={{ width: `${pct}%` }}
                   />
                 </div>

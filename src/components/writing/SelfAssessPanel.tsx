@@ -1,3 +1,4 @@
+import { SectionLabel } from "@/components/typography/SectionLabel";
 import type { Bilingual } from "@/content/types";
 import { getDict } from "@/lib/i18n";
 
@@ -12,22 +13,22 @@ export async function SelfAssessPanel({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-300">
-        <p className="font-semibold">{t.writing.selfAssessTitle}</p>
-        <p className="mt-1">{t.writing.selfAssessHint}</p>
+      <div className="border border-cinnabar/30 bg-cinnabar/5 p-4 text-sm">
+        <p className="font-medium">{t.writing.selfAssessTitle}</p>
+        <p className="mt-1 text-muted-foreground">{t.writing.selfAssessHint}</p>
       </div>
 
-      <section className="rounded-xl border bg-card p-6 shadow-xs">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+      <section className="border-y border-border py-6">
+        <SectionLabel as="h2" className="mb-3">
           {t.writing.checklist}
-        </h2>
+        </SectionLabel>
         <ul className="space-y-3">
           {checklist.map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-sm">
               <input
                 type="checkbox"
                 id={`check-${i}`}
-                className="mt-0.5 h-4 w-4 rounded border-border accent-primary"
+                className="mt-0.5 h-4 w-4 rounded-sm border-border accent-cinnabar"
               />
               <label htmlFor={`check-${i}`} className="cursor-pointer">
                 <span className="font-medium">{item.zh}</span>
@@ -38,11 +39,11 @@ export async function SelfAssessPanel({
         </ul>
       </section>
 
-      <section className="rounded-xl border bg-card p-6 shadow-xs">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+      <section className="border-y border-border py-6">
+        <SectionLabel as="h2" className="mb-3">
           {t.writing.modelAnswer}
-        </h2>
-        <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
+        </SectionLabel>
+        <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/80">
           {modelAnswer}
         </p>
       </section>

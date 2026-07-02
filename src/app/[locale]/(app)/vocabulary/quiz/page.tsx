@@ -30,7 +30,7 @@ export default async function QuizPage() {
 
   if (words.length < 4) {
     return (
-      <div className="rounded-xl border bg-card p-10 text-center text-muted-foreground">
+      <div className="border-y border-border py-12 text-center text-muted-foreground">
         {t.vocab.noWords}
       </div>
     );
@@ -59,12 +59,12 @@ export default async function QuizPage() {
       <div>
         <Link
           href="/vocabulary"
-          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" aria-hidden />
           {t.nav.vocabulary}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold">{t.vocab.quiz}</h1>
+        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
       </div>
       <QuizRunner track={track} questions={questions} />
     </div>

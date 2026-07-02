@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Briefcase, GraduationCap, Target, type LucideIcon } from "lucide-react";
+import { Briefcase, Check, GraduationCap, Target, type LucideIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Track } from "@/content/types";
 import { completeOnboarding } from "@/lib/actions/settings";
@@ -17,32 +18,32 @@ export function TrackPicker() {
     label: string;
     desc: string;
     badge: string;
+    accent: boolean;
     icon: LucideIcon;
-    iconClass: string;
   }[] = [
     {
       track: "toeic",
       label: t.tracks.toeic,
       desc: t.onboarding.toeicDesc,
       badge: t.onboarding.examBadge,
+      accent: false,
       icon: Target,
-      iconClass: "bg-primary/10 text-primary",
     },
     {
       track: "ielts",
       label: t.tracks.ielts,
       desc: t.onboarding.ieltsDesc,
       badge: t.onboarding.examBadge,
+      accent: false,
       icon: GraduationCap,
-      iconClass: "bg-primary/10 text-primary",
     },
     {
       track: "business",
       label: t.tracks.business,
       desc: t.onboarding.businessDesc,
       badge: t.onboarding.bizBadge,
+      accent: true,
       icon: Briefcase,
-      iconClass: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
     },
   ];
 
@@ -63,41 +64,29 @@ export function TrackPicker() {
               key={o.track}
               onClick={() => setSelected(o.track)}
               aria-pressed={active}
-              className={`rounded-xl border-2 bg-card p-6 text-left transition ${
-                active
-                  ? "border-primary shadow-md ring-2 ring-primary/20"
-                  : "shadow-xs hover:border-primary/40"
+              className={`border p-6 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                active ? "border-foreground" : "border-border hover:border-input"
               }`}
             >
-              <div className="flex items-center justify-between">
-                <div
-                  className={`flex size-10 items-center justify-center rounded-lg ${o.iconClass}`}
-                  aria-hidden
-                >
-                  <o.icon className="size-5" />
-                </div>
-                <span
-                  className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                    o.badge === t.onboarding.examBadge
-                      ? "bg-primary/10 text-primary"
-                      : "bg-amber-100 text-amber-900 dark:bg-amber-400/15 dark:text-amber-300"
-                  }`}
-                >
-                  {o.badge}
+              <div className="flex items-center justify-between gap-2">
+                <o.icon className="size-5" aria-hidden />
+                <span className="flex items-center gap-2">
+                  {active && <Check className="size-4 text-cinnabar" aria-hidden />}
+                  <Badge variant={o.accent ? "accent" : "outline"}>{o.badge}</Badge>
                 </span>
               </div>
-              <h2 className="mt-4 text-lg font-bold">{o.label}</h2>
+              <h2 className="mt-4 font-serif text-lg font-medium">{o.label}</h2>
               <p className="mt-1 text-sm text-muted-foreground">{o.desc}</p>
             </button>
           );
         })}
       </div>
-      <div className="text-center">
+      <div>
         <Button
           onClick={confirm}
           disabled={!selected || pending}
           size="lg"
-          className="h-11 px-8 text-base font-semibold"
+          className="h-11 px-8 text-base"
         >
           {pending ? t.common.loading : t.onboarding.confirm}
         </Button>

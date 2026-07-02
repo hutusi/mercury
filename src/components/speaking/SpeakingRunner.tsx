@@ -3,6 +3,8 @@
 import { Ban, Mic } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
+import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Button } from "@/components/ui/button";
 import type { Bilingual } from "@/content/types";
 import { submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -130,7 +132,7 @@ export function SpeakingRunner({
   if (!sttSupported()) {
     return (
       <div className="space-y-6">
-        <div className="rounded-xl border border-destructive/20 bg-destructive/10 p-5 text-sm text-destructive">
+        <div className="border border-destructive/20 bg-destructive/10 p-5 text-sm text-destructive">
           <span aria-hidden>
             <Ban className="inline size-4" />
           </span>{" "}
@@ -144,10 +146,10 @@ export function SpeakingRunner({
   if (phase === "done" && result) {
     return (
       <div className="space-y-6">
-        <section className="rounded-xl border bg-card p-5 shadow-xs">
-          <h2 className="mb-2 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+        <section className="border-y border-border py-5">
+          <SectionLabel as="h2" className="mb-2">
             {t.speaking.transcript}
-          </h2>
+          </SectionLabel>
           <p className="text-sm leading-relaxed text-foreground/80">{finalText}</p>
         </section>
         {result.status === "ai_scored" && result.feedback ? (
@@ -157,7 +159,7 @@ export function SpeakingRunner({
         )}
         <Link
           href="/speaking"
-          className="inline-block text-sm font-medium text-primary hover:underline"
+          className="inline-block text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           ← {t.common.back}
         </Link>
@@ -168,75 +170,61 @@ export function SpeakingRunner({
   return (
     <div className="space-y-4">
       {micError && (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-300">
-          {micError}
-        </div>
+        <div className="border border-cinnabar/30 bg-cinnabar/5 p-3 text-sm">{micError}</div>
       )}
 
       {phase === "idle" && (
-        <div className="rounded-xl border bg-card p-8 text-center shadow-xs">
-          <p className="text-sm text-muted-foreground">
+        <div className="border border-border p-8 text-center">
+          <p className="font-mono text-sm text-muted-foreground tabular-nums">
             {t.speaking.prep}: {prepSeconds}
             {t.common.seconds} · {t.speaking.speak}: {speakSeconds}
             {t.common.seconds}
           </p>
           <div className="mt-5 flex justify-center gap-3">
-            <button
-              onClick={beginPrep}
-              className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80"
-            >
-              <span aria-hidden>
-                <Mic className="inline size-4" />
-              </span>{" "}
-              {t.speaking.startPrep}
-            </button>
+            <Button onClick={beginPrep} size="lg" className="h-11 px-6">
+              <Mic className="size-4" aria-hidden /> {t.speaking.startPrep}
+            </Button>
           </div>
         </div>
       )}
 
       {phase === "prep" && (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-8 text-center dark:border-amber-400/20 dark:bg-amber-400/10">
-          <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
+        <div className="border border-cinnabar/40 bg-cinnabar/5 p-8 text-center">
+          <SectionLabel as="p" className="text-cinnabar">
             {t.speaking.prep}
-          </p>
-          <p className="mt-2 text-5xl font-bold text-amber-600 tabular-nums dark:text-amber-400">
+          </SectionLabel>
+          <p className="mt-2 font-mono text-5xl font-semibold text-cinnabar tabular-nums">
             {secondsLeft}
           </p>
-          <button
-            onClick={beginRecording}
-            className="mt-5 rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600"
-          >
+          <Button onClick={beginRecording} variant="accent" className="mt-5">
             {t.speaking.skipPrep}
-          </button>
+          </Button>
         </div>
       )}
 
       {phase === "recording" && (
-        <div className="rounded-xl border border-destructive/20 bg-card p-8 text-center shadow-xs">
-          <p className="flex items-center justify-center gap-2 text-sm font-medium text-destructive">
-            <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-destructive" />
+        <div className="border border-cinnabar/40 p-8 text-center">
+          <p className="flex items-center justify-center gap-2 text-sm font-medium text-cinnabar">
+            <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-cinnabar motion-reduce:animate-none" />
             {t.speaking.recording}
           </p>
-          <p className="mt-2 text-5xl font-bold tabular-nums">{secondsLeft}</p>
-          <div className="mx-auto mt-4 min-h-16 max-w-xl rounded-lg bg-muted p-3 text-left text-sm text-foreground/80">
+          <p className="mt-2 font-mono text-5xl font-semibold tabular-nums">{secondsLeft}</p>
+          <div className="mx-auto mt-4 min-h-16 max-w-xl bg-muted p-3 text-left text-sm text-foreground/80">
             {finalText}
             <span className="text-muted-foreground/70">{interimText ? ` ${interimText}` : ""}</span>
           </div>
-          <button
-            onClick={stopRecording}
-            className="mt-5 rounded-lg bg-red-500 px-6 py-2.5 font-semibold text-white transition hover:bg-red-600"
-          >
+          <Button onClick={stopRecording} variant="accent" className="mt-5 px-6">
             ⏹ {t.speaking.stop}
-          </button>
+          </Button>
         </div>
       )}
 
       {phase === "review" && (
         <div className="space-y-4">
-          <section className="rounded-xl border bg-card p-5 shadow-xs">
-            <h2 className="mb-2 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+          <section className="border-y border-border py-5">
+            <SectionLabel as="h2" className="mb-2">
               {t.speaking.transcript}
-            </h2>
+            </SectionLabel>
             {finalText ? (
               <p className="text-sm leading-relaxed text-foreground/80">{finalText}</p>
             ) : (
@@ -244,23 +232,26 @@ export function SpeakingRunner({
             )}
           </section>
           <div className="flex gap-3">
-            <button
+            <Button
               onClick={beginPrep}
               disabled={pending}
-              className="flex-1 rounded-lg border bg-card px-4 py-3 font-medium text-foreground/80 transition hover:bg-muted disabled:opacity-50"
+              variant="outline"
+              size="lg"
+              className="h-11 flex-1"
             >
               🔁 {t.common.tryAgain}
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={submit}
               disabled={pending || finalText.trim().length < 10}
-              className="flex-1 rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-40"
+              size="lg"
+              className="h-11 flex-1 disabled:cursor-not-allowed"
             >
               {pending ? t.speaking.submitting : t.speaking.submitForFeedback}
-            </button>
+            </Button>
           </div>
           {pending && (
-            <div className="rounded-lg border border-primary/20 bg-primary/10 p-3 text-center text-sm text-primary">
+            <div className="border border-border bg-muted p-3 text-center text-sm text-muted-foreground">
               {t.speaking.submitting}
             </div>
           )}
@@ -283,22 +274,22 @@ function SelfAssessBlock({
   return (
     <div className="space-y-4">
       {showHint && (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-300">
-          <p className="font-semibold">{t.writing.selfAssessTitle}</p>
-          <p className="mt-1">{t.writing.selfAssessHint}</p>
+        <div className="border border-cinnabar/30 bg-cinnabar/5 p-4 text-sm">
+          <p className="font-medium">{t.writing.selfAssessTitle}</p>
+          <p className="mt-1 text-muted-foreground">{t.writing.selfAssessHint}</p>
         </div>
       )}
-      <section className="rounded-xl border bg-card p-6 shadow-xs">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+      <section className="border-y border-border py-6">
+        <SectionLabel as="h2" className="mb-3">
           {t.speaking.checklist}
-        </h2>
+        </SectionLabel>
         <ul className="space-y-3">
           {checklist.map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-sm">
               <input
                 type="checkbox"
                 id={`speak-check-${i}`}
-                className="mt-0.5 h-4 w-4 rounded border-border accent-primary"
+                className="mt-0.5 h-4 w-4 rounded-sm border-border accent-cinnabar"
               />
               <label htmlFor={`speak-check-${i}`} className="cursor-pointer">
                 <span className="font-medium">{item.zh}</span>
@@ -308,11 +299,11 @@ function SelfAssessBlock({
           ))}
         </ul>
       </section>
-      <section className="rounded-xl border bg-card p-6 shadow-xs">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+      <section className="border-y border-border py-6">
+        <SectionLabel as="h2" className="mb-3">
           {t.speaking.modelAnswer}
-        </h2>
-        <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
+        </SectionLabel>
+        <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/80">
           {modelAnswer}
         </p>
       </section>

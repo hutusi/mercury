@@ -1,5 +1,7 @@
 import { Timer } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Button } from "@/components/ui/button";
 import type { ExamEstimate } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
 
@@ -20,25 +22,30 @@ export async function ExamBanner({
         : null;
 
   return (
-    <div className="flex flex-col justify-between rounded-xl border-2 border-amber-300 bg-linear-to-br from-amber-500/10 to-transparent p-5 shadow-xs dark:border-amber-400/30">
-      <div>
-        <p className="flex items-center gap-1.5 text-sm font-semibold text-amber-700 dark:text-amber-400">
-          <Timer className="size-4" aria-hidden />
-          {t.dashboard.examBanner}
-        </p>
-        <p className="mt-1 text-xs text-muted-foreground">{t.dashboard.examBannerDesc}</p>
-        {estimateText && (
-          <p className="mt-2 text-lg font-bold">
-            {t.dashboard.lastEstimate}: {estimateText}
-          </p>
-        )}
+    // The exam funnel is the page's cinnabar moment.
+    <div className="border border-cinnabar/40 p-6">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <SectionLabel as="p" className="flex items-center gap-1.5 text-cinnabar">
+            <Timer className="size-3.5" aria-hidden />
+            {t.dashboard.examBanner}
+          </SectionLabel>
+          <p className="mt-2 text-sm text-muted-foreground">{t.dashboard.examBannerDesc}</p>
+          {estimateText && (
+            <p className="mt-3 text-sm text-muted-foreground">
+              {t.dashboard.lastEstimate}:{" "}
+              <span className="font-mono text-2xl font-semibold text-foreground tabular-nums">
+                {estimateText}
+              </span>
+            </p>
+          )}
+        </div>
+        <Button asChild variant="accent">
+          <Link href={resumeExamId ? `/exams/${resumeExamId}/take` : "/exams"}>
+            {resumeExamId ? t.exams.resumeExam : t.dashboard.startExam}
+          </Link>
+        </Button>
       </div>
-      <Link
-        href={resumeExamId ? `/exams/${resumeExamId}/take` : "/exams"}
-        className="mt-3 inline-block rounded-lg bg-amber-500 px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-amber-600"
-      >
-        {resumeExamId ? t.exams.resumeExam : t.dashboard.startExam}
-      </Link>
     </div>
   );
 }

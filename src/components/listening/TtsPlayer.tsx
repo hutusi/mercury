@@ -24,7 +24,7 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
 
   if (!ttsSupported()) {
     return (
-      <div className="rounded-xl border border-destructive/20 bg-destructive/10 p-4 text-sm text-destructive">
+      <div className="border border-destructive/20 bg-destructive/10 p-4 text-sm text-destructive">
         {t.listening.ttsUnsupported}
       </div>
     );
@@ -54,14 +54,14 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
   const progress = playing && lineIndex >= 0 ? ((lineIndex + 1) / script.length) * 100 : 0;
 
   return (
-    <div className="rounded-xl border bg-card p-5 shadow-xs">
+    <div className="border border-border p-5">
       <div className="flex items-center gap-4">
         <button
           onClick={playing ? stop : play}
-          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition ${
+          className={`flex h-12 w-12 shrink-0 items-center justify-center transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
             playing
-              ? "bg-red-500 text-white hover:bg-red-600"
-              : "bg-primary text-primary-foreground hover:bg-primary/80"
+              ? "bg-cinnabar text-cinnabar-foreground hover:bg-cinnabar/90"
+              : "bg-primary text-primary-foreground hover:bg-primary/85"
           }`}
           aria-label={playing ? t.listening.pause : t.listening.play}
         >
@@ -73,9 +73,9 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
           <p className="text-sm font-medium text-foreground/80">
             {playing ? t.listening.playing : playCount > 0 ? t.listening.replay : t.listening.play}
           </p>
-          <div className="mt-2 h-2 overflow-hidden rounded-full bg-muted">
+          <div className="mt-2 h-1 overflow-hidden bg-muted">
             <div
-              className="h-full rounded-full bg-primary transition-all duration-500"
+              className="h-full bg-primary transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>

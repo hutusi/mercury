@@ -51,24 +51,22 @@ export default async function StudyPage() {
       <div>
         <Link
           href="/vocabulary"
-          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" aria-hidden />
           {t.nav.vocabulary}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold">{t.vocab.study}</h1>
+        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{t.vocab.study}</h1>
       </div>
       {cards.length === 0 ? (
-        <div className="mx-auto max-w-md rounded-xl border bg-card p-10 text-center shadow-xs">
+        <div className="mx-auto max-w-md border border-border p-10 text-center">
           <p className="flex justify-center" aria-hidden>
-            <span className="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <Sparkles className="size-6" />
-            </span>
+            <Sparkles className="size-6" />
           </p>
           <p className="mt-4 font-medium text-foreground/80">{t.vocab.allClear}</p>
           <Link
             href="/vocabulary/quiz"
-            className="mt-6 inline-block rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/80"
+            className="mt-6 inline-block bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
           >
             {t.vocab.startQuiz}
           </Link>

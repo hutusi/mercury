@@ -6,6 +6,8 @@ import { DueWordsCard } from "@/components/dashboard/DueWordsCard";
 import { ExamBanner } from "@/components/dashboard/ExamBanner";
 import { RecentScoresCard, type RecentScore } from "@/components/dashboard/RecentScoresCard";
 import { StreakCard } from "@/components/dashboard/StreakCard";
+import { EntryHeader } from "@/components/typography/EntryHeader";
+import { SectionLabel } from "@/components/typography/SectionLabel";
 import { db } from "@/lib/db";
 import {
   exerciseAttempts,
@@ -126,43 +128,52 @@ export default async function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold">
-        {t.dashboard.greeting}，{user.name || user.email}
-      </h1>
+    <div className="space-y-10">
+      <EntryHeader
+        size="md"
+        title={
+          <>
+            {t.dashboard.greeting}，{user.name || user.email}
+          </>
+        }
+      />
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <StreakCard streak={streak} />
-        <DueWordsCard dueCount={dueCount} />
-        <ExamBanner
-          lastEstimate={lastExam?.estimate ?? null}
-          resumeExamId={inProgressExam?.examId ?? null}
-        />
-      </div>
+      {/* Editorial asymmetry: work in the main column, numbers in the margin. */}
+      <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
+        <div className="space-y-10">
+          <ExamBanner
+            lastEstimate={lastExam?.estimate ?? null}
+            resumeExamId={inProgressExam?.examId ?? null}
+          />
+          <RecentScoresCard scores={recentScores} />
+        </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <RecentScoresCard scores={recentScores} />
-        <div className="space-y-4">
-          <div className="rounded-xl border bg-card p-5 shadow-xs">
-            <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
-              {t.dashboard.quickStart}
-            </h2>
-            <div className="mt-3 grid grid-cols-3 gap-2">
+        <aside className="space-y-8">
+          <StreakCard streak={streak} />
+          <DueWordsCard dueCount={dueCount} />
+          <div className="border-t border-border pt-4">
+            <SectionLabel as="h2">{t.dashboard.quickStart}</SectionLabel>
+            <ul className="mt-3 space-y-1">
               {quickLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="rounded-lg border bg-muted px-3 py-3 text-center text-sm font-medium text-foreground/80 transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
-                >
-                  <l.icon className="mx-auto mb-1.5 size-5" aria-hidden />
-                  {l.label}
-                </Link>
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className={`flex items-center gap-2.5 py-1.5 text-sm transition-colors ${
+                      l.href === "/exams"
+                        ? "text-cinnabar hover:text-cinnabar/80"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    <l.icon className="size-4" aria-hidden />
+                    {l.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
           {/* The funnel card: exam tracks → business content; business → mini-TOEIC */}
           <CrossPromoCard track={track} />
-        </div>
+        </aside>
       </div>
     </div>
   );

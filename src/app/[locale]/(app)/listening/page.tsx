@@ -1,6 +1,9 @@
-import { Headphones } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { Check } from "lucide-react";
 import { and, eq } from "drizzle-orm";
+import { EmptyState } from "@/components/typography/EmptyState";
+import { EntryHeader } from "@/components/typography/EntryHeader";
+import { EntryList, EntryRow } from "@/components/typography/EntryList";
+import { Badge } from "@/components/ui/badge";
 import { db } from "@/lib/db";
 import { exerciseAttempts, listeningExercises } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
@@ -28,53 +31,46 @@ export default async function ListeningListPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="flex items-center gap-3 text-2xl font-bold">
-          <span
-            className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary"
-            aria-hidden
-          >
-            <Headphones className="size-5" />
-          </span>
-          {t.nav.listening}
-        </h1>
-        <p className="mt-1 text-muted-foreground">{t.listening.subtitle}</p>
-      </div>
+    <div className="space-y-8">
+      <EntryHeader
+        title={t.nav.listening}
+        ipa={t.entry.listeningIpa}
+        pos={t.entry.listeningPos}
+        gloss={t.listening.subtitle}
+      />
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <EntryList>
         {exercises.map((ex) => {
           const best = bestByExercise.get(ex.id);
           return (
-            <Link
+            <EntryRow
               key={ex.id}
               href={`/listening/${ex.id}`}
-              className="group rounded-xl border bg-card p-5 shadow-xs transition hover:border-primary/40 hover:shadow-sm"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                  {ex.style}
-                </span>
-                <span className="text-xs text-muted-foreground/70">
-                  {ex.questions.length} {t.common.questions}
-                </span>
-              </div>
-              <h2 className="mt-3 font-semibold group-hover:text-primary">{ex.title}</h2>
-              <p className="text-sm text-muted-foreground">{ex.titleZh}</p>
-              <p className="mt-3 text-xs font-medium">
-                {best ? (
-                  <span className="text-green-600 dark:text-green-400">
-                    {t.reading.bestScore}: {best.score}/{best.total}
-                  </span>
-                ) : (
-                  <span className="text-muted-foreground/70">{t.reading.notAttempted}</span>
-                )}
-              </p>
-            </Link>
+              meta={<Badge variant="outline">{ex.style}</Badge>}
+              title={ex.title}
+              subtitle={ex.titleZh}
+              right={
+                <div className="text-right">
+                  <p className="font-mono text-2xs text-muted-foreground">
+                    {ex.questions.length} {t.common.questions}
+                  </p>
+                  {best ? (
+                    <p className="mt-1 flex items-center justify-end gap-1 font-mono text-xs font-medium text-foreground tabular-nums">
+                      <Check className="size-3.5" aria-hidden />
+                      {t.reading.bestScore}: {best.score}/{best.total}
+                    </p>
+                  ) : (
+                    <p className="mt-1 text-xs text-muted-foreground/70">
+                      {t.reading.notAttempted}
+                    </p>
+                  )}
+                </div>
+              }
+            />
           );
         })}
-      </div>
-      {exercises.length === 0 && <p className="text-muted-foreground">{t.common.empty}</p>}
+      </EntryList>
+      {exercises.length === 0 && <EmptyState>{t.common.empty}</EmptyState>}
     </div>
   );
 }

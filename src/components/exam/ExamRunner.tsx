@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TtsPlayer } from "@/components/listening/TtsPlayer";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
+import { Button } from "@/components/ui/button";
 import { saveExamProgress, submitExamSection } from "@/lib/actions/exams";
 import type { AnswerMap, SectionDeadline } from "@/lib/db/schema";
 import type { SanitizedExamSection } from "@/lib/exam-utils";
@@ -159,7 +160,7 @@ export function ExamRunner({
   return (
     <div className="space-y-6">
       {/* Sticky header: section info + timer + palette */}
-      <div className="sticky top-14 z-10 -mx-4 border-b bg-background/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6">
+      <div className="sticky top-14 z-10 -mx-4 border-b border-border bg-background px-4 py-3 sm:-mx-6 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-sm font-semibold">
@@ -169,9 +170,9 @@ export function ExamRunner({
             <p className="text-xs text-muted-foreground">{section.titleZh}</p>
           </div>
           <div
-            className={`rounded-lg px-3 py-1.5 font-mono text-lg font-bold tabular-nums ${
+            className={`px-3 py-1.5 font-mono text-lg font-semibold tabular-nums ${
               lowTime
-                ? "animate-pulse bg-destructive/10 text-destructive"
+                ? "animate-pulse bg-cinnabar/10 text-cinnabar motion-reduce:animate-none"
                 : "bg-muted text-foreground/80"
             }`}
             aria-label={t.exams.timeLeft}
@@ -184,7 +185,7 @@ export function ExamRunner({
             <a
               key={q.id}
               href={`#q-${q.id}`}
-              className={`flex h-7 w-7 items-center justify-center rounded text-xs font-semibold transition ${
+              className={`flex h-7 w-7 items-center justify-center rounded-sm font-mono text-xs font-medium transition-colors ${
                 sectionAnswers[q.id] !== undefined
                   ? "bg-primary text-primary-foreground"
                   : "bg-muted text-muted-foreground hover:bg-muted/70"
@@ -197,8 +198,8 @@ export function ExamRunner({
       </div>
 
       {section.kind === "listening" && (
-        <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-300">
-          <span aria-hidden>
+        <p className="border border-cinnabar/30 bg-cinnabar/5 p-3 text-sm">
+          <span className="text-cinnabar" aria-hidden>
             <Headphones className="inline size-4" />
           </span>{" "}
           {t.exams.audioOnce}
@@ -209,8 +210,8 @@ export function ExamRunner({
         <div key={group.id} className="space-y-4">
           {group.script && <TtsPlayer script={group.script} />}
           {group.passage && (
-            <article className="rounded-xl border bg-card p-6 shadow-xs">
-              <div className="leading-relaxed whitespace-pre-line text-foreground/80">
+            <article className="border-y border-border py-6">
+              <div className="font-serif leading-relaxed whitespace-pre-line text-foreground/90">
                 {group.passage}
               </div>
             </article>
@@ -234,46 +235,40 @@ export function ExamRunner({
         </div>
       ))}
 
-      <div className="rounded-xl border bg-card p-5 shadow-xs">
+      <div className="border-t border-border pt-5">
         {submitError && (
-          <p className="mb-3 rounded-lg border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+          <p className="mb-3 border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
             {submitError}
           </p>
         )}
         {confirming ? (
           <div className="space-y-3 text-center">
             <p className="text-sm font-medium text-foreground/80">{t.exams.confirmSubmitSection}</p>
-            <p className="text-xs text-muted-foreground">
+            <p className="font-mono text-xs text-muted-foreground tabular-nums">
               {t.exams.answered} {answeredCount}/{sectionQuestions.length}
             </p>
             <div className="flex justify-center gap-3">
-              <button
-                onClick={() => setConfirming(false)}
-                className="rounded-lg border bg-card px-5 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted"
-              >
+              <Button variant="outline" onClick={() => setConfirming(false)}>
                 {t.common.cancel}
-              </button>
-              <button
-                onClick={() => void doSubmitSection(section.id)}
-                disabled={submitting}
-                className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/80 disabled:opacity-50"
-              >
+              </Button>
+              <Button onClick={() => void doSubmitSection(section.id)} disabled={submitting}>
                 {submitting
                   ? t.common.loading
                   : sectionIndex === sections.length - 1
                     ? t.common.finish
                     : t.exams.nextSection}
-              </button>
+              </Button>
             </div>
           </div>
         ) : (
-          <button
+          <Button
             onClick={() => setConfirming(true)}
             disabled={submitting}
-            className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:opacity-50"
+            size="lg"
+            className="h-11 w-full"
           >
             {t.exams.submitSection} ({answeredCount}/{sectionQuestions.length})
-          </button>
+          </Button>
         )}
       </div>
     </div>

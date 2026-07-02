@@ -5,6 +5,8 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
+import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Button } from "@/components/ui/button";
 import type { SanitizedQuestion, ScriptLine } from "@/content/types";
 import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attempts";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -63,19 +65,19 @@ export function ListeningRunner({
           total={result.total}
         />
         {/* Transcript unlocks only after submission */}
-        <div className="rounded-xl border bg-card p-6 shadow-xs">
-          <h2 className="mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+        <div className="border-y border-border py-6">
+          <SectionLabel as="h2" className="mb-4">
             {t.listening.transcript}
-          </h2>
+          </SectionLabel>
           <div className="space-y-3">
             {script.map((line, i) => (
               <p key={i} className="text-sm leading-relaxed text-foreground/80">
                 {line.speaker !== "narrator" && (
                   <span
-                    className={`mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
+                    className={`mr-2 inline-flex h-5 w-5 items-center justify-center rounded-sm font-mono text-xs font-medium ${
                       line.speaker === "A"
                         ? "bg-primary text-primary-foreground"
-                        : "bg-amber-500 text-white"
+                        : "bg-muted text-foreground"
                     }`}
                   >
                     {line.speaker}
@@ -88,7 +90,7 @@ export function ListeningRunner({
         </div>
         <Link
           href="/listening"
-          className="inline-block text-sm font-medium text-primary hover:underline"
+          className="inline-block text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           ← {t.reading.backToList}
         </Link>
@@ -100,7 +102,7 @@ export function ListeningRunner({
   return (
     <div className="space-y-6">
       <TtsPlayer script={script} />
-      <div className="rounded-xl border border-dashed bg-muted p-3 text-center text-xs text-muted-foreground">
+      <div className="border border-dashed border-border p-3 text-center text-xs text-muted-foreground">
         <span aria-hidden>
           <Lock className="inline size-4" />
         </span>{" "}
@@ -112,19 +114,20 @@ export function ListeningRunner({
         onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
       />
       {error && (
-        <p className="rounded-lg border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+        <p className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
           {error}
         </p>
       )}
-      <button
+      <Button
         onClick={submit}
         disabled={pending || answeredCount < questions.length}
-        className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-40"
+        size="lg"
+        className="h-11 w-full disabled:cursor-not-allowed"
       >
         {pending
           ? t.common.loading
           : `${t.listening.submitAnswers} (${answeredCount}/${questions.length})`}
-      </button>
+      </Button>
     </div>
   );
 }

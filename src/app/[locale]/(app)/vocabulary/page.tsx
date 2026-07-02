@@ -1,6 +1,10 @@
-import { BookMarked } from "lucide-react";
+import { Check } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, eq } from "drizzle-orm";
+import { EntryHeader } from "@/components/typography/EntryHeader";
+import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Stat } from "@/components/typography/Stat";
+import { Button } from "@/components/ui/button";
 import { db } from "@/lib/db";
 import { srsCards, vocabWords } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
@@ -37,91 +41,77 @@ export default async function VocabularyPage() {
   }
 
   const stats = [
-    { label: t.vocab.due, value: dueCount, cls: "text-amber-600 dark:text-amber-400" },
-    { label: t.vocab.fresh, value: freshCount, cls: "text-primary" },
-    { label: t.vocab.learned, value: learnedCount, cls: "text-green-600 dark:text-green-400" },
+    { label: t.vocab.due, value: dueCount, accent: dueCount > 0 },
+    { label: t.vocab.fresh, value: freshCount, accent: false },
+    { label: t.vocab.learned, value: learnedCount, accent: false },
   ];
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h1 className="flex items-center gap-3 text-2xl font-bold">
-            <span
-              className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary"
-              aria-hidden
-            >
-              <BookMarked className="size-5" />
-            </span>
-            {t.nav.vocabulary}
-          </h1>
-          <p className="mt-1 text-muted-foreground">{t.vocab.subtitle}</p>
-        </div>
-        <div className="flex gap-3">
-          <Link
-            href="/vocabulary/study"
-            className="rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/80"
-          >
-            {t.vocab.study}
-            {dueCount + Math.min(freshCount, 10) > 0 && (
-              <span className="ml-2 rounded-full bg-primary-foreground/20 px-2 py-0.5 text-xs">
-                {dueCount + Math.min(freshCount, 10)}
-              </span>
-            )}
-          </Link>
-          <Link
-            href="/vocabulary/quiz"
-            className="rounded-lg border border-primary/20 bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary/20"
-          >
-            {t.vocab.quiz}
-          </Link>
-        </div>
-      </div>
+      <EntryHeader
+        title={t.nav.vocabulary}
+        ipa={t.entry.vocabularyIpa}
+        pos={t.entry.vocabularyPos}
+        gloss={t.vocab.subtitle}
+        actions={
+          <>
+            <Button asChild>
+              <Link href="/vocabulary/study">
+                {t.vocab.study}
+                {dueCount + Math.min(freshCount, 10) > 0 && (
+                  <span className="ml-1.5 font-mono text-xs tabular-nums opacity-70">
+                    {dueCount + Math.min(freshCount, 10)}
+                  </span>
+                )}
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/vocabulary/quiz">{t.vocab.quiz}</Link>
+            </Button>
+          </>
+        }
+      />
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 divide-x divide-border border-y border-border">
         {stats.map((s) => (
-          <div key={s.label} className="rounded-xl border bg-card p-4 text-center shadow-xs">
-            <p className={`text-3xl font-bold ${s.cls}`}>{s.value}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
+          <div key={s.label} className="px-4 py-4 first:pl-0">
+            <Stat label={s.label} value={s.value} accent={s.accent} />
           </div>
         ))}
       </div>
 
       {[...topics.entries()].map(([topic, topicWords]) => (
         <section key={topic}>
-          <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+          <SectionLabel as="h2" className="mb-3">
             {topic} · {topicWords.length}
-          </h2>
-          <div className="overflow-hidden rounded-xl border bg-card shadow-xs">
-            <table className="w-full text-sm">
-              <tbody>
-                {topicWords.map((w, i) => (
-                  <tr key={w.id} className={i > 0 ? "border-t" : ""}>
-                    <td className="px-4 py-2.5 font-semibold">{w.headword}</td>
-                    <td className="hidden px-4 py-2.5 text-muted-foreground/70 sm:table-cell">
-                      {w.ipa}
-                    </td>
-                    <td className="px-4 py-2.5 text-muted-foreground/70">{w.pos}</td>
-                    <td className="px-4 py-2.5 text-foreground/80">{w.translationZh}</td>
-                    <td className="px-4 py-2.5 text-right">
-                      {startedIds.has(w.id) ? (
-                        <span
-                          className="text-green-500 dark:text-green-400"
-                          aria-label={t.vocab.learned}
-                        >
-                          ●
-                        </span>
-                      ) : (
-                        <span className="text-muted-foreground/25" aria-label={t.vocab.notLearned}>
-                          ●
-                        </span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          </SectionLabel>
+          <table className="w-full border-y border-border text-sm">
+            <tbody className="divide-y divide-border">
+              {topicWords.map((w) => (
+                <tr key={w.id}>
+                  <td className="py-2.5 pr-4 font-serif text-base font-medium">{w.headword}</td>
+                  <td className="hidden px-4 py-2.5 font-serif text-muted-foreground italic sm:table-cell">
+                    {w.ipa}
+                  </td>
+                  <td className="px-4 py-2.5 font-mono text-2xs text-muted-foreground uppercase">
+                    {w.pos}
+                  </td>
+                  <td className="px-4 py-2.5 text-foreground/80">{w.translationZh}</td>
+                  <td className="py-2.5 pl-4 text-right">
+                    {startedIds.has(w.id) ? (
+                      <span aria-label={t.vocab.learned}>
+                        <Check className="ml-auto size-4" aria-hidden />
+                      </span>
+                    ) : (
+                      <span className="text-muted-foreground/40" aria-label={t.vocab.notLearned}>
+                        ○
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </section>
       ))}
     </div>

@@ -2,6 +2,8 @@
 
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { gradeCard } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import type { ReviewGrade } from "@/lib/srs";
@@ -42,42 +44,53 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
 
   if (!card) {
     return (
-      <div className="mx-auto max-w-md rounded-xl border bg-card p-10 text-center shadow-xs">
+      <div className="mx-auto max-w-md border border-border p-10 text-center">
         <p className="text-4xl" aria-hidden>
           🎉
         </p>
-        <h2 className="mt-4 text-xl font-bold">{t.vocab.sessionDone}</h2>
+        <h2 className="mt-4 font-serif text-2xl font-medium">{t.vocab.sessionDone}</h2>
         <p className="mt-2 text-muted-foreground">
           {t.vocab.reviewedCount}: {reviewed}
         </p>
         <div className="mt-6 flex justify-center gap-3">
-          <Link
-            href="/vocabulary"
-            className="rounded-lg border bg-card px-4 py-2 text-sm font-medium text-foreground/80 hover:bg-muted"
-          >
-            {t.common.back}
-          </Link>
-          <Link
-            href="/vocabulary/quiz"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/80"
-          >
-            {t.vocab.startQuiz}
-          </Link>
+          <Button asChild variant="outline">
+            <Link href="/vocabulary">{t.common.back}</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/vocabulary/quiz">{t.vocab.startQuiz}</Link>
+          </Button>
         </div>
       </div>
     );
   }
 
+  // The teacher's-pen scale: "again" is the red mark; the rest stay quiet ink.
   const gradeButtons: { grade: ReviewGrade; label: string; cls: string }[] = [
-    { grade: 1, label: t.vocab.again, cls: "bg-red-500 hover:bg-red-600" },
-    { grade: 3, label: t.vocab.hard, cls: "bg-amber-500 hover:bg-amber-600" },
-    { grade: 4, label: t.vocab.good, cls: "bg-green-500 hover:bg-green-600" },
-    { grade: 5, label: t.vocab.easy, cls: "bg-primary hover:bg-primary/80" },
+    {
+      grade: 1,
+      label: t.vocab.again,
+      cls: "bg-cinnabar text-cinnabar-foreground hover:bg-cinnabar/90",
+    },
+    {
+      grade: 3,
+      label: t.vocab.hard,
+      cls: "bg-secondary text-secondary-foreground hover:bg-secondary/70",
+    },
+    {
+      grade: 4,
+      label: t.vocab.good,
+      cls: "bg-primary text-primary-foreground hover:bg-primary/85",
+    },
+    {
+      grade: 5,
+      label: t.vocab.easy,
+      cls: "border border-border bg-background text-foreground hover:bg-muted",
+    },
   ];
 
   return (
     <div className="mx-auto max-w-xl space-y-4">
-      <div className="flex items-center justify-between text-sm text-muted-foreground">
+      <div className="flex items-center justify-between font-mono text-sm text-muted-foreground tabular-nums">
         <span>
           {index + 1} / {queue.length}
         </span>
@@ -86,25 +99,26 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
         </span>
       </div>
 
+      {/* The flashcard is a full dictionary entry; click to flip. */}
       <button
         onClick={() => setFlipped((f) => !f)}
-        className="block min-h-72 w-full cursor-pointer rounded-2xl border bg-card p-8 text-center shadow-xs transition hover:shadow-md"
+        className="block min-h-72 w-full cursor-pointer border border-border bg-background p-8 text-center transition-colors outline-none hover:border-input focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         {card.isNew && (
-          <span className="mb-3 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800 dark:bg-amber-400/15 dark:text-amber-300">
+          <Badge variant="accent" className="mb-3">
             {t.vocab.fresh}
-          </span>
+          </Badge>
         )}
-        <p className="text-4xl font-bold">{card.headword}</p>
-        <p className="mt-2 text-muted-foreground">
+        <p className="font-serif text-5xl font-medium tracking-tight">{card.headword}</p>
+        <p className="mt-3 font-serif text-muted-foreground italic">
           {card.ipa} · {card.pos}
         </p>
         {flipped ? (
-          <div className="mt-6 space-y-4 border-t pt-6 text-left">
-            <p className="text-center text-2xl font-semibold text-primary">{card.translationZh}</p>
+          <div className="mt-6 space-y-4 border-t border-border pt-6 text-left">
+            <p className="text-center font-serif text-2xl font-medium">{card.translationZh}</p>
             <p className="text-center text-sm text-muted-foreground">{card.definitionEn}</p>
-            <div className="rounded-lg bg-muted p-4 text-sm">
-              <p className="font-medium text-foreground/80">{card.exampleEn}</p>
+            <div className="bg-muted p-4 text-sm">
+              <p className="font-serif font-medium text-foreground/90">{card.exampleEn}</p>
               <p className="mt-1 text-muted-foreground">{card.exampleZh}</p>
             </div>
           </div>
@@ -120,7 +134,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
               key={b.grade}
               onClick={() => grade(b.grade)}
               disabled={pending}
-              className={`rounded-lg px-3 py-3 text-sm font-semibold text-white transition disabled:opacity-50 ${b.cls}`}
+              className={`px-3 py-3 text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 ${b.cls}`}
             >
               {b.label}
             </button>
