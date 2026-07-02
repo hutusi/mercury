@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { authClient } from "@/lib/auth/client";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export default function RegisterPage() {
+  const t = useT();
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,7 +21,7 @@ export default function RegisterPage() {
     setPending(true);
     const { error } = await authClient.signUp.email({ name, email, password });
     if (error) {
-      setError(error.message ?? "注册失败，请重试 / Sign-up failed");
+      setError(error.message ?? t.auth.genericError);
       setPending(false);
       return;
     }
@@ -27,16 +29,19 @@ export default function RegisterPage() {
     router.refresh();
   }
 
+  const inputClass =
+    "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none";
+
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold text-slate-900">创建账号</h1>
-        <p className="mt-1 text-sm text-slate-500">Create your Mercury account</p>
+        <h1 className="text-xl font-semibold text-slate-900">{t.auth.registerTitle}</h1>
+        <p className="mt-1 text-sm text-slate-500">{t.auth.registerSubtitle}</p>
       </div>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-slate-700">
-            昵称 Name
+            {t.auth.name}
           </label>
           <input
             id="name"
@@ -44,12 +49,12 @@ export default function RegisterPage() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none"
+            className={inputClass}
           />
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-slate-700">
-            邮箱 Email
+            {t.auth.email}
           </label>
           <input
             id="email"
@@ -57,12 +62,12 @@ export default function RegisterPage() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none"
+            className={inputClass}
           />
         </div>
         <div>
           <label htmlFor="password" className="block text-sm font-medium text-slate-700">
-            密码 Password（至少 8 位）
+            {t.auth.password} · {t.auth.passwordHint}
           </label>
           <input
             id="password"
@@ -71,7 +76,7 @@ export default function RegisterPage() {
             minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none"
+            className={inputClass}
           />
         </div>
         {error && <p className="text-sm text-red-600">{error}</p>}
@@ -80,13 +85,13 @@ export default function RegisterPage() {
           disabled={pending}
           className="w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:opacity-50"
         >
-          {pending ? "注册中…" : "注册 Sign up"}
+          {pending ? t.auth.signingUp : t.auth.signUp}
         </button>
       </form>
       <p className="text-center text-sm text-slate-500">
-        已有账号？{" "}
+        {t.auth.haveAccount}{" "}
         <Link href="/login" className="font-medium text-brand-600 hover:underline">
-          直接登录
+          {t.auth.loginLink}
         </Link>
       </p>
     </div>
