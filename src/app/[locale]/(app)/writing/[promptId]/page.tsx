@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { and, desc, eq } from "drizzle-orm";
+import { SectionLabel } from "@/components/typography/SectionLabel";
 import { WritingEditor } from "@/components/writing/WritingEditor";
 import { db } from "@/lib/db";
 import { writingPrompts, writingSubmissions } from "@/lib/db/schema";
@@ -33,23 +34,23 @@ export default async function WritingPromptPage({
       <div>
         <Link
           href="/writing"
-          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" aria-hidden />
           {t.nav.writing}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold">{prompt.title}</h1>
+        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{prompt.title}</h1>
         <p className="text-muted-foreground">
           {prompt.titleZh} · {t.writing.minWords} {prompt.minWords} · {prompt.suggestedMinutes}{" "}
           {t.common.minutes}
         </p>
       </div>
 
-      <div className="rounded-xl border bg-card p-6 shadow-xs">
-        <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
+      <div className="border-y border-border py-6">
+        <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/90">
           {prompt.promptEn}
         </p>
-        <p className="mt-4 border-t pt-4 text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
+        <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
           {prompt.promptZh}
         </p>
       </div>
@@ -58,23 +59,23 @@ export default async function WritingPromptPage({
 
       {past.length > 0 && (
         <section>
-          <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+          <SectionLabel as="h2" className="mb-3">
             {t.writing.pastSubmissions}
-          </h2>
-          <ul className="divide-y overflow-hidden rounded-xl border bg-card shadow-xs">
+          </SectionLabel>
+          <ul className="divide-y divide-border border-y border-border">
             {past.map((s) => (
               <li key={s.id}>
                 <Link
                   href={`/writing/submissions/${s.id}`}
-                  className="flex items-center justify-between px-4 py-3 text-sm transition hover:bg-muted"
+                  className="flex items-center justify-between gap-4 py-3 text-sm transition-colors hover:bg-muted/50"
                 >
-                  <span className="text-muted-foreground">
+                  <span className="font-mono text-xs text-muted-foreground">
                     {s.createdAt.toLocaleString(locale === "zh" ? "zh-CN" : "en-US")} ·{" "}
                     {s.wordCount} words
                   </span>
                   <span
-                    className={`font-semibold ${
-                      s.status === "ai_scored" ? "text-primary" : "text-muted-foreground"
+                    className={`font-medium ${
+                      s.status === "ai_scored" ? "text-foreground" : "text-muted-foreground"
                     }`}
                   >
                     {s.status === "ai_scored" && s.feedback

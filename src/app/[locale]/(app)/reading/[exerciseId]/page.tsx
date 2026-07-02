@@ -31,12 +31,12 @@ export default async function ReadingExercisePage({
       <div>
         <Link
           href="/reading"
-          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" aria-hidden />
           {t.reading.backToList}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold">{exercise.title}</h1>
+        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{exercise.title}</h1>
         <p className="text-muted-foreground">
           {exercise.titleZh} · {exercise.genre} · {t.reading.suggestedTime}{" "}
           {exercise.suggestedMinutes} {t.common.minutes}

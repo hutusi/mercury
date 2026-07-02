@@ -20,8 +20,10 @@ export function QuestionsForm({
 }) {
   return (
     <ol className="space-y-6">
+      {/* E2E DOM contract: each question is an li whose option group is a
+          direct-child div of direct-child buttons (li > div > button). */}
       {questions.map((q, qIndex) => (
-        <li key={q.id} className="rounded-xl border bg-card p-5 shadow-xs">
+        <li key={q.id} className="border-b border-border pb-6 last:border-0 last:pb-0">
           <p className="font-medium">
             {numbered ? `${qIndex + 1}. ` : ""}
             {q.stem}
@@ -35,14 +37,14 @@ export function QuestionsForm({
                   type="button"
                   disabled={disabled}
                   onClick={() => onAnswer(q.id, i)}
-                  className={`flex w-full items-start gap-3 rounded-lg border px-3 py-2.5 text-left text-sm transition ${
+                  className={`flex w-full items-start gap-3 border px-3 py-2.5 text-left text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                     selected
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border bg-card text-foreground/80 hover:border-primary/50 hover:bg-muted"
+                      ? "border-foreground bg-muted font-medium text-foreground"
+                      : "border-border text-foreground/80 hover:border-input hover:bg-muted/50"
                   } disabled:cursor-not-allowed disabled:opacity-60`}
                 >
                   <span
-                    className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
+                    className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-sm font-mono text-xs font-medium ${
                       selected
                         ? "bg-primary text-primary-foreground"
                         : "bg-muted text-muted-foreground"

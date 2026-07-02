@@ -1,7 +1,9 @@
 "use client";
 
+import { Check, X } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
+import { Button } from "@/components/ui/button";
 import type { Track } from "@/content/types";
 import { submitQuiz } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -47,27 +49,21 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
   if (result) {
     const pct = Math.round((result.score / result.total) * 100);
     return (
-      <div className="mx-auto max-w-md rounded-xl border bg-card p-10 text-center shadow-xs">
+      <div className="mx-auto max-w-md border border-border p-10 text-center">
         <p className="text-4xl" aria-hidden>
           {pct >= 80 ? "🏆" : pct >= 60 ? "👍" : "💪"}
         </p>
-        <h2 className="mt-4 text-xl font-bold">{t.vocab.quizDone}</h2>
-        <p className="mt-2 text-3xl font-bold text-primary">
+        <h2 className="mt-4 font-serif text-2xl font-medium">{t.vocab.quizDone}</h2>
+        <p className="mt-2 font-mono text-3xl font-semibold tabular-nums">
           {result.score} / {result.total}
         </p>
         <div className="mt-6 flex justify-center gap-3">
-          <Link
-            href="/vocabulary"
-            className="rounded-lg border bg-card px-4 py-2 text-sm font-medium text-foreground/80 hover:bg-muted"
-          >
-            {t.common.back}
-          </Link>
-          <Link
-            href="/vocabulary/study"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/80"
-          >
-            {t.vocab.startStudy}
-          </Link>
+          <Button asChild variant="outline">
+            <Link href="/vocabulary">{t.common.back}</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/vocabulary/study">{t.vocab.startStudy}</Link>
+          </Button>
         </div>
       </div>
     );
@@ -78,7 +74,7 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
   return (
     <div className="mx-auto max-w-xl space-y-4">
       <div className="flex items-center justify-between text-sm text-muted-foreground">
-        <span>
+        <span className="font-mono tabular-nums">
           {index + 1} / {questions.length}
         </span>
         <span>
@@ -86,29 +82,31 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
         </span>
       </div>
 
-      <div className="rounded-2xl border bg-card p-8 text-center shadow-xs">
-        <p className="text-3xl font-bold">{question.prompt}</p>
+      <div className="border border-border p-8 text-center">
+        <p className="font-serif text-3xl font-medium tracking-tight">{question.prompt}</p>
       </div>
 
       <div className="space-y-2">
         {question.options.map((option) => {
           const isCorrect = option.wordId === question.wordId;
           const isPicked = picked === option.wordId;
-          let cls = "border-border bg-card text-foreground/80 hover:border-primary/50";
+          // Graded like a marked paper: correct answers get an ink check, the
+          // wrong pick gets the red pen — icons carry the meaning, not color.
+          let cls = "border-border text-foreground/80 hover:border-input hover:bg-muted/50";
           if (picked) {
-            if (isCorrect)
-              cls =
-                "border-green-500 bg-green-500/10 text-green-700 dark:text-green-400 font-semibold";
-            else if (isPicked) cls = "border-destructive/40 bg-destructive/10 text-destructive";
-            else cls = "border-border bg-card text-muted-foreground/70";
+            if (isCorrect) cls = "border-foreground bg-muted font-medium text-foreground";
+            else if (isPicked) cls = "border-cinnabar bg-cinnabar/10 text-cinnabar";
+            else cls = "border-border text-muted-foreground/70";
           }
           return (
             <button
               key={option.wordId}
               onClick={() => pick(option.wordId)}
               disabled={!!picked}
-              className={`w-full rounded-lg border px-4 py-3 text-left transition ${cls}`}
+              className={`flex w-full items-center gap-2 border px-4 py-3 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${cls}`}
             >
+              {picked && isCorrect && <Check className="size-4 shrink-0" aria-hidden />}
+              {picked && isPicked && !isCorrect && <X className="size-4 shrink-0" aria-hidden />}
               {option.text}
             </button>
           );
@@ -116,13 +114,9 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
       </div>
 
       {picked && (
-        <button
-          onClick={next}
-          disabled={pending}
-          className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80 disabled:opacity-50"
-        >
+        <Button onClick={next} disabled={pending} size="lg" className="h-11 w-full">
           {pending ? t.common.loading : isLast ? t.common.finish : t.common.next}
-        </button>
+        </Button>
       )}
     </div>
   );

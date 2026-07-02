@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { and, eq } from "drizzle-orm";
+import { SectionLabel } from "@/components/typography/SectionLabel";
 import { AiFeedbackPanel } from "@/components/writing/AiFeedbackPanel";
 import { SelfAssessPanel } from "@/components/writing/SelfAssessPanel";
 import { requireUser } from "@/lib/auth/session";
@@ -33,19 +34,21 @@ export default async function WritingSubmissionPage({
       <div>
         <Link
           href={`/writing/${prompt.id}`}
-          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" aria-hidden />
           {prompt.title}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold">{t.writing.feedbackTitle}</h1>
+        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">
+          {t.writing.feedbackTitle}
+        </h1>
       </div>
 
-      <section className="rounded-xl border bg-card p-6 shadow-xs">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+      <section className="border-y border-border py-6">
+        <SectionLabel as="h2" className="mb-3">
           {t.writing.yourText} · {submission.wordCount} words
-        </h2>
-        <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
+        </SectionLabel>
+        <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/90">
           {submission.text}
         </p>
       </section>

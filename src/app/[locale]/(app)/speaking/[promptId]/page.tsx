@@ -27,20 +27,20 @@ export default async function SpeakingPromptPage({
       <div>
         <Link
           href="/speaking"
-          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" aria-hidden />
           {t.nav.speaking}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold">{prompt.title}</h1>
+        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{prompt.title}</h1>
         <p className="text-muted-foreground">{prompt.titleZh}</p>
       </div>
 
-      <div className="rounded-xl border bg-card p-6 shadow-xs">
-        <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
+      <div className="border-y border-border py-6">
+        <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/90">
           {prompt.promptEn}
         </p>
-        <p className="mt-4 border-t pt-4 text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
+        <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
           {prompt.promptZh}
         </p>
       </div>
