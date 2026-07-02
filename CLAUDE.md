@@ -29,7 +29,7 @@ Full verify gate: `lint && format:check && test && build && typecheck && test:e2
 ## Conventions
 
 - Conventional Commits with why-bodies; no AI-attribution trailers.
-- Match existing UI style: Tailwind utility classes inline, feature components under `src/components/<feature>/`.
+- UI follows the Lexicon design system (docs/DESIGN.md): compose `src/components/typography/*` (EntryHeader, SectionLabel, Stat, EntryList) and `ui/*` primitives; color only via semantic tokens (red only via `cinnabar` — never map it onto shadcn's `--accent`); no shadows, gradients, raw palette classes, or new animation. `src/lib/design-guard.test.ts` enforces this. Feature components live under `src/components/<feature>/`.
 
 ## Gotchas
 
