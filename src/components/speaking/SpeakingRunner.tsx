@@ -37,10 +37,14 @@ export function SpeakingRunner({
   const recognizerRef = useRef<Recognizer | null>(null);
   const deadlineRef = useRef(0);
   const recordStartRef = useRef(0);
+  // Latest-ref pattern: recognition callbacks read the current phase.
   const phaseRef = useRef<Phase>("idle");
-  phaseRef.current = phase;
+  useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side
     setMounted(true);
     return () => recognizerRef.current?.abort();
   }, []);

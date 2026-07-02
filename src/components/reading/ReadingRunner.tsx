@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import type { SanitizedQuestion } from "@/content/types";
@@ -24,7 +24,11 @@ export function ReadingRunner({
   const [result, setResult] = useState<GradedExercise | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef(0);
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   function submit() {
     setError(null);

@@ -6,6 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
     "db:push": "drizzle-kit push",
     "db:seed": "bunx tsx src/lib/db/seed.ts",
     "db:studio": "drizzle-kit studio",
@@ -29,7 +34,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "0.31.10",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "16.2.10",
+    "prettier": "^3.9.4",
+    "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "4.3.2",
+    "tsx": "^4.22.4",
     "typescript": "6.0.3"
   }
 }

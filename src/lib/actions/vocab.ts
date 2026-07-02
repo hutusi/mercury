@@ -5,7 +5,7 @@ import { z } from "zod";
 import { requireUser } from "../auth/session";
 import { db } from "../db";
 import { exerciseAttempts, reviewLogs, srsCards, vocabWords } from "../db/schema";
-import { NEW_CARD_STATE, scheduleReview, type ReviewGrade } from "../srs";
+import { scheduleReview, type ReviewGrade } from "../srs";
 import { recordActivity } from "../streak";
 import { TrackSchema } from "../../content/types";
 

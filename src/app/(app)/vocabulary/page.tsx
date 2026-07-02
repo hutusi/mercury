@@ -21,6 +21,7 @@ export default async function VocabularyPage() {
       .where(and(eq(srsCards.userId, user.id), eq(vocabWords.track, track))),
   ]);
 
+  // eslint-disable-next-line react-hooks/purity -- server component: runs once per request, not re-rendered
   const now = Date.now();
   const startedIds = new Set(cards.map((c) => c.wordId));
   const dueCount = cards.filter((c) => c.dueAt.getTime() <= now).length;
