@@ -26,10 +26,12 @@ export function EntryHeader({
   actions?: React.ReactNode;
   /** "p" for decorative entries that must not enter the heading outline. */
   headingLevel?: "h1" | "h2" | "p";
-  size?: "lg" | "xl";
+  size?: "md" | "lg" | "xl";
   className?: string;
 }) {
   const Heading = headingLevel;
+  const headingSize =
+    size === "xl" ? "text-6xl sm:text-7xl" : size === "md" ? "text-3xl" : "text-4xl sm:text-5xl";
 
   return (
     <header className={cn("border-b border-border pb-6", className)}>
@@ -37,10 +39,7 @@ export function EntryHeader({
         <div className="min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <Heading
-              className={cn(
-                "font-serif font-medium tracking-tight text-balance",
-                size === "xl" ? "text-6xl sm:text-7xl" : "text-4xl sm:text-5xl",
-              )}
+              className={cn("font-serif font-medium tracking-tight text-balance", headingSize)}
             >
               {title}
             </Heading>
@@ -49,7 +48,7 @@ export function EntryHeader({
                 aria-hidden
                 className={cn(
                   "font-serif text-muted-foreground italic",
-                  size === "xl" ? "text-2xl" : "text-lg",
+                  size === "xl" ? "text-2xl" : size === "md" ? "text-base" : "text-lg",
                 )}
               >
                 {ipa}

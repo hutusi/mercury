@@ -3,6 +3,7 @@
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { EntryHeader } from "@/components/typography/EntryHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -35,10 +36,14 @@ export default function LoginPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-xl font-semibold">{t.auth.loginTitle}</h1>
-        <p className="mt-1 text-sm text-muted-foreground">{t.auth.loginSubtitle}</p>
-      </div>
+      <EntryHeader
+        size="md"
+        title={t.auth.loginTitle}
+        ipa={t.entry.loginIpa}
+        pos={t.entry.loginPos}
+        gloss={t.auth.loginSubtitle}
+        className="pb-5"
+      />
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-1.5">
           <Label htmlFor="email">{t.auth.email}</Label>
@@ -67,7 +72,10 @@ export default function LoginPage() {
       </form>
       <p className="text-center text-sm text-muted-foreground">
         {t.auth.noAccount}{" "}
-        <Link href="/register" className="font-medium text-primary hover:underline">
+        <Link
+          href="/register"
+          className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+        >
           {t.auth.registerLink}
         </Link>
       </p>
