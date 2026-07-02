@@ -1,3 +1,4 @@
+import { BookMarked } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
@@ -36,35 +37,41 @@ export default async function VocabularyPage() {
   }
 
   const stats = [
-    { label: t.vocab.due, value: dueCount, cls: "text-amber-600" },
-    { label: t.vocab.fresh, value: freshCount, cls: "text-brand-600" },
-    { label: t.vocab.learned, value: learnedCount, cls: "text-green-600" },
+    { label: t.vocab.due, value: dueCount, cls: "text-amber-600 dark:text-amber-400" },
+    { label: t.vocab.fresh, value: freshCount, cls: "text-primary" },
+    { label: t.vocab.learned, value: learnedCount, cls: "text-green-600 dark:text-green-400" },
   ];
 
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">
-            <span aria-hidden>📚</span> {t.nav.vocabulary}
+          <h1 className="flex items-center gap-3 text-2xl font-bold">
+            <span
+              className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary"
+              aria-hidden
+            >
+              <BookMarked className="size-5" />
+            </span>
+            {t.nav.vocabulary}
           </h1>
-          <p className="mt-1 text-slate-500">{t.vocab.subtitle}</p>
+          <p className="mt-1 text-muted-foreground">{t.vocab.subtitle}</p>
         </div>
         <div className="flex gap-3">
           <Link
             href="/vocabulary/study"
-            className="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"
+            className="rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/80"
           >
             {t.vocab.study}
             {dueCount + Math.min(freshCount, 10) > 0 && (
-              <span className="ml-2 rounded-full bg-white/20 px-2 py-0.5 text-xs">
+              <span className="ml-2 rounded-full bg-primary-foreground/20 px-2 py-0.5 text-xs">
                 {dueCount + Math.min(freshCount, 10)}
               </span>
             )}
           </Link>
           <Link
             href="/vocabulary/quiz"
-            className="rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-700 transition hover:bg-brand-100"
+            className="rounded-lg border border-primary/20 bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary/20"
           >
             {t.vocab.quiz}
           </Link>
@@ -73,37 +80,39 @@ export default async function VocabularyPage() {
 
       <div className="grid grid-cols-3 gap-4">
         {stats.map((s) => (
-          <div
-            key={s.label}
-            className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm"
-          >
+          <div key={s.label} className="rounded-xl border bg-card p-4 text-center shadow-xs">
             <p className={`text-3xl font-bold ${s.cls}`}>{s.value}</p>
-            <p className="mt-1 text-sm text-slate-500">{s.label}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
           </div>
         ))}
       </div>
 
       {[...topics.entries()].map(([topic, topicWords]) => (
         <section key={topic}>
-          <h2 className="mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+          <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
             {topic} · {topicWords.length}
           </h2>
-          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+          <div className="overflow-hidden rounded-xl border bg-card shadow-xs">
             <table className="w-full text-sm">
               <tbody>
                 {topicWords.map((w, i) => (
-                  <tr key={w.id} className={i > 0 ? "border-t border-slate-100" : ""}>
-                    <td className="px-4 py-2.5 font-semibold text-slate-900">{w.headword}</td>
-                    <td className="hidden px-4 py-2.5 text-slate-400 sm:table-cell">{w.ipa}</td>
-                    <td className="px-4 py-2.5 text-slate-400">{w.pos}</td>
-                    <td className="px-4 py-2.5 text-slate-700">{w.translationZh}</td>
+                  <tr key={w.id} className={i > 0 ? "border-t" : ""}>
+                    <td className="px-4 py-2.5 font-semibold">{w.headword}</td>
+                    <td className="hidden px-4 py-2.5 text-muted-foreground/70 sm:table-cell">
+                      {w.ipa}
+                    </td>
+                    <td className="px-4 py-2.5 text-muted-foreground/70">{w.pos}</td>
+                    <td className="px-4 py-2.5 text-foreground/80">{w.translationZh}</td>
                     <td className="px-4 py-2.5 text-right">
                       {startedIds.has(w.id) ? (
-                        <span className="text-green-500" aria-label={t.vocab.learned}>
+                        <span
+                          className="text-green-500 dark:text-green-400"
+                          aria-label={t.vocab.learned}
+                        >
                           ●
                         </span>
                       ) : (
-                        <span className="text-slate-200">●</span>
+                        <span className="text-muted-foreground/25">●</span>
                       )}
                     </td>
                   </tr>

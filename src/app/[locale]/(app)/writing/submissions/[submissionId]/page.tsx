@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { and, eq } from "drizzle-orm";
@@ -32,18 +33,19 @@ export default async function WritingSubmissionPage({
       <div>
         <Link
           href={`/writing/${prompt.id}`}
-          className="text-sm font-medium text-brand-600 hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
         >
-          ← {prompt.title}
+          <ArrowLeft className="size-4" aria-hidden />
+          {prompt.title}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold text-slate-900">{t.writing.feedbackTitle}</h1>
+        <h1 className="mt-2 text-2xl font-bold">{t.writing.feedbackTitle}</h1>
       </div>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+      <section className="rounded-xl border bg-card p-6 shadow-xs">
+        <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
           {t.writing.yourText} · {submission.wordCount} words
         </h2>
-        <p className="text-sm leading-relaxed whitespace-pre-line text-slate-800">
+        <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
           {submission.text}
         </p>
       </section>

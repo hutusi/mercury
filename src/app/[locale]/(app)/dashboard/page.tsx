@@ -1,3 +1,4 @@
+import { BookMarked, BookOpenText, Headphones, Mic, PenLine, Timer } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, desc, eq, lte, sql } from "drizzle-orm";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
@@ -116,17 +117,17 @@ export default async function DashboardPage() {
     .slice(0, 5);
 
   const quickLinks = [
-    { href: "/vocabulary", label: t.nav.vocabulary, icon: "📚" },
-    { href: "/reading", label: t.nav.reading, icon: "📖" },
-    { href: "/listening", label: t.nav.listening, icon: "🎧" },
-    { href: "/writing", label: t.nav.writing, icon: "✍️" },
-    { href: "/speaking", label: t.nav.speaking, icon: "🎤" },
-    { href: "/exams", label: t.nav.exams, icon: "⏱️" },
+    { href: "/vocabulary", label: t.nav.vocabulary, icon: BookMarked },
+    { href: "/reading", label: t.nav.reading, icon: BookOpenText },
+    { href: "/listening", label: t.nav.listening, icon: Headphones },
+    { href: "/writing", label: t.nav.writing, icon: PenLine },
+    { href: "/speaking", label: t.nav.speaking, icon: Mic },
+    { href: "/exams", label: t.nav.exams, icon: Timer },
   ];
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-slate-900">
+      <h1 className="text-2xl font-bold">
         {t.dashboard.greeting}，{user.name || user.email}
       </h1>
 
@@ -142,8 +143,8 @@ export default async function DashboardPage() {
       <div className="grid gap-4 lg:grid-cols-2">
         <RecentScoresCard scores={recentScores} />
         <div className="space-y-4">
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-            <h2 className="text-sm font-semibold tracking-wide text-slate-500 uppercase">
+          <div className="rounded-xl border bg-card p-5 shadow-xs">
+            <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
               {t.dashboard.quickStart}
             </h2>
             <div className="mt-3 grid grid-cols-3 gap-2">
@@ -151,11 +152,9 @@ export default async function DashboardPage() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-3 text-center text-sm font-medium text-slate-700 transition hover:border-brand-300 hover:bg-brand-50"
+                  className="rounded-lg border bg-muted px-3 py-3 text-center text-sm font-medium text-foreground/80 transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
                 >
-                  <span className="block text-xl" aria-hidden>
-                    {l.icon}
-                  </span>
+                  <l.icon className="mx-auto mb-1.5 size-5" aria-hidden />
                   {l.label}
                 </Link>
               ))}

@@ -1,3 +1,4 @@
+import { ArrowLeft, Sparkles } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, asc, eq, lte } from "drizzle-orm";
 import { StudySession, type StudyCardData } from "@/components/vocab/StudySession";
@@ -48,20 +49,26 @@ export default async function StudyPage() {
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/vocabulary" className="text-sm font-medium text-brand-600 hover:underline">
-          ← {t.nav.vocabulary}
+        <Link
+          href="/vocabulary"
+          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+        >
+          <ArrowLeft className="size-4" aria-hidden />
+          {t.nav.vocabulary}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold text-slate-900">{t.vocab.study}</h1>
+        <h1 className="mt-2 text-2xl font-bold">{t.vocab.study}</h1>
       </div>
       {cards.length === 0 ? (
-        <div className="mx-auto max-w-md rounded-xl border border-slate-200 bg-white p-10 text-center shadow-sm">
-          <p className="text-4xl" aria-hidden>
-            ✨
+        <div className="mx-auto max-w-md rounded-xl border bg-card p-10 text-center shadow-xs">
+          <p className="flex justify-center" aria-hidden>
+            <span className="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <Sparkles className="size-6" />
+            </span>
           </p>
-          <p className="mt-4 font-medium text-slate-700">{t.vocab.allClear}</p>
+          <p className="mt-4 font-medium text-foreground/80">{t.vocab.allClear}</p>
           <Link
             href="/vocabulary/quiz"
-            className="mt-6 inline-block rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+            className="mt-6 inline-block rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/80"
           >
             {t.vocab.startQuiz}
           </Link>

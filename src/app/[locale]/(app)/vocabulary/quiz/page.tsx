@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { eq, sql } from "drizzle-orm";
 import { QuizRunner, type QuizQuestion } from "@/components/vocab/QuizRunner";
@@ -29,7 +30,7 @@ export default async function QuizPage() {
 
   if (words.length < 4) {
     return (
-      <div className="rounded-xl border border-slate-200 bg-white p-10 text-center text-slate-500">
+      <div className="rounded-xl border bg-card p-10 text-center text-muted-foreground">
         {t.vocab.noWords}
       </div>
     );
@@ -56,10 +57,14 @@ export default async function QuizPage() {
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/vocabulary" className="text-sm font-medium text-brand-600 hover:underline">
-          ← {t.nav.vocabulary}
+        <Link
+          href="/vocabulary"
+          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+        >
+          <ArrowLeft className="size-4" aria-hidden />
+          {t.nav.vocabulary}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold text-slate-900">{t.vocab.quiz}</h1>
+        <h1 className="mt-2 text-2xl font-bold">{t.vocab.quiz}</h1>
       </div>
       <QuizRunner track={track} questions={questions} />
     </div>

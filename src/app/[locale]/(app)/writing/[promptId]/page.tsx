@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { and, desc, eq } from "drizzle-orm";
@@ -30,21 +31,25 @@ export default async function WritingPromptPage({
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/writing" className="text-sm font-medium text-brand-600 hover:underline">
-          ← {t.nav.writing}
+        <Link
+          href="/writing"
+          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+        >
+          <ArrowLeft className="size-4" aria-hidden />
+          {t.nav.writing}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold text-slate-900">{prompt.title}</h1>
-        <p className="text-slate-500">
+        <h1 className="mt-2 text-2xl font-bold">{prompt.title}</h1>
+        <p className="text-muted-foreground">
           {prompt.titleZh} · {t.writing.minWords} {prompt.minWords} · {prompt.suggestedMinutes}{" "}
           {t.common.minutes}
         </p>
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-sm leading-relaxed whitespace-pre-line text-slate-800">
+      <div className="rounded-xl border bg-card p-6 shadow-xs">
+        <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
           {prompt.promptEn}
         </p>
-        <p className="mt-4 border-t border-slate-100 pt-4 text-sm leading-relaxed whitespace-pre-line text-slate-500">
+        <p className="mt-4 border-t pt-4 text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
           {prompt.promptZh}
         </p>
       </div>
@@ -53,23 +58,23 @@ export default async function WritingPromptPage({
 
       {past.length > 0 && (
         <section>
-          <h2 className="mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+          <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
             {t.writing.pastSubmissions}
           </h2>
-          <ul className="divide-y divide-slate-100 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+          <ul className="divide-y overflow-hidden rounded-xl border bg-card shadow-xs">
             {past.map((s) => (
               <li key={s.id}>
                 <Link
                   href={`/writing/submissions/${s.id}`}
-                  className="flex items-center justify-between px-4 py-3 text-sm transition hover:bg-slate-50"
+                  className="flex items-center justify-between px-4 py-3 text-sm transition hover:bg-muted"
                 >
-                  <span className="text-slate-600">
+                  <span className="text-muted-foreground">
                     {s.createdAt.toLocaleString(locale === "zh" ? "zh-CN" : "en-US")} ·{" "}
                     {s.wordCount} words
                   </span>
                   <span
                     className={`font-semibold ${
-                      s.status === "ai_scored" ? "text-brand-700" : "text-slate-500"
+                      s.status === "ai_scored" ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
                     {s.status === "ai_scored" && s.feedback

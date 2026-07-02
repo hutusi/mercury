@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { eq } from "drizzle-orm";
@@ -28,11 +29,15 @@ export default async function ReadingExercisePage({
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/reading" className="text-sm font-medium text-brand-600 hover:underline">
-          ← {t.reading.backToList}
+        <Link
+          href="/reading"
+          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+        >
+          <ArrowLeft className="size-4" aria-hidden />
+          {t.reading.backToList}
         </Link>
-        <h1 className="mt-2 text-2xl font-bold text-slate-900">{exercise.title}</h1>
-        <p className="text-slate-500">
+        <h1 className="mt-2 text-2xl font-bold">{exercise.title}</h1>
+        <p className="text-muted-foreground">
           {exercise.titleZh} · {exercise.genre} · {t.reading.suggestedTime}{" "}
           {exercise.suggestedMinutes} {t.common.minutes}
         </p>

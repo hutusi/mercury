@@ -1,3 +1,4 @@
+import { Headphones } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
@@ -29,10 +30,16 @@ export default async function ListeningListPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">
-          <span aria-hidden>🎧</span> {t.nav.listening}
+        <h1 className="flex items-center gap-3 text-2xl font-bold">
+          <span
+            className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary"
+            aria-hidden
+          >
+            <Headphones className="size-5" />
+          </span>
+          {t.nav.listening}
         </h1>
-        <p className="mt-1 text-slate-500">{t.listening.subtitle}</p>
+        <p className="mt-1 text-muted-foreground">{t.listening.subtitle}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -42,34 +49,32 @@ export default async function ListeningListPage() {
             <Link
               key={ex.id}
               href={`/listening/${ex.id}`}
-              className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-brand-300 hover:shadow"
+              className="group rounded-xl border bg-card p-5 shadow-xs transition hover:border-primary/40 hover:shadow-sm"
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">
+                <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
                   {ex.style}
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-muted-foreground/70">
                   {ex.questions.length} {t.common.questions}
                 </span>
               </div>
-              <h2 className="mt-3 font-semibold text-slate-900 group-hover:text-brand-700">
-                {ex.title}
-              </h2>
-              <p className="text-sm text-slate-500">{ex.titleZh}</p>
+              <h2 className="mt-3 font-semibold group-hover:text-primary">{ex.title}</h2>
+              <p className="text-sm text-muted-foreground">{ex.titleZh}</p>
               <p className="mt-3 text-xs font-medium">
                 {best ? (
-                  <span className="text-green-600">
+                  <span className="text-green-600 dark:text-green-400">
                     {t.reading.bestScore}: {best.score}/{best.total}
                   </span>
                 ) : (
-                  <span className="text-slate-400">{t.reading.notAttempted}</span>
+                  <span className="text-muted-foreground/70">{t.reading.notAttempted}</span>
                 )}
               </p>
             </Link>
           );
         })}
       </div>
-      {exercises.length === 0 && <p className="text-slate-500">{t.common.empty}</p>}
+      {exercises.length === 0 && <p className="text-muted-foreground">{t.common.empty}</p>}
     </div>
   );
 }

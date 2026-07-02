@@ -1,3 +1,4 @@
+import { Mic } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { desc, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
@@ -28,10 +29,16 @@ export default async function SpeakingListPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">
-          <span aria-hidden>🎤</span> {t.nav.speaking}
+        <h1 className="flex items-center gap-3 text-2xl font-bold">
+          <span
+            className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary"
+            aria-hidden
+          >
+            <Mic className="size-5" />
+          </span>
+          {t.nav.speaking}
         </h1>
-        <p className="mt-1 text-slate-500">{t.speaking.subtitle}</p>
+        <p className="mt-1 text-muted-foreground">{t.speaking.subtitle}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -41,24 +48,22 @@ export default async function SpeakingListPage() {
             <Link
               key={p.id}
               href={`/speaking/${p.id}`}
-              className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-brand-300 hover:shadow"
+              className="group rounded-xl border bg-card p-5 shadow-xs transition hover:border-primary/40 hover:shadow-sm"
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">
+                <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
                   {p.partType.replace(/_/g, " ")}
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-muted-foreground/70">
                   {p.prepSeconds > 0 && `${t.speaking.prep} ${p.prepSeconds}${t.common.seconds} · `}
                   {t.speaking.speak} {p.speakSeconds}
                   {t.common.seconds}
                 </span>
               </div>
-              <h2 className="mt-3 font-semibold text-slate-900 group-hover:text-brand-700">
-                {p.title}
-              </h2>
-              <p className="text-sm text-slate-500">{p.titleZh}</p>
+              <h2 className="mt-3 font-semibold group-hover:text-primary">{p.title}</h2>
+              <p className="text-sm text-muted-foreground">{p.titleZh}</p>
               {count > 0 && (
-                <p className="mt-3 text-xs font-medium text-green-600">
+                <p className="mt-3 text-xs font-medium text-green-600 dark:text-green-400">
                   {t.writing.pastSubmissions}: {count}
                 </p>
               )}
@@ -66,7 +71,7 @@ export default async function SpeakingListPage() {
           );
         })}
       </div>
-      {prompts.length === 0 && <p className="text-slate-500">{t.common.empty}</p>}
+      {prompts.length === 0 && <p className="text-muted-foreground">{t.common.empty}</p>}
     </div>
   );
 }
