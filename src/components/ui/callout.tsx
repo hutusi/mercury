@@ -22,7 +22,17 @@ const calloutVariants = cva("border", {
 export function Callout({
   variant,
   className,
+  role,
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof calloutVariants>) {
-  return <div className={cn(calloutVariants({ variant }), className)} {...props} />;
+  // The error variant carries dynamically-appearing async failures, so default
+  // it to an alert live region — assistive tech otherwise misses them. Callers
+  // can still override via `role`.
+  return (
+    <div
+      role={role ?? (variant === "error" ? "alert" : undefined)}
+      className={cn(calloutVariants({ variant }), className)}
+      {...props}
+    />
+  );
 }
