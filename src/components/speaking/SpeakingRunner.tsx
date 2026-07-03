@@ -35,6 +35,7 @@ export function SpeakingRunner({
   const [micError, setMicError] = useState<string | null>(null);
   const [result, setResult] = useState<SpeakingResult | null>(null);
   const [spokenSeconds, setSpokenSeconds] = useState(0);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   const recognizerRef = useRef<Recognizer | null>(null);
@@ -115,15 +116,21 @@ export function SpeakingRunner({
   }
 
   function submit() {
+    setSubmitError(null);
     startTransition(async () => {
-      const r = await submitSpeaking({
-        promptId,
-        transcript: finalText,
-        durationSeconds: Math.min(spokenSeconds || speakSeconds, 600),
-      });
-      setResult(r);
-      setPhase("done");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        const r = await submitSpeaking({
+          promptId,
+          transcript: finalText,
+          durationSeconds: Math.min(spokenSeconds || speakSeconds, 600),
+        });
+        setResult(r);
+        setPhase("done");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch {
+        // Stay in review so the recording can be resubmitted.
+        setSubmitError(t.exams.submitFailed);
+      }
     });
   }
 
@@ -253,6 +260,11 @@ export function SpeakingRunner({
           {pending && (
             <div className="border border-border bg-muted p-3 text-center text-sm text-muted-foreground">
               {t.speaking.submitting}
+            </div>
+          )}
+          {submitError && (
+            <div className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+              {submitError}
             </div>
           )}
         </div>

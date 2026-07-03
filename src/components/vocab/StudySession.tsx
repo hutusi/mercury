@@ -26,19 +26,26 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [reviewed, setReviewed] = useState(0);
+  const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   const card = queue[index];
 
   function grade(g: ReviewGrade) {
     if (!card || pending) return;
+    setError(null);
     startTransition(async () => {
-      await gradeCard({ wordId: card.wordId, grade: g });
-      setReviewed((n) => n + 1);
-      // "Again" re-queues the card at the end of this session.
-      setQueue((q) => (g === 1 ? [...q, { ...card, isNew: false }] : q));
-      setFlipped(false);
-      setIndex((i) => i + 1);
+      try {
+        await gradeCard({ wordId: card.wordId, grade: g });
+        setReviewed((n) => n + 1);
+        // "Again" re-queues the card at the end of this session.
+        setQueue((q) => (g === 1 ? [...q, { ...card, isNew: false }] : q));
+        setFlipped(false);
+        setIndex((i) => i + 1);
+      } catch {
+        // Keep the card in place so the grade can be retried.
+        setError(t.exams.submitFailed);
+      }
     });
   }
 
@@ -140,6 +147,12 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
             </button>
           ))}
         </div>
+      )}
+
+      {error && (
+        <p className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+          {error}
+        </p>
       )}
     </div>
   );

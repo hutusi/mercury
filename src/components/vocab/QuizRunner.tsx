@@ -21,6 +21,7 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [picked, setPicked] = useState<string | null>(null);
   const [result, setResult] = useState<{ score: number; total: number } | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   const question = questions[index];
@@ -36,9 +37,14 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
     if (!picked) return;
     if (isLast) {
       const finalAnswers = { ...answers };
+      setError(null);
       startTransition(async () => {
-        const r = await submitQuiz({ track, answers: finalAnswers });
-        setResult(r);
+        try {
+          const r = await submitQuiz({ track, answers: finalAnswers });
+          setResult(r);
+        } catch {
+          setError(t.exams.submitFailed);
+        }
       });
     } else {
       setPicked(null);
@@ -112,6 +118,12 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
           );
         })}
       </div>
+
+      {error && (
+        <p className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+          {error}
+        </p>
+      )}
 
       {picked && (
         <Button onClick={next} disabled={pending} size="lg" className="h-11 w-full">

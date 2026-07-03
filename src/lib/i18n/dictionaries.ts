@@ -292,6 +292,13 @@ const zh = {
     businessToExamDesc: "15 分钟迷你托业模考，快速定位当前实力",
     cta: "去看看",
   },
+  errors: {
+    boundaryTitle: "出错了",
+    boundaryBody: "页面加载时出现问题。可以重试，或返回首页。",
+    notFoundTitle: "页面未找到",
+    notFoundBody: "你访问的页面不存在或已被移动。",
+    goHome: "返回首页",
+  },
 } as const satisfies Record<string, Record<string, string>>;
 
 type DeepString<T> = { [K in keyof T]: T[K] extends object ? DeepString<T[K]> : string };
@@ -580,6 +587,13 @@ const en: Dictionary = {
     businessToExamTitle: "Benchmark your English",
     businessToExamDesc: "A 15-minute mini-TOEIC to locate your current level",
     cta: "Take a look",
+  },
+  errors: {
+    boundaryTitle: "Something went wrong",
+    boundaryBody: "This page ran into a problem. You can retry, or head back home.",
+    notFoundTitle: "Page not found",
+    notFoundBody: "The page you're looking for doesn't exist or has moved.",
+    goHome: "Back home",
   },
 };
 
