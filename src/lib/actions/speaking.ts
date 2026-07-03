@@ -95,7 +95,7 @@ export async function retrySpeakingFeedback(submissionId: string): Promise<Speak
   });
 
   // Compare-and-set on status so a concurrent retry can't overwrite this one.
-  await db
+  const [updated] = await db
     .update(speakingSubmissions)
     .set({
       status: "ai_scored",
@@ -107,7 +107,20 @@ export async function retrySpeakingFeedback(submissionId: string): Promise<Speak
         eq(speakingSubmissions.id, submission.id),
         eq(speakingSubmissions.status, "self_assessed"),
       ),
-    );
+    )
+    .returning();
 
-  return { submissionId: submission.id, status: "ai_scored", feedback };
+  if (updated) return { submissionId: submission.id, status: "ai_scored", feedback };
+
+  // Lost the race: a concurrent retry already scored this submission. Return
+  // the persisted feedback (status is necessarily ai_scored now) so the UI
+  // can't show a result that never reached the database.
+  const stored = await db.query.speakingSubmissions.findFirst({
+    where: and(eq(speakingSubmissions.id, submission.id), eq(speakingSubmissions.userId, user.id)),
+  });
+  return {
+    submissionId: submission.id,
+    status: "ai_scored",
+    feedback: stored?.feedback ?? feedback,
+  };
 }
