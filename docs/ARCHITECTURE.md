@@ -93,6 +93,10 @@ Degradation is a first-class path: a missing `ANTHROPIC_API_KEY`, an API error, 
 
 Learner text is untrusted: angle brackets are neutralized to full-width equivalents before being embedded in grading prompts, and the examiner system prompt instructs the model to treat `<learner_response>`/`<transcript>` content as data to grade, scoring manipulation attempts as off-topic.
 
+## Resilience
+
+Route errors are caught before they can white-screen the app: `error.tsx` at the `(app)` and `[locale]` levels (localized, rendered inside their surrounding chrome) share one `ErrorState` body, backed by a self-contained root `global-error.tsx`; `not-found.tsx` handles bad content ids. Client runners wrap every server-action call in `try/catch` and surface a retryable inline error instead of throwing into a boundary. A single `(app)/loading.tsx` shows a hairline `PageSkeleton` while a server page's queries run. The Lexicon design rules are enforced by `src/lib/design-guard.test.ts` (part of `bun run test`), which scans component/page source for forbidden primitives (raw palette classes, shadows, gradients, `transition-all`, ungated animation, emoji glyphs).
+
 ## Streaks and SRS
 
 Any completed learning action calls `recordActivity`, which upserts one `activity_days` row per local day; `computeStreak` (pure, `src/lib/streak-core.ts`) walks back from today — or yesterday, so a streak isn't shown broken before the first exercise of the day. Vocabulary uses SM-2 (see [ADR 0003](adr/0003-sm2-over-fsrs.md)) with four grade buttons; cards are created lazily on first review.
