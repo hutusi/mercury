@@ -43,7 +43,7 @@ export function ReadingRunner({
           durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
         });
         setResult(graded);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0 });
       } catch {
         setError(t.exams.submitFailed);
       }

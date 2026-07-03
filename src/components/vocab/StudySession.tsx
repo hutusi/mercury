@@ -1,5 +1,6 @@
 "use client";
 
+import { Sparkles } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -52,8 +53,8 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   if (!card) {
     return (
       <div className="mx-auto max-w-md border border-border p-10 text-center">
-        <p className="text-4xl" aria-hidden>
-          🎉
+        <p className="flex justify-center" aria-hidden>
+          <Sparkles className="size-6" />
         </p>
         <h2 className="mt-4 font-serif text-2xl font-medium">{t.vocab.sessionDone}</h2>
         <p className="mt-2 text-muted-foreground">

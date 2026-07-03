@@ -1,6 +1,6 @@
 "use client";
 
-import { Ban, Mic } from "lucide-react";
+import { Ban, Mic, RotateCcw, Square } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { SectionLabel } from "@/components/typography/SectionLabel";
@@ -126,7 +126,7 @@ export function SpeakingRunner({
         });
         setResult(r);
         setPhase("done");
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0 });
       } catch {
         // Stay in review so the recording can be resubmitted.
         setSubmitError(t.exams.submitFailed);
@@ -221,7 +221,7 @@ export function SpeakingRunner({
             <span className="text-muted-foreground/70">{interimText ? ` ${interimText}` : ""}</span>
           </div>
           <Button onClick={stopRecording} variant="accent" className="mt-5 px-6">
-            ⏹ {t.speaking.stop}
+            <Square className="size-4" aria-hidden /> {t.speaking.stop}
           </Button>
         </div>
       )}
@@ -246,7 +246,7 @@ export function SpeakingRunner({
               size="lg"
               className="h-11 flex-1"
             >
-              🔁 {t.common.tryAgain}
+              <RotateCcw className="size-4" aria-hidden /> {t.common.tryAgain}
             </Button>
             <Button
               onClick={submit}

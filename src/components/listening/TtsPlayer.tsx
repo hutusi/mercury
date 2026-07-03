@@ -74,10 +74,7 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
             {playing ? t.listening.playing : playCount > 0 ? t.listening.replay : t.listening.play}
           </p>
           <div className="mt-2 h-1 overflow-hidden bg-muted">
-            <div
-              className="h-full bg-primary transition-all duration-500"
-              style={{ width: `${progress}%` }}
-            />
+            <div className="h-full bg-primary" style={{ width: `${progress}%` }} />
           </div>
         </div>
       </div>

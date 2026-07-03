@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, X } from "lucide-react";
+import { Check, Dumbbell, ThumbsUp, Trophy, X } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
@@ -54,10 +54,11 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
 
   if (result) {
     const pct = Math.round((result.score / result.total) * 100);
+    const TierIcon = pct >= 80 ? Trophy : pct >= 60 ? ThumbsUp : Dumbbell;
     return (
       <div className="mx-auto max-w-md border border-border p-10 text-center">
-        <p className="text-4xl" aria-hidden>
-          {pct >= 80 ? "🏆" : pct >= 60 ? "👍" : "💪"}
+        <p className="flex justify-center" aria-hidden>
+          <TierIcon className="size-6" />
         </p>
         <h2 className="mt-4 font-serif text-2xl font-medium">{t.vocab.quizDone}</h2>
         <p className="mt-2 font-mono text-3xl font-semibold tabular-nums">

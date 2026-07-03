@@ -1,6 +1,6 @@
 "use client";
 
-import { Headphones } from "lucide-react";
+import { Headphones, Timer } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TtsPlayer } from "@/components/listening/TtsPlayer";
@@ -170,14 +170,15 @@ export function ExamRunner({
             <p className="text-xs text-muted-foreground">{section.titleZh}</p>
           </div>
           <div
-            className={`px-3 py-1.5 font-mono text-lg font-semibold tabular-nums ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-lg font-semibold tabular-nums ${
               lowTime
                 ? "animate-pulse bg-cinnabar/10 text-cinnabar motion-reduce:animate-none"
                 : "bg-muted text-foreground/80"
             }`}
             aria-label={t.exams.timeLeft}
           >
-            ⏱ {remainingMs === null ? "--:--" : formatClock(remainingMs)}
+            <Timer className="size-4" aria-hidden />
+            {remainingMs === null ? "--:--" : formatClock(remainingMs)}
           </div>
         </div>
         <div className="mt-2 flex flex-wrap gap-1.5">
