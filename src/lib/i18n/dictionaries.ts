@@ -447,7 +447,7 @@ const en: Dictionary = {
     quickStart: "Quick start",
     welcomeTitle: "Welcome to Mercury",
     welcomeBody:
-      "Start with a timed mock exam to benchmark your level, then build vocabulary a little every day. Finish any exercise and your streak begins today.",
+      "Begin with a timed practice exam to benchmark your level, then build vocabulary a little every day. Every exercise you finish counts from day one.",
   },
   vocab: {
     subtitle: "Spaced repetition + quizzes",
