@@ -91,6 +91,8 @@ Claude is called **only from server actions** (`src/lib/ai/client.ts`) using `me
 
 Degradation is a first-class path: a missing `ANTHROPIC_API_KEY`, an API error, a refusal, or a schema mismatch raises `AiUnavailableError`, and the submission is stored as `self_assessed`; the UI then shows the prompt's seeded model answer plus a bilingual checklist. CI runs entirely keyless on this path.
 
+The two cases are kept honest at view time by `isAiEnabled()`: with no key the copy stays "not configured"; with a key present, a `self_assessed` submission means grading failed transiently, so the UI offers a retry. `retryWritingFeedback` / `retrySpeakingFeedback` re-grade the stored submission and upgrade it to `ai_scored`, guarded by a status-scoped compare-and-set so concurrent retries can't both write.
+
 Learner text is untrusted: angle brackets are neutralized to full-width equivalents before being embedded in grading prompts, and the examiner system prompt instructs the model to treat `<learner_response>`/`<transcript>` content as data to grade, scoring manipulation attempts as off-topic.
 
 ## Resilience
