@@ -144,6 +144,9 @@ const zh = {
     recentScores: "近期成绩",
     noScores: "完成练习后，成绩会显示在这里",
     quickStart: "快速开始",
+    welcomeTitle: "欢迎来到 Mercury",
+    welcomeBody:
+      "先来一场限时模拟考试，快速定位你的水平；再用记忆卡每天积累词汇。每天完成一项练习，从今天坚持下去。",
   },
   vocab: {
     subtitle: "间隔重复记忆 + 小测巩固",
@@ -439,6 +442,9 @@ const en: Dictionary = {
     recentScores: "Recent scores",
     noScores: "Your scores will appear here after you practice",
     quickStart: "Quick start",
+    welcomeTitle: "Welcome to Mercury",
+    welcomeBody:
+      "Start with a timed mock exam to benchmark your level, then build vocabulary a little every day. Finish any exercise and your streak begins today.",
   },
   vocab: {
     subtitle: "Spaced repetition + quizzes",
