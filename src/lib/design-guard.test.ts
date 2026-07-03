@@ -85,10 +85,15 @@ describe("Lexicon design guard", () => {
   });
 
   it("gates every animation behind motion-reduce:animate-none", () => {
-    const bad = FILES.filter(
-      (f) =>
-        /\banimate-(?!none)[a-z]/.test(f.text) && !f.text.includes("motion-reduce:animate-none"),
-    ).map((f) => f.file);
+    const bad = FILES.filter((f) => {
+      // Check each className string in isolation, so an ungated animate-* can't
+      // hide behind an unrelated, properly-gated one elsewhere in the file.
+      const classAttrs = f.text.match(/className=(?:"[^"]*"|\{[^}]*\})/g) ?? [];
+      return classAttrs.some(
+        (attr) =>
+          /\banimate-(?!none)[a-z]/.test(attr) && !attr.includes("motion-reduce:animate-none"),
+      );
+    }).map((f) => f.file);
     expect(bad).toEqual([]);
   });
 
