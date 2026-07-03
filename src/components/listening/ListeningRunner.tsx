@@ -7,6 +7,7 @@ import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import type { SanitizedQuestion, ScriptLine } from "@/content/types";
 import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attempts";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -114,9 +115,9 @@ export function ListeningRunner({
         onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
       />
       {error && (
-        <p className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+        <Callout variant="error" className="p-3 text-center text-sm">
           {error}
-        </p>
+        </Callout>
       )}
       <Button
         onClick={submit}

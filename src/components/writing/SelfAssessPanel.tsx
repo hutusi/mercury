@@ -1,4 +1,5 @@
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
 import { getDict } from "@/lib/i18n";
 
@@ -13,10 +14,10 @@ export async function SelfAssessPanel({
 
   return (
     <div className="space-y-6">
-      <div className="border border-cinnabar/30 bg-cinnabar/5 p-4 text-sm">
+      <Callout variant="accent" className="p-4 text-sm">
         <p className="font-medium">{t.writing.selfAssessTitle}</p>
         <p className="mt-1 text-muted-foreground">{t.writing.selfAssessHint}</p>
-      </div>
+      </Callout>
 
       <section className="border-y border-border py-6">
         <SectionLabel as="h2" className="mb-3">

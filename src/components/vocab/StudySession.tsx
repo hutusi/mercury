@@ -5,6 +5,7 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import { gradeCard } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import type { ReviewGrade } from "@/lib/srs";
@@ -151,9 +152,9 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
       )}
 
       {error && (
-        <p className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+        <Callout variant="error" className="p-3 text-center text-sm">
           {error}
-        </p>
+        </Callout>
       )}
     </div>
   );

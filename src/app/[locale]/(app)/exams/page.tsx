@@ -4,6 +4,7 @@ import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Badge } from "@/components/ui/badge";
+import { Callout } from "@/components/ui/callout";
 import { db } from "@/lib/db";
 import { mockExamAttempts, mockExams, type ExamEstimate } from "@/lib/db/schema";
 import { getDict, getLocale } from "@/lib/i18n";
@@ -46,10 +47,10 @@ export default async function ExamsPage() {
       />
 
       {track === "business" && (
-        <div className="border border-cinnabar/30 bg-cinnabar/5 p-4 text-sm">
+        <Callout variant="accent" className="p-4 text-sm">
           <span className="font-medium">{t.crosspromo.businessToExamTitle}</span> ·{" "}
           <span className="text-muted-foreground">{t.crosspromo.businessToExamDesc}</span>
-        </div>
+        </Callout>
       )}
 
       {/* Mock exams are the product's cinnabar moment. */}

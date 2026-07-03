@@ -3,7 +3,9 @@
 import { Check, Dumbbell, ThumbsUp, Trophy, X } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
+import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import type { Track } from "@/content/types";
 import { submitQuiz } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -61,9 +63,7 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
           <TierIcon className="size-6" />
         </p>
         <h2 className="mt-4 font-serif text-2xl font-medium">{t.vocab.quizDone}</h2>
-        <p className="mt-2 font-mono text-3xl font-semibold tabular-nums">
-          {result.score} / {result.total}
-        </p>
+        <Stat value={`${result.score} / ${result.total}`} align="center" className="mt-2" />
         <div className="mt-6 flex justify-center gap-3">
           <Button asChild variant="outline">
             <Link href="/vocabulary">{t.common.back}</Link>
@@ -121,9 +121,9 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
       </div>
 
       {error && (
-        <p className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+        <Callout variant="error" className="p-3 text-center text-sm">
           {error}
-        </p>
+        </Callout>
       )}
 
       {picked && (

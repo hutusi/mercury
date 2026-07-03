@@ -4,7 +4,9 @@ import { Ban, Mic, RotateCcw, Square } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
 import { submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -139,12 +141,12 @@ export function SpeakingRunner({
   if (!sttSupported()) {
     return (
       <div className="space-y-6">
-        <div className="border border-destructive/20 bg-destructive/10 p-5 text-sm text-destructive">
+        <Callout variant="error" className="p-5 text-sm">
           <span aria-hidden>
             <Ban className="inline size-4" />
           </span>{" "}
           {t.speaking.unsupported}
-        </div>
+        </Callout>
         <SelfAssessBlock modelAnswer={modelAnswer} checklist={checklist} />
       </div>
     );
@@ -177,7 +179,9 @@ export function SpeakingRunner({
   return (
     <div className="space-y-4">
       {micError && (
-        <div className="border border-cinnabar/30 bg-cinnabar/5 p-3 text-sm">{micError}</div>
+        <Callout variant="accent" className="p-3 text-sm">
+          {micError}
+        </Callout>
       )}
 
       {phase === "idle" && (
@@ -200,9 +204,7 @@ export function SpeakingRunner({
           <SectionLabel as="p" className="text-cinnabar">
             {t.speaking.prep}
           </SectionLabel>
-          <p className="mt-2 font-mono text-5xl font-semibold text-cinnabar tabular-nums">
-            {secondsLeft}
-          </p>
+          <Stat value={secondsLeft} size="lg" accent align="center" className="mt-2" />
           <Button onClick={beginRecording} variant="accent" className="mt-5">
             {t.speaking.skipPrep}
           </Button>
@@ -215,7 +217,7 @@ export function SpeakingRunner({
             <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-cinnabar motion-reduce:animate-none" />
             {t.speaking.recording}
           </p>
-          <p className="mt-2 font-mono text-5xl font-semibold tabular-nums">{secondsLeft}</p>
+          <Stat value={secondsLeft} size="lg" align="center" className="mt-2" />
           <div className="mx-auto mt-4 min-h-16 max-w-xl bg-muted p-3 text-left text-sm text-foreground/80">
             {finalText}
             <span className="text-muted-foreground/70">{interimText ? ` ${interimText}` : ""}</span>
@@ -263,9 +265,9 @@ export function SpeakingRunner({
             </div>
           )}
           {submitError && (
-            <div className="border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+            <Callout variant="error" className="p-3 text-center text-sm">
               {submitError}
-            </div>
+            </Callout>
           )}
         </div>
       )}
@@ -286,10 +288,10 @@ function SelfAssessBlock({
   return (
     <div className="space-y-4">
       {showHint && (
-        <div className="border border-cinnabar/30 bg-cinnabar/5 p-4 text-sm">
+        <Callout variant="accent" className="p-4 text-sm">
           <p className="font-medium">{t.writing.selfAssessTitle}</p>
           <p className="mt-1 text-muted-foreground">{t.writing.selfAssessHint}</p>
-        </div>
+        </Callout>
       )}
       <section className="border-y border-border py-6">
         <SectionLabel as="h2" className="mb-3">
