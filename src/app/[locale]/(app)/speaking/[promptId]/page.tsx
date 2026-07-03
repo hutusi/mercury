@@ -3,6 +3,7 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { eq } from "drizzle-orm";
 import { SpeakingRunner } from "@/components/speaking/SpeakingRunner";
+import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
 import { db } from "@/lib/db";
 import { speakingPrompts } from "@/lib/db/schema";
@@ -51,6 +52,7 @@ export default async function SpeakingPromptPage({
         speakSeconds={prompt.speakSeconds}
         modelAnswer={prompt.modelAnswer}
         checklist={prompt.checklist}
+        aiEnabled={isAiEnabled()}
       />
     </div>
   );

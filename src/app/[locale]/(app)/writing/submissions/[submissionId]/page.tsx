@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { AiFeedbackPanel } from "@/components/writing/AiFeedbackPanel";
+import { RetryWritingFeedback } from "@/components/writing/RetryWritingFeedback";
 import { SelfAssessPanel } from "@/components/writing/SelfAssessPanel";
+import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
 import { db } from "@/lib/db";
 import { writingPrompts, writingSubmissions } from "@/lib/db/schema";
@@ -56,7 +58,12 @@ export default async function WritingSubmissionPage({
       {submission.status === "ai_scored" && submission.feedback ? (
         <AiFeedbackPanel feedback={submission.feedback} />
       ) : (
-        <SelfAssessPanel modelAnswer={prompt.modelAnswer} checklist={prompt.checklist} />
+        <SelfAssessPanel
+          modelAnswer={prompt.modelAnswer}
+          checklist={prompt.checklist}
+          canRetry={isAiEnabled()}
+          retry={isAiEnabled() ? <RetryWritingFeedback submissionId={submission.id} /> : undefined}
+        />
       )}
     </div>
   );

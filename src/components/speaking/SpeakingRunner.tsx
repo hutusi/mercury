@@ -8,7 +8,7 @@ import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
-import { submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
+import { retrySpeakingFeedback, submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createRecognizer, sttSupported, type Recognizer } from "@/lib/speech";
 import { SpeakingFeedbackPanel } from "./SpeakingFeedbackPanel";
@@ -21,12 +21,14 @@ export function SpeakingRunner({
   speakSeconds,
   modelAnswer,
   checklist,
+  aiEnabled,
 }: {
   promptId: string;
   prepSeconds: number;
   speakSeconds: number;
   modelAnswer: string;
   checklist: Bilingual[];
+  aiEnabled: boolean;
 }) {
   const t = useT();
   const [mounted, setMounted] = useState(false);
@@ -38,7 +40,9 @@ export function SpeakingRunner({
   const [result, setResult] = useState<SpeakingResult | null>(null);
   const [spokenSeconds, setSpokenSeconds] = useState(0);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [retryFailed, setRetryFailed] = useState(false);
   const [pending, startTransition] = useTransition();
+  const [retrying, startRetry] = useTransition();
 
   const recognizerRef = useRef<Recognizer | null>(null);
   const deadlineRef = useRef(0);
@@ -136,6 +140,18 @@ export function SpeakingRunner({
     });
   }
 
+  function retryFeedback() {
+    if (!result) return;
+    setRetryFailed(false);
+    startRetry(async () => {
+      try {
+        setResult(await retrySpeakingFeedback(result.submissionId));
+      } catch {
+        setRetryFailed(true);
+      }
+    });
+  }
+
   if (!mounted) return null;
 
   if (!sttSupported()) {
@@ -164,7 +180,25 @@ export function SpeakingRunner({
         {result.status === "ai_scored" && result.feedback ? (
           <SpeakingFeedbackPanel feedback={result.feedback} />
         ) : (
-          <SelfAssessBlock modelAnswer={modelAnswer} checklist={checklist} showHint />
+          <SelfAssessBlock
+            modelAnswer={modelAnswer}
+            checklist={checklist}
+            showHint
+            canRetry={aiEnabled}
+            retry={
+              aiEnabled ? (
+                <div>
+                  <Button variant="accent" size="sm" disabled={retrying} onClick={retryFeedback}>
+                    <RotateCcw className="size-4" aria-hidden />
+                    {retrying ? t.speaking.submitting : t.writing.retryFeedback}
+                  </Button>
+                  {retryFailed && (
+                    <p className="mt-2 text-sm text-destructive">{t.writing.aiFailed}</p>
+                  )}
+                </div>
+              ) : undefined
+            }
+          />
         )}
         <Link
           href="/speaking"
@@ -279,18 +313,27 @@ function SelfAssessBlock({
   modelAnswer,
   checklist,
   showHint,
+  canRetry = false,
+  retry,
 }: {
   modelAnswer: string;
   checklist: Bilingual[];
   showHint?: boolean;
+  canRetry?: boolean;
+  retry?: React.ReactNode;
 }) {
   const t = useT();
   return (
     <div className="space-y-4">
       {showHint && (
         <Callout variant="accent" className="p-4 text-sm">
-          <p className="font-medium">{t.writing.selfAssessTitle}</p>
-          <p className="mt-1 text-muted-foreground">{t.writing.selfAssessHint}</p>
+          <p className="font-medium">
+            {canRetry ? t.writing.aiUnavailableTitle : t.writing.selfAssessTitle}
+          </p>
+          <p className="mt-1 text-muted-foreground">
+            {canRetry ? t.writing.aiUnavailableHint : t.writing.selfAssessHint}
+          </p>
+          {retry ? <div className="mt-3">{retry}</div> : null}
         </Callout>
       )}
       <section className="border-y border-border py-6">

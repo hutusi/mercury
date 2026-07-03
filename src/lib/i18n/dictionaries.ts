@@ -224,6 +224,9 @@ const zh = {
     viewFeedback: "查看反馈",
     noSubmissions: "还没有提交记录",
     aiFailed: "AI 批改暂不可用，已保存为自评模式",
+    aiUnavailableTitle: "AI 批改暂时不可用",
+    aiUnavailableHint: "这次批改没能完成，可以重试；也可以先对照下方范文与清单自评。",
+    retryFeedback: "重试 AI 批改",
   },
   speaking: {
     subtitle: "开口练习，AI 点评",
@@ -523,6 +526,10 @@ const en: Dictionary = {
     viewFeedback: "View feedback",
     noSubmissions: "No submissions yet",
     aiFailed: "AI feedback is temporarily unavailable — saved in self-assessment mode",
+    aiUnavailableTitle: "AI feedback unavailable",
+    aiUnavailableHint:
+      "Grading didn't complete this time. Retry it, or self-assess against the model answer and checklist below.",
+    retryFeedback: "Retry AI feedback",
   },
   speaking: {
     subtitle: "Speak up and get AI coaching",
