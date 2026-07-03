@@ -91,6 +91,7 @@ export async function retryWritingFeedback(submissionId: string): Promise<{ scor
     wordCount: submission.wordCount,
   });
 
+  // Compare-and-set on status so a concurrent retry can't overwrite this one.
   await db
     .update(writingSubmissions)
     .set({
@@ -98,7 +99,9 @@ export async function retryWritingFeedback(submissionId: string): Promise<{ scor
       feedback,
       model: process.env.MERCURY_AI_MODEL || "claude-sonnet-5",
     })
-    .where(eq(writingSubmissions.id, submission.id));
+    .where(
+      and(eq(writingSubmissions.id, submission.id), eq(writingSubmissions.status, "self_assessed")),
+    );
 
   return { scored: true };
 }

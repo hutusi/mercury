@@ -94,6 +94,7 @@ export async function retrySpeakingFeedback(submissionId: string): Promise<Speak
     durationSeconds: submission.durationSeconds,
   });
 
+  // Compare-and-set on status so a concurrent retry can't overwrite this one.
   await db
     .update(speakingSubmissions)
     .set({
@@ -101,7 +102,12 @@ export async function retrySpeakingFeedback(submissionId: string): Promise<Speak
       feedback,
       model: process.env.MERCURY_AI_MODEL || "claude-sonnet-5",
     })
-    .where(eq(speakingSubmissions.id, submission.id));
+    .where(
+      and(
+        eq(speakingSubmissions.id, submission.id),
+        eq(speakingSubmissions.status, "self_assessed"),
+      ),
+    );
 
   return { submissionId: submission.id, status: "ai_scored", feedback };
 }
