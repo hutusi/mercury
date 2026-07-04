@@ -1,6 +1,10 @@
 # ADR 0001: Bun as package manager, Node as runtime
 
-**Status:** Accepted (2026-07)
+**Status:** Accepted (2026-07). Partly relaxed by
+[ADR 0007](0007-postgres-neon-for-serverless.md): the database is now Postgres via
+`node-postgres` (pure JS, Bun-loadable), so the better-sqlite3 napi constraint that forced
+the Bun/Node split no longer applies. The split and DB-free unit tests are retained as
+conventions (parity with Vercel's Node build; hermetic, fast tests), not hard requirements.
 
 ## Context
 

@@ -17,19 +17,23 @@ AI feedback degrades gracefully: without an `ANTHROPIC_API_KEY`, writing and spe
 
 ## Stack
 
-Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 6 · Tailwind CSS 4 · SQLite + Drizzle ORM · better-auth · Claude API (`@anthropic-ai/sdk`) · Web Speech API · Bun (package manager / scripts; Next runs under Node)
+Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 6 · Tailwind CSS 4 · Postgres (Neon) + Drizzle ORM · better-auth · Claude API (`@anthropic-ai/sdk`) · Web Speech API · Bun (package manager / scripts; Next runs under Node)
 
 ## Getting started
 
 ```bash
 bun install
 
+# Start a local Postgres (or bring your own / use a Neon branch)
+docker compose up -d
+
 # Configure environment
 cp .env.example .env
+# set DATABASE_URL (e.g. `postgresql://mercury:mercury@localhost:5432/mercury`)
 # set BETTER_AUTH_SECRET (e.g. `openssl rand -base64 32`)
 # optionally set ANTHROPIC_API_KEY to enable AI feedback
 
-# Create and seed the database (data/mercury.db)
+# Apply the schema and seed content
 bun run db:push
 bun run db:seed
 
@@ -47,8 +51,8 @@ Open http://localhost:3000, register an account, pick a track, and start studyin
 | `bun run dev` / `bun run build` / `bun run start` | Next.js dev / production build / serve                                                          |
 | `bun run lint` / `bun run format`                 | ESLint / Prettier (with Tailwind class sorting)                                                 |
 | `bun run typecheck`                               | TypeScript check (`tsc --noEmit`)                                                               |
-| `bun run db:push`                                 | Apply the Drizzle schema to SQLite                                                              |
-| `bun run db:seed`                                 | Load/refresh seed content (idempotent; runs via tsx because Bun can't load better-sqlite3)      |
+| `bun run db:push`                                 | Apply the Drizzle schema to Postgres                                                            |
+| `bun run db:seed`                                 | Load/refresh seed content (idempotent; runs under Node via tsx)                                 |
 | `bun run db:studio`                               | Browse the database in Drizzle Studio                                                           |
 | `bun run test`                                    | Unit tests (SRS, scoring, exam grading, content validation, i18n parity, streaks, design guard) |
 | `bun run test:e2e`                                | Playwright end-to-end suite (build first; runs on a scratch DB)                                 |
@@ -64,6 +68,6 @@ Open http://localhost:3000, register an account, pick a track, and start studyin
 ## Architecture notes
 
 - **Auth** — better-auth with email/password. `src/proxy.ts` does an optimistic cookie check; the `(app)` layout does the authoritative session lookup; every server action re-verifies via `requireUser()`.
-- **Content** — authored as typed TS in `src/content/` (zod-validated), upserted into SQLite by stable slug ids. Progress rows reference content ids.
+- **Content** — authored as typed TS in `src/content/` (zod-validated), upserted into Postgres by stable slug ids. Progress rows reference content ids.
 - **Exam integrity** — answer keys never reach the client during an attempt; deadlines are issued and enforced server-side (late answers are discarded beyond a 30s grace window); grading and score estimation run against unsanitized content on the server.
 - **AI** — Claude is called only from server actions using structured outputs (`messages.parse` + `zodOutputFormat`), so feedback arrives schema-validated. Model defaults to `claude-sonnet-5`, overridable via `MERCURY_AI_MODEL`.

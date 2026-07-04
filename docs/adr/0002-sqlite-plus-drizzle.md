@@ -1,6 +1,11 @@
 # ADR 0002: SQLite + Drizzle ORM
 
-**Status:** Accepted (2026-07)
+**Status:** Superseded by [ADR 0007](0007-postgres-neon-for-serverless.md) (2026-07) — the
+storage driver moved to Neon Postgres (`node-postgres`) for Vercel deployment. The Drizzle
+choice and the schema/seed model below still stand; only the SQLite/better-sqlite3 driver
+was swapped, as this ADR anticipated.
+
+**Original status:** Accepted (2026-07)
 
 ## Context
 
