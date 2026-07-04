@@ -80,7 +80,9 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: mercury
+          # The E2E suite targets a dedicated `mercury_e2e` database (it resets
+          # the schema on each boot); see playwright.config.ts.
+          POSTGRES_DB: mercury_e2e
         ports:
           - 5432:5432
         options: >-
@@ -89,7 +91,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/mercury
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/mercury_e2e
     steps:
       - uses: actions/checkout@v4
 

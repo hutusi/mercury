@@ -47,7 +47,7 @@ bun run build && bun run typecheck && bun run test:e2e
 ## Testing guide
 
 - **Unit tests** (`bun test src`) run under Bun and stay **DB-free** by convention — keep pure logic in its own module (see `src/lib/streak-core.ts`) and test that, so tests need no database. (The `node-postgres` driver is Bun-loadable, so importing `src/lib/db` no longer crashes; the convention is about hermeticity, not a hard limit.)
-- **E2E tests** (`e2e/*.spec.ts`) run against a production build on port 3100 with a scratch Postgres database (`DATABASE_URL`, defaulting to `…/mercury_e2e`), reset to a pristine schema each run by `scripts/e2e-server.sh`. The dev database is never touched. No Claude key is used — tests exercise the AI-degradation path.
+- **E2E tests** (`e2e/*.spec.ts`) run against a production build on port 3100 with a **dedicated `mercury_e2e` database** (derived from `DATABASE_URL`, or set `E2E_DATABASE_URL` to override), reset to a pristine schema each run by `scripts/e2e-server.sh` — so the dev database is never touched. `docker compose up` creates `mercury_e2e` automatically; if you bring your own Postgres, create it once (`createdb mercury_e2e`). No Claude key is used — tests exercise the AI-degradation path.
 
 ## Commit conventions
 

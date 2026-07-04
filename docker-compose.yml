@@ -14,6 +14,8 @@ services:
       - "5432:5432"
     volumes:
       - mercury-pgdata:/var/lib/postgresql/data
+      # Creates the separate `mercury_e2e` database on first init (for `test:e2e`).
+      - ./scripts/postgres-init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U mercury"]
       interval: 10s
