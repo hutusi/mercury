@@ -1,6 +1,6 @@
 /**
  * Pure streak logic, kept free of DB imports so it can be unit-tested under
- * Bun (which cannot load better-sqlite3 — importing src/lib/db would crash).
+ * Bun with no database — importing src/lib/db would pull in the pg client.
  */
 
 /** Local calendar date as YYYY-MM-DD (server timezone). */

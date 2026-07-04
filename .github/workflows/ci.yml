@@ -11,6 +11,22 @@ env:
 jobs:
   quality:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: mercury
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/mercury
     steps:
       - uses: actions/checkout@v4
 
@@ -18,8 +34,7 @@ jobs:
         with:
           bun-version: "1.3.12"
 
-      # Pin Node explicitly: it runs next build / tsx, and its ABI must match
-      # better-sqlite3's prebuilt binary. Bump to 26 once it reaches LTS.
+      # Pin Node explicitly: it runs next build / tsx. Bump to 26 once it reaches LTS.
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
@@ -36,10 +51,10 @@ jobs:
       - run: bun run format:check
       - run: bun run test
 
-      - name: Validate schema and seed content against a scratch DB
+      - name: Validate schema and seed content against Postgres
         run: |
-          MERCURY_DB_PATH="$RUNNER_TEMP/ci-mercury.db" bun run db:push
-          MERCURY_DB_PATH="$RUNNER_TEMP/ci-mercury.db" bun run db:seed
+          bun run db:push
+          bun run db:seed
 
       - name: Cache Next.js build
         uses: actions/cache@v4
@@ -59,6 +74,24 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          # The E2E suite targets a dedicated `mercury_e2e` database (it resets
+          # the schema on each boot); see playwright.config.ts.
+          POSTGRES_DB: mercury_e2e
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/mercury_e2e
     steps:
       - uses: actions/checkout@v4
 

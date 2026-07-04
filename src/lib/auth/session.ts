@@ -3,7 +3,7 @@ import { cache } from "react";
 import { localeRedirect } from "../i18n";
 import { auth } from "./auth";
 
-/** Authoritative session lookup (hits SQLite). Deduped per request. */
+/** Authoritative session lookup (hits Postgres). Deduped per request. */
 export const getSession = cache(async () => {
   return auth.api.getSession({ headers: await headers() });
 });

@@ -1,12 +1,14 @@
 import {
+  doublePrecision,
   index,
   integer,
+  jsonb,
+  pgTable,
   primaryKey,
-  real,
-  sqliteTable,
   text,
+  timestamp,
   uniqueIndex,
-} from "drizzle-orm/sqlite-core";
+} from "drizzle-orm/pg-core";
 import type {
   Bilingual,
   ExamSection,
@@ -24,6 +26,10 @@ export * from "./auth-schema";
 
 const now = () => new Date();
 const uuid = () => crypto.randomUUID();
+
+// timestamptz columns that round-trip JS Date, matching the previous SQLite
+// `timestamp_ms` semantics.
+const ts = (name: string) => timestamp(name, { withTimezone: true, mode: "date" });
 
 // ---------------------------------------------------------------------------
 // Shared row types
@@ -57,22 +63,22 @@ export type AnswerMap = Record<string, number>;
 // User settings
 // ---------------------------------------------------------------------------
 
-export const userSettings = sqliteTable("user_settings", {
+export const userSettings = pgTable("user_settings", {
   userId: text("user_id")
     .primaryKey()
     .references(() => user.id, { onDelete: "cascade" }),
   activeTrack: text("active_track").$type<Track>(),
   dailyGoal: integer("daily_goal").notNull().default(20),
-  onboardedAt: integer("onboarded_at", { mode: "timestamp_ms" }),
-  createdAt: integer("created_at", { mode: "timestamp_ms" }).notNull().$defaultFn(now),
-  updatedAt: integer("updated_at", { mode: "timestamp_ms" }).notNull().$defaultFn(now),
+  onboardedAt: ts("onboarded_at"),
+  createdAt: ts("created_at").notNull().$defaultFn(now),
+  updatedAt: ts("updated_at").notNull().$defaultFn(now),
 });
 
 // ---------------------------------------------------------------------------
 // Content tables (seeded from src/content, ids are stable slugs)
 // ---------------------------------------------------------------------------
 
-export const vocabWords = sqliteTable(
+export const vocabWords = pgTable(
   "vocab_words",
   {
     id: text("id").primaryKey(),
@@ -90,7 +96,7 @@ export const vocabWords = sqliteTable(
   (t) => [index("vocab_words_track_idx").on(t.track)],
 );
 
-export const readingExercises = sqliteTable(
+export const readingExercises = pgTable(
   "reading_exercises",
   {
     id: text("id").primaryKey(),
@@ -100,12 +106,12 @@ export const readingExercises = sqliteTable(
     genre: text("genre").notNull(),
     passage: text("passage").notNull(),
     suggestedMinutes: integer("suggested_minutes").notNull(),
-    questions: text("questions", { mode: "json" }).$type<McqQuestion[]>().notNull(),
+    questions: jsonb("questions").$type<McqQuestion[]>().notNull(),
   },
   (t) => [index("reading_exercises_track_idx").on(t.track)],
 );
 
-export const listeningExercises = sqliteTable(
+export const listeningExercises = pgTable(
   "listening_exercises",
   {
     id: text("id").primaryKey(),
@@ -113,13 +119,13 @@ export const listeningExercises = sqliteTable(
     title: text("title").notNull(),
     titleZh: text("title_zh").notNull(),
     style: text("style").notNull(),
-    script: text("script", { mode: "json" }).$type<ScriptLine[]>().notNull(),
-    questions: text("questions", { mode: "json" }).$type<McqQuestion[]>().notNull(),
+    script: jsonb("script").$type<ScriptLine[]>().notNull(),
+    questions: jsonb("questions").$type<McqQuestion[]>().notNull(),
   },
   (t) => [index("listening_exercises_track_idx").on(t.track)],
 );
 
-export const writingPrompts = sqliteTable(
+export const writingPrompts = pgTable(
   "writing_prompts",
   {
     id: text("id").primaryKey(),
@@ -132,12 +138,12 @@ export const writingPrompts = sqliteTable(
     minWords: integer("min_words").notNull(),
     suggestedMinutes: integer("suggested_minutes").notNull(),
     modelAnswer: text("model_answer").notNull(),
-    checklist: text("checklist", { mode: "json" }).$type<Bilingual[]>().notNull(),
+    checklist: jsonb("checklist").$type<Bilingual[]>().notNull(),
   },
   (t) => [index("writing_prompts_track_idx").on(t.track)],
 );
 
-export const speakingPrompts = sqliteTable(
+export const speakingPrompts = pgTable(
   "speaking_prompts",
   {
     id: text("id").primaryKey(),
@@ -150,19 +156,19 @@ export const speakingPrompts = sqliteTable(
     prepSeconds: integer("prep_seconds").notNull(),
     speakSeconds: integer("speak_seconds").notNull(),
     modelAnswer: text("model_answer").notNull(),
-    checklist: text("checklist", { mode: "json" }).$type<Bilingual[]>().notNull(),
+    checklist: jsonb("checklist").$type<Bilingual[]>().notNull(),
   },
   (t) => [index("speaking_prompts_track_idx").on(t.track)],
 );
 
-export const mockExams = sqliteTable("mock_exams", {
+export const mockExams = pgTable("mock_exams", {
   id: text("id").primaryKey(),
   track: text("track").$type<ExamTrack>().notNull(),
   title: text("title").notNull(),
   titleZh: text("title_zh").notNull(),
   descriptionZh: text("description_zh").notNull(),
   /** Full sections including answers — must never be sent raw to the client. */
-  sections: text("sections", { mode: "json" }).$type<ExamSection[]>().notNull(),
+  sections: jsonb("sections").$type<ExamSection[]>().notNull(),
   totalQuestions: integer("total_questions").notNull(),
 });
 
@@ -170,7 +176,7 @@ export const mockExams = sqliteTable("mock_exams", {
 // User progress
 // ---------------------------------------------------------------------------
 
-export const srsCards = sqliteTable(
+export const srsCards = pgTable(
   "srs_cards",
   {
     id: text("id").primaryKey().$defaultFn(uuid),
@@ -180,13 +186,13 @@ export const srsCards = sqliteTable(
     wordId: text("word_id")
       .notNull()
       .references(() => vocabWords.id, { onDelete: "cascade" }),
-    easeFactor: real("ease_factor").notNull().default(2.5),
-    intervalDays: real("interval_days").notNull().default(0),
+    easeFactor: doublePrecision("ease_factor").notNull().default(2.5),
+    intervalDays: doublePrecision("interval_days").notNull().default(0),
     repetitions: integer("repetitions").notNull().default(0),
     lapses: integer("lapses").notNull().default(0),
-    dueAt: integer("due_at", { mode: "timestamp_ms" }).notNull(),
-    lastReviewedAt: integer("last_reviewed_at", { mode: "timestamp_ms" }),
-    createdAt: integer("created_at", { mode: "timestamp_ms" }).notNull().$defaultFn(now),
+    dueAt: ts("due_at").notNull(),
+    lastReviewedAt: ts("last_reviewed_at"),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
   },
   (t) => [
     uniqueIndex("srs_cards_user_word_idx").on(t.userId, t.wordId),
@@ -194,7 +200,7 @@ export const srsCards = sqliteTable(
   ],
 );
 
-export const reviewLogs = sqliteTable(
+export const reviewLogs = pgTable(
   "review_logs",
   {
     id: text("id").primaryKey().$defaultFn(uuid),
@@ -205,14 +211,14 @@ export const reviewLogs = sqliteTable(
       .notNull()
       .references(() => srsCards.id, { onDelete: "cascade" }),
     grade: integer("grade").notNull(),
-    previousIntervalDays: real("previous_interval_days").notNull(),
-    newIntervalDays: real("new_interval_days").notNull(),
-    reviewedAt: integer("reviewed_at", { mode: "timestamp_ms" }).notNull().$defaultFn(now),
+    previousIntervalDays: doublePrecision("previous_interval_days").notNull(),
+    newIntervalDays: doublePrecision("new_interval_days").notNull(),
+    reviewedAt: ts("reviewed_at").notNull().$defaultFn(now),
   },
   (t) => [index("review_logs_user_idx").on(t.userId, t.reviewedAt)],
 );
 
-export const exerciseAttempts = sqliteTable(
+export const exerciseAttempts = pgTable(
   "exercise_attempts",
   {
     id: text("id").primaryKey().$defaultFn(uuid),
@@ -222,16 +228,16 @@ export const exerciseAttempts = sqliteTable(
     kind: text("kind").$type<ExerciseKind>().notNull(),
     refId: text("ref_id").notNull(),
     track: text("track").$type<Track>().notNull(),
-    answers: text("answers", { mode: "json" }).$type<AnswerMap>().notNull(),
+    answers: jsonb("answers").$type<AnswerMap>().notNull(),
     score: integer("score").notNull(),
     total: integer("total").notNull(),
     durationSeconds: integer("duration_seconds").notNull().default(0),
-    completedAt: integer("completed_at", { mode: "timestamp_ms" }).notNull().$defaultFn(now),
+    completedAt: ts("completed_at").notNull().$defaultFn(now),
   },
   (t) => [index("exercise_attempts_user_idx").on(t.userId, t.completedAt)],
 );
 
-export const writingSubmissions = sqliteTable(
+export const writingSubmissions = pgTable(
   "writing_submissions",
   {
     id: text("id").primaryKey().$defaultFn(uuid),
@@ -244,14 +250,14 @@ export const writingSubmissions = sqliteTable(
     text: text("text").notNull(),
     wordCount: integer("word_count").notNull(),
     status: text("status").$type<SubmissionStatus>().notNull(),
-    feedback: text("feedback", { mode: "json" }).$type<WritingFeedback | null>(),
+    feedback: jsonb("feedback").$type<WritingFeedback | null>(),
     model: text("model"),
-    createdAt: integer("created_at", { mode: "timestamp_ms" }).notNull().$defaultFn(now),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
   },
   (t) => [index("writing_submissions_user_idx").on(t.userId, t.createdAt)],
 );
 
-export const speakingSubmissions = sqliteTable(
+export const speakingSubmissions = pgTable(
   "speaking_submissions",
   {
     id: text("id").primaryKey().$defaultFn(uuid),
@@ -264,14 +270,14 @@ export const speakingSubmissions = sqliteTable(
     transcript: text("transcript").notNull(),
     durationSeconds: integer("duration_seconds").notNull(),
     status: text("status").$type<SubmissionStatus>().notNull(),
-    feedback: text("feedback", { mode: "json" }).$type<SpeakingFeedback | null>(),
+    feedback: jsonb("feedback").$type<SpeakingFeedback | null>(),
     model: text("model"),
-    createdAt: integer("created_at", { mode: "timestamp_ms" }).notNull().$defaultFn(now),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
   },
   (t) => [index("speaking_submissions_user_idx").on(t.userId, t.createdAt)],
 );
 
-export const mockExamAttempts = sqliteTable(
+export const mockExamAttempts = pgTable(
   "mock_exam_attempts",
   {
     id: text("id").primaryKey().$defaultFn(uuid),
@@ -283,23 +289,21 @@ export const mockExamAttempts = sqliteTable(
       .references(() => mockExams.id, { onDelete: "cascade" }),
     track: text("track").$type<ExamTrack>().notNull(),
     status: text("status").$type<AttemptStatus>().notNull().default("in_progress"),
-    startedAt: integer("started_at", { mode: "timestamp_ms" }).notNull().$defaultFn(now),
+    startedAt: ts("started_at").notNull().$defaultFn(now),
     currentSectionIndex: integer("current_section_index").notNull().default(0),
-    sectionDeadlines: text("section_deadlines", { mode: "json" })
-      .$type<SectionDeadline[]>()
-      .notNull(),
-    answers: text("answers", { mode: "json" }).$type<AnswerMap>().notNull(),
-    sectionScores: text("section_scores", { mode: "json" }).$type<SectionScore[] | null>(),
+    sectionDeadlines: jsonb("section_deadlines").$type<SectionDeadline[]>().notNull(),
+    answers: jsonb("answers").$type<AnswerMap>().notNull(),
+    sectionScores: jsonb("section_scores").$type<SectionScore[] | null>(),
     rawScore: integer("raw_score"),
     totalQuestions: integer("total_questions").notNull(),
-    estimate: text("estimate", { mode: "json" }).$type<ExamEstimate | null>(),
-    completedAt: integer("completed_at", { mode: "timestamp_ms" }),
+    estimate: jsonb("estimate").$type<ExamEstimate | null>(),
+    completedAt: ts("completed_at"),
   },
   (t) => [index("mock_exam_attempts_user_idx").on(t.userId, t.startedAt)],
 );
 
 /** One row per user per local day with any learning activity; drives streaks. */
-export const activityDays = sqliteTable(
+export const activityDays = pgTable(
   "activity_days",
   {
     userId: text("user_id")

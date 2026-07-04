@@ -1,6 +1,6 @@
 # Content Authoring Guide
 
-All learning content is authored as typed TypeScript in `src/content/`, validated with zod, and loaded into SQLite by an idempotent seed script. This guide covers the model, the conventions, and the workflow for adding or editing content.
+All learning content is authored as typed TypeScript in `src/content/`, validated with zod, and loaded into Postgres by an idempotent seed script. This guide covers the model, the conventions, and the workflow for adding or editing content.
 
 ## The content model
 
@@ -52,8 +52,8 @@ MCQs are exactly 4 options with `correctIndex` in 0–3 (schema-enforced).
 # 1. Edit/add content in src/content/…, register new collections in index.ts
 # 2. Validate without touching the DB
 bun run test
-# 3. Load into the local database (idempotent upsert by id — re-runs are safe)
+# 3. Load into the Postgres database (idempotent upsert by id — re-runs are safe)
 bun run db:seed
 ```
 
-`db:seed` runs via `bunx tsx` (Node) because Bun cannot load better-sqlite3. Edits to existing ids update rows in place; removed items are _not_ deleted from the DB (write a migration if that ever matters).
+`db:seed` runs via `bunx tsx` under Node against the `DATABASE_URL` Postgres. Edits to existing ids update rows in place; removed items are _not_ deleted from the DB (write a migration if that ever matters).
