@@ -8,6 +8,13 @@ function createDb() {
   // this module (e.g. during `next build` or unit-test collection) never opens a
   // connection or requires the URL to be set — the first query does.
   const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5 });
+  // pg surfaces failures on *idle* clients (Neon recycling a connection, a
+  // network blip) as an `error` event on the Pool; with no listener Node treats
+  // it as uncaught and exits. The pool discards the broken client and recovers
+  // on its own, so logging is enough — we must not let it crash the server.
+  pool.on("error", (err) => {
+    console.error("Unexpected error on idle Postgres client", err);
+  });
   return drizzle(pool, { schema });
 }
 
