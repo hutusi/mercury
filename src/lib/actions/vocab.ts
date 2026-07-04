@@ -33,16 +33,16 @@ export async function gradeCard(input: {
   // one transaction: a mid-sequence failure can't leave the card advanced
   // without a matching log, and — since StudySession retries on error — the
   // grade can't commit and then fail afterward, which would double-advance the
-  // card on retry. better-sqlite3 transactions are synchronous, hence the
-  // .run()/.get() terminals and no await inside the callback.
-  const next = db.transaction((tx) => {
-    tx.insert(srsCards).values({ userId: user.id, wordId, dueAt: now }).onConflictDoNothing().run();
+  // card on retry. Postgres transactions are async, hence the awaited
+  // statements and `.limit(1)` reselect (pg-core has no `.get()` terminal).
+  const next = await db.transaction(async (tx) => {
+    await tx.insert(srsCards).values({ userId: user.id, wordId, dueAt: now }).onConflictDoNothing();
 
-    const card = tx
+    const [card] = await tx
       .select()
       .from(srsCards)
       .where(and(eq(srsCards.userId, user.id), eq(srsCards.wordId, wordId)))
-      .get();
+      .limit(1);
     if (!card) throw new Error(`Failed to load SRS card for word: ${wordId}`);
 
     const scheduled = scheduleReview(
@@ -56,7 +56,8 @@ export async function gradeCard(input: {
       now,
     );
 
-    tx.update(srsCards)
+    await tx
+      .update(srsCards)
       .set({
         easeFactor: scheduled.easeFactor,
         intervalDays: scheduled.intervalDays,
@@ -65,23 +66,20 @@ export async function gradeCard(input: {
         dueAt: scheduled.dueAt,
         lastReviewedAt: now,
       })
-      .where(eq(srsCards.id, card.id))
-      .run();
+      .where(eq(srsCards.id, card.id));
 
-    tx.insert(reviewLogs)
-      .values({
-        userId: user.id,
-        cardId: card.id,
-        grade,
-        previousIntervalDays: card.intervalDays,
-        newIntervalDays: scheduled.intervalDays,
-      })
-      .run();
+    await tx.insert(reviewLogs).values({
+      userId: user.id,
+      cardId: card.id,
+      grade,
+      previousIntervalDays: card.intervalDays,
+      newIntervalDays: scheduled.intervalDays,
+    });
 
-    tx.insert(activityDays)
+    await tx
+      .insert(activityDays)
       .values({ userId: user.id, day: localDay() })
-      .onConflictDoNothing()
-      .run();
+      .onConflictDoNothing();
 
     return scheduled;
   });

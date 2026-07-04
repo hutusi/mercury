@@ -1,10 +1,10 @@
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
-  dialect: "sqlite",
+  dialect: "postgresql",
   schema: "./src/lib/db/schema.ts",
   out: "./drizzle",
   dbCredentials: {
-    url: process.env.MERCURY_DB_PATH ?? "./data/mercury.db",
+    url: process.env.DATABASE_URL ?? "postgresql://localhost:5432/mercury",
   },
 });
