@@ -1,6 +1,6 @@
 "use server";
 
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { getWritingFeedback } from "../ai/client";
 import type { WritingFeedback } from "../ai/schemas";
@@ -63,4 +63,45 @@ export async function submitWriting(input: {
 
   await recordActivity(user.id);
   return { submissionId: submission.id };
+}
+
+/**
+ * Re-grade a submission that landed in self-assessment mode after a transient
+ * AI failure. Only reachable when a key is configured; throws AiUnavailableError
+ * if grading fails again, which the caller surfaces as a retryable error.
+ */
+export async function retryWritingFeedback(submissionId: string): Promise<{ scored: boolean }> {
+  const user = await requireUser();
+
+  const submission = await db.query.writingSubmissions.findFirst({
+    where: and(eq(writingSubmissions.id, submissionId), eq(writingSubmissions.userId, user.id)),
+  });
+  if (!submission) throw new Error("Submission not found");
+  if (submission.status === "ai_scored") return { scored: true };
+
+  const prompt = await db.query.writingPrompts.findFirst({
+    where: eq(writingPrompts.id, submission.promptId),
+  });
+  if (!prompt) throw new Error(`Unknown writing prompt: ${submission.promptId}`);
+
+  const feedback = await getWritingFeedback({
+    taskType: prompt.taskType,
+    promptEn: prompt.promptEn,
+    userText: submission.text,
+    wordCount: submission.wordCount,
+  });
+
+  // Compare-and-set on status so a concurrent retry can't overwrite this one.
+  await db
+    .update(writingSubmissions)
+    .set({
+      status: "ai_scored",
+      feedback,
+      model: process.env.MERCURY_AI_MODEL || "claude-sonnet-5",
+    })
+    .where(
+      and(eq(writingSubmissions.id, submission.id), eq(writingSubmissions.status, "self_assessed")),
+    );
+
+  return { scored: true };
 }

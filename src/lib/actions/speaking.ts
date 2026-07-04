@@ -1,6 +1,6 @@
 "use server";
 
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { getSpeakingFeedback } from "../ai/client";
 import type { SpeakingFeedback } from "../ai/schemas";
@@ -64,4 +64,63 @@ export async function submitSpeaking(input: {
 
   await recordActivity(user.id);
   return { submissionId: submission.id, status, feedback };
+}
+
+/**
+ * Re-grade a submission that landed in self-assessment mode after a transient
+ * AI failure. Returns the refreshed result so the runner can swap in the AI
+ * panel in place; throws AiUnavailableError if grading fails again.
+ */
+export async function retrySpeakingFeedback(submissionId: string): Promise<SpeakingResult> {
+  const user = await requireUser();
+
+  const submission = await db.query.speakingSubmissions.findFirst({
+    where: and(eq(speakingSubmissions.id, submissionId), eq(speakingSubmissions.userId, user.id)),
+  });
+  if (!submission) throw new Error("Submission not found");
+  if (submission.status === "ai_scored") {
+    return { submissionId: submission.id, status: "ai_scored", feedback: submission.feedback };
+  }
+
+  const prompt = await db.query.speakingPrompts.findFirst({
+    where: eq(speakingPrompts.id, submission.promptId),
+  });
+  if (!prompt) throw new Error(`Unknown speaking prompt: ${submission.promptId}`);
+
+  const feedback = await getSpeakingFeedback({
+    partType: prompt.partType,
+    promptEn: prompt.promptEn,
+    transcript: submission.transcript,
+    durationSeconds: submission.durationSeconds,
+  });
+
+  // Compare-and-set on status so a concurrent retry can't overwrite this one.
+  const [updated] = await db
+    .update(speakingSubmissions)
+    .set({
+      status: "ai_scored",
+      feedback,
+      model: process.env.MERCURY_AI_MODEL || "claude-sonnet-5",
+    })
+    .where(
+      and(
+        eq(speakingSubmissions.id, submission.id),
+        eq(speakingSubmissions.status, "self_assessed"),
+      ),
+    )
+    .returning();
+
+  if (updated) return { submissionId: submission.id, status: "ai_scored", feedback };
+
+  // Lost the race: a concurrent retry already scored this submission. Return
+  // the persisted feedback (status is necessarily ai_scored now) so the UI
+  // can't show a result that never reached the database.
+  const stored = await db.query.speakingSubmissions.findFirst({
+    where: and(eq(speakingSubmissions.id, submission.id), eq(speakingSubmissions.userId, user.id)),
+  });
+  return {
+    submissionId: submission.id,
+    status: "ai_scored",
+    feedback: stored?.feedback ?? feedback,
+  };
 }

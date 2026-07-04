@@ -5,6 +5,7 @@ import { and, eq } from "drizzle-orm";
 import { AnswerReview } from "@/components/exam/AnswerReview";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Stat } from "@/components/typography/Stat";
 import { requireUser } from "@/lib/auth/session";
 import { db } from "@/lib/db";
 import { mockExamAttempts, mockExams } from "@/lib/db/schema";
@@ -57,7 +58,7 @@ export default async function ExamReportPage({
             <SectionLabel as="p" className="text-cinnabar">
               {t.exams.totalEstimate}
             </SectionLabel>
-            <p className="mt-3 font-mono text-7xl font-semibold tabular-nums">{estimate.total}</p>
+            <Stat value={estimate.total} size="xl" align="center" className="mt-3" />
             <div className="mt-5 flex justify-center gap-8 font-mono text-sm tabular-nums">
               <span>
                 {t.exams.listeningSection}: <strong>{estimate.listening}</strong> / 495
@@ -72,9 +73,7 @@ export default async function ExamReportPage({
             <SectionLabel as="p" className="text-cinnabar">
               {t.exams.bandEstimate}
             </SectionLabel>
-            <p className="mt-3 font-mono text-7xl font-semibold tabular-nums">
-              {estimate.band.toFixed(1)}
-            </p>
+            <Stat value={estimate.band.toFixed(1)} size="xl" align="center" className="mt-3" />
           </>
         ) : null}
         <p className="mt-5 text-xs text-muted-foreground/70">{t.common.estimateNote}</p>

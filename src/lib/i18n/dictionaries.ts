@@ -144,6 +144,9 @@ const zh = {
     recentScores: "近期成绩",
     noScores: "完成练习后，成绩会显示在这里",
     quickStart: "快速开始",
+    welcomeTitle: "欢迎来到 Mercury",
+    welcomeBody:
+      "先来一场限时模拟考试，快速定位你的水平；再用记忆卡每天积累词汇。每天完成一项练习，从今天坚持下去。",
   },
   vocab: {
     subtitle: "间隔重复记忆 + 小测巩固",
@@ -221,6 +224,9 @@ const zh = {
     viewFeedback: "查看反馈",
     noSubmissions: "还没有提交记录",
     aiFailed: "AI 批改暂不可用，已保存为自评模式",
+    aiUnavailableTitle: "AI 批改暂时不可用",
+    aiUnavailableHint: "这次批改没能完成，可以重试；也可以先对照下方范文与清单自评。",
+    retryFeedback: "重试 AI 批改",
   },
   speaking: {
     subtitle: "开口练习，AI 点评",
@@ -291,6 +297,13 @@ const zh = {
     businessToExamTitle: "测测你的英语水平",
     businessToExamDesc: "15 分钟迷你托业模考，快速定位当前实力",
     cta: "去看看",
+  },
+  errors: {
+    boundaryTitle: "出错了",
+    boundaryBody: "页面加载时出现问题。可以重试，或返回首页。",
+    notFoundTitle: "页面未找到",
+    notFoundBody: "你访问的页面不存在或已被移动。",
+    goHome: "返回首页",
   },
 } as const satisfies Record<string, Record<string, string>>;
 
@@ -432,6 +445,9 @@ const en: Dictionary = {
     recentScores: "Recent scores",
     noScores: "Your scores will appear here after you practice",
     quickStart: "Quick start",
+    welcomeTitle: "Welcome to Mercury",
+    welcomeBody:
+      "Begin with a timed practice exam to benchmark your level, then build vocabulary a little every day. Every exercise you finish counts from day one.",
   },
   vocab: {
     subtitle: "Spaced repetition + quizzes",
@@ -510,6 +526,10 @@ const en: Dictionary = {
     viewFeedback: "View feedback",
     noSubmissions: "No submissions yet",
     aiFailed: "AI feedback is temporarily unavailable — saved in self-assessment mode",
+    aiUnavailableTitle: "AI feedback unavailable",
+    aiUnavailableHint:
+      "Grading didn't complete this time. Retry it, or self-assess against the model answer and checklist below.",
+    retryFeedback: "Retry AI feedback",
   },
   speaking: {
     subtitle: "Speak up and get AI coaching",
@@ -580,6 +600,13 @@ const en: Dictionary = {
     businessToExamTitle: "Benchmark your English",
     businessToExamDesc: "A 15-minute mini-TOEIC to locate your current level",
     cta: "Take a look",
+  },
+  errors: {
+    boundaryTitle: "Something went wrong",
+    boundaryBody: "This page ran into a problem. You can retry, or head back home.",
+    notFoundTitle: "Page not found",
+    notFoundBody: "The page you're looking for doesn't exist or has moved.",
+    goHome: "Back home",
   },
 };
 

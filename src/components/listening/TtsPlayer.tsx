@@ -2,6 +2,7 @@
 
 import { Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Callout } from "@/components/ui/callout";
 import type { ScriptLine } from "@/content/types";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createScriptSpeaker, ttsSupported, type ScriptSpeaker } from "@/lib/speech";
@@ -24,9 +25,9 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
 
   if (!ttsSupported()) {
     return (
-      <div className="border border-destructive/20 bg-destructive/10 p-4 text-sm text-destructive">
+      <Callout variant="error" className="p-4 text-sm">
         {t.listening.ttsUnsupported}
-      </div>
+      </Callout>
     );
   }
 
@@ -74,10 +75,7 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
             {playing ? t.listening.playing : playCount > 0 ? t.listening.replay : t.listening.play}
           </p>
           <div className="mt-2 h-1 overflow-hidden bg-muted">
-            <div
-              className="h-full bg-primary transition-all duration-500"
-              style={{ width: `${progress}%` }}
-            />
+            <div className="h-full bg-primary" style={{ width: `${progress}%` }} />
           </div>
         </div>
       </div>

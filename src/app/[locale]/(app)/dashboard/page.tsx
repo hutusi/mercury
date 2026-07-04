@@ -6,10 +6,12 @@ import { DueWordsCard } from "@/components/dashboard/DueWordsCard";
 import { ExamBanner } from "@/components/dashboard/ExamBanner";
 import { RecentScoresCard, type RecentScore } from "@/components/dashboard/RecentScoresCard";
 import { StreakCard } from "@/components/dashboard/StreakCard";
+import { WelcomeCard } from "@/components/dashboard/WelcomeCard";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { db } from "@/lib/db";
 import {
+  activityDays,
   exerciseAttempts,
   mockExamAttempts,
   speakingSubmissions,
@@ -34,6 +36,7 @@ export default async function DashboardPage() {
     recentWriting,
     recentSpeaking,
     recentExams,
+    firstActivity,
   ] = await Promise.all([
     getStreak(user.id),
     db
@@ -81,9 +84,14 @@ export default async function DashboardPage() {
       orderBy: desc(mockExamAttempts.completedAt),
       limit: 5,
     }),
+    // Any completed activity ever — drives the first-run guidance below.
+    db.query.activityDays.findFirst({ where: eq(activityDays.userId, user.id) }),
   ]);
 
   const dueCount = dueRows[0]?.count ?? 0;
+  // Brand-new account: nothing done yet and not mid-exam. Show orientation
+  // instead of a wall of zeros.
+  const isNewUser = !firstActivity && !inProgressExam;
 
   const exerciseLabel = (kind: string) =>
     kind === "reading" ? t.nav.reading : kind === "listening" ? t.nav.listening : t.vocab.quiz;
@@ -141,11 +149,12 @@ export default async function DashboardPage() {
       {/* Editorial asymmetry: work in the main column, numbers in the margin. */}
       <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
         <div className="space-y-10">
+          {isNewUser && <WelcomeCard />}
           <ExamBanner
             lastEstimate={lastExam?.estimate ?? null}
             resumeExamId={inProgressExam?.examId ?? null}
           />
-          <RecentScoresCard scores={recentScores} />
+          {!isNewUser && <RecentScoresCard scores={recentScores} />}
         </div>
 
         <aside className="space-y-8">

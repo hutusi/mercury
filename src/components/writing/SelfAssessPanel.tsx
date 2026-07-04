@@ -1,22 +1,33 @@
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
 import { getDict } from "@/lib/i18n";
 
 export async function SelfAssessPanel({
   modelAnswer,
   checklist,
+  canRetry = false,
+  retry,
 }: {
   modelAnswer: string;
   checklist: Bilingual[];
+  /** True when a key is configured, so the earlier failure was transient. */
+  canRetry?: boolean;
+  retry?: React.ReactNode;
 }) {
   const t = await getDict();
 
   return (
     <div className="space-y-6">
-      <div className="border border-cinnabar/30 bg-cinnabar/5 p-4 text-sm">
-        <p className="font-medium">{t.writing.selfAssessTitle}</p>
-        <p className="mt-1 text-muted-foreground">{t.writing.selfAssessHint}</p>
-      </div>
+      <Callout variant="accent" className="p-4 text-sm">
+        <p className="font-medium">
+          {canRetry ? t.writing.aiUnavailableTitle : t.writing.selfAssessTitle}
+        </p>
+        <p className="mt-1 text-muted-foreground">
+          {canRetry ? t.writing.aiUnavailableHint : t.writing.selfAssessHint}
+        </p>
+        {retry ? <div className="mt-3">{retry}</div> : null}
+      </Callout>
 
       <section className="border-y border-border py-6">
         <SectionLabel as="h2" className="mb-3">

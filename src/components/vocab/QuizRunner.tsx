@@ -1,9 +1,11 @@
 "use client";
 
-import { Check, X } from "lucide-react";
+import { Check, Dumbbell, ThumbsUp, Trophy, X } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
+import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import type { Track } from "@/content/types";
 import { submitQuiz } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -21,6 +23,7 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [picked, setPicked] = useState<string | null>(null);
   const [result, setResult] = useState<{ score: number; total: number } | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   const question = questions[index];
@@ -36,9 +39,14 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
     if (!picked) return;
     if (isLast) {
       const finalAnswers = { ...answers };
+      setError(null);
       startTransition(async () => {
-        const r = await submitQuiz({ track, answers: finalAnswers });
-        setResult(r);
+        try {
+          const r = await submitQuiz({ track, answers: finalAnswers });
+          setResult(r);
+        } catch {
+          setError(t.exams.submitFailed);
+        }
       });
     } else {
       setPicked(null);
@@ -48,15 +56,14 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
 
   if (result) {
     const pct = Math.round((result.score / result.total) * 100);
+    const TierIcon = pct >= 80 ? Trophy : pct >= 60 ? ThumbsUp : Dumbbell;
     return (
       <div className="mx-auto max-w-md border border-border p-10 text-center">
-        <p className="text-4xl" aria-hidden>
-          {pct >= 80 ? "🏆" : pct >= 60 ? "👍" : "💪"}
+        <p className="flex justify-center" aria-hidden>
+          <TierIcon className="size-6" />
         </p>
         <h2 className="mt-4 font-serif text-2xl font-medium">{t.vocab.quizDone}</h2>
-        <p className="mt-2 font-mono text-3xl font-semibold tabular-nums">
-          {result.score} / {result.total}
-        </p>
+        <Stat value={`${result.score} / ${result.total}`} align="center" className="mt-2" />
         <div className="mt-6 flex justify-center gap-3">
           <Button asChild variant="outline">
             <Link href="/vocabulary">{t.common.back}</Link>
@@ -112,6 +119,12 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
           );
         })}
       </div>
+
+      {error && (
+        <Callout variant="error" className="p-3 text-center text-sm">
+          {error}
+        </Callout>
+      )}
 
       {picked && (
         <Button onClick={next} disabled={pending} size="lg" className="h-11 w-full">

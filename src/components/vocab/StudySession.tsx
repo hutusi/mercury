@@ -1,9 +1,11 @@
 "use client";
 
+import { Sparkles } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useState, useTransition } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import { gradeCard } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import type { ReviewGrade } from "@/lib/srs";
@@ -26,27 +28,34 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [reviewed, setReviewed] = useState(0);
+  const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   const card = queue[index];
 
   function grade(g: ReviewGrade) {
     if (!card || pending) return;
+    setError(null);
     startTransition(async () => {
-      await gradeCard({ wordId: card.wordId, grade: g });
-      setReviewed((n) => n + 1);
-      // "Again" re-queues the card at the end of this session.
-      setQueue((q) => (g === 1 ? [...q, { ...card, isNew: false }] : q));
-      setFlipped(false);
-      setIndex((i) => i + 1);
+      try {
+        await gradeCard({ wordId: card.wordId, grade: g });
+        setReviewed((n) => n + 1);
+        // "Again" re-queues the card at the end of this session.
+        setQueue((q) => (g === 1 ? [...q, { ...card, isNew: false }] : q));
+        setFlipped(false);
+        setIndex((i) => i + 1);
+      } catch {
+        // Keep the card in place so the grade can be retried.
+        setError(t.exams.submitFailed);
+      }
     });
   }
 
   if (!card) {
     return (
       <div className="mx-auto max-w-md border border-border p-10 text-center">
-        <p className="text-4xl" aria-hidden>
-          🎉
+        <p className="flex justify-center" aria-hidden>
+          <Sparkles className="size-6" />
         </p>
         <h2 className="mt-4 font-serif text-2xl font-medium">{t.vocab.sessionDone}</h2>
         <p className="mt-2 text-muted-foreground">
@@ -140,6 +149,12 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
             </button>
           ))}
         </div>
+      )}
+
+      {error && (
+        <Callout variant="error" className="p-3 text-center text-sm">
+          {error}
+        </Callout>
       )}
     </div>
   );

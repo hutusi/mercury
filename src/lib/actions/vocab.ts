@@ -4,9 +4,9 @@ import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { requireUser } from "../auth/session";
 import { db } from "../db";
-import { exerciseAttempts, reviewLogs, srsCards, vocabWords } from "../db/schema";
+import { activityDays, exerciseAttempts, reviewLogs, srsCards, vocabWords } from "../db/schema";
 import { scheduleReview, type ReviewGrade } from "../srs";
-import { recordActivity } from "../streak";
+import { localDay, recordActivity } from "../streak";
 import { TrackSchema } from "../../content/types";
 
 const GradeSchema = z.object({
@@ -24,48 +24,67 @@ export async function gradeCard(input: {
   const word = await db.query.vocabWords.findFirst({ where: eq(vocabWords.id, wordId) });
   if (!word) throw new Error(`Unknown word: ${wordId}`);
 
-  // Cards are created lazily on first review.
-  let card = await db.query.srsCards.findFirst({
-    where: and(eq(srsCards.userId, user.id), eq(srsCards.wordId, wordId)),
+  const now = new Date();
+
+  // A first review creates the card lazily. Upsert-then-reselect (rather than
+  // read-then-insert) so two concurrent first-reviews of the same word can't
+  // both insert and trip the unique(userId, wordId) index. The upsert, the
+  // scheduler update, the review-log insert, and the activity record all run in
+  // one transaction: a mid-sequence failure can't leave the card advanced
+  // without a matching log, and — since StudySession retries on error — the
+  // grade can't commit and then fail afterward, which would double-advance the
+  // card on retry. better-sqlite3 transactions are synchronous, hence the
+  // .run()/.get() terminals and no await inside the callback.
+  const next = db.transaction((tx) => {
+    tx.insert(srsCards).values({ userId: user.id, wordId, dueAt: now }).onConflictDoNothing().run();
+
+    const card = tx
+      .select()
+      .from(srsCards)
+      .where(and(eq(srsCards.userId, user.id), eq(srsCards.wordId, wordId)))
+      .get();
+    if (!card) throw new Error(`Failed to load SRS card for word: ${wordId}`);
+
+    const scheduled = scheduleReview(
+      {
+        easeFactor: card.easeFactor,
+        intervalDays: card.intervalDays,
+        repetitions: card.repetitions,
+        lapses: card.lapses,
+      },
+      grade,
+      now,
+    );
+
+    tx.update(srsCards)
+      .set({
+        easeFactor: scheduled.easeFactor,
+        intervalDays: scheduled.intervalDays,
+        repetitions: scheduled.repetitions,
+        lapses: scheduled.lapses,
+        dueAt: scheduled.dueAt,
+        lastReviewedAt: now,
+      })
+      .where(eq(srsCards.id, card.id))
+      .run();
+
+    tx.insert(reviewLogs)
+      .values({
+        userId: user.id,
+        cardId: card.id,
+        grade,
+        previousIntervalDays: card.intervalDays,
+        newIntervalDays: scheduled.intervalDays,
+      })
+      .run();
+
+    tx.insert(activityDays)
+      .values({ userId: user.id, day: localDay() })
+      .onConflictDoNothing()
+      .run();
+
+    return scheduled;
   });
-  if (!card) {
-    const [created] = await db
-      .insert(srsCards)
-      .values({ userId: user.id, wordId, dueAt: new Date() })
-      .returning();
-    card = created;
-  }
-
-  const next = scheduleReview(
-    {
-      easeFactor: card.easeFactor,
-      intervalDays: card.intervalDays,
-      repetitions: card.repetitions,
-      lapses: card.lapses,
-    },
-    grade,
-  );
-
-  await db
-    .update(srsCards)
-    .set({
-      easeFactor: next.easeFactor,
-      intervalDays: next.intervalDays,
-      repetitions: next.repetitions,
-      lapses: next.lapses,
-      dueAt: next.dueAt,
-      lastReviewedAt: new Date(),
-    })
-    .where(eq(srsCards.id, card.id));
-
-  await db.insert(reviewLogs).values({
-    userId: user.id,
-    cardId: card.id,
-    grade,
-    previousIntervalDays: card.intervalDays,
-    newIntervalDays: next.intervalDays,
-  });
-  await recordActivity(user.id);
 
   return { intervalDays: next.intervalDays };
 }

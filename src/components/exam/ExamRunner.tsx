@@ -1,11 +1,12 @@
 "use client";
 
-import { Headphones } from "lucide-react";
+import { Headphones, Timer } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TtsPlayer } from "@/components/listening/TtsPlayer";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import { saveExamProgress, submitExamSection } from "@/lib/actions/exams";
 import type { AnswerMap, SectionDeadline } from "@/lib/db/schema";
 import type { SanitizedExamSection } from "@/lib/exam-utils";
@@ -170,14 +171,15 @@ export function ExamRunner({
             <p className="text-xs text-muted-foreground">{section.titleZh}</p>
           </div>
           <div
-            className={`px-3 py-1.5 font-mono text-lg font-semibold tabular-nums ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-lg font-semibold tabular-nums ${
               lowTime
                 ? "animate-pulse bg-cinnabar/10 text-cinnabar motion-reduce:animate-none"
                 : "bg-muted text-foreground/80"
             }`}
             aria-label={t.exams.timeLeft}
           >
-            ⏱ {remainingMs === null ? "--:--" : formatClock(remainingMs)}
+            <Timer className="size-4" aria-hidden />
+            {remainingMs === null ? "--:--" : formatClock(remainingMs)}
           </div>
         </div>
         <div className="mt-2 flex flex-wrap gap-1.5">
@@ -198,12 +200,12 @@ export function ExamRunner({
       </div>
 
       {section.kind === "listening" && (
-        <p className="border border-cinnabar/30 bg-cinnabar/5 p-3 text-sm">
+        <Callout variant="accent" className="p-3 text-sm">
           <span className="text-cinnabar" aria-hidden>
             <Headphones className="inline size-4" />
           </span>{" "}
           {t.exams.audioOnce}
-        </p>
+        </Callout>
       )}
 
       {section.groups.map((group) => (
@@ -237,9 +239,9 @@ export function ExamRunner({
 
       <div className="border-t border-border pt-5">
         {submitError && (
-          <p className="mb-3 border border-destructive/20 bg-destructive/10 p-3 text-center text-sm text-destructive">
+          <Callout variant="error" className="mb-3 p-3 text-center text-sm">
             {submitError}
-          </p>
+          </Callout>
         )}
         {confirming ? (
           <div className="space-y-3 text-center">

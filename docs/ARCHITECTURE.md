@@ -91,7 +91,13 @@ Claude is called **only from server actions** (`src/lib/ai/client.ts`) using `me
 
 Degradation is a first-class path: a missing `ANTHROPIC_API_KEY`, an API error, a refusal, or a schema mismatch raises `AiUnavailableError`, and the submission is stored as `self_assessed`; the UI then shows the prompt's seeded model answer plus a bilingual checklist. CI runs entirely keyless on this path.
 
+The two cases are kept honest at view time by `isAiEnabled()`: with no key the copy stays "not configured"; with a key present, a `self_assessed` submission means grading failed transiently, so the UI offers a retry. `retryWritingFeedback` / `retrySpeakingFeedback` re-grade the stored submission and upgrade it to `ai_scored`, guarded by a status-scoped compare-and-set so concurrent retries can't both write.
+
 Learner text is untrusted: angle brackets are neutralized to full-width equivalents before being embedded in grading prompts, and the examiner system prompt instructs the model to treat `<learner_response>`/`<transcript>` content as data to grade, scoring manipulation attempts as off-topic.
+
+## Resilience
+
+Route errors are caught before they can white-screen the app: `error.tsx` at the `(app)` and `[locale]` levels (localized, rendered inside their surrounding chrome) share one `ErrorState` body, backed by a self-contained root `global-error.tsx`; `not-found.tsx` handles bad content ids. Client runners wrap every server-action call in `try/catch` and surface a retryable inline error instead of throwing into a boundary. A single `(app)/loading.tsx` shows a hairline `PageSkeleton` while a server page's queries run. The Lexicon design rules are enforced by `src/lib/design-guard.test.ts` (part of `bun run test`), which scans component/page source for forbidden primitives (raw palette classes, shadows, gradients, `transition-all`, ungated animation, emoji glyphs).
 
 ## Streaks and SRS
 

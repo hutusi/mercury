@@ -1,12 +1,14 @@
 "use client";
 
-import { Ban, Mic } from "lucide-react";
+import { Ban, Mic, RotateCcw, Square } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
-import { submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
+import { retrySpeakingFeedback, submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createRecognizer, sttSupported, type Recognizer } from "@/lib/speech";
 import { SpeakingFeedbackPanel } from "./SpeakingFeedbackPanel";
@@ -19,12 +21,14 @@ export function SpeakingRunner({
   speakSeconds,
   modelAnswer,
   checklist,
+  aiEnabled,
 }: {
   promptId: string;
   prepSeconds: number;
   speakSeconds: number;
   modelAnswer: string;
   checklist: Bilingual[];
+  aiEnabled: boolean;
 }) {
   const t = useT();
   const [mounted, setMounted] = useState(false);
@@ -35,7 +39,10 @@ export function SpeakingRunner({
   const [micError, setMicError] = useState<string | null>(null);
   const [result, setResult] = useState<SpeakingResult | null>(null);
   const [spokenSeconds, setSpokenSeconds] = useState(0);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [retryFailed, setRetryFailed] = useState(false);
   const [pending, startTransition] = useTransition();
+  const [retrying, startRetry] = useTransition();
 
   const recognizerRef = useRef<Recognizer | null>(null);
   const deadlineRef = useRef(0);
@@ -115,15 +122,33 @@ export function SpeakingRunner({
   }
 
   function submit() {
+    setSubmitError(null);
     startTransition(async () => {
-      const r = await submitSpeaking({
-        promptId,
-        transcript: finalText,
-        durationSeconds: Math.min(spokenSeconds || speakSeconds, 600),
-      });
-      setResult(r);
-      setPhase("done");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        const r = await submitSpeaking({
+          promptId,
+          transcript: finalText,
+          durationSeconds: Math.min(spokenSeconds || speakSeconds, 600),
+        });
+        setResult(r);
+        setPhase("done");
+        window.scrollTo({ top: 0 });
+      } catch {
+        // Stay in review so the recording can be resubmitted.
+        setSubmitError(t.exams.submitFailed);
+      }
+    });
+  }
+
+  function retryFeedback() {
+    if (!result) return;
+    setRetryFailed(false);
+    startRetry(async () => {
+      try {
+        setResult(await retrySpeakingFeedback(result.submissionId));
+      } catch {
+        setRetryFailed(true);
+      }
     });
   }
 
@@ -132,12 +157,12 @@ export function SpeakingRunner({
   if (!sttSupported()) {
     return (
       <div className="space-y-6">
-        <div className="border border-destructive/20 bg-destructive/10 p-5 text-sm text-destructive">
+        <Callout variant="error" className="p-5 text-sm">
           <span aria-hidden>
             <Ban className="inline size-4" />
           </span>{" "}
           {t.speaking.unsupported}
-        </div>
+        </Callout>
         <SelfAssessBlock modelAnswer={modelAnswer} checklist={checklist} />
       </div>
     );
@@ -155,7 +180,25 @@ export function SpeakingRunner({
         {result.status === "ai_scored" && result.feedback ? (
           <SpeakingFeedbackPanel feedback={result.feedback} />
         ) : (
-          <SelfAssessBlock modelAnswer={modelAnswer} checklist={checklist} showHint />
+          <SelfAssessBlock
+            modelAnswer={modelAnswer}
+            checklist={checklist}
+            showHint
+            canRetry={aiEnabled}
+            retry={
+              aiEnabled ? (
+                <div>
+                  <Button variant="accent" size="sm" disabled={retrying} onClick={retryFeedback}>
+                    <RotateCcw className="size-4" aria-hidden />
+                    {retrying ? t.speaking.submitting : t.writing.retryFeedback}
+                  </Button>
+                  {retryFailed && (
+                    <p className="mt-2 text-sm text-destructive">{t.writing.aiFailed}</p>
+                  )}
+                </div>
+              ) : undefined
+            }
+          />
         )}
         <Link
           href="/speaking"
@@ -170,7 +213,9 @@ export function SpeakingRunner({
   return (
     <div className="space-y-4">
       {micError && (
-        <div className="border border-cinnabar/30 bg-cinnabar/5 p-3 text-sm">{micError}</div>
+        <Callout variant="accent" className="p-3 text-sm">
+          {micError}
+        </Callout>
       )}
 
       {phase === "idle" && (
@@ -193,9 +238,7 @@ export function SpeakingRunner({
           <SectionLabel as="p" className="text-cinnabar">
             {t.speaking.prep}
           </SectionLabel>
-          <p className="mt-2 font-mono text-5xl font-semibold text-cinnabar tabular-nums">
-            {secondsLeft}
-          </p>
+          <Stat value={secondsLeft} size="lg" accent align="center" className="mt-2" />
           <Button onClick={beginRecording} variant="accent" className="mt-5">
             {t.speaking.skipPrep}
           </Button>
@@ -208,13 +251,13 @@ export function SpeakingRunner({
             <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-cinnabar motion-reduce:animate-none" />
             {t.speaking.recording}
           </p>
-          <p className="mt-2 font-mono text-5xl font-semibold tabular-nums">{secondsLeft}</p>
+          <Stat value={secondsLeft} size="lg" align="center" className="mt-2" />
           <div className="mx-auto mt-4 min-h-16 max-w-xl bg-muted p-3 text-left text-sm text-foreground/80">
             {finalText}
             <span className="text-muted-foreground/70">{interimText ? ` ${interimText}` : ""}</span>
           </div>
           <Button onClick={stopRecording} variant="accent" className="mt-5 px-6">
-            ⏹ {t.speaking.stop}
+            <Square className="size-4" aria-hidden /> {t.speaking.stop}
           </Button>
         </div>
       )}
@@ -239,7 +282,7 @@ export function SpeakingRunner({
               size="lg"
               className="h-11 flex-1"
             >
-              🔁 {t.common.tryAgain}
+              <RotateCcw className="size-4" aria-hidden /> {t.common.tryAgain}
             </Button>
             <Button
               onClick={submit}
@@ -255,6 +298,11 @@ export function SpeakingRunner({
               {t.speaking.submitting}
             </div>
           )}
+          {submitError && (
+            <Callout variant="error" className="p-3 text-center text-sm">
+              {submitError}
+            </Callout>
+          )}
         </div>
       )}
     </div>
@@ -265,19 +313,28 @@ function SelfAssessBlock({
   modelAnswer,
   checklist,
   showHint,
+  canRetry = false,
+  retry,
 }: {
   modelAnswer: string;
   checklist: Bilingual[];
   showHint?: boolean;
+  canRetry?: boolean;
+  retry?: React.ReactNode;
 }) {
   const t = useT();
   return (
     <div className="space-y-4">
       {showHint && (
-        <div className="border border-cinnabar/30 bg-cinnabar/5 p-4 text-sm">
-          <p className="font-medium">{t.writing.selfAssessTitle}</p>
-          <p className="mt-1 text-muted-foreground">{t.writing.selfAssessHint}</p>
-        </div>
+        <Callout variant="accent" className="p-4 text-sm">
+          <p className="font-medium">
+            {canRetry ? t.writing.aiUnavailableTitle : t.writing.selfAssessTitle}
+          </p>
+          <p className="mt-1 text-muted-foreground">
+            {canRetry ? t.writing.aiUnavailableHint : t.writing.selfAssessHint}
+          </p>
+          {retry ? <div className="mt-3">{retry}</div> : null}
+        </Callout>
       )}
       <section className="border-y border-border py-6">
         <SectionLabel as="h2" className="mb-3">

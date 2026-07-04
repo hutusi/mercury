@@ -53,15 +53,15 @@ Compose these before writing inline Tailwind. Signature pieces live in `src/comp
 
 - **`EntryHeader`** — the signature: a page title set as a dictionary entry (serif headword, italic IPA, cinnabar POS tag, gloss, hairline rule). IPA/POS strings come from the `entry.*` dictionary keys and render `aria-hidden`, so the accessible heading name is exactly the dictionary string the e2e suite asserts.
 - **`SectionLabel`** — mono 11px uppercase tracked label for section headings, table heads, stat captions.
-- **`Stat`** — mono tabular figure with optional unit/label; `accent` for cinnabar.
+- **`Stat`** — mono tabular figure with optional unit/label; a `size` (`sm`–`xl`) and `align` (`start`/`center`) scale for hero figures vs the marginalia rail; `accent` for cinnabar.
 - **`EntryList` / `EntryRow`** — hairline-divided rows replacing card grids on list pages.
 - **`EmptyState`** — centered hairline empty block.
-- `src/components/layout/`: `SkipLink` (targets `#main-content`), the seal `Wordmark` (square cinnabar tile — the brand's only filled-red surface).
-- `src/components/ui/`: flattened shadcn primitives; `Button` and `Badge` have an `accent` (cinnabar) variant for funnel CTAs.
+- `src/components/layout/`: `SkipLink` (targets `#main-content`), the seal `Wordmark` (square cinnabar tile — the brand's only filled-red surface), `PageSkeleton` (route-transition placeholder), `ErrorState` (shared error-boundary body).
+- `src/components/ui/`: flattened shadcn primitives; `Button` and `Badge` have an `accent` (cinnabar) variant for funnel CTAs. **`Callout`** is the one bordered-notice box — `accent` (cinnabar funnel/self-assess), `error` (destructive; defaults to `role="alert"` so async failures are announced), and `muted` — replacing the box that was hand-rolled across features.
 
 ## Motion
 
-`transition-colors` only. The sole animations are the exam timer's sub-minute pulse and the recording dot, both paired with `motion-reduce:animate-none`. No entrance animations, hover lifts, or shadows-on-hover — over-animation is noise.
+`transition-colors` only. The sole animations are the exam timer's sub-minute pulse and the recording dot, both paired with `motion-reduce:animate-none`. No entrance animations, hover lifts, or shadows-on-hover — over-animation is noise. The design guard also rejects `transition-all`, smooth-scroll (`behavior: "smooth"`), and emoji glyphs — icons are always lucide components, so they carry a role and inherit ink.
 
 ## Accessibility floor
 
