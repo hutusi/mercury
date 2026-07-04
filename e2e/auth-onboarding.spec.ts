@@ -24,7 +24,14 @@ test("new account sees first-run guidance until it completes an activity", async
   // Completing one activity (grading a flashcard) clears the first-run state.
   await page.goto("/vocabulary/study");
   await page.getByText(t.vocab.flipHint).click();
-  await page.getByRole("button", { name: t.vocab.good, exact: true }).click();
+  const goodButton = page.getByRole("button", { name: t.vocab.good, exact: true });
+  await expect(goodButton).toBeVisible();
+  await goodButton.click();
+  // Wait until the grade has committed (the reviewed counter only increments
+  // after the server action resolves) before navigating, so the activity write
+  // has landed — the async Postgres write, unlike the old synchronous SQLite
+  // one, isn't guaranteed to finish before an immediate page.goto.
+  await expect(page.getByText(`${t.vocab.reviewedCount}: 1`)).toBeVisible();
 
   await page.goto("/dashboard");
   await expect(page.getByRole("heading", { name: t.dashboard.welcomeTitle })).toBeHidden();

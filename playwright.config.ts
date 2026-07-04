@@ -1,4 +1,3 @@
-import path from "node:path";
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = 3100;
@@ -6,7 +5,7 @@ const BASE_URL = `http://localhost:${PORT}`;
 
 export default defineConfig({
   testDir: "./e2e",
-  // SQLite is single-writer and the suite is small — serial keeps it flake-free.
+  // Serial keeps the shared scratch database deterministic; the suite is small.
   workers: 1,
   retries: process.env.CI ? 2 : 0,
   forbidOnly: !!process.env.CI,
@@ -24,7 +23,9 @@ export default defineConfig({
     timeout: 120_000,
     env: {
       PORT: String(PORT),
-      MERCURY_DB_PATH: path.join(__dirname, ".e2e", "mercury-e2e.db"),
+      // A scratch Postgres, reset to a pristine schema on each boot (see
+      // scripts/e2e-server.sh). CI injects the service-container URL.
+      DATABASE_URL: process.env.DATABASE_URL ?? "postgresql://localhost:5432/mercury_e2e",
       BETTER_AUTH_SECRET: "mercury-e2e-secret-not-for-production",
       // Must match the port or better-auth rejects the request origin.
       BETTER_AUTH_URL: BASE_URL,

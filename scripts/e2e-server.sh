@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 # Boot the E2E server against a fresh scratch database.
-# Invoked by Playwright's webServer with MERCURY_DB_PATH/PORT/auth env set.
+# Invoked by Playwright's webServer with DATABASE_URL/PORT/auth env set.
 set -euo pipefail
 
-: "${MERCURY_DB_PATH:?MERCURY_DB_PATH must be set}"
+: "${DATABASE_URL:?DATABASE_URL must be set}"
 
-mkdir -p "$(dirname "$MERCURY_DB_PATH")"
-rm -f "$MERCURY_DB_PATH" "$MERCURY_DB_PATH"-wal "$MERCURY_DB_PATH"-shm
-
+# Reset to a pristine schema, then apply the schema and seed content.
+bunx tsx scripts/db-reset.ts
 bun run db:push
 bun run db:seed
 
