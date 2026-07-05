@@ -33,8 +33,8 @@ cp .env.example .env
 # set BETTER_AUTH_SECRET (e.g. `openssl rand -base64 32`)
 # optionally set ANTHROPIC_API_KEY to enable AI feedback
 
-# Apply the schema and seed content
-bun run db:push
+# Apply migrations and seed content
+bun run db:migrate
 bun run db:seed
 
 bun run dev
@@ -51,7 +51,9 @@ Open http://localhost:3000, register an account, pick a track, and start studyin
 | `bun run dev` / `bun run build` / `bun run start` | Next.js dev / production build / serve                                                          |
 | `bun run lint` / `bun run format`                 | ESLint / Prettier (with Tailwind class sorting)                                                 |
 | `bun run typecheck`                               | TypeScript check (`tsc --noEmit`)                                                               |
-| `bun run db:push`                                 | Apply the Drizzle schema to Postgres                                                            |
+| `bun run db:migrate`                              | Apply committed migrations to Postgres (runs automatically on Vercel deploy)                    |
+| `bun run db:generate`                             | Snapshot a `schema.ts` change as a new versioned migration                                      |
+| `bun run db:push`                                 | Push the schema directly to Postgres, no migration file — local prototyping only                |
 | `bun run db:seed`                                 | Load/refresh seed content (idempotent; runs under Node via tsx)                                 |
 | `bun run db:studio`                               | Browse the database in Drizzle Studio                                                           |
 | `bun run test`                                    | Unit tests (SRS, scoring, exam grading, content validation, i18n parity, streaks, design guard) |
