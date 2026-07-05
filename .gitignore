@@ -30,3 +30,4 @@ next-env.d.ts
 # debug
 npm-debug.log*
 bun-debug.log*
+.vercel
