@@ -65,8 +65,18 @@ bun run build && bun run typecheck && bun run test:e2e
    DATABASE_URL=<neon-pooled-url> bun run db:seed
    ```
    Seeding is **not** part of `next build` — an unseeded database is an empty app.
-3. Set Vercel env vars: `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` (production =
-   your domain), and optionally `ANTHROPIC_API_KEY` / `MERCURY_AI_MODEL`.
+3. Set Vercel env vars. The Neon integration auto-injects `DATABASE_URL` (and friends), but
+   `BETTER_AUTH_SECRET` and `BETTER_AUTH_URL` are **not** provisioned by anything — they must be
+   added by hand, per environment (Production, and Preview if you want previews to work too):
+   - `BETTER_AUTH_SECRET`: `openssl rand -base64 32`. Without it, better-auth throws on
+     construction, which breaks _every_ page (not just login), since `getSession()` is called
+     from the landing page.
+   - `BETTER_AUTH_URL`: the exact origin users load the site from (e.g. your custom domain, not
+     a stale `*.vercel.app` alias) — a mismatch fails login even though pages otherwise load fine.
+   - Optionally `ANTHROPIC_API_KEY` / `MERCURY_AI_MODEL`.
+
+   Env var changes only take effect on a new deployment — redeploy after adding/changing any of
+   these (`vercel redeploy <url> --target production` or the dashboard's Redeploy button).
 
 ## Architecture decisions
 
