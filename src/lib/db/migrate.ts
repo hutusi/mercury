@@ -22,7 +22,13 @@ async function main() {
   const pool = new Pool({ connectionString, max: 1 });
   const client = await pool.connect();
   try {
+    // Bound only the wait for the lock itself - an overlapping deploy holding
+    // it should fail this build fast and loudly, not hang until Vercel's own
+    // build timeout kills it with no explanation. Reset before migrating so a
+    // legitimately slow migration isn't aborted by the same timeout.
+    await client.query("set lock_timeout = '30s'");
     await client.query("select pg_advisory_lock($1)", [LOCK_KEY]);
+    await client.query("set lock_timeout = 0");
     await migrate(drizzle(client), { migrationsFolder: "./drizzle" });
     console.log("Migrations applied.");
   } finally {

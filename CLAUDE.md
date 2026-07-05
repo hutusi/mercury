@@ -12,7 +12,7 @@ bun run format[:check]     # Prettier + Tailwind class sorting
 bun run typecheck          # tsc --noEmit (after a build — needs the generated .next/types)
 bun run test               # bun unit tests — scoped to src/, DB-free
 bun run test:e2e           # Playwright (port 3100, scratch DB in .e2e/)
-bun run db:migrate | db:generate | db:seed | db:studio
+bun run db:migrate / db:generate / db:seed / db:studio
 bun run db:push            # local schema prototyping only — never CI/CD/Neon
 ```
 
