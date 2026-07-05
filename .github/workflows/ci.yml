@@ -51,9 +51,9 @@ jobs:
       - run: bun run format:check
       - run: bun run test
 
-      - name: Validate schema and seed content against Postgres
+      - name: Validate migrations and seed content against Postgres
         run: |
-          bun run db:push
+          bun run db:migrate
           bun run db:seed
 
       - name: Cache Next.js build
