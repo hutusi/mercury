@@ -190,10 +190,10 @@ export function SpeakingRunner({
                 <div>
                   <Button variant="accent" size="sm" disabled={retrying} onClick={retryFeedback}>
                     <RotateCcw className="size-4" aria-hidden />
-                    {retrying ? t.speaking.submitting : t.writing.retryFeedback}
+                    {retrying ? t.speaking.submitting : t.speaking.retryFeedback}
                   </Button>
                   {retryFailed && (
-                    <p className="mt-2 text-sm text-destructive">{t.writing.aiFailed}</p>
+                    <p className="mt-2 text-sm text-destructive">{t.speaking.aiFailed}</p>
                   )}
                 </div>
               ) : undefined
@@ -328,10 +328,10 @@ function SelfAssessBlock({
       {showHint && (
         <Callout variant="accent" className="p-4 text-sm">
           <p className="font-medium">
-            {canRetry ? t.writing.aiUnavailableTitle : t.writing.selfAssessTitle}
+            {canRetry ? t.speaking.aiUnavailableTitle : t.speaking.selfAssessTitle}
           </p>
           <p className="mt-1 text-muted-foreground">
-            {canRetry ? t.writing.aiUnavailableHint : t.writing.selfAssessHint}
+            {canRetry ? t.speaking.aiUnavailableHint : t.speaking.selfAssessHint}
           </p>
           {retry ? <div className="mt-3">{retry}</div> : null}
         </Callout>
