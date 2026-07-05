@@ -256,7 +256,7 @@ const zh = {
     pastSubmissions: "历史提交",
     aiFailed: "AI 点评暂不可用，已保存为自评模式",
     aiUnavailableTitle: "AI 点评暂时不可用",
-    aiUnavailableHint: "这次点评没能完成，可以重试；也可以先对照下方范文与清单自评。",
+    aiUnavailableHint: "这次点评没能完成，可以重试；也可以先对照下方参考回答与清单自评。",
     retryFeedback: "重试 AI 点评",
   },
   exams: {

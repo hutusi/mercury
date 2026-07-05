@@ -19,16 +19,20 @@ export default async function SpeakingPromptPage({
   const { promptId } = await params;
   const [t, locale] = await Promise.all([getDict(), getLocale()]);
 
-  const prompt = await db.query.speakingPrompts.findFirst({
-    where: eq(speakingPrompts.id, promptId),
-  });
+  const [prompt, past] = await Promise.all([
+    db.query.speakingPrompts.findFirst({
+      where: eq(speakingPrompts.id, promptId),
+    }),
+    db.query.speakingSubmissions.findMany({
+      where: and(
+        eq(speakingSubmissions.userId, user.id),
+        eq(speakingSubmissions.promptId, promptId),
+      ),
+      orderBy: desc(speakingSubmissions.createdAt),
+      limit: 10,
+    }),
+  ]);
   if (!prompt) notFound();
-
-  const past = await db.query.speakingSubmissions.findMany({
-    where: and(eq(speakingSubmissions.userId, user.id), eq(speakingSubmissions.promptId, promptId)),
-    orderBy: desc(speakingSubmissions.createdAt),
-    limit: 10,
-  });
 
   return (
     <div className="space-y-6">
