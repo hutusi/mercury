@@ -3,7 +3,8 @@
 **Status:** Superseded by [ADR 0007](0007-postgres-neon-for-serverless.md) (2026-07) — the
 storage driver moved to Neon Postgres (`node-postgres`) for Vercel deployment. The Drizzle
 choice and the schema/seed model below still stand; only the SQLite/better-sqlite3 driver
-was swapped, as this ADR anticipated.
+was swapped, as this ADR anticipated. The `drizzle-kit push` schema-application mechanism
+described below was itself later superseded by [ADR 0008](0008-versioned-migrations-on-deploy.md).
 
 **Original status:** Accepted (2026-07)
 

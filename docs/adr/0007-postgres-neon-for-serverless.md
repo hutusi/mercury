@@ -4,6 +4,8 @@
 
 Supersedes the storage-driver decision in [ADR 0002](0002-sqlite-plus-drizzle.md) and
 relaxes the runtime constraint behind [ADR 0001](0001-bun-package-manager-node-runtime.md).
+The schema-application detail in the Decision section below (`drizzle-kit push`) was itself
+later superseded by [ADR 0008](0008-versioned-migrations-on-deploy.md).
 
 ## Context
 
