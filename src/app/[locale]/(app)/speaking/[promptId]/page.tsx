@@ -1,14 +1,12 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { and, desc, eq } from "drizzle-orm";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { SpeakingRunner } from "@/components/speaking/SpeakingRunner";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
-import { db } from "@/lib/db";
-import { speakingPrompts, speakingSubmissions } from "@/lib/db/schema";
 import { getDict, getLocale } from "@/lib/i18n";
+import { getSpeakingPromptWithHistory } from "@/lib/queries/speaking";
 
 export default async function SpeakingPromptPage({
   params,
@@ -19,20 +17,9 @@ export default async function SpeakingPromptPage({
   const { promptId } = await params;
   const [t, locale] = await Promise.all([getDict(), getLocale()]);
 
-  const [prompt, past] = await Promise.all([
-    db.query.speakingPrompts.findFirst({
-      where: eq(speakingPrompts.id, promptId),
-    }),
-    db.query.speakingSubmissions.findMany({
-      where: and(
-        eq(speakingSubmissions.userId, user.id),
-        eq(speakingSubmissions.promptId, promptId),
-      ),
-      orderBy: desc(speakingSubmissions.createdAt),
-      limit: 10,
-    }),
-  ]);
-  if (!prompt) notFound();
+  const data = await getSpeakingPromptWithHistory(user.id, promptId);
+  if (!data) notFound();
+  const { prompt, past } = data;
 
   return (
     <div className="space-y-6">

@@ -1,16 +1,14 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { and, eq } from "drizzle-orm";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { AiFeedbackPanel } from "@/components/writing/AiFeedbackPanel";
 import { RetryWritingFeedback } from "@/components/writing/RetryWritingFeedback";
 import { SelfAssessPanel } from "@/components/writing/SelfAssessPanel";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
-import { db } from "@/lib/db";
-import { writingPrompts, writingSubmissions } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { getWritingSubmissionDetail } from "@/lib/queries/writing";
 
 export default async function WritingSubmissionPage({
   params,
@@ -21,15 +19,9 @@ export default async function WritingSubmissionPage({
   const { submissionId } = await params;
   const t = await getDict();
 
-  const submission = await db.query.writingSubmissions.findFirst({
-    where: and(eq(writingSubmissions.id, submissionId), eq(writingSubmissions.userId, user.id)),
-  });
-  if (!submission) notFound();
-
-  const prompt = await db.query.writingPrompts.findFirst({
-    where: eq(writingPrompts.id, submission.promptId),
-  });
-  if (!prompt) notFound();
+  const data = await getWritingSubmissionDetail(user.id, submissionId);
+  if (!data) notFound();
+  const { submission, prompt } = data;
 
   return (
     <div className="space-y-6">

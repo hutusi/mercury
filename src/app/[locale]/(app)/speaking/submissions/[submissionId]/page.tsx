@@ -1,16 +1,14 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { and, eq } from "drizzle-orm";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { RetrySpeakingFeedback } from "@/components/speaking/RetrySpeakingFeedback";
 import { SelfAssessPanel } from "@/components/speaking/SelfAssessPanel";
 import { SpeakingFeedbackPanel } from "@/components/speaking/SpeakingFeedbackPanel";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
-import { db } from "@/lib/db";
-import { speakingPrompts, speakingSubmissions } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { getSpeakingSubmissionDetail } from "@/lib/queries/speaking";
 
 export default async function SpeakingSubmissionPage({
   params,
@@ -21,15 +19,9 @@ export default async function SpeakingSubmissionPage({
   const { submissionId } = await params;
   const t = await getDict();
 
-  const submission = await db.query.speakingSubmissions.findFirst({
-    where: and(eq(speakingSubmissions.id, submissionId), eq(speakingSubmissions.userId, user.id)),
-  });
-  if (!submission) notFound();
-
-  const prompt = await db.query.speakingPrompts.findFirst({
-    where: eq(speakingPrompts.id, submission.promptId),
-  });
-  if (!prompt) notFound();
+  const data = await getSpeakingSubmissionDetail(user.id, submissionId);
+  if (!data) notFound();
+  const { submission, prompt } = data;
 
   return (
     <div className="space-y-6">

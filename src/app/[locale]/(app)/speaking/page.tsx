@@ -1,33 +1,20 @@
 import { Check } from "lucide-react";
-import { desc, eq } from "drizzle-orm";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
 import { Badge } from "@/components/ui/badge";
-import { db } from "@/lib/db";
-import { speakingPrompts, speakingSubmissions } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { listSpeakingPrompts } from "@/lib/queries/speaking";
 import { requireTrack } from "@/lib/settings";
 
 export default async function SpeakingListPage() {
   const { user, track } = await requireTrack();
   const t = await getDict();
 
-  const [prompts, submissions] = await Promise.all([
-    db.query.speakingPrompts.findMany({
-      where: eq(speakingPrompts.track, track),
-      orderBy: speakingPrompts.id,
-    }),
-    db.query.speakingSubmissions.findMany({
-      where: eq(speakingSubmissions.userId, user.id),
-      orderBy: desc(speakingSubmissions.createdAt),
-    }),
-  ]);
-
-  const countByPrompt = new Map<string, number>();
-  for (const s of submissions) {
-    countByPrompt.set(s.promptId, (countByPrompt.get(s.promptId) ?? 0) + 1);
-  }
+  const { prompts, submissionCountByPrompt: countByPrompt } = await listSpeakingPrompts(
+    user.id,
+    track,
+  );
 
   return (
     <div className="space-y-8">

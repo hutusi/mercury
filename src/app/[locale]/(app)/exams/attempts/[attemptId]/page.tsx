@@ -1,15 +1,13 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { and, eq } from "drizzle-orm";
 import { AnswerReview } from "@/components/exam/AnswerReview";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
 import { requireUser } from "@/lib/auth/session";
-import { db } from "@/lib/db";
-import { mockExamAttempts, mockExams } from "@/lib/db/schema";
 import { getDict, localeRedirect } from "@/lib/i18n";
+import { getAttemptWithExam } from "@/lib/queries/exams";
 
 export default async function ExamReportPage({
   params,
@@ -20,16 +18,10 @@ export default async function ExamReportPage({
   const { attemptId } = await params;
   const t = await getDict();
 
-  const attempt = await db.query.mockExamAttempts.findFirst({
-    where: and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, user.id)),
-  });
-  if (!attempt) notFound();
+  const data = await getAttemptWithExam(user.id, attemptId);
+  if (!data) notFound();
+  const { attempt, exam } = data;
   if (attempt.status === "in_progress") return localeRedirect(`/exams/${attempt.examId}/take`);
-
-  const exam = await db.query.mockExams.findFirst({
-    where: eq(mockExams.id, attempt.examId),
-  });
-  if (!exam) notFound();
 
   const estimate = attempt.estimate;
   const sectionScores = attempt.sectionScores ?? [];

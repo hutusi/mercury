@@ -1,12 +1,10 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { eq } from "drizzle-orm";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { ListeningRunner } from "@/components/listening/ListeningRunner";
-import { db } from "@/lib/db";
-import { listeningExercises } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { getListeningExerciseSanitized } from "@/lib/queries/listening";
 import { requireTrack } from "@/lib/settings";
 
 export default async function ListeningExercisePage({
@@ -18,12 +16,9 @@ export default async function ListeningExercisePage({
   const { exerciseId } = await params;
   const t = await getDict();
 
-  const exercise = await db.query.listeningExercises.findFirst({
-    where: eq(listeningExercises.id, exerciseId),
-  });
+  // The query strips answers — the script stays for client-side TTS.
+  const exercise = await getListeningExerciseSanitized(exerciseId);
   if (!exercise) notFound();
-
-  const sanitized = exercise.questions.map(({ id, stem, options }) => ({ id, stem, options }));
 
   return (
     <div className="space-y-6">
@@ -43,7 +38,7 @@ export default async function ListeningExercisePage({
       <ListeningRunner
         exerciseId={exercise.id}
         script={exercise.script}
-        questions={sanitized}
+        questions={exercise.questions}
         crossPromo={<CrossPromoCard track={track} />}
       />
     </div>

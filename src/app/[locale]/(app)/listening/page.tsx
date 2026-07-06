@@ -1,34 +1,17 @@
 import { Check } from "lucide-react";
-import { and, eq } from "drizzle-orm";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
 import { Badge } from "@/components/ui/badge";
-import { db } from "@/lib/db";
-import { exerciseAttempts, listeningExercises } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { listListeningExercises } from "@/lib/queries/listening";
 import { requireTrack } from "@/lib/settings";
 
 export default async function ListeningListPage() {
   const { user, track } = await requireTrack();
   const t = await getDict();
 
-  const [exercises, attempts] = await Promise.all([
-    db.query.listeningExercises.findMany({
-      where: eq(listeningExercises.track, track),
-      orderBy: listeningExercises.id,
-    }),
-    db.query.exerciseAttempts.findMany({
-      where: and(eq(exerciseAttempts.userId, user.id), eq(exerciseAttempts.kind, "listening")),
-    }),
-  ]);
-
-  const bestByExercise = new Map<string, { score: number; total: number }>();
-  for (const a of attempts) {
-    const best = bestByExercise.get(a.refId);
-    if (!best || a.score > best.score)
-      bestByExercise.set(a.refId, { score: a.score, total: a.total });
-  }
+  const { exercises, bestByExercise } = await listListeningExercises(user.id, track);
 
   return (
     <div className="space-y-8">

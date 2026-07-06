@@ -1,13 +1,12 @@
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
-import { desc, eq, inArray } from "drizzle-orm";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
-import { db } from "@/lib/db";
-import { mockExamAttempts, mockExams, type ExamEstimate } from "@/lib/db/schema";
+import { type ExamEstimate } from "@/lib/db/schema";
 import { getDict, getLocale } from "@/lib/i18n";
+import { listExamsWithAttempts } from "@/lib/queries/exams";
 import { requireTrack } from "@/lib/settings";
 
 function formatEstimate(estimate: ExamEstimate | null): string {
@@ -21,20 +20,7 @@ export default async function ExamsPage() {
   const t = await getDict();
   const locale = await getLocale();
 
-  // Exam-track users see their own exam first; business users see both —
-  // the mini-TOEIC is the reverse funnel's benchmark hook.
-  const exams = await db.query.mockExams.findMany({
-    where:
-      track === "business"
-        ? inArray(mockExams.track, ["toeic", "ielts"])
-        : eq(mockExams.track, track),
-  });
-
-  const attempts = await db.query.mockExamAttempts.findMany({
-    where: eq(mockExamAttempts.userId, user.id),
-    orderBy: desc(mockExamAttempts.startedAt),
-    limit: 20,
-  });
+  const { exams, attempts } = await listExamsWithAttempts(user.id, track);
   const examTitleById = new Map(exams.map((e) => [e.id, e.titleZh]));
 
   return (
