@@ -39,6 +39,7 @@ test.describe("API writing (AI degradation)", () => {
     expect(submitRes.status()).toBe(200);
     const submitted = await submitRes.json();
     expect(submitted.status).toBe("self_assessed");
+    expect(submitted.feedback).toBeNull(); // same result contract as speaking
 
     // Detail: degradation contract — feedback null, selfAssess present.
     const subRes = await request.get(`/api/v1/writing/submissions/${submitted.submissionId}`, {

@@ -16,11 +16,14 @@ function countWords(text: string): number {
   return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
+export interface WritingResult {
+  submissionId: string;
+  status: "ai_scored" | "self_assessed";
+  feedback: WritingFeedback | null;
+}
+
 /** AI-grade an essay; on any AI failure degrade to self-assessment. */
-export async function submitWritingForUser(
-  userId: string,
-  input: unknown,
-): Promise<{ submissionId: string; status: "ai_scored" | "self_assessed" }> {
+export async function submitWritingForUser(userId: string, input: unknown): Promise<WritingResult> {
   const { promptId, text } = SubmitWritingSchema.parse(input);
 
   const prompt = await db.query.writingPrompts.findFirst({
@@ -60,23 +63,26 @@ export async function submitWritingForUser(
     .returning({ id: writingSubmissions.id });
 
   await recordActivity(userId);
-  return { submissionId: submission.id, status };
+  return { submissionId: submission.id, status, feedback };
 }
 
 /**
  * Re-grade a submission that landed in self-assessment mode after a transient
- * AI failure. Only reachable when a key is configured; throws AiUnavailableError
- * if grading fails again, which the caller surfaces as a retryable error.
+ * AI failure. Returns the refreshed result (same contract as speaking) so the
+ * caller can swap in the AI panel without a follow-up read; throws
+ * AiUnavailableError if grading fails again.
  */
 export async function retryWritingFeedbackForUser(
   userId: string,
   submissionId: string,
-): Promise<{ scored: boolean }> {
+): Promise<WritingResult> {
   const submission = await db.query.writingSubmissions.findFirst({
     where: and(eq(writingSubmissions.id, submissionId), eq(writingSubmissions.userId, userId)),
   });
   if (!submission) throw new NotFoundError("Submission not found");
-  if (submission.status === "ai_scored") return { scored: true };
+  if (submission.status === "ai_scored") {
+    return { submissionId: submission.id, status: "ai_scored", feedback: submission.feedback };
+  }
 
   const prompt = await db.query.writingPrompts.findFirst({
     where: eq(writingPrompts.id, submission.promptId),
@@ -91,7 +97,7 @@ export async function retryWritingFeedbackForUser(
   });
 
   // Compare-and-set on status so a concurrent retry can't overwrite this one.
-  await db
+  const [updated] = await db
     .update(writingSubmissions)
     .set({
       status: "ai_scored",
@@ -100,7 +106,20 @@ export async function retryWritingFeedbackForUser(
     })
     .where(
       and(eq(writingSubmissions.id, submission.id), eq(writingSubmissions.status, "self_assessed")),
-    );
+    )
+    .returning();
 
-  return { scored: true };
+  if (updated) return { submissionId: submission.id, status: "ai_scored", feedback };
+
+  // Lost the race: a concurrent retry already scored this submission. Return
+  // the persisted feedback so the caller can't show a result that never
+  // reached the database.
+  const stored = await db.query.writingSubmissions.findFirst({
+    where: and(eq(writingSubmissions.id, submission.id), eq(writingSubmissions.userId, userId)),
+  });
+  return {
+    submissionId: submission.id,
+    status: "ai_scored",
+    feedback: stored?.feedback ?? feedback,
+  };
 }

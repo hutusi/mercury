@@ -29,7 +29,8 @@ export async function getDashboardData(userId: string, track: Track) {
   ] = await Promise.all([
     getStreak(userId),
     db
-      .select({ count: sql<number>`count(*)` })
+      // pg returns bigint counts as strings; mapWith keeps the API numeric.
+      .select({ count: sql<number>`count(*)`.mapWith(Number) })
       .from(srsCards)
       .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
       .where(

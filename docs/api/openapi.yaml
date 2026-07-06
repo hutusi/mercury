@@ -572,7 +572,7 @@ paths:
                 text: { type: string, minLength: 20, maxLength: 30000 }
       responses:
         "200":
-          description: Submission id and resulting status.
+          description: Result (feedback null when degraded).
           content:
             application/json:
               schema:
@@ -580,6 +580,7 @@ paths:
                 properties:
                   submissionId: { type: string }
                   status: { $ref: "#/components/schemas/SubmissionStatus" }
+                  feedback: {}
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
@@ -600,7 +601,7 @@ paths:
       parameters: [{ $ref: "#/components/parameters/submissionId" }]
       responses:
         "200":
-          description: Scored.
+          description: Refreshed result with the graded feedback (same contract as speaking).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
         "503": { $ref: "#/components/responses/AiUnavailable" }

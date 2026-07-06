@@ -62,6 +62,9 @@ test.describe("API vocab/SRS", () => {
     expect(dashRes.status()).toBe(200);
     const dash = await dashRes.json();
     expect(dash.streak).toBe(1);
+    // Strict equality also pins the type: pg returns count(*) as a string,
+    // and the query must map it back to a number for the JSON contract.
+    expect(dash.dueWords).toBe(0);
     expect(dash.isNewUser).toBe(false);
     expect(dash.recentScores.some((s: { kind: string }) => s.kind === "vocab_quiz")).toBe(true);
   });

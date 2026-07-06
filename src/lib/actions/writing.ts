@@ -14,5 +14,8 @@ export async function submitWriting(input: {
 
 export async function retryWritingFeedback(submissionId: string): Promise<{ scored: boolean }> {
   const user = await requireUser();
-  return retryWritingFeedbackForUser(user.id, submissionId);
+  // The web component refreshes the page after a retry, so it only needs the
+  // boolean; the API route returns the service's full result directly.
+  const result = await retryWritingFeedbackForUser(user.id, submissionId);
+  return { scored: result.status === "ai_scored" };
 }
