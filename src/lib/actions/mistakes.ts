@@ -1,18 +1,20 @@
 "use server";
 
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import type { McqQuestion } from "@/content/types";
 import { requireUser } from "../auth/session";
 import { db } from "../db";
 import {
+  exerciseAttempts,
   listeningExercises,
   mistakeClears,
+  mockExamAttempts,
   mockExams,
   readingExercises,
   vocabWords,
 } from "../db/schema";
-import type { MistakeKind } from "../mistakes-core";
+import { deriveMistakes, sourceKey, type MistakeKind } from "../mistakes-core";
 import { recordActivity } from "../streak";
 
 const RetestSchema = z.object({
@@ -45,25 +47,88 @@ async function upsertClear(userId: string, kind: MistakeKind, refId: string, que
     });
 }
 
+/**
+ * The question must be one of the caller's ACTIVE mistakes: without this
+ * check, a user mid-exam could call the action directly and extract the
+ * answer key for questions they've never answered. Re-derives the wrong-set
+ * for this single source with the same core logic the page uses.
+ */
+async function isActiveMistake(
+  userId: string,
+  kind: "reading" | "listening" | "exam",
+  refId: string,
+  questions: McqQuestion[],
+  questionId: string,
+): Promise<boolean> {
+  const [attempts, clears] = await Promise.all([
+    kind === "exam"
+      ? db.query.mockExamAttempts
+          .findMany({
+            where: and(
+              eq(mockExamAttempts.userId, userId),
+              eq(mockExamAttempts.examId, refId),
+              eq(mockExamAttempts.status, "completed"),
+            ),
+            columns: { answers: true, completedAt: true },
+          })
+          .then((rows) =>
+            rows.flatMap((r) =>
+              r.completedAt
+                ? [{ kind, refId, completedAt: r.completedAt, answers: r.answers }]
+                : [],
+            ),
+          )
+      : db.query.exerciseAttempts
+          .findMany({
+            where: and(
+              eq(exerciseAttempts.userId, userId),
+              eq(exerciseAttempts.kind, kind),
+              eq(exerciseAttempts.refId, refId),
+            ),
+            columns: { answers: true, completedAt: true },
+          })
+          .then((rows) =>
+            rows.map((r) => ({ kind, refId, completedAt: r.completedAt, answers: r.answers })),
+          ),
+    db.query.mistakeClears.findMany({
+      where: and(
+        eq(mistakeClears.userId, userId),
+        eq(mistakeClears.kind, kind),
+        eq(mistakeClears.refId, refId),
+        eq(mistakeClears.questionId, questionId),
+      ),
+    }),
+  ]);
+
+  const answerKeys = new Map([
+    [sourceKey(kind, refId), new Map(questions.map((q) => [q.id, q.correctIndex]))],
+  ]);
+  return deriveMistakes(attempts, answerKeys, clears).some(
+    (s) => s.questionId === questionId && !s.cleared,
+  );
+}
+
 export async function retestMistake(input: z.infer<typeof RetestSchema>): Promise<RetestResult> {
   const user = await requireUser();
   const { kind, refId, questionId, chosenIndex } = RetestSchema.parse(input);
 
-  let question: McqQuestion | undefined;
+  let questions: McqQuestion[] | undefined;
   if (kind === "reading" || kind === "listening") {
     const exercise =
       kind === "reading"
         ? await db.query.readingExercises.findFirst({ where: eq(readingExercises.id, refId) })
         : await db.query.listeningExercises.findFirst({ where: eq(listeningExercises.id, refId) });
-    question = exercise?.questions.find((q) => q.id === questionId);
+    questions = exercise?.questions;
   } else {
     const exam = await db.query.mockExams.findFirst({ where: eq(mockExams.id, refId) });
-    question = exam?.sections
-      .flatMap((s) => s.groups)
-      .flatMap((g) => g.questions)
-      .find((q) => q.id === questionId);
+    questions = exam?.sections.flatMap((s) => s.groups).flatMap((g) => g.questions);
   }
+  const question = questions?.find((q) => q.id === questionId);
   if (!question) throw new Error(`Unknown ${kind} question: ${refId}/${questionId}`);
+
+  if (!(await isActiveMistake(user.id, kind, refId, questions!, questionId))) {
+    throw new Error(`Not an active mistake: ${kind}/${refId}/${questionId}`);
+  }
 
   const correct = chosenIndex === question.correctIndex;
   if (correct) {

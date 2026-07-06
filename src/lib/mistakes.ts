@@ -87,13 +87,20 @@ async function deriveStatuses(userId: string, track: Track): Promise<MistakeStat
       completedAt: a.completedAt,
       answers: a.answers,
     })),
-    ...examAttempts.map((a) => ({
-      kind: "exam" as const,
-      refId: a.examId,
-      // status === "completed" guarantees completedAt is set.
-      completedAt: a.completedAt!,
-      answers: a.answers,
-    })),
+    // status === "completed" should guarantee completedAt; skip (rather than
+    // crash the page on) any row where that invariant is broken.
+    ...examAttempts.flatMap((a) =>
+      a.completedAt
+        ? [
+            {
+              kind: "exam" as const,
+              refId: a.examId,
+              completedAt: a.completedAt,
+              answers: a.answers,
+            },
+          ]
+        : [],
+    ),
   ];
 
   const distinctRefIds = (kind: CoreAttempt["kind"]) => [

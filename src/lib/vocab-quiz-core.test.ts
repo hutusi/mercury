@@ -17,6 +17,15 @@ function seededRng(): () => number {
 }
 
 describe("buildQuizQuestion", () => {
+  test("works with default randomness (no rng argument)", () => {
+    // The quiz page calls without an rng — cover the Math.random default.
+    const pool = words(10);
+    const q = buildQuizQuestion(pool[0], pool, "en2zh");
+    expect(q.options).toHaveLength(4);
+    expect(q.options.filter((o) => o.wordId === "w0")).toHaveLength(1);
+    expect(new Set(q.options.map((o) => o.wordId)).size).toBe(4);
+  });
+
   test("produces 4 options with exactly one correct", () => {
     const pool = words(10);
     const q = buildQuizQuestion(pool[0], pool, "en2zh", seededRng());
