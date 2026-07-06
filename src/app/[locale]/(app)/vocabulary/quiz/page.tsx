@@ -1,22 +1,14 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { eq, sql } from "drizzle-orm";
-import { QuizRunner, type QuizQuestion } from "@/components/vocab/QuizRunner";
+import { QuizRunner } from "@/components/vocab/QuizRunner";
 import { db } from "@/lib/db";
 import { vocabWords } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
 import { requireTrack } from "@/lib/settings";
+import { buildQuizQuestion, type QuizQuestion } from "@/lib/vocab-quiz-core";
 
 const QUIZ_SIZE = 10;
-
-function shuffle<T>(items: T[]): T[] {
-  const arr = [...items];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
 
 export default async function QuizPage() {
   const { track } = await requireTrack();
@@ -37,22 +29,9 @@ export default async function QuizPage() {
   }
 
   const quizWords = words.slice(0, QUIZ_SIZE);
-  const questions: QuizQuestion[] = quizWords.map((word, i) => {
-    const direction = i % 2 === 0 ? ("en2zh" as const) : ("zh2en" as const);
-    const distractors = shuffle(words.filter((w) => w.id !== word.id)).slice(0, 3);
-    const options = shuffle(
-      [word, ...distractors].map((w) => ({
-        wordId: w.id,
-        text: direction === "en2zh" ? w.translationZh : w.headword,
-      })),
-    );
-    return {
-      wordId: word.id,
-      direction,
-      prompt: direction === "en2zh" ? word.headword : word.translationZh,
-      options,
-    };
-  });
+  const questions: QuizQuestion[] = quizWords.map((word, i) =>
+    buildQuizQuestion(word, words, i % 2 === 0 ? "en2zh" : "zh2en"),
+  );
 
   return (
     <div className="space-y-6">
