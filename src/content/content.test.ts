@@ -36,6 +36,17 @@ describe("seed content", () => {
     });
   }
 
+  test("vocab: headwords are unique within a track", () => {
+    // Ids are guarded above, but nothing else stops the same word being added
+    // twice under two ids — the likeliest authoring mistake as vocab grows.
+    for (const track of TRACKS) {
+      const headwords = allVocab
+        .filter((w) => w.track === track)
+        .map((w) => w.headword.toLowerCase());
+      expect(new Set(headwords).size).toBe(headwords.length);
+    }
+  });
+
   test("every track has content in all five practice areas", () => {
     for (const track of TRACKS) {
       expect(allVocab.some((w) => w.track === track)).toBe(true);
