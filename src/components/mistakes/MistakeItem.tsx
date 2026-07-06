@@ -17,7 +17,13 @@ const LETTERS = ["A", "B", "C", "D"];
  * the correct answer + explanation and offers another try; a correct one
  * clears the mistake (persisted server-side).
  */
-export function MistakeItem({ mistake }: { mistake: McqMistakeVM }) {
+export function MistakeItem({
+  mistake,
+  onCleared,
+}: {
+  mistake: McqMistakeVM;
+  onCleared?: () => void;
+}) {
   const t = useT();
   const locale = useLocale();
   const [expanded, setExpanded] = useState(false);
@@ -46,7 +52,10 @@ export function MistakeItem({ mistake }: { mistake: McqMistakeVM }) {
           chosenIndex: chosen,
         });
         setGraded(result);
-        if (result.correct) setClearedNow(true);
+        if (result.correct) {
+          setClearedNow(true);
+          onCleared?.();
+        }
       } catch {
         setError(t.exams.submitFailed);
       }

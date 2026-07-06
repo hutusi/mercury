@@ -14,7 +14,13 @@ import type { VocabMistakeVM } from "@/lib/mistakes";
  * QuizRunner: options carry word ids and grade by id equality client-side;
  * the server action re-grades and persists the clear.
  */
-export function VocabMistakeItem({ mistake }: { mistake: VocabMistakeVM }) {
+export function VocabMistakeItem({
+  mistake,
+  onCleared,
+}: {
+  mistake: VocabMistakeVM;
+  onCleared?: () => void;
+}) {
   const t = useT();
   const locale = useLocale();
   const [picked, setPicked] = useState<string | null>(null);
@@ -40,7 +46,10 @@ export function VocabMistakeItem({ mistake }: { mistake: VocabMistakeVM }) {
           wordId: mistake.wordId,
           chosenWordId: optionWordId,
         });
-        if (result.correct) setClearedNow(true);
+        if (result.correct) {
+          setClearedNow(true);
+          onCleared?.();
+        }
       } catch {
         setError(t.exams.submitFailed);
         setPicked(null);
@@ -57,7 +66,9 @@ export function VocabMistakeItem({ mistake }: { mistake: VocabMistakeVM }) {
           {cleared ? <Check className="size-4" /> : <X className="size-4 text-cinnabar" />}
         </span>
         <div className="min-w-0 flex-1">
-          {cleared || !quiz ? (
+          {/* Key on the server-cleared flag, not clearedNow: a just-cleared item
+              keeps its revealed options + confirmation instead of collapsing. */}
+          {mistake.cleared || !quiz ? (
             <p className={`text-sm ${cleared ? "text-muted-foreground" : ""}`}>
               <span className="font-medium">{mistake.headword}</span>
               <span className="mx-2 text-muted-foreground">·</span>
