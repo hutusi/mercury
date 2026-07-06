@@ -20,6 +20,7 @@ import type {
   WritingTaskType,
 } from "../../content/types";
 import type { SpeakingFeedback, WritingFeedback } from "../ai/schemas";
+import type { MistakeKind } from "../mistakes-core";
 import { user } from "./auth-schema";
 
 export * from "./auth-schema";
@@ -300,6 +301,31 @@ export const mockExamAttempts = pgTable(
     completedAt: ts("completed_at"),
   },
   (t) => [index("mock_exam_attempts_user_idx").on(t.userId, t.startedAt)],
+);
+
+/**
+ * Re-test clears for the mistakes notebook (错题本). The wrong-set itself is
+ * DERIVED at read time from attempt history + content answer keys
+ * (src/lib/mistakes-core.ts); this table only records "answered correctly on
+ * the mistakes page at clearedAt". A wrong answer in a real attempt after
+ * clearedAt revives the mistake. Vocab rows mirror exercise_attempts identity:
+ * refId = `quiz-${track}`, questionId = word id.
+ */
+export const mistakeClears = pgTable(
+  "mistake_clears",
+  {
+    id: text("id").primaryKey().$defaultFn(uuid),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    kind: text("kind").$type<MistakeKind>().notNull(),
+    refId: text("ref_id").notNull(),
+    questionId: text("question_id").notNull(),
+    clearedAt: ts("cleared_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    uniqueIndex("mistake_clears_user_question_idx").on(t.userId, t.kind, t.refId, t.questionId),
+  ],
 );
 
 /** One row per user per local day with any learning activity; drives streaks. */
