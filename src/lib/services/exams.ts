@@ -46,9 +46,22 @@ export async function startExamAttemptForUser(
       answers: {},
       totalQuestions: exam.totalQuestions,
     })
+    // The partial unique index (userId, examId where in_progress) closes the
+    // check-then-insert race: a concurrent start loses the insert here...
+    .onConflictDoNothing()
     .returning({ id: mockExamAttempts.id });
+  if (attempt) return { attemptId: attempt.id };
 
-  return { attemptId: attempt.id };
+  // ...and resumes the attempt the winner created.
+  const winner = await db.query.mockExamAttempts.findFirst({
+    where: and(
+      eq(mockExamAttempts.userId, userId),
+      eq(mockExamAttempts.examId, examId),
+      eq(mockExamAttempts.status, "in_progress"),
+    ),
+  });
+  if (!winner) throw new NotFoundError(`Unknown exam: ${examId}`);
+  return { attemptId: winner.id };
 }
 
 export const SaveExamProgressSchema = z.object({
@@ -106,6 +119,27 @@ export interface SubmitSectionResult {
   deadlines: SectionDeadline[];
 }
 
+/**
+ * Fallback when a guarded update matched no row: a concurrent request
+ * (e.g. a network-retry double submit) advanced or completed the attempt
+ * first. Report the state that actually persisted instead of pretending
+ * this request's write happened.
+ */
+async function persistedSectionState(
+  userId: string,
+  attemptId: string,
+): Promise<SubmitSectionResult> {
+  const fresh = await db.query.mockExamAttempts.findFirst({
+    where: and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)),
+  });
+  if (!fresh) throw new NotFoundError("Attempt not found");
+  return {
+    done: fresh.status !== "in_progress",
+    nextSectionIndex: fresh.currentSectionIndex,
+    deadlines: fresh.sectionDeadlines,
+  };
+}
+
 /** Advance to the next section, or grade the whole exam on the last one. */
 export async function submitExamSectionForUser(
   userId: string,
@@ -158,7 +192,7 @@ export async function submitExamSectionForUser(
       ...attempt.sectionDeadlines,
       { sectionId: next.id, startedAt: now, expiresAt: now + next.durationSeconds * 1000 },
     ];
-    await db
+    const [advanced] = await db
       .update(mockExamAttempts)
       .set({
         answers: merged,
@@ -171,14 +205,16 @@ export async function submitExamSectionForUser(
           eq(mockExamAttempts.status, "in_progress"),
           eq(mockExamAttempts.currentSectionIndex, attempt.currentSectionIndex),
         ),
-      );
+      )
+      .returning({ id: mockExamAttempts.id });
+    if (!advanced) return persistedSectionState(userId, attempt.id);
     return { done: false, nextSectionIndex: attempt.currentSectionIndex + 1, deadlines };
   }
 
   // Final section: grade everything server-side against unsanitized content.
   const { sectionScores, rawScore, estimate } = gradeExam(exam.track, exam.sections, merged);
 
-  await db
+  const [completed] = await db
     .update(mockExamAttempts)
     .set({
       answers: merged,
@@ -194,7 +230,9 @@ export async function submitExamSectionForUser(
         eq(mockExamAttempts.status, "in_progress"),
         eq(mockExamAttempts.currentSectionIndex, attempt.currentSectionIndex),
       ),
-    );
+    )
+    .returning({ id: mockExamAttempts.id });
+  if (!completed) return persistedSectionState(userId, attempt.id);
   await recordActivity(userId);
 
   return {

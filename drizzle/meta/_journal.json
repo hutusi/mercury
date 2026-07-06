@@ -15,6 +15,13 @@
       "when": 1783340701224,
       "tag": "0001_pretty_virginia_dare",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1783374885828,
+      "tag": "0002_cheerful_blizzard",
+      "breakpoints": true
     }
   ]
 }

@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import {
   doublePrecision,
   index,
@@ -300,7 +301,14 @@ export const mockExamAttempts = pgTable(
     estimate: jsonb("estimate").$type<ExamEstimate | null>(),
     completedAt: ts("completed_at"),
   },
-  (t) => [index("mock_exam_attempts_user_idx").on(t.userId, t.startedAt)],
+  (t) => [
+    index("mock_exam_attempts_user_idx").on(t.userId, t.startedAt),
+    // At most one live attempt per user+exam: startExamAttempt's
+    // check-then-insert would otherwise race under concurrent starts.
+    uniqueIndex("mock_exam_attempts_in_progress_idx")
+      .on(t.userId, t.examId)
+      .where(sql`${t.status} = 'in_progress'`),
+  ],
 );
 
 /**
