@@ -83,6 +83,20 @@ test.describe("API auth (bearer)", () => {
     expect(body.error.code).toBe("invalid_json");
   });
 
+  test("track-gated endpoints 403 until onboarding completes", async ({ request }) => {
+    const user = await apiSignUp();
+
+    const before = await request.get("/api/v1/dashboard", { headers: user.authHeaders });
+    expect(before.status()).toBe(403);
+    const body = await before.json();
+    expect(body.error.code).toBe("onboarding_required");
+
+    await apiOnboard(request, user, "toeic");
+
+    const after = await request.get("/api/v1/dashboard", { headers: user.authHeaders });
+    expect(after.status()).toBe(200);
+  });
+
   test("sign-out revokes the token", async ({ request }) => {
     const user = await apiSignUp();
     await apiOnboard(request, user);
