@@ -149,3 +149,75 @@
         - Attending on public holidays when it is quieter
       correctIndex: 1
       explanationZh: 讲话人建议："I'd recommend signing up at the start of each term rather than waiting"，因为瑜伽和舞蹈课非常热门。选项 C 的“提前 48 小时”是球场预订规则，不适用于课程报名，属于移花接木的干扰项。
+- id: ielts-l-003
+  track: ielts
+  title: "Lecture: How Migrating Birds Navigate"
+  titleZh: 讲座：候鸟如何导航
+  style: 讲座 · Lecture
+  script:
+    - speaker: narrator
+      text: Good morning, everyone. Today's lecture looks at one of nature's great puzzles — how migrating birds find their way across thousands of kilometres.
+    - speaker: narrator
+      text: For a long time, scientists assumed birds simply followed coastlines and other visible landmarks.
+    - speaker: narrator
+      text: Landmarks certainly matter, but they cannot explain how young birds complete their first migration alone, often at night and over open ocean.
+    - speaker: narrator
+      text: Experiments in the 1950s provided the first clue. Birds kept in enclosed cages still hopped in the direction of their normal migration route.
+    - speaker: narrator
+      text: When researchers moved the cages to a planetarium and rotated the artificial night sky, the birds shifted direction to match. They were reading the stars.
+    - speaker: narrator
+      text: The second clue came from the Earth's magnetic field. Birds fitted with small magnets became disoriented, while those carrying non-magnetic weights flew normally.
+    - speaker: narrator
+      text: We now believe many species carry an internal magnetic compass, possibly based on light-sensitive proteins in the eye.
+    - speaker: narrator
+      text: Smell may play a part as well. Seabirds in particular appear to build up a map of ocean scents carried on the wind.
+    - speaker: narrator
+      text: The key point is that these systems work together. A bird might hold its bearing with the magnetic compass, confirm it by the stars, and use scent or landmarks for the final approach.
+    - speaker: narrator
+      text: Next week, we'll consider how climate change is disrupting the timing of these extraordinary journeys.
+  questions:
+    - id: q1
+      stem: What long-held assumption does the lecturer question?
+      options:
+        - That birds migrate mainly in daylight
+        - That young birds learn routes from their parents
+        - That birds rely only on visible landmarks
+        - That seabirds cannot fly over open ocean
+      correctIndex: 2
+      explanationZh: 讲座开头指出旧观点："scientists assumed birds simply followed coastlines and other visible landmarks"，随后用幼鸟能独自夜间跨洋迁徙这一事实说明仅靠地标解释不通。选项 B 的“向父母学习路线”恰与“独自完成首次迁徙”矛盾。
+    - id: q2
+      stem: What did the planetarium experiment demonstrate?
+      options:
+        - Birds use the night sky to set their direction
+        - Birds cannot orient themselves under artificial light
+        - Caged birds lose the urge to migrate
+        - Rotating cages makes birds disoriented
+      correctIndex: 0
+      explanationZh: 研究者旋转天文馆的人造星空后，"the birds shifted direction to match. They were reading the stars"——鸟随星空转向，证明它们依靠星空定向。被旋转的是星空而不是笼子（排除 D）。
+    - id: q3
+      stem: What happened to birds fitted with small magnets?
+      options:
+        - They flew faster than usual
+        - They lost their sense of direction
+        - They refused to fly at night
+        - They followed coastlines instead
+      correctIndex: 1
+      explanationZh: 原文说 "Birds fitted with small magnets became disoriented"——佩戴磁铁的鸟失去方向感，而携带非磁性重物的对照组飞行正常，由此证明磁场感知的存在。
+    - id: q4
+      stem: What does the lecturer say about seabirds?
+      options:
+        - They navigate entirely by magnetism
+        - They migrate shorter distances than land birds
+        - They cannot see stars over open water
+        - They may use a map of ocean scents
+      correctIndex: 3
+      explanationZh: 讲座提到嗅觉的作用时特别指出："Seabirds in particular appear to build up a map of ocean scents carried on the wind"。选项 A 的 entirely 过于绝对——讲座强调多套系统并用。
+    - id: q5
+      stem: What is the lecturer's main conclusion about bird navigation?
+      options:
+        - Magnetic navigation has replaced all other explanations
+        - Landmark use is limited to seabirds
+        - Birds combine several navigation systems
+        - Star navigation is the most reliable method
+      correctIndex: 2
+      explanationZh: 结论句明确："The key point is that these systems work together"，并举例说明磁场定向、星空校准、气味与地标进近相互配合。其余选项都把某一种手段绝对化，与讲座主旨相悖。

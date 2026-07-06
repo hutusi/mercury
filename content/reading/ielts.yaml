@@ -119,3 +119,65 @@
         - Organisations should observe actual behaviour rather than assume a layout will work as intended
       correctIndex: 3
       explanationZh: 末段直接引述 Bernstein 的观点："organisations should measure how employees actually behave rather than assume that a fashionable layout will produce the intended behaviour"。选项 B 过于绝对——作者并未说时髦设计“总是”失败；文中根本没有讨论居家办公（排除 C）。
+- id: ielts-r-003
+  track: ielts
+  title: The Architecture of Sleep
+  titleZh: 睡眠的结构
+  genre: Academic
+  passage: |-
+    Most people picture sleep as a single, uniform state — a switch that turns off at night and back on in the morning. Recordings of the brain's electrical activity, first made systematically in the 1950s, revealed something far more organised. A night of sleep is a series of cycles, each lasting roughly ninety minutes, in which the brain moves through several distinct stages before briefly surfacing and beginning again.
+
+    The early cycles of the night are dominated by deep, slow-wave sleep. During these hours the body carries out most of its physical repair: tissues are rebuilt and growth hormone is released. The brain, meanwhile, is busy filing the day away. Neuroscientists have observed the hippocampus — a region essential for forming new memories — replaying patterns of activity recorded during the day, apparently transferring fragile new memories into more permanent storage.
+
+    Towards morning, the balance shifts to rapid eye movement, or REM, sleep, when most vivid dreaming occurs. REM sleep appears central to emotional regulation: volunteers deprived of it react more strongly to unpleasant images the following day, while retaining the memory of the events themselves. Some researchers describe REM as "overnight therapy" — the brain revisits difficult experiences with the emotional charge turned down.
+
+    The cycle structure has practical consequences. Because REM is concentrated in the final cycles, an alarm that shortens sleep by an hour does not trim each stage equally; it removes a disproportionate share of REM. Waking from deep sleep instead produces "sleep inertia", the heavy grogginess that can take half an hour to clear. This is why sleep researchers often suggest naps of either twenty minutes — ending before deep sleep begins — or a full ninety-minute cycle.
+
+    None of this means everyone needs an identical routine. Cycle length and the preferred timing of sleep vary between individuals, and researchers caution that consumer sleep-tracking apps estimate stages only indirectly, sometimes with considerable error. The architecture of sleep is universal; the schedule built on it is not.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: What is the main purpose of the passage?
+      options:
+        - To argue that people should sleep for longer
+        - To compare human sleep with that of other animals
+        - To describe how sleep is structured and why that structure matters
+        - To promote the use of sleep-tracking technology
+      correctIndex: 2
+      explanationZh: 文章先介绍睡眠以约九十分钟为周期的结构，再分述深睡与 REM 各自的功能，最后讨论其对闹钟、小睡等日常安排的实际影响，对应选项 C。文章结尾对睡眠追踪应用持保留态度，与选项 D 相反。
+    - id: q2
+      stem: According to the passage, during slow-wave sleep the hippocampus
+      options:
+        - replays daytime activity patterns to secure new memories
+        - releases growth hormone into the body
+        - switches off almost completely
+        - produces the night's most vivid dreams
+      correctIndex: 0
+      explanationZh: 第二段写道，海马体 "replaying patterns of activity recorded during the day, apparently transferring fragile new memories into more permanent storage"。生长激素的释放属于身体修复，并非海马体的活动（排除 B）；生动的梦发生在 REM 阶段（排除 D）。
+    - id: q3
+      stem: The phrase "overnight therapy" in paragraph 3 refers to
+      options:
+        - the body's physical repair during deep sleep
+        - REM sleep weakening the emotional charge of experiences
+        - the use of daytime naps to recover from stress
+        - professional treatment offered at sleep clinics
+      correctIndex: 1
+      explanationZh: 引号内的说法紧跟解释："the brain revisits difficult experiences with the emotional charge turned down"——REM 睡眠让大脑以降低的情绪强度重温不快经历，故选 B。身体修复对应的是深睡阶段（排除 A）。
+    - id: q4
+      stem: The word "trim" in paragraph 4 is closest in meaning to
+      options:
+        - decorate
+        - measure
+        - divide
+        - reduce
+      correctIndex: 3
+      explanationZh: 上下文说闹钟提前一小时叫醒 "does not trim each stage equally; it removes a disproportionate share of REM"——各阶段不是被均等地“削减”，其中 removes 一词提示 trim 在此意为“减少”。trim 的“装饰”义（选项 A）与语境不符。
+    - id: q5
+      stem: What does the writer say about consumer sleep-tracking apps?
+      options:
+        - Their stage estimates are indirect and can be inaccurate
+        - They have proved that sleep cycles are universal
+        - They help users obtain more REM sleep
+        - They are unsuitable for people with irregular schedules
+      correctIndex: 0
+      explanationZh: 末段指出这类应用 "estimate stages only indirectly, sometimes with considerable error"，即测算是间接的、可能有相当误差。“睡眠结构具有普遍性”是作者自己的结论，并非应用所证明（排除 B）。

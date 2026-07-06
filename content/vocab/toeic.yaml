@@ -504,3 +504,508 @@
   translationZh: 简历
   exampleEn: Please attach your résumé and a cover letter to the online application.
   exampleZh: 请在网上申请中附上简历和求职信。
+# marketing (营销)
+- id: toeic-w-051
+  track: toeic
+  topic: marketing
+  headword: campaign
+  ipa: /kæmˈpeɪn/
+  pos: n.
+  definitionEn: An organized series of promotional activities to achieve a marketing goal.
+  translationZh: 营销活动；宣传攻势
+  exampleEn: Our spring campaign increased online sales by thirty percent.
+  exampleZh: 我们的春季营销活动使线上销售额增长了百分之三十。
+- id: toeic-w-052
+  track: toeic
+  topic: marketing
+  headword: brochure
+  ipa: /ˈbroʊʃʊr/
+  pos: n.
+  definitionEn: A thin booklet describing products or services.
+  translationZh: 宣传册
+  exampleEn: The travel agency's brochure lists all package tours for the summer season.
+  exampleZh: 这家旅行社的宣传册列出了夏季所有的跟团游产品。
+- id: toeic-w-053
+  track: toeic
+  topic: marketing
+  headword: endorsement
+  ipa: /ɪnˈdɔːrsmənt/
+  pos: n.
+  definitionEn: Public support for a product, often from a well-known person.
+  translationZh: 代言；公开支持
+  exampleEn: The athlete's endorsement boosted the brand's credibility among young consumers.
+  exampleZh: 这位运动员的代言提升了该品牌在年轻消费者中的可信度。
+- id: toeic-w-054
+  track: toeic
+  topic: marketing
+  headword: publicity
+  ipa: /pʌˈblɪsəti/
+  pos: n.
+  definitionEn: Public attention given to a company or product by the media.
+  translationZh: 宣传；曝光
+  exampleEn: The product recall generated negative publicity for the manufacturer.
+  exampleZh: 产品召回给制造商带来了负面舆论。
+- id: toeic-w-055
+  track: toeic
+  topic: marketing
+  headword: questionnaire
+  ipa: /ˌkwestʃəˈner/
+  pos: n.
+  definitionEn: A written set of questions used to collect information from people.
+  translationZh: 问卷
+  exampleEn: Customers who complete the questionnaire will receive a ten-percent coupon.
+  exampleZh: 填写问卷的顾客将获得九折优惠券。
+- id: toeic-w-056
+  track: toeic
+  topic: marketing
+  headword: launch
+  ipa: /lɔːntʃ/
+  pos: v.
+  definitionEn: To introduce a new product or service to the market.
+  translationZh: 推出；上市
+  exampleEn: The company plans to launch its new smartphone in October.
+  exampleZh: 公司计划十月推出新款智能手机。
+- id: toeic-w-057
+  track: toeic
+  topic: marketing
+  headword: testimonial
+  ipa: /ˌtestɪˈmoʊniəl/
+  pos: n.
+  definitionEn: A customer's written statement praising a product or service.
+  translationZh: 用户好评；推荐语
+  exampleEn: The website features testimonials from satisfied long-term clients.
+  exampleZh: 网站上展示了长期老客户的好评。
+- id: toeic-w-058
+  track: toeic
+  topic: marketing
+  headword: target audience
+  ipa: /ˈtɑːrɡɪt ˈɔːdiəns/
+  pos: n.
+  definitionEn: The specific group of consumers a product is aimed at.
+  translationZh: 目标受众
+  exampleEn: Our target audience for this app is commuters in large cities.
+  exampleZh: 这款应用的目标受众是大城市的通勤族。
+- id: toeic-w-059
+  track: toeic
+  topic: marketing
+  headword: discount
+  ipa: /ˈdɪskaʊnt/
+  pos: n.
+  definitionEn: A reduction from the usual price.
+  translationZh: 折扣
+  exampleEn: Members receive a fifteen percent discount on all purchases this weekend.
+  exampleZh: 会员本周末购物一律享八五折优惠。
+- id: toeic-w-060
+  track: toeic
+  topic: marketing
+  headword: subscriber
+  ipa: /səbˈskraɪbər/
+  pos: n.
+  definitionEn: A person who pays regularly to receive a product or service.
+  translationZh: 订阅用户
+  exampleEn: The newsletter gained two thousand new subscribers after the promotion.
+  exampleZh: 促销活动后，该简报新增了两千名订阅用户。
+# logistics (物流)
+- id: toeic-w-061
+  track: toeic
+  topic: logistics
+  headword: shipment
+  ipa: /ˈʃɪpmənt/
+  pos: n.
+  definitionEn: A quantity of goods sent together to a destination.
+  translationZh: 一批货物；装运
+  exampleEn: The shipment of office chairs will arrive at the warehouse on Monday.
+  exampleZh: 这批办公椅将于周一运抵仓库。
+- id: toeic-w-062
+  track: toeic
+  topic: logistics
+  headword: warehouse
+  ipa: /ˈwerhaʊs/
+  pos: n.
+  definitionEn: A large building where goods are stored before distribution.
+  translationZh: 仓库
+  exampleEn: All returned items are inspected at the central warehouse.
+  exampleZh: 所有退货商品都会在中央仓库接受检查。
+- id: toeic-w-063
+  track: toeic
+  topic: logistics
+  headword: freight
+  ipa: /freɪt/
+  pos: n.
+  definitionEn: Goods transported in bulk, or the charge for transporting them.
+  translationZh: 货运；运费
+  exampleEn: Freight costs have risen sharply because of higher fuel prices.
+  exampleZh: 由于燃油价格上涨，货运费用大幅上升。
+- id: toeic-w-064
+  track: toeic
+  topic: logistics
+  headword: dispatch
+  ipa: /dɪˈspætʃ/
+  pos: v.
+  definitionEn: To send goods or people to a destination.
+  translationZh: 发货；派遣
+  exampleEn: Orders placed before noon are dispatched the same day.
+  exampleZh: 中午前下的订单当天发货。
+- id: toeic-w-065
+  track: toeic
+  topic: logistics
+  headword: tracking number
+  ipa: /ˈtrækɪŋ ˌnʌmbər/
+  pos: n.
+  definitionEn: A code used to follow a package during delivery.
+  translationZh: 快递单号
+  exampleEn: You will receive a tracking number once your parcel leaves our facility.
+  exampleZh: 包裹出库后您将收到快递单号。
+- id: toeic-w-066
+  track: toeic
+  topic: logistics
+  headword: fragile
+  ipa: /ˈfrædʒəl/
+  pos: adj.
+  definitionEn: Easily broken and needing careful handling.
+  translationZh: 易碎的
+  exampleEn: Please mark the crate as fragile before loading it onto the truck.
+  exampleZh: 装车前请在木箱上标明易碎。
+- id: toeic-w-067
+  track: toeic
+  topic: logistics
+  headword: consignment
+  ipa: /kənˈsaɪnmənt/
+  pos: n.
+  definitionEn: A batch of goods sent to someone, often for sale.
+  translationZh: 托运货物；寄售货物
+  exampleEn: A consignment of laptops was delayed at customs for two days.
+  exampleZh: 一批托运的笔记本电脑在海关滞留了两天。
+- id: toeic-w-068
+  track: toeic
+  topic: logistics
+  headword: backlog
+  ipa: /ˈbæklɔːɡ/
+  pos: n.
+  definitionEn: An accumulation of work or orders not yet completed.
+  translationZh: 积压的工作（或订单）
+  exampleEn: The factory is working overtime to clear the backlog of orders.
+  exampleZh: 工厂正在加班以消化积压的订单。
+- id: toeic-w-069
+  track: toeic
+  topic: logistics
+  headword: distributor
+  ipa: /dɪˈstrɪbjətər/
+  pos: n.
+  definitionEn: A company that buys products and sells them to retailers.
+  translationZh: 分销商；经销商
+  exampleEn: We are seeking a local distributor for our beverages in Southeast Asia.
+  exampleZh: 我们正在东南亚寻找本地饮料分销商。
+- id: toeic-w-070
+  track: toeic
+  topic: logistics
+  headword: lead time
+  ipa: /ˈliːd taɪm/
+  pos: n.
+  definitionEn: The time between placing an order and receiving delivery.
+  translationZh: 交货周期
+  exampleEn: The lead time for customized furniture is approximately six weeks.
+  exampleZh: 定制家具的交货周期约为六周。
+# support (客服)
+- id: toeic-w-071
+  track: toeic
+  topic: support
+  headword: complaint
+  ipa: /kəmˈpleɪnt/
+  pos: n.
+  definitionEn: A statement expressing dissatisfaction with a product or service.
+  translationZh: 投诉
+  exampleEn: The manager responded to the customer's complaint within twenty-four hours.
+  exampleZh: 经理在二十四小时内回应了顾客的投诉。
+- id: toeic-w-072
+  track: toeic
+  topic: support
+  headword: refund
+  ipa: /ˈriːfʌnd/
+  pos: n.
+  definitionEn: Money returned to a customer for an unsatisfactory purchase.
+  translationZh: 退款
+  exampleEn: You may request a full refund within thirty days of purchase.
+  exampleZh: 购买后三十天内可申请全额退款。
+- id: toeic-w-073
+  track: toeic
+  topic: support
+  headword: inquiry
+  ipa: /ɪnˈkwaɪəri/
+  pos: n.
+  definitionEn: A request for information about products or services.
+  translationZh: 咨询；询问
+  exampleEn: Our support team handles hundreds of inquiries every day.
+  exampleZh: 我们的客服团队每天处理数百条咨询。
+- id: toeic-w-074
+  track: toeic
+  topic: support
+  headword: hotline
+  ipa: /ˈhɑːtlaɪn/
+  pos: n.
+  definitionEn: A telephone line providing quick assistance to customers.
+  translationZh: 服务热线
+  exampleEn: Call our twenty-four-hour hotline if the device stops working.
+  exampleZh: 如果设备无法工作，请拨打我们的二十四小时热线。
+- id: toeic-w-075
+  track: toeic
+  topic: support
+  headword: apologize
+  ipa: /əˈpɑːlədʒaɪz/
+  pos: v.
+  definitionEn: To say sorry for a mistake or inconvenience.
+  translationZh: 道歉
+  exampleEn: We sincerely apologize for the delay in processing your order.
+  exampleZh: 对于订单处理延误，我们深表歉意。
+- id: toeic-w-076
+  track: toeic
+  topic: support
+  headword: defective
+  ipa: /dɪˈfektɪv/
+  pos: adj.
+  definitionEn: Having a fault; not working correctly.
+  translationZh: 有缺陷的；有瑕疵的
+  exampleEn: Defective items can be exchanged at any of our retail locations.
+  exampleZh: 有瑕疵的商品可在我们任一门店换货。
+- id: toeic-w-077
+  track: toeic
+  topic: support
+  headword: courteous
+  ipa: /ˈkɜːrtiəs/
+  pos: adj.
+  definitionEn: Polite and respectful in manner.
+  translationZh: 彬彬有礼的
+  exampleEn: Passengers praised the courteous staff at the check-in counter.
+  exampleZh: 乘客们称赞值机柜台的工作人员彬彬有礼。
+- id: toeic-w-078
+  track: toeic
+  topic: support
+  headword: resolve
+  ipa: /rɪˈzɑːlv/
+  pos: v.
+  definitionEn: To find a solution to a problem or dispute.
+  translationZh: 解决
+  exampleEn: The technician resolved the billing issue during the first call.
+  exampleZh: 技术人员在第一通电话中就解决了账单问题。
+- id: toeic-w-079
+  track: toeic
+  topic: support
+  headword: satisfaction
+  ipa: /ˌsætɪsˈfækʃn/
+  pos: n.
+  definitionEn: The feeling of being pleased with a product or service.
+  translationZh: 满意（度）
+  exampleEn: The survey shows customer satisfaction has improved this quarter.
+  exampleZh: 调查显示本季度客户满意度有所提升。
+- id: toeic-w-080
+  track: toeic
+  topic: support
+  headword: goodwill
+  ipa: /ˌɡʊdˈwɪl/
+  pos: n.
+  definitionEn: Friendly feeling shown to customers; a company's good reputation.
+  translationZh: 善意；商誉
+  exampleEn: As a gesture of goodwill, the airline offered meal vouchers to delayed passengers.
+  exampleZh: 作为善意的表示，航空公司向延误的乘客提供了餐券。
+# manufacturing (生产制造)
+- id: toeic-w-081
+  track: toeic
+  topic: manufacturing
+  headword: assembly line
+  ipa: /əˈsembli laɪn/
+  pos: n.
+  definitionEn: A production arrangement where work passes from station to station.
+  translationZh: 装配线；流水线
+  exampleEn: The new assembly line doubled the plant's daily output.
+  exampleZh: 新装配线使工厂的日产量翻了一番。
+- id: toeic-w-082
+  track: toeic
+  topic: manufacturing
+  headword: specification
+  ipa: /ˌspesɪfɪˈkeɪʃn/
+  pos: n.
+  definitionEn: A detailed description of how something should be made or perform.
+  translationZh: 规格；技术要求
+  exampleEn: All components must meet the specifications listed in the contract.
+  exampleZh: 所有部件必须符合合同中列明的规格。
+- id: toeic-w-083
+  track: toeic
+  topic: manufacturing
+  headword: prototype
+  ipa: /ˈproʊtətaɪp/
+  pos: n.
+  definitionEn: A first model of a product used for testing.
+  translationZh: 原型；样机
+  exampleEn: Engineers are testing a prototype of the electric delivery van.
+  exampleZh: 工程师们正在测试电动送货车的样机。
+- id: toeic-w-084
+  track: toeic
+  topic: manufacturing
+  headword: output
+  ipa: /ˈaʊtpʊt/
+  pos: n.
+  definitionEn: The amount of goods produced by a factory or worker.
+  translationZh: 产量
+  exampleEn: Monthly output fell after the equipment failure in July.
+  exampleZh: 七月设备故障后，月产量有所下降。
+- id: toeic-w-085
+  track: toeic
+  topic: manufacturing
+  headword: machinery
+  ipa: /məˈʃiːnəri/
+  pos: n.
+  definitionEn: Machines as a group, especially in a factory.
+  translationZh: 机械设备
+  exampleEn: The plant invested heavily in modern machinery last year.
+  exampleZh: 该工厂去年斥巨资购置现代化机械设备。
+- id: toeic-w-086
+  track: toeic
+  topic: manufacturing
+  headword: calibrate
+  ipa: /ˈkælɪbreɪt/
+  pos: v.
+  definitionEn: To adjust an instrument so it measures accurately.
+  translationZh: 校准
+  exampleEn: Technicians calibrate the scales at the start of every shift.
+  exampleZh: 技术人员在每个班次开始时校准秤具。
+- id: toeic-w-087
+  track: toeic
+  topic: manufacturing
+  headword: batch
+  ipa: /bætʃ/
+  pos: n.
+  definitionEn: A group of products made together in one production run.
+  translationZh: 一批（产品）
+  exampleEn: The entire batch was recalled after a labeling error was found.
+  exampleZh: 发现标签错误后，整批产品被召回。
+- id: toeic-w-088
+  track: toeic
+  topic: manufacturing
+  headword: quality control
+  ipa: /ˈkwɑːləti kənˌtroʊl/
+  pos: n.
+  definitionEn: Checking products to ensure they meet required standards.
+  translationZh: 质量控制；质检
+  exampleEn: Every device passes through quality control before packaging.
+  exampleZh: 每台设备在包装前都要经过质检。
+- id: toeic-w-089
+  track: toeic
+  topic: manufacturing
+  headword: raw material
+  ipa: /ˌrɔː məˈtɪriəl/
+  pos: n.
+  definitionEn: A basic substance used to manufacture products.
+  translationZh: 原材料
+  exampleEn: Rising raw material prices squeezed the company's profit margin.
+  exampleZh: 原材料价格上涨压缩了公司的利润空间。
+- id: toeic-w-090
+  track: toeic
+  topic: manufacturing
+  headword: hazard
+  ipa: /ˈhæzərd/
+  pos: n.
+  definitionEn: Something that can cause danger or harm.
+  translationZh: 危险；隐患
+  exampleEn: Workers must report any safety hazard on the factory floor immediately.
+  exampleZh: 工人必须立即报告车间内的任何安全隐患。
+# technology (信息技术)
+- id: toeic-w-091
+  track: toeic
+  topic: technology
+  headword: install
+  ipa: /ɪnˈstɔːl/
+  pos: v.
+  definitionEn: To put software or equipment in place for use.
+  translationZh: 安装
+  exampleEn: Please install the latest update before tomorrow's system check.
+  exampleZh: 请在明天系统检查前安装最新更新。
+- id: toeic-w-092
+  track: toeic
+  topic: technology
+  headword: credentials
+  ipa: /krəˈdenʃlz/
+  pos: n.
+  definitionEn: Login details proving identity, or qualifications proving ability.
+  translationZh: 登录凭证；资历
+  exampleEn: Never share your login credentials with anyone outside the company.
+  exampleZh: 切勿将登录凭证透露给公司以外的任何人。
+- id: toeic-w-093
+  track: toeic
+  topic: technology
+  headword: troubleshoot
+  ipa: /ˈtrʌblʃuːt/
+  pos: v.
+  definitionEn: To find and fix problems in a system or machine.
+  translationZh: 排查故障
+  exampleEn: The IT team spent the morning troubleshooting the email server.
+  exampleZh: IT 团队花了一上午排查邮件服务器的故障。
+- id: toeic-w-094
+  track: toeic
+  topic: technology
+  headword: upgrade
+  ipa: /ˈʌpɡreɪd/
+  pos: n.
+  definitionEn: An improvement to a newer or better version.
+  translationZh: 升级
+  exampleEn: The software upgrade fixed several security vulnerabilities.
+  exampleZh: 这次软件升级修复了多个安全漏洞。
+- id: toeic-w-095
+  track: toeic
+  topic: technology
+  headword: server
+  ipa: /ˈsɜːrvər/
+  pos: n.
+  definitionEn: A computer that stores data and provides it over a network.
+  translationZh: 服务器
+  exampleEn: The website went down when the main server overheated.
+  exampleZh: 主服务器过热导致网站瘫痪。
+- id: toeic-w-096
+  track: toeic
+  topic: technology
+  headword: database
+  ipa: /ˈdeɪtəbeɪs/
+  pos: n.
+  definitionEn: An organized collection of information stored on a computer.
+  translationZh: 数据库
+  exampleEn: Customer records are stored in a secure central database.
+  exampleZh: 客户记录保存在一个安全的中央数据库中。
+- id: toeic-w-097
+  track: toeic
+  topic: technology
+  headword: encryption
+  ipa: /ɪnˈkrɪpʃn/
+  pos: n.
+  definitionEn: Converting data into code to prevent unauthorized access.
+  translationZh: 加密
+  exampleEn: All payment information is protected by strong encryption.
+  exampleZh: 所有支付信息都受到高强度加密保护。
+- id: toeic-w-098
+  track: toeic
+  topic: technology
+  headword: compatible
+  ipa: /kəmˈpætəbl/
+  pos: adj.
+  definitionEn: Able to work together with another device or system.
+  translationZh: 兼容的
+  exampleEn: The new printer is compatible with both Windows and Mac computers.
+  exampleZh: 这款新打印机与 Windows 和 Mac 电脑均兼容。
+- id: toeic-w-099
+  track: toeic
+  topic: technology
+  headword: glitch
+  ipa: /ɡlɪtʃ/
+  pos: n.
+  definitionEn: A small, sudden problem in equipment or software.
+  translationZh: 小故障
+  exampleEn: A software glitch caused some invoices to print twice.
+  exampleZh: 软件小故障导致部分发票重复打印。
+- id: toeic-w-100
+  track: toeic
+  topic: technology
+  headword: backup
+  ipa: /ˈbækʌp/
+  pos: n.
+  definitionEn: A copy of data kept in case the original is lost.
+  translationZh: 备份
+  exampleEn: The system creates an automatic backup every night at midnight.
+  exampleZh: 系统每天午夜自动创建备份。

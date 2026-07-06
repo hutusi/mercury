@@ -176,3 +176,58 @@
         - placed on a waiting list
       correctIndex: 2
       explanationZh: shortlisted 指从全部申请人中“初选入围、进入下一轮”。"Only shortlisted candidates will be contacted" 意为只有进入下一轮筛选的候选人才会收到通知。选项 D “列入等候名单”形似但含义相反——waiting list 是暂未入选者。
+- id: toeic-r-004
+  track: toeic
+  title: "Notice: Elevator Modernization at Harborview Tower"
+  titleZh: 港景大厦电梯改造通知
+  genre: Notice
+  passage: |-
+    NOTICE TO ALL TENANTS OF HARBORVIEW TOWER
+
+    Beginning Monday, 4 August, the building's two passenger elevators will undergo scheduled modernization, one at a time. Work on the east elevator will start first and is expected to take approximately three weeks. The west elevator will remain in service during this period, though tenants should allow extra time during the morning and evening rush, when wait times may exceed ten minutes.
+
+    The freight elevator will be reserved for contractors between 9:00 a.m. and 4:00 p.m. on weekdays. Deliveries requiring the freight elevator should therefore be scheduled before 9:00 a.m. or after 4:00 p.m. Tenants expecting large shipments during working hours are asked to notify the building office at least forty-eight hours in advance so that arrangements can be made.
+
+    While the work is underway, the stairwells on both sides of the lobby will stay open, and tenants on lower floors are encouraged to use them. The modernization will bring faster, quieter cabs and a new destination-control system that groups passengers by floor, which is expected to cut average wait times by a third once both elevators return to service in late September.
+
+    We apologize for the inconvenience and appreciate your patience.
+
+    Building Management
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: What is the main purpose of the notice?
+      options:
+        - To announce a change in building ownership
+        - To inform tenants about upcoming elevator work
+        - To advertise office space for rent
+        - To explain new delivery company policies
+      correctIndex: 1
+      explanationZh: 首段开门见山："the building's two passenger elevators will undergo scheduled modernization"——通知租户电梯即将改造及相关安排。配送安排（选项 D）只是改造期间的附带说明，不是通知的主要目的。
+    - id: q2
+      stem: What are tenants asked to do before receiving large deliveries?
+      options:
+        - Use the west elevator instead
+        - Schedule them on weekends only
+        - Notify the building office two days ahead
+        - Carry the items up the stairwells
+      correctIndex: 2
+      explanationZh: 原文要求 "notify the building office at least forty-eight hours in advance"，forty-eight hours 即两天，对应选项 C。楼梯（选项 D）是建议低楼层租户日常通行用的，与收货无关。
+    - id: q3
+      stem: According to the notice, what benefit will the modernization bring?
+      options:
+        - Lower monthly service fees
+        - Additional freight elevators
+        - A larger lobby area
+        - Shorter average waiting times
+      correctIndex: 3
+      explanationZh: 末段说明新的目的地控制系统 "is expected to cut average wait times by a third"——平均等待时间将缩短三分之一。通知从头到尾没有提到费用、大堂面积或增加货梯。
+    - id: q4
+      stem: When are both elevators expected to be back in service?
+      options:
+        - In late September
+        - In early August
+        - Within three weeks
+        - By the end of the year
+      correctIndex: 0
+      explanationZh: 原文写明 "once both elevators return to service in late September"。选项 C 有迷惑性：three weeks 只是东侧电梯第一阶段的工期，不是全部工程完工的时间。

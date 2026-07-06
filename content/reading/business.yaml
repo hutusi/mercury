@@ -150,3 +150,54 @@
         - They judge competence by how directly a colleague speaks
       correctIndex: 2
       explanationZh: 末段指出有经验的管理者 "make a habit of separating style from substance"，并通过追问和书面确认来核实实质内容。选项 D 与原文 "resist the temptation to judge a colleague's competence by how directly..." 正好相反；文章也没有要求完全照搬对方风格——"The skill is not to abandon your own style"（排除 A）。
+- id: biz-r-004
+  track: business
+  title: "Case Study: A Loyalty Program Nobody Used"
+  titleZh: 案例研究：无人问津的会员计划
+  genre: Case study
+  passage: |-
+    When Meridian Coffee introduced a loyalty program across its sixty stores in 2022, the finance team projected that a third of regular customers would join within a year. Twelve months later, the program appeared in fewer than eight percent of transactions. Customers had to download a separate app, create an account, and then earn one point per dollar toward a free drink at two hundred points. Baristas quietly hated it: walking a customer through registration took minutes that the morning rush did not have.
+
+    Rather than commissioning another survey, the new program manager spent a week behind the counter at three stores, watching what actually happened at checkout. The observation surfaced two points of friction. Sign-up took an average of four minutes, so staff stopped offering it whenever a queue formed. And the first reward sat roughly forty visits away — too distant to change anyone's behaviour.
+
+    The redesign attacked both problems. Enrollment moved to the register: a customer now joins by giving a phone number, which takes about ten seconds. The reward ladder was rebuilt so that a small perk — a free flavour upgrade — arrives within the first month of typical visits, with the free drink at one hundred and twenty points. Store incentives changed too: instead of individual sign-up quotas, which had encouraged staff to pressure customers, stores now earn bonuses on overall participation.
+
+    Six months later, enrollment had quadrupled and members were visiting fifteen percent more often. The lesson Meridian drew was blunt: a loyalty program does not fail in the spreadsheet; it fails at the counter. However elegant the economics, the enrollment experience is the product.
+  suggestedMinutes: 9
+  questions:
+    - id: q1
+      stem: Why did the original program attract so few members?
+      options:
+        - The rewards were too generous to sustain
+        - Customers preferred a competitor's program
+        - Joining was slow and the first reward felt out of reach
+        - It was only available in some of the stores
+      correctIndex: 2
+      explanationZh: 第二段总结了两个摩擦点：注册平均需要四分钟（"Sign-up took an average of four minutes"），且第一份奖励约四十次消费之遥（"too distant to change anyone's behaviour"），对应选项 C。文中没有出现竞争对手，奖励的问题是太远而非太慷慨。
+    - id: q2
+      stem: How did the program manager investigate the problem?
+      options:
+        - By working behind the counter and watching checkouts
+        - By commissioning a customer survey
+        - By reviewing the finance team's projections
+        - By interviewing baristas by email
+      correctIndex: 0
+      explanationZh: 原文特意对比："Rather than commissioning another survey, the new program manager spent a week behind the counter... watching what actually happened at checkout"——亲自站柜台观察，而不是再做一次问卷（排除 B）。
+    - id: q3
+      stem: What change was made to staff incentives?
+      options:
+        - Baristas received a bonus for each individual sign-up
+        - Bonuses were tied to store-wide participation instead of personal quotas
+        - Staff were required to register customers during the morning rush
+        - Sales incentives were removed entirely
+      correctIndex: 1
+      explanationZh: 第三段写道："instead of individual sign-up quotas, which had encouraged staff to pressure customers, stores now earn bonuses on overall participation"——把个人指标改为门店整体参与度奖金。选项 A 恰恰是被取消的旧做法。
+    - id: q4
+      stem: Which statement best summarises the lesson of the case?
+      options:
+        - Loyalty programs should offer bigger rewards
+        - Financial projections should be more conservative
+        - Surveys are more reliable than direct observation
+        - A program's enrollment experience matters more than its design on paper
+      correctIndex: 3
+      explanationZh: 结尾点题："a loyalty program does not fail in the spreadsheet; it fails at the counter... the enrollment experience is the product"——纸面设计再优雅，注册体验才是成败关键。选项 C 与案例的做法正好相反。

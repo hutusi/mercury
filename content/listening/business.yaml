@@ -133,3 +133,79 @@
         - Send new samples before shipping
       correctIndex: 1
       explanationZh: Mr. Reyes 提出："Could you copy our warehouse manager on the confirmation email?"——请 Sofia 在书面确认邮件中抄送仓库经理，方便安排收货。copy someone on an email 是商务英语常用表达，意为“抄送某人”，不是打电话给她（排除 A）。
+- id: biz-l-003
+  track: business
+  title: Negotiating a Software Renewal
+  titleZh: 软件续约谈判
+  style: 谈判 · Negotiation
+  script:
+    - speaker: A
+      text: Thanks for making time, Priya. I wanted to talk about your contract renewal before it expires at the end of the month.
+    - speaker: B
+      text: Of course, Daniel. I'll be honest — the fifteen percent price increase in your proposal caught us by surprise.
+    - speaker: A
+      text: I understand. The increase reflects the new analytics module and the doubled storage we added this year.
+    - speaker: B
+      text: The analytics module is useful, but only two of our teams actually use it. We can't justify paying for the whole company.
+    - speaker: A
+      text: That's fair. What if we moved you to a tiered plan? You'd pay the higher rate only for the seats that use analytics.
+    - speaker: B
+      text: That sounds more reasonable. What would it do to the total?
+    - speaker: A
+      text: Based on your current usage, the renewal would come to about a six percent increase overall, instead of fifteen.
+    - speaker: B
+      text: Six percent is workable, but I'd need a two-year price lock to get sign-off from our finance director.
+    - speaker: A
+      text: I can do a two-year lock if you commit to annual payment rather than monthly invoices.
+    - speaker: B
+      text: Annual payment is fine — we prefer fewer invoices anyway. Can you send the revised terms in writing today?
+    - speaker: A
+      text: I'll email the updated agreement this afternoon, and I'll copy your procurement team as well.
+    - speaker: B
+      text: Perfect. If the numbers match what we discussed, you'll have the signature by Friday.
+  questions:
+    - id: q1
+      stem: What surprised the woman about the renewal proposal?
+      options:
+        - A fifteen percent price increase
+        - The removal of the analytics module
+        - A change to monthly invoicing
+        - An earlier expiry date
+      correctIndex: 0
+      explanationZh: Priya 开场就说："the fifteen percent price increase in your proposal caught us by surprise"——catch someone by surprise 意为“让人意外”。分析模块并没有被移除，反而是涨价的理由之一（排除 B）。
+    - id: q2
+      stem: What solution does the man propose?
+      options:
+        - Cancelling the analytics module for all teams
+        - Delaying the renewal by one month
+        - Charging the higher rate only for seats that use analytics
+        - Reducing the company's storage capacity
+      correctIndex: 2
+      explanationZh: Daniel 提出分级方案："What if we moved you to a tiered plan? You'd pay the higher rate only for the seats that use analytics"——只有实际使用分析功能的席位才按高价计费，从而把整体涨幅降到约百分之六。
+    - id: q3
+      stem: What condition does the woman attach to accepting the six percent increase?
+      options:
+        - Switching to monthly invoices
+        - A two-year price lock
+        - A discount for early payment
+        - A free trial for the other teams
+      correctIndex: 1
+      explanationZh: Priya 说："I'd need a two-year price lock to get sign-off from our finance director"——需要两年价格锁定才能获得财务总监批准。选项 A 方向相反：最终商定的是年付而非月付。
+    - id: q4
+      stem: What will the man do this afternoon?
+      options:
+        - Call the finance director
+        - Visit the client's office
+        - Prepare an analytics demonstration
+        - Send the revised terms in writing
+      correctIndex: 3
+      explanationZh: 对应 Priya 的请求，Daniel 承诺："I'll email the updated agreement this afternoon, and I'll copy your procurement team as well"——今天下午书面发送修订条款并抄送采购团队。
+    - id: q5
+      stem: What does the woman say will happen by Friday?
+      options:
+        - The contract will expire
+        - The signed agreement will be returned
+        - The finance director will schedule a meeting
+        - The analytics module will be rolled out
+      correctIndex: 1
+      explanationZh: 结尾 Priya 承诺："If the numbers match what we discussed, you'll have the signature by Friday"——只要数字与商谈一致，周五前就会签字返回。合同到期时间是月底，不是周五（排除 A）。
