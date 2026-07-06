@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "track": {
+        "type": "string",
+        "enum": ["toeic", "ielts", "business"]
+      },
+      "topic": {
+        "type": "string"
+      },
+      "headword": {
+        "type": "string"
+      },
+      "ipa": {
+        "type": "string"
+      },
+      "pos": {
+        "type": "string"
+      },
+      "definitionEn": {
+        "type": "string"
+      },
+      "translationZh": {
+        "type": "string"
+      },
+      "exampleEn": {
+        "type": "string"
+      },
+      "exampleZh": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "track",
+      "topic",
+      "headword",
+      "ipa",
+      "pos",
+      "definitionEn",
+      "translationZh",
+      "exampleEn",
+      "exampleZh"
+    ],
+    "additionalProperties": false
+  }
+}

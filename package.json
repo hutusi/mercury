@@ -17,6 +17,7 @@
     "db:migrate": "bunx tsx src/lib/db/migrate.ts",
     "db:seed": "bunx tsx src/lib/db/seed.ts",
     "db:studio": "drizzle-kit studio",
+    "content:schemas": "bun scripts/generate-content-schemas.ts && prettier --write content/.schemas",
     "test": "bun test src",
     "test:e2e": "playwright test"
   },
