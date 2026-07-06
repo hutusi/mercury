@@ -1,0 +1,178 @@
+# yaml-language-server: $schema=../.schemas/reading.schema.json
+- id: toeic-r-001
+  track: toeic
+  title: Delivery Delay Notice from Brightline Office Supplies
+  titleZh: Brightline 办公用品公司的延迟发货通知
+  genre: Email
+  passage: |-
+    From: Marina Kovacs, Account Manager, Brightline Office Supplies
+    To: Daniel Cheng, Procurement Lead, Vantagra Solutions
+    Subject: Delay to Order #58214
+    Date: 12 March
+
+    Dear Mr. Cheng,
+
+    I am writing to inform you that part of your order #58214, placed on 3 March, will arrive later than scheduled. The forty ergonomic chairs are on track for delivery this Friday as originally planned. However, the twelve height-adjustable desks are temporarily out of stock because our manufacturer is dealing with a production backlog. The desks are now expected to reach your office on 26 March, ten days behind schedule.
+
+    To compensate for the inconvenience, we would like to offer you a 15 percent discount on the desks as well as complimentary installation of all items, a service that normally costs $300. Alternatively, if the revised date does not suit your team, we can substitute a similar model from another supplier that could be delivered by 19 March, although that model is available only in white.
+
+    Please let me know by Wednesday which option you prefer so that we can adjust the shipment accordingly. We appreciate your patience and value your continued business.
+
+    Sincerely,
+    Marina Kovacs
+    Account Manager, Brightline Office Supplies
+  suggestedMinutes: 7
+  questions:
+    - id: q1
+      stem: Why did Ms. Kovacs write the email?
+      options:
+        - To confirm that a complete order will arrive on Friday
+        - To explain a shipping delay and propose solutions
+        - To promote a new line of office furniture
+        - "To request payment for order #58214"
+      correctIndex: 1
+      explanationZh: 邮件开头明确写道 "I am writing to inform you that part of your order... will arrive later than scheduled"，随后提出折扣、免费安装、替换型号等补救方案，因此正确答案是“解释延迟并提出解决方案”。选项 A 具有迷惑性：周五按时到货的只有椅子，并非全部订单。
+    - id: q2
+      stem: According to the email, what is expected to happen on 26 March?
+      options:
+        - The ergonomic chairs will be delivered
+        - The discount offer will expire
+        - The height-adjustable desks will arrive
+        - Mr. Cheng must choose one of the two options
+      correctIndex: 2
+      explanationZh: 原文说 "The desks are now expected to reach your office on 26 March"，即升降桌将于 3 月 26 日送达。椅子周五到货，回复期限是周三（Wednesday），这两个日期都是干扰项。
+    - id: q3
+      stem: What is indicated about the substitute desks from another supplier?
+      options:
+        - They cost 15 percent more than the original model
+        - They require an extra $300 installation fee
+        - They cannot be delivered before 26 March
+        - They come in only one color
+      correctIndex: 3
+      explanationZh: 邮件提到替换型号 "is available only in white"，即只有白色一种颜色。它反而能提前在 3 月 19 日送达（排除 C）；15% 折扣和 $300 安装费说的是第一种补偿方案，与替换型号无关。
+    - id: q4
+      stem: The word "complimentary" in paragraph 2 is closest in meaning to
+      options:
+        - free of charge
+        - highly praised
+        - optional
+        - professional
+      correctIndex: 0
+      explanationZh: complimentary 在此意为“免费赠送的”，后文 "a service that normally costs $300" 说明这项通常收费 $300 的安装服务此次不收费。注意不要与 complimentary 的另一词源含义“赞美的”（选项 B）混淆，商务语境中修饰服务时几乎总是指“免费”。
+- id: toeic-r-002
+  track: toeic
+  title: "Memo: New Expense Reporting System"
+  titleZh: 内部备忘录：启用新报销系统
+  genre: Memo
+  passage: |-
+    MEMO
+
+    To: All Staff
+    From: Priya Raman, Director of Operations
+    Date: 8 October
+    Subject: Transition to the ClearPath Expense System
+
+    Beginning Monday, 1 November, the company will replace paper expense forms with ClearPath, an online expense reporting tool. Employees will photograph their receipts with the ClearPath mobile application and submit claims directly from their phones or computers. Managers will receive automatic notifications and are expected to approve or return claims within three business days.
+
+    The change should benefit everyone: reimbursements will be processed within one week of approval, compared with the current average of three weeks. The finance team will also gain accurate, real-time data on departmental spending, which will simplify quarterly budget reviews.
+
+    To prepare staff for the transition, the finance team will hold two identical training sessions in Room 4B on 20 and 22 October. Each session lasts one hour and includes a live demonstration. Please register for one of the sessions on the company intranet no later than 15 October, as seating is limited to thirty people per session.
+
+    During the transition period, paper forms will still be accepted until 30 November. After that date, only claims submitted through ClearPath will be processed. Questions may be directed to the finance help desk at extension 4501.
+  suggestedMinutes: 6
+  questions:
+    - id: q1
+      stem: What is the main purpose of the memo?
+      options:
+        - To announce changes to the company's travel budget
+        - To remind managers to approve expense claims faster
+        - To inform staff about a new procedure for expense claims
+        - To report the results of a quarterly budget review
+      correctIndex: 2
+      explanationZh: 备忘录主旨是宣布公司将用 ClearPath 线上系统取代纸质报销单，并说明时间表和培训安排。选项 B 有迷惑性：经理需在三个工作日内审批只是新流程的一个细节，不是备忘录的目的；D 中的季度预算审查只是顺带提到的好处。
+    - id: q2
+      stem: What are employees asked to do by 15 October?
+      options:
+        - Sign up for a training session on the intranet
+        - Submit their remaining paper expense forms
+        - Download the ClearPath mobile application
+        - Contact the finance help desk
+      correctIndex: 0
+      explanationZh: 原文要求 "Please register for one of the sessions on the company intranet no later than 15 October"，即 10 月 15 日前在内网报名培训。纸质表格截止日是 11 月 30 日，属于日期干扰项。
+    - id: q3
+      stem: According to the memo, how will reimbursement times change?
+      options:
+        - From one week to three business days
+        - From three business days to one week
+        - From one month to three weeks
+        - From about three weeks to about one week
+      correctIndex: 3
+      explanationZh: 原文写道 "reimbursements will be processed within one week of approval, compared with the current average of three weeks"：报销到账时间将从平均三周缩短到一周。“三个工作日”是经理审批的时限，用来构造 A、B 两个干扰项。
+    - id: q4
+      stem: What can be inferred about expense claims submitted in December?
+      options:
+        - They will require approval from the Director of Operations
+        - They must be submitted through ClearPath
+        - They will be reimbursed within three weeks
+        - They may still be filed using paper forms
+      correctIndex: 1
+      explanationZh: 备忘录说纸质表格只接受到 11 月 30 日，"After that date, only claims submitted through ClearPath will be processed"。因此 12 月的报销必须走 ClearPath 系统，选项 D 与原文直接矛盾。
+- id: toeic-r-003
+  track: toeic
+  title: "Job Opening: Regional Sales Manager"
+  titleZh: 招聘广告：区域销售经理
+  genre: Advertisement
+  passage: |-
+    REGIONAL SALES MANAGER
+    Meridian Beverage Group — Kuala Lumpur
+
+    Meridian Beverage Group, one of the fastest-growing drinks distributors in Southeast Asia, is seeking an experienced Regional Sales Manager to lead its expansion in the Kuala Lumpur area.
+
+    Responsibilities
+    The successful candidate will manage a team of eight sales representatives, develop annual sales plans for the region, and negotiate supply contracts with supermarket chains, hotels, and restaurants. The position reports directly to the Director of Sales and requires a detailed performance report at the end of each month.
+
+    Requirements
+    Applicants must hold a bachelor's degree in business or a related field and have at least five years of sales experience, including a minimum of two years in a supervisory role. Fluency in English is essential, and proficiency in Malay is preferred. Because the role involves visiting clients across the region, candidates should be willing to travel up to three days per week.
+
+    What We Offer
+    We provide a competitive salary, performance-based bonuses, a company car, and comprehensive medical coverage. New managers will also complete a two-week orientation program at our Singapore headquarters before starting in Kuala Lumpur.
+
+    To apply, send a resume and cover letter to careers@meridianbev.com by 31 August. Only shortlisted candidates will be contacted. Meridian Beverage Group is an equal opportunity employer.
+  suggestedMinutes: 6
+  questions:
+    - id: q1
+      stem: What is indicated about the Regional Sales Manager position?
+      options:
+        - It involves frequent travel within the region
+        - It is based at the company's Singapore headquarters
+        - It requires fluency in both English and Malay
+        - It reports to the team of sales representatives
+      correctIndex: 0
+      explanationZh: 广告明确写道 "candidates should be willing to travel up to three days per week"，即每周最多出差三天，可见该职位需要频繁出差。工作地点在吉隆坡，新加坡只是入职培训地点（排除 B）；马来语是 preferred（优先）而非必需（排除 C）。
+    - id: q2
+      stem: According to the advertisement, what is a stated requirement for applicants?
+      options:
+        - A master's degree in business administration
+        - Experience in the beverage industry
+        - Willingness to relocate to Singapore
+        - At least two years of supervisory experience
+      correctIndex: 3
+      explanationZh: 要求部分写明五年销售经验中须包含 "a minimum of two years in a supervisory role"，即至少两年管理经验。学历要求是学士（bachelor's degree）而非硕士；广告并未要求饮料行业背景，公司自身是饮料分销商，这是干扰信息。
+    - id: q3
+      stem: What will new managers do before starting work in Kuala Lumpur?
+      options:
+        - Negotiate their first supply contracts
+        - Attend a two-week orientation program
+        - Submit a monthly performance report
+        - Meet the eight sales representatives
+      correctIndex: 1
+      explanationZh: 福利部分提到 "New managers will also complete a two-week orientation program at our Singapore headquarters before starting in Kuala Lumpur"，即入职前先在新加坡总部参加两周培训。月度报告和合同谈判是上岗后的日常职责，不是入职前的安排。
+    - id: q4
+      stem: The word "shortlisted" in the last paragraph is closest in meaning to
+      options:
+        - recently hired
+        - briefly interviewed
+        - selected for further consideration
+        - placed on a waiting list
+      correctIndex: 2
+      explanationZh: shortlisted 指从全部申请人中“初选入围、进入下一轮”。"Only shortlisted candidates will be contacted" 意为只有进入下一轮筛选的候选人才会收到通知。选项 D “列入等候名单”形似但含义相反——waiting list 是暂未入选者。

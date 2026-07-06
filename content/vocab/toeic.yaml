@@ -1,0 +1,506 @@
+# yaml-language-server: $schema=../.schemas/vocab.schema.json
+# office (办公)
+- id: toeic-w-001
+  track: toeic
+  topic: office
+  headword: invoice
+  ipa: /ˈɪnvɔɪs/
+  pos: n.
+  definitionEn: A document listing goods or services provided and the amount due.
+  translationZh: 发票；账单
+  exampleEn: Please send the invoice to our accounting department by Friday.
+  exampleZh: 请在周五前把发票发给我们的财务部门。
+- id: toeic-w-002
+  track: toeic
+  topic: office
+  headword: memorandum
+  ipa: /ˌmeməˈrændəm/
+  pos: n.
+  definitionEn: A short official note or report circulated within an organization.
+  translationZh: 备忘录
+  exampleEn: All staff received a memorandum about the new security procedures yesterday.
+  exampleZh: 全体员工昨天收到了一份关于新安全规程的备忘录。
+- id: toeic-w-003
+  track: toeic
+  topic: office
+  headword: stationery
+  ipa: /ˈsteɪʃəneri/
+  pos: n.
+  definitionEn: Paper, pens, and other materials used for writing in an office.
+  translationZh: 文具
+  exampleEn: Please order extra stationery for the new employees starting next Monday.
+  exampleZh: 请为下周一入职的新员工订购额外的文具。
+- id: toeic-w-004
+  track: toeic
+  topic: office
+  headword: agenda
+  ipa: /əˈdʒendə/
+  pos: n.
+  definitionEn: A list of items to be discussed at a meeting.
+  translationZh: 议程
+  exampleEn: The budget review is the first item on today's agenda.
+  exampleZh: 预算审查是今天议程上的第一项。
+- id: toeic-w-005
+  track: toeic
+  topic: office
+  headword: courier
+  ipa: /ˈkʊriər/
+  pos: n.
+  definitionEn: A person or company that delivers documents or packages quickly.
+  translationZh: 快递员；快递公司
+  exampleEn: The signed documents were sent by courier to the head office this morning.
+  exampleZh: 签署好的文件今天上午已由快递送往总部。
+- id: toeic-w-006
+  track: toeic
+  topic: office
+  headword: inventory
+  ipa: /ˈɪnvəntɔːri/
+  pos: n.
+  definitionEn: A complete list or stock of goods held by a business.
+  translationZh: 库存；存货清单
+  exampleEn: Staff will conduct a full inventory of office equipment at the end of the month.
+  exampleZh: 员工将在月底对办公设备进行全面盘点。
+- id: toeic-w-007
+  track: toeic
+  topic: office
+  headword: malfunction
+  ipa: /ˌmælˈfʌŋkʃn/
+  pos: n.
+  definitionEn: A failure of a machine or system to work correctly.
+  translationZh: 故障
+  exampleEn: The photocopier malfunction delayed the printing of the conference materials.
+  exampleZh: 复印机故障耽误了会议材料的打印。
+- id: toeic-w-008
+  track: toeic
+  topic: office
+  headword: expedite
+  ipa: /ˈekspədaɪt/
+  pos: v.
+  definitionEn: To make a process happen more quickly.
+  translationZh: 加快；加速办理
+  exampleEn: We hired extra staff to expedite the processing of customer orders.
+  exampleZh: 我们增聘了人手以加快客户订单的处理。
+- id: toeic-w-009
+  track: toeic
+  topic: office
+  headword: premises
+  ipa: /ˈpremɪsɪz/
+  pos: n.
+  definitionEn: The buildings and land occupied by a business.
+  translationZh: 经营场所；办公楼
+  exampleEn: Visitors must wear identification badges at all times on company premises.
+  exampleZh: 访客在公司场所内必须始终佩戴身份识别牌。
+- id: toeic-w-010
+  track: toeic
+  topic: office
+  headword: renovation
+  ipa: /ˌrenəˈveɪʃn/
+  pos: n.
+  definitionEn: The act of repairing and improving a building.
+  translationZh: 翻新；装修
+  exampleEn: The third floor will be closed during the office renovation next month.
+  exampleZh: 下个月办公室装修期间，三楼将暂停使用。
+# finance (财务)
+- id: toeic-w-011
+  track: toeic
+  topic: finance
+  headword: reimburse
+  ipa: /ˌriːɪmˈbɜːrs/
+  pos: v.
+  definitionEn: To pay someone back money they have spent for business purposes.
+  translationZh: 报销；偿还
+  exampleEn: The company will reimburse employees for travel expenses within two weeks.
+  exampleZh: 公司将在两周内为员工报销差旅费用。
+- id: toeic-w-012
+  track: toeic
+  topic: finance
+  headword: expenditure
+  ipa: /ɪkˈspendɪtʃər/
+  pos: n.
+  definitionEn: The amount of money spent by an organization.
+  translationZh: 支出；开支
+  exampleEn: The finance team reviewed last quarter's expenditure to identify possible savings.
+  exampleZh: 财务团队审查了上季度的支出，以寻找可节省的空间。
+- id: toeic-w-013
+  track: toeic
+  topic: finance
+  headword: audit
+  ipa: /ˈɔːdɪt/
+  pos: n.
+  definitionEn: An official inspection of an organization's financial records.
+  translationZh: 审计
+  exampleEn: External accountants will conduct the annual audit in early April.
+  exampleZh: 外部会计师将于四月初进行年度审计。
+- id: toeic-w-014
+  track: toeic
+  topic: finance
+  headword: ledger
+  ipa: /ˈledʒər/
+  pos: n.
+  definitionEn: A book or file recording a company's financial transactions.
+  translationZh: 分类账；账簿
+  exampleEn: Every payment must be recorded in the general ledger before month-end closing.
+  exampleZh: 所有付款都必须在月末结账前记入总账。
+- id: toeic-w-015
+  track: toeic
+  topic: finance
+  headword: quarterly
+  ipa: /ˈkwɔːrtərli/
+  pos: adj.
+  definitionEn: Happening or produced four times a year.
+  translationZh: 季度的
+  exampleEn: The quarterly financial report shows a steady increase in overseas sales.
+  exampleZh: 季度财务报告显示海外销售额稳步增长。
+- id: toeic-w-016
+  track: toeic
+  topic: finance
+  headword: revenue
+  ipa: /ˈrevənuː/
+  pos: n.
+  definitionEn: The total income a company receives from its business activities.
+  translationZh: 收入；营业额
+  exampleEn: Online sales now account for nearly half of the company's revenue.
+  exampleZh: 线上销售目前占公司收入的近一半。
+- id: toeic-w-017
+  track: toeic
+  topic: finance
+  headword: deficit
+  ipa: /ˈdefɪsɪt/
+  pos: n.
+  definitionEn: The amount by which spending exceeds income.
+  translationZh: 赤字；亏损
+  exampleEn: The department must cut costs to reduce this year's budget deficit.
+  exampleZh: 该部门必须削减成本以减少今年的预算赤字。
+- id: toeic-w-018
+  track: toeic
+  topic: finance
+  headword: installment
+  ipa: /ɪnˈstɔːlmənt/
+  pos: n.
+  definitionEn: One of several regular payments made over a period of time.
+  translationZh: 分期付款
+  exampleEn: Clients may pay for the equipment in twelve monthly installments.
+  exampleZh: 客户可以分十二个月按月分期支付设备款项。
+- id: toeic-w-019
+  track: toeic
+  topic: finance
+  headword: remittance
+  ipa: /rɪˈmɪtns/
+  pos: n.
+  definitionEn: An amount of money sent as payment, especially by mail or bank.
+  translationZh: 汇款
+  exampleEn: Please include the invoice number with your remittance to avoid processing delays.
+  exampleZh: 请在汇款时注明发票号码，以免延误处理。
+- id: toeic-w-020
+  track: toeic
+  topic: finance
+  headword: fiscal
+  ipa: /ˈfɪskl/
+  pos: adj.
+  definitionEn: Relating to government or company finances and money management.
+  translationZh: 财政的；会计的
+  exampleEn: The company's fiscal year ends on March 31 rather than in December.
+  exampleZh: 公司的财政年度截止于3月31日，而非12月。
+# travel (差旅)
+- id: toeic-w-021
+  track: toeic
+  topic: travel
+  headword: itinerary
+  ipa: /aɪˈtɪnəreri/
+  pos: n.
+  definitionEn: A detailed plan of a journey, including routes and schedules.
+  translationZh: 行程表
+  exampleEn: The assistant emailed a detailed itinerary for the three-day business trip to Tokyo.
+  exampleZh: 助理通过电子邮件发送了东京三日商务出差的详细行程表。
+- id: toeic-w-022
+  track: toeic
+  topic: travel
+  headword: layover
+  ipa: /ˈleɪoʊvər/
+  pos: n.
+  definitionEn: A short stay between parts of a journey, especially between flights.
+  translationZh: 中途停留；转机停留
+  exampleEn: The cheapest flight has a four-hour layover in Dubai.
+  exampleZh: 最便宜的航班需要在迪拜停留四个小时转机。
+- id: toeic-w-023
+  track: toeic
+  topic: travel
+  headword: accommodation
+  ipa: /əˌkɑːməˈdeɪʃn/
+  pos: n.
+  definitionEn: A place to stay, such as a hotel room.
+  translationZh: 住宿
+  exampleEn: The conference organizers will arrange accommodation for all invited speakers.
+  exampleZh: 会议主办方将为所有受邀演讲嘉宾安排住宿。
+- id: toeic-w-024
+  track: toeic
+  topic: travel
+  headword: boarding pass
+  ipa: /ˈbɔːrdɪŋ pæs/
+  pos: n.
+  definitionEn: A card that allows a passenger to get on a plane.
+  translationZh: 登机牌
+  exampleEn: Please have your boarding pass and passport ready at the gate.
+  exampleZh: 请在登机口备好登机牌和护照。
+- id: toeic-w-025
+  track: toeic
+  topic: travel
+  headword: round-trip
+  ipa: /ˌraʊnd ˈtrɪp/
+  pos: adj.
+  definitionEn: Traveling to a place and back again.
+  translationZh: 往返的
+  exampleEn: A round-trip ticket to Chicago costs less if you book three weeks ahead.
+  exampleZh: 提前三周预订去芝加哥的往返机票会更便宜。
+- id: toeic-w-026
+  track: toeic
+  topic: travel
+  headword: customs
+  ipa: /ˈkʌstəmz/
+  pos: n.
+  definitionEn: The government authority that inspects goods and luggage entering a country.
+  translationZh: 海关
+  exampleEn: After landing, the sales team cleared customs and headed straight to the hotel.
+  exampleZh: 落地后，销售团队通过海关，直接前往酒店。
+- id: toeic-w-027
+  track: toeic
+  topic: travel
+  headword: carry-on
+  ipa: /ˈkæri ɑːn/
+  pos: n.
+  definitionEn: A small bag that passengers may take onto a plane.
+  translationZh: 随身行李
+  exampleEn: Laptops must be removed from your carry-on at the security checkpoint.
+  exampleZh: 过安检时必须把笔记本电脑从随身行李中取出。
+- id: toeic-w-028
+  track: toeic
+  topic: travel
+  headword: fare
+  ipa: /fer/
+  pos: n.
+  definitionEn: The money paid for a journey by bus, train, or plane.
+  translationZh: 票价；车费
+  exampleEn: Employees may claim the train fare between the airport and the hotel.
+  exampleZh: 员工可以报销机场与酒店之间的火车票费用。
+- id: toeic-w-029
+  track: toeic
+  topic: travel
+  headword: excursion
+  ipa: /ɪkˈskɜːrʒn/
+  pos: n.
+  definitionEn: A short trip made for pleasure, often by a group.
+  translationZh: 短途旅行；远足
+  exampleEn: The conference schedule includes a half-day excursion to the old city.
+  exampleZh: 会议日程包括一次前往老城区的半日游。
+- id: toeic-w-030
+  track: toeic
+  topic: travel
+  headword: reservation
+  ipa: /ˌrezərˈveɪʃn/
+  pos: n.
+  definitionEn: An arrangement to have a room, seat, or table kept for you.
+  translationZh: 预订
+  exampleEn: I made a reservation for six at the restaurant near the client's office.
+  exampleZh: 我在客户办公室附近的餐厅订了六个人的位子。
+# contracts (合同)
+- id: toeic-w-031
+  track: toeic
+  topic: contracts
+  headword: comply
+  ipa: /kəmˈplaɪ/
+  pos: v.
+  definitionEn: To act according to a rule, agreement, or law.
+  translationZh: 遵守；遵从
+  exampleEn: All suppliers must comply with the safety standards stated in the contract.
+  exampleZh: 所有供应商都必须遵守合同中规定的安全标准。
+- id: toeic-w-032
+  track: toeic
+  topic: contracts
+  headword: warranty
+  ipa: /ˈwɔːrənti/
+  pos: n.
+  definitionEn: A written promise to repair or replace a faulty product.
+  translationZh: 保修；质保
+  exampleEn: The printer comes with a two-year warranty covering parts and labor.
+  exampleZh: 这台打印机附带两年保修，涵盖零件和人工费用。
+- id: toeic-w-033
+  track: toeic
+  topic: contracts
+  headword: clause
+  ipa: /klɔːz/
+  pos: n.
+  definitionEn: A separate section or condition in a legal document.
+  translationZh: 条款
+  exampleEn: The lawyer suggested adding a confidentiality clause to the agreement.
+  exampleZh: 律师建议在协议中增加一条保密条款。
+- id: toeic-w-034
+  track: toeic
+  topic: contracts
+  headword: breach
+  ipa: /briːtʃ/
+  pos: n.
+  definitionEn: An act of breaking a law, promise, or agreement.
+  translationZh: 违约；违反
+  exampleEn: Late delivery of the goods was considered a breach of contract.
+  exampleZh: 货物延迟交付被视为违反合同。
+- id: toeic-w-035
+  track: toeic
+  topic: contracts
+  headword: terminate
+  ipa: /ˈtɜːrmɪneɪt/
+  pos: v.
+  definitionEn: To end something officially, such as a contract or employment.
+  translationZh: 终止
+  exampleEn: Either party may terminate the agreement with thirty days' written notice.
+  exampleZh: 任何一方均可提前三十天书面通知终止本协议。
+- id: toeic-w-036
+  track: toeic
+  topic: contracts
+  headword: stipulate
+  ipa: /ˈstɪpjuleɪt/
+  pos: v.
+  definitionEn: To state clearly and firmly as a condition of an agreement.
+  translationZh: 规定；明确要求
+  exampleEn: The contract stipulates that payment must be made within sixty days.
+  exampleZh: 合同规定必须在六十天内付款。
+- id: toeic-w-037
+  track: toeic
+  topic: contracts
+  headword: provision
+  ipa: /prəˈvɪʒn/
+  pos: n.
+  definitionEn: A condition or arrangement included in a legal document.
+  translationZh: 条款；规定
+  exampleEn: Under the new provision, the supplier bears all shipping costs.
+  exampleZh: 根据新条款，供应商承担全部运费。
+- id: toeic-w-038
+  track: toeic
+  topic: contracts
+  headword: liability
+  ipa: /ˌlaɪəˈbɪləti/
+  pos: n.
+  definitionEn: Legal responsibility for damage, loss, or debt.
+  translationZh: 法律责任；债务
+  exampleEn: The clause limits the manufacturer's liability for damage during transport.
+  exampleZh: 该条款限定了制造商对运输途中损坏所承担的责任。
+- id: toeic-w-039
+  track: toeic
+  topic: contracts
+  headword: expiration
+  ipa: /ˌekspəˈreɪʃn/
+  pos: n.
+  definitionEn: The end of a period during which something is valid.
+  translationZh: 到期；期满
+  exampleEn: Please renew the license before its expiration date at the end of June.
+  exampleZh: 请在六月底许可证到期日之前完成续期。
+- id: toeic-w-040
+  track: toeic
+  topic: contracts
+  headword: amendment
+  ipa: /əˈmendmənt/
+  pos: n.
+  definitionEn: A change or addition made to a contract or law.
+  translationZh: 修正案；修改
+  exampleEn: Both parties signed an amendment extending the delivery deadline by two weeks.
+  exampleZh: 双方签署了一项修正条款，将交货期限延长两周。
+# hr (人事)
+- id: toeic-w-041
+  track: toeic
+  topic: hr
+  headword: recruit
+  ipa: /rɪˈkruːt/
+  pos: v.
+  definitionEn: To find and hire new people to join a company.
+  translationZh: 招聘；招募
+  exampleEn: The firm plans to recruit twenty engineers for its new research center.
+  exampleZh: 该公司计划为新研发中心招聘二十名工程师。
+- id: toeic-w-042
+  track: toeic
+  topic: hr
+  headword: applicant
+  ipa: /ˈæplɪkənt/
+  pos: n.
+  definitionEn: A person who formally applies for a job or position.
+  translationZh: 申请人；求职者
+  exampleEn: Over three hundred applicants applied for the marketing manager position.
+  exampleZh: 超过三百名求职者申请了市场经理这一职位。
+- id: toeic-w-043
+  track: toeic
+  topic: hr
+  headword: candidate
+  ipa: /ˈkændɪdət/
+  pos: n.
+  definitionEn: A person being considered for a job or position.
+  translationZh: 候选人
+  exampleEn: The hiring committee will interview five candidates for the finance director role.
+  exampleZh: 招聘委员会将面试五位财务总监职位的候选人。
+- id: toeic-w-044
+  track: toeic
+  topic: hr
+  headword: probation
+  ipa: /proʊˈbeɪʃn/
+  pos: n.
+  definitionEn: A trial period during which a new employee's performance is assessed.
+  translationZh: 试用期
+  exampleEn: New hires complete a three-month probation before their contracts become permanent.
+  exampleZh: 新员工需完成三个月试用期，之后合同才转为正式。
+- id: toeic-w-045
+  track: toeic
+  topic: hr
+  headword: compensation
+  ipa: /ˌkɑːmpenˈseɪʃn/
+  pos: n.
+  definitionEn: Money and benefits an employee receives for their work.
+  translationZh: 薪酬；补偿
+  exampleEn: The compensation package includes a base salary, bonuses, and health insurance.
+  exampleZh: 薪酬方案包括基本工资、奖金和医疗保险。
+- id: toeic-w-046
+  track: toeic
+  topic: hr
+  headword: appraisal
+  ipa: /əˈpreɪzl/
+  pos: n.
+  definitionEn: A formal assessment of an employee's job performance.
+  translationZh: 绩效考核；评估
+  exampleEn: Managers hold performance appraisals with each team member every June.
+  exampleZh: 经理每年六月与每位团队成员进行绩效考核。
+- id: toeic-w-047
+  track: toeic
+  topic: hr
+  headword: vacancy
+  ipa: /ˈveɪkənsi/
+  pos: n.
+  definitionEn: A job or position that is available to be filled.
+  translationZh: 职位空缺
+  exampleEn: The HR department posted a vacancy for a senior accountant on Monday.
+  exampleZh: 人力资源部周一发布了一个高级会计师的职位空缺。
+- id: toeic-w-048
+  track: toeic
+  topic: hr
+  headword: dismiss
+  ipa: /dɪsˈmɪs/
+  pos: v.
+  definitionEn: To officially remove someone from their job.
+  translationZh: 解雇
+  exampleEn: The company may dismiss employees who repeatedly violate safety regulations.
+  exampleZh: 公司可以解雇屡次违反安全规定的员工。
+- id: toeic-w-049
+  track: toeic
+  topic: hr
+  headword: orientation
+  ipa: /ˌɔːriənˈteɪʃn/
+  pos: n.
+  definitionEn: A training session introducing new employees to a company.
+  translationZh: 入职培训
+  exampleEn: All new staff attend a two-day orientation during their first week.
+  exampleZh: 所有新员工在入职第一周参加为期两天的入职培训。
+- id: toeic-w-050
+  track: toeic
+  topic: hr
+  headword: résumé
+  ipa: /ˈrezəmeɪ/
+  pos: n.
+  definitionEn: A written summary of your education, skills, and work experience.
+  translationZh: 简历
+  exampleEn: Please attach your résumé and a cover letter to the online application.
+  exampleZh: 请在网上申请中附上简历和求职信。
