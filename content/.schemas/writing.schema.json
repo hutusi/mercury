@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "track": {
+        "type": "string",
+        "enum": ["toeic", "ielts", "business"]
+      },
+      "taskType": {
+        "type": "string",
+        "enum": ["ielts_task1", "ielts_task2", "opinion_essay", "business_email", "business_report"]
+      },
+      "title": {
+        "type": "string"
+      },
+      "titleZh": {
+        "type": "string"
+      },
+      "promptEn": {
+        "type": "string"
+      },
+      "promptZh": {
+        "type": "string"
+      },
+      "minWords": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991
+      },
+      "suggestedMinutes": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991
+      },
+      "modelAnswer": {
+        "type": "string"
+      },
+      "checklist": {
+        "minItems": 3,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "en": {
+              "type": "string"
+            },
+            "zh": {
+              "type": "string"
+            }
+          },
+          "required": ["en", "zh"],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "id",
+      "track",
+      "taskType",
+      "title",
+      "titleZh",
+      "promptEn",
+      "promptZh",
+      "minWords",
+      "suggestedMinutes",
+      "modelAnswer",
+      "checklist"
+    ],
+    "additionalProperties": false
+  }
+}

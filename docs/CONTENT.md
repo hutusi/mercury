@@ -1,21 +1,29 @@
 # Content Authoring Guide
 
-All learning content is authored as typed TypeScript in `src/content/`, validated with zod, and loaded into Postgres by an idempotent seed script. This guide covers the model, the conventions, and the workflow for adding or editing content.
+All learning content is authored as YAML in the top-level `content/` directory, validated against the zod content model (`src/content/types.ts`), and loaded into Postgres by an idempotent seed script. The app never reads the YAML at runtime — pages and server actions query the seeded tables. This guide covers the model, the conventions, and the workflow for adding or editing content (see [ADR 0009](adr/0009-yaml-content-authoring.md) for why YAML).
 
 ## The content model
 
-Schemas and types live in `src/content/types.ts`. Every content kind follows the bilingual convention: **learning material in English, scaffolding in Simplified Chinese** — titles carry both (`title` / `titleZh`), prompts carry both (`promptEn` / `promptZh`), explanations are Chinese (`explanationZh`), and checklists are `{ en, zh }` pairs.
+Schemas and types live in `src/content/types.ts`; `src/content/load.ts` reads and validates the YAML files and exposes the `all*` aggregates to the seed script and tests. Every content kind follows the bilingual convention: **learning material in English, scaffolding in Simplified Chinese** — titles carry both (`title` / `titleZh`), prompts carry both (`promptEn` / `promptZh`), explanations are Chinese (`explanationZh`), and checklists are `{ en, zh }` pairs.
 
-| Kind       | File pattern                      | Export                | Schema                    |
-| ---------- | --------------------------------- | --------------------- | ------------------------- |
-| Vocabulary | `vocab/{toeic,ielts,business}.ts` | `toeicVocab` etc.     | `VocabWordSchema`         |
-| Reading    | `reading/{track}.ts`              | `toeicReading` etc.   | `ReadingExerciseSchema`   |
-| Listening  | `listening/{track}.ts`            | `toeicListening` etc. | `ListeningExerciseSchema` |
-| Writing    | `writing/{track}.ts`              | `toeicWriting` etc.   | `WritingPromptSchema`     |
-| Speaking   | `speaking/{track}.ts`             | `toeicSpeaking` etc.  | `SpeakingPromptSchema`    |
-| Mock exams | `exams/{toeic,ielts}-mini.ts`     | `toeicMiniExam` etc.  | `MockExamSchema`          |
+| Kind       | File pattern                                | Document shape     | Schema                    |
+| ---------- | ------------------------------------------- | ------------------ | ------------------------- |
+| Vocabulary | `content/vocab/{toeic,ielts,business}.yaml` | array of words     | `VocabWordSchema`         |
+| Reading    | `content/reading/{track}.yaml`              | array of exercises | `ReadingExerciseSchema`   |
+| Listening  | `content/listening/{track}.yaml`            | array of exercises | `ListeningExerciseSchema` |
+| Writing    | `content/writing/{track}.yaml`              | array of prompts   | `WritingPromptSchema`     |
+| Speaking   | `content/speaking/{track}.yaml`             | array of prompts   | `SpeakingPromptSchema`    |
+| Mock exams | `content/exams/{toeic,ielts}-mini.yaml`     | one exam object    | `MockExamSchema`          |
 
-New collections must be registered in `src/content/index.ts` (the seed script and tests read the `all*` aggregates).
+New files must be registered in `src/content/load.ts` — file order there is deliberate and hardcoded (vocabulary `sort_order` derives from array position; never load by directory order).
+
+## YAML authoring notes
+
+- Indent with 2 spaces. Multi-paragraph prose (`passage`, `promptEn`, `modelAnswer`) uses literal block scalars (`|-`) with a blank line between paragraphs.
+- The first line of every file is a `# yaml-language-server: $schema=…` directive pointing at the JSON Schemas in `content/.schemas/` — editors with the YAML language server (VS Code: the Red Hat YAML extension) validate and autocomplete as you type. Those schemas are generated from zod: run `bun run content:schemas` after changing `src/content/types.ts` (a unit test fails if you forget).
+- Item order matters: vocabulary order is review order. Append new items; don't reshuffle.
+- Quote strings that YAML would otherwise parse as something else (a value that is entirely digits, or a literal `null`/`true`). If you get it wrong, zod rejects the file with a pointed error at test/seed time — nothing bad reaches the DB.
+- Duplicate keys in a mapping are a parse error, and Prettier formats the files (`bun run format`).
 
 ## Id conventions — ids are load-bearing
 
@@ -39,9 +47,10 @@ Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001`
 
 ## Validation
 
-Two layers enforce the same invariants:
+Three layers enforce the same invariants:
 
-- `bun run test` → `src/content/content.test.ts`: zod parse of every collection, id uniqueness, per-exam question-id uniqueness, section-kind coverage, per-track coverage of all five practice areas.
+- The editor, live: the `$schema` directive validates shape as you type (advisory — zod is the authority).
+- `bun run test` → `src/content/content.test.ts`: every file loads through `src/content/load.ts` (zod parse with file-scoped errors), id uniqueness, per-exam question-id uniqueness, section-kind coverage, per-track coverage of all five practice areas. It also guards the pipeline itself: app code must not import the loader (runtime content comes from Postgres), and the committed JSON Schemas must match the zod model.
 - `bun run db:seed` re-validates before writing and refuses duplicate ids.
 
 MCQs are exactly 4 options with `correctIndex` in 0–3 (schema-enforced).
@@ -49,7 +58,7 @@ MCQs are exactly 4 options with `correctIndex` in 0–3 (schema-enforced).
 ## Seed workflow
 
 ```bash
-# 1. Edit/add content in src/content/…, register new collections in index.ts
+# 1. Edit/add content in content/…, register new files in src/content/load.ts
 # 2. Validate without touching the DB
 bun run test
 # 3. Load into the Postgres database (idempotent upsert by id — re-runs are safe)

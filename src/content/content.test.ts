@@ -1,6 +1,9 @@
 import { describe, expect, test } from "bun:test";
+import fs from "node:fs";
+import path from "node:path";
 import { z } from "zod";
-import { allExams, allListening, allReading, allSpeaking, allVocab, allWriting } from "./index";
+import { buildContentSchemas } from "../../scripts/generate-content-schemas";
+import { allExams, allListening, allReading, allSpeaking, allVocab, allWriting } from "./load";
 import {
   examQuestionCount,
   ListeningExerciseSchema,
@@ -80,4 +83,34 @@ describe("mock exams", () => {
       }
     });
   }
+});
+
+describe("content pipeline guard", () => {
+  test("app code never imports the loader (runtime content comes from Postgres)", () => {
+    // load.ts touches node:fs; a client import would break the build cryptically.
+    // Only tooling may use it: the seed script and test files. Scan all of src/
+    // so a future directory can't bypass the guard.
+    const allowed = new Set([path.join("src", "lib", "db", "seed.ts")]);
+    const offenders: string[] = [];
+    const abs = path.join(process.cwd(), "src");
+    for (const rel of fs.readdirSync(abs, { recursive: true }) as string[]) {
+      if (!/\.(ts|tsx)$/.test(rel) || /\.(test|spec)\.(ts|tsx)$/.test(rel)) continue;
+      const file = path.join("src", rel);
+      if (allowed.has(file)) continue;
+      const text = fs.readFileSync(path.join(abs, rel), "utf8");
+      if (/from\s+["'][^"']*content\/load["']/.test(text)) offenders.push(file);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test("committed JSON Schemas match the zod content model", () => {
+    // Editor validation reads content/.schemas/*.json; zod is the source of
+    // truth. Fails when types.ts changes without `bun run content:schemas`.
+    for (const [name, generated] of Object.entries(buildContentSchemas())) {
+      const committed: unknown = JSON.parse(
+        fs.readFileSync(path.join(process.cwd(), "content", ".schemas", name), "utf8"),
+      );
+      expect(committed).toEqual(generated as never);
+    }
+  });
 });

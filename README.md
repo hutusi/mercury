@@ -70,6 +70,6 @@ Open http://localhost:3000, register an account, pick a track, and start studyin
 ## Architecture notes
 
 - **Auth** — better-auth with email/password. `src/proxy.ts` does an optimistic cookie check; the `(app)` layout does the authoritative session lookup; every server action re-verifies via `requireUser()`.
-- **Content** — authored as typed TS in `src/content/` (zod-validated), upserted into Postgres by stable slug ids. Progress rows reference content ids.
+- **Content** — authored as YAML in `content/` (zod-validated via `src/content/load.ts`), upserted into Postgres by stable slug ids. Progress rows reference content ids.
 - **Exam integrity** — answer keys never reach the client during an attempt; deadlines are issued and enforced server-side (late answers are discarded beyond a 30s grace window); grading and score estimation run against unsanitized content on the server.
 - **AI** — Claude is called only from server actions using structured outputs (`messages.parse` + `zodOutputFormat`), so feedback arrives schema-validated. Model defaults to `claude-sonnet-5`, overridable via `MERCURY_AI_MODEL`.

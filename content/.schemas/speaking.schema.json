@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "track": {
+        "type": "string",
+        "enum": ["toeic", "ielts", "business"]
+      },
+      "partType": {
+        "type": "string",
+        "enum": ["ielts_part1", "ielts_part2", "ielts_part3", "qa_response", "business_scenario"]
+      },
+      "title": {
+        "type": "string"
+      },
+      "titleZh": {
+        "type": "string"
+      },
+      "promptEn": {
+        "type": "string"
+      },
+      "promptZh": {
+        "type": "string"
+      },
+      "prepSeconds": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "speakSeconds": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991
+      },
+      "modelAnswer": {
+        "type": "string"
+      },
+      "checklist": {
+        "minItems": 3,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "en": {
+              "type": "string"
+            },
+            "zh": {
+              "type": "string"
+            }
+          },
+          "required": ["en", "zh"],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "id",
+      "track",
+      "partType",
+      "title",
+      "titleZh",
+      "promptEn",
+      "promptZh",
+      "prepSeconds",
+      "speakSeconds",
+      "modelAnswer",
+      "checklist"
+    ],
+    "additionalProperties": false
+  }
+}

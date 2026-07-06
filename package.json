@@ -17,6 +17,7 @@
     "db:migrate": "bunx tsx src/lib/db/migrate.ts",
     "db:seed": "bunx tsx src/lib/db/seed.ts",
     "db:studio": "drizzle-kit studio",
+    "content:schemas": "bun scripts/generate-content-schemas.ts && prettier --write content/.schemas",
     "test": "bun test src",
     "test:e2e": "playwright test"
   },
@@ -52,6 +53,7 @@
     "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "4.3.2",
     "tsx": "^4.22.4",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "yaml": "2.9.0"
   }
 }
