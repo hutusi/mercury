@@ -504,3 +504,508 @@
   translationZh: 外包
   exampleEn: The firm decided to outsource its customer support to reduce operating costs.
   exampleZh: 该公司决定将客服外包，以降低运营成本。
+# leadership (领导管理)
+- id: biz-w-051
+  track: business
+  topic: leadership
+  headword: delegate
+  ipa: /ˈdelɪɡeɪt/
+  pos: v.
+  definitionEn: To give part of your work or authority to someone else.
+  translationZh: 授权；分派
+  exampleEn: Good managers delegate routine tasks and focus on priorities.
+  exampleZh: 优秀的管理者会分派例行事务，专注于优先事项。
+- id: biz-w-052
+  track: business
+  topic: leadership
+  headword: mentor
+  ipa: /ˈmentɔːr/
+  pos: n.
+  definitionEn: An experienced person who guides someone less experienced.
+  translationZh: 导师
+  exampleEn: Each new hire is paired with a mentor for the first six months.
+  exampleZh: 每位新员工在入职前六个月都会配备一名导师。
+- id: biz-w-053
+  track: business
+  topic: leadership
+  headword: empower
+  ipa: /ɪmˈpaʊər/
+  pos: v.
+  definitionEn: To give someone the confidence and authority to act.
+  translationZh: 赋能；授权
+  exampleEn: The new policy empowers teams to approve small budgets themselves.
+  exampleZh: 新政策授权团队自行审批小额预算。
+- id: biz-w-054
+  track: business
+  topic: leadership
+  headword: accountability
+  ipa: /əˌkaʊntəˈbɪləti/
+  pos: n.
+  definitionEn: Being responsible for results and willing to explain them.
+  translationZh: 问责；担当
+  exampleEn: Clear ownership of each project improves accountability.
+  exampleZh: 明确每个项目的负责人有助于加强问责。
+- id: biz-w-055
+  track: business
+  topic: leadership
+  headword: micromanage
+  ipa: /ˌmaɪkroʊˈmænɪdʒ/
+  pos: v.
+  definitionEn: To control every small detail of other people's work.
+  translationZh: 事无巨细地管控
+  exampleEn: Employees quit because the director micromanaged every decision.
+  exampleZh: 由于总监事事插手，员工纷纷离职。
+- id: biz-w-056
+  track: business
+  topic: leadership
+  headword: buy-in
+  ipa: /ˈbaɪ ɪn/
+  pos: n.
+  definitionEn: Agreement and support for a decision or plan.
+  translationZh: 认同；支持
+  exampleEn: Get buy-in from the sales team before changing the pricing.
+  exampleZh: 调整定价前先争取销售团队的认同。
+- id: biz-w-057
+  track: business
+  topic: leadership
+  headword: morale
+  ipa: /məˈræl/
+  pos: n.
+  definitionEn: The level of confidence and enthusiasm in a group.
+  translationZh: 士气
+  exampleEn: Flexible working hours noticeably improved team morale.
+  exampleZh: 弹性工作时间显著提升了团队士气。
+- id: biz-w-058
+  track: business
+  topic: leadership
+  headword: lead by example
+  ipa: /ˌliːd baɪ ɪɡˈzæmpl/
+  pos: phr.
+  definitionEn: To show how to behave by doing it yourself.
+  translationZh: 以身作则
+  exampleEn: She leads by example, always arriving first and fully prepared.
+  exampleZh: 她以身作则，总是最早到并做好充分准备。
+- id: biz-w-059
+  track: business
+  topic: leadership
+  headword: one-on-one
+  ipa: /ˌwʌn ɑːn ˈwʌn/
+  pos: n.
+  definitionEn: A private meeting between a manager and one team member.
+  translationZh: 一对一面谈
+  exampleEn: I raised the workload issue in my weekly one-on-one.
+  exampleZh: 我在每周的一对一面谈中提出了工作量问题。
+- id: biz-w-060
+  track: business
+  topic: leadership
+  headword: big picture
+  ipa: /ˌbɪɡ ˈpɪktʃər/
+  pos: n.
+  definitionEn: The overall situation rather than the small details.
+  translationZh: 全局；大方向
+  exampleEn: Step back from the details and look at the big picture.
+  exampleZh: 从细节中跳出来，着眼于全局。
+# sales (市场销售)
+- id: biz-w-061
+  track: business
+  topic: sales
+  headword: lead
+  ipa: /liːd/
+  pos: n.
+  definitionEn: A potential customer who has shown interest.
+  translationZh: 潜在客户；销售线索
+  exampleEn: The webinar generated over three hundred qualified leads.
+  exampleZh: 这场线上讲座带来了三百多条有效销售线索。
+- id: biz-w-062
+  track: business
+  topic: sales
+  headword: conversion rate
+  ipa: /kənˈvɜːrʒn reɪt/
+  pos: n.
+  definitionEn: The percentage of prospects who become paying customers.
+  translationZh: 转化率
+  exampleEn: Simplifying the checkout page doubled our conversion rate.
+  exampleZh: 简化结算页面使转化率翻了一番。
+- id: biz-w-063
+  track: business
+  topic: sales
+  headword: funnel
+  ipa: /ˈfʌnl/
+  pos: n.
+  definitionEn: The stages a prospect passes through before buying.
+  translationZh: 销售漏斗
+  exampleEn: Most prospects drop out at the top of the funnel.
+  exampleZh: 大多数潜在客户在漏斗顶端就流失了。
+- id: biz-w-064
+  track: business
+  topic: sales
+  headword: upsell
+  ipa: /ˈʌpsel/
+  pos: v.
+  definitionEn: To persuade a customer to buy something more expensive.
+  translationZh: 推销升级产品；向上销售
+  exampleEn: Staff are trained to upsell the premium plan politely.
+  exampleZh: 员工接受过培训，会礼貌地推荐高级套餐。
+- id: biz-w-065
+  track: business
+  topic: sales
+  headword: churn
+  ipa: /tʃɜːrn/
+  pos: n.
+  definitionEn: The rate at which customers stop using a service.
+  translationZh: 客户流失（率）
+  exampleEn: Monthly churn fell sharply after we improved onboarding.
+  exampleZh: 改进新用户引导后，月流失率大幅下降。
+- id: biz-w-066
+  track: business
+  topic: sales
+  headword: brand awareness
+  ipa: /ˌbrænd əˈwernəs/
+  pos: n.
+  definitionEn: How familiar consumers are with a brand's name.
+  translationZh: 品牌知名度
+  exampleEn: The sponsorship deal boosted brand awareness in overseas markets.
+  exampleZh: 这项赞助协议提升了品牌在海外市场的知名度。
+- id: biz-w-067
+  track: business
+  topic: sales
+  headword: cold call
+  ipa: /ˌkoʊld ˈkɔːl/
+  pos: n.
+  definitionEn: An unexpected sales phone call to a stranger.
+  translationZh: 陌生电话推销
+  exampleEn: Few deals start from a cold call these days.
+  exampleZh: 如今很少有生意是从陌生电话开始的。
+- id: biz-w-068
+  track: business
+  topic: sales
+  headword: quota
+  ipa: /ˈkwoʊtə/
+  pos: n.
+  definitionEn: A fixed sales target someone must reach.
+  translationZh: 销售指标
+  exampleEn: She hit her quarterly quota two weeks early.
+  exampleZh: 她提前两周完成了季度销售指标。
+- id: biz-w-069
+  track: business
+  topic: sales
+  headword: retention
+  ipa: /rɪˈtenʃn/
+  pos: n.
+  definitionEn: Keeping existing customers over time.
+  translationZh: 客户留存
+  exampleEn: Loyalty rewards are central to our retention strategy.
+  exampleZh: 会员奖励是我们客户留存策略的核心。
+- id: biz-w-070
+  track: business
+  topic: sales
+  headword: value proposition
+  ipa: /ˈvæljuː ˌprɑːpəˈzɪʃn/
+  pos: n.
+  definitionEn: A clear statement of the benefit a product offers.
+  translationZh: 价值主张
+  exampleEn: The pitch failed because the value proposition was vague.
+  exampleZh: 由于价值主张含糊不清，这次推介没有成功。
+# projects (项目管理)
+- id: biz-w-071
+  track: business
+  topic: projects
+  headword: scope creep
+  ipa: /ˈskoʊp kriːp/
+  pos: n.
+  definitionEn: Gradual, uncontrolled growth of a project's requirements.
+  translationZh: 需求范围蔓延
+  exampleEn: Scope creep pushed the launch back by three months.
+  exampleZh: 需求不断扩张使上线推迟了三个月。
+- id: biz-w-072
+  track: business
+  topic: projects
+  headword: bottleneck
+  ipa: /ˈbɑːtlnek/
+  pos: n.
+  definitionEn: A point where progress slows because of limited capacity.
+  translationZh: 瓶颈
+  exampleEn: Design review became the bottleneck of the release cycle.
+  exampleZh: 设计评审成了发布周期中的瓶颈。
+- id: biz-w-073
+  track: business
+  topic: projects
+  headword: dependency
+  ipa: /dɪˈpendənsi/
+  pos: n.
+  definitionEn: A task that cannot start until another is finished.
+  translationZh: 依赖项
+  exampleEn: Map the dependencies before you commit to a deadline.
+  exampleZh: 承诺截止日期之前，先梳理清楚依赖关系。
+- id: biz-w-074
+  track: business
+  topic: projects
+  headword: kickoff
+  ipa: /ˈkɪkɔːf/
+  pos: n.
+  definitionEn: The first meeting that starts a project.
+  translationZh: 启动会
+  exampleEn: The client will present the requirements at Thursday's kickoff.
+  exampleZh: 客户将在周四的启动会上介绍需求。
+- id: biz-w-075
+  track: business
+  topic: projects
+  headword: bandwidth
+  ipa: /ˈbændwɪdθ/
+  pos: n.
+  definitionEn: The time and energy someone has for extra work.
+  translationZh: 精力；余力
+  exampleEn: I don't have the bandwidth to take on another project this month.
+  exampleZh: 这个月我没有精力再接一个项目了。
+- id: biz-w-076
+  track: business
+  topic: projects
+  headword: sprint
+  ipa: /sprɪnt/
+  pos: n.
+  definitionEn: A short, fixed period for completing a set of work.
+  translationZh: 冲刺周期
+  exampleEn: The payment feature is planned for the next two-week sprint.
+  exampleZh: 支付功能安排在下一个双周冲刺中。
+- id: biz-w-077
+  track: business
+  topic: projects
+  headword: postmortem
+  ipa: /ˌpoʊstˈmɔːrtəm/
+  pos: n.
+  definitionEn: A review after a project or incident to learn lessons.
+  translationZh: 复盘
+  exampleEn: The postmortem revealed that testing had started far too late.
+  exampleZh: 复盘发现测试启动得太晚了。
+- id: biz-w-078
+  track: business
+  topic: projects
+  headword: contingency
+  ipa: /kənˈtɪndʒənsi/
+  pos: n.
+  definitionEn: A plan or fund prepared for unexpected events.
+  translationZh: 应急预案；备用金
+  exampleEn: Keep a contingency of ten percent in the project budget.
+  exampleZh: 项目预算中要预留百分之十的应急资金。
+- id: biz-w-079
+  track: business
+  topic: projects
+  headword: sign-off
+  ipa: /ˈsaɪn ɔːf/
+  pos: n.
+  definitionEn: Formal approval to proceed or release.
+  translationZh: 签核；正式批准
+  exampleEn: We need legal sign-off before publishing the campaign.
+  exampleZh: 发布这次活动前需要法务签核。
+- id: biz-w-080
+  track: business
+  topic: projects
+  headword: on track
+  ipa: /ˌɑːn ˈtræk/
+  pos: phr.
+  definitionEn: Progressing as planned toward a goal.
+  translationZh: 进展正常
+  exampleEn: Despite the early delays, the project is back on track.
+  exampleZh: 尽管前期有延误，项目现已回到正轨。
+# networking (人脉拓展)
+- id: biz-w-081
+  track: business
+  topic: networking
+  headword: referral
+  ipa: /rɪˈfɜːrəl/
+  pos: n.
+  definitionEn: A recommendation that directs someone to a person or business.
+  translationZh: 引荐；转介
+  exampleEn: Most of our new clients come from referrals.
+  exampleZh: 我们的新客户大多来自引荐。
+- id: biz-w-082
+  track: business
+  topic: networking
+  headword: rapport
+  ipa: /ræˈpɔːr/
+  pos: n.
+  definitionEn: A friendly relationship with good mutual understanding.
+  translationZh: 融洽的关系
+  exampleEn: She builds rapport with clients before talking business.
+  exampleZh: 她先与客户建立融洽关系，再谈业务。
+- id: biz-w-083
+  track: business
+  topic: networking
+  headword: icebreaker
+  ipa: /ˈaɪsbreɪkər/
+  pos: n.
+  definitionEn: A remark or activity that eases initial awkwardness.
+  translationZh: 破冰话题（活动）
+  exampleEn: The host opened the session with a quick icebreaker.
+  exampleZh: 主持人以一个简短的破冰活动开场。
+- id: biz-w-084
+  track: business
+  topic: networking
+  headword: elevator pitch
+  ipa: /ˈelɪveɪtər pɪtʃ/
+  pos: n.
+  definitionEn: A very short, persuasive summary of an idea or business.
+  translationZh: 电梯演讲
+  exampleEn: Practice a thirty-second elevator pitch before the expo.
+  exampleZh: 参展前先练好三十秒的电梯演讲。
+- id: biz-w-085
+  track: business
+  topic: networking
+  headword: mingle
+  ipa: /ˈmɪŋɡl/
+  pos: v.
+  definitionEn: To move around and talk to many people at an event.
+  translationZh: （社交场合）四处交谈
+  exampleEn: Don't stand in a corner — mingle and exchange contacts.
+  exampleZh: 别站在角落里——多走动，交换联系方式。
+- id: biz-w-086
+  track: business
+  topic: networking
+  headword: alumni
+  ipa: /əˈlʌmnaɪ/
+  pos: n.
+  definitionEn: Former students of a school or members of an organization.
+  translationZh: 校友
+  exampleEn: The alumni network helped him land his first overseas role.
+  exampleZh: 校友网络帮他获得了第一份海外工作。
+- id: biz-w-087
+  track: business
+  topic: networking
+  headword: mutual connection
+  ipa: /ˌmjuːtʃuəl kəˈnekʃn/
+  pos: n.
+  definitionEn: A person known by both parties.
+  translationZh: 共同认识的人
+  exampleEn: A mutual connection introduced us at the trade fair.
+  exampleZh: 一位共同认识的朋友在展会上介绍我们认识。
+- id: biz-w-088
+  track: business
+  topic: networking
+  headword: business card
+  ipa: /ˈbɪznəs kɑːrd/
+  pos: n.
+  definitionEn: A small card with your name and contact details.
+  translationZh: 名片
+  exampleEn: He ran out of business cards halfway through the conference.
+  exampleZh: 会议进行到一半，他的名片就发完了。
+- id: biz-w-089
+  track: business
+  topic: networking
+  headword: word of mouth
+  ipa: /ˌwɜːrd əv ˈmaʊθ/
+  pos: n.
+  definitionEn: Informal recommendation spread from person to person.
+  translationZh: 口碑
+  exampleEn: The restaurant grew purely by word of mouth.
+  exampleZh: 这家餐厅完全靠口碑发展起来。
+- id: biz-w-090
+  track: business
+  topic: networking
+  headword: keep in touch
+  ipa: /ˌkiːp ɪn ˈtʌtʃ/
+  pos: phr.
+  definitionEn: To continue communicating with someone.
+  translationZh: 保持联系
+  exampleEn: Let's keep in touch after the project wraps up.
+  exampleZh: 项目结束后我们保持联系。
+# remote (远程协作)
+- id: biz-w-091
+  track: business
+  topic: remote
+  headword: asynchronous
+  ipa: /eɪˈsɪŋkrənəs/
+  pos: adj.
+  definitionEn: Not happening at the same time; not requiring instant replies.
+  translationZh: 异步的
+  exampleEn: Asynchronous updates let the team collaborate across time zones.
+  exampleZh: 异步同步进展让团队可以跨时区协作。
+- id: biz-w-092
+  track: business
+  topic: remote
+  headword: time zone
+  ipa: /ˈtaɪm zoʊn/
+  pos: n.
+  definitionEn: A region sharing the same standard time.
+  translationZh: 时区
+  exampleEn: Schedule the call in a time zone that works for both offices.
+  exampleZh: 把电话会安排在两地都方便的时区时间。
+- id: biz-w-093
+  track: business
+  topic: remote
+  headword: check-in
+  ipa: /ˈtʃek ɪn/
+  pos: n.
+  definitionEn: A brief regular update on progress or wellbeing.
+  translationZh: 例行沟通；进度碰头
+  exampleEn: We start each morning with a fifteen-minute check-in.
+  exampleZh: 我们每天早上以十五分钟的例行碰头开始。
+- id: biz-w-094
+  track: business
+  topic: remote
+  headword: mute
+  ipa: /mjuːt/
+  pos: v.
+  definitionEn: To turn off your microphone during a call.
+  translationZh: 静音
+  exampleEn: Please stay muted unless you are speaking.
+  exampleZh: 不发言时请保持静音。
+- id: biz-w-095
+  track: business
+  topic: remote
+  headword: breakout room
+  ipa: /ˈbreɪkaʊt ruːm/
+  pos: n.
+  definitionEn: A smaller online room for group discussion during a meeting.
+  translationZh: 分组讨论室
+  exampleEn: The trainer split us into breakout rooms of four.
+  exampleZh: 培训师把我们分成四人一组的讨论室。
+- id: biz-w-096
+  track: business
+  topic: remote
+  headword: screen share
+  ipa: /ˈskriːn ʃer/
+  pos: n.
+  definitionEn: Showing your computer screen to others in a call.
+  translationZh: 屏幕共享
+  exampleEn: Could you start a screen share so we can see the dashboard?
+  exampleZh: 你能共享屏幕让我们看看仪表盘吗？
+- id: biz-w-097
+  track: business
+  topic: remote
+  headword: hybrid
+  ipa: /ˈhaɪbrɪd/
+  pos: adj.
+  definitionEn: Combining office work and remote work.
+  translationZh: 混合办公的
+  exampleEn: The company moved to a hybrid model with two office days.
+  exampleZh: 公司改为每周两天到岗的混合办公模式。
+- id: biz-w-098
+  track: business
+  topic: remote
+  headword: overlap
+  ipa: /ˈoʊvərlæp/
+  pos: n.
+  definitionEn: A period when different schedules coincide.
+  translationZh: （时间）重叠
+  exampleEn: Keep four hours of overlap with the Berlin team.
+  exampleZh: 与柏林团队保持四小时的工作时间重叠。
+- id: biz-w-099
+  track: business
+  topic: remote
+  headword: virtual
+  ipa: /ˈvɜːrtʃuəl/
+  pos: adj.
+  definitionEn: Happening online rather than in person.
+  translationZh: 线上的；虚拟的
+  exampleEn: The annual summit will be fully virtual again this year.
+  exampleZh: 今年的年度峰会将再次全程线上举行。
+- id: biz-w-100
+  track: business
+  topic: remote
+  headword: handoff
+  ipa: /ˈhændɔːf/
+  pos: n.
+  definitionEn: Transferring work or responsibility to another person.
+  translationZh: 交接
+  exampleEn: Write clear notes so the night team gets a smooth handoff.
+  exampleZh: 写清备注，让夜班团队顺利交接。

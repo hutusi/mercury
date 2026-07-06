@@ -504,3 +504,508 @@
   translationZh: 同行评审
   exampleEn: The findings were published only after a rigorous peer review process.
   exampleZh: 这些研究结果经过严格的同行评审后才得以发表。
+# health (健康)
+- id: ielts-w-051
+  track: ielts
+  topic: health
+  headword: epidemic
+  ipa: /ˌepɪˈdemɪk/
+  pos: n.
+  definitionEn: A rapid spread of a disease among many people.
+  translationZh: 流行病
+  exampleEn: The government acted quickly to contain the flu epidemic.
+  exampleZh: 政府迅速采取行动以控制流感疫情。
+- id: ielts-w-052
+  track: ielts
+  topic: health
+  headword: sedentary
+  ipa: /ˈsednteri/
+  pos: adj.
+  definitionEn: Involving much sitting and little physical activity.
+  translationZh: 久坐的
+  exampleEn: Sedentary lifestyles are strongly linked to rising obesity rates.
+  exampleZh: 久坐的生活方式与肥胖率上升密切相关。
+- id: ielts-w-053
+  track: ielts
+  topic: health
+  headword: nutrition
+  ipa: /nuˈtrɪʃn/
+  pos: n.
+  definitionEn: The process of getting the food necessary for health.
+  translationZh: 营养
+  exampleEn: Good nutrition in childhood lays the foundation for lifelong health.
+  exampleZh: 儿童时期的良好营养为终身健康打下基础。
+- id: ielts-w-054
+  track: ielts
+  topic: health
+  headword: obesity
+  ipa: /oʊˈbiːsəti/
+  pos: n.
+  definitionEn: The condition of being severely overweight.
+  translationZh: 肥胖症
+  exampleEn: Obesity among teenagers has doubled over the past two decades.
+  exampleZh: 过去二十年，青少年肥胖率翻了一番。
+- id: ielts-w-055
+  track: ielts
+  topic: health
+  headword: immunity
+  ipa: /ɪˈmjuːnəti/
+  pos: n.
+  definitionEn: The body's ability to resist infection or disease.
+  translationZh: 免疫力
+  exampleEn: Vaccination gives the population immunity against measles.
+  exampleZh: 接种疫苗使人群获得对麻疹的免疫力。
+- id: ielts-w-056
+  track: ielts
+  topic: health
+  headword: longevity
+  ipa: /lɔːnˈdʒevəti/
+  pos: n.
+  definitionEn: Long life; the length of a person's life.
+  translationZh: 长寿
+  exampleEn: Researchers attribute the islanders' longevity to diet and strong community ties.
+  exampleZh: 研究人员将岛民的长寿归因于饮食和紧密的社区关系。
+- id: ielts-w-057
+  track: ielts
+  topic: health
+  headword: ailment
+  ipa: /ˈeɪlmənt/
+  pos: n.
+  definitionEn: A minor illness.
+  translationZh: 小病；不适
+  exampleEn: Pharmacists can treat common ailments without a doctor's prescription.
+  exampleZh: 药剂师无需医生处方即可治疗常见小病。
+- id: ielts-w-058
+  track: ielts
+  topic: health
+  headword: therapy
+  ipa: /ˈθerəpi/
+  pos: n.
+  definitionEn: Treatment intended to heal a physical or mental condition.
+  translationZh: 治疗；疗法
+  exampleEn: Music therapy is increasingly used to reduce anxiety in patients.
+  exampleZh: 音乐疗法越来越多地被用于缓解病人的焦虑。
+- id: ielts-w-059
+  track: ielts
+  topic: health
+  headword: hygiene
+  ipa: /ˈhaɪdʒiːn/
+  pos: n.
+  definitionEn: Practices that keep people and places clean to prevent disease.
+  translationZh: 卫生
+  exampleEn: Basic hygiene, such as hand washing, prevents many infections.
+  exampleZh: 洗手等基本卫生习惯能预防许多感染。
+- id: ielts-w-060
+  track: ielts
+  topic: health
+  headword: wellbeing
+  ipa: /ˌwelˈbiːɪŋ/
+  pos: n.
+  definitionEn: The state of being comfortable, healthy, and happy.
+  translationZh: 身心健康；幸福感
+  exampleEn: Regular exercise improves both physical and mental wellbeing.
+  exampleZh: 规律运动能同时改善身体和心理健康。
+# urbanization (城市化)
+- id: ielts-w-061
+  track: ielts
+  topic: urbanization
+  headword: congestion
+  ipa: /kənˈdʒestʃən/
+  pos: n.
+  definitionEn: Overcrowding, especially of traffic on roads.
+  translationZh: 拥堵
+  exampleEn: Congestion charges have reduced city-centre traffic by a fifth.
+  exampleZh: 拥堵费使市中心车流量减少了五分之一。
+- id: ielts-w-062
+  track: ielts
+  topic: urbanization
+  headword: sprawl
+  ipa: /sprɔːl/
+  pos: n.
+  definitionEn: The uncontrolled spread of a city into surrounding areas.
+  translationZh: （城市）无序扩张
+  exampleEn: Urban sprawl has swallowed farmland on the city's outskirts.
+  exampleZh: 城市无序扩张吞噬了市郊的农田。
+- id: ielts-w-063
+  track: ielts
+  topic: urbanization
+  headword: amenity
+  ipa: /əˈmenəti/
+  pos: n.
+  definitionEn: A facility that makes life pleasant or convenient.
+  translationZh: 便利设施
+  exampleEn: The district lacks basic amenities such as parks and libraries.
+  exampleZh: 该区缺乏公园、图书馆等基本设施。
+- id: ielts-w-064
+  track: ielts
+  topic: urbanization
+  headword: commute
+  ipa: /kəˈmjuːt/
+  pos: v.
+  definitionEn: To travel regularly between home and work.
+  translationZh: 通勤
+  exampleEn: Millions of residents commute more than an hour each way.
+  exampleZh: 数百万居民单程通勤超过一小时。
+- id: ielts-w-065
+  track: ielts
+  topic: urbanization
+  headword: high-rise
+  ipa: /ˈhaɪ raɪz/
+  pos: n.
+  definitionEn: A tall building with many floors.
+  translationZh: 高层建筑
+  exampleEn: High-rises now dominate the skyline of the old harbour district.
+  exampleZh: 高楼如今主宰了老港区的天际线。
+- id: ielts-w-066
+  track: ielts
+  topic: urbanization
+  headword: pedestrian
+  ipa: /pəˈdestriən/
+  pos: n.
+  definitionEn: A person walking rather than travelling in a vehicle.
+  translationZh: 行人
+  exampleEn: The city centre was redesigned to give pedestrians priority over cars.
+  exampleZh: 市中心经过重新设计，行人享有优先权。
+- id: ielts-w-067
+  track: ielts
+  topic: urbanization
+  headword: gentrification
+  ipa: /ˌdʒentrɪfɪˈkeɪʃn/
+  pos: n.
+  definitionEn: Wealthier residents moving in and changing a poorer urban area.
+  translationZh: 士绅化
+  exampleEn: Gentrification has pushed long-term residents out of the neighbourhood.
+  exampleZh: 士绅化把老住户挤出了这个街区。
+- id: ielts-w-068
+  track: ielts
+  topic: urbanization
+  headword: metropolitan
+  ipa: /ˌmetrəˈpɑːlɪtən/
+  pos: adj.
+  definitionEn: Relating to a large city and its surrounding areas.
+  translationZh: 大都市的
+  exampleEn: The metropolitan area produces nearly half of the nation's economic output.
+  exampleZh: 该大都市区贡献了全国近一半的经济产出。
+- id: ielts-w-069
+  track: ielts
+  topic: urbanization
+  headword: slum
+  ipa: /slʌm/
+  pos: n.
+  definitionEn: A crowded urban area with very poor housing conditions.
+  translationZh: 贫民窟
+  exampleEn: Rapid migration to cities has expanded slums in many developing countries.
+  exampleZh: 人口快速涌入城市使许多发展中国家的贫民窟不断扩大。
+- id: ielts-w-070
+  track: ielts
+  topic: urbanization
+  headword: zoning
+  ipa: /ˈzoʊnɪŋ/
+  pos: n.
+  definitionEn: Official rules controlling how land in an area is used.
+  translationZh: （土地）分区规划
+  exampleEn: Strict zoning laws separate factories from residential districts.
+  exampleZh: 严格的分区法规将工厂与居民区分隔开来。
+# culture (文化艺术)
+- id: ielts-w-071
+  track: ielts
+  topic: culture
+  headword: heritage
+  ipa: /ˈherɪtɪdʒ/
+  pos: n.
+  definitionEn: Traditions, buildings, and culture passed down from the past.
+  translationZh: 文化遗产
+  exampleEn: The old town was listed as a world heritage site in 1997.
+  exampleZh: 这座古城于 1997 年被列为世界遗产。
+- id: ielts-w-072
+  track: ielts
+  topic: culture
+  headword: aesthetic
+  ipa: /esˈθetɪk/
+  pos: adj.
+  definitionEn: Concerned with beauty or the appreciation of beauty.
+  translationZh: 审美的；美学的
+  exampleEn: The bridge was praised for both its engineering and aesthetic value.
+  exampleZh: 这座桥的工程价值和美学价值都广受赞誉。
+- id: ielts-w-073
+  track: ielts
+  topic: culture
+  headword: exhibition
+  ipa: /ˌeksɪˈbɪʃn/
+  pos: n.
+  definitionEn: A public display of art or other interesting objects.
+  translationZh: 展览
+  exampleEn: The museum's new exhibition traces the history of printing.
+  exampleZh: 博物馆的新展览追溯了印刷术的历史。
+- id: ielts-w-074
+  track: ielts
+  topic: culture
+  headword: preservation
+  ipa: /ˌprezərˈveɪʃn/
+  pos: n.
+  definitionEn: Keeping something in its original state and protecting it from damage.
+  translationZh: 保护；保存
+  exampleEn: Digital scanning aids the preservation of fragile manuscripts.
+  exampleZh: 数字扫描有助于脆弱手稿的保存。
+- id: ielts-w-075
+  track: ielts
+  topic: culture
+  headword: indigenous
+  ipa: /ɪnˈdɪdʒənəs/
+  pos: adj.
+  definitionEn: Originating naturally in a particular place; native.
+  translationZh: 本土的；原住民的
+  exampleEn: The gallery devotes an entire wing to indigenous art and craft.
+  exampleZh: 美术馆专设一个展区展示原住民艺术与手工艺。
+- id: ielts-w-076
+  track: ielts
+  topic: culture
+  headword: folklore
+  ipa: /ˈfoʊklɔːr/
+  pos: n.
+  definitionEn: The traditional stories and customs of a community.
+  translationZh: 民间传说；民俗
+  exampleEn: Local folklore inspired many of the composer's early works.
+  exampleZh: 当地民间传说启发了这位作曲家的许多早期作品。
+- id: ielts-w-077
+  track: ielts
+  topic: culture
+  headword: masterpiece
+  ipa: /ˈmæstərpiːs/
+  pos: n.
+  definitionEn: A work of art done with extraordinary skill.
+  translationZh: 杰作
+  exampleEn: The restored masterpiece drew record crowds to the gallery.
+  exampleZh: 修复后的杰作为美术馆带来了创纪录的人流。
+- id: ielts-w-078
+  track: ielts
+  topic: culture
+  headword: patronage
+  ipa: /ˈpætrənɪdʒ/
+  pos: n.
+  definitionEn: Financial support given to artists or organizations.
+  translationZh: 赞助；资助
+  exampleEn: Renaissance painters depended on the patronage of wealthy families.
+  exampleZh: 文艺复兴时期的画家依赖富裕家族的赞助。
+- id: ielts-w-079
+  track: ielts
+  topic: culture
+  headword: archive
+  ipa: /ˈɑːrkaɪv/
+  pos: n.
+  definitionEn: A collection of historical documents or records.
+  translationZh: 档案；档案馆
+  exampleEn: The national archive holds letters dating back four centuries.
+  exampleZh: 国家档案馆收藏着四百年前的信件。
+- id: ielts-w-080
+  track: ielts
+  topic: culture
+  headword: authenticity
+  ipa: /ˌɔːθenˈtɪsəti/
+  pos: n.
+  definitionEn: The quality of being genuine or real.
+  translationZh: 真实性
+  exampleEn: Experts questioned the authenticity of the newly discovered painting.
+  exampleZh: 专家们质疑这幅新发现画作的真伪。
+# economy (经济与工作)
+- id: ielts-w-081
+  track: ielts
+  topic: economy
+  headword: recession
+  ipa: /rɪˈseʃn/
+  pos: n.
+  definitionEn: A period when an economy shrinks and unemployment rises.
+  translationZh: 经济衰退
+  exampleEn: Many small businesses closed during the recession.
+  exampleZh: 许多小企业在经济衰退期间倒闭。
+- id: ielts-w-082
+  track: ielts
+  topic: economy
+  headword: inflation
+  ipa: /ɪnˈfleɪʃn/
+  pos: n.
+  definitionEn: A general rise in prices over time.
+  translationZh: 通货膨胀
+  exampleEn: High inflation eroded the real value of workers' wages.
+  exampleZh: 高通胀侵蚀了工人工资的实际价值。
+- id: ielts-w-083
+  track: ielts
+  topic: economy
+  headword: workforce
+  ipa: /ˈwɜːrkfɔːrs/
+  pos: n.
+  definitionEn: All the people who work in a country or company.
+  translationZh: 劳动力
+  exampleEn: Women now make up nearly half of the national workforce.
+  exampleZh: 如今女性约占全国劳动力的一半。
+- id: ielts-w-084
+  track: ielts
+  topic: economy
+  headword: redundancy
+  ipa: /rɪˈdʌndənsi/
+  pos: n.
+  definitionEn: Loss of a job because the employer no longer needs it.
+  translationZh: （岗位裁撤造成的）裁员
+  exampleEn: The plant closure resulted in six hundred redundancies.
+  exampleZh: 工厂关闭导致六百人被裁。
+- id: ielts-w-085
+  track: ielts
+  topic: economy
+  headword: subsidy
+  ipa: /ˈsʌbsədi/
+  pos: n.
+  definitionEn: Government money paid to keep prices low or support producers.
+  translationZh: 补贴
+  exampleEn: Farm subsidies remain a controversial part of the trade agreement.
+  exampleZh: 农业补贴仍是该贸易协定中有争议的部分。
+- id: ielts-w-086
+  track: ielts
+  topic: economy
+  headword: entrepreneur
+  ipa: /ˌɑːntrəprəˈnɜːr/
+  pos: n.
+  definitionEn: A person who starts and runs their own business.
+  translationZh: 创业者；企业家
+  exampleEn: The city offers tax breaks to attract young entrepreneurs.
+  exampleZh: 该市提供税收优惠以吸引年轻创业者。
+- id: ielts-w-087
+  track: ielts
+  topic: economy
+  headword: freelance
+  ipa: /ˈfriːlæns/
+  pos: adj.
+  definitionEn: Working independently for different clients rather than one employer.
+  translationZh: 自由职业的
+  exampleEn: Freelance designers can choose projects that match their interests.
+  exampleZh: 自由设计师可以选择符合自身兴趣的项目。
+- id: ielts-w-088
+  track: ielts
+  topic: economy
+  headword: productivity
+  ipa: /ˌproʊdʌkˈtɪvəti/
+  pos: n.
+  definitionEn: The rate at which goods or services are produced.
+  translationZh: 生产率
+  exampleEn: Investment in training raised productivity across the sector.
+  exampleZh: 培训投入提升了整个行业的生产率。
+- id: ielts-w-089
+  track: ielts
+  topic: economy
+  headword: austerity
+  ipa: /ɔːˈsterəti/
+  pos: n.
+  definitionEn: Strict government policies to reduce spending and debt.
+  translationZh: 财政紧缩
+  exampleEn: Years of austerity cut funding for public libraries.
+  exampleZh: 多年的财政紧缩削减了公共图书馆的经费。
+- id: ielts-w-090
+  track: ielts
+  topic: economy
+  headword: gig economy
+  ipa: /ˈɡɪɡ ɪˌkɑːnəmi/
+  pos: n.
+  definitionEn: A labour market based on short-term and freelance work.
+  translationZh: 零工经济
+  exampleEn: The gig economy offers flexibility but little job security.
+  exampleZh: 零工经济提供了灵活性，但缺乏工作保障。
+# media (媒体传播)
+- id: ielts-w-091
+  track: ielts
+  topic: media
+  headword: censorship
+  ipa: /ˈsensərʃɪp/
+  pos: n.
+  definitionEn: Official control over what may be published or broadcast.
+  translationZh: 审查（制度）
+  exampleEn: Strict censorship prevented the documentary from being shown.
+  exampleZh: 严格的审查使这部纪录片无法上映。
+- id: ielts-w-092
+  track: ielts
+  topic: media
+  headword: misinformation
+  ipa: /ˌmɪsɪnfərˈmeɪʃn/
+  pos: n.
+  definitionEn: False information spread without intent to deceive.
+  translationZh: 错误信息
+  exampleEn: Health misinformation spreads faster than corrections on social media.
+  exampleZh: 在社交媒体上，健康类错误信息比更正传播得更快。
+- id: ielts-w-093
+  track: ielts
+  topic: media
+  headword: tabloid
+  ipa: /ˈtæblɔɪd/
+  pos: n.
+  definitionEn: A small-format newspaper focused on sensational stories.
+  translationZh: 小报
+  exampleEn: The actor sued the tabloid over a fabricated story.
+  exampleZh: 这位演员就一则捏造的报道起诉了该小报。
+- id: ielts-w-094
+  track: ielts
+  topic: media
+  headword: broadcast
+  ipa: /ˈbrɔːdkæst/
+  pos: v.
+  definitionEn: To send out programmes on television or radio.
+  translationZh: 播出；广播
+  exampleEn: The interview was broadcast live to a national audience.
+  exampleZh: 这次采访面向全国观众现场直播。
+- id: ielts-w-095
+  track: ielts
+  topic: media
+  headword: credibility
+  ipa: /ˌkredəˈbɪləti/
+  pos: n.
+  definitionEn: The quality of being trusted and believed.
+  translationZh: 可信度
+  exampleEn: Repeated errors damaged the newspaper's credibility with readers.
+  exampleZh: 屡次出错损害了这家报纸在读者中的可信度。
+- id: ielts-w-096
+  track: ielts
+  topic: media
+  headword: sensationalism
+  ipa: /senˈseɪʃənəlɪzəm/
+  pos: n.
+  definitionEn: Presenting news in a shocking way to attract attention.
+  translationZh: 煽情主义
+  exampleEn: Critics accused the channel of sensationalism in its crime coverage.
+  exampleZh: 批评者指责该频道在犯罪报道中哗众取宠。
+- id: ielts-w-097
+  track: ielts
+  topic: media
+  headword: anonymity
+  ipa: /ˌænəˈnɪməti/
+  pos: n.
+  definitionEn: The state of having one's name or identity unknown.
+  translationZh: 匿名（性）
+  exampleEn: Online anonymity encourages both honesty and abuse.
+  exampleZh: 网络匿名既催生坦诚，也助长恶意。
+- id: ielts-w-098
+  track: ielts
+  topic: media
+  headword: mainstream
+  ipa: /ˈmeɪnstriːm/
+  pos: adj.
+  definitionEn: Accepted or used by most people; conventional.
+  translationZh: 主流的
+  exampleEn: The theory took decades to enter mainstream science journalism.
+  exampleZh: 这一理论历经数十年才进入主流科学报道。
+- id: ielts-w-099
+  track: ielts
+  topic: media
+  headword: propaganda
+  ipa: /ˌprɑːpəˈɡændə/
+  pos: n.
+  definitionEn: Biased information used to promote a political cause.
+  translationZh: （政治）宣传
+  exampleEn: Wartime propaganda portrayed the enemy in dehumanising terms.
+  exampleZh: 战时宣传以非人化的方式描绘敌人。
+- id: ielts-w-100
+  track: ielts
+  topic: media
+  headword: echo chamber
+  ipa: /ˈekoʊ ˌtʃeɪmbər/
+  pos: n.
+  definitionEn: An environment where people only hear opinions like their own.
+  translationZh: 回音室（效应）
+  exampleEn: Personalised feeds can trap users inside an echo chamber.
+  exampleZh: 个性化推送可能把用户困在回音室里。
