@@ -1,7 +1,9 @@
 import { describe, expect, test } from "bun:test";
-import { ieltsMiniExam } from "../content/exams/ielts-mini";
-import { toeicMiniExam } from "../content/exams/toeic-mini";
+import { allExams } from "../content/load";
 import { gradeExam, sanitizeSections } from "./exam-utils";
+
+const toeicMiniExam = allExams.find((e) => e.id === "exam-toeic-mini")!;
+const ieltsMiniExam = allExams.find((e) => e.id === "exam-ielts-mini")!;
 
 function perfectAnswers(exam: typeof toeicMiniExam): Record<string, number> {
   const answers: Record<string, number> = {};

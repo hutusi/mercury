@@ -6,7 +6,7 @@ import {
   allSpeaking,
   allVocab,
   allWriting,
-} from "../../content";
+} from "../../content/load";
 import {
   examQuestionCount,
   ListeningExerciseSchema,
