@@ -1,8 +1,17 @@
-import { BookMarked, BookOpenText, Headphones, Mic, PenLine, Timer } from "lucide-react";
+import {
+  BookMarked,
+  BookOpenText,
+  Headphones,
+  Mic,
+  NotebookPen,
+  PenLine,
+  Timer,
+} from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { and, desc, eq, lte, sql } from "drizzle-orm";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { DueWordsCard } from "@/components/dashboard/DueWordsCard";
+import { MistakesCard } from "@/components/dashboard/MistakesCard";
 import { ExamBanner } from "@/components/dashboard/ExamBanner";
 import { RecentScoresCard, type RecentScore } from "@/components/dashboard/RecentScoresCard";
 import { StreakCard } from "@/components/dashboard/StreakCard";
@@ -20,6 +29,7 @@ import {
   writingSubmissions,
 } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { countActiveMistakes } from "@/lib/mistakes";
 import { requireTrack } from "@/lib/settings";
 import { getStreak } from "@/lib/streak";
 
@@ -37,6 +47,7 @@ export default async function DashboardPage() {
     recentSpeaking,
     recentExams,
     firstActivity,
+    activeMistakes,
   ] = await Promise.all([
     getStreak(user.id),
     db
@@ -86,6 +97,7 @@ export default async function DashboardPage() {
     }),
     // Any completed activity ever — drives the first-run guidance below.
     db.query.activityDays.findFirst({ where: eq(activityDays.userId, user.id) }),
+    countActiveMistakes(user.id, track),
   ]);
 
   const dueCount = dueRows[0]?.count ?? 0;
@@ -132,6 +144,7 @@ export default async function DashboardPage() {
     { href: "/listening", label: t.nav.listening, icon: Headphones },
     { href: "/writing", label: t.nav.writing, icon: PenLine },
     { href: "/speaking", label: t.nav.speaking, icon: Mic },
+    { href: "/mistakes", label: t.nav.mistakes, icon: NotebookPen },
     { href: "/exams", label: t.nav.exams, icon: Timer },
   ];
 
@@ -160,6 +173,7 @@ export default async function DashboardPage() {
         <aside className="space-y-8">
           <StreakCard streak={streak} />
           <DueWordsCard dueCount={dueCount} />
+          <MistakesCard activeCount={activeMistakes} />
           <div className="border-t border-border pt-4">
             <SectionLabel as="h2">{t.dashboard.quickStart}</SectionLabel>
             <ul className="mt-3 space-y-1">

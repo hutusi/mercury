@@ -9,13 +9,9 @@ import { Callout } from "@/components/ui/callout";
 import type { Track } from "@/content/types";
 import { submitQuiz } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
+import type { QuizQuestion } from "@/lib/vocab-quiz-core";
 
-export interface QuizQuestion {
-  wordId: string;
-  direction: "en2zh" | "zh2en";
-  prompt: string;
-  options: { wordId: string; text: string }[];
-}
+export type { QuizQuestion } from "@/lib/vocab-quiz-core";
 
 export function QuizRunner({ track, questions }: { track: Track; questions: QuizQuestion[] }) {
   const t = useT();

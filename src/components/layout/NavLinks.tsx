@@ -6,6 +6,7 @@ import {
   Headphones,
   LayoutDashboard,
   Mic,
+  NotebookPen,
   PenLine,
   Timer,
 } from "lucide-react";
@@ -21,6 +22,7 @@ const NAV_ITEMS = [
   { key: "listening", href: "/listening", icon: Headphones },
   { key: "writing", href: "/writing", icon: PenLine },
   { key: "speaking", href: "/speaking", icon: Mic },
+  { key: "mistakes", href: "/mistakes", icon: NotebookPen },
 ] as const;
 
 export function NavLinks({ orientation }: { orientation: "vertical" | "horizontal" }) {
