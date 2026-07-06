@@ -163,10 +163,7 @@ export async function countActiveMistakes(userId: string, track: Track): Promise
   return statuses.filter((s) => !s.cleared).length;
 }
 
-export async function getMistakesPageData(
-  userId: string,
-  track: Track,
-): Promise<MistakesPageData> {
+export async function getMistakesPageData(userId: string, track: Track): Promise<MistakesPageData> {
   const statuses = await withExistingWords(await deriveStatuses(userId, track));
 
   const wordIds = statuses.filter((s) => s.kind === "vocab_quiz").map((s) => s.questionId);
@@ -260,9 +257,7 @@ export async function getMistakesPageData(
     }
 
     const exercise =
-      status.kind === "reading"
-        ? readingById.get(status.refId)
-        : listeningById.get(status.refId);
+      status.kind === "reading" ? readingById.get(status.refId) : listeningById.get(status.refId);
     if (!exercise) continue;
     const q = exercise.questions.find((question) => question.id === status.questionId);
     if (!q) continue;
@@ -274,8 +269,7 @@ export async function getMistakesPageData(
       sourceTitle: exercise.title,
       sourceTitleZh: exercise.titleZh,
       question: { id: q.id, stem: q.stem, options: q.options },
-      context:
-        "passage" in exercise ? { passage: exercise.passage } : { script: exercise.script },
+      context: "passage" in exercise ? { passage: exercise.passage } : { script: exercise.script },
     });
   }
 

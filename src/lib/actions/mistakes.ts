@@ -35,7 +35,12 @@ async function upsertClear(userId: string, kind: MistakeKind, refId: string, que
     .insert(mistakeClears)
     .values({ userId, kind, refId, questionId })
     .onConflictDoUpdate({
-      target: [mistakeClears.userId, mistakeClears.kind, mistakeClears.refId, mistakeClears.questionId],
+      target: [
+        mistakeClears.userId,
+        mistakeClears.kind,
+        mistakeClears.refId,
+        mistakeClears.questionId,
+      ],
       set: { clearedAt: new Date() },
     });
 }
