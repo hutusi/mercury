@@ -127,3 +127,64 @@
         - Wait for a further announcement
       correctIndex: 2
       explanationZh: 广播指示转机乘客 "should speak to a member of staff at the service desk"，工作人员会为受延误影响的衔接航班重新订票。直接去 32 号登机口是对普通乘客的指引，对转机乘客而言少了改签这一步（排除 A）。
+- id: toeic-l-003
+  track: toeic
+  title: Department Store Closing Announcement
+  titleZh: 商场闭店广播
+  style: 广播 · Announcement
+  script:
+    - speaker: narrator
+      text: Good evening, shoppers, and thank you for visiting Westfield Department Store.
+    - speaker: narrator
+      text: Please note that the store will close in thirty minutes, at nine o'clock.
+    - speaker: narrator
+      text: If you would like to make a purchase, we invite you to bring your items to the registers on each floor now.
+    - speaker: narrator
+      text: As a reminder, our annual home and kitchen sale begins tomorrow morning at ten.
+    - speaker: narrator
+      text: All cookware and small appliances will be reduced by up to forty percent, for three days only.
+    - speaker: narrator
+      text: Members of our rewards program can enter one hour early, at nine a.m., through the north entrance.
+    - speaker: narrator
+      text: Tonight, the underground parking garage will remain open until nine thirty.
+    - speaker: narrator
+      text: Don't forget to have your parking ticket validated at any register to receive two hours of free parking.
+    - speaker: narrator
+      text: Thank you for shopping with us, and we look forward to seeing you at tomorrow's sale.
+  questions:
+    - id: q1
+      stem: Where is this announcement most likely being made?
+      options:
+        - At an airport
+        - At a department store
+        - At a train station
+        - At a sports stadium
+      correctIndex: 1
+      explanationZh: 开头直接点明地点："thank you for visiting Westfield Department Store"，后文的收银台、厨具促销、积分会员也都指向百货商场。注意不要靠“广播”这一形式就联想到机场（排除 A）。
+    - id: q2
+      stem: What will happen tomorrow at ten o'clock?
+      options:
+        - The store will close for renovation
+        - A new floor will open to the public
+        - A home and kitchen sale will begin
+        - Parking will become free all day
+      correctIndex: 2
+      explanationZh: 广播提醒："our annual home and kitchen sale begins tomorrow morning at ten"——家居厨房用品年度特卖明早十点开始。免费停车（选项 D）是今晚凭小票验证获得的两小时优惠，与明天十点无关。
+    - id: q3
+      stem: Who can enter the store at nine a.m. tomorrow?
+      options:
+        - Rewards program members
+        - All shoppers with a receipt
+        - Kitchen appliance vendors
+        - Contractors doing renovations
+      correctIndex: 0
+      explanationZh: 广播说明 "Members of our rewards program can enter one hour early, at nine a.m., through the north entrance"——只有积分会员可提前一小时从北门入场，普通顾客十点才开始。
+    - id: q4
+      stem: How can shoppers receive two hours of free parking?
+      options:
+        - By spending more than forty dollars
+        - By joining the rewards program tonight
+        - By entering through the north entrance
+        - By having their parking ticket validated at a register
+      correctIndex: 3
+      explanationZh: 广播提示 "have your parking ticket validated at any register to receive two hours of free parking"——在任意收银台验证停车票即可。“forty percent”是商品折扣力度，与停车无关（排除 A）。
