@@ -88,19 +88,17 @@ describe("mock exams", () => {
 describe("content pipeline guard", () => {
   test("app code never imports the loader (runtime content comes from Postgres)", () => {
     // load.ts touches node:fs; a client import would break the build cryptically.
-    // Only tooling may use it: the seed script and test files.
-    const roots = ["src/app", "src/components", "src/lib"];
+    // Only tooling may use it: the seed script and test files. Scan all of src/
+    // so a future directory can't bypass the guard.
     const allowed = new Set([path.join("src", "lib", "db", "seed.ts")]);
     const offenders: string[] = [];
-    for (const root of roots) {
-      const abs = path.join(process.cwd(), root);
-      for (const rel of fs.readdirSync(abs, { recursive: true }) as string[]) {
-        if (!/\.(ts|tsx)$/.test(rel) || /\.(test|spec)\.(ts|tsx)$/.test(rel)) continue;
-        const file = path.join(root, rel);
-        if (allowed.has(file)) continue;
-        const text = fs.readFileSync(path.join(abs, rel), "utf8");
-        if (/from\s+["'][^"']*content\/load["']/.test(text)) offenders.push(file);
-      }
+    const abs = path.join(process.cwd(), "src");
+    for (const rel of fs.readdirSync(abs, { recursive: true }) as string[]) {
+      if (!/\.(ts|tsx)$/.test(rel) || /\.(test|spec)\.(ts|tsx)$/.test(rel)) continue;
+      const file = path.join("src", rel);
+      if (allowed.has(file)) continue;
+      const text = fs.readFileSync(path.join(abs, rel), "utf8");
+      if (/from\s+["'][^"']*content\/load["']/.test(text)) offenders.push(file);
     }
     expect(offenders).toEqual([]);
   });
