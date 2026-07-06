@@ -59,7 +59,7 @@ export default async function SpeakingListPage() {
                   {count > 0 && (
                     <p className="mt-1 flex items-center justify-end gap-1 font-mono text-xs font-medium text-foreground tabular-nums">
                       <Check className="size-3.5" aria-hidden />
-                      {t.writing.pastSubmissions}: {count}
+                      {t.speaking.pastSubmissions}: {count}
                     </p>
                   )}
                 </div>

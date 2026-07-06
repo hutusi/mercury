@@ -249,7 +249,15 @@ const zh = {
     betterPhrases: "更地道的表达",
     modelAnswer: "参考回答",
     checklist: "自评清单",
+    selfAssessTitle: "自评模式",
+    selfAssessHint: "未配置 AI 服务，已切换为自评模式：对照参考回答与清单逐项检查",
     emptyTranscript: "转写为空，请先录音作答",
+    feedbackTitle: "点评反馈",
+    pastSubmissions: "历史提交",
+    aiFailed: "AI 点评暂不可用，已保存为自评模式",
+    aiUnavailableTitle: "AI 点评暂时不可用",
+    aiUnavailableHint: "这次点评没能完成，可以重试；也可以先对照下方参考回答与清单自评。",
+    retryFeedback: "重试 AI 点评",
   },
   exams: {
     subtitle: "限时全真模拟，自动估分",
@@ -552,7 +560,17 @@ const en: Dictionary = {
     betterPhrases: "More natural phrasing",
     modelAnswer: "Model answer",
     checklist: "Self-assessment checklist",
+    selfAssessTitle: "Self-assessment mode",
+    selfAssessHint:
+      "AI service is not configured. Compare your transcript against the model answer and checklist.",
     emptyTranscript: "Transcript is empty — record your answer first",
+    feedbackTitle: "Feedback",
+    pastSubmissions: "Past submissions",
+    aiFailed: "AI feedback is temporarily unavailable — saved in self-assessment mode",
+    aiUnavailableTitle: "AI feedback unavailable",
+    aiUnavailableHint:
+      "Grading didn't complete this time. Retry it, or self-assess against the model answer and checklist below.",
+    retryFeedback: "Retry AI feedback",
   },
   exams: {
     subtitle: "Timed simulation with automatic score estimates",

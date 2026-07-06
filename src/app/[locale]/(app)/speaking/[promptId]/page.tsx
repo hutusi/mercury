@@ -1,26 +1,37 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
+import { SectionLabel } from "@/components/typography/SectionLabel";
 import { SpeakingRunner } from "@/components/speaking/SpeakingRunner";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
 import { db } from "@/lib/db";
-import { speakingPrompts } from "@/lib/db/schema";
-import { getDict } from "@/lib/i18n";
+import { speakingPrompts, speakingSubmissions } from "@/lib/db/schema";
+import { getDict, getLocale } from "@/lib/i18n";
 
 export default async function SpeakingPromptPage({
   params,
 }: {
   params: Promise<{ promptId: string }>;
 }) {
-  await requireUser();
+  const user = await requireUser();
   const { promptId } = await params;
-  const t = await getDict();
+  const [t, locale] = await Promise.all([getDict(), getLocale()]);
 
-  const prompt = await db.query.speakingPrompts.findFirst({
-    where: eq(speakingPrompts.id, promptId),
-  });
+  const [prompt, past] = await Promise.all([
+    db.query.speakingPrompts.findFirst({
+      where: eq(speakingPrompts.id, promptId),
+    }),
+    db.query.speakingSubmissions.findMany({
+      where: and(
+        eq(speakingSubmissions.userId, user.id),
+        eq(speakingSubmissions.promptId, promptId),
+      ),
+      orderBy: desc(speakingSubmissions.createdAt),
+      limit: 10,
+    }),
+  ]);
   if (!prompt) notFound();
 
   return (
@@ -54,6 +65,39 @@ export default async function SpeakingPromptPage({
         checklist={prompt.checklist}
         aiEnabled={isAiEnabled()}
       />
+
+      {past.length > 0 && (
+        <section>
+          <SectionLabel as="h2" className="mb-3">
+            {t.speaking.pastSubmissions}
+          </SectionLabel>
+          <ul className="divide-y divide-border border-y border-border">
+            {past.map((s) => (
+              <li key={s.id}>
+                <Link
+                  href={`/speaking/submissions/${s.id}`}
+                  className="flex items-center justify-between gap-4 py-3 text-sm transition-colors hover:bg-muted/50"
+                >
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {s.createdAt.toLocaleString(locale === "zh" ? "zh-CN" : "en-US")} ·{" "}
+                    {s.durationSeconds}
+                    {t.common.seconds}
+                  </span>
+                  <span
+                    className={`font-medium ${
+                      s.status === "ai_scored" ? "text-foreground" : "text-muted-foreground"
+                    }`}
+                  >
+                    {s.status === "ai_scored" && s.feedback
+                      ? s.feedback.scoreLabel
+                      : t.speaking.selfAssessTitle}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </div>
   );
 }
