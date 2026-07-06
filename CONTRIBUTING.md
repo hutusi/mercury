@@ -33,6 +33,7 @@ bun run dev           # http://localhost:3000
 | `bun run test:e2e`                                             | Playwright suite (requires a prior `bun run build`)                       |
 | `bun run db:migrate` / `db:generate` / `db:seed` / `db:studio` | Apply migrations / snapshot a schema change / content seed / DB browser   |
 | `bun run db:push`                                              | Push schema directly, no migration file — **local prototyping only**      |
+| `bun run content:schemas`                                      | Regenerate `content/.schemas/` after editing `src/content/types.ts`       |
 
 ## Changing the database schema
 

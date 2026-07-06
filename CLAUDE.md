@@ -14,6 +14,7 @@ bun run test               # bun unit tests — scoped to src/, DB-free
 bun run test:e2e           # Playwright (port 3100, scratch DB in .e2e/)
 bun run db:migrate / db:generate / db:seed / db:studio
 bun run db:push            # local schema prototyping only — never CI/CD/Neon
+bun run content:schemas    # regenerate content/.schemas/ after editing src/content/types.ts
 ```
 
 ## Workflow
@@ -27,7 +28,7 @@ bun run db:push            # local schema prototyping only — never CI/CD/Neon
 
 - **Auth is three layers**: `src/proxy.ts` (cookie check, UX only) → `(app)/layout.tsx` (real session) → **every server action calls `requireUser()`** — layouts don't protect actions.
 - All mutations are server actions in `src/lib/actions/`; the only API route is better-auth's catch-all.
-- Content pipeline: typed TS in `src/content/` (zod schemas in `types.ts`) → `bun run db:seed` upserts by stable slug id. **Ids are load-bearing** — progress rows and exam answer maps reference them; never rename (see docs/CONTENT.md).
+- Content pipeline: YAML in `content/` → `src/content/load.ts` (zod schemas in `src/content/types.ts`) → `bun run db:seed` upserts by stable slug id. **Ids are load-bearing** — progress rows and exam answer maps reference them; never rename (see docs/CONTENT.md). The loader is tooling-only (seed + tests; guard test enforces it); after editing `types.ts`, run `bun run content:schemas` to regenerate the editor JSON Schemas.
 - Exam integrity: clients only ever get `sanitizeSections()` output (no `correctIndex`/explanations); deadlines and grading are server-side (`src/lib/actions/exams.ts`, `src/lib/exam-utils.ts`).
 - AI: server-only `messages.parse` + `zodOutputFormat` in `src/lib/ai/client.ts`; any failure degrades to `self_assessed` + model-answer/checklist UI. No key in dev/CI is a supported path.
 - i18n: zh dictionary is the source of truth (`src/lib/i18n/dictionaries.ts`); `Dictionary` type derives from it. Server: `getDict()`; client: `useT()`. Locale comes from the cookie server-side — never `navigator.language`.
@@ -55,5 +56,5 @@ UI follows the Lexicon design system (docs/DESIGN.md), enforced by `src/lib/desi
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — runtime split, directory map, data model, auth chain, exam integrity, AI degradation, SRS/streaks
 - [docs/CONTENT.md](docs/CONTENT.md) — content model, id conventions, authoring rules per kind, validation, seed workflow
 - [docs/DESIGN.md](docs/DESIGN.md) — the Lexicon design system: palette & cinnabar rules, type, components, motion, a11y floor
-- [docs/adr/](docs/adr/) — decision records (Bun+Node split, SQLite+Drizzle, SM-2, homegrown i18n, server-issued deadlines, AI degradation, Postgres/Neon for serverless, versioned migrations)
+- [docs/adr/](docs/adr/) — decision records (Bun+Node split, SQLite+Drizzle, SM-2, homegrown i18n, server-issued deadlines, AI degradation, Postgres/Neon for serverless, versioned migrations, YAML content authoring)
 - [CONTRIBUTING.md](CONTRIBUTING.md) — prerequisites, setup, scripts table, testing guide

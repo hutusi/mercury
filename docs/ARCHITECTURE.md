@@ -21,6 +21,7 @@ Everything is bilingual by design: learning material is English, scaffolding (tr
 ## Directory map
 
 ```
+content/                  # learning content authored as YAML (validated by src/content/types.ts)
 src/
 ├── app/                  # App Router pages
 │   ├── (auth)/           # login, register (public)
@@ -30,7 +31,7 @@ src/
 │   └── page.tsx          # landing (redirects to /dashboard when signed in)
 ├── proxy.ts              # Next 16 proxy (ex-middleware): optimistic cookie check
 ├── components/           # feature-scoped UI (vocab/, exam/, writing/, …)
-├── content/              # seed content as typed TS + zod schemas (types.ts)
+├── content/              # zod content model (types.ts) + YAML loader (load.ts, tooling-only)
 └── lib/
     ├── actions/          # ALL mutations are server actions; each calls requireUser()
     ├── ai/               # Claude client, prompts, feedback zod schemas
@@ -73,7 +74,7 @@ Learning content bypasses this layer entirely: every content record carries both
 
 ## Content pipeline
 
-Typed TS files in `src/content/` → zod validation → idempotent upsert by slug id (`bun run db:seed`). Content lives in the DB (not static imports) because progress rows reference content ids. `src/content/content.test.ts` enforces the same invariants as the seed script without needing a DB. Authoring guide: [docs/CONTENT.md](CONTENT.md).
+YAML files in `content/` → `src/content/load.ts` (zod validation) → idempotent upsert by slug id (`bun run db:seed`). Content lives in the DB (not static imports) because progress rows reference content ids; the loader is tooling-only (seed + tests) and a guard test keeps it out of app code. Editors validate the YAML against JSON Schemas generated from zod (`bun run content:schemas`, see [ADR 0009](adr/0009-yaml-content-authoring.md)). `src/content/content.test.ts` enforces the same invariants as the seed script without needing a DB. Authoring guide: [docs/CONTENT.md](CONTENT.md).
 
 ## Exam integrity
 
