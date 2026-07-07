@@ -50,6 +50,34 @@ export function gradeExam(
   return { sectionScores, rawScore, maxScore, estimate };
 }
 
+export function sectionQuestionIds(section: ExamSection): Set<string> {
+  return new Set(section.groups.flatMap((g) => g.questions.map((q) => q.id)));
+}
+
+/**
+ * Merge submitted/autosaved answers for one section: only questions belonging
+ * to the section are accepted, and nothing is accepted past the deadline's
+ * grace window — late answers are discarded. Returns the `existing` object
+ * itself when nothing was accepted so callers can cheaply detect a no-op.
+ */
+export function acceptSectionAnswers(
+  section: ExamSection,
+  deadline: { expiresAt: number } | undefined,
+  now: number,
+  existing: Record<string, number>,
+  incoming: Record<string, number>,
+  graceMs: number,
+): Record<string, number> {
+  const onTime = deadline ? now <= deadline.expiresAt + graceMs : false;
+  if (!onTime) return existing;
+  const valid = sectionQuestionIds(section);
+  const merged: Record<string, number> = { ...existing };
+  for (const [qid, choice] of Object.entries(incoming)) {
+    if (valid.has(qid)) merged[qid] = choice;
+  }
+  return merged;
+}
+
 export interface SanitizedExamGroup {
   id: string;
   passage?: string;

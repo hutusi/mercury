@@ -1,38 +1,19 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { TrackSchema } from "../../content/types";
 import { requireUser } from "../auth/session";
 import { localeRedirect } from "../i18n";
-import { db } from "../db";
-import { userSettings } from "../db/schema";
-
-async function upsertActiveTrack(userId: string, track: string) {
-  const activeTrack = TrackSchema.parse(track);
-  const now = new Date();
-  await db
-    .insert(userSettings)
-    .values({
-      userId,
-      activeTrack,
-      onboardedAt: now,
-      updatedAt: now,
-    })
-    .onConflictDoUpdate({
-      target: userSettings.userId,
-      set: { activeTrack, updatedAt: now },
-    });
-}
+import { setActiveTrackForUser } from "../services/settings";
 
 export async function completeOnboarding(track: string) {
   const user = await requireUser();
-  await upsertActiveTrack(user.id, track);
+  await setActiveTrackForUser(user.id, track);
   await localeRedirect("/dashboard");
 }
 
 export async function setActiveTrack(track: string) {
   const user = await requireUser();
-  await upsertActiveTrack(user.id, track);
+  await setActiveTrackForUser(user.id, track);
   // Track affects every list page — bust the whole router cache.
   revalidatePath("/", "layout");
 }

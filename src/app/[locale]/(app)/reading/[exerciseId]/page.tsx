@@ -1,12 +1,10 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { eq } from "drizzle-orm";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { ReadingRunner } from "@/components/reading/ReadingRunner";
-import { db } from "@/lib/db";
-import { readingExercises } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { getReadingExerciseSanitized } from "@/lib/queries/reading";
 import { requireTrack } from "@/lib/settings";
 
 export default async function ReadingExercisePage({
@@ -18,13 +16,9 @@ export default async function ReadingExercisePage({
   const { exerciseId } = await params;
   const t = await getDict();
 
-  const exercise = await db.query.readingExercises.findFirst({
-    where: eq(readingExercises.id, exerciseId),
-  });
+  // The query strips answers — nothing here can leak the key while answering.
+  const exercise = await getReadingExerciseSanitized(exerciseId);
   if (!exercise) notFound();
-
-  // Never ship answers to the client while answering.
-  const sanitized = exercise.questions.map(({ id, stem, options }) => ({ id, stem, options }));
 
   return (
     <div className="space-y-6">
@@ -45,7 +39,7 @@ export default async function ReadingExercisePage({
       <ReadingRunner
         exerciseId={exercise.id}
         passage={exercise.passage}
-        questions={sanitized}
+        questions={exercise.questions}
         crossPromo={<CrossPromoCard track={track} />}
       />
     </div>

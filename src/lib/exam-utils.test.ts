@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { allExams } from "../content/load";
-import { gradeExam, sanitizeSections } from "./exam-utils";
+import { acceptSectionAnswers, gradeExam, sanitizeSections } from "./exam-utils";
 
 const toeicMiniExam = allExams.find((e) => e.id === "exam-toeic-mini")!;
 const ieltsMiniExam = allExams.find((e) => e.id === "exam-ielts-mini")!;
@@ -65,5 +65,67 @@ describe("gradeExam", () => {
     for (const [id, correct] of Object.entries(answers)) wrong[id] = (correct + 1) % 4;
     const { rawScore } = gradeExam("toeic", toeicMiniExam.sections, wrong);
     expect(rawScore).toBe(0);
+  });
+});
+
+describe("acceptSectionAnswers", () => {
+  const GRACE_MS = 30_000;
+  const section = toeicMiniExam.sections[0];
+  const otherSection = toeicMiniExam.sections[1];
+  const qid = section.groups[0].questions[0].id;
+  const foreignQid = otherSection.groups[0].questions[0].id;
+  const now = 1_000_000;
+  const deadline = { expiresAt: now + 60_000 };
+
+  test("accepts and merges answers within the deadline", () => {
+    const existing = { [qid]: 0 };
+    const merged = acceptSectionAnswers(section, deadline, now, existing, { [qid]: 2 }, GRACE_MS);
+    expect(merged[qid]).toBe(2);
+    expect(merged).not.toBe(existing); // fresh object on accept
+  });
+
+  test("accepts answers within the grace window past the deadline", () => {
+    const merged = acceptSectionAnswers(
+      section,
+      { expiresAt: now - 10_000 },
+      now,
+      {},
+      { [qid]: 1 },
+      GRACE_MS,
+    );
+    expect(merged[qid]).toBe(1);
+  });
+
+  test("discards late answers, returning existing unchanged", () => {
+    const existing = { [qid]: 3 };
+    const merged = acceptSectionAnswers(
+      section,
+      { expiresAt: now - GRACE_MS - 1 },
+      now,
+      existing,
+      { [qid]: 0 },
+      GRACE_MS,
+    );
+    expect(merged).toBe(existing); // same reference — caller can skip the write
+    expect(merged[qid]).toBe(3);
+  });
+
+  test("discards everything when the section has no deadline", () => {
+    const existing = {};
+    expect(acceptSectionAnswers(section, undefined, now, existing, { [qid]: 1 }, GRACE_MS)).toBe(
+      existing,
+    );
+  });
+
+  test("filters out answers for questions outside the section", () => {
+    const merged = acceptSectionAnswers(
+      section,
+      deadline,
+      now,
+      {},
+      { [qid]: 1, [foreignQid]: 2, "bogus-question": 3 },
+      GRACE_MS,
+    );
+    expect(merged).toEqual({ [qid]: 1 });
   });
 });

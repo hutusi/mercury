@@ -8,7 +8,6 @@ import {
   Timer,
 } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
-import { and, desc, eq, lte, sql } from "drizzle-orm";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { DueWordsCard } from "@/components/dashboard/DueWordsCard";
 import { MistakesCard } from "@/components/dashboard/MistakesCard";
@@ -18,92 +17,26 @@ import { StreakCard } from "@/components/dashboard/StreakCard";
 import { WelcomeCard } from "@/components/dashboard/WelcomeCard";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
-import { db } from "@/lib/db";
-import {
-  activityDays,
-  exerciseAttempts,
-  mockExamAttempts,
-  speakingSubmissions,
-  srsCards,
-  vocabWords,
-  writingSubmissions,
-} from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
-import { countActiveMistakes } from "@/lib/mistakes";
+import { getDashboardData } from "@/lib/queries/dashboard";
 import { requireTrack } from "@/lib/settings";
-import { getStreak } from "@/lib/streak";
 
 export default async function DashboardPage() {
   const { user, track } = await requireTrack();
   const t = await getDict();
 
-  const [
+  const {
     streak,
-    dueRows,
+    dueCount,
     lastExam,
     inProgressExam,
     recentExercises,
     recentWriting,
     recentSpeaking,
     recentExams,
-    firstActivity,
     activeMistakes,
-  ] = await Promise.all([
-    getStreak(user.id),
-    db
-      .select({ count: sql<number>`count(*)` })
-      .from(srsCards)
-      .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
-      .where(
-        and(
-          eq(srsCards.userId, user.id),
-          eq(vocabWords.track, track),
-          lte(srsCards.dueAt, new Date()),
-        ),
-      ),
-    db.query.mockExamAttempts.findFirst({
-      where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "completed")),
-      orderBy: desc(mockExamAttempts.completedAt),
-    }),
-    db.query.mockExamAttempts.findFirst({
-      where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "in_progress")),
-      orderBy: desc(mockExamAttempts.startedAt),
-    }),
-    db.query.exerciseAttempts.findMany({
-      where: eq(exerciseAttempts.userId, user.id),
-      orderBy: desc(exerciseAttempts.completedAt),
-      limit: 5,
-    }),
-    db.query.writingSubmissions.findMany({
-      where: and(
-        eq(writingSubmissions.userId, user.id),
-        eq(writingSubmissions.status, "ai_scored"),
-      ),
-      orderBy: desc(writingSubmissions.createdAt),
-      limit: 5,
-    }),
-    db.query.speakingSubmissions.findMany({
-      where: and(
-        eq(speakingSubmissions.userId, user.id),
-        eq(speakingSubmissions.status, "ai_scored"),
-      ),
-      orderBy: desc(speakingSubmissions.createdAt),
-      limit: 5,
-    }),
-    db.query.mockExamAttempts.findMany({
-      where: and(eq(mockExamAttempts.userId, user.id), eq(mockExamAttempts.status, "completed")),
-      orderBy: desc(mockExamAttempts.completedAt),
-      limit: 5,
-    }),
-    // Any completed activity ever — drives the first-run guidance below.
-    db.query.activityDays.findFirst({ where: eq(activityDays.userId, user.id) }),
-    countActiveMistakes(user.id, track),
-  ]);
-
-  const dueCount = dueRows[0]?.count ?? 0;
-  // Brand-new account: nothing done yet and not mid-exam. Show orientation
-  // instead of a wall of zeros.
-  const isNewUser = !firstActivity && !inProgressExam;
+    isNewUser,
+  } = await getDashboardData(user.id, track);
 
   const exerciseLabel = (kind: string) =>
     kind === "reading" ? t.nav.reading : kind === "listening" ? t.nav.listening : t.vocab.quiz;

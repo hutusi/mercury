@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
+import { bearer } from "better-auth/plugins";
 import { db } from "../db";
 
 // Production sets BETTER_AUTH_URL to the real domain (takes precedence). Preview
@@ -26,6 +27,14 @@ export const auth = betterAuth({
   ...(process.env.MERCURY_DISABLE_RATE_LIMIT === "1" && baseURL.startsWith("http://localhost")
     ? { rateLimit: { enabled: false } }
     : {}),
-  // Must stay the last plugin: lets server actions set auth cookies.
-  plugins: [nextCookies()],
+  // Native clients can't silently re-login, so give sessions a 30-day cap;
+  // getSession slides the expiry at most once a day. Applies to web cookies too.
+  session: {
+    expiresIn: 60 * 60 * 24 * 30,
+    updateAge: 60 * 60 * 24,
+  },
+  // bearer(): native clients send the session token (from the `set-auth-token`
+  // response header) as `Authorization: Bearer` instead of a cookie.
+  // nextCookies() must stay the last plugin: lets server actions set auth cookies.
+  plugins: [bearer(), nextCookies()],
 });

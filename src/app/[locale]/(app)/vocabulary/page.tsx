@@ -1,37 +1,21 @@
 import { Check } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
-import { and, eq } from "drizzle-orm";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
-import { db } from "@/lib/db";
-import { srsCards, vocabWords } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { getVocabOverview } from "@/lib/queries/vocab";
 import { requireTrack } from "@/lib/settings";
 
 export default async function VocabularyPage() {
   const { user, track } = await requireTrack();
   const t = await getDict();
 
-  const [words, cards] = await Promise.all([
-    db.query.vocabWords.findMany({
-      where: eq(vocabWords.track, track),
-      orderBy: vocabWords.sortOrder,
-    }),
-    db
-      .select({ wordId: srsCards.wordId, dueAt: srsCards.dueAt })
-      .from(srsCards)
-      .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
-      .where(and(eq(srsCards.userId, user.id), eq(vocabWords.track, track))),
-  ]);
-
-  // eslint-disable-next-line react-hooks/purity -- server component: runs once per request, not re-rendered
-  const now = Date.now();
-  const startedIds = new Set(cards.map((c) => c.wordId));
-  const dueCount = cards.filter((c) => c.dueAt.getTime() <= now).length;
-  const freshCount = words.length - startedIds.size;
-  const learnedCount = startedIds.size;
+  const { words, startedIds, dueCount, freshCount, learnedCount } = await getVocabOverview(
+    user.id,
+    track,
+  );
 
   const topics = new Map<string, typeof words>();
   for (const w of words) {

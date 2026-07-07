@@ -1,33 +1,20 @@
 import { Check } from "lucide-react";
-import { and, desc, eq } from "drizzle-orm";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
 import { Badge } from "@/components/ui/badge";
-import { db } from "@/lib/db";
-import { writingPrompts, writingSubmissions } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { listWritingPrompts } from "@/lib/queries/writing";
 import { requireTrack } from "@/lib/settings";
 
 export default async function WritingListPage() {
   const { user, track } = await requireTrack();
   const t = await getDict();
 
-  const [prompts, submissions] = await Promise.all([
-    db.query.writingPrompts.findMany({
-      where: eq(writingPrompts.track, track),
-      orderBy: writingPrompts.id,
-    }),
-    db.query.writingSubmissions.findMany({
-      where: and(eq(writingSubmissions.userId, user.id)),
-      orderBy: desc(writingSubmissions.createdAt),
-    }),
-  ]);
-
-  const submissionsByPrompt = new Map<string, number>();
-  for (const s of submissions) {
-    submissionsByPrompt.set(s.promptId, (submissionsByPrompt.get(s.promptId) ?? 0) + 1);
-  }
+  const { prompts, submissionCountByPrompt: submissionsByPrompt } = await listWritingPrompts(
+    user.id,
+    track,
+  );
 
   return (
     <div className="space-y-8">

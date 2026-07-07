@@ -1,13 +1,11 @@
 import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { and, desc, eq } from "drizzle-orm";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { WritingEditor } from "@/components/writing/WritingEditor";
-import { db } from "@/lib/db";
-import { writingPrompts, writingSubmissions } from "@/lib/db/schema";
 import { requireUser } from "@/lib/auth/session";
 import { getDict, getLocale } from "@/lib/i18n";
+import { getWritingPromptWithHistory } from "@/lib/queries/writing";
 
 export default async function WritingPromptPage({
   params,
@@ -18,16 +16,9 @@ export default async function WritingPromptPage({
   const { promptId } = await params;
   const [t, locale] = await Promise.all([getDict(), getLocale()]);
 
-  const prompt = await db.query.writingPrompts.findFirst({
-    where: eq(writingPrompts.id, promptId),
-  });
-  if (!prompt) notFound();
-
-  const past = await db.query.writingSubmissions.findMany({
-    where: and(eq(writingSubmissions.userId, user.id), eq(writingSubmissions.promptId, promptId)),
-    orderBy: desc(writingSubmissions.createdAt),
-    limit: 10,
-  });
+  const data = await getWritingPromptWithHistory(user.id, promptId);
+  if (!data) notFound();
+  const { prompt, past } = data;
 
   return (
     <div className="space-y-6">

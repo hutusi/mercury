@@ -1,29 +1,20 @@
 import { ArrowLeft, ClipboardList } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
-import { and, eq } from "drizzle-orm";
 import { StartExamButton } from "@/components/exam/StartExamButton";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { requireUser } from "@/lib/auth/session";
-import { db } from "@/lib/db";
-import { mockExamAttempts, mockExams } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { getExamIntro } from "@/lib/queries/exams";
 
 export default async function ExamIntroPage({ params }: { params: Promise<{ examId: string }> }) {
   const user = await requireUser();
   const { examId } = await params;
   const t = await getDict();
 
-  const exam = await db.query.mockExams.findFirst({ where: eq(mockExams.id, examId) });
-  if (!exam) notFound();
-
-  const inProgress = await db.query.mockExamAttempts.findFirst({
-    where: and(
-      eq(mockExamAttempts.userId, user.id),
-      eq(mockExamAttempts.examId, examId),
-      eq(mockExamAttempts.status, "in_progress"),
-    ),
-  });
+  const data = await getExamIntro(user.id, examId);
+  if (!data) notFound();
+  const { exam, inProgress } = data;
 
   const rules = [t.exams.rule1, t.exams.rule2, t.exams.rule3];
 

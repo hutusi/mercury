@@ -1,0 +1,853 @@
+openapi: 3.1.0
+info:
+  title: Mercury API
+  version: "1"
+  description: |
+    HTTP API for native Mercury clients (iOS). Authentication uses better-auth
+    bearer tokens: sign-in/sign-up responses carry the session token in the
+    `set-auth-token` response header; clients send it back as
+    `Authorization: Bearer <token>` and MUST NOT store cookies (a cookie sent
+    without an Origin header fails better-auth's CSRF check).
+
+    Coverage of this document is enforced by src/lib/api/openapi-coverage.test.ts:
+    every /api/v1 route in the codebase must appear here and vice versa.
+servers:
+  - url: /
+security:
+  - bearerAuth: []
+
+paths:
+  # ── better-auth (catch-all route, documented for client authors) ─────────
+  /api/auth/sign-up/email:
+    post:
+      summary: Register with email and password
+      security: []
+      tags: [auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, password]
+              properties:
+                name: { type: string }
+                email: { type: string, format: email }
+                password: { type: string, minLength: 8 }
+      responses:
+        "200":
+          description: Registered and signed in.
+          headers:
+            set-auth-token:
+              description: Bearer token for subsequent requests (store in Keychain).
+              schema: { type: string }
+  /api/auth/sign-in/email:
+    post:
+      summary: Sign in with email and password
+      security: []
+      tags: [auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+      responses:
+        "200":
+          description: Signed in.
+          headers:
+            set-auth-token:
+              description: Bearer token for subsequent requests.
+              schema: { type: string }
+  /api/auth/sign-out:
+    post:
+      summary: Revoke the current session token
+      tags: [auth]
+      responses:
+        "200": { description: Session revoked. }
+  /api/auth/get-session:
+    get:
+      summary: Current session (null when unauthenticated)
+      tags: [auth]
+      responses:
+        "200": { description: Session or null. }
+
+  # ── account ───────────────────────────────────────────────────────────────
+  /api/v1/me:
+    get:
+      summary: Current user, settings, and AI availability
+      tags: [account]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id: { type: string }
+                      name: { type: string }
+                      email: { type: string }
+                  settings:
+                    oneOf: [{ $ref: "#/components/schemas/Settings" }, { type: "null" }]
+                  aiEnabled: { type: boolean }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+  /api/v1/me/settings:
+    put:
+      summary: Set the active learning track (doubles as onboarding)
+      tags: [account]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [track]
+              properties:
+                track: { $ref: "#/components/schemas/Track" }
+      responses:
+        "200":
+          description: Updated settings.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  settings: { $ref: "#/components/schemas/Settings" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+  # ── dashboard ─────────────────────────────────────────────────────────────
+  /api/v1/dashboard:
+    get:
+      summary: Streak, due counts, and recent scores
+      tags: [dashboard]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  track: { $ref: "#/components/schemas/Track" }
+                  streak: { type: integer }
+                  dueWords: { type: integer }
+                  activeMistakes: { type: integer }
+                  isNewUser: { type: boolean }
+                  inProgressExamId: { type: ["string", "null"] }
+                  lastExamEstimate:
+                    oneOf: [{ $ref: "#/components/schemas/ExamEstimate" }, { type: "null" }]
+                  recentScores:
+                    type: array
+                    items: { $ref: "#/components/schemas/RecentScore" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+
+  # ── vocabulary / SRS ──────────────────────────────────────────────────────
+  /api/v1/vocab/overview:
+    get:
+      summary: Track word list with per-user SRS flags and aggregates
+      tags: [vocab]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  words:
+                    type: array
+                    items:
+                      allOf:
+                        - { $ref: "#/components/schemas/VocabWord" }
+                        - type: object
+                          properties:
+                            started: { type: boolean }
+                            due: { type: boolean }
+                  dueCount: { type: integer }
+                  freshCount: { type: integer }
+                  learnedCount: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/vocab/study-queue:
+    get:
+      summary: Due cards (oldest first) topped up with unseen words
+      tags: [vocab]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cards:
+                    type: array
+                    items:
+                      allOf:
+                        - { $ref: "#/components/schemas/VocabWord" }
+                        - type: object
+                          properties:
+                            wordId: { type: string }
+                            isNew: { type: boolean }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/vocab/grade:
+    post:
+      summary: SM-2 grade a flashcard (creates the card lazily)
+      tags: [vocab]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [wordId, grade]
+              properties:
+                wordId: { type: string }
+                grade: { type: integer, enum: [1, 3, 4, 5] }
+      responses:
+        "200":
+          description: New interval.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  intervalDays: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+  /api/v1/vocab/quiz:
+    get:
+      summary: Build a fresh random quiz (empty questions when the pool < 4)
+      tags: [vocab]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  track: { $ref: "#/components/schemas/Track" }
+                  questions:
+                    type: array
+                    items: { $ref: "#/components/schemas/QuizQuestion" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+    post:
+      summary: Score a quiz (id-equality; max 20 answers)
+      tags: [vocab]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [track, answers]
+              properties:
+                track: { $ref: "#/components/schemas/Track" }
+                answers:
+                  type: object
+                  description: questionWordId -> chosen option's wordId
+                  additionalProperties: { type: string }
+      responses:
+        "200":
+          description: Score.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  score: { type: integer }
+                  total: { type: integer }
+                  correctWordIds:
+                    type: array
+                    items: { type: string }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+  # ── reading / listening drills ────────────────────────────────────────────
+  /api/v1/reading:
+    get:
+      summary: Reading exercises with the user's best scores (metadata only)
+      tags: [exercises]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exercises:
+                    type: array
+                    items: { $ref: "#/components/schemas/ExerciseListItem" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/reading/{exerciseId}:
+    get:
+      summary: One reading exercise, questions sanitized (no answer keys)
+      tags: [exercises]
+      parameters: [{ $ref: "#/components/parameters/exerciseId" }]
+      responses:
+        "200":
+          description: Sanitized exercise (passage + questions without keys).
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/listening:
+    get:
+      summary: Listening exercises with the user's best scores (metadata only)
+      tags: [exercises]
+      responses:
+        "200":
+          description: OK
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/listening/{exerciseId}:
+    get:
+      summary: One listening exercise; includes the script for on-device TTS
+      tags: [exercises]
+      parameters: [{ $ref: "#/components/parameters/exerciseId" }]
+      responses:
+        "200":
+          description: Sanitized exercise (script + questions without keys).
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/exercises/{kind}/{exerciseId}/attempts:
+    post:
+      summary: Grade an MCQ attempt server-side
+      description: The graded result reveals correctIndex/explanationZh — only after answering.
+      tags: [exercises]
+      parameters:
+        - name: kind
+          in: path
+          required: true
+          schema: { type: string, enum: [reading, listening] }
+        - { $ref: "#/components/parameters/exerciseId" }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [answers, durationSeconds]
+              properties:
+                answers:
+                  type: object
+                  additionalProperties: { type: integer, minimum: 0, maximum: 3 }
+                durationSeconds: { type: integer, minimum: 0 }
+      responses:
+        "200":
+          description: Graded result with per-question key and explanation.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/GradedExercise" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+  # ── mistakes notebook ─────────────────────────────────────────────────────
+  /api/v1/mistakes:
+    get:
+      summary: Active and cleared mistakes (derived, sanitized)
+      tags: [mistakes]
+      responses:
+        "200":
+          description: Active/cleared view models; questions carry no keys.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/mistakes/retest:
+    post:
+      summary: Re-answer an active MCQ mistake (correct answer clears it)
+      description: 403 (integrity) unless the question is a derived active mistake — blocks mid-exam key extraction.
+      tags: [mistakes]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [kind, refId, questionId, chosenIndex]
+              properties:
+                kind: { type: string, enum: [reading, listening, exam] }
+                refId: { type: string }
+                questionId: { type: string }
+                chosenIndex: { type: integer, minimum: 0, maximum: 3 }
+      responses:
+        "200":
+          description: Result with the key revealed (post-answer).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  correct: { type: boolean }
+                  correctIndex: { type: integer }
+                  explanationZh: { type: string }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Integrity" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/mistakes/vocab-retest:
+    post:
+      summary: Re-answer a vocab mistake by word-id equality
+      tags: [mistakes]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [wordId, chosenWordId]
+              properties:
+                wordId: { type: string }
+                chosenWordId: { type: string }
+      responses:
+        "200":
+          description: Result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  correct: { type: boolean }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  # ── mock exams (server-issued deadlines, server-side grading) ─────────────
+  /api/v1/exams:
+    get:
+      summary: Visible exams (section metadata only) and attempt history
+      tags: [exams]
+      responses:
+        "200":
+          description: OK
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/exams/{examId}:
+    get:
+      summary: Exam intro (sections metadata, resumable attempt id)
+      tags: [exams]
+      parameters: [{ $ref: "#/components/parameters/examId" }]
+      responses:
+        "200":
+          description: Intro; never contains questions.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/exams/{examId}/attempts:
+    post:
+      summary: Start (or resume) an attempt — idempotent
+      description: The server stamps the first section's expiresAt; clients never set timing.
+      tags: [exams]
+      parameters: [{ $ref: "#/components/parameters/examId" }]
+      responses:
+        "200":
+          description: Attempt id (existing one when already in progress).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attemptId: { type: string }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/exams/attempts/{attemptId}:
+    get:
+      summary: Live attempt (sanitized) or completed report (with review keys)
+      description: |
+        in_progress: sanitized sections only, serverTime for clock-skew handling,
+        deadlines as epoch-ms. completed/expired: scores, estimate, and the full
+        review including correctIndex/explanationZh.
+      tags: [exams]
+      parameters: [{ $ref: "#/components/parameters/attemptId" }]
+      responses:
+        "200":
+          description: Status-discriminated attempt resource.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/exams/attempts/{attemptId}/answers:
+    patch:
+      summary: Autosave answers for the current unexpired section
+      description: Always 204; late or out-of-section answers are silently dropped.
+      tags: [exams]
+      parameters: [{ $ref: "#/components/parameters/attemptId" }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [answers]
+              properties:
+                answers:
+                  type: object
+                  additionalProperties: { type: integer, minimum: 0, maximum: 3 }
+      responses:
+        "204": { description: Accepted (whatever passed the deadline/section filter). }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+  /api/v1/exams/attempts/{attemptId}/sections/{sectionId}/submit:
+    post:
+      summary: Submit a section; final section triggers server-side grading
+      description: Late answers (past expiresAt + 30s grace) are discarded — only prior autosaves count.
+      tags: [exams]
+      parameters:
+        - { $ref: "#/components/parameters/attemptId" }
+        - name: sectionId
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [answers]
+              properties:
+                answers:
+                  type: object
+                  additionalProperties: { type: integer, minimum: 0, maximum: 3 }
+      responses:
+        "200":
+          description: Progress state.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  done: { type: boolean }
+                  nextSectionIndex: { type: integer }
+                  deadlines:
+                    type: array
+                    items: { $ref: "#/components/schemas/SectionDeadline" }
+                  serverTime: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+  # ── writing (AI-graded, degrades to self-assessment) ──────────────────────
+  /api/v1/writing:
+    get:
+      summary: Writing prompts with the user's submission counts
+      tags: [writing]
+      responses:
+        "200":
+          description: OK
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/writing/{promptId}:
+    get:
+      summary: One prompt (never includes the model answer) + recent submissions
+      tags: [writing]
+      parameters: [{ $ref: "#/components/parameters/promptId" }]
+      responses:
+        "200":
+          description: Prompt and history.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/writing/{promptId}/submissions:
+    post:
+      summary: Submit an essay for AI grading (degrades to self_assessed)
+      tags: [writing]
+      parameters: [{ $ref: "#/components/parameters/promptId" }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string, minLength: 20, maxLength: 30000 }
+      responses:
+        "200":
+          description: Result (feedback null when degraded).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  submissionId: { type: string }
+                  status: { $ref: "#/components/schemas/SubmissionStatus" }
+                  feedback: {}
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+  /api/v1/writing/submissions/{submissionId}:
+    get:
+      summary: Submission detail; selfAssess material only when not AI-scored
+      tags: [writing]
+      parameters: [{ $ref: "#/components/parameters/submissionId" }]
+      responses:
+        "200":
+          description: Detail with feedback or selfAssess payload.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/writing/submissions/{submissionId}/retry-feedback:
+    post:
+      summary: Retry AI grading for a self-assessed submission
+      tags: [writing]
+      parameters: [{ $ref: "#/components/parameters/submissionId" }]
+      responses:
+        "200":
+          description: Refreshed result with the graded feedback (same contract as speaking).
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "503": { $ref: "#/components/responses/AiUnavailable" }
+
+  # ── speaking (on-device STT, AI-graded, degrades) ─────────────────────────
+  /api/v1/speaking:
+    get:
+      summary: Speaking prompts with the user's submission counts
+      tags: [speaking]
+      responses:
+        "200":
+          description: OK
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/speaking/{promptId}:
+    get:
+      summary: One prompt incl. model answer/checklist (practice material) + history
+      tags: [speaking]
+      parameters: [{ $ref: "#/components/parameters/promptId" }]
+      responses:
+        "200":
+          description: Prompt and history.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/speaking/{promptId}/submissions:
+    post:
+      summary: Submit an on-device transcript for AI grading (degrades)
+      tags: [speaking]
+      parameters: [{ $ref: "#/components/parameters/promptId" }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [transcript, durationSeconds]
+              properties:
+                transcript: { type: string, minLength: 10, maxLength: 20000 }
+                durationSeconds: { type: integer, minimum: 0, maximum: 600 }
+      responses:
+        "200":
+          description: Result (feedback null when degraded).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  submissionId: { type: string }
+                  status: { $ref: "#/components/schemas/SubmissionStatus" }
+                  feedback: {}
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+  /api/v1/speaking/submissions/{submissionId}:
+    get:
+      summary: Submission detail; selfAssess material only when not AI-scored
+      tags: [speaking]
+      parameters: [{ $ref: "#/components/parameters/submissionId" }]
+      responses:
+        "200":
+          description: Detail with feedback or selfAssess payload.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/speaking/submissions/{submissionId}/retry-feedback:
+    post:
+      summary: Retry AI grading for a self-assessed submission
+      tags: [speaking]
+      parameters: [{ $ref: "#/components/parameters/submissionId" }]
+      responses:
+        "200":
+          description: Refreshed result.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "503": { $ref: "#/components/responses/AiUnavailable" }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: better-auth session token from the set-auth-token response header.
+
+  parameters:
+    exerciseId:
+      name: exerciseId
+      in: path
+      required: true
+      schema: { type: string }
+    examId:
+      name: examId
+      in: path
+      required: true
+      schema: { type: string }
+    attemptId:
+      name: attemptId
+      in: path
+      required: true
+      schema: { type: string }
+    promptId:
+      name: promptId
+      in: path
+      required: true
+      schema: { type: string }
+    submissionId:
+      name: submissionId
+      in: path
+      required: true
+      schema: { type: string }
+
+  responses:
+    Unauthorized:
+      description: Missing or invalid bearer token.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+    OnboardingRequired:
+      description: The user has not picked a learning track yet (code onboarding_required).
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+    Integrity:
+      description: The mutation is not allowed in the current state (code integrity).
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+    NotFound:
+      description: Resource missing or not visible to this user (code not_found).
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+    ValidationFailed:
+      description: Request failed Zod validation (code validation_failed, issues in details).
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+    AiUnavailable:
+      description: AI grading is unavailable (code ai_unavailable); keep the self-assessed state.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+
+  schemas:
+    ErrorEnvelope:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, validation_failed, invalid_json, ai_unavailable, internal).
+            message:
+              type: string
+              description: English debug text — not for end users.
+            details: {}
+    Track:
+      type: string
+      enum: [toeic, ielts, business]
+    Settings:
+      type: object
+      properties:
+        activeTrack: { $ref: "#/components/schemas/Track" }
+        dailyGoal: { type: integer }
+        onboardedAt: { type: string, format: date-time }
+    VocabWord:
+      type: object
+      description: Bilingual dictionary entry (zh fields are content, not localization).
+      properties:
+        id: { type: string }
+        headword: { type: string }
+        ipa: { type: string }
+        pos: { type: string }
+        translationZh: { type: string }
+    QuizQuestion:
+      type: object
+      description: Options carry word ids; grading is id equality server-side.
+      properties:
+        wordId: { type: string }
+        direction: { type: string, enum: [en2zh, zh2en] }
+        prompt: { type: string }
+        options:
+          type: array
+          items:
+            type: object
+            properties:
+              wordId: { type: string }
+              text: { type: string }
+    ExerciseListItem:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        titleZh: { type: string }
+        questionCount: { type: integer }
+        best:
+          oneOf:
+            - type: object
+              properties:
+                score: { type: integer }
+                total: { type: integer }
+            - type: "null"
+    GradedExercise:
+      type: object
+      properties:
+        score: { type: integer }
+        total: { type: integer }
+        perQuestion:
+          type: array
+          items:
+            type: object
+            properties:
+              questionId: { type: string }
+              correctIndex: { type: integer }
+              explanationZh: { type: string }
+              correct: { type: boolean }
+    SectionDeadline:
+      type: object
+      description: Epoch-ms timestamps issued by the server.
+      properties:
+        sectionId: { type: string }
+        startedAt: { type: integer }
+        expiresAt: { type: integer }
+    ExamEstimate:
+      oneOf:
+        - type: object
+          properties:
+            kind: { type: string, const: toeic }
+            listening: { type: integer }
+            reading: { type: integer }
+            total: { type: integer }
+        - type: object
+          properties:
+            kind: { type: string, const: ielts }
+            band: { type: number }
+    RecentScore:
+      type: object
+      properties:
+        kind: { type: string, enum: [reading, listening, vocab_quiz, writing, speaking, exam] }
+        at: { type: string, format: date-time }
+        score: { type: integer }
+        total: { type: integer }
+        scoreLabel: { type: ["string", "null"] }
+        estimate:
+          oneOf: [{ $ref: "#/components/schemas/ExamEstimate" }, { type: "null" }]
+    SubmissionStatus:
+      type: string
+      enum: [ai_scored, self_assessed]

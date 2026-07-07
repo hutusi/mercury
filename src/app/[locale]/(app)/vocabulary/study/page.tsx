@@ -1,50 +1,15 @@
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
-import { and, asc, eq, lte } from "drizzle-orm";
 import { StudySession, type StudyCardData } from "@/components/vocab/StudySession";
-import { db } from "@/lib/db";
-import { srsCards, vocabWords } from "@/lib/db/schema";
 import { getDict } from "@/lib/i18n";
+import { getStudyQueue } from "@/lib/queries/vocab";
 import { requireTrack } from "@/lib/settings";
-
-const MAX_DUE_PER_SESSION = 30;
-const MAX_NEW_PER_SESSION = 10;
 
 export default async function StudyPage() {
   const { user, track } = await requireTrack();
   const t = await getDict();
 
-  const dueRows = await db
-    .select({ word: vocabWords })
-    .from(srsCards)
-    .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
-    .where(
-      and(
-        eq(srsCards.userId, user.id),
-        eq(vocabWords.track, track),
-        lte(srsCards.dueAt, new Date()),
-      ),
-    )
-    .orderBy(asc(srsCards.dueAt))
-    .limit(MAX_DUE_PER_SESSION);
-
-  const startedRows = await db
-    .select({ wordId: srsCards.wordId })
-    .from(srsCards)
-    .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
-    .where(and(eq(srsCards.userId, user.id), eq(vocabWords.track, track)));
-  const startedIds = new Set(startedRows.map((r) => r.wordId));
-
-  const trackWords = await db.query.vocabWords.findMany({
-    where: eq(vocabWords.track, track),
-    orderBy: vocabWords.sortOrder,
-  });
-  const newWords = trackWords.filter((w) => !startedIds.has(w.id)).slice(0, MAX_NEW_PER_SESSION);
-
-  const cards: StudyCardData[] = [
-    ...dueRows.map(({ word }) => ({ ...word, wordId: word.id, isNew: false })),
-    ...newWords.map((word) => ({ ...word, wordId: word.id, isNew: true })),
-  ];
+  const cards: StudyCardData[] = await getStudyQueue(user.id, track);
 
   return (
     <div className="space-y-6">
