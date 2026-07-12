@@ -6,14 +6,14 @@ All learning content is authored as YAML in the top-level `content/` directory, 
 
 Schemas and types live in `src/content/types.ts`; `src/content/load.ts` reads and validates the YAML files and exposes the `all*` aggregates to the seed script and tests. Every content kind follows the bilingual convention: **learning material in English, scaffolding in Simplified Chinese** — titles carry both (`title` / `titleZh`), prompts carry both (`promptEn` / `promptZh`), explanations are Chinese (`explanationZh`), and checklists are `{ en, zh }` pairs.
 
-| Kind       | File pattern                                | Document shape     | Schema                    |
-| ---------- | ------------------------------------------- | ------------------ | ------------------------- |
-| Vocabulary | `content/vocab/{toeic,ielts,business}.yaml` | array of words     | `VocabWordSchema`         |
-| Reading    | `content/reading/{track}.yaml`              | array of exercises | `ReadingExerciseSchema`   |
-| Listening  | `content/listening/{track}.yaml`            | array of exercises | `ListeningExerciseSchema` |
-| Writing    | `content/writing/{track}.yaml`              | array of prompts   | `WritingPromptSchema`     |
-| Speaking   | `content/speaking/{track}.yaml`             | array of prompts   | `SpeakingPromptSchema`    |
-| Mock exams | `content/exams/{toeic,ielts}-mini.yaml`     | one exam object    | `MockExamSchema`          |
+| Kind       | File pattern                                       | Document shape     | Schema                    |
+| ---------- | -------------------------------------------------- | ------------------ | ------------------------- |
+| Vocabulary | `content/vocab/{toeic,ielts,business}.yaml`        | array of words     | `VocabWordSchema`         |
+| Reading    | `content/reading/{track}.yaml`                     | array of exercises | `ReadingExerciseSchema`   |
+| Listening  | `content/listening/{track}.yaml`                   | array of exercises | `ListeningExerciseSchema` |
+| Writing    | `content/writing/{track}.yaml`                     | array of prompts   | `WritingPromptSchema`     |
+| Speaking   | `content/speaking/{track}.yaml`                    | array of prompts   | `SpeakingPromptSchema`    |
+| Mock exams | `content/exams/{toeic,ielts}-{mini,standard}.yaml` | one exam object    | `MockExamSchema`          |
 
 New files must be registered in `src/content/load.ts` — file order there is deliberate and hardcoded (vocabulary `sort_order` derives from array position; never load by directory order).
 

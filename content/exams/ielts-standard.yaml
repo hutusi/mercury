@@ -1,0 +1,575 @@
+# yaml-language-server: $schema=../.schemas/exam.schema.json
+id: exam-ielts-standard
+track: ielts
+title: IELTS Standard Practice Test
+titleZh: 雅思标准模考
+descriptionZh: 共 44 题：听力 20 题（两个部分，涵盖生活对话、参观独白、学术讨论与讲座）+ 阅读 24 题（四篇学术短文），全程约 60 分钟。
+sections:
+  - id: ielts-standard-listening-1
+    kind: listening
+    title: Listening Section 1
+    titleZh: 听力第一部分
+    durationSeconds: 600
+    groups:
+      - id: is-lg1
+        script:
+          - speaker: A
+            text: Good afternoon, Bayview Wildlife Tours. What can I do for you?
+          - speaker: B
+            text: Hi, I'm ringing about your boat trips. My sister and I are visiting next week and we'd love to see some seals.
+          - speaker: A
+            text: We run two trips. The morning cruise lasts two hours and visits the seal colony, and the full-day trip also lands on Puffin Island.
+          - speaker: B
+            text: The full-day one sounds wonderful, but my sister gets seasick on long crossings. We'd better take the morning cruise.
+          - speaker: A
+            text: Good choice. It's twenty-eight pounds per person, or twenty-five if you book online in advance.
+          - speaker: B
+            text: We'll book online then. Do we need to bring anything special?
+          - speaker: A
+            text: Waterproof jackets are provided, but do wear flat shoes — the deck can be slippery. And bring binoculars if you have them.
+          - speaker: B
+            text: Fine. Where does the boat leave from?
+          - speaker: A
+            text: Not the main harbour — we moved last season. We now depart from the jetty beside the fish market, and boarding starts fifteen minutes before departure.
+          - speaker: B
+            text: Got it. Could you put us down for Thursday the twenty-third of July?
+          - speaker: A
+            text: Certainly. May I have your name?
+          - speaker: B
+            text: It's Alice Thornber — T-H-O-R-N-B-E-R. My mobile is oh seven four four one, three double two, nine oh eight.
+        questions:
+          - id: is-l-q01
+            stem: Which trip does the woman choose, and why?
+            options:
+              - The full-day trip, because it lands on Puffin Island
+              - The morning cruise, because her sister suffers from seasickness
+              - The morning cruise, because it is cheaper
+              - The full-day trip, because binoculars are provided
+            correctIndex: 1
+            explanationZh: 女士说妹妹晕船："my sister gets seasick on long crossings. We'd better take the morning cruise"——因此选择两小时的上午航线。全天行程虽然能登上海鹦岛，但被明确排除。
+          - id: is-l-q02
+            stem: How much will each person pay for the trip?
+            options:
+              - £25
+              - £28
+              - £30
+              - £20
+            correctIndex: 0
+            explanationZh: 职员报价 "twenty-eight pounds per person, or twenty-five if you book online in advance"，女士随即回答 "We'll book online then"，因此每人实付 25 英镑。28 英镑是未提前网上预订的价格。
+          - id: is-l-q03
+            stem: What does the man advise the woman to wear?
+            options:
+              - A waterproof jacket
+              - Warm gloves
+              - A sun hat
+              - Flat shoes
+            correctIndex: 3
+            explanationZh: 职员说防水外套由船方提供（"Waterproof jackets are provided"），但提醒 "do wear flat shoes — the deck can be slippery"，即建议自己穿平底鞋，以防甲板湿滑。
+          - id: is-l-q04
+            stem: Where does the boat now depart from?
+            options:
+              - The main harbour
+              - Outside the tour office
+              - The jetty beside the fish market
+              - The beach car park
+            correctIndex: 2
+            explanationZh: 职员特别说明出发点已变更："We now depart from the jetty beside the fish market"。主港口是上一季之前的旧出发点，属于典型的干扰信息。
+          - id: is-l-q05
+            stem: What is the caller's surname?
+            options:
+              - Thornbury
+              - Thornber
+              - Tornber
+              - Thornton
+            correctIndex: 1
+            explanationZh: 女士报出姓名并拼写："It's Alice Thornber — T-H-O-R-N-B-E-R"。听清逐字母拼读是雅思 Part 1 的常规考点，注意与发音相近的 Thornbury、Thornton 区分。
+      - id: is-lg2
+        script:
+          - speaker: narrator
+            text: Hello everyone, and welcome to Hartfield Botanic Garden. Before you set off, let me mention a few things that will help you plan your visit.
+          - speaker: narrator
+            text: The garden is open from nine until six, and on Thursday evenings this summer we stay open until nine for our twilight concerts.
+          - speaker: narrator
+            text: I'm sorry to say the tropical glasshouse is closed at the moment. A storm damaged several roof panels in the spring, and repairs won't finish until the end of August.
+          - speaker: narrator
+            text: The free guided walk begins at eleven o'clock. It used to leave from the main gate, but it now starts at the fountain in the rose garden, so please gather there a few minutes early.
+          - speaker: narrator
+            text: If you'd like lunch, the café on the lake terrace serves hot food until three. Picnics are welcome anywhere except the wildflower meadow, where we're protecting orchids that seed themselves in the grass.
+          - speaker: narrator
+            text: Families should pick up the children's explorer trail from the ticket office. Children who complete all ten puzzles can collect a small prize when they leave.
+          - speaker: narrator
+            text: Keen gardeners might like to visit our plant centre, which you'll find just beside the exit. Every plant sold there was grown here in the garden's own nursery.
+          - speaker: narrator
+            text: Finally, if you enjoy your visit, do consider becoming a member. Membership gives you unlimited entry for a year, and this month we're also giving new members a free ticket to a twilight concert.
+          - speaker: narrator
+            text: That's everything from me — enjoy your day, and don't hesitate to ask any of the staff in green shirts if you need help.
+        questions:
+          - id: is-l-q06
+            stem: On which evenings does the garden stay open late this summer?
+            options:
+              - Fridays
+              - Saturdays
+              - Thursdays
+              - Every evening
+            correctIndex: 2
+            explanationZh: 讲话人说 "on Thursday evenings this summer we stay open until nine for our twilight concerts"——夏季每逢周四晚延长开放至九点，其余日子六点闭园。
+          - id: is-l-q07
+            stem: Why is the tropical glasshouse currently closed?
+            options:
+              - Storm damage is being repaired
+              - It is being repainted
+              - New plants are being installed
+              - There are not enough staff
+            correctIndex: 0
+            explanationZh: 原因是风暴受损："A storm damaged several roof panels in the spring, and repairs won't finish until the end of August"——屋顶被春季风暴损坏，正在维修，八月底才能完工。
+          - id: is-l-q08
+            stem: Where does the guided walk now begin?
+            options:
+              - At the main gate
+              - At the ticket office
+              - At the lake terrace café
+              - At the fountain in the rose garden
+            correctIndex: 3
+            explanationZh: 讲话人强调集合点已改："It used to leave from the main gate, but it now starts at the fountain in the rose garden"。正门是过去的旧集合点，注意 used to 引出的干扰信息。
+          - id: is-l-q09
+            stem: Where are visitors NOT allowed to picnic?
+            options:
+              - In the rose garden
+              - In the wildflower meadow
+              - On the lake terrace
+              - Beside the plant centre
+            correctIndex: 1
+            explanationZh: 原文说 "Picnics are welcome anywhere except the wildflower meadow"——因为草甸里正在保护自播繁衍的兰花，所以唯独野花草甸禁止野餐。
+          - id: is-l-q10
+            stem: What do new members receive this month?
+            options:
+              - A free concert ticket
+              - A free plant from the nursery
+              - A children's explorer prize
+              - Free lunch at the café
+            correctIndex: 0
+            explanationZh: 结尾提到本月的入会优惠："this month we're also giving new members a free ticket to a twilight concert"——赠送一张黄昏音乐会门票。会员本身的常规权益是一年不限次入园，注意区分。
+  - id: ielts-standard-listening-2
+    kind: listening
+    title: Listening Section 2
+    titleZh: 听力第二部分
+    durationSeconds: 600
+    groups:
+      - id: is-lg3
+        script:
+          - speaker: A
+            text: Have you had a chance to look at our river data since Friday, Priya?
+          - speaker: B
+            text: I have, and there's a problem. It rained heavily the night before we sampled, so the pollution readings are far lower than usual — the rain simply diluted everything.
+          - speaker: A
+            text: That's annoying. Should we throw those results away and start again?
+          - speaker: B
+            text: Not entirely. Dr Okafor suggested we keep them but add a second round of samples in dry weather, so we can compare the two conditions.
+          - speaker: A
+            text: That makes sense. While we're at it, do we really need all six sampling sites? Getting to the two above the weir takes half a day.
+          - speaker: B
+            text: I agree — let's cut it to four. She said four sites are enough as long as we keep the one below the sewage works, because that's where the interesting changes happen.
+          - speaker: A
+            text: OK. And I've been thinking about the chemical tests. The kits only tell us what the water was like at that exact moment.
+          - speaker: B
+            text: Exactly, which is why I want to count the invertebrates as well. Mayfly larvae can't survive pollution episodes, so the species we find reflect conditions over whole months, not just one afternoon.
+          - speaker: A
+            text: Good idea. How shall we split the writing?
+          - speaker: B
+            text: You're better at the maps, so you take the site descriptions, and I'll run the statistics. We can draft the discussion section together.
+          - speaker: A
+            text: Deal. One more thing — the assessment. Is it still a ten-minute talk?
+          - speaker: B
+            text: No, that changed. This year every project is presented as a poster, and we have to stand beside it and answer questions for half an hour.
+        questions:
+          - id: is-l-q11
+            stem: Why are the students' first pollution readings unreliable?
+            options:
+              - Their testing equipment was faulty
+              - They sampled at the wrong sites
+              - The readings were recorded incorrectly
+              - Heavy rain had diluted the river water
+            correctIndex: 3
+            explanationZh: 女生解释 "It rained heavily the night before we sampled... the rain simply diluted everything"——采样前夜的大雨稀释了河水，污染读数因此偏低，与设备或记录无关。
+          - id: is-l-q12
+            stem: What does Dr Okafor suggest they do with the first set of results?
+            options:
+              - Discard them and start again
+              - Keep them and add dry-weather samples for comparison
+              - Publish them without changes
+              - Ask another group to check them
+            correctIndex: 1
+            explanationZh: 导师的建议是保留并补测："Dr Okafor suggested we keep them but add a second round of samples in dry weather, so we can compare the two conditions"——两种天气条件对比，而不是全部作废重来。
+          - id: is-l-q13
+            stem: Why do the students decide to keep the site below the sewage works?
+            options:
+              - It shows the most significant changes
+              - It is the easiest site to reach
+              - It has the cleanest water
+              - The equipment is already installed there
+            correctIndex: 0
+            explanationZh: 女生转述导师的话：四个点足够，"as long as we keep the one below the sewage works, because that's where the interesting changes happen"——污水处理厂下游的点位变化最显著，必须保留。
+          - id: is-l-q14
+            stem: Why does the woman want to count invertebrates as well?
+            options:
+              - They are easier to collect than water samples
+              - The chemical test kits are too expensive
+              - They indicate water quality over a longer period
+              - The tutor has made it a requirement
+            correctIndex: 2
+            explanationZh: 女生解释生物指标的价值："the species we find reflect conditions over whole months, not just one afternoon"——化学检测只反映取样瞬间的水质，而无脊椎动物种类反映数月的长期状况。
+          - id: is-l-q15
+            stem: How will the project be assessed this year?
+            options:
+              - A ten-minute talk
+              - A written report only
+              - A recorded video presentation
+              - A poster with a question session
+            correctIndex: 3
+            explanationZh: 男生问是否还是十分钟口头报告，女生纠正："This year every project is presented as a poster, and we have to stand beside it and answer questions for half an hour"——改为海报展示并现场答问半小时。
+      - id: is-lg4
+        script:
+          - speaker: narrator
+            text: Today I want to trace the history of street lighting, and to show how each new technology changed not just the look of cities, but the way people lived in them.
+          - speaker: narrator
+            text: For most of history, city streets after sunset were simply dark. Respectable citizens stayed at home, and anyone walking at night hired a boy with a torch to guide them.
+          - speaker: narrator
+            text: The first organised systems appeared in the seventeenth century, when cities such as Paris required householders to hang oil lamps outside their doors. The light was feeble, but the principle was new — lighting the street had become a public duty rather than a private choice.
+          - speaker: narrator
+            text: The real transformation came with gas. In 1807, a row of gas lamps was demonstrated on Pall Mall in London, and within a few decades thousands of miles of gas pipes ran beneath European cities.
+          - speaker: narrator
+            text: Gas light was roughly ten times brighter than oil, and it reshaped urban life. Shops stayed open into the evening, theatres multiplied, and for the first time factory shifts could run through the night.
+          - speaker: narrator
+            text: Each lamp, however, had to be lit by hand. Every evening at dusk, an army of lamplighters walked fixed routes with long poles, and they became trusted figures who doubled as informal night watchmen.
+          - speaker: narrator
+            text: Electricity arrived in the 1870s in the form of arc lamps, which many people actually disliked. They were so harsh that some cities mounted them on high towers, trying to imitate moonlight rather than lamplight.
+          - speaker: narrator
+            text: It was the smaller, softer incandescent bulb that finally made electric street lighting practical, and by the 1930s the lamplighter had all but disappeared.
+          - speaker: narrator
+            text: Today the story has taken an unexpected turn. Astronomers and ecologists now argue that our cities are over-lit, and that constant artificial light confuses migrating birds and disrupts human sleep.
+          - speaker: narrator
+            text: So the newest LED systems are designed not to shine brighter, but to dim themselves when streets are empty. After four centuries of chasing more light, the challenge now is learning to use less of it.
+        questions:
+          - id: is-l-q16
+            stem: According to the lecturer, what was new about the seventeenth-century systems in cities like Paris?
+            options:
+              - Street lighting became a public responsibility
+              - Oil lamps were brighter than torches
+              - Householders were paid to hang lamps
+              - Lamps were mounted on high towers
+            correctIndex: 0
+            explanationZh: 讲座指出新意在于观念而非亮度："lighting the street had become a public duty rather than a private choice"——照亮街道首次成为公共责任。原文明确说当时的灯光仍然微弱（feeble）。
+          - id: is-l-q17
+            stem: What effect did gas lighting have on city life?
+            options:
+              - It made streets safer than in daytime
+              - It reduced the price of oil
+              - It allowed shops and theatres to open in the evening
+              - It removed the need for lamplighters
+            correctIndex: 2
+            explanationZh: 讲座列举煤气灯的影响："Shops stayed open into the evening, theatres multiplied, and for the first time factory shifts could run through the night"。点灯人恰恰因煤气灯而成规模，最后一项与原文相反。
+          - id: is-l-q18
+            stem: Why did many people dislike the early arc lamps?
+            options:
+              - They were expensive to run
+              - Their light was too harsh
+              - They had to be lit by hand
+              - They attracted night-time crowds
+            correctIndex: 1
+            explanationZh: 原文说弧光灯 "were so harsh that some cities mounted them on high towers, trying to imitate moonlight"——人们不喜欢正是因为光线过于刺眼，把灯装上高塔是应对办法而非原因。
+          - id: is-l-q19
+            stem: What finally made electric street lighting practical?
+            options:
+              - High lighting towers
+              - Cheaper gas pipes
+              - The disappearance of lamplighters
+              - The incandescent bulb
+            correctIndex: 3
+            explanationZh: 讲座明确说 "It was the smaller, softer incandescent bulb that finally made electric street lighting practical"——是更小、更柔和的白炽灯泡让电力路灯真正实用，点灯人消失是结果而非原因。
+          - id: is-l-q20
+            stem: What is the aim of the newest LED street lighting systems?
+            options:
+              - To imitate moonlight
+              - To shine more brightly than gas lamps
+              - To reduce light when it is not needed
+              - To help birds migrate at night
+            correctIndex: 2
+            explanationZh: 结尾说最新的 LED 系统 "are designed not to shine brighter, but to dim themselves when streets are empty"——目标是在街道无人时调暗、减少用光，呼应"学会用更少的光"这一主旨。
+  - id: ielts-standard-reading-1
+    kind: reading
+    title: Reading Section 1
+    titleZh: 阅读第一部分
+    durationSeconds: 1200
+    groups:
+      - id: is-rg1
+        passage: |-
+          The Secret of Roman Concrete
+
+          Nearly two thousand years after it was poured, the concrete dome of the Pantheon in Rome remains the largest unreinforced concrete dome in the world. Roman harbour walls have withstood twenty centuries of waves, while many modern marine structures crack and crumble within fifty years. For engineers, this durability has long been an uncomfortable puzzle: how did builders without modern chemistry produce a material that outlasts our own?
+
+          Part of the answer lies in the recipe. Modern concrete binds sand and gravel with Portland cement, and in harsh environments it is usually strengthened with steel bars. Seawater is its enemy: salt gradually penetrates the material and corrodes the steel, which expands as it rusts and splits the concrete from within. The Romans used neither steel nor Portland cement. Instead they mixed lime with volcanic ash and, for harbour works, with seawater itself — a combination praised by Roman writers, who observed that these structures seemed to grow stronger with age.
+
+          Modern analysis has shown that this was no exaggeration. When researchers drilled cores from ancient breakwaters, they found the concrete laced with a rare and remarkably strong mineral called aluminium tobermorite. Crucially, the crystals had continued to form long after construction: as seawater seeped through tiny cracks, it slowly dissolved the volcanic ash and allowed new crystals to grow, knitting the damage together. Far from destroying the material, the sea was repairing it.
+
+          A study published in 2023 added a second mechanism. Roman concrete is scattered with small white lumps of lime that were long dismissed as evidence of careless mixing. The study argued instead that these lumps act as reservoirs of calcium: whenever a crack lets water in, the lime dissolves and reseals the gap within weeks.
+
+          Why, then, do we not simply copy the Romans? Their concrete cures far too slowly for an industry that expects a bridge deck to bear traffic within days, and its compressive strength is lower than that of modern mixes. But with cement production responsible for roughly eight per cent of global carbon-dioxide emissions, engineers are studying these self-healing mechanisms closely — not to rebuild the Pantheon, but to make sea walls that repair themselves.
+        questions:
+          - id: is-r-q01
+            stem: What puzzle does the writer introduce in the first paragraph?
+            options:
+              - Why the Romans stopped building with concrete
+              - How Roman builders transported their materials
+              - Why Roman concrete has outlasted modern concrete
+              - Why the Pantheon was built without windows
+            correctIndex: 2
+            explanationZh: 首段以疑问收尾："how did builders without modern chemistry produce a material that outlasts our own?"——罗马混凝土屹立两千年而现代海工结构几十年内开裂，这一反差正是全文要解答的谜题。
+          - id: is-r-q02
+            stem: According to the passage, what happens to steel-reinforced concrete in seawater?
+            options:
+              - It becomes stronger with age
+              - It cannot be poured underwater
+              - It absorbs volcanic ash from the water
+              - Its steel corrodes, expands and splits the concrete
+            correctIndex: 3
+            explanationZh: 第二段解释海水的破坏机制：盐分渗入并腐蚀钢筋，"which expands as it rusts and splits the concrete from within"——钢筋生锈膨胀，从内部撑裂混凝土。"随年月变强"说的是罗马混凝土，属于张冠李戴。
+          - id: is-r-q03
+            stem: The researchers found that the mineral aluminium tobermorite
+            options:
+              - formed as seawater reacted with the volcanic ash
+              - was added deliberately by Roman builders
+              - weakened the ancient breakwaters over time
+              - is a common ingredient of modern cement
+            correctIndex: 0
+            explanationZh: 第三段说晶体在建成后仍持续生成："as seawater seeped through tiny cracks, it slowly dissolved the volcanic ash and allowed new crystals to grow"——它是海水与火山灰反应的产物，并非建造者刻意添加。
+          - id: is-r-q04
+            stem: According to the 2023 study, the white lumps of lime in Roman concrete
+            options:
+              - prove that the mixing process was careless
+              - give the material a self-healing ability
+              - were added purely for decoration
+              - dissolved completely during construction
+            correctIndex: 1
+            explanationZh: 研究推翻了"搅拌粗心"的旧看法，认为石灰块是钙的储备库："whenever a crack lets water in, the lime dissolves and reseals the gap within weeks"——正是它们赋予混凝土自愈能力。
+          - id: is-r-q05
+            stem: Why is Roman-style concrete not simply adopted by modern builders?
+            options:
+              - The recipe has been completely lost
+              - Volcanic ash is banned in construction
+              - It contains steel that rusts too quickly
+              - It hardens too slowly for modern construction schedules
+            correctIndex: 3
+            explanationZh: 末段解释："Their concrete cures far too slowly for an industry that expects a bridge deck to bear traffic within days"——固化太慢无法满足现代工期（且抗压强度较低）。配方已被研究清楚，第一项不成立。
+          - id: is-r-q06
+            stem: Why does the writer mention that cement production causes about eight per cent of global carbon-dioxide emissions?
+            options:
+              - To explain why engineers want alternatives to modern cement
+              - To show that Roman concrete produced more emissions
+              - To argue that concrete construction should stop
+              - To compare the cement industry with shipping
+            correctIndex: 0
+            explanationZh: 作者以 8% 的排放占比说明研究动机：正因水泥业排放巨大，工程师才想借鉴罗马的自愈机制，"to make sea walls that repair themselves"——为现代材料寻找低碳出路。
+      - id: is-rg2
+        passage: |-
+          The Spacing Effect
+
+          In 1885, the German psychologist Hermann Ebbinghaus published the results of a strange experiment he had performed on himself. For months he memorised lists of invented syllables such as "wid" and "zof", chosen precisely because they meant nothing: real words would have allowed him to lean on existing knowledge, clouding the measurement of pure memory. By testing how quickly the lists faded, he produced his famous "forgetting curve" — and a less famous but more useful discovery. The same number of repetitions produced far stronger memories when they were spread over days than when they were packed into a single session.
+
+          This finding, now called the spacing effect, has been replicated for well over a century in laboratories and classrooms, with material ranging from foreign vocabulary to surgical skills. It is arguably the most reliable result in the psychology of learning. The explanation most researchers favour concerns effort: when a review is delayed, the memory has begun to fade, so retrieving it is a struggle — and it is precisely this struggle that strengthens the memory. The psychologist Robert Bjork calls such conditions "desirable difficulties", circumstances that feel unproductive to the learner while actually deepening learning.
+
+          That word "feel" explains why, despite the evidence, students the world over still cram the night before an examination. Massed practice is seductive because it produces fluency: the material, having just been seen, comes to mind easily, and learners mistake this temporary ease for durable knowledge. In one well-known study, students who crammed confidently predicted higher test scores than those who spaced their practice — and then scored substantially lower.
+
+          The spacing effect has now escaped the laboratory. Flashcard software schedules each item to reappear just as it is about to be forgotten, and some medical schools distribute the teaching of a topic in small doses across a whole year. The classroom itself, however, remains an obstacle: textbooks and courses are usually organised in tidy blocks, with each topic visited once, mastered and left behind — an arrangement that a century of evidence suggests is almost perfectly designed for forgetting.
+        questions:
+          - id: is-r-q07
+            stem: Why did Ebbinghaus memorise invented syllables rather than real words?
+            options:
+              - They were quicker to read aloud
+              - They could not be linked to existing knowledge
+              - They resembled foreign vocabulary
+              - They were easier to remember accurately
+            correctIndex: 1
+            explanationZh: 首段解释选材原因："real words would have allowed him to lean on existing knowledge, clouding the measurement of pure memory"——真实单词会借助既有知识，干扰对纯粹记忆的测量，所以刻意选用无意义音节。
+          - id: is-r-q08
+            stem: According to the passage, why does delaying a review strengthen memory?
+            options:
+              - It gives the brain time to rest
+              - It increases total study time
+              - The effort of retrieval reinforces the memory
+              - It reduces anxiety about examinations
+            correctIndex: 2
+            explanationZh: 第二段给出主流解释：复习延迟后记忆已开始消退，提取变得费力，"it is precisely this struggle that strengthens the memory"——正是这种费力的提取巩固了记忆，而非大脑得到休息。
+          - id: is-r-q09
+            stem: In the passage, "desirable difficulties" are conditions that
+            options:
+              - make examinations harder to pass
+              - students find enjoyable to overcome
+              - teachers deliberately remove from lessons
+              - feel unproductive but actually deepen learning
+            correctIndex: 3
+            explanationZh: Bjork 的定义在原文中是 "circumstances that feel unproductive to the learner while actually deepening learning"——让学习者感觉低效、实际却加深学习的条件，与考试难度无关。
+          - id: is-r-q10
+            stem: Why do students continue to cram despite the evidence against it?
+            options:
+              - Massed practice creates a false feeling of mastery
+              - Spaced practice requires expensive software
+              - Teachers encourage last-minute revision
+              - Cramming produces better long-term results
+            correctIndex: 0
+            explanationZh: 第三段指出集中练习的诱惑在于流畅感：材料刚看过、提取容易，"learners mistake this temporary ease for durable knowledge"——学习者误把一时的轻松当作牢固掌握。
+          - id: is-r-q11
+            stem: In the study mentioned in the third paragraph, students who crammed
+            options:
+              - refused to predict their test scores
+              - performed better than they expected
+              - expected high scores but performed worse
+              - scored the same as the spaced-practice group
+            correctIndex: 2
+            explanationZh: 原文说突击复习的学生 "confidently predicted higher test scores than those who spaced their practice — and then scored substantially lower"——自信预测了更高分数，实际成绩反而明显更低。
+          - id: is-r-q12
+            stem: What obstacle to spaced learning does the writer identify in the final paragraph?
+            options:
+              - Students' lack of motivation
+              - The block-by-block organisation of courses
+              - The cost of flashcard software
+              - Medical schools' resistance to change
+            correctIndex: 1
+            explanationZh: 末段指出课堂的结构性障碍："textbooks and courses are usually organised in tidy blocks, with each topic visited once, mastered and left behind"——教材按整块编排、每个主题只学一次，恰恰不利于间隔复习。
+  - id: ielts-standard-reading-2
+    kind: reading
+    title: Reading Section 2
+    titleZh: 阅读第二部分
+    durationSeconds: 1200
+    groups:
+      - id: is-rg3
+        passage: |-
+          Cooling the Urban Furnace
+
+          On a summer evening, the centre of a large city can be five degrees Celsius warmer than the countryside around it, a phenomenon known as the urban heat island. Its causes are well understood. Asphalt and dark rooftops absorb most of the solar energy that strikes them, tall buildings block the winds that would otherwise carry heat away, and vehicles and air conditioners pour waste heat directly into the streets. Above all, cities lack vegetation: where the countryside cools itself by evaporating water through leaves, cities are largely sealed under stone and tar.
+
+          The effect is strongest not at midday but at night, because dense building materials release the heat they have stored during the day for hours after sunset. It is this loss of night-time cooling that makes heat islands dangerous: during heatwaves, bodies that cannot cool overnight come under growing strain, and mortality among the elderly rises accordingly. The heat island also feeds on itself. As temperatures climb, residents turn up their air conditioners, whose exhaust warms the streets further and drives demand still higher — a feedback loop that in some districts can add an extra degree to the evening air.
+
+          The remedies sound almost quaint. Painting roofs white reflects sunlight before it can be absorbed, and Los Angeles has experimented with pale coatings on the roads themselves. The most powerful tool, however, is the tree, which cools twice over: its canopy shades the surface, while the water evaporating from its leaves draws heat from the air, working as a slow, silent air conditioner. Studies in European cities have found that well-treed streets can be several degrees cooler than bare ones nearby.
+
+          Yet trees are distributed with striking inequality. Satellite surveys repeatedly show that wealthy neighbourhoods enjoy far denser canopies than poor ones, meaning that those least able to afford air conditioning often live on the hottest streets. And planting has its own limits: in arid cities, every new tree competes for scarce water, and planners must weigh the cooling of today against the reservoirs of tomorrow. The urban heat island, in short, is not a fact of nature but a consequence of design — and what design has caused, design can temper.
+        questions:
+          - id: is-r-q13
+            stem: Which of the following is mentioned as a cause of the urban heat island?
+            options:
+              - Dark surfaces absorbing the sun's energy
+              - Higher rainfall over city centres
+              - Cities being built at lower altitudes
+              - Sunlight reflected from office windows
+            correctIndex: 0
+            explanationZh: 首段列举成因，第一条便是 "Asphalt and dark rooftops absorb most of the solar energy that strikes them"——深色路面和屋顶吸收了照射到的大部分太阳能，其余选项原文均未提及。
+          - id: is-r-q14
+            stem: Why does the heat island remain strong at night?
+            options:
+              - Vehicles are used more after dark
+              - Air conditioners are switched off at night
+              - Wind speeds increase after sunset
+              - Building materials release heat stored during the day
+            correctIndex: 3
+            explanationZh: 第二段解释夜间效应最强的原因："dense building materials release the heat they have stored during the day for hours after sunset"——致密的建筑材料在日落后持续释放白天储存的热量。
+          - id: is-r-q15
+            stem: The feedback loop described in the second paragraph occurs because
+            options:
+              - trees release moisture that warms the air
+              - air-conditioner exhaust heats the streets further
+              - white roofs increase electricity demand
+              - night temperatures reduce energy use
+            correctIndex: 1
+            explanationZh: 反馈回路是：气温升高使居民加大空调使用，"whose exhaust warms the streets further and drives demand still higher"——空调排出的废热进一步加热街道，用电需求随之更高，形成自我强化。
+          - id: is-r-q16
+            stem: According to the passage, trees cool cities because they
+            options:
+              - reflect sunlight like pale road coatings
+              - block waste heat from vehicles
+              - provide shade and release water vapour
+              - remove the need for white roofs
+            correctIndex: 2
+            explanationZh: 作者说树木"双重降温"："its canopy shades the surface, while the water evaporating from its leaves draws heat from the air"——树冠遮阳，叶片蒸腾吸热，像一台缓慢无声的空调。
+          - id: is-r-q17
+            stem: What problem with urban tree cover does the writer point out?
+            options:
+              - It is unevenly spread between rich and poor areas
+              - Trees grow too slowly to be useful
+              - Most cities have no space left for planting
+              - Residents generally oppose new trees
+            correctIndex: 0
+            explanationZh: 卫星调查显示 "wealthy neighbourhoods enjoy far denser canopies than poor ones"——树冠覆盖贫富分布严重不均，最买不起空调的人反而住在最热的街道上。
+          - id: is-r-q18
+            stem: What caution does the writer raise about tree planting?
+            options:
+              - Trees raise humidity to unhealthy levels
+              - Tree roots damage road surfaces
+              - Shade reduces the value of solar panels
+              - In dry regions trees compete for scarce water
+            correctIndex: 3
+            explanationZh: 末段提醒种树的限制："in arid cities, every new tree competes for scarce water"——干旱城市里每棵新树都要争夺稀缺的水资源，规划者需在今日降温与明日蓄水之间权衡。
+      - id: is-rg4
+        passage: |-
+          The Paradox of Automation
+
+          Automation was supposed to remove human error, and in many respects it has. A modern airliner can fly itself from shortly after take-off to touchdown, and flying has never been safer. Yet accident investigators have documented a troubling pattern: when the automation does fail, the humans supervising it are sometimes bewildered, reacting slowly or making errors a novice would recognise. This is the paradox of automation — the more reliable the machine, the less prepared the human becomes to take over when it falters.
+
+          One reason is the slow decay of skill. A typical airline pilot now steers the aircraft by hand for only a few minutes in each flight, usually just after take-off and just before landing. Manual flying, like any skill, fades without practice, and the pilots who most need sharp skills — those flying the most automated aircraft — get the least rehearsal. Investigations into several modern crashes have found experienced crews mishandling emergencies that earlier generations of pilots regarded as routine.
+
+          The second reason concerns attention. Watching a system that almost never fails is one of the tasks human beings perform worst. Laboratory research on vigilance, first conducted with wartime radar operators, shows that the ability to notice rare events falls away sharply within about half an hour of passive monitoring. As early as 1983, the engineer Lisanne Bainbridge described the central irony of automation: designers hand over to the machine the active work that people do well, and leave people the passive watching that they do badly.
+
+          The response, in aviation at least, has been twofold. Some regulators now require pilots to fly manually on a regular schedule, treating hand-flying as a perishable skill to be maintained like any other. Designers, meanwhile, are experimenting with systems that deliberately keep the human engaged — handing back control at unpredictable moments, or requiring active confirmation of decisions. The stakes reach well beyond the cockpit. As cars begin to drive themselves and software reads medical scans, entire professions are becoming supervisors of machines — and the lesson of aviation is that supervision is far harder than it looks.
+        questions:
+          - id: is-r-q19
+            stem: The "paradox of automation" described in the passage is that
+            options:
+              - automated systems fail more often than human operators
+              - automation increases the cost of pilot training
+              - the more reliable the machine, the less ready the human is to take over
+              - machines cannot be held responsible for accidents
+            correctIndex: 2
+            explanationZh: 首段直接定义悖论："the more reliable the machine, the less prepared the human becomes to take over when it falters"——机器越可靠，人越缺乏接管故障的准备。原文强调飞行从未如此安全，第一项与之相反。
+          - id: is-r-q20
+            stem: The writer notes that a typical airline pilot today
+            options:
+              - no longer needs a licence to fly
+              - flies the aircraft by hand for only a few minutes per flight
+              - refuses to rely on autopilot systems
+              - practises emergencies on every flight
+            correctIndex: 1
+            explanationZh: 第二段说 "A typical airline pilot now steers the aircraft by hand for only a few minutes in each flight"——如今每个航班只手动操纵几分钟，手动飞行技能因缺乏练习而逐渐退化。
+          - id: is-r-q21
+            stem: Research into vigilance shows that people
+            options:
+              - monitor screens best when working alone
+              - improve steadily with monitoring practice
+              - notice rare events more easily at night
+              - lose attentiveness within about half an hour
+            correctIndex: 3
+            explanationZh: 警觉性研究的结论是："the ability to notice rare events falls away sharply within about half an hour of passive monitoring"——被动监视约半小时后，察觉罕见事件的能力急剧下降。
+          - id: is-r-q22
+            stem: According to Bainbridge, the central irony of automation is that designers
+            options:
+              - leave people the monitoring tasks they perform worst
+              - remove humans from systems entirely
+              - trust pilots more than they trust machines
+              - build systems that are never allowed to fail
+            correctIndex: 0
+            explanationZh: Bainbridge 指出的讽刺是：设计者把人擅长的主动操作交给机器，"leave people the passive watching that they do badly"——留给人的恰恰是人最不擅长的被动监视任务。
+          - id: is-r-q23
+            stem: One remedy mentioned in the final paragraph is
+            options:
+              - banning autopilot during bad weather
+              - requiring pilots to practise manual flying regularly
+              - replacing pilots with more reliable software
+              - shortening the length of long-haul flights
+            correctIndex: 1
+            explanationZh: 末段提到监管对策："Some regulators now require pilots to fly manually on a regular schedule"——要求飞行员按固定周期手动飞行，把手飞当作会"过期"的技能加以保持。
+          - id: is-r-q24
+            stem: The writer concludes that the automation paradox
+            options:
+              - applies only to commercial aviation
+              - will disappear as computers improve
+              - is relevant to fields such as driving and medicine
+              - proves that automation was a mistake
+            correctIndex: 2
+            explanationZh: 结尾将教训推广开来："As cars begin to drive themselves and software reads medical scans, entire professions are becoming supervisors of machines"——悖论的意义远超航空业，延伸到驾驶与医疗等领域。

@@ -11,7 +11,7 @@ Mercury acquires users through exam prep (**TOEIC** and **IELTS** tracks) and re
 - **Listening** — dialogues and talks played through browser text-to-speech with per-speaker voices; transcripts unlock after submission
 - **Writing** — IELTS Task 1/2, TOEIC essays, and business emails/reports graded by Claude with band scores, line-level issues, and rewritten samples
 - **Speaking** — browser speech recognition transcribes your answer; Claude coaches fluency, vocabulary, and grammar with more natural phrasings
-- **Mock Exam Mode** — timed mini-TOEIC (25Q) and mini-IELTS (23Q) with server-validated section deadlines, auto-submit on expiry, refresh-safe resume, scaled score / band estimates, and wrong-answer review
+- **Mock Exam Mode** — timed TOEIC and IELTS exams in two lengths (mini 25Q/23Q, standard 50Q/44Q) with server-validated section deadlines, auto-submit on expiry, refresh-safe resume, scaled score / band estimates, and wrong-answer review
 
 AI grading runs on Claude (`ANTHROPIC_API_KEY`) or Alibaba Bailian GLM (`DASHSCOPE_API_KEY`) and degrades gracefully: with neither key configured, writing and speaking fall back to model answers plus bilingual self-assessment checklists.
 
