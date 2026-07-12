@@ -49,13 +49,22 @@ async function requestStructuredFeedback<Schema extends z.ZodType>(
     : bailianStructuredFeedback(req);
 }
 
+/**
+ * Server-composed learner context (formatLearnerContext output) becomes the
+ * <learner_profile> block; memo strings inside were sanitized at compose time.
+ */
+function learnerProfileBlock(learnerContext: string | undefined): string {
+  return learnerContext ? `<learner_profile>\n${learnerContext}\n</learner_profile>\n\n` : "";
+}
+
 export async function getWritingFeedback(req: {
   taskType: WritingTaskType;
   promptEn: string;
   userText: string;
   wordCount: number;
+  learnerContext?: string;
 }): Promise<WritingFeedback> {
-  const userContent = `<task>
+  const userContent = `${learnerProfileBlock(req.learnerContext)}<task>
 ${req.promptEn}
 </task>
 
@@ -76,8 +85,9 @@ export async function getSpeakingFeedback(req: {
   promptEn: string;
   transcript: string;
   durationSeconds: number;
+  learnerContext?: string;
 }): Promise<SpeakingFeedback> {
-  const userContent = `<task>
+  const userContent = `${learnerProfileBlock(req.learnerContext)}<task>
 ${req.promptEn}
 </task>
 

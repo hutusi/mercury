@@ -1,11 +1,71 @@
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { activeAiModel, getWritingFeedback } from "../ai/client";
 import type { WritingFeedback } from "../ai/schemas";
+import type { Track, WritingTaskType } from "../../content/types";
 import { db } from "../db";
 import { writingPrompts, writingSubmissions } from "../db/schema";
+import { formatLearnerContext, normalizeAiScore } from "../learner-model-core";
+import { getLearnerProfile } from "../queries/profile";
 import { recordActivity } from "../streak";
 import { NotFoundError } from "./errors";
+import { mergeCoachMemoSafely, recordSkillSignalSafely } from "./profile";
+
+/**
+ * The <learner_profile> block for the grader: profile + rubric scores from
+ * the last few AI-graded essays. Guarded — context is an enhancement, never
+ * a reason for a submission to fail or degrade.
+ */
+async function writingLearnerContext(
+  userId: string,
+  promptTrack: Track,
+): Promise<string | undefined> {
+  try {
+    const profile = await getLearnerProfile(userId);
+    if (!profile) return undefined;
+    const recent = await db.query.writingSubmissions.findMany({
+      where: and(eq(writingSubmissions.userId, userId), eq(writingSubmissions.status, "ai_scored")),
+      orderBy: [desc(writingSubmissions.createdAt)],
+      limit: 3,
+    });
+    const recentCriteria = recent.flatMap(
+      (s) => s.feedback?.criteria.map((c) => ({ name: c.name, score: c.score })) ?? [],
+    );
+    return formatLearnerContext({
+      goalTrack: profile.goalTrack,
+      activeTrack: promptTrack,
+      targetScore: profile.targetScore,
+      examDate: profile.examDate,
+      selfRatedLevel: profile.selfRatedLevel,
+      skillEstimates: profile.skillEstimates,
+      coachMemo: profile.coachMemo,
+      recentCriteria,
+      today: new Date(),
+    });
+  } catch (error) {
+    console.error("[writing] learner context failed", error);
+    return undefined;
+  }
+}
+
+/** IELTS tasks score on the 0-9 band scale; everything else is 0-100. */
+function writingScoreScale(taskType: WritingTaskType): "band9" | "pct100" {
+  return taskType.startsWith("ielts") ? "band9" : "pct100";
+}
+
+/** Post-grading learner-model hooks; both are guarded internally. */
+async function recordWritingOutcome(
+  userId: string,
+  taskType: WritingTaskType,
+  feedback: WritingFeedback,
+) {
+  await recordSkillSignalSafely(userId, {
+    skill: "writing",
+    value: normalizeAiScore(writingScoreScale(taskType), feedback.overallScore),
+    source: "ai_feedback",
+  });
+  if (feedback.memoUpdate) await mergeCoachMemoSafely(userId, feedback.memoUpdate);
+}
 
 export const SubmitWritingSchema = z.object({
   promptId: z.string(),
@@ -33,6 +93,8 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
 
   const wordCount = countWords(text);
 
+  const learnerContext = await writingLearnerContext(userId, prompt.track);
+
   let feedback: WritingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
   try {
@@ -41,6 +103,7 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
       promptEn: prompt.promptEn,
       userText: text,
       wordCount,
+      learnerContext,
     });
     status = "ai_scored";
   } catch {
@@ -63,6 +126,9 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
     .returning({ id: writingSubmissions.id });
 
   await recordActivity(userId);
+  if (status === "ai_scored" && feedback) {
+    await recordWritingOutcome(userId, prompt.taskType, feedback);
+  }
   return { submissionId: submission.id, status, feedback };
 }
 
@@ -89,11 +155,14 @@ export async function retryWritingFeedbackForUser(
   });
   if (!prompt) throw new NotFoundError(`Unknown writing prompt: ${submission.promptId}`);
 
+  const learnerContext = await writingLearnerContext(userId, prompt.track);
+
   const feedback = await getWritingFeedback({
     taskType: prompt.taskType,
     promptEn: prompt.promptEn,
     userText: submission.text,
     wordCount: submission.wordCount,
+    learnerContext,
   });
 
   // Compare-and-set on status so a concurrent retry can't overwrite this one.
@@ -109,7 +178,10 @@ export async function retryWritingFeedbackForUser(
     )
     .returning();
 
-  if (updated) return { submissionId: submission.id, status: "ai_scored", feedback };
+  if (updated) {
+    await recordWritingOutcome(userId, prompt.taskType, feedback);
+    return { submissionId: submission.id, status: "ai_scored", feedback };
+  }
 
   // Lost the race: a concurrent retry already scored this submission. Return
   // the persisted feedback so the caller can't show a result that never

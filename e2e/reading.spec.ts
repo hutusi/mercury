@@ -26,11 +26,13 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
   await expect(page.getByText(t.common.accuracy, { exact: false })).toBeVisible();
   await expect(page.getByText(`${t.reading.explanation}：`).first()).toBeVisible();
 
-  // Back on the list, the best score shows up. (The result view renders two
-  // identical back-links — header and footer — so take the first.)
-  await page
-    .getByRole("link", { name: new RegExp(t.reading.backToList) })
-    .first()
-    .click();
+  // Back on the list, the best score shows up. Assert the back-link's target
+  // but navigate with goto: clicking right after the server action races the
+  // post-action router-cache refresh, and the client transition's RSC fetch
+  // can stall in full-suite runs (flaked repeatedly — see git history).
+  await expect(
+    page.getByRole("link", { name: new RegExp(t.reading.backToList) }).first(),
+  ).toHaveAttribute("href", "/zh/reading");
+  await page.goto("/reading");
   await expect(page.getByText(new RegExp(`${t.reading.bestScore}:`)).first()).toBeVisible();
 });

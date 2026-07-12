@@ -121,6 +121,15 @@ export async function recordSkillSignalSafely(userId: string, signal: SkillSigna
   }
 }
 
+/** Guarded memo merge for post-grading hooks (same rule as skill signals). */
+export async function mergeCoachMemoSafely(userId: string, update: MemoUpdate) {
+  try {
+    await mergeCoachMemoForUser(userId, update);
+  } catch (error) {
+    console.error("[profile] coach memo merge failed", error);
+  }
+}
+
 /** Merge a grading call's memoUpdate into the coach memo (same guard rule). */
 export async function mergeCoachMemoForUser(userId: string, update: MemoUpdate) {
   const profile = await ensureLearnerProfile(userId);
