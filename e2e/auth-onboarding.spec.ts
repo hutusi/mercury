@@ -15,6 +15,33 @@ test("register → forced onboarding → dashboard", async ({ page }) => {
   await expect(page.getByText(t.dashboard.quickStart)).toBeVisible();
 });
 
+test("onboarding goal step: fill target + self-rating, then submit", async ({ page }) => {
+  await registerUser(page);
+
+  // Step 1 → step 2 shows the goal form for an exam track.
+  await page.getByRole("button", { name: new RegExp(t.tracks.toeic) }).click();
+  await page.getByRole("button", { name: t.onboarding.next }).click();
+  await expect(page.getByRole("heading", { name: t.onboarding.goalTitle })).toBeVisible();
+  await expect(page.getByText(t.onboarding.targetScoreLabel)).toBeVisible();
+
+  await page.getByRole("button", { name: "800", exact: true }).click();
+  await page.getByRole("button", { name: t.onboarding.levelIntermediate }).click();
+  await page.getByRole("button", { name: t.onboarding.confirm }).click();
+  await page.waitForURL("**/dashboard");
+});
+
+test("onboarding goal step can be skipped; business track hides exam fields", async ({ page }) => {
+  await registerUser(page);
+
+  await page.getByRole("button", { name: new RegExp(t.tracks.business) }).click();
+  await page.getByRole("button", { name: t.onboarding.next }).click();
+  await expect(page.getByRole("heading", { name: t.onboarding.goalTitle })).toBeVisible();
+  await expect(page.getByText(t.onboarding.targetScoreLabel)).toBeHidden();
+
+  await page.getByRole("button", { name: t.onboarding.skipGoal }).click();
+  await page.waitForURL("**/dashboard");
+});
+
 test("new account sees first-run guidance until it completes an activity", async ({ page }) => {
   await registerAndOnboard(page, "toeic");
 
