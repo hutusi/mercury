@@ -6,6 +6,7 @@ import { activityDays, exerciseAttempts, reviewLogs, srsCards, vocabWords } from
 import { scheduleReview } from "../srs";
 import { localDay, recordActivity } from "../streak";
 import { NotFoundError } from "./errors";
+import { recordSkillSignalSafely } from "./profile";
 
 export const GradeCardSchema = z.object({
   wordId: z.string(),
@@ -114,6 +115,15 @@ export async function submitQuizForUser(
     durationSeconds: 0,
   });
   await recordActivity(userId);
+  // The quiz (not per-card SRS grades, which are too noisy and run inside a
+  // transaction) is the vocab accuracy signal for the learner model.
+  if (total > 0) {
+    await recordSkillSignalSafely(userId, {
+      skill: "vocab",
+      value: (score / total) * 100,
+      source: "exercise",
+    });
+  }
 
   return { score, total, correctWordIds };
 }

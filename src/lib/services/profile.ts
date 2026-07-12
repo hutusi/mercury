@@ -109,6 +109,18 @@ export async function applySkillSignalForUser(userId: string, signal: SkillSigna
     .where(eq(learnerProfiles.userId, userId));
 }
 
+/**
+ * Guarded variant for post-mutation hooks: a learner-profile update may never
+ * fail the learning action that produced the signal, so this logs and moves on.
+ */
+export async function recordSkillSignalSafely(userId: string, signal: SkillSignal) {
+  try {
+    await applySkillSignalForUser(userId, signal);
+  } catch (error) {
+    console.error("[profile] skill signal failed", error);
+  }
+}
+
 /** Merge a grading call's memoUpdate into the coach memo (same guard rule). */
 export async function mergeCoachMemoForUser(userId: string, update: MemoUpdate) {
   const profile = await ensureLearnerProfile(userId);
