@@ -10,8 +10,8 @@ export const LOCALE_COOKIE = "mercury_locale";
  */
 const zh = {
   meta: {
-    title: "Mercury · 商务英语进阶",
-    description: "为中文母语职场人打造的英语提升平台：托业 / 雅思备考 + 实战商务英语",
+    title: "Mercury · 最懂你的 AI 英语私教",
+    description: "从托业 / 雅思备考，到职场实战 —— AI 私教定制每日计划、批改写作口语、随时答疑",
   },
   common: {
     appName: "Mercury",
@@ -85,17 +85,17 @@ const zh = {
     registerPos: "v.",
   },
   landing: {
-    heroTitle: "考试为始，职场为终",
+    heroTitle: "最懂你的 AI 英语私教",
     heroSubtitle:
-      "托业 / 雅思高效备考，配合实战商务英语训练 —— 词汇、阅读、听力、写作、口语、全真模考，一站式提升。",
+      "从托业 / 雅思备考，到职场实战 —— 了解你的目标、水平与弱项，每天为你定制学习计划，写作口语逐条批改，随时提问。",
     ctaStart: "免费开始",
     ctaLogin: "登录",
+    featureAiTitle: "AI 私教",
+    featureAiDesc: "记住你的目标与弱项：每日定制计划 + 写作口语批改 + 随时提问",
     featureExamTitle: "备考提分",
     featureExamDesc: "托业 / 雅思专项训练与全真模考，精准估分",
     featureBizTitle: "商务实战",
     featureBizDesc: "邮件、会议、汇报场景，学了明天就能用",
-    featureAiTitle: "AI 批改",
-    featureAiDesc: "写作口语即时反馈，中文讲解逐条改进",
   },
   auth: {
     loginTitle: "登录",
@@ -406,9 +406,9 @@ export type Dictionary = DeepString<typeof zh>;
 
 const en: Dictionary = {
   meta: {
-    title: "Mercury · Business English, Upgraded",
+    title: "Mercury · The AI English tutor that knows you",
     description:
-      "English platform for Chinese-speaking professionals: TOEIC / IELTS prep plus real-world business English",
+      "From TOEIC / IELTS prep to the workplace — an AI tutor that plans your day, reviews your writing and speaking, and answers anytime",
   },
   common: {
     appName: "Mercury",
@@ -480,17 +480,18 @@ const en: Dictionary = {
     registerPos: "v.",
   },
   landing: {
-    heroTitle: "Start with the exam. End with the career.",
+    heroTitle: "The AI English tutor that knows you",
     heroSubtitle:
-      "Efficient TOEIC / IELTS prep plus hands-on business English — vocabulary, reading, listening, writing, speaking, and full mock exams in one place.",
+      "From TOEIC / IELTS prep to the workplace — it learns your goal, level, and weak spots, plans every study day for you, reviews your writing and speaking line by line, and answers your questions anytime.",
     ctaStart: "Get started free",
     ctaLogin: "Sign in",
+    featureAiTitle: "AI tutor",
+    featureAiDesc:
+      "Remembers your goal and weak spots: a daily plan, line-by-line feedback, answers anytime",
     featureExamTitle: "Exam prep",
     featureExamDesc: "TOEIC / IELTS drills and timed mock exams with score estimates",
     featureBizTitle: "Business skills",
     featureBizDesc: "Emails, meetings, and reports you can use tomorrow",
-    featureAiTitle: "AI feedback",
-    featureAiDesc: "Instant writing & speaking review with detailed guidance",
   },
   auth: {
     loginTitle: "Sign in",
