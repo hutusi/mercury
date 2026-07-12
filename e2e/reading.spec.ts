@@ -7,8 +7,11 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
   await page.goto("/reading");
   await expect(page.getByRole("heading", { name: t.nav.reading })).toBeVisible();
 
-  // Open the first exercise.
+  // Open the first exercise. Wait for the navigation before asserting —
+  // during the transition the list page is still attached, and its subtitle
+  // plus any title containing "文章" would trip getByText's strict mode.
   await page.locator('a[href^="/zh/reading/"]').first().click();
+  await page.waitForURL(/\/zh\/reading\/[^/]+$/);
   await expect(page.getByText(t.reading.passage)).toBeVisible();
 
   // Submit stays disabled until every question is answered.
