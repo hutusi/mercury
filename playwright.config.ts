@@ -21,6 +21,10 @@ export default defineConfig({
   // Serial keeps the shared scratch database deterministic; the suite is small.
   workers: 1,
   retries: process.env.CI ? 2 : 0,
+  // Prod server + Postgres + browser share one machine: a single server
+  // round-trip can occasionally exceed the 5s expect default late in the
+  // suite. 10s absorbs load stalls without masking determinism bugs.
+  expect: { timeout: 10_000 },
   forbidOnly: !!process.env.CI,
   reporter: process.env.CI ? [["list"], ["html", { open: "never" }]] : "list",
   use: {

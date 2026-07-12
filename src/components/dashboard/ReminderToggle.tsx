@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Button } from "@/components/ui/button";
@@ -8,20 +9,27 @@ import { useT } from "@/lib/i18n/LocaleProvider";
 
 export function ReminderToggle({ enabled }: { enabled: boolean }) {
   const t = useT();
+  const router = useRouter();
   // Optimistic so the button flips instantly; reverted if the action fails.
   const [optimistic, setOptimistic] = useState(enabled);
-  const [pending, startTransition] = useTransition();
+  // The button gates on the action round-trip only; the refresh (to hide the
+  // nudge) runs in its own transition so a slow tree apply can't wedge the
+  // control (see the note in src/lib/actions/settings.ts).
+  const [pending, setPending] = useState(false);
+  const [, startTransition] = useTransition();
 
-  function toggle() {
+  async function toggle() {
     const next = !optimistic;
     setOptimistic(next);
-    startTransition(async () => {
-      try {
-        await setRemindersEnabled(next);
-      } catch {
-        setOptimistic(!next);
-      }
-    });
+    setPending(true);
+    try {
+      await setRemindersEnabled(next);
+      startTransition(() => router.refresh());
+    } catch {
+      setOptimistic(!next);
+    } finally {
+      setPending(false);
+    }
   }
 
   return (
