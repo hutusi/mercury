@@ -9,10 +9,13 @@ test("register → forced onboarding → dashboard", async ({ page }) => {
 
   await pickTrack(page, "toeic");
 
-  // Dashboard renders greeting + core cards.
+  // Dashboard renders greeting + core cards, led by a non-empty 今日计划
+  // (the plan engine's fresh-account fallback guarantees at least one item).
   await expect(page.getByText(t.dashboard.streak)).toBeVisible();
   await expect(page.getByText(t.dashboard.examBanner)).toBeVisible();
   await expect(page.getByText(t.dashboard.quickStart)).toBeVisible();
+  await expect(page.getByRole("heading", { name: t.plan.title })).toBeVisible();
+  await expect(page.getByText(t.plan.itemVocabNew)).toBeVisible();
 });
 
 test("onboarding goal step: fill target + self-rating, then submit", async ({ page }) => {

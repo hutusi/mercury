@@ -202,6 +202,33 @@ paths:
         "422": { $ref: "#/components/responses/ValidationFailed" }
 
   # ── dashboard ─────────────────────────────────────────────────────────────
+  /api/v1/plan:
+    get:
+      summary: Today's study plan (今日计划)
+      description: >
+        Deterministic, server-computed daily plan — due vocab, mistakes,
+        weakest-skill practice, writing/speaking cadence, and a mock-exam
+        checkpoint ramping toward the exam date, fitted to the learner's
+        dailyMinutes. href values are unlocalized web paths; native clients
+        map kind/refId to their own screens.
+      tags: [dashboard]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/PlanItem" }
+                  dailyMinutes: { type: integer }
+                  generatedFor:
+                    type: string
+                    description: Local day the plan was computed for (YYYY-MM-DD).
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/dashboard:
     get:
       summary: Streak, due counts, and recent scores
@@ -852,6 +879,30 @@ components:
     SelfRatedLevel:
       type: string
       enum: [novice, elementary, intermediate, upper, advanced]
+    PlanItem:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            [vocab_review, vocab_new, mistakes, reading, listening, writing, speaking, mock_exam]
+        refId:
+          type: string
+          description: Content id for exercise/prompt/exam kinds; absent for vocab/mistakes.
+        href: { type: string, description: Unlocalized web path for this item. }
+        estMinutes: { type: integer }
+        reasonKey:
+          type: string
+          enum:
+            [
+              dueVocab,
+              newWords,
+              clearMistakes,
+              weakSkill,
+              writingCadence,
+              speakingCadence,
+              examCheckpoint,
+            ]
     SkillEstimate:
       type: object
       description: Server-computed ability estimate; evolves from practice/exam/AI signals.

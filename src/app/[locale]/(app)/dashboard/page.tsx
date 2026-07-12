@@ -16,30 +16,35 @@ import { RecentScoresCard, type RecentScore } from "@/components/dashboard/Recen
 import { ReminderNudge } from "@/components/dashboard/ReminderNudge";
 import { ReminderToggle } from "@/components/dashboard/ReminderToggle";
 import { StreakCard } from "@/components/dashboard/StreakCard";
+import { TodayPlanCard } from "@/components/dashboard/TodayPlanCard";
 import { WelcomeCard } from "@/components/dashboard/WelcomeCard";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { getDict } from "@/lib/i18n";
 import { getDashboardData } from "@/lib/queries/dashboard";
+import { getDailyPlan } from "@/lib/queries/plan";
 import { requireTrack } from "@/lib/settings";
 
 export default async function DashboardPage() {
   const { user, track, remindersEnabled } = await requireTrack();
   const t = await getDict();
 
-  const {
-    streak,
-    dueCount,
-    reminder,
-    lastExam,
-    inProgressExam,
-    recentExercises,
-    recentWriting,
-    recentSpeaking,
-    recentExams,
-    activeMistakes,
-    isNewUser,
-  } = await getDashboardData(user.id, track);
+  const [
+    {
+      streak,
+      dueCount,
+      reminder,
+      lastExam,
+      inProgressExam,
+      recentExercises,
+      recentWriting,
+      recentSpeaking,
+      recentExams,
+      activeMistakes,
+      isNewUser,
+    },
+    plan,
+  ] = await Promise.all([getDashboardData(user.id, track), getDailyPlan(user.id, track)]);
 
   const exerciseLabel = (kind: string) =>
     kind === "reading" ? t.nav.reading : kind === "listening" ? t.nav.listening : t.vocab.quiz;
@@ -100,6 +105,7 @@ export default async function DashboardPage() {
         <div className="space-y-10">
           {isNewUser && <WelcomeCard />}
           {remindersEnabled && <ReminderNudge reminder={reminder} />}
+          <TodayPlanCard items={plan.items} />
           <ExamBanner
             lastEstimate={lastExam?.estimate ?? null}
             resumeExamId={inProgressExam?.examId ?? null}

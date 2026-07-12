@@ -190,7 +190,8 @@ export function formatTarget(track: Track, targetScore: number): string | null {
   return null;
 }
 
-function daysUntil(day: string, today: Date): number {
+/** Whole days from `today` to a local YYYY-MM-DD date (negative if past). */
+export function daysUntil(day: string, today: Date): number {
   const [y, m, d] = day.split("-").map(Number);
   const target = new Date(y, m - 1, d);
   const start = new Date(today.getFullYear(), today.getMonth(), today.getDate());
