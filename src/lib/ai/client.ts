@@ -5,6 +5,7 @@ import { bailianStructuredFeedback } from "./bailian";
 import { AiUnavailableError } from "./errors";
 import { modelForProvider, resolveAiProvider } from "./provider";
 import { speakingSystemPrompt, writingSystemPrompt } from "./prompts";
+import { sanitizeUntrusted } from "./sanitize";
 import {
   SpeakingFeedbackSchema,
   WritingFeedbackSchema,
@@ -31,15 +32,6 @@ export function isAiEnabled(): boolean {
 export function activeAiModel(): string | null {
   const provider = resolveAiProvider();
   return provider ? modelForProvider(provider) : null;
-}
-
-/**
- * Learner text is untrusted: neutralize angle brackets so it cannot close our
- * delimiter tags and smuggle instructions into the grading prompt. Full-width
- * equivalents keep the text readable for the grader.
- */
-function sanitizeUntrusted(text: string): string {
-  return text.replace(/</g, "＜").replace(/>/g, "＞");
 }
 
 async function requestStructuredFeedback<Schema extends z.ZodType>(
