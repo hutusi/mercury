@@ -6,15 +6,15 @@ Everything is bilingual by design: learning material is English, scaffolding (tr
 
 ## Stack and runtime split
 
-| Layer     | Choice                                                                                                                                 |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Framework | Next.js 16 (App Router, Turbopack) + React 19                                                                                          |
-| Language  | TypeScript 6, zod 4 for runtime validation                                                                                             |
-| Styling   | Tailwind CSS 4 (`@theme` tokens in `src/app/globals.css`, no config file); the Lexicon design system — see [docs/DESIGN.md](DESIGN.md) |
-| Database  | Postgres (Neon in prod) via node-postgres + Drizzle ORM — see [ADR 0007](adr/0007-postgres-neon-for-serverless.md)                     |
-| Auth      | better-auth (email/password)                                                                                                           |
-| AI        | Claude API (`@anthropic-ai/sdk`), server-side only                                                                                     |
-| Speech    | Browser Web Speech API (TTS + STT), no audio hosting                                                                                   |
+| Layer     | Choice                                                                                                                                                   |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework | Next.js 16 (App Router, Turbopack) + React 19                                                                                                            |
+| Language  | TypeScript 6, zod 4 for runtime validation                                                                                                               |
+| Styling   | Tailwind CSS 4 (`@theme` tokens in `src/app/globals.css`, no config file); the Lexicon design system — see [docs/DESIGN.md](DESIGN.md)                   |
+| Database  | Postgres (Neon in prod) via node-postgres + Drizzle ORM — see [ADR 0007](adr/0007-postgres-neon-for-serverless.md)                                       |
+| Auth      | better-auth (email/password)                                                                                                                             |
+| AI        | Claude (`@anthropic-ai/sdk`) or Bailian GLM (`openai` SDK, OpenAI-compatible endpoint), server-side only — see [ADR 0011](adr/0011-multi-provider-ai.md) |
+| Speech    | Browser Web Speech API (TTS + STT), no audio hosting                                                                                                     |
 
 **Bun is the package manager and script runner; Node runs Next.js.** Next runs under Node (`bun run dev` executes the `next` binary under Node), matching Vercel's build; the seed script is `bunx tsx src/lib/db/seed.ts`, and Playwright runs under Node. Bun's own runtime is used for `bun test`. The database driver is now `node-postgres` (pure JS, Bun-loadable), so DB-touching code no longer _crashes_ under Bun as it did with better-sqlite3 — but unit tests stay DB-free by convention to keep them hermetic and fast (see [ADR 0001](adr/0001-bun-package-manager-node-runtime.md) and [ADR 0007](adr/0007-postgres-neon-for-serverless.md)).
 
@@ -38,7 +38,7 @@ src/
     ├── services/         # mutation bodies, userId-scoped (shared by actions and API routes)
     ├── queries/          # read functions, userId-scoped (shared by pages and API routes)
     ├── api/              # HTTP plumbing: error envelope, apiHandler, requireUserApi, resources/
-    ├── ai/               # Claude client, prompts, feedback zod schemas
+    ├── ai/               # provider facade (client.ts) + anthropic/bailian transports, prompts, feedback zod schemas
     ├── auth/             # better-auth config, client, session helpers
     ├── db/               # drizzle schema, singleton, seed script
     ├── i18n/             # dictionaries (zh/en), locale provider, cookie helpers
@@ -97,11 +97,16 @@ The mock-exam mode assumes a hostile client (see [ADR 0005](adr/0005-server-issu
 
 ## AI feedback and degradation
 
-Claude is called **only server-side, from the writing/speaking services** (`src/lib/ai/client.ts`) using `messages.parse()` + `zodOutputFormat()`, so feedback arrives schema-validated — there is no JSON scraping. The model defaults to `claude-sonnet-5` (`MERCURY_AI_MODEL` overrides).
+AI grading is called **only server-side, from the writing/speaking services**, through the stable facade `src/lib/ai/client.ts`. Two provider transports live behind it (see [ADR 0011](adr/0011-multi-provider-ai.md)), selected by pure env resolution in `src/lib/ai/provider.ts` — `MERCURY_AI_PROVIDER=anthropic|bailian` explicit, else auto-detect by configured key (`ANTHROPIC_API_KEY` before `DASHSCOPE_API_KEY`):
 
-Degradation is a first-class path: a missing `ANTHROPIC_API_KEY`, an API error, a refusal, or a schema mismatch raises `AiUnavailableError`, and the submission is stored as `self_assessed`; the UI then shows the prompt's seeded model answer plus a bilingual checklist. CI runs entirely keyless on this path.
+- **Anthropic** (`anthropic.ts`): `messages.parse()` + `zodOutputFormat()` — the schema is enforced server-side, no JSON scraping. Default model `claude-sonnet-5`.
+- **Bailian / DashScope** (`bailian.ts`): GLM via the OpenAI-compatible endpoint with `response_format: json_object` and thinking disabled (GLM structured output requires non-thinking mode); the zod-derived JSON Schema is embedded in the system prompt, the reply zod-validated, with one repair round-trip before failing. Default model `glm-5.2`.
 
-The two cases are kept honest at view time by `isAiEnabled()`: with no key the copy stays "not configured"; with a key present, a `self_assessed` submission means grading failed transiently, so the UI offers a retry. `retryWritingFeedback` / `retrySpeakingFeedback` re-grade the stored submission and upgrade it to `ai_scored`, guarded by a status-scoped compare-and-set so concurrent retries can't both write.
+`MERCURY_AI_MODEL` overrides the active provider's default; graded submissions persist whichever model ran (`activeAiModel()`).
+
+Degradation is a first-class path: no configured provider, an API error, a refusal, truncation, or a schema mismatch raises `AiUnavailableError`, and the submission is stored as `self_assessed`; the UI then shows the prompt's seeded model answer plus a bilingual checklist. CI runs entirely keyless on this path.
+
+The two cases are kept honest at view time by `isAiEnabled()`: with no provider configured the copy stays "not configured"; with a key present, a `self_assessed` submission means grading failed transiently, so the UI offers a retry. `retryWritingFeedback` / `retrySpeakingFeedback` re-grade the stored submission and upgrade it to `ai_scored`, guarded by a status-scoped compare-and-set so concurrent retries can't both write.
 
 Learner text is untrusted: angle brackets are neutralized to full-width equivalents before being embedded in grading prompts, and the examiner system prompt instructs the model to treat `<learner_response>`/`<transcript>` content as data to grade, scoring manipulation attempts as off-topic.
 

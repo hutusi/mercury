@@ -1,7 +1,9 @@
-import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import type { z } from "zod";
 import type { SpeakingPartType, WritingTaskType } from "../../content/types";
+import { anthropicStructuredFeedback } from "./anthropic";
+import { bailianStructuredFeedback } from "./bailian";
+import { AiUnavailableError } from "./errors";
+import { modelForProvider, resolveAiProvider } from "./provider";
 import { speakingSystemPrompt, writingSystemPrompt } from "./prompts";
 import {
   SpeakingFeedbackSchema,
@@ -10,24 +12,25 @@ import {
   type WritingFeedback,
 } from "./schemas";
 
-export const AI_MODEL = process.env.MERCURY_AI_MODEL || "claude-sonnet-5";
+/**
+ * Stable AI facade. Callers (services, pages, API routes) only see
+ * isAiEnabled/activeAiModel/getWritingFeedback/getSpeakingFeedback and
+ * AiUnavailableError; the provider transports live in anthropic.ts and
+ * bailian.ts, selected by provider.ts. Every transport failure surfaces as
+ * AiUnavailableError so the self-assessment degradation contract holds
+ * regardless of provider.
+ */
 
-/** Thrown when AI feedback cannot be produced; callers degrade to self-assessment. */
-export class AiUnavailableError extends Error {
-  constructor(message: string, options?: { cause?: unknown }) {
-    super(message, options);
-    this.name = "AiUnavailableError";
-  }
-}
+export { AiUnavailableError } from "./errors";
 
 export function isAiEnabled(): boolean {
-  return Boolean(process.env.ANTHROPIC_API_KEY);
+  return resolveAiProvider() !== null;
 }
 
-let client: Anthropic | null = null;
-function getClient(): Anthropic {
-  // TS SDK timeout is in milliseconds.
-  return (client ??= new Anthropic({ timeout: 60_000, maxRetries: 2 }));
+/** Model id persisted with AI-scored submissions; null when AI is disabled. */
+export function activeAiModel(): string | null {
+  const provider = resolveAiProvider();
+  return provider ? modelForProvider(provider) : null;
 }
 
 /**
@@ -44,34 +47,14 @@ async function requestStructuredFeedback<Schema extends z.ZodType>(
   userContent: string,
   schema: Schema,
 ): Promise<z.infer<Schema>> {
-  if (!isAiEnabled()) {
-    throw new AiUnavailableError("ANTHROPIC_API_KEY is not configured");
+  const provider = resolveAiProvider();
+  if (!provider) {
+    throw new AiUnavailableError("No AI provider is configured");
   }
-
-  let response;
-  try {
-    // Sonnet 5: no temperature/top_p/top_k; adaptive thinking is the default.
-    response = await getClient().messages.parse({
-      model: AI_MODEL,
-      max_tokens: 16000,
-      system,
-      messages: [{ role: "user", content: userContent }],
-      output_config: { format: zodOutputFormat(schema) },
-    });
-  } catch (error) {
-    throw new AiUnavailableError("Claude API request failed", { cause: error });
-  }
-
-  if (response.stop_reason === "refusal") {
-    throw new AiUnavailableError("Model refused the request");
-  }
-  if (response.stop_reason === "max_tokens") {
-    throw new AiUnavailableError("Response truncated at max_tokens");
-  }
-  if (!response.parsed_output) {
-    throw new AiUnavailableError("Model output did not match the schema");
-  }
-  return response.parsed_output;
+  const req = { model: modelForProvider(provider), system, userContent, schema };
+  return provider === "anthropic"
+    ? anthropicStructuredFeedback(req)
+    : bailianStructuredFeedback(req);
 }
 
 export async function getWritingFeedback(req: {

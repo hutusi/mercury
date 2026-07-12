@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
-import { getSpeakingFeedback } from "../ai/client";
+import { activeAiModel, getSpeakingFeedback } from "../ai/client";
 import type { SpeakingFeedback } from "../ai/schemas";
 import { db } from "../db";
 import { speakingPrompts, speakingSubmissions } from "../db/schema";
@@ -55,7 +55,7 @@ export async function submitSpeakingForUser(
       durationSeconds,
       status,
       feedback,
-      model: status === "ai_scored" ? process.env.MERCURY_AI_MODEL || "claude-sonnet-5" : null,
+      model: status === "ai_scored" ? activeAiModel() : null,
     })
     .returning({ id: speakingSubmissions.id });
 
@@ -98,7 +98,7 @@ export async function retrySpeakingFeedbackForUser(
     .set({
       status: "ai_scored",
       feedback,
-      model: process.env.MERCURY_AI_MODEL || "claude-sonnet-5",
+      model: activeAiModel(),
     })
     .where(
       and(

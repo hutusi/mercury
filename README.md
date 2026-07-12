@@ -6,18 +6,18 @@ Mercury acquires users through exam prep (**TOEIC** and **IELTS** tracks) and re
 
 ## Features
 
-- **Vocabulary** — 150 seeded words across three tracks with SM-2 spaced-repetition flashcards and self-grading quizzes
+- **Vocabulary** — 300 seeded words across three tracks with SM-2 spaced-repetition flashcards and self-grading quizzes
 - **Reading** — exam-style passages (TOEIC Part 7 emails/memos, IELTS academic, business articles) with server-graded questions and Chinese explanations
 - **Listening** — dialogues and talks played through browser text-to-speech with per-speaker voices; transcripts unlock after submission
 - **Writing** — IELTS Task 1/2, TOEIC essays, and business emails/reports graded by Claude with band scores, line-level issues, and rewritten samples
 - **Speaking** — browser speech recognition transcribes your answer; Claude coaches fluency, vocabulary, and grammar with more natural phrasings
 - **Mock Exam Mode** — timed mini-TOEIC (25Q) and mini-IELTS (23Q) with server-validated section deadlines, auto-submit on expiry, refresh-safe resume, scaled score / band estimates, and wrong-answer review
 
-AI feedback degrades gracefully: without an `ANTHROPIC_API_KEY`, writing and speaking fall back to model answers plus bilingual self-assessment checklists.
+AI grading runs on Claude (`ANTHROPIC_API_KEY`) or Alibaba Bailian GLM (`DASHSCOPE_API_KEY`) and degrades gracefully: with neither key configured, writing and speaking fall back to model answers plus bilingual self-assessment checklists.
 
 ## Stack
 
-Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 6 · Tailwind CSS 4 · Postgres (Neon) + Drizzle ORM · better-auth · Claude API (`@anthropic-ai/sdk`) · Web Speech API · Bun (package manager / scripts; Next runs under Node)
+Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 6 · Tailwind CSS 4 · Postgres (Neon) + Drizzle ORM · better-auth · Claude API (`@anthropic-ai/sdk`) / Bailian GLM (`openai` SDK) · Web Speech API · Bun (package manager / scripts; Next runs under Node)
 
 ## Getting started
 
@@ -31,7 +31,7 @@ docker compose up -d
 cp .env.example .env
 # set DATABASE_URL (e.g. `postgresql://mercury:mercury@localhost:5432/mercury`)
 # set BETTER_AUTH_SECRET (e.g. `openssl rand -base64 32`)
-# optionally set ANTHROPIC_API_KEY to enable AI feedback
+# optionally set ANTHROPIC_API_KEY (Claude) or DASHSCOPE_API_KEY (Bailian GLM) to enable AI feedback
 
 # Apply migrations and seed content
 bun run db:migrate
@@ -72,4 +72,4 @@ Open http://localhost:3000, register an account, pick a track, and start studyin
 - **Auth** — better-auth with email/password. `src/proxy.ts` does an optimistic cookie check; the `(app)` layout does the authoritative session lookup; every server action re-verifies via `requireUser()`.
 - **Content** — authored as YAML in `content/` (zod-validated via `src/content/load.ts`), upserted into Postgres by stable slug ids. Progress rows reference content ids.
 - **Exam integrity** — answer keys never reach the client during an attempt; deadlines are issued and enforced server-side (late answers are discarded beyond a 30s grace window); grading and score estimation run against unsanitized content on the server.
-- **AI** — Claude is called only from server actions using structured outputs (`messages.parse` + `zodOutputFormat`), so feedback arrives schema-validated. Model defaults to `claude-sonnet-5`, overridable via `MERCURY_AI_MODEL`.
+- **AI** — grading is server-only behind a provider facade (`src/lib/ai/client.ts`): Claude uses server-enforced structured outputs (`messages.parse` + `zodOutputFormat`); Bailian GLM uses the OpenAI-compatible endpoint with JSON mode + zod validation. Provider auto-detects from the configured key (`MERCURY_AI_PROVIDER` overrides); model defaults to `claude-sonnet-5` / `glm-5.2` (`MERCURY_AI_MODEL` overrides).
