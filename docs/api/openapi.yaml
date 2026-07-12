@@ -123,6 +123,31 @@ paths:
                   settings: { $ref: "#/components/schemas/Settings" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
+    patch:
+      summary: Partially update settings (track stays PUT-only — it doubles as onboarding)
+      tags: [account]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [remindersEnabled]
+              properties:
+                remindersEnabled:
+                  type: boolean
+                  description: Opt in/out of study reminders (dashboard nudge; future email/push).
+      responses:
+        "200":
+          description: Updated settings.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  settings: { $ref: "#/components/schemas/Settings" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
 
   # ── dashboard ─────────────────────────────────────────────────────────────
   /api/v1/dashboard:
@@ -767,6 +792,7 @@ components:
       properties:
         activeTrack: { $ref: "#/components/schemas/Track" }
         dailyGoal: { type: integer }
+        remindersEnabled: { type: boolean }
         onboardedAt: { type: string, format: date-time }
     VocabWord:
       type: object

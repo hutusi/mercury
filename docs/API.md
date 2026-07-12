@@ -37,6 +37,9 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
 - **Dates** are ISO 8601 strings; **exam deadlines** are epoch-ms (see below).
 - **Onboarding**: track-scoped endpoints return `403 onboarding_required` until
   `PUT /api/v1/me/settings` sets a track.
+- **Settings**: `PATCH /api/v1/me/settings` partially updates preferences (currently
+  `remindersEnabled`, the study-reminder opt-in); `track` stays PUT-only because it doubles
+  as onboarding. Both verbs and `GET /api/v1/me` return the same `Settings` shape.
 - No pagination — list sizes mirror the web's fixed limits (history 20, recents 5,
   past submissions 10).
 

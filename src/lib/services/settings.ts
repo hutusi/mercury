@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { TrackSchema } from "../../content/types";
 import { db } from "../db";
 import { userSettings } from "../db/schema";
@@ -21,6 +22,25 @@ export async function setActiveTrackForUser(userId: string, track: unknown) {
     .onConflictDoUpdate({
       target: userSettings.userId,
       set: { activeTrack, updatedAt: now },
+    })
+    .returning();
+  return settings;
+}
+
+/**
+ * Toggle study reminders (the dashboard nudge, later email/push). Upserts so
+ * a pre-onboarding call — no settings row yet — can't explode; activeTrack
+ * stays null until onboarding fills it.
+ */
+export async function setRemindersEnabledForUser(userId: string, enabled: unknown) {
+  const remindersEnabled = z.boolean().parse(enabled);
+  const now = new Date();
+  const [settings] = await db
+    .insert(userSettings)
+    .values({ userId, remindersEnabled, updatedAt: now })
+    .onConflictDoUpdate({
+      target: userSettings.userId,
+      set: { remindersEnabled, updatedAt: now },
     })
     .returning();
   return settings;

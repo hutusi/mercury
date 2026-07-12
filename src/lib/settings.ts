@@ -20,9 +20,15 @@ export async function requireTrack(): Promise<{
   user: Awaited<ReturnType<typeof requireUser>>;
   track: Track;
   dailyGoal: number;
+  remindersEnabled: boolean;
 }> {
   const user = await requireUser();
   const settings = await getSettings(user.id);
   if (!settings?.activeTrack) return localeRedirect("/onboarding");
-  return { user, track: settings.activeTrack, dailyGoal: settings.dailyGoal };
+  return {
+    user,
+    track: settings.activeTrack,
+    dailyGoal: settings.dailyGoal,
+    remindersEnabled: settings.remindersEnabled,
+  };
 }
