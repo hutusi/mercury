@@ -118,3 +118,34 @@ Reply again with ONLY the corrected JSON object.`,
     `Model output did not match the schema after repair: ${reparsed.problem}`,
   );
 }
+
+/**
+ * Plain-text multi-turn chat for the tutor. Thinking stays off here too — a
+ * latency/cost choice for short coaching replies, distinct from the
+ * structured-output constraint above.
+ */
+export async function bailianPlainText(
+  req: {
+    model: string;
+    system: string;
+    messages: { role: "user" | "assistant"; content: string }[];
+  },
+  clientOverride?: OpenAI,
+): Promise<string> {
+  const api = clientOverride ?? getClient();
+  let response: OpenAI.Chat.Completions.ChatCompletion;
+  try {
+    response = await api.chat.completions.create({
+      model: req.model,
+      messages: [{ role: "system", content: req.system }, ...req.messages],
+      max_tokens: 1024,
+      enable_thinking: false,
+    } as OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming);
+  } catch (error) {
+    throw new AiUnavailableError("Bailian API request failed", { cause: error });
+  }
+
+  const content = response.choices?.[0]?.message?.content?.trim();
+  if (!content) throw new AiUnavailableError("Bailian returned empty content");
+  return content;
+}

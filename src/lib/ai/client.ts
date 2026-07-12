@@ -1,10 +1,10 @@
 import type { z } from "zod";
 import type { SpeakingPartType, WritingTaskType } from "../../content/types";
-import { anthropicStructuredFeedback } from "./anthropic";
-import { bailianStructuredFeedback } from "./bailian";
+import { anthropicPlainText, anthropicStructuredFeedback } from "./anthropic";
+import { bailianPlainText, bailianStructuredFeedback } from "./bailian";
 import { AiUnavailableError } from "./errors";
 import { modelForProvider, resolveAiProvider } from "./provider";
-import { speakingSystemPrompt, writingSystemPrompt } from "./prompts";
+import { speakingSystemPrompt, tutorSystemPrompt, writingSystemPrompt } from "./prompts";
 import { sanitizeUntrusted } from "./sanitize";
 import {
   SpeakingFeedbackSchema,
@@ -101,4 +101,26 @@ Evaluate the learner's spoken answer (transcribed above) and produce the structu
     userContent,
     SpeakingFeedbackSchema,
   );
+}
+
+/**
+ * One tutor-chat reply (plain text, both providers). User turns are untrusted
+ * and sanitized here; the system prompt carries the learner profile.
+ */
+export async function getTutorReply(req: {
+  learnerContext: string | null;
+  messages: { role: "user" | "assistant"; content: string }[];
+}): Promise<string> {
+  const provider = resolveAiProvider();
+  if (!provider) {
+    throw new AiUnavailableError("No AI provider is configured");
+  }
+  const chatReq = {
+    model: modelForProvider(provider),
+    system: tutorSystemPrompt(req.learnerContext),
+    messages: req.messages.map((m) =>
+      m.role === "user" ? { ...m, content: sanitizeUntrusted(m.content) } : m,
+    ),
+  };
+  return provider === "anthropic" ? anthropicPlainText(chatReq) : bailianPlainText(chatReq);
 }

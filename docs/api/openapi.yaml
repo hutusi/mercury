@@ -201,6 +201,70 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
 
+  # ── tutor chat ────────────────────────────────────────────────────────────
+  /api/v1/tutor/messages:
+    get:
+      summary: Tutor thread (rolling, single per user) and today's quota
+      tags: [tutor]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: False when no AI provider is configured (POST would 503).
+                  dailyLimit: { type: integer }
+                  remainingToday: { type: integer }
+                  messages:
+                    type: array
+                    description: Chronological tail of the thread (up to 50).
+                    items: { $ref: "#/components/schemas/ChatMessage" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+    post:
+      summary: Send a message to the AI tutor and get the reply
+      description: >
+        Non-streaming by design (one JSON round-trip; see ADR 0013). The user
+        message and the reply persist atomically — a failed AI call stores
+        nothing and does not consume quota.
+      tags: [tutor]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [content]
+              properties:
+                content: { type: string, minLength: 1, maxLength: 4000 }
+      responses:
+        "200":
+          description: The assistant reply.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: { $ref: "#/components/schemas/ChatMessage" }
+                  remainingToday: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+        "429":
+          description: Daily tutor message cap reached (code chat_limit_reached).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+        "503":
+          description: No AI provider configured (code ai_unavailable).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+
   # ── dashboard ─────────────────────────────────────────────────────────────
   /api/v1/plan:
     get:
@@ -858,7 +922,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, validation_failed, invalid_json, ai_unavailable, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, validation_failed, invalid_json, ai_unavailable, chat_limit_reached, internal).
             message:
               type: string
               description: English debug text — not for end users.
@@ -879,6 +943,13 @@ components:
     SelfRatedLevel:
       type: string
       enum: [novice, elementary, intermediate, upper, advanced]
+    ChatMessage:
+      type: object
+      properties:
+        id: { type: string }
+        role: { type: string, enum: [user, assistant] }
+        content: { type: string }
+        createdAt: { type: string, format: date-time }
     PlanItem:
       type: object
       properties:

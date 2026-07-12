@@ -369,6 +369,32 @@ export const mistakeClears = pgTable(
   ],
 );
 
+/**
+ * Tutor chat: one rolling thread per user (the memory IS the thread — no
+ * thread management, see ADR 0013). `day` snapshots localDay() at insert and
+ * drives the per-user daily cap by counting user-role rows.
+ */
+export const chatMessages = pgTable(
+  "chat_messages",
+  {
+    id: text("id").primaryKey().$defaultFn(uuid),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    role: text("role").$type<"user" | "assistant">().notNull(),
+    content: text("content").notNull(),
+    /** AI model for assistant rows; null on user rows. */
+    model: text("model"),
+    /** Local date string YYYY-MM-DD, same convention as activity_days.day. */
+    day: text("day").notNull(),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    index("chat_messages_user_created_idx").on(t.userId, t.createdAt),
+    index("chat_messages_user_day_idx").on(t.userId, t.day),
+  ],
+);
+
 /** One row per user per local day with any learning activity; drives streaks. */
 export const activityDays = pgTable(
   "activity_days",

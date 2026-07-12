@@ -5,6 +5,7 @@ import {
   BookOpenText,
   Headphones,
   LayoutDashboard,
+  MessageCircle,
   Mic,
   NotebookPen,
   PenLine,
@@ -22,6 +23,7 @@ const NAV_ITEMS = [
   { key: "listening", href: "/listening", icon: Headphones },
   { key: "writing", href: "/writing", icon: PenLine },
   { key: "speaking", href: "/speaking", icon: Mic },
+  { key: "tutor", href: "/tutor", icon: MessageCircle },
   { key: "mistakes", href: "/mistakes", icon: NotebookPen },
 ] as const;
 

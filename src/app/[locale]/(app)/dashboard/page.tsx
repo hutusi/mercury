@@ -2,6 +2,7 @@ import {
   BookMarked,
   BookOpenText,
   Headphones,
+  MessageCircle,
   Mic,
   NotebookPen,
   PenLine,
@@ -85,6 +86,7 @@ export default async function DashboardPage() {
     { href: "/listening", label: t.nav.listening, icon: Headphones },
     { href: "/writing", label: t.nav.writing, icon: PenLine },
     { href: "/speaking", label: t.nav.speaking, icon: Mic },
+    { href: "/tutor", label: t.nav.tutor, icon: MessageCircle },
     { href: "/mistakes", label: t.nav.mistakes, icon: NotebookPen },
     { href: "/exams", label: t.nav.exams, icon: Timer },
   ];
