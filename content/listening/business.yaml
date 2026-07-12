@@ -276,7 +276,7 @@
     - speaker: narrator
       text: Here is what that means for you. Friday the twenty-fifth will be the last working day at Harbour Tower, and the office will close early, at three p.m.
     - speaker: narrator
-      text: Please pack your personal belongings into the crates that will be delivered to each floor next Monday. Label every crate with your name and your new desk number, which you can find on the intranet from today.
+      text: Please pack your personal belongings into the crates that will be delivered to each floor on Monday the twenty-first. Label every crate with your name and your new desk number, which you can find on the intranet from today.
     - speaker: narrator
       text: IT equipment is handled differently. Do not pack your laptop — take it home with you, because Monday the twenty-eighth will be a work-from-home day for everyone while the network is tested.
     - speaker: narrator
@@ -323,7 +323,7 @@
         - Everyone will work from home while the network is tested
         - Crates will be delivered to each floor
       correctIndex: 2
-      explanationZh: 原话是 "Monday the twenty-eighth will be a work-from-home day for everyone while the network is tested"。Riverside 园区周二 29 日才启用（排除 A）；周五 25 日下午三点提前闭楼说的是搬迁前最后一个工作日（排除 B）；板条箱在通知发布后的下周一送达，用于提前打包（排除 D）。本题考查把多个日期与对应事件配对的能力。
+      explanationZh: 原话是 "Monday the twenty-eighth will be a work-from-home day for everyone while the network is tested"。Riverside 园区周二 29 日才启用（排除 A）；周五 25 日下午三点提前闭楼说的是搬迁前最后一个工作日（排除 B）；板条箱周一 21 日就已送达，供搬迁前打包，与 28 日无关（排除 D）。本题考查把多个日期与对应事件配对的能力。
 - id: biz-l-006
   track: business
   title: Handover Before Annual Leave

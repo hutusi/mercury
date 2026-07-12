@@ -3,7 +3,7 @@ id: exam-toeic-standard
 track: toeic
 title: TOEIC Standard Practice Test
 titleZh: 托业标准模考
-descriptionZh: 共 50 题：听力 25 题（四段对话 + 两段短讲）+ 阅读 25 题（电子邮件、在线讨论、新闻报道、招聘广告、备忘录、专题文章各一篇），全程约 54 分钟。
+descriptionZh: 共 50 题：听力 25 题（四段对话 + 两段短讲）+ 阅读 25 题（电子邮件、在线讨论、新闻报道、招聘广告、备忘录、专题文章各一篇），全程约 54 分钟。题量约为正式考试的四分之一，题型与出题节奏和正式考试一致。
 sections:
   - id: toeic-standard-listening-1
     kind: listening

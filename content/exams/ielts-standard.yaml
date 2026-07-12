@@ -3,7 +3,7 @@ id: exam-ielts-standard
 track: ielts
 title: IELTS Standard Practice Test
 titleZh: 雅思标准模考
-descriptionZh: 共 44 题：听力 20 题（两个部分，涵盖生活对话、参观独白、学术讨论与讲座）+ 阅读 24 题（四篇学术短文），全程约 60 分钟。
+descriptionZh: 共 44 题：听力 20 题（两个部分，涵盖生活对话、参观独白、学术讨论与讲座）+ 阅读 24 题（四篇学术短文），全程约 60 分钟。题量约为正式考试听力与阅读部分的一半，题型与出题节奏和正式考试一致。
 sections:
   - id: ielts-standard-listening-1
     kind: listening

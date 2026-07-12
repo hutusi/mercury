@@ -112,5 +112,9 @@ Reply again with ONLY the corrected JSON object.`,
   ]);
   const reparsed = tryParse(repaired, req.schema);
   if (reparsed.success) return reparsed.data;
-  throw new AiUnavailableError("Model output did not match the schema");
+  // Keep the zod diagnostics in the (log-only) message — the API handler
+  // maps AiUnavailableError to a generic 503 without leaking it.
+  throw new AiUnavailableError(
+    `Model output did not match the schema after repair: ${reparsed.problem}`,
+  );
 }
