@@ -1,11 +1,12 @@
 # Mercury
 
-**考试为始，职场为终** — An English-learning web app for native Chinese-speaking business professionals.
+**最懂你的 AI 英语私教：从托业 / 雅思备考，到职场实战** — The AI English tutor that knows you, for native Chinese-speaking business professionals.
 
-Mercury acquires users through exam prep (**TOEIC** and **IELTS** tracks) and retains them with practical **Business English**. Every surface is bilingual: learning material is English, scaffolding (translations, explanations, feedback) is Simplified Chinese, and the UI chrome switches between 中文 and English.
+Mercury acquires users through exam prep (**TOEIC** and **IELTS** tracks) and retains them with practical **Business English** — and an AI tutor is the core mechanic: a learner model tracks your goal, level, and weak spots; a daily plan decides what to study; feedback remembers your recurring mistakes; and a chat coach answers anytime. Every surface is bilingual: learning material is English, scaffolding (translations, explanations, feedback) is Simplified Chinese, and the UI chrome switches between 中文 and English.
 
 ## Features
 
+- **AI Tutor** — a per-user learner model (goals, per-skill estimates, recurring-issue memory), a deterministic daily plan (今日计划) fitted to your minutes-per-day, memory-infused writing/speaking feedback, and a tutor chat with a daily message cap (`MERCURY_CHAT_DAILY_LIMIT`)
 - **Vocabulary** — 300 seeded words across three tracks with SM-2 spaced-repetition flashcards and self-grading quizzes
 - **Reading** — exam-style passages (TOEIC Part 7 emails/memos, IELTS academic, business articles) with server-graded questions and Chinese explanations
 - **Listening** — dialogues and talks played through browser text-to-speech with per-speaker voices; transcripts unlock after submission

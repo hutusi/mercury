@@ -46,10 +46,13 @@ src/
     ├── scoring.ts        # raw % → TOEIC-scale / IELTS-band estimates (pure)
     ├── exam-utils.ts     # exam sanitization + grading (pure)
     ├── streak-core.ts    # streak computation (pure)
+    ├── learner-model-core.ts # skill-estimate EWMA + coach memo + AI prompt context (pure)
+    ├── plan-core.ts      # 今日计划 daily-plan engine (pure, rule-based)
+    ├── chat-core.ts      # tutor-chat cap + context window (pure)
     └── speech.ts         # Web Speech helpers (client-only)
 ```
 
-Pure logic (`srs`, `scoring`, `exam-utils`, `streak-core`) is deliberately separated from DB access so it can be unit-tested under Bun.
+Pure logic (`srs`, `scoring`, `exam-utils`, `streak-core`, `learner-model-core`, `plan-core`, `chat-core`) is deliberately separated from DB access so it can be unit-tested under Bun.
 
 ## Data model
 
@@ -112,6 +115,17 @@ The two cases are kept honest at view time by `isAiEnabled()`: with no provider 
 Learner text is untrusted: angle brackets are neutralized to full-width equivalents before being embedded in grading prompts, and the examiner system prompt instructs the model to treat `<learner_response>`/`<transcript>` content as data to grade, scoring manipulation attempts as off-topic.
 
 Grading is **memory-infused** ([ADR 0012](adr/0012-learner-model-and-ai-memory.md)): the services prepend a `<learner_profile>` block (target, skill estimates, recurring issues, recent rubric scores — `formatLearnerContext`) so the examiner can tailor its summary and call out repeat mistakes, and the same call returns an optional `memoUpdate` that the service merges into `learner_profiles.coachMemo` plus an `overallScore` signal folded into the skill estimates. Both post-grading hooks are guarded — they never fail or degrade a submission — and the block explicitly never changes grading standards. Keyless behavior is unchanged.
+
+## Learner model and daily plan
+
+The AI-tutor positioning rests on two server-side systems ([ADR 0012](adr/0012-learner-model-and-ai-memory.md)):
+
+- **Learner model** (`learner_profiles` + `src/lib/learner-model-core.ts`): goals from onboarding (target score, exam date, daily minutes, self-rating), per-skill EWMA estimates fed by exercise accuracy, exam section scores, and AI rubric scores (hooked into the services via `recordSkillSignalSafely` — guarded, never fails the parent mutation), and the `coachMemo` of recurring issues merged from grading-call `memoUpdate`s. `GET/PATCH /api/v1/me/profile`; skillEstimates/coachMemo are server-owned.
+- **Daily plan** (`src/lib/plan-core.ts` + `src/lib/queries/plan.ts`): a deterministic, rule-based engine — due vocab → mistakes retest → weakest-skill practice → writing/speaking cadence → mock-exam checkpoint ramping toward the exam date — greedily fitted to `dailyMinutes` (max 5 items, never empty for fresh accounts). It is deliberately NOT an AI call: free, unit-testable, and identical keyless. The dashboard leads with it (`TodayPlanCard`); native clients read `GET /api/v1/plan`.
+
+## Tutor chat
+
+`/tutor` is a single rolling thread per user (`chat_messages`; [ADR 0013](adr/0013-tutor-chat-single-thread-non-streaming.md)): non-streaming (one JSON round-trip; user+assistant rows insert in one transaction, so a failed reply persists nothing and consumes no quota), with the learner profile embedded in the system prompt via `formatLearnerContext`. A per-user daily cap (`MERCURY_CHAT_DAILY_LIMIT`, default 30) is the first AI cost control — `429 chat_limit_reached`. Keyless, the tab renders a disabled composer and `POST /api/v1/tutor/messages` returns `503 ai_unavailable`. User turns are sanitized at prompt assembly; the DB stores raw text.
 
 ## Resilience
 
