@@ -71,3 +71,52 @@
       zh: 是否使用了礼貌的电话用语（do you have a quick minute、I'm afraid、thanks for being flexible）？
     - en: Did you close the call warmly and clearly instead of ending abruptly?
       zh: 通话结束是否亲切、明确，而不是生硬挂断？
+- id: biz-s-004
+  track: business
+  partType: business_scenario
+  title: Pushing Back on an Unrealistic Deadline
+  titleZh: 据理力争：回应不合理的截止日期
+  promptEn: "In a planning meeting, your manager proposes moving the delivery date of your data-migration project forward by three weeks, to the end of this month, because a major client has asked for it. You know your team cannot make that date safely. Respond to your manager in the meeting: acknowledge the business need first, explain the risk with specifics, offer at least two realistic alternatives, and close by asking for a decision."
+  promptZh: 在一次规划会上，你的经理提议将你负责的数据迁移项目的交付日期提前三周至本月底，因为一个大客户提出了要求。你清楚团队无法安全地赶上这个日期。请在会上回应经理：先认可业务需求，再用具体事实说明风险，然后提出至少两个可行的替代方案，最后请经理做决定。
+  prepSeconds: 30
+  speakSeconds: 90
+  modelAnswer: |-
+    Thanks — and I completely understand why the client is pushing for this. I want to keep them happy too, so let me be straight about where we stand.
+
+    Honestly, the end of this month worries me. We're still migrating the last two databases, and the step that really can't be rushed is validation — checking that every customer record survived the move intact. If we pull the date forward three weeks, validation shrinks from ten days to about three. And if bad data reaches the client, we don't lose three weeks — we lose the client.
+
+    So rather than a flat no, let me offer two options. Option one: we keep the original date overall, but deliver the client's own data first — fully validated — by the end of this month. That's probably what they actually care about. Option two: we hit the new date for everything, but I'd need two engineers borrowed from the platform team, and we'd still carry some risk on the reporting module.
+
+    My recommendation is option one. It gives the client something real this month without gambling on quality. But it's your call — which direction would you like me to plan for?
+  checklist:
+    - en: Did you acknowledge the business need before raising your concerns?
+      zh: 是否先认可业务需求，再提出你的顾虑？
+    - en: Did you explain the risk with specifics — numbers and consequences — rather than just saying it is impossible?
+      zh: 是否用数字和后果具体说明风险，而不是只说“做不到”？
+    - en: Did you offer at least two workable alternatives and name their trade-offs?
+      zh: 是否提出了至少两个可行的替代方案，并说明各自的代价？
+    - en: Did you state a clear recommendation while leaving the final decision to your manager?
+      zh: 是否给出明确建议，同时把最终决定权留给经理？
+    - en: Did you use softening language (my concern is, honestly, I'd rather) instead of a blunt refusal?
+      zh: 是否使用了缓和语气的表达（my concern is、honestly、I'd rather），而不是生硬拒绝？
+- id: biz-s-005
+  track: business
+  partType: business_scenario
+  title: "Delivering Difficult News: A Price Increase"
+  titleZh: 当面向客户传达涨价消息
+  promptEn: "You are an account manager meeting your long-term client, Sarah, for an annual review. You must tell her that prices will rise by eight percent from January — the first increase in three years, driven by higher data-centre and licensing costs. Deliver the news face-to-face: raise it directly rather than hiding it, give an honest reason, offer something concrete to soften the impact, and propose a clear next step."
+  promptZh: 你是一名客户经理，正与长期客户 Sarah 进行年度回顾会议。你必须告诉她：由于数据中心和授权成本上升，明年 1 月起价格将上调 8%——这是三年来的首次涨价。请当面传达这个消息：直接说明而不是回避、给出诚实的理由、提供具体的缓冲措施以减轻影响，并提出明确的下一步安排。
+  prepSeconds: 30
+  speakSeconds: 60
+  modelAnswer: Sarah, before we get into next year's plan, there's something I need to raise with you directly, because I'd rather you hear it from me than read it in the renewal letter. From January, our prices are going up by eight percent. That's the first increase in three years, and I know it's not the news you were hoping for. The honest reason is that our data-centre and licensing costs have risen sharply, and we've absorbed them for two years — we can't keep doing that without cutting the service quality you rely on. Now, here's what I can do. If you renew for two years, I can hold the increase to five percent and lock the price for the full term. And the premium support tier you've been trialling stays included at no extra cost. I know you'll need to take this to your finance director, so I've prepared a one-page summary with the numbers. Shall we walk through it together now?
+  checklist:
+    - en: Did you raise the news directly and early, instead of hiding it behind small talk?
+      zh: 是否直接、尽早说出坏消息，而不是用寒暄绕圈子回避？
+    - en: Did you give an honest, specific reason without over-apologising?
+      zh: 是否给出诚实、具体的理由，而没有过度道歉？
+    - en: Did you offer something concrete to soften the impact (a cap, a price lock, added value)?
+      zh: 是否提供了实际的缓冲措施（涨幅上限、价格锁定、附加价值）？
+    - en: Did you acknowledge the client's position and propose a clear next step?
+      zh: 是否体谅客户的处境，并提出明确的下一步安排？
+    - en: Did you sound calm and confident — the decision is firm, but the delivery is warm?
+      zh: 语气是否平静自信——决定是坚定的，但表达是温和的？

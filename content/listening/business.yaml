@@ -209,3 +209,185 @@
         - The analytics module will be rolled out
       correctIndex: 1
       explanationZh: 结尾 Priya 承诺："If the numbers match what we discussed, you'll have the signature by Friday"——只要数字与商谈一致，周五前就会签字返回。合同到期时间是月底，不是周五（排除 A）。
+- id: biz-l-004
+  track: business
+  title: "Daily Stand-up: A Blocked Task"
+  titleZh: 每日站会：被阻塞的任务
+  style: 站会 · Stand-up
+  script:
+    - speaker: A
+      text: Morning, Ben. Quick stand-up — what did you finish yesterday?
+    - speaker: B
+      text: I wrapped up the invoice export feature and pushed it to the test environment. All the automated checks passed.
+    - speaker: A
+      text: Nice. What are you picking up today?
+    - speaker: B
+      text: The currency display bug, the one the Singapore office reported. But I'm blocked on something first.
+    - speaker: A
+      text: Go on.
+    - speaker: B
+      text: I need access to the production logs to see the failed transactions, and my access request has been sitting with IT since Monday.
+    - speaker: A
+      text: Three days is too long for a standard request. I'll message the IT duty manager right after this and ask him to prioritise it.
+    - speaker: B
+      text: Thanks. If I get access before lunch, I can still have a fix ready for review by tomorrow.
+    - speaker: A
+      text: Good. One more thing — the client demo moved from Thursday to Wednesday, so don't merge anything risky after tomorrow morning.
+    - speaker: B
+      text: Understood. I'll keep tomorrow afternoon free for testing, then.
+  questions:
+    - id: q1
+      stem: What did Ben complete yesterday?
+      options:
+        - The currency display fix
+        - A demo for the Singapore office
+        - The invoice export feature
+        - A review of the production logs
+      correctIndex: 2
+      explanationZh: Ben 汇报昨天的成果："I wrapped up the invoice export feature and pushed it to the test environment"。wrap up 意为“完成、收尾”，是站会汇报的高频短语。货币显示 bug 是他今天才要开始的任务（排除 A），生产日志他还没拿到权限、根本没看过（排除 D）。
+    - id: q2
+      stem: What is blocking Ben's work today?
+      options:
+        - He is still waiting for access to the production logs
+        - The automated checks keep failing
+        - The test environment has been shut down
+        - The Singapore office has not replied to him
+      correctIndex: 0
+      explanationZh: Ben 解释："I need access to the production logs... and my access request has been sitting with IT since Monday"——权限申请从周一起一直压在 IT 部门。be blocked on something 是敏捷站会里“被某事卡住”的地道说法。自动化检查其实全部通过了（"All the automated checks passed"，排除 B）。
+    - id: q3
+      stem: Why should Ben avoid merging risky changes after tomorrow morning?
+      options:
+        - IT will shut down the test environment
+        - The team is switching to a new code repository
+        - His access to the production logs will expire
+        - The client demo has been moved forward to Wednesday
+      correctIndex: 3
+      explanationZh: 组长提醒："the client demo moved from Thursday to Wednesday, so don't merge anything risky after tomorrow morning"——客户演示从周四提前到周三，演示前要保持代码稳定。会议或日程 moved from X to Y 是听力常考的时间变更信息，注意分辨提前还是推后。
+- id: biz-l-005
+  track: business
+  title: "All-Company Call: Office Move Announcement"
+  titleZh: 全员电话会：办公室搬迁通知
+  style: 通知 · Announcement
+  script:
+    - speaker: narrator
+      text: Good afternoon, everyone, and thank you for joining this short all-company call. This is Rachel Kim from Workplace Services, and I have an important update about our office move.
+    - speaker: narrator
+      text: As announced in March, we are relocating from Harbour Tower to the new Riverside campus. I can now confirm the move will take place over the weekend of the twenty-sixth and twenty-seventh of September.
+    - speaker: narrator
+      text: Here is what that means for you. Friday the twenty-fifth will be the last working day at Harbour Tower, and the office will close early, at three p.m.
+    - speaker: narrator
+      text: Please pack your personal belongings into the crates that will be delivered to each floor next Monday. Label every crate with your name and your new desk number, which you can find on the intranet from today.
+    - speaker: narrator
+      text: IT equipment is handled differently. Do not pack your laptop — take it home with you, because Monday the twenty-eighth will be a work-from-home day for everyone while the network is tested.
+    - speaker: narrator
+      text: The Riverside campus opens on Tuesday the twenty-ninth. Your building access cards will keep working; only the parking arrangements change.
+    - speaker: narrator
+      text: If you drive, you will need to register your car through the facilities portal by the twenty-second. Spaces at Riverside are limited, so we encourage the shuttle bus from Central Station, which runs every fifteen minutes at peak times.
+    - speaker: narrator
+      text: Finally, if you have any special requirements — for example, medical equipment at your desk — please contact my team by the end of this week.
+    - speaker: narrator
+      text: Thank you all for your patience during the move. A summary of everything I have covered will be emailed to you this afternoon.
+  questions:
+    - id: q1
+      stem: What is the main purpose of the call?
+      options:
+        - To announce the closure of the company
+        - To give employees details about the office relocation
+        - To introduce a new head of Workplace Services
+        - To explain changes to the shuttle bus timetable
+      correctIndex: 1
+      explanationZh: 开场即点明主题："I have an important update about our office move"，随后通报搬迁日期、打包要求、居家办公安排和停车登记等细节。班车信息只是停车安排下的一个建议（排除 D）；公司是搬迁，不是关闭（排除 A）。
+    - id: q2
+      stem: What should employees do with their laptops?
+      options:
+        - Pack them into the labelled crates
+        - Leave them at Harbour Tower for the movers
+        - Hand them in to Workplace Services
+        - Take them home for a work-from-home day
+      correctIndex: 3
+      explanationZh: 讲话人特别强调："Do not pack your laptop — take it home with you, because Monday the twenty-eighth will be a work-from-home day"——笔记本不装箱、要带回家，因为周一全员居家办公。这是与“个人物品装箱”相对的例外指令，听到 do not 开头的转折时要格外留心（排除 A）。
+    - id: q3
+      stem: What must employees who drive do by the twenty-second?
+      options:
+        - Register their car through the facilities portal
+        - Buy a parking permit at Central Station
+        - Return their building access cards
+        - Reserve a seat on the shuttle bus
+      correctIndex: 0
+      explanationZh: 通知要求："If you drive, you will need to register your car through the facilities portal by the twenty-second"——开车通勤的员工须在 22 日前通过设施门户登记车辆。班车只是被鼓励乘坐，无需预订座位（排除 D）；门禁卡继续有效，不用交回（"Your building access cards will keep working"，排除 C）。
+    - id: q4
+      stem: What will happen on Monday the twenty-eighth?
+      options:
+        - The Riverside campus will open
+        - Harbour Tower will close at three p.m.
+        - Everyone will work from home while the network is tested
+        - Crates will be delivered to each floor
+      correctIndex: 2
+      explanationZh: 原话是 "Monday the twenty-eighth will be a work-from-home day for everyone while the network is tested"。Riverside 园区周二 29 日才启用（排除 A）；周五 25 日下午三点提前闭楼说的是搬迁前最后一个工作日（排除 B）；板条箱在通知发布后的下周一送达，用于提前打包（排除 D）。本题考查把多个日期与对应事件配对的能力。
+- id: biz-l-006
+  track: business
+  title: Handover Before Annual Leave
+  titleZh: 休假前的工作交接
+  style: 交接 · Handover
+  script:
+    - speaker: A
+      text: Tom, do you have twenty minutes? I'd like to hand over my main accounts before I leave on Friday.
+    - speaker: B
+      text: Sure, Maria. Two weeks in Portugal, right? Let me grab my notebook.
+    - speaker: A
+      text: Right, back on the fourth. The only account that needs real attention is Keystone Logistics.
+    - speaker: B
+      text: The warehouse client? I thought their contract was already signed.
+    - speaker: A
+      text: The contract is signed, but their first invoice is on hold. Their finance team says the purchase order number is missing, so I sent a corrected invoice yesterday.
+    - speaker: B
+      text: Okay. So what do I need to do?
+    - speaker: A
+      text: If payment hasn't arrived by Wednesday, call their accounts manager, Susan — her number is in the handover document. Don't email; she gets hundreds a day and answers the phone much faster.
+    - speaker: B
+      text: Call, don't email. Got it — anything else on Keystone?
+    - speaker: A
+      text: One thing to be careful about. They asked about a discount for next year, and I said we'd discuss it in October — please don't make any commitments before I'm back.
+    - speaker: B
+      text: Understood, I'll just take notes if they raise it. What about your weekly sales report?
+    - speaker: A
+      text: Already covered — my manager agreed to skip it while I'm away. You only need to update the pipeline numbers in the shared sheet every Friday.
+    - speaker: B
+      text: Fine. Enjoy Portugal, and don't check your email — I've got this.
+  questions:
+    - id: q1
+      stem: Why is Maria talking to Tom?
+      options:
+        - To ask him to sign the Keystone contract
+        - To train him for a permanent new role
+        - To plan a business trip to Portugal together
+        - To hand over her accounts before her holiday
+      correctIndex: 3
+      explanationZh: Maria 开场说明来意："I'd like to hand over my main accounts before I leave on Friday"，之后又确认 "back on the fourth"——这是一次休假前的工作交接。葡萄牙是她的度假目的地，不是两人要一起出差（排除 C）；交接只覆盖两周假期，不是长期换岗（排除 B）。
+    - id: q2
+      stem: Why is Keystone's first invoice on hold?
+      options:
+        - The purchase order number was missing
+        - The contract has not been signed yet
+        - Susan rejected the corrected invoice
+        - The discount has not been agreed
+      correctIndex: 0
+      explanationZh: Maria 解释："Their finance team says the purchase order number is missing, so I sent a corrected invoice yesterday"——发票被搁置是因为缺少采购订单号，修正版昨天已发出。合同其实已经签署（"The contract is signed"，排除 B）；折扣是明年的事，与本次付款无关（排除 D）。
+    - id: q3
+      stem: What should Tom do if the payment has not arrived by Wednesday?
+      options:
+        - Send a reminder email to Susan
+        - Put the Keystone account on hold
+        - Phone Keystone's accounts manager
+        - Offer Keystone a discount
+      correctIndex: 2
+      explanationZh: Maria 的指示很明确："If payment hasn't arrived by Wednesday, call their accounts manager, Susan"，并特别叮嘱 "Don't email; she gets hundreds a day and answers the phone much faster"——要打电话而不是发邮件，选项 A 恰好说反。这里也顺带学到一个沟通技巧：跟进急事优先用电话。
+    - id: q4
+      stem: What does Maria say about the discount request?
+      options:
+        - She has already agreed to a discount for next year
+        - Tom should not make any commitments before she returns
+        - Her manager has rejected the request
+        - It will be reviewed every Friday
+      correctIndex: 1
+      explanationZh: 关于折扣，Maria 只答应十月再谈，并叮嘱："please don't make any commitments before I'm back"——Tom 只需记录客户的诉求，不能许诺任何条件。选项 A 无中生有；每周五更新的是共享表格里的销售管道数据，与折扣无关（排除 D）。

@@ -201,3 +201,253 @@
         - A program's enrollment experience matters more than its design on paper
       correctIndex: 3
       explanationZh: 结尾点题："a loyalty program does not fail in the spreadsheet; it fails at the counter... the enrollment experience is the product"——纸面设计再优雅，注册体验才是成败关键。选项 C 与案例的做法正好相反。
+- id: biz-r-005
+  track: business
+  title: "Minutes: Product Steering Committee, 4 March"
+  titleZh: 会议纪要：产品指导委员会（3 月 4 日）
+  genre: Minutes
+  passage: |-
+    Product Steering Committee — Minutes
+
+    Date: Tuesday 4 March, 10:00–11:00
+    Present: R. Okafor (chair), M. Ellis (Engineering), J. Park (Sales), T. Nguyen (Finance), A. Silva (Support)
+    Apologies: D. Weber (Marketing)
+
+    1. Mobile app crash reports (A. Silva)
+    Support has logged 214 crash reports since the version 4.2 release, most affecting older Android devices. Engineering confirmed the cause is a memory issue in the new photo-upload feature. ACTION: M. Ellis to release a hotfix by 7 March and report daily until crash volumes return to normal.
+
+    2. Proposal to extend the free trial (J. Park)
+    Sales proposed extending the free trial from 14 to 30 days, citing feedback that enterprise customers need longer to evaluate the product. Finance cautioned that a longer trial would delay revenue and asked for a forecast of the impact before any company-wide change. The committee agreed to run a three-month pilot with new sign-ups in the education sector only. ACTION: J. Park and T. Nguyen to present pilot results at the June meeting.
+
+    3. Any other business
+    The chair reminded team leads that budget requests for the next financial year are due by 21 March. Requests received after this date will be considered only if funds remain.
+
+    Next meeting: Tuesday 1 April, 10:00.
+  suggestedMinutes: 7
+  questions:
+    - id: q1
+      stem: According to the minutes, what caused the crash reports?
+      options:
+        - An update to older Android operating systems
+        - A memory issue in the new photo-upload feature
+        - A server failure during the version 4.2 release
+        - Incorrect settings in the support logging system
+      correctIndex: 1
+      explanationZh: 纪要第 1 项写明 "Engineering confirmed the cause is a memory issue in the new photo-upload feature"——工程团队确认原因是新照片上传功能的内存问题。选项 A 有迷惑性：老款 Android 设备只是受影响最多的机型（"most affecting older Android devices"），是受害者而不是原因。
+    - id: q2
+      stem: What did the committee decide about the free trial proposal?
+      options:
+        - To reject it because of the impact on revenue
+        - To extend the trial to 30 days for all customers immediately
+        - To postpone any discussion until the June meeting
+        - To run a limited pilot with education-sector sign-ups only
+      correctIndex: 3
+      explanationZh: 决议是 "The committee agreed to run a three-month pilot with new sign-ups in the education sector only"——先在教育行业的新注册用户中试点三个月，而不是立即全面推行（排除 B）。六月会议是汇报试点结果的时间点，讨论本身并没有被推迟（排除 C）；财务只是提出谨慎意见并要求预测影响，提案并未被否决（排除 A）。
+    - id: q3
+      stem: What must team leads do by 21 March?
+      options:
+        - Submit budget requests for the next financial year
+        - Present the results of the trial pilot
+        - Send daily crash reports to the chair
+        - Confirm attendance at the next meeting
+      correctIndex: 0
+      explanationZh: “其他事项”一栏写道 "budget requests for the next financial year are due by 21 March"——下一财年的预算申请须在 3 月 21 日前提交，逾期只有在仍有余款时才会被考虑。试点结果要到六月才汇报（排除 B）；每日汇报崩溃数据的责任人是 M. Ellis，与各团队负责人无关（排除 C）。
+    - id: q4
+      stem: What can be inferred about D. Weber?
+      options:
+        - He chaired the meeting
+        - He presented the free trial proposal
+        - He did not attend the meeting
+        - He is responsible for the hotfix
+      correctIndex: 2
+      explanationZh: '纪要头部的 "Apologies: D. Weber (Marketing)" 是英文会议纪要的固定用语，意为“已请假、未出席”。读懂 Present（出席名单）与 Apologies（请假名单）这对术语是本题考点。主持人是标注 chair 的 R. Okafor（排除 A），热修复的负责人是 M. Ellis（排除 D）。'
+- id: biz-r-006
+  track: business
+  title: "Policy Update: New Travel and Expense Rules"
+  titleZh: 制度更新：新版差旅报销规定
+  genre: Memo
+  passage: |-
+    To: All employees
+    From: Finance Operations
+    Subject: Updated travel and expense policy — effective 1 August
+
+    Following a review of last year's travel spending, we are updating the travel and expense policy. The changes below take effect on 1 August; expenses incurred before that date will be processed under the current rules.
+
+    First, all flights and hotels must be booked through the TravelDesk portal. Bookings made outside the portal will be reimbursed only in emergencies, and will require a written explanation approved by a department head. The portal applies our negotiated corporate rates automatically, which we expect to reduce average booking costs by around 12 percent.
+
+    Second, the daily meal allowance is being simplified. Instead of submitting individual receipts for each meal, travellers will receive a flat allowance of $65 per day for domestic trips and $90 for international trips. Receipts are no longer required for meals, but the allowance cannot be claimed for days when meals are already provided, for example at a conference.
+
+    Third, expense reports must be submitted within 30 days of the end of a trip. Reports submitted more than 60 days after a trip will not be reimbursed except in exceptional circumstances.
+
+    We want to stress that these changes are intended to cut paperwork for travellers, not to make claiming harder. A short video guide to the TravelDesk portal is available on the intranet, and Finance Operations will hold two open question-and-answer sessions in July.
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: What is the main purpose of the memo?
+      options:
+        - To announce a reduction in the company's travel budget
+        - To teach employees how to use the TravelDesk portal
+        - To inform employees about changes to the expense policy
+        - To invite employees to a conference in July
+      correctIndex: 2
+      explanationZh: 主题行即点明 "Updated travel and expense policy — effective 1 August"，正文分三条（订票渠道、餐补、报销时限）说明制度如何变化，属于典型的政策更新通知。选项 B 范围过窄：门户的视频指南只是结尾附带的信息，不是备忘录的目的；七月举行的是答疑会，不是会议邀请（排除 D）。
+    - id: q2
+      stem: What will happen if an employee books a hotel outside the TravelDesk portal?
+      options:
+        - It will be reimbursed only in an emergency, with a department head's written approval
+        - It will be reimbursed at the negotiated corporate rate
+        - It will be automatically rejected in all cases
+        - It must be reported to Finance Operations within 60 days
+      correctIndex: 0
+      explanationZh: 原文规定 "Bookings made outside the portal will be reimbursed only in emergencies, and will require a written explanation approved by a department head"——只有紧急情况且经部门负责人书面批准才能报销。选项 C 的 "in all cases" 过于绝对，忽略了紧急情况这一例外；阅读制度类文本时要警惕 all、never 这类绝对化改写。
+    - id: q3
+      stem: What is true about the new meal allowance?
+      options:
+        - A receipt is still required for each individual meal
+        - It is $90 per day for all business trips
+        - It can be claimed even when a conference provides meals
+        - It replaces individual meal receipts with a flat daily amount
+      correctIndex: 3
+      explanationZh: 原文写道 "Instead of submitting individual receipts for each meal, travellers will receive a flat allowance of $65 per day for domestic trips and $90 for international trips"——用固定日补取代逐餐贴票。$90 只适用于国际差旅（排除 B）；会议已提供餐食的天数不能再领补贴（"the allowance cannot be claimed for days when meals are already provided"，排除 C）。
+    - id: q4
+      stem: Why does Finance Operations include the final paragraph?
+      options:
+        - To warn employees that late reports will always be rejected
+        - To reassure employees that the changes make claiming easier, not stricter
+        - To announce that the policy may be withdrawn after July
+        - To ask employees to record their own video guides
+      correctIndex: 1
+      explanationZh: 结尾段写道 "these changes are intended to cut paperwork for travellers, not to make claiming harder"，并附上视频指南和答疑安排——功能是安抚员工，避免新政被误读为收紧管控。这类“段落意图”题要看段落在全文中的作用：关于逾期报销的规定在第三条，且留有例外（"except in exceptional circumstances"），选项 A 既放错位置又过于绝对。
+- id: biz-r-007
+  track: business
+  title: "Email Thread: Negotiating a Catering Contract"
+  titleZh: 邮件往来：餐饮服务合同谈判
+  genre: Email thread
+  passage: |-
+    From: Hannah Osei, Office Manager, Brightline Consulting
+    To: Marco Ferrari, Sales Director, Verdura Catering
+    Subject: Quotation for weekly client lunches
+
+    Dear Marco,
+
+    Thank you for the quotation and the tasting session — the menu samples impressed everyone, and Verdura is our preferred choice. However, at $38 per head, the quotation is around 20 percent above the budget we set. Rather than reduce the guest experience, could we look at the specification together? For instance, we could accept a fixed seasonal menu instead of a weekly choice of dishes, and we can confirm final numbers five days in advance rather than two, which should help your planning. If we can bring the price closer to $31, I am ready to confirm a twelve-month agreement this week.
+
+    Best regards,
+    Hannah
+
+    From: Marco Ferrari
+    To: Hannah Osei
+    Subject: RE: Quotation for weekly client lunches
+
+    Dear Hannah,
+
+    Thank you for such constructive suggestions — flexibility on the menu and the notice period genuinely does reduce our costs. With a fixed seasonal menu and five days' notice, I can offer $33 per head. Below that figure, I am afraid the numbers no longer work for a service of this standard. May I suggest a middle path? If you include your four quarterly all-staff events in the agreement, I can hold $31 across everything.
+
+    Kind regards,
+    Marco
+
+    From: Hannah Osei
+    To: Marco Ferrari
+    Subject: RE: RE: Quotation for weekly client lunches
+
+    Dear Marco,
+
+    That works for us. Please send over a single agreement covering the weekly lunches and the quarterly events at $31 per head, and you will have the signature by Friday.
+
+    Best regards,
+    Hannah
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: Why does Hannah write the first email?
+      options:
+        - To cancel the weekly client lunches
+        - To complain about the quality of the menu samples
+        - To ask Marco to bid again against other caterers
+        - To negotiate a lower price by adjusting the specification
+      correctIndex: 3
+      explanationZh: Hannah 明确表示 Verdura 是首选（"Verdura is our preferred choice"），但报价 "is around 20 percent above the budget we set"，于是提议 "could we look at the specification together?"——通过调整服务规格换取降价，而不是重新招标（排除 C）。她对菜单样品的评价是正面的（"the menu samples impressed everyone"，排除 B）。
+    - id: q2
+      stem: What does Hannah offer in exchange for a lower price?
+      options:
+        - A shorter contract with a trial period
+        - A fixed seasonal menu and earlier confirmation of guest numbers
+        - Payment in advance at the start of each quarter
+        - A recommendation to other consulting firms
+      correctIndex: 1
+      explanationZh: 她主动给出两项让步："we could accept a fixed seasonal menu instead of a weekly choice of dishes"，以及提前五天而非两天确认人数（"confirm final numbers five days in advance rather than two"）——都是能实际降低供应商成本的条件，这正是谈判中“用条件换价格”的地道做法。预付款、转介绍等内容文中并未出现。
+    - id: q3
+      stem: How does Marco respond to the request for $31 per head?
+      options:
+        - He accepts it immediately for the weekly lunches alone
+        - He refuses to move below the original $38
+        - He agrees to $31 only if the quarterly events are included
+        - He offers $33 in exchange for a six-month agreement
+      correctIndex: 2
+      explanationZh: Marco 的答复分两层：常规让步下他只能给到 $33（"With a fixed seasonal menu and five days' notice, I can offer $33 per head"）；要到 $31，条件是扩大合同范围（"If you include your four quarterly all-staff events in the agreement, I can hold $31 across everything"）。他既没有直接接受 $31（排除 A），也没有拒绝一切降价（排除 B）。
+    - id: q4
+      stem: Which best describes the tone of this negotiation?
+      options:
+        - Cooperative — each side trades concessions to close the price gap
+        - Confrontational — each side issues ultimatums and threats
+        - Evasive — neither side is willing to commit to a figure
+        - One-sided — the vendor accepts every request unconditionally
+      correctIndex: 0
+      explanationZh: 双方都在交换让步：Hannah 放宽菜单和通知期，Marco 让出价格但换取更大的合同范围，最后一封邮件爽快成交（"That works for us"）。全程没有威胁或最后通牒——注意 Marco 的 "I am afraid the numbers no longer work" 是礼貌的拒绝用语，不是对抗（排除 B）；每一轮双方都报出了具体数字（排除 C）。
+- id: biz-r-008
+  track: business
+  title: "Launch Brief: Fieldmate Mobile App"
+  titleZh: 发布简报：Fieldmate 移动应用
+  genre: Brief
+  passage: |-
+    Fieldmate 1.0 — Launch Brief (Internal)
+
+    Product. Fieldmate is a mobile app that lets field service engineers view job details, order spare parts, and file inspection reports without returning to the office.
+
+    Objective. Sign up 2,000 active engineer accounts within 90 days of launch, drawn primarily from our existing 340 enterprise maintenance customers.
+
+    Positioning. Fieldmate is not another scheduling tool. Competitors focus on helping managers assign jobs; Fieldmate is built for the engineer in the field. Every message should reinforce one idea — finish the job in one visit. Marketing materials must avoid technical jargon: our research shows engineers associate "workflow platform" language with tools imposed on them, not tools that help them.
+
+    Timing. A private beta with three customers runs through April. Public launch is 12 May at the Facilities Management Expo, where we have a keynote slot. Do not brief press before 5 May; embargoed briefings for two trade publications are being arranged by the communications team.
+
+    Roles. Product marketing owns messaging and the launch webinar. Sales enablement delivers training to account managers in the last week of April. Support will staff extended hours for the first two weeks after launch.
+
+    Known risk. The spare-parts ordering feature depends on a partner integration that has slipped twice. If it is not stable by 20 April, we launch without it and communicate it as "coming this summer" — under no circumstances do we announce a date we are not certain of.
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: What is the objective of the launch?
+      options:
+        - To reach 2,000 active engineer accounts within 90 days of launch
+        - To win 340 new enterprise maintenance customers
+        - To replace competitors' scheduling tools by May
+        - To sell the app to visitors at the Facilities Management Expo
+      correctIndex: 0
+      explanationZh: Objective 一栏写明 "Sign up 2,000 active engineer accounts within 90 days of launch"。340 是现有企业维保客户的数量（"our existing 340 enterprise maintenance customers"），是获客的主要来源而不是目标本身——把文中数字安到错误对象上是这类题最常见的陷阱（排除 B）。
+    - id: q2
+      stem: Why must marketing materials avoid phrases like "workflow platform"?
+      options:
+        - Because the term is legally protected by a competitor
+        - Because managers do not understand technical jargon
+        - Because engineers associate such language with tools forced on them
+        - Because the app does not include any workflow features
+      correctIndex: 2
+      explanationZh: 简报解释 "our research shows engineers associate 'workflow platform' language with tools imposed on them, not tools that help them"——调研发现工程师会把这类术语与“被强加的工具”画等号，与产品“为一线工程师而建”的定位相抵触。受众是工程师而非管理者（排除 B）；文中没有任何法律或商标层面的说法（排除 A）。
+    - id: q3
+      stem: What is true about press communication?
+      options:
+        - Press may be briefed at any time after the private beta
+        - Press must not be briefed before 5 May
+        - The keynote will be delivered by two trade publications
+        - The communications team will not contact press at all
+      correctIndex: 1
+      explanationZh: Timing 一栏的指令很明确："Do not brief press before 5 May"，同时两家行业媒体的限时禁发（embargoed）吹风会由传播团队另行安排——所以并非完全不接触媒体（排除 D）。主题演讲是公司在展会上的环节，与两家媒体无关（排除 C）。
+    - id: q4
+      stem: What will happen if the spare-parts feature is not stable by 20 April?
+      options:
+        - The whole launch will be postponed to the summer
+        - The partner integration will be cancelled
+        - A firm delivery date will be announced at the Expo
+        - The app will launch without it, described as "coming this summer"
+      correctIndex: 3
+      explanationZh: 风险预案写得非常具体："If it is not stable by 20 April, we launch without it and communicate it as 'coming this summer'"——发布照常进行，只是砍掉该功能并以“今夏推出”对外表述。选项 C 与 "under no circumstances do we announce a date we are not certain of" 直接矛盾；推迟整个发布不在预案之中（排除 A）。
