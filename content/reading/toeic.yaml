@@ -231,3 +231,247 @@
         - By the end of the year
       correctIndex: 0
       explanationZh: 原文写明 "once both elevators return to service in late September"。选项 C 有迷惑性：three weeks 只是东侧电梯第一阶段的工期，不是全部工程完工的时间。
+- id: toeic-r-005
+  track: toeic
+  title: "Text-Message Chain: Early Airport Arrival"
+  titleZh: 短信对话：客户提前抵达机场
+  genre: Text-message chain
+  passage: |-
+    Priya Nair (2:05 p.m.)
+    Jun, are you still at the Riverside branch? Mr. Alvarez's flight from Madrid landed forty minutes early — he's already at baggage claim.
+
+    Jun Park (2:06 p.m.)
+    I am. Wasn't the car service booked for 3:15?
+
+    Priya Nair (2:08 p.m.)
+    Yes, and they can't send anyone sooner — their nearest driver is stuck on the expressway. I don't want him standing at the curb for an hour.
+
+    Jun Park (2:09 p.m.)
+    Riverside is only ten minutes from the airport. I'll drive over and meet him outside Arrivals, Door 4.
+
+    Priya Nair (2:10 p.m.)
+    You're a lifesaver. I'll text you his mobile number right now.
+
+    Jun Park (2:11 p.m.)
+    Thanks. Should I take him to the hotel first, or straight to the office?
+
+    Priya Nair (2:12 p.m.)
+    Straight here, please. The laboratory tour starts at 3:30, and his hotel room won't be ready until four anyway.
+
+    Jun Park (2:13 p.m.)
+    Got it. Anything else?
+
+    Priya Nair (2:14 p.m.)
+    Just one thing — I'll cancel the 3:15 booking so we aren't billed for a no-show. See you both soon.
+  suggestedMinutes: 6
+  questions:
+    - id: q1
+      stem: What problem does Ms. Nair mention?
+      options:
+        - A hotel reservation was cancelled
+        - A laboratory tour has been postponed
+        - A visitor arrived earlier than scheduled
+        - A driver went to the wrong terminal
+      correctIndex: 2
+      explanationZh: 2:05 的消息说 "Mr. Alvarez's flight from Madrid landed forty minutes early — he's already at baggage claim"——客户的航班提前四十分钟落地，而接机车 3:15 才到，这就是麻烦所在。实验室参观仍按 3:30 进行（排除 B）；司机是被堵在高速上，并非走错航站楼（排除 D）。
+    - id: q2
+      stem: At 2:10 p.m., what does Ms. Nair most likely mean when she writes, "You're a lifesaver"?
+      options:
+        - She is grateful that Mr. Park offered to help
+        - She thinks Mr. Park drives very safely
+        - She is worried about Mr. Park's schedule
+        - She wants Mr. Park to call the car service
+      correctIndex: 0
+      explanationZh: 短语 "You're a lifesaver" 是口语中表达感激的固定说法，意为“你真是救星/帮了大忙”。上一条消息里 Jun 主动提出 "I'll drive over and meet him outside Arrivals"，Priya 因此如释重负地道谢。这类意图题切忌按字面把 lifesaver 理解成与安全、救援有关（排除 B、D）。
+    - id: q3
+      stem: What does Ms. Nair say she will do?
+      options:
+        - Pick up Mr. Alvarez herself
+        - Postpone the laboratory tour
+        - Reserve a different hotel room
+        - Cancel a car booking
+      correctIndex: 3
+      explanationZh: 她在最后说 "I'll cancel the 3:15 booking so we aren't billed for a no-show"——取消原订的接机车，以免空车照样计费。去机场接人的是 Jun（排除 A），参观时间并未改动（排除 B），酒店只是房间四点才准备好，并没有换房（排除 C）。
+    - id: q4
+      stem: What is suggested about Mr. Alvarez?
+      options:
+        - He has visited the company before
+        - He will go to the office before his hotel
+        - He missed a connecting flight
+        - He is traveling with several colleagues
+      correctIndex: 1
+      explanationZh: Priya 说 "Straight here, please. The laboratory tour starts at 3:30, and his hotel room won't be ready until four anyway"——先直接到公司参加参观，之后再去酒店入住。他的航班是提前到达而非误机（排除 C），对话中没有信息支持他来过公司或有同行者（排除 A、D）。
+- id: toeic-r-006
+  track: toeic
+  title: Coreline Logistics to Open Automated Distribution Center
+  titleZh: 文章：Coreline 物流将开设自动化配送中心
+  genre: Article
+  passage: |-
+    GREENFIELD BUSINESS WEEKLY — 14 April
+
+    Coreline Logistics will open its largest distribution center to date on the outskirts of Greenfield this September, the company announced at a press conference on Tuesday. The 40,000-square-meter facility, located next to the Route 9 interchange, will sort and ship goods for online retailers across the region.
+
+    According to chief operations officer Sandra Yee, the site was chosen primarily for its access to major highways. "Eighty percent of our deliveries travel less than 200 kilometers," Ms. Yee explained. "Being fifteen minutes from the interchange means our trucks spend less time in city traffic and more time on the road."
+
+    The center will rely heavily on automation. Robotic carts will move goods between storage shelves and packing stations, work that is done by hand at the company's older warehouses. Even so, Coreline expects to hire approximately 300 employees, including drivers, technicians who maintain the robotic equipment, and customer service staff. Recruitment will begin in June, and the company will hold a job fair at the Greenfield Community Center on 6 and 7 June.
+
+    Local officials welcomed the announcement. Mayor Thomas Grady noted that the project is expected to generate over two million dollars in annual tax revenue, which the city plans to invest in road improvements around the new facility.
+  suggestedMinutes: 7
+  questions:
+    - id: q1
+      stem: What is the article mainly about?
+      options:
+        - A merger between two logistics companies
+        - The planned opening of a distribution facility
+        - Traffic problems near the Route 9 interchange
+        - The results of a regional job fair
+      correctIndex: 1
+      explanationZh: 文章首句开门见山："Coreline Logistics will open its largest distribution center to date on the outskirts of Greenfield this September"——报道的是配送中心的开设计划。六月的招聘会（选项 D）只是其中一项安排，Route 9 路口只是选址细节，都不是文章主旨。
+    - id: q2
+      stem: According to the article, why was the Greenfield site chosen?
+      options:
+        - Land there is less expensive
+        - The city offered tax reductions
+        - Most of the company's employees live nearby
+        - It is close to major highways
+      correctIndex: 3
+      explanationZh: 首席运营官 Sandra Yee 说明 "the site was chosen primarily for its access to major highways"，并解释卡车可以 "spend less time in city traffic and more time on the road"。市长提到的税收是项目建成后的收益，不是选址原因（排除 B）。
+    - id: q3
+      stem: What is suggested about Coreline's older warehouses?
+      options:
+        - Goods there are moved by hand
+        - They will close in September
+        - They are located outside the region
+        - They employ mostly customer service staff
+      correctIndex: 0
+      explanationZh: 介绍自动化时文章写道，机器人推车承担的搬运工作 "is done by hand at the company's older warehouses"——可见旧仓库目前仍靠人工搬运货物。文章并未说旧仓库将关闭或搬迁（排除 B、C）。
+    - id: q4
+      stem: The word "generate" in the last paragraph is closest in meaning to
+      options:
+        - operate
+        - distribute
+        - produce
+        - collect
+      correctIndex: 2
+      explanationZh: generate 在 "expected to generate over two million dollars in annual tax revenue" 中意为“产生、带来（收入）”，与 produce 最接近。collect（征收）有迷惑性：征税的是政府，而句子的主语是这个项目，说的是它能“创造”税收。
+- id: toeic-r-007
+  track: toeic
+  title: "Guest Review: Grandmont Hotel and Conference Center"
+  titleZh: 住客评论：Grandmont 酒店暨会议中心
+  genre: Online review
+  passage: |-
+    TravelPoint Reviews
+
+    Grandmont Hotel and Conference Center — Osaka
+    Rating: 4 out of 5 | Reviewed by Claudia Benitez on 3 May
+
+    I spent four nights at the Grandmont last month while attending a logistics conference in the hotel's convention wing, and I would recommend it to anyone traveling for work.
+
+    The rooms are quiet and sensibly designed. Mine had a proper desk with an adjustable chair, plenty of power outlets, and the fastest hotel Internet I have used in years — I uploaded a fifteen-minute training video in seconds. Housekeeping was impeccable, and the front desk arranged a late checkout on my last day without any extra charge.
+
+    Two things kept me from giving five stars. First, breakfast is not worth the price. The buffet costs thirty dollars but offers little variety; the cafe across the street serves a better meal for a third of the price. Second, although the hotel advertises an airport shuttle, it runs only once an hour and fills up quickly during conference season. I missed it twice and had to take a taxi.
+
+    If you are attending an event in the convention wing, though, nothing beats taking an elevator straight down to the exhibition hall. I will most likely stay here again next year.
+  suggestedMinutes: 6
+  questions:
+    - id: q1
+      stem: What is suggested about Ms. Benitez?
+      options:
+        - She paid extra for a late checkout
+        - She travels to Osaka every month
+        - She works for the Grandmont Hotel
+        - She attended an event held at the hotel
+      correctIndex: 3
+      explanationZh: 评论开头写道 "I spent four nights at the Grandmont last month while attending a logistics conference in the hotel's convention wing"——她参加的会议就设在这家酒店的会展区。延迟退房是前台免费安排的（"without any extra charge"，排除 A）；她计划明年再来，看不出每月都去大阪（排除 B）。
+    - id: q2
+      stem: What does Ms. Benitez praise about her room?
+      options:
+        - The view of the exhibition hall
+        - The fast Internet connection
+        - The complimentary breakfast
+        - The size of the bathroom
+      correctIndex: 1
+      explanationZh: 谈到房间时她最称赞网络："the fastest hotel Internet I have used in years — I uploaded a fifteen-minute training video in seconds"。早餐恰恰是被批评的一项（"breakfast is not worth the price"），属于典型的反向干扰（排除 C）。
+    - id: q3
+      stem: According to the review, what is a problem with the airport shuttle?
+      options:
+        - It costs more than a taxi
+        - It stops running in the evening
+        - It does not run often enough
+        - It leaves from the cafe across the street
+      correctIndex: 2
+      explanationZh: 她抱怨班车 "runs only once an hour and fills up quickly during conference season"——班次太少、还容易坐满，害她两次错过只能打车。打车是错过班车的后果，评论并没有比较两者的价格（排除 A）。
+    - id: q4
+      stem: The word "impeccable" in paragraph 2 is closest in meaning to
+      options:
+        - flawless
+        - frequent
+        - affordable
+        - optional
+      correctIndex: 0
+      explanationZh: impeccable 意为“无可挑剔的”。"Housekeeping was impeccable" 是说客房清洁毫无瑕疵，与 flawless（完美无瑕）同义。这是评价服务的高频褒义词，与价格（affordable，选项 C）无关。
+- id: toeic-r-008
+  track: toeic
+  title: "Web Page: MetroFleet Business Car-Sharing Plans"
+  titleZh: 网页：MetroFleet 企业共享用车方案
+  genre: Web page
+  passage: |-
+    https://www.metrofleet.com/business/plans
+
+    METROFLEET FOR BUSINESS
+    Vehicles when your team needs them — none when it does not
+
+    MetroFleet gives companies access to a shared fleet of sedans, vans, and electric cars parked at more than ninety locations across the city, without the cost of owning a single vehicle. Employees reserve a car in the mobile app, unlock it with their staff badge, and every trip is billed automatically to one corporate account.
+
+    Choose the plan that fits your team.
+
+    STARTER — up to 10 drivers
+    $99 per month plus $12 per hour of driving. Ideal for occasional client visits and deliveries.
+
+    TEAM — up to 50 drivers
+    $349 per month plus $9 per hour. Adds priority reservations and free cancellation up to one hour before pickup.
+
+    ENTERPRISE — unlimited drivers
+    Custom pricing. Adds dedicated vehicles kept exclusively for your company and a monthly usage report for your finance department.
+
+    Every plan includes fuel, insurance, and parking at all MetroFleet locations, with no long-term contract required. Sign up before 30 September and your company's first month is free on any plan.
+
+    Ready to leave your parking problems behind? Book a free demonstration with our business team at metrofleet.com/demo.
+  suggestedMinutes: 6
+  questions:
+    - id: q1
+      stem: For whom is the web page most likely intended?
+      options:
+        - Companies whose employees occasionally need vehicles
+        - Tourists looking for airport transportation
+        - Drivers seeking full-time employment
+        - Dealerships selling used sedans
+      correctIndex: 0
+      explanationZh: 页面开头说明服务对象："MetroFleet gives companies access to a shared fleet ... without the cost of owning a single vehicle"——面向偶尔需要用车、又不想自购车辆的企业团队。这是企业共享用车服务，与游客、求职司机或车行都无关（排除 B、C、D）。
+    - id: q2
+      stem: What is included in every MetroFleet plan?
+      options:
+        - A dedicated vehicle
+        - Monthly usage reports
+        - Fuel and insurance
+        - Priority reservations
+      correctIndex: 2
+      explanationZh: 结尾段写明 "Every plan includes fuel, insurance, and parking at all MetroFleet locations"。专属车辆和月度用车报告只属于 Enterprise 方案，优先预订从 Team 方案才开始提供，都不是每个方案都有的（排除 A、B、D）。
+    - id: q3
+      stem: What can new customers receive by signing up before 30 September?
+      options:
+        - A reduced hourly rate
+        - One month of free service
+        - Free parking anywhere in the city
+        - A complimentary staff badge
+      correctIndex: 1
+      explanationZh: 促销条款是 "Sign up before 30 September and your company's first month is free on any plan"——9 月 30 日前注册，任何方案首月免费。小时费率并没有降价（排除 A），免费停车本来就仅限 MetroFleet 网点（排除 C）。
+    - id: q4
+      stem: The word "dedicated" in the description of the Enterprise plan is closest in meaning to
+      options:
+        - hardworking
+        - donated
+        - committed
+        - exclusively reserved
+      correctIndex: 3
+      explanationZh: dedicated 修饰 vehicles 时意为“专用的”，页面随即给出解释——"kept exclusively for your company"，即专为贵公司保留。选项 A（hardworking）、C（committed）是 dedicated 形容“人”时“敬业尽责”的含义，属于一词多义陷阱。
