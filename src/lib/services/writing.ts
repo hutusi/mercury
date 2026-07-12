@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
-import { getWritingFeedback } from "../ai/client";
+import { activeAiModel, getWritingFeedback } from "../ai/client";
 import type { WritingFeedback } from "../ai/schemas";
 import { db } from "../db";
 import { writingPrompts, writingSubmissions } from "../db/schema";
@@ -58,7 +58,7 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
       wordCount,
       status,
       feedback,
-      model: status === "ai_scored" ? process.env.MERCURY_AI_MODEL || "claude-sonnet-5" : null,
+      model: status === "ai_scored" ? activeAiModel() : null,
     })
     .returning({ id: writingSubmissions.id });
 
@@ -102,7 +102,7 @@ export async function retryWritingFeedbackForUser(
     .set({
       status: "ai_scored",
       feedback,
-      model: process.env.MERCURY_AI_MODEL || "claude-sonnet-5",
+      model: activeAiModel(),
     })
     .where(
       and(eq(writingSubmissions.id, submission.id), eq(writingSubmissions.status, "self_assessed")),

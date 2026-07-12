@@ -39,3 +39,62 @@
       zh: 是否在时间结束前用一句简短的话收尾？
     - en: Was your pace steady — neither rushed nor full of fillers like 'um' and 'you know'?
       zh: 语速是否平稳——既不匆忙，也没有过多 um、you know 之类的填充词？
+- id: toeic-s-003
+  track: toeic
+  partType: qa_response
+  title: "Respond to a Question: Lunch on Workdays"
+  titleZh: 回答问题：工作日的午餐
+  promptEn: 'Imagine that a marketing research firm is doing a study about eating habits in your country. You have agreed to a telephone interview. Answer the following question in a natural, complete way: "On workdays, do you usually bring lunch from home or buy it near your workplace, and why?"'
+  promptZh: 假设一家市场调研公司正在你所在的国家做一项关于饮食习惯的研究，你同意接受电话访问。请自然、完整地回答以下问题："工作日你通常自带午餐，还是在单位附近购买？为什么？"
+  prepSeconds: 15
+  speakSeconds: 45
+  modelAnswer: Honestly, it depends on the day, but most of the time I buy lunch near my office. There's a food court just downstairs with maybe ten different stalls, so I can grab a bowl of noodles or a rice box in five minutes, and it only costs a few dollars. The main reason is time — my mornings are pretty hectic, and I'd rather sleep an extra fifteen minutes than pack a lunchbox. That said, on Mondays I usually bring leftovers from Sunday dinner, because home-cooked food is healthier and, to be fair, it tastes better too. So overall I'd say I buy lunch out of convenience, but I do try to bring my own at least once a week.
+  checklist:
+    - en: Did you answer both parts of the question (which option you usually choose AND why)?
+      zh: 是否回答了问题的两个部分（通常选哪种方式、为什么）？
+    - en: Did you include specific details such as place, price, or time instead of vague statements?
+      zh: 是否加入了地点、价格、时间等具体细节，而不是泛泛而谈？
+    - en: Did you keep speaking for most of the 45 seconds, perhaps adding an exception or extra example?
+      zh: 是否在 45 秒内持续表达，例如补充一个例外情况或额外例子？
+    - en: Did you use natural spoken connectors (honestly, that said, so) and contractions?
+      zh: 是否使用了自然的口语衔接词（honestly、that said、so）和缩略形式？
+- id: toeic-s-004
+  track: toeic
+  partType: qa_response
+  title: "Respond to a Voicemail: An Incomplete Delivery"
+  titleZh: 回复语音留言：到货不全
+  promptEn: 'You work in the customer service department of an office furniture company. A customer has left the following voicemail: "Hi, this is Karen Doyle from Atlas Accounting. We ordered twenty office chairs for our new branch, but only twelve arrived this morning. Our office opens on Monday, and we really need the remaining chairs before then. Please call me back." Respond as if you were returning her call. In your response, acknowledge the problem and propose a solution.'
+  promptZh: 你在一家办公家具公司的客服部门工作。一位客户留下了这样一条语音留言："你好，我是 Atlas 会计师事务所的 Karen Doyle。我们为新分部订购了二十把办公椅，但今天上午只送到了十二把。我们的办公室下周一开业，其余的椅子必须在那之前送到。请回电。"请以回电的口吻作答：确认问题，并提出解决方案。
+  prepSeconds: 30
+  speakSeconds: 60
+  modelAnswer: Hi Ms. Doyle, this is Chen Wei returning your call from Fairfield Office Furniture — thanks for letting us know, and I'm really sorry about the missing chairs. I've just checked your order, and here's what happened — the twenty chairs were split into two shipments, and the second one with the remaining eight got held up at our warehouse. The good news is those eight chairs are in stock, so here's what we'll do. We'll send them out by express courier tomorrow morning, which means you'd have them by Saturday afternoon — well before your Monday opening. I'll email you the tracking number as soon as they ship, and we'll take the express delivery charge off your invoice for the trouble. If Saturday doesn't work for any reason, just call me back on this number and we'll figure something else out. Thanks again for your patience, and sorry for the inconvenience.
+  checklist:
+    - en: Did you greet the caller by name and say who you are and why you are calling?
+      zh: 是否称呼对方姓名，并说明自己是谁、为何来电？
+    - en: Did you restate the problem to show you understood it (only twelve of twenty chairs arrived)?
+      zh: 是否复述了问题以表明你理解了情况（二十把椅子只到了十二把）？
+    - en: Did you propose a concrete solution with a timeline that meets the Monday deadline?
+      zh: 是否提出了具体的解决方案，并且时间安排能赶上周一的期限？
+    - en: Did you apologize and offer a goodwill gesture, then invite a follow-up call?
+      zh: 是否表达歉意并提供补偿性安排，最后邀请对方随时回电？
+    - en: Did it sound like natural speech, with contractions and a calm, helpful tone?
+      zh: 听起来是否像自然口语——有缩略形式，语气冷静而乐于助人？
+- id: toeic-s-005
+  track: toeic
+  partType: qa_response
+  title: "Express an Opinion: Large Company or Small Company"
+  titleZh: 表达观点：大公司还是小公司
+  promptEn: If you received two job offers at the same time, one from a large international company and one from a small local company, which one would you choose? Give specific reasons or examples to support your opinion. You will have 30 seconds to prepare and 60 seconds to speak.
+  promptZh: 如果你同时收到两份工作邀约，一份来自大型跨国公司，一份来自小型本地公司，你会选择哪一份？请给出具体的理由或例子来支持你的观点。你有 30 秒准备时间和 60 秒作答时间。
+  prepSeconds: 30
+  speakSeconds: 60
+  modelAnswer: For me, I'd probably go with the small local company, and the biggest reason is what you get to learn. In a small team you can't just do one narrow job — I'd be talking to customers one day and helping plan the marketing budget the next, and that kind of range is really hard to get at a big firm where everyone's a specialist. My cousin joined a startup with about fifteen people, and within two years she was basically running client projects on her own, while her friends at bigger companies were still waiting for their first real responsibility. Now, I'll admit the large company has real advantages — a well-known name on your resume, proper training programs, more job security. But early in a career, I think fast growth matters more than a famous logo, so I'd take the small company and treat it as an accelerated education.
+  checklist:
+    - en: Did you state your choice clearly in the first sentence?
+      zh: 第一句话是否清楚说出了你的选择？
+    - en: Did you support your choice with a specific example, such as a real person or company?
+      zh: 是否用具体例子（比如真实的人或公司）支撑你的选择？
+    - en: Did you briefly acknowledge the advantages of the other option before returning to your position?
+      zh: 是否简要承认了另一选项的优势，然后回到自己的立场？
+    - en: Did you finish with a short concluding sentence before time ran out?
+      zh: 是否在时间结束前用一句简短的话收尾？

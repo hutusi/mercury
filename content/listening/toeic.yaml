@@ -188,3 +188,184 @@
         - By having their parking ticket validated at a register
       correctIndex: 3
       explanationZh: 广播提示 "have your parking ticket validated at any register to receive two hours of free parking"——在任意收银台验证停车票即可。“forty percent”是商品折扣力度，与停车无关（排除 A）。
+- id: toeic-l-004
+  track: toeic
+  title: Calling the IT Help Desk Before a Business Trip
+  titleZh: 出差前致电 IT 服务台
+  style: 对话 · Conversation
+  script:
+    - speaker: A
+      text: Hi, this is Hannah Lin from the marketing department. My laptop won't connect to the office network this morning, and I have a flight to Singapore tomorrow afternoon.
+    - speaker: B
+      text: Good morning, Ms. Lin, this is Victor at the IT help desk. Is the problem with the cable connection or the wireless?
+    - speaker: A
+      text: The wireless. It keeps asking for a password, but the one I always use doesn't work anymore.
+    - speaker: B
+      text: Ah, that explains it. We updated the network security over the weekend, so everyone needs to install a new certificate first.
+    - speaker: A
+      text: I had no idea. Was there an announcement I missed?
+    - speaker: B
+      text: It went out by e-mail on Friday afternoon, but a lot of people had already left. I can install the certificate for you remotely — it takes about ten minutes.
+    - speaker: A
+      text: That would be great. And could you check the video conferencing software too, since I'll need it for daily check-ins during the trip?
+    - speaker: B
+      text: No problem. One more thing — since you're traveling, I'd recommend borrowing one of our portable Wi-Fi routers for overseas trips.
+    - speaker: A
+      text: I didn't know we had those. Where do I get one?
+    - speaker: B
+      text: Come down to the second-floor service counter before five today. Just bring your staff ID, and you can sign one out for up to two weeks.
+    - speaker: A
+      text: Perfect, I'll stop by after lunch. Thanks, Victor.
+  questions:
+    - id: q1
+      stem: Why is the woman calling?
+      options:
+        - To reschedule a flight to Singapore
+        - To report a broken laptop screen
+        - To ask about video conferencing software
+        - To get help connecting to the network
+      correctIndex: 3
+      explanationZh: 女士开口就说明了来意："My laptop won't connect to the office network this morning, and I have a flight to Singapore tomorrow afternoon"——她是来求助联网问题的，提到航班只是强调事情紧急。检查视频会议软件是她后来顺带提出的请求（排除 C）。
+    - id: q2
+      stem: According to the man, what caused the problem?
+      options:
+        - A security update over the weekend
+        - An incorrect e-mail address
+        - A damaged wireless router
+        - An expired staff ID
+      correctIndex: 0
+      explanationZh: 男士解释原因："We updated the network security over the weekend, so everyone needs to install a new certificate first"——周末的安全升级让旧密码失效了。周五的通知邮件只是很多人没看到，并不是故障原因（排除 B）。
+    - id: q3
+      stem: What does the man offer to do?
+      options:
+        - Send the Friday announcement again
+        - Replace the woman's laptop
+        - Install a certificate remotely
+        - Book a video conference room
+      correctIndex: 2
+      explanationZh: 男士主动提出 "I can install the certificate for you remotely — it takes about ten minutes"，即远程帮她安装新证书。重发通知邮件、更换电脑、预订会议室都没有出现在对话里。
+    - id: q4
+      stem: What does the man suggest the woman do before five o'clock?
+      options:
+        - Update her password
+        - Visit the second-floor service counter
+        - E-mail the IT department her travel dates
+        - Return her portable Wi-Fi router
+      correctIndex: 1
+      explanationZh: 男士建议她出差前借一台随身 Wi-Fi："Come down to the second-floor service counter before five today"，带上工卡就能借用两周。注意方向：她是去“借出”设备，不是“归还”（排除 D）。
+- id: toeic-l-005
+  track: toeic
+  title: First-Day Orientation Welcome
+  titleZh: 新员工入职培训导览
+  style: 短独白 · Short Talk
+  script:
+    - speaker: narrator
+      text: Good morning, everyone, and welcome to your first day at Novara Financial. I'm Denise Cho, and I coordinate new-employee orientation.
+    - speaker: narrator
+      text: Before we begin the building tour, please pick up your ID badge from the table by the door. You'll need it to open the security gates on every floor.
+    - speaker: narrator
+      text: Our first stop will be the fourth floor, where you'll find your team areas and the meeting rooms, which can be reserved through the calendar app.
+    - speaker: narrator
+      text: After that, we'll visit the cafeteria on the second floor. It serves breakfast and lunch, and today's meal is free for everyone in this group.
+    - speaker: narrator
+      text: At eleven o'clock, we'll come back to this room for a short session on payroll and benefits. A specialist from human resources will be here to answer your questions.
+    - speaker: narrator
+      text: One reminder — the parking garage entrance on Pine Street closes for repairs starting tomorrow. Until Friday, please use the entrance on Harbor Avenue instead.
+    - speaker: narrator
+      text: If you haven't received your laptop yet, don't worry. The IT team will deliver it to your desk this afternoon.
+    - speaker: narrator
+      text: All right, if everyone has a badge, let's start the tour. Please stay together — the building can be confusing on your first day.
+  questions:
+    - id: q1
+      stem: Who most likely are the listeners?
+      options:
+        - Job applicants waiting for interviews
+        - Employees starting their first day
+        - Clients visiting the fourth floor
+        - Technicians repairing a garage
+      correctIndex: 1
+      explanationZh: 开场白 "welcome to your first day at Novara Financial" 与 "I coordinate new-employee orientation" 说明听众是入职第一天的新员工。他们已经被录用，不再是等待面试的求职者（排除 A）；维修车库的是外部施工，与听众无关（排除 D）。
+    - id: q2
+      stem: What are the listeners asked to do before the tour?
+      options:
+        - Reserve a meeting room
+        - Turn on their laptops
+        - Pick up an ID badge
+        - Sign a benefits form
+      correctIndex: 2
+      explanationZh: 说话人要求 "Before we begin the building tour, please pick up your ID badge from the table by the door"——参观开始前先到门边领取工牌，因为每层的安全闸机都需要它。笔记本电脑要到下午才由 IT 送来（排除 B），福利说明会在十一点才开始（排除 D）。
+    - id: q3
+      stem: According to the speaker, what will happen at eleven o'clock?
+      options:
+        - A session about payroll and benefits
+        - A free lunch in the cafeteria
+        - A software training class
+        - A group photograph
+      correctIndex: 0
+      explanationZh: 时间点信息在 "At eleven o'clock, we'll come back to this room for a short session on payroll and benefits"——十一点回到这个房间听薪酬与福利说明，人力资源专员现场答疑。免费餐是在参观食堂时提到的福利，并没有和十一点绑定（排除 B）。
+    - id: q4
+      stem: What change does the speaker mention?
+      options:
+        - The cafeteria will serve dinner
+        - Orientation will move to another building
+        - Badges will be reissued on Friday
+        - A parking entrance will be closed temporarily
+      correctIndex: 3
+      explanationZh: 说话人提醒 "the parking garage entrance on Pine Street closes for repairs starting tomorrow. Until Friday, please use the entrance on Harbor Avenue instead"——Pine Street 的车库入口明天起临时关闭维修，周五前改走 Harbor Avenue。其余选项都没有在独白中出现。
+- id: toeic-l-006
+  track: toeic
+  title: Voicemail About a Brochure Order
+  titleZh: 关于宣传册订单的语音留言
+  style: 电话留言 · Voicemail
+  script:
+    - speaker: narrator
+      text: Hello, this message is for Angela Park. This is Devon calling from Riverside Print Solutions about your order of five hundred brochures for the medical equipment fair.
+    - speaker: narrator
+      text: I'm afraid we've found a problem with the file you sent us. The photographs on pages two and three are too low in resolution, and they would look blurry in print.
+    - speaker: narrator
+      text: We'd rather not print anything until you've seen the difference yourself. I've e-mailed you a test page this morning so you can compare the two versions.
+    - speaker: narrator
+      text: If you can send us higher-resolution images by Wednesday noon, we can still deliver the full order by Friday as promised.
+    - speaker: narrator
+      text: If the original files are the only ones you have, we could print the photos at a smaller size instead. That would hide the problem, though the layout would need some small adjustments.
+    - speaker: narrator
+      text: Either way, please call me back at 555-0164 before the end of the day, since the printers are scheduled to run Thursday morning.
+    - speaker: narrator
+      text: Thanks very much, and again, sorry for the extra trouble.
+  questions:
+    - id: q1
+      stem: Where does the speaker most likely work?
+      options:
+        - At a photography studio
+        - At a medical equipment company
+        - At a printing company
+        - At an exhibition center
+      correctIndex: 2
+      explanationZh: 说话人开头自报家门："This is Devon calling from Riverside Print Solutions about your order of five hundred brochures"——他在印刷公司工作。medical equipment fair 是客户要参加的展会，不是说话人的单位（排除 B）。
+    - id: q2
+      stem: What problem does the speaker mention?
+      options:
+        - An order was delivered to the wrong address
+        - A payment has not been received
+        - Some pages are missing from a file
+        - Some images are low quality
+      correctIndex: 3
+      explanationZh: 问题出在图片质量："The photographs on pages two and three are too low in resolution, and they would look blurry in print"——分辨率太低，印出来会模糊。文件收到了、页面也没有缺失（排除 C）。
+    - id: q3
+      stem: What did the speaker send to Ms. Park this morning?
+      options:
+        - An invoice
+        - A test page
+        - Higher-resolution images
+        - A revised delivery schedule
+      correctIndex: 1
+      explanationZh: 说话人说 "I've e-mailed you a test page this morning so you can compare the two versions"——发去的是测试样张，方便客户亲眼对比效果。高分辨率图片是他希望客户提供的，方向正好相反（排除 C）。
+    - id: q4
+      stem: Why should Ms. Park call back today?
+      options:
+        - The printing is scheduled to start on Thursday morning
+        - The fair begins on Wednesday
+        - The office closes early on Fridays
+        - A discount offer expires tonight
+      correctIndex: 0
+      explanationZh: 留言结尾说明了紧迫性："please call me back ... before the end of the day, since the printers are scheduled to run Thursday morning"——印刷机周四一早开印，今天之内必须回电。周五只是承诺的交货日期，“周五提前下班”（选项 C）留言中从未提到。

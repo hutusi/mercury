@@ -13,6 +13,8 @@ import { DueWordsCard } from "@/components/dashboard/DueWordsCard";
 import { MistakesCard } from "@/components/dashboard/MistakesCard";
 import { ExamBanner } from "@/components/dashboard/ExamBanner";
 import { RecentScoresCard, type RecentScore } from "@/components/dashboard/RecentScoresCard";
+import { ReminderNudge } from "@/components/dashboard/ReminderNudge";
+import { ReminderToggle } from "@/components/dashboard/ReminderToggle";
 import { StreakCard } from "@/components/dashboard/StreakCard";
 import { WelcomeCard } from "@/components/dashboard/WelcomeCard";
 import { EntryHeader } from "@/components/typography/EntryHeader";
@@ -22,12 +24,13 @@ import { getDashboardData } from "@/lib/queries/dashboard";
 import { requireTrack } from "@/lib/settings";
 
 export default async function DashboardPage() {
-  const { user, track } = await requireTrack();
+  const { user, track, remindersEnabled } = await requireTrack();
   const t = await getDict();
 
   const {
     streak,
     dueCount,
+    reminder,
     lastExam,
     inProgressExam,
     recentExercises,
@@ -96,6 +99,7 @@ export default async function DashboardPage() {
       <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
         <div className="space-y-10">
           {isNewUser && <WelcomeCard />}
+          {remindersEnabled && <ReminderNudge reminder={reminder} />}
           <ExamBanner
             lastEstimate={lastExam?.estimate ?? null}
             resumeExamId={inProgressExam?.examId ?? null}
@@ -129,6 +133,7 @@ export default async function DashboardPage() {
           </div>
           {/* The funnel card: exam tracks → business content; business → mini-TOEIC */}
           <CrossPromoCard track={track} />
+          <ReminderToggle enabled={remindersEnabled} />
         </aside>
       </div>
     </div>

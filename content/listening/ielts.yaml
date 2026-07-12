@@ -221,3 +221,205 @@
         - Star navigation is the most reliable method
       correctIndex: 2
       explanationZh: 结论句明确："The key point is that these systems work together"，并举例说明磁场定向、星空校准、气味与地标进近相互配合。其余选项都把某一种手段绝对化，与讲座主旨相悖。
+- id: ielts-l-004
+  track: ielts
+  title: Reporting a Lost Backpack at the Railway Station
+  titleZh: 在火车站失物招领处挂失背包
+  style: 对话 · Dialogue
+  script:
+    - speaker: A
+      text: Good afternoon, railway lost property office. How can I help?
+    - speaker: B
+      text: Oh, hello. I think I left my backpack on a train this morning, and I'm hoping someone has handed it in.
+    - speaker: A
+      text: Let's see what we can do. Which train were you on?
+    - speaker: B
+      text: The nine fifteen from Cambridge to London King's Cross. I was sitting in the last carriage.
+    - speaker: A
+      text: And where do you think you left the bag?
+    - speaker: B
+      text: On the luggage rack above my seat, I'm fairly sure.
+    - speaker: A
+      text: Can you describe it for me?
+    - speaker: B
+      text: It's a dark green backpack with brown leather straps. There's a small panda badge sewn onto the front pocket.
+    - speaker: A
+      text: And what was inside?
+    - speaker: B
+      text: A grey laptop, a physics textbook, and my gym clothes.
+    - speaker: A
+      text: Let me check this morning's list. You're in luck — a green backpack with a panda badge was handed in at King's Cross just before eleven.
+    - speaker: B
+      text: Oh, that's such a relief! How do I get it back?
+    - speaker: A
+      text: You can collect it from the King's Cross office any day between eight in the morning and six in the evening. Just bring some photo ID, and there's a three-pound handling fee.
+    - speaker: B
+      text: No problem at all. Do I need a reference number?
+    - speaker: A
+      text: Yes, write this down — it's L-four-seven-two. Give that number at the desk and they'll bring the bag straight out.
+    - speaker: B
+      text: L-four-seven-two, got it. Thank you so much for your help!
+  questions:
+    - id: q1
+      stem: Why is the caller contacting the lost property office?
+      options:
+        - To ask whether his backpack has been handed in
+        - To report a delay to his train
+        - To complain about a theft in his carriage
+        - To ask about opening hours at King's Cross
+      correctIndex: 0
+      explanationZh: 来电者开门见山："I think I left my backpack on a train this morning, and I'm hoping someone has handed it in"——他把背包落在了火车上，想确认是否有人捡到上交。King's Cross 办公室的开放时间只是后续领取环节的细节（排除 D）；包是遗落而非被偷（排除 C）。
+    - id: q2
+      stem: Which train was the caller travelling on?
+      options:
+        - The eleven o'clock from London
+        - The nine fifty from Cambridge
+        - The eight fifteen to King's Cross
+        - The nine fifteen from Cambridge
+      correctIndex: 3
+      explanationZh: 他明确说自己乘坐的是 "The nine fifteen from Cambridge to London King's Cross"。注意 eleven（十一点前）是背包被送到失物办公室的时间，eight 出现在办公时间里——IELTS Section 1 惯用多个时间数字互相干扰，务必听清每个数字对应的事项。
+    - id: q3
+      stem: How can the backpack be identified?
+      options:
+        - It has the caller's name written inside
+        - It has a panda badge on the front pocket
+        - It has a broken zip on one side
+        - It is covered in travel stickers
+      correctIndex: 1
+      explanationZh: 描述外观时他说 "There's a small panda badge sewn onto the front pocket"——前袋上缝着一枚小熊猫徽章，工作人员正是凭这一特征在清单上找到了包。笔记本电脑和课本是包内物品，属于内容而非外观识别特征。
+    - id: q4
+      stem: What must the caller do to collect the bag?
+      options:
+        - Pay ten pounds and sign a form
+        - Return to Cambridge station before six
+        - Show photo ID, pay a small fee, and give a reference number
+        - Wait for the office to post it to his home
+      correctIndex: 2
+      explanationZh: 工作人员交代领取手续："Just bring some photo ID, and there's a three-pound handling fee"，随后又给出取件编号 L-four-seven-two——即出示证件、付三英镑手续费并报编号。手续费是三英镑而非十英镑（排除 A）；领取地点在 King's Cross 而不是 Cambridge（排除 B）。
+- id: ielts-l-005
+  track: ielts
+  title: Discussing a Questionnaire with a Tutor
+  titleZh: 与导师讨论问卷设计
+  style: 对话 · Dialogue
+  script:
+    - speaker: A
+      text: Come in, Maya. You wanted to talk about the questionnaire for your psychology project?
+    - speaker: B
+      text: Yes, thanks for seeing me. I've drafted twenty questions about social media and sleep, and I was hoping you could look them over.
+    - speaker: A
+      text: I read the draft you emailed me. Overall it's a good start, but I do have one main concern.
+    - speaker: B
+      text: Oh — is it too long?
+    - speaker: A
+      text: No, twenty questions is fine. The problem is that several of your questions are leading — they suggest the answer you want.
+    - speaker: B
+      text: Could you give me an example?
+    - speaker: A
+      text: Take question five. You wrote, "How much does using your phone at night damage your sleep?" That already assumes it does damage sleep.
+    - speaker: B
+      text: Ah, I see. So I should ask something more neutral, like how phone use affects their sleep, if at all?
+    - speaker: A
+      text: Exactly. And before you send it to your whole sample, I'd strongly recommend a pilot study.
+    - speaker: B
+      text: You mean testing it on a small group first?
+    - speaker: A
+      text: Yes, five or six people is enough. They'll catch confusing wording that you can't see yourself, because you're too close to it.
+    - speaker: B
+      text: That makes sense. Will I still have time before the deadline, though?
+    - speaker: A
+      text: If you run the pilot this week and revise at the weekend, you can still send the final version out on Monday.
+    - speaker: B
+      text: Perfect. I'll rewrite the leading questions tonight and email you the new draft by Friday.
+  questions:
+    - id: q1
+      stem: What is the tutor's main concern about the questionnaire?
+      options:
+        - It contains far too many questions
+        - It was emailed to students too early
+        - Some questions suggest the answer the student wants
+        - It does not mention social media
+      correctIndex: 2
+      explanationZh: 导师明确指出："The problem is that several of your questions are leading — they suggest the answer you want"——若干问题带有引导性，暗示了期望得到的答案。长度不是问题，导师原话是 "No, twenty questions is fine"（排除 A），这是学生自己猜错的方向。
+    - id: q2
+      stem: What does the tutor recommend before sending out the full survey?
+      options:
+        - Testing the questionnaire on a small group
+        - Doubling the size of the sample
+        - Asking the department for more time
+        - Changing the topic to sleep medication
+      correctIndex: 0
+      explanationZh: 导师建议 "I'd strongly recommend a pilot study"，并解释只需五六个人的小规模试测，就能发现作者因“离得太近”而看不出的表述问题，故 A。他并未要求扩大样本或申请延期——按现有时间表周一即可正式发放。
+    - id: q3
+      stem: What will the student do by Friday?
+      options:
+        - Send the survey to the whole sample
+        - Finish analysing the pilot results
+        - Meet the tutor again in person
+        - Email a revised draft to the tutor
+      correctIndex: 3
+      explanationZh: 学生最后承诺："I'll rewrite the leading questions tonight and email you the new draft by Friday"——今晚改写引导性问题，周五前把修改稿发给导师。向全部样本发放问卷是下周一的安排，选项 A 张冠李戴。
+- id: ielts-l-006
+  track: ielts
+  title: "Lecture: Rebuilding Coral Reefs"
+  titleZh: 讲座：修复珊瑚礁
+  style: 讲座 · Lecture
+  script:
+    - speaker: narrator
+      text: Good afternoon. Today we turn to coral reefs, and to the growing efforts to restore them.
+    - speaker: narrator
+      text: First, why do reefs matter so much? They cover less than one per cent of the ocean floor, yet they support roughly a quarter of all known marine species.
+    - speaker: narrator
+      text: They also protect coastlines from storm waves, and they support the livelihoods of hundreds of millions of people.
+    - speaker: narrator
+      text: The main threat is rising sea temperature. When the water stays too warm for too long, corals expel the tiny algae that feed them and turn completely white — an event known as bleaching.
+    - speaker: narrator
+      text: A bleached coral is not dead, but if the heat continues, it starves.
+    - speaker: narrator
+      text: So what can be done? The oldest restoration method is usually called coral gardening.
+    - speaker: narrator
+      text: Divers collect small fragments of healthy coral, grow them on underwater frames in a nursery, and then transplant them back onto a damaged reef.
+    - speaker: narrator
+      text: More recent work goes further. Some teams now search for corals that have already survived severe heat, and breed from those individuals — an approach known as assisted evolution.
+    - speaker: narrator
+      text: I should end with a caution, however. Restoration is slow and expensive, and it cannot keep pace with warming on its own.
+    - speaker: narrator
+      text: Replanting a reef while the ocean keeps heating is like rebuilding a house during an earthquake. Reducing emissions must come first, with restoration buying time for the survivors.
+    - speaker: narrator
+      text: Next week, we'll look at mangrove forests, which face similar pressures but recover rather differently.
+  questions:
+    - id: q1
+      stem: What point does the lecturer make about the importance of coral reefs?
+      options:
+        - They cover a quarter of the ocean floor
+        - They are the oldest ecosystems on Earth
+        - They keep sea temperatures stable
+        - They support a large share of marine species despite their small area
+      correctIndex: 3
+      explanationZh: 讲座开头指出珊瑚礁 "cover less than one per cent of the ocean floor, yet they support roughly a quarter of all known marine species"——面积不到海底的百分之一，却养育了约四分之一的已知海洋物种。选项 A 把两个数字张冠李戴，是典型的数字干扰。
+    - id: q2
+      stem: According to the lecturer, what happens during coral bleaching?
+      options:
+        - Corals are eaten by warm-water predators
+        - Corals die immediately when the water warms
+        - Corals expel their algae and turn white
+        - Corals move to cooler, deeper water
+      correctIndex: 2
+      explanationZh: 原文描述白化过程："corals expel the tiny algae that feed them and turn completely white"——珊瑚排出供养自己的藻类并完全变白。讲座紧接着强调 "A bleached coral is not dead"（白化并不等于死亡，持续高温才会使其饿死），排除 B。
+    - id: q3
+      stem: What does coral gardening involve?
+      options:
+        - Growing coral fragments in nurseries and transplanting them onto damaged reefs
+        - Building artificial reefs from concrete blocks
+        - Breeding fish that keep the coral clean
+        - Cooling the water around a reef with pumps
+      correctIndex: 0
+      explanationZh: 讲座介绍这一最早的修复方法："Divers collect small fragments of healthy coral, grow them on underwater frames in a nursery, and then transplant them back onto a damaged reef"——采集健康珊瑚碎枝、在水下苗圃培育、再移植回受损礁体。其余三项讲座均未提及。
+    - id: q4
+      stem: What is the lecturer's final caution about reef restoration?
+      options:
+        - It is too dangerous for divers
+        - It cannot succeed on its own while the ocean keeps warming
+        - It damages the corals that are moved
+        - It is only possible in shallow water
+      correctIndex: 1
+      explanationZh: 讲座结尾告诫："it cannot keep pace with warming on its own"，并用“地震中重建房屋”作比喻——海水持续升温时，只靠修复无法奏效，必须首先减排，修复只是为幸存者争取时间。选项 D 的水深限制讲座中并未提及。

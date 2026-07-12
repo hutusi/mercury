@@ -1,4 +1,4 @@
-import { and, desc, eq, inArray } from "drizzle-orm";
+import { and, asc, desc, eq, inArray } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import { mockExamAttempts, mockExams } from "../db/schema";
@@ -15,6 +15,9 @@ export async function listExamsWithAttempts(userId: string, track: Track) {
         track === "business"
           ? inArray(mockExams.track, ["toeic", "ielts"])
           : eq(mockExams.track, track),
+      // Deterministic listing now that a track has more than one exam; the
+      // id slugs happen to sort mini before standard within a track.
+      orderBy: asc(mockExams.id),
     }),
     db.query.mockExamAttempts.findMany({
       where: eq(mockExamAttempts.userId, userId),

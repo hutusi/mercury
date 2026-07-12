@@ -1,0 +1,696 @@
+# yaml-language-server: $schema=../.schemas/exam.schema.json
+id: exam-toeic-standard
+track: toeic
+title: TOEIC Standard Practice Test
+titleZh: 托业标准模考
+descriptionZh: 共 50 题：听力 25 题（四段对话 + 两段短讲）+ 阅读 25 题（电子邮件、在线讨论、新闻报道、招聘广告、备忘录、专题文章各一篇），全程约 54 分钟。题量约为正式考试的四分之一，题型与出题节奏和正式考试一致。
+sections:
+  - id: toeic-standard-listening-1
+    kind: listening
+    title: Listening — Part 1
+    titleZh: 听力第一部分
+    durationSeconds: 660
+    groups:
+      - id: ts-lg1
+        script:
+          - speaker: A
+            text: Corporate travel desk, this is Elena speaking. How can I help you?
+          - speaker: B
+            text: Hi Elena, this is Tom Baker from the sales team. I'm in Chicago, and my client meetings have been extended by a day.
+          - speaker: A
+            text: I see. So you'd like to move your return flight from Wednesday to Thursday?
+          - speaker: B
+            text: Exactly. An evening departure would be best — my last meeting ends at four o'clock.
+          - speaker: A
+            text: Let me check the schedule. There's a direct flight at seven fifteen on Thursday evening with aisle seats still open.
+          - speaker: B
+            text: That's perfect. Will there be a change fee?
+          - speaker: A
+            text: The corporate rate includes one free change, but the new fare is thirty dollars higher.
+          - speaker: B
+            text: That's fine — just charge the difference to the department card. Could you also extend my hotel reservation by one night?
+          - speaker: A
+            text: I can't book hotels from this desk, but I'll forward your request to the accommodations team right away.
+        questions:
+          - id: ts-l-q01
+            stem: Why is the man calling?
+            options:
+              - To cancel a client meeting
+              - To change his return flight
+              - To report a lost receipt
+              - To book a rental car
+            correctIndex: 1
+            explanationZh: 男士说客户会议延长了一天，女士确认 "you'd like to move your return flight from Wednesday to Thursday"，男士回答 "Exactly"，即来电目的是改签回程航班。会议本身并没有被取消，属于干扰项。
+          - id: ts-l-q02
+            stem: According to the man, what time does his last meeting end?
+            options:
+              - At noon
+              - At two o'clock
+              - At four o'clock
+              - At seven fifteen
+            correctIndex: 2
+            explanationZh: 男士说 "my last meeting ends at four o'clock"，即最后一场会议四点结束。七点十五分是新航班的起飞时间，属于干扰项。
+          - id: ts-l-q03
+            stem: What does the woman say about the flight change?
+            options:
+              - One change is free under the corporate rate
+              - It must be approved by a manager
+              - It can only be made online
+              - It doubles the ticket price
+            correctIndex: 0
+            explanationZh: 女士说 "The corporate rate includes one free change"，即公司协议价包含一次免费改签。票价只是 "thirty dollars higher"（贵三十美元），并非翻倍。
+          - id: ts-l-q04
+            stem: What will the woman most likely do next?
+            options:
+              - Upgrade the man's seat
+              - Cancel the Thursday flight
+              - E-mail a new invoice
+              - Forward a request to another team
+            correctIndex: 3
+            explanationZh: 对话结尾女士说无法直接订酒店，"but I'll forward your request to the accommodations team right away"，即马上把延住请求转给住宿团队。
+      - id: ts-lg2
+        script:
+          - speaker: A
+            text: Sunrise Catering, Marco speaking. What can I do for you?
+          - speaker: B
+            text: Hi Marco, this is Alice Wong at Kestrel Software. I need lunch catered for our quarterly staff meeting next Friday.
+          - speaker: A
+            text: Happy to help. How many people are you expecting?
+          - speaker: B
+            text: Around forty-five. We ordered sandwiches last year, but several employees have asked for vegetarian options this time.
+          - speaker: A
+            text: Then I'd suggest our Mediterranean buffet — about a third of the dishes are vegetarian, and it's our most popular menu.
+          - speaker: B
+            text: Sounds ideal. Could you deliver by eleven thirty? The meeting starts at noon.
+          - speaker: A
+            text: Eleven thirty is no problem. And since your order is for more than forty people, delivery and setup are free.
+          - speaker: B
+            text: Wonderful. One more thing — our loading dock is being repaved, so your driver should use the main entrance on Frost Street.
+          - speaker: A
+            text: I'll note that on the order. You'll have a written quote in your inbox this afternoon.
+        questions:
+          - id: ts-l-q05
+            stem: What event is the woman preparing for?
+            options:
+              - A retirement dinner
+              - A product launch
+              - A staff meeting lunch
+              - A cooking demonstration
+            correctIndex: 2
+            explanationZh: 女士说 "I need lunch catered for our quarterly staff meeting next Friday"，即为季度员工会议安排午餐。
+          - id: ts-l-q06
+            stem: Why does the woman want a different menu this year?
+            options:
+              - Employees requested vegetarian dishes
+              - The sandwiches arrived late last time
+              - Her budget has been reduced
+              - The meeting will be shorter than usual
+            correctIndex: 0
+            explanationZh: 女士说去年订的是三明治，"but several employees have asked for vegetarian options this time"，即因为有员工提出想要素食。原文并未抱怨上次送餐迟到。
+          - id: ts-l-q07
+            stem: What does the man say about orders for more than forty people?
+            options:
+              - They require a deposit
+              - They must be placed two weeks ahead
+              - They come with a free dessert
+              - They include free delivery and setup
+            correctIndex: 3
+            explanationZh: 男士说 "since your order is for more than forty people, delivery and setup are free"，即四十人以上的订单免收配送和布置费用。
+          - id: ts-l-q08
+            stem: What does the woman inform the man about?
+            options:
+              - A change in the meeting time
+              - Some construction at her building
+              - A missing invoice
+              - A new company address
+            correctIndex: 1
+            explanationZh: 女士提醒 "our loading dock is being repaved, so your driver should use the main entrance"，即她办公楼的卸货区正在翻修施工，司机需改走正门。会议时间并没有变化。
+      - id: ts-lg3
+        script:
+          - speaker: narrator
+            text: Hello, this message is for Rachel Kim. This is Devon Marsh, human resources manager at Northgate Financial.
+          - speaker: narrator
+            text: Thank you for applying for the senior accountant position. We were impressed with your qualifications and would like to invite you for an interview.
+          - speaker: narrator
+            text: We have openings next Tuesday at ten a.m. or Wednesday at two p.m. Please call me back to let me know which time works better for you.
+          - speaker: narrator
+            text: The interview will last about an hour. You'll meet with me first, and then with the head of the accounting department.
+          - speaker: narrator
+            text: Please bring two copies of your résumé and a list of professional references.
+          - speaker: narrator
+            text: Also, note that our office has moved recently. We're now on the ninth floor of the Lakeview Tower, not at the address printed on the job posting.
+          - speaker: narrator
+            text: Visitor parking is available behind the building. Just ask the security desk to validate your ticket.
+          - speaker: narrator
+            text: You can reach me at 555-0139, extension 22, any weekday before five. I look forward to hearing from you.
+        questions:
+          - id: ts-l-q09
+            stem: Why is the speaker calling?
+            options:
+              - To invite the listener to an interview
+              - To offer the listener a job
+              - To reschedule a training session
+              - To request some financial documents
+            correctIndex: 0
+            explanationZh: 讲话人说 "we would like to invite you for an interview"，即邀请对方参加面试。此时尚未正式录用，"To offer the listener a job" 属于干扰项。
+          - id: ts-l-q10
+            stem: What is the listener asked to bring?
+            options:
+              - A signed application form
+              - A letter of recommendation
+              - A parking permit
+              - Copies of her résumé
+            correctIndex: 3
+            explanationZh: 讲话人要求 "Please bring two copies of your résumé and a list of professional references"，即带上两份简历和一份推荐人名单。停车只需请保安台盖章验证，无需自备停车证。
+          - id: ts-l-q11
+            stem: What does the speaker mention about the company's office?
+            options:
+              - It is being renovated
+              - It has recently moved
+              - It is next to a parking garage
+              - It closes at five o'clock
+            correctIndex: 1
+            explanationZh: 讲话人特别提醒 "our office has moved recently. We're now on the ninth floor of the Lakeview Tower"，即办公室最近搬迁了，与招聘启事上印的地址不同。
+          - id: ts-l-q12
+            stem: How can the listener have her parking ticket validated?
+            options:
+              - By calling extension 22
+              - By printing the job posting
+              - By asking at the security desk
+              - By registering online
+            correctIndex: 2
+            explanationZh: 原文说 "Just ask the security desk to validate your ticket"，即请大楼保安台为停车票盖章验证。分机 22 是联系讲话人本人的方式，属于干扰项。
+  - id: toeic-standard-listening-2
+    kind: listening
+    title: Listening — Part 2
+    titleZh: 听力第二部分
+    durationSeconds: 720
+    groups:
+      - id: ts-lg4
+        script:
+          - speaker: A
+            text: Hi Jonas, do you have a minute? The numbers from our spring social-media campaign just came in.
+          - speaker: B
+            text: Sure, I've been waiting for those. How did we do?
+          - speaker: A
+            text: Better than expected. Visits to our website are up forty percent since March.
+          - speaker: B
+            text: Impressive. What worked best?
+          - speaker: A
+            text: The series of short videos, by far — most of the new visitors clicked through from those.
+          - speaker: B
+            text: And the print advertisements in the trade magazines?
+          - speaker: A
+            text: Honestly, they brought in very few customers. I'd like to shift that budget to online channels next quarter.
+          - speaker: B
+            text: I agree, but the budget proposal is due to the director on Monday. Could you put these numbers into a short report by Friday?
+          - speaker: A
+            text: Of course. I'll add a chart comparing the cost per customer for each channel.
+        questions:
+          - id: ts-l-q13
+            stem: What are the speakers mainly discussing?
+            options:
+              - A product recall
+              - The results of an advertising campaign
+              - The launch of a new website
+              - A magazine subscription
+            correctIndex: 1
+            explanationZh: 女士开头说 "The numbers from our spring social-media campaign just came in"，随后两人围绕各渠道的效果和预算展开讨论，主题是广告宣传活动的效果。
+          - id: ts-l-q14
+            stem: According to the woman, what was the most effective part of the campaign?
+            options:
+              - The print advertisements
+              - A radio commercial
+              - An e-mail newsletter
+              - A series of short videos
+            correctIndex: 3
+            explanationZh: 女士说效果最好的是 "The series of short videos, by far"，大部分新访客都由短视频引流而来。纸质广告 "brought in very few customers"，属于干扰项。
+          - id: ts-l-q15
+            stem: What does the woman suggest doing?
+            options:
+              - Shifting a budget to online channels
+              - Extending the campaign into the summer
+              - Redesigning the company website
+              - Meeting with the magazine publishers
+            correctIndex: 0
+            explanationZh: 女士说纸质广告收效甚微，"I'd like to shift that budget to online channels next quarter"，即建议下季度把这部分预算转投线上渠道。
+          - id: ts-l-q16
+            stem: What is the woman asked to do by Friday?
+            options:
+              - Send the proposal to the director
+              - Update the campaign videos
+              - Prepare a short report
+              - Contact some new customers
+            correctIndex: 2
+            explanationZh: 男士问 "Could you put these numbers into a short report by Friday?"，女士答应并会附上对比图表。向总监提交预算提案是男士周一要做的事，属于干扰项。
+      - id: ts-lg5
+        script:
+          - speaker: A
+            text: Good evening, welcome to the Alder Park Hotel. Are you checking in?
+          - speaker: B
+            text: Yes, I have a reservation under Daniel Reyes — three nights, starting tonight.
+          - speaker: A
+            text: Hmm, I do see a booking for Daniel Reyes, but it's for next month, the fourteenth through the seventeenth.
+          - speaker: B
+            text: Oh no, our office assistant must have entered the wrong dates. Is anything available tonight?
+          - speaker: A
+            text: We're nearly full because of the medical conference, but I do have a suite on the top floor. It's sixty dollars more per night than a standard room.
+          - speaker: B
+            text: That's more than my company allows for lodging. Is there any other option?
+          - speaker: A
+            text: Let me call our sister property across the river, the Alder Riverside. They often have rooms on short notice, at the same rate as a standard room here.
+          - speaker: B
+            text: I'd appreciate that. Is it far? I have an early meeting downtown tomorrow.
+          - speaker: A
+            text: It's ten minutes away by taxi, and their shuttle runs downtown every half hour starting at six a.m.
+        questions:
+          - id: ts-l-q17
+            stem: Where most likely are the speakers?
+            options:
+              - At a hotel front desk
+              - At an airport check-in counter
+              - At a car rental agency
+              - At a conference registration booth
+            correctIndex: 0
+            explanationZh: 女士开口便说 "welcome to the Alder Park Hotel. Are you checking in?"，两人随后谈论房间和入住日期，场景显然是酒店前台。医学会议只是酒店客满的原因，属于干扰项。
+          - id: ts-l-q18
+            stem: What is the problem with the man's reservation?
+            options:
+              - It was canceled by the hotel
+              - It was charged twice
+              - It was made for the wrong dates
+              - It was booked under a different name
+            correctIndex: 2
+            explanationZh: 女士查到预订是下个月的日期，男士恍然大悟："our office assistant must have entered the wrong dates"，即助理录错了入住日期。预订姓名并没有错。
+          - id: ts-l-q19
+            stem: Why does the man decline the suite?
+            options:
+              - It is on a noisy floor
+              - It is not available tonight
+              - It does not include breakfast
+              - It costs more than his company allows
+            correctIndex: 3
+            explanationZh: 套房每晚贵六十美元，男士说 "That's more than my company allows for lodging"，即超出了公司的住宿报销标准。
+          - id: ts-l-q20
+            stem: What does the woman offer to do?
+            options:
+              - Refund the man's deposit
+              - Contact a nearby sister hotel
+              - Reserve a taxi for the morning
+              - Upgrade the man at no charge
+            correctIndex: 1
+            explanationZh: 女士说 "Let me call our sister property across the river"，即主动联系河对岸的姊妹酒店帮男士找房。她并没有提出免费升级套房。
+      - id: ts-lg6
+        script:
+          - speaker: narrator
+            text: Good afternoon, everyone, and welcome to the Ridgeway Bottling Plant. My name is Sofia, and I'll be your guide for the next ninety minutes.
+          - speaker: narrator
+            text: Before we begin, please put on the safety glasses and vests provided at the front desk. They must be worn at all times inside the production area.
+          - speaker: narrator
+            text: Our tour starts in the mixing hall, where natural fruit concentrate is blended with spring water from our own wells.
+          - speaker: narrator
+            text: After that, we'll visit the bottling line, which fills more than twelve thousand bottles every hour.
+          - speaker: narrator
+            text: Photography is welcome everywhere except the quality-control laboratory, where the instruments are sensitive to camera flashes.
+          - speaker: narrator
+            text: Halfway through the tour, we'll stop at the tasting room. There you can sample two new flavors before they reach stores this fall.
+          - speaker: narrator
+            text: At the end of the visit, everyone will receive a discount coupon for the factory shop next to the parking lot.
+          - speaker: narrator
+            text: If you have any questions along the way, don't hesitate to ask. Now, please follow me through the blue doors on your left.
+        questions:
+          - id: ts-l-q21
+            stem: Who most likely is the speaker?
+            options:
+              - A safety inspector
+              - A production manager
+              - A tour guide
+              - A store clerk
+            correctIndex: 2
+            explanationZh: 讲话人自我介绍 "I'll be your guide for the next ninety minutes"，并带领听众按路线参观工厂，身份是导览员。
+          - id: ts-l-q22
+            stem: What are the listeners asked to put on?
+            options:
+              - Safety glasses and vests
+              - Hard hats and gloves
+              - Laboratory coats
+              - Rubber boots
+            correctIndex: 0
+            explanationZh: 讲话人要求 "please put on the safety glasses and vests provided at the front desk"，并强调在生产区内必须全程佩戴。
+          - id: ts-l-q23
+            stem: Where is photography NOT allowed?
+            options:
+              - In the mixing hall
+              - On the bottling line
+              - In the tasting room
+              - In the quality-control laboratory
+            correctIndex: 3
+            explanationZh: 原文说 "Photography is welcome everywhere except the quality-control laboratory"，因为那里的仪器对闪光灯敏感，即只有质检实验室禁止拍照。
+          - id: ts-l-q24
+            stem: What can the listeners do halfway through the tour?
+            options:
+              - Purchase some souvenirs
+              - Try some new drink flavors
+              - Watch a short film
+              - Meet the factory director
+            correctIndex: 1
+            explanationZh: 讲话人说参观中途会在品尝室停留，"you can sample two new flavors before they reach stores this fall"，即试喝两款尚未上市的新口味。购物要等到行程结束后去工厂商店。
+          - id: ts-l-q25
+            stem: What will the listeners receive at the end of the visit?
+            options:
+              - A discount coupon
+              - A free bottle of juice
+              - A recipe booklet
+              - A group photograph
+            correctIndex: 0
+            explanationZh: 原文说 "everyone will receive a discount coupon for the factory shop"，即每人获得一张工厂商店的折扣券，而不是免费饮料。
+  - id: toeic-standard-reading-1
+    kind: reading
+    title: Reading — Part 1
+    titleZh: 阅读第一部分
+    durationSeconds: 900
+    groups:
+      - id: ts-rg1
+        passage: |-
+          From: Customer Care Team, Vextra Electronics
+          To: Laila Haddad
+          Subject: Re: Order 88213 — damaged monitor
+
+          Dear Ms. Haddad,
+
+          Thank you for contacting us about order 88213. We are sorry to hear that the computer monitor arrived with a cracked screen, and we appreciate the photographs you sent — they allow us to process your claim without a further inspection.
+
+          A replacement monitor will be shipped from our Dayton warehouse within two business days, and you will receive a tracking number by e-mail as soon as it leaves the facility. There is no need to return the damaged unit. Instead, we ask that you take it to a certified electronics recycling center; a list of centers in your area is attached to this message.
+
+          As an apology for the inconvenience, we have refunded the express shipping fee of eighteen dollars to your original method of payment. Please allow three to five business days for the credit to appear on your statement. Should the replacement unit show any defect, please reply to this message directly rather than opening a new request, so that the same agent can assist you.
+
+          Sincerely,
+          Priya Nair
+          Customer Care Team, Vextra Electronics
+        questions:
+          - id: ts-r-q01
+            stem: Why did Ms. Haddad contact Vextra Electronics?
+            options:
+              - To cancel an order
+              - To ask about a warranty
+              - To report a damaged product
+              - To request a product catalog
+            correctIndex: 2
+            explanationZh: 邮件开头写道 "We are sorry to hear that the computer monitor arrived with a cracked screen"，可见她来信是反映显示器送达时屏幕已破裂。
+          - id: ts-r-q02
+            stem: What is Ms. Haddad asked to do with the damaged monitor?
+            options:
+              - Return it to the Dayton warehouse
+              - Take it to a recycling center
+              - Keep it until an inspector visits
+              - Send more photographs of it
+            correctIndex: 1
+            explanationZh: 邮件明确说 "There is no need to return the damaged unit. Instead, we ask that you take it to a certified electronics recycling center"，即无需退回，送去认证回收点即可。"寄回代顿仓库" 正是原文否定的做法，属于干扰项。
+          - id: ts-r-q03
+            stem: How did the company apologize for the inconvenience?
+            options:
+              - By sending a discount code
+              - By upgrading the order
+              - By extending the warranty
+              - By refunding a shipping fee
+            correctIndex: 3
+            explanationZh: 原文说 "As an apology for the inconvenience, we have refunded the express shipping fee of eighteen dollars"，即退还了十八美元的快递费。
+          - id: ts-r-q04
+            stem: According to the e-mail, what should Ms. Haddad do if the replacement is defective?
+            options:
+              - Reply to the same e-mail
+              - Open a new support request
+              - Call the Dayton warehouse
+              - Visit a service center
+            correctIndex: 0
+            explanationZh: 邮件结尾要求 "please reply to this message directly rather than opening a new request"，即直接回复本邮件，以便同一位客服继续跟进。"另开新工单" 正是原文排除的做法。
+      - id: ts-rg2
+        passage: |-
+          Mia Torres (9:12 A.M.): Hi Ben, are you at the convention center yet? Our booth crates were supposed to arrive at eight, but the organizers say nothing has been delivered to Hall C.
+
+          Ben Okafor (9:14 A.M.): Just got here. I called the freight company — the truck was rerouted because of a highway accident. The new arrival estimate is 11:30.
+
+          Mia Torres (9:15 A.M.): That's cutting it close. The exhibition opens at 1:00, and it took us three hours to set up in Denver.
+
+          Ben Okafor (9:17 A.M.): True, but most of that was the lighting rig. The electricians here can pre-wire our space if we send them the floor plan now.
+
+          Mia Torres (9:18 A.M.): Good thinking. I have the plan on my laptop — I'll e-mail it to the site office right away.
+
+          Ben Okafor (9:20 A.M.): Perfect. Also, Kenji's flight landed early, so we'll have three pairs of hands instead of two.
+
+          Mia Torres (9:21 A.M.): Then we should manage. Let's meet at the Hall C loading entrance at 11:15.
+        questions:
+          - id: ts-r-q05
+            stem: According to Mr. Okafor, why is the delivery late?
+            options:
+              - The crates were sent to the wrong hall
+              - The freight company lost the paperwork
+              - The truck left the warehouse late
+              - The truck was rerouted after an accident
+            correctIndex: 3
+            explanationZh: 本·奥卡福说他联系了货运公司，"the truck was rerouted because of a highway accident"，即卡车因高速公路事故绕行，预计 11:30 才能到达。
+          - id: ts-r-q06
+            stem: At 9:17 A.M., what does Mr. Okafor most likely mean when he writes, "most of that was the lighting rig"?
+            options:
+              - The lighting rig was damaged in Denver
+              - Setting up may take less time than before
+              - The electricians made a mistake
+              - The booth needs brighter lights
+            correctIndex: 1
+            explanationZh: 米娅担心来不及布展，因为上次在丹佛花了三小时。本回应上次耗时主要在灯架，而这次 "The electricians here can pre-wire our space"，言下之意是这次布展时间会比上次短，来得及。
+          - id: ts-r-q07
+            stem: What will Ms. Torres send to the site office?
+            options:
+              - A delivery invoice
+              - A list of exhibitors
+              - A floor plan
+              - A parking pass
+            correctIndex: 2
+            explanationZh: 米娅说 "I have the plan on my laptop — I'll e-mail it to the site office right away"，即把展位平面图发给场馆办公室，供电工提前布线。
+          - id: ts-r-q08
+            stem: Why does Mr. Okafor mention Kenji?
+            options:
+              - An extra person will be available to help
+              - A manager is coming to inspect the booth
+              - A flight has been delayed
+              - A client wants to meet earlier
+            correctIndex: 0
+            explanationZh: 本说 "Kenji's flight landed early, so we'll have three pairs of hands instead of two"，即健二提前到达，布展多了一个帮手。他的航班是提前而非延误，属于干扰项。
+      - id: ts-rg3
+        passage: |-
+          Harlow Business Journal — April 8
+
+          Crestbay Foods to Expand Riverside Facility
+
+          Crestbay Foods, the region's largest producer of frozen seafood meals, announced Monday that it will invest thirty million dollars to expand its processing facility on Riverside Road. The project will add sixty thousand square feet of refrigerated storage and a second packaging line, increasing the plant's output by nearly half.
+
+          Company president Marta Silva said the expansion was driven by growing demand from grocery chains on the West Coast, where Crestbay products became available last year. "Our single packaging line now runs around the clock," Silva explained. "Without more capacity, we would have to turn away new orders."
+
+          Construction is scheduled to begin in June and finish by early next year. Once the new line is running, the company expects to hire about seventy-five additional workers, mainly machine operators and quality inspectors. Job postings will appear on the company's website in the fall, and Crestbay will hold a hiring event at the Harlow Community Center in November.
+
+          City officials welcomed the announcement, noting that Crestbay has been one of the county's ten largest employers since it moved to Harlow two decades ago.
+        questions:
+          - id: ts-r-q09
+            stem: What is the article mainly about?
+            options:
+              - A change in food-safety rules
+              - A company's expansion project
+              - The opening of a grocery chain
+              - A city construction schedule
+            correctIndex: 1
+            explanationZh: 文章报道 Crestbay Foods "will invest thirty million dollars to expand its processing facility"，全文围绕扩建的原因、工期和招聘计划展开，主题是企业扩建项目。
+          - id: ts-r-q10
+            stem: According to Ms. Silva, why is the project necessary?
+            options:
+              - Storage costs have increased
+              - A packaging line broke down
+              - The company is moving to the West Coast
+              - The current line cannot meet demand
+            correctIndex: 3
+            explanationZh: 西尔瓦说现有包装线已全天候运转，"Without more capacity, we would have to turn away new orders"，即产能不足以满足增长的需求。公司只是产品进入西海岸市场，并非搬迁过去。
+          - id: ts-r-q11
+            stem: What will take place in November?
+            options:
+              - A hiring event
+              - The start of construction
+              - A product launch
+              - A board election
+            correctIndex: 0
+            explanationZh: 原文说 "Crestbay will hold a hiring event at the Harlow Community Center in November"，即 11 月将举办招聘会。施工六月开始，属于干扰项。
+          - id: ts-r-q12
+            stem: What is suggested about Crestbay Foods?
+            options:
+              - It was founded by Marta Silva
+              - It recently changed its name
+              - It has operated in Harlow for about twenty years
+              - It mainly sells to restaurants
+            correctIndex: 2
+            explanationZh: 结尾提到 Crestbay "since it moved to Harlow two decades ago" 一直是全县十大雇主之一，可推知它已在 Harlow 经营约二十年。文中并未说公司由西尔瓦创办。
+  - id: toeic-standard-reading-2
+    kind: reading
+    title: Reading — Part 2
+    titleZh: 阅读第二部分
+    durationSeconds: 960
+    groups:
+      - id: ts-rg4
+        passage: |-
+          SOLVIA SOFTWARE — Technical Support Specialist (Full-Time)
+
+          Solvia Software, a developer of scheduling tools for medical clinics, is seeking a technical support specialist to join its growing customer care team at our Fairmont office.
+
+          Responsibilities include answering customer inquiries by phone and e-mail, guiding new clinics through software installation, and reporting recurring problems to the development team. The specialist will also update the help articles in our online support center once a month.
+
+          Applicants must have at least two years of customer service experience and a working knowledge of database software. Experience in a medical office is helpful but not required. Because our clients include clinics in Quebec, candidates who speak both English and French will be given preference.
+
+          The position offers a competitive salary, health insurance from the first day of employment, and the option to work from home up to two days per week after a three-month training period.
+
+          To apply, send a résumé and a brief cover letter to the careers address on our website by August 15. Interviews will be held during the first week of September. Please note that applications submitted through third-party job boards will not be reviewed.
+        questions:
+          - id: ts-r-q13
+            stem: What kind of product does Solvia Software make?
+            options:
+              - Training videos for hospitals
+              - Billing software for pharmacies
+              - Scheduling tools for medical clinics
+              - Security systems for offices
+            correctIndex: 2
+            explanationZh: 广告第一句介绍公司是 "a developer of scheduling tools for medical clinics"，即为医疗诊所开发排班预约软件。
+          - id: ts-r-q14
+            stem: What is a stated requirement for the position?
+            options:
+              - Two years of customer service experience
+              - Fluency in French
+              - A background in a medical office
+              - A university degree in computing
+            correctIndex: 0
+            explanationZh: 原文要求 "Applicants must have at least two years of customer service experience"。法语只是优先条件（"will be given preference"），医疗办公室经验 "helpful but not required"，都不是硬性要求，属于干扰项。
+          - id: ts-r-q15
+            stem: What benefit becomes available only after three months?
+            options:
+              - Health insurance
+              - A salary increase
+              - Paid tuition
+              - Working from home part of the week
+            correctIndex: 3
+            explanationZh: 原文说每周最多两天居家办公须 "after a three-month training period" 才可享受。医疗保险 "from the first day of employment" 即入职当天生效，属于干扰项。
+          - id: ts-r-q16
+            stem: How should candidates apply for the position?
+            options:
+              - By completing an online form
+              - By e-mailing a résumé and cover letter
+              - By visiting the Fairmont office
+              - By using a third-party job board
+            correctIndex: 1
+            explanationZh: 广告要求 "send a résumé and a brief cover letter to the careers address"，即通过电子邮件投递简历和求职信。原文特别说明第三方招聘网站的申请 "will not be reviewed"，属于反向干扰项。
+      - id: ts-rg5
+        passage: |-
+          MEMO
+
+          To: All Larkspur Insurance employees
+          From: Gloria Chen, Vice President of Operations
+          Date: September 2
+          Re: Flexible scheduling pilot program
+
+          Starting October 1, Larkspur Insurance will test a flexible scheduling program for a period of six months. Under the program, employees may begin their workday at any time between 7:00 and 10:00 A.M., provided that they work eight hours and are present during the core hours of 10:00 A.M. to 3:00 P.M.
+
+          Participation is voluntary. Employees who wish to keep their current nine-to-five schedule do not need to take any action. Those who want a flexible schedule should submit a request form to their department manager by September 19. Managers in departments that answer customer calls may limit the number of participants so that telephone coverage is maintained throughout the day.
+
+          Please note that the program does not change meeting obligations. Employees are expected to attend all meetings scheduled during core hours, regardless of their chosen start time.
+
+          At the end of the pilot, the human resources team will survey participants and their managers. The results will determine whether flexible scheduling becomes a permanent policy next spring.
+        questions:
+          - id: ts-r-q17
+            stem: What is the purpose of the memo?
+            options:
+              - To announce new customer service hours
+              - To explain a change in overtime pay
+              - To introduce a new department manager
+              - To describe a trial scheduling program
+            correctIndex: 3
+            explanationZh: 备忘录开头说公司 "will test a flexible scheduling program for a period of six months"，全文说明弹性工作制试点的规则和报名方式，目的是介绍这一试行项目。
+          - id: ts-r-q18
+            stem: What should interested employees do by September 19?
+            options:
+              - Attend an information session
+              - Choose a new start time online
+              - Submit a form to their manager
+              - Update their contact information
+            correctIndex: 2
+            explanationZh: 原文要求想参加的员工 "should submit a request form to their department manager by September 19"，即在 9 月 19 日前向部门经理提交申请表。
+          - id: ts-r-q19
+            stem: What is required of all program participants?
+            options:
+              - Being at work from 10 A.M. to 3 P.M.
+              - Starting work at 7 A.M.
+              - Working four days per week
+              - Answering customer telephone calls
+            correctIndex: 0
+            explanationZh: 备忘录规定参加者须 "present during the core hours of 10:00 A.M. to 3:00 P.M."，即核心时段必须在岗。早上七点只是最早的可选上班时间，并非强制。
+          - id: ts-r-q20
+            stem: According to the memo, what will happen at the end of the pilot?
+            options:
+              - The program will be extended by six months
+              - Participants and managers will be surveyed
+              - Employees will vote on the schedule
+              - Core hours will be shortened
+            correctIndex: 1
+            explanationZh: 原文说试点结束后 "the human resources team will survey participants and their managers"，调查结果将决定弹性工作制是否转为长期政策。是否延续尚无定论，"直接延长六个月" 属于干扰项。
+      - id: ts-rg6
+        passage: |-
+          Gearing Up: Pedal Express Doubles Its Fleet
+
+          When Pedal Express began delivering packages in downtown Marston four years ago, the company owned six cargo bicycles and rented a single garage. Today it operates sixty electric cargo bikes from three depots and handles roughly two thousand deliveries a day for local pharmacies, law firms, and online retailers.
+
+          Founder Imani Brooks credits much of the company's growth to a change in city traffic rules. Two years ago, Marston banned delivery trucks from the historic district between ten in the morning and four in the afternoon; courier bicycles were exempt. Contracts with downtown businesses tripled within six months of the ban.
+
+          "Our couriers can legally go where trucks cannot, and they never circle the block looking for parking," Brooks said. "For any distance under five kilometers, we are almost always faster than a van."
+
+          Last week the company announced that it will double its fleet again by next summer and open a fourth depot near the university. It is also testing insulated containers so that it can begin delivering refrigerated medications to clinics — a service several hospital networks have already asked about.
+
+          Not everything has been easy. Brooks says that finding mechanics familiar with electric cargo bikes remains the company's biggest challenge. In January, Pedal Express opened its own training workshop, where new mechanics earn a certification in eight weeks.
+        questions:
+          - id: ts-r-q21
+            stem: What is the article mainly about?
+            options:
+              - A new bicycle-sharing service for tourists
+              - The rising cost of downtown parking
+              - The growth of a delivery company
+              - A ban on electric vehicles
+            correctIndex: 2
+            explanationZh: 文章从 Pedal Express 四年前的六辆货运自行车讲到如今的六十辆车和三个站点，并介绍其扩张计划，主题是一家快递公司的成长历程。
+          - id: ts-r-q22
+            stem: According to Ms. Brooks, what helped the business grow?
+            options:
+              - Restrictions on trucks in part of the city
+              - A partnership with a national retailer
+              - Lower fuel prices
+              - An award from the mayor
+            correctIndex: 0
+            explanationZh: 布鲁克斯把增长归功于交通新规：Marston "banned delivery trucks from the historic district"，而快递自行车不受限制，禁令实施半年内合同增至三倍。
+          - id: ts-r-q23
+            stem: What advantage of cargo bicycles does Ms. Brooks mention?
+            options:
+              - They can carry larger loads than vans
+              - They require no operating license
+              - They are cheaper to insure
+              - They do not need to look for parking
+            correctIndex: 3
+            explanationZh: 布鲁克斯说 "they never circle the block looking for parking"，即快递自行车无需绕圈找车位，而且五公里内几乎总比货车快。载货量和保险费用文中并未提及。
+          - id: ts-r-q24
+            stem: What is Pedal Express currently testing?
+            options:
+              - A mobile application for customers
+              - Containers for refrigerated deliveries
+              - A longer-lasting battery
+              - A new courier uniform
+            correctIndex: 1
+            explanationZh: 原文说公司 "is also testing insulated containers so that it can begin delivering refrigerated medications to clinics"，即测试保温箱以便为诊所配送需冷藏的药品。
+          - id: ts-r-q25
+            stem: How is the company addressing its biggest challenge?
+            options:
+              - By raising mechanics' wages
+              - By purchasing simpler bicycles
+              - By training its own mechanics
+              - By closing one of its depots
+            correctIndex: 2
+            explanationZh: 公司最大的难题是招不到熟悉电动货运自行车的技师，因此 "Pedal Express opened its own training workshop"，让新技师八周内取得认证，即自己培养技师。

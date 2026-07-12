@@ -60,3 +60,92 @@
       zh: 你的建议是否具体可行，而非空泛笼统？
     - en: Is the tone professional and friendly throughout, with at least 80 words?
       zh: 全文语气是否专业友好，且达到 80 词以上？
+- id: toeic-wr-003
+  track: toeic
+  taskType: business_email
+  title: "E-mail Reply: Workshop Room Arrangements"
+  titleZh: 邮件回复：研讨会场地安排
+  promptEn: 'Read the following e-mail, then write a reply. "From: Marcus Webb, Events Coordinator, Lakeside Conference Hotel — Subject: Your reservation on 18 November. Dear customer, thank you for reserving our Cedar Room for your team workshop on 18 November. To help us prepare, please let me know the expected number of participants and how you would like the seating arranged." In your reply to Mr. Webb, give TWO pieces of information and ask ONE question. Write at least 80 words.'
+  promptZh: 阅读下面的邮件并撰写回复。"发件人：Lakeside 会议酒店活动协调员 Marcus Webb — 主题：您 11 月 18 日的预订。尊敬的客户，感谢您为团队研讨会预订我们的 Cedar Room（11 月 18 日）。为便于我们提前准备，请告知预计参加人数，以及您希望的座位布置方式。"在给 Webb 先生的回复中，提供两项信息，并提出一个问题。不少于 80 词。
+  minWords: 80
+  suggestedMinutes: 15
+  modelAnswer: |-
+    Dear Mr. Webb,
+
+    Thank you for confirming our reservation of the Cedar Room for our team workshop on 18 November.
+
+    Here are the details you requested. We are expecting eighteen participants in total — sixteen members of our sales team plus two guest speakers. As for the seating, the workshop involves a great deal of small-group discussion, so we would prefer four round tables seating four to five people each, rather than classroom-style rows facing the front.
+
+    I also have one question: is the Cedar Room equipped with a projector and wireless microphones, or should we bring our own? Our opening presentation includes a short video, so reliable audio matters to us.
+
+    Thank you in advance for your help, and please contact me if you need anything else before the event.
+
+    Best regards,
+    Chen Lu
+  checklist:
+    - en: Did you provide both pieces of information the coordinator asked for (participant numbers and seating)?
+      zh: 是否提供了对方询问的两项信息（参加人数与座位安排）？
+    - en: Did you ask exactly one clear question?
+      zh: 是否恰好提出了一个清晰的问题？
+    - en: Did you refer to specific details from the original e-mail (the Cedar Room, 18 November)?
+      zh: 是否呼应了原邮件中的具体细节（Cedar Room、11 月 18 日）？
+    - en: Did you briefly explain why you prefer that seating arrangement?
+      zh: 是否简要说明了偏好这种座位安排的原因？
+    - en: Did you open and close politely, with at least 80 words in a professional tone?
+      zh: 开头结尾是否礼貌得体，全文是否达到 80 词以上且语气专业？
+- id: toeic-wr-004
+  track: toeic
+  taskType: opinion_essay
+  title: "Opinion Essay: Promoting Managers from Within"
+  titleZh: 观点作文：内部提拔还是外部招聘
+  promptEn: Do you agree or disagree with the following statement? "When a management position becomes available, a company should promote one of its existing employees rather than hire a manager from outside." Use specific reasons and examples from your own knowledge or experience to support your opinion. Write at least 120 words.
+  promptZh: 你是否同意以下观点？"当管理岗位出现空缺时，公司应该提拔现有员工，而不是从外部招聘管理者。"请结合你自己的知识或经历，用具体的理由和例子支持你的观点。不少于 120 词。
+  minWords: 120
+  suggestedMinutes: 20
+  modelAnswer: |-
+    I largely agree that companies should look inside first when a management position opens, for reasons of knowledge, motivation, and risk.
+
+    An internal candidate already understands how the company actually works. A team leader promoted from within knows the customers, the systems, and the unwritten rules, so she can make useful decisions in her first month instead of spending half a year learning the basics. When my previous employer promoted a senior engineer to department manager, the transition was almost invisible; projects simply continued.
+
+    Internal promotion also motivates the whole staff. When employees see that good work leads somewhere, they stay longer and invest more in their skills. At my current company, after two team leads were promoted from within last year, several colleagues immediately signed up for the optional management-training course. By contrast, if every attractive position goes to an outsider, ambitious people conclude that the only way up is out — and the company ends up training talent for its competitors.
+
+    That said, hiring externally makes sense when a company needs skills nobody inside possesses, such as experience in a new market. As a general rule, however, I believe the best policy is to develop and promote existing employees, and to look outside only when the internal search genuinely fails.
+  checklist:
+    - en: Did you state clearly in the opening whether you favor internal promotion or external hiring?
+      zh: 开头是否明确表态支持内部提拔还是外部招聘？
+    - en: Did you develop each reason with a concrete example, such as a company or person you know?
+      zh: 每个理由是否都用具体例子展开，比如你了解的公司或人物？
+    - en: Did you acknowledge a situation where external hiring makes sense before concluding?
+      zh: 结论之前是否承认了外部招聘更合适的情形？
+    - en: Did you use linking words (first, also, by contrast, however) to connect paragraphs?
+      zh: 是否使用衔接词（first、also、by contrast、however 等）串联段落？
+    - en: Is your essay at least 120 words, and does the conclusion restate your position?
+      zh: 文章是否达到 120 词以上，结尾是否重申了你的立场？
+- id: toeic-wr-005
+  track: toeic
+  taskType: opinion_essay
+  title: "Opinion Essay: Open-Plan Offices"
+  titleZh: 观点作文：开放式办公室
+  promptEn: Do you agree or disagree with the following statement? "An open-plan office, where employees share one large space, is better for a company than giving employees private offices." Use specific reasons and examples from your own knowledge or experience to support your opinion. Write at least 120 words.
+  promptZh: 你是否同意以下观点？"让员工共处一个大空间的开放式办公室，比为员工提供独立办公室对公司更有利。"请结合你自己的知识或经历，用具体的理由和例子支持你的观点。不少于 120 词。
+  minWords: 120
+  suggestedMinutes: 20
+  modelAnswer: |-
+    I disagree that open-plan offices are automatically better for a company, because what they save in rent they often lose in concentration.
+
+    Supporters argue that open spaces improve communication, and this is partly true: asking a quick question is easier when your colleague sits three meters away. But the same openness produces constant noise and interruption. In my office, a single sales call can distract ten people at once, and many of my colleagues now wear noise-cancelling headphones all day — hardly a sign of better teamwork. Tasks that demand deep focus, such as writing code or checking contracts, take noticeably longer in a loud room.
+
+    Privacy matters too. Performance reviews, salary discussions, and difficult client calls should not happen within earshot of the whole department, yet in a fully open office they often do.
+
+    In my view, the best design is a mixture: an open area for teamwork, plus enough quiet rooms and small offices for focused work and private conversations. A company that chooses open-plan seating purely to cut costs is likely to pay the difference back in lower productivity.
+  checklist:
+    - en: Did you make your position on open-plan offices clear in the first paragraph?
+      zh: 第一段是否清楚表明了你对开放式办公室的立场？
+    - en: Did you respond to the strongest opposing argument (easier communication) instead of ignoring it?
+      zh: 是否正面回应了对方最有力的论点（沟通更方便），而不是视而不见？
+    - en: Did you support your points with concrete workplace details (noise, privacy, focused tasks)?
+      zh: 论证是否有具体的职场细节支撑（噪音、隐私、专注型工作等）？
+    - en: Did you use linking words to guide the reader through your argument?
+      zh: 是否使用衔接词引导读者跟上你的论证思路？
+    - en: Is your essay at least 120 words with a clear concluding paragraph?
+      zh: 文章是否达到 120 词以上并有明确的结论段？

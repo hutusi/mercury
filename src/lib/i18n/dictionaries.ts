@@ -147,6 +147,18 @@ const zh = {
     recentScores: "近期成绩",
     noScores: "完成练习后，成绩会显示在这里",
     quickStart: "快速开始",
+    // Reminder copy must not contain other dashboard strings verbatim
+    // (e.g. streak "连续学习") — e2e getByText assertions match substrings.
+    reminderStreakTitle: "打卡即将中断",
+    reminderStreakBody: "昨天已打卡，今天还没有练习记录 —— 完成任意练习即可保持节奏。",
+    reminderDueTitle: "复习提醒",
+    reminderDueBefore: "有",
+    reminderDueAfter: "个单词已到期，趁热复习一下",
+    reminderCta: "立即复习",
+    reminderToggleLabel: "学习提醒",
+    reminderToggleOn: "已开启",
+    reminderToggleOff: "已关闭",
+    reminderToggleHint: "在仪表盘提示到期单词与打卡进度",
     welcomeTitle: "欢迎来到 Mercury",
     welcomeBody:
       "先来一场限时模拟考试，快速定位你的水平；再用记忆卡每天积累词汇。每天完成一项练习，从今天坚持下去。",
@@ -478,6 +490,19 @@ const en: Dictionary = {
     recentScores: "Recent scores",
     noScores: "Your scores will appear here after you practice",
     quickStart: "Quick start",
+    // See the zh note: keep these free of other dashboard strings ("Streak",
+    // "Due for review", …) so e2e substring matches stay unambiguous.
+    reminderStreakTitle: "Keep the chain going",
+    reminderStreakBody:
+      "You checked in yesterday but not yet today — finish any exercise to keep the rhythm.",
+    reminderDueTitle: "Review reminder",
+    reminderDueBefore: "You have",
+    reminderDueAfter: "words waiting — a quick session clears them",
+    reminderCta: "Review now",
+    reminderToggleLabel: "Study reminders",
+    reminderToggleOn: "On",
+    reminderToggleOff: "Off",
+    reminderToggleHint: "Dashboard nudges for waiting words and daily check-ins",
     welcomeTitle: "Welcome to Mercury",
     welcomeBody:
       "Begin with a timed practice exam to benchmark your level, then build vocabulary a little every day. Every exercise you finish counts from day one.",

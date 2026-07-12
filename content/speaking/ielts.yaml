@@ -84,3 +84,69 @@
       zh: 每个观点是否都用例子或后果加以论证？
     - en: Did you keep a natural discussion tone rather than delivering a formal lecture?
       zh: 是否保持了自然的讨论语气，而不是像发表正式演讲？
+- id: ielts-s-004
+  track: ielts
+  partType: ielts_part2
+  title: "Part 2: An Important Decision You Made"
+  titleZh: 第二部分：你做过的一个重要决定
+  promptEn: |-
+    Describe an important decision you have made in your work or studies.
+    You should say:
+    - what the decision was
+    - what options you were choosing between
+    - who or what helped you decide
+    and explain whether you think it was the right decision.
+  promptZh: |-
+    描述一个你在工作或学习中做过的重要决定。
+    你应当谈到：
+    - 这个决定是什么
+    - 你当时在哪些选择之间权衡
+    - 是谁或什么帮助你做出了决定
+    并说明你认为这个决定是否正确。
+  prepSeconds: 60
+  speakSeconds: 120
+  modelAnswer: |-
+    The decision I'd like to talk about is leaving a big multinational company to join a small startup, which I did about three years ago.
+
+    At the time I was working in the marketing department of a well-known electronics firm. It was a comfortable job — good salary, a clear career ladder, and nobody ever worked weekends. Then a former colleague asked me to join her startup as employee number eight. So the choice was basically between security and growth. I could stay where I was and get promoted every couple of years, or jump into something risky where I'd have to do five jobs at once.
+
+    What helped me decide? A few things, really. I talked to my wife first, of course, because it meant a pay cut for at least a year, and we went through our savings together to see whether we could manage. But honestly, the thing that tipped me over was a question a friend asked me. He said, imagine you're fifty and looking back — which choice would you regret not taking? And the moment he said it, I knew, because I'd always wonder about the startup.
+
+    So, was it the right decision? I'd say yes, though not in the way I expected. The startup didn't become a huge success — we were acquired after two years, which was a decent outcome but hardly a fairy tale. But I learned more in those two years than in the previous seven, and the confidence I gained is permanent. So even though the company was only a partial success, for me personally it was completely the right call.
+  checklist:
+    - en: Did you cover all four points on the cue card, including the final 'explain' point?
+      zh: 是否覆盖了提示卡上的全部四个要点，包括最后的“说明”部分？
+    - en: Did you speak for close to the full two minutes, with a clear beginning, middle, and end?
+      zh: 是否讲满接近两分钟，并有清晰的开头、展开和结尾？
+    - en: Did you present the decision as a real choice, describing both options before revealing what you chose?
+      zh: 是否把决定讲成真实的权衡，先描述两个选项再说出你的选择？
+    - en: Did you use natural spoken linkers (at the time, honestly, so basically) rather than essay language?
+      zh: 是否使用了自然的口语连接词（at the time、honestly、so basically），而不是书面语？
+    - en: Did you evaluate the outcome honestly, with nuance rather than a simple happy ending?
+      zh: 是否对结果做了坦诚而有层次的评价，而不是简单的圆满结局？
+- id: ielts-s-005
+  track: ielts
+  partType: ielts_part3
+  title: "Part 3: How People Make Decisions"
+  titleZh: 第三部分：人们如何做决定
+  promptEn: "Now let's talk more generally about decisions. Do you think people today find it harder to make decisions than in the past — why might that be? Should important decisions be made with the head or with the heart? And do you think we should always ask other people for advice before deciding something important?"
+  promptZh: 现在我们来更宏观地聊聊“做决定”这件事。你认为如今的人是否比过去更难做决定？为什么？重要的决定应该靠理性还是靠感性？在做重大决定之前，我们是否总应该征求他人的意见？
+  prepSeconds: 0
+  speakSeconds: 90
+  modelAnswer: |-
+    Do people find decisions harder now? In a way, yes, and the reason is almost the opposite of what you'd expect — it's not that we have too few options, but far too many. A hundred years ago, most people's career, hometown, even their partner were largely decided by circumstances. Now you can compare thirty phones, two hundred apartments, and a thousand possible careers, and psychologists say all this choice actually makes us more anxious, not happier. There's even a name for it — choice overload.
+
+    As for head versus heart, I don't think it's really either-or. For decisions with clear numbers, like choosing a mortgage, you obviously want to sit down and do the maths. But for the big life decisions — who to marry, what career to follow — pure logic runs out at some point, because you can't put feelings into a spreadsheet. What I try to do is use the head to narrow things down, and then let the heart make the final call.
+
+    And on advice — I'd say seek it, but treat it as information, not instruction. Other people can spot risks you're blind to, and that's genuinely valuable. The danger is asking so many people that you end up more confused, or just following the loudest voice. In the end, you're the one who has to live with the outcome, so the final decision has to be yours.
+  checklist:
+    - en: Did you discuss general trends and reasons rather than only your own experience?
+      zh: 是否讨论了普遍趋势和原因，而不是只谈个人经历？
+    - en: Did you give a balanced answer to the head-versus-heart question instead of picking one side flatly?
+      zh: 在“理性还是感性”的问题上是否给出了有层次的回答，而非武断地二选一？
+    - en: Did you support each opinion with an example or consequence (choice overload, following the loudest voice)?
+      zh: 每个观点是否有例子或后果支撑（如选择过载、盲从最响亮的声音）？
+    - en: Did you use natural discussion language (in a way, as for, I'd say) and hedge where appropriate?
+      zh: 是否使用了自然的讨论语言（in a way、as for、I'd say），并在适当处留有余地？
+    - en: Did you keep speaking fluently for the full time, developing each question before moving on?
+      zh: 是否流畅地讲满全程，每个问题都充分展开后再进入下一个？

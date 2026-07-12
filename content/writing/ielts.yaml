@@ -87,3 +87,61 @@
       zh: 是否准确使用了较精确的学术词汇（public goods、vocational、employability 等）？
     - en: Did you vary your sentence structures, mixing complex sentences with shorter emphatic ones?
       zh: 句式是否有变化，长难句与简短有力的句子是否交替使用？
+- id: ielts-wr-004
+  track: ielts
+  taskType: ielts_task1
+  title: "Task 1: The Glass Recycling Process"
+  titleZh: 小作文：玻璃回收流程
+  promptEn: The diagram below shows how glass bottles are recycled. The process has six main stages. First, used bottles are collected from recycling points and taken by lorry to a cleaning plant, where they are washed in high-pressure water and sorted by colour. Next, the sorted glass is transported to a processing plant, where it is crushed into small pieces known as cullet. The cullet is then melted in a furnace at around 1500 degrees Celsius, and the molten glass is poured into moulds to form new bottles. Finally, the new bottles are sent to a bottling factory to be filled, and the finished products are delivered to shops, where the cycle can begin again. Summarise the information by selecting and reporting the main features. Write at least 150 words.
+  promptZh: 下图显示了玻璃瓶的回收过程，共有六个主要阶段。首先，废旧玻璃瓶从回收点收集起来，由卡车运往清洗厂，用高压水清洗并按颜色分类。接着，分类后的玻璃被运往加工厂，粉碎成称为 cullet 的碎玻璃。随后碎玻璃在约 1500 摄氏度的熔炉中熔化，熔融玻璃被注入模具制成新瓶。最后，新瓶被送往灌装厂灌装，成品配送到商店，循环由此重新开始。请选择并报告主要特征来概述这些信息。不少于 150 词。
+  minWords: 150
+  suggestedMinutes: 20
+  modelAnswer: |-
+    The diagram illustrates the six main stages by which used glass bottles are recycled into new ones.
+
+    Overall, the process is a continuous cycle rather than a linear sequence. Bottles collected from the public pass through cleaning, crushing and melting stages at three separate sites before returning to shops as new products.
+
+    The cycle begins when used bottles are gathered from recycling points and transported by lorry to a cleaning plant. There they are washed in high-pressure water and sorted into different colours, ready for processing.
+
+    In the following stage, the sorted glass is delivered to a processing plant, where it is crushed into small fragments known as cullet. The cullet is subsequently fed into a furnace and melted at approximately 1,500 degrees Celsius. Once molten, the glass is poured into bottle-shaped moulds, producing new, empty bottles.
+
+    In the final stages, these bottles are taken to a bottling factory, where they are filled, and the finished goods are then distributed to shops. When customers have used the products, the empty bottles can be returned to recycling points, and the entire cycle starts again.
+  checklist:
+    - en: Did you write an overview stating the number of stages and that the process is a cycle?
+      zh: 是否写了概述段，点明阶段数量并指出整个流程是一个循环？
+    - en: Did you use the passive voice consistently (are collected, is crushed, is melted), as process descriptions require?
+      zh: 是否按流程图写作的要求，始终使用被动语态（are collected、is crushed、is melted）？
+    - en: Did you link the stages with varied sequencers (begins when, in the following stage, subsequently, finally)?
+      zh: 是否用多样的顺序衔接词（begins when、in the following stage、subsequently、finally）串联各阶段？
+    - en: Did you group related stages into paragraphs instead of writing one sentence per stage?
+      zh: 是否把相关阶段整合成段落，而不是每个阶段孤立地写一句？
+    - en: Did you describe every stage without adding opinions or explaining why the process works?
+      zh: 是否完整描述了所有阶段，而没有加入个人观点或解释流程的原理？
+- id: ielts-wr-005
+  track: ielts
+  taskType: ielts_task2
+  title: "Task 2: Charging Drivers to Enter City Centres"
+  titleZh: 大作文：市中心拥堵收费
+  promptEn: Some people believe that the best way to reduce traffic congestion in city centres is to charge motorists a daily fee for driving there. To what extent do you agree or disagree? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words.
+  promptZh: 一些人认为，减少市中心交通拥堵的最佳方法是向驾车进入市中心的司机收取每日费用。你在多大程度上同意或不同意这一观点？请说明理由，并结合你自己的知识或经历举例。不少于 250 词。
+  minWords: 250
+  suggestedMinutes: 40
+  modelAnswer: |-
+    Charging motorists to drive into a city centre strikes many people as simply another tax. Nevertheless, I largely agree that congestion pricing is the most effective single measure available, provided that the revenue it raises is used to improve the alternatives to driving.
+
+    The core argument for a charge is that it addresses the actual cause of congestion — too many private cars competing for limited road space at the same time. Appeals to drive less rarely change behaviour, and building more roads tends to attract more traffic until the new lanes are as blocked as the old ones. A fee, by contrast, gives every driver a daily reason to consider the bus, the train, or a different time of travel. The experience of real cities supports this. After London introduced its congestion charge in 2003, traffic in the charging zone fell by around a fifth, and Stockholm and Singapore have reported similar effects over many years.
+
+    Opponents raise a fair objection — a flat fee weighs more heavily on a nurse driving to a night shift than on a wealthy commuter, so the policy can look regressive. This is why the second half of the policy matters as much as the first. Where charging revenue is invested in reliable public transport, cycle routes, and exemptions for night workers and disabled drivers, the burden falls mainly on those who have a realistic alternative and choose not to use it. A charge imposed without such investment, in a city where buses are scarce, would indeed be unfair and unpopular.
+
+    In conclusion, congestion charging is not painless, but it is the only measure that reliably reduces traffic while generating the money to fund better options. I therefore agree with the statement, with the important condition that the fee and the improved alternatives must arrive together.
+  checklist:
+    - en: Is your position stated clearly in the introduction and maintained consistently through to the conclusion?
+      zh: 是否在开头明确表明立场，并全文保持一致直到结论？
+    - en: Did you answer 'to what extent', qualifying your agreement rather than giving an unconditional yes or no?
+      zh: 是否回应了“在多大程度上”，为同意附加了条件，而不是简单的全盘肯定或否定？
+    - en: Did you support your arguments with concrete examples such as real cities or policies?
+      zh: 论证是否有具体例子支撑（如真实城市或政策）？
+    - en: Did you address the strongest opposing argument (fairness) instead of ignoring it?
+      zh: 是否正面回应了最有力的反方论点（公平性问题），而不是回避它？
+    - en: Did you use precise topic vocabulary (congestion, regressive, exemptions, revenue) accurately?
+      zh: 是否准确使用了话题相关的精确词汇（congestion、regressive、exemptions、revenue）？

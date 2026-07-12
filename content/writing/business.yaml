@@ -103,3 +103,78 @@
       zh: 是否提到了防止问题再次发生的措施？
     - en: Did you close by valuing the relationship and offering a direct contact channel?
       zh: 结尾是否表达了对合作关系的重视，并提供了直接联系方式？
+- id: biz-wr-004
+  track: business
+  taskType: business_email
+  title: "E-mail: Escalating a Supplier Problem Diplomatically"
+  titleZh: 邮件：得体地向供应商升级问题
+  promptEn: "Your component supplier, Deltapoint Industrial, has delivered three consecutive orders (#4471, #4489, #4502) between four and nine days late over the past two months, despite polite reminders to its support desk. The delays have twice forced you to reschedule production runs and once to pay overtime. Write an e-mail to the supplier's account director, Mr. Novak: state the facts with order numbers, describe the business impact, request a corrective plan with a deadline, and keep the tone firm but constructive — you want to fix the relationship, not end it. Write at least 100 words."
+  promptZh: 你公司的零部件供应商 Deltapoint Industrial 在过去两个月里连续三笔订单（#4471、#4489、#4502）迟到 4 至 9 天，尽管你已多次礼貌提醒其客服部门。延误两次迫使你们调整生产排期，一次产生加班费用。请给该供应商的客户总监 Novak 先生写一封邮件：列出带订单号的事实、说明对业务的影响、要求对方在限期内提交整改方案，语气要坚定而有建设性——你的目标是修复合作关系，而不是终止它。不少于 100 词。
+  minWords: 100
+  suggestedMinutes: 15
+  modelAnswer: |-
+    Dear Mr. Novak,
+
+    I am writing to you directly about our recent deliveries, because I believe the issue now needs your attention rather than another routine follow-up with the support desk.
+
+    Over the past two months, three consecutive orders — #4471, #4489, and #4502 — have arrived between four and nine days late. To be fair, your dispatch team has responded politely each time, and the goods have always arrived in good condition. However, the delays have twice forced us to reschedule production runs, and last week we paid overtime to protect a customer deadline that should never have been at risk.
+
+    Deltapoint has been a dependable partner for more than four years, which is exactly why I am raising this with you now rather than looking elsewhere. Could you investigate the root cause and share a short corrective plan by Friday 24 July? I would also welcome a thirty-minute call next week to agree on how we monitor delivery performance over the coming quarter.
+
+    I am confident we can resolve this quickly and return the relationship to the standard we are both used to.
+
+    Kind regards,
+    Zhang Min
+    Operations Manager, Kestrel Manufacturing
+  checklist:
+    - en: Did you state the facts precisely, with order numbers and dates, before expressing any frustration?
+      zh: 是否先用订单号和具体天数客观陈述事实，而不是一上来就宣泄不满？
+    - en: Did you describe the business impact concretely (rescheduled production, overtime costs)?
+      zh: 是否具体说明了对业务的影响（生产改期、加班成本），让对方看到问题的分量？
+    - en: Is the tone firm but constructive — no threats, no sarcasm, and no apologising for raising the issue?
+      zh: 语气是否坚定而有建设性——没有威胁和讽刺，也没有为提出问题而不必要地道歉？
+    - en: Did you make a specific request with a deadline (a corrective plan, a follow-up call)?
+      zh: 是否提出了带明确期限的具体要求（整改方案、后续通话）？
+    - en: Did you acknowledge what the supplier does well and reaffirm the long-term relationship?
+      zh: 是否肯定了对方做得好的地方，并重申长期合作的意愿？
+- id: biz-wr-005
+  track: business
+  taskType: business_report
+  title: "Lessons-Learned Report: A Launch-Day Outage"
+  titleZh: 复盘报告：促销日宕机事故
+  promptEn: "Your company's online store went down for three hours during the first morning of its biggest annual promotion. The causes: the marketing email went to the full customer list at 9 a.m. instead of in staggered batches, and the traffic spike overwhelmed the checkout service; the on-call rota also listed an engineer who had left the company, which slowed the response. Write a lessons-learned report for the management team: summarise the incident and its impact, analyse the causes without blaming individuals, note what went well, and propose specific preventive actions with owners and deadlines. Write at least 120 words."
+  promptZh: 在公司年度最大促销活动的首日上午，网上商店宕机了三个小时。原因有二：市场部的推广邮件在上午 9 点一次性发给了全部客户，而非分批发送，流量激增压垮了结算服务；同时值班表上还留着一位已离职工程师的名字，延误了响应。请为管理层写一份复盘报告（lessons-learned report）：概述事件及其影响、客观分析原因（对事不对人）、指出做得好的地方，并提出带责任人和期限的具体改进措施。不少于 120 词。
+  minWords: 120
+  suggestedMinutes: 20
+  modelAnswer: |-
+    Subject: Lessons-Learned Report — Online Store Outage, 12 October
+
+    Summary
+    On 12 October, the first morning of the Autumn Sale, the online store was unavailable from 9:04 to 12:15. We estimate 5,800 lost orders worth approximately $210,000, and customer service handled four times its normal contact volume.
+
+    What happened
+    The 9 a.m. promotional email went to all 480,000 customers at once, rather than in staggered batches as in previous years. Traffic reached eleven times the normal load within ten minutes and the checkout service failed. Recovery was slowed by roughly forty minutes because the on-call rota still listed an engineer who left in August.
+
+    Causes
+    This was a process failure, not an individual error. The batch-sending step existed only as informal knowledge and was never written into the campaign checklist; no load test was run against the promotion-day traffic forecast; and the on-call rota had no owner responsible for keeping it current.
+
+    What went well
+    Once the right engineer was reached, diagnosis and recovery took under an hour. The status page and social media updates were prompt, and complaint volumes stayed below comparable incidents.
+
+    Recommended actions
+    1. Add mandatory batch-sending and a pre-launch load test to the campaign checklist — Marketing Operations, by 31 October.
+    2. Generate the on-call rota automatically from the HR system so it can never go stale — IT, by 15 November.
+    3. Hold a joint marketing-engineering rehearsal one week before every major promotion — both teams, starting with the Year-End Sale.
+
+    Li Wei
+  checklist:
+    - en: Did you structure the report under clear headings (summary, what happened, causes, what went well, actions)?
+      zh: 报告是否按清晰的小标题组织（概述、经过、原因、亮点、改进措施）？
+    - en: Did you quantify the impact with concrete numbers (downtime, lost orders, cost)?
+      zh: 是否用具体数字量化了影响（宕机时长、损失订单、金额）？
+    - en: Did you analyse the causes as process failures instead of blaming individuals?
+      zh: 原因分析是否聚焦流程缺陷，而不是指责某个人？
+    - en: Did you include a "what went well" section to keep the review balanced and credible?
+      zh: 是否包含“做得好的地方”，让复盘保持客观、可信？
+    - en: Does every recommended action have an owner and a deadline?
+      zh: 每项改进措施是否都有明确的责任人和完成期限？

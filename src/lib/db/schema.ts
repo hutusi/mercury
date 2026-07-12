@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  boolean,
   doublePrecision,
   index,
   integer,
@@ -71,6 +72,9 @@ export const userSettings = pgTable("user_settings", {
     .references(() => user.id, { onDelete: "cascade" }),
   activeTrack: text("active_track").$type<Track>(),
   dailyGoal: integer("daily_goal").notNull().default(20),
+  // Controls the dashboard study nudge today; opted-in channel reminders
+  // (email/push) will reuse it when a delivery provider lands.
+  remindersEnabled: boolean("reminders_enabled").notNull().default(true),
   onboardedAt: ts("onboarded_at"),
   createdAt: ts("created_at").notNull().$defaultFn(now),
   updatedAt: ts("updated_at").notNull().$defaultFn(now),

@@ -42,9 +42,11 @@ export default defineConfig({
       BETTER_AUTH_SECRET: "mercury-e2e-secret-not-for-production",
       // Must match the port or better-auth rejects the request origin.
       BETTER_AUTH_URL: BASE_URL,
-      // Empty string beats any real key in .env (Next never overrides pre-set
-      // env), forcing the AI-degradation path so tests never call Claude.
+      // Empty strings beat any real keys in .env (Next never overrides
+      // pre-set env), forcing the AI-degradation path so tests never call a
+      // live provider (Claude or Bailian).
       ANTHROPIC_API_KEY: "",
+      DASHSCOPE_API_KEY: "",
       // Tests register users rapid-fire; disable better-auth's rate limiter.
       MERCURY_DISABLE_RATE_LIMIT: "1",
     },

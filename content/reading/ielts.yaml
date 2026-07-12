@@ -181,3 +181,258 @@
         - They are unsuitable for people with irregular schedules
       correctIndex: 0
       explanationZh: 末段指出这类应用 "estimate stages only indirectly, sometimes with considerable error"，即测算是间接的、可能有相当误差。“睡眠结构具有普遍性”是作者自己的结论，并非应用所证明（排除 B）。
+- id: ielts-r-004
+  track: ielts
+  title: The Bilingual Brain
+  titleZh: 双语者的大脑
+  genre: Academic
+  passage: |-
+    For much of the twentieth century, raising a child with two languages was widely regarded as a mistake. Teachers and even doctors warned parents that a second language would overload young minds, confusing children and delaying their progress at school. Families who moved abroad were routinely advised to abandon their mother tongue at home. Research over the past few decades has not merely softened this view; it has overturned it.
+
+    The key insight is that a bilingual brain is never truly "switched off". Brain-imaging studies show that when a bilingual person speaks, both languages remain active, and the one not in use must be continuously suppressed. This constant management appears to act as a form of mental exercise. In laboratory tasks, bilinguals are often faster at switching between rules and better at ignoring irrelevant information — a set of abilities psychologists call executive control, which supports everything from planning a project to resisting distraction.
+
+    The most striking claims concern ageing. In a series of studies in Toronto, the psychologist Ellen Bialystok found that lifelong bilinguals were diagnosed with dementia on average four to five years later than comparable monolinguals, even after education, income, and occupation were taken into account. Bilingualism does not prevent the disease. Brain scans suggest that bilingual patients carry a similar amount of physical damage; rather, their brains appear to cope with that damage for longer, a phenomenon researchers call cognitive reserve.
+
+    The picture is not entirely settled. Several recent large-scale studies have failed to reproduce the laboratory advantage in executive control, and some researchers argue that early positive results were simply more likely to be published than negative ones. Others suggest the benefits depend less on knowing two languages than on how often a speaker actually switches between them. What no one now seriously argues, however, is the old idea that a second language harms the developing mind.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: What is the main idea of the passage?
+      options:
+        - Children should be taught a second language as early as possible
+        - Bilingualism prevents dementia in old age
+        - Research suggests bilingualism brings cognitive benefits, though some findings remain debated
+        - Laboratory studies of bilingual people are usually unreliable
+      correctIndex: 2
+      explanationZh: 第一段结尾指出研究 "has not merely softened this view; it has overturned it"，第二、三段分别介绍执行控制与认知储备两类益处，末段又坦承 "The picture is not entirely settled"，因此 C 概括最准确。选项 B 过于绝对——原文明确说 "Bilingualism does not prevent the disease"（双语并不能预防疾病）。
+    - id: q2
+      stem: What did the Toronto studies find about lifelong bilinguals?
+      options:
+        - They were diagnosed with dementia several years later than monolinguals
+        - They showed less physical brain damage than monolinguals
+        - They had higher levels of education and income
+        - They recovered from dementia more quickly
+      correctIndex: 0
+      explanationZh: 原文写道，双语者 "were diagnosed with dementia on average four to five years later than comparable monolinguals"，即确诊平均晚四到五年。选项 B 有迷惑性——脑部扫描显示双语患者 "carry a similar amount of physical damage"，生理损伤程度相近，只是大脑应对损伤的时间更长。
+    - id: q3
+      stem: The word "overturned" in paragraph 1 is closest in meaning to
+      options:
+        - examined
+        - confirmed
+        - repeated
+        - reversed
+      correctIndex: 3
+      explanationZh: 前半句 "has not merely softened this view" 说明研究的作用不止是“缓和”旧观点，而是将其彻底推翻，故 overturned 意为 reversed（逆转、颠覆）。选项 B（confirmed，证实）方向恰好相反，属于反向干扰。
+    - id: q4
+      stem: What do some researchers suggest about the benefits of bilingualism?
+      options:
+        - They appear only in young children
+        - They may depend on how often speakers actually switch between languages
+        - They have been exaggerated by journalists
+        - They disappear after retirement
+      correctIndex: 1
+      explanationZh: 末段提到，有研究者认为 "the benefits depend less on knowing two languages than on how often a speaker actually switches between them"——关键或许不在于会两门语言，而在于切换的频率。选项 C 偷换了对象——原文说的是阳性结果更容易被发表（发表偏倚），并未指责记者夸大。
+- id: ielts-r-005
+  track: ielts
+  title: The Box That Changed World Trade
+  titleZh: 改变世界贸易的集装箱
+  genre: Academic
+  passage: |-
+    Before the mid-1950s, moving goods by sea had changed little since the age of sail. Cargo arrived at the docks in barrels, sacks, and wooden crates, and gangs of workers carried each item into the ship's hold by hand. Loading a single vessel could take a week or more, theft was rampant, and ships often spent longer tied up in port than they did at sea. Shipping was so slow and expensive that most manufacturers simply sold their goods close to home.
+
+    The man who changed this was not a shipping magnate but an American trucking entrepreneur named Malcom McLean. Frustrated by the days his lorries wasted waiting at the docks, he asked a simple question — why unload the cargo at all? In April 1956, a converted tanker called the Ideal X sailed from Newark to Houston carrying fifty-eight sealed metal boxes lifted straight from trucks onto the ship. McLean's real innovation, historians stress, was not the box itself — metal containers had existed for decades — but the system built around it: ships, cranes, lorries, and ports all redesigned to handle one standard unit.
+
+    The economic effects were dramatic. By one estimate, the cost of loading a ship fell from nearly six dollars a ton to just sixteen cents. Ports that embraced the container, such as Felixstowe in England, grew from obscurity into major hubs, while famous old docks like central London's, unsuited to the giant cranes, fell silent within a generation. Cheap, reliable transport also made it practical to assemble a single product from parts made in many different countries — the foundation of today's global supply chains.
+
+    Perhaps the most useful lesson lies in why the container took a further decade to spread worldwide. The technology was trivially simple; the hard part was persuading competing companies and countries to agree on standard sizes and fittings. The container reshaped the world economy not because it was clever, but because everyone finally agreed to use the same one.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: What is the main purpose of the passage?
+      options:
+        - To describe the life and career of Malcom McLean
+        - To explain how the shipping container transformed world trade
+        - To argue that modern supply chains are too fragile
+        - To compare ports in England and the United States
+      correctIndex: 1
+      explanationZh: 文章从集装箱出现前航运的低效讲起，继而介绍 McLean 的创新、装卸成本骤降与港口兴衰，最后落在标准化的启示上，主线是集装箱如何改变世界贸易。McLean 的经历只是第二段的引子，选项 A 以偏概全；文中并未评价供应链是否脆弱（排除 C）。
+    - id: q2
+      stem: According to the passage, what was McLean's real innovation?
+      options:
+        - Inventing the first metal shipping container
+        - Converting oil tankers into passenger ships
+        - Reducing theft at the docks
+        - Creating a whole transport system around a standard box
+      correctIndex: 3
+      explanationZh: 原文特别强调："McLean's real innovation, historians stress, was not the box itself — metal containers had existed for decades — but the system built around it"。选项 A 恰好被这句话直接否定——金属箱早已存在几十年，他的创新是让船、起重机、卡车和港口都围绕同一标准单元重新设计。
+    - id: q3
+      stem: Why did central London's docks decline, according to the passage?
+      options:
+        - They could not accommodate the equipment container ships required
+        - Theft there had become uncontrollable
+        - Manufacturers moved their factories to Felixstowe
+        - The government closed them to build housing
+      correctIndex: 0
+      explanationZh: 第三段写道，伦敦市中心的老码头 "unsuited to the giant cranes, fell silent within a generation"——容纳不下集装箱作业所需的巨型起重机，一代人之内便沉寂了。Felixstowe 是拥抱集装箱而崛起的新港口，与工厂搬迁无关（排除 C）。
+    - id: q4
+      stem: What does the writer suggest was the hardest part of containerisation?
+      options:
+        - Designing a box strong enough for ocean voyages
+        - Raising money to convert existing ships
+        - Getting companies and countries to adopt common standards
+        - Training dockworkers to operate the new cranes
+      correctIndex: 2
+      explanationZh: 末段点明："The technology was trivially simple; the hard part was persuading competing companies and countries to agree on standard sizes and fittings"——技术本身极其简单，难在让相互竞争的公司和国家就统一尺寸与接口达成一致。这也呼应了结尾“因为大家终于同意使用同一种箱子”。
+- id: ielts-r-006
+  track: ielts
+  title: The Sand Beneath Our Cities
+  titleZh: 城市脚下的沙子
+  genre: Academic
+  passage: |-
+    After fresh water, sand is the natural resource that humanity consumes in the greatest quantity — by some estimates, around fifty billion tonnes a year. Almost every feature of the modern city begins as sand: concrete is essentially sand and gravel bound with cement, glass is sand melted at high temperature, and even the silicon chips inside computers start life as quartz grains. Demand has tripled in two decades, driven by the fastest wave of urbanisation in human history.
+
+    It might seem absurd to speak of a sand shortage on a planet with the Sahara in it, but deserts offer little help. Grains that have been rolled by wind for thousands of years become round and polished, and they slide past one another instead of locking together, which makes them nearly useless for concrete. Builders need the angular grains produced by flowing water, and so extraction concentrates on riverbeds, floodplains, lakes and coastlines — precisely the environments least able to spare it. Dubai, surrounded by dunes, famously imported sand from Australia to build its tallest towers.
+
+    The consequences of removal are now well documented. Dredging lowers riverbeds, leaving bridge foundations exposed and unstable, while the loss of sediment starves deltas that would otherwise rebuild themselves. In the Mekong Delta, the combination of upstream dams and relentless sand mining has allowed salt water to push further inland each year, damaging the rice fields that feed millions. Elsewhere, at least two dozen small Indonesian islands are reported to have disappeared entirely, carried away barge by barge.
+
+    Governments have begun to respond, banning exports or licensing extraction, though enforcement is patchy and illegal mining remains profitable. In the longer term, researchers argue, the answer is to curb the appetite itself: crushed rock and recycled construction rubble can replace much of the natural sand in concrete, and several laboratories are developing binders that could finally put desert sand to work. Sand is cheap, but treating it as limitless, they warn, is a luxury the coming century cannot afford.
+  suggestedMinutes: 9
+  questions:
+    - id: q1
+      stem: What point does the writer make in the first paragraph?
+      options:
+        - Sand consumption is exceeded only by that of fresh water
+        - Computer manufacturing uses more sand than construction
+        - Cities have begun to reduce their demand for sand
+        - Concrete can now be produced without any sand
+      correctIndex: 0
+      explanationZh: 首段开头写道 "After fresh water, sand is the natural resource that humanity consumes in the greatest quantity"——除淡水外，沙子是人类消耗量最大的自然资源。芯片只是沙子的用途之一，文中并未比较其与建筑业的用量（排除 B）；需求 "has tripled in two decades"，是增长而非减少（排除 C）。
+    - id: q2
+      stem: Why is desert sand of little use to the construction industry?
+      options:
+        - It contains too much salt to mix with cement
+        - It is too expensive to transport from remote areas
+        - Its rounded grains do not lock together
+        - Its colour makes concrete structurally weak
+      correctIndex: 2
+      explanationZh: 第二段解释，风吹了几千年的沙粒 "become round and polished, and they slide past one another instead of locking together"——颗粒圆滑、无法咬合，所以不适合做混凝土。文中没有提到盐分或颜色问题；迪拜从澳大利亚进口沙子说明运输虽贵但可行，且这并非沙漠沙无用的原因（排除 B）。
+    - id: q3
+      stem: What does the writer say about the Mekong Delta?
+      options:
+        - Its bridges have collapsed because of dredging
+        - Seawater is advancing further into its farmland
+        - Its sand exports have been completely banned
+        - It has lost more than twenty islands to mining
+      correctIndex: 1
+      explanationZh: 第三段指出，在湄公河三角洲，"the combination of upstream dams and relentless sand mining has allowed salt water to push further inland each year, damaging the rice fields"——海水逐年深入内陆侵蚀稻田。消失的岛屿说的是印度尼西亚（排除 D）；桥基裸露是普遍后果，文中并没有说湄公河的桥梁已经坍塌（排除 A）。
+    - id: q4
+      stem: The word "curb" in the final paragraph is closest in meaning to
+      options:
+        - measure
+        - satisfy
+        - conceal
+        - restrain
+      correctIndex: 3
+      explanationZh: 原句 "the answer is to curb the appetite itself" 中，curb 意为“抑制、约束”——通过碎石、回收建筑废料等替代品来抑制对天然沙的需求本身。restrain 与之最接近。measure（测量）、satisfy（满足）、conceal（隐藏）都与上下文“减少需求”的方向不符。
+- id: ielts-r-007
+  track: ielts
+  title: The Clock That Found the World
+  titleZh: 找到世界坐标的时钟
+  genre: Academic
+  passage: |-
+    For centuries, sailors could work out how far north or south they were by measuring the height of the sun or the pole star above the horizon. Longitude — their position east or west — was another matter entirely. The Earth rotates fifteen degrees every hour, so knowing longitude requires comparing local time, easily read from the sun, with the exact time at a reference point such as the home port. The problem was that no clock of the age could keep time on a rolling, damp, hot-and-cold ship. Out of sight of land, navigators were reduced to educated guesswork, and the guesses could be fatal: in 1707, a British fleet misjudged its position in fog and struck the rocks of the Scilly Isles, drowning nearly two thousand men.
+
+    Seven years later, Parliament passed the Longitude Act, offering a prize of twenty thousand pounds — a fortune at the time — for any practical method of finding longitude at sea. Most experts assumed the answer would come from astronomy, using the moon's movement against the stars as a universal clock. The lunar method worked in principle, but it demanded hours of calculation and clear skies.
+
+    John Harrison, a village carpenter with no formal scientific training, pursued the unfashionable alternative: build a better clock. Over four decades he produced a series of marine timekeepers, each smaller and steadier than the last, replacing pendulums with balance springs and inventing bearings that needed no oil. On a voyage to Jamaica in 1761, his fourth design — a large silver watch — lost only a few seconds, comfortably within the prize's requirements. Harrison felt vindicated, yet the astronomers who dominated the judging board demanded trial after trial, and he received the final portion of his reward only in old age, after the king himself intervened.
+
+    The chronometer went on to guide ships for two centuries. Its modern descendants are the atomic clocks aboard navigation satellites: every smartphone that plots its position today is, in essence, still solving Harrison's problem — by comparing clocks.
+  suggestedMinutes: 9
+  questions:
+    - id: q1
+      stem: According to the first paragraph, why was longitude so difficult to determine at sea?
+      options:
+        - Sailors could not measure the height of the sun accurately
+        - The pole star is invisible from the southern hemisphere
+        - Fog made astronomical observation impossible
+        - No clock could keep accurate time during a voyage
+      correctIndex: 3
+      explanationZh: 第一段解释，经度需要 "comparing local time... with the exact time at a reference point"，而 "no clock of the age could keep time on a rolling, damp, hot-and-cold ship"——当时没有钟表能在颠簸潮湿、冷热交替的船上走准，这才是症结。测太阳高度解决的是纬度问题（排除 A）；1707 年的大雾只是那次海难的诱因，不是经度难题本身的原因（排除 C）。
+    - id: q2
+      stem: What does the writer say about the Longitude Act?
+      options:
+        - It required winners to use astronomical methods
+        - It offered a very large reward for a workable solution
+        - It was passed immediately after the Scilly disaster
+        - It funded the construction of Harrison's first clock
+      correctIndex: 1
+      explanationZh: 第二段写道，议会悬赏 "a prize of twenty thousand pounds — a fortune at the time — for any practical method"——重金征求任何切实可行的方案，并未限定必须用天文方法（排除 A）。法案在海难 "Seven years later" 才通过，并非立即（排除 C）；奖金是事后颁发的悬赏，不是研制经费（排除 D）。
+    - id: q3
+      stem: What is indicated about John Harrison?
+      options:
+        - He was a member of the judging board
+        - He perfected the lunar-distance method
+        - He had no formal scientific education
+        - He completed his first sea clock in 1761
+      correctIndex: 2
+      explanationZh: 文中称他是 "a village carpenter with no formal scientific training"——一位没有受过正规科学训练的乡村木匠，却选择了"造一台更好的钟"这条冷门路线。1761 年去牙买加试航的是他的第四件作品而非第一件（排除 D）；评审委员会由天文学家主导，他是被评审的一方（排除 A）。
+    - id: q4
+      stem: The word "vindicated" in the third paragraph is closest in meaning to
+      options:
+        - proved right
+        - deeply disappointed
+        - generously rewarded
+        - widely imitated
+      correctIndex: 0
+      explanationZh: 原句 "his fourth design... lost only a few seconds... Harrison felt vindicated"——试航结果远超悬赏要求，哈里森觉得自己的路线"被证明是对的"，vindicated 即"获得平反/被证明正确"。他此时并未拿到全部奖金，所以"获得丰厚回报"不合语境（排除 C）。
+- id: ielts-r-008
+  track: ielts
+  title: The Vanishing Night
+  titleZh: 正在消失的黑夜
+  genre: Academic
+  passage: |-
+    For most of human history, the Milky Way was the most spectacular sight in the night sky. Today, around one third of humanity — including some eighty per cent of people in North America and Europe — can no longer see it at all. The cause is skyglow, artificial light scattered by the atmosphere until the sky over a city glows dull orange all night. Measurements based on citizen scientists counting visible stars suggest the world's night sky has been brightening by almost ten per cent a year, considerably faster than satellite data had indicated.
+
+    The ecological consequences are increasingly well documented. Night-flying insects circle streetlamps until they die of exhaustion, one factor in the worrying decline of insect populations. Birds that migrate at night, navigating partly by the stars, become disoriented by illuminated buildings and collide with them in large numbers. On beaches, newly hatched sea turtles, which instinctively crawl towards the brightest horizon — historically the moonlit sea — instead head inland towards hotels and roads.
+
+    Humans are not exempt. The blue-rich light of modern LED streetlamps and screens suppresses melatonin, the hormone that regulates sleep, and disrupted sleep is linked to a range of health problems. There is also a simpler cost — light shining uselessly into the sky is wasted electricity, paid for by cities every single night.
+
+    The encouraging difference between light pollution and almost every other kind is that it vanishes the instant the source is switched off; nothing lingers in the soil or the water. Solutions are correspondingly straightforward — shielded fittings that direct light downwards, warmer-coloured lamps, dimmers, and motion sensors. When the city of Tucson in Arizona converted its streetlights along these lines, it cut its light output by seven per cent, with residents barely noticing the change. Increasingly, dark-sky reserves are protecting the remaining natural night: places where the Milky Way can still astonish.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: What is the main idea of the passage?
+      options:
+        - Cities should switch off all their lights at night
+        - Light pollution causes wide-ranging harm but is unusually easy to reduce
+        - Insect decline is caused mainly by streetlights
+        - Satellites are unreliable for measuring the night sky
+      correctIndex: 1
+      explanationZh: 前三段依次列举光污染对生态、人体和经济的多重危害，末段笔锋一转指出 "it vanishes the instant the source is switched off"，并给出一系列简单易行的解决方案，故 B 最完整。选项 A 过于极端——文中提倡的是加罩、调暖、调暗，而不是全部关灯；路灯只是昆虫减少的 "one factor"（排除 C）。
+    - id: q2
+      stem: According to the passage, why do sea turtle hatchlings head inland?
+      options:
+        - They mistake artificial lights for the brightness of the sea
+        - They are chased away from the water by predators
+        - They are attracted by the warmth of the roads
+        - They follow migrating birds towards the city
+      correctIndex: 0
+      explanationZh: 原文解释，小海龟本能地爬向最亮的地平线，"historically the moonlit sea"——历史上那是月光下的海面；如今人工灯光更亮，它们便 "instead head inland towards hotels and roads"。它们是被灯光误导，而非被捕食者驱赶或受温度吸引。
+    - id: q3
+      stem: How is light pollution different from most other forms of pollution?
+      options:
+        - It affects animals but not humans
+        - It cannot be measured accurately
+        - It is becoming less severe every year
+        - It disappears as soon as its source is turned off
+      correctIndex: 3
+      explanationZh: 末段明确指出这一关键差别："it vanishes the instant the source is switched off; nothing lingers in the soil or the water"——光源一关即刻消失，土壤和水中不留任何残余。第三段专门讨论了对人体睡眠的影响，选项 A 与原文矛盾；第一段说夜空亮度每年增长近一成，排除 C。
+    - id: q4
+      stem: What happened when Tucson modified its streetlights?
+      options:
+        - Residents complained about darker streets
+        - Crime increased across the city
+        - Light output fell with little public reaction
+        - The city's electricity costs doubled
+      correctIndex: 2
+      explanationZh: 原文写道，图森市改造路灯后 "cut its light output by seven per cent, with residents barely noticing the change"——灯光输出减少了 7%，居民几乎没有察觉。选项 A 与 "barely noticing" 相反；犯罪率和电费翻倍文中均未提及，属于无中生有。

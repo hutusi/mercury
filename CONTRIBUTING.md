@@ -14,7 +14,8 @@ docker compose up -d   # start local Postgres (or use your own)
 cp .env.example .env
 # set DATABASE_URL, e.g.:  postgresql://mercury:mercury@localhost:5432/mercury
 # set BETTER_AUTH_SECRET, e.g.:  openssl rand -base64 32
-# optional: ANTHROPIC_API_KEY enables AI grading (the app degrades gracefully without it)
+# optional: ANTHROPIC_API_KEY (Claude) or DASHSCOPE_API_KEY (Bailian GLM) enables AI grading
+#           (the app degrades gracefully without either)
 
 bun run db:migrate   # apply committed migrations to Postgres
 bun run db:seed      # load seed content (idempotent)
@@ -88,7 +89,9 @@ bun run build && bun run typecheck && bun run test:e2e
      from the landing page.
    - `BETTER_AUTH_URL`: the exact origin users load the site from (e.g. your custom domain, not
      a stale `*.vercel.app` alias) — a mismatch fails login even though pages otherwise load fine.
-   - Optionally `ANTHROPIC_API_KEY` / `MERCURY_AI_MODEL`.
+   - Optionally `ANTHROPIC_API_KEY` or `DASHSCOPE_API_KEY` (AI grading; Claude wins when both are
+     set — pin with `MERCURY_AI_PROVIDER`), plus `MERCURY_AI_MODEL` / `DASHSCOPE_BASE_URL`
+     overrides ([ADR 0011](docs/adr/0011-multi-provider-ai.md)).
 
    Env var changes only take effect on a new deployment — redeploy after adding/changing any of
    these (`vercel redeploy <url> --target production` or the dashboard's Redeploy button).

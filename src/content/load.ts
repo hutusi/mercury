@@ -44,6 +44,9 @@ export const allReading = loadTracked("reading", ReadingExerciseSchema);
 export const allListening = loadTracked("listening", ListeningExerciseSchema);
 export const allWriting = loadTracked("writing", WritingPromptSchema);
 export const allSpeaking = loadTracked("speaking", SpeakingPromptSchema);
-export const allExams = ["exams/toeic-mini.yaml", "exams/ielts-mini.yaml"].map((file) =>
-  loadFile(file, MockExamSchema),
-);
+export const allExams = [
+  "exams/toeic-mini.yaml",
+  "exams/toeic-standard.yaml",
+  "exams/ielts-mini.yaml",
+  "exams/ielts-standard.yaml",
+].map((file) => loadFile(file, MockExamSchema));
