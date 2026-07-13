@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { TrackSchema } from "../../content/types";
 import { db } from "../db";
-import { activityDays, exerciseAttempts, reviewLogs, srsCards, vocabWords } from "../db/schema";
+import { exerciseAttempts, reviewLogs, srsCards, vocabWords } from "../db/schema";
 import { scheduleReview } from "../srs";
-import { localDay, recordActivity } from "../streak";
+import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
 import { recordSkillSignalSafely } from "./profile";
 
@@ -41,6 +41,7 @@ export async function gradeCardForUser(
       .select()
       .from(srsCards)
       .where(and(eq(srsCards.userId, userId), eq(srsCards.wordId, wordId)))
+      .for("update")
       .limit(1);
     if (!card) throw new Error(`Failed to load SRS card for word: ${wordId}`);
 
@@ -75,7 +76,7 @@ export async function gradeCardForUser(
       newIntervalDays: scheduled.intervalDays,
     });
 
-    await tx.insert(activityDays).values({ userId, day: localDay() }).onConflictDoNothing();
+    await recordActivityWith(tx, userId);
 
     return scheduled;
   });
@@ -104,17 +105,19 @@ export async function submitQuizForUser(
   const answerMap: Record<string, number> = {};
   for (const [wordId, chosen] of entries) answerMap[wordId] = wordId === chosen ? 1 : 0;
 
-  await db.insert(exerciseAttempts).values({
-    userId,
-    kind: "vocab_quiz",
-    refId: `quiz-${track}`,
-    track,
-    answers: answerMap,
-    score,
-    total,
-    durationSeconds: 0,
+  await db.transaction(async (tx) => {
+    await tx.insert(exerciseAttempts).values({
+      userId,
+      kind: "vocab_quiz",
+      refId: `quiz-${track}`,
+      track,
+      answers: answerMap,
+      score,
+      total,
+      durationSeconds: 0,
+    });
+    await recordActivityWith(tx, userId);
   });
-  await recordActivity(userId);
   // The quiz (not per-card SRS grades, which are too noisy and run inside a
   // transaction) is the vocab accuracy signal for the learner model.
   if (total > 0) {

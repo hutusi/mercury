@@ -96,7 +96,7 @@ The mock-exam mode assumes a hostile client (see [ADR 0005](adr/0005-server-issu
 - `startExamAttempt` stores server-issued per-section deadlines; each subsequent section's clock starts when the previous one is submitted.
 - Clients receive **sanitized** sections (`sanitizeSections` strips `correctIndex` and `explanationZh`; listening scripts must ship for TTS playback — an accepted tradeoff).
 - The client countdown recomputes from `expiresAt - Date.now()` each tick and auto-submits at zero; refreshing resumes with the original clock.
-- `submitExamSection` accepts answers only within `deadline + 30s` grace; late answers are discarded in favor of previously autosaved ones. Attempt updates are guarded on `status`/`currentSectionIndex` so stale concurrent requests can't overwrite advanced state.
+- `submitExamSection` accepts answers only within `deadline + 30s` grace; late answers are discarded in favor of previously autosaved ones. Autosaves and section submits lock the attempt row before merging, so overlapping requests serialize against the latest persisted state; the web client also queues autosaves in click order.
 - Grading and score estimation (`gradeExam` in `src/lib/exam-utils.ts`) run server-side against unsanitized content.
 
 ## AI feedback and degradation
@@ -120,7 +120,7 @@ Grading is **memory-infused** ([ADR 0012](adr/0012-learner-model-and-ai-memory.m
 
 The AI-tutor positioning rests on two server-side systems ([ADR 0012](adr/0012-learner-model-and-ai-memory.md)):
 
-- **Learner model** (`learner_profiles` + `src/lib/learner-model-core.ts`): goals from onboarding (target score, exam date, daily minutes, self-rating), per-skill EWMA estimates fed by exercise accuracy, exam section scores, and AI rubric scores (hooked into the services via `recordSkillSignalSafely` — guarded, never fails the parent mutation), and the `coachMemo` of recurring issues merged from grading-call `memoUpdate`s. `GET/PATCH /api/v1/me/profile`; skillEstimates/coachMemo are server-owned.
+- **Learner model** (`learner_profiles` + `src/lib/learner-model-core.ts`): goals from onboarding (target score, exam date, daily minutes, self-rating), per-skill EWMA estimates fed by exercise accuracy, exam section scores, and AI rubric scores, and the `coachMemo` of recurring issues merged from grading-call `memoUpdate`s. `recordLearnerOutcomeSafely` folds all signals and the optional memo under one profile-row lock, so concurrent outcomes cannot overwrite each other; the guarded hook never fails the parent mutation. `GET/PATCH /api/v1/me/profile`; skillEstimates/coachMemo are server-owned.
 - **Daily plan** (`src/lib/plan-core.ts` + `src/lib/queries/plan.ts`): a deterministic, rule-based engine — due vocab → mistakes retest → weakest-skill practice → writing/speaking cadence → mock-exam checkpoint ramping toward the exam date — greedily fitted to `dailyMinutes` (max 5 items, never empty for fresh accounts). It is deliberately NOT an AI call: free, unit-testable, and identical keyless. The dashboard leads with it (`TodayPlanCard`); native clients read `GET /api/v1/plan`.
 
 ## Tutor chat
@@ -133,7 +133,7 @@ Route errors are caught before they can white-screen the app: `error.tsx` at the
 
 ## Streaks and SRS
 
-Any completed learning action calls `recordActivity`, which upserts one `activity_days` row per local day; `computeStreak` (pure, `src/lib/streak-core.ts`) walks back from today — or yesterday, so a streak isn't shown broken before the first exercise of the day. Vocabulary uses SM-2 (see [ADR 0003](adr/0003-sm2-over-fsrs.md)) with four grade buttons; cards are created lazily on first review.
+Any completed learning action upserts one `activity_days` row per local day in the same transaction as its primary progress row; `computeStreak` (pure, `src/lib/streak-core.ts`) walks back from today — or yesterday, so a streak isn't shown broken before the first exercise of the day. Vocabulary uses SM-2 (see [ADR 0003](adr/0003-sm2-over-fsrs.md)) with four grade buttons; cards are created lazily on first review, and existing-card grades lock the row before scheduling so concurrent reviews cannot lose an advancement.
 
 A **study reminder nudge** on the dashboard reuses this data: `src/lib/reminders-core.ts` (pure, like streak-core) decides whether to surface it — never when the user already studied today, otherwise when the streak is at risk (active yesterday, not yet today) or reviews are due. It's gated by the `user_settings.reminders_enabled` opt-out (toggle on the dashboard; `PATCH /api/v1/me/settings` for native clients). The module is delivery-agnostic by design so a future email/push channel can reuse it unchanged.
 

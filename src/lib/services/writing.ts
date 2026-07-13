@@ -7,9 +7,9 @@ import { db } from "../db";
 import { writingPrompts, writingSubmissions } from "../db/schema";
 import { formatLearnerContext, normalizeAiScore } from "../learner-model-core";
 import { getLearnerProfile } from "../queries/profile";
-import { recordActivity } from "../streak";
+import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
-import { mergeCoachMemoSafely, recordSkillSignalSafely } from "./profile";
+import { recordLearnerOutcomeSafely } from "./profile";
 
 /**
  * The <learner_profile> block for the grader: profile + rubric scores from
@@ -59,12 +59,16 @@ async function recordWritingOutcome(
   taskType: WritingTaskType,
   feedback: WritingFeedback,
 ) {
-  await recordSkillSignalSafely(userId, {
-    skill: "writing",
-    value: normalizeAiScore(writingScoreScale(taskType), feedback.overallScore),
-    source: "ai_feedback",
+  await recordLearnerOutcomeSafely(userId, {
+    signals: [
+      {
+        skill: "writing",
+        value: normalizeAiScore(writingScoreScale(taskType), feedback.overallScore),
+        source: "ai_feedback",
+      },
+    ],
+    memoUpdate: feedback.memoUpdate,
   });
-  if (feedback.memoUpdate) await mergeCoachMemoSafely(userId, feedback.memoUpdate);
 }
 
 export const SubmitWritingSchema = z.object({
@@ -112,20 +116,23 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
     status = "self_assessed";
   }
 
-  const [submission] = await db
-    .insert(writingSubmissions)
-    .values({
-      userId,
-      promptId,
-      text,
-      wordCount,
-      status,
-      feedback,
-      model: status === "ai_scored" ? activeAiModel() : null,
-    })
-    .returning({ id: writingSubmissions.id });
+  const submission = await db.transaction(async (tx) => {
+    const [row] = await tx
+      .insert(writingSubmissions)
+      .values({
+        userId,
+        promptId,
+        text,
+        wordCount,
+        status,
+        feedback,
+        model: status === "ai_scored" ? activeAiModel() : null,
+      })
+      .returning({ id: writingSubmissions.id });
+    await recordActivityWith(tx, userId);
+    return row;
+  });
 
-  await recordActivity(userId);
   if (status === "ai_scored" && feedback) {
     await recordWritingOutcome(userId, prompt.taskType, feedback);
   }

@@ -25,3 +25,6 @@ const globalForDb = globalThis as unknown as {
 };
 
 export const db = (globalForDb.__mercuryDb ??= createDb());
+
+/** Database surface shared by the root database and transaction adapters. */
+export type DbExecutor = Pick<typeof db, "insert" | "update" | "select" | "query">;

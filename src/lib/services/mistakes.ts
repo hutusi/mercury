@@ -1,7 +1,7 @@
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import type { McqQuestion } from "@/content/types";
-import { db } from "../db";
+import { db, type DbExecutor } from "../db";
 import {
   exerciseAttempts,
   listeningExercises,
@@ -12,7 +12,7 @@ import {
   vocabWords,
 } from "../db/schema";
 import { deriveMistakes, sourceKey, type MistakeKind } from "../mistakes-core";
-import { recordActivity } from "../streak";
+import { recordActivity, recordActivityWith } from "../streak";
 import { IntegrityError, NotFoundError } from "./errors";
 
 export const RetestSchema = z.object({
@@ -30,8 +30,14 @@ export interface RetestResult {
 
 /** Records "answered correctly on the mistakes page"; upsert refreshes clearedAt
  *  so re-clearing a revived mistake outweighs the newer wrong answer. */
-async function upsertClear(userId: string, kind: MistakeKind, refId: string, questionId: string) {
-  await db
+async function upsertClear(
+  executor: DbExecutor,
+  userId: string,
+  kind: MistakeKind,
+  refId: string,
+  questionId: string,
+) {
+  await executor
     .insert(mistakeClears)
     .values({ userId, kind, refId, questionId })
     .onConflictDoUpdate({
@@ -130,9 +136,13 @@ export async function retestMistakeForUser(userId: string, input: unknown): Prom
 
   const correct = chosenIndex === question.correctIndex;
   if (correct) {
-    await upsertClear(userId, kind, refId, questionId);
+    await db.transaction(async (tx) => {
+      await upsertClear(tx, userId, kind, refId, questionId);
+      await recordActivityWith(tx, userId);
+    });
+  } else {
+    await recordActivity(userId);
   }
-  await recordActivity(userId);
 
   // The answer key ships only after an answer, mirroring submitExerciseAttempt.
   return { correct, correctIndex: question.correctIndex, explanationZh: question.explanationZh };
@@ -158,9 +168,13 @@ export async function retestVocabMistakeForUser(
   const correct = chosenWordId === wordId;
   if (correct) {
     // Mirrors exercise_attempts identity for vocab: refId = quiz-${track}.
-    await upsertClear(userId, "vocab_quiz", `quiz-${word.track}`, wordId);
+    await db.transaction(async (tx) => {
+      await upsertClear(tx, userId, "vocab_quiz", `quiz-${word.track}`, wordId);
+      await recordActivityWith(tx, userId);
+    });
+  } else {
+    await recordActivity(userId);
   }
-  await recordActivity(userId);
 
   return { correct };
 }

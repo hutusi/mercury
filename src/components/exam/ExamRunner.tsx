@@ -49,6 +49,7 @@ export function ExamRunner({
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const submittedSections = useRef(new Set<string>());
+  const autosaveChain = useRef(Promise.resolve());
   // Latest-ref pattern: interval callbacks and submit read the current
   // answers without retriggering their effects.
   const answersRef = useRef(answers);
@@ -147,7 +148,12 @@ export function ExamRunner({
   // Periodic server autosave of the current section's answers.
   useEffect(() => {
     const timer = setInterval(() => {
-      void saveExamProgress({ attemptId, answers: answersRef.current });
+      const snapshot = { ...answersRef.current };
+      // Preserve click order even when a request takes longer than the save
+      // interval; the server also serializes these merges with section submit.
+      autosaveChain.current = autosaveChain.current
+        .catch(() => undefined)
+        .then(() => saveExamProgress({ attemptId, answers: snapshot }));
     }, AUTOSAVE_MS);
     return () => clearInterval(timer);
   }, [attemptId]);

@@ -7,9 +7,9 @@ import { db } from "../db";
 import { speakingPrompts, speakingSubmissions } from "../db/schema";
 import { formatLearnerContext, normalizeAiScore } from "../learner-model-core";
 import { getLearnerProfile } from "../queries/profile";
-import { recordActivity } from "../streak";
+import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
-import { mergeCoachMemoSafely, recordSkillSignalSafely } from "./profile";
+import { recordLearnerOutcomeSafely } from "./profile";
 
 /**
  * The <learner_profile> block for the grader: profile + fluency/vocabulary/
@@ -68,12 +68,16 @@ async function recordSpeakingOutcome(
   partType: SpeakingPartType,
   feedback: SpeakingFeedback,
 ) {
-  await recordSkillSignalSafely(userId, {
-    skill: "speaking",
-    value: normalizeAiScore(speakingScoreScale(partType), feedback.overallScore),
-    source: "ai_feedback",
+  await recordLearnerOutcomeSafely(userId, {
+    signals: [
+      {
+        skill: "speaking",
+        value: normalizeAiScore(speakingScoreScale(partType), feedback.overallScore),
+        source: "ai_feedback",
+      },
+    ],
+    memoUpdate: feedback.memoUpdate,
   });
-  if (feedback.memoUpdate) await mergeCoachMemoSafely(userId, feedback.memoUpdate);
 }
 
 export const SubmitSpeakingSchema = z.object({
@@ -118,20 +122,23 @@ export async function submitSpeakingForUser(
     status = "self_assessed";
   }
 
-  const [submission] = await db
-    .insert(speakingSubmissions)
-    .values({
-      userId,
-      promptId,
-      transcript,
-      durationSeconds,
-      status,
-      feedback,
-      model: status === "ai_scored" ? activeAiModel() : null,
-    })
-    .returning({ id: speakingSubmissions.id });
+  const submission = await db.transaction(async (tx) => {
+    const [row] = await tx
+      .insert(speakingSubmissions)
+      .values({
+        userId,
+        promptId,
+        transcript,
+        durationSeconds,
+        status,
+        feedback,
+        model: status === "ai_scored" ? activeAiModel() : null,
+      })
+      .returning({ id: speakingSubmissions.id });
+    await recordActivityWith(tx, userId);
+    return row;
+  });
 
-  await recordActivity(userId);
   if (status === "ai_scored" && feedback) {
     await recordSpeakingOutcome(userId, prompt.partType, feedback);
   }

@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "../db";
 import { exerciseAttempts, listeningExercises, readingExercises } from "../db/schema";
-import { recordActivity } from "../streak";
+import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
 import { recordSkillSignalSafely } from "./profile";
 
@@ -50,17 +50,19 @@ export async function submitExerciseAttemptForUser(
   const score = perQuestion.filter((p) => p.correct).length;
   const total = perQuestion.length;
 
-  await db.insert(exerciseAttempts).values({
-    userId,
-    kind,
-    refId,
-    track: exercise.track,
-    answers,
-    score,
-    total,
-    durationSeconds,
+  await db.transaction(async (tx) => {
+    await tx.insert(exerciseAttempts).values({
+      userId,
+      kind,
+      refId,
+      track: exercise.track,
+      answers,
+      score,
+      total,
+      durationSeconds,
+    });
+    await recordActivityWith(tx, userId);
   });
-  await recordActivity(userId);
   if (total > 0) {
     await recordSkillSignalSafely(userId, {
       skill: kind,
