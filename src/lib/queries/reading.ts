@@ -31,6 +31,8 @@ export async function listReadingExercises(userId: string, track: Track) {
         exerciseAttempts.refId,
         desc(exerciseAttempts.score),
         desc(exerciseAttempts.completedAt),
+        // Deterministic winner when score and completedAt (ms) both tie.
+        desc(exerciseAttempts.id),
       ),
   ]);
 
