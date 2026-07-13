@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import type { SanitizedQuestion } from "@/content/types";
 import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attempts";
+import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
 export function ReadingRunner({
@@ -28,6 +29,7 @@ export function ReadingRunner({
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(0);
+  const requestRef = useRef<LogicalRequestId | null>(null);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -37,12 +39,18 @@ export function ReadingRunner({
     setError(null);
     startTransition(async () => {
       try {
+        // A retry after a lost response reuses the same id (answers unchanged),
+        // so the server replays instead of writing a second attempt.
+        const request = requestIdForInput(requestRef.current, JSON.stringify(answers));
+        requestRef.current = request;
         const graded = await submitExerciseAttempt({
+          requestId: request.requestId,
           kind: "reading",
           refId: exerciseId,
           answers,
           durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
         });
+        requestRef.current = null;
         setResult(graded);
         window.scrollTo({ top: 0 });
       } catch {

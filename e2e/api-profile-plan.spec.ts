@@ -7,12 +7,12 @@ test.describe("API learner profile + daily plan", () => {
   }) => {
     const user = await apiSignUpAndOnboard(request, "toeic");
 
-    // No profile row yet: GET serves the default shape so clients never
-    // branch on null.
+    // Onboarding atomically creates the profile substrate with the selected
+    // goal track; the remaining goal fields and estimates start at defaults.
     const initialRes = await request.get("/api/v1/me/profile", { headers: user.authHeaders });
     expect(initialRes.status()).toBe(200);
     const { profile: defaults } = await initialRes.json();
-    expect(defaults.goalTrack).toBeNull();
+    expect(defaults.goalTrack).toBe("toeic");
     expect(defaults.dailyMinutes).toBe(20);
     expect(defaults.skillEstimates.reading.confidence).toBe("low");
 
@@ -47,7 +47,7 @@ test.describe("API learner profile + daily plan", () => {
     for (const q of detail.questions) answers[q.id] = 0;
     const attemptRes = await request.post(`/api/v1/exercises/reading/${detail.id}/attempts`, {
       headers: user.authHeaders,
-      data: { answers, durationSeconds: 60 },
+      data: { requestId: crypto.randomUUID(), answers, durationSeconds: 60 },
     });
     expect(attemptRes.status()).toBe(200);
 
@@ -58,6 +58,18 @@ test.describe("API learner profile + daily plan", () => {
     ).json();
     expect(updated.skillEstimates.reading.confidence).toBe("medium");
     expect(updated.skillEstimates.writing.confidence).toBe("low");
+
+    // A later self-rating edit changes the stated level but must not erase
+    // estimates that have already incorporated observed practice.
+    const observedReading = updated.skillEstimates.reading;
+    const rerateRes = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { selfRatedLevel: "advanced" },
+    });
+    expect(rerateRes.status()).toBe(200);
+    const { profile: rerated } = await rerateRes.json();
+    expect(rerated.selfRatedLevel).toBe("advanced");
+    expect(rerated.skillEstimates.reading).toEqual(observedReading);
 
     // The plan is never empty and respects the configured budget.
     const planRes = await request.get("/api/v1/plan", { headers: user.authHeaders });

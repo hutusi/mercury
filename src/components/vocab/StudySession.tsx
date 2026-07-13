@@ -110,7 +110,10 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
 
       {/* The flashcard is a full dictionary entry; click to flip. */}
       <button
+        type="button"
         onClick={() => setFlipped((f) => !f)}
+        aria-expanded={flipped}
+        aria-controls="study-card-answer"
         className="block min-h-72 w-full cursor-pointer border border-border bg-background p-8 text-center transition-colors outline-none hover:border-input focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         {card.isNew && (
@@ -123,7 +126,10 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
           {card.ipa} · {card.pos}
         </p>
         {flipped ? (
-          <div className="mt-6 space-y-4 border-t border-border pt-6 text-left">
+          <div
+            id="study-card-answer"
+            className="mt-6 space-y-4 border-t border-border pt-6 text-left"
+          >
             <p className="text-center font-serif text-2xl font-medium">{card.translationZh}</p>
             <p className="text-center text-sm text-muted-foreground">{card.definitionEn}</p>
             <div className="bg-muted p-4 text-sm">
@@ -141,6 +147,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
           {gradeButtons.map((b) => (
             <button
               key={b.grade}
+              type="button"
               onClick={() => grade(b.grade)}
               disabled={pending}
               className={`px-3 py-3 text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 ${b.cls}`}

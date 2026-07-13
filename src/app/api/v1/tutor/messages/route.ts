@@ -20,7 +20,7 @@ export const GET = apiHandler(async (req) => {
   });
 });
 
-// 503 ai_unavailable when keyless; 429 chat_limit_reached at the daily cap.
+// 503 keyless; 409 single-flight conflict; 429 at the exact daily cap.
 export const POST = apiHandler(async (req) => {
   const { user, track } = await requireTrackApi(req);
   const body = await readJson(req);

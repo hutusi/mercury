@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { buildChatWindow, chatDailyLimit, type ChatTurn } from "./chat-core";
+import { buildChatWindow, chatClaimIsFresh, chatDailyLimit, type ChatTurn } from "./chat-core";
 
 describe("chatDailyLimit", () => {
   test("defaults to 30 and rejects invalid values", () => {
@@ -32,5 +32,14 @@ describe("buildChatWindow", () => {
     expect(window.length).toBeLessThanOrEqual(6);
     expect(window[0].role).toBe("user");
     expect(window.at(-1)?.content).toBe("next");
+  });
+});
+
+describe("chatClaimIsFresh", () => {
+  test("expires a single-flight lease at two minutes", () => {
+    const now = new Date("2026-07-13T12:00:00Z");
+    expect(chatClaimIsFresh(new Date(now.getTime() - 119_999), now)).toBe(true);
+    expect(chatClaimIsFresh(new Date(now.getTime() - 120_000), now)).toBe(false);
+    expect(chatClaimIsFresh(null, now)).toBe(false);
   });
 });

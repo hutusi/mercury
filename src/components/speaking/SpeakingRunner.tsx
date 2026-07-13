@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
 import { retrySpeakingFeedback, submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
+import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createRecognizer, sttSupported, type Recognizer } from "@/lib/speech";
 import { SpeakingFeedbackPanel } from "./SpeakingFeedbackPanel";
@@ -47,6 +48,7 @@ export function SpeakingRunner({
   const recognizerRef = useRef<Recognizer | null>(null);
   const deadlineRef = useRef(0);
   const recordStartRef = useRef(0);
+  const submissionRequestRef = useRef<LogicalRequestId | null>(null);
   // Latest-ref pattern: recognition callbacks read the current phase.
   const phaseRef = useRef<Phase>("idle");
   useEffect(() => {
@@ -86,6 +88,7 @@ export function SpeakingRunner({
   }
 
   function beginRecording() {
+    submissionRequestRef.current = null;
     setMicError(null);
     setFinalText("");
     setInterimText("");
@@ -125,11 +128,17 @@ export function SpeakingRunner({
     setSubmitError(null);
     startTransition(async () => {
       try {
+        const durationSeconds = Math.min(spokenSeconds || speakSeconds, 600);
+        const fingerprint = JSON.stringify({ promptId, transcript: finalText, durationSeconds });
+        const request = requestIdForInput(submissionRequestRef.current, fingerprint);
+        submissionRequestRef.current = request;
         const r = await submitSpeaking({
+          requestId: request.requestId,
           promptId,
           transcript: finalText,
-          durationSeconds: Math.min(spokenSeconds || speakSeconds, 600),
+          durationSeconds,
         });
+        submissionRequestRef.current = null;
         setResult(r);
         setPhase("done");
         window.scrollTo({ top: 0 });
@@ -145,7 +154,7 @@ export function SpeakingRunner({
     setRetryFailed(false);
     startRetry(async () => {
       try {
-        setResult(await retrySpeakingFeedback(result.submissionId));
+        setResult(await retrySpeakingFeedback(result.submissionId, crypto.randomUUID()));
       } catch {
         setRetryFailed(true);
       }

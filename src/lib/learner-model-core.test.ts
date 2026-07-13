@@ -5,6 +5,7 @@ import {
   emptyCoachMemo,
   formatLearnerContext,
   formatTarget,
+  isUnratedSkillSeed,
   mergeCoachMemo,
   normalizeAiScore,
   SKILL_KEYS,
@@ -32,6 +33,17 @@ describe("defaultSkillEstimates", () => {
 
   test("uses a conservative seed when the learner skipped the rating", () => {
     expect(defaultSkillEstimates(null, NOW).writing.estimate).toBe(40);
+  });
+
+  test("recognizes only the untouched unrated bootstrap", () => {
+    const unrated = defaultSkillEstimates(null, NOW);
+    expect(isUnratedSkillSeed(unrated)).toBe(true);
+    expect(isUnratedSkillSeed(defaultSkillEstimates("intermediate", NOW))).toBe(false);
+    expect(
+      isUnratedSkillSeed(
+        applySkillSignal(unrated, { skill: "reading", value: 40, source: "exercise" }, NOW),
+      ),
+    ).toBe(false);
   });
 });
 

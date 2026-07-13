@@ -1,15 +1,21 @@
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
-import { activeAiModel, getWritingFeedback } from "../ai/client";
+import { activeAiModel, AiUnavailableError, getWritingFeedback, isAiEnabled } from "../ai/client";
 import type { WritingFeedback } from "../ai/schemas";
 import type { Track, WritingTaskType } from "../../content/types";
+import { gradingInputHash } from "../ai-grading-core";
+import {
+  claimGradingRequest,
+  completeGradingRequestWith,
+  failGradingRequest,
+} from "../ai-grading-usage";
 import { db } from "../db";
 import { writingPrompts, writingSubmissions } from "../db/schema";
 import { formatLearnerContext, normalizeAiScore } from "../learner-model-core";
 import { getLearnerProfile } from "../queries/profile";
-import { recordActivity } from "../streak";
+import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
-import { mergeCoachMemoSafely, recordSkillSignalSafely } from "./profile";
+import { recordLearnerOutcomeSafely } from "./profile";
 
 /**
  * The <learner_profile> block for the grader: profile + rubric scores from
@@ -59,18 +65,25 @@ async function recordWritingOutcome(
   taskType: WritingTaskType,
   feedback: WritingFeedback,
 ) {
-  await recordSkillSignalSafely(userId, {
-    skill: "writing",
-    value: normalizeAiScore(writingScoreScale(taskType), feedback.overallScore),
-    source: "ai_feedback",
+  await recordLearnerOutcomeSafely(userId, {
+    signals: [
+      {
+        skill: "writing",
+        value: normalizeAiScore(writingScoreScale(taskType), feedback.overallScore),
+        source: "ai_feedback",
+      },
+    ],
+    memoUpdate: feedback.memoUpdate,
   });
-  if (feedback.memoUpdate) await mergeCoachMemoSafely(userId, feedback.memoUpdate);
 }
 
 export const SubmitWritingSchema = z.object({
+  requestId: z.string().uuid(),
   promptId: z.string(),
   text: z.string().min(20).max(30000),
 });
+
+export const RetryWritingSchema = z.object({ requestId: z.string().uuid() });
 
 function countWords(text: string): number {
   return text.trim().split(/\s+/).filter(Boolean).length;
@@ -82,9 +95,26 @@ export interface WritingResult {
   feedback: WritingFeedback | null;
 }
 
+async function getPersistedWritingResult(
+  userId: string,
+  submissionId: string,
+): Promise<WritingResult> {
+  const submission = await db.query.writingSubmissions.findFirst({
+    where: and(eq(writingSubmissions.id, submissionId), eq(writingSubmissions.userId, userId)),
+  });
+  if (!submission || submission.status === "failed") {
+    throw new NotFoundError("Submission not found");
+  }
+  return {
+    submissionId: submission.id,
+    status: submission.status,
+    feedback: submission.feedback,
+  };
+}
+
 /** AI-grade an essay; on any AI failure degrade to self-assessment. */
 export async function submitWritingForUser(userId: string, input: unknown): Promise<WritingResult> {
-  const { promptId, text } = SubmitWritingSchema.parse(input);
+  const { requestId, promptId, text } = SubmitWritingSchema.parse(input);
 
   const prompt = await db.query.writingPrompts.findFirst({
     where: eq(writingPrompts.id, promptId),
@@ -92,40 +122,63 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
   if (!prompt) throw new NotFoundError(`Unknown writing prompt: ${promptId}`);
 
   const wordCount = countWords(text);
-
+  const inputHash = gradingInputHash({ promptId, text });
+  const aiEnabled = isAiEnabled();
+  const claim = await claimGradingRequest({
+    userId,
+    requestId,
+    kind: "writing",
+    scope: `writing:submit:${inputHash}`,
+    inputHash,
+    charge: aiEnabled,
+  });
+  if (claim.disposition === "completed") {
+    return getPersistedWritingResult(userId, claim.submissionId);
+  }
   const learnerContext = await writingLearnerContext(userId, prompt.track);
 
   let feedback: WritingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
-  try {
-    feedback = await getWritingFeedback({
-      taskType: prompt.taskType,
-      promptEn: prompt.promptEn,
-      userText: text,
-      wordCount,
-      learnerContext,
-    });
-    status = "ai_scored";
-  } catch {
-    // No key, API error, refusal, or schema mismatch — degrade to self-assessment.
-    feedback = null;
-    status = "self_assessed";
+  if (aiEnabled) {
+    try {
+      feedback = await getWritingFeedback({
+        taskType: prompt.taskType,
+        promptEn: prompt.promptEn,
+        userText: text,
+        wordCount,
+        learnerContext,
+      });
+      status = "ai_scored";
+    } catch {
+      // API error, refusal, or schema mismatch — degrade to self-assessment.
+      feedback = null;
+      status = "self_assessed";
+    }
   }
 
-  const [submission] = await db
-    .insert(writingSubmissions)
-    .values({
+  const submission = await db.transaction(async (tx) => {
+    const [row] = await tx
+      .insert(writingSubmissions)
+      .values({
+        userId,
+        promptId,
+        text,
+        wordCount,
+        status,
+        feedback,
+        model: status === "ai_scored" ? activeAiModel() : null,
+      })
+      .returning({ id: writingSubmissions.id });
+    await recordActivityWith(tx, userId);
+    await completeGradingRequestWith(tx, {
       userId,
-      promptId,
-      text,
-      wordCount,
-      status,
-      feedback,
-      model: status === "ai_scored" ? activeAiModel() : null,
-    })
-    .returning({ id: writingSubmissions.id });
+      requestId,
+      claimId: claim.claimId,
+      submissionId: row.id,
+    });
+    return row;
+  });
 
-  await recordActivity(userId);
   if (status === "ai_scored" && feedback) {
     await recordWritingOutcome(userId, prompt.taskType, feedback);
   }
@@ -141,7 +194,9 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
 export async function retryWritingFeedbackForUser(
   userId: string,
   submissionId: string,
+  input: unknown,
 ): Promise<WritingResult> {
+  const { requestId } = RetryWritingSchema.parse(input);
   const submission = await db.query.writingSubmissions.findFirst({
     where: and(eq(writingSubmissions.id, submissionId), eq(writingSubmissions.userId, userId)),
   });
@@ -149,34 +204,68 @@ export async function retryWritingFeedbackForUser(
   if (submission.status === "ai_scored") {
     return { submissionId: submission.id, status: "ai_scored", feedback: submission.feedback };
   }
+  if (submission.status !== "self_assessed") {
+    throw new NotFoundError("Submission not found");
+  }
+  if (!isAiEnabled()) {
+    // Keyless is a supported submit path, but a retry has no work it can do.
+    throw new AiUnavailableError("No AI provider is configured");
+  }
+
+  const inputHash = gradingInputHash({ submissionId: submission.id });
+  const claim = await claimGradingRequest({
+    userId,
+    requestId,
+    kind: "writing",
+    scope: `writing:retry:${submission.id}`,
+    inputHash,
+    charge: true,
+  });
+  if (claim.disposition === "completed") {
+    return getPersistedWritingResult(userId, claim.submissionId);
+  }
 
   const prompt = await db.query.writingPrompts.findFirst({
     where: eq(writingPrompts.id, submission.promptId),
   });
   if (!prompt) throw new NotFoundError(`Unknown writing prompt: ${submission.promptId}`);
-
   const learnerContext = await writingLearnerContext(userId, prompt.track);
 
-  const feedback = await getWritingFeedback({
-    taskType: prompt.taskType,
-    promptEn: prompt.promptEn,
-    userText: submission.text,
-    wordCount: submission.wordCount,
-    learnerContext,
-  });
+  let feedback: WritingFeedback;
+  try {
+    feedback = await getWritingFeedback({
+      taskType: prompt.taskType,
+      promptEn: prompt.promptEn,
+      userText: submission.text,
+      wordCount: submission.wordCount,
+      learnerContext,
+    });
+  } catch (error) {
+    await failGradingRequest({ userId, requestId, claimId: claim.claimId });
+    throw error;
+  }
 
-  // Compare-and-set on status so a concurrent retry can't overwrite this one.
-  const [updated] = await db
-    .update(writingSubmissions)
-    .set({
-      status: "ai_scored",
-      feedback,
-      model: activeAiModel(),
-    })
-    .where(
-      and(eq(writingSubmissions.id, submission.id), eq(writingSubmissions.status, "self_assessed")),
-    )
-    .returning();
+  // The request ledger serializes retries before the provider call. Keep the
+  // final submission update and idempotency completion atomic as well.
+  const updated = await db.transaction(async (tx) => {
+    const [row] = await tx
+      .update(writingSubmissions)
+      .set({ status: "ai_scored", feedback, model: activeAiModel() })
+      .where(
+        and(
+          eq(writingSubmissions.id, submission.id),
+          eq(writingSubmissions.status, "self_assessed"),
+        ),
+      )
+      .returning();
+    await completeGradingRequestWith(tx, {
+      userId,
+      requestId,
+      claimId: claim.claimId,
+      submissionId: submission.id,
+    });
+    return row;
+  });
 
   if (updated) {
     await recordWritingOutcome(userId, prompt.taskType, feedback);
@@ -186,12 +275,5 @@ export async function retryWritingFeedbackForUser(
   // Lost the race: a concurrent retry already scored this submission. Return
   // the persisted feedback so the caller can't show a result that never
   // reached the database.
-  const stored = await db.query.writingSubmissions.findFirst({
-    where: and(eq(writingSubmissions.id, submission.id), eq(writingSubmissions.userId, userId)),
-  });
-  return {
-    submissionId: submission.id,
-    status: "ai_scored",
-    feedback: stored?.feedback ?? feedback,
-  };
+  return getPersistedWritingResult(userId, submission.id);
 }

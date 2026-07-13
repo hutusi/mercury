@@ -4,7 +4,7 @@ import { db } from "../db";
 import { mockExamAttempts, mockExams, speakingSubmissions, writingSubmissions } from "../db/schema";
 import { countActiveMistakes } from "../mistakes";
 import { buildDailyPlan, type PlanItem } from "../plan-core";
-import { localDay } from "../streak-core";
+import { calendarDay, getUserTimeZone } from "../streak";
 import { getLearnerProfile } from "./profile";
 import { listListeningExercises } from "./listening";
 import { listReadingExercises } from "./reading";
@@ -22,6 +22,11 @@ export interface DailyPlan {
 /** Gather every plan-core input in one parallel round and build 今日计划. */
 export async function getDailyPlan(userId: string, track: Track): Promise<DailyPlan> {
   const today = new Date();
+  const timeZone = await getUserTimeZone(userId);
+  const generatedFor = calendarDay(today, timeZone);
+  const planToday = new Date(`${generatedFor}T12:00:00.000Z`);
+  const learnerDate = (date: Date | null | undefined) =>
+    date ? new Date(`${calendarDay(date, timeZone)}T12:00:00.000Z`) : null;
 
   const [
     profile,
@@ -87,9 +92,9 @@ export async function getDailyPlan(userId: string, track: Track): Promise<DailyP
     freshCount: vocab.freshCount,
     activeMistakes,
     recent: {
-      lastWritingAt: lastWriting?.createdAt ?? null,
-      lastSpeakingAt: lastSpeaking?.createdAt ?? null,
-      lastExamAt: lastExam?.completedAt ?? null,
+      lastWritingAt: learnerDate(lastWriting?.createdAt),
+      lastSpeakingAt: learnerDate(lastSpeaking?.createdAt),
+      lastExamAt: learnerDate(lastExam?.completedAt),
     },
     available: {
       reading: reading.exercises.map((e) => ({
@@ -107,12 +112,12 @@ export async function getDailyPlan(userId: string, track: Track): Promise<DailyP
       speaking: nextSpeaking ? { id: nextSpeaking.id } : null,
       examId: exam?.id ?? null,
     },
-    today,
+    today: planToday,
   });
 
   return {
     items,
     dailyMinutes: profile?.dailyMinutes ?? 20,
-    generatedFor: localDay(today),
+    generatedFor,
   };
 }

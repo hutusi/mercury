@@ -33,7 +33,7 @@ Everything else stays ink. Correct answers are quiet ink `Check` icons — never
 
 ## Type
 
-Three faces, loaded in `src/app/[locale]/layout.tsx` via `next/font`:
+Three Latin faces, bundled under `src/app/fonts/` and loaded in `src/app/[locale]/layout.tsx` via `next/font/local`. Keeping the assets in the repository makes production builds deterministic and network-independent; attribution and the SIL OFL 1.1 license live beside the files.
 
 | Face              | Utility      | Role                                                                                                            |
 | ----------------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
@@ -69,3 +69,5 @@ Compose these before writing inline Tailwind. Signature pieces live in `src/comp
 - Focus is a 2px cinnabar ring with offset on buttons/links, borderless ring on fields.
 - Skip link as the shell's first element; `<main id="main-content">`.
 - Correct/wrong state always carries an icon or shape in addition to color.
+- Textareas have persistent programmatic labels; placeholders are hints, never labels.
+- Selection and disclosure buttons expose state with `aria-pressed` / `aria-expanded`, and async failures or progress use alert/status live regions.

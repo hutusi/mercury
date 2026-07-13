@@ -3,6 +3,7 @@
 import { requireUser } from "../auth/session";
 import type { AnswerMap } from "../db/schema";
 import {
+  abandonExamAttemptForUser,
   saveExamProgressForUser,
   startExamAttemptForUser,
   submitExamSectionForUser,
@@ -14,6 +15,11 @@ export type { SubmitSectionResult } from "../services/exams";
 export async function startExamAttempt(examId: string): Promise<{ attemptId: string }> {
   const user = await requireUser();
   return startExamAttemptForUser(user.id, examId);
+}
+
+export async function abandonExamAttempt(attemptId: string): Promise<{ status: "abandoned" }> {
+  const user = await requireUser();
+  return abandonExamAttemptForUser(user.id, attemptId);
 }
 
 /** Autosave: merge answers for the current, unexpired section only. */

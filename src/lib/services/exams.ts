@@ -3,9 +3,10 @@ import { z } from "zod";
 import { db } from "../db";
 import { mockExamAttempts, mockExams, type AnswerMap, type SectionDeadline } from "../db/schema";
 import { acceptSectionAnswers, gradeExam } from "../exam-utils";
-import { recordActivity } from "../streak";
-import { NotFoundError } from "./errors";
-import { recordSkillSignalSafely } from "./profile";
+import { recordActivityWith } from "../streak";
+import { ConflictError, NotFoundError } from "./errors";
+import { recordMistakeOutcomes } from "./mistake-state";
+import { recordLearnerOutcomeSafely } from "./profile";
 
 /** Late submissions within this window are still accepted (network slack). */
 export const GRACE_MS = 30_000;
@@ -44,6 +45,7 @@ export async function startExamAttemptForUser(
       examId,
       track: exam.track,
       sectionDeadlines: deadlines,
+      sectionsSnapshot: exam.sections,
       answers: {},
       totalQuestions: exam.totalQuestions,
     })
@@ -74,38 +76,35 @@ export const SaveExamProgressSchema = z.object({
 export async function saveExamProgressForUser(userId: string, input: unknown): Promise<void> {
   const { attemptId, answers } = SaveExamProgressSchema.parse(input);
 
-  const attempt = await db.query.mockExamAttempts.findFirst({
-    where: and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)),
-  });
-  if (!attempt || attempt.status !== "in_progress") return;
+  await db.transaction(async (tx) => {
+    // Lock before merging: two overlapping autosaves must fold into the state
+    // left by the previous request, not both write from the same snapshot.
+    const [attempt] = await tx
+      .select()
+      .from(mockExamAttempts)
+      .where(and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)))
+      .for("update")
+      .limit(1);
+    if (!attempt || attempt.status !== "in_progress") return;
 
-  const exam = await db.query.mockExams.findFirst({ where: eq(mockExams.id, attempt.examId) });
-  if (!exam) return;
-
-  const section = exam.sections[attempt.currentSectionIndex];
-  const deadline = attempt.sectionDeadlines.find((d) => d.sectionId === section.id);
-  const merged = acceptSectionAnswers(
-    section,
-    deadline,
-    Date.now(),
-    attempt.answers,
-    answers,
-    GRACE_MS,
-  );
-  if (merged === attempt.answers) return; // late or no deadline — nothing accepted
-
-  // Guard on status + section so a delayed autosave can't overwrite an
-  // attempt that another request has already advanced or completed.
-  await db
-    .update(mockExamAttempts)
-    .set({ answers: merged })
-    .where(
-      and(
-        eq(mockExamAttempts.id, attempt.id),
-        eq(mockExamAttempts.status, "in_progress"),
-        eq(mockExamAttempts.currentSectionIndex, attempt.currentSectionIndex),
-      ),
+    const section = attempt.sectionsSnapshot[attempt.currentSectionIndex];
+    if (!section) return;
+    const deadline = attempt.sectionDeadlines.find((d) => d.sectionId === section.id);
+    const merged = acceptSectionAnswers(
+      section,
+      deadline,
+      Date.now(),
+      attempt.answers,
+      answers,
+      GRACE_MS,
     );
+    if (merged === attempt.answers) return;
+
+    await tx
+      .update(mockExamAttempts)
+      .set({ answers: merged })
+      .where(eq(mockExamAttempts.id, attempt.id));
+  });
 }
 
 export const SubmitSectionSchema = z.object({
@@ -120,27 +119,6 @@ export interface SubmitSectionResult {
   deadlines: SectionDeadline[];
 }
 
-/**
- * Fallback when a guarded update matched no row: a concurrent request
- * (e.g. a network-retry double submit) advanced or completed the attempt
- * first. Report the state that actually persisted instead of pretending
- * this request's write happened.
- */
-async function persistedSectionState(
-  userId: string,
-  attemptId: string,
-): Promise<SubmitSectionResult> {
-  const fresh = await db.query.mockExamAttempts.findFirst({
-    where: and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)),
-  });
-  if (!fresh) throw new NotFoundError("Attempt not found");
-  return {
-    done: fresh.status !== "in_progress",
-    nextSectionIndex: fresh.currentSectionIndex,
-    deadlines: fresh.sectionDeadlines,
-  };
-}
-
 /** Advance to the next section, or grade the whole exam on the last one. */
 export async function submitExamSectionForUser(
   userId: string,
@@ -148,105 +126,156 @@ export async function submitExamSectionForUser(
 ): Promise<SubmitSectionResult> {
   const { attemptId, sectionId, answers } = SubmitSectionSchema.parse(input);
 
-  const attempt = await db.query.mockExamAttempts.findFirst({
-    where: and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)),
-  });
-  if (!attempt) throw new NotFoundError("Attempt not found");
-  if (attempt.status !== "in_progress") {
-    return {
-      done: true,
-      nextSectionIndex: attempt.currentSectionIndex,
-      deadlines: attempt.sectionDeadlines,
-    };
-  }
+  const persisted = await db.transaction(async (tx) => {
+    // Section submits share the same row lock as autosave. A retry therefore
+    // observes the already-advanced row and returns its persisted state.
+    const [attempt] = await tx
+      .select()
+      .from(mockExamAttempts)
+      .where(and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)))
+      .for("update")
+      .limit(1);
+    if (!attempt) throw new NotFoundError("Attempt not found");
+    if (attempt.status !== "in_progress") {
+      return {
+        result: {
+          done: true,
+          nextSectionIndex: attempt.currentSectionIndex,
+          deadlines: attempt.sectionDeadlines,
+        },
+        sectionScores: null,
+      };
+    }
 
-  const exam = await db.query.mockExams.findFirst({ where: eq(mockExams.id, attempt.examId) });
-  if (!exam) throw new NotFoundError("Exam content missing");
+    const sections = attempt.sectionsSnapshot;
+    const section = sections[attempt.currentSectionIndex];
+    if (!section || section.id !== sectionId) {
+      return {
+        result: {
+          done: false,
+          nextSectionIndex: attempt.currentSectionIndex,
+          deadlines: attempt.sectionDeadlines,
+        },
+        sectionScores: null,
+      };
+    }
 
-  const section = exam.sections[attempt.currentSectionIndex];
-  if (!section || section.id !== sectionId) {
-    // Stale client (double submit / refresh race): report current state.
-    return {
-      done: attempt.status !== "in_progress",
-      nextSectionIndex: attempt.currentSectionIndex,
-      deadlines: attempt.sectionDeadlines,
-    };
-  }
+    const deadline = attempt.sectionDeadlines.find((d) => d.sectionId === sectionId);
+    const merged: AnswerMap = acceptSectionAnswers(
+      section,
+      deadline,
+      Date.now(),
+      attempt.answers,
+      answers,
+      GRACE_MS,
+    );
 
-  // Late answers are discarded — only previously autosaved ones count.
-  const deadline = attempt.sectionDeadlines.find((d) => d.sectionId === sectionId);
-  const merged: AnswerMap = acceptSectionAnswers(
-    section,
-    deadline,
-    Date.now(),
-    attempt.answers,
-    answers,
-    GRACE_MS,
-  );
+    if (attempt.currentSectionIndex < sections.length - 1) {
+      const next = sections[attempt.currentSectionIndex + 1];
+      const now = Date.now();
+      const deadlines: SectionDeadline[] = [
+        ...attempt.sectionDeadlines,
+        { sectionId: next.id, startedAt: now, expiresAt: now + next.durationSeconds * 1000 },
+      ];
+      await tx
+        .update(mockExamAttempts)
+        .set({
+          answers: merged,
+          currentSectionIndex: attempt.currentSectionIndex + 1,
+          sectionDeadlines: deadlines,
+        })
+        .where(eq(mockExamAttempts.id, attempt.id));
+      return {
+        result: {
+          done: false,
+          nextSectionIndex: attempt.currentSectionIndex + 1,
+          deadlines,
+        },
+        sectionScores: null,
+      };
+    }
 
-  const isLastSection = attempt.currentSectionIndex >= exam.sections.length - 1;
-
-  if (!isLastSection) {
-    const next = exam.sections[attempt.currentSectionIndex + 1];
-    const now = Date.now();
-    const deadlines: SectionDeadline[] = [
-      ...attempt.sectionDeadlines,
-      { sectionId: next.id, startedAt: now, expiresAt: now + next.durationSeconds * 1000 },
-    ];
-    const [advanced] = await db
+    const graded = gradeExam(attempt.track, sections, merged);
+    const completedAt = new Date();
+    await tx
       .update(mockExamAttempts)
       .set({
         answers: merged,
-        currentSectionIndex: attempt.currentSectionIndex + 1,
-        sectionDeadlines: deadlines,
+        status: "completed",
+        sectionScores: graded.sectionScores,
+        rawScore: graded.rawScore,
+        estimate: graded.estimate,
+        completedAt,
       })
-      .where(
-        and(
-          eq(mockExamAttempts.id, attempt.id),
-          eq(mockExamAttempts.status, "in_progress"),
-          eq(mockExamAttempts.currentSectionIndex, attempt.currentSectionIndex),
+      .where(eq(mockExamAttempts.id, attempt.id));
+    await recordMistakeOutcomes(tx, {
+      userId,
+      track: attempt.track,
+      kind: "exam",
+      refId: attempt.examId,
+      occurredAt: completedAt,
+      outcomes: sections.flatMap((examSection) =>
+        examSection.groups.flatMap((group) =>
+          group.questions.map((question) => ({
+            questionId: question.id,
+            correct: merged[question.id] === question.correctIndex,
+          })),
         ),
-      )
-      .returning({ id: mockExamAttempts.id });
-    if (!advanced) return persistedSectionState(userId, attempt.id);
-    return { done: false, nextSectionIndex: attempt.currentSectionIndex + 1, deadlines };
-  }
-
-  // Final section: grade everything server-side against unsanitized content.
-  const { sectionScores, rawScore, estimate } = gradeExam(exam.track, exam.sections, merged);
-
-  const [completed] = await db
-    .update(mockExamAttempts)
-    .set({
-      answers: merged,
-      status: "completed",
-      sectionScores,
-      rawScore,
-      estimate,
-      completedAt: new Date(),
-    })
-    .where(
-      and(
-        eq(mockExamAttempts.id, attempt.id),
-        eq(mockExamAttempts.status, "in_progress"),
-        eq(mockExamAttempts.currentSectionIndex, attempt.currentSectionIndex),
       ),
-    )
-    .returning({ id: mockExamAttempts.id });
-  if (!completed) return persistedSectionState(userId, attempt.id);
-  await recordActivity(userId);
-  for (const s of sectionScores) {
-    if (s.max === 0) continue;
-    await recordSkillSignalSafely(userId, {
-      skill: s.kind,
-      value: (s.raw / s.max) * 100,
-      source: "exam",
+    });
+    await recordActivityWith(tx, userId);
+
+    return {
+      result: {
+        done: true,
+        nextSectionIndex: attempt.currentSectionIndex,
+        deadlines: attempt.sectionDeadlines,
+      },
+      sectionScores: graded.sectionScores,
+    };
+  });
+
+  if (persisted.sectionScores) {
+    await recordLearnerOutcomeSafely(userId, {
+      signals: persisted.sectionScores.flatMap((score) =>
+        score.max === 0
+          ? []
+          : [
+              {
+                skill: score.kind,
+                value: (score.raw / score.max) * 100,
+                source: "exam" as const,
+              },
+            ],
+      ),
     });
   }
 
-  return {
-    done: true,
-    nextSectionIndex: attempt.currentSectionIndex,
-    deadlines: attempt.sectionDeadlines,
-  };
+  return persisted.result;
+}
+
+/** Abandon an in-progress attempt so the user can start a fresh snapshot. */
+export async function abandonExamAttemptForUser(
+  userId: string,
+  attemptIdInput: unknown,
+): Promise<{ status: "abandoned" }> {
+  const attemptId = z.string().min(1).parse(attemptIdInput);
+  await db.transaction(async (tx) => {
+    const [attempt] = await tx
+      .select({ status: mockExamAttempts.status })
+      .from(mockExamAttempts)
+      .where(and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)))
+      .for("update")
+      .limit(1);
+    if (!attempt) throw new NotFoundError("Attempt not found");
+    if (attempt.status === "completed") {
+      throw new ConflictError("Completed attempts cannot be abandoned", "attempt_not_abandonable");
+    }
+    if (attempt.status === "abandoned") return;
+    await tx
+      .update(mockExamAttempts)
+      .set({ status: "abandoned", abandonedAt: new Date() })
+      .where(eq(mockExamAttempts.id, attemptId));
+  });
+  return { status: "abandoned" };
 }

@@ -1,7 +1,8 @@
 "use server";
 
 import { requireUser } from "../auth/session";
-import { gradeCardForUser, submitQuizForUser } from "../services/vocab";
+import { answerQuizSessionForUser } from "../services/vocab-quiz";
+import { gradeCardForUser } from "../services/vocab";
 import type { ReviewGrade } from "../srs";
 
 export async function gradeCard(input: {
@@ -12,10 +13,11 @@ export async function gradeCard(input: {
   return gradeCardForUser(user.id, input);
 }
 
-export async function submitQuiz(input: {
-  track: string;
-  answers: Record<string, string>;
-}): Promise<{ score: number; total: number; correctWordIds: string[] }> {
+export async function answerQuiz(input: {
+  sessionId: string;
+  questionId: string;
+  optionId: string;
+}) {
   const user = await requireUser();
-  return submitQuizForUser(user.id, input);
+  return answerQuizSessionForUser(user.id, input);
 }

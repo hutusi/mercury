@@ -55,6 +55,9 @@ test("mistakes notebook: seed wrong answers, retest until cleared", async ({ pag
     .locator("li", { has: page.locator(`text=${t.vocab.quiz}`) })
     .filter({ has: page.getByText(t.mistakes.lastWrong) })
     .first();
+  // First click creates the opaque one-question session; the next picks an
+  // option. The answer key is revealed only in the grading response.
+  await vocabItem.getByRole("button", { name: t.mistakes.retest }).click();
   await vocabItem.locator("button").first().click();
   const vocabOutcome = await Promise.race([
     vocabItem
@@ -69,6 +72,7 @@ test("mistakes notebook: seed wrong answers, retest until cleared", async ({ pag
   if (vocabOutcome === "wrong") {
     const correctText = (await vocabItem.locator("button.border-foreground").textContent())!;
     await vocabItem.getByRole("button", { name: t.common.tryAgain }).click();
+    await expect(vocabItem.getByRole("button", { name: correctText.trim() })).toBeVisible();
     await vocabItem.getByRole("button", { name: correctText.trim() }).click();
   }
   await expect(vocabItem.getByText(t.mistakes.retestCorrect)).toBeVisible();

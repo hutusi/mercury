@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, ChevronDown, ChevronRight, X } from "lucide-react";
-import { useState, useTransition } from "react";
+import { useId, useState, useTransition } from "react";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,8 @@ export function MistakeItem({
 }) {
   const t = useT();
   const locale = useLocale();
+  const detailsId = useId();
+  const contextId = useId();
   const [expanded, setExpanded] = useState(false);
   const [showContext, setShowContext] = useState(false);
   const [chosen, setChosen] = useState<number | undefined>(undefined);
@@ -73,6 +75,7 @@ export function MistakeItem({
         type="button"
         onClick={() => setExpanded((e) => !e)}
         aria-expanded={expanded}
+        aria-controls={detailsId}
         className="flex w-full items-start gap-3 py-3 text-left transition-colors hover:bg-muted/50"
       >
         <span aria-hidden className="mt-0.5 shrink-0">
@@ -100,18 +103,23 @@ export function MistakeItem({
       </button>
 
       {expanded && (
-        <div className="space-y-4 pb-5 pl-7">
+        <div id={detailsId} className="space-y-4 pb-5 pl-7">
           {mistake.context && (
             <div>
               <button
                 type="button"
                 onClick={() => setShowContext((s) => !s)}
+                aria-expanded={showContext}
+                aria-controls={contextId}
                 className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {showContext ? t.mistakes.hideContext : t.mistakes.showContext}
               </button>
               {showContext && (
-                <div className="mt-2 border-l-2 border-border pl-4 text-sm text-foreground/80">
+                <div
+                  id={contextId}
+                  className="mt-2 border-l-2 border-border pl-4 text-sm text-foreground/80"
+                >
                   {mistake.context.passage && (
                     <p className="font-serif whitespace-pre-line">{mistake.context.passage}</p>
                   )}
@@ -191,7 +199,11 @@ export function MistakeItem({
               <Button onClick={submit} disabled={chosen === undefined || pending}>
                 {t.common.submit}
               </Button>
-              {error && <p className="text-sm font-medium text-cinnabar">{error}</p>}
+              {error && (
+                <p role="alert" className="text-sm font-medium text-destructive">
+                  {error}
+                </p>
+              )}
             </div>
           )}
         </div>

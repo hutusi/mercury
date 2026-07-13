@@ -1,24 +1,20 @@
 "use server";
 
-import { TrackSchema } from "../../content/types";
 import { requireUser } from "../auth/session";
 import { localeRedirect } from "../i18n";
-import { UpsertLearnerProfileSchema, upsertLearnerProfileForUser } from "../services/profile";
-import { setActiveTrackForUser, setRemindersEnabledForUser } from "../services/settings";
+import {
+  completeOnboardingForUser,
+  setActiveTrackForUser,
+  setRemindersEnabledForUser,
+} from "../services/settings";
 
-export async function completeOnboarding(input: { track: string; goal?: Record<string, unknown> }) {
+export async function completeOnboarding(input: {
+  track: string;
+  timeZone?: string;
+  goal?: Record<string, unknown>;
+}) {
   const user = await requireUser();
-  // Validate the full payload before any write: a malformed goal must fail
-  // here with nothing committed, not leave a track-onboarded account whose
-  // goals were silently dropped.
-  const goal = UpsertLearnerProfileSchema.parse({
-    ...(input.goal ?? {}),
-    goalTrack: TrackSchema.parse(input.track),
-  });
-  await setActiveTrackForUser(user.id, input.track);
-  // The profile row (with goalTrack) is created even when the goal step was
-  // skipped, so the plan engine and AI prompt context always have a substrate.
-  await upsertLearnerProfileForUser(user.id, goal);
+  await completeOnboardingForUser(user.id, input);
   await localeRedirect("/dashboard");
 }
 

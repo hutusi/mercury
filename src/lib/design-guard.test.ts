@@ -100,4 +100,8 @@ describe("Lexicon design guard", () => {
   it("uses lucide icons, not emoji glyphs", () => {
     expect(offenders(EMOJI)).toEqual([]);
   });
+
+  it("uses bundled fonts so builds do not depend on Google Fonts", () => {
+    expect(offenders(/next\/font\/google/)).toEqual([]);
+  });
 });

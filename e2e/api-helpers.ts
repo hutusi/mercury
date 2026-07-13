@@ -53,7 +53,7 @@ export async function apiOnboard(
 ): Promise<void> {
   const res = await request.put("/api/v1/me/settings", {
     headers: user.authHeaders,
-    data: { track },
+    data: { track, timeZone: "Asia/Shanghai" },
   });
   expect(res.ok()).toBeTruthy();
 }

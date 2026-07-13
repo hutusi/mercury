@@ -7,6 +7,7 @@ import type { userSettings } from "../../db/schema";
 export function serializeSettings(settings: typeof userSettings.$inferSelect) {
   return {
     activeTrack: settings.activeTrack,
+    timeZone: settings.timeZone,
     dailyGoal: settings.dailyGoal,
     remindersEnabled: settings.remindersEnabled,
     onboardedAt: settings.onboardedAt,

@@ -20,7 +20,12 @@ export async function listExamsWithAttempts(userId: string, track: Track) {
       orderBy: asc(mockExams.id),
     }),
     db.query.mockExamAttempts.findMany({
-      where: eq(mockExamAttempts.userId, userId),
+      where: and(
+        eq(mockExamAttempts.userId, userId),
+        track === "business"
+          ? inArray(mockExamAttempts.track, ["toeic", "ielts"])
+          : eq(mockExamAttempts.track, track),
+      ),
       orderBy: desc(mockExamAttempts.startedAt),
       limit: 20,
     }),
@@ -54,15 +59,14 @@ export async function getInProgressAttempt(userId: string, examId: string) {
   });
 }
 
-/** A user's attempt with its exam (owner-scoped). */
+/** A user's attempt with live metadata and its immutable section snapshot. */
 export async function getAttemptWithExam(userId: string, attemptId: string) {
-  const attempt = await db.query.mockExamAttempts.findFirst({
-    where: and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)),
-  });
-  if (!attempt) return null;
-
-  const exam = await getExamById(attempt.examId);
-  if (!exam) return null;
-
-  return { attempt, exam };
+  const [row] = await db
+    .select({ attempt: mockExamAttempts, exam: mockExams })
+    .from(mockExamAttempts)
+    .innerJoin(mockExams, eq(mockExamAttempts.examId, mockExams.id))
+    .where(and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)))
+    .limit(1);
+  if (!row) return null;
+  return { attempt: row.attempt, exam: { ...row.exam, sections: row.attempt.sectionsSnapshot } };
 }

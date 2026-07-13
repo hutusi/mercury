@@ -28,7 +28,7 @@ export function QuestionsForm({
             {numbered ? `${qIndex + 1}. ` : ""}
             {q.stem}
           </p>
-          <div className="mt-3 space-y-2">
+          <div className="mt-3 space-y-2" role="group" aria-label={q.stem}>
             {q.options.map((option, i) => {
               const selected = answers[q.id] === i;
               return (
@@ -37,6 +37,7 @@ export function QuestionsForm({
                   type="button"
                   disabled={disabled}
                   onClick={() => onAnswer(q.id, i)}
+                  aria-pressed={selected}
                   className={`flex w-full items-start gap-3 border px-3 py-2.5 text-left text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                     selected
                       ? "border-foreground bg-muted font-medium text-foreground"

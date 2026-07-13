@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter, Newsreader } from "next/font/google";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { dictionaries } from "@/lib/i18n";
@@ -9,19 +9,37 @@ import "../globals.css";
 
 // Latin glyphs only — zh renders through the CJK system faces in --font-sans /
 // --font-serif (see globals.css).
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+const inter = localFont({
+  src: "../fonts/inter-latin-variable.woff2",
+  weight: "100 900",
+  style: "normal",
+  display: "swap",
+  variable: "--font-inter",
+});
 // Display serif for headwords; italics carry IPA transcriptions.
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
+const newsreader = localFont({
+  src: [
+    {
+      path: "../fonts/newsreader-latin-variable-normal.woff2",
+      weight: "200 800",
+      style: "normal",
+    },
+    {
+      path: "../fonts/newsreader-latin-variable-italic.woff2",
+      weight: "200 800",
+      style: "italic",
+    },
+  ],
   display: "swap",
   variable: "--font-newsreader",
-  axes: ["opsz"],
 });
 // Data face: timers, scores, counts, micro-labels.
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const plexMono = localFont({
+  src: [
+    { path: "../fonts/ibm-plex-mono-latin-400.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/ibm-plex-mono-latin-500.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/ibm-plex-mono-latin-600.woff2", weight: "600", style: "normal" },
+  ],
   display: "swap",
   variable: "--font-plex-mono",
 });

@@ -1,5 +1,11 @@
 import { describe, expect, test } from "bun:test";
-import { buildQuizQuestion, shuffle, type QuizWordInput } from "./vocab-quiz-core";
+import {
+  buildQuizQuestion,
+  gradeQuizAnswer,
+  sanitizeQuizQuestion,
+  shuffle,
+  type QuizWordInput,
+} from "./vocab-quiz-core";
 
 function words(n: number): QuizWordInput[] {
   return Array.from({ length: n }, (_, i) => ({
@@ -52,6 +58,58 @@ describe("buildQuizQuestion", () => {
     const pool = words(4);
     const q = buildQuizQuestion(pool[0], pool, "en2zh", seededRng());
     expect(q.options.filter((o) => o.wordId === "w0")).toHaveLength(1);
+  });
+
+  test("deduplicates distractors by the visible label for each direction", () => {
+    const pool: QuizWordInput[] = [
+      { id: "answer", headword: "invoice", translationZh: "发票" },
+      { id: "duplicate-answer", headword: "bill", translationZh: "发票" },
+      { id: "duplicate-a", headword: "memo", translationZh: "备忘录" },
+      { id: "duplicate-b", headword: "note", translationZh: "备忘录" },
+      { id: "unique-a", headword: "agenda", translationZh: "议程" },
+      { id: "unique-b", headword: "courier", translationZh: "快递员" },
+    ];
+
+    const en2zh = buildQuizQuestion(pool[0], pool, "en2zh", seededRng());
+    expect(en2zh.options).toHaveLength(4);
+    expect(new Set(en2zh.options.map((option) => option.text)).size).toBe(4);
+    expect(en2zh.options.filter((option) => option.text === "发票")).toHaveLength(1);
+
+    const zh2en = buildQuizQuestion(pool[0], pool, "zh2en", seededRng());
+    expect(new Set(zh2en.options.map((option) => option.text)).size).toBe(zh2en.options.length);
+  });
+
+  test("returns only the available unique choices when the pool is small", () => {
+    const pool: QuizWordInput[] = [
+      { id: "answer", headword: "invoice", translationZh: "发票" },
+      { id: "duplicate-answer", headword: "bill", translationZh: "发票" },
+      { id: "same-a", headword: "memo", translationZh: "备忘录" },
+      { id: "same-b", headword: "note", translationZh: "备忘录" },
+    ];
+
+    const question = buildQuizQuestion(pool[0], pool, "en2zh", seededRng());
+    expect(question.options).toHaveLength(2);
+    expect(new Set(question.options.map((option) => option.text))).toEqual(
+      new Set(["发票", "备忘录"]),
+    );
+  });
+
+  test("public serialization removes every word id and still supports opaque grading", () => {
+    const pool = words(5);
+    let id = 0;
+    const stored = buildQuizQuestion(pool[0], pool, "en2zh", seededRng(), () => `opaque-${id++}`);
+    const publicQuestion = sanitizeQuizQuestion(stored);
+
+    expect(JSON.stringify(publicQuestion)).not.toContain("wordId");
+    expect(publicQuestion.id).toStartWith("opaque-");
+    expect(publicQuestion.options.every((option) => option.id.startsWith("opaque-"))).toBe(true);
+
+    const correct = stored.options.find((option) => option.wordId === stored.wordId)!;
+    expect(gradeQuizAnswer(stored, correct.id)).toEqual({
+      correct: true,
+      correctOptionId: correct.id,
+    });
+    expect(gradeQuizAnswer(stored, "not-an-option")).toBeNull();
   });
 });
 

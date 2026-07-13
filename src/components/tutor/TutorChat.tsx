@@ -33,7 +33,7 @@ export function TutorChat({
   const [messages, setMessages] = useState<ChatMessageVM[]>(initialMessages);
   const [input, setInput] = useState("");
   const [remaining, setRemaining] = useState(remainingToday);
-  const [error, setError] = useState<"unavailable" | "limit" | "failed" | null>(
+  const [error, setError] = useState<"unavailable" | "limit" | "in_progress" | "failed" | null>(
     enabled ? null : "unavailable",
   );
   const [pending, startTransition] = useTransition();
@@ -63,7 +63,15 @@ export function TutorChat({
       } else {
         setMessages((m) => m.slice(0, -1));
         setInput(content);
-        setError(result.error === "limit_reached" ? "limit" : "failed");
+        setError(
+          result.error === "limit_reached"
+            ? "limit"
+            : result.error === "in_progress"
+              ? "in_progress"
+              : result.error === "ai_unavailable"
+                ? "unavailable"
+                : "failed",
+        );
         if (result.error === "limit_reached") setRemaining(0);
       }
     });
@@ -75,7 +83,7 @@ export function TutorChat({
         <p className="text-sm text-muted-foreground">{t.tutor.emptyHint}</p>
       )}
 
-      <div className="space-y-6">
+      <div className="space-y-6" aria-live="polite" aria-relevant="additions text">
         {messages.map((m) => (
           <div key={m.id} className={m.role === "user" ? "border-l-2 border-border pl-4" : ""}>
             <SectionLabel as="p" className="mb-1">
@@ -84,7 +92,11 @@ export function TutorChat({
             <p className="text-sm leading-relaxed whitespace-pre-wrap">{m.content}</p>
           </div>
         ))}
-        {pending && <p className="text-sm text-muted-foreground">{t.tutor.thinking}</p>}
+        {pending && (
+          <p role="status" className="text-sm text-muted-foreground">
+            {t.tutor.thinking}
+          </p>
+        )}
         <div ref={endRef} />
       </div>
 
@@ -98,6 +110,11 @@ export function TutorChat({
           {t.tutor.limitReached}
         </Callout>
       )}
+      {error === "in_progress" && (
+        <Callout variant="accent" className="p-4 text-sm" role="status">
+          {t.tutor.inProgress}
+        </Callout>
+      )}
       {error === "failed" && (
         <Callout variant="error" className="p-3 text-sm">
           {t.tutor.sendFailed}
@@ -105,7 +122,11 @@ export function TutorChat({
       )}
 
       <div className="space-y-2">
+        <label htmlFor="tutor-message" className="sr-only">
+          {t.tutor.messageLabel}
+        </label>
         <Textarea
+          id="tutor-message"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
@@ -118,9 +139,10 @@ export function TutorChat({
           rows={3}
           maxLength={4000}
           disabled={!enabled || remaining <= 0}
+          aria-describedby="tutor-message-meta"
         />
         <div className="flex items-center justify-between gap-3">
-          <p className="font-mono text-xs text-muted-foreground">
+          <p id="tutor-message-meta" className="font-mono text-xs text-muted-foreground">
             {t.tutor.remainingLabel}: {remaining}
           </p>
           <Button onClick={send} disabled={!canSend}>

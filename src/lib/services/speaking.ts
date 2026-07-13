@@ -1,15 +1,21 @@
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
-import { activeAiModel, getSpeakingFeedback } from "../ai/client";
+import { activeAiModel, AiUnavailableError, getSpeakingFeedback, isAiEnabled } from "../ai/client";
 import type { SpeakingFeedback } from "../ai/schemas";
 import type { SpeakingPartType, Track } from "../../content/types";
+import { gradingInputHash } from "../ai-grading-core";
+import {
+  claimGradingRequest,
+  completeGradingRequestWith,
+  failGradingRequest,
+} from "../ai-grading-usage";
 import { db } from "../db";
 import { speakingPrompts, speakingSubmissions } from "../db/schema";
 import { formatLearnerContext, normalizeAiScore } from "../learner-model-core";
 import { getLearnerProfile } from "../queries/profile";
-import { recordActivity } from "../streak";
+import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
-import { mergeCoachMemoSafely, recordSkillSignalSafely } from "./profile";
+import { recordLearnerOutcomeSafely } from "./profile";
 
 /**
  * The <learner_profile> block for the grader: profile + fluency/vocabulary/
@@ -68,19 +74,26 @@ async function recordSpeakingOutcome(
   partType: SpeakingPartType,
   feedback: SpeakingFeedback,
 ) {
-  await recordSkillSignalSafely(userId, {
-    skill: "speaking",
-    value: normalizeAiScore(speakingScoreScale(partType), feedback.overallScore),
-    source: "ai_feedback",
+  await recordLearnerOutcomeSafely(userId, {
+    signals: [
+      {
+        skill: "speaking",
+        value: normalizeAiScore(speakingScoreScale(partType), feedback.overallScore),
+        source: "ai_feedback",
+      },
+    ],
+    memoUpdate: feedback.memoUpdate,
   });
-  if (feedback.memoUpdate) await mergeCoachMemoSafely(userId, feedback.memoUpdate);
 }
 
 export const SubmitSpeakingSchema = z.object({
+  requestId: z.string().uuid(),
   promptId: z.string(),
   transcript: z.string().min(10).max(20000),
   durationSeconds: z.number().int().nonnegative().max(600),
 });
+
+export const RetrySpeakingSchema = z.object({ requestId: z.string().uuid() });
 
 export interface SpeakingResult {
   submissionId: string;
@@ -88,50 +101,91 @@ export interface SpeakingResult {
   feedback: SpeakingFeedback | null;
 }
 
+async function getPersistedSpeakingResult(
+  userId: string,
+  submissionId: string,
+): Promise<SpeakingResult> {
+  const submission = await db.query.speakingSubmissions.findFirst({
+    where: and(eq(speakingSubmissions.id, submissionId), eq(speakingSubmissions.userId, userId)),
+  });
+  if (!submission || submission.status === "failed") {
+    throw new NotFoundError("Submission not found");
+  }
+  return {
+    submissionId: submission.id,
+    status: submission.status,
+    feedback: submission.feedback,
+  };
+}
+
 /** AI-grade a spoken transcript; on any AI failure degrade to self-assessment. */
 export async function submitSpeakingForUser(
   userId: string,
   input: unknown,
 ): Promise<SpeakingResult> {
-  const { promptId, transcript, durationSeconds } = SubmitSpeakingSchema.parse(input);
+  const { requestId, promptId, transcript, durationSeconds } = SubmitSpeakingSchema.parse(input);
 
   const prompt = await db.query.speakingPrompts.findFirst({
     where: eq(speakingPrompts.id, promptId),
   });
   if (!prompt) throw new NotFoundError(`Unknown speaking prompt: ${promptId}`);
 
+  const inputHash = gradingInputHash({ promptId, transcript, durationSeconds });
+  const aiEnabled = isAiEnabled();
+  const claim = await claimGradingRequest({
+    userId,
+    requestId,
+    kind: "speaking",
+    scope: `speaking:submit:${inputHash}`,
+    inputHash,
+    charge: aiEnabled,
+  });
+  if (claim.disposition === "completed") {
+    return getPersistedSpeakingResult(userId, claim.submissionId);
+  }
   const learnerContext = await speakingLearnerContext(userId, prompt.track);
 
   let feedback: SpeakingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
-  try {
-    feedback = await getSpeakingFeedback({
-      partType: prompt.partType,
-      promptEn: prompt.promptEn,
-      transcript,
-      durationSeconds,
-      learnerContext,
-    });
-    status = "ai_scored";
-  } catch {
-    feedback = null;
-    status = "self_assessed";
+  if (aiEnabled) {
+    try {
+      feedback = await getSpeakingFeedback({
+        partType: prompt.partType,
+        promptEn: prompt.promptEn,
+        transcript,
+        durationSeconds,
+        learnerContext,
+      });
+      status = "ai_scored";
+    } catch {
+      feedback = null;
+      status = "self_assessed";
+    }
   }
 
-  const [submission] = await db
-    .insert(speakingSubmissions)
-    .values({
+  const submission = await db.transaction(async (tx) => {
+    const [row] = await tx
+      .insert(speakingSubmissions)
+      .values({
+        userId,
+        promptId,
+        transcript,
+        durationSeconds,
+        status,
+        feedback,
+        model: status === "ai_scored" ? activeAiModel() : null,
+      })
+      .returning({ id: speakingSubmissions.id });
+    await recordActivityWith(tx, userId);
+    await completeGradingRequestWith(tx, {
       userId,
-      promptId,
-      transcript,
-      durationSeconds,
-      status,
-      feedback,
-      model: status === "ai_scored" ? activeAiModel() : null,
-    })
-    .returning({ id: speakingSubmissions.id });
+      requestId,
+      claimId: claim.claimId,
+      submissionId: row.id,
+    });
+    return row;
+  });
 
-  await recordActivity(userId);
   if (status === "ai_scored" && feedback) {
     await recordSpeakingOutcome(userId, prompt.partType, feedback);
   }
@@ -146,7 +200,9 @@ export async function submitSpeakingForUser(
 export async function retrySpeakingFeedbackForUser(
   userId: string,
   submissionId: string,
+  input: unknown,
 ): Promise<SpeakingResult> {
+  const { requestId } = RetrySpeakingSchema.parse(input);
   const submission = await db.query.speakingSubmissions.findFirst({
     where: and(eq(speakingSubmissions.id, submissionId), eq(speakingSubmissions.userId, userId)),
   });
@@ -154,37 +210,65 @@ export async function retrySpeakingFeedbackForUser(
   if (submission.status === "ai_scored") {
     return { submissionId: submission.id, status: "ai_scored", feedback: submission.feedback };
   }
+  if (submission.status !== "self_assessed") {
+    throw new NotFoundError("Submission not found");
+  }
+  if (!isAiEnabled()) {
+    throw new AiUnavailableError("No AI provider is configured");
+  }
+
+  const inputHash = gradingInputHash({ submissionId: submission.id });
+  const claim = await claimGradingRequest({
+    userId,
+    requestId,
+    kind: "speaking",
+    scope: `speaking:retry:${submission.id}`,
+    inputHash,
+    charge: true,
+  });
+  if (claim.disposition === "completed") {
+    return getPersistedSpeakingResult(userId, claim.submissionId);
+  }
 
   const prompt = await db.query.speakingPrompts.findFirst({
     where: eq(speakingPrompts.id, submission.promptId),
   });
   if (!prompt) throw new NotFoundError(`Unknown speaking prompt: ${submission.promptId}`);
-
   const learnerContext = await speakingLearnerContext(userId, prompt.track);
 
-  const feedback = await getSpeakingFeedback({
-    partType: prompt.partType,
-    promptEn: prompt.promptEn,
-    transcript: submission.transcript,
-    durationSeconds: submission.durationSeconds,
-    learnerContext,
-  });
+  let feedback: SpeakingFeedback;
+  try {
+    feedback = await getSpeakingFeedback({
+      partType: prompt.partType,
+      promptEn: prompt.promptEn,
+      transcript: submission.transcript,
+      durationSeconds: submission.durationSeconds,
+      learnerContext,
+    });
+  } catch (error) {
+    await failGradingRequest({ userId, requestId, claimId: claim.claimId });
+    throw error;
+  }
 
-  // Compare-and-set on status so a concurrent retry can't overwrite this one.
-  const [updated] = await db
-    .update(speakingSubmissions)
-    .set({
-      status: "ai_scored",
-      feedback,
-      model: activeAiModel(),
-    })
-    .where(
-      and(
-        eq(speakingSubmissions.id, submission.id),
-        eq(speakingSubmissions.status, "self_assessed"),
-      ),
-    )
-    .returning();
+  const updated = await db.transaction(async (tx) => {
+    const [row] = await tx
+      .update(speakingSubmissions)
+      .set({ status: "ai_scored", feedback, model: activeAiModel() })
+      .where(
+        and(
+          eq(speakingSubmissions.id, submission.id),
+          eq(speakingSubmissions.status, "self_assessed"),
+        ),
+      )
+      .returning();
+    await completeGradingRequestWith(tx, {
+      userId,
+      requestId,
+      claimId: claim.claimId,
+      submissionId: submission.id,
+    });
+    return row;
+  });
 
   if (updated) {
     await recordSpeakingOutcome(userId, prompt.partType, feedback);
@@ -194,12 +278,5 @@ export async function retrySpeakingFeedbackForUser(
   // Lost the race: a concurrent retry already scored this submission. Return
   // the persisted feedback (status is necessarily ai_scored now) so the UI
   // can't show a result that never reached the database.
-  const stored = await db.query.speakingSubmissions.findFirst({
-    where: and(eq(speakingSubmissions.id, submission.id), eq(speakingSubmissions.userId, userId)),
-  });
-  return {
-    submissionId: submission.id,
-    status: "ai_scored",
-    feedback: stored?.feedback ?? feedback,
-  };
+  return getPersistedSpeakingResult(userId, submission.id);
 }

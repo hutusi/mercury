@@ -2,7 +2,8 @@ import type { ExamSection } from "../../../content/types";
 import { sanitizeSections } from "../../exam-utils";
 
 /**
- * Pure mapper from an attempt row + exam content to the API resource.
+ * Pure mapper from an attempt row (including its immutable section snapshot)
+ * to the API resource.
  * Status decides what may cross the wire: an in-progress attempt only ever
  * carries sanitizeSections() output (no correctIndex/explanationZh); the full
  * sections with keys appear as `review` strictly after completion. Pure so a
@@ -12,7 +13,7 @@ import { sanitizeSections } from "../../exam-utils";
 interface AttemptLike {
   id: string;
   examId: string;
-  status: "in_progress" | "completed" | "expired";
+  status: "in_progress" | "completed" | "abandoned";
   currentSectionIndex: number;
   sectionDeadlines: { sectionId: string; startedAt: number; expiresAt: number }[];
   answers: Record<string, number>;
@@ -22,13 +23,11 @@ interface AttemptLike {
   estimate: unknown;
   startedAt: Date;
   completedAt: Date | null;
+  abandonedAt: Date | null;
+  sectionsSnapshot: ExamSection[];
 }
 
-export function toAttemptResource(
-  attempt: AttemptLike,
-  exam: { sections: ExamSection[] },
-  now: number,
-) {
+export function toAttemptResource(attempt: AttemptLike, now: number) {
   if (attempt.status === "in_progress") {
     return {
       id: attempt.id,
@@ -39,7 +38,17 @@ export function toAttemptResource(
       currentSectionIndex: attempt.currentSectionIndex,
       sectionDeadlines: attempt.sectionDeadlines,
       answers: attempt.answers,
-      sections: sanitizeSections(exam.sections),
+      sections: sanitizeSections(attempt.sectionsSnapshot),
+    };
+  }
+
+  if (attempt.status === "abandoned") {
+    return {
+      id: attempt.id,
+      examId: attempt.examId,
+      status: "abandoned" as const,
+      startedAt: attempt.startedAt,
+      abandonedAt: attempt.abandonedAt,
     };
   }
 
@@ -55,6 +64,6 @@ export function toAttemptResource(
     estimate: attempt.estimate,
     answers: attempt.answers,
     // Post-completion review legitimately includes the answer key.
-    review: exam.sections,
+    review: attempt.sectionsSnapshot,
   };
 }

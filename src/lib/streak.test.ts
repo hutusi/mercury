@@ -1,13 +1,29 @@
 import { describe, expect, test } from "bun:test";
-import { computeStreak, localDay } from "./streak-core";
+import { calendarDay, computeStreak, isIanaTimeZone, shiftCalendarDay } from "./streak-core";
 
 // Noon avoids any DST-edge weirdness when walking days backwards.
 const day = (iso: string) => new Date(`${iso}T12:00:00`);
 
-describe("localDay", () => {
-  test("zero-pads month and day", () => {
-    expect(localDay(day("2026-03-05"))).toBe("2026-03-05");
-    expect(localDay(day("2026-11-30"))).toBe("2026-11-30");
+describe("calendarDay", () => {
+  test("uses the learner timezone instead of the server timezone", () => {
+    const instant = new Date("2026-03-05T16:30:00.000Z");
+    expect(calendarDay(instant, "Asia/Shanghai")).toBe("2026-03-06");
+    expect(calendarDay(instant, "America/New_York")).toBe("2026-03-05");
+  });
+
+  test("handles dates across daylight-saving transitions", () => {
+    expect(calendarDay(new Date("2026-03-08T06:59:00Z"), "America/New_York")).toBe("2026-03-08");
+    expect(calendarDay(new Date("2026-11-01T05:30:00Z"), "America/New_York")).toBe("2026-11-01");
+  });
+
+  test("validates IANA timezone identifiers", () => {
+    expect(isIanaTimeZone("Asia/Shanghai")).toBe(true);
+    expect(isIanaTimeZone("Mars/Olympus_Mons")).toBe(false);
+  });
+
+  test("shifts calendar dates across month and year boundaries", () => {
+    expect(shiftCalendarDay("2026-03-01", -1)).toBe("2026-02-28");
+    expect(shiftCalendarDay("2026-12-31", 1)).toBe("2027-01-01");
   });
 });
 

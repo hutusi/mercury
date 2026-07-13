@@ -53,45 +53,49 @@ async function seed() {
     }
   }
 
-  for (const [i, word] of vocab.entries()) {
-    await db
-      .insert(vocabWords)
-      .values({ ...word, sortOrder: i })
-      .onConflictDoUpdate({ target: vocabWords.id, set: { ...word, sortOrder: i } });
-  }
+  // Content versions move as one unit. A validation or database failure can
+  // never leave practice areas on different seed revisions.
+  await db.transaction(async (tx) => {
+    for (const [i, word] of vocab.entries()) {
+      await tx
+        .insert(vocabWords)
+        .values({ ...word, sortOrder: i })
+        .onConflictDoUpdate({ target: vocabWords.id, set: { ...word, sortOrder: i } });
+    }
 
-  for (const ex of reading) {
-    await db
-      .insert(readingExercises)
-      .values(ex)
-      .onConflictDoUpdate({ target: readingExercises.id, set: ex });
-  }
+    for (const ex of reading) {
+      await tx
+        .insert(readingExercises)
+        .values(ex)
+        .onConflictDoUpdate({ target: readingExercises.id, set: ex });
+    }
 
-  for (const ex of listening) {
-    await db
-      .insert(listeningExercises)
-      .values(ex)
-      .onConflictDoUpdate({ target: listeningExercises.id, set: ex });
-  }
+    for (const ex of listening) {
+      await tx
+        .insert(listeningExercises)
+        .values(ex)
+        .onConflictDoUpdate({ target: listeningExercises.id, set: ex });
+    }
 
-  for (const prompt of writing) {
-    await db
-      .insert(writingPrompts)
-      .values(prompt)
-      .onConflictDoUpdate({ target: writingPrompts.id, set: prompt });
-  }
+    for (const prompt of writing) {
+      await tx
+        .insert(writingPrompts)
+        .values(prompt)
+        .onConflictDoUpdate({ target: writingPrompts.id, set: prompt });
+    }
 
-  for (const prompt of speaking) {
-    await db
-      .insert(speakingPrompts)
-      .values(prompt)
-      .onConflictDoUpdate({ target: speakingPrompts.id, set: prompt });
-  }
+    for (const prompt of speaking) {
+      await tx
+        .insert(speakingPrompts)
+        .values(prompt)
+        .onConflictDoUpdate({ target: speakingPrompts.id, set: prompt });
+    }
 
-  for (const exam of exams) {
-    const row = { ...exam, totalQuestions: examQuestionCount(exam) };
-    await db.insert(mockExams).values(row).onConflictDoUpdate({ target: mockExams.id, set: row });
-  }
+    for (const exam of exams) {
+      const row = { ...exam, totalQuestions: examQuestionCount(exam) };
+      await tx.insert(mockExams).values(row).onConflictDoUpdate({ target: mockExams.id, set: row });
+    }
+  });
 
   console.log("Seed complete:");
   console.log(`  vocab_words:         ${vocab.length}`);
