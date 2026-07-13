@@ -776,8 +776,12 @@ paths:
           application/json:
             schema:
               type: object
-              required: [text]
+              required: [requestId, text]
               properties:
+                requestId:
+                  type: string
+                  format: uuid
+                  description: Per-user idempotency key; same input returns the original submission.
                 text: { type: string, minLength: 20, maxLength: 30000 }
       responses:
         "200":
@@ -792,7 +796,13 @@ paths:
                   feedback: {}
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
+        "429":
+          description: Shared daily writing/speaking provider-call cap reached (code ai_grading_limit_reached).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
   /api/v1/writing/submissions/{submissionId}:
     get:
       summary: Submission detail; selfAssess material only when not AI-scored
@@ -808,11 +818,27 @@ paths:
       summary: Retry AI grading for a self-assessed submission
       tags: [writing]
       parameters: [{ $ref: "#/components/parameters/submissionId" }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [requestId]
+              properties:
+                requestId: { type: string, format: uuid }
       responses:
         "200":
           description: Refreshed result with the graded feedback (same contract as speaking).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+        "429":
+          description: Shared daily writing/speaking provider-call cap reached (code ai_grading_limit_reached).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
         "503": { $ref: "#/components/responses/AiUnavailable" }
 
   # ── speaking (on-device STT, AI-graded, degrades) ─────────────────────────
@@ -846,8 +872,12 @@ paths:
           application/json:
             schema:
               type: object
-              required: [transcript, durationSeconds]
+              required: [requestId, transcript, durationSeconds]
               properties:
+                requestId:
+                  type: string
+                  format: uuid
+                  description: Per-user idempotency key; same input returns the original submission.
                 transcript: { type: string, minLength: 10, maxLength: 20000 }
                 durationSeconds: { type: integer, minimum: 0, maximum: 600 }
       responses:
@@ -863,7 +893,13 @@ paths:
                   feedback: {}
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
+        "429":
+          description: Shared daily writing/speaking provider-call cap reached (code ai_grading_limit_reached).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
   /api/v1/speaking/submissions/{submissionId}:
     get:
       summary: Submission detail; selfAssess material only when not AI-scored
@@ -879,11 +915,27 @@ paths:
       summary: Retry AI grading for a self-assessed submission
       tags: [speaking]
       parameters: [{ $ref: "#/components/parameters/submissionId" }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [requestId]
+              properties:
+                requestId: { type: string, format: uuid }
       responses:
         "200":
           description: Refreshed result.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+        "429":
+          description: Shared daily writing/speaking provider-call cap reached (code ai_grading_limit_reached).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
         "503": { $ref: "#/components/responses/AiUnavailable" }
 
 components:
@@ -973,7 +1025,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, expired, validation_failed, invalid_json, ai_unavailable, chat_limit_reached, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, grading_request_conflict, grading_in_progress, expired, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, internal).
             message:
               type: string
               description: English debug text — not for end users.

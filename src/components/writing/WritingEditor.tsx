@@ -22,7 +22,11 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
     setError(null);
     startTransition(async () => {
       try {
-        const { submissionId } = await submitWriting({ promptId, text });
+        const { submissionId } = await submitWriting({
+          requestId: crypto.randomUUID(),
+          promptId,
+          text,
+        });
         router.push(localePath(locale, `/writing/submissions/${submissionId}`));
       } catch {
         setError(t.auth.genericError);

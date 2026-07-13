@@ -44,6 +44,8 @@ export type ExerciseKind = "reading" | "listening" | "vocab_quiz";
 export type SubmissionStatus = "ai_scored" | "self_assessed" | "failed";
 export type AttemptStatus = "in_progress" | "completed" | "abandoned";
 export type QuizPurpose = "practice" | "mistake_retest";
+export type AiGradingKind = "writing" | "speaking";
+export type AiGradingRequestStatus = "in_progress" | "completed" | "failed";
 
 export interface SectionDeadline {
   sectionId: string;
@@ -341,6 +343,53 @@ export const speakingSubmissions = pgTable(
     createdAt: ts("created_at").notNull().$defaultFn(now),
   },
   (t) => [index("speaking_submissions_user_idx").on(t.userId, t.createdAt)],
+);
+
+/**
+ * Learner-local daily cost ledger shared by writing and speaking graders.
+ * The row is locked before a provider call is claimed, making the cap exact
+ * even when requests arrive concurrently.
+ */
+export const aiUsageDays = pgTable(
+  "ai_usage_days",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    day: text("day").notNull(),
+    gradingCalls: integer("grading_calls").notNull().default(0),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.day] })],
+);
+
+/**
+ * Idempotency + lease ledger for paid grading calls. `claimId` changes on
+ * every stale reclaim so a superseded worker cannot publish a late result.
+ */
+export const aiGradingRequests = pgTable(
+  "ai_grading_requests",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    requestId: text("request_id").notNull(),
+    kind: text("kind").$type<AiGradingKind>().notNull(),
+    scope: text("scope").notNull(),
+    inputHash: text("input_hash").notNull(),
+    day: text("day").notNull(),
+    status: text("status").$type<AiGradingRequestStatus>().notNull(),
+    claimId: text("claim_id").notNull(),
+    submissionId: text("submission_id"),
+    startedAt: ts("started_at").notNull(),
+    completedAt: ts("completed_at"),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.requestId] }),
+    index("ai_grading_requests_user_day_idx").on(t.userId, t.day),
+    uniqueIndex("ai_grading_requests_active_scope_idx")
+      .on(t.userId, t.scope)
+      .where(sql`${t.status} = 'in_progress'`),
+  ],
 );
 
 export const mockExamAttempts = pgTable(

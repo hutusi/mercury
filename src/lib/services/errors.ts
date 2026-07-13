@@ -22,9 +22,12 @@ export class IntegrityError extends Error {
 
 /** A per-user usage cap was hit (e.g. daily tutor messages). → 429 */
 export class LimitExceededError extends Error {
-  constructor(message: string) {
+  readonly code: string;
+
+  constructor(message: string, code = "chat_limit_reached") {
     super(message);
     this.name = "LimitExceededError";
+    this.code = code;
   }
 }
 

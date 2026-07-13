@@ -24,7 +24,7 @@ export function RetryWritingFeedback({ submissionId }: { submissionId: string })
           setFailed(false);
           startTransition(async () => {
             try {
-              await retryWritingFeedback(submissionId);
+              await retryWritingFeedback(submissionId, crypto.randomUUID());
               router.refresh();
             } catch {
               setFailed(true);

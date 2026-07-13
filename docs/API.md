@@ -31,9 +31,11 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
 - **Errors** are always `{"error": {"code", "message", "details?"}}`. `code` is the contract;
   `message` is English debug text (clients own user-facing copy). Codes: `unauthorized` (401),
   `onboarding_required` / `integrity` (403), `not_found` (404), conflicts such as
-  `quiz_answer_conflict` (409), expiry such as `quiz_session_expired` (410),
+  `quiz_answer_conflict` / `grading_in_progress` (409), expiry such as
+  `quiz_session_expired` (410),
   `validation_failed` (422, zod issues in `details`), `invalid_json` (400),
-  `chat_limit_reached` (429), `ai_unavailable` (503), `internal` (500).
+  `chat_limit_reached` / `ai_grading_limit_reached` (429), `ai_unavailable` (503), `internal`
+  (500).
 - **Locale**: responses are bilingual _data_ (`title` + `titleZh`, explanations in zh) — there is
   no `Accept-Language` handling; the client owns its UI strings.
 - **Dates** are ISO 8601 strings; **exam deadlines** are epoch-ms (see below).
@@ -111,8 +113,13 @@ Writing/speaking submissions try AI grading and **never fail because of it**
 ([ADR 0006](adr/0006-ai-structured-output-and-degradation.md)): on any AI failure the submission
 persists with `status: "self_assessed"` and `feedback: null`, and the submission detail carries a
 `selfAssess: {modelAnswer, checklist}` payload plus `canRetryAi`. `POST …/retry-feedback` re-grades
-(CAS-guarded, so concurrent retries are safe) and returns `503 ai_unavailable` when grading is
-still impossible. Speaking clients run speech-to-text **on-device** (SFSpeechRecognizer /
+(claim-guarded, so concurrent retries cannot both call the provider) and returns `503
+ai_unavailable` when grading is still impossible. Every submit and retry body requires a UUID
+`requestId`: replaying the same request/input returns its original result; reusing it for different
+input returns `409 grading_request_conflict`, and a live duplicate returns `409
+grading_in_progress`. Writing and speaking share 10 paid provider calls per learner-local day
+(`MERCURY_AI_GRADING_DAILY_LIMIT`; `429 ai_grading_limit_reached`). Keyless self-assessment does
+not consume that budget. Speaking clients run speech-to-text **on-device** (SFSpeechRecognizer /
 AVSpeechSynthesizer for TTS) and POST the transcript — the server never handles audio.
 
 ## Odds and ends

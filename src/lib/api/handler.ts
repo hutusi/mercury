@@ -56,7 +56,7 @@ export function apiHandler<Ctx>(
         return errorResponse(410, error.code, error.message);
       }
       if (error instanceof LimitExceededError) {
-        return errorResponse(429, "chat_limit_reached", error.message);
+        return errorResponse(429, error.code, error.message);
       }
       if (error instanceof AiUnavailableError) {
         return errorResponse(503, "ai_unavailable", "AI feedback is currently unavailable");

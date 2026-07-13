@@ -26,20 +26,36 @@ test.describe("API writing (AI degradation)", () => {
     // Too-short essay is a 422 from the shared Zod schema.
     const tooShort = await request.post(`/api/v1/writing/${prompts[0].id}/submissions`, {
       headers: user.authHeaders,
-      data: { text: "too short" },
+      data: { requestId: crypto.randomUUID(), text: "too short" },
     });
     expect(tooShort.status()).toBe(422);
 
     const essay =
       "Remote work has reshaped how modern companies operate. It offers flexibility, reduces commuting, and can improve focus, though it also demands deliberate communication and self-discipline from every member of a distributed team.";
+    const requestId = crypto.randomUUID();
     const submitRes = await request.post(`/api/v1/writing/${prompts[0].id}/submissions`, {
       headers: user.authHeaders,
-      data: { text: essay },
+      data: { requestId, text: essay },
     });
     expect(submitRes.status()).toBe(200);
     const submitted = await submitRes.json();
     expect(submitted.status).toBe("self_assessed");
     expect(submitted.feedback).toBeNull(); // same result contract as speaking
+
+    // A lost response can be replayed without creating or grading twice.
+    const replay = await request.post(`/api/v1/writing/${prompts[0].id}/submissions`, {
+      headers: user.authHeaders,
+      data: { requestId, text: essay },
+    });
+    expect(replay.status()).toBe(200);
+    expect((await replay.json()).submissionId).toBe(submitted.submissionId);
+
+    const conflictingReplay = await request.post(`/api/v1/writing/${prompts[0].id}/submissions`, {
+      headers: user.authHeaders,
+      data: { requestId, text: `${essay} Changed.` },
+    });
+    expect(conflictingReplay.status()).toBe(409);
+    expect((await conflictingReplay.json()).error.code).toBe("grading_request_conflict");
 
     // Detail: degradation contract — feedback null, selfAssess present.
     const subRes = await request.get(`/api/v1/writing/submissions/${submitted.submissionId}`, {
@@ -56,7 +72,7 @@ test.describe("API writing (AI degradation)", () => {
     // Retry without a key: the 503 envelope, not a crash.
     const retryRes = await request.post(
       `/api/v1/writing/submissions/${submitted.submissionId}/retry-feedback`,
-      { headers: user.authHeaders, data: {} },
+      { headers: user.authHeaders, data: { requestId: crypto.randomUUID() } },
     );
     expect(retryRes.status()).toBe(503);
     expect((await retryRes.json()).error.code).toBe("ai_unavailable");
@@ -71,6 +87,7 @@ test.describe("API writing (AI degradation)", () => {
       await request.post(`/api/v1/writing/${prompts[0].id}/submissions`, {
         headers: alice.authHeaders,
         data: {
+          requestId: crypto.randomUUID(),
           text: "A sufficiently long essay body for the validation threshold to pass easily.",
         },
       })
@@ -105,6 +122,7 @@ test.describe("API speaking (AI degradation)", () => {
     const submitRes = await request.post(`/api/v1/speaking/${prompts[0].id}/submissions`, {
       headers: user.authHeaders,
       data: {
+        requestId: crypto.randomUUID(),
         transcript:
           "I believe the chart shows a steady increase in sales over the second quarter of the year.",
         durationSeconds: 42,
@@ -125,7 +143,7 @@ test.describe("API speaking (AI degradation)", () => {
 
     const retryRes = await request.post(
       `/api/v1/speaking/submissions/${submitted.submissionId}/retry-feedback`,
-      { headers: user.authHeaders, data: {} },
+      { headers: user.authHeaders, data: { requestId: crypto.randomUUID() } },
     );
     expect(retryRes.status()).toBe(503);
     expect((await retryRes.json()).error.code).toBe("ai_unavailable");

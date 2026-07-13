@@ -24,7 +24,7 @@ export function RetrySpeakingFeedback({ submissionId }: { submissionId: string }
           setFailed(false);
           startTransition(async () => {
             try {
-              await retrySpeakingFeedback(submissionId);
+              await retrySpeakingFeedback(submissionId, crypto.randomUUID());
               router.refresh();
             } catch {
               setFailed(true);

@@ -48,11 +48,12 @@ src/
     ├── streak-core.ts    # streak computation (pure)
     ├── learner-model-core.ts # skill-estimate EWMA + coach memo + AI prompt context (pure)
     ├── plan-core.ts      # 今日计划 daily-plan engine (pure, rule-based)
+    ├── ai-grading-core.ts # paid-grading limits + input fingerprints (pure)
     ├── chat-core.ts      # tutor-chat cap + context window (pure)
     └── speech.ts         # Web Speech helpers (client-only)
 ```
 
-Pure logic (`srs`, `scoring`, `exam-utils`, `streak-core`, `learner-model-core`, `plan-core`, `chat-core`) is deliberately separated from DB access so it can be unit-tested under Bun.
+Pure logic (`srs`, `scoring`, `exam-utils`, `streak-core`, `learner-model-core`, `plan-core`, `ai-grading-core`, `chat-core`) is deliberately separated from DB access so it can be unit-tested under Bun.
 
 ## Data model
 
@@ -111,7 +112,7 @@ AI grading is called **only server-side, from the writing/speaking services**, t
 
 Degradation is a first-class path: no configured provider, an API error, a refusal, truncation, or a schema mismatch raises `AiUnavailableError`, and the submission is stored as `self_assessed`; the UI then shows the prompt's seeded model answer plus a bilingual checklist. CI runs entirely keyless on this path.
 
-The two cases are kept honest at view time by `isAiEnabled()`: with no provider configured the copy stays "not configured"; with a key present, a `self_assessed` submission means grading failed transiently, so the UI offers a retry. `retryWritingFeedback` / `retrySpeakingFeedback` re-grade the stored submission and upgrade it to `ai_scored`, guarded by a status-scoped compare-and-set so concurrent retries can't both write.
+The two cases are kept honest at view time by `isAiEnabled()`: with no provider configured the copy stays "not configured"; with a key present, a `self_assessed` submission means grading failed transiently, so the UI offers a retry. `ai_grading_requests` gives every submit/retry a per-user idempotency key and renewable two-minute lease; `ai_usage_days` is locked before a provider call so writing and speaking share an exact learner-local daily budget (default 10). A late superseded worker cannot publish because completion compares the lease's `claimId`. Keyless self-assessment is idempotent but free. See [ADR 0018](adr/0018-idempotent-ai-grading-budget.md).
 
 Learner text is untrusted: angle brackets are neutralized to full-width equivalents before being embedded in grading prompts, and the examiner system prompt instructs the model to treat `<learner_response>`/`<transcript>` content as data to grade, scoring manipulation attempts as off-topic.
 

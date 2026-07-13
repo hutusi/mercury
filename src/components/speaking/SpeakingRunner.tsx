@@ -126,6 +126,7 @@ export function SpeakingRunner({
     startTransition(async () => {
       try {
         const r = await submitSpeaking({
+          requestId: crypto.randomUUID(),
           promptId,
           transcript: finalText,
           durationSeconds: Math.min(spokenSeconds || speakSeconds, 600),
@@ -145,7 +146,7 @@ export function SpeakingRunner({
     setRetryFailed(false);
     startRetry(async () => {
       try {
-        setResult(await retrySpeakingFeedback(result.submissionId));
+        setResult(await retrySpeakingFeedback(result.submissionId, crypto.randomUUID()));
       } catch {
         setRetryFailed(true);
       }
