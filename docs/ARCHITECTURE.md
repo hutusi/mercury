@@ -87,17 +87,18 @@ Learning content bypasses this layer entirely: every content record carries both
 
 ## Content pipeline
 
-YAML files in `content/` → `src/content/load.ts` (zod validation) → idempotent upsert by slug id (`bun run db:seed`). Content lives in the DB (not static imports) because progress rows reference content ids; the loader is tooling-only (seed + tests) and a guard test keeps it out of app code. Editors validate the YAML against JSON Schemas generated from zod (`bun run content:schemas`, see [ADR 0009](adr/0009-yaml-content-authoring.md)). `src/content/content.test.ts` enforces the same invariants as the seed script without needing a DB. Authoring guide: [docs/CONTENT.md](CONTENT.md).
+YAML files in `content/` → `src/content/load.ts` (zod validation) → idempotent upsert by slug id (`bun run db:seed`). The seed validates the complete corpus before opening one transaction for every content table, so a failed write cannot leave a partially updated release. Content lives in the DB (not static imports) because progress rows reference content ids; the loader is tooling-only (seed + tests) and a guard test keeps it out of app code. Editors validate the YAML against JSON Schemas generated from zod (`bun run content:schemas`, see [ADR 0009](adr/0009-yaml-content-authoring.md)). `src/content/content.test.ts` enforces the same invariants as the seed script without needing a DB. Authoring guide: [docs/CONTENT.md](CONTENT.md).
 
 ## Exam integrity
 
-The mock-exam mode assumes a hostile client (see [ADR 0005](adr/0005-server-issued-exam-deadlines.md)):
+The mock-exam mode assumes a hostile client (see [ADR 0005](adr/0005-server-issued-exam-deadlines.md) and [ADR 0017](adr/0017-immutable-exam-attempt-snapshots.md)):
 
-- `startExamAttempt` stores server-issued per-section deadlines; each subsequent section's clock starts when the previous one is submitted.
+- `startExamAttempt` stores both the complete unsanitized exam snapshot and server-issued per-section deadlines; each subsequent section's clock starts when the previous one is submitted. Autosave, grading, mistakes, and reports use the immutable snapshot rather than mutable live content.
 - Clients receive **sanitized** sections (`sanitizeSections` strips `correctIndex` and `explanationZh`; listening scripts must ship for TTS playback — an accepted tradeoff).
 - The client countdown recomputes from `expiresAt - Date.now()` each tick and auto-submits at zero; refreshing resumes with the original clock.
 - `submitExamSection` accepts answers only within `deadline + 30s` grace; late answers are discarded in favor of previously autosaved ones. Autosaves and section submits lock the attempt row before merging, so overlapping requests serialize against the latest persisted state; the web client also queues autosaves in click order.
-- Grading and score estimation (`gradeExam` in `src/lib/exam-utils.ts`) run server-side against unsanitized content.
+- Attempts are `in_progress`, `completed`, or explicitly `abandoned`. Abandonment is owner-scoped and idempotent, permits a fresh start, and never exposes answers or review keys.
+- Grading and score estimation (`gradeExam` in `src/lib/exam-utils.ts`) run server-side against the attempt's unsanitized snapshot.
 
 ## AI feedback and degradation
 

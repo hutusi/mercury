@@ -42,7 +42,7 @@ const ts = (name: string) => timestamp(name, { withTimezone: true, mode: "date" 
 
 export type ExerciseKind = "reading" | "listening" | "vocab_quiz";
 export type SubmissionStatus = "ai_scored" | "self_assessed" | "failed";
-export type AttemptStatus = "in_progress" | "completed" | "expired";
+export type AttemptStatus = "in_progress" | "completed" | "abandoned";
 export type QuizPurpose = "practice" | "mistake_retest";
 
 export interface SectionDeadline {
@@ -358,12 +358,15 @@ export const mockExamAttempts = pgTable(
     startedAt: ts("started_at").notNull().$defaultFn(now),
     currentSectionIndex: integer("current_section_index").notNull().default(0),
     sectionDeadlines: jsonb("section_deadlines").$type<SectionDeadline[]>().notNull(),
+    /** Immutable content/key snapshot used for timing, grading, and review. */
+    sectionsSnapshot: jsonb("sections_snapshot").$type<ExamSection[]>().notNull(),
     answers: jsonb("answers").$type<AnswerMap>().notNull(),
     sectionScores: jsonb("section_scores").$type<SectionScore[] | null>(),
     rawScore: integer("raw_score"),
     totalQuestions: integer("total_questions").notNull(),
     estimate: jsonb("estimate").$type<ExamEstimate | null>(),
     completedAt: ts("completed_at"),
+    abandonedAt: ts("abandoned_at"),
   },
   (t) => [
     index("mock_exam_attempts_user_idx").on(t.userId, t.startedAt),

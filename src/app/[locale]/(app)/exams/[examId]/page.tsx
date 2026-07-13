@@ -79,7 +79,7 @@ export default async function ExamIntroPage({ params }: { params: Promise<{ exam
       </section>
 
       <div>
-        <StartExamButton examId={exam.id} resume={!!inProgress} />
+        <StartExamButton examId={exam.id} inProgressAttemptId={inProgress?.id ?? null} />
       </div>
     </div>
   );

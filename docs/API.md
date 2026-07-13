@@ -90,7 +90,9 @@ ai_unavailable` when no provider is configured — check `enabled` from GET befo
 All timing is server-issued (see [ADR 0005](adr/0005-server-issued-exam-deadlines.md)):
 
 - `POST /api/v1/exams/{examId}/attempts` (idempotent) stamps section 1's
-  `{startedAt, expiresAt}`; each section submit stamps the next section's deadline.
+  `{startedAt, expiresAt}` and freezes the exam sections on the attempt; each section submit
+  stamps the next section's deadline. Later content edits cannot change an active or historical
+  attempt.
 - Deadlines are **epoch-ms**; every exam response includes `serverTime` — compute
   `remaining = expiresAt - serverTime` and count down locally instead of trusting the device
   clock.
@@ -99,6 +101,9 @@ All timing is server-issued (see [ADR 0005](adr/0005-server-issued-exam-deadline
 - An in-progress attempt resource only ever contains sanitized questions (no
   `correctIndex`/`explanationZh`). The keyed `review` appears on the resource strictly after
   completion.
+- `POST /api/v1/exams/attempts/{attemptId}/abandon` is owner-scoped and idempotent. It releases
+  the exam for a fresh attempt; abandoned resources expose metadata only, never saved answers or
+  review keys. A completed attempt returns `409 attempt_not_abandonable`.
 
 ## AI degradation contract
 

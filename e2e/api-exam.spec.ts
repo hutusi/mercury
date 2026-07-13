@@ -1,6 +1,17 @@
 import { expect, test } from "@playwright/test";
+import { Pool } from "pg";
 import { apiSignUpAndOnboard, type ApiUser } from "./api-helpers";
 import type { APIRequestContext } from "@playwright/test";
+import type { ExamSection } from "../src/content/types";
+
+function e2eDatabaseUrl(): string {
+  if (process.env.E2E_DATABASE_URL) return process.env.E2E_DATABASE_URL;
+  const base = process.env.DATABASE_URL;
+  if (!base) return "postgresql://localhost:5432/mercury_e2e";
+  const url = new URL(base);
+  url.pathname = "/mercury_e2e";
+  return url.toString();
+}
 
 async function getAttempt(request: APIRequestContext, user: ApiUser, attemptId: string) {
   const res = await request.get(`/api/v1/exams/attempts/${attemptId}`, {
@@ -142,5 +153,105 @@ test.describe("API mock exam lifecycle", () => {
       headers: mallory.authHeaders,
     });
     expect(res.status()).toBe(404);
+  });
+
+  test("abandonment hides saved state and permits a fresh attempt", async ({ request }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const { exams } = await (
+      await request.get("/api/v1/exams", { headers: user.authHeaders })
+    ).json();
+    const exam = exams[0];
+    const firstStart = await request.post(`/api/v1/exams/${exam.id}/attempts`, {
+      headers: user.authHeaders,
+      data: {},
+    });
+    const { attemptId } = await firstStart.json();
+
+    const abandoned = await request.post(`/api/v1/exams/attempts/${attemptId}/abandon`, {
+      headers: user.authHeaders,
+      data: {},
+    });
+    expect(abandoned.status()).toBe(200);
+    expect(await abandoned.json()).toEqual({ status: "abandoned" });
+
+    // Repeating the command is safe, and the public resource exposes metadata only.
+    const repeated = await request.post(`/api/v1/exams/attempts/${attemptId}/abandon`, {
+      headers: user.authHeaders,
+      data: {},
+    });
+    expect(repeated.status()).toBe(200);
+    const { text, body } = await getAttempt(request, user, attemptId);
+    expect(body.status).toBe("abandoned");
+    expect(text).not.toContain("answers");
+    expect(text).not.toContain("correctIndex");
+    expect(text).not.toContain("review");
+
+    const secondStart = await request.post(`/api/v1/exams/${exam.id}/attempts`, {
+      headers: user.authHeaders,
+      data: {},
+    });
+    expect(secondStart.status()).toBe(200);
+    expect((await secondStart.json()).attemptId).not.toBe(attemptId);
+  });
+
+  test("attempt grading and review survive a live content edit", async ({ request }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const { exams } = await (
+      await request.get("/api/v1/exams", { headers: user.authHeaders })
+    ).json();
+    const exam = exams[0];
+    const pool = new Pool({ connectionString: e2eDatabaseUrl(), max: 1 });
+    const stored = await pool.query<{ sections: ExamSection[] }>(
+      "select sections from mock_exams where id = $1",
+      [exam.id],
+    );
+    const originalSections = stored.rows[0].sections;
+    const mutatedSections = structuredClone(originalSections);
+    const originalQuestion = originalSections[0].groups[0].questions[0];
+    const mutatedQuestion = mutatedSections[0].groups[0].questions[0];
+    mutatedQuestion.stem = "MUTATED AFTER ATTEMPT START";
+    mutatedQuestion.correctIndex = (originalQuestion.correctIndex + 1) % 4;
+
+    const start = await request.post(`/api/v1/exams/${exam.id}/attempts`, {
+      headers: user.authHeaders,
+      data: {},
+    });
+    const { attemptId } = await start.json();
+
+    try {
+      await pool.query("update mock_exams set sections = $1 where id = $2", [
+        JSON.stringify(mutatedSections),
+        exam.id,
+      ]);
+
+      const { text: liveText } = await getAttempt(request, user, attemptId);
+      expect(liveText).not.toContain("MUTATED AFTER ATTEMPT START");
+
+      for (const section of originalSections) {
+        const answers: Record<string, number> = {};
+        for (const group of section.groups) {
+          for (const question of group.questions) answers[question.id] = question.correctIndex;
+        }
+        const submit = await request.post(
+          `/api/v1/exams/attempts/${attemptId}/sections/${section.id}/submit`,
+          { headers: user.authHeaders, data: { answers } },
+        );
+        expect(submit.status()).toBe(200);
+      }
+
+      const { text: reportText, body: report } = await getAttempt(request, user, attemptId);
+      expect(report.status).toBe("completed");
+      expect(report.rawScore).toBe(report.totalQuestions);
+      expect(reportText).not.toContain("MUTATED AFTER ATTEMPT START");
+      expect(report.review[0].groups[0].questions[0].correctIndex).toBe(
+        originalQuestion.correctIndex,
+      );
+    } finally {
+      await pool.query("update mock_exams set sections = $1 where id = $2", [
+        JSON.stringify(originalSections),
+        exam.id,
+      ]);
+      await pool.end();
+    }
   });
 });

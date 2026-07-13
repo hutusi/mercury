@@ -29,7 +29,7 @@ New files must be registered in `src/content/load.ts` — file order there is de
 
 Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001` (listening), `toeic-wr-001` (writing), `ielts-s-003` (speaking), `exam-toeic-mini` (exam). Exam internals use prefixed ids: sections (`toeic-mini-listening`), groups (`tm-lg1`), questions (`tm-l-q01`).
 
-**Never rename an id once shipped.** Progress rows reference them: `srs_cards.word_id`, `exercise_attempts.ref_id`, submissions' `prompt_id`, and mock-exam `answers` maps are keyed by question id. Renaming orphans user data; editing an in-flight exam's question ids corrupts active attempts. Add new ids, don't recycle old ones.
+**Never rename an id once shipped.** Progress rows reference them: `srs_cards.word_id`, `exercise_attempts.ref_id`, submissions' `prompt_id`, and mock-exam `answers` maps are keyed by question id. Renaming orphans user data. Exam attempts freeze a complete section snapshot when they start, so later edits cannot corrupt those attempts, but stable ids remain necessary for progress, mistakes, analytics, and cross-release continuity. Add new ids, don't recycle old ones.
 
 ## Authoring rules per kind
 
@@ -65,4 +65,4 @@ bun run test
 bun run db:seed
 ```
 
-`db:seed` runs via `bunx tsx` under Node against the `DATABASE_URL` Postgres. Edits to existing ids update rows in place; removed items are _not_ deleted from the DB (write a migration if that ever matters).
+`db:seed` runs via `bunx tsx` under Node against the `DATABASE_URL` Postgres. It validates the complete corpus first, then upserts every content table in one database transaction; any failure rolls the whole seed back. Edits to existing ids update rows in place; removed items are _not_ deleted from the DB (write a migration if that ever matters).

@@ -636,7 +636,7 @@ paths:
   /api/v1/exams/{examId}/attempts:
     post:
       summary: Start (or resume) an attempt — idempotent
-      description: The server stamps the first section's expiresAt; clients never set timing.
+      description: The server freezes the exam sections and stamps the first section's expiresAt; clients never set timing.
       tags: [exams]
       parameters: [{ $ref: "#/components/parameters/examId" }]
       responses:
@@ -652,11 +652,12 @@ paths:
         "404": { $ref: "#/components/responses/NotFound" }
   /api/v1/exams/attempts/{attemptId}:
     get:
-      summary: Live attempt (sanitized) or completed report (with review keys)
+      summary: Live attempt (sanitized), completed report, or abandoned metadata
       description: |
         in_progress: sanitized sections only, serverTime for clock-skew handling,
-        deadlines as epoch-ms. completed/expired: scores, estimate, and the full
-        review including correctIndex/explanationZh.
+        deadlines as epoch-ms. completed: scores, estimate, and the full review
+        including correctIndex/explanationZh. abandoned: lifecycle metadata only,
+        with neither answers nor review keys.
       tags: [exams]
       parameters: [{ $ref: "#/components/parameters/attemptId" }]
       responses:
@@ -664,6 +665,25 @@ paths:
           description: Status-discriminated attempt resource.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/exams/attempts/{attemptId}/abandon:
+    post:
+      summary: Abandon an in-progress attempt so a fresh one can start
+      description: Owner-scoped and idempotent for already-abandoned attempts; completed attempts cannot be abandoned.
+      tags: [exams]
+      parameters: [{ $ref: "#/components/parameters/attemptId" }]
+      responses:
+        "200":
+          description: Abandoned attempt metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, enum: [abandoned] }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
   /api/v1/exams/attempts/{attemptId}/answers:
     patch:
       summary: Autosave answers for the current unexpired section

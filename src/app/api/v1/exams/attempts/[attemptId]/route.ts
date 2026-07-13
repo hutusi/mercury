@@ -11,5 +11,5 @@ export const GET = apiHandler(async (req, ctx: { params: Promise<{ attemptId: st
   const data = await getAttemptWithExam(user.id, attemptId);
   if (!data) throw new NotFoundError(`Unknown attempt: ${attemptId}`);
 
-  return Response.json(toAttemptResource(data.attempt, data.exam, Date.now()));
+  return Response.json(toAttemptResource(data.attempt, Date.now()));
 });

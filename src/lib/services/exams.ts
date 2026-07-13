@@ -4,7 +4,7 @@ import { db } from "../db";
 import { mockExamAttempts, mockExams, type AnswerMap, type SectionDeadline } from "../db/schema";
 import { acceptSectionAnswers, gradeExam } from "../exam-utils";
 import { recordActivityWith } from "../streak";
-import { NotFoundError } from "./errors";
+import { ConflictError, NotFoundError } from "./errors";
 import { recordMistakeOutcomes } from "./mistake-state";
 import { recordLearnerOutcomeSafely } from "./profile";
 
@@ -45,6 +45,7 @@ export async function startExamAttemptForUser(
       examId,
       track: exam.track,
       sectionDeadlines: deadlines,
+      sectionsSnapshot: exam.sections,
       answers: {},
       totalQuestions: exam.totalQuestions,
     })
@@ -86,10 +87,7 @@ export async function saveExamProgressForUser(userId: string, input: unknown): P
       .limit(1);
     if (!attempt || attempt.status !== "in_progress") return;
 
-    const exam = await tx.query.mockExams.findFirst({ where: eq(mockExams.id, attempt.examId) });
-    if (!exam) return;
-
-    const section = exam.sections[attempt.currentSectionIndex];
+    const section = attempt.sectionsSnapshot[attempt.currentSectionIndex];
     if (!section) return;
     const deadline = attempt.sectionDeadlines.find((d) => d.sectionId === section.id);
     const merged = acceptSectionAnswers(
@@ -149,10 +147,8 @@ export async function submitExamSectionForUser(
       };
     }
 
-    const exam = await tx.query.mockExams.findFirst({ where: eq(mockExams.id, attempt.examId) });
-    if (!exam) throw new NotFoundError("Exam content missing");
-
-    const section = exam.sections[attempt.currentSectionIndex];
+    const sections = attempt.sectionsSnapshot;
+    const section = sections[attempt.currentSectionIndex];
     if (!section || section.id !== sectionId) {
       return {
         result: {
@@ -174,8 +170,8 @@ export async function submitExamSectionForUser(
       GRACE_MS,
     );
 
-    if (attempt.currentSectionIndex < exam.sections.length - 1) {
-      const next = exam.sections[attempt.currentSectionIndex + 1];
+    if (attempt.currentSectionIndex < sections.length - 1) {
+      const next = sections[attempt.currentSectionIndex + 1];
       const now = Date.now();
       const deadlines: SectionDeadline[] = [
         ...attempt.sectionDeadlines,
@@ -199,7 +195,7 @@ export async function submitExamSectionForUser(
       };
     }
 
-    const graded = gradeExam(exam.track, exam.sections, merged);
+    const graded = gradeExam(attempt.track, sections, merged);
     const completedAt = new Date();
     await tx
       .update(mockExamAttempts)
@@ -214,11 +210,11 @@ export async function submitExamSectionForUser(
       .where(eq(mockExamAttempts.id, attempt.id));
     await recordMistakeOutcomes(tx, {
       userId,
-      track: exam.track,
+      track: attempt.track,
       kind: "exam",
-      refId: exam.id,
+      refId: attempt.examId,
       occurredAt: completedAt,
-      outcomes: exam.sections.flatMap((examSection) =>
+      outcomes: sections.flatMap((examSection) =>
         examSection.groups.flatMap((group) =>
           group.questions.map((question) => ({
             questionId: question.id,
@@ -256,4 +252,30 @@ export async function submitExamSectionForUser(
   }
 
   return persisted.result;
+}
+
+/** Abandon an in-progress attempt so the user can start a fresh snapshot. */
+export async function abandonExamAttemptForUser(
+  userId: string,
+  attemptIdInput: unknown,
+): Promise<{ status: "abandoned" }> {
+  const attemptId = z.string().min(1).parse(attemptIdInput);
+  await db.transaction(async (tx) => {
+    const [attempt] = await tx
+      .select({ status: mockExamAttempts.status })
+      .from(mockExamAttempts)
+      .where(and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)))
+      .for("update")
+      .limit(1);
+    if (!attempt) throw new NotFoundError("Attempt not found");
+    if (attempt.status === "completed") {
+      throw new ConflictError("Completed attempts cannot be abandoned", "attempt_not_abandonable");
+    }
+    if (attempt.status === "abandoned") return;
+    await tx
+      .update(mockExamAttempts)
+      .set({ status: "abandoned", abandonedAt: new Date() })
+      .where(eq(mockExamAttempts.id, attemptId));
+  });
+  return { status: "abandoned" };
 }

@@ -14,7 +14,7 @@ The server is the source of truth for time and correctness:
 - Clients receive **sanitized** sections — `correctIndex` and `explanationZh` are stripped (`sanitizeSections`). Listening scripts do ship, because client-side TTS must speak them; that leak is accepted and documented.
 - The client countdown derives remaining time from `expiresAt - Date.now()` on every tick (never a decrementing counter) and auto-submits at zero; refresh resumes against the same stored deadline.
 - `submitExamSection` accepts new answers only until `expiresAt + 30s` grace; afterwards only previously autosaved answers count. UPDATEs are guarded on `status = 'in_progress'` and the expected section index so stale or duplicate requests can't overwrite advanced state.
-- Grading and score estimation (`gradeExam`) run server-side against unsanitized content.
+- Grading and score estimation (`gradeExam`) run server-side against the immutable unsanitized sections captured when the attempt starts. Snapshot ownership and explicit abandonment are recorded in [ADR 0017](0017-immutable-exam-attempt-snapshots.md).
 
 Answers additionally mirror to `localStorage` (client convenience for refresh) and autosave to the server every 30 seconds.
 

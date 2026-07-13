@@ -102,6 +102,8 @@ export default async function ExamsPage() {
                   <td className="px-4 py-3 font-mono font-medium tabular-nums">
                     {a.status === "in_progress" ? (
                       <span className="font-sans text-cinnabar">{t.exams.inProgress}</span>
+                    ) : a.status === "abandoned" ? (
+                      <span className="font-sans text-muted-foreground">{t.exams.abandoned}</span>
                     ) : (
                       formatEstimate(a.estimate)
                     )}
@@ -114,13 +116,15 @@ export default async function ExamsPage() {
                       >
                         {t.exams.resumeExam}
                       </Link>
-                    ) : (
+                    ) : a.status === "completed" ? (
                       <Link
                         href={`/exams/attempts/${a.id}`}
                         className="font-medium underline underline-offset-4 transition-colors hover:text-cinnabar"
                       >
                         {t.exams.viewReport}
                       </Link>
+                    ) : (
+                      <span className="text-muted-foreground">—</span>
                     )}
                   </td>
                 </tr>

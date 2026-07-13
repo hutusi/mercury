@@ -22,6 +22,7 @@ export default async function ExamReportPage({
   if (!data) notFound();
   const { attempt, exam } = data;
   if (attempt.status === "in_progress") return localeRedirect(`/exams/${attempt.examId}/take`);
+  if (attempt.status === "abandoned") return localeRedirect(`/exams/${attempt.examId}`);
 
   const estimate = attempt.estimate;
   const sectionScores = attempt.sectionScores ?? [];

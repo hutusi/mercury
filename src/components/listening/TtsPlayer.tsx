@@ -7,7 +7,7 @@ import type { ScriptLine } from "@/content/types";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createScriptSpeaker, ttsSupported, type ScriptSpeaker } from "@/lib/speech";
 
-export function TtsPlayer({ script }: { script: ScriptLine[] }) {
+export function TtsPlayer({ script, maxPlays }: { script: ScriptLine[]; maxPlays?: number }) {
   const t = useT();
   const [mounted, setMounted] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -32,6 +32,7 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
   }
 
   function play() {
+    if (maxPlays !== undefined && playCount >= maxPlays) return;
     speakerRef.current?.stop();
     const speaker = createScriptSpeaker(script, {
       onLineChange: setLineIndex,
@@ -53,16 +54,20 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
   }
 
   const progress = playing && lineIndex >= 0 ? ((lineIndex + 1) / script.length) * 100 : 0;
+  const exhausted = !playing && maxPlays !== undefined && playCount >= maxPlays;
 
   return (
     <div className="border border-border p-5">
       <div className="flex items-center gap-4">
         <button
           onClick={playing ? stop : play}
+          disabled={exhausted}
           className={`flex h-12 w-12 shrink-0 items-center justify-center transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
             playing
               ? "bg-cinnabar text-cinnabar-foreground hover:bg-cinnabar/90"
-              : "bg-primary text-primary-foreground hover:bg-primary/85"
+              : exhausted
+                ? "bg-muted text-muted-foreground"
+                : "bg-primary text-primary-foreground hover:bg-primary/85"
           }`}
           aria-label={playing ? t.listening.pause : t.listening.play}
         >
@@ -72,7 +77,13 @@ export function TtsPlayer({ script }: { script: ScriptLine[] }) {
         </button>
         <div className="flex-1">
           <p className="text-sm font-medium text-foreground/80">
-            {playing ? t.listening.playing : playCount > 0 ? t.listening.replay : t.listening.play}
+            {playing
+              ? t.listening.playing
+              : exhausted
+                ? t.exams.audioOnce
+                : playCount > 0
+                  ? t.listening.replay
+                  : t.listening.play}
           </p>
           <div className="mt-2 h-1 overflow-hidden bg-muted">
             <div className="h-full bg-primary" style={{ width: `${progress}%` }} />

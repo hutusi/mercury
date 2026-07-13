@@ -54,7 +54,7 @@ export async function getInProgressAttempt(userId: string, examId: string) {
   });
 }
 
-/** A user's attempt with its exam (owner-scoped). */
+/** A user's attempt with live metadata and its immutable section snapshot. */
 export async function getAttemptWithExam(userId: string, attemptId: string) {
   const attempt = await db.query.mockExamAttempts.findFirst({
     where: and(eq(mockExamAttempts.id, attemptId), eq(mockExamAttempts.userId, userId)),
@@ -64,5 +64,5 @@ export async function getAttemptWithExam(userId: string, attemptId: string) {
   const exam = await getExamById(attempt.examId);
   if (!exam) return null;
 
-  return { attempt, exam };
+  return { attempt, exam: { ...exam, sections: attempt.sectionsSnapshot } };
 }
