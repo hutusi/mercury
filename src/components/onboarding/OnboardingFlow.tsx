@@ -201,6 +201,7 @@ export function OnboardingFlow() {
           </SectionLabel>
           <Input
             type="date"
+            aria-label={t.onboarding.examDateLabel}
             value={examDate}
             onChange={(e) => setExamDate(e.target.value)}
             className="max-w-48"

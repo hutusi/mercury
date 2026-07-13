@@ -12,7 +12,9 @@ import {
   type LearnerContextInput,
 } from "./learner-model-core";
 
-const NOW = new Date("2026-07-12T10:00:00Z");
+// Local constructor, not a UTC string: in UTC+14 "2026-07-12T10:00:00Z" is
+// already July 13, which would flip the days-until-exam assertion.
+const NOW = new Date(2026, 6, 12, 10);
 
 describe("defaultSkillEstimates", () => {
   test("seeds every skill from the self-rated level with low confidence", () => {
@@ -95,7 +97,7 @@ describe("normalizeAiScore", () => {
 
 describe("mergeCoachMemo", () => {
   test("bumps count and refreshes note for a recurring tag", () => {
-    const later = new Date("2026-07-13T10:00:00Z");
+    const later = new Date(2026, 6, 13, 10);
     let memo = mergeCoachMemo(
       emptyCoachMemo(),
       { issues: [{ tag: "article-usage", noteZh: "冠词使用错误" }], strengths: [] },
@@ -132,6 +134,22 @@ describe("mergeCoachMemo", () => {
     expect(memo.issues).toHaveLength(8);
     expect(memo.issues.some((i) => i.tag === "tag-0")).toBe(false); // stalest evicted
     expect(memo.issues.some((i) => i.tag === "tag-new")).toBe(true);
+  });
+
+  test("a tag repeated within one update counts once", () => {
+    const memo = mergeCoachMemo(
+      emptyCoachMemo(),
+      {
+        issues: [
+          { tag: "run-on", noteZh: "第一次" },
+          { tag: "run-on", noteZh: "第二次" },
+        ],
+        strengths: [],
+      },
+      NOW,
+    );
+    expect(memo.issues).toHaveLength(1);
+    expect(memo.issues[0].count).toBe(1);
   });
 
   test("truncates long notes and drops empty tags", () => {

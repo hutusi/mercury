@@ -27,6 +27,10 @@ export function TrackSwitcher({ current }: { current: Track }) {
     try {
       await setActiveTrack(track as Track);
       startTransition(() => router.refresh());
+    } catch (error) {
+      // The Select reflects the server prop, so there is nothing to revert —
+      // just keep a failed action from becoming an unhandled rejection.
+      console.error("track switch failed", error);
     } finally {
       setPending(false);
     }

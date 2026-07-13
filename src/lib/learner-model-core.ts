@@ -140,9 +140,13 @@ function mergeMemoItems(
 ): MemoItem[] {
   const merged = items.map((item) => ({ ...item }));
   const nowIso = now.toISOString();
+  // count means "gradings that surfaced this tag" — a tag repeated within one
+  // update must not inflate it.
+  const seenTags = new Set<string>();
   for (const update of updates) {
     const tag = update.tag.trim();
-    if (!tag) continue;
+    if (!tag || seenTags.has(tag)) continue;
+    seenTags.add(tag);
     const noteZh = update.noteZh.slice(0, MAX_MEMO_NOTE_CHARS);
     const existing = merged.find((item) => item.tag === tag);
     if (existing) {

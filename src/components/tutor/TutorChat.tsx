@@ -116,6 +116,7 @@ export function TutorChat({
           }}
           placeholder={t.tutor.placeholder}
           rows={3}
+          maxLength={4000}
           disabled={!enabled || remaining <= 0}
         />
         <div className="flex items-center justify-between gap-3">
