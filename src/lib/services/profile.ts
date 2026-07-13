@@ -7,6 +7,7 @@ import {
   applySkillSignal,
   defaultSkillEstimates,
   emptyCoachMemo,
+  isUnratedSkillSeed,
   mergeCoachMemo,
   SELF_RATED_LEVELS,
   type MemoUpdate,
@@ -39,7 +40,7 @@ export const UpsertLearnerProfileSchema = z.object({
  */
 export async function upsertLearnerProfileForUser(userId: string, input: unknown) {
   const patch = UpsertLearnerProfileSchema.parse(input);
-  return upsertLearnerProfileWith(db, userId, patch);
+  return db.transaction((tx) => upsertLearnerProfileWith(tx, userId, patch));
 }
 
 /** Transaction-aware profile upsert used by atomic onboarding. */
@@ -57,7 +58,7 @@ export async function upsertLearnerProfileWith(
   if (patch.dailyMinutes !== undefined) set.dailyMinutes = patch.dailyMinutes;
   if (patch.selfRatedLevel !== undefined) set.selfRatedLevel = patch.selfRatedLevel;
 
-  const [profile] = await executor
+  const [inserted] = await executor
     .insert(learnerProfiles)
     .values({
       userId,
@@ -70,7 +71,32 @@ export async function upsertLearnerProfileWith(
       coachMemo: emptyCoachMemo(),
       updatedAt: nowDate,
     })
-    .onConflictDoUpdate({ target: learnerProfiles.userId, set })
+    .onConflictDoNothing()
+    .returning();
+  if (inserted) return inserted;
+
+  // Atomic onboarding creates an unrated profile before the optional goals
+  // step. Let that first later rating replace the conservative bootstrap, but
+  // never overwrite estimates after a real signal (or after a prior rating).
+  const [existing] = await executor
+    .select()
+    .from(learnerProfiles)
+    .where(eq(learnerProfiles.userId, userId))
+    .for("update")
+    .limit(1);
+  if (!existing) throw new Error("learner profile upsert failed");
+  if (
+    patch.selfRatedLevel != null &&
+    existing.selfRatedLevel === null &&
+    isUnratedSkillSeed(existing.skillEstimates)
+  ) {
+    set.skillEstimates = defaultSkillEstimates(patch.selfRatedLevel, nowDate);
+  }
+
+  const [profile] = await executor
+    .update(learnerProfiles)
+    .set(set)
+    .where(eq(learnerProfiles.userId, userId))
     .returning();
   return profile;
 }

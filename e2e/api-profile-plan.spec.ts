@@ -59,6 +59,18 @@ test.describe("API learner profile + daily plan", () => {
     expect(updated.skillEstimates.reading.confidence).toBe("medium");
     expect(updated.skillEstimates.writing.confidence).toBe("low");
 
+    // A later self-rating edit changes the stated level but must not erase
+    // estimates that have already incorporated observed practice.
+    const observedReading = updated.skillEstimates.reading;
+    const rerateRes = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { selfRatedLevel: "advanced" },
+    });
+    expect(rerateRes.status()).toBe(200);
+    const { profile: rerated } = await rerateRes.json();
+    expect(rerated.selfRatedLevel).toBe("advanced");
+    expect(rerated.skillEstimates.reading).toEqual(observedReading);
+
     // The plan is never empty and respects the configured budget.
     const planRes = await request.get("/api/v1/plan", { headers: user.authHeaders });
     expect(planRes.status()).toBe(200);

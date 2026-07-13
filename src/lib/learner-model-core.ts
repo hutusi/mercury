@@ -101,6 +101,13 @@ export function defaultSkillEstimates(level: SelfRatedLevel | null, now: Date): 
   };
 }
 
+/** True only before the learner model has a rating or any observed signal. */
+export function isUnratedSkillSeed(estimates: SkillEstimates): boolean {
+  return SKILL_KEYS.every(
+    (skill) => estimates[skill].estimate === UNRATED_SEED && estimates[skill].confidence === "low",
+  );
+}
+
 export function emptyCoachMemo(): CoachMemo {
   return { issues: [], strengths: [] };
 }
