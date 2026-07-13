@@ -319,10 +319,18 @@ export const exerciseAttempts = pgTable(
     total: integer("total").notNull(),
     durationSeconds: integer("duration_seconds").notNull().default(0),
     completedAt: ts("completed_at").notNull().$defaultFn(now),
+    // Client-supplied idempotency key + graded-input fingerprint. Nullable so
+    // historical rows and the backfill are unaffected; new writes always set
+    // both (see submitExerciseAttemptForUser).
+    requestId: text("request_id"),
+    inputHash: text("input_hash"),
   },
   (t) => [
     index("exercise_attempts_user_idx").on(t.userId, t.completedAt),
     index("exercise_attempts_user_kind_ref_idx").on(t.userId, t.kind, t.refId),
+    uniqueIndex("exercise_attempts_request_idx")
+      .on(t.userId, t.requestId)
+      .where(sql`${t.requestId} is not null`),
     check("exercise_attempts_kind_check", sql`${t.kind} in ('reading', 'listening', 'vocab_quiz')`),
     check("exercise_attempts_track_check", sql`${t.track} in ('toeic', 'ielts', 'business')`),
     check(

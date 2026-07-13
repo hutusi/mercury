@@ -128,6 +128,10 @@ AVSpeechSynthesizer for TTS) and POST the transcript — the server never handle
 
 ## Odds and ends
 
+- `POST /api/v1/exercises/{kind}/{exerciseId}/attempts` grades a reading/listening MCQ attempt and
+  now requires a client UUID `requestId` (same idempotency model as the AI graders, [ADR 0018](adr/0018-idempotent-ai-grading-budget.md), but with no budget). Replaying the same id with the same
+  answers returns the original grade without recording a second attempt or double-counting mistakes;
+  reusing it for different answers returns `409 exercise_request_conflict`.
 - Streaks, daily plans, reminders, and daily AI quotas use `Settings.timeZone`. Send an IANA
   identifier detected on-device and display server-reported day/quota state; do not recompute it
   with a different timezone client-side.

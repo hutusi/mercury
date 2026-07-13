@@ -19,6 +19,16 @@ interface ClaimInput {
 export type GradingClaim =
   { disposition: "claimed"; claimId: string } | { disposition: "completed"; submissionId: string };
 
+/** A unique violation on the partial active-scope index (Postgres 23505). */
+function isActiveScopeConflict(error: unknown): boolean {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    (error as { code?: unknown }).code === "23505" &&
+    (error as { constraint?: unknown }).constraint === "ai_grading_requests_active_scope_idx"
+  );
+}
+
 /**
  * Claim one provider call under the per-user/day row lock. The request id is
  * idempotent; a fresh in-flight lease returns 409, while a lease older than
@@ -110,35 +120,46 @@ export async function claimGradingRequest(input: ClaimInput): Promise<GradingCla
     }
 
     const claimId = crypto.randomUUID();
-    if (existing) {
-      await tx
-        .update(aiGradingRequests)
-        .set({
+    try {
+      if (existing) {
+        await tx
+          .update(aiGradingRequests)
+          .set({
+            day,
+            status: "in_progress",
+            claimId,
+            submissionId: null,
+            startedAt: now,
+            completedAt: null,
+          })
+          .where(
+            and(
+              eq(aiGradingRequests.userId, input.userId),
+              eq(aiGradingRequests.requestId, input.requestId),
+            ),
+          );
+      } else {
+        await tx.insert(aiGradingRequests).values({
+          userId: input.userId,
+          requestId: input.requestId,
+          kind: input.kind,
+          scope: input.scope,
+          inputHash: input.inputHash,
           day,
           status: "in_progress",
           claimId,
-          submissionId: null,
           startedAt: now,
-          completedAt: null,
-        })
-        .where(
-          and(
-            eq(aiGradingRequests.userId, input.userId),
-            eq(aiGradingRequests.requestId, input.requestId),
-          ),
-        );
-    } else {
-      await tx.insert(aiGradingRequests).values({
-        userId: input.userId,
-        requestId: input.requestId,
-        kind: input.kind,
-        scope: input.scope,
-        inputHash: input.inputHash,
-        day,
-        status: "in_progress",
-        claimId,
-        startedAt: now,
-      });
+        });
+      }
+    } catch (error) {
+      // The activeScope pre-check above only serializes claims resolving to the
+      // same usage-day row; two concurrent same-scope claims straddling the
+      // learner's local midnight lock different rows, so the partial unique
+      // index is the real arbiter. Surface its loser as a clean 409, not a 500.
+      if (isActiveScopeConflict(error)) {
+        throw new ConflictError("Grading is already in progress", "grading_in_progress");
+      }
+      throw error;
     }
     if (input.charge) {
       await tx

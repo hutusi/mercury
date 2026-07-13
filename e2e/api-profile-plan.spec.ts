@@ -47,7 +47,7 @@ test.describe("API learner profile + daily plan", () => {
     for (const q of detail.questions) answers[q.id] = 0;
     const attemptRes = await request.post(`/api/v1/exercises/reading/${detail.id}/attempts`, {
       headers: user.authHeaders,
-      data: { answers, durationSeconds: 60 },
+      data: { requestId: crypto.randomUUID(), answers, durationSeconds: 60 },
     });
     expect(attemptRes.status()).toBe(200);
 

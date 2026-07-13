@@ -1,4 +1,4 @@
-import { and, eq, max } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import { exerciseAttempts, listeningExercises } from "../db/schema";
@@ -10,11 +10,14 @@ export async function listListeningExercises(userId: string, track: Track) {
       where: eq(listeningExercises.track, track),
       orderBy: listeningExercises.id,
     }),
+    // The single best attempt per exercise, returning that row's own score AND
+    // total together. Aggregating them independently could pair a high score
+    // with a higher total from a later, longer version of the same exercise.
     db
-      .select({
+      .selectDistinctOn([exerciseAttempts.refId], {
         refId: exerciseAttempts.refId,
-        score: max(exerciseAttempts.score),
-        total: max(exerciseAttempts.total),
+        score: exerciseAttempts.score,
+        total: exerciseAttempts.total,
       })
       .from(exerciseAttempts)
       .where(
@@ -24,14 +27,16 @@ export async function listListeningExercises(userId: string, track: Track) {
           eq(exerciseAttempts.track, track),
         ),
       )
-      .groupBy(exerciseAttempts.refId),
+      .orderBy(
+        exerciseAttempts.refId,
+        desc(exerciseAttempts.score),
+        desc(exerciseAttempts.completedAt),
+      ),
   ]);
 
   const bestByExercise = new Map<string, { score: number; total: number }>();
   for (const attempt of attempts) {
-    if (attempt.score !== null && attempt.total !== null) {
-      bestByExercise.set(attempt.refId, { score: attempt.score, total: attempt.total });
-    }
+    bestByExercise.set(attempt.refId, { score: attempt.score, total: attempt.total });
   }
 
   return { exercises, bestByExercise };

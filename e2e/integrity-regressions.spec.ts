@@ -5,6 +5,7 @@ import { Pool } from "pg";
 import * as dbSchema from "../src/lib/db/schema";
 import {
   aiGradingRequests,
+  exerciseAttempts,
   mistakeStates,
   speakingSubmissions,
   vocabQuizSessions,
@@ -223,5 +224,75 @@ test.describe("persisted integrity regressions", () => {
         ),
       );
     expect(claimedRetries).toEqual([]);
+  });
+
+  test("a replayed exercise submit is idempotent — one attempt, no double-counted mistake", async ({
+    request,
+  }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const userId = await userIdFor(request, user.authHeaders);
+
+    const { exercises } = await (
+      await request.get("/api/v1/reading", { headers: user.authHeaders })
+    ).json();
+    const detail = await (
+      await request.get(`/api/v1/reading/${exercises[0].id}`, { headers: user.authHeaders })
+    ).json();
+    const answers: Record<string, number> = {};
+    for (const q of detail.questions) answers[q.id] = 0;
+
+    const requestId = crypto.randomUUID();
+    const url = `/api/v1/exercises/reading/${detail.id}/attempts`;
+
+    const first = await request.post(url, {
+      headers: user.authHeaders,
+      data: { requestId, answers, durationSeconds: 60 },
+    });
+    expect(first.status()).toBe(200);
+    const graded = await first.json();
+    const wrong = graded.perQuestion.filter((p: { correct: boolean }) => !p.correct);
+    expect(wrong.length).toBeGreaterThan(0); // seeded content: option 0 is not always right
+
+    // A lost-response retry reuses the id with a larger durationSeconds (which is
+    // excluded from the idempotency hash) and must replay, not re-grade.
+    const replay = await request.post(url, {
+      headers: user.authHeaders,
+      data: { requestId, answers, durationSeconds: 95 },
+    });
+    expect(replay.status()).toBe(200);
+    expect((await replay.json()).score).toBe(graded.score);
+
+    // Exactly one attempt row was written.
+    const attempts = await testDb
+      .select()
+      .from(exerciseAttempts)
+      .where(and(eq(exerciseAttempts.userId, userId), eq(exerciseAttempts.refId, detail.id)));
+    expect(attempts.length).toBe(1);
+
+    // The wrong answer was counted once, not twice.
+    const [state] = await testDb
+      .select()
+      .from(mistakeStates)
+      .where(
+        and(
+          eq(mistakeStates.userId, userId),
+          eq(mistakeStates.refId, detail.id),
+          eq(mistakeStates.questionId, wrong[0].questionId),
+        ),
+      );
+    expect(state.wrongCount).toBe(1);
+
+    // Reusing the same id for different answers is a conflict, not a silent
+    // overwrite or a second attempt.
+    const conflict = await request.post(url, {
+      headers: user.authHeaders,
+      data: {
+        requestId,
+        answers: { ...answers, [detail.questions[0].id]: 1 },
+        durationSeconds: 60,
+      },
+    });
+    expect(conflict.status()).toBe(409);
+    expect((await conflict.json()).error.code).toBe("exercise_request_conflict");
   });
 });

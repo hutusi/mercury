@@ -59,14 +59,23 @@ export function VocabMistakeItem({
     setError(null);
     startTransition(async () => {
       try {
-        const result = await answerVocabMistakeRetest({
+        const outcome = await answerVocabMistakeRetest({
           sessionId: session.sessionId,
           questionId: session.question.id,
           optionId,
         });
+        if (!outcome.ok) {
+          // The mistake changed (or the session lapsed) after this retest was
+          // issued: discard the obsolete question and offer a fresh retest.
+          setSession(null);
+          setPicked(null);
+          setCorrectOptionId(null);
+          setError(t.mistakes.retestStale);
+          return;
+        }
         setPicked(optionId);
-        setCorrectOptionId(result.correctOptionId);
-        if (result.correct) {
+        setCorrectOptionId(outcome.result.correctOptionId);
+        if (outcome.result.correct) {
           setClearedNow(true);
           onCleared?.();
         }

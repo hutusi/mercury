@@ -272,7 +272,7 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
         "409":
-          description: Another tutor provider call is in flight for this user (code chat_in_progress).
+          description: Another tutor provider call is in flight (chat_in_progress), or this turn's claim was superseded by a stale-takeover retry (chat_claim_superseded).
           content:
             application/json:
               schema: { $ref: "#/components/schemas/ErrorEnvelope" }
@@ -543,8 +543,16 @@ paths:
           application/json:
             schema:
               type: object
-              required: [answers, durationSeconds]
+              required: [requestId, answers, durationSeconds]
               properties:
+                requestId:
+                  type: string
+                  format: uuid
+                  description: >-
+                    Client-generated idempotency key. Replaying the same id with
+                    the same answers returns the original grade without recording
+                    a second attempt; reusing it for different answers is a
+                    conflict (exercise_request_conflict).
                 answers:
                   type: object
                   additionalProperties: { type: integer, minimum: 0, maximum: 3 }
@@ -557,6 +565,7 @@ paths:
               schema: { $ref: "#/components/schemas/GradedExercise" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
 
   # ── mistakes notebook ─────────────────────────────────────────────────────
@@ -1001,7 +1010,11 @@ components:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
     Conflict:
-      description: Request conflicts with persisted state (for example quiz_answer_conflict).
+      description: >-
+        Request conflicts with persisted state — the specific code is in the
+        envelope (quiz_answer_conflict, attempt_not_abandonable,
+        exercise_request_conflict, grading_request_conflict, grading_in_progress,
+        or grading_claim_superseded).
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
@@ -1032,7 +1045,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, grading_request_conflict, grading_in_progress, chat_in_progress, expired, quiz_session_expired, mistake_session_stale, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, quiz_answer_conflict, attempt_not_abandonable, exercise_request_conflict, grading_request_conflict, grading_in_progress, grading_claim_superseded, chat_in_progress, chat_claim_superseded, expired, quiz_session_expired, mistake_session_stale, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, internal).
             message:
               type: string
               description: English debug text — not for end users.
