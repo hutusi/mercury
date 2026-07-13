@@ -1,4 +1,4 @@
-import { and, eq } from "drizzle-orm";
+import { and, eq, max } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import { exerciseAttempts, readingExercises } from "../db/schema";
@@ -10,16 +10,28 @@ export async function listReadingExercises(userId: string, track: Track) {
       where: eq(readingExercises.track, track),
       orderBy: readingExercises.id,
     }),
-    db.query.exerciseAttempts.findMany({
-      where: and(eq(exerciseAttempts.userId, userId), eq(exerciseAttempts.kind, "reading")),
-    }),
+    db
+      .select({
+        refId: exerciseAttempts.refId,
+        score: max(exerciseAttempts.score),
+        total: max(exerciseAttempts.total),
+      })
+      .from(exerciseAttempts)
+      .where(
+        and(
+          eq(exerciseAttempts.userId, userId),
+          eq(exerciseAttempts.kind, "reading"),
+          eq(exerciseAttempts.track, track),
+        ),
+      )
+      .groupBy(exerciseAttempts.refId),
   ]);
 
   const bestByExercise = new Map<string, { score: number; total: number }>();
-  for (const a of attempts) {
-    const best = bestByExercise.get(a.refId);
-    if (!best || a.score > best.score)
-      bestByExercise.set(a.refId, { score: a.score, total: a.total });
+  for (const attempt of attempts) {
+    if (attempt.score !== null && attempt.total !== null) {
+      bestByExercise.set(attempt.refId, { score: attempt.score, total: attempt.total });
+    }
   }
 
   return { exercises, bestByExercise };

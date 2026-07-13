@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, count, desc, eq } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import { speakingPrompts, speakingSubmissions } from "../db/schema";
@@ -10,16 +10,17 @@ export async function listSpeakingPrompts(userId: string, track: Track) {
       where: eq(speakingPrompts.track, track),
       orderBy: speakingPrompts.id,
     }),
-    db.query.speakingSubmissions.findMany({
-      where: eq(speakingSubmissions.userId, userId),
-      orderBy: desc(speakingSubmissions.createdAt),
-    }),
+    db
+      .select({ promptId: speakingSubmissions.promptId, count: count() })
+      .from(speakingSubmissions)
+      .innerJoin(speakingPrompts, eq(speakingSubmissions.promptId, speakingPrompts.id))
+      .where(and(eq(speakingSubmissions.userId, userId), eq(speakingPrompts.track, track)))
+      .groupBy(speakingSubmissions.promptId),
   ]);
 
   const submissionCountByPrompt = new Map<string, number>();
-  for (const s of submissions) {
-    submissionCountByPrompt.set(s.promptId, (submissionCountByPrompt.get(s.promptId) ?? 0) + 1);
-  }
+  for (const submission of submissions)
+    submissionCountByPrompt.set(submission.promptId, submission.count);
 
   return { prompts, submissionCountByPrompt };
 }
@@ -44,15 +45,11 @@ export async function getSpeakingPromptWithHistory(userId: string, promptId: str
 
 /** A user's submission with its prompt (owner-scoped). */
 export async function getSpeakingSubmissionDetail(userId: string, submissionId: string) {
-  const submission = await db.query.speakingSubmissions.findFirst({
-    where: and(eq(speakingSubmissions.id, submissionId), eq(speakingSubmissions.userId, userId)),
-  });
-  if (!submission) return null;
-
-  const prompt = await db.query.speakingPrompts.findFirst({
-    where: eq(speakingPrompts.id, submission.promptId),
-  });
-  if (!prompt) return null;
-
-  return { submission, prompt };
+  const [row] = await db
+    .select({ submission: speakingSubmissions, prompt: speakingPrompts })
+    .from(speakingSubmissions)
+    .innerJoin(speakingPrompts, eq(speakingSubmissions.promptId, speakingPrompts.id))
+    .where(and(eq(speakingSubmissions.id, submissionId), eq(speakingSubmissions.userId, userId)))
+    .limit(1);
+  return row ?? null;
 }

@@ -40,9 +40,9 @@ export async function recordActivityWith(
   await executor.insert(activityDays).values({ userId, day }).onConflictDoNothing();
 }
 
-export async function getStreak(userId: string): Promise<number> {
+export async function getStreak(userId: string, knownTimeZone?: string): Promise<number> {
   const [timeZone, rows] = await Promise.all([
-    getUserTimeZone(userId),
+    knownTimeZone ? Promise.resolve(knownTimeZone) : getUserTimeZone(userId),
     db
       .select({ day: activityDays.day })
       .from(activityDays)

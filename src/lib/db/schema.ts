@@ -276,7 +276,10 @@ export const exerciseAttempts = pgTable(
     durationSeconds: integer("duration_seconds").notNull().default(0),
     completedAt: ts("completed_at").notNull().$defaultFn(now),
   },
-  (t) => [index("exercise_attempts_user_idx").on(t.userId, t.completedAt)],
+  (t) => [
+    index("exercise_attempts_user_idx").on(t.userId, t.completedAt),
+    index("exercise_attempts_user_kind_ref_idx").on(t.userId, t.kind, t.refId),
+  ],
 );
 
 /**
@@ -322,7 +325,10 @@ export const writingSubmissions = pgTable(
     model: text("model"),
     createdAt: ts("created_at").notNull().$defaultFn(now),
   },
-  (t) => [index("writing_submissions_user_idx").on(t.userId, t.createdAt)],
+  (t) => [
+    index("writing_submissions_user_idx").on(t.userId, t.createdAt),
+    index("writing_submissions_user_prompt_idx").on(t.userId, t.promptId, t.createdAt),
+  ],
 );
 
 export const speakingSubmissions = pgTable(
@@ -342,7 +348,10 @@ export const speakingSubmissions = pgTable(
     model: text("model"),
     createdAt: ts("created_at").notNull().$defaultFn(now),
   },
-  (t) => [index("speaking_submissions_user_idx").on(t.userId, t.createdAt)],
+  (t) => [
+    index("speaking_submissions_user_idx").on(t.userId, t.createdAt),
+    index("speaking_submissions_user_prompt_idx").on(t.userId, t.promptId, t.createdAt),
+  ],
 );
 
 /**
@@ -419,6 +428,7 @@ export const mockExamAttempts = pgTable(
   },
   (t) => [
     index("mock_exam_attempts_user_idx").on(t.userId, t.startedAt),
+    index("mock_exam_attempts_user_status_idx").on(t.userId, t.status, t.completedAt),
     // At most one live attempt per user+exam: startExamAttempt's
     // check-then-insert would otherwise race under concurrent starts.
     uniqueIndex("mock_exam_attempts_in_progress_idx")

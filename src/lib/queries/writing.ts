@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, count, desc, eq } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import { writingPrompts, writingSubmissions } from "../db/schema";
@@ -10,16 +10,17 @@ export async function listWritingPrompts(userId: string, track: Track) {
       where: eq(writingPrompts.track, track),
       orderBy: writingPrompts.id,
     }),
-    db.query.writingSubmissions.findMany({
-      where: eq(writingSubmissions.userId, userId),
-      orderBy: desc(writingSubmissions.createdAt),
-    }),
+    db
+      .select({ promptId: writingSubmissions.promptId, count: count() })
+      .from(writingSubmissions)
+      .innerJoin(writingPrompts, eq(writingSubmissions.promptId, writingPrompts.id))
+      .where(and(eq(writingSubmissions.userId, userId), eq(writingPrompts.track, track)))
+      .groupBy(writingSubmissions.promptId),
   ]);
 
   const submissionCountByPrompt = new Map<string, number>();
-  for (const s of submissions) {
-    submissionCountByPrompt.set(s.promptId, (submissionCountByPrompt.get(s.promptId) ?? 0) + 1);
-  }
+  for (const submission of submissions)
+    submissionCountByPrompt.set(submission.promptId, submission.count);
 
   return { prompts, submissionCountByPrompt };
 }
@@ -42,15 +43,11 @@ export async function getWritingPromptWithHistory(userId: string, promptId: stri
 
 /** A user's submission with its prompt (owner-scoped). */
 export async function getWritingSubmissionDetail(userId: string, submissionId: string) {
-  const submission = await db.query.writingSubmissions.findFirst({
-    where: and(eq(writingSubmissions.id, submissionId), eq(writingSubmissions.userId, userId)),
-  });
-  if (!submission) return null;
-
-  const prompt = await db.query.writingPrompts.findFirst({
-    where: eq(writingPrompts.id, submission.promptId),
-  });
-  if (!prompt) return null;
-
-  return { submission, prompt };
+  const [row] = await db
+    .select({ submission: writingSubmissions, prompt: writingPrompts })
+    .from(writingSubmissions)
+    .innerJoin(writingPrompts, eq(writingSubmissions.promptId, writingPrompts.id))
+    .where(and(eq(writingSubmissions.id, submissionId), eq(writingSubmissions.userId, userId)))
+    .limit(1);
+  return row ?? null;
 }

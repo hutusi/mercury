@@ -1,4 +1,4 @@
-import { and, desc, eq, inArray, lte, sql } from "drizzle-orm";
+import { and, desc, eq, lte, sql } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import {
@@ -13,29 +13,25 @@ import {
 import { countActiveMistakes } from "../mistakes";
 import { reminderState } from "../reminders-core";
 import { calendarDay, getStreak, getUserTimeZone } from "../streak";
-import { shiftCalendarDay } from "../streak-core";
 
 /** Everything the dashboard shows, in one round of parallel queries. */
 export async function getDashboardData(userId: string, track: Track) {
   const today = new Date();
   const timeZone = await getUserTimeZone(userId);
   const todayDay = calendarDay(today, timeZone);
-  const yesterdayDay = shiftCalendarDay(todayDay, -1);
 
   const [
     streak,
     dueRows,
-    lastExam,
     inProgressExam,
     recentExercises,
     recentWriting,
     recentSpeaking,
     recentExams,
-    firstActivity,
+    latestActivity,
     activeMistakes,
-    recentActivity,
   ] = await Promise.all([
-    getStreak(userId),
+    getStreak(userId, timeZone),
     db
       // pg returns bigint counts as strings; mapWith keeps the API numeric.
       .select({ count: sql<number>`count(*)`.mapWith(Number) })
@@ -49,22 +45,21 @@ export async function getDashboardData(userId: string, track: Track) {
         ),
       ),
     db.query.mockExamAttempts.findFirst({
-      where: and(eq(mockExamAttempts.userId, userId), eq(mockExamAttempts.status, "completed")),
-      orderBy: desc(mockExamAttempts.completedAt),
-    }),
-    db.query.mockExamAttempts.findFirst({
       where: and(eq(mockExamAttempts.userId, userId), eq(mockExamAttempts.status, "in_progress")),
       orderBy: desc(mockExamAttempts.startedAt),
+      columns: { examId: true },
     }),
     db.query.exerciseAttempts.findMany({
       where: eq(exerciseAttempts.userId, userId),
       orderBy: desc(exerciseAttempts.completedAt),
       limit: 5,
+      columns: { kind: true, score: true, total: true, completedAt: true },
     }),
     db.query.writingSubmissions.findMany({
       where: and(eq(writingSubmissions.userId, userId), eq(writingSubmissions.status, "ai_scored")),
       orderBy: desc(writingSubmissions.createdAt),
       limit: 5,
+      columns: { feedback: true, createdAt: true },
     }),
     db.query.speakingSubmissions.findMany({
       where: and(
@@ -73,31 +68,31 @@ export async function getDashboardData(userId: string, track: Track) {
       ),
       orderBy: desc(speakingSubmissions.createdAt),
       limit: 5,
+      columns: { feedback: true, createdAt: true },
     }),
     db.query.mockExamAttempts.findMany({
       where: and(eq(mockExamAttempts.userId, userId), eq(mockExamAttempts.status, "completed")),
       orderBy: desc(mockExamAttempts.completedAt),
       limit: 5,
+      columns: { startedAt: true, completedAt: true, estimate: true },
     }),
-    // Any completed activity ever — drives the first-run guidance.
-    db.query.activityDays.findFirst({ where: eq(activityDays.userId, userId) }),
+    // The latest day proves whether any activity exists and is all reminderState needs.
+    db.query.activityDays.findFirst({
+      where: eq(activityDays.userId, userId),
+      orderBy: desc(activityDays.day),
+      columns: { day: true },
+    }),
     countActiveMistakes(userId, track),
-    // Today/yesterday only — all the reminder nudge needs.
-    db
-      .select({ day: activityDays.day })
-      .from(activityDays)
-      .where(
-        and(eq(activityDays.userId, userId), inArray(activityDays.day, [todayDay, yesterdayDay])),
-      ),
   ]);
 
   const dueCount = dueRows[0]?.count ?? 0;
+  const lastExam = recentExams[0] ?? null;
 
   return {
     streak,
     dueCount,
     reminder: reminderState({
-      days: new Set(recentActivity.map((r) => r.day)),
+      days: new Set(latestActivity ? [latestActivity.day] : []),
       dueCount,
       today: todayDay,
     }),
@@ -109,6 +104,6 @@ export async function getDashboardData(userId: string, track: Track) {
     recentExams,
     activeMistakes,
     // Brand-new account: nothing done yet and not mid-exam.
-    isNewUser: !firstActivity && !inProgressExam,
+    isNewUser: !latestActivity && !inProgressExam,
   };
 }
