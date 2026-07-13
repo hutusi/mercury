@@ -32,30 +32,58 @@ test.describe("API vocab/SRS", () => {
     const graded = overview.words.find((w: { id: string }) => w.id === cards[0].wordId);
     expect(graded.started).toBe(true);
 
-    // Quiz round-trip: one right, one wrong, graded by id equality.
-    const quizRes = await request.get("/api/v1/vocab/quiz", { headers: user.authHeaders });
-    const quiz = await quizRes.json();
+    // Quiz round-trip: the raw session resource contains only opaque ids.
+    const quizRes = await request.post("/api/v1/vocab/quiz", { headers: user.authHeaders });
+    expect(quizRes.status()).toBe(201);
+    const quizText = await quizRes.text();
+    expect(quizText).not.toContain("wordId");
+    const quiz = JSON.parse(quizText);
     expect(quiz.track).toBe("toeic");
     expect(quiz.questions.length).toBeGreaterThanOrEqual(2);
     for (const q of quiz.questions) {
       expect(q.options.length).toBe(4);
-      expect(q.options.some((o: { wordId: string }) => o.wordId === q.wordId)).toBe(true);
+      expect(q.id).toBeTruthy();
+      expect(q.options.every((o: { id: string }) => o.id)).toBe(true);
     }
 
-    const [q1, q2] = quiz.questions;
-    const wrongOption = q2.options.find((o: { wordId: string }) => o.wordId !== q2.wordId);
-    const submitRes = await request.post("/api/v1/vocab/quiz", {
+    const first = quiz.questions[0];
+    const answerUrl = `/api/v1/vocab/quiz/${quiz.sessionId}/answers`;
+    const firstAnswer = { questionId: first.id, optionId: first.options[0].id };
+    const submitRes = await request.post(answerUrl, {
       headers: user.authHeaders,
-      data: {
-        track: "toeic",
-        answers: { [q1.wordId]: q1.wordId, [q2.wordId]: wrongOption.wordId },
-      },
+      data: firstAnswer,
     });
     expect(submitRes.status()).toBe(200);
-    const result = await submitRes.json();
-    expect(result.score).toBe(1);
-    expect(result.total).toBe(2);
-    expect(result.correctWordIds).toEqual([q1.wordId]);
+    const firstResult = await submitRes.json();
+    expect(firstResult.correctOptionId).toBeTruthy();
+    expect(firstResult.completed).toBe(false);
+
+    // Same answer is idempotent; a different answer is an explicit conflict.
+    const repeated = await request.post(answerUrl, {
+      headers: user.authHeaders,
+      data: firstAnswer,
+    });
+    expect(await repeated.json()).toEqual(firstResult);
+    const conflict = await request.post(answerUrl, {
+      headers: user.authHeaders,
+      data: { questionId: first.id, optionId: first.options[1].id },
+    });
+    expect(conflict.status()).toBe(409);
+    expect((await conflict.json()).error.code).toBe("quiz_answer_conflict");
+
+    let result = firstResult;
+    for (const q of quiz.questions.slice(1)) {
+      const response = await request.post(answerUrl, {
+        headers: user.authHeaders,
+        data: { questionId: q.id, optionId: q.options[0].id },
+      });
+      expect(response.status()).toBe(200);
+      result = await response.json();
+    }
+    expect(result.completed).toBe(true);
+    expect(result.total).toBe(quiz.questions.length);
+    expect(result.score).toBeGreaterThanOrEqual(0);
+    expect(result.score).toBeLessThanOrEqual(result.total);
 
     // Today's activity shows up as a streak of 1 and a recent quiz score.
     const dashRes = await request.get("/api/v1/dashboard", { headers: user.authHeaders });

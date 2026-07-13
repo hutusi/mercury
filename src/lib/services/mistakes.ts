@@ -9,7 +9,6 @@ import {
   mockExamAttempts,
   mockExams,
   readingExercises,
-  vocabWords,
 } from "../db/schema";
 import { deriveMistakes, sourceKey, type MistakeKind } from "../mistakes-core";
 import { recordActivity, recordActivityWith } from "../streak";
@@ -146,35 +145,4 @@ export async function retestMistakeForUser(userId: string, input: unknown): Prom
 
   // The answer key ships only after an answer, mirroring submitExerciseAttempt.
   return { correct, correctIndex: question.correctIndex, explanationZh: question.explanationZh };
-}
-
-export const VocabRetestSchema = z.object({
-  wordId: z.string(),
-  chosenWordId: z.string(),
-});
-
-/** Re-test a vocab mistake by word-id equality; a correct answer clears it. */
-export async function retestVocabMistakeForUser(
-  userId: string,
-  input: unknown,
-): Promise<{ correct: boolean }> {
-  const { wordId, chosenWordId } = VocabRetestSchema.parse(input);
-
-  const word = await db.query.vocabWords.findFirst({ where: eq(vocabWords.id, wordId) });
-  if (!word) throw new NotFoundError(`Unknown vocab word: ${wordId}`);
-
-  // Same integrity model as submitQuiz: options carry word ids, grading is id
-  // equality; the regenerated question's key never needs to reach the client.
-  const correct = chosenWordId === wordId;
-  if (correct) {
-    // Mirrors exercise_attempts identity for vocab: refId = quiz-${track}.
-    await db.transaction(async (tx) => {
-      await upsertClear(tx, userId, "vocab_quiz", `quiz-${word.track}`, wordId);
-      await recordActivityWith(tx, userId);
-    });
-  } else {
-    await recordActivity(userId);
-  }
-
-  return { correct };
 }

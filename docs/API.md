@@ -30,9 +30,10 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
 
 - **Errors** are always `{"error": {"code", "message", "details?"}}`. `code` is the contract;
   `message` is English debug text (clients own user-facing copy). Codes: `unauthorized` (401),
-  `onboarding_required` / `integrity` (403), `not_found` (404), `validation_failed` (422, zod
-  issues in `details`), `invalid_json` (400), `chat_limit_reached` (429), `ai_unavailable` (503),
-  `internal` (500).
+  `onboarding_required` / `integrity` (403), `not_found` (404), conflicts such as
+  `quiz_answer_conflict` (409), expiry such as `quiz_session_expired` (410),
+  `validation_failed` (422, zod issues in `details`), `invalid_json` (400),
+  `chat_limit_reached` (429), `ai_unavailable` (503), `internal` (500).
 - **Locale**: responses are bilingual _data_ (`title` + `titleZh`, explanations in zh) — there is
   no `Accept-Language` handling; the client owns its UI strings.
 - **Dates** are ISO 8601 strings; **exam deadlines** are epoch-ms (see below).
@@ -58,6 +59,20 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
 - `GET /api/v1/plan` — the deterministic 今日计划 (due vocab → mistakes → weakest skill →
   writing/speaking cadence → mock-exam checkpoint), fitted to `dailyMinutes`. `href` values are
   unlocalized web paths; native clients should map `kind`/`refId` to their own screens.
+
+## Vocabulary quiz integrity
+
+The server-owned session model is recorded in
+[ADR 0015](adr/0015-server-owned-vocabulary-quiz-sessions.md).
+
+- `POST /api/v1/vocab/quiz` creates a 30-minute server-owned session. Questions and options use
+  opaque ids; no content id or equality relationship reveals the answer.
+- `POST /api/v1/vocab/quiz/{sessionId}/answers` accepts one `{questionId, optionId}` and returns
+  `{correct, correctOptionId, completed, score?, total?}`. Repeating the identical answer is
+  idempotent; changing it returns `409 quiz_answer_conflict`; expired sessions return `410
+quiz_session_expired`.
+- `POST /api/v1/mistakes/vocab-retest` `{wordId}` creates the same kind of one-question session,
+  but only for an active mistake. Submit it through the shared answers route.
 
 ## Tutor chat
 

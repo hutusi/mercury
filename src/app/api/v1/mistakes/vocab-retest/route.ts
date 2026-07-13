@@ -1,9 +1,11 @@
 import { requireUserApi } from "@/lib/api/auth";
 import { apiHandler, readJson } from "@/lib/api/handler";
-import { retestVocabMistakeForUser } from "@/lib/services/mistakes";
+import { createVocabMistakeSessionForUser } from "@/lib/services/vocab-quiz";
 
 export const POST = apiHandler(async (req) => {
   const user = await requireUserApi(req);
   const body = await readJson(req);
-  return Response.json(await retestVocabMistakeForUser(user.id, body));
+  const wordId =
+    typeof body === "object" && body !== null ? Reflect.get(body, "wordId") : undefined;
+  return Response.json(await createVocabMistakeSessionForUser(user.id, wordId), { status: 201 });
 });

@@ -1,6 +1,12 @@
 import { ZodError } from "zod";
 import { AiUnavailableError } from "../ai/client";
-import { IntegrityError, LimitExceededError, NotFoundError } from "../services/errors";
+import {
+  ConflictError,
+  ExpiredError,
+  IntegrityError,
+  LimitExceededError,
+  NotFoundError,
+} from "../services/errors";
 import { ApiError } from "./errors";
 
 /**
@@ -42,6 +48,12 @@ export function apiHandler<Ctx>(
       }
       if (error instanceof IntegrityError) {
         return errorResponse(403, "integrity", error.message);
+      }
+      if (error instanceof ConflictError) {
+        return errorResponse(409, error.code, error.message);
+      }
+      if (error instanceof ExpiredError) {
+        return errorResponse(410, error.code, error.message);
       }
       if (error instanceof LimitExceededError) {
         return errorResponse(429, "chat_limit_reached", error.message);

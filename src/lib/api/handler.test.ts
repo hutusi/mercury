@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { z } from "zod";
 import { AiUnavailableError } from "../ai/client";
-import { IntegrityError, NotFoundError } from "../services/errors";
+import { ConflictError, ExpiredError, IntegrityError, NotFoundError } from "../services/errors";
 import { ApiError } from "./errors";
 import { apiHandler, readJson } from "./handler";
 
@@ -53,6 +53,22 @@ describe("apiHandler", () => {
     const { status, body } = await runWithError(new IntegrityError("Not an active mistake"));
     expect(status).toBe(403);
     expect(body.error).toEqual({ code: "integrity", message: "Not an active mistake" });
+  });
+
+  test("ConflictError preserves its machine code on 409", async () => {
+    const { status, body } = await runWithError(
+      new ConflictError("Already answered", "quiz_answer_conflict"),
+    );
+    expect(status).toBe(409);
+    expect(body.error.code).toBe("quiz_answer_conflict");
+  });
+
+  test("ExpiredError preserves its machine code on 410", async () => {
+    const { status, body } = await runWithError(
+      new ExpiredError("Session expired", "quiz_session_expired"),
+    );
+    expect(status).toBe(410);
+    expect(body.error.code).toBe("quiz_session_expired");
   });
 
   test("AiUnavailableError maps to 503 without leaking the internal message", async () => {

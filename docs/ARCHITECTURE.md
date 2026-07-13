@@ -141,6 +141,13 @@ A **study reminder nudge** on the dashboard reuses this data: `src/lib/reminders
 
 `/mistakes` (错题本) lists every MCQ the user answered wrongly, per active track, re-testable inline. The wrong-set is **derived at read time** — `src/lib/mistakes-core.ts` (pure, unit-tested) folds attempt history against live content answer keys — so there is no write-path hook and no backfill; only clears persist (`mistake_clears`, written by `src/lib/services/mistakes.ts` when a re-test is answered correctly). A later wrong answer in a real attempt outweighs an older clear by timestamp, reviving the mistake. Questions ship sanitized; the answer key returns only in the retest response, after answering. Vocab items re-test through a freshly regenerated question (`src/lib/vocab-quiz-core.ts`, shared with the quiz page) because original quiz distractors are never persisted — attempts store only a per-word 0/1 flag.
 
+Vocabulary quiz integrity is session-based ([ADR 0015](adr/0015-server-owned-vocabulary-quiz-sessions.md)): `vocab_quiz_sessions` stores the hidden word ids,
+opaque question/option ids, owner, purpose, expiry, and accepted answers. The public resource is
+sanitized by `vocab-quiz-core`; `services/vocab-quiz.ts` locks the session and grades one answer at
+a time. Identical retries are idempotent, conflicting retries fail with 409, and only completion
+writes the practice attempt or mistake clear. Normal quizzes and vocab mistake re-tests share this
+module and its 30-minute lifetime.
+
 ## Browser speech
 
 `src/lib/speech.ts` wraps SpeechSynthesis (TTS) and SpeechRecognition (STT, Chrome/Edge only). Components using them are client-only and render behind a mounted-gate (`setMounted(true)` in an effect) because the APIs don't exist during SSR — rendering capability-dependent UI before mount would mismatch hydration. TTS speaks one utterance per script line since Chrome silently cuts long utterances, and always cancels on unmount to prevent zombie audio.

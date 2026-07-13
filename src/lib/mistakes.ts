@@ -1,4 +1,4 @@
-import { and, eq, inArray, sql } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 import type { SanitizedQuestion, ScriptLine, Track } from "@/content/types";
 import { db } from "./db";
 import {
@@ -17,7 +17,6 @@ import {
   type CoreAttempt,
   type MistakeStatus,
 } from "./mistakes-core";
-import { buildQuizQuestion, type QuizQuestion } from "./vocab-quiz-core";
 
 /**
  * Server assembly for the mistakes notebook: derives the wrong-set from
@@ -45,8 +44,6 @@ export interface VocabMistakeVM {
   wordId: string;
   headword: string;
   translationZh: string;
-  /** Fresh regenerated question; null when the track pool is too small (view-only). */
-  quiz: QuizQuestion | null;
   wrongCount: number;
   lastWrongAt: string;
   cleared: boolean;
@@ -181,18 +178,9 @@ export async function getMistakesPageData(userId: string, track: Track): Promise
   const listeningIds = mcqRefIds("listening");
   const examIds = mcqRefIds("exam");
 
-  const hasActiveVocab = statuses.some((s) => s.kind === "vocab_quiz" && !s.cleared);
-  const [words, pool, reading, listening, exams] = await Promise.all([
+  const [words, reading, listening, exams] = await Promise.all([
     wordIds.length
       ? db.query.vocabWords.findMany({ where: inArray(vocabWords.id, wordIds) })
-      : Promise.resolve([]),
-    // Distractor pool for regenerated questions, like the quiz page's fetch.
-    hasActiveVocab
-      ? db.query.vocabWords.findMany({
-          where: eq(vocabWords.track, track),
-          orderBy: sql`random()`,
-          limit: 40,
-        })
       : Promise.resolve([]),
     readingIds.length
       ? db.query.readingExercises.findMany({ where: inArray(readingExercises.id, readingIds) })
@@ -213,7 +201,6 @@ export async function getMistakesPageData(userId: string, track: Track): Promise
   const examById = new Map(exams.map((e) => [e.id, e]));
 
   const vms: MistakeVM[] = [];
-  let vocabIndex = 0;
   for (const status of statuses) {
     const base = {
       wrongCount: status.wrongCount,
@@ -224,16 +211,12 @@ export async function getMistakesPageData(userId: string, track: Track): Promise
     if (status.kind === "vocab_quiz") {
       const word = wordById.get(status.questionId);
       if (!word) continue;
-      const canQuiz = !status.cleared && pool.length >= 4;
       vms.push({
         ...base,
         kind: "vocab_quiz",
         wordId: word.id,
         headword: word.headword,
         translationZh: word.translationZh,
-        quiz: canQuiz
-          ? buildQuizQuestion(word, pool, vocabIndex++ % 2 === 0 ? "en2zh" : "zh2en")
-          : null,
       });
       continue;
     }

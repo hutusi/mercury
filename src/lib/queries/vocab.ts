@@ -1,12 +1,10 @@
-import { and, asc, eq, lte, sql } from "drizzle-orm";
+import { and, asc, eq, lte } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import { srsCards, vocabWords } from "../db/schema";
-import { buildQuizQuestion, type QuizQuestion } from "../vocab-quiz-core";
 
 const MAX_DUE_PER_SESSION = 30;
 const MAX_NEW_PER_SESSION = 10;
-const QUIZ_SIZE = 10;
 
 /** Word list plus per-user SRS aggregates for the vocabulary overview. */
 export async function getVocabOverview(userId: string, track: Track) {
@@ -69,22 +67,4 @@ export async function getStudyQueue(userId: string, track: Track) {
     ...dueRows.map(({ word }) => ({ ...word, wordId: word.id, isNew: false })),
     ...newWords.map((word) => ({ ...word, wordId: word.id, isNew: true })),
   ];
-}
-
-/** Random quiz for a track; empty when the word pool is too small for options. */
-export async function buildQuiz(
-  track: Track,
-): Promise<{ track: Track; questions: QuizQuestion[] }> {
-  const words = await db.query.vocabWords.findMany({
-    where: eq(vocabWords.track, track),
-    orderBy: sql`random()`,
-    limit: QUIZ_SIZE + 15,
-  });
-
-  if (words.length < 4) return { track, questions: [] };
-
-  const questions = words
-    .slice(0, QUIZ_SIZE)
-    .map((word, i) => buildQuizQuestion(word, words, i % 2 === 0 ? "en2zh" : "zh2en"));
-  return { track, questions };
 }

@@ -4,15 +4,14 @@ import { Check, X } from "lucide-react";
 import { useState, useTransition } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { retestVocabMistake } from "@/lib/actions/mistakes";
+import { answerVocabMistakeRetest, createVocabMistakeRetest } from "@/lib/actions/mistakes";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import type { VocabMistakeVM } from "@/lib/mistakes";
+import type { QuizQuestion } from "@/lib/vocab-quiz-core";
 
 /**
- * One wrong vocab word, re-tested with a freshly regenerated question (the
- * original quiz's distractors were never stored). Same integrity model as
- * QuizRunner: options carry word ids and grade by id equality client-side;
- * the server action re-grades and persists the clear.
+ * One wrong vocab word, re-tested through a one-question server-owned quiz
+ * session. Opaque ids reveal nothing until the server grades the selection.
  */
 export function VocabMistakeItem({
   mistake,
@@ -24,38 +23,56 @@ export function VocabMistakeItem({
   const t = useT();
   const locale = useLocale();
   const [picked, setPicked] = useState<string | null>(null);
+  const [correctOptionId, setCorrectOptionId] = useState<string | null>(null);
+  const [session, setSession] = useState<{ sessionId: string; question: QuizQuestion } | null>(
+    null,
+  );
   const [clearedNow, setClearedNow] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [, startTransition] = useTransition();
+  const [pending, startTransition] = useTransition();
 
   const cleared = mistake.cleared || clearedNow;
-  const quiz = mistake.quiz;
+  const quiz = session?.question ?? null;
   const date = new Date(mistake.lastWrongAt).toLocaleDateString(
     locale === "zh" ? "zh-CN" : "en-US",
     { month: "short", day: "numeric" },
   );
 
-  function pick(optionWordId: string) {
-    if (picked || cleared) return;
-    setPicked(optionWordId);
+  function loadQuiz() {
+    if (pending || cleared) return;
     setError(null);
-    const correct = optionWordId === mistake.wordId;
     startTransition(async () => {
       try {
-        const result = await retestVocabMistake({
-          wordId: mistake.wordId,
-          chosenWordId: optionWordId,
+        const created = await createVocabMistakeRetest(mistake.wordId);
+        if (!created.sessionId || !created.questions[0]) throw new Error("No quiz available");
+        setSession({ sessionId: created.sessionId, question: created.questions[0] });
+        setPicked(null);
+        setCorrectOptionId(null);
+      } catch {
+        setError(t.exams.submitFailed);
+      }
+    });
+  }
+
+  function pick(optionId: string) {
+    if (picked || cleared || pending || !session) return;
+    setError(null);
+    startTransition(async () => {
+      try {
+        const result = await answerVocabMistakeRetest({
+          sessionId: session.sessionId,
+          questionId: session.question.id,
+          optionId,
         });
+        setPicked(optionId);
+        setCorrectOptionId(result.correctOptionId);
         if (result.correct) {
           setClearedNow(true);
           onCleared?.();
         }
       } catch {
         setError(t.exams.submitFailed);
-        setPicked(null);
-        return;
       }
-      if (!correct) return; // stays wrong; tryAgain re-enables below
     });
   }
 
@@ -68,13 +85,13 @@ export function VocabMistakeItem({
         <div className="min-w-0 flex-1">
           {/* Key on the server-cleared flag, not clearedNow: a just-cleared item
               keeps its revealed options + confirmation instead of collapsing. */}
-          {mistake.cleared || !quiz ? (
+          {mistake.cleared ? (
             <p className={`text-sm ${cleared ? "text-muted-foreground" : ""}`}>
               <span className="font-medium">{mistake.headword}</span>
               <span className="mx-2 text-muted-foreground">·</span>
               {mistake.translationZh}
             </p>
-          ) : (
+          ) : quiz ? (
             <div className="space-y-3">
               <p className="text-sm">
                 <span className="font-serif text-lg font-medium">{quiz.prompt}</span>
@@ -84,15 +101,15 @@ export function VocabMistakeItem({
               </p>
               <div className="grid gap-2 sm:grid-cols-2">
                 {quiz.options.map((option) => {
-                  const isCorrect = option.wordId === mistake.wordId;
-                  const isPicked = picked === option.wordId;
+                  const isCorrect = option.id === correctOptionId;
+                  const isPicked = picked === option.id;
                   const revealed = picked !== null;
                   return (
                     <button
-                      key={option.wordId}
+                      key={option.id}
                       type="button"
                       disabled={revealed}
-                      onClick={() => pick(option.wordId)}
+                      onClick={() => pick(option.id)}
                       className={`border px-3 py-2 text-left text-sm transition-colors ${
                         revealed && isCorrect
                           ? "border-foreground bg-muted font-medium"
@@ -112,10 +129,10 @@ export function VocabMistakeItem({
                   );
                 })}
               </div>
-              {picked !== null && picked !== mistake.wordId && (
+              {picked !== null && picked !== correctOptionId && (
                 <div className="flex items-center gap-3">
                   <p className="text-sm font-medium text-cinnabar">{t.mistakes.retestWrong}</p>
-                  <Button variant="outline" size="sm" onClick={() => setPicked(null)}>
+                  <Button variant="outline" size="sm" onClick={loadQuiz} disabled={pending}>
                     {t.common.tryAgain}
                   </Button>
                 </div>
@@ -126,6 +143,18 @@ export function VocabMistakeItem({
                   {t.mistakes.retestCorrect}
                 </p>
               )}
+              {error && <p className="text-sm font-medium text-cinnabar">{error}</p>}
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <p className="text-sm">
+                <span className="font-medium">{mistake.headword}</span>
+                <span className="mx-2 text-muted-foreground">·</span>
+                {mistake.translationZh}
+              </p>
+              <Button variant="outline" size="sm" onClick={loadQuiz} disabled={pending}>
+                {pending ? t.common.loading : t.mistakes.retest}
+              </Button>
               {error && <p className="text-sm font-medium text-cinnabar">{error}</p>}
             </div>
           )}

@@ -412,53 +412,64 @@ paths:
         "404": { $ref: "#/components/responses/NotFound" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
   /api/v1/vocab/quiz:
-    get:
-      summary: Build a fresh random quiz (empty questions when the pool < 4)
+    post:
+      summary: Create a 30-minute server-owned quiz session
       tags: [vocab]
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created; questions contain opaque ids and no answer-key signal.
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   track: { $ref: "#/components/schemas/Track" }
+                  sessionId:
+                    oneOf: [{ type: string }, { type: "null" }]
+                  expiresAt:
+                    oneOf: [{ type: string, format: date-time }, { type: "null" }]
                   questions:
                     type: array
                     items: { $ref: "#/components/schemas/QuizQuestion" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/vocab/quiz/{sessionId}/answers:
     post:
-      summary: Score a quiz (id-equality; max 20 answers)
+      summary: Grade one opaque quiz option
       tags: [vocab]
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema: { type: string }
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [track, answers]
+              required: [questionId, optionId]
               properties:
-                track: { $ref: "#/components/schemas/Track" }
-                answers:
-                  type: object
-                  description: questionWordId -> chosen option's wordId
-                  additionalProperties: { type: string }
+                questionId: { type: string }
+                optionId: { type: string }
       responses:
         "200":
-          description: Score.
+          description: Per-answer grade; score and total appear on completion.
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  correct: { type: boolean }
+                  correctOptionId: { type: string }
+                  completed: { type: boolean }
                   score: { type: integer }
                   total: { type: integer }
-                  correctWordIds:
-                    type: array
-                    items: { type: string }
         "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Integrity" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "410": { $ref: "#/components/responses/Expired" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
 
   # ── reading / listening drills ────────────────────────────────────────────
@@ -584,7 +595,7 @@ paths:
         "404": { $ref: "#/components/responses/NotFound" }
   /api/v1/mistakes/vocab-retest:
     post:
-      summary: Re-answer a vocab mistake by word-id equality
+      summary: Create an opaque one-question session for an active vocab mistake
       tags: [mistakes]
       requestBody:
         required: true
@@ -592,20 +603,14 @@ paths:
           application/json:
             schema:
               type: object
-              required: [wordId, chosenWordId]
+              required: [wordId]
               properties:
                 wordId: { type: string }
-                chosenWordId: { type: string }
       responses:
-        "200":
-          description: Result.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  correct: { type: boolean }
+        "201":
+          description: Quiz session; submit through /vocab/quiz/{sessionId}/answers.
         "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Integrity" }
         "404": { $ref: "#/components/responses/NotFound" }
 
   # ── mock exams (server-issued deadlines, server-side grading) ─────────────
@@ -916,6 +921,16 @@ components:
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+    Conflict:
+      description: Request conflicts with persisted state (for example quiz_answer_conflict).
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+    Expired:
+      description: Ephemeral resource expired (for example quiz_session_expired).
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
     ValidationFailed:
       description: Request failed Zod validation (code validation_failed, issues in details).
       content:
@@ -938,7 +953,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, validation_failed, invalid_json, ai_unavailable, chat_limit_reached, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, expired, validation_failed, invalid_json, ai_unavailable, chat_limit_reached, internal).
             message:
               type: string
               description: English debug text — not for end users.
@@ -1050,9 +1065,9 @@ components:
         translationZh: { type: string }
     QuizQuestion:
       type: object
-      description: Options carry word ids; grading is id equality server-side.
+      description: Opaque server-owned question; no content id or answer-key signal.
       properties:
-        wordId: { type: string }
+        id: { type: string }
         direction: { type: string, enum: [en2zh, zh2en] }
         prompt: { type: string }
         options:
@@ -1060,7 +1075,7 @@ components:
           items:
             type: object
             properties:
-              wordId: { type: string }
+              id: { type: string }
               text: { type: string }
     ExerciseListItem:
       type: object

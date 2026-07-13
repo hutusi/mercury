@@ -1,12 +1,10 @@
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
-import { TrackSchema } from "../../content/types";
 import { db } from "../db";
-import { exerciseAttempts, reviewLogs, srsCards, vocabWords } from "../db/schema";
+import { reviewLogs, srsCards, vocabWords } from "../db/schema";
 import { scheduleReview } from "../srs";
 import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
-import { recordSkillSignalSafely } from "./profile";
 
 export const GradeCardSchema = z.object({
   wordId: z.string(),
@@ -82,51 +80,4 @@ export async function gradeCardForUser(
   });
 
   return { intervalDays: next.intervalDays };
-}
-
-export const QuizSubmitSchema = z.object({
-  track: TrackSchema,
-  /** questionWordId -> chosen option's wordId */
-  answers: z.record(z.string(), z.string()).refine((r) => Object.keys(r).length <= 20),
-});
-
-/** Score a vocab quiz by word-id equality and persist it as an exercise attempt. */
-export async function submitQuizForUser(
-  userId: string,
-  input: unknown,
-): Promise<{ score: number; total: number; correctWordIds: string[] }> {
-  const { track, answers } = QuizSubmitSchema.parse(input);
-
-  const entries = Object.entries(answers);
-  const correctWordIds = entries.filter(([wordId, chosen]) => wordId === chosen).map(([w]) => w);
-  const score = correctWordIds.length;
-  const total = entries.length;
-
-  const answerMap: Record<string, number> = {};
-  for (const [wordId, chosen] of entries) answerMap[wordId] = wordId === chosen ? 1 : 0;
-
-  await db.transaction(async (tx) => {
-    await tx.insert(exerciseAttempts).values({
-      userId,
-      kind: "vocab_quiz",
-      refId: `quiz-${track}`,
-      track,
-      answers: answerMap,
-      score,
-      total,
-      durationSeconds: 0,
-    });
-    await recordActivityWith(tx, userId);
-  });
-  // The quiz (not per-card SRS grades, which are too noisy and run inside a
-  // transaction) is the vocab accuracy signal for the learner model.
-  if (total > 0) {
-    await recordSkillSignalSafely(userId, {
-      skill: "vocab",
-      value: (score / total) * 100,
-      source: "exercise",
-    });
-  }
-
-  return { score, total, correctWordIds };
 }

@@ -1,5 +1,11 @@
 import { describe, expect, test } from "bun:test";
-import { buildQuizQuestion, shuffle, type QuizWordInput } from "./vocab-quiz-core";
+import {
+  buildQuizQuestion,
+  gradeQuizAnswer,
+  sanitizeQuizQuestion,
+  shuffle,
+  type QuizWordInput,
+} from "./vocab-quiz-core";
 
 function words(n: number): QuizWordInput[] {
   return Array.from({ length: n }, (_, i) => ({
@@ -52,6 +58,24 @@ describe("buildQuizQuestion", () => {
     const pool = words(4);
     const q = buildQuizQuestion(pool[0], pool, "en2zh", seededRng());
     expect(q.options.filter((o) => o.wordId === "w0")).toHaveLength(1);
+  });
+
+  test("public serialization removes every word id and still supports opaque grading", () => {
+    const pool = words(5);
+    let id = 0;
+    const stored = buildQuizQuestion(pool[0], pool, "en2zh", seededRng(), () => `opaque-${id++}`);
+    const publicQuestion = sanitizeQuizQuestion(stored);
+
+    expect(JSON.stringify(publicQuestion)).not.toContain("wordId");
+    expect(publicQuestion.id).toStartWith("opaque-");
+    expect(publicQuestion.options.every((option) => option.id.startsWith("opaque-"))).toBe(true);
+
+    const correct = stored.options.find((option) => option.wordId === stored.wordId)!;
+    expect(gradeQuizAnswer(stored, correct.id)).toEqual({
+      correct: true,
+      correctOptionId: correct.id,
+    });
+    expect(gradeQuizAnswer(stored, "not-an-option")).toBeNull();
   });
 });
 

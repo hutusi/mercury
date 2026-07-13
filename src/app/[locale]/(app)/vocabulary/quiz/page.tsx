@@ -2,16 +2,16 @@ import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { QuizRunner } from "@/components/vocab/QuizRunner";
 import { getDict } from "@/lib/i18n";
-import { buildQuiz } from "@/lib/queries/vocab";
+import { createQuizSessionForUser } from "@/lib/services/vocab-quiz";
 import { requireTrack } from "@/lib/settings";
 
 export default async function QuizPage() {
-  const { track } = await requireTrack();
+  const { user, track } = await requireTrack();
   const t = await getDict();
 
-  const { questions } = await buildQuiz(track);
+  const session = await createQuizSessionForUser(user.id, track);
 
-  if (questions.length === 0) {
+  if (!session.sessionId || session.questions.length === 0) {
     return (
       <div className="border-y border-border py-12 text-center text-muted-foreground">
         {t.vocab.noWords}
@@ -31,7 +31,7 @@ export default async function QuizPage() {
         </Link>
         <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
       </div>
-      <QuizRunner track={track} questions={questions} />
+      <QuizRunner sessionId={session.sessionId} questions={session.questions} />
     </div>
   );
 }

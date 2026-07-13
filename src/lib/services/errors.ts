@@ -27,3 +27,25 @@ export class LimitExceededError extends Error {
     this.name = "LimitExceededError";
   }
 }
+
+/** A request conflicts with already-persisted state. → 409 */
+export class ConflictError extends Error {
+  readonly code: string;
+
+  constructor(message: string, code = "conflict") {
+    super(message);
+    this.name = "ConflictError";
+    this.code = code;
+  }
+}
+
+/** An ephemeral server-owned resource has expired. → 410 */
+export class ExpiredError extends Error {
+  readonly code: string;
+
+  constructor(message: string, code = "expired") {
+    super(message);
+    this.name = "ExpiredError";
+    this.code = code;
+  }
+}

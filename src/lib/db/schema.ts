@@ -24,6 +24,7 @@ import type {
 import type { SpeakingFeedback, WritingFeedback } from "../ai/schemas";
 import type { CoachMemo, SelfRatedLevel, SkillEstimates } from "../learner-model-core";
 import type { MistakeKind } from "../mistakes-core";
+import type { StoredQuizQuestion } from "../vocab-quiz-core";
 import { user } from "./auth-schema";
 
 export * from "./auth-schema";
@@ -42,6 +43,7 @@ const ts = (name: string) => timestamp(name, { withTimezone: true, mode: "date" 
 export type ExerciseKind = "reading" | "listening" | "vocab_quiz";
 export type SubmissionStatus = "ai_scored" | "self_assessed" | "failed";
 export type AttemptStatus = "in_progress" | "completed" | "expired";
+export type QuizPurpose = "practice" | "mistake_retest";
 
 export interface SectionDeadline {
   sectionId: string;
@@ -62,6 +64,7 @@ export type ExamEstimate =
 
 /** Answers keyed by question id (word id for vocab quizzes). */
 export type AnswerMap = Record<string, number>;
+export type QuizSessionAnswers = Record<string, string>;
 
 // ---------------------------------------------------------------------------
 // User settings
@@ -272,6 +275,32 @@ export const exerciseAttempts = pgTable(
     completedAt: ts("completed_at").notNull().$defaultFn(now),
   },
   (t) => [index("exercise_attempts_user_idx").on(t.userId, t.completedAt)],
+);
+
+/**
+ * Server-owned quiz state. Public questions are sanitized from `questions`;
+ * hidden word ids never cross the interface until an answer has been graded.
+ */
+export const vocabQuizSessions = pgTable(
+  "vocab_quiz_sessions",
+  {
+    id: text("id").primaryKey().$defaultFn(uuid),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    track: text("track").$type<Track>().notNull(),
+    purpose: text("purpose").$type<QuizPurpose>().notNull(),
+    sourceWordId: text("source_word_id").references(() => vocabWords.id, { onDelete: "cascade" }),
+    questions: jsonb("questions").$type<StoredQuizQuestion[]>().notNull(),
+    answers: jsonb("answers").$type<QuizSessionAnswers>().notNull().default({}),
+    expiresAt: ts("expires_at").notNull(),
+    consumedAt: ts("consumed_at"),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    index("vocab_quiz_sessions_user_created_idx").on(t.userId, t.createdAt),
+    index("vocab_quiz_sessions_expires_idx").on(t.expiresAt),
+  ],
 );
 
 export const writingSubmissions = pgTable(

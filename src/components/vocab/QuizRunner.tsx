@@ -6,18 +6,26 @@ import { useState, useTransition } from "react";
 import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
-import type { Track } from "@/content/types";
-import { submitQuiz } from "@/lib/actions/vocab";
+import { answerQuiz } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import type { QuizQuestion } from "@/lib/vocab-quiz-core";
 
 export type { QuizQuestion } from "@/lib/vocab-quiz-core";
 
-export function QuizRunner({ track, questions }: { track: Track; questions: QuizQuestion[] }) {
+export function QuizRunner({
+  sessionId,
+  questions,
+}: {
+  sessionId: string;
+  questions: QuizQuestion[];
+}) {
   const t = useT();
   const [index, setIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [picked, setPicked] = useState<string | null>(null);
+  const [correctOptionId, setCorrectOptionId] = useState<string | null>(null);
+  const [completedResult, setCompletedResult] = useState<{ score: number; total: number } | null>(
+    null,
+  );
   const [result, setResult] = useState<{ score: number; total: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -25,27 +33,34 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
   const question = questions[index];
   const isLast = index === questions.length - 1;
 
-  function pick(optionWordId: string) {
-    if (picked) return;
-    setPicked(optionWordId);
-    setAnswers((a) => ({ ...a, [question.wordId]: optionWordId }));
+  function pick(optionId: string) {
+    if (picked || pending) return;
+    setError(null);
+    startTransition(async () => {
+      try {
+        const graded = await answerQuiz({
+          sessionId,
+          questionId: question.id,
+          optionId,
+        });
+        setPicked(optionId);
+        setCorrectOptionId(graded.correctOptionId);
+        if (graded.completed && graded.score !== undefined && graded.total !== undefined) {
+          setCompletedResult({ score: graded.score, total: graded.total });
+        }
+      } catch {
+        setError(t.exams.submitFailed);
+      }
+    });
   }
 
   function next() {
     if (!picked) return;
     if (isLast) {
-      const finalAnswers = { ...answers };
-      setError(null);
-      startTransition(async () => {
-        try {
-          const r = await submitQuiz({ track, answers: finalAnswers });
-          setResult(r);
-        } catch {
-          setError(t.exams.submitFailed);
-        }
-      });
+      if (completedResult) setResult(completedResult);
     } else {
       setPicked(null);
+      setCorrectOptionId(null);
       setIndex((i) => i + 1);
     }
   }
@@ -91,8 +106,8 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
 
       <div className="space-y-2">
         {question.options.map((option) => {
-          const isCorrect = option.wordId === question.wordId;
-          const isPicked = picked === option.wordId;
+          const isCorrect = option.id === correctOptionId;
+          const isPicked = picked === option.id;
           // Graded like a marked paper: correct answers get an ink check, the
           // wrong pick gets the red pen — icons carry the meaning, not color.
           let cls = "border-border text-foreground/80 hover:border-input hover:bg-muted/50";
@@ -103,9 +118,9 @@ export function QuizRunner({ track, questions }: { track: Track; questions: Quiz
           }
           return (
             <button
-              key={option.wordId}
-              onClick={() => pick(option.wordId)}
-              disabled={!!picked}
+              key={option.id}
+              onClick={() => pick(option.id)}
+              disabled={!!picked || pending}
               className={`flex w-full items-center gap-2 border px-4 py-3 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${cls}`}
             >
               {picked && isCorrect && <Check className="size-4 shrink-0" aria-hidden />}
