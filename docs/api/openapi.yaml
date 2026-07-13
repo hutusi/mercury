@@ -9,8 +9,10 @@ info:
     `Authorization: Bearer <token>` and MUST NOT store cookies (a cookie sent
     without an Origin header fails better-auth's CSRF check).
 
-    Coverage of this document is enforced by src/lib/api/openapi-coverage.test.ts:
-    every /api/v1 route in the codebase must appear here and vice versa.
+    This document is executable under src/lib/api/openapi-coverage.test.ts:
+    every /api/v1 route must appear here and vice versa; local references,
+    auth/success metadata, path parameters, and parsed JSON request schemas
+    are also checked.
 servers:
   - url: /
 security:

@@ -1,0 +1,49 @@
+ALTER TABLE "activity_days" ADD CONSTRAINT "activity_days_day_check" CHECK ("activity_days"."day" ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$');--> statement-breakpoint
+ALTER TABLE "ai_grading_requests" ADD CONSTRAINT "ai_grading_requests_kind_check" CHECK ("ai_grading_requests"."kind" in ('writing', 'speaking'));--> statement-breakpoint
+ALTER TABLE "ai_grading_requests" ADD CONSTRAINT "ai_grading_requests_status_check" CHECK ("ai_grading_requests"."status" in ('in_progress', 'completed', 'failed'));--> statement-breakpoint
+ALTER TABLE "ai_grading_requests" ADD CONSTRAINT "ai_grading_requests_day_check" CHECK ("ai_grading_requests"."day" ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$');--> statement-breakpoint
+ALTER TABLE "ai_grading_requests" ADD CONSTRAINT "ai_grading_requests_lifecycle_check" CHECK (("ai_grading_requests"."status" = 'in_progress' and "ai_grading_requests"."completed_at" is null and "ai_grading_requests"."submission_id" is null) or ("ai_grading_requests"."status" = 'completed' and "ai_grading_requests"."completed_at" is not null and "ai_grading_requests"."submission_id" is not null) or ("ai_grading_requests"."status" = 'failed' and "ai_grading_requests"."completed_at" is not null));--> statement-breakpoint
+ALTER TABLE "ai_usage_days" ADD CONSTRAINT "ai_usage_days_day_check" CHECK ("ai_usage_days"."day" ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$');--> statement-breakpoint
+ALTER TABLE "ai_usage_days" ADD CONSTRAINT "ai_usage_days_calls_check" CHECK ("ai_usage_days"."grading_calls" >= 0);--> statement-breakpoint
+ALTER TABLE "chat_messages" ADD CONSTRAINT "chat_messages_role_check" CHECK ("chat_messages"."role" in ('user', 'assistant'));--> statement-breakpoint
+ALTER TABLE "chat_messages" ADD CONSTRAINT "chat_messages_day_check" CHECK ("chat_messages"."day" ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$');--> statement-breakpoint
+ALTER TABLE "chat_messages" ADD CONSTRAINT "chat_messages_sequence_check" CHECK ("chat_messages"."sequence" >= 1);--> statement-breakpoint
+ALTER TABLE "chat_messages" ADD CONSTRAINT "chat_messages_model_check" CHECK (("chat_messages"."role" = 'user' and "chat_messages"."model" is null) or "chat_messages"."role" = 'assistant');--> statement-breakpoint
+ALTER TABLE "chat_states" ADD CONSTRAINT "chat_states_day_check" CHECK ("chat_states"."day" ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$');--> statement-breakpoint
+ALTER TABLE "chat_states" ADD CONSTRAINT "chat_states_counts_check" CHECK ("chat_states"."used_count" >= 0 and "chat_states"."next_sequence" >= 1);--> statement-breakpoint
+ALTER TABLE "chat_states" ADD CONSTRAINT "chat_states_claim_check" CHECK (("chat_states"."claim_id" is null and "chat_states"."claim_started_at" is null) or ("chat_states"."claim_id" is not null and "chat_states"."claim_started_at" is not null));--> statement-breakpoint
+ALTER TABLE "exercise_attempts" ADD CONSTRAINT "exercise_attempts_kind_check" CHECK ("exercise_attempts"."kind" in ('reading', 'listening', 'vocab_quiz'));--> statement-breakpoint
+ALTER TABLE "exercise_attempts" ADD CONSTRAINT "exercise_attempts_track_check" CHECK ("exercise_attempts"."track" in ('toeic', 'ielts', 'business'));--> statement-breakpoint
+ALTER TABLE "exercise_attempts" ADD CONSTRAINT "exercise_attempts_score_check" CHECK ("exercise_attempts"."total" > 0 and "exercise_attempts"."score" between 0 and "exercise_attempts"."total");--> statement-breakpoint
+ALTER TABLE "exercise_attempts" ADD CONSTRAINT "exercise_attempts_duration_check" CHECK ("exercise_attempts"."duration_seconds" >= 0);--> statement-breakpoint
+ALTER TABLE "learner_profiles" ADD CONSTRAINT "learner_profiles_goal_track_check" CHECK ("learner_profiles"."goal_track" is null or "learner_profiles"."goal_track" in ('toeic', 'ielts', 'business'));--> statement-breakpoint
+ALTER TABLE "learner_profiles" ADD CONSTRAINT "learner_profiles_target_score_check" CHECK ("learner_profiles"."target_score" is null or "learner_profiles"."target_score" between 10 and 990);--> statement-breakpoint
+ALTER TABLE "learner_profiles" ADD CONSTRAINT "learner_profiles_exam_date_check" CHECK ("learner_profiles"."exam_date" is null or "learner_profiles"."exam_date" ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$');--> statement-breakpoint
+ALTER TABLE "learner_profiles" ADD CONSTRAINT "learner_profiles_daily_minutes_check" CHECK ("learner_profiles"."daily_minutes" between 5 and 180);--> statement-breakpoint
+ALTER TABLE "learner_profiles" ADD CONSTRAINT "learner_profiles_self_level_check" CHECK ("learner_profiles"."self_rated_level" is null or "learner_profiles"."self_rated_level" in ('novice', 'elementary', 'intermediate', 'upper', 'advanced'));--> statement-breakpoint
+ALTER TABLE "mistake_clears" ADD CONSTRAINT "mistake_clears_kind_check" CHECK ("mistake_clears"."kind" in ('reading', 'listening', 'vocab_quiz', 'exam'));--> statement-breakpoint
+ALTER TABLE "mistake_states" ADD CONSTRAINT "mistake_states_track_check" CHECK ("mistake_states"."track" in ('toeic', 'ielts', 'business'));--> statement-breakpoint
+ALTER TABLE "mistake_states" ADD CONSTRAINT "mistake_states_kind_check" CHECK ("mistake_states"."kind" in ('reading', 'listening', 'vocab_quiz', 'exam'));--> statement-breakpoint
+ALTER TABLE "mistake_states" ADD CONSTRAINT "mistake_states_wrong_count_check" CHECK ("mistake_states"."wrong_count" >= 1);--> statement-breakpoint
+ALTER TABLE "mock_exam_attempts" ADD CONSTRAINT "mock_exam_attempts_track_check" CHECK ("mock_exam_attempts"."track" in ('toeic', 'ielts'));--> statement-breakpoint
+ALTER TABLE "mock_exam_attempts" ADD CONSTRAINT "mock_exam_attempts_status_check" CHECK ("mock_exam_attempts"."status" in ('in_progress', 'completed', 'abandoned'));--> statement-breakpoint
+ALTER TABLE "mock_exam_attempts" ADD CONSTRAINT "mock_exam_attempts_progress_check" CHECK ("mock_exam_attempts"."current_section_index" >= 0 and "mock_exam_attempts"."total_questions" > 0 and ("mock_exam_attempts"."raw_score" is null or "mock_exam_attempts"."raw_score" between 0 and "mock_exam_attempts"."total_questions"));--> statement-breakpoint
+ALTER TABLE "mock_exam_attempts" ADD CONSTRAINT "mock_exam_attempts_lifecycle_check" CHECK (("mock_exam_attempts"."status" = 'in_progress' and "mock_exam_attempts"."completed_at" is null and "mock_exam_attempts"."abandoned_at" is null) or ("mock_exam_attempts"."status" = 'completed' and "mock_exam_attempts"."completed_at" is not null and "mock_exam_attempts"."abandoned_at" is null) or ("mock_exam_attempts"."status" = 'abandoned' and "mock_exam_attempts"."abandoned_at" is not null));--> statement-breakpoint
+ALTER TABLE "review_logs" ADD CONSTRAINT "review_logs_grade_check" CHECK ("review_logs"."grade" between 0 and 5);--> statement-breakpoint
+ALTER TABLE "review_logs" ADD CONSTRAINT "review_logs_intervals_check" CHECK ("review_logs"."previous_interval_days" >= 0 and "review_logs"."new_interval_days" >= 0);--> statement-breakpoint
+ALTER TABLE "speaking_submissions" ADD CONSTRAINT "speaking_submissions_status_check" CHECK ("speaking_submissions"."status" in ('ai_scored', 'self_assessed', 'failed'));--> statement-breakpoint
+ALTER TABLE "speaking_submissions" ADD CONSTRAINT "speaking_submissions_duration_check" CHECK ("speaking_submissions"."duration_seconds" between 0 and 600);--> statement-breakpoint
+ALTER TABLE "speaking_submissions" ADD CONSTRAINT "speaking_submissions_feedback_check" CHECK ("speaking_submissions"."status" <> 'ai_scored' or ("speaking_submissions"."feedback" is not null and "speaking_submissions"."model" is not null));--> statement-breakpoint
+ALTER TABLE "srs_cards" ADD CONSTRAINT "srs_cards_ease_check" CHECK ("srs_cards"."ease_factor" >= 1.3);--> statement-breakpoint
+ALTER TABLE "srs_cards" ADD CONSTRAINT "srs_cards_interval_check" CHECK ("srs_cards"."interval_days" >= 0);--> statement-breakpoint
+ALTER TABLE "srs_cards" ADD CONSTRAINT "srs_cards_counts_check" CHECK ("srs_cards"."repetitions" >= 0 and "srs_cards"."lapses" >= 0);--> statement-breakpoint
+ALTER TABLE "user_settings" ADD CONSTRAINT "user_settings_active_track_check" CHECK ("user_settings"."active_track" is null or "user_settings"."active_track" in ('toeic', 'ielts', 'business'));--> statement-breakpoint
+ALTER TABLE "user_settings" ADD CONSTRAINT "user_settings_daily_goal_check" CHECK ("user_settings"."daily_goal" >= 1);--> statement-breakpoint
+ALTER TABLE "user_settings" ADD CONSTRAINT "user_settings_time_zone_check" CHECK (length("user_settings"."time_zone") between 1 and 100);--> statement-breakpoint
+ALTER TABLE "vocab_quiz_sessions" ADD CONSTRAINT "vocab_quiz_sessions_track_check" CHECK ("vocab_quiz_sessions"."track" in ('toeic', 'ielts', 'business'));--> statement-breakpoint
+ALTER TABLE "vocab_quiz_sessions" ADD CONSTRAINT "vocab_quiz_sessions_purpose_check" CHECK ("vocab_quiz_sessions"."purpose" in ('practice', 'mistake_retest'));--> statement-breakpoint
+ALTER TABLE "vocab_quiz_sessions" ADD CONSTRAINT "vocab_quiz_sessions_source_check" CHECK (("vocab_quiz_sessions"."purpose" = 'practice' and "vocab_quiz_sessions"."source_word_id" is null) or ("vocab_quiz_sessions"."purpose" = 'mistake_retest' and "vocab_quiz_sessions"."source_word_id" is not null));--> statement-breakpoint
+ALTER TABLE "vocab_quiz_sessions" ADD CONSTRAINT "vocab_quiz_sessions_expiry_check" CHECK ("vocab_quiz_sessions"."expires_at" > "vocab_quiz_sessions"."created_at");--> statement-breakpoint
+ALTER TABLE "writing_submissions" ADD CONSTRAINT "writing_submissions_status_check" CHECK ("writing_submissions"."status" in ('ai_scored', 'self_assessed', 'failed'));--> statement-breakpoint
+ALTER TABLE "writing_submissions" ADD CONSTRAINT "writing_submissions_word_count_check" CHECK ("writing_submissions"."word_count" >= 0);--> statement-breakpoint
+ALTER TABLE "writing_submissions" ADD CONSTRAINT "writing_submissions_feedback_check" CHECK ("writing_submissions"."status" <> 'ai_scored' or ("writing_submissions"."feedback" is not null and "writing_submissions"."model" is not null));

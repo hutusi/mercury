@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm";
 import {
   boolean,
+  check,
   doublePrecision,
   index,
   integer,
@@ -72,21 +73,32 @@ export type QuizSessionAnswers = Record<string, string>;
 // User settings
 // ---------------------------------------------------------------------------
 
-export const userSettings = pgTable("user_settings", {
-  userId: text("user_id")
-    .primaryKey()
-    .references(() => user.id, { onDelete: "cascade" }),
-  activeTrack: text("active_track").$type<Track>(),
-  /** IANA timezone used for learner-day quotas, plans, reminders, and streaks. */
-  timeZone: text("time_zone").notNull().default("Asia/Shanghai"),
-  dailyGoal: integer("daily_goal").notNull().default(20),
-  // Controls the dashboard study nudge today; opted-in channel reminders
-  // (email/push) will reuse it when a delivery provider lands.
-  remindersEnabled: boolean("reminders_enabled").notNull().default(true),
-  onboardedAt: ts("onboarded_at"),
-  createdAt: ts("created_at").notNull().$defaultFn(now),
-  updatedAt: ts("updated_at").notNull().$defaultFn(now),
-});
+export const userSettings = pgTable(
+  "user_settings",
+  {
+    userId: text("user_id")
+      .primaryKey()
+      .references(() => user.id, { onDelete: "cascade" }),
+    activeTrack: text("active_track").$type<Track>(),
+    /** IANA timezone used for learner-day quotas, plans, reminders, and streaks. */
+    timeZone: text("time_zone").notNull().default("Asia/Shanghai"),
+    dailyGoal: integer("daily_goal").notNull().default(20),
+    // Controls the dashboard study nudge today; opted-in channel reminders
+    // (email/push) will reuse it when a delivery provider lands.
+    remindersEnabled: boolean("reminders_enabled").notNull().default(true),
+    onboardedAt: ts("onboarded_at"),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
+    updatedAt: ts("updated_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    check(
+      "user_settings_active_track_check",
+      sql`${t.activeTrack} is null or ${t.activeTrack} in ('toeic', 'ielts', 'business')`,
+    ),
+    check("user_settings_daily_goal_check", sql`${t.dailyGoal} >= 1`),
+    check("user_settings_time_zone_check", sql`length(${t.timeZone}) between 1 and 100`),
+  ],
+);
 
 // ---------------------------------------------------------------------------
 // Learner profile (the AI tutor's model of the user)
@@ -98,23 +110,45 @@ export const userSettings = pgTable("user_settings", {
  * AI grading, never from client writes. dailyMinutes deliberately does not
  * reuse user_settings.dailyGoal (a card count baked into the v1 API contract).
  */
-export const learnerProfiles = pgTable("learner_profiles", {
-  userId: text("user_id")
-    .primaryKey()
-    .references(() => user.id, { onDelete: "cascade" }),
-  /** Track the goal fields describe; may lag activeTrack after a switch. */
-  goalTrack: text("goal_track").$type<Track>(),
-  /** TOEIC 10–990; IELTS stored as band×10 (65 = band 6.5). */
-  targetScore: integer("target_score"),
-  /** Local date string YYYY-MM-DD, same convention as activity_days.day. */
-  examDate: text("exam_date"),
-  dailyMinutes: integer("daily_minutes").notNull().default(20),
-  selfRatedLevel: text("self_rated_level").$type<SelfRatedLevel>(),
-  skillEstimates: jsonb("skill_estimates").$type<SkillEstimates>().notNull(),
-  coachMemo: jsonb("coach_memo").$type<CoachMemo>().notNull(),
-  createdAt: ts("created_at").notNull().$defaultFn(now),
-  updatedAt: ts("updated_at").notNull().$defaultFn(now),
-});
+export const learnerProfiles = pgTable(
+  "learner_profiles",
+  {
+    userId: text("user_id")
+      .primaryKey()
+      .references(() => user.id, { onDelete: "cascade" }),
+    /** Track the goal fields describe; may lag activeTrack after a switch. */
+    goalTrack: text("goal_track").$type<Track>(),
+    /** TOEIC 10–990; IELTS stored as band×10 (65 = band 6.5). */
+    targetScore: integer("target_score"),
+    /** Local date string YYYY-MM-DD, same convention as activity_days.day. */
+    examDate: text("exam_date"),
+    dailyMinutes: integer("daily_minutes").notNull().default(20),
+    selfRatedLevel: text("self_rated_level").$type<SelfRatedLevel>(),
+    skillEstimates: jsonb("skill_estimates").$type<SkillEstimates>().notNull(),
+    coachMemo: jsonb("coach_memo").$type<CoachMemo>().notNull(),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
+    updatedAt: ts("updated_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    check(
+      "learner_profiles_goal_track_check",
+      sql`${t.goalTrack} is null or ${t.goalTrack} in ('toeic', 'ielts', 'business')`,
+    ),
+    check(
+      "learner_profiles_target_score_check",
+      sql`${t.targetScore} is null or ${t.targetScore} between 10 and 990`,
+    ),
+    check(
+      "learner_profiles_exam_date_check",
+      sql`${t.examDate} is null or ${t.examDate} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`,
+    ),
+    check("learner_profiles_daily_minutes_check", sql`${t.dailyMinutes} between 5 and 180`),
+    check(
+      "learner_profiles_self_level_check",
+      sql`${t.selfRatedLevel} is null or ${t.selfRatedLevel} in ('novice', 'elementary', 'intermediate', 'upper', 'advanced')`,
+    ),
+  ],
+);
 
 // ---------------------------------------------------------------------------
 // Content tables (seeded from src/content, ids are stable slugs)
@@ -239,6 +273,9 @@ export const srsCards = pgTable(
   (t) => [
     uniqueIndex("srs_cards_user_word_idx").on(t.userId, t.wordId),
     index("srs_cards_user_due_idx").on(t.userId, t.dueAt),
+    check("srs_cards_ease_check", sql`${t.easeFactor} >= 1.3`),
+    check("srs_cards_interval_check", sql`${t.intervalDays} >= 0`),
+    check("srs_cards_counts_check", sql`${t.repetitions} >= 0 and ${t.lapses} >= 0`),
   ],
 );
 
@@ -257,7 +294,14 @@ export const reviewLogs = pgTable(
     newIntervalDays: doublePrecision("new_interval_days").notNull(),
     reviewedAt: ts("reviewed_at").notNull().$defaultFn(now),
   },
-  (t) => [index("review_logs_user_idx").on(t.userId, t.reviewedAt)],
+  (t) => [
+    index("review_logs_user_idx").on(t.userId, t.reviewedAt),
+    check("review_logs_grade_check", sql`${t.grade} between 0 and 5`),
+    check(
+      "review_logs_intervals_check",
+      sql`${t.previousIntervalDays} >= 0 and ${t.newIntervalDays} >= 0`,
+    ),
+  ],
 );
 
 export const exerciseAttempts = pgTable(
@@ -279,6 +323,13 @@ export const exerciseAttempts = pgTable(
   (t) => [
     index("exercise_attempts_user_idx").on(t.userId, t.completedAt),
     index("exercise_attempts_user_kind_ref_idx").on(t.userId, t.kind, t.refId),
+    check("exercise_attempts_kind_check", sql`${t.kind} in ('reading', 'listening', 'vocab_quiz')`),
+    check("exercise_attempts_track_check", sql`${t.track} in ('toeic', 'ielts', 'business')`),
+    check(
+      "exercise_attempts_score_check",
+      sql`${t.total} > 0 and ${t.score} between 0 and ${t.total}`,
+    ),
+    check("exercise_attempts_duration_check", sql`${t.durationSeconds} >= 0`),
   ],
 );
 
@@ -305,6 +356,13 @@ export const vocabQuizSessions = pgTable(
   (t) => [
     index("vocab_quiz_sessions_user_created_idx").on(t.userId, t.createdAt),
     index("vocab_quiz_sessions_expires_idx").on(t.expiresAt),
+    check("vocab_quiz_sessions_track_check", sql`${t.track} in ('toeic', 'ielts', 'business')`),
+    check("vocab_quiz_sessions_purpose_check", sql`${t.purpose} in ('practice', 'mistake_retest')`),
+    check(
+      "vocab_quiz_sessions_source_check",
+      sql`(${t.purpose} = 'practice' and ${t.sourceWordId} is null) or (${t.purpose} = 'mistake_retest' and ${t.sourceWordId} is not null)`,
+    ),
+    check("vocab_quiz_sessions_expiry_check", sql`${t.expiresAt} > ${t.createdAt}`),
   ],
 );
 
@@ -328,6 +386,15 @@ export const writingSubmissions = pgTable(
   (t) => [
     index("writing_submissions_user_idx").on(t.userId, t.createdAt),
     index("writing_submissions_user_prompt_idx").on(t.userId, t.promptId, t.createdAt),
+    check(
+      "writing_submissions_status_check",
+      sql`${t.status} in ('ai_scored', 'self_assessed', 'failed')`,
+    ),
+    check("writing_submissions_word_count_check", sql`${t.wordCount} >= 0`),
+    check(
+      "writing_submissions_feedback_check",
+      sql`${t.status} <> 'ai_scored' or (${t.feedback} is not null and ${t.model} is not null)`,
+    ),
   ],
 );
 
@@ -351,6 +418,15 @@ export const speakingSubmissions = pgTable(
   (t) => [
     index("speaking_submissions_user_idx").on(t.userId, t.createdAt),
     index("speaking_submissions_user_prompt_idx").on(t.userId, t.promptId, t.createdAt),
+    check(
+      "speaking_submissions_status_check",
+      sql`${t.status} in ('ai_scored', 'self_assessed', 'failed')`,
+    ),
+    check("speaking_submissions_duration_check", sql`${t.durationSeconds} between 0 and 600`),
+    check(
+      "speaking_submissions_feedback_check",
+      sql`${t.status} <> 'ai_scored' or (${t.feedback} is not null and ${t.model} is not null)`,
+    ),
   ],
 );
 
@@ -368,7 +444,11 @@ export const aiUsageDays = pgTable(
     day: text("day").notNull(),
     gradingCalls: integer("grading_calls").notNull().default(0),
   },
-  (t) => [primaryKey({ columns: [t.userId, t.day] })],
+  (t) => [
+    primaryKey({ columns: [t.userId, t.day] }),
+    check("ai_usage_days_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+    check("ai_usage_days_calls_check", sql`${t.gradingCalls} >= 0`),
+  ],
 );
 
 /**
@@ -398,6 +478,16 @@ export const aiGradingRequests = pgTable(
     uniqueIndex("ai_grading_requests_active_scope_idx")
       .on(t.userId, t.scope)
       .where(sql`${t.status} = 'in_progress'`),
+    check("ai_grading_requests_kind_check", sql`${t.kind} in ('writing', 'speaking')`),
+    check(
+      "ai_grading_requests_status_check",
+      sql`${t.status} in ('in_progress', 'completed', 'failed')`,
+    ),
+    check("ai_grading_requests_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+    check(
+      "ai_grading_requests_lifecycle_check",
+      sql`(${t.status} = 'in_progress' and ${t.completedAt} is null and ${t.submissionId} is null) or (${t.status} = 'completed' and ${t.completedAt} is not null and ${t.submissionId} is not null) or (${t.status} = 'failed' and ${t.completedAt} is not null)`,
+    ),
   ],
 );
 
@@ -434,6 +524,19 @@ export const mockExamAttempts = pgTable(
     uniqueIndex("mock_exam_attempts_in_progress_idx")
       .on(t.userId, t.examId)
       .where(sql`${t.status} = 'in_progress'`),
+    check("mock_exam_attempts_track_check", sql`${t.track} in ('toeic', 'ielts')`),
+    check(
+      "mock_exam_attempts_status_check",
+      sql`${t.status} in ('in_progress', 'completed', 'abandoned')`,
+    ),
+    check(
+      "mock_exam_attempts_progress_check",
+      sql`${t.currentSectionIndex} >= 0 and ${t.totalQuestions} > 0 and (${t.rawScore} is null or ${t.rawScore} between 0 and ${t.totalQuestions})`,
+    ),
+    check(
+      "mock_exam_attempts_lifecycle_check",
+      sql`(${t.status} = 'in_progress' and ${t.completedAt} is null and ${t.abandonedAt} is null) or (${t.status} = 'completed' and ${t.completedAt} is not null and ${t.abandonedAt} is null) or (${t.status} = 'abandoned' and ${t.abandonedAt} is not null)`,
+    ),
   ],
 );
 
@@ -455,6 +558,10 @@ export const mistakeClears = pgTable(
   },
   (t) => [
     uniqueIndex("mistake_clears_user_question_idx").on(t.userId, t.kind, t.refId, t.questionId),
+    check(
+      "mistake_clears_kind_check",
+      sql`${t.kind} in ('reading', 'listening', 'vocab_quiz', 'exam')`,
+    ),
   ],
 );
 
@@ -481,6 +588,12 @@ export const mistakeStates = pgTable(
   (t) => [
     primaryKey({ columns: [t.userId, t.kind, t.refId, t.questionId] }),
     index("mistake_states_user_track_idx").on(t.userId, t.track, t.lastWrongAt),
+    check("mistake_states_track_check", sql`${t.track} in ('toeic', 'ielts', 'business')`),
+    check(
+      "mistake_states_kind_check",
+      sql`${t.kind} in ('reading', 'listening', 'vocab_quiz', 'exam')`,
+    ),
+    check("mistake_states_wrong_count_check", sql`${t.wrongCount} >= 1`),
   ],
 );
 
@@ -510,23 +623,41 @@ export const chatMessages = pgTable(
     index("chat_messages_user_created_idx").on(t.userId, t.createdAt),
     index("chat_messages_user_day_idx").on(t.userId, t.day),
     uniqueIndex("chat_messages_user_sequence_idx").on(t.userId, t.sequence),
+    check("chat_messages_role_check", sql`${t.role} in ('user', 'assistant')`),
+    check("chat_messages_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+    check("chat_messages_sequence_check", sql`${t.sequence} >= 1`),
+    check(
+      "chat_messages_model_check",
+      sql`(${t.role} = 'user' and ${t.model} is null) or ${t.role} = 'assistant'`,
+    ),
   ],
 );
 
 /** Exact chat quota and single-flight state for one learner's rolling thread. */
-export const chatStates = pgTable("chat_states", {
-  userId: text("user_id")
-    .primaryKey()
-    .references(() => user.id, { onDelete: "cascade" }),
-  /** Learner-local day represented by usedCount. */
-  day: text("day").notNull(),
-  usedCount: integer("used_count").notNull().default(0),
-  /** Next message sequence; advances by two after a completed turn. */
-  nextSequence: integer("next_sequence").notNull().default(1),
-  /** Renewable single-flight lease; null when no provider call is running. */
-  claimId: text("claim_id"),
-  claimStartedAt: ts("claim_started_at"),
-});
+export const chatStates = pgTable(
+  "chat_states",
+  {
+    userId: text("user_id")
+      .primaryKey()
+      .references(() => user.id, { onDelete: "cascade" }),
+    /** Learner-local day represented by usedCount. */
+    day: text("day").notNull(),
+    usedCount: integer("used_count").notNull().default(0),
+    /** Next message sequence; advances by two after a completed turn. */
+    nextSequence: integer("next_sequence").notNull().default(1),
+    /** Renewable single-flight lease; null when no provider call is running. */
+    claimId: text("claim_id"),
+    claimStartedAt: ts("claim_started_at"),
+  },
+  (t) => [
+    check("chat_states_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+    check("chat_states_counts_check", sql`${t.usedCount} >= 0 and ${t.nextSequence} >= 1`),
+    check(
+      "chat_states_claim_check",
+      sql`(${t.claimId} is null and ${t.claimStartedAt} is null) or (${t.claimId} is not null and ${t.claimStartedAt} is not null)`,
+    ),
+  ],
+);
 
 /** One row per user per local day with any learning activity; drives streaks. */
 export const activityDays = pgTable(
@@ -538,5 +669,8 @@ export const activityDays = pgTable(
     /** Local date string YYYY-MM-DD. */
     day: text("day").notNull(),
   },
-  (t) => [primaryKey({ columns: [t.userId, t.day] })],
+  (t) => [
+    primaryKey({ columns: [t.userId, t.day] }),
+    check("activity_days_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+  ],
 );
