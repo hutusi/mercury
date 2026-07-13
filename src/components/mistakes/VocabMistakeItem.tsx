@@ -99,7 +99,7 @@ export function VocabMistakeItem({
                   {quiz.direction === "en2zh" ? t.vocab.quizPickMeaning : t.vocab.quizPickWord}
                 </span>
               </p>
-              <div className="grid gap-2 sm:grid-cols-2">
+              <div className="grid gap-2 sm:grid-cols-2" role="group" aria-label={quiz.prompt}>
                 {quiz.options.map((option) => {
                   const isCorrect = option.id === correctOptionId;
                   const isPicked = picked === option.id;
@@ -110,6 +110,7 @@ export function VocabMistakeItem({
                       type="button"
                       disabled={revealed}
                       onClick={() => pick(option.id)}
+                      aria-pressed={isPicked}
                       className={`border px-3 py-2 text-left text-sm transition-colors ${
                         revealed && isCorrect
                           ? "border-foreground bg-muted font-medium"
@@ -130,7 +131,7 @@ export function VocabMistakeItem({
                 })}
               </div>
               {picked !== null && picked !== correctOptionId && (
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" role="status">
                   <p className="text-sm font-medium text-cinnabar">{t.mistakes.retestWrong}</p>
                   <Button variant="outline" size="sm" onClick={loadQuiz} disabled={pending}>
                     {t.common.tryAgain}
@@ -138,12 +139,16 @@ export function VocabMistakeItem({
                 </div>
               )}
               {clearedNow && (
-                <p className="flex items-center gap-1.5 text-sm font-medium">
+                <p role="status" className="flex items-center gap-1.5 text-sm font-medium">
                   <Check className="size-4" aria-hidden />
                   {t.mistakes.retestCorrect}
                 </p>
               )}
-              {error && <p className="text-sm font-medium text-cinnabar">{error}</p>}
+              {error && (
+                <p role="alert" className="text-sm font-medium text-destructive">
+                  {error}
+                </p>
+              )}
             </div>
           ) : (
             <div className="space-y-2">
@@ -155,7 +160,11 @@ export function VocabMistakeItem({
               <Button variant="outline" size="sm" onClick={loadQuiz} disabled={pending}>
                 {pending ? t.common.loading : t.mistakes.retest}
               </Button>
-              {error && <p className="text-sm font-medium text-cinnabar">{error}</p>}
+              {error && (
+                <p role="alert" className="text-sm font-medium text-destructive">
+                  {error}
+                </p>
+              )}
             </div>
           )}
           <p className="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">

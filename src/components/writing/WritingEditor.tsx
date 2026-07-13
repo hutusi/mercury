@@ -36,16 +36,23 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
 
   return (
     <div className="space-y-3">
+      <label htmlFor="writing-response" className="sr-only">
+        {t.writing.responseLabel}
+      </label>
       <textarea
+        id="writing-response"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder={t.writing.placeholder}
         rows={14}
         disabled={pending}
+        aria-describedby={`writing-word-count${error ? " writing-error" : ""}`}
+        aria-invalid={error !== null}
         className="w-full border border-input bg-background p-4 font-serif text-sm leading-relaxed transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/25 focus-visible:outline-none disabled:bg-muted"
       />
       <div className="flex items-center justify-between">
         <p
+          id="writing-word-count"
           className={`font-mono text-sm font-medium tabular-nums ${
             enough ? "text-foreground" : "text-muted-foreground"
           }`}
@@ -63,9 +70,16 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
           {pending ? t.writing.submitting : t.writing.submitForFeedback}
         </Button>
       </div>
-      {error && <p className="text-sm text-destructive">{error}</p>}
+      {error && (
+        <p id="writing-error" role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
       {pending && (
-        <div className="border border-border bg-muted p-3 text-center text-sm text-muted-foreground">
+        <div
+          role="status"
+          className="border border-border bg-muted p-3 text-center text-sm text-muted-foreground"
+        >
           {t.writing.submitting}
         </div>
       )}

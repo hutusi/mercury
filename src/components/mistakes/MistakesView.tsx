@@ -63,7 +63,12 @@ export function MistakesView({
           <Stat label={t.mistakes.activeLabel} value={activeCount} accent={activeCount > 0} />
           <Stat label={t.mistakes.clearedLabel} value={clearedCount} />
         </div>
-        <Button variant="outline" size="sm" onClick={() => setShowCleared((s) => !s)}>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setShowCleared((s) => !s)}
+          aria-pressed={showCleared}
+        >
           {showCleared ? t.mistakes.showActive : t.mistakes.showCleared}
         </Button>
       </div>

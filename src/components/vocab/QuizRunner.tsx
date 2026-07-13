@@ -101,10 +101,12 @@ export function QuizRunner({
       </div>
 
       <div className="border border-border p-8 text-center">
-        <p className="font-serif text-3xl font-medium tracking-tight">{question.prompt}</p>
+        <h2 id="vocab-quiz-prompt" className="font-serif text-3xl font-medium tracking-tight">
+          {question.prompt}
+        </h2>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2" role="group" aria-labelledby="vocab-quiz-prompt">
         {question.options.map((option) => {
           const isCorrect = option.id === correctOptionId;
           const isPicked = picked === option.id;
@@ -119,8 +121,10 @@ export function QuizRunner({
           return (
             <button
               key={option.id}
+              type="button"
               onClick={() => pick(option.id)}
               disabled={!!picked || pending}
+              aria-pressed={isPicked}
               className={`flex w-full items-center gap-2 border px-4 py-3 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${cls}`}
             >
               {picked && isCorrect && <Check className="size-4 shrink-0" aria-hidden />}
