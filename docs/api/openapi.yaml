@@ -269,6 +269,11 @@ paths:
                   remainingToday: { type: integer }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
+        "409":
+          description: Another tutor provider call is in flight for this user (code chat_in_progress).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
         "429":
           description: Daily tutor message cap reached (code chat_limit_reached).
@@ -1025,7 +1030,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, grading_request_conflict, grading_in_progress, expired, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, grading_request_conflict, grading_in_progress, chat_in_progress, expired, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, internal).
             message:
               type: string
               description: English debug text — not for end users.

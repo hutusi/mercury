@@ -31,7 +31,7 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
 - **Errors** are always `{"error": {"code", "message", "details?"}}`. `code` is the contract;
   `message` is English debug text (clients own user-facing copy). Codes: `unauthorized` (401),
   `onboarding_required` / `integrity` (403), `not_found` (404), conflicts such as
-  `quiz_answer_conflict` / `grading_in_progress` (409), expiry such as
+  `quiz_answer_conflict` / `grading_in_progress` / `chat_in_progress` (409), expiry such as
   `quiz_session_expired` (410),
   `validation_failed` (422, zod issues in `details`), `invalid_json` (400),
   `chat_limit_reached` / `ai_grading_limit_reached` (429), `ai_unavailable` (503), `internal`
@@ -82,9 +82,10 @@ quiz_session_expired`.
   plus `enabled` (AI configured?), `dailyLimit`, and `remainingToday`.
 - `POST /api/v1/tutor/messages` `{content}` — one non-streaming round-trip
   ([ADR 0013](adr/0013-tutor-chat-single-thread-non-streaming.md)); the user message and reply
-  persist atomically, so a failed call stores nothing and consumes no quota. `429
-chat_limit_reached` at the per-user daily cap (`MERCURY_CHAT_DAILY_LIMIT`, default 30); `503
-ai_unavailable` when no provider is configured — check `enabled` from GET before showing a
+  persist atomically, so a failed call stores nothing and consumes no quota. One call may be in
+  flight per user (`409 chat_in_progress`); the learner-local cap is exact under concurrency (`429
+chat_limit_reached`, `MERCURY_CHAT_DAILY_LIMIT`, default 30). `503 ai_unavailable` when no
+  provider is configured — check `enabled` from GET before showing a
   composer.
 
 ## Exam timing model

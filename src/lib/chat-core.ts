@@ -9,6 +9,12 @@ export interface ChatTurn {
   content: string;
 }
 
+export const CHAT_CLAIM_STALE_MS = 2 * 60 * 1000;
+
+export function chatClaimIsFresh(startedAt: Date | null, now: Date): boolean {
+  return startedAt !== null && now.getTime() - startedAt.getTime() < CHAT_CLAIM_STALE_MS;
+}
+
 /** History turns (plus the new user message) sent to the model per reply. */
 export const CHAT_CONTEXT_TURNS = 20;
 

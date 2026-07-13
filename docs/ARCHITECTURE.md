@@ -127,7 +127,7 @@ The AI-tutor positioning rests on two server-side systems ([ADR 0012](adr/0012-l
 
 ## Tutor chat
 
-`/tutor` is a single rolling thread per user (`chat_messages`; [ADR 0013](adr/0013-tutor-chat-single-thread-non-streaming.md)): non-streaming (one JSON round-trip; user+assistant rows insert in one transaction, so a failed reply persists nothing and consumes no quota), with the learner profile embedded in the system prompt via `formatLearnerContext`. A per-user daily cap (`MERCURY_CHAT_DAILY_LIMIT`, default 30) is the first AI cost control — `429 chat_limit_reached`. Keyless, the tab renders a disabled composer and `POST /api/v1/tutor/messages` returns `503 ai_unavailable`. User turns are sanitized at prompt assembly; the DB stores raw text.
+`/tutor` is a single rolling thread per user (`chat_messages` + `chat_states`; [ADR 0013](adr/0013-tutor-chat-single-thread-non-streaming.md)): non-streaming (one JSON round-trip; user+assistant rows, quota, and streak activity commit together). `chat_states` is locked before the provider call, permits one renewable in-flight claim, assigns monotonic message sequences, and makes `MERCURY_CHAT_DAILY_LIMIT` (default 30) exact under concurrency — `409 chat_in_progress` / `429 chat_limit_reached`. A failed reply clears its claim, persists nothing, and consumes no quota. Keyless, the tab renders a disabled composer and POST returns `503 ai_unavailable`. User turns are sanitized at prompt assembly; the DB stores raw text.
 
 ## Resilience
 

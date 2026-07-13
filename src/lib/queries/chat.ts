@@ -1,7 +1,7 @@
-import { and, count, desc, eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { chatDailyLimit } from "../chat-core";
 import { db } from "../db";
-import { chatMessages } from "../db/schema";
+import { chatMessages, chatStates } from "../db/schema";
 import { getCalendarDayForUser } from "../streak";
 
 const HISTORY_LIMIT = 50;
@@ -9,28 +9,20 @@ const HISTORY_LIMIT = 50;
 /** Recent thread (chronological) plus today's remaining message quota. */
 export async function getChatPageData(userId: string) {
   const today = await getCalendarDayForUser(userId);
-  const [rows, sent] = await Promise.all([
+  const [rows, state] = await Promise.all([
     db.query.chatMessages.findMany({
       where: eq(chatMessages.userId, userId),
-      orderBy: desc(chatMessages.createdAt),
+      orderBy: desc(chatMessages.sequence),
       limit: HISTORY_LIMIT,
     }),
-    db
-      .select({ n: count() })
-      .from(chatMessages)
-      .where(
-        and(
-          eq(chatMessages.userId, userId),
-          eq(chatMessages.day, today),
-          eq(chatMessages.role, "user"),
-        ),
-      ),
+    db.query.chatStates.findFirst({ where: eq(chatStates.userId, userId) }),
   ]);
 
   const dailyLimit = chatDailyLimit();
+  const usedToday = state?.day === today ? state.usedCount : 0;
   return {
     messages: rows.reverse(),
     dailyLimit,
-    remainingToday: Math.max(0, dailyLimit - (sent[0]?.n ?? 0)),
+    remainingToday: Math.max(0, dailyLimit - usedToday),
   };
 }

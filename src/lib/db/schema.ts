@@ -492,13 +492,31 @@ export const chatMessages = pgTable(
     model: text("model"),
     /** Local date string YYYY-MM-DD, same convention as activity_days.day. */
     day: text("day").notNull(),
+    /** Per-user monotonic order; timestamps are display metadata only. */
+    sequence: integer("sequence").notNull(),
     createdAt: ts("created_at").notNull().$defaultFn(now),
   },
   (t) => [
     index("chat_messages_user_created_idx").on(t.userId, t.createdAt),
     index("chat_messages_user_day_idx").on(t.userId, t.day),
+    uniqueIndex("chat_messages_user_sequence_idx").on(t.userId, t.sequence),
   ],
 );
+
+/** Exact chat quota and single-flight state for one learner's rolling thread. */
+export const chatStates = pgTable("chat_states", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => user.id, { onDelete: "cascade" }),
+  /** Learner-local day represented by usedCount. */
+  day: text("day").notNull(),
+  usedCount: integer("used_count").notNull().default(0),
+  /** Next message sequence; advances by two after a completed turn. */
+  nextSequence: integer("next_sequence").notNull().default(1),
+  /** Renewable single-flight lease; null when no provider call is running. */
+  claimId: text("claim_id"),
+  claimStartedAt: ts("claim_started_at"),
+});
 
 /** One row per user per local day with any learning activity; drives streaks. */
 export const activityDays = pgTable(
