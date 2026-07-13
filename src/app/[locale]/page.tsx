@@ -29,9 +29,9 @@ export default async function LandingPage() {
   const t = await getDict();
 
   const features = [
+    { title: t.landing.featureAiTitle, desc: t.landing.featureAiDesc },
     { title: t.landing.featureExamTitle, desc: t.landing.featureExamDesc },
     { title: t.landing.featureBizTitle, desc: t.landing.featureBizDesc },
-    { title: t.landing.featureAiTitle, desc: t.landing.featureAiDesc },
   ];
 
   return (

@@ -12,7 +12,11 @@ test.describe("study reminders", () => {
 
     // Default is on; turning it off survives a reload (persisted setting).
     await page.getByRole("button", { name: t.dashboard.reminderToggleOn }).click();
-    await expect(page.getByRole("button", { name: t.dashboard.reminderToggleOff })).toBeVisible();
+    const offButton = page.getByRole("button", { name: t.dashboard.reminderToggleOff });
+    // The label flips optimistically and the button stays disabled until the
+    // server action commits — wait for enabled, or the reload races the write.
+    await expect(offButton).toBeVisible();
+    await expect(offButton).toBeEnabled();
     await page.reload();
     await expect(page.getByRole("button", { name: t.dashboard.reminderToggleOff })).toBeVisible();
   });

@@ -19,3 +19,11 @@ export class IntegrityError extends Error {
     this.name = "IntegrityError";
   }
 }
+
+/** A per-user usage cap was hit (e.g. daily tutor messages). → 429 */
+export class LimitExceededError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "LimitExceededError";
+  }
+}

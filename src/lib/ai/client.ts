@@ -1,10 +1,11 @@
 import type { z } from "zod";
 import type { SpeakingPartType, WritingTaskType } from "../../content/types";
-import { anthropicStructuredFeedback } from "./anthropic";
-import { bailianStructuredFeedback } from "./bailian";
+import { anthropicPlainText, anthropicStructuredFeedback } from "./anthropic";
+import { bailianPlainText, bailianStructuredFeedback } from "./bailian";
 import { AiUnavailableError } from "./errors";
 import { modelForProvider, resolveAiProvider } from "./provider";
-import { speakingSystemPrompt, writingSystemPrompt } from "./prompts";
+import { speakingSystemPrompt, tutorSystemPrompt, writingSystemPrompt } from "./prompts";
+import { sanitizeUntrusted } from "./sanitize";
 import {
   SpeakingFeedbackSchema,
   WritingFeedbackSchema,
@@ -33,15 +34,6 @@ export function activeAiModel(): string | null {
   return provider ? modelForProvider(provider) : null;
 }
 
-/**
- * Learner text is untrusted: neutralize angle brackets so it cannot close our
- * delimiter tags and smuggle instructions into the grading prompt. Full-width
- * equivalents keep the text readable for the grader.
- */
-function sanitizeUntrusted(text: string): string {
-  return text.replace(/</g, "＜").replace(/>/g, "＞");
-}
-
 async function requestStructuredFeedback<Schema extends z.ZodType>(
   system: string,
   userContent: string,
@@ -57,13 +49,22 @@ async function requestStructuredFeedback<Schema extends z.ZodType>(
     : bailianStructuredFeedback(req);
 }
 
+/**
+ * Server-composed learner context (formatLearnerContext output) becomes the
+ * <learner_profile> block; memo strings inside were sanitized at compose time.
+ */
+function learnerProfileBlock(learnerContext: string | undefined): string {
+  return learnerContext ? `<learner_profile>\n${learnerContext}\n</learner_profile>\n\n` : "";
+}
+
 export async function getWritingFeedback(req: {
   taskType: WritingTaskType;
   promptEn: string;
   userText: string;
   wordCount: number;
+  learnerContext?: string;
 }): Promise<WritingFeedback> {
-  const userContent = `<task>
+  const userContent = `${learnerProfileBlock(req.learnerContext)}<task>
 ${req.promptEn}
 </task>
 
@@ -84,8 +85,9 @@ export async function getSpeakingFeedback(req: {
   promptEn: string;
   transcript: string;
   durationSeconds: number;
+  learnerContext?: string;
 }): Promise<SpeakingFeedback> {
-  const userContent = `<task>
+  const userContent = `${learnerProfileBlock(req.learnerContext)}<task>
 ${req.promptEn}
 </task>
 
@@ -99,4 +101,26 @@ Evaluate the learner's spoken answer (transcribed above) and produce the structu
     userContent,
     SpeakingFeedbackSchema,
   );
+}
+
+/**
+ * One tutor-chat reply (plain text, both providers). User turns are untrusted
+ * and sanitized here; the system prompt carries the learner profile.
+ */
+export async function getTutorReply(req: {
+  learnerContext: string | null;
+  messages: { role: "user" | "assistant"; content: string }[];
+}): Promise<string> {
+  const provider = resolveAiProvider();
+  if (!provider) {
+    throw new AiUnavailableError("No AI provider is configured");
+  }
+  const chatReq = {
+    model: modelForProvider(provider),
+    system: tutorSystemPrompt(req.learnerContext),
+    messages: req.messages.map((m) =>
+      m.role === "user" ? { ...m, content: sanitizeUntrusted(m.content) } : m,
+    ),
+  };
+  return provider === "anthropic" ? anthropicPlainText(chatReq) : bailianPlainText(chatReq);
 }

@@ -31,7 +31,8 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
 - **Errors** are always `{"error": {"code", "message", "details?"}}`. `code` is the contract;
   `message` is English debug text (clients own user-facing copy). Codes: `unauthorized` (401),
   `onboarding_required` / `integrity` (403), `not_found` (404), `validation_failed` (422, zod
-  issues in `details`), `invalid_json` (400), `ai_unavailable` (503), `internal` (500).
+  issues in `details`), `invalid_json` (400), `chat_limit_reached` (429), `ai_unavailable` (503),
+  `internal` (500).
 - **Locale**: responses are bilingual _data_ (`title` + `titleZh`, explanations in zh) — there is
   no `Accept-Language` handling; the client owns its UI strings.
 - **Dates** are ISO 8601 strings; **exam deadlines** are epoch-ms (see below).
@@ -41,7 +42,31 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
   `remindersEnabled`, the study-reminder opt-in); `track` stays PUT-only because it doubles
   as onboarding. Both verbs and `GET /api/v1/me` return the same `Settings` shape.
 - No pagination — list sizes mirror the web's fixed limits (history 20, recents 5,
-  past submissions 10).
+  past submissions 10, chat thread 50).
+
+## Learner profile and daily plan
+
+- `GET/PATCH /api/v1/me/profile` — goals (`goalTrack`, `targetScore`, `examDate`,
+  `dailyMinutes`, `selfRatedLevel`) are client-writable; `skillEstimates` and `coachMemo` are
+  **server-owned** (computed from practice/exam/AI signals — [ADR 0012](adr/0012-learner-model-and-ai-memory.md))
+  and silently ignored if sent. Users without a profile row get the same shape with defaults —
+  never branch on null.
+- **`targetScore` encoding**: TOEIC is the raw 10–990 score; **IELTS is band×10** (`65` = band
+  6.5) because the column is an integer — divide by 10 for display when `goalTrack === "ielts"`.
+- `GET /api/v1/plan` — the deterministic 今日计划 (due vocab → mistakes → weakest skill →
+  writing/speaking cadence → mock-exam checkpoint), fitted to `dailyMinutes`. `href` values are
+  unlocalized web paths; native clients should map `kind`/`refId` to their own screens.
+
+## Tutor chat
+
+- `GET /api/v1/tutor/messages` — the rolling thread (single per user, chronological tail of 50),
+  plus `enabled` (AI configured?), `dailyLimit`, and `remainingToday`.
+- `POST /api/v1/tutor/messages` `{content}` — one non-streaming round-trip
+  ([ADR 0013](adr/0013-tutor-chat-single-thread-non-streaming.md)); the user message and reply
+  persist atomically, so a failed call stores nothing and consumes no quota. `429
+chat_limit_reached` at the per-user daily cap (`MERCURY_CHAT_DAILY_LIMIT`, default 30); `503
+ai_unavailable` when no provider is configured — check `enabled` from GET before showing a
+  composer.
 
 ## Exam timing model
 

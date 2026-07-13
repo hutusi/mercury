@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
 import { AiUnavailableError } from "../ai/client";
-import { IntegrityError, NotFoundError } from "../services/errors";
+import { IntegrityError, LimitExceededError, NotFoundError } from "../services/errors";
 import { ApiError } from "./errors";
 
 /**
@@ -42,6 +42,9 @@ export function apiHandler<Ctx>(
       }
       if (error instanceof IntegrityError) {
         return errorResponse(403, "integrity", error.message);
+      }
+      if (error instanceof LimitExceededError) {
+        return errorResponse(429, "chat_limit_reached", error.message);
       }
       if (error instanceof AiUnavailableError) {
         return errorResponse(503, "ai_unavailable", "AI feedback is currently unavailable");

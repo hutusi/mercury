@@ -22,6 +22,7 @@ import type {
   WritingTaskType,
 } from "../../content/types";
 import type { SpeakingFeedback, WritingFeedback } from "../ai/schemas";
+import type { CoachMemo, SelfRatedLevel, SkillEstimates } from "../learner-model-core";
 import type { MistakeKind } from "../mistakes-core";
 import { user } from "./auth-schema";
 
@@ -76,6 +77,34 @@ export const userSettings = pgTable("user_settings", {
   // (email/push) will reuse it when a delivery provider lands.
   remindersEnabled: boolean("reminders_enabled").notNull().default(true),
   onboardedAt: ts("onboarded_at"),
+  createdAt: ts("created_at").notNull().$defaultFn(now),
+  updatedAt: ts("updated_at").notNull().$defaultFn(now),
+});
+
+// ---------------------------------------------------------------------------
+// Learner profile (the AI tutor's model of the user)
+// ---------------------------------------------------------------------------
+
+/**
+ * Goals + measured state per learner. skillEstimates/coachMemo are
+ * server-owned: they evolve via learner-model-core from practice signals and
+ * AI grading, never from client writes. dailyMinutes deliberately does not
+ * reuse user_settings.dailyGoal (a card count baked into the v1 API contract).
+ */
+export const learnerProfiles = pgTable("learner_profiles", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => user.id, { onDelete: "cascade" }),
+  /** Track the goal fields describe; may lag activeTrack after a switch. */
+  goalTrack: text("goal_track").$type<Track>(),
+  /** TOEIC 10–990; IELTS stored as band×10 (65 = band 6.5). */
+  targetScore: integer("target_score"),
+  /** Local date string YYYY-MM-DD, same convention as activity_days.day. */
+  examDate: text("exam_date"),
+  dailyMinutes: integer("daily_minutes").notNull().default(20),
+  selfRatedLevel: text("self_rated_level").$type<SelfRatedLevel>(),
+  skillEstimates: jsonb("skill_estimates").$type<SkillEstimates>().notNull(),
+  coachMemo: jsonb("coach_memo").$type<CoachMemo>().notNull(),
   createdAt: ts("created_at").notNull().$defaultFn(now),
   updatedAt: ts("updated_at").notNull().$defaultFn(now),
 });
@@ -337,6 +366,32 @@ export const mistakeClears = pgTable(
   },
   (t) => [
     uniqueIndex("mistake_clears_user_question_idx").on(t.userId, t.kind, t.refId, t.questionId),
+  ],
+);
+
+/**
+ * Tutor chat: one rolling thread per user (the memory IS the thread — no
+ * thread management, see ADR 0013). `day` snapshots localDay() at insert and
+ * drives the per-user daily cap by counting user-role rows.
+ */
+export const chatMessages = pgTable(
+  "chat_messages",
+  {
+    id: text("id").primaryKey().$defaultFn(uuid),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    role: text("role").$type<"user" | "assistant">().notNull(),
+    content: text("content").notNull(),
+    /** AI model for assistant rows; null on user rows. */
+    model: text("model"),
+    /** Local date string YYYY-MM-DD, same convention as activity_days.day. */
+    day: text("day").notNull(),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    index("chat_messages_user_created_idx").on(t.userId, t.createdAt),
+    index("chat_messages_user_day_idx").on(t.userId, t.day),
   ],
 );
 

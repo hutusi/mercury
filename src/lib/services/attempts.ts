@@ -4,6 +4,7 @@ import { db } from "../db";
 import { exerciseAttempts, listeningExercises, readingExercises } from "../db/schema";
 import { recordActivity } from "../streak";
 import { NotFoundError } from "./errors";
+import { recordSkillSignalSafely } from "./profile";
 
 export const SubmitExerciseSchema = z.object({
   kind: z.enum(["reading", "listening"]),
@@ -60,6 +61,13 @@ export async function submitExerciseAttemptForUser(
     durationSeconds,
   });
   await recordActivity(userId);
+  if (total > 0) {
+    await recordSkillSignalSafely(userId, {
+      skill: kind,
+      value: (score / total) * 100,
+      source: "exercise",
+    });
+  }
 
   return { score, total, perQuestion };
 }

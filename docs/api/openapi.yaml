@@ -148,8 +148,151 @@ paths:
                   settings: { $ref: "#/components/schemas/Settings" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
+  /api/v1/me/profile:
+    get:
+      summary: Learner profile (goals, skill estimates, coach memo)
+      description: >
+        Users without a profile row get the same shape with defaults, so
+        clients never branch on null.
+      tags: [account]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile: { $ref: "#/components/schemas/LearnerProfile" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+    patch:
+      summary: Partially update learning goals
+      description: >
+        Absent fields stay untouched; null clears. skillEstimates and
+        coachMemo are server-owned and ignored if sent.
+      tags: [account]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                goalTrack:
+                  oneOf: [{ $ref: "#/components/schemas/Track" }, { type: "null" }]
+                targetScore:
+                  oneOf: [{ type: integer }, { type: "null" }]
+                  description: TOEIC 10–990; IELTS as band×10 (65 = band 6.5).
+                examDate:
+                  oneOf: [{ type: string }, { type: "null" }]
+                  description: Local date YYYY-MM-DD.
+                dailyMinutes: { type: integer, minimum: 5, maximum: 180 }
+                selfRatedLevel:
+                  oneOf: [{ $ref: "#/components/schemas/SelfRatedLevel" }, { type: "null" }]
+      responses:
+        "200":
+          description: Updated profile.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile: { $ref: "#/components/schemas/LearnerProfile" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+  # ── tutor chat ────────────────────────────────────────────────────────────
+  /api/v1/tutor/messages:
+    get:
+      summary: Tutor thread (rolling, single per user) and today's quota
+      tags: [tutor]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: False when no AI provider is configured (POST would 503).
+                  dailyLimit: { type: integer }
+                  remainingToday: { type: integer }
+                  messages:
+                    type: array
+                    description: Chronological tail of the thread (up to 50).
+                    items: { $ref: "#/components/schemas/ChatMessage" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+    post:
+      summary: Send a message to the AI tutor and get the reply
+      description: >
+        Non-streaming by design (one JSON round-trip; see ADR 0013). The user
+        message and the reply persist atomically — a failed AI call stores
+        nothing and does not consume quota.
+      tags: [tutor]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [content]
+              properties:
+                content: { type: string, minLength: 1, maxLength: 4000 }
+      responses:
+        "200":
+          description: The assistant reply.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: { $ref: "#/components/schemas/ChatMessage" }
+                  remainingToday: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+        "429":
+          description: Daily tutor message cap reached (code chat_limit_reached).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+        "503":
+          description: No AI provider configured (code ai_unavailable).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
 
   # ── dashboard ─────────────────────────────────────────────────────────────
+  /api/v1/plan:
+    get:
+      summary: Today's study plan (今日计划)
+      description: >
+        Deterministic, server-computed daily plan — due vocab, mistakes,
+        weakest-skill practice, writing/speaking cadence, and a mock-exam
+        checkpoint ramping toward the exam date, fitted to the learner's
+        dailyMinutes. href values are unlocalized web paths; native clients
+        map kind/refId to their own screens.
+      tags: [dashboard]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/PlanItem" }
+                  dailyMinutes: { type: integer }
+                  generatedFor:
+                    type: string
+                    description: Local day the plan was computed for (YYYY-MM-DD).
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/dashboard:
     get:
       summary: Streak, due counts, and recent scores
@@ -779,7 +922,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, validation_failed, invalid_json, ai_unavailable, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, validation_failed, invalid_json, ai_unavailable, chat_limit_reached, internal).
             message:
               type: string
               description: English debug text — not for end users.
@@ -791,9 +934,89 @@ components:
       type: object
       properties:
         activeTrack: { $ref: "#/components/schemas/Track" }
-        dailyGoal: { type: integer }
+        dailyGoal:
+          type: integer
+          deprecated: true
+          description: Legacy card-count goal; superseded by LearnerProfile.dailyMinutes.
         remindersEnabled: { type: boolean }
         onboardedAt: { type: string, format: date-time }
+    SelfRatedLevel:
+      type: string
+      enum: [novice, elementary, intermediate, upper, advanced]
+    ChatMessage:
+      type: object
+      properties:
+        id: { type: string }
+        role: { type: string, enum: [user, assistant] }
+        content: { type: string }
+        createdAt: { type: string, format: date-time }
+    PlanItem:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            [vocab_review, vocab_new, mistakes, reading, listening, writing, speaking, mock_exam]
+        refId:
+          type: string
+          description: Content id for exercise/prompt/exam kinds; absent for vocab/mistakes.
+        href: { type: string, description: Unlocalized web path for this item. }
+        estMinutes: { type: integer }
+        reasonKey:
+          type: string
+          enum:
+            [
+              dueVocab,
+              newWords,
+              clearMistakes,
+              weakSkill,
+              writingCadence,
+              speakingCadence,
+              examCheckpoint,
+            ]
+    SkillEstimate:
+      type: object
+      description: Server-computed ability estimate; evolves from practice/exam/AI signals.
+      properties:
+        estimate: { type: integer, minimum: 0, maximum: 100 }
+        confidence: { type: string, enum: [low, medium, high] }
+        updatedAt: { type: string, format: date-time }
+    MemoItem:
+      type: object
+      properties:
+        tag: { type: string, description: "Stable English slug, e.g. article-usage." }
+        noteZh: { type: string }
+        count: { type: integer }
+        lastSeenAt: { type: string, format: date-time }
+    LearnerProfile:
+      type: object
+      properties:
+        goalTrack:
+          oneOf: [{ $ref: "#/components/schemas/Track" }, { type: "null" }]
+          description: Track the goal fields describe; may lag activeTrack after a switch.
+        targetScore:
+          oneOf: [{ type: integer }, { type: "null" }]
+          description: TOEIC 10–990; IELTS as band×10 (65 = band 6.5).
+        examDate:
+          oneOf: [{ type: string }, { type: "null" }]
+          description: Local date YYYY-MM-DD.
+        dailyMinutes: { type: integer }
+        selfRatedLevel:
+          oneOf: [{ $ref: "#/components/schemas/SelfRatedLevel" }, { type: "null" }]
+        skillEstimates:
+          type: object
+          description: Keys are listening/reading/writing/speaking/vocab; server-owned.
+          additionalProperties: { $ref: "#/components/schemas/SkillEstimate" }
+        coachMemo:
+          type: object
+          description: The AI tutor's rolling notes on this learner; server-owned.
+          properties:
+            issues:
+              type: array
+              items: { $ref: "#/components/schemas/MemoItem" }
+            strengths:
+              type: array
+              items: { $ref: "#/components/schemas/MemoItem" }
     VocabWord:
       type: object
       description: Bilingual dictionary entry (zh fields are content, not localization).

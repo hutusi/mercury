@@ -5,6 +5,7 @@ import { mockExamAttempts, mockExams, type AnswerMap, type SectionDeadline } fro
 import { acceptSectionAnswers, gradeExam } from "../exam-utils";
 import { recordActivity } from "../streak";
 import { NotFoundError } from "./errors";
+import { recordSkillSignalSafely } from "./profile";
 
 /** Late submissions within this window are still accepted (network slack). */
 export const GRACE_MS = 30_000;
@@ -234,6 +235,14 @@ export async function submitExamSectionForUser(
     .returning({ id: mockExamAttempts.id });
   if (!completed) return persistedSectionState(userId, attempt.id);
   await recordActivity(userId);
+  for (const s of sectionScores) {
+    if (s.max === 0) continue;
+    await recordSkillSignalSafely(userId, {
+      skill: s.kind,
+      value: (s.raw / s.max) * 100,
+      source: "exam",
+    });
+  }
 
   return {
     done: true,

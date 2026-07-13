@@ -7,6 +7,18 @@ import { z } from "zod";
  * stay in English.
  */
 
+/**
+ * The grader's notes for the learner's file, merged into
+ * learner_profiles.coachMemo (learner-model-core.mergeCoachMemo). Optional on
+ * both feedback schemas — it is load-bearing that old stored feedback rows
+ * (which predate the field) still satisfy the jsonb column types.
+ */
+export const MemoUpdateSchema = z.object({
+  issues: z.array(z.object({ tag: z.string(), noteZh: z.string() })).max(3),
+  strengths: z.array(z.object({ tag: z.string(), noteZh: z.string() })).max(2),
+});
+export type AiMemoUpdate = z.infer<typeof MemoUpdateSchema>;
+
 export const WritingFeedbackSchema = z.object({
   /** IELTS band (0-9, halves allowed) or a 0-100 rubric score for business tasks. */
   overallScore: z.number(),
@@ -30,6 +42,7 @@ export const WritingFeedbackSchema = z.object({
   ),
   rewrittenSample: z.string(),
   summaryZh: z.string(),
+  memoUpdate: MemoUpdateSchema.optional(),
 });
 export type WritingFeedback = z.infer<typeof WritingFeedbackSchema>;
 
@@ -53,5 +66,6 @@ export const SpeakingFeedbackSchema = z.object({
     }),
   ),
   summaryZh: z.string(),
+  memoUpdate: MemoUpdateSchema.optional(),
 });
 export type SpeakingFeedback = z.infer<typeof SpeakingFeedbackSchema>;

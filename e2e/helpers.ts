@@ -24,10 +24,14 @@ export async function registerUser(page: Page): Promise<{ email: string; passwor
   return { email, password };
 }
 
-/** Pick a track on the onboarding screen; lands on /dashboard. */
+/**
+ * Complete both onboarding steps (track → goal); lands on /dashboard.
+ * The goal step is submitted with its defaults (no target, 20 min/day).
+ */
 export async function pickTrack(page: Page, track: "toeic" | "ielts" | "business" = "toeic") {
   const label = t.tracks[track];
   await page.getByRole("button", { name: new RegExp(label) }).click();
+  await page.getByRole("button", { name: t.onboarding.next }).click();
   await page.getByRole("button", { name: t.onboarding.confirm }).click();
   await page.waitForURL("**/dashboard");
 }

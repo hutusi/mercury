@@ -1,4 +1,4 @@
-import { TrackPicker } from "@/components/dashboard/TrackPicker";
+import { OnboardingFlow } from "@/components/onboarding/OnboardingFlow";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { getSession } from "@/lib/auth/session";
@@ -22,7 +22,7 @@ export default async function OnboardingPage() {
           gloss={t.onboarding.subtitle}
           className="mb-10"
         />
-        <TrackPicker />
+        <OnboardingFlow />
       </main>
     </div>
   );
