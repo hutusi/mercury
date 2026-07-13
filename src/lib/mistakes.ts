@@ -1,28 +1,19 @@
-import { and, eq, inArray } from "drizzle-orm";
+import { and, count, desc, eq, gt, inArray, isNull, or } from "drizzle-orm";
 import type { SanitizedQuestion, ScriptLine, Track } from "@/content/types";
 import { db } from "./db";
 import {
-  exerciseAttempts,
   listeningExercises,
-  mistakeClears,
-  mockExamAttempts,
+  mistakeStates,
   mockExams,
   readingExercises,
   vocabWords,
 } from "./db/schema";
-import {
-  deriveMistakes,
-  sourceKey,
-  type AnswerKeyMap,
-  type CoreAttempt,
-  type MistakeStatus,
-} from "./mistakes-core";
+import type { MistakeStatus } from "./mistakes-core";
 
 /**
- * Server assembly for the mistakes notebook: derives the wrong-set from
- * attempt history + live content (mistakes-core) and decorates it into view
- * models. Questions ship sanitized — correctIndex/explanationZh only ever
- * leave the server through the retest actions, after an answer.
+ * Server assembly for the mistakes notebook: reads the bounded current-state
+ * model and decorates it with live content. Questions ship sanitized — answer
+ * keys only leave through a retest result after the learner answers.
  */
 
 export interface McqMistakeVM {
@@ -57,118 +48,37 @@ export interface MistakesPageData {
   counts: { active: number; cleared: number };
 }
 
-async function deriveStatuses(userId: string, track: Track): Promise<MistakeStatus[]> {
-  const [attempts, examAttempts, clears] = await Promise.all([
-    db.query.exerciseAttempts.findMany({
-      where: and(eq(exerciseAttempts.userId, userId), eq(exerciseAttempts.track, track)),
-      columns: { kind: true, refId: true, answers: true, completedAt: true },
-    }),
-    // Business has no mock exams (ExamTrack excludes it).
-    track === "business"
-      ? Promise.resolve([])
-      : db.query.mockExamAttempts.findMany({
-          where: and(
-            eq(mockExamAttempts.userId, userId),
-            eq(mockExamAttempts.track, track),
-            eq(mockExamAttempts.status, "completed"),
-          ),
-          columns: { examId: true, answers: true, completedAt: true },
-        }),
-    db.query.mistakeClears.findMany({ where: eq(mistakeClears.userId, userId) }),
-  ]);
-
-  const core: CoreAttempt[] = [
-    ...attempts.map((a) => ({
-      kind: a.kind,
-      refId: a.refId,
-      completedAt: a.completedAt,
-      answers: a.answers,
-    })),
-    // status === "completed" should guarantee completedAt; skip (rather than
-    // crash the page on) any row where that invariant is broken.
-    ...examAttempts.flatMap((a) =>
-      a.completedAt
-        ? [
-            {
-              kind: "exam" as const,
-              refId: a.examId,
-              completedAt: a.completedAt,
-              answers: a.answers,
-            },
-          ]
-        : [],
-    ),
-  ];
-
-  const distinctRefIds = (kind: CoreAttempt["kind"]) => [
-    ...new Set(core.filter((a) => a.kind === kind).map((a) => a.refId)),
-  ];
-
-  const readingIds = distinctRefIds("reading");
-  const listeningIds = distinctRefIds("listening");
-  const examIds = distinctRefIds("exam");
-  const [reading, listening, exams] = await Promise.all([
-    readingIds.length
-      ? db.query.readingExercises.findMany({ where: inArray(readingExercises.id, readingIds) })
-      : Promise.resolve([]),
-    listeningIds.length
-      ? db.query.listeningExercises.findMany({
-          where: inArray(listeningExercises.id, listeningIds),
-        })
-      : Promise.resolve([]),
-    examIds.length
-      ? db.query.mockExams.findMany({ where: inArray(mockExams.id, examIds) })
-      : Promise.resolve([]),
-  ]);
-
-  const answerKeys: AnswerKeyMap = new Map();
-  for (const ex of reading) {
-    answerKeys.set(
-      sourceKey("reading", ex.id),
-      new Map(ex.questions.map((q) => [q.id, q.correctIndex])),
-    );
-  }
-  for (const ex of listening) {
-    answerKeys.set(
-      sourceKey("listening", ex.id),
-      new Map(ex.questions.map((q) => [q.id, q.correctIndex])),
-    );
-  }
-  for (const exam of exams) {
-    const key = new Map<string, number>();
-    for (const section of exam.sections) {
-      for (const group of section.groups) {
-        for (const q of group.questions) key.set(q.id, q.correctIndex);
-      }
-    }
-    answerKeys.set(sourceKey("exam", exam.id), key);
-  }
-
-  return deriveMistakes(core, answerKeys, clears);
-}
-
-/** Statuses whose vocab word still exists; other kinds pass through. */
-async function withExistingWords(statuses: MistakeStatus[]): Promise<MistakeStatus[]> {
-  const wordIds = statuses.filter((s) => s.kind === "vocab_quiz").map((s) => s.questionId);
-  if (wordIds.length === 0) return statuses;
-  const existing = new Set(
-    (
-      await db.query.vocabWords.findMany({
-        where: inArray(vocabWords.id, wordIds),
-        columns: { id: true },
-      })
-    ).map((w) => w.id),
-  );
-  return statuses.filter((s) => s.kind !== "vocab_quiz" || existing.has(s.questionId));
+async function listStatuses(userId: string, track: Track): Promise<MistakeStatus[]> {
+  const rows = await db.query.mistakeStates.findMany({
+    where: and(eq(mistakeStates.userId, userId), eq(mistakeStates.track, track)),
+    orderBy: desc(mistakeStates.lastWrongAt),
+  });
+  return rows.map((row) => ({
+    kind: row.kind,
+    refId: row.refId,
+    questionId: row.questionId,
+    wrongCount: row.wrongCount,
+    lastWrongAt: row.lastWrongAt,
+    cleared: row.clearedAt !== null && row.clearedAt.getTime() >= row.lastWrongAt.getTime(),
+  }));
 }
 
 export async function countActiveMistakes(userId: string, track: Track): Promise<number> {
-  const statuses = await withExistingWords(await deriveStatuses(userId, track));
-  return statuses.filter((s) => !s.cleared).length;
+  const [row] = await db
+    .select({ value: count() })
+    .from(mistakeStates)
+    .where(
+      and(
+        eq(mistakeStates.userId, userId),
+        eq(mistakeStates.track, track),
+        or(isNull(mistakeStates.clearedAt), gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt)),
+      ),
+    );
+  return row?.value ?? 0;
 }
 
 export async function getMistakesPageData(userId: string, track: Track): Promise<MistakesPageData> {
-  const statuses = await withExistingWords(await deriveStatuses(userId, track));
+  const statuses = await listStatuses(userId, track);
 
   const wordIds = statuses.filter((s) => s.kind === "vocab_quiz").map((s) => s.questionId);
   const mcqRefIds = (kind: "reading" | "listening" | "exam") => [

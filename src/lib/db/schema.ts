@@ -376,12 +376,8 @@ export const mockExamAttempts = pgTable(
 );
 
 /**
- * Re-test clears for the mistakes notebook (错题本). The wrong-set itself is
- * DERIVED at read time from attempt history + content answer keys
- * (src/lib/mistakes-core.ts); this table only records "answered correctly on
- * the mistakes page at clearedAt". A wrong answer in a real attempt after
- * clearedAt revives the mistake. Vocab rows mirror exercise_attempts identity:
- * refId = `quiz-${track}`, questionId = word id.
+ * Durable notebook re-test events. `mistake_states` is the current read model;
+ * these rows retain how a learner cleared an item and support rebuilds.
  */
 export const mistakeClears = pgTable(
   "mistake_clears",
@@ -397,6 +393,32 @@ export const mistakeClears = pgTable(
   },
   (t) => [
     uniqueIndex("mistake_clears_user_question_idx").on(t.userId, t.kind, t.refId, t.questionId),
+  ],
+);
+
+/**
+ * Current mistakes notebook read model. Attempt/retest transactions maintain
+ * it from trusted grading outcomes; reads never scan historical attempts.
+ */
+export const mistakeStates = pgTable(
+  "mistake_states",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    track: text("track").$type<Track>().notNull(),
+    kind: text("kind").$type<MistakeKind>().notNull(),
+    refId: text("ref_id").notNull(),
+    questionId: text("question_id").notNull(),
+    wrongCount: integer("wrong_count").notNull(),
+    lastWrongAt: ts("last_wrong_at").notNull(),
+    /** Latest resolving real attempt or notebook re-test, if any. */
+    clearedAt: ts("cleared_at"),
+    updatedAt: ts("updated_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.kind, t.refId, t.questionId] }),
+    index("mistake_states_user_track_idx").on(t.userId, t.track, t.lastWrongAt),
   ],
 );
 

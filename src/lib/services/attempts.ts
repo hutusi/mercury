@@ -4,6 +4,7 @@ import { db } from "../db";
 import { exerciseAttempts, listeningExercises, readingExercises } from "../db/schema";
 import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
+import { recordMistakeOutcomes } from "./mistake-state";
 import { recordSkillSignalSafely } from "./profile";
 
 export const SubmitExerciseSchema = z.object({
@@ -50,6 +51,7 @@ export async function submitExerciseAttemptForUser(
   const score = perQuestion.filter((p) => p.correct).length;
   const total = perQuestion.length;
 
+  const completedAt = new Date();
   await db.transaction(async (tx) => {
     await tx.insert(exerciseAttempts).values({
       userId,
@@ -60,6 +62,18 @@ export async function submitExerciseAttemptForUser(
       score,
       total,
       durationSeconds,
+      completedAt,
+    });
+    await recordMistakeOutcomes(tx, {
+      userId,
+      track: exercise.track,
+      kind,
+      refId,
+      occurredAt: completedAt,
+      outcomes: perQuestion.map((question) => ({
+        questionId: question.questionId,
+        correct: question.correct,
+      })),
     });
     await recordActivityWith(tx, userId);
   });

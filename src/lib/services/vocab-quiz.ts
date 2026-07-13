@@ -1,15 +1,15 @@
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, gt, isNull, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import { TrackSchema, type Track } from "../../content/types";
 import { db } from "../db";
 import {
   exerciseAttempts,
   mistakeClears,
+  mistakeStates,
   vocabQuizSessions,
   vocabWords,
   type QuizSessionAnswers,
 } from "../db/schema";
-import { deriveMistakes, sourceKey } from "../mistakes-core";
 import { recordActivityWith } from "../streak";
 import {
   buildQuizQuestion,
@@ -19,6 +19,7 @@ import {
   type StoredQuizQuestion,
 } from "../vocab-quiz-core";
 import { ConflictError, ExpiredError, IntegrityError, NotFoundError } from "./errors";
+import { clearMistakeState, recordMistakeOutcomes } from "./mistake-state";
 import { recordSkillSignalSafely } from "./profile";
 
 const QUIZ_SIZE = 10;
@@ -85,38 +86,19 @@ export async function createQuizSessionForUser(
   return insertSession({ userId, track, purpose: "practice", questions });
 }
 
-/** Vocab attempts store a 0/1 flag per word, so no live answer key is needed. */
 async function isActiveVocabMistake(userId: string, track: Track, wordId: string) {
   const refId = `quiz-${track}`;
-  const [attempts, clears] = await Promise.all([
-    db.query.exerciseAttempts.findMany({
-      where: and(
-        eq(exerciseAttempts.userId, userId),
-        eq(exerciseAttempts.kind, "vocab_quiz"),
-        eq(exerciseAttempts.refId, refId),
-      ),
-      columns: { completedAt: true, answers: true },
-    }),
-    db.query.mistakeClears.findMany({
-      where: and(
-        eq(mistakeClears.userId, userId),
-        eq(mistakeClears.kind, "vocab_quiz"),
-        eq(mistakeClears.refId, refId),
-        eq(mistakeClears.questionId, wordId),
-      ),
-    }),
-  ]);
-  const statuses = deriveMistakes(
-    attempts.map((attempt) => ({
-      kind: "vocab_quiz" as const,
-      refId,
-      completedAt: attempt.completedAt,
-      answers: attempt.answers,
-    })),
-    new Map([[sourceKey("vocab_quiz", refId), new Map()]]),
-    clears,
-  );
-  return statuses.some((status) => status.questionId === wordId && !status.cleared);
+  const row = await db.query.mistakeStates.findFirst({
+    where: and(
+      eq(mistakeStates.userId, userId),
+      eq(mistakeStates.kind, "vocab_quiz"),
+      eq(mistakeStates.refId, refId),
+      eq(mistakeStates.questionId, wordId),
+      or(isNull(mistakeStates.clearedAt), gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt)),
+    ),
+    columns: { questionId: true },
+  });
+  return Boolean(row);
 }
 
 /** Create a one-question session only for a currently active vocab mistake. */
@@ -218,6 +200,7 @@ export async function answerQuizSessionForUser(
 
     let signal: number | null = null;
     if (result.completed && session.purpose === "practice") {
+      const completedAt = new Date();
       const answerMap: Record<string, number> = {};
       for (const item of session.questions) {
         const answer = answers[item.id];
@@ -232,6 +215,18 @@ export async function answerQuizSessionForUser(
         score: result.score ?? 0,
         total: result.total ?? session.questions.length,
         durationSeconds: 0,
+        completedAt,
+      });
+      await recordMistakeOutcomes(tx, {
+        userId,
+        track: session.track,
+        kind: "vocab_quiz",
+        refId: `quiz-${session.track}`,
+        occurredAt: completedAt,
+        outcomes: session.questions.map((item) => ({
+          questionId: item.wordId,
+          correct: answerMap[item.wordId] === 1,
+        })),
       });
       signal = session.questions.length
         ? ((result.score ?? 0) / session.questions.length) * 100
@@ -257,6 +252,13 @@ export async function answerQuizSessionForUser(
           ],
           set: { clearedAt: new Date() },
         });
+      await clearMistakeState(tx, {
+        userId,
+        track: session.track,
+        kind: "vocab_quiz",
+        refId: `quiz-${session.track}`,
+        questionId: session.sourceWordId,
+      });
     }
 
     if (result.completed) await recordActivityWith(tx, userId);

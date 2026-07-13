@@ -5,6 +5,7 @@ import { mockExamAttempts, mockExams, type AnswerMap, type SectionDeadline } fro
 import { acceptSectionAnswers, gradeExam } from "../exam-utils";
 import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
+import { recordMistakeOutcomes } from "./mistake-state";
 import { recordLearnerOutcomeSafely } from "./profile";
 
 /** Late submissions within this window are still accepted (network slack). */
@@ -199,6 +200,7 @@ export async function submitExamSectionForUser(
     }
 
     const graded = gradeExam(exam.track, exam.sections, merged);
+    const completedAt = new Date();
     await tx
       .update(mockExamAttempts)
       .set({
@@ -207,9 +209,24 @@ export async function submitExamSectionForUser(
         sectionScores: graded.sectionScores,
         rawScore: graded.rawScore,
         estimate: graded.estimate,
-        completedAt: new Date(),
+        completedAt,
       })
       .where(eq(mockExamAttempts.id, attempt.id));
+    await recordMistakeOutcomes(tx, {
+      userId,
+      track: exam.track,
+      kind: "exam",
+      refId: exam.id,
+      occurredAt: completedAt,
+      outcomes: exam.sections.flatMap((examSection) =>
+        examSection.groups.flatMap((group) =>
+          group.questions.map((question) => ({
+            questionId: question.id,
+            correct: merged[question.id] === question.correctIndex,
+          })),
+        ),
+      ),
+    });
     await recordActivityWith(tx, userId);
 
     return {
