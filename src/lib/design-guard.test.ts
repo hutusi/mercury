@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 /**
- * The Lexicon design guard (docs/DESIGN.md). CLAUDE.md and DESIGN.md both state
+ * The Lexicon design guard (docs/DESIGN.md). AGENTS.md and DESIGN.md both state
  * the system is "enforced by src/lib/design-guard.test.ts" as part of
  * `bun run test`; this file makes that claim true.
  *
