@@ -19,7 +19,7 @@ import {
   type StoredQuizQuestion,
 } from "../vocab-quiz-core";
 import { ConflictError, ExpiredError, IntegrityError, NotFoundError } from "./errors";
-import { clearMistakeState, recordMistakeOutcomes } from "./mistake-state";
+import { clearMistakeGeneration, recordMistakeOutcomes } from "./mistake-state";
 import { recordSkillSignalSafely } from "./profile";
 
 const QUIZ_SIZE = 10;
@@ -54,6 +54,7 @@ async function insertSession(input: {
   track: Track;
   purpose: "practice" | "mistake_retest";
   sourceWordId?: string;
+  sourceMistakeAt?: Date;
   questions: StoredQuizQuestion[];
 }): Promise<QuizSessionResource> {
   const [session] = await db
@@ -61,6 +62,7 @@ async function insertSession(input: {
     .values({
       ...input,
       sourceWordId: input.sourceWordId ?? null,
+      sourceMistakeAt: input.sourceMistakeAt ?? null,
       expiresAt: new Date(Date.now() + SESSION_TTL_MS),
     })
     .returning();
@@ -78,15 +80,17 @@ export async function createQuizSessionForUser(
     orderBy: sql`random()`,
     limit: QUIZ_SIZE + 15,
   });
-  if (words.length < 4) return { sessionId: null, track, expiresAt: null, questions: [] };
+  if (words.length < 2) return { sessionId: null, track, expiresAt: null, questions: [] };
 
   const questions = words
     .slice(0, QUIZ_SIZE)
-    .map((word, index) => buildQuizQuestion(word, words, index % 2 === 0 ? "en2zh" : "zh2en"));
+    .map((word, index) => buildQuizQuestion(word, words, index % 2 === 0 ? "en2zh" : "zh2en"))
+    .filter((question) => question.options.length >= 2);
+  if (!questions.length) return { sessionId: null, track, expiresAt: null, questions: [] };
   return insertSession({ userId, track, purpose: "practice", questions });
 }
 
-async function isActiveVocabMistake(userId: string, track: Track, wordId: string) {
+async function activeVocabMistakeGeneration(userId: string, track: Track, wordId: string) {
   const refId = `quiz-${track}`;
   const row = await db.query.mistakeStates.findFirst({
     where: and(
@@ -94,11 +98,12 @@ async function isActiveVocabMistake(userId: string, track: Track, wordId: string
       eq(mistakeStates.kind, "vocab_quiz"),
       eq(mistakeStates.refId, refId),
       eq(mistakeStates.questionId, wordId),
+      gt(mistakeStates.wrongCount, 0),
       or(isNull(mistakeStates.clearedAt), gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt)),
     ),
-    columns: { questionId: true },
+    columns: { lastWrongAt: true },
   });
-  return Boolean(row);
+  return row?.lastWrongAt ?? null;
 }
 
 /** Create a one-question session only for a currently active vocab mistake. */
@@ -109,7 +114,8 @@ export async function createVocabMistakeSessionForUser(
   const wordId = z.string().min(1).parse(wordIdInput);
   const word = await db.query.vocabWords.findFirst({ where: eq(vocabWords.id, wordId) });
   if (!word) throw new NotFoundError(`Unknown vocab word: ${wordId}`);
-  if (!(await isActiveVocabMistake(userId, word.track, word.id))) {
+  const sourceMistakeAt = await activeVocabMistakeGeneration(userId, word.track, word.id);
+  if (!sourceMistakeAt) {
     throw new IntegrityError(`Not an active mistake: vocab_quiz/quiz-${word.track}/${word.id}`);
   }
 
@@ -118,15 +124,19 @@ export async function createVocabMistakeSessionForUser(
     orderBy: sql`random()`,
     limit: 40,
   });
-  if (pool.length < 4) {
+  if (pool.length < 2) {
     return { sessionId: null, track: word.track, expiresAt: null, questions: [] };
   }
   const question = buildQuizQuestion(word, pool, "en2zh");
+  if (question.options.length < 2) {
+    return { sessionId: null, track: word.track, expiresAt: null, questions: [] };
+  }
   return insertSession({
     userId,
     track: word.track,
     purpose: "mistake_retest",
     sourceWordId: word.id,
+    sourceMistakeAt,
     questions: [question],
   });
 }
@@ -234,7 +244,27 @@ export async function answerQuizSessionForUser(
     }
 
     if (result.completed && session.purpose === "mistake_retest" && result.correct) {
-      if (!session.sourceWordId) throw new IntegrityError("Mistake session is missing its word");
+      if (!session.sourceWordId || !session.sourceMistakeAt) {
+        throw new IntegrityError("Mistake session is missing its source generation");
+      }
+      const clearedAt = new Date();
+      const cleared = await clearMistakeGeneration(tx, {
+        userId,
+        track: session.track,
+        kind: "vocab_quiz",
+        refId: `quiz-${session.track}`,
+        questionId: session.sourceWordId,
+        expectedLastWrongAt: session.sourceMistakeAt,
+        clearedAt,
+      });
+      if (!cleared) {
+        // Throwing inside the transaction also rolls back the accepted answer,
+        // so every replay of this stale session receives the same 410.
+        throw new ExpiredError(
+          "The mistake changed after this re-test was created",
+          "mistake_session_stale",
+        );
+      }
       await tx
         .insert(mistakeClears)
         .values({
@@ -242,6 +272,7 @@ export async function answerQuizSessionForUser(
           kind: "vocab_quiz",
           refId: `quiz-${session.track}`,
           questionId: session.sourceWordId,
+          clearedAt,
         })
         .onConflictDoUpdate({
           target: [
@@ -250,15 +281,10 @@ export async function answerQuizSessionForUser(
             mistakeClears.refId,
             mistakeClears.questionId,
           ],
-          set: { clearedAt: new Date() },
+          set: {
+            clearedAt: sql`greatest(${mistakeClears.clearedAt}, ${clearedAt})`,
+          },
         });
-      await clearMistakeState(tx, {
-        userId,
-        track: session.track,
-        kind: "vocab_quiz",
-        refId: `quiz-${session.track}`,
-        questionId: session.sourceWordId,
-      });
     }
 
     if (result.completed) await recordActivityWith(tx, userId);

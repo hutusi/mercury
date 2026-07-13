@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useMemo, useState, useTransition } from "react";
+import { useMemo, useRef, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { submitWriting } from "@/lib/actions/writing";
+import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
 
@@ -14,6 +15,7 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
   const [text, setText] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  const submissionRequestRef = useRef<LogicalRequestId | null>(null);
 
   const wordCount = useMemo(() => text.trim().split(/\s+/).filter(Boolean).length, [text]);
   const enough = wordCount >= minWords;
@@ -22,11 +24,14 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
     setError(null);
     startTransition(async () => {
       try {
+        const request = requestIdForInput(submissionRequestRef.current, text);
+        submissionRequestRef.current = request;
         const { submissionId } = await submitWriting({
-          requestId: crypto.randomUUID(),
+          requestId: request.requestId,
           promptId,
           text,
         });
+        submissionRequestRef.current = null;
         router.push(localePath(locale, `/writing/submissions/${submissionId}`));
       } catch {
         setError(t.auth.genericError);

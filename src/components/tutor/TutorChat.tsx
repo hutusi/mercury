@@ -33,7 +33,7 @@ export function TutorChat({
   const [messages, setMessages] = useState<ChatMessageVM[]>(initialMessages);
   const [input, setInput] = useState("");
   const [remaining, setRemaining] = useState(remainingToday);
-  const [error, setError] = useState<"unavailable" | "limit" | "failed" | null>(
+  const [error, setError] = useState<"unavailable" | "limit" | "in_progress" | "failed" | null>(
     enabled ? null : "unavailable",
   );
   const [pending, startTransition] = useTransition();
@@ -63,7 +63,15 @@ export function TutorChat({
       } else {
         setMessages((m) => m.slice(0, -1));
         setInput(content);
-        setError(result.error === "limit_reached" ? "limit" : "failed");
+        setError(
+          result.error === "limit_reached"
+            ? "limit"
+            : result.error === "in_progress"
+              ? "in_progress"
+              : result.error === "ai_unavailable"
+                ? "unavailable"
+                : "failed",
+        );
         if (result.error === "limit_reached") setRemaining(0);
       }
     });
@@ -100,6 +108,11 @@ export function TutorChat({
       {error === "limit" && (
         <Callout variant="accent" className="p-4 text-sm">
           {t.tutor.limitReached}
+        </Callout>
+      )}
+      {error === "in_progress" && (
+        <Callout variant="accent" className="p-4 text-sm" role="status">
+          {t.tutor.inProgress}
         </Callout>
       )}
       {error === "failed" && (

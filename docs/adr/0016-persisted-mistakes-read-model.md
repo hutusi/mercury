@@ -8,10 +8,10 @@ The mistakes notebook originally rebuilt every learner's current wrong set on ea
 
 ## Decision
 
-- `mistake_states` stores one row per `(user, kind, refId, questionId)` with track, wrong count, latest wrong time, and latest resolving time.
-- Trusted exercise, vocabulary-session, and completed-exam grading call `recordMistakeOutcomes` inside the same transaction as the attempt. A wrong outcome upserts/increments the row; a correct outcome resolves an existing row without creating never-wrong clutter.
+- `mistake_states` stores one row per `(user, kind, refId, questionId)` with track, wrong count, latest wrong time, and latest resolving time. A correct-only outcome is a hidden tombstone (`wrongCount = 0`, `lastWrongAt = null`) so its timestamp still participates in ordering; notebook and count reads exclude these rows.
+- Trusted exercise, vocabulary-session, and completed-exam grading call `recordMistakeOutcomes` inside the same transaction as the attempt. A wrong outcome upserts/increments the row; a correct outcome advances the resolving watermark even if the corresponding wrong transaction commits later.
 - Notebook re-tests retain `mistake_clears` as durable events and update the read model in the same transaction. A row is active when it has no clear time or `lastWrongAt > clearedAt`; a later real mistake therefore revives it automatically.
-- Timestamp maxima make the result independent of concurrent commit order. The module owns this invariant; callers submit only trusted question outcomes.
+- Timestamp maxima make the result independent of concurrent commit order. The database constrains rows to either the correct-only tombstone shape or a wrong history with a non-null `lastWrongAt`; the module owns this invariant and callers submit only trusted question outcomes.
 - Migration 0008 backfills idempotently from existing exercise attempts, completed exams, live content answer keys, and clear events. The pure `mistakes-core` fold remains as the semantic reference and test oracle for rebuilds, not a request-time path.
 - Dashboard and plan counts use an indexed aggregate over current state. The notebook loads only current rows and the small set of content records needed to decorate them.
 

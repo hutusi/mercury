@@ -50,17 +50,24 @@ export interface MistakesPageData {
 
 async function listStatuses(userId: string, track: Track): Promise<MistakeStatus[]> {
   const rows = await db.query.mistakeStates.findMany({
-    where: and(eq(mistakeStates.userId, userId), eq(mistakeStates.track, track)),
+    where: and(
+      eq(mistakeStates.userId, userId),
+      eq(mistakeStates.track, track),
+      gt(mistakeStates.wrongCount, 0),
+    ),
     orderBy: desc(mistakeStates.lastWrongAt),
   });
-  return rows.map((row) => ({
-    kind: row.kind,
-    refId: row.refId,
-    questionId: row.questionId,
-    wrongCount: row.wrongCount,
-    lastWrongAt: row.lastWrongAt,
-    cleared: row.clearedAt !== null && row.clearedAt.getTime() >= row.lastWrongAt.getTime(),
-  }));
+  return rows.map((row) => {
+    if (!row.lastWrongAt) throw new Error("Persisted mistake is missing its wrong timestamp");
+    return {
+      kind: row.kind,
+      refId: row.refId,
+      questionId: row.questionId,
+      wrongCount: row.wrongCount,
+      lastWrongAt: row.lastWrongAt,
+      cleared: row.clearedAt !== null && row.clearedAt.getTime() >= row.lastWrongAt.getTime(),
+    };
+  });
 }
 
 export async function countActiveMistakes(userId: string, track: Track): Promise<number> {
@@ -71,6 +78,7 @@ export async function countActiveMistakes(userId: string, track: Track): Promise
       and(
         eq(mistakeStates.userId, userId),
         eq(mistakeStates.track, track),
+        gt(mistakeStates.wrongCount, 0),
         or(isNull(mistakeStates.clearedAt), gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt)),
       ),
     );

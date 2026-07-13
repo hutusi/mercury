@@ -32,7 +32,7 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
   `message` is English debug text (clients own user-facing copy). Codes: `unauthorized` (401),
   `onboarding_required` / `integrity` (403), `not_found` (404), conflicts such as
   `quiz_answer_conflict` / `grading_in_progress` / `chat_in_progress` (409), expiry such as
-  `quiz_session_expired` (410),
+  `quiz_session_expired` / `mistake_session_stale` (410),
   `validation_failed` (422, zod issues in `details`), `invalid_json` (400),
   `chat_limit_reached` / `ai_grading_limit_reached` (429), `ai_unavailable` (503), `internal`
   (500).
@@ -68,13 +68,16 @@ The server-owned session model is recorded in
 [ADR 0015](adr/0015-server-owned-vocabulary-quiz-sessions.md).
 
 - `POST /api/v1/vocab/quiz` creates a 30-minute server-owned session. Questions and options use
-  opaque ids; no content id or equality relationship reveals the answer.
+  opaque ids; no content id or equality relationship reveals the answer. Every issued question
+  has 2–4 unique visible option labels; questions without a viable distractor are omitted.
 - `POST /api/v1/vocab/quiz/{sessionId}/answers` accepts one `{questionId, optionId}` and returns
   `{correct, correctOptionId, completed, score?, total?}`. Repeating the identical answer is
   idempotent; changing it returns `409 quiz_answer_conflict`; expired sessions return `410
 quiz_session_expired`.
 - `POST /api/v1/mistakes/vocab-retest` `{wordId}` creates the same kind of one-question session,
-  but only for an active mistake. Submit it through the shared answers route.
+  but only for an active mistake. The session snapshots that mistake generation; if the learner
+  makes a newer mistake before answering, the old session returns `410 mistake_session_stale`
+  instead of clearing the newer mistake. Submit it through the shared answers route.
 
 ## Tutor chat
 

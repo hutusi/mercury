@@ -35,8 +35,8 @@ export function shuffle<T>(items: T[], rng: () => number = Math.random): T[] {
 }
 
 /**
- * One correct option + 3 distractors drawn from `pool` (the word itself is
- * excluded if present). Caller guarantees the pool holds ≥3 other words.
+ * One correct option + up to 3 distractors drawn from `pool`. Visible labels
+ * are unique, so an equivalent-looking option can never be graded as wrong.
  */
 export function buildQuizQuestion(
   word: QuizWordInput,
@@ -45,15 +45,25 @@ export function buildQuizQuestion(
   rng: () => number = Math.random,
   idFactory: () => string = () => crypto.randomUUID(),
 ): StoredQuizQuestion {
-  const distractors = shuffle(
-    pool.filter((w) => w.id !== word.id),
+  const visibleLabel = (candidate: QuizWordInput) =>
+    direction === "en2zh" ? candidate.translationZh : candidate.headword;
+  const seen = new Set([visibleLabel(word)]);
+  const distractors: QuizWordInput[] = [];
+  for (const candidate of shuffle(
+    pool.filter((item) => item.id !== word.id),
     rng,
-  ).slice(0, 3);
+  )) {
+    const label = visibleLabel(candidate);
+    if (seen.has(label)) continue;
+    seen.add(label);
+    distractors.push(candidate);
+    if (distractors.length === 3) break;
+  }
   const options = shuffle(
     [word, ...distractors].map((w) => ({
       id: idFactory(),
       wordId: w.id,
-      text: direction === "en2zh" ? w.translationZh : w.headword,
+      text: visibleLabel(w),
     })),
     rng,
   );

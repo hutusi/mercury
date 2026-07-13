@@ -1006,7 +1006,7 @@ components:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
     Expired:
-      description: Ephemeral resource expired (for example quiz_session_expired).
+      description: Ephemeral resource expired or stale (for example quiz_session_expired or mistake_session_stale).
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
@@ -1032,7 +1032,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, grading_request_conflict, grading_in_progress, chat_in_progress, expired, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, grading_request_conflict, grading_in_progress, chat_in_progress, expired, quiz_session_expired, mistake_session_stale, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, internal).
             message:
               type: string
               description: English debug text — not for end users.
@@ -1151,6 +1151,8 @@ components:
         prompt: { type: string }
         options:
           type: array
+          minItems: 2
+          maxItems: 4
           items:
             type: object
             properties:

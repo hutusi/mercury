@@ -122,7 +122,6 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
   if (!prompt) throw new NotFoundError(`Unknown writing prompt: ${promptId}`);
 
   const wordCount = countWords(text);
-  const learnerContext = await writingLearnerContext(userId, prompt.track);
   const inputHash = gradingInputHash({ promptId, text });
   const aiEnabled = isAiEnabled();
   const claim = await claimGradingRequest({
@@ -136,6 +135,7 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
   if (claim.disposition === "completed") {
     return getPersistedWritingResult(userId, claim.submissionId);
   }
+  const learnerContext = await writingLearnerContext(userId, prompt.track);
 
   let feedback: WritingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
@@ -204,17 +204,14 @@ export async function retryWritingFeedbackForUser(
   if (submission.status === "ai_scored") {
     return { submissionId: submission.id, status: "ai_scored", feedback: submission.feedback };
   }
+  if (submission.status !== "self_assessed") {
+    throw new NotFoundError("Submission not found");
+  }
   if (!isAiEnabled()) {
     // Keyless is a supported submit path, but a retry has no work it can do.
     throw new AiUnavailableError("No AI provider is configured");
   }
 
-  const prompt = await db.query.writingPrompts.findFirst({
-    where: eq(writingPrompts.id, submission.promptId),
-  });
-  if (!prompt) throw new NotFoundError(`Unknown writing prompt: ${submission.promptId}`);
-
-  const learnerContext = await writingLearnerContext(userId, prompt.track);
   const inputHash = gradingInputHash({ submissionId: submission.id });
   const claim = await claimGradingRequest({
     userId,
@@ -227,6 +224,12 @@ export async function retryWritingFeedbackForUser(
   if (claim.disposition === "completed") {
     return getPersistedWritingResult(userId, claim.submissionId);
   }
+
+  const prompt = await db.query.writingPrompts.findFirst({
+    where: eq(writingPrompts.id, submission.promptId),
+  });
+  if (!prompt) throw new NotFoundError(`Unknown writing prompt: ${submission.promptId}`);
+  const learnerContext = await writingLearnerContext(userId, prompt.track);
 
   let feedback: WritingFeedback;
   try {

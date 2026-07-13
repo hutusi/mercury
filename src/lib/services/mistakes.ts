@@ -67,6 +67,7 @@ async function isActiveMistake(
       eq(mistakeStates.kind, kind),
       eq(mistakeStates.refId, refId),
       eq(mistakeStates.questionId, questionId),
+      gt(mistakeStates.wrongCount, 0),
       or(isNull(mistakeStates.clearedAt), gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt)),
     ),
     columns: { questionId: true },

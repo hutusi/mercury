@@ -367,6 +367,7 @@ const zh = {
     remainingLabel: "今日剩余",
     unavailable: "AI 私教暂不可用：当前环境未配置 AI 服务。你仍可以完成今日计划中的其他练习。",
     limitReached: "今日提问次数已用完，明天再来吧。",
+    inProgress: "上一条消息仍在处理中，请稍后再试。",
     sendFailed: "回复失败，请稍后重试。",
     emptyHint: "从一个问题开始：语法、选词、翻译、面试表达，或让私教点评你的句子。",
   },
@@ -773,6 +774,7 @@ const en: Dictionary = {
     unavailable:
       "The AI tutor is unavailable: no AI provider is configured in this environment. You can still work through today's plan.",
     limitReached: "You've used today's questions — come back tomorrow.",
+    inProgress: "Your previous message is still being processed. Please try again shortly.",
     sendFailed: "Reply failed, please try again later.",
     emptyHint:
       "Start with any question: grammar, word choice, translation, interview phrasing, or ask the coach to review your sentence.",

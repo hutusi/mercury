@@ -347,6 +347,8 @@ export const vocabQuizSessions = pgTable(
     track: text("track").$type<Track>().notNull(),
     purpose: text("purpose").$type<QuizPurpose>().notNull(),
     sourceWordId: text("source_word_id").references(() => vocabWords.id, { onDelete: "cascade" }),
+    /** Mistake generation authorized when a re-test session was issued. */
+    sourceMistakeAt: ts("source_mistake_at"),
     questions: jsonb("questions").$type<StoredQuizQuestion[]>().notNull(),
     answers: jsonb("answers").$type<QuizSessionAnswers>().notNull().default({}),
     expiresAt: ts("expires_at").notNull(),
@@ -360,7 +362,7 @@ export const vocabQuizSessions = pgTable(
     check("vocab_quiz_sessions_purpose_check", sql`${t.purpose} in ('practice', 'mistake_retest')`),
     check(
       "vocab_quiz_sessions_source_check",
-      sql`(${t.purpose} = 'practice' and ${t.sourceWordId} is null) or (${t.purpose} = 'mistake_retest' and ${t.sourceWordId} is not null)`,
+      sql`(${t.purpose} = 'practice' and ${t.sourceWordId} is null and ${t.sourceMistakeAt} is null) or (${t.purpose} = 'mistake_retest' and ${t.sourceWordId} is not null and ${t.sourceMistakeAt} is not null)`,
     ),
     check("vocab_quiz_sessions_expiry_check", sql`${t.expiresAt} > ${t.createdAt}`),
   ],
@@ -579,8 +581,9 @@ export const mistakeStates = pgTable(
     kind: text("kind").$type<MistakeKind>().notNull(),
     refId: text("ref_id").notNull(),
     questionId: text("question_id").notNull(),
+    /** Zero marks a hidden correct-only tombstone for outcome ordering. */
     wrongCount: integer("wrong_count").notNull(),
-    lastWrongAt: ts("last_wrong_at").notNull(),
+    lastWrongAt: ts("last_wrong_at"),
     /** Latest resolving real attempt or notebook re-test, if any. */
     clearedAt: ts("cleared_at"),
     updatedAt: ts("updated_at").notNull().$defaultFn(now),
@@ -593,7 +596,11 @@ export const mistakeStates = pgTable(
       "mistake_states_kind_check",
       sql`${t.kind} in ('reading', 'listening', 'vocab_quiz', 'exam')`,
     ),
-    check("mistake_states_wrong_count_check", sql`${t.wrongCount} >= 1`),
+    check("mistake_states_wrong_count_check", sql`${t.wrongCount} >= 0`),
+    check(
+      "mistake_states_lifecycle_check",
+      sql`(${t.wrongCount} = 0 and ${t.lastWrongAt} is null and ${t.clearedAt} is not null) or (${t.wrongCount} >= 1 and ${t.lastWrongAt} is not null)`,
+    ),
   ],
 );
 

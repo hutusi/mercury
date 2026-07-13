@@ -130,7 +130,6 @@ export async function submitSpeakingForUser(
   });
   if (!prompt) throw new NotFoundError(`Unknown speaking prompt: ${promptId}`);
 
-  const learnerContext = await speakingLearnerContext(userId, prompt.track);
   const inputHash = gradingInputHash({ promptId, transcript, durationSeconds });
   const aiEnabled = isAiEnabled();
   const claim = await claimGradingRequest({
@@ -144,6 +143,7 @@ export async function submitSpeakingForUser(
   if (claim.disposition === "completed") {
     return getPersistedSpeakingResult(userId, claim.submissionId);
   }
+  const learnerContext = await speakingLearnerContext(userId, prompt.track);
 
   let feedback: SpeakingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
@@ -210,16 +210,13 @@ export async function retrySpeakingFeedbackForUser(
   if (submission.status === "ai_scored") {
     return { submissionId: submission.id, status: "ai_scored", feedback: submission.feedback };
   }
+  if (submission.status !== "self_assessed") {
+    throw new NotFoundError("Submission not found");
+  }
   if (!isAiEnabled()) {
     throw new AiUnavailableError("No AI provider is configured");
   }
 
-  const prompt = await db.query.speakingPrompts.findFirst({
-    where: eq(speakingPrompts.id, submission.promptId),
-  });
-  if (!prompt) throw new NotFoundError(`Unknown speaking prompt: ${submission.promptId}`);
-
-  const learnerContext = await speakingLearnerContext(userId, prompt.track);
   const inputHash = gradingInputHash({ submissionId: submission.id });
   const claim = await claimGradingRequest({
     userId,
@@ -232,6 +229,12 @@ export async function retrySpeakingFeedbackForUser(
   if (claim.disposition === "completed") {
     return getPersistedSpeakingResult(userId, claim.submissionId);
   }
+
+  const prompt = await db.query.speakingPrompts.findFirst({
+    where: eq(speakingPrompts.id, submission.promptId),
+  });
+  if (!prompt) throw new NotFoundError(`Unknown speaking prompt: ${submission.promptId}`);
+  const learnerContext = await speakingLearnerContext(userId, prompt.track);
 
   let feedback: SpeakingFeedback;
   try {
