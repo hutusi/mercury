@@ -1,4 +1,4 @@
-import { localDay } from "./streak-core";
+import { shiftCalendarDay } from "./streak-core";
 
 /**
  * Pure study-reminder logic, DB-free like streak-core so it unit-tests under
@@ -12,7 +12,8 @@ export interface ReminderInput {
   days: ReadonlySet<string>;
   /** SRS cards currently due in the user's active track. */
   dueCount: number;
-  today?: Date;
+  /** Learner-local calendar day as YYYY-MM-DD. */
+  today: string;
 }
 
 export interface ReminderState {
@@ -23,15 +24,9 @@ export interface ReminderState {
   show: boolean;
 }
 
-export function reminderState({
-  days,
-  dueCount,
-  today = new Date(),
-}: ReminderInput): ReminderState {
-  const activeToday = days.has(localDay(today));
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
-  const streakAtRisk = !activeToday && days.has(localDay(yesterday));
+export function reminderState({ days, dueCount, today }: ReminderInput): ReminderState {
+  const activeToday = days.has(today);
+  const streakAtRisk = !activeToday && days.has(shiftCalendarDay(today, -1));
   // Never nag someone who already studied today; otherwise remind when the
   // streak is on the line or reviews are piling up.
   return { streakAtRisk, dueCount, show: !activeToday && (streakAtRisk || dueCount > 0) };

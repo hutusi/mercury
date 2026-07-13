@@ -43,6 +43,13 @@
       "when": 1783863525029,
       "tag": "0005_cloudy_siren",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783930774521,
+      "tag": "0006_condemned_nico_minoru",
+      "breakpoints": true
     }
   ]
 }

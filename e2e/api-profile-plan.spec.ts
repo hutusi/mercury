@@ -7,12 +7,12 @@ test.describe("API learner profile + daily plan", () => {
   }) => {
     const user = await apiSignUpAndOnboard(request, "toeic");
 
-    // No profile row yet: GET serves the default shape so clients never
-    // branch on null.
+    // Onboarding atomically creates the profile substrate with the selected
+    // goal track; the remaining goal fields and estimates start at defaults.
     const initialRes = await request.get("/api/v1/me/profile", { headers: user.authHeaders });
     expect(initialRes.status()).toBe(200);
     const { profile: defaults } = await initialRes.json();
-    expect(defaults.goalTrack).toBeNull();
+    expect(defaults.goalTrack).toBe("toeic");
     expect(defaults.dailyMinutes).toBe(20);
     expect(defaults.skillEstimates.reading.confidence).toBe("low");
 

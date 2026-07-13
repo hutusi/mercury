@@ -12,13 +12,15 @@ import {
 } from "../db/schema";
 import { countActiveMistakes } from "../mistakes";
 import { reminderState } from "../reminders-core";
-import { getStreak, localDay } from "../streak";
+import { calendarDay, getStreak, getUserTimeZone } from "../streak";
+import { shiftCalendarDay } from "../streak-core";
 
 /** Everything the dashboard shows, in one round of parallel queries. */
 export async function getDashboardData(userId: string, track: Track) {
   const today = new Date();
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
+  const timeZone = await getUserTimeZone(userId);
+  const todayDay = calendarDay(today, timeZone);
+  const yesterdayDay = shiftCalendarDay(todayDay, -1);
 
   const [
     streak,
@@ -85,10 +87,7 @@ export async function getDashboardData(userId: string, track: Track) {
       .select({ day: activityDays.day })
       .from(activityDays)
       .where(
-        and(
-          eq(activityDays.userId, userId),
-          inArray(activityDays.day, [localDay(today), localDay(yesterday)]),
-        ),
+        and(eq(activityDays.userId, userId), inArray(activityDays.day, [todayDay, yesterdayDay])),
       ),
   ]);
 
@@ -100,7 +99,7 @@ export async function getDashboardData(userId: string, track: Track) {
     reminder: reminderState({
       days: new Set(recentActivity.map((r) => r.day)),
       dueCount,
-      today,
+      today: todayDay,
     }),
     lastExam,
     inProgressExam,

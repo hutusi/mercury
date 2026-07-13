@@ -72,6 +72,8 @@ export const userSettings = pgTable("user_settings", {
     .primaryKey()
     .references(() => user.id, { onDelete: "cascade" }),
   activeTrack: text("active_track").$type<Track>(),
+  /** IANA timezone used for learner-day quotas, plans, reminders, and streaks. */
+  timeZone: text("time_zone").notNull().default("Asia/Shanghai"),
   dailyGoal: integer("daily_goal").notNull().default(20),
   // Controls the dashboard study nudge today; opted-in channel reminders
   // (email/push) will reuse it when a delivery provider lands.
@@ -371,8 +373,8 @@ export const mistakeClears = pgTable(
 
 /**
  * Tutor chat: one rolling thread per user (the memory IS the thread — no
- * thread management, see ADR 0013). `day` snapshots localDay() at insert and
- * drives the per-user daily cap by counting user-role rows.
+ * thread management, see ADR 0013). `day` snapshots the learner's IANA-local
+ * calendar day at insert and drives the per-user daily cap.
  */
 export const chatMessages = pgTable(
   "chat_messages",

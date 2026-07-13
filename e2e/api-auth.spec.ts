@@ -46,15 +46,17 @@ test.describe("API auth (bearer)", () => {
 
     const put = await request.put("/api/v1/me/settings", {
       headers: user.authHeaders,
-      data: { track: "ielts" },
+      data: { track: "ielts", timeZone: "America/Toronto" },
     });
     expect(put.status()).toBe(200);
     const putBody = await put.json();
     expect(putBody.settings.activeTrack).toBe("ielts");
+    expect(putBody.settings.timeZone).toBe("America/Toronto");
 
     const me = await request.get("/api/v1/me", { headers: user.authHeaders });
     const meBody = await me.json();
     expect(meBody.settings.activeTrack).toBe("ielts");
+    expect(meBody.settings.timeZone).toBe("America/Toronto");
     expect(meBody.settings.onboardedAt).toBeTruthy();
   });
 
@@ -68,6 +70,16 @@ test.describe("API auth (bearer)", () => {
     const body = await res.json();
     expect(body.error.code).toBe("validation_failed");
     expect(Array.isArray(body.error.details)).toBe(true);
+  });
+
+  test("invalid IANA timezone gets a 422 validation envelope", async ({ request }) => {
+    const user = await apiSignUp();
+    const res = await request.put("/api/v1/me/settings", {
+      headers: user.authHeaders,
+      data: { track: "toeic", timeZone: "Mars/Olympus_Mons" },
+    });
+    expect(res.status()).toBe(422);
+    expect((await res.json()).error.code).toBe("validation_failed");
   });
 
   test("malformed JSON body gets a 400 envelope", async ({ request }) => {

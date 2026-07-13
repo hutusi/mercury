@@ -105,8 +105,10 @@ export function OnboardingFlow() {
   function submit(withGoal: boolean) {
     if (!selected) return;
     startTransition(async () => {
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || undefined;
       await completeOnboarding({
         track: selected,
+        timeZone,
         goal: withGoal
           ? {
               targetScore,

@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { TrackSchema } from "../../content/types";
-import { db } from "../db";
+import { db, type DbExecutor } from "../db";
 import { learnerProfiles } from "../db/schema";
 import {
   applySkillSignal,
@@ -39,6 +39,15 @@ export const UpsertLearnerProfileSchema = z.object({
  */
 export async function upsertLearnerProfileForUser(userId: string, input: unknown) {
   const patch = UpsertLearnerProfileSchema.parse(input);
+  return upsertLearnerProfileWith(db, userId, patch);
+}
+
+/** Transaction-aware profile upsert used by atomic onboarding. */
+export async function upsertLearnerProfileWith(
+  executor: DbExecutor,
+  userId: string,
+  patch: z.infer<typeof UpsertLearnerProfileSchema>,
+) {
   const nowDate = new Date();
 
   const set: Partial<typeof learnerProfiles.$inferInsert> = { updatedAt: nowDate };
@@ -48,7 +57,7 @@ export async function upsertLearnerProfileForUser(userId: string, input: unknown
   if (patch.dailyMinutes !== undefined) set.dailyMinutes = patch.dailyMinutes;
   if (patch.selfRatedLevel !== undefined) set.selfRatedLevel = patch.selfRatedLevel;
 
-  const [profile] = await db
+  const [profile] = await executor
     .insert(learnerProfiles)
     .values({
       userId,

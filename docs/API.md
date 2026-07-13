@@ -37,10 +37,12 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
   no `Accept-Language` handling; the client owns its UI strings.
 - **Dates** are ISO 8601 strings; **exam deadlines** are epoch-ms (see below).
 - **Onboarding**: track-scoped endpoints return `403 onboarding_required` until
-  `PUT /api/v1/me/settings` sets a track.
-- **Settings**: `PATCH /api/v1/me/settings` partially updates preferences (currently
-  `remindersEnabled`, the study-reminder opt-in); `track` stays PUT-only because it doubles
-  as onboarding. Both verbs and `GET /api/v1/me` return the same `Settings` shape.
+  `PUT /api/v1/me/settings` atomically creates settings plus the learner profile. Send
+  `{track, timeZone, goal?}`; `timeZone` is an IANA identifier and defaults to `Asia/Shanghai`
+  when omitted.
+- **Settings**: `PATCH /api/v1/me/settings` partially updates `remindersEnabled` and/or
+  `timeZone`; `track` stays PUT-only because it doubles as onboarding. Both verbs and
+  `GET /api/v1/me` return the same `Settings` shape.
 - No pagination — list sizes mirror the web's fixed limits (history 20, recents 5,
   past submissions 10, chat thread 50).
 
@@ -95,9 +97,9 @@ AVSpeechSynthesizer for TTS) and POST the transcript — the server never handle
 
 ## Odds and ends
 
-- Streak days are computed in the **server's timezone** (`localDay()` in
-  `src/lib/streak-core.ts`) — display the server-reported streak; don't recompute day boundaries
-  client-side.
+- Streaks, daily plans, reminders, and daily AI quotas use `Settings.timeZone`. Send an IANA
+  identifier detected on-device and display server-reported day/quota state; do not recompute it
+  with a different timezone client-side.
 - `/api/v1` has no rate limiting yet (better-auth's limiter covers `/api/auth/*` only) — noted as
   future work in ADR 0010.
 
@@ -112,6 +114,7 @@ AUTH="Authorization: Bearer $TOKEN"
 
 curl -s $BASE/api/v1/me -H "$AUTH"                            # settings: null
 curl -s -X PUT $BASE/api/v1/me/settings -H "$AUTH" \
-  -H 'content-type: application/json' -d '{"track":"toeic"}'  # onboard
+  -H 'content-type: application/json' \
+  -d '{"track":"toeic","timeZone":"Asia/Shanghai"}'       # onboard
 curl -s $BASE/api/v1/dashboard -H "$AUTH"                     # streak, due counts
 ```

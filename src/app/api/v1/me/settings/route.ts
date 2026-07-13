@@ -1,19 +1,19 @@
 import { requireUserApi } from "@/lib/api/auth";
 import { apiHandler, readJson } from "@/lib/api/handler";
 import { serializeSettings } from "@/lib/api/resources/settings";
-import { setActiveTrackForUser, setRemindersEnabledForUser } from "@/lib/services/settings";
+import { completeOnboardingForUser, updateSettingsForUser } from "@/lib/services/settings";
 
 export const PUT = apiHandler(async (req) => {
   const user = await requireUserApi(req);
-  const body = (await readJson(req)) as { track?: unknown } | null;
-  const settings = await setActiveTrackForUser(user.id, body?.track);
+  const body = await readJson(req);
+  const settings = await completeOnboardingForUser(user.id, body);
   return Response.json({ settings: serializeSettings(settings) });
 });
 
-// Partial update; `track` intentionally stays PUT-only (it doubles as onboarding).
+// Partial preference update; `track` intentionally stays PUT-only.
 export const PATCH = apiHandler(async (req) => {
   const user = await requireUserApi(req);
-  const body = (await readJson(req)) as { remindersEnabled?: unknown } | null;
-  const settings = await setRemindersEnabledForUser(user.id, body?.remindersEnabled);
+  const body = await readJson(req);
+  const settings = await updateSettingsForUser(user.id, body);
   return Response.json({ settings: serializeSettings(settings) });
 });

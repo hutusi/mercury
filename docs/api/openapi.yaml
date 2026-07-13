@@ -101,7 +101,7 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
   /api/v1/me/settings:
     put:
-      summary: Set the active learning track (doubles as onboarding)
+      summary: Atomically create settings and learner profile (onboarding)
       tags: [account]
       requestBody:
         required: true
@@ -112,6 +112,19 @@ paths:
               required: [track]
               properties:
                 track: { $ref: "#/components/schemas/Track" }
+                timeZone:
+                  type: string
+                  default: Asia/Shanghai
+                  description: IANA timezone identifier used for learner-local days.
+                goal:
+                  type: object
+                  properties:
+                    targetScore: { type: [integer, "null"], minimum: 10, maximum: 990 }
+                    examDate:
+                      type: [string, "null"]
+                      pattern: '^\d{4}-\d{2}-\d{2}$'
+                    dailyMinutes: { type: integer, minimum: 5, maximum: 180 }
+                    selfRatedLevel: { $ref: "#/components/schemas/SelfRatedLevel" }
       responses:
         "200":
           description: Updated settings.
@@ -124,7 +137,7 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
     patch:
-      summary: Partially update settings (track stays PUT-only — it doubles as onboarding)
+      summary: Partially update preferences (track stays PUT-only)
       tags: [account]
       requestBody:
         required: true
@@ -132,11 +145,14 @@ paths:
           application/json:
             schema:
               type: object
-              required: [remindersEnabled]
+              minProperties: 1
               properties:
                 remindersEnabled:
                   type: boolean
                   description: Opt in/out of study reminders (dashboard nudge; future email/push).
+                timeZone:
+                  type: string
+                  description: IANA timezone identifier used for learner-local days.
       responses:
         "200":
           description: Updated settings.
@@ -932,14 +948,20 @@ components:
       enum: [toeic, ielts, business]
     Settings:
       type: object
+      required: [activeTrack, timeZone, dailyGoal, remindersEnabled, onboardedAt]
       properties:
-        activeTrack: { $ref: "#/components/schemas/Track" }
+        activeTrack:
+          oneOf: [{ $ref: "#/components/schemas/Track" }, { type: "null" }]
+        timeZone:
+          type: string
+          description: IANA timezone for streaks, plans, reminders, and daily quotas.
         dailyGoal:
           type: integer
           deprecated: true
           description: Legacy card-count goal; superseded by LearnerProfile.dailyMinutes.
         remindersEnabled: { type: boolean }
-        onboardedAt: { type: string, format: date-time }
+        onboardedAt:
+          oneOf: [{ type: string, format: date-time }, { type: "null" }]
     SelfRatedLevel:
       type: string
       enum: [novice, elementary, intermediate, upper, advanced]

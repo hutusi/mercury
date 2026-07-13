@@ -7,7 +7,7 @@ import { db } from "../db";
 import { chatMessages } from "../db/schema";
 import { formatLearnerContext } from "../learner-model-core";
 import { getLearnerProfile } from "../queries/profile";
-import { localDay, recordActivity } from "../streak";
+import { getCalendarDayForUser, recordActivity } from "../streak";
 import { LimitExceededError } from "./errors";
 
 export const SendChatMessageSchema = z.object({
@@ -57,7 +57,7 @@ export async function sendChatMessageForUser(
   }
 
   const limit = chatDailyLimit();
-  const day = localDay();
+  const day = await getCalendarDayForUser(userId);
   const [sent] = await db
     .select({ n: count() })
     .from(chatMessages)

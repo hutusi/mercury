@@ -21,6 +21,7 @@ export async function requireTrack(): Promise<{
   track: Track;
   dailyGoal: number;
   remindersEnabled: boolean;
+  timeZone: string;
 }> {
   const user = await requireUser();
   const settings = await getSettings(user.id);
@@ -30,5 +31,6 @@ export async function requireTrack(): Promise<{
     track: settings.activeTrack,
     dailyGoal: settings.dailyGoal,
     remindersEnabled: settings.remindersEnabled,
+    timeZone: settings.timeZone,
   };
 }

@@ -1,13 +1,11 @@
 import { describe, expect, test } from "bun:test";
 import { reminderState } from "./reminders-core";
-import { localDay } from "./streak-core";
+import { shiftCalendarDay } from "./streak-core";
 
-const TODAY = new Date("2026-07-12T10:00:00");
+const TODAY = "2026-07-12";
 
 function daysAgo(n: number): string {
-  const d = new Date(TODAY);
-  d.setDate(d.getDate() - n);
-  return localDay(d);
+  return shiftCalendarDay(TODAY, -n);
 }
 
 describe("reminderState", () => {
