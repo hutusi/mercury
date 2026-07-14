@@ -77,12 +77,14 @@ export async function generateMetadata({
     description: t.meta.description,
     // og:image / twitter:image are injected by src/app/opengraph-image.tsx —
     // don't set openGraph.images here or it overrides that file convention.
+    // No og:url: a layout-level url is inherited by every child (login, app
+    // pages), tagging them all as the locale root. The landing page carries the
+    // canonical signal via alternates.canonical instead.
     openGraph: {
       type: "website",
       siteName: "Mercury",
       title: t.meta.title,
       description: t.meta.description,
-      url: `/${resolved}`,
       locale: resolved === "zh" ? "zh_CN" : "en_US",
     },
     twitter: {
