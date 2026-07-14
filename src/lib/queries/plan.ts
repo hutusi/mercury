@@ -20,9 +20,15 @@ export interface DailyPlan {
 }
 
 /** Gather every plan-core input in one parallel round and build 今日计划. */
-export async function getDailyPlan(userId: string, track: Track): Promise<DailyPlan> {
+export async function getDailyPlan(
+  userId: string,
+  track: Track,
+  knownTimeZone?: string,
+): Promise<DailyPlan> {
   const today = new Date();
-  const timeZone = await getUserTimeZone(userId);
+  // Threaded from the already-loaded settings on the web path; looked up only
+  // when a caller (e.g. the API route) doesn't have it.
+  const timeZone = knownTimeZone ?? (await getUserTimeZone(userId));
   const generatedFor = calendarDay(today, timeZone);
   const planToday = new Date(`${generatedFor}T12:00:00.000Z`);
   const learnerDate = (date: Date | null | undefined) =>

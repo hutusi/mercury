@@ -1,4 +1,5 @@
 import { and, count, desc, eq, gt, inArray, isNull, or } from "drizzle-orm";
+import { cache } from "react";
 import type { SanitizedQuestion, ScriptLine, Track } from "@/content/types";
 import { db } from "./db";
 import {
@@ -70,7 +71,9 @@ async function listStatuses(userId: string, track: Track): Promise<MistakeStatus
   });
 }
 
-export async function countActiveMistakes(userId: string, track: Track): Promise<number> {
+// cache(): the dashboard and the daily plan both count active mistakes in the
+// same render — dedupe it to one query per request.
+export const countActiveMistakes = cache(async (userId: string, track: Track): Promise<number> => {
   const [row] = await db
     .select({ value: count() })
     .from(mistakeStates)
@@ -83,7 +86,7 @@ export async function countActiveMistakes(userId: string, track: Track): Promise
       ),
     );
   return row?.value ?? 0;
-}
+});
 
 export async function getMistakesPageData(userId: string, track: Track): Promise<MistakesPageData> {
   const statuses = await listStatuses(userId, track);

@@ -51,3 +51,20 @@ as-is. Schema still applies via `drizzle-kit push`; content still seeds by stabl
   not hard requirements.
 - Postgres removes the single-writer limitation; the exam actions' interleave guards remain
   correct and are now backed by real row-level concurrency.
+
+## Update (2026-07): region colocation and Fluid Compute pool lifecycle
+
+A dashboard render fans out ~25 owner-scoped queries, so per-request latency is dominated by
+the number of DB round-trips × the round-trip time. Two deployment facts follow:
+
+- **Function region must track the Neon region (operational invariant).** The database lives in
+  Neon `ap-southeast-1` (Singapore); Vercel functions default to `iad1` (US-East), which put a
+  trans-Pacific hop (~200 ms) on every round-trip. `vercel.json` pins `regions: ["sin1"]` to
+  colocate the two (and it sits closer to the zh/Asia user base). **If the Neon region ever
+  changes, the `vercel.json` region must change with it** — they are a matched pair.
+- **The `pg.Pool` is sized `max: 20` and attached to Fluid Compute's lifecycle.** A wider pool
+  lets a request's fan-out run in one wave instead of serializing behind a handful of
+  connections. Because Fluid Compute can suspend an instance with JS timers paused,
+  `idleTimeoutMillis` alone won't reliably reap idle clients, so `attachDatabasePool(pool)`
+  (`@vercel/functions`) drains the pool on suspend/shutdown and keeps connection counts bounded
+  across instances and deploys. See `src/lib/db/index.ts`.

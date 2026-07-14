@@ -15,9 +15,11 @@ import { reminderState } from "../reminders-core";
 import { calendarDay, getStreak, getUserTimeZone } from "../streak";
 
 /** Everything the dashboard shows, in one round of parallel queries. */
-export async function getDashboardData(userId: string, track: Track) {
+export async function getDashboardData(userId: string, track: Track, knownTimeZone?: string) {
   const today = new Date();
-  const timeZone = await getUserTimeZone(userId);
+  // The web dashboard already loaded the settings row (and its timeZone) in the
+  // layout, so it threads it in; callers without it fall back to a lookup.
+  const timeZone = knownTimeZone ?? (await getUserTimeZone(userId));
   const todayDay = calendarDay(today, timeZone);
 
   const [
