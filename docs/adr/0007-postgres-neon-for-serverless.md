@@ -63,8 +63,9 @@ the number of DB round-trips × the round-trip time. Two deployment facts follow
   colocate the two (and it sits closer to the zh/Asia user base). **If the Neon region ever
   changes, the `vercel.json` region must change with it** — they are a matched pair.
 - **The `pg.Pool` is sized `max: 20` and attached to Fluid Compute's lifecycle.** A wider pool
-  lets a request's fan-out run in one wave instead of serializing behind a handful of
-  connections. Because Fluid Compute can suspend an instance with JS timers paused,
-  `idleTimeoutMillis` alone won't reliably reap idle clients, so `attachDatabasePool(pool)`
-  (`@vercel/functions`) drains the pool on suspend/shutdown and keeps connection counts bounded
-  across instances and deploys. See `src/lib/db/index.ts`.
+  lets a request's ~25-query fan-out run largely in parallel (~1–2 round-trip waves) instead of
+  the ~5–6 a `max: 5` pool forced; concurrent requests on an instance share those connections.
+  Because Fluid Compute can suspend an instance with JS timers paused, `idleTimeoutMillis` alone
+  won't reliably reap idle clients, so `attachDatabasePool(pool)` (`@vercel/functions`) registers
+  the pool with that lifecycle so its connections are cleaned up as an instance suspends, keeping
+  connection counts from accumulating across suspensions and deploys. See `src/lib/db/index.ts`.

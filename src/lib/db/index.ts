@@ -30,10 +30,11 @@ function createDb() {
   pool.on("error", (err) => {
     console.error("Unexpected error on idle Postgres client", err);
   });
-  // Hook the pool into Vercel Fluid Compute's instance lifecycle. Fluid can
+  // Register the pool with Vercel Fluid Compute's instance lifecycle. Fluid can
   // suspend an instance with JS timers paused, so `idleTimeoutMillis` alone
   // won't reliably reap idle clients and a widened `max` could accumulate
-  // connections across instances/deploys; attachDatabasePool drains on suspend.
+  // connections across instances/deploys; attachDatabasePool ties the pool to
+  // that lifecycle so its connections are cleaned up as an instance suspends.
   // No-op off Vercel (local/dev), so it's safe everywhere.
   attachDatabasePool(pool);
   return drizzle(pool, { schema });
