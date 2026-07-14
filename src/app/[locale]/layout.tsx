@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
@@ -48,6 +48,17 @@ const plexMono = localFont({
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
+
+// Tint mobile browser chrome to match the page background (the --background
+// token) in each scheme, so the address bar blends with paper / near-black
+// instead of flashing the browser's default.
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f6f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#191712" },
+  ],
+};
 
 export async function generateMetadata({
   params,
