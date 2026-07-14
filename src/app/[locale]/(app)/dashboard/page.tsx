@@ -24,14 +24,17 @@ import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { getDict } from "@/lib/i18n";
 import { getDashboardData } from "@/lib/queries/dashboard";
+import { getDailyPlan } from "@/lib/queries/plan";
 import { requireTrack } from "@/lib/settings";
 
 export default async function DashboardPage() {
   const { user, track, remindersEnabled, timeZone } = await requireTrack();
   const t = await getDict();
 
-  // The daily plan (heaviest fan-out) streams in its own Suspense boundary
-  // below; the page only blocks on the lighter summary batch.
+  // Start the heavy plan fan-out now so it runs concurrently with the summary,
+  // then hand the in-flight promise to the Suspense boundary below — the page
+  // blocks only on the lighter summary batch, and the plan streams in when ready.
+  const planPromise = getDailyPlan(user.id, track, timeZone);
   const {
     streak,
     dueCount,
@@ -107,7 +110,7 @@ export default async function DashboardPage() {
           {isNewUser && <WelcomeCard />}
           {remindersEnabled && <ReminderNudge reminder={reminder} />}
           <Suspense fallback={<DailyPlanSkeleton />}>
-            <DailyPlanSection userId={user.id} track={track} timeZone={timeZone} />
+            <DailyPlanSection plan={planPromise} />
           </Suspense>
           <ExamBanner
             lastEstimate={lastExam?.estimate ?? null}

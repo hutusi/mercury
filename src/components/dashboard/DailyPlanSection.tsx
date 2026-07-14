@@ -1,25 +1,17 @@
-import type { Track } from "@/content/types";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getDailyPlan } from "@/lib/queries/plan";
+import type { DailyPlan } from "@/lib/queries/plan";
 import { TodayPlanCard } from "./TodayPlanCard";
 
 /**
  * 今日计划 is the heaviest fan-out on the dashboard (~16 content-list queries).
- * Fetching it inside its own Suspense boundary lets the rest of the dashboard
- * paint from the lighter summary batch while the plan streams in, instead of
- * the whole content area waiting on the slowest query.
+ * It streams inside its own Suspense boundary so the rest of the dashboard
+ * paints from the lighter summary batch. The page starts the query *before*
+ * awaiting the summary and passes the in-flight promise here, so the two
+ * batches run concurrently (total ≈ max(summary, plan), not summary + plan).
  */
-export async function DailyPlanSection({
-  userId,
-  track,
-  timeZone,
-}: {
-  userId: string;
-  track: Track;
-  timeZone: string;
-}) {
-  const plan = await getDailyPlan(userId, track, timeZone);
-  return <TodayPlanCard items={plan.items} />;
+export async function DailyPlanSection({ plan }: { plan: Promise<DailyPlan> }) {
+  const resolved = await plan;
+  return <TodayPlanCard items={resolved.items} />;
 }
 
 /** Suspense fallback shaped like the plan card so the layout doesn't jump. */

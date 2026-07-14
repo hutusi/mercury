@@ -96,6 +96,12 @@ bun run build && bun run typecheck && bun run test:e2e
    Env var changes only take effect on a new deployment — redeploy after adding/changing any of
    these (`vercel redeploy <url> --target production` or the dashboard's Redeploy button).
 
+4. **Keep the function region colocated with the Neon region.** Each dashboard render fans out
+   ~25 DB round-trips, so cross-region latency dominates. `vercel.json` pins the function region
+   to `sin1` (Singapore) to match the Neon database in `ap-southeast-1`. **If you move the Neon
+   database to another region, change the `vercel.json` `regions` entry to match** — they are a
+   matched pair ([ADR 0007](docs/adr/0007-postgres-neon-for-serverless.md)).
+
 ## Architecture decisions
 
 Significant, hard-to-reverse choices are recorded in [docs/adr/](docs/adr/). Write a new ADR (next number, Status/Context/Decision/Consequences) when you change a foundational technology, an integrity model, or a cross-cutting convention. Start from an existing one as a template.
