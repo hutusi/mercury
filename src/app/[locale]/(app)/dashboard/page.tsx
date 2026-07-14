@@ -8,8 +8,10 @@ import {
   PenLine,
   Timer,
 } from "lucide-react";
+import { Suspense } from "react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
+import { DailyPlanSection, DailyPlanSkeleton } from "@/components/dashboard/DailyPlanSection";
 import { DueWordsCard } from "@/components/dashboard/DueWordsCard";
 import { MistakesCard } from "@/components/dashboard/MistakesCard";
 import { ExamBanner } from "@/components/dashboard/ExamBanner";
@@ -17,38 +19,32 @@ import { RecentScoresCard, type RecentScore } from "@/components/dashboard/Recen
 import { ReminderNudge } from "@/components/dashboard/ReminderNudge";
 import { ReminderToggle } from "@/components/dashboard/ReminderToggle";
 import { StreakCard } from "@/components/dashboard/StreakCard";
-import { TodayPlanCard } from "@/components/dashboard/TodayPlanCard";
 import { WelcomeCard } from "@/components/dashboard/WelcomeCard";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { getDict } from "@/lib/i18n";
 import { getDashboardData } from "@/lib/queries/dashboard";
-import { getDailyPlan } from "@/lib/queries/plan";
 import { requireTrack } from "@/lib/settings";
 
 export default async function DashboardPage() {
   const { user, track, remindersEnabled, timeZone } = await requireTrack();
   const t = await getDict();
 
-  const [
-    {
-      streak,
-      dueCount,
-      reminder,
-      lastExam,
-      inProgressExam,
-      recentExercises,
-      recentWriting,
-      recentSpeaking,
-      recentExams,
-      activeMistakes,
-      isNewUser,
-    },
-    plan,
-  ] = await Promise.all([
-    getDashboardData(user.id, track, timeZone),
-    getDailyPlan(user.id, track, timeZone),
-  ]);
+  // The daily plan (heaviest fan-out) streams in its own Suspense boundary
+  // below; the page only blocks on the lighter summary batch.
+  const {
+    streak,
+    dueCount,
+    reminder,
+    lastExam,
+    inProgressExam,
+    recentExercises,
+    recentWriting,
+    recentSpeaking,
+    recentExams,
+    activeMistakes,
+    isNewUser,
+  } = await getDashboardData(user.id, track, timeZone);
 
   const exerciseLabel = (kind: string) =>
     kind === "reading" ? t.nav.reading : kind === "listening" ? t.nav.listening : t.vocab.quiz;
@@ -110,7 +106,9 @@ export default async function DashboardPage() {
         <div className="space-y-10">
           {isNewUser && <WelcomeCard />}
           {remindersEnabled && <ReminderNudge reminder={reminder} />}
-          <TodayPlanCard items={plan.items} />
+          <Suspense fallback={<DailyPlanSkeleton />}>
+            <DailyPlanSection userId={user.id} track={track} timeZone={timeZone} />
+          </Suspense>
           <ExamBanner
             lastEstimate={lastExam?.estimate ?? null}
             resumeExamId={inProgressExam?.examId ?? null}
