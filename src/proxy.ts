@@ -2,20 +2,10 @@ import { getSessionCookie } from "better-auth/cookies";
 import { NextResponse, type NextRequest } from "next/server";
 import { LOCALE_COOKIE } from "@/lib/i18n/dictionaries";
 import { DEFAULT_LOCALE, isLocale, splitLocalePath } from "@/lib/i18n/routing";
-
-const PROTECTED = [
-  "/dashboard",
-  "/onboarding",
-  "/vocabulary",
-  "/reading",
-  "/listening",
-  "/writing",
-  "/speaking",
-  "/exams",
-];
+import { PROTECTED_PATHS } from "@/lib/routes";
 
 function isProtected(rest: string): boolean {
-  return PROTECTED.some((p) => rest === p || rest.startsWith(`${p}/`));
+  return PROTECTED_PATHS.some((p) => rest === p || rest.startsWith(`${p}/`));
 }
 
 /**
