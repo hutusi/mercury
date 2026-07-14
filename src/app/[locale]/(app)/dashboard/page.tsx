@@ -35,6 +35,12 @@ export default async function DashboardPage() {
   // then hand the in-flight promise to the Suspense boundary below — the page
   // blocks only on the lighter summary batch, and the plan streams in when ready.
   const planPromise = getDailyPlan(user.id, track, timeZone);
+  // Observe rejections immediately: if the plan query fails before the summary
+  // await resolves, nothing is attached to planPromise yet, so Node would report
+  // an unhandledRejection. DailyPlanSection still awaits planPromise, so the real
+  // error reaches the Suspense/error boundary — this only silences the premature
+  // warning without swallowing it.
+  void planPromise.catch(() => {});
   const {
     streak,
     dueCount,

@@ -12,8 +12,9 @@ function createDb() {
     connectionString: process.env.DATABASE_URL,
     // A dashboard/plan render fans out ~25 queries at once. With max:5 that
     // "parallel" batch drained in ~5-6 serial round-trip waves — the dominant
-    // content-latency cost. Widen it so one request's fan-out runs in one wave;
-    // still safely small in front of Neon's connection pooler.
+    // content-latency cost. Widen it so an uncontended request's fan-out runs
+    // largely in parallel (~1-2 waves; concurrent requests share these
+    // connections and can queue); still safely small in front of Neon's pooler.
     max: 20,
     // Keep sockets warm between refreshes: without this, pg closed idle clients
     // after 10s and every refresh paid a fresh TLS handshake to Neon.
@@ -30,10 +31,11 @@ function createDb() {
   pool.on("error", (err) => {
     console.error("Unexpected error on idle Postgres client", err);
   });
-  // Hook the pool into Vercel Fluid Compute's instance lifecycle. Fluid can
+  // Register the pool with Vercel Fluid Compute's instance lifecycle. Fluid can
   // suspend an instance with JS timers paused, so `idleTimeoutMillis` alone
   // won't reliably reap idle clients and a widened `max` could accumulate
-  // connections across instances/deploys; attachDatabasePool drains on suspend.
+  // connections across instances/deploys; attachDatabasePool ties the pool to
+  // that lifecycle so its connections are cleaned up as an instance suspends.
   // No-op off Vercel (local/dev), so it's safe everywhere.
   attachDatabasePool(pool);
   return drizzle(pool, { schema });
