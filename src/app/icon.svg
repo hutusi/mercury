@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- The Mercury seal: the cinnabar Wordmark from AppShell, reused as the
+       favicon. Fill colors are the sRGB form of the cinnabar design tokens. -->
+  <rect width="32" height="32" fill="#b6341f" />
+  <text
+    x="16"
+    y="23.2"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', 'Songti SC', serif"
+    font-weight="600"
+    font-size="22"
+    fill="#fbfaf7"
+  >M</text>
+</svg>
