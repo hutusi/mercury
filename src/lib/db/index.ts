@@ -7,7 +7,21 @@ function createDb() {
   // Docker/Homebrew Postgres in dev/CI. The Pool connects lazily, so importing
   // this module (e.g. during `next build` or unit-test collection) never opens a
   // connection or requires the URL to be set — the first query does.
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5 });
+  const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    // A dashboard/plan render fans out ~25 queries at once. With max:5 that
+    // "parallel" batch drained in ~5-6 serial round-trip waves — the dominant
+    // content-latency cost. Widen it so one request's fan-out runs in one wave;
+    // still safely small in front of Neon's connection pooler.
+    max: 20,
+    // Keep sockets warm between refreshes: without this, pg closed idle clients
+    // after 10s and every refresh paid a fresh TLS handshake to Neon.
+    keepAlive: true,
+    keepAliveInitialDelayMillis: 10_000,
+    idleTimeoutMillis: 30_000,
+    // Fail fast on a bad connection instead of hanging the request forever.
+    connectionTimeoutMillis: 10_000,
+  });
   // pg surfaces failures on *idle* clients (Neon recycling a connection, a
   // network blip) as an `error` event on the Pool; with no listener Node treats
   // it as uncaught and exits. The pool discards the broken client and recovers
