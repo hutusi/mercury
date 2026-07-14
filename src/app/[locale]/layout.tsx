@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { dictionaries } from "@/lib/i18n";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { DEFAULT_LOCALE, isLocale, LOCALES } from "@/lib/i18n/routing";
+import { siteUrl } from "@/lib/site-url";
 import "../globals.css";
 
 // Latin glyphs only — zh renders through the CJK system faces in --font-sans /
@@ -59,7 +60,7 @@ export async function generateMetadata({
   // [locale] is a duplicate of the locale root. Pages set their own (see the
   // landing page); the app pages are auth-gated and not indexable anyway.
   return {
-    metadataBase: new URL(process.env.BETTER_AUTH_URL ?? "http://localhost:3000"),
+    metadataBase: siteUrl(),
     title: t.meta.title,
     description: t.meta.description,
   };

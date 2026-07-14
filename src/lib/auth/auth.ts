@@ -3,13 +3,12 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { bearer } from "better-auth/plugins";
 import { db } from "../db";
+import { siteBaseUrl } from "../site-url";
 
-// Production sets BETTER_AUTH_URL to the real domain (takes precedence). Preview
-// deployments have a per-deploy URL, so fall back to VERCEL_URL; local dev falls
-// back to localhost. The origin must match the request or better-auth rejects it.
-const baseURL =
-  process.env.BETTER_AUTH_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+// The origin must match the request or better-auth rejects it. siteBaseUrl()
+// owns the BETTER_AUTH_URL → VERCEL_URL → localhost fallback chain, shared with
+// the site metadata so auth and canonical URLs never diverge.
+const baseURL = siteBaseUrl();
 
 export const auth = betterAuth({
   baseURL,
