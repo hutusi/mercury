@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { dictionaries } from "@/lib/i18n";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
-import { DEFAULT_LOCALE, isLocale, LOCALES } from "@/lib/i18n/routing";
+import { DEFAULT_LOCALE, htmlLang, isLocale, LOCALES } from "@/lib/i18n/routing";
 import { siteUrl } from "@/lib/site-url";
 import "../globals.css";
 
@@ -108,7 +108,7 @@ export default async function RootLayout({
     // suppressHydrationWarning: next-themes sets the theme class on <html>
     // before hydration.
     <html
-      lang={locale === "zh" ? "zh-CN" : "en"}
+      lang={htmlLang(locale)}
       className={`${inter.variable} ${newsreader.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >

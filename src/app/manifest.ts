@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { dictionaries } from "@/lib/i18n";
-import { DEFAULT_LOCALE } from "@/lib/i18n/routing";
+import { DEFAULT_LOCALE, htmlLang } from "@/lib/i18n/routing";
 
 // The manifest is a single, non-locale route (/manifest.webmanifest), so it
 // carries the default-locale copy. Colours are the --background token; the seal
@@ -13,7 +13,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: meta.description,
     start_url: "/",
     display: "standalone",
-    lang: "zh-CN",
+    lang: htmlLang(DEFAULT_LOCALE),
     background_color: "#f7f6f1",
     theme_color: "#f7f6f1",
     icons: [

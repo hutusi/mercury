@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/auth/session";
 import { getDict, localeRedirect } from "@/lib/i18n";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { htmlLang, LOCALES } from "@/lib/i18n/routing";
 
 export async function generateMetadata({
   params,
@@ -18,7 +19,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `/${locale}`,
-      languages: { "zh-CN": "/zh", en: "/en" },
+      languages: Object.fromEntries(LOCALES.map((l) => [htmlLang(l), `/${l}`])),
     },
   };
 }
