@@ -55,7 +55,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = dictionaries[isLocale(locale) ? locale : DEFAULT_LOCALE];
+  const resolved = isLocale(locale) ? locale : DEFAULT_LOCALE;
+  const t = dictionaries[resolved];
   // No alternates here: a layout-level canonical would claim every page under
   // [locale] is a duplicate of the locale root. Pages set their own (see the
   // landing page); the app pages are auth-gated and not indexable anyway.
@@ -63,6 +64,21 @@ export async function generateMetadata({
     metadataBase: siteUrl(),
     title: t.meta.title,
     description: t.meta.description,
+    // og:image / twitter:image are injected by src/app/opengraph-image.tsx —
+    // don't set openGraph.images here or it overrides that file convention.
+    openGraph: {
+      type: "website",
+      siteName: "Mercury",
+      title: t.meta.title,
+      description: t.meta.description,
+      url: `/${resolved}`,
+      locale: resolved === "zh" ? "zh_CN" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.meta.title,
+      description: t.meta.description,
+    },
   };
 }
 
