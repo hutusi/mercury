@@ -27,7 +27,7 @@ import { getDailyPlan } from "@/lib/queries/plan";
 import { requireTrack } from "@/lib/settings";
 
 export default async function DashboardPage() {
-  const { user, track, remindersEnabled } = await requireTrack();
+  const { user, track, remindersEnabled, timeZone } = await requireTrack();
   const t = await getDict();
 
   const [
@@ -45,7 +45,10 @@ export default async function DashboardPage() {
       isNewUser,
     },
     plan,
-  ] = await Promise.all([getDashboardData(user.id, track), getDailyPlan(user.id, track)]);
+  ] = await Promise.all([
+    getDashboardData(user.id, track, timeZone),
+    getDailyPlan(user.id, track, timeZone),
+  ]);
 
   const exerciseLabel = (kind: string) =>
     kind === "reading" ? t.nav.reading : kind === "listening" ? t.nav.listening : t.vocab.quiz;
