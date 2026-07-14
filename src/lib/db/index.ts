@@ -12,8 +12,9 @@ function createDb() {
     connectionString: process.env.DATABASE_URL,
     // A dashboard/plan render fans out ~25 queries at once. With max:5 that
     // "parallel" batch drained in ~5-6 serial round-trip waves — the dominant
-    // content-latency cost. Widen it so one request's fan-out runs in one wave;
-    // still safely small in front of Neon's connection pooler.
+    // content-latency cost. Widen it so an uncontended request's fan-out runs
+    // largely in parallel (~1-2 waves; concurrent requests share these
+    // connections and can queue); still safely small in front of Neon's pooler.
     max: 20,
     // Keep sockets warm between refreshes: without this, pg closed idle clients
     // after 10s and every refresh paid a fresh TLS handshake to Neon.
