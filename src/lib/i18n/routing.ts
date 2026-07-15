@@ -14,6 +14,19 @@ export function isLocale(value: string | undefined): value is Locale {
   return (LOCALES as readonly string[]).includes(value ?? "");
 }
 
+/**
+ * The BCP-47 language tag for a locale — used for `<html lang>` and hreflang
+ * alternates. Lives here so the zh→zh-CN mapping is defined once instead of
+ * copy-pasted across the layout, landing page, sitemap, and manifest. The
+ * Record (not a ternary) makes adding a Locale a compile error until its tag
+ * is supplied.
+ */
+const HTML_LANG: Record<Locale, string> = { zh: "zh-CN", en: "en" };
+
+export function htmlLang(locale: Locale): string {
+  return HTML_LANG[locale];
+}
+
 /** Prefix an internal href with a locale segment: ("zh", "/") → "/zh". */
 export function localePath(locale: Locale, href: string): string {
   return href === "/" ? `/${locale}` : `/${locale}${href}`;

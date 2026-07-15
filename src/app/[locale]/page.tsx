@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/auth/session";
 import { getDict, localeRedirect } from "@/lib/i18n";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { DEFAULT_LOCALE, htmlLang, isLocale, LOCALES } from "@/lib/i18n/routing";
+import { openGraphFor } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,11 +17,15 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const resolved = isLocale(locale) ? locale : DEFAULT_LOCALE;
   return {
     alternates: {
-      canonical: `/${locale}`,
-      languages: { "zh-CN": "/zh", en: "/en" },
+      canonical: `/${resolved}`,
+      languages: Object.fromEntries(LOCALES.map((l) => [htmlLang(l), `/${l}`])),
     },
+    // Unlike the auth/app pages, the landing page has a canonical page-specific
+    // URL, so it restores the required og:url (absent from the shared layout).
+    openGraph: openGraphFor(resolved, `/${resolved}`),
   };
 }
 
