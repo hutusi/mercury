@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { dictionaries } from "@/lib/i18n";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { DEFAULT_LOCALE, htmlLang, isLocale, LOCALES } from "@/lib/i18n/routing";
+import { openGraphFor } from "@/lib/seo";
 import { siteUrl } from "@/lib/site-url";
 import "../globals.css";
 
@@ -75,18 +76,11 @@ export async function generateMetadata({
     metadataBase: siteUrl(),
     title: t.meta.title,
     description: t.meta.description,
-    // og:image / twitter:image are injected by src/app/opengraph-image.tsx —
-    // don't set openGraph.images here or it overrides that file convention.
-    // No og:url: a layout-level url is inherited by every child (login, app
-    // pages), tagging them all as the locale root. The landing page carries the
-    // canonical signal via alternates.canonical instead.
-    openGraph: {
-      type: "website",
-      siteName: "Mercury",
-      title: t.meta.title,
-      description: t.meta.description,
-      locale: resolved === "zh" ? "zh_CN" : "en_US",
-    },
+    // Site-wide OG defaults, no og:url — a layout-level url is inherited by every
+    // child (login, app pages), tagging them all as the locale root. The landing
+    // page sets its own og:url (openGraphFor(locale, url)); og:image/twitter:image
+    // are injected by src/app/[locale]/opengraph-image.tsx.
+    openGraph: openGraphFor(resolved),
     twitter: {
       card: "summary_large_image",
       title: t.meta.title,
