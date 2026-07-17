@@ -25,11 +25,9 @@ export function Wordmark({ compact = false }: { compact?: boolean }) {
 
 export async function AppShell({
   userName,
-  trackSwitcher,
   children,
 }: {
   userName: string;
-  trackSwitcher?: React.ReactNode;
   children: React.ReactNode;
 }) {
   const t = await getDict();
@@ -55,7 +53,6 @@ export async function AppShell({
               <Wordmark compact />
             </Link>
             <div className="flex flex-1 items-center justify-end gap-2">
-              {trackSwitcher}
               <LanguageToggle />
               <ThemeToggle />
               <span className="hidden max-w-32 truncate text-sm font-medium text-muted-foreground sm:block">

@@ -25,16 +25,16 @@ import { SectionLabel } from "@/components/typography/SectionLabel";
 import { getDict } from "@/lib/i18n";
 import { getDashboardData } from "@/lib/queries/dashboard";
 import { getDailyPlan } from "@/lib/queries/plan";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
 
 export default async function DashboardPage() {
-  const { user, track, remindersEnabled, timeZone } = await requireTrack();
+  const { user, goalTrack, remindersEnabled, timeZone } = await requireOnboarded();
   const t = await getDict();
 
   // Start the heavy plan fan-out now so it runs concurrently with the summary,
   // then hand the in-flight promise to the Suspense boundary below — the page
   // blocks only on the lighter summary batch, and the plan streams in when ready.
-  const planPromise = getDailyPlan(user.id, track, timeZone);
+  const planPromise = getDailyPlan(user.id, goalTrack, timeZone);
   // Observe rejections immediately: if the plan query fails before the summary
   // await resolves, nothing is attached to planPromise yet, so Node would report
   // an unhandledRejection. DailyPlanSection still awaits planPromise, so the real
@@ -150,7 +150,7 @@ export default async function DashboardPage() {
             </ul>
           </div>
           {/* The funnel card: exam tracks → business content; business → mini-TOEIC */}
-          <CrossPromoCard track={track} />
+          <CrossPromoCard track={goalTrack} />
           <ReminderToggle enabled={remindersEnabled} />
         </aside>
       </div>

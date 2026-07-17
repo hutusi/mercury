@@ -54,37 +54,8 @@ export async function completeOnboardingForUser(userId: string, input: unknown) 
 }
 
 /**
- * Set the user's active learning track (first call doubles as onboarding).
- * Accepts unknown input: TrackSchema.parse is the validation boundary for
- * both the server action and the API route.
- */
-export async function setActiveTrackForUser(userId: string, track: unknown) {
-  const activeTrack = TrackSchema.parse(track);
-  const now = new Date();
-  const [settings] = await db
-    .insert(userSettings)
-    .values({
-      userId,
-      activeTrack,
-      onboardedAt: now,
-      updatedAt: now,
-    })
-    .onConflictDoUpdate({
-      target: userSettings.userId,
-      set: {
-        activeTrack,
-        onboardedAt: sql`coalesce(${userSettings.onboardedAt}, ${now})`,
-        updatedAt: now,
-      },
-    })
-    .returning();
-  return settings;
-}
-
-/**
  * Toggle study reminders (the dashboard nudge, later email/push). Upserts so
- * a pre-onboarding call — no settings row yet — can't explode; activeTrack
- * stays null until onboarding fills it.
+ * a pre-onboarding call — no settings row yet — can't explode.
  */
 export async function setRemindersEnabledForUser(userId: string, enabled: unknown) {
   return updateSettingsForUser(userId, { remindersEnabled: enabled });

@@ -3,19 +3,31 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
+import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { Button } from "@/components/ui/button";
 import { getDict } from "@/lib/i18n";
 import { getVocabOverview } from "@/lib/queries/vocab";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
+import { parseTrackFilter, TRACK_FILTER_OPTIONS } from "@/lib/track-filter";
 
-export default async function VocabularyPage() {
-  const { user, track } = await requireTrack();
+export default async function VocabularyPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ track?: string }>;
+}) {
+  const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
 
+  const { filter, track } = parseTrackFilter((await searchParams).track, goalTrack);
   const { words, startedIds, dueCount, freshCount, learnedCount } = await getVocabOverview(
     user.id,
     track,
   );
+
+  // Study follows the current filter; the quiz is single-track by design, so
+  // "all" falls back to the goal default (no param).
+  const studyHref = `/vocabulary/study?track=${filter}`;
+  const quizHref = filter === "all" ? "/vocabulary/quiz" : `/vocabulary/quiz?track=${filter}`;
 
   const topics = new Map<string, typeof words>();
   for (const w of words) {
@@ -40,7 +52,7 @@ export default async function VocabularyPage() {
         actions={
           <>
             <Button asChild>
-              <Link href="/vocabulary/study">
+              <Link href={studyHref}>
                 {t.vocab.study}
                 {dueCount + Math.min(freshCount, 10) > 0 && (
                   <span className="ml-1.5 font-mono text-xs tabular-nums opacity-70">
@@ -50,11 +62,13 @@ export default async function VocabularyPage() {
               </Link>
             </Button>
             <Button asChild variant="outline">
-              <Link href="/vocabulary/quiz">{t.vocab.quiz}</Link>
+              <Link href={quizHref}>{t.vocab.quiz}</Link>
             </Button>
           </>
         }
       />
+
+      <TrackFilterChips basePath="/vocabulary" current={filter} options={TRACK_FILTER_OPTIONS} />
 
       <div className="grid grid-cols-3 divide-x divide-border border-y border-border">
         {stats.map((s) => (

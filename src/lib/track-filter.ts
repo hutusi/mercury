@@ -13,6 +13,10 @@ export type ExamTrackFilter = ExamTrack | "all";
 export const TrackFilterSchema = z.enum([...TRACKS, "all"]);
 export const ExamTrackFilterSchema = z.enum([...EXAM_TRACKS, "all"]);
 
+/** Chip order on list pages: the unfiltered view first, then concrete tracks. */
+export const TRACK_FILTER_OPTIONS = ["all", ...TRACKS] as const;
+export const EXAM_TRACK_FILTER_OPTIONS = ["all", ...EXAM_TRACKS] as const;
+
 /** Web-side parse: absent/invalid input degrades to the goal-track default. */
 export function parseTrackFilter(
   raw: string | undefined,

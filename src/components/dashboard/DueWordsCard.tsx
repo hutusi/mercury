@@ -15,7 +15,7 @@ export async function DueWordsCard({ dueCount }: { dueCount: number }) {
         accent={dueCount > 0}
       />
       <Button asChild variant={dueCount > 0 ? "default" : "outline"} className="mt-3 w-full">
-        <Link href="/vocabulary/study">
+        <Link href="/vocabulary/study?track=all">
           {dueCount > 0 ? t.dashboard.reviewNow : t.dashboard.learnNew}
         </Link>
       </Button>

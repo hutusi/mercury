@@ -36,27 +36,3 @@ export async function requireOnboarded(): Promise<{
     timeZone: settings.timeZone,
   };
 }
-
-/**
- * Guard for pages/actions that need a chosen learning track.
- * Redirects to onboarding until the user has picked one.
- * @deprecated The track is no longer an app mode — use `requireOnboarded()`.
- */
-export async function requireTrack(): Promise<{
-  user: Awaited<ReturnType<typeof requireUser>>;
-  track: Track;
-  dailyGoal: number;
-  remindersEnabled: boolean;
-  timeZone: string;
-}> {
-  const user = await requireUser();
-  const settings = await getSettings(user.id);
-  if (!settings?.activeTrack) return localeRedirect("/onboarding");
-  return {
-    user,
-    track: settings.activeTrack,
-    dailyGoal: settings.dailyGoal,
-    remindersEnabled: settings.remindersEnabled,
-    timeZone: settings.timeZone,
-  };
-}

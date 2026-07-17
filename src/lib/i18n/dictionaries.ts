@@ -49,6 +49,7 @@ const zh = {
     tutor: "AI 私教",
     mistakes: "错题本",
     exams: "模考中心",
+    settings: "设置",
   },
   a11y: {
     skipToContent: "跳到主要内容",
@@ -120,11 +121,14 @@ const zh = {
     toeic: "托业 TOEIC",
     ielts: "雅思 IELTS",
     business: "商务英语",
-    switchTrack: "切换方向",
+  },
+  filters: {
+    all: "全部",
+    byTrack: "按方向筛选",
   },
   onboarding: {
     title: "选择你的学习方向",
-    subtitle: "随时可以在顶部切换，学习进度分别保留",
+    subtitle: "之后可在设置中修改目标，学习内容随时可切换",
     toeicDesc: "职场晋升的敲门砖，外企求职硬通货",
     ieltsDesc: "留学与移民必备，学术英语全面提升",
     businessDesc: "邮件、会议、谈判——实战商务英语",
@@ -452,6 +456,7 @@ const en: Dictionary = {
     tutor: "AI Tutor",
     mistakes: "Mistakes",
     exams: "Mock Exams",
+    settings: "Settings",
   },
   a11y: {
     skipToContent: "Skip to content",
@@ -522,11 +527,14 @@ const en: Dictionary = {
     toeic: "TOEIC",
     ielts: "IELTS",
     business: "Business English",
-    switchTrack: "Switch track",
+  },
+  filters: {
+    all: "All",
+    byTrack: "Filter by track",
   },
   onboarding: {
     title: "Choose your learning track",
-    subtitle: "You can switch anytime — progress is kept per track",
+    subtitle: "You can change your goal later in Settings — all content stays a filter away",
     toeicDesc: "The workplace credential for promotions and job hunting",
     ieltsDesc: "For study abroad and immigration, with academic English",
     businessDesc: "Emails, meetings, negotiations — practical business English",

@@ -3,10 +3,10 @@ import { EntryHeader } from "@/components/typography/EntryHeader";
 import { isAiEnabled } from "@/lib/ai/client";
 import { getDict } from "@/lib/i18n";
 import { getChatPageData } from "@/lib/queries/chat";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
 
 export default async function TutorPage() {
-  const { user } = await requireTrack();
+  const { user } = await requireOnboarded();
   const t = await getDict();
   const { messages, remainingToday } = await getChatPageData(user.id);
 

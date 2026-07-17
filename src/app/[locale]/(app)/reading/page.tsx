@@ -2,15 +2,22 @@ import { Check } from "lucide-react";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
+import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { Badge } from "@/components/ui/badge";
 import { getDict } from "@/lib/i18n";
 import { listReadingExercises } from "@/lib/queries/reading";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
+import { parseTrackFilter, TRACK_FILTER_OPTIONS } from "@/lib/track-filter";
 
-export default async function ReadingListPage() {
-  const { user, track } = await requireTrack();
+export default async function ReadingListPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ track?: string }>;
+}) {
+  const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
 
+  const { filter, track } = parseTrackFilter((await searchParams).track, goalTrack);
   const { exercises, bestByExercise } = await listReadingExercises(user.id, track);
 
   return (
@@ -21,6 +28,8 @@ export default async function ReadingListPage() {
         pos={t.entry.readingPos}
         gloss={t.reading.subtitle}
       />
+
+      <TrackFilterChips basePath="/reading" current={filter} options={TRACK_FILTER_OPTIONS} />
 
       <EntryList>
         {exercises.map((ex) => {

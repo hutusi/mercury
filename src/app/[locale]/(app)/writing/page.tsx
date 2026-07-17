@@ -2,14 +2,22 @@ import { Check } from "lucide-react";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
+import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { Badge } from "@/components/ui/badge";
 import { getDict } from "@/lib/i18n";
 import { listWritingPrompts } from "@/lib/queries/writing";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
+import { parseTrackFilter, TRACK_FILTER_OPTIONS } from "@/lib/track-filter";
 
-export default async function WritingListPage() {
-  const { user, track } = await requireTrack();
+export default async function WritingListPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ track?: string }>;
+}) {
+  const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
+
+  const { filter, track } = parseTrackFilter((await searchParams).track, goalTrack);
 
   const { prompts, submissionCountByPrompt: submissionsByPrompt } = await listWritingPrompts(
     user.id,
@@ -24,6 +32,8 @@ export default async function WritingListPage() {
         pos={t.entry.writingPos}
         gloss={t.writing.subtitle}
       />
+
+      <TrackFilterChips basePath="/writing" current={filter} options={TRACK_FILTER_OPTIONS} />
 
       <EntryList>
         {prompts.map((p) => {

@@ -2,11 +2,7 @@
 
 import { requireUser } from "../auth/session";
 import { localeRedirect } from "../i18n";
-import {
-  completeOnboardingForUser,
-  setActiveTrackForUser,
-  setRemindersEnabledForUser,
-} from "../services/settings";
+import { completeOnboardingForUser, setRemindersEnabledForUser } from "../services/settings";
 
 export async function completeOnboarding(input: {
   track: string;
@@ -24,11 +20,6 @@ export async function completeOnboarding(input: {
 // completes — reproduced 9/9 warm). Every page renders dynamically, so
 // freshness comes from the callers issuing router.refresh() in a separate,
 // non-gating transition instead.
-
-export async function setActiveTrack(track: string) {
-  const user = await requireUser();
-  await setActiveTrackForUser(user.id, track);
-}
 
 export async function setRemindersEnabled(enabled: boolean) {
   const user = await requireUser();

@@ -1,12 +1,19 @@
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { MistakesView } from "@/components/mistakes/MistakesView";
+import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { getDict } from "@/lib/i18n";
 import { getMistakesPageData } from "@/lib/mistakes";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
+import { parseTrackFilter, TRACK_FILTER_OPTIONS } from "@/lib/track-filter";
 
-export default async function MistakesPage() {
-  const { user, track } = await requireTrack();
+export default async function MistakesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ track?: string }>;
+}) {
+  const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
+  const { filter, track } = parseTrackFilter((await searchParams).track, goalTrack);
   const { active, cleared, counts } = await getMistakesPageData(user.id, track);
 
   return (
@@ -17,6 +24,7 @@ export default async function MistakesPage() {
         pos={t.entry.mistakesPos}
         gloss={t.mistakes.subtitle}
       />
+      <TrackFilterChips basePath="/mistakes" current={filter} options={TRACK_FILTER_OPTIONS} />
       <MistakesView active={active} cleared={cleared} counts={counts} />
     </div>
   );
