@@ -7,7 +7,8 @@ test("goal edit on /settings redirects feature defaults to the new track", async
   // Header entry point → settings.
   await page.getByRole("link", { name: t.nav.settings }).click();
   await page.waitForURL("**/settings");
-  await expect(page.getByRole("heading", { name: t.nav.settings })).toBeVisible();
+  // exact: "设置" is a substring of the "偏好设置" section label.
+  await expect(page.getByRole("heading", { name: t.nav.settings, exact: true })).toBeVisible();
 
   // Switch the goal to IELTS and save.
   await page.getByRole("button", { name: t.tracks.ielts }).click();
