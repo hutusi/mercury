@@ -53,7 +53,7 @@ export default async function DashboardPage() {
     recentExams,
     activeMistakes,
     isNewUser,
-  } = await getDashboardData(user.id, track, timeZone);
+  } = await getDashboardData(user.id, timeZone);
 
   const exerciseLabel = (kind: string) =>
     kind === "reading" ? t.nav.reading : kind === "listening" ? t.nav.listening : t.vocab.quiz;

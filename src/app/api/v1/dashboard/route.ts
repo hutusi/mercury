@@ -4,7 +4,7 @@ import { getDashboardData } from "@/lib/queries/dashboard";
 
 export const GET = apiHandler(async (req) => {
   const { user, track } = await requireTrackApi(req);
-  const data = await getDashboardData(user.id, track);
+  const data = await getDashboardData(user.id);
 
   // Raw values only — the client owns labels and formatting.
   const recentScores = [

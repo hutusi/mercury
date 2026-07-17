@@ -1,5 +1,4 @@
 import { and, desc, eq, lte, sql } from "drizzle-orm";
-import type { Track } from "../../content/types";
 import { db } from "../db";
 import {
   activityDays,
@@ -7,15 +6,14 @@ import {
   mockExamAttempts,
   speakingSubmissions,
   srsCards,
-  vocabWords,
   writingSubmissions,
 } from "../db/schema";
 import { countActiveMistakes } from "../mistakes";
 import { reminderState } from "../reminders-core";
 import { calendarDay, getStreak, getUserTimeZone } from "../streak";
 
-/** Everything the dashboard shows, in one round of parallel queries. */
-export async function getDashboardData(userId: string, track: Track, knownTimeZone?: string) {
+/** Everything the unified dashboard shows (all tracks), in one round of parallel queries. */
+export async function getDashboardData(userId: string, knownTimeZone?: string) {
   const today = new Date();
   // The web dashboard already loaded the settings row (and its timeZone) in the
   // layout, so it threads it in; callers without it fall back to a lookup.
@@ -38,14 +36,7 @@ export async function getDashboardData(userId: string, track: Track, knownTimeZo
       // pg returns bigint counts as strings; mapWith keeps the API numeric.
       .select({ count: sql<number>`count(*)`.mapWith(Number) })
       .from(srsCards)
-      .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
-      .where(
-        and(
-          eq(srsCards.userId, userId),
-          eq(vocabWords.track, track),
-          lte(srsCards.dueAt, new Date()),
-        ),
-      ),
+      .where(and(eq(srsCards.userId, userId), lte(srsCards.dueAt, new Date()))),
     db.query.mockExamAttempts.findFirst({
       where: and(eq(mockExamAttempts.userId, userId), eq(mockExamAttempts.status, "in_progress")),
       orderBy: desc(mockExamAttempts.startedAt),
@@ -84,7 +75,7 @@ export async function getDashboardData(userId: string, track: Track, knownTimeZo
       orderBy: desc(activityDays.day),
       columns: { day: true },
     }),
-    countActiveMistakes(userId, track),
+    countActiveMistakes(userId, null),
   ]);
 
   const dueCount = dueRows[0]?.count ?? 0;

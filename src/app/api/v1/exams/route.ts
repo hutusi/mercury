@@ -4,7 +4,10 @@ import { listExamsWithAttempts } from "@/lib/queries/exams";
 
 export const GET = apiHandler(async (req) => {
   const { user, track } = await requireTrackApi(req);
-  const { exams, attempts } = await listExamsWithAttempts(user.id, track);
+  const { exams, attempts } = await listExamsWithAttempts(
+    user.id,
+    track === "business" ? null : track,
+  );
 
   return Response.json({
     // Section metadata only — questions never appear outside a started attempt.

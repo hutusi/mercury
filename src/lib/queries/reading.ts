@@ -3,11 +3,11 @@ import type { Track } from "../../content/types";
 import { db } from "../db";
 import { exerciseAttempts, readingExercises } from "../db/schema";
 
-/** Track's reading exercises plus the user's best score per exercise. */
-export async function listReadingExercises(userId: string, track: Track) {
+/** Reading exercises (one track, or all when null) plus the user's best score per exercise. */
+export async function listReadingExercises(userId: string, track: Track | null) {
   const [exercises, attempts] = await Promise.all([
     db.query.readingExercises.findMany({
-      where: eq(readingExercises.track, track),
+      where: track ? eq(readingExercises.track, track) : undefined,
       orderBy: readingExercises.id,
     }),
     // The single best attempt per exercise, returning that row's own score AND
@@ -24,7 +24,7 @@ export async function listReadingExercises(userId: string, track: Track) {
         and(
           eq(exerciseAttempts.userId, userId),
           eq(exerciseAttempts.kind, "reading"),
-          eq(exerciseAttempts.track, track),
+          track ? eq(exerciseAttempts.track, track) : undefined,
         ),
       )
       .orderBy(

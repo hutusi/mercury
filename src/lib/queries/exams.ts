@@ -1,20 +1,17 @@
-import { and, asc, desc, eq, inArray } from "drizzle-orm";
-import type { Track } from "../../content/types";
+import { and, asc, desc, eq } from "drizzle-orm";
+import type { ExamTrack } from "../../content/types";
 import { db } from "../db";
 import { mockExamAttempts, mockExams } from "../db/schema";
 
 /**
- * Exams visible to a track plus the user's attempt history. Exam-track users
- * see their own exam; business users see both — the mini-TOEIC is the reverse
- * funnel's benchmark hook.
+ * Exams for one exam track (or all when null) plus the user's attempt history.
+ * Callers with a business goal default to null — the mini exams are the
+ * reverse funnel's benchmark hook.
  */
-export async function listExamsWithAttempts(userId: string, track: Track) {
+export async function listExamsWithAttempts(userId: string, track: ExamTrack | null) {
   const [exams, attempts] = await Promise.all([
     db.query.mockExams.findMany({
-      where:
-        track === "business"
-          ? inArray(mockExams.track, ["toeic", "ielts"])
-          : eq(mockExams.track, track),
+      where: track ? eq(mockExams.track, track) : undefined,
       // Deterministic listing now that a track has more than one exam; the
       // id slugs happen to sort mini before standard within a track.
       orderBy: asc(mockExams.id),
@@ -22,9 +19,7 @@ export async function listExamsWithAttempts(userId: string, track: Track) {
     db.query.mockExamAttempts.findMany({
       where: and(
         eq(mockExamAttempts.userId, userId),
-        track === "business"
-          ? inArray(mockExamAttempts.track, ["toeic", "ielts"])
-          : eq(mockExamAttempts.track, track),
+        track ? eq(mockExamAttempts.track, track) : undefined,
       ),
       orderBy: desc(mockExamAttempts.startedAt),
       limit: 20,

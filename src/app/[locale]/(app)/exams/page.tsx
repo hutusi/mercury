@@ -20,7 +20,10 @@ export default async function ExamsPage() {
   const t = await getDict();
   const locale = await getLocale();
 
-  const { exams, attempts } = await listExamsWithAttempts(user.id, track);
+  const { exams, attempts } = await listExamsWithAttempts(
+    user.id,
+    track === "business" ? null : track,
+  );
   const examTitleById = new Map(exams.map((e) => [e.id, e.titleZh]));
 
   return (
