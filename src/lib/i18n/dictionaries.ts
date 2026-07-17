@@ -78,6 +78,8 @@ const zh = {
     mistakesPos: "n.",
     tutorIpa: "/ˈtjuːtə(r)/",
     tutorPos: "n.",
+    settingsIpa: "/ˈsetɪŋz/",
+    settingsPos: "n.",
     onboardingIpa: "/træk/",
     onboardingPos: "n.",
     loginIpa: "/lɒɡ ˈɪn/",
@@ -125,6 +127,15 @@ const zh = {
   filters: {
     all: "全部",
     byTrack: "按方向筛选",
+  },
+  settings: {
+    subtitle: "学习目标与偏好",
+    goalSection: "学习目标",
+    trackLabel: "学习方向",
+    prefsSection: "偏好设置",
+    save: "保存",
+    saving: "保存中…",
+    saved: "已保存",
   },
   onboarding: {
     title: "选择你的学习方向",
@@ -483,6 +494,8 @@ const en: Dictionary = {
     mistakesPos: "n.",
     tutorIpa: "/ˈtjuːtə(r)/",
     tutorPos: "n.",
+    settingsIpa: "/ˈsetɪŋz/",
+    settingsPos: "n.",
     onboardingIpa: "/træk/",
     onboardingPos: "n.",
     loginIpa: "/lɒɡ ˈɪn/",
@@ -531,6 +544,15 @@ const en: Dictionary = {
   filters: {
     all: "All",
     byTrack: "Filter by track",
+  },
+  settings: {
+    subtitle: "Your goal and preferences",
+    goalSection: "Learning goal",
+    trackLabel: "Track",
+    prefsSection: "Preferences",
+    save: "Save",
+    saving: "Saving…",
+    saved: "Saved",
   },
   onboarding: {
     title: "Choose your learning track",

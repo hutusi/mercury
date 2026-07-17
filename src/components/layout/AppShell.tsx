@@ -1,3 +1,4 @@
+import { Settings2 } from "lucide-react";
 import { getDict } from "@/lib/i18n";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { LanguageToggle } from "./LanguageToggle";
@@ -55,6 +56,13 @@ export async function AppShell({
             <div className="flex flex-1 items-center justify-end gap-2">
               <LanguageToggle />
               <ThemeToggle />
+              <Link
+                href="/settings"
+                aria-label={t.nav.settings}
+                className="inline-flex size-9 items-center justify-center text-foreground transition-colors outline-none hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Settings2 className="size-4" aria-hidden />
+              </Link>
               <span className="hidden max-w-32 truncate text-sm font-medium text-muted-foreground sm:block">
                 {userName}
               </span>
