@@ -89,11 +89,10 @@ export async function getDailyPlan(
       ? {
           dailyMinutes: profile.dailyMinutes,
           examDate: profile.examDate,
-          goalTrack: profile.goalTrack,
           skillEstimates: profile.skillEstimates,
         }
       : null,
-    activeTrack: track,
+    track,
     dueCount: vocab.dueCount,
     freshCount: vocab.freshCount,
     activeMistakes,

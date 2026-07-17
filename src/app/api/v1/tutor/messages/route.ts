@@ -22,8 +22,8 @@ export const GET = apiHandler(async (req) => {
 
 // 503 keyless; 409 single-flight conflict; 429 at the exact daily cap.
 export const POST = apiHandler(async (req) => {
-  const { user, track } = await requireTrackApi(req);
+  const { user } = await requireTrackApi(req);
   const body = await readJson(req);
-  const reply = await sendChatMessageForUser(user.id, track, body);
+  const reply = await sendChatMessageForUser(user.id, body);
   return Response.json(reply);
 });
