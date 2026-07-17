@@ -15,7 +15,7 @@ export async function MistakesCard({ activeCount }: { activeCount: number }) {
         accent={activeCount > 0}
       />
       <Button asChild variant="outline" className="mt-3 w-full">
-        <Link href="/mistakes">{t.mistakes.open}</Link>
+        <Link href="/mistakes?track=all">{t.mistakes.open}</Link>
       </Button>
     </div>
   );

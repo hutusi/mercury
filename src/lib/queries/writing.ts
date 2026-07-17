@@ -3,18 +3,23 @@ import type { Track } from "../../content/types";
 import { db } from "../db";
 import { writingPrompts, writingSubmissions } from "../db/schema";
 
-/** Track's writing prompts plus the user's submission count per prompt. */
-export async function listWritingPrompts(userId: string, track: Track) {
+/** Writing prompts (one track, or all when null) plus the user's submission count per prompt. */
+export async function listWritingPrompts(userId: string, track: Track | null) {
   const [prompts, submissions] = await Promise.all([
     db.query.writingPrompts.findMany({
-      where: eq(writingPrompts.track, track),
+      where: track ? eq(writingPrompts.track, track) : undefined,
       orderBy: writingPrompts.id,
     }),
     db
       .select({ promptId: writingSubmissions.promptId, count: count() })
       .from(writingSubmissions)
       .innerJoin(writingPrompts, eq(writingSubmissions.promptId, writingPrompts.id))
-      .where(and(eq(writingSubmissions.userId, userId), eq(writingPrompts.track, track)))
+      .where(
+        and(
+          eq(writingSubmissions.userId, userId),
+          track ? eq(writingPrompts.track, track) : undefined,
+        ),
+      )
       .groupBy(writingSubmissions.promptId),
   ]);
 

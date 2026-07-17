@@ -5,6 +5,7 @@ import { requireUser } from "./auth/session";
 import { localeRedirect } from "./i18n";
 import { db } from "./db";
 import { userSettings } from "./db/schema";
+import { getLearnerProfile } from "./queries/profile";
 
 export const getSettings = cache(async (userId: string) => {
   return db.query.userSettings.findFirst({
@@ -13,24 +14,34 @@ export const getSettings = cache(async (userId: string) => {
 });
 
 /**
- * Guard for pages/actions that need a chosen learning track.
- * Redirects to onboarding until the user has picked one.
+ * The one onboarding predicate, shared by the (app) layout and both guards:
+ * onboarding completed (settings.onboardedAt, written only by the atomic
+ * onboarding flow) AND a goal track on the learner profile. Requiring both
+ * keeps piecemeal PATCHes (profile goalTrack + a settings upsert) from
+ * synthesizing an onboarded account.
  */
-export async function requireTrack(): Promise<{
+export const getOnboardedState = cache(async (userId: string) => {
+  const [settings, profile] = await Promise.all([getSettings(userId), getLearnerProfile(userId)]);
+  if (!settings?.onboardedAt || !profile?.goalTrack) return null;
+  return { settings, goalTrack: profile.goalTrack };
+});
+
+/** Guard for pages/actions that need an onboarded user; redirects otherwise. */
+export async function requireOnboarded(): Promise<{
   user: Awaited<ReturnType<typeof requireUser>>;
-  track: Track;
+  goalTrack: Track;
   dailyGoal: number;
   remindersEnabled: boolean;
   timeZone: string;
 }> {
   const user = await requireUser();
-  const settings = await getSettings(user.id);
-  if (!settings?.activeTrack) return localeRedirect("/onboarding");
+  const onboarded = await getOnboardedState(user.id);
+  if (!onboarded) return localeRedirect("/onboarding");
   return {
     user,
-    track: settings.activeTrack,
-    dailyGoal: settings.dailyGoal,
-    remindersEnabled: settings.remindersEnabled,
-    timeZone: settings.timeZone,
+    goalTrack: onboarded.goalTrack,
+    dailyGoal: onboarded.settings.dailyGoal,
+    remindersEnabled: onboarded.settings.remindersEnabled,
+    timeZone: onboarded.settings.timeZone,
   };
 }

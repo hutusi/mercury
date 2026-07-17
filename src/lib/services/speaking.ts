@@ -2,7 +2,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { activeAiModel, AiUnavailableError, getSpeakingFeedback, isAiEnabled } from "../ai/client";
 import type { SpeakingFeedback } from "../ai/schemas";
-import type { SpeakingPartType, Track } from "../../content/types";
+import type { SpeakingPartType } from "../../content/types";
 import { gradingInputHash } from "../ai-grading-core";
 import {
   claimGradingRequest,
@@ -22,10 +22,7 @@ import { recordLearnerOutcomeSafely } from "./profile";
  * grammar scores from the last few AI-graded answers. Guarded — context is an
  * enhancement, never a reason for a submission to fail or degrade.
  */
-async function speakingLearnerContext(
-  userId: string,
-  promptTrack: Track,
-): Promise<string | undefined> {
+async function speakingLearnerContext(userId: string): Promise<string | undefined> {
   try {
     const profile = await getLearnerProfile(userId);
     if (!profile) return undefined;
@@ -48,7 +45,6 @@ async function speakingLearnerContext(
     );
     return formatLearnerContext({
       goalTrack: profile.goalTrack,
-      activeTrack: promptTrack,
       targetScore: profile.targetScore,
       examDate: profile.examDate,
       selfRatedLevel: profile.selfRatedLevel,
@@ -143,7 +139,7 @@ export async function submitSpeakingForUser(
   if (claim.disposition === "completed") {
     return getPersistedSpeakingResult(userId, claim.submissionId);
   }
-  const learnerContext = await speakingLearnerContext(userId, prompt.track);
+  const learnerContext = await speakingLearnerContext(userId);
 
   let feedback: SpeakingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
@@ -234,7 +230,7 @@ export async function retrySpeakingFeedbackForUser(
     where: eq(speakingPrompts.id, submission.promptId),
   });
   if (!prompt) throw new NotFoundError(`Unknown speaking prompt: ${submission.promptId}`);
-  const learnerContext = await speakingLearnerContext(userId, prompt.track);
+  const learnerContext = await speakingLearnerContext(userId);
 
   let feedback: SpeakingFeedback;
   try {

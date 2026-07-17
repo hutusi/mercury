@@ -2,12 +2,14 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
 import { type ExamEstimate } from "@/lib/db/schema";
 import { getDict, getLocale } from "@/lib/i18n";
 import { listExamsWithAttempts } from "@/lib/queries/exams";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
+import { EXAM_TRACK_FILTER_OPTIONS, parseExamTrackFilter } from "@/lib/track-filter";
 
 function formatEstimate(estimate: ExamEstimate | null): string {
   if (!estimate) return "—";
@@ -15,11 +17,16 @@ function formatEstimate(estimate: ExamEstimate | null): string {
   return `IELTS ${estimate.band.toFixed(1)}`;
 }
 
-export default async function ExamsPage() {
-  const { user, track } = await requireTrack();
+export default async function ExamsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ track?: string }>;
+}) {
+  const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
   const locale = await getLocale();
 
+  const { filter, track } = parseExamTrackFilter((await searchParams).track, goalTrack);
   const { exams, attempts } = await listExamsWithAttempts(user.id, track);
   const examTitleById = new Map(exams.map((e) => [e.id, e.titleZh]));
 
@@ -32,7 +39,9 @@ export default async function ExamsPage() {
         gloss={t.exams.subtitle}
       />
 
-      {track === "business" && (
+      <TrackFilterChips basePath="/exams" current={filter} options={EXAM_TRACK_FILTER_OPTIONS} />
+
+      {goalTrack === "business" && (
         <Callout variant="accent" className="p-4 text-sm">
           <span className="font-medium">{t.crosspromo.businessToExamTitle}</span> ·{" "}
           <span className="text-muted-foreground">{t.crosspromo.businessToExamDesc}</span>
@@ -45,7 +54,7 @@ export default async function ExamsPage() {
           <li key={exam.id}>
             <Link
               href={`/exams/${exam.id}`}
-              className="group flex items-center gap-4 py-6 transition-colors outline-none hover:bg-cinnabar/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="group flex items-center gap-4 py-6 outline-hidden transition-colors hover:bg-cinnabar/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <div className="min-w-0 flex-1">
                 <div className="mb-2 flex flex-wrap items-center gap-3">

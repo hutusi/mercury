@@ -2,7 +2,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { activeAiModel, AiUnavailableError, getWritingFeedback, isAiEnabled } from "../ai/client";
 import type { WritingFeedback } from "../ai/schemas";
-import type { Track, WritingTaskType } from "../../content/types";
+import type { WritingTaskType } from "../../content/types";
 import { gradingInputHash } from "../ai-grading-core";
 import {
   claimGradingRequest,
@@ -22,10 +22,7 @@ import { recordLearnerOutcomeSafely } from "./profile";
  * the last few AI-graded essays. Guarded — context is an enhancement, never
  * a reason for a submission to fail or degrade.
  */
-async function writingLearnerContext(
-  userId: string,
-  promptTrack: Track,
-): Promise<string | undefined> {
+async function writingLearnerContext(userId: string): Promise<string | undefined> {
   try {
     const profile = await getLearnerProfile(userId);
     if (!profile) return undefined;
@@ -39,7 +36,6 @@ async function writingLearnerContext(
     );
     return formatLearnerContext({
       goalTrack: profile.goalTrack,
-      activeTrack: promptTrack,
       targetScore: profile.targetScore,
       examDate: profile.examDate,
       selfRatedLevel: profile.selfRatedLevel,
@@ -135,7 +131,7 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
   if (claim.disposition === "completed") {
     return getPersistedWritingResult(userId, claim.submissionId);
   }
-  const learnerContext = await writingLearnerContext(userId, prompt.track);
+  const learnerContext = await writingLearnerContext(userId);
 
   let feedback: WritingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
@@ -229,7 +225,7 @@ export async function retryWritingFeedbackForUser(
     where: eq(writingPrompts.id, submission.promptId),
   });
   if (!prompt) throw new NotFoundError(`Unknown writing prompt: ${submission.promptId}`);
-  const learnerContext = await writingLearnerContext(userId, prompt.track);
+  const learnerContext = await writingLearnerContext(userId);
 
   let feedback: WritingFeedback;
   try {

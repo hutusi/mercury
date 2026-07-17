@@ -5,11 +5,11 @@ import type { Track } from "../content/types";
  * (retention), business-track users toward a mini mock exam (benchmarking,
  * and a taste of the exam-prep surface).
  */
-export function getCrossPromo(track: Track): {
+export function getCrossPromo(goalTrack: Track): {
   direction: "examToBusiness" | "businessToExam";
   href: string;
 } {
-  if (track === "business") {
+  if (goalTrack === "business") {
     return { direction: "businessToExam", href: "/exams" };
   }
   return { direction: "examToBusiness", href: "/reading/biz-r-001" };

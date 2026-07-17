@@ -1,6 +1,6 @@
 import type { Track } from "../../content/types";
 import { auth } from "../auth/auth";
-import { getSettings } from "../settings";
+import { getOnboardedState } from "../settings";
 import { ApiError } from "./errors";
 
 /**
@@ -14,16 +14,16 @@ export async function requireUserApi(req: Request) {
   return session.user;
 }
 
-/** API twin of `requireTrack()`: 403 until the user has picked a track. */
-export async function requireTrackApi(req: Request): Promise<{
+/** API twin of `requireOnboarded()`: 403 until the user has completed onboarding. */
+export async function requireOnboardedApi(req: Request): Promise<{
   user: Awaited<ReturnType<typeof requireUserApi>>;
-  track: Track;
-  dailyGoal: number;
+  goalTrack: Track;
+  timeZone: string;
 }> {
   const user = await requireUserApi(req);
-  const settings = await getSettings(user.id);
-  if (!settings?.activeTrack) {
-    throw new ApiError(403, "onboarding_required", "Pick a learning track first");
+  const onboarded = await getOnboardedState(user.id);
+  if (!onboarded) {
+    throw new ApiError(403, "onboarding_required", "Complete onboarding first");
   }
-  return { user, track: settings.activeTrack, dailyGoal: settings.dailyGoal };
+  return { user, goalTrack: onboarded.goalTrack, timeZone: onboarded.settings.timeZone };
 }

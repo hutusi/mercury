@@ -49,11 +49,11 @@ export interface MistakesPageData {
   counts: { active: number; cleared: number };
 }
 
-async function listStatuses(userId: string, track: Track): Promise<MistakeStatus[]> {
+async function listStatuses(userId: string, track: Track | null): Promise<MistakeStatus[]> {
   const rows = await db.query.mistakeStates.findMany({
     where: and(
       eq(mistakeStates.userId, userId),
-      eq(mistakeStates.track, track),
+      track ? eq(mistakeStates.track, track) : undefined,
       gt(mistakeStates.wrongCount, 0),
     ),
     orderBy: desc(mistakeStates.lastWrongAt),
@@ -73,22 +73,30 @@ async function listStatuses(userId: string, track: Track): Promise<MistakeStatus
 
 // cache(): the dashboard and the daily plan both count active mistakes in the
 // same render — dedupe it to one query per request.
-export const countActiveMistakes = cache(async (userId: string, track: Track): Promise<number> => {
-  const [row] = await db
-    .select({ value: count() })
-    .from(mistakeStates)
-    .where(
-      and(
-        eq(mistakeStates.userId, userId),
-        eq(mistakeStates.track, track),
-        gt(mistakeStates.wrongCount, 0),
-        or(isNull(mistakeStates.clearedAt), gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt)),
-      ),
-    );
-  return row?.value ?? 0;
-});
+export const countActiveMistakes = cache(
+  async (userId: string, track: Track | null): Promise<number> => {
+    const [row] = await db
+      .select({ value: count() })
+      .from(mistakeStates)
+      .where(
+        and(
+          eq(mistakeStates.userId, userId),
+          track ? eq(mistakeStates.track, track) : undefined,
+          gt(mistakeStates.wrongCount, 0),
+          or(
+            isNull(mistakeStates.clearedAt),
+            gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt),
+          ),
+        ),
+      );
+    return row?.value ?? 0;
+  },
+);
 
-export async function getMistakesPageData(userId: string, track: Track): Promise<MistakesPageData> {
+export async function getMistakesPageData(
+  userId: string,
+  track: Track | null,
+): Promise<MistakesPageData> {
   const statuses = await listStatuses(userId, track);
 
   const wordIds = statuses.filter((s) => s.kind === "vocab_quiz").map((s) => s.questionId);

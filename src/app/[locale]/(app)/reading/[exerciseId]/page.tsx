@@ -5,14 +5,14 @@ import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { ReadingRunner } from "@/components/reading/ReadingRunner";
 import { getDict } from "@/lib/i18n";
 import { getReadingExerciseSanitized } from "@/lib/queries/reading";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
 
 export default async function ReadingExercisePage({
   params,
 }: {
   params: Promise<{ exerciseId: string }>;
 }) {
-  const { track } = await requireTrack();
+  const { goalTrack } = await requireOnboarded();
   const { exerciseId } = await params;
   const t = await getDict();
 
@@ -40,7 +40,7 @@ export default async function ReadingExercisePage({
         exerciseId={exercise.id}
         passage={exercise.passage}
         questions={exercise.questions}
-        crossPromo={<CrossPromoCard track={track} />}
+        crossPromo={<CrossPromoCard track={goalTrack} />}
       />
     </div>
   );

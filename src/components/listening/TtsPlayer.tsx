@@ -62,7 +62,7 @@ export function TtsPlayer({ script, maxPlays }: { script: ScriptLine[]; maxPlays
         <button
           onClick={playing ? stop : play}
           disabled={exhausted}
-          className={`flex h-12 w-12 shrink-0 items-center justify-center transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+          className={`flex h-12 w-12 shrink-0 items-center justify-center outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
             playing
               ? "bg-cinnabar text-cinnabar-foreground hover:bg-cinnabar/90"
               : exhausted

@@ -41,10 +41,10 @@ export interface PlanInput {
   profile: {
     dailyMinutes: number;
     examDate: string | null;
-    goalTrack: Track | null;
     skillEstimates: SkillEstimates;
   } | null;
-  activeTrack: Track;
+  /** The learner's goal track — the plan is always aimed at the goal. */
+  track: Track;
   dueCount: number;
   freshCount: number;
   activeMistakes: number;
@@ -181,13 +181,12 @@ export function buildDailyPlan(input: PlanInput): PlanItem[] {
   }
 
   // 4. Exam checkpoint: appended outside the minutes budget (a 20-minute plan
-  //    should still surface it) when the goal matches the active track and the
-  //    spacing rule says it's time.
+  //    should still surface it) when the goal is an exam track and the spacing
+  //    rule says it's time.
   const profile = input.profile;
   if (
     profile?.examDate &&
-    profile.goalTrack === input.activeTrack &&
-    input.activeTrack !== "business" &&
+    input.track !== "business" &&
     input.available.examId &&
     items.length < MAX_ITEMS
   ) {

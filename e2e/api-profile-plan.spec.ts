@@ -82,6 +82,56 @@ test.describe("API learner profile + daily plan", () => {
     expect(plan.items[0]).toHaveProperty("reasonKey");
   });
 
+  test("goal track drives list defaults; ?track= overrides; goal is non-clearable", async ({
+    request,
+  }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+
+    // Absent param = goal-track default.
+    const byGoal = await (
+      await request.get("/api/v1/reading", { headers: user.authHeaders })
+    ).json();
+    expect(byGoal.exercises.some((e: { id: string }) => e.id.startsWith("toeic-"))).toBe(true);
+    expect(byGoal.exercises.some((e: { id: string }) => e.id.startsWith("biz-"))).toBe(false);
+
+    // "all" lifts the filter; an invalid value is a 422 envelope.
+    const all = await (
+      await request.get("/api/v1/reading?track=all", { headers: user.authHeaders })
+    ).json();
+    expect(all.exercises.some((e: { id: string }) => e.id.startsWith("biz-"))).toBe(true);
+    const invalid = await request.get("/api/v1/reading?track=gre", { headers: user.authHeaders });
+    expect(invalid.status()).toBe(422);
+    expect((await invalid.json()).error.code).toBe("validation_failed");
+
+    // goalTrack changes but never clears.
+    const clear = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { goalTrack: null },
+    });
+    expect(clear.status()).toBe(422);
+    const move = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { goalTrack: "business" },
+    });
+    expect(move.status()).toBe(200);
+
+    // The new goal becomes the default; a business goal sees both exam tracks
+    // and the dashboard reports goalTrack.
+    const bizList = await (
+      await request.get("/api/v1/reading", { headers: user.authHeaders })
+    ).json();
+    expect(bizList.exercises.some((e: { id: string }) => e.id.startsWith("biz-"))).toBe(true);
+    expect(bizList.exercises.some((e: { id: string }) => e.id.startsWith("toeic-"))).toBe(false);
+    const exams = await (await request.get("/api/v1/exams", { headers: user.authHeaders })).json();
+    const examTracks = new Set(exams.exams.map((e: { track: string }) => e.track));
+    expect(examTracks.has("toeic")).toBe(true);
+    expect(examTracks.has("ielts")).toBe(true);
+    const dash = await (
+      await request.get("/api/v1/dashboard", { headers: user.authHeaders })
+    ).json();
+    expect(dash.goalTrack).toBe("business");
+  });
+
   test("validation: IELTS band×10 range enforced, bad dates rejected", async ({ request }) => {
     const user = await apiSignUpAndOnboard(request, "ielts");
     const bad = await request.patch("/api/v1/me/profile", {
@@ -97,5 +147,21 @@ test.describe("API learner profile + daily plan", () => {
     expect(ok.status()).toBe(200);
     const { profile } = await ok.json();
     expect(profile.targetScore).toBe(65); // band 6.5, stored ×10
+
+    // Same-track patches keep goal fields; a track change resets them unless
+    // resupplied — an IELTS 65 must never linger under a TOEIC goal.
+    const sameTrack = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { goalTrack: "ielts", dailyMinutes: 15 },
+    });
+    expect((await sameTrack.json()).profile.targetScore).toBe(65);
+    const moved = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { goalTrack: "toeic" },
+    });
+    const { profile: reset } = await moved.json();
+    expect(reset.goalTrack).toBe("toeic");
+    expect(reset.targetScore).toBeNull();
+    expect(reset.examDate).toBeNull();
   });
 });

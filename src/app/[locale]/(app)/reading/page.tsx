@@ -2,15 +2,22 @@ import { Check } from "lucide-react";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
+import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { Badge } from "@/components/ui/badge";
 import { getDict } from "@/lib/i18n";
 import { listReadingExercises } from "@/lib/queries/reading";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
+import { parseTrackFilter, TRACK_FILTER_OPTIONS } from "@/lib/track-filter";
 
-export default async function ReadingListPage() {
-  const { user, track } = await requireTrack();
+export default async function ReadingListPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ track?: string }>;
+}) {
+  const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
 
+  const { filter, track } = parseTrackFilter((await searchParams).track, goalTrack);
   const { exercises, bestByExercise } = await listReadingExercises(user.id, track);
 
   return (
@@ -22,6 +29,8 @@ export default async function ReadingListPage() {
         gloss={t.reading.subtitle}
       />
 
+      <TrackFilterChips basePath="/reading" current={filter} options={TRACK_FILTER_OPTIONS} />
+
       <EntryList>
         {exercises.map((ex) => {
           const best = bestByExercise.get(ex.id);
@@ -29,7 +38,12 @@ export default async function ReadingListPage() {
             <EntryRow
               key={ex.id}
               href={`/reading/${ex.id}`}
-              meta={<Badge variant="outline">{ex.genre}</Badge>}
+              meta={
+                <>
+                  {filter === "all" && <Badge variant="outline">{t.tracks[ex.track]}</Badge>}
+                  <Badge variant="outline">{ex.genre}</Badge>
+                </>
+              }
               title={ex.title}
               subtitle={ex.titleZh}
               right={

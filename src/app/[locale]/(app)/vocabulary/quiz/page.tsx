@@ -3,13 +3,21 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { QuizRunner } from "@/components/vocab/QuizRunner";
 import { getDict } from "@/lib/i18n";
 import { createQuizSessionForUser } from "@/lib/services/vocab-quiz";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
+import { parseTrackFilter } from "@/lib/track-filter";
 
-export default async function QuizPage() {
-  const { user, track } = await requireTrack();
+export default async function QuizPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ track?: string }>;
+}) {
+  const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
 
-  const session = await createQuizSessionForUser(user.id, track);
+  // Quiz sessions are single-track (mistake identity bakes the track in), so
+  // "all" resolves to the goal default rather than a cross-track pool.
+  const { track } = parseTrackFilter((await searchParams).track, goalTrack);
+  const session = await createQuizSessionForUser(user.id, track ?? goalTrack);
 
   if (!session.sessionId || session.questions.length === 0) {
     return (

@@ -39,13 +39,25 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
 - **Locale**: responses are bilingual _data_ (`title` + `titleZh`, explanations in zh) — there is
   no `Accept-Language` handling; the client owns its UI strings.
 - **Dates** are ISO 8601 strings; **exam deadlines** are epoch-ms (see below).
-- **Onboarding**: track-scoped endpoints return `403 onboarding_required` until
+- **Onboarding**: onboarding-gated endpoints return `403 onboarding_required` until
   `PUT /api/v1/me/settings` atomically creates settings plus the learner profile. Send
-  `{track, timeZone, goal?}`; `timeZone` is an IANA identifier and defaults to `Asia/Shanghai`
-  when omitted.
+  `{track, timeZone, goal?}` — `track` becomes the profile's `goalTrack`; `timeZone` is an IANA
+  identifier and defaults to `Asia/Shanghai` when omitted. The gate is completed onboarding —
+  `settings.onboardedAt` (written only by the PUT) plus a profile `goalTrack`; piecemeal
+  PATCHes cannot synthesize it. `goalTrack` can later change (via `PATCH /me/profile`) but
+  never clear — sending `goalTrack: null` is a 422 — and changing it resets `targetScore`
+  and `examDate` unless the same patch supplies them (score scales are track-specific).
+- **Track filtering**: the track is a content attribute, not an app mode. List endpoints
+  (reading, listening, writing, speaking, mistakes, vocab overview/study-queue, exams) accept
+  `?track=` — absent defaults to the goal track, `all` lifts the filter (exams use
+  `toeic|ielts|all`, defaulting to `all` for a business goal), anything else is a 422.
+  `POST /vocab/quiz` accepts a concrete track only (sessions are single-track by design).
+  List rows include their `track` so mixed `all` responses stay unambiguous.
 - **Settings**: `PATCH /api/v1/me/settings` partially updates `remindersEnabled` and/or
-  `timeZone`; `track` stays PUT-only because it doubles as onboarding. Both verbs and
-  `GET /api/v1/me` return the same `Settings` shape.
+  `timeZone`. Both verbs and `GET /api/v1/me` return the same `Settings` shape (`timeZone`,
+  `dailyGoal`, `remindersEnabled`, `onboardedAt` — the former `activeTrack` field is gone;
+  read `goalTrack` from `GET /me/profile`, and `GET /dashboard` returns `goalTrack` instead
+  of `track`).
 - No pagination — list sizes mirror the web's fixed limits (history 20, recents 5,
   past submissions 10, chat thread 50).
 

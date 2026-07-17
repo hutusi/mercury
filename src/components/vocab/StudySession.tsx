@@ -114,7 +114,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
         onClick={() => setFlipped((f) => !f)}
         aria-expanded={flipped}
         aria-controls="study-card-answer"
-        className="block min-h-72 w-full cursor-pointer border border-border bg-background p-8 text-center transition-colors outline-none hover:border-input focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="block min-h-72 w-full cursor-pointer border border-border bg-background p-8 text-center outline-hidden transition-colors hover:border-input focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         {card.isNew && (
           <Badge variant="accent" className="mb-3">
@@ -150,7 +150,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
               type="button"
               onClick={() => grade(b.grade)}
               disabled={pending}
-              className={`px-3 py-3 text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 ${b.cls}`}
+              className={`px-3 py-3 text-sm font-medium outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 ${b.cls}`}
             >
               {b.label}
             </button>

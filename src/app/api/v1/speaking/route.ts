@@ -1,14 +1,17 @@
-import { requireTrackApi } from "@/lib/api/auth";
+import { requireOnboardedApi } from "@/lib/api/auth";
 import { apiHandler } from "@/lib/api/handler";
+import { apiTrackFilter } from "@/lib/track-filter";
 import { listSpeakingPrompts } from "@/lib/queries/speaking";
 
 export const GET = apiHandler(async (req) => {
-  const { user, track } = await requireTrackApi(req);
+  const { user, goalTrack } = await requireOnboardedApi(req);
+  const track = apiTrackFilter(req, goalTrack);
   const { prompts, submissionCountByPrompt } = await listSpeakingPrompts(user.id, track);
 
   return Response.json({
     prompts: prompts.map((p) => ({
       id: p.id,
+      track: p.track,
       partType: p.partType,
       title: p.title,
       titleZh: p.titleZh,

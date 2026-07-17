@@ -183,7 +183,6 @@ export function mergeCoachMemo(memo: CoachMemo, update: MemoUpdate, now: Date): 
 
 export interface LearnerContextInput {
   goalTrack: Track | null;
-  activeTrack: Track;
   targetScore: number | null;
   examDate: string | null;
   selfRatedLevel: SelfRatedLevel | null;
@@ -217,9 +216,8 @@ export function daysUntil(day: string, today: Date): number {
 export function formatLearnerContext(input: LearnerContextInput): string {
   const lines: string[] = [];
 
-  const goalApplies = input.goalTrack !== null && input.goalTrack === input.activeTrack;
-  if (goalApplies && input.targetScore !== null) {
-    const target = formatTarget(input.goalTrack as Track, input.targetScore);
+  if (input.goalTrack !== null && input.targetScore !== null) {
+    const target = formatTarget(input.goalTrack, input.targetScore);
     if (target) {
       const days = input.examDate ? daysUntil(input.examDate, input.today) : null;
       lines.push(

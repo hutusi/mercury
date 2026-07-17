@@ -10,10 +10,9 @@ function baseInput(overrides: Partial<PlanInput> = {}): PlanInput {
     profile: {
       dailyMinutes: 20,
       examDate: null,
-      goalTrack: "toeic",
       skillEstimates: defaultSkillEstimates("intermediate", NOW),
     },
-    activeTrack: "toeic",
+    track: "toeic",
     dueCount: 0,
     freshCount: 50,
     activeMistakes: 0,
@@ -132,10 +131,10 @@ describe("buildDailyPlan", () => {
     expect(far.some((i) => i.kind === "mock_exam")).toBe(false);
   });
 
-  test("no exam checkpoint when the goal track differs or track is business", () => {
+  test("no exam checkpoint on the business track", () => {
     const input = baseInput({
-      profile: { ...baseInput().profile!, examDate: "2026-08-01", goalTrack: "toeic" },
-      activeTrack: "business",
+      profile: { ...baseInput().profile!, examDate: "2026-08-01" },
+      track: "business",
       available: { ...baseInput().available, examId: null },
     });
     expect(buildDailyPlan(input).some((i) => i.kind === "mock_exam")).toBe(false);

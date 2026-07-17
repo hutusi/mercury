@@ -192,7 +192,6 @@ describe("formatTarget", () => {
 describe("formatLearnerContext", () => {
   const base: LearnerContextInput = {
     goalTrack: "toeic",
-    activeTrack: "toeic",
     targetScore: 800,
     examDate: "2026-08-11",
     selfRatedLevel: "intermediate",
@@ -210,8 +209,8 @@ describe("formatLearnerContext", () => {
     expect(text).not.toContain("Recurring issues");
   });
 
-  test("omits the target when the goal is for a different track", () => {
-    const text = formatLearnerContext({ ...base, activeTrack: "business" });
+  test("omits the target for a business goal", () => {
+    const text = formatLearnerContext({ ...base, goalTrack: "business" });
     expect(text).not.toContain("Target:");
   });
 

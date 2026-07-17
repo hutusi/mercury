@@ -1,9 +1,11 @@
-import { requireTrackApi } from "@/lib/api/auth";
+import { requireOnboardedApi } from "@/lib/api/auth";
 import { apiHandler } from "@/lib/api/handler";
+import { apiExamTrackFilter } from "@/lib/track-filter";
 import { listExamsWithAttempts } from "@/lib/queries/exams";
 
 export const GET = apiHandler(async (req) => {
-  const { user, track } = await requireTrackApi(req);
+  const { user, goalTrack } = await requireOnboardedApi(req);
+  const track = apiExamTrackFilter(req, goalTrack);
   const { exams, attempts } = await listExamsWithAttempts(user.id, track);
 
   return Response.json({

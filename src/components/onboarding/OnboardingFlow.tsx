@@ -5,44 +5,13 @@ import { Briefcase, Check, GraduationCap, Target, type LucideIcon } from "lucide
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
 import { Input } from "@/components/ui/input";
 import type { Track } from "@/content/types";
 import { completeOnboarding } from "@/lib/actions/settings";
+import { MINUTE_OPTIONS, TARGET_OPTIONS } from "@/lib/goal-options";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { SELF_RATED_LEVELS, type SelfRatedLevel } from "@/lib/learner-model-core";
-
-/** IELTS values are band×10 (65 = 6.5) — the learner_profiles encoding. */
-const TARGET_OPTIONS: Record<"toeic" | "ielts", { value: number; label: string }[]> = {
-  toeic: [600, 700, 800, 900].map((value) => ({ value, label: String(value) })),
-  ielts: [55, 60, 65, 70, 75].map((value) => ({ value, label: (value / 10).toFixed(1) })),
-};
-
-const MINUTE_OPTIONS = [10, 15, 20, 30, 45, 60];
-
-function Chip({
-  active,
-  onClick,
-  children,
-  className = "",
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={`border px-4 py-2 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-        active ? "border-foreground" : "border-border hover:border-input"
-      } ${className}`}
-    >
-      {children}
-    </button>
-  );
-}
 
 /**
  * Two local steps (track → goal + self-rating), one server action at the end
@@ -136,7 +105,7 @@ export function OnboardingFlow() {
                   setExamDate("");
                 }}
                 aria-pressed={active}
-                className={`border p-6 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                className={`border p-6 text-left outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                   active ? "border-foreground" : "border-border hover:border-input"
                 }`}
               >

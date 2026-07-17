@@ -1,6 +1,5 @@
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
-import type { Track } from "../../content/types";
 import { activeAiModel, AiUnavailableError, getTutorReply, isAiEnabled } from "../ai/client";
 import { buildChatWindow, chatClaimIsFresh, chatDailyLimit } from "../chat-core";
 import { db } from "../db";
@@ -20,13 +19,12 @@ export interface ChatReply {
 }
 
 /** Guarded: profile context enriches the tutor but must never block a chat. */
-async function tutorLearnerContext(userId: string, track: Track): Promise<string | null> {
+async function tutorLearnerContext(userId: string): Promise<string | null> {
   try {
     const profile = await getLearnerProfile(userId);
     if (!profile) return null;
     return formatLearnerContext({
       goalTrack: profile.goalTrack,
-      activeTrack: track,
       targetScore: profile.targetScore,
       examDate: profile.examDate,
       selfRatedLevel: profile.selfRatedLevel,
@@ -97,11 +95,7 @@ async function clearChatClaim(userId: string, claimId: string): Promise<void> {
  * BOTH messages and consume quota atomically. Failed replies clear the claim,
  * store nothing, and consume no quota.
  */
-export async function sendChatMessageForUser(
-  userId: string,
-  track: Track,
-  input: unknown,
-): Promise<ChatReply> {
+export async function sendChatMessageForUser(userId: string, input: unknown): Promise<ChatReply> {
   const { content } = SendChatMessageSchema.parse(input);
   if (!isAiEnabled()) {
     throw new AiUnavailableError("No AI provider is configured");
@@ -119,7 +113,7 @@ export async function sendChatMessageForUser(
     });
     const window = buildChatWindow(recent.reverse(), content);
 
-    const learnerContext = await tutorLearnerContext(userId, track);
+    const learnerContext = await tutorLearnerContext(userId);
     const reply = await getTutorReply({ learnerContext, messages: window });
 
     const now = new Date();

@@ -125,7 +125,7 @@ export function QuizRunner({
               onClick={() => pick(option.id)}
               disabled={!!picked || pending}
               aria-pressed={isPicked}
-              className={`flex w-full items-center gap-2 border px-4 py-3 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${cls}`}
+              className={`flex w-full items-center gap-2 border px-4 py-3 text-left outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${cls}`}
             >
               {picked && isCorrect && <Check className="size-4 shrink-0" aria-hidden />}
               {picked && isPicked && !isCorrect && <X className="size-4 shrink-0" aria-hidden />}

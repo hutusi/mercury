@@ -21,7 +21,8 @@ import {
  */
 
 export const UpsertLearnerProfileSchema = z.object({
-  goalTrack: TrackSchema.nullish(),
+  // Changeable but never clearable — goalTrack presence is the onboarding invariant.
+  goalTrack: TrackSchema.optional(),
   // TOEIC 10–990; IELTS as band×10 (55–90). One range covers both.
   targetScore: z.number().int().min(10).max(990).nullish(),
   examDate: z
@@ -91,6 +92,14 @@ export async function upsertLearnerProfileWith(
     isUnratedSkillSeed(existing.skillEstimates)
   ) {
     set.skillEstimates = defaultSkillEstimates(patch.selfRatedLevel, nowDate);
+  }
+
+  // Goal-specific fields don't survive a track change unless resupplied in the
+  // same patch — a retained TOEIC 800 against an IELTS goal would render as
+  // "IELTS 80.0" in every AI prompt.
+  if (patch.goalTrack !== undefined && patch.goalTrack !== existing.goalTrack) {
+    set.targetScore = patch.targetScore ?? null;
+    set.examDate = patch.examDate ?? null;
   }
 
   const [profile] = await executor

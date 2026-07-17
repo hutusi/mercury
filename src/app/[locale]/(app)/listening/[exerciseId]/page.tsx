@@ -5,14 +5,14 @@ import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { ListeningRunner } from "@/components/listening/ListeningRunner";
 import { getDict } from "@/lib/i18n";
 import { getListeningExerciseSanitized } from "@/lib/queries/listening";
-import { requireTrack } from "@/lib/settings";
+import { requireOnboarded } from "@/lib/settings";
 
 export default async function ListeningExercisePage({
   params,
 }: {
   params: Promise<{ exerciseId: string }>;
 }) {
-  const { track } = await requireTrack();
+  const { goalTrack } = await requireOnboarded();
   const { exerciseId } = await params;
   const t = await getDict();
 
@@ -39,7 +39,7 @@ export default async function ListeningExercisePage({
         exerciseId={exercise.id}
         script={exercise.script}
         questions={exercise.questions}
-        crossPromo={<CrossPromoCard track={track} />}
+        crossPromo={<CrossPromoCard track={goalTrack} />}
       />
     </div>
   );
