@@ -79,7 +79,6 @@ export const userSettings = pgTable(
     userId: text("user_id")
       .primaryKey()
       .references(() => user.id, { onDelete: "cascade" }),
-    activeTrack: text("active_track").$type<Track>(),
     /** IANA timezone used for learner-day quotas, plans, reminders, and streaks. */
     timeZone: text("time_zone").notNull().default("Asia/Shanghai"),
     dailyGoal: integer("daily_goal").notNull().default(20),
@@ -91,10 +90,6 @@ export const userSettings = pgTable(
     updatedAt: ts("updated_at").notNull().$defaultFn(now),
   },
   (t) => [
-    check(
-      "user_settings_active_track_check",
-      sql`${t.activeTrack} is null or ${t.activeTrack} in ('toeic', 'ielts', 'business')`,
-    ),
     check("user_settings_daily_goal_check", sql`${t.dailyGoal} >= 1`),
     check("user_settings_time_zone_check", sql`length(${t.timeZone}) between 1 and 100`),
   ],
@@ -116,7 +111,11 @@ export const learnerProfiles = pgTable(
     userId: text("user_id")
       .primaryKey()
       .references(() => user.id, { onDelete: "cascade" }),
-    /** Track the goal fields describe; may lag activeTrack after a switch. */
+    /**
+     * The learner's goal track — the only track state. Null only before
+     * onboarding; once set it can change but never clear (the guards key
+     * onboarding on its presence).
+     */
     goalTrack: text("goal_track").$type<Track>(),
     /** TOEIC 10–990; IELTS stored as band×10 (65 = band 6.5). */
     targetScore: integer("target_score"),

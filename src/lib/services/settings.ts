@@ -36,11 +36,10 @@ export async function completeOnboardingForUser(userId: string, input: unknown) 
   return db.transaction(async (tx) => {
     const [settings] = await tx
       .insert(userSettings)
-      .values({ userId, activeTrack: track, timeZone, onboardedAt: now, updatedAt: now })
+      .values({ userId, timeZone, onboardedAt: now, updatedAt: now })
       .onConflictDoUpdate({
         target: userSettings.userId,
         set: {
-          activeTrack: track,
           timeZone,
           onboardedAt: sql`coalesce(${userSettings.onboardedAt}, ${now})`,
           updatedAt: now,
