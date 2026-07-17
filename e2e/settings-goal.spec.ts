@@ -15,6 +15,12 @@ test("goal edit on /settings redirects feature defaults to the new track", async
   await page.getByRole("button", { name: t.settings.save, exact: true }).click();
   await expect(page.getByText(t.settings.saved)).toBeVisible();
 
+  // Any further edit invalidates the saved indicator.
+  await page.getByRole("button", { name: `45 ${t.onboarding.minutesUnit}` }).click();
+  await expect(page.getByText(t.settings.saved)).toHaveCount(0);
+  await page.getByRole("button", { name: t.settings.save, exact: true }).click();
+  await expect(page.getByText(t.settings.saved)).toBeVisible();
+
   // Exams now default to the new goal track.
   await page.goto("/exams");
   await expect(page.locator('a[href="/zh/exams/exam-ielts-mini"]')).toBeVisible();

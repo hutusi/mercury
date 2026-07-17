@@ -94,6 +94,14 @@ export async function upsertLearnerProfileWith(
     set.skillEstimates = defaultSkillEstimates(patch.selfRatedLevel, nowDate);
   }
 
+  // Goal-specific fields don't survive a track change unless resupplied in the
+  // same patch — a retained TOEIC 800 against an IELTS goal would render as
+  // "IELTS 80.0" in every AI prompt.
+  if (patch.goalTrack !== undefined && patch.goalTrack !== existing.goalTrack) {
+    set.targetScore = patch.targetScore ?? null;
+    set.examDate = patch.examDate ?? null;
+  }
+
   const [profile] = await executor
     .update(learnerProfiles)
     .set(set)

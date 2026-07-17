@@ -12,6 +12,7 @@ export const GET = apiHandler(async (req) => {
     // List rows never include questions — the raw rows carry answer keys.
     exercises: exercises.map((ex) => ({
       id: ex.id,
+      track: ex.track,
       title: ex.title,
       titleZh: ex.titleZh,
       genre: ex.genre,

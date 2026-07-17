@@ -14,8 +14,11 @@ export async function DueWordsCard({ dueCount }: { dueCount: number }) {
         unit={t.dashboard.dueWordsUnit}
         accent={dueCount > 0}
       />
+      {/* Review: track=all so the queue matches the all-tracks count above.
+          Learn-new: goal-track default — the unfiltered fresh-word top-up
+          would start at whichever track the seed order puts first. */}
       <Button asChild variant={dueCount > 0 ? "default" : "outline"} className="mt-3 w-full">
-        <Link href="/vocabulary/study?track=all">
+        <Link href={dueCount > 0 ? "/vocabulary/study?track=all" : "/vocabulary/study"}>
           {dueCount > 0 ? t.dashboard.reviewNow : t.dashboard.learnNew}
         </Link>
       </Button>

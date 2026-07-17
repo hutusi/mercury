@@ -38,7 +38,12 @@ export default async function ReadingListPage({
             <EntryRow
               key={ex.id}
               href={`/reading/${ex.id}`}
-              meta={<Badge variant="outline">{ex.genre}</Badge>}
+              meta={
+                <>
+                  {filter === "all" && <Badge variant="outline">{t.tracks[ex.track]}</Badge>}
+                  <Badge variant="outline">{ex.genre}</Badge>
+                </>
+              }
               title={ex.title}
               subtitle={ex.titleZh}
               right={

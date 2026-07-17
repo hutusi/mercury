@@ -11,6 +11,7 @@ export const GET = apiHandler(async (req) => {
   return Response.json({
     prompts: prompts.map((p) => ({
       id: p.id,
+      track: p.track,
       taskType: p.taskType,
       title: p.title,
       titleZh: p.titleZh,

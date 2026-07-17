@@ -3,7 +3,7 @@
 import { ZodError } from "zod";
 import { AiUnavailableError } from "../ai/client";
 import { requireUser } from "../auth/session";
-import { getLearnerProfile } from "../queries/profile";
+import { getOnboardedState } from "../settings";
 import { ConflictError, IntegrityError, LimitExceededError } from "../services/errors";
 import { sendChatMessageForUser, type ChatReply } from "../services/chat";
 
@@ -21,8 +21,7 @@ export type SendTutorMessageResult =
  */
 export async function sendTutorMessage(input: unknown): Promise<SendTutorMessageResult> {
   const user = await requireUser();
-  const profile = await getLearnerProfile(user.id);
-  if (!profile?.goalTrack) throw new IntegrityError("Onboarding required");
+  if (!(await getOnboardedState(user.id))) throw new IntegrityError("Onboarding required");
 
   try {
     const reply = await sendChatMessageForUser(user.id, input);

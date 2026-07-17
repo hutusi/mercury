@@ -14,10 +14,19 @@ export const getSettings = cache(async (userId: string) => {
 });
 
 /**
- * Guard for pages/actions that need an onboarded user. The goal track on the
- * learner profile is the onboarding invariant — it is set atomically with the
- * settings row and can be changed but never cleared.
+ * The one onboarding predicate, shared by the (app) layout and both guards:
+ * onboarding completed (settings.onboardedAt, written only by the atomic
+ * onboarding flow) AND a goal track on the learner profile. Requiring both
+ * keeps piecemeal PATCHes (profile goalTrack + a settings upsert) from
+ * synthesizing an onboarded account.
  */
+export const getOnboardedState = cache(async (userId: string) => {
+  const [settings, profile] = await Promise.all([getSettings(userId), getLearnerProfile(userId)]);
+  if (!settings?.onboardedAt || !profile?.goalTrack) return null;
+  return { settings, goalTrack: profile.goalTrack };
+});
+
+/** Guard for pages/actions that need an onboarded user; redirects otherwise. */
 export async function requireOnboarded(): Promise<{
   user: Awaited<ReturnType<typeof requireUser>>;
   goalTrack: Track;
@@ -26,13 +35,13 @@ export async function requireOnboarded(): Promise<{
   timeZone: string;
 }> {
   const user = await requireUser();
-  const [settings, profile] = await Promise.all([getSettings(user.id), getLearnerProfile(user.id)]);
-  if (!settings || !profile?.goalTrack) return localeRedirect("/onboarding");
+  const onboarded = await getOnboardedState(user.id);
+  if (!onboarded) return localeRedirect("/onboarding");
   return {
     user,
-    goalTrack: profile.goalTrack,
-    dailyGoal: settings.dailyGoal,
-    remindersEnabled: settings.remindersEnabled,
-    timeZone: settings.timeZone,
+    goalTrack: onboarded.goalTrack,
+    dailyGoal: onboarded.settings.dailyGoal,
+    remindersEnabled: onboarded.settings.remindersEnabled,
+    timeZone: onboarded.settings.timeZone,
   };
 }

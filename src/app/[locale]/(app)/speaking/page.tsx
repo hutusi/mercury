@@ -42,7 +42,12 @@ export default async function SpeakingListPage({
             <EntryRow
               key={p.id}
               href={`/speaking/${p.id}`}
-              meta={<Badge variant="outline">{p.partType.replace(/_/g, " ")}</Badge>}
+              meta={
+                <>
+                  {filter === "all" && <Badge variant="outline">{t.tracks[p.track]}</Badge>}
+                  <Badge variant="outline">{p.partType.replace(/_/g, " ")}</Badge>
+                </>
+              }
               title={p.title}
               subtitle={p.titleZh}
               right={

@@ -189,8 +189,9 @@ paths:
       summary: Partially update learning goals
       description: >
         Absent fields stay untouched; null clears — except goalTrack, which
-        can change but never clear (its presence is the onboarding
-        invariant). skillEstimates and coachMemo are server-owned and
+        can change but never clear. Changing goalTrack resets targetScore and
+        examDate unless the same patch supplies them (score scales are
+        track-specific). skillEstimates and coachMemo are server-owned and
         ignored if sent.
       tags: [account]
       requestBody:
@@ -1031,7 +1032,7 @@ components:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
     OnboardingRequired:
-      description: The user has not completed onboarding — no goal track on the learner profile (code onboarding_required).
+      description: The user has not completed onboarding — no settings.onboardedAt plus profile goal track (code onboarding_required).
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
@@ -1209,6 +1210,7 @@ components:
       type: object
       properties:
         id: { type: string }
+        track: { $ref: "#/components/schemas/Track" }
         title: { type: string }
         titleZh: { type: string }
         questionCount: { type: integer }

@@ -147,5 +147,21 @@ test.describe("API learner profile + daily plan", () => {
     expect(ok.status()).toBe(200);
     const { profile } = await ok.json();
     expect(profile.targetScore).toBe(65); // band 6.5, stored ×10
+
+    // Same-track patches keep goal fields; a track change resets them unless
+    // resupplied — an IELTS 65 must never linger under a TOEIC goal.
+    const sameTrack = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { goalTrack: "ielts", dailyMinutes: 15 },
+    });
+    expect((await sameTrack.json()).profile.targetScore).toBe(65);
+    const moved = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { goalTrack: "toeic" },
+    });
+    const { profile: reset } = await moved.json();
+    expect(reset.goalTrack).toBe("toeic");
+    expect(reset.targetScore).toBeNull();
+    expect(reset.examDate).toBeNull();
   });
 });

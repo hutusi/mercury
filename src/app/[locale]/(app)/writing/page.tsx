@@ -42,7 +42,12 @@ export default async function WritingListPage({
             <EntryRow
               key={p.id}
               href={`/writing/${p.id}`}
-              meta={<Badge variant="outline">{p.taskType.replace(/_/g, " ")}</Badge>}
+              meta={
+                <>
+                  {filter === "all" && <Badge variant="outline">{t.tracks[p.track]}</Badge>}
+                  <Badge variant="outline">{p.taskType.replace(/_/g, " ")}</Badge>
+                </>
+              }
               title={p.title}
               subtitle={p.titleZh}
               right={

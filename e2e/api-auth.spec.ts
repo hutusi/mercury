@@ -106,6 +106,19 @@ test.describe("API auth (bearer)", () => {
     const body = await before.json();
     expect(body.error.code).toBe("onboarding_required");
 
+    // Piecemeal PATCHes (a profile goal + a settings upsert) must not
+    // synthesize an onboarded account — only the atomic PUT sets onboardedAt.
+    await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { goalTrack: "toeic" },
+    });
+    await request.patch("/api/v1/me/settings", {
+      headers: user.authHeaders,
+      data: { remindersEnabled: true },
+    });
+    const synthesized = await request.get("/api/v1/dashboard", { headers: user.authHeaders });
+    expect(synthesized.status()).toBe(403);
+
     await apiOnboard(request, user, "toeic");
 
     const after = await request.get("/api/v1/dashboard", { headers: user.authHeaders });

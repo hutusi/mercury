@@ -11,6 +11,7 @@ export const GET = apiHandler(async (req) => {
   return Response.json({
     exercises: exercises.map((ex) => ({
       id: ex.id,
+      track: ex.track,
       title: ex.title,
       titleZh: ex.titleZh,
       style: ex.style,

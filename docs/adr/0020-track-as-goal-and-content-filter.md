@@ -28,9 +28,14 @@ contexts. An exam is a goal, not a workspace.
 - **`learner_profiles.goalTrack` is the only track state.**
   `user_settings.active_track` is dropped (migration 0016 backfills lagging or
   missing profiles first). The goal is set at onboarding and editable on
-  `/settings`; it can change but never clear — **its presence is the
-  onboarding invariant** that `requireOnboarded()` / `requireOnboardedApi()`
-  and the `(app)` layout gate on (403 `onboarding_required` in the API).
+  `/settings`; it can change but never clear. **The onboarding invariant is
+  `settings.onboardedAt` plus `goalTrack`** — one shared predicate
+  (`getOnboardedState()`) behind `requireOnboarded()` /
+  `requireOnboardedApi()` and the `(app)` layout (403 `onboarding_required`
+  in the API); requiring the flow's own timestamp keeps piecemeal profile +
+  settings PATCHes from synthesizing an onboarded account. Changing the goal
+  resets `targetScore`/`examDate` unless the same patch resupplies them —
+  score scales are track-specific.
 - **One dashboard for everyone.** Stats count across all tracks (the due-words
   and mistakes cards link to `?track=all` so numbers match the lists behind
   them); the deterministic daily plan is aimed at the goal track; tutor

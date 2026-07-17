@@ -1,7 +1,6 @@
 import type { Track } from "../../content/types";
 import { auth } from "../auth/auth";
-import { getLearnerProfile } from "../queries/profile";
-import { getSettings } from "../settings";
+import { getOnboardedState } from "../settings";
 import { ApiError } from "./errors";
 
 /**
@@ -22,9 +21,9 @@ export async function requireOnboardedApi(req: Request): Promise<{
   timeZone: string;
 }> {
   const user = await requireUserApi(req);
-  const [settings, profile] = await Promise.all([getSettings(user.id), getLearnerProfile(user.id)]);
-  if (!settings || !profile?.goalTrack) {
+  const onboarded = await getOnboardedState(user.id);
+  if (!onboarded) {
     throw new ApiError(403, "onboarding_required", "Complete onboarding first");
   }
-  return { user, goalTrack: profile.goalTrack, timeZone: settings.timeZone };
+  return { user, goalTrack: onboarded.goalTrack, timeZone: onboarded.settings.timeZone };
 }

@@ -38,12 +38,20 @@ export function GoalEditor({ initial }: { initial: GoalEditorInitial }) {
 
   const isExamTrack = track === "toeic" || track === "ielts";
 
+  // Any edit invalidates the last save/error indicator.
+  function edit(apply: () => void) {
+    apply();
+    setSaved(false);
+    setFailed(false);
+  }
+
   function pickTrack(next: Track) {
     if (next === track) return;
-    setTrack(next);
-    // Score scales differ per exam (and business has none) — never carry one over.
-    setTargetScore(null);
-    setSaved(false);
+    edit(() => {
+      setTrack(next);
+      // Score scales differ per exam (and business has none) — never carry one over.
+      setTargetScore(null);
+    });
   }
 
   async function save() {
@@ -87,14 +95,14 @@ export function GoalEditor({ initial }: { initial: GoalEditorInitial }) {
             {t.onboarding.targetScoreLabel}
           </SectionLabel>
           <div className="flex flex-wrap gap-2">
-            <Chip active={targetScore === null} onClick={() => setTargetScore(null)}>
+            <Chip active={targetScore === null} onClick={() => edit(() => setTargetScore(null))}>
               {t.onboarding.noTarget}
             </Chip>
             {TARGET_OPTIONS[track as "toeic" | "ielts"].map((o) => (
               <Chip
                 key={o.value}
                 active={targetScore === o.value}
-                onClick={() => setTargetScore(o.value)}
+                onClick={() => edit(() => setTargetScore(o.value))}
               >
                 {o.label}
               </Chip>
@@ -112,7 +120,7 @@ export function GoalEditor({ initial }: { initial: GoalEditorInitial }) {
             type="date"
             aria-label={t.onboarding.examDateLabel}
             value={examDate}
-            onChange={(e) => setExamDate(e.target.value)}
+            onChange={(e) => edit(() => setExamDate(e.target.value))}
             className="max-w-48"
           />
         </div>
@@ -124,7 +132,11 @@ export function GoalEditor({ initial }: { initial: GoalEditorInitial }) {
         </SectionLabel>
         <div className="flex flex-wrap gap-2">
           {MINUTE_OPTIONS.map((m) => (
-            <Chip key={m} active={dailyMinutes === m} onClick={() => setDailyMinutes(m)}>
+            <Chip
+              key={m}
+              active={dailyMinutes === m}
+              onClick={() => edit(() => setDailyMinutes(m))}
+            >
               {m} {t.onboarding.minutesUnit}
             </Chip>
           ))}
