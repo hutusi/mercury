@@ -54,7 +54,7 @@ export default async function ExamsPage({
           <li key={exam.id}>
             <Link
               href={`/exams/${exam.id}`}
-              className="group flex items-center gap-4 py-6 transition-colors outline-none hover:bg-cinnabar/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="group flex items-center gap-4 py-6 outline-hidden transition-colors hover:bg-cinnabar/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <div className="min-w-0 flex-1">
                 <div className="mb-2 flex flex-wrap items-center gap-3">

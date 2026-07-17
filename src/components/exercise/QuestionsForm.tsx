@@ -38,7 +38,7 @@ export function QuestionsForm({
                   disabled={disabled}
                   onClick={() => onAnswer(q.id, i)}
                   aria-pressed={selected}
-                  className={`flex w-full items-start gap-3 border px-3 py-2.5 text-left text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  className={`flex w-full items-start gap-3 border px-3 py-2.5 text-left text-sm outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                     selected
                       ? "border-foreground bg-muted font-medium text-foreground"
                       : "border-border text-foreground/80 hover:border-input hover:bg-muted/50"

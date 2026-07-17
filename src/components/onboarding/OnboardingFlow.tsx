@@ -105,7 +105,7 @@ export function OnboardingFlow() {
                   setExamDate("");
                 }}
                 aria-pressed={active}
-                className={`border p-6 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                className={`border p-6 text-left outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                   active ? "border-foreground" : "border-border hover:border-input"
                 }`}
               >

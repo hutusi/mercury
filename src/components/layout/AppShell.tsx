@@ -59,7 +59,7 @@ export async function AppShell({
               <Link
                 href="/settings"
                 aria-label={t.nav.settings}
-                className="inline-flex size-9 items-center justify-center text-foreground transition-colors outline-none hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring"
+                className="inline-flex size-9 items-center justify-center text-foreground outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <Settings2 className="size-4" aria-hidden />
               </Link>

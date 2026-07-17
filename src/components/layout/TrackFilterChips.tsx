@@ -27,7 +27,7 @@ export async function TrackFilterChips({
             key={option}
             href={`${basePath}?track=${option}`}
             aria-current={active ? "true" : undefined}
-            className={`border px-3 py-1.5 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+            className={`border px-3 py-1.5 text-sm outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
               active
                 ? "border-foreground font-medium"
                 : "border-border text-muted-foreground hover:border-input hover:text-foreground"

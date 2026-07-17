@@ -51,7 +51,7 @@ export function EntryRow({
       {href ? (
         <LocalizedLink
           href={href}
-          className="group flex items-center gap-4 py-5 transition-colors outline-none hover:bg-muted/50 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="group flex items-center gap-4 py-5 outline-hidden transition-colors hover:bg-muted/50 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           {body}
         </LocalizedLink>

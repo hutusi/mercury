@@ -53,7 +53,7 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
         disabled={pending}
         aria-describedby={`writing-word-count${error ? " writing-error" : ""}`}
         aria-invalid={error !== null}
-        className="w-full border border-input bg-background p-4 font-serif text-sm leading-relaxed transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/25 focus-visible:outline-none disabled:bg-muted"
+        className="w-full border border-input bg-background p-4 font-serif text-sm leading-relaxed transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/25 focus-visible:outline-hidden disabled:bg-muted"
       />
       <div className="flex items-center justify-between">
         <p
