@@ -21,7 +21,8 @@ import {
  */
 
 export const UpsertLearnerProfileSchema = z.object({
-  goalTrack: TrackSchema.nullish(),
+  // Changeable but never clearable — goalTrack presence is the onboarding invariant.
+  goalTrack: TrackSchema.optional(),
   // TOEIC 10–990; IELTS as band×10 (55–90). One range covers both.
   targetScore: z.number().int().min(10).max(990).nullish(),
   examDate: z

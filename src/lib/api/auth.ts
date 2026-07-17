@@ -28,20 +28,3 @@ export async function requireOnboardedApi(req: Request): Promise<{
   }
   return { user, goalTrack: profile.goalTrack, timeZone: settings.timeZone };
 }
-
-/**
- * API twin of `requireTrack()`: 403 until the user has picked a track.
- * @deprecated The track is no longer an app mode — use `requireOnboardedApi()`.
- */
-export async function requireTrackApi(req: Request): Promise<{
-  user: Awaited<ReturnType<typeof requireUserApi>>;
-  track: Track;
-  dailyGoal: number;
-}> {
-  const user = await requireUserApi(req);
-  const settings = await getSettings(user.id);
-  if (!settings?.activeTrack) {
-    throw new ApiError(403, "onboarding_required", "Pick a learning track first");
-  }
-  return { user, track: settings.activeTrack, dailyGoal: settings.dailyGoal };
-}

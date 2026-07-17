@@ -1,10 +1,10 @@
-import { requireTrackApi } from "@/lib/api/auth";
+import { requireOnboardedApi } from "@/lib/api/auth";
 import { apiHandler } from "@/lib/api/handler";
 import { getDashboardData } from "@/lib/queries/dashboard";
 
 export const GET = apiHandler(async (req) => {
-  const { user, track } = await requireTrackApi(req);
-  const data = await getDashboardData(user.id);
+  const { user, goalTrack, timeZone } = await requireOnboardedApi(req);
+  const data = await getDashboardData(user.id, timeZone);
 
   // Raw values only — the client owns labels and formatting.
   const recentScores = [
@@ -34,7 +34,7 @@ export const GET = apiHandler(async (req) => {
     .slice(0, 5);
 
   return Response.json({
-    track,
+    goalTrack,
     streak: data.streak,
     dueWords: data.dueCount,
     activeMistakes: data.activeMistakes,

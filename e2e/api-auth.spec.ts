@@ -50,14 +50,17 @@ test.describe("API auth (bearer)", () => {
     });
     expect(put.status()).toBe(200);
     const putBody = await put.json();
-    expect(putBody.settings.activeTrack).toBe("ielts");
+    // The Settings payload carries no track — the goal lives on the profile.
+    expect(putBody.settings).not.toHaveProperty("activeTrack");
     expect(putBody.settings.timeZone).toBe("America/Toronto");
 
     const me = await request.get("/api/v1/me", { headers: user.authHeaders });
     const meBody = await me.json();
-    expect(meBody.settings.activeTrack).toBe("ielts");
     expect(meBody.settings.timeZone).toBe("America/Toronto");
     expect(meBody.settings.onboardedAt).toBeTruthy();
+
+    const profile = await request.get("/api/v1/me/profile", { headers: user.authHeaders });
+    expect((await profile.json()).profile.goalTrack).toBe("ielts");
   });
 
   test("invalid track gets a 422 validation envelope", async ({ request }) => {

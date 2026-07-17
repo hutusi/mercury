@@ -1,5 +1,6 @@
-import { requireTrackApi } from "@/lib/api/auth";
+import { requireOnboardedApi } from "@/lib/api/auth";
 import { apiHandler } from "@/lib/api/handler";
+import { apiQuizTrack } from "@/lib/track-filter";
 import { createQuizSessionForUser } from "@/lib/services/vocab-quiz";
 
 /**
@@ -7,6 +8,7 @@ import { createQuizSessionForUser } from "@/lib/services/vocab-quiz";
  * or answer-key signal; each option is submitted through the answers route.
  */
 export const POST = apiHandler(async (req) => {
-  const { user, track } = await requireTrackApi(req);
+  const { user, goalTrack } = await requireOnboardedApi(req);
+  const track = apiQuizTrack(req, goalTrack);
   return Response.json(await createQuizSessionForUser(user.id, track), { status: 201 });
 });
