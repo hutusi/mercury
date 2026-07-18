@@ -92,6 +92,11 @@ bun run build && bun run typecheck && bun run test:e2e
    - Optionally `ANTHROPIC_API_KEY` or `DASHSCOPE_API_KEY` (AI grading; Claude wins when both are
      set — pin with `MERCURY_AI_PROVIDER`), plus `MERCURY_AI_MODEL` / `DASHSCOPE_BASE_URL`
      overrides ([ADR 0011](docs/adr/0011-multi-provider-ai.md)).
+   - `MERCURY_AUDIO_BASE_URL`: the Vercel Blob store origin serving pre-generated listening
+     audio ([ADR 0022](docs/adr/0022-listening-audio-on-vercel-blob.md)). Without it every
+     listening exercise silently degrades to browser TTS. (`BLOB_READ_WRITE_TOKEN` is
+     auto-provisioned by connecting the store and is used by `content:audio` tooling only —
+     the deployed app never reads it.)
 
    Env var changes only take effect on a new deployment — redeploy after adding/changing any of
    these (`vercel redeploy <url> --target production` or the dashboard's Redeploy button).

@@ -16,6 +16,7 @@ bun run db:migrate / db:generate / db:seed / db:studio
 bun run db:push            # local schema prototyping only — never CI/CD/Neon
 bun run content:schemas    # regenerate content/.schemas/ after editing src/content/types.ts
 bun run content:audio      # re-render listening audio → Vercel Blob after editing scripts (needs BLOB_READ_WRITE_TOKEN + DASHSCOPE_API_KEY; commit the manifest only)
+bun run content:audio:prune # sweep unreferenced blobs — ONLY after the change deployed and prod was reseeded (old hashes serve prod until then)
 ```
 
 ## Workflow

@@ -138,7 +138,9 @@ test.describe("API exercises + mistakes notebook", () => {
     // to speaking the script on-device.
     expect(detail).toHaveProperty("audioUrl");
     if (detail.audioUrl !== null) {
-      expect(detail.audioUrl).toMatch(/^\/audio\/listening\//);
+      // Origin-relative without MERCURY_AUDIO_BASE_URL (the e2e default),
+      // absolute Blob URL when an environment sets it — accept both.
+      expect(detail.audioUrl).toMatch(/\/audio\/listening\//);
     }
   });
 });

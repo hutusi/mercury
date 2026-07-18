@@ -20,9 +20,17 @@ weight grow with it, for files a script can always re-produce.
 - **Audio lives in a Vercel Blob store** (`mercury-audio`, sin1 — colocated
   with the app region). `content:audio` uploads each render to the canonical
   pathname `audio/listening/<id>.<hash>.mp3` (public access, `audio/mpeg`)
-  and verifies every manifest entry with a `head()` sweep; superseded and
-  orphaned blobs are pruned by the same run. `BLOB_READ_WRITE_TOKEN` is
-  tooling-time only — the deployed app never talks to the Blob API.
+  and verifies every manifest entry with a `head()` sweep.
+  `BLOB_READ_WRITE_TOKEN` is tooling-time only — the deployed app never talks
+  to the Blob API.
+- **Blob deletion is deferred to an explicit prune step.** Generation never
+  deletes: deployed environments keep referencing the previous hash until
+  their database is reseeded, so deleting at generation time would degrade
+  live audio to browser TTS days before any deploy.
+  `bun run content:audio:prune` sweeps blobs no longer referenced by the
+  manifest (superseded hashes and removed exercises) — run it only after the
+  manifest has deployed and the prod seed has run. Until then, superseded
+  renders cost pennies of storage.
 - **The manifest + hash pipeline is unchanged and storage-agnostic.** The
   committed `content/audio-manifest.json` remains the seed's source of truth;
   the DB keeps storing origin-relative paths. The only runtime addition is

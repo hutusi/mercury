@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { Mp3Encoder } from "@breezystack/lamejs";
-import { del, head, list, put } from "@vercel/blob";
+import { BlobNotFoundError, del, head, list, put } from "@vercel/blob";
 import {
   AudioManifestSchema,
   LISTENING_AUDIO_CONFIG,
@@ -26,6 +26,12 @@ import type { ScriptLine } from "../src/content/types";
  * Needs BLOB_READ_WRITE_TOKEN always, DASHSCOPE_API_KEY only when something
  * actually re-renders. Commit the manifest afterwards — audio files are never
  * committed.
+ *
+ * Default runs never delete blobs: deployed environments keep referencing the
+ * previous hash until their database is reseeded, so superseded renders must
+ * outlive generation. Run `bun run content:audio:prune` (--prune) to sweep
+ * unreferenced blobs — only after the manifest has deployed AND the prod seed
+ * has run.
  *
  * Tooling-only, like the content loader: the app never talks to DashScope or
  * Blob at runtime — it serves public blob URLs and falls back to browser TTS
@@ -186,8 +192,12 @@ async function blobExists(pathname: string): Promise<boolean> {
   try {
     await head(pathname);
     return true;
-  } catch {
-    return false;
+  } catch (error) {
+    // Only a confirmed miss means "regenerate". Auth failures, rate limits,
+    // and outages must propagate — treating them as missing would trigger
+    // paid re-synthesis for files that exist.
+    if (error instanceof BlobNotFoundError) return false;
+    throw error;
   }
 }
 
@@ -242,8 +252,10 @@ async function main() {
 
     let mp3: Uint8Array;
     let entryCharacters = entry?.characters ?? 0;
-    if (fresh && fs.existsSync(localPath)) {
-      // Local render cache hit: same hash, blob just missing — upload as-is.
+    if (fs.existsSync(localPath)) {
+      // The cache filename embeds the content hash, so its existence alone
+      // proves freshness — no manifest check. This also makes a
+      // synthesis-succeeded/upload-failed run resumable without re-paying.
       mp3 = fs.readFileSync(localPath);
       uploadedFromCache++;
       console.log(`uploaded ${fileName} from local cache (no synthesis)`);
@@ -268,16 +280,15 @@ async function main() {
     }
 
     storeOrigin = await uploadRender(pathname, mp3);
-    // Drop superseded renders of this exercise (ids never contain dots).
+    // Drop superseded local-cache renders (author's machine only). Superseded
+    // BLOBS are deliberately kept: deployed environments reference the old
+    // hash until the prod seed runs, so deleting here would degrade live
+    // audio. content:audio:prune sweeps them after deploy + seed.
     for (const stale of fs.readdirSync(AUDIO_DIR)) {
       if (stale.startsWith(`${exercise.id}.`) && stale !== fileName) {
         fs.unlinkSync(path.join(AUDIO_DIR, stale));
       }
     }
-    const superseded = await list({ prefix: `audio/listening/${exercise.id}.` });
-    await Promise.all(
-      superseded.blobs.filter((b) => b.pathname !== pathname).map((b) => del(b.url)),
-    );
 
     manifest[key] = {
       hash,
@@ -290,24 +301,20 @@ async function main() {
     writeManifest(manifest); // persist per exercise so a mid-run failure loses nothing
   }
 
-  // Prune exercises that no longer exist in the content set (manifest, local
-  // cache, and blobs).
+  // Drop manifest entries (and local cache) for exercises removed from the
+  // content set. Their blobs stay until content:audio:prune.
   const liveKeys = new Set(allListening.map((e) => listeningManifestKey(e.id)));
   for (const [key, entry] of Object.entries(manifest)) {
     if (key.startsWith("listening:") && !liveKeys.has(key)) {
       const local = path.join(process.cwd(), "public", entry.file);
       if (fs.existsSync(local)) fs.unlinkSync(local);
-      const id = key.slice("listening:".length);
-      const stale = await list({ prefix: `audio/listening/${id}.` });
-      await Promise.all(stale.blobs.map((b) => del(b.url)));
       delete manifest[key];
-      console.log(`pruned ${key} (exercise removed from content)`);
+      console.log(`pruned ${key} from manifest (exercise removed from content)`);
     }
   }
   writeManifest(manifest);
 
-  // Verification sweep: every manifest entry must be publicly fetchable, and
-  // no orphan blobs may linger under the listening prefix.
+  // Verification sweep: every manifest entry must be publicly fetchable.
   const missing: string[] = [];
   for (const [key, entry] of Object.entries(manifest)) {
     if (!(await blobExists(entry.file.slice(1)))) missing.push(`${key} → ${entry.file}`);
@@ -315,11 +322,21 @@ async function main() {
   if (missing.length > 0) {
     throw new Error(`manifest entries missing from Blob:\n${missing.join("\n")}`);
   }
-  const known = new Set(Object.values(manifest).map((e) => e.file.slice(1)));
-  const all = await list({ prefix: "audio/listening/" });
-  for (const orphan of all.blobs.filter((b) => !known.has(b.pathname))) {
-    await del(orphan.url);
-    console.log(`deleted orphan blob ${orphan.pathname}`);
+
+  // Blob deletion happens ONLY under --prune (content:audio:prune): deployed
+  // environments reference old hashes until their seed runs, so sweeping
+  // superseded/orphaned blobs is safe only after the manifest has deployed
+  // AND the prod seed has run.
+  if (process.argv.includes("--prune")) {
+    const known = new Set(Object.values(manifest).map((e) => e.file.slice(1)));
+    const all = await list({ prefix: "audio/listening/" });
+    let pruned = 0;
+    for (const orphan of all.blobs.filter((b) => !known.has(b.pathname))) {
+      await del(orphan.url);
+      pruned++;
+      console.log(`deleted unreferenced blob ${orphan.pathname}`);
+    }
+    console.log(`Prune complete: ${pruned} unreferenced blob(s) deleted.`);
   }
 
   console.log(
