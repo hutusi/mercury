@@ -14,7 +14,6 @@ import {
 } from "drizzle-orm/pg-core";
 import type {
   Bilingual,
-  ExamSection,
   ExamTrack,
   McqQuestion,
   ScriptLine,
@@ -23,6 +22,7 @@ import type {
   WritingTaskType,
 } from "../../content/types";
 import type { SpeakingFeedback, WritingFeedback } from "../ai/schemas";
+import type { SeededExamSection } from "../exam-utils";
 import type { CoachMemo, SelfRatedLevel, SkillEstimates } from "../learner-model-core";
 import type { MistakeKind } from "../mistakes-core";
 import type { StoredQuizQuestion } from "../vocab-quiz-core";
@@ -167,6 +167,9 @@ export const vocabWords = pgTable(
     exampleEn: text("example_en").notNull(),
     exampleZh: text("example_zh").notNull(),
     sortOrder: integer("sort_order").notNull().default(0),
+    // Pre-generated headword pronunciation (ADR 0023); null degrades to
+    // browser TTS. Seed-owned: linked only on a fresh manifest hash.
+    audioUrl: text("audio_url"),
   },
   (t) => [index("vocab_words_track_idx").on(t.track)],
 );
@@ -246,7 +249,7 @@ export const mockExams = pgTable("mock_exams", {
   titleZh: text("title_zh").notNull(),
   descriptionZh: text("description_zh").notNull(),
   /** Full sections including answers — must never be sent raw to the client. */
-  sections: jsonb("sections").$type<ExamSection[]>().notNull(),
+  sections: jsonb("sections").$type<SeededExamSection[]>().notNull(),
   totalQuestions: integer("total_questions").notNull(),
 });
 
@@ -519,7 +522,7 @@ export const mockExamAttempts = pgTable(
     currentSectionIndex: integer("current_section_index").notNull().default(0),
     sectionDeadlines: jsonb("section_deadlines").$type<SectionDeadline[]>().notNull(),
     /** Immutable content/key snapshot used for timing, grading, and review. */
-    sectionsSnapshot: jsonb("sections_snapshot").$type<ExamSection[]>().notNull(),
+    sectionsSnapshot: jsonb("sections_snapshot").$type<SeededExamSection[]>().notNull(),
     answers: jsonb("answers").$type<AnswerMap>().notNull(),
     sectionScores: jsonb("section_scores").$type<SectionScore[] | null>(),
     rawScore: integer("raw_score"),

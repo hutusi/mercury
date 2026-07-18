@@ -1,9 +1,15 @@
 import { describe, expect, it } from "bun:test";
 import {
+  examManifestKey,
   LISTENING_AUDIO_CONFIG,
   listeningManifestKey,
   resolveAudioUrl,
+  resolveExamAudioUrl,
+  resolveVocabAudioUrl,
   scriptAudioHash,
+  VOCAB_AUDIO_CONFIG,
+  vocabManifestKey,
+  wordAudioHash,
   type AudioConfig,
   type AudioManifest,
 } from "./audio-hash";
@@ -86,5 +92,60 @@ describe("resolveAudioUrl", () => {
   it("returns null when the script changed since generation (stale audio)", () => {
     const edited = [script[0], { ...script[1], text: "Different words entirely." }];
     expect(resolveAudioUrl("biz-l-001", edited, manifest, config)).toBeNull();
+  });
+});
+
+describe("resolveExamAudioUrl", () => {
+  const hash = scriptAudioHash(script, config);
+  const manifest: AudioManifest = {
+    [examManifestKey("exam-toeic-mini", "tm-lg1")]: {
+      hash,
+      file: `/audio/exams/exam-toeic-mini.tm-lg1.${hash}.mp3`,
+      model: config.model,
+      voices: config.voices,
+      generatedAt: "2026-07-18T00:00:00.000Z",
+      characters: 55,
+    },
+  };
+
+  it("resolves the canonical exam path on a hash match, null when stale", () => {
+    expect(resolveExamAudioUrl("exam-toeic-mini", "tm-lg1", script, manifest, config)).toBe(
+      `/audio/exams/exam-toeic-mini.tm-lg1.${hash}.mp3`,
+    );
+    const edited = [{ ...script[0], text: "changed" }, script[1]];
+    expect(resolveExamAudioUrl("exam-toeic-mini", "tm-lg1", edited, manifest, config)).toBeNull();
+    expect(resolveExamAudioUrl("exam-toeic-mini", "tm-lg2", script, manifest, config)).toBeNull();
+  });
+});
+
+describe("vocab headword audio", () => {
+  const vc = VOCAB_AUDIO_CONFIG;
+
+  it("wordAudioHash is stable and sensitive to text, voice, and renderer", () => {
+    const hash = wordAudioHash("negotiate", vc);
+    expect(hash).toBe(wordAudioHash("negotiate", vc));
+    expect(hash).toMatch(/^[0-9a-f]{12}$/);
+    expect(wordAudioHash("negotiation", vc)).not.toBe(hash);
+    expect(wordAudioHash("negotiate", { ...vc, voice: "Neil" })).not.toBe(hash);
+    expect(wordAudioHash("negotiate", { ...vc, mp3Kbps: 96 })).not.toBe(hash);
+  });
+
+  it("resolveVocabAudioUrl resolves canonically, null on stale headword", () => {
+    const hash = wordAudioHash("negotiate", vc);
+    const manifest: AudioManifest = {
+      [vocabManifestKey("biz-w-001")]: {
+        hash,
+        file: `/audio/vocab/biz-w-001.${hash}.mp3`,
+        model: vc.model,
+        voices: { narrator: vc.voice },
+        generatedAt: "2026-07-18T00:00:00.000Z",
+        characters: 9,
+      },
+    };
+    expect(resolveVocabAudioUrl("biz-w-001", "negotiate", manifest, vc)).toBe(
+      `/audio/vocab/biz-w-001.${hash}.mp3`,
+    );
+    expect(resolveVocabAudioUrl("biz-w-001", "renegotiate", manifest, vc)).toBeNull();
+    expect(resolveVocabAudioUrl("biz-w-002", "negotiate", manifest, vc)).toBeNull();
   });
 });

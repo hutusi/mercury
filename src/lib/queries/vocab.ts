@@ -1,5 +1,6 @@
 import { and, asc, eq, lte, notExists } from "drizzle-orm";
 import type { Track } from "../../content/types";
+import { composeAudioUrl } from "../audio-url";
 import { db } from "../db";
 import { srsCards, vocabWords } from "../db/schema";
 import { NEW_CARD_STATE } from "../srs";
@@ -76,14 +77,22 @@ export async function getStudyQueue(userId: string, track: Track | null) {
   ]);
 
   // Each card carries its scheduler state so clients can preview what every
-  // grade would do (interval hints) with the same pure SM-2 rules.
+  // grade would do (interval hints) with the same pure SM-2 rules. audioUrl
+  // (headword pronunciation, ADR 0023) is composed against the Blob origin.
   return [
     ...dueRows.map(({ word, easeFactor, intervalDays, repetitions, lapses }) => ({
       ...word,
       wordId: word.id,
+      audioUrl: composeAudioUrl(word.audioUrl),
       isNew: false,
       srs: { easeFactor, intervalDays, repetitions, lapses },
     })),
-    ...newRows.map(({ word }) => ({ ...word, wordId: word.id, isNew: true, srs: NEW_CARD_STATE })),
+    ...newRows.map(({ word }) => ({
+      ...word,
+      wordId: word.id,
+      audioUrl: composeAudioUrl(word.audioUrl),
+      isNew: true,
+      srs: NEW_CARD_STATE,
+    })),
   ];
 }

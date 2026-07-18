@@ -3,24 +3,31 @@ import path from "node:path";
 import { Mp3Encoder } from "@breezystack/lamejs";
 import { BlobNotFoundError, del, head, list, put } from "@vercel/blob";
 import {
-  AudioManifestSchema,
+  examAudioFile,
+  examManifestKey,
   LISTENING_AUDIO_CONFIG,
   listeningAudioFile,
   listeningManifestKey,
   scriptAudioHash,
+  VOCAB_AUDIO_CONFIG,
+  vocabAudioFile,
+  vocabManifestKey,
+  wordAudioHash,
   type AudioManifest,
+  AudioManifestSchema,
 } from "../src/content/audio-hash";
-import { allListening } from "../src/content/load";
+import { allExams, allListening, allVocab } from "../src/content/load";
 import type { ScriptLine } from "../src/content/types";
 
 /**
- * Renders every listening exercise's script to one MP3 via DashScope TTS and
- * uploads it to Vercel Blob (ADR 0021/0022), recording it in
- * content/audio-manifest.json. Idempotent: an exercise whose manifest hash
- * matches its current script (and whose blob exists) is skipped, so re-runs
- * after editing one YAML script only pay for that exercise.
- * public/audio/listening/ is a gitignored local render cache: fresh renders
- * land there too, and a cached file whose hash still matches is uploaded
+ * Renders all pre-generated audio via DashScope TTS and uploads it to Vercel
+ * Blob (ADR 0021/0022/0023), recording everything in
+ * content/audio-manifest.json: listening-exercise scripts, mock-exam
+ * listening-group scripts, and vocab headwords. Idempotent: an item whose
+ * manifest hash matches its current content (and whose blob exists) is
+ * skipped, so re-runs after editing one YAML file only pay for that item.
+ * public/audio/ is a gitignored local render cache: fresh renders land there
+ * too, and a cached file whose hash-bearing name still matches is uploaded
  * without re-synthesizing (zero DashScope cost).
  *
  * Needs BLOB_READ_WRITE_TOKEN always, DASHSCOPE_API_KEY only when something
@@ -35,17 +42,17 @@ import type { ScriptLine } from "../src/content/types";
  *
  * Tooling-only, like the content loader: the app never talks to DashScope or
  * Blob at runtime — it serves public blob URLs and falls back to browser TTS
- * when an exercise has no (or stale) audio.
+ * when an item has no (or stale) audio.
  */
 
 const TTS_URL =
   process.env.DASHSCOPE_TTS_URL ??
   "https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation";
-// All settings that shape the sound live in CONFIG — they feed the content
-// hash, so changing any of them correctly invalidates every existing render.
-const CONFIG = LISTENING_AUDIO_CONFIG;
+// All settings that shape the sound live in these configs — they feed the
+// content hashes, so changing any of them correctly invalidates renders.
+const SCRIPT_CONFIG = LISTENING_AUDIO_CONFIG;
+const WORD_CONFIG = VOCAB_AUDIO_CONFIG;
 const MANIFEST_PATH = path.join(process.cwd(), "content", "audio-manifest.json");
-const AUDIO_DIR = path.join(process.cwd(), "public", "audio", "listening");
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -98,21 +105,20 @@ function parseWav(bytes: Uint8Array): { samples: Int16Array; sampleRate: number 
   };
 }
 
-async function synthesizeLine(line: ScriptLine, apiKey: string): Promise<SynthesizedLine> {
+async function synthesizeUtterance(
+  text: string,
+  voice: string,
+  model: string,
+  languageType: string,
+  apiKey: string,
+): Promise<SynthesizedLine> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       const res = await fetch(TTS_URL, {
         method: "POST",
         headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: CONFIG.model,
-          input: {
-            text: line.text,
-            voice: CONFIG.voices[line.speaker],
-            language_type: CONFIG.languageType,
-          },
-        }),
+        body: JSON.stringify({ model, input: { text, voice, language_type: languageType } }),
       });
       if (!res.ok) throw new Error(`TTS request failed: ${res.status} ${await res.text()}`);
       const payload = (await res.json()) as {
@@ -127,7 +133,7 @@ async function synthesizeLine(line: ScriptLine, apiKey: string): Promise<Synthes
       const audio = await fetch(url);
       if (!audio.ok) throw new Error(`audio download failed: ${audio.status}`);
       const wav = parseWav(new Uint8Array(await audio.arrayBuffer()));
-      return { ...wav, characters: payload.usage?.characters ?? line.text.length };
+      return { ...wav, characters: payload.usage?.characters ?? text.length };
     } catch (error) {
       lastError = error;
       if (attempt < 3) await sleep(1000 * 2 ** (attempt - 1));
@@ -136,13 +142,13 @@ async function synthesizeLine(line: ScriptLine, apiKey: string): Promise<Synthes
   throw lastError;
 }
 
-function stitchToMp3(lines: SynthesizedLine[]): Uint8Array {
+function encodeMp3(lines: SynthesizedLine[], gapSeconds: number, kbps: number): Uint8Array {
   const sampleRate = lines[0].sampleRate;
   const mismatch = lines.find((l) => l.sampleRate !== sampleRate);
   if (mismatch) {
-    throw new Error(`mixed sample rates in one exercise: ${sampleRate} vs ${mismatch.sampleRate}`);
+    throw new Error(`mixed sample rates in one render: ${sampleRate} vs ${mismatch.sampleRate}`);
   }
-  const gap = new Int16Array(Math.round(CONFIG.lineGapSeconds * sampleRate));
+  const gap = new Int16Array(Math.round(gapSeconds * sampleRate));
   const total = lines.reduce((n, l) => n + l.samples.length, 0) + gap.length * (lines.length - 1);
   const pcm = new Int16Array(total);
   let cursor = 0;
@@ -152,7 +158,7 @@ function stitchToMp3(lines: SynthesizedLine[]): Uint8Array {
     cursor += line.samples.length;
   }
 
-  const encoder = new Mp3Encoder(1, sampleRate, CONFIG.mp3Kbps);
+  const encoder = new Mp3Encoder(1, sampleRate, kbps);
   const chunks: Uint8Array[] = [];
   const blockSize = 1152;
   for (let i = 0; i < pcm.length; i += blockSize) {
@@ -171,6 +177,30 @@ function stitchToMp3(lines: SynthesizedLine[]): Uint8Array {
   return mp3;
 }
 
+/** Synthesize a dialogue script with the shared cast and inter-line pauses. */
+async function synthesizeScript(
+  script: ScriptLine[],
+  apiKey: string,
+): Promise<{ mp3: Uint8Array; characters: number }> {
+  // Sequential on purpose: DashScope QPS limits are undocumented.
+  const lines: SynthesizedLine[] = [];
+  for (const line of script) {
+    lines.push(
+      await synthesizeUtterance(
+        line.text,
+        SCRIPT_CONFIG.voices[line.speaker],
+        SCRIPT_CONFIG.model,
+        SCRIPT_CONFIG.languageType,
+        apiKey,
+      ),
+    );
+  }
+  return {
+    mp3: encodeMp3(lines, SCRIPT_CONFIG.lineGapSeconds, SCRIPT_CONFIG.mp3Kbps),
+    characters: lines.reduce((n, l) => n + l.characters, 0),
+  };
+}
+
 function loadManifest(): AudioManifest {
   if (!fs.existsSync(MANIFEST_PATH)) return {};
   return AudioManifestSchema.parse(JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8")));
@@ -181,11 +211,6 @@ function writeManifest(manifest: AudioManifest) {
     Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)),
   );
   fs.writeFileSync(MANIFEST_PATH, JSON.stringify(sorted, null, 2) + "\n");
-}
-
-/** Blob pathname for an exercise render (no leading slash). */
-function blobPathname(exerciseId: string, hash: string): string {
-  return listeningAudioFile(exerciseId, hash).slice(1);
 }
 
 async function blobExists(pathname: string): Promise<boolean> {
@@ -219,6 +244,133 @@ async function uploadRender(pathname: string, body: Uint8Array): Promise<string>
   return url.origin;
 }
 
+/** One render target: its manifest key, canonical file, and synthesis recipe. */
+interface RenderJob {
+  key: string;
+  hash: string;
+  file: string; // canonical /audio/... path (hash embedded in the filename)
+  model: string;
+  voices: Record<string, string>;
+  synthesize: (apiKey: string) => Promise<{ mp3: Uint8Array; characters: number }>;
+}
+
+function buildJobs(): RenderJob[] {
+  const jobs: RenderJob[] = [];
+  for (const exercise of allListening) {
+    const hash = scriptAudioHash(exercise.script, SCRIPT_CONFIG);
+    jobs.push({
+      key: listeningManifestKey(exercise.id),
+      hash,
+      file: listeningAudioFile(exercise.id, hash),
+      model: SCRIPT_CONFIG.model,
+      voices: SCRIPT_CONFIG.voices,
+      synthesize: (apiKey) => synthesizeScript(exercise.script, apiKey),
+    });
+  }
+  for (const exam of allExams) {
+    for (const section of exam.sections) {
+      for (const group of section.groups) {
+        if (!group.script) continue;
+        const script = group.script;
+        const hash = scriptAudioHash(script, SCRIPT_CONFIG);
+        jobs.push({
+          key: examManifestKey(exam.id, group.id),
+          hash,
+          file: examAudioFile(exam.id, group.id, hash),
+          model: SCRIPT_CONFIG.model,
+          voices: SCRIPT_CONFIG.voices,
+          synthesize: (apiKey) => synthesizeScript(script, apiKey),
+        });
+      }
+    }
+  }
+  for (const word of allVocab) {
+    const hash = wordAudioHash(word.headword, WORD_CONFIG);
+    jobs.push({
+      key: vocabManifestKey(word.id),
+      hash,
+      file: vocabAudioFile(word.id, hash),
+      model: WORD_CONFIG.model,
+      voices: { narrator: WORD_CONFIG.voice },
+      synthesize: async (apiKey) => {
+        const line = await synthesizeUtterance(
+          word.headword,
+          WORD_CONFIG.voice,
+          WORD_CONFIG.model,
+          WORD_CONFIG.languageType,
+          apiKey,
+        );
+        return { mp3: encodeMp3([line], 0, WORD_CONFIG.mp3Kbps), characters: line.characters };
+      },
+    });
+  }
+  return jobs;
+}
+
+const counters = { synthesized: 0, uploadedFromCache: 0, skipped: 0, characters: 0 };
+let storeOrigin: string | null = null;
+
+async function processJob(job: RenderJob, manifest: AudioManifest, apiKey: string | undefined) {
+  const pathname = job.file.slice(1);
+  const localPath = path.join(process.cwd(), "public", job.file);
+  const fileName = path.basename(job.file);
+  const entry = manifest[job.key];
+  const fresh = entry?.hash === job.hash;
+
+  if (fresh && (await blobExists(pathname))) {
+    counters.skipped++;
+    return;
+  }
+
+  let mp3: Uint8Array;
+  let entryCharacters = entry?.characters ?? 0;
+  if (fs.existsSync(localPath)) {
+    // The cache filename embeds the content hash, so its existence alone
+    // proves freshness — no manifest check. This also makes a
+    // synthesis-succeeded/upload-failed run resumable without re-paying.
+    mp3 = fs.readFileSync(localPath);
+    counters.uploadedFromCache++;
+    console.log(`uploaded ${fileName} from local cache (no synthesis)`);
+  } else {
+    if (!apiKey) {
+      throw new Error(
+        `DASHSCOPE_API_KEY is not set but ${job.key} needs (re)generation. ` +
+          "Set the key (tooling-time only) and re-run bun run content:audio.",
+      );
+    }
+    const result = await job.synthesize(apiKey);
+    mp3 = result.mp3;
+    entryCharacters = result.characters;
+    counters.characters += result.characters;
+    counters.synthesized++;
+    fs.mkdirSync(path.dirname(localPath), { recursive: true });
+    fs.writeFileSync(localPath, mp3);
+    console.log(`generated ${fileName}`);
+  }
+
+  storeOrigin = await uploadRender(pathname, mp3);
+
+  // Drop superseded local-cache renders (author's machine only). Superseded
+  // BLOBS are deliberately kept until content:audio:prune (see header).
+  const stalePrefix = `${fileName.slice(0, fileName.length - job.hash.length - 5)}.`;
+  const dir = path.dirname(localPath);
+  for (const stale of fs.readdirSync(dir)) {
+    if (stale.startsWith(stalePrefix) && stale !== fileName) {
+      fs.unlinkSync(path.join(dir, stale));
+    }
+  }
+
+  manifest[job.key] = {
+    hash: job.hash,
+    file: job.file,
+    model: job.model,
+    voices: job.voices,
+    generatedAt: new Date().toISOString(),
+    characters: entryCharacters,
+  };
+  writeManifest(manifest); // persist per item so a mid-run failure loses nothing
+}
+
 async function main() {
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     throw new Error(
@@ -228,88 +380,21 @@ async function main() {
   }
   const apiKey = process.env.DASHSCOPE_API_KEY;
   const manifest = loadManifest();
-  fs.mkdirSync(AUDIO_DIR, { recursive: true });
+  const jobs = buildJobs();
 
-  let generated = 0;
-  let uploadedFromCache = 0;
-  let skipped = 0;
-  let characters = 0;
-  let storeOrigin: string | null = null;
-
-  for (const exercise of allListening) {
-    const hash = scriptAudioHash(exercise.script, CONFIG);
-    const key = listeningManifestKey(exercise.id);
-    const pathname = blobPathname(exercise.id, hash);
-    const fileName = path.basename(pathname);
-    const localPath = path.join(AUDIO_DIR, fileName);
-    const entry = manifest[key];
-    const fresh = entry?.hash === hash;
-
-    if (fresh && (await blobExists(pathname))) {
-      skipped++;
-      continue;
-    }
-
-    let mp3: Uint8Array;
-    let entryCharacters = entry?.characters ?? 0;
-    if (fs.existsSync(localPath)) {
-      // The cache filename embeds the content hash, so its existence alone
-      // proves freshness — no manifest check. This also makes a
-      // synthesis-succeeded/upload-failed run resumable without re-paying.
-      mp3 = fs.readFileSync(localPath);
-      uploadedFromCache++;
-      console.log(`uploaded ${fileName} from local cache (no synthesis)`);
-    } else {
-      if (!apiKey) {
-        throw new Error(
-          `DASHSCOPE_API_KEY is not set but ${exercise.id} needs (re)generation. ` +
-            "Set the key (tooling-time only) and re-run bun run content:audio.",
-        );
-      }
-      // Sequential on purpose: DashScope QPS limits are undocumented.
-      const lines: SynthesizedLine[] = [];
-      for (const line of exercise.script) {
-        lines.push(await synthesizeLine(line, apiKey));
-      }
-      mp3 = stitchToMp3(lines);
-      fs.writeFileSync(localPath, mp3);
-      entryCharacters = lines.reduce((n, l) => n + l.characters, 0);
-      characters += entryCharacters;
-      generated++;
-      console.log(`generated ${fileName} (${exercise.script.length} lines)`);
-    }
-
-    storeOrigin = await uploadRender(pathname, mp3);
-    // Drop superseded local-cache renders (author's machine only). Superseded
-    // BLOBS are deliberately kept: deployed environments reference the old
-    // hash until the prod seed runs, so deleting here would degrade live
-    // audio. content:audio:prune sweeps them after deploy + seed.
-    for (const stale of fs.readdirSync(AUDIO_DIR)) {
-      if (stale.startsWith(`${exercise.id}.`) && stale !== fileName) {
-        fs.unlinkSync(path.join(AUDIO_DIR, stale));
-      }
-    }
-
-    manifest[key] = {
-      hash,
-      file: listeningAudioFile(exercise.id, hash),
-      model: CONFIG.model,
-      voices: CONFIG.voices,
-      generatedAt: new Date().toISOString(),
-      characters: entryCharacters,
-    };
-    writeManifest(manifest); // persist per exercise so a mid-run failure loses nothing
+  for (const job of jobs) {
+    await processJob(job, manifest, apiKey);
   }
 
-  // Drop manifest entries (and local cache) for exercises removed from the
-  // content set. Their blobs stay until content:audio:prune.
-  const liveKeys = new Set(allListening.map((e) => listeningManifestKey(e.id)));
+  // Drop manifest entries (and local cache) for content that no longer
+  // exists. Their blobs stay until content:audio:prune.
+  const liveKeys = new Set(jobs.map((j) => j.key));
   for (const [key, entry] of Object.entries(manifest)) {
-    if (key.startsWith("listening:") && !liveKeys.has(key)) {
+    if (!liveKeys.has(key)) {
       const local = path.join(process.cwd(), "public", entry.file);
       if (fs.existsSync(local)) fs.unlinkSync(local);
       delete manifest[key];
-      console.log(`pruned ${key} from manifest (exercise removed from content)`);
+      console.log(`pruned ${key} from manifest (content removed)`);
     }
   }
   writeManifest(manifest);
@@ -329,20 +414,24 @@ async function main() {
   // AND the prod seed has run.
   if (process.argv.includes("--prune")) {
     const known = new Set(Object.values(manifest).map((e) => e.file.slice(1)));
-    const all = await list({ prefix: "audio/listening/" });
     let pruned = 0;
-    for (const orphan of all.blobs.filter((b) => !known.has(b.pathname))) {
-      await del(orphan.url);
-      pruned++;
-      console.log(`deleted unreferenced blob ${orphan.pathname}`);
-    }
+    let cursor: string | undefined;
+    do {
+      const page = await list({ prefix: "audio/", cursor });
+      for (const orphan of page.blobs.filter((b) => !known.has(b.pathname))) {
+        await del(orphan.url);
+        pruned++;
+        console.log(`deleted unreferenced blob ${orphan.pathname}`);
+      }
+      cursor = page.hasMore ? page.cursor : undefined;
+    } while (cursor);
     console.log(`Prune complete: ${pruned} unreferenced blob(s) deleted.`);
   }
 
   console.log(
-    `Audio generation complete: ${generated} synthesized, ${uploadedFromCache} uploaded from cache, ` +
-      `${skipped} up to date` +
-      (characters > 0 ? `, ${characters} billed characters` : ""),
+    `Audio generation complete: ${counters.synthesized} synthesized, ` +
+      `${counters.uploadedFromCache} uploaded from cache, ${counters.skipped} up to date` +
+      (counters.characters > 0 ? `, ${counters.characters} billed characters` : ""),
   );
   if (storeOrigin) {
     console.log(`Audio serves from ${storeOrigin} — MERCURY_AUDIO_BASE_URL must be set to it.`);

@@ -1,5 +1,6 @@
 import { and, desc, eq } from "drizzle-orm";
 import type { Track } from "../../content/types";
+import { composeAudioUrl } from "../audio-url";
 import { db } from "../db";
 import { exerciseAttempts, listeningExercises } from "../db/schema";
 
@@ -42,19 +43,6 @@ export async function listListeningExercises(userId: string, track: Track | null
   }
 
   return { exercises, bestByExercise };
-}
-
-/**
- * The DB stores audio paths origin-relative; audio lives on Vercel Blob
- * (ADR 0022), so the fetchable URL is composed here from the store origin.
- * Unset base (dev/CI without Blob) keeps the relative path — served from the
- * gitignored local render cache when present, degrading to browser TTS
- * otherwise.
- */
-function composeAudioUrl(audioPath: string | null): string | null {
-  if (!audioPath) return null;
-  const base = process.env.MERCURY_AUDIO_BASE_URL;
-  return base ? `${base.replace(/\/$/, "")}${audioPath}` : audioPath;
 }
 
 /**

@@ -216,7 +216,9 @@ export function ExamRunner({
 
       {section.groups.map((group) => (
         <div key={group.id} className="space-y-4">
-          {group.script && <TtsPlayer script={group.script} maxPlays={1} />}
+          {group.script && (
+            <TtsPlayer script={group.script} audioUrl={group.audioUrl} maxPlays={1} />
+          )}
           {group.passage && (
             <article className="border-y border-border py-6">
               <div className="font-serif leading-relaxed whitespace-pre-line text-foreground/90">

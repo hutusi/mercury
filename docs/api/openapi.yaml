@@ -377,6 +377,10 @@ paths:
   /api/v1/vocab/study-queue:
     get:
       summary: Due cards (oldest first) topped up with unseen words
+      description: >
+        Each card carries a nullable audioUrl (ADR 0023) — pre-generated
+        headword pronunciation, immutable per URL and safe to cache. Fall back
+        to on-device TTS when null; example sentences are always on-device.
       parameters: [{ $ref: "#/components/parameters/trackFilter" }]
       tags: [vocab]
       responses:
@@ -691,7 +695,9 @@ paths:
       summary: Live attempt (sanitized), completed report, or abandoned metadata
       description: |
         in_progress: sanitized sections only, serverTime for clock-skew handling,
-        deadlines as epoch-ms. completed: scores, estimate, and the full review
+        deadlines as epoch-ms. Each listening group carries a nullable audioUrl
+        (ADR 0023) next to its script — same play/fallback contract as
+        listening exercises. completed: scores, estimate, and the full review
         including correctIndex/explanationZh. abandoned: lifecycle metadata only,
         with neither answers nor review keys.
       tags: [exams]
