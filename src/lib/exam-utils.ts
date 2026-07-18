@@ -1,4 +1,11 @@
-import type { ExamSection, ExamTrack, SanitizedQuestion, ScriptLine } from "../content/types";
+import type {
+  ExamGroup,
+  ExamSection,
+  ExamTrack,
+  SanitizedQuestion,
+  ScriptLine,
+} from "../content/types";
+import { composeAudioUrl } from "./audio-url";
 import { estimateIeltsBand, estimateToeic } from "./scoring";
 
 export interface SectionScoreResult {
@@ -78,10 +85,20 @@ export function acceptSectionAnswers(
   return merged;
 }
 
+/**
+ * Exam content as seeded: the DB's sections jsonb (and every attempt's
+ * immutable snapshot copied from it) may carry generated-audio paths on
+ * listening groups (ADR 0023). Kept out of the content ExamGroupSchema so the
+ * authoring JSON Schemas never advertise a machine-written field.
+ */
+export type SeededExamGroup = ExamGroup & { audioUrl?: string | null };
+export type SeededExamSection = Omit<ExamSection, "groups"> & { groups: SeededExamGroup[] };
+
 export interface SanitizedExamGroup {
   id: string;
   passage?: string;
   script?: ScriptLine[];
+  audioUrl?: string | null;
   questions: SanitizedQuestion[];
 }
 
@@ -94,7 +111,7 @@ export interface SanitizedExamSection {
   groups: SanitizedExamGroup[];
 }
 
-export function sanitizeSections(sections: ExamSection[]): SanitizedExamSection[] {
+export function sanitizeSections(sections: SeededExamSection[]): SanitizedExamSection[] {
   return sections.map((section) => ({
     id: section.id,
     kind: section.kind,
@@ -104,8 +121,11 @@ export function sanitizeSections(sections: ExamSection[]): SanitizedExamSection[
     groups: section.groups.map((group) => ({
       id: group.id,
       passage: group.passage,
-      // Listening scripts must reach the client for TTS playback; answers never do.
+      // Listening scripts must reach the client for TTS fallback; answers
+      // never do. audioUrl points at the group's pre-generated render
+      // (snapshots taken before audio existed simply lack it → TTS).
       script: group.script,
+      audioUrl: composeAudioUrl(group.audioUrl),
       questions: group.questions.map(({ id, stem, options }) => ({ id, stem, options })),
     })),
   }));

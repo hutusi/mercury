@@ -13,11 +13,9 @@ import type { ScriptLine } from "./types";
  * and unit tests. Server/tooling-side — never import from client code.
  */
 
-export interface AudioVoiceCast {
-  A: string;
-  B: string;
-  narrator: string;
-}
+// Type alias (not interface) on purpose: aliases get implicit index-signature
+// compatibility with the manifest's Record<string, string> voices field.
+export type AudioVoiceCast = { A: string; B: string; narrator: string };
 
 export interface AudioConfig {
   model: string;

@@ -1,5 +1,12 @@
 import { z } from "zod";
-import { listeningManifestKey, resolveAudioUrl } from "../../content/audio-hash";
+import {
+  examManifestKey,
+  listeningManifestKey,
+  resolveAudioUrl,
+  resolveExamAudioUrl,
+  resolveVocabAudioUrl,
+  vocabManifestKey,
+} from "../../content/audio-hash";
 import {
   allExams,
   allListening,
@@ -104,7 +111,22 @@ async function seed() {
     }
 
     for (const exam of exams) {
-      const row = { ...exam, totalQuestions: examQuestionCount(exam) };
+      // Listening groups carry their render's path under the same
+      // hash-freshness rule as exercises; attempt snapshots copy it along.
+      const sections = exam.sections.map((section) => ({
+        ...section,
+        groups: section.groups.map((group) => {
+          if (!group.script) return group;
+          const audioUrl = resolveExamAudioUrl(exam.id, group.id, group.script, audioManifest);
+          if (!audioUrl && audioManifest[examManifestKey(exam.id, group.id)]) {
+            console.warn(
+              `  exam ${exam.id}/${group.id}: audio is stale (script changed) — run bun run content:audio`,
+            );
+          }
+          return { ...group, audioUrl };
+        }),
+      }));
+      const row = { ...exam, sections, totalQuestions: examQuestionCount(exam) };
       await tx.insert(mockExams).values(row).onConflictDoUpdate({ target: mockExams.id, set: row });
     }
   });
