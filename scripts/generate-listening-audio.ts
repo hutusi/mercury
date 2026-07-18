@@ -4,6 +4,7 @@ import { Mp3Encoder } from "@breezystack/lamejs";
 import {
   AudioManifestSchema,
   LISTENING_AUDIO_CONFIG,
+  listeningAudioFile,
   listeningManifestKey,
   scriptAudioHash,
   type AudioManifest,
@@ -27,11 +28,11 @@ import type { ScriptLine } from "../src/content/types";
 const TTS_URL =
   process.env.DASHSCOPE_TTS_URL ??
   "https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation";
+// All settings that shape the sound live in CONFIG — they feed the content
+// hash, so changing any of them correctly invalidates every existing render.
 const CONFIG = LISTENING_AUDIO_CONFIG;
 const MANIFEST_PATH = path.join(process.cwd(), "content", "audio-manifest.json");
 const AUDIO_DIR = path.join(process.cwd(), "public", "audio", "listening");
-const LINE_GAP_SECONDS = 0.4;
-const MP3_KBPS = 64;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -93,7 +94,11 @@ async function synthesizeLine(line: ScriptLine, apiKey: string): Promise<Synthes
         headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
         body: JSON.stringify({
           model: CONFIG.model,
-          input: { text: line.text, voice: CONFIG.voices[line.speaker], language_type: "English" },
+          input: {
+            text: line.text,
+            voice: CONFIG.voices[line.speaker],
+            language_type: CONFIG.languageType,
+          },
         }),
       });
       if (!res.ok) throw new Error(`TTS request failed: ${res.status} ${await res.text()}`);
@@ -124,7 +129,7 @@ function stitchToMp3(lines: SynthesizedLine[]): Uint8Array {
   if (mismatch) {
     throw new Error(`mixed sample rates in one exercise: ${sampleRate} vs ${mismatch.sampleRate}`);
   }
-  const gap = new Int16Array(Math.round(LINE_GAP_SECONDS * sampleRate));
+  const gap = new Int16Array(Math.round(CONFIG.lineGapSeconds * sampleRate));
   const total = lines.reduce((n, l) => n + l.samples.length, 0) + gap.length * (lines.length - 1);
   const pcm = new Int16Array(total);
   let cursor = 0;
@@ -134,7 +139,7 @@ function stitchToMp3(lines: SynthesizedLine[]): Uint8Array {
     cursor += line.samples.length;
   }
 
-  const encoder = new Mp3Encoder(1, sampleRate, MP3_KBPS);
+  const encoder = new Mp3Encoder(1, sampleRate, CONFIG.mp3Kbps);
   const chunks: Uint8Array[] = [];
   const blockSize = 1152;
   for (let i = 0; i < pcm.length; i += blockSize) {
@@ -177,7 +182,7 @@ async function main() {
   for (const exercise of allListening) {
     const hash = scriptAudioHash(exercise.script, CONFIG);
     const key = listeningManifestKey(exercise.id);
-    const fileName = `${exercise.id}.${hash}.mp3`;
+    const fileName = path.basename(listeningAudioFile(exercise.id, hash));
     const entry = manifest[key];
     if (entry?.hash === hash && fs.existsSync(path.join(AUDIO_DIR, fileName))) {
       skipped++;
@@ -205,7 +210,7 @@ async function main() {
     const lineCharacters = lines.reduce((n, l) => n + l.characters, 0);
     manifest[key] = {
       hash,
-      file: `/audio/listening/${fileName}`,
+      file: listeningAudioFile(exercise.id, hash),
       model: CONFIG.model,
       voices: CONFIG.voices,
       generatedAt: new Date().toISOString(),

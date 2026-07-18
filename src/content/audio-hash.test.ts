@@ -45,12 +45,20 @@ describe("scriptAudioHash", () => {
     ).not.toBe(hash);
     expect(scriptAudioHash(script, { ...config, model: "qwen-tts" })).not.toBe(hash);
   });
+
+  it("changes when renderer settings change", () => {
+    const hash = scriptAudioHash(script, config);
+    expect(scriptAudioHash(script, { ...config, lineGapSeconds: 0.6 })).not.toBe(hash);
+    expect(scriptAudioHash(script, { ...config, mp3Kbps: 96 })).not.toBe(hash);
+    expect(scriptAudioHash(script, { ...config, languageType: "Chinese" })).not.toBe(hash);
+  });
 });
 
 describe("resolveAudioUrl", () => {
+  const hash = scriptAudioHash(script, config);
   const entry = {
-    hash: scriptAudioHash(script, config),
-    file: "/audio/listening/biz-l-001.abcdef123456.mp3",
+    hash,
+    file: `/audio/listening/biz-l-001.${hash}.mp3`,
     model: config.model,
     voices: config.voices,
     generatedAt: "2026-07-18T00:00:00.000Z",
@@ -58,8 +66,17 @@ describe("resolveAudioUrl", () => {
   };
   const manifest: AudioManifest = { [listeningManifestKey("biz-l-001")]: entry };
 
-  it("returns the file when the manifest hash matches the script", () => {
+  it("returns the canonical id+hash path when the manifest hash matches", () => {
     expect(resolveAudioUrl("biz-l-001", script, manifest, config)).toBe(entry.file);
+  });
+
+  it("derives the path from id + hash even when entry.file lies", () => {
+    // A swapped/mangled file field must never route one exercise's player to
+    // another's audio; the manifest guard test rejects such manifests in CI.
+    const lying: AudioManifest = {
+      [listeningManifestKey("biz-l-001")]: { ...entry, file: "/audio/listening/other.mp3" },
+    };
+    expect(resolveAudioUrl("biz-l-001", script, lying, config)).toBe(entry.file);
   });
 
   it("returns null for an exercise with no manifest entry", () => {

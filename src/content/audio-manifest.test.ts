@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "bun:test";
-import { AudioManifestSchema, type AudioManifest } from "./audio-hash";
+import { AudioManifestSchema, listeningAudioFile, type AudioManifest } from "./audio-hash";
 
 /**
  * Broken states between content/audio-manifest.json and the committed files
@@ -20,6 +20,18 @@ const manifest: AudioManifest = fs.existsSync(manifestPath)
   : {};
 
 describe("audio manifest ↔ committed files", () => {
+  it("every entry's key and file follow the canonical id/hash mapping", () => {
+    // resolveAudioUrl derives paths from id + hash, so a manifest whose file
+    // fields were swapped or hand-mangled must fail here, not play wrongly.
+    const broken = Object.entries(manifest)
+      .filter(([key, entry]) => {
+        const id = key.startsWith("listening:") ? key.slice("listening:".length) : null;
+        return !id || entry.file !== listeningAudioFile(id, entry.hash);
+      })
+      .map(([key, entry]) => `${key} → ${entry.file}`);
+    expect(broken).toEqual([]);
+  });
+
   it("every manifest entry points at a committed file", () => {
     const missing = Object.entries(manifest)
       .filter(([, entry]) => !fs.existsSync(path.join(root, "public", entry.file)))

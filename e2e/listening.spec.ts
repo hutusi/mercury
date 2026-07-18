@@ -1,16 +1,17 @@
-import fs from "node:fs";
-import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
+import { resolveAudioUrl } from "../src/content/audio-hash";
+import { allListening, audioManifest } from "../src/content/load";
 import { answerAllQuestions, registerAndOnboard, t } from "./helpers";
 
-// The audio manifest ships with the MP3s (ADR 0021) and the seeded audioUrl
-// mirrors it, so the specs read it to know which player mode to expect. With
-// no generated audio committed, the suite still covers the browser-TTS path —
-// generation never runs in CI and no spec needs a DashScope key.
-const manifestPath = path.join(process.cwd(), "content", "audio-manifest.json");
-const manifest: Record<string, { file: string }> = fs.existsSync(manifestPath)
-  ? (JSON.parse(fs.readFileSync(manifestPath, "utf8")) as Record<string, { file: string }>)
-  : {};
+// Expected audio availability per exercise, computed with the exact logic the
+// seed uses (resolveAudioUrl): a manifest entry whose hash no longer matches
+// the script — the documented keyless edit-without-regenerating state — must
+// expect the TTS fallback, same as the runtime. With no generated audio at
+// all, the suite still covers the browser-TTS path; no spec needs a key.
+const expectedAudio = new Map(
+  allListening.map((ex) => [ex.id, resolveAudioUrl(ex.id, ex.script, audioManifest)]),
+);
+const anyAudio = [...expectedAudio.values()].some(Boolean);
 
 async function openFirstExercise(page: Page): Promise<string> {
   await page.goto("/listening");
@@ -25,9 +26,10 @@ test("listening exercise: player matches generated audio, submit unlocks transcr
   await registerAndOnboard(page, "toeic");
   const exerciseId = await openFirstExercise(page);
 
-  // Pre-generated audio renders a chrome-less <audio>; without it the player
-  // is pure browser TTS and no audio element exists.
-  if (manifest[`listening:${exerciseId}`]) {
+  // Fresh pre-generated audio renders a chrome-less <audio>; without it (none
+  // generated, or stale after a script edit) the player is pure browser TTS
+  // and no audio element exists.
+  if (expectedAudio.get(exerciseId)) {
     const audio = page.locator("audio");
     await expect(audio).toHaveAttribute("src", /^\/audio\/listening\//);
     // Clicking play must actually start playback, not trip the degradation
@@ -56,12 +58,12 @@ test("listening exercise: player matches generated audio, submit unlocks transcr
 });
 
 test("blocked audio degrades to browser TTS with a visible hint", async ({ page }) => {
-  test.skip(Object.keys(manifest).length === 0, "no generated audio committed yet");
+  test.skip(!anyAudio, "no fresh generated audio committed yet");
 
   await registerAndOnboard(page, "toeic");
   await page.route("**/audio/listening/**", (route) => route.abort());
   const exerciseId = await openFirstExercise(page);
-  test.skip(!manifest[`listening:${exerciseId}`], "first listed exercise has no audio");
+  test.skip(!expectedAudio.get(exerciseId), "first listed exercise has no fresh audio");
 
   // preload starts the fetch on mount; the element's error handler flips the
   // player to TTS mode and surfaces the degradation hint without a click.
