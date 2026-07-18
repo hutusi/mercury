@@ -223,12 +223,16 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
               onClick={() => grade(b.grade)}
               disabled={pending}
               aria-keyshortcuts={b.shortcut}
+              aria-describedby={`grade-${b.grade}-interval`}
               className={`px-3 py-3 text-sm font-medium outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 ${b.cls}`}
             >
               {b.label}
-              {/* aria-hidden keeps each button's accessible name exactly its label. */}
+              {/* aria-hidden keeps each button's accessible name exactly its label;
+                  the aria-describedby reference still surfaces the hint as the
+                  button's description (directly referenced hidden nodes count). */}
               <span
                 aria-hidden
+                id={`grade-${b.grade}-interval`}
                 className={`mt-1 block font-mono text-xs tabular-nums ${
                   b.grade === 1 ? "text-cinnabar-foreground/80" : "text-muted-foreground"
                 }`}

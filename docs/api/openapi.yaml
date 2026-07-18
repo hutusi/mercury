@@ -393,6 +393,7 @@ paths:
                       allOf:
                         - { $ref: "#/components/schemas/VocabWord" }
                         - type: object
+                          required: [wordId, isNew, srs]
                           properties:
                             wordId: { type: string }
                             isNew: { type: boolean }
@@ -420,6 +421,7 @@ paths:
             application/json:
               schema:
                 type: object
+                required: [intervalDays, srs]
                 properties:
                   intervalDays: { type: integer }
                   srs: { $ref: "#/components/schemas/SrsState" }
@@ -1197,9 +1199,10 @@ components:
       description: >-
         Per-user SM-2 scheduler state — enough for clients to preview what each
         grade would schedule using the same deterministic SM-2 rules.
+      required: [easeFactor, intervalDays, repetitions, lapses]
       properties:
         easeFactor: { type: number }
-        intervalDays: { type: number }
+        intervalDays: { type: integer }
         repetitions: { type: integer }
         lapses: { type: integer }
     QuizQuestion:
