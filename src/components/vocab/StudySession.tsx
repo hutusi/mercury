@@ -20,6 +20,8 @@ export interface StudyCardData {
   translationZh: string;
   exampleEn: string;
   exampleZh: string;
+  /** Pre-generated headword pronunciation (ADR 0023); null → browser TTS. */
+  audioUrl: string | null;
   isNew: boolean;
   srs: SrsState;
 }
@@ -36,21 +38,48 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   const [pending, startTransition] = useTransition();
   const [mounted, setMounted] = useState(false);
   const speakerRef = useRef<WordSpeaker | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side
     setMounted(true);
     speakerRef.current = createWordSpeaker();
-    return () => speakerRef.current?.stop();
+    audioRef.current = new Audio();
+    return () => {
+      speakerRef.current?.stop();
+      audioRef.current?.pause();
+    };
   }, []);
 
   const card = queue[index];
+
+  function stopAudio() {
+    audioRef.current?.pause();
+    speakerRef.current?.stop();
+  }
+
+  // Headword pronunciation prefers the pre-generated render (ADR 0023) and
+  // falls back to browser TTS when there is none or it fails to play. URLs
+  // are hash-immutable with year-long cache headers, so repeat plays are
+  // served from the browser cache.
+  function speakHeadword(c: StudyCardData) {
+    stopAudio();
+    const el = audioRef.current;
+    if (!c.audioUrl || !el) {
+      speakerRef.current?.speak(c.headword);
+      return;
+    }
+    const resolved = new URL(c.audioUrl, window.location.href).href;
+    if (el.src !== resolved) el.src = resolved;
+    el.currentTime = 0;
+    void el.play().catch(() => speakerRef.current?.speak(c.headword));
+  }
 
   const grade = useCallback(
     (g: ReviewGrade) => {
       if (!card || pending) return;
       setError(null);
-      speakerRef.current?.stop();
+      stopAudio();
       startTransition(async () => {
         try {
           const result = await gradeCard({ wordId: card.wordId, grade: g });
@@ -172,10 +201,10 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
           {!flipped && <p className="mt-8 text-sm text-muted-foreground/70">{t.vocab.flipHint}</p>}
         </button>
 
-        {canSpeak && (
+        {(canSpeak || (mounted && card.audioUrl)) && (
           <button
             type="button"
-            onClick={() => speakerRef.current?.speak(card.headword)}
+            onClick={() => speakHeadword(card)}
             aria-label={t.vocab.speakWord}
             className="absolute top-3 right-3 flex size-9 items-center justify-center text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
@@ -198,7 +227,12 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
                 {canSpeak && (
                   <button
                     type="button"
-                    onClick={() => speakerRef.current?.speak(card.exampleEn)}
+                    onClick={() => {
+                      // Example sentences deliberately stay on browser TTS
+                      // (ADR 0023); just don't talk over the headword MP3.
+                      audioRef.current?.pause();
+                      speakerRef.current?.speak(card.exampleEn);
+                    }}
                     aria-label={t.vocab.speakExample}
                     className="shrink-0 text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >

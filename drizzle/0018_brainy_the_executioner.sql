@@ -1,0 +1,1 @@
+ALTER TABLE "vocab_words" ADD COLUMN "audio_url" text;

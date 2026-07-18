@@ -66,10 +66,17 @@ async function seed() {
   // never leave practice areas on different seed revisions.
   await db.transaction(async (tx) => {
     for (const [i, word] of vocab.entries()) {
+      const audioUrl = resolveVocabAudioUrl(word.id, word.headword, audioManifest);
+      if (!audioUrl && audioManifest[vocabManifestKey(word.id)]) {
+        console.warn(
+          `  vocab ${word.id}: audio is stale (headword changed) — run bun run content:audio`,
+        );
+      }
+      const row = { ...word, sortOrder: i, audioUrl };
       await tx
         .insert(vocabWords)
-        .values({ ...word, sortOrder: i })
-        .onConflictDoUpdate({ target: vocabWords.id, set: { ...word, sortOrder: i } });
+        .values(row)
+        .onConflictDoUpdate({ target: vocabWords.id, set: row });
     }
 
     for (const ex of reading) {

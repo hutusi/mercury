@@ -167,6 +167,9 @@ export const vocabWords = pgTable(
     exampleEn: text("example_en").notNull(),
     exampleZh: text("example_zh").notNull(),
     sortOrder: integer("sort_order").notNull().default(0),
+    // Pre-generated headword pronunciation (ADR 0023); null degrades to
+    // browser TTS. Seed-owned: linked only on a fresh manifest hash.
+    audioUrl: text("audio_url"),
   },
   (t) => [index("vocab_words_track_idx").on(t.track)],
 );

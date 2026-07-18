@@ -1,7 +1,25 @@
+import fs from "node:fs";
+import path from "node:path";
 import { expect, test } from "@playwright/test";
+import { resolveVocabAudioUrl } from "../src/content/audio-hash";
+import { allVocab, audioManifest } from "../src/content/load";
 import { registerAndOnboard, t } from "./helpers";
 
+// The first study card for a fresh toeic user is the lowest-sortOrder unseen
+// word; its pre-generated headword audio exists only when the manifest hash
+// is fresh (seed parity — see listening.spec.ts).
+const firstWord = allVocab.find((w) => w.track === "toeic");
+const expectedWordAudio = firstWord
+  ? resolveVocabAudioUrl(firstWord.id, firstWord.headword, audioManifest)
+  : null;
+const FIXTURE_MP3 = fs.readFileSync(path.join(__dirname, "fixtures", "listening-sample.mp3"));
+
 test("flashcard study: flip reveals grading, Good advances, Again re-queues", async ({ page }) => {
+  let audioRequested = false;
+  await page.route("**/audio/vocab/**", (route) => {
+    audioRequested = true;
+    return route.fulfill({ body: FIXTURE_MP3, contentType: "audio/mpeg" });
+  });
   await registerAndOnboard(page, "toeic");
 
   await page.goto("/vocabulary/study");
@@ -11,9 +29,14 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   await expect(page.getByText(t.vocab.flipHint)).toBeVisible();
   await expect(page.getByRole("progressbar", { name: t.vocab.sessionProgress })).toBeVisible();
 
-  // Word pronunciation is offered before the flip (headless Chromium exposes
-  // speechSynthesis; presence only — never trigger playback in e2e).
+  // Word pronunciation is offered before the flip. With generated headword
+  // audio the button must fetch the MP3 (fulfilled hermetically above);
+  // without it, presence only — browser TTS is never triggered in e2e.
   await expect(page.getByRole("button", { name: t.vocab.speakWord })).toBeVisible();
+  if (expectedWordAudio) {
+    await page.getByRole("button", { name: t.vocab.speakWord }).click();
+    await expect.poll(() => audioRequested).toBe(true);
+  }
 
   // Grade buttons hidden until the card is flipped.
   const goodButton = page.getByRole("button", { name: t.vocab.good, exact: true });
