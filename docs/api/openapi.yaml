@@ -533,8 +533,9 @@ paths:
     get:
       summary: One listening exercise; pre-generated audio plus the script for TTS fallback
       description: >
-        audioUrl (nullable) is an origin-relative path to pre-generated neural
-        audio (ADR 0021). Clients play it when present; when null or when the
+        audioUrl (nullable) points at pre-generated neural audio (ADR 0021/0022)
+        — normally an absolute Vercel Blob URL, immutable per URL and safe to
+        cache aggressively. Clients play it when present; when null or when the
         fetch fails they fall back to speaking the script with on-device TTS.
       tags: [exercises]
       parameters: [{ $ref: "#/components/parameters/exerciseId" }]
