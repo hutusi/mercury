@@ -28,7 +28,18 @@ test("listening exercise: player matches generated audio, submit unlocks transcr
   // Pre-generated audio renders a chrome-less <audio>; without it the player
   // is pure browser TTS and no audio element exists.
   if (manifest[`listening:${exerciseId}`]) {
-    await expect(page.locator("audio")).toHaveAttribute("src", /^\/audio\/listening\//);
+    const audio = page.locator("audio");
+    await expect(audio).toHaveAttribute("src", /^\/audio\/listening\//);
+    // Clicking play must actually start playback, not trip the degradation
+    // path — an identity-unstable ref cleanup once paused the element on the
+    // click's own re-render, rejecting play() and falsely degrading to TTS.
+    await page.getByRole("button", { name: t.listening.play }).click();
+    await expect
+      .poll(() => audio.evaluate((el) => (el as HTMLAudioElement).currentTime))
+      .toBeGreaterThan(0);
+    await expect(audio.evaluate((el) => (el as HTMLAudioElement).error)).resolves.toBeNull();
+    await expect(page.getByText(t.listening.usingBrowserTts, { exact: false })).toHaveCount(0);
+    await page.getByRole("button", { name: t.listening.pause }).click();
   } else {
     await expect(page.locator("audio")).toHaveCount(0);
   }

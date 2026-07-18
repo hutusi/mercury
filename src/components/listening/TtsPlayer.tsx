@@ -1,7 +1,7 @@
 "use client";
 
 import { Pause, Play } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Callout } from "@/components/ui/callout";
 import type { ScriptLine } from "@/content/types";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -35,6 +35,21 @@ export function TtsPlayer({
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const audioMode = Boolean(audioUrl) && !audioFailed;
+
+  // MUST be identity-stable: React 19 re-runs a changed ref callback's cleanup
+  // on every render, and this cleanup pauses the element — an inline callback
+  // here paused the media 13ms after play() (the click's own re-render),
+  // rejecting it with AbortError and falsely degrading to browser TTS.
+  // The pause-on-detach itself is load-bearing: a removed <audio> can keep
+  // playing (Chrome) until GC'd.
+  const attachAudio = useCallback((el: HTMLAudioElement | null) => {
+    audioRef.current = el;
+    if (!el) return;
+    return () => {
+      el.pause();
+      audioRef.current = null;
+    };
+  }, []);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side
@@ -74,7 +89,19 @@ export function TtsPlayer({
     }
     setPlaying(true);
     setResumable(false);
-    void el.play().catch(degradeToTts);
+    void el.play().catch(() => {
+      if (el.error) {
+        // A real media failure (network/decode/unsupported) — degrade.
+        degradeToTts();
+        return;
+      }
+      // Benign rejection: AbortError from an interrupting pause()/unmount or
+      // NotAllowedError from autoplay policy. The media is healthy — sync the
+      // UI, keep audio mode, and refund the play if nothing was heard yet.
+      if (el.currentTime === 0) setPlayCount((n) => Math.max(0, n - 1));
+      setPlaying(false);
+      setResumable(el.currentTime > 0 && !el.ended);
+    });
   }
 
   function pauseAudio() {
@@ -118,16 +145,7 @@ export function TtsPlayer({
     <div className="border border-border p-5">
       {audioMode && (
         <audio
-          // Ref cleanup pauses on unmount: a detached <audio> can keep
-          // playing (Chrome) until GC'd otherwise.
-          ref={(el) => {
-            audioRef.current = el;
-            if (!el) return;
-            return () => {
-              el.pause();
-              audioRef.current = null;
-            };
-          }}
+          ref={attachAudio}
           src={audioUrl ?? undefined}
           preload="auto"
           onTimeUpdate={(e) => {
@@ -139,7 +157,13 @@ export function TtsPlayer({
             setResumable(false);
             setAudioProgress(0);
           }}
-          onError={degradeToTts}
+          onError={(e) => {
+            const err = e.currentTarget.error;
+            console.warn(
+              `listening audio failed (code=${err?.code ?? "?"}: ${err?.message ?? "unknown"}) — degrading to browser TTS`,
+            );
+            degradeToTts();
+          }}
         />
       )}
       <div className="flex items-center gap-4">
