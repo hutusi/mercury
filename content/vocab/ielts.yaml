@@ -1094,7 +1094,7 @@
   track: ielts
   topic: energy
   headword: photovoltaic
-  ipa: /ˌfoʊtoʊvoʊlˈteɪɪk/
+  ipa: /ˌfoʊtoʊvɑːlˈteɪɪk/
   pos: adj.
   definitionEn: Converting sunlight directly into electricity.
   translationZh: 光伏的
@@ -1127,8 +1127,8 @@
   headword: pesticide
   ipa: /ˈpestɪsaɪd/
   pos: n.
-  definitionEn: A chemical used to kill insects that damage crops.
-  translationZh: 杀虫剂；农药
+  definitionEn: A chemical used to kill insects, weeds, or other organisms harmful to crops.
+  translationZh: 农药；杀虫剂
   exampleEn: Excessive use of pesticides has been blamed for the decline in bee populations.
   exampleZh: 农药的过度使用被认为是蜜蜂数量减少的原因。
 - id: ielts-w-113

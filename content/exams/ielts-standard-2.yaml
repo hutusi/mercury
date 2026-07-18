@@ -3,7 +3,7 @@ id: exam-ielts-standard-2
 track: ielts
 title: IELTS Standard Practice Test 2
 titleZh: 雅思标准模考（二）
-descriptionZh: 第二套标准模考，共 44 题：听力 20 题（两个部分，涵盖成人课程报名、图书馆导览、城市鸟类项目讨论与电梯史讲座）+ 阅读 24 题（经度难题、排队心理、海草床保护与四天工作制四篇学术短文），全程约 60 分钟。内容与第一套完全不同，便于重考，题型与出题节奏和正式考试一致。
+descriptionZh: 第二套标准模考，共 44 题：听力 20 题（两个部分，涵盖成人课程报名、图书馆导览、城市鸟类项目讨论与电梯史讲座）+ 阅读 24 题（冰川运动、排队心理、海草床保护与四天工作制四篇学术短文），全程约 60 分钟。内容与第一套完全不同，便于重考，题型与出题节奏和正式考试一致。
 sections:
   - id: ielts-standard-2-listening-1
     kind: listening
@@ -305,70 +305,70 @@ sections:
     groups:
       - id: is2-rg1
         passage: |-
-          The Longitude Problem
+          The Slow River of Ice
 
-          For centuries, sailors could find their latitude — their position north or south — with ease, simply by measuring the height of the sun or the pole star. Longitude, their position east or west, was a deadlier puzzle. A ship that misjudged it by a hundred miles might run onto rocks it believed were far away, and countless sailors drowned for want of an answer. In 1714, after a British fleet was wrecked in fog with the loss of some two thousand men, Parliament offered a vast prize to anyone who could solve it.
+          A glacier looks like the stillest thing in nature, yet its stillness is an illusion. A glacier is not a frozen pond but a slow river: a mass of ice that flows downhill under its own colossal weight. One forms wherever winter snowfall outlasts summer melting year after year. Each new season buries the last, and the deepening snow is squeezed until its delicate crystals recrystallise into dense glacial ice. When the mass grows heavy enough — typically around fifty metres thick — it begins to move.
 
-          In principle the solution was simple. Because the earth turns a fixed amount each hour, the difference between the local time aboard ship and the time at a fixed reference point, such as London, reveals how far east or west a vessel has sailed. Local time was easy to read from the sun. The real difficulty was knowing London's time on the far side of an ocean, which meant carrying a clock that kept perfect time despite the pitching deck, the changing temperature and the salt air — something no clock of the age could manage.
+          That movement happens in two ways. Deep inside the glacier, where pressure is immense, the ice itself deforms: its crystals slip past one another in what physicists call plastic flow, so the body of the glacier creeps forward without breaking. Where the base rests on a film of meltwater, the whole glacier may also slide across its bed, like a skater gliding on a wet rink. Because the centre of the glacier flows faster than the edges, which drag against the valley walls, the brittle surface ice is stretched and torn into the deep cracks known as crevasses.
 
-          Most experts, including the astronomers who dominated the prize board, expected the answer to come from the stars rather than from machinery. A largely self-taught carpenter named John Harrison disagreed. Over four decades he built a series of remarkable timekeepers, ending with a watch not much larger than an ordinary pocket watch that lost only a few seconds on a voyage to the Caribbean. Yet the board, reluctant to reward a mere mechanic over the heavens, withheld the full prize for years, and Harrison received it only after the king intervened on his behalf.
+          Most glaciers travel at a leisurely pace of a few centimetres to a few metres a day. A small number, however, periodically "surge", accelerating to a hundred times their normal speed for months at a time before falling quiet again. Early researchers tracked such changes by hammering lines of stakes into the ice and returning each summer to measure how far they had drifted downhill; today, satellites can map the speed of ice sheets far too remote for any surveyor to visit.
 
-          Harrison's chronometers were at first far too costly and delicate for everyday use, and cheaper copies took decades to spread through the world's fleets. But once they did, the effect was profound. Ships could at last cross open water with confidence, accurate charts became possible, and trade routes that had once been a gamble turned into reliable highways. The problem that had defeated the finest minds of Europe was solved in the end not by a grand theory but by the patience of a craftsman.
+          The speed of ice is more than a curiosity. Glaciers store more fresh water than all the world's rivers and lakes combined, and hundreds of millions of people depend on their summer meltwater for drinking and farming. A glacier that delivers its ice to the ocean more quickly also raises the sea level. Understanding how, and how fast, ice moves has therefore become one of the more urgent questions in earth science.
         questions:
           - id: is2-r-q01
-            stem: Why was getting longitude wrong more dangerous than getting latitude wrong?
+            stem: According to the first paragraph, what causes a glacier to start moving?
             options:
-              - Latitude could not be measured at sea
-              - A large error in longitude could wreck a ship
-              - Longitude changed with the seasons
-              - Latitude required expensive instruments
+              - The melting of winter snow
+              - The weight of the accumulated ice
+              - Cracks opening on its surface
+              - The steepness of the valley floor
             correctIndex: 1
-            explanationZh: 首段说纬度靠太阳或北极星就能轻松测得，而经度算错 "a hundred miles might run onto rocks... countless sailors drowned"——误差百里就可能撞礁沉船，因此更致命。
+            explanationZh: 首段说冰川 "flows downhill under its own colossal weight"，并且 "When the mass grows heavy enough — typically around fifty metres thick — it begins to move"——冰体是在自身重量达到临界后才开始流动。积雪消融和山谷坡度都不是文中给出的启动条件（排除 A、D）。
           - id: is2-r-q02
-            stem: What prompted Parliament to offer the prize in 1714?
+            stem: In plastic flow, what allows the glacier to creep forward?
             options:
-              - A new astronomical discovery
-              - The invention of a better clock
-              - A shipwreck that killed about two thousand men
-              - A personal request from John Harrison
-            correctIndex: 2
-            explanationZh: 首段说悬赏出于一场海难："after a British fleet was wrecked in fog with the loss of some two thousand men, Parliament offered a vast prize"——舰队触雾遇难约两千人，才促成设立巨额奖金。
+              - Ice crystals slipping past one another
+              - Meltwater collecting beneath the glacier
+              - The surface breaking into crevasses
+              - The glacier sliding across its rocky bed
+            correctIndex: 0
+            explanationZh: 第二段解释塑性流动："its crystals slip past one another in what physicists call plastic flow, so the body of the glacier creeps forward without breaking"——冰晶相互滑移，使冰体不破裂地缓慢前移。底部融水与整体滑动（B、D）是另一种运动方式，不是塑性流动。
           - id: is2-r-q03
-            stem: How can the time difference between ship and London reveal longitude?
+            stem: Why do crevasses form on the surface of a glacier?
             options:
-              - The earth turns a fixed amount each hour
-              - London is always warmer than the open sea
-              - The sun sets at the same moment everywhere
-              - Clocks run faster at sea than on land
-            correctIndex: 0
-            explanationZh: 第二段解释原理："Because the earth turns a fixed amount each hour, the difference between the local time... and the time at a fixed reference point... reveals how far east or west a vessel has sailed"——地球每小时自转固定角度，两地时差即对应经度差。
-          - id: is2-r-q04
-            stem: What made keeping London's time at sea so difficult?
-            options:
-              - The sun could not be seen from a ship
-              - No clock could stay accurate on a moving ship
-              - Sailors could not read local time
-              - London had no fixed reference time
-            correctIndex: 1
-            explanationZh: 第二段说难点在于 "carrying a clock that kept perfect time despite the pitching deck, the changing temperature and the salt air — something no clock of the age could manage"——当时没有钟表能在颠簸、温差和盐雾中保持精准。
-          - id: is2-r-q05
-            stem: Why did the prize board delay rewarding Harrison?
-            options:
-              - His watch lost far too many seconds
-              - His design had been copied by rivals
-              - The king was opposed to him
-              - They preferred an answer from astronomy
+              - The base of the glacier freezes onto the rock
+              - Meltwater dissolves the surface ice
+              - Winter snow is heavier than glacial ice
+              - The centre of the glacier moves faster than its edges
             correctIndex: 3
-            explanationZh: 第三段说评委会 "reluctant to reward a mere mechanic over the heavens, withheld the full prize for years"——他们更期待来自天文学的解法，不愿把奖颁给一名工匠。国王其实是为哈里森出面（intervened on his behalf），并非反对。
-          - id: is2-r-q06
-            stem: According to the final paragraph, how was the longitude problem ultimately solved?
+            explanationZh: 第二段说 "Because the centre of the glacier flows faster than the edges, which drag against the valley walls, the brittle surface ice is stretched and torn into the deep cracks known as crevasses"——中间流得快、两侧受谷壁拖拽流得慢，表层脆冰被拉扯撕裂成裂隙。
+          - id: is2-r-q04
+            stem: What is unusual about a surging glacier?
             options:
-              - By the patience of a craftsman
-              - By a grand astronomical theory
-              - By a government committee
-              - By a cheaper shipbuilding material
+              - It speeds up dramatically for months before slowing again
+              - It flows uphill during part of the year
+              - It moves only a few centimetres each day
+              - It never develops any crevasses
             correctIndex: 0
-            explanationZh: 末段总结："solved in the end not by a grand theory but by the patience of a craftsman"——最终不是靠宏大理论，而是靠一位工匠数十年的耐心。
+            explanationZh: 第三段说少数冰川会周期性 "surge"："accelerating to a hundred times their normal speed for months at a time before falling quiet again"——数月内提速至常速的百倍，随后又恢复平静。每天几厘米是普通冰川的常速，不是涌动的特征（排除 C）。
+          - id: is2-r-q05
+            stem: How did early researchers measure the movement of glaciers?
+            options:
+              - By mapping the ice from satellites
+              - By measuring the volume of summer meltwater
+              - By recording how far stakes in the ice had drifted
+              - By counting the layers of each winter's snow
+            correctIndex: 2
+            explanationZh: 第三段说早期研究者 "hammering lines of stakes into the ice and returning each summer to measure how far they had drifted downhill"——在冰面钉入成排木桩，每年夏天测量其漂移距离。卫星测速是今天才有的手段（排除 A）。
+          - id: is2-r-q06
+            stem: According to the final paragraph, why does the speed of glaciers matter?
+            options:
+              - Fast-moving glaciers open the deepest crevasses
+              - Meltwater supplies and sea level both depend on how glaciers flow
+              - The speed of the ice reveals the age of a valley
+              - Faster glaciers are easier for surveyors to reach
+            correctIndex: 1
+            explanationZh: 末段指出冰川储存的淡水超过全球江河湖泊的总和，"hundreds of millions of people depend on their summer meltwater"，同时 "A glacier that delivers its ice to the ocean more quickly also raises the sea level"——流速既关系亿万人的供水，又关系海平面，因此是地球科学的紧迫问题。
       - id: is2-rg2
         passage: |-
           The Psychology of Queuing
