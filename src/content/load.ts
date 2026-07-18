@@ -48,8 +48,10 @@ export const allSpeaking = loadTracked("speaking", SpeakingPromptSchema);
 export const allExams = [
   "exams/toeic-mini.yaml",
   "exams/toeic-standard.yaml",
+  "exams/toeic-standard-2.yaml",
   "exams/ielts-mini.yaml",
   "exams/ielts-standard.yaml",
+  "exams/ielts-standard-2.yaml",
 ].map((file) => loadFile(file, MockExamSchema));
 
 // Machine-written by `bun run content:audio` (ADR 0021); absent until audio

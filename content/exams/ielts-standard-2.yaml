@@ -1,0 +1,575 @@
+# yaml-language-server: $schema=../.schemas/exam.schema.json
+id: exam-ielts-standard-2
+track: ielts
+title: IELTS Standard Practice Test 2
+titleZh: 雅思标准模考（二）
+descriptionZh: 第二套标准模考，共 44 题：听力 20 题（两个部分，涵盖成人课程报名、图书馆导览、城市鸟类项目讨论与电梯史讲座）+ 阅读 24 题（经度难题、排队心理、海草床保护与四天工作制四篇学术短文），全程约 60 分钟。内容与第一套完全不同，便于重考，题型与出题节奏和正式考试一致。
+sections:
+  - id: ielts-standard-2-listening-1
+    kind: listening
+    title: Listening Section 1
+    titleZh: 听力第一部分
+    durationSeconds: 600
+    groups:
+      - id: is2-lg1
+        script:
+          - speaker: A
+            text: Good evening, Kingsley Adult Learning Centre. How can I help you?
+          - speaker: B
+            text: Hello, I'd like to enrol on one of your evening courses. I saw that you run classes in pottery and in watercolour painting.
+          - speaker: A
+            text: Yes, both start next week. The pottery class runs on Mondays, and the watercolour class is on Wednesdays.
+          - speaker: B
+            text: I'd prefer the pottery, but I'm away every Monday for work. Is there another pottery group?
+          - speaker: A
+            text: There's a Thursday pottery group, actually, and it still has a couple of places left. Shall I put you down for that one?
+          - speaker: B
+            text: Yes please, the Thursday one would be perfect.
+          - speaker: A
+            text: The course is ninety pounds for the term, or seventy-five if you hold a library membership card.
+          - speaker: B
+            text: Oh, I do have a library card, so that's the cheaper rate for me.
+          - speaker: A
+            text: Lovely. Most materials are supplied, but please bring an apron, as the clay does get everywhere.
+          - speaker: B
+            text: No problem. And which room is the class in?
+          - speaker: A
+            text: We used to use the art studio upstairs, but the pottery kiln is downstairs, so the class now meets in the basement workshop.
+          - speaker: B
+            text: Good to know. Could I give you my details?
+          - speaker: A
+            text: Of course — what's your name?
+          - speaker: B
+            text: It's Fiona Ashworth — that's A-S-H-W-O-R-T-H.
+        questions:
+          - id: is2-l-q01
+            stem: Which class does the woman finally enrol on?
+            options:
+              - The Wednesday watercolour class
+              - The Monday pottery class
+              - The upstairs art class
+              - The Thursday pottery class
+            correctIndex: 3
+            explanationZh: 女士说周一要上班（"I'm away every Monday for work"），职员提到周四的陶艺班还有名额，女士回答 "the Thursday one would be perfect"，因此报名周四陶艺班。周一陶艺班被明确排除。
+          - id: is2-l-q02
+            stem: How much will the woman pay for the course?
+            options:
+              - £90
+              - £75
+              - £70
+              - £15
+            correctIndex: 1
+            explanationZh: 职员报价 "ninety pounds for the term, or seventy-five if you hold a library membership card"，女士随即说 "I do have a library card"，因此按 75 英镑的优惠价付款。90 英镑是无图书馆卡的价格。
+          - id: is2-l-q03
+            stem: What does the man ask the woman to bring?
+            options:
+              - An apron
+              - Her own clay
+              - A set of brushes
+              - A notebook
+            correctIndex: 0
+            explanationZh: 职员说大部分材料由中心提供，但提醒 "please bring an apron, as the clay does get everywhere"——因为黏土容易弄脏衣服，所以要自带围裙。原文说 materials are supplied，故不必自带黏土。
+          - id: is2-l-q04
+            stem: Where does the pottery class now take place?
+            options:
+              - In the upstairs art studio
+              - In the library
+              - In the basement workshop
+              - In the main hall
+            correctIndex: 2
+            explanationZh: 职员说明因为窑炉在楼下，"the class now meets in the basement workshop"——如今在地下室工作间上课。楼上的美术工作室是过去的旧地点，属于 used to 引出的干扰信息。
+          - id: is2-l-q05
+            stem: What is the caller's surname?
+            options:
+              - Ashwood
+              - Ashworthe
+              - Ashford
+              - Ashworth
+            correctIndex: 3
+            explanationZh: 女士报出并拼写姓名："It's Fiona Ashworth — that's A-S-H-W-O-R-T-H"。听清逐字母拼读是雅思 Part 1 的常规考点，注意与发音相近的 Ashwood、Ashford 区分。
+      - id: is2-lg2
+        script:
+          - speaker: narrator
+            text: Hello everyone, and welcome to the reopening of Northgate Central Library. I'll take a few minutes to explain what has changed while we were closed for refurbishment.
+          - speaker: narrator
+            text: Our opening hours are now longer. We're open from eight in the morning until eight at night on weekdays, and from ten until four on Saturdays.
+          - speaker: narrator
+            text: I'm afraid the top-floor local history archive is not yet open. The new climate-control system is still being installed, and the archive will reopen in September.
+          - speaker: narrator
+            text: The self-service machines for borrowing and returning books have moved. They used to be by the main entrance, but you'll now find them next to the lift on the ground floor.
+          - speaker: narrator
+            text: We've added a quiet study zone on the first floor, where talking and phone calls are not allowed. If you need to make a call, please use the seating area beside the café.
+          - speaker: narrator
+            text: The children's story time has proved so popular that we now run it twice a week, on Tuesday and Friday mornings, rather than only on Fridays.
+          - speaker: narrator
+            text: Our café now serves hot meals as well as drinks, but please note that food may not be taken into the reading rooms.
+          - speaker: narrator
+            text: Finally, if you join as a member today, you'll receive a free tote bag, and you can reserve books online and collect them from the front desk.
+          - speaker: narrator
+            text: That's everything from me — do ask any member of staff at the help desk if you can't find what you're looking for.
+        questions:
+          - id: is2-l-q06
+            stem: When is the library open on Saturdays?
+            options:
+              - From 8am to 8pm
+              - From 10am to 4pm
+              - From 9am to 6pm
+              - It is closed on Saturdays
+            correctIndex: 1
+            explanationZh: 讲话人说 "from ten until four on Saturdays"——周六开放时间为上午十点到下午四点。八点到八点是工作日的时间，属于典型的干扰数字。
+          - id: is2-l-q07
+            stem: Why is the local history archive still closed?
+            options:
+              - A new climate-control system is being installed
+              - It is being repainted
+              - The staff are being trained
+              - The books are being catalogued
+            correctIndex: 0
+            explanationZh: 讲话人解释 "The new climate-control system is still being installed, and the archive will reopen in September"——因新的温湿度控制系统仍在安装，档案室要到九月才重开。
+          - id: is2-l-q08
+            stem: Where are the self-service machines now located?
+            options:
+              - By the main entrance
+              - In the café
+              - Next to the lift on the ground floor
+              - On the first floor
+            correctIndex: 2
+            explanationZh: 讲话人强调机器已搬迁："you'll now find them next to the lift on the ground floor"——现在位于一楼电梯旁。正门口是过去的旧位置，注意 used to 引出的干扰信息。
+          - id: is2-l-q09
+            stem: What is NOT allowed in the quiet study zone?
+            options:
+              - Reading books
+              - Using laptops
+              - Drinking water
+              - Making phone calls
+            correctIndex: 3
+            explanationZh: 讲话人说安静自习区 "talking and phone calls are not allowed"——禁止交谈和打电话，需要打电话请到咖啡厅旁的座位区。阅读、用电脑均未被禁止。
+          - id: is2-l-q10
+            stem: What do new members receive if they join today?
+            options:
+              - A free tote bag
+              - A free hot meal
+              - A free book
+              - Free café drinks
+            correctIndex: 0
+            explanationZh: 结尾说 "if you join as a member today, you'll receive a free tote bag"——今天入会赠送一个帆布袋。会员还可在线预约取书，但那是常规权益，不是赠品。
+  - id: ielts-standard-2-listening-2
+    kind: listening
+    title: Listening Section 2
+    titleZh: 听力第二部分
+    durationSeconds: 600
+    groups:
+      - id: is2-lg3
+        script:
+          - speaker: A
+            text: Did you get a chance to look at our first set of bird counts from Greenwood Park, Leila?
+          - speaker: B
+            text: I did, and I'm worried about them. There was a music festival in the park that weekend, and the noise seems to have driven most of the birds away.
+          - speaker: A
+            text: So the numbers are far too low. Should we just delete that weekend and count again?
+          - speaker: B
+            text: Dr Halloran said we should keep the data but add extra counts on quiet weekday mornings, so we can actually show the effect of the disturbance.
+          - speaker: A
+            text: That makes sense. And honestly, do we need all six parks? Getting out to the two on the edge of town eats up a whole morning.
+          - speaker: B
+            text: I agree, let's drop those two. She said four parks are fine, as long as we keep the one beside the reservoir, because it has the widest range of species.
+          - speaker: A
+            text: Good. I've also been thinking that just counting the birds we can see misses a lot.
+          - speaker: B
+            text: Exactly. That's why I want to record the dawn chorus as well, because some species stay hidden in the trees but we can identify them from their song.
+          - speaker: A
+            text: Clever. So how should we divide up the report?
+          - speaker: B
+            text: You're stronger with graphs, so you take the data analysis, and I'll write the species descriptions. We can do the introduction together.
+          - speaker: A
+            text: Sounds fair. One last thing — is the assessment still a written report?
+          - speaker: B
+            text: No, it's changed this year. We each have to give a fifteen-minute presentation and answer questions afterwards.
+        questions:
+          - id: is2-l-q11
+            stem: Why are the students' first bird counts unreliable?
+            options:
+              - They visited the wrong park
+              - A music festival had frightened the birds away
+              - Their equipment failed
+              - They counted at the wrong time of day
+            correctIndex: 1
+            explanationZh: 女生解释 "There was a music festival in the park that weekend, and the noise seems to have driven most of the birds away"——音乐节的噪音把鸟吓走，导致计数偏低，与设备或地点无关。
+          - id: is2-l-q12
+            stem: What does Dr Halloran advise them to do with the first data?
+            options:
+              - Delete it and start again
+              - Publish it immediately
+              - Give it to another group
+              - Keep it and add quiet-weekday counts for comparison
+            correctIndex: 3
+            explanationZh: 导师的建议是保留并补测："keep the data but add extra counts on quiet weekday mornings, so we can actually show the effect of the disturbance"——保留数据并在安静的工作日补计数，用来呈现干扰的影响，而非全部删除重来。
+          - id: is2-l-q13
+            stem: Why do the students decide to keep the park beside the reservoir?
+            options:
+              - It is the easiest one to reach
+              - It has the widest range of species
+              - It is the quietest park
+              - It has the most visitors
+            correctIndex: 1
+            explanationZh: 女生转述导师的话：四个公园足够，"as long as we keep the one beside the reservoir, because it has the widest range of species"——水库旁的公园鸟类种类最丰富，必须保留。
+          - id: is2-l-q14
+            stem: Why does Leila want to record the dawn chorus?
+            options:
+              - To identify species that stay hidden in the trees
+              - Because it is quicker than counting
+              - Because the counts are too expensive
+              - Because the tutor requires it
+            correctIndex: 0
+            explanationZh: 女生解释录音的价值："some species stay hidden in the trees but we can identify them from their song"——有些鸟藏在树里看不见，但能通过鸣声辨认，因此要录制黎明合唱。
+          - id: is2-l-q15
+            stem: How will the project be assessed this year?
+            options:
+              - A written report
+              - A poster display
+              - A presentation with questions
+              - A group essay
+            correctIndex: 2
+            explanationZh: 男生问是否还是书面报告，女生纠正："We each have to give a fifteen-minute presentation and answer questions afterwards"——今年改为十五分钟的口头报告并现场答问。
+      - id: is2-lg4
+        script:
+          - speaker: narrator
+            text: Today I want to look at the passenger lift, and to argue that this small moving room did as much to shape the modern city as any bridge or railway.
+          - speaker: narrator
+            text: Lifts of a kind are ancient. Hoists powered by animals or by hand raised goods and water for centuries, but no sensible person would ride in one, because if the rope broke, the platform fell.
+          - speaker: narrator
+            text: The breakthrough was not power but safety. In 1853, Elisha Otis demonstrated a device that gripped the rails automatically if the rope snapped, and he proved it by having the cable cut while he stood on the platform.
+          - speaker: narrator
+            text: Once people trusted the lift, the logic of tall buildings changed completely. Before, the most valuable rooms were on the lower floors, because nobody wanted to climb six flights of stairs.
+          - speaker: narrator
+            text: After the safe lift arrived, that hierarchy turned upside down. The upper floors, once cramped servants' quarters, became the most sought-after, with the best light and the quietest air.
+          - speaker: narrator
+            text: The lift also made the skyscraper possible. There was no point building thirty storeys if tenants could not reach them, so the lift and the tall building rose together, each one encouraging the other.
+          - speaker: narrator
+            text: There were social effects too. In a lift, strangers of every rank stand pressed together in silence, and some historians see it as one of the first truly democratic spaces in the city.
+          - speaker: narrator
+            text: Lifts even changed how buildings were designed. Architects learned to gather the lifts into a central core, which became the structural backbone around which the rest of each floor could be freely arranged.
+          - speaker: narrator
+            text: Today the challenge is different again. In the tallest towers a single shaft can no longer serve every floor, so engineers are testing cars that move sideways as well as up, freeing the building from the straight vertical line.
+        questions:
+          - id: is2-l-q16
+            stem: According to the lecturer, what was the key breakthrough for passenger lifts?
+            options:
+              - A more powerful engine
+              - A safety device that stopped the lift falling
+              - A cheaper building material
+              - A faster cable
+            correctIndex: 1
+            explanationZh: 讲座指出 "The breakthrough was not power but safety"，具体是奥的斯发明了绳索断裂时自动卡住导轨的装置——关键在安全而非动力。
+          - id: is2-l-q17
+            stem: Before the safe lift, which floors were the most valuable?
+            options:
+              - The upper floors
+              - The basement
+              - The middle floors
+              - The lower floors
+            correctIndex: 3
+            explanationZh: 讲座说在安全电梯出现前 "the most valuable rooms were on the lower floors, because nobody wanted to climb six flights of stairs"——因为没人愿意爬楼，低层最值钱。上层变贵是电梯出现之后的事。
+          - id: is2-l-q18
+            stem: How did the safe lift change tall buildings?
+            options:
+              - It made the upper floors the most desirable
+              - It made buildings cheaper to heat
+              - It reduced the number of storeys
+              - It removed the need for stairs
+            correctIndex: 0
+            explanationZh: 讲座说等级"彻底颠倒"："The upper floors... became the most sought-after, with the best light and the quietest air"——上层因采光好、更安静而变得最抢手。
+          - id: is2-l-q19
+            stem: Why does the lecturer call the lift a democratic space?
+            options:
+              - Tickets were free for everyone
+              - Strangers of all ranks stand together in it
+              - It was funded by the public
+              - Anyone could operate it
+            correctIndex: 1
+            explanationZh: 讲座说 "strangers of every rank stand pressed together in silence"——不同身份的陌生人在电梯里紧挨而立，史学家因此视其为城市里最早的平等空间之一。
+          - id: is2-l-q20
+            stem: What are engineers testing in the tallest towers today?
+            options:
+              - Lifts powered by animals
+              - Buildings with no lifts at all
+              - Lifts that move sideways as well as up
+              - Much shorter lift shafts
+            correctIndex: 2
+            explanationZh: 结尾说最高的塔楼里单一井道已无法服务所有楼层，"engineers are testing cars that move sideways as well as up"——工程师正试验可横向移动的电梯轿厢，摆脱直上直下的限制。
+  - id: ielts-standard-2-reading-1
+    kind: reading
+    title: Reading Section 1
+    titleZh: 阅读第一部分
+    durationSeconds: 1200
+    groups:
+      - id: is2-rg1
+        passage: |-
+          The Longitude Problem
+
+          For centuries, sailors could find their latitude — their position north or south — with ease, simply by measuring the height of the sun or the pole star. Longitude, their position east or west, was a deadlier puzzle. A ship that misjudged it by a hundred miles might run onto rocks it believed were far away, and countless sailors drowned for want of an answer. In 1714, after a British fleet was wrecked in fog with the loss of some two thousand men, Parliament offered a vast prize to anyone who could solve it.
+
+          In principle the solution was simple. Because the earth turns a fixed amount each hour, the difference between the local time aboard ship and the time at a fixed reference point, such as London, reveals how far east or west a vessel has sailed. Local time was easy to read from the sun. The real difficulty was knowing London's time on the far side of an ocean, which meant carrying a clock that kept perfect time despite the pitching deck, the changing temperature and the salt air — something no clock of the age could manage.
+
+          Most experts, including the astronomers who dominated the prize board, expected the answer to come from the stars rather than from machinery. A largely self-taught carpenter named John Harrison disagreed. Over four decades he built a series of remarkable timekeepers, ending with a watch not much larger than an ordinary pocket watch that lost only a few seconds on a voyage to the Caribbean. Yet the board, reluctant to reward a mere mechanic over the heavens, withheld the full prize for years, and Harrison received it only after the king intervened on his behalf.
+
+          Harrison's chronometers were at first far too costly and delicate for everyday use, and cheaper copies took decades to spread through the world's fleets. But once they did, the effect was profound. Ships could at last cross open water with confidence, accurate charts became possible, and trade routes that had once been a gamble turned into reliable highways. The problem that had defeated the finest minds of Europe was solved in the end not by a grand theory but by the patience of a craftsman.
+        questions:
+          - id: is2-r-q01
+            stem: Why was getting longitude wrong more dangerous than getting latitude wrong?
+            options:
+              - Latitude could not be measured at sea
+              - A large error in longitude could wreck a ship
+              - Longitude changed with the seasons
+              - Latitude required expensive instruments
+            correctIndex: 1
+            explanationZh: 首段说纬度靠太阳或北极星就能轻松测得，而经度算错 "a hundred miles might run onto rocks... countless sailors drowned"——误差百里就可能撞礁沉船，因此更致命。
+          - id: is2-r-q02
+            stem: What prompted Parliament to offer the prize in 1714?
+            options:
+              - A new astronomical discovery
+              - The invention of a better clock
+              - A shipwreck that killed about two thousand men
+              - A personal request from John Harrison
+            correctIndex: 2
+            explanationZh: 首段说悬赏出于一场海难："after a British fleet was wrecked in fog with the loss of some two thousand men, Parliament offered a vast prize"——舰队触雾遇难约两千人，才促成设立巨额奖金。
+          - id: is2-r-q03
+            stem: How can the time difference between ship and London reveal longitude?
+            options:
+              - The earth turns a fixed amount each hour
+              - London is always warmer than the open sea
+              - The sun sets at the same moment everywhere
+              - Clocks run faster at sea than on land
+            correctIndex: 0
+            explanationZh: 第二段解释原理："Because the earth turns a fixed amount each hour, the difference between the local time... and the time at a fixed reference point... reveals how far east or west a vessel has sailed"——地球每小时自转固定角度，两地时差即对应经度差。
+          - id: is2-r-q04
+            stem: What made keeping London's time at sea so difficult?
+            options:
+              - The sun could not be seen from a ship
+              - No clock could stay accurate on a moving ship
+              - Sailors could not read local time
+              - London had no fixed reference time
+            correctIndex: 1
+            explanationZh: 第二段说难点在于 "carrying a clock that kept perfect time despite the pitching deck, the changing temperature and the salt air — something no clock of the age could manage"——当时没有钟表能在颠簸、温差和盐雾中保持精准。
+          - id: is2-r-q05
+            stem: Why did the prize board delay rewarding Harrison?
+            options:
+              - His watch lost far too many seconds
+              - His design had been copied by rivals
+              - The king was opposed to him
+              - They preferred an answer from astronomy
+            correctIndex: 3
+            explanationZh: 第三段说评委会 "reluctant to reward a mere mechanic over the heavens, withheld the full prize for years"——他们更期待来自天文学的解法，不愿把奖颁给一名工匠。国王其实是为哈里森出面（intervened on his behalf），并非反对。
+          - id: is2-r-q06
+            stem: According to the final paragraph, how was the longitude problem ultimately solved?
+            options:
+              - By the patience of a craftsman
+              - By a grand astronomical theory
+              - By a government committee
+              - By a cheaper shipbuilding material
+            correctIndex: 0
+            explanationZh: 末段总结："solved in the end not by a grand theory but by the patience of a craftsman"——最终不是靠宏大理论，而是靠一位工匠数十年的耐心。
+      - id: is2-rg2
+        passage: |-
+          The Psychology of Queuing
+
+          Few experiences are as universally disliked as waiting in a queue, yet the way we experience a wait often has little to do with how long it actually lasts. Researchers who study waiting lines have found that our sense of time is easily distorted: an unoccupied ten minutes can feel far longer than a busy twenty. This is why the psychology of queuing has become a serious concern for airports, hospitals and theme parks, where the perception of delay can matter as much as the delay itself.
+
+          One of the most reliable findings is that occupied time feels shorter than empty time. A famous example comes from an airport that received a stream of complaints about the long wait for luggage at the carousel. Rather than speed up the baggage handlers, the airport moved the arrival gates further from the baggage hall, so that passengers spent most of the wait walking rather than standing still. The total time was unchanged, but the complaints all but vanished, because a wait filled with activity feels less onerous than one spent doing nothing.
+
+          Uncertainty makes waiting worse. A queue that moves steadily, even if slowly, is easier to bear than one that stops and starts unpredictably, because not knowing how long a wait will last adds anxiety to boredom. This is why many services now display an estimated waiting time: the number itself may be only a rough guess, but simply having it restores a sense of control. Fairness matters too, for people will tolerate a long wait far more readily than the sight of a latecomer being served first.
+
+          These insights have quietly reshaped the design of public spaces. The single, snaking line now common in banks and airports is not an accident; it feels fairer than several parallel queues, and it removes the frustration of choosing the "wrong" one. Mirrors were once installed beside slow lifts for a similar reason — not to speed the lift, but to give waiting passengers something to look at. The lesson, repeated across decades of research, is that a well-managed wait is often cheaper and more effective than a genuinely shorter one.
+        questions:
+          - id: is2-r-q07
+            stem: What is the main idea of the first paragraph?
+            options:
+              - Queues are getting longer everywhere
+              - People secretly enjoy waiting
+              - Airports have the worst queues of all
+              - How long a wait feels often differs from how long it lasts
+            correctIndex: 3
+            explanationZh: 首段主旨："the way we experience a wait often has little to do with how long it actually lasts"——等待的感受与实际时长常常关系不大，人对时间的感知容易被扭曲。
+          - id: is2-r-q08
+            stem: How did the airport reduce complaints about baggage waits?
+            options:
+              - It hired more baggage handlers
+              - It reduced the number of flights
+              - It made passengers walk further to the baggage hall
+              - It offered passengers refunds
+            correctIndex: 2
+            explanationZh: 第二段说机场没有加快行李处理，而是 "moved the arrival gates further from the baggage hall, so that passengers spent most of the wait walking"——让乘客走更远的路，把站着干等变成走动，投诉几乎消失。
+          - id: is2-r-q09
+            stem: Why does the passage say uncertainty makes waiting worse?
+            options:
+              - Uncertain queues actually move faster
+              - Not knowing how long a wait will last adds anxiety
+              - People forget their place in the line
+              - Staff deliberately work more slowly
+            correctIndex: 1
+            explanationZh: 第三段说 "not knowing how long a wait will last adds anxiety to boredom"——不知道还要等多久会在无聊之上再添焦虑，因此不确定性让等待更难忍。
+          - id: is2-r-q10
+            stem: Why do many services now display an estimated waiting time?
+            options:
+              - It is always completely accurate
+              - It makes the queue move faster
+              - It is required by law
+              - It gives people a sense of control
+            correctIndex: 3
+            explanationZh: 第三段说这个数字虽只是粗略估计，"but simply having it restores a sense of control"——有了预估时间就能让人重获掌控感，而非让队伍真的变快。
+          - id: is2-r-q11
+            stem: According to the passage, why is a single snaking line used in banks and airports?
+            options:
+              - It serves customers more quickly
+              - It takes up less floor space
+              - It feels fairer than several parallel queues
+              - It requires fewer staff
+            correctIndex: 2
+            explanationZh: 末段说单排蛇形队 "feels fairer than several parallel queues, and it removes the frustration of choosing the 'wrong' one"——它让人觉得更公平，也免去了选错队的懊恼，而非速度更快。
+          - id: is2-r-q12
+            stem: Why were mirrors installed beside slow lifts?
+            options:
+              - To give waiting passengers something to look at
+              - To make the lobby appear larger
+              - To help passengers check the time
+              - To reflect more daylight indoors
+            correctIndex: 0
+            explanationZh: 末段说装镜子 "not to speed the lift, but to give waiting passengers something to look at"——不是为了让电梯变快，而是给等候的人一点可看的东西，减轻等待感。
+  - id: ielts-standard-2-reading-2
+    kind: reading
+    title: Reading Section 2
+    titleZh: 阅读第二部分
+    durationSeconds: 1200
+    groups:
+      - id: is2-rg3
+        passage: |-
+          Saving the Seagrass Meadows
+
+          Beneath the shallow coastal waters of every continent except Antarctica lie meadows of seagrass, the only flowering plants that have returned to live entirely in the sea. Unlike the seaweeds with which they are often confused, seagrasses have true roots, stems and flowers, and they form dense underwater lawns that shelter an extraordinary variety of life. For most of history they were dismissed as worthless slime; only recently have scientists begun to grasp how much they matter.
+
+          Their value is easiest to measure in carbon. Seagrass meadows cover a tiny fraction of the ocean floor, yet acre for acre they lock away carbon far faster than tropical rainforests. The carbon is buried in the seabed beneath the plants, where the lack of oxygen prevents it from rotting, so it can remain trapped for thousands of years. When a meadow is destroyed, however, that ancient store is disturbed, and much of the carbon escapes back into the water and the air.
+
+          Seagrass does much more than store carbon. Its roots bind the seabed and its leaves slow the water, so the meadows act as natural breakwaters, protecting shorelines from the force of storms. They are also nurseries: countless young fish, including many species that people later eat, spend their early lives sheltering among the blades before moving out to the open sea. And by filtering the water and trapping sediment, seagrass keeps coastal waters clear enough for it, and for any nearby coral, to survive.
+
+          Despite all this, seagrass is disappearing faster than almost any other habitat, lost to pollution, dredging and the murky water that follows coastal development. The damage is usually invisible from the shore, which is part of the problem: it is hard to protect what cannot be seen. Yet restoration turns out to be possible and surprisingly cheap. In several bays, volunteers have simply scattered seagrass seeds by hand and watched whole meadows return within a few years, reviving local fisheries and burying carbon once again.
+        questions:
+          - id: is2-r-q13
+            stem: How do seagrasses differ from the seaweeds they are confused with?
+            options:
+              - They have true roots, stems and flowers
+              - They grow only in very deep water
+              - They are actually a kind of coral
+              - They cannot survive in salt water
+            correctIndex: 0
+            explanationZh: 首段说 "Unlike the seaweeds with which they are often confused, seagrasses have true roots, stems and flowers"——海草不同于海藻，拥有真正的根、茎和花，是重回海洋的开花植物。
+          - id: is2-r-q14
+            stem: What does the passage say about seagrass and carbon?
+            options:
+              - It stores less carbon than rainforests do
+              - It releases carbon as it grows
+              - Acre for acre, it stores carbon faster than rainforests
+              - It cannot store carbon in cold water
+            correctIndex: 2
+            explanationZh: 第二段说海草床面积虽小，"acre for acre they lock away carbon far faster than tropical rainforests"——单位面积固碳速度远超热带雨林。
+          - id: is2-r-q15
+            stem: Why can carbon stay trapped beneath seagrass for thousands of years?
+            options:
+              - The plants reabsorb it every year
+              - The lack of oxygen stops it rotting
+              - It freezes in the cold seabed
+              - Fish carry it out to sea
+            correctIndex: 1
+            explanationZh: 第二段说碳埋在植物下方的海床中，"where the lack of oxygen prevents it from rotting"——缺氧环境使其无法分解，因此能封存数千年。
+          - id: is2-r-q16
+            stem: How do seagrass meadows help protect shorelines?
+            options:
+              - By raising the water temperature
+              - By attracting large numbers of fish
+              - By binding the seabed and slowing the water
+              - By absorbing all the sunlight
+            correctIndex: 2
+            explanationZh: 第三段说 "Its roots bind the seabed and its leaves slow the water, so the meadows act as natural breakwaters"——根系固定海床、叶片减缓水流，如同天然防波堤，抵御风暴。
+          - id: is2-r-q17
+            stem: According to the passage, why is seagrass loss hard to prevent?
+            options:
+              - The damage is usually invisible from the shore
+              - Restoration is extremely expensive
+              - Governments have banned any protection
+              - The plants grow back too quickly
+            correctIndex: 0
+            explanationZh: 末段说 "The damage is usually invisible from the shore... it is hard to protect what cannot be seen"——破坏在岸上看不见，看不见的东西自然难以保护。
+          - id: is2-r-q18
+            stem: What does the final paragraph say about restoring seagrass?
+            options:
+              - It has never actually been attempted
+              - It requires costly specialist machinery
+              - It is impossible once a meadow is lost
+              - It can be cheap and effective
+            correctIndex: 3
+            explanationZh: 末段说修复 "possible and surprisingly cheap"，志愿者仅用手撒种子就能在数年内让整片海草床恢复——既便宜又有效。
+      - id: is2-rg4
+        passage: |-
+          The Four-Day Week
+
+          The idea that a full working week must occupy five days is more recent, and more fragile, than it seems. The two-day weekend became standard only in the twentieth century, and for most of history the rhythm of work was set by harvests and daylight rather than by any calendar. In recent years a growing number of companies have begun to ask a once-heretical question: could employees produce just as much in four days as in five, and go home happier for it?
+
+          The largest test so far took place in the United Kingdom, where dozens of firms cut their staff to a four-day week for six months with no reduction in pay. The results, when they were published, surprised even the organisers. Revenue at the participating companies held roughly steady, the number of employees resigning fell sharply, and reported levels of stress and burnout dropped. At the end of the trial, the great majority of the firms chose to keep the shorter week rather than return to five days.
+
+          Supporters argue that the gains come from cutting waste rather than from working faster. Given less time, teams trimmed the least useful parts of their week: meetings grew shorter or disappeared, needless interruptions were discouraged, and attention was concentrated on work that genuinely mattered. A rested workforce, they add, is a more productive one, and the promise of a three-day weekend gives employees a powerful reason to guard their own concentration.
+
+          Sceptics urge caution. The trials so far have been small and voluntary, and firms that volunteer may well be unusually well managed to begin with. Critics also note that the model suits some jobs far better than others: a software team may be able to compress its output, but a hospital ward or a school classroom cannot simply be closed for a day. The four-day week may yet prove to be less a universal law than a good idea for particular kinds of work — valuable, but not for everyone.
+        questions:
+          - id: is2-r-q19
+            stem: What point does the writer make in the first paragraph?
+            options:
+              - The five-day week has always existed
+              - The five-day week is more recent than it seems
+              - Weekends were invented in ancient times
+              - Harvests no longer affect any work
+            correctIndex: 1
+            explanationZh: 首段说 "The two-day weekend became standard only in the twentieth century"——两天周末直到二十世纪才成为惯例，说明五天工作制远比看上去要晚近、脆弱。
+          - id: is2-r-q20
+            stem: What did the large UK trial involve?
+            options:
+              - Longer working days in exchange for higher pay
+              - Six months of unpaid leave
+              - Replacing staff with machines
+              - A four-day week with no cut in pay
+            correctIndex: 3
+            explanationZh: 第二段说 "dozens of firms cut their staff to a four-day week for six months with no reduction in pay"——数十家公司让员工改为四天工作、为期半年且工资不减。
+          - id: is2-r-q21
+            stem: What happened to revenue during the trial?
+            options:
+              - It fell sharply
+              - It held roughly steady
+              - It doubled
+              - It could not be measured
+            correctIndex: 1
+            explanationZh: 第二段说 "Revenue at the participating companies held roughly steady"——参与公司的营收大致持平，同时离职率下降、压力与倦怠减轻。
+          - id: is2-r-q22
+            stem: According to supporters, where do the gains of a four-day week come from?
+            options:
+              - Working faster under greater pressure
+              - Hiring additional employees
+              - Cutting wasteful activities such as long meetings
+              - Reducing employees' pay
+            correctIndex: 2
+            explanationZh: 第三段说收益源于 "cutting waste rather than from working faster"——靠削减浪费而非加快速度，如缩短或取消会议、减少无谓打扰、聚焦真正重要的工作。
+          - id: is2-r-q23
+            stem: What concern do sceptics raise about the trials?
+            options:
+              - The firms involved may be unusually well managed
+              - The pay cuts imposed were too large
+              - Employees ended up working longer hours
+              - Revenue always fell in the end
+            correctIndex: 0
+            explanationZh: 末段说怀疑者指出 "firms that volunteer may well be unusually well managed to begin with"——自愿参加试验的公司本就可能管理格外出色，结果未必能推广。
+          - id: is2-r-q24
+            stem: What is the writer's overall conclusion about the four-day week?
+            options:
+              - It should be made compulsory for all firms
+              - It always reduces productivity
+              - It will soon replace all full-time work
+              - It suits some kinds of work but not everyone
+            correctIndex: 3
+            explanationZh: 末段总结 "less a universal law than a good idea for particular kinds of work — valuable, but not for everyone"——它更像适合特定工作的好主意，而非放之四海皆准的定律。
