@@ -31,3 +31,7 @@ next-env.d.ts
 npm-debug.log*
 bun-debug.log*
 .vercel
+
+# Local render cache — audio lives on Vercel Blob (ADR 0022)
+/public/audio/
+.env*

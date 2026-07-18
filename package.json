@@ -19,6 +19,7 @@
     "db:studio": "drizzle-kit studio",
     "content:schemas": "bun scripts/generate-content-schemas.ts && prettier --write content/.schemas",
     "content:audio": "bun scripts/generate-listening-audio.ts && prettier --write content/audio-manifest.json",
+    "content:audio:prune": "bun scripts/generate-listening-audio.ts --prune && prettier --write content/audio-manifest.json",
     "test": "bun test src",
     "test:e2e": "playwright test"
   },
@@ -50,6 +51,7 @@
     "@types/pg": "^8.20.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vercel/blob": "^2.6.1",
     "drizzle-kit": "0.31.10",
     "eslint": "^9.39.4",
     "eslint-config-next": "16.2.10",

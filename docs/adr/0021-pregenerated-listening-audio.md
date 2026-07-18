@@ -4,7 +4,9 @@ Date: 2026-07-18
 
 ## Status
 
-Accepted
+Accepted — storage clause (committed files under `public/`) superseded by
+[ADR 0022](0022-listening-audio-on-vercel-blob.md); generation, hashing, seed
+linking, and degradation are unchanged.
 
 ## Context
 

@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { Mp3Encoder } from "@breezystack/lamejs";
+import { BlobNotFoundError, del, head, list, put } from "@vercel/blob";
 import {
   AudioManifestSchema,
   LISTENING_AUDIO_CONFIG,
@@ -13,16 +14,28 @@ import { allListening } from "../src/content/load";
 import type { ScriptLine } from "../src/content/types";
 
 /**
- * Renders every listening exercise's script to one MP3 via DashScope TTS
- * (ADR 0021) and records it in content/audio-manifest.json. Idempotent:
- * an exercise whose manifest hash matches its current script (and whose file
- * exists) is skipped, so re-runs after editing one YAML script only pay for
- * that exercise. Run `bun run content:audio` with DASHSCOPE_API_KEY set, then
- * commit the MP3s and the manifest together.
+ * Renders every listening exercise's script to one MP3 via DashScope TTS and
+ * uploads it to Vercel Blob (ADR 0021/0022), recording it in
+ * content/audio-manifest.json. Idempotent: an exercise whose manifest hash
+ * matches its current script (and whose blob exists) is skipped, so re-runs
+ * after editing one YAML script only pay for that exercise.
+ * public/audio/listening/ is a gitignored local render cache: fresh renders
+ * land there too, and a cached file whose hash still matches is uploaded
+ * without re-synthesizing (zero DashScope cost).
  *
- * Tooling-only, like the content loader: the app itself never calls DashScope
- * TTS — it serves the committed files and falls back to browser TTS when an
- * exercise has no (or stale) audio.
+ * Needs BLOB_READ_WRITE_TOKEN always, DASHSCOPE_API_KEY only when something
+ * actually re-renders. Commit the manifest afterwards — audio files are never
+ * committed.
+ *
+ * Default runs never delete blobs: deployed environments keep referencing the
+ * previous hash until their database is reseeded, so superseded renders must
+ * outlive generation. Run `bun run content:audio:prune` (--prune) to sweep
+ * unreferenced blobs — only after the manifest has deployed AND the prod seed
+ * has run.
+ *
+ * Tooling-only, like the content loader: the app never talks to DashScope or
+ * Blob at runtime — it serves public blob URLs and falls back to browser TTS
+ * when an exercise has no (or stale) audio.
  */
 
 const TTS_URL =
@@ -170,74 +183,170 @@ function writeManifest(manifest: AudioManifest) {
   fs.writeFileSync(MANIFEST_PATH, JSON.stringify(sorted, null, 2) + "\n");
 }
 
+/** Blob pathname for an exercise render (no leading slash). */
+function blobPathname(exerciseId: string, hash: string): string {
+  return listeningAudioFile(exerciseId, hash).slice(1);
+}
+
+async function blobExists(pathname: string): Promise<boolean> {
+  try {
+    await head(pathname);
+    return true;
+  } catch (error) {
+    // Only a confirmed miss means "regenerate". Auth failures, rate limits,
+    // and outages must propagate — treating them as missing would trigger
+    // paid re-synthesis for files that exist.
+    if (error instanceof BlobNotFoundError) return false;
+    throw error;
+  }
+}
+
+/** Upload a render; assert Blob kept our canonical pathname; return the store origin. */
+async function uploadRender(pathname: string, body: Uint8Array): Promise<string> {
+  const result = await put(pathname, Buffer.from(body), {
+    access: "public",
+    contentType: "audio/mpeg",
+    // URLs embed the content hash, so they're immutable — let browsers cache
+    // for a year and never revalidate (the "cache on local" contract).
+    cacheControlMaxAge: 60 * 60 * 24 * 365,
+    addRandomSuffix: false,
+    allowOverwrite: true,
+  });
+  const url = new URL(result.url);
+  if (url.pathname !== `/${pathname}`) {
+    throw new Error(`Blob stored ${result.url}, expected pathname /${pathname}`);
+  }
+  return url.origin;
+}
+
 async function main() {
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    throw new Error(
+      "BLOB_READ_WRITE_TOKEN is not set (tooling-time only). Connect the Blob " +
+        "store to the project and `vercel env pull`, or copy the token from the store dashboard.",
+    );
+  }
   const apiKey = process.env.DASHSCOPE_API_KEY;
   const manifest = loadManifest();
   fs.mkdirSync(AUDIO_DIR, { recursive: true });
 
   let generated = 0;
+  let uploadedFromCache = 0;
   let skipped = 0;
   let characters = 0;
+  let storeOrigin: string | null = null;
 
   for (const exercise of allListening) {
     const hash = scriptAudioHash(exercise.script, CONFIG);
     const key = listeningManifestKey(exercise.id);
-    const fileName = path.basename(listeningAudioFile(exercise.id, hash));
+    const pathname = blobPathname(exercise.id, hash);
+    const fileName = path.basename(pathname);
+    const localPath = path.join(AUDIO_DIR, fileName);
     const entry = manifest[key];
-    if (entry?.hash === hash && fs.existsSync(path.join(AUDIO_DIR, fileName))) {
+    const fresh = entry?.hash === hash;
+
+    if (fresh && (await blobExists(pathname))) {
       skipped++;
       continue;
     }
-    if (!apiKey) {
-      throw new Error(
-        `DASHSCOPE_API_KEY is not set but ${exercise.id} needs (re)generation. ` +
-          "Set the key (tooling-time only) and re-run bun run content:audio.",
-      );
+
+    let mp3: Uint8Array;
+    let entryCharacters = entry?.characters ?? 0;
+    if (fs.existsSync(localPath)) {
+      // The cache filename embeds the content hash, so its existence alone
+      // proves freshness — no manifest check. This also makes a
+      // synthesis-succeeded/upload-failed run resumable without re-paying.
+      mp3 = fs.readFileSync(localPath);
+      uploadedFromCache++;
+      console.log(`uploaded ${fileName} from local cache (no synthesis)`);
+    } else {
+      if (!apiKey) {
+        throw new Error(
+          `DASHSCOPE_API_KEY is not set but ${exercise.id} needs (re)generation. ` +
+            "Set the key (tooling-time only) and re-run bun run content:audio.",
+        );
+      }
+      // Sequential on purpose: DashScope QPS limits are undocumented.
+      const lines: SynthesizedLine[] = [];
+      for (const line of exercise.script) {
+        lines.push(await synthesizeLine(line, apiKey));
+      }
+      mp3 = stitchToMp3(lines);
+      fs.writeFileSync(localPath, mp3);
+      entryCharacters = lines.reduce((n, l) => n + l.characters, 0);
+      characters += entryCharacters;
+      generated++;
+      console.log(`generated ${fileName} (${exercise.script.length} lines)`);
     }
 
-    // Sequential on purpose: DashScope QPS limits are undocumented.
-    const lines: SynthesizedLine[] = [];
-    for (const line of exercise.script) {
-      lines.push(await synthesizeLine(line, apiKey));
-    }
-    fs.writeFileSync(path.join(AUDIO_DIR, fileName), stitchToMp3(lines));
-    // Drop superseded renders of this exercise (ids never contain dots).
+    storeOrigin = await uploadRender(pathname, mp3);
+    // Drop superseded local-cache renders (author's machine only). Superseded
+    // BLOBS are deliberately kept: deployed environments reference the old
+    // hash until the prod seed runs, so deleting here would degrade live
+    // audio. content:audio:prune sweeps them after deploy + seed.
     for (const stale of fs.readdirSync(AUDIO_DIR)) {
       if (stale.startsWith(`${exercise.id}.`) && stale !== fileName) {
         fs.unlinkSync(path.join(AUDIO_DIR, stale));
       }
     }
-    const lineCharacters = lines.reduce((n, l) => n + l.characters, 0);
+
     manifest[key] = {
       hash,
       file: listeningAudioFile(exercise.id, hash),
       model: CONFIG.model,
       voices: CONFIG.voices,
       generatedAt: new Date().toISOString(),
-      characters: lineCharacters,
+      characters: entryCharacters,
     };
     writeManifest(manifest); // persist per exercise so a mid-run failure loses nothing
-    generated++;
-    characters += lineCharacters;
-    console.log(`generated ${fileName} (${exercise.script.length} lines)`);
   }
 
-  // Prune renders whose exercise no longer exists in the content set.
+  // Drop manifest entries (and local cache) for exercises removed from the
+  // content set. Their blobs stay until content:audio:prune.
   const liveKeys = new Set(allListening.map((e) => listeningManifestKey(e.id)));
   for (const [key, entry] of Object.entries(manifest)) {
     if (key.startsWith("listening:") && !liveKeys.has(key)) {
-      const file = path.join(process.cwd(), "public", entry.file);
-      if (fs.existsSync(file)) fs.unlinkSync(file);
+      const local = path.join(process.cwd(), "public", entry.file);
+      if (fs.existsSync(local)) fs.unlinkSync(local);
       delete manifest[key];
-      console.log(`pruned ${key} (exercise removed from content)`);
+      console.log(`pruned ${key} from manifest (exercise removed from content)`);
     }
   }
-
   writeManifest(manifest);
+
+  // Verification sweep: every manifest entry must be publicly fetchable.
+  const missing: string[] = [];
+  for (const [key, entry] of Object.entries(manifest)) {
+    if (!(await blobExists(entry.file.slice(1)))) missing.push(`${key} → ${entry.file}`);
+  }
+  if (missing.length > 0) {
+    throw new Error(`manifest entries missing from Blob:\n${missing.join("\n")}`);
+  }
+
+  // Blob deletion happens ONLY under --prune (content:audio:prune): deployed
+  // environments reference old hashes until their seed runs, so sweeping
+  // superseded/orphaned blobs is safe only after the manifest has deployed
+  // AND the prod seed has run.
+  if (process.argv.includes("--prune")) {
+    const known = new Set(Object.values(manifest).map((e) => e.file.slice(1)));
+    const all = await list({ prefix: "audio/listening/" });
+    let pruned = 0;
+    for (const orphan of all.blobs.filter((b) => !known.has(b.pathname))) {
+      await del(orphan.url);
+      pruned++;
+      console.log(`deleted unreferenced blob ${orphan.pathname}`);
+    }
+    console.log(`Prune complete: ${pruned} unreferenced blob(s) deleted.`);
+  }
+
   console.log(
-    `Audio generation complete: ${generated} generated, ${skipped} up to date` +
+    `Audio generation complete: ${generated} synthesized, ${uploadedFromCache} uploaded from cache, ` +
+      `${skipped} up to date` +
       (characters > 0 ? `, ${characters} billed characters` : ""),
   );
+  if (storeOrigin) {
+    console.log(`Audio serves from ${storeOrigin} — MERCURY_AUDIO_BASE_URL must be set to it.`);
+  }
 }
 
 main().catch((error) => {

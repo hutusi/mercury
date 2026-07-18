@@ -149,9 +149,11 @@ not consume that budget. Speaking clients run speech-to-text **on-device** (SFSp
 AVSpeechSynthesizer for TTS) and POST the transcript — the server never accepts uploaded audio.
 
 Listening audio follows the same degradation shape
-([ADR 0021](adr/0021-pregenerated-listening-audio.md)): `GET /api/v1/listening/{exerciseId}`
-returns a nullable `audioUrl` — an origin-relative path to a pre-generated MP3 (fetch it from the
-app origin; it is a plain static asset, immutable per URL and safe to cache). Play it when present;
+([ADR 0021](adr/0021-pregenerated-listening-audio.md),
+[0022](adr/0022-listening-audio-on-vercel-blob.md)): `GET /api/v1/listening/{exerciseId}` returns a
+nullable `audioUrl` — normally an absolute Vercel Blob URL (origin-relative only in environments
+without a configured audio base). Treat it as an opaque URL: immutable per URL (the path embeds a
+content hash) and served with year-long cache headers, so cache aggressively. Play it when present;
 when it is `null` or the fetch/decode fails, fall back to speaking `script` line-by-line with
 on-device TTS (AVSpeechSynthesizer). The script always ships regardless, and doubles as the
 post-submit transcript.

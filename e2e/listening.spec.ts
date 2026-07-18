@@ -1,7 +1,15 @@
+import fs from "node:fs";
+import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import { resolveAudioUrl } from "../src/content/audio-hash";
 import { allListening, audioManifest } from "../src/content/load";
 import { answerAllQuestions, registerAndOnboard, t } from "./helpers";
+
+// Audio lives on Vercel Blob (ADR 0022), not in the repo, and e2e must stay
+// hermetic — so audio requests are fulfilled with a tiny committed MP3. The
+// player's behavior (element wiring, playback, maxPlays, degradation) is what
+// these specs guard; the bytes are interchangeable.
+const FIXTURE_MP3 = fs.readFileSync(path.join(__dirname, "fixtures", "listening-sample.mp3"));
 
 // Expected audio availability per exercise, computed with the exact logic the
 // seed uses (resolveAudioUrl): a manifest entry whose hash no longer matches
@@ -23,6 +31,9 @@ async function openFirstExercise(page: Page): Promise<string> {
 test("listening exercise: player matches generated audio, submit unlocks transcript", async ({
   page,
 }) => {
+  await page.route("**/audio/listening/**", (route) =>
+    route.fulfill({ body: FIXTURE_MP3, contentType: "audio/mpeg" }),
+  );
   await registerAndOnboard(page, "toeic");
   const exerciseId = await openFirstExercise(page);
 
@@ -31,7 +42,9 @@ test("listening exercise: player matches generated audio, submit unlocks transcr
   // and no audio element exists.
   if (expectedAudio.get(exerciseId)) {
     const audio = page.locator("audio");
-    await expect(audio).toHaveAttribute("src", /^\/audio\/listening\//);
+    // Origin-relative without MERCURY_AUDIO_BASE_URL (the e2e default),
+    // absolute Blob URL when an environment sets it — accept both.
+    await expect(audio).toHaveAttribute("src", /\/audio\/listening\//);
     // Clicking play must actually start playback, not trip the degradation
     // path — an identity-unstable ref cleanup once paused the element on the
     // click's own re-render, rejecting play() and falsely degrading to TTS.
@@ -41,7 +54,10 @@ test("listening exercise: player matches generated audio, submit unlocks transcr
       .toBeGreaterThan(0);
     await expect(audio.evaluate((el) => (el as HTMLAudioElement).error)).resolves.toBeNull();
     await expect(page.getByText(t.listening.usingBrowserTts, { exact: false })).toHaveCount(0);
-    await page.getByRole("button", { name: t.listening.pause }).click();
+    // The short fixture ends on its own; the player must return to a
+    // replayable state rather than degrade.
+    await expect.poll(() => audio.evaluate((el) => (el as HTMLAudioElement).paused)).toBe(true);
+    await expect(page.getByRole("button", { name: t.listening.play })).toBeEnabled();
   } else {
     await expect(page.locator("audio")).toHaveCount(0);
   }
