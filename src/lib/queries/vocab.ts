@@ -2,6 +2,7 @@ import { and, asc, eq, lte, notExists } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import { srsCards, vocabWords } from "../db/schema";
+import { NEW_CARD_STATE } from "../srs";
 
 const MAX_DUE_PER_SESSION = 30;
 const MAX_NEW_PER_SESSION = 10;
@@ -38,7 +39,13 @@ export async function getVocabOverview(userId: string, track: Track | null) {
 export async function getStudyQueue(userId: string, track: Track | null) {
   const [dueRows, newRows] = await Promise.all([
     db
-      .select({ word: vocabWords })
+      .select({
+        word: vocabWords,
+        easeFactor: srsCards.easeFactor,
+        intervalDays: srsCards.intervalDays,
+        repetitions: srsCards.repetitions,
+        lapses: srsCards.lapses,
+      })
       .from(srsCards)
       .innerJoin(vocabWords, eq(srsCards.wordId, vocabWords.id))
       .where(
@@ -68,8 +75,15 @@ export async function getStudyQueue(userId: string, track: Track | null) {
       .limit(MAX_NEW_PER_SESSION),
   ]);
 
+  // Each card carries its scheduler state so clients can preview what every
+  // grade would do (interval hints) with the same pure SM-2 rules.
   return [
-    ...dueRows.map(({ word }) => ({ ...word, wordId: word.id, isNew: false })),
-    ...newRows.map(({ word }) => ({ ...word, wordId: word.id, isNew: true })),
+    ...dueRows.map(({ word, easeFactor, intervalDays, repetitions, lapses }) => ({
+      ...word,
+      wordId: word.id,
+      isNew: false,
+      srs: { easeFactor, intervalDays, repetitions, lapses },
+    })),
+    ...newRows.map(({ word }) => ({ ...word, wordId: word.id, isNew: true, srs: NEW_CARD_STATE })),
   ];
 }

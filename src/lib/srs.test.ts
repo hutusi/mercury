@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { NEW_CARD_STATE, scheduleReview } from "./srs";
+import { NEW_CARD_STATE, previewInterval, scheduleReview } from "./srs";
 
 const NOW = new Date("2026-01-01T08:00:00Z");
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -56,5 +56,31 @@ describe("scheduleReview (SM-2)", () => {
     const next = scheduleReview(state, 5, NOW);
     expect(next.easeFactor).toBeCloseTo(2.6);
     expect(next.intervalDays).toBe(Math.round(10 * 2.6) + 1);
+  });
+});
+
+describe("previewInterval", () => {
+  test("Forgot always previews the 10-minute relearn delay", () => {
+    expect(previewInterval(NEW_CARD_STATE, 1)).toEqual({ unit: "minutes", value: 10 });
+  });
+
+  test("a new card previews 1 day for every pass grade", () => {
+    expect(previewInterval(NEW_CARD_STATE, 3)).toEqual({ unit: "days", value: 1 });
+    expect(previewInterval(NEW_CARD_STATE, 4)).toEqual({ unit: "days", value: 1 });
+    expect(previewInterval(NEW_CARD_STATE, 5)).toEqual({ unit: "days", value: 1 });
+  });
+
+  test("a mature card previews the diverging Hard/Good/Easy intervals", () => {
+    const state = { easeFactor: 2.5, intervalDays: 6, repetitions: 2, lapses: 0 };
+    expect(previewInterval(state, 3)).toEqual({ unit: "days", value: 7 });
+    expect(previewInterval(state, 4)).toEqual({ unit: "days", value: 15 });
+    expect(previewInterval(state, 5)).toEqual({ unit: "days", value: 17 });
+  });
+
+  test("does not mutate the input state", () => {
+    const state = { easeFactor: 2.5, intervalDays: 6, repetitions: 2, lapses: 0 };
+    previewInterval(state, 1);
+    previewInterval(state, 4);
+    expect(state).toEqual({ easeFactor: 2.5, intervalDays: 6, repetitions: 2, lapses: 0 });
   });
 });
