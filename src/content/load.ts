@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { parse } from "yaml";
 import { z } from "zod";
+import { AudioManifestSchema, type AudioManifest } from "./audio-hash";
 import {
   ListeningExerciseSchema,
   MockExamSchema,
@@ -50,3 +51,10 @@ export const allExams = [
   "exams/ielts-mini.yaml",
   "exams/ielts-standard.yaml",
 ].map((file) => loadFile(file, MockExamSchema));
+
+// Machine-written by `bun run content:audio` (ADR 0021); absent until audio
+// is first generated, and tolerated — exercises then seed without audio.
+const MANIFEST_PATH = path.join(CONTENT_DIR, "audio-manifest.json");
+export const audioManifest: AudioManifest = fs.existsSync(MANIFEST_PATH)
+  ? AudioManifestSchema.parse(JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8")))
+  : {};
