@@ -149,3 +149,153 @@
       zh: 是否使用衔接词引导读者跟上你的论证思路？
     - en: Is your essay at least 120 words with a clear concluding paragraph?
       zh: 文章是否达到 120 词以上并有明确的结论段？
+- id: toeic-wr-006
+  track: toeic
+  taskType: opinion_essay
+  title: "Opinion Essay: Paying for Employee Training"
+  titleZh: 观点作文：公司该为培训买单吗
+  promptEn: Do you agree or disagree with the following statement? "Companies should pay for employees to take training courses that improve their job skills." Use specific reasons and examples from your own knowledge or experience to support your opinion. Write at least 120 words.
+  promptZh: 你是否同意以下观点？"公司应该为员工支付提升工作技能的培训课程的费用。"请结合你自己的知识或经历，用具体的理由和例子支持你的观点。不少于 120 词。
+  minWords: 120
+  suggestedMinutes: 20
+  modelAnswer: |-
+    I fully agree that companies should pay for training courses that improve employees' job skills, because such spending is an investment rather than a cost.
+
+    The most obvious benefit is better performance. If a company pays for its accountants to learn new tax software or for its sales staff to sharpen their presentation skills, the improvement shows up in daily work almost immediately. Last year my employer paid for our whole team to take a data-analysis course, and within a few months we had automated two weekly reports that used to take hours to prepare.
+
+    Paid training also builds loyalty. Employees notice which companies develop their people, and they stay longer at those companies. A colleague of mine turned down a slightly higher salary elsewhere precisely because our firm funds one professional certificate every year.
+
+    Some managers worry that trained employees will simply take their new skills to a competitor. In my experience the opposite is more common: people leave companies that never invest in them. For these reasons, I believe paying for job-related training is one of the smartest expenses a company can make.
+  checklist:
+    - en: Did you state your position on company-paid training clearly in the first paragraph?
+      zh: 第一段是否清楚表明了你对公司出资培训的立场？
+    - en: Did you support each reason with a concrete example, such as a course or a colleague you know?
+      zh: 每个理由是否都有具体例子支撑，比如某门课程或你认识的同事？
+    - en: Did you address the common counterargument that trained employees might leave?
+      zh: 是否回应了常见的反方论点——受训员工可能会离职？
+    - en: Did you use linking words (first, also, in my experience, for these reasons) to organize paragraphs?
+      zh: 是否使用衔接词（first、also、in my experience、for these reasons 等）组织段落？
+    - en: Is your essay at least 120 words, and does the conclusion restate your position?
+      zh: 文章是否达到 120 词以上，结尾是否重申了你的立场？
+- id: toeic-wr-007
+  track: toeic
+  taskType: business_email
+  title: "E-mail Reply: Rescheduling a Product Demonstration"
+  titleZh: 邮件回复：产品演示改期
+  promptEn: 'Read the following e-mail, then write a reply. "From: Sofia Marino, Purchasing Manager, Brightway Retail — Subject: Product demonstration on Tuesday. Dear supplier, I am writing to confirm your product demonstration at our head office this Tuesday at 2 P.M. Please let me know if anything has changed." In your reply to Ms. Marino, explain that you need to reschedule, give ONE reason, and suggest TWO alternative times. Write at least 80 words.'
+  promptZh: 阅读下面的邮件并撰写回复。"发件人：Brightway 零售公司采购经理 Sofia Marino — 主题：周二的产品演示。尊敬的供应商，我写信确认贵方本周二下午 2 点在我们总部的产品演示。如有任何变动，请告知我。"在给 Marino 女士的回复中，说明你需要改期，给出一个理由，并建议两个备选时间。不少于 80 词。
+  minWords: 80
+  suggestedMinutes: 15
+  modelAnswer: |-
+    Dear Ms. Marino,
+
+    Thank you for confirming our product demonstration this Tuesday at 2 P.M. Unfortunately, I must ask to reschedule, and I apologize for the late change.
+
+    The reason is that our lead engineer, who runs the technical part of the demonstration, has been called to an urgent client installation abroad and will not return until Wednesday night.
+
+    Could we move the demonstration to Thursday at 2 P.M. instead? If that is inconvenient for your team, Friday morning at 10 A.M. would also work well for us. The full team, including our engineer, would be available at either time.
+
+    Please let me know which time suits you best, and I will send an updated calendar invitation right away. Thank you very much for your flexibility.
+
+    Best regards,
+    Lin Hao
+  checklist:
+    - en: Did you clearly state that you need to reschedule and apologize for the late change?
+      zh: 是否清楚说明需要改期，并为临时变动致歉？
+    - en: Did you give exactly one specific reason for rescheduling?
+      zh: 是否恰好给出了一个具体的改期理由？
+    - en: Did you suggest exactly two alternative times, as the task requires?
+      zh: 是否按题目要求恰好建议了两个备选时间？
+    - en: Did you refer to details from the original e-mail (Tuesday, 2 P.M., the demonstration)?
+      zh: 是否呼应了原邮件中的细节（周二、下午 2 点、产品演示）？
+    - en: Did you close by asking Ms. Marino to confirm, with a polite opening and closing and at least 80 words?
+      zh: 结尾是否请 Marino 女士确认时间，开头结尾是否礼貌，全文是否达到 80 词以上？
+- id: toeic-wr-008
+  track: toeic
+  taskType: opinion_essay
+  title: "Opinion Essay: The Four-Day Workweek"
+  titleZh: 观点作文：四天工作制
+  promptEn: Do you agree or disagree with the following statement? "A four-day workweek, in which employees work longer hours on four days and take three days off, is better than the traditional five-day schedule." Use specific reasons and examples from your own knowledge or experience to support your opinion. Write at least 120 words.
+  promptZh: 你是否同意以下观点？"每周工作四天、每天工时更长并休息三天的四天工作制，比传统的五天工作制更好。"请结合你自己的知识或经历，用具体的理由和例子支持你的观点。不少于 120 词。
+  minWords: 120
+  suggestedMinutes: 20
+  modelAnswer: |-
+    I agree that a four-day workweek with longer days is better than the traditional five-day schedule, mainly because it trades a small daily cost for a large weekly gain.
+
+    The extra day off makes a real difference to people's lives. With three-day weekends, employees can travel, handle family matters, or simply rest properly, and they return with far more energy. When a partner company of ours piloted a four-day week last year, its staff survey scores on stress and job satisfaction improved sharply, while sick days went down.
+
+    Longer working days are less painful than they sound. Most office employees already lose scattered time to small talk and unnecessary meetings; a slightly longer, better-planned day simply absorbs work that was spread thinly across five. Commuting only four times a week also saves several hours.
+
+    I accept that the schedule does not fit every business — hospitals, restaurants, and customer hotlines must cover five or more days. But where the work allows it, I believe compressing the week rewards both the employee, with time, and the employer, with a fresher and more loyal workforce.
+  checklist:
+    - en: Did you make your position on the four-day workweek clear in the first paragraph?
+      zh: 第一段是否清楚表明了你对四天工作制的立场？
+    - en: Did you support your reasons with concrete details, such as a company, survey, or personal routine?
+      zh: 论证是否有具体细节支撑，比如某家公司、调查结果或个人日常？
+    - en: Did you address an obvious objection (longer days, or businesses that need five-day coverage)?
+      zh: 是否回应了明显的反对意见（工作日更长，或需要五天营业的行业）？
+    - en: Did you use linking words to guide the reader through your argument?
+      zh: 是否使用衔接词引导读者跟上你的论证思路？
+    - en: Is your essay at least 120 words with a clear concluding paragraph?
+      zh: 文章是否达到 120 词以上并有明确的结论段？
+- id: toeic-wr-009
+  track: toeic
+  taskType: business_email
+  title: "E-mail Reply: New Employee Orientation"
+  titleZh: 邮件回复：新员工入职培训
+  promptEn: 'Read the following e-mail, then write a reply. "From: Daniel Osei, Human Resources Coordinator — Subject: Orientation for new employees. Dear colleagues, next month we will welcome twelve new employees, and we are looking for staff volunteers to lead short sessions during their two-day orientation. If you would like to take part, please tell me what you could present." In your reply to Mr. Osei, make ONE offer and ask TWO questions. Write at least 80 words.'
+  promptZh: 阅读下面的邮件并撰写回复。"发件人：人力资源协调员 Daniel Osei — 主题：新员工入职培训。各位同事，下个月我们将迎来十二名新员工，现征集志愿者在为期两天的入职培训中主持简短的讲解环节。如果你愿意参加，请告诉我你可以讲什么内容。"在给 Osei 先生的回复中，主动提出一项你可以承担的内容，并提出两个问题。不少于 80 词。
+  minWords: 80
+  suggestedMinutes: 15
+  modelAnswer: |-
+    Dear Mr. Osei,
+
+    Thank you for organizing the orientation for our twelve new employees — I would be glad to take part as a volunteer.
+
+    I would like to offer a short session introducing our project-management tools. New staff usually need two or three weeks to feel comfortable with the software, and a hands-on demonstration on their first day could shorten that considerably. I gave a similar talk to our interns last summer, so most of the materials are already prepared.
+
+    I do have two questions. First, how long should each session be, so that I can plan the right amount of content? Second, will the new employees have laptops with them, or should I prepare a version that works as a simple presentation?
+
+    I look forward to your reply.
+
+    Best regards,
+    Zhou Min
+  checklist:
+    - en: Did you make exactly one offer and ask exactly two questions, as the task requires?
+      zh: 是否按题目要求恰好提出了一项主动承担的内容和两个问题？
+    - en: Is your offer specific — what you would present and why it would help the new employees?
+      zh: 你的提议是否具体——讲什么内容、为什么对新员工有帮助？
+    - en: Did you refer to details from the original e-mail (twelve new employees, the two-day orientation)?
+      zh: 是否呼应了原邮件中的细节（十二名新员工、为期两天的入职培训）？
+    - en: Did you open and close the e-mail politely (Dear Mr. Osei / Best regards)?
+      zh: 邮件开头和结尾是否使用了礼貌用语（Dear Mr. Osei / Best regards）？
+    - en: Is the tone professional and friendly throughout, with at least 80 words?
+      zh: 全文语气是否专业友好，且达到 80 词以上？
+- id: toeic-wr-010
+  track: toeic
+  taskType: opinion_essay
+  title: "Opinion Essay: Changing Jobs or Staying Put"
+  titleZh: 观点作文：跳槽还是坚守
+  promptEn: Do you agree or disagree with the following statement? "It is better for your career to change companies every few years than to stay with one employer for a long time." Use specific reasons and examples from your own knowledge or experience to support your opinion. Write at least 120 words.
+  promptZh: 你是否同意以下观点？"每隔几年更换公司比长期留在同一家公司更有利于你的职业发展。"请结合你自己的知识或经历，用具体的理由和例子支持你的观点。不少于 120 词。
+  minWords: 120
+  suggestedMinutes: 20
+  modelAnswer: |-
+    I disagree that changing companies every few years is automatically better for a career; in my view, staying long enough to grow matters more than moving on a schedule.
+
+    Deep skills take time. In most jobs, the first year is spent learning systems and relationships, and the truly valuable work — leading a project, mentoring juniors, owning a client — only comes afterward. A friend of mine stayed seven years at one logistics firm and rose from assistant to regional manager; her classmates who switched employers every two years gained variety, but at thirty they were still applying for the same junior roles, just at different companies.
+
+    Frequent moves can also worry employers. A résumé with five companies in eight years makes interviewers wonder whether the candidate will leave them just as quickly, and companies invest less in people they expect to lose.
+
+    Of course, staying makes sense only when a company offers growth; if salaries are frozen and promotions never come, leaving is the rational choice. But as a general strategy, I believe careers are built by going deep, not by moving often, and that a job change should be an answer to a real problem rather than a habit.
+  checklist:
+    - en: Did you state clearly in the opening whether you favor changing jobs often or staying with one employer?
+      zh: 开头是否明确表态支持频繁跳槽还是长期留任？
+    - en: Did you develop each reason with a concrete example, such as a person whose career you know?
+      zh: 每个理由是否都用具体例子展开，比如你了解的某个人的职业经历？
+    - en: Did you acknowledge a situation where the opposite choice makes sense before concluding?
+      zh: 结论之前是否承认了相反选择更合理的情形？
+    - en: Did you use linking words (first, also, of course, but) to connect paragraphs?
+      zh: 是否使用衔接词（first、also、of course、but 等）串联段落？
+    - en: Is your essay at least 120 words, and does the conclusion restate your position?
+      zh: 文章是否达到 120 词以上，结尾是否重申了你的立场？

@@ -145,3 +145,151 @@
       zh: 是否正面回应了最有力的反方论点（公平性问题），而不是回避它？
     - en: Did you use precise topic vocabulary (congestion, regressive, exemptions, revenue) accurately?
       zh: 是否准确使用了话题相关的精确词汇（congestion、regressive、exemptions、revenue）？
+- id: ielts-wr-006
+  track: ielts
+  taskType: ielts_task1
+  title: "Task 1: Changes to Riverton Town Centre"
+  titleZh: 小作文：里弗顿市中心的变迁
+  promptEn: The two maps below show the centre of a town called Riverton in 1990 and in 2020. In 1990, the town centre consisted of a market square surrounded by small shops, with a cinema on one corner. A library stood on the north side of the square, and a bus station occupied the area to the east, while the riverside to the south was lined with warehouses. By 2020, the market square had been converted into a pedestrian plaza with cafes, and the small shops had been replaced by a shopping mall. The library had been extended to include a community centre. The bus station had moved to the edge of the town, and an apartment complex now stands on its former site. The riverside warehouses had been demolished to make way for a public park and a new footbridge across the river. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.
+  promptZh: 下面两幅地图显示了里弗顿镇中心在 1990 年和 2020 年的面貌。1990 年，镇中心是一个被小商铺环绕的集市广场，广场一角有一家电影院；广场北侧是图书馆，东侧是公交车站，南面的河岸则排列着仓库。到 2020 年，集市广场已改建为带咖啡馆的步行广场，小商铺被一座购物中心取代；图书馆经过扩建，增设了社区中心；公交车站迁到了城镇边缘，原址上建起了公寓楼；河岸的仓库被拆除，改建为公共公园，河上还新建了一座人行桥。请选择并报告主要特征来概述这些信息，并在相关之处进行比较。不少于 150 词。
+  minWords: 150
+  suggestedMinutes: 20
+  modelAnswer: |-
+    The two maps illustrate how the centre of Riverton changed between 1990 and 2020.
+
+    Overall, the town centre was transformed from a traditional commercial and transport hub into a far more pedestrian-friendly area oriented towards leisure and housing. The most striking developments were the pedestrianisation of the market square and the complete redevelopment of the riverside.
+
+    In 1990, the heart of the town was a market square surrounded by small shops, with a cinema on one corner. A library stood on the north side of the square, a bus station lay to the east, and the riverside to the south was occupied entirely by warehouses.
+
+    By 2020, the square had been converted into a pedestrian plaza with cafes, while the small shops had given way to a shopping mall. The library was one of the few features to survive, although it had been enlarged to incorporate a community centre. Change elsewhere was more radical: the bus station was relocated to the edge of the town, and an apartment complex was constructed on its former site. Along the river, the warehouses were demolished and replaced by a public park, together with a new footbridge linking the centre to the opposite bank.
+
+    In summary, although the basic position of the square and library remained, almost every other part of the centre was rebuilt to serve shoppers, residents and leisure rather than trade and transport.
+  checklist:
+    - en: Did you write an overview identifying the most significant overall changes rather than listing details?
+      zh: 是否写了概述段，指出最显著的总体变化，而不是罗列细节？
+    - en: Did you use past and past perfect passives (was demolished, had been converted) to describe the changes?
+      zh: 是否使用了一般过去时和过去完成时的被动语态（was demolished、had been converted）来描述变化？
+    - en: Did you use precise location language (on the north side, to the east, on its former site)?
+      zh: 是否使用了准确的方位表达（on the north side、to the east、on its former site）？
+    - en: Did you compare the two maps directly, noting what survived as well as what changed?
+      zh: 是否对两幅地图进行了直接比较，既指出变化，也指出保留下来的部分？
+    - en: Did you avoid speculating about why the town changed, as Task 1 requires?
+      zh: 是否按小作文要求避免了猜测城镇变化的原因？
+- id: ielts-wr-007
+  track: ielts
+  taskType: ielts_task2
+  title: "Task 2: Banning Advertising Aimed at Children"
+  titleZh: 大作文：禁止针对儿童的广告
+  promptEn: Advertising strongly influences what children eat, wear and play with. Some people believe that all advertising aimed at young children should be banned, while others think such a ban would be unnecessary or impossible to enforce. To what extent do you agree or disagree with banning advertising directed at young children? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words.
+  promptZh: 广告深刻影响着儿童吃什么、穿什么、玩什么。一些人认为应当全面禁止针对幼龄儿童的广告，另一些人则认为这样的禁令没有必要，或者根本无法执行。你在多大程度上同意或不同意禁止针对幼龄儿童的广告？请说明理由，并结合你自己的知识或经历举例。不少于 250 词。
+  minWords: 250
+  suggestedMinutes: 40
+  modelAnswer: |-
+    Few audiences are more open to persuasion than small children, which is precisely why advertisers prize them. I largely agree that advertising aimed directly at young children should be banned, although any ban must be carefully designed and updated as media change.
+
+    The central argument for a ban is one of fairness. Advertising is a contest between a persuader and a sceptic, and adults at least understand that a commercial is trying to sell them something. Research suggests that children under about eight do not: they absorb an advertisement much as they absorb a programme, treating its claims as fact. Marketing to them is therefore less like persuasion than like exploiting a blind spot. The consequences are easy to observe — the products most heavily advertised to children are overwhelmingly sugary foods and plastic toys, and doctors have repeatedly linked such marketing to rising childhood obesity and to constant pestering of parents in supermarkets. Several countries have acted on this evidence; Sweden, for instance, has prohibited television advertising aimed at children under twelve since the 1990s, without any obvious harm to its economy.
+
+    Opponents raise two reasonable objections: that parents, not governments, should control what children see, and that in the internet age a ban cannot be enforced. The first point underestimates the sheer volume of exposure — no parent can preview every video a child watches on a tablet. The second is an argument for writing better rules, not for giving up; the fact that some advertising slips through online does not justify permitting it everywhere.
+
+    In conclusion, because young children cannot recognise persuasion for what it is, advertising aimed at them is inherently unfair. I therefore agree it should be banned, provided regulators keep extending the rules to cover new media.
+  checklist:
+    - en: Did you state a clear position on the ban in the introduction and maintain it throughout?
+      zh: 是否在开头明确表明对禁令的立场，并全文保持一致？
+    - en: Did you answer 'to what extent', attaching conditions to your agreement rather than an absolute yes or no?
+      zh: 是否回应了“在多大程度上”，为你的立场附加条件，而不是绝对的同意或反对？
+    - en: Did you address the strongest counterarguments (parental responsibility, enforceability) directly?
+      zh: 是否正面回应了最有力的反方论点（家长责任、可执行性）？
+    - en: Did you support your claims with concrete evidence or examples, such as real countries or policies?
+      zh: 论点是否有具体证据或例子支撑（如真实国家或政策）？
+    - en: Did you use precise topic vocabulary (persuasion, exposure, regulators, enforce) accurately?
+      zh: 是否准确使用了话题相关的精确词汇（persuasion、exposure、regulators、enforce）？
+- id: ielts-wr-008
+  track: ielts
+  taskType: ielts_task2
+  title: "Task 2: Should Museums Entertain or Educate?"
+  titleZh: 大作文：博物馆应该娱乐还是教育？
+  promptEn: Some people think the main role of museums is to entertain their visitors, while others believe that their purpose is to educate. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words.
+  promptZh: 一些人认为博物馆的主要作用是娱乐参观者，另一些人则认为博物馆的目的在于教育。请讨论这两种观点并给出你自己的看法。请说明理由，并结合你自己的知识或经历举例。不少于 250 词。
+  minWords: 250
+  suggestedMinutes: 40
+  modelAnswer: |-
+    Museums today compete for attention with cinemas, shopping centres and theme parks, and this has sharpened the debate about what they are actually for. Some insist their job is to entertain, others that it is to educate. In my view this is largely a false choice: museums educate most effectively precisely when they are enjoyable.
+
+    Those who emphasise entertainment start from a practical observation — a museum without visitors fulfils no purpose at all. Public funding and ticket income both depend on attendance, and rows of dusty display cases with lengthy labels drive casual visitors away. When institutions embrace spectacle instead, the public responds: interactive science galleries, immersive exhibitions and evening events have brought in families and young people who would never have entered a traditional gallery. From this perspective, being entertaining is not a betrayal of the museum's mission but the price of admission to people's leisure time.
+
+    Supporters of the educational view reply that entertainment is exactly what the rest of the leisure industry already provides. What makes museums distinctive is that they hold authentic objects and expert knowledge, and their collections are usually maintained at taxpayers' expense precisely because society values learning. If a museum reduces its content to amusement — simplifying history into a costume show, say — it abandons the one function nobody else performs, and the public money it receives becomes hard to justify.
+
+    My own view is that the two goals are means and end rather than rivals. Education is the purpose; enjoyment is the most powerful method. A child who spends an afternoon absorbed in a hands-on science exhibit learns more than one marched past cabinets of labelled specimens. The best museums therefore refuse to choose: they design experiences that people enjoy so much that they do not notice how much they are learning.
+  checklist:
+    - en: Did you discuss both views fairly before giving your own position?
+      zh: 在给出个人观点之前，是否公平地讨论了两种观点？
+    - en: Is your own opinion stated clearly and developed consistently, not just added in the final sentence?
+      zh: 你自己的观点是否清晰表达并贯穿展开，而不是只在最后一句才提到？
+    - en: Did you support each view with concrete examples (interactive galleries, public funding)?
+      zh: 每种观点是否有具体例子支撑（互动展馆、公共拨款）？
+    - en: Did you use precise topic vocabulary (collections, immersive, authentic, taxpayers' expense) accurately?
+      zh: 是否准确使用了话题相关的精确词汇（collections、immersive、authentic、taxpayers' expense）？
+    - en: Did you vary sentence structures, mixing complex sentences with shorter emphatic ones?
+      zh: 句式是否有变化，长难句与简短有力的句子是否交替使用？
+- id: ielts-wr-009
+  track: ielts
+  taskType: ielts_task1
+  title: "Task 1: Electricity Generation by Source"
+  titleZh: 小作文：发电能源结构的变化
+  promptEn: The bar chart below shows the sources of electricity generated in a European country in 2000, 2010 and 2020, as a percentage of total generation. In 2000, coal accounted for 48% of electricity, gas for 22%, nuclear power for 24% and renewable sources for just 6%. By 2010, the share of coal had fallen to 35%, while gas had risen to 30%; nuclear power remained almost unchanged at 23%, and renewables doubled to 12%. In 2020, renewables became the largest single source at 38%, coal collapsed to 10%, gas provided 28% and nuclear 24%. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.
+  promptZh: 下面的柱状图显示了某欧洲国家 2000、2010 和 2020 年各能源在总发电量中所占的百分比。2000 年，煤炭发电占 48%，天然气占 22%，核电占 24%，可再生能源仅占 6%。到 2010 年，煤炭的份额降至 35%，天然气升至 30%；核电几乎不变，为 23%，可再生能源翻倍至 12%。2020 年，可再生能源以 38% 成为最大的单一电力来源，煤炭骤降至 10%，天然气占 28%，核电占 24%。请选择并报告主要特征来概述这些信息，并在相关之处进行比较。不少于 150 词。
+  minWords: 150
+  suggestedMinutes: 20
+  modelAnswer: |-
+    The chart shows the percentage of electricity generated from coal, gas, nuclear power and renewable sources in a European country in 2000, 2010 and 2020.
+
+    Overall, the country's electricity mix was transformed over the two decades. Coal and renewables effectively exchanged places — coal fell from the dominant source to the smallest, while renewables rose from a marginal contributor to the largest — whereas nuclear power stayed remarkably stable throughout.
+
+    In 2000, coal was by far the most important source, generating almost half of all electricity at 48%. Nuclear power and gas followed with roughly a quarter and a fifth respectively, while renewables supplied a mere 6%.
+
+    The following decade saw the beginning of a clear shift. Coal's share dropped to 35%, although it remained the leading source, while gas climbed to 30% and renewables doubled to 12%. Nuclear power barely moved, slipping one point to 23%.
+
+    Change then accelerated dramatically. By 2020, renewables had more than trebled to 38%, overtaking every other source, whereas coal collapsed to just 10% — roughly a fifth of its 2000 level. Gas settled at 28%, and nuclear returned to exactly its original share of 24%.
+
+    In summary, within twenty years the country moved from a coal-dominated system to one led by renewable energy, with gas and nuclear playing broadly steady supporting roles.
+  checklist:
+    - en: Did you write an overview capturing the reversal between coal and renewables without copying every figure?
+      zh: 是否写了概述段，点明煤炭与可再生能源地位互换的核心变化，而不是照抄所有数字？
+    - en: Did you select and group key figures (largest source, biggest change, what stayed stable) rather than listing all twelve numbers?
+      zh: 是否选取并归类了关键数据（最大来源、最大变化、保持稳定的项），而非罗列全部十二个数字？
+    - en: Did you use varied trend and comparison language (exchanged places, trebled, collapsed, barely moved)?
+      zh: 是否使用了多样的趋势和比较表达（exchanged places、trebled、collapsed、barely moved）？
+    - en: Did you use approximations (almost half, roughly a fifth) as well as exact percentages?
+      zh: 是否在给出精确百分比之外，也使用了近似表达（almost half、roughly a fifth）？
+    - en: Did you avoid explaining why the energy mix changed, as Task 1 requires?
+      zh: 是否按小作文要求避免了解释能源结构变化的原因？
+- id: ielts-wr-010
+  track: ielts
+  taskType: ielts_task2
+  title: "Task 2: Spending on Space Exploration"
+  titleZh: 大作文：太空探索的开支
+  promptEn: Space exploration costs billions of dollars every year. Some people argue that this money would be better spent on solving urgent problems here on Earth, such as poverty and disease. To what extent do you agree or disagree? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words.
+  promptZh: 太空探索每年耗资数十亿美元。一些人认为，这些钱更应该用来解决地球上的紧迫问题，比如贫困和疾病。你在多大程度上同意或不同意这一观点？请说明理由，并结合你自己的知识或经历举例。不少于 250 词。
+  minWords: 250
+  suggestedMinutes: 40
+  modelAnswer: |-
+    Whenever a rocket launches, someone asks how many hospitals the same money could have built. Although I sympathise with the instinct behind this question, I largely disagree with the claim that space budgets should be redirected to problems on Earth, because it rests on a false choice and overlooks what space programmes actually deliver.
+
+    The case for redirection sounds compelling at first. Poverty and disease kill people today, while planetary science satisfies curiosity about places no human may ever visit. If a government has a spare billion dollars, a vaccination campaign appears to buy more human welfare than a space probe, and citizens in struggling regions may reasonably resent spending that seems to fly over their heads.
+
+    On closer inspection, however, the argument weakens. First, the sums involved are far smaller than people imagine: most national space agencies receive well under one percent of public spending, so even abolishing them would barely dent global poverty. Second, and more importantly, space technology has become part of how we solve earthly problems. Weather satellites give farmers and flood authorities days of warning instead of hours; communications satellites carry banking and telemedicine to remote villages; climate research depends almost entirely on observation from orbit. Cancelling space programmes to fight disease would, in part, mean dismantling the very tools used to track it.
+
+    There is also a longer-term consideration. The problems cited against space spending are permanent, so the logic of postponement would forbid exploration forever, just as it would once have forbidden basic physics or ocean voyages — investments that seemed indulgent and later transformed daily life.
+
+    In conclusion, governments should certainly fight poverty and disease first, but the modest cost of space exploration is not what stands in their way. I therefore disagree that the money would be better spent elsewhere: a society can afford to look upward and downward at the same time.
+  checklist:
+    - en: Did you state clearly how far you agree or disagree, and keep that position consistent throughout?
+      zh: 是否明确表明同意或不同意的程度，并全文保持立场一致？
+    - en: Did you present the opposing argument fairly before rebutting it with evidence?
+      zh: 是否先公平呈现反方论点，再用证据加以反驳？
+    - en: Did you support your view with concrete examples (weather satellites, telemedicine, climate research)?
+      zh: 你的观点是否有具体例子支撑（气象卫星、远程医疗、气候研究）？
+    - en: Did you challenge the assumption in the question (the false choice) rather than accepting it uncritically?
+      zh: 是否质疑了题目中的隐含前提（非此即彼的错误选择），而不是不加批判地接受？
+    - en: Does your conclusion follow logically from your arguments rather than introducing new ideas?
+      zh: 结论是否由前文论证自然得出，而没有引入新的论点？

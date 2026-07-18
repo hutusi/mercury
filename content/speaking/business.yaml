@@ -120,3 +120,137 @@
       zh: 是否体谅客户的处境，并提出明确的下一步安排？
     - en: Did you sound calm and confident — the decision is firm, but the delivery is warm?
       zh: 语气是否平静自信——决定是坚定的，但表达是温和的？
+- id: biz-s-006
+  track: business
+  partType: business_scenario
+  title: Giving a Status Update in the Daily Stand-up
+  titleZh: 在每日站会上汇报进展
+  promptEn: "It is your turn to speak at your team's daily stand-up. Give a crisp update on your work on the customer-analytics dashboard: what you finished yesterday (the data-export feature, plus two bug fixes), what you plan to do today (start building the date-filter component), and one blocker (you are still waiting for the platform team to grant you database access, requested two days ago). Keep it tight and structured, and end with a specific ask so the blocker gets resolved."
+  promptZh: 团队每日站会轮到你发言。请就客户分析看板的工作做一个简明汇报：昨天完成了什么（数据导出功能，外加修复两个 bug）、今天计划做什么（开始开发日期筛选组件），以及一个阻塞项（两天前向平台团队申请的数据库权限至今没有开通）。汇报要简洁、有条理，并在结尾提出具体的求助请求，推动阻塞项解决。
+  prepSeconds: 20
+  speakSeconds: 60
+  modelAnswer: "Morning, everyone — quick update from me on the analytics dashboard. Yesterday I finished the data-export feature, so users can now download any report as a spreadsheet; that's merged and ready for review. I also fixed the two bugs from Monday's testing — the chart-refresh issue and the broken date display on the summary page. Today I'm starting on the date-filter component, which is the last big piece before our demo next Thursday. One blocker, though, and it's getting urgent: I still don't have access to the production database. I requested it from the platform team on Monday, and without it the filter work stalls by tomorrow. Sam, I think you know their lead — could you ping him after this meeting, or should I raise a priority ticket instead? Either works for me; I just need it today. That's all from me."
+  checklist:
+    - en: Did you follow the yesterday / today / blocker structure without drifting into detail?
+      zh: 是否遵循“昨天、今天、阻塞项”的结构，而没有陷入细节？
+    - en: Did you describe finished work as concrete outcomes rather than vague activity?
+      zh: 汇报已完成的工作时，是否说的是具体成果而不是含糊的忙碌？
+    - en: Did you say how long the blocker has been open and when it will start costing time?
+      zh: 是否说明了阻塞项已持续多久、何时会开始耽误进度？
+    - en: Did you end with a specific ask directed at a named person?
+      zh: 结尾是否向具体的人提出了明确的请求？
+    - en: Did you keep the whole update within about sixty seconds?
+      zh: 整个汇报是否控制在约六十秒内？
+- id: biz-s-007
+  track: business
+  partType: business_scenario
+  title: Giving Constructive Feedback to a Peer
+  titleZh: 向同事提出建设性反馈
+  promptEn: "Your colleague Ben built the data section of the client presentation you delivered together yesterday. Two of his charts used last quarter's figures, the client spotted it, and you had to apologise on the spot. Ben is skilled, you enjoy working with him, and this is the first time it has happened. Speak to him privately: raise the issue directly but kindly, describe what happened and its impact factually, invite his side of the story, and agree on a concrete way to prevent a repeat."
+  promptZh: 同事 Ben 负责制作你们昨天共同向客户交付的演示文稿中的数据部分。其中两张图表用的是上季度的数据，被客户当场发现，你不得不当场致歉。Ben 能力很强，你们合作愉快，而且这是第一次出这种问题。请私下与他谈一谈：直接而友善地提出问题，客观描述事情经过和影响，请他讲讲自己的情况，并商定一个防止再次发生的具体办法。
+  prepSeconds: 30
+  speakSeconds: 90
+  modelAnswer: |-
+    Ben, have you got five minutes? I wanted to talk about yesterday's presentation while it's still fresh — just the two of us.
+
+    First, the deck overall was strong — the client said the market-sizing section was the clearest they'd seen. But I do need to raise the two revenue charts. They showed last quarter's figures, their finance director caught it in the room, and I had to apologise on the spot. My worry isn't the mistake itself — it's that for a few minutes we looked unreliable on exactly the numbers we were there to defend.
+
+    Before I suggest anything — what happened from your side? Right, that makes sense. If the data team only sent you the refreshed export late on Friday, I can see exactly how the old file slipped through.
+
+    So here's what I'd propose, and tell me if you'd change it: whichever of us owns the data does a final source check the day before, and the other does a ten-minute review of the numbers only — fresh eyes, nothing else. If we'd had that in place this time, we'd have caught it.
+
+    And Ben, to be clear — one slip in two years of working together doesn't change how much I trust your work. I just want us bulletproof next time. Sound fair?
+  checklist:
+    - en: Did you raise the issue promptly, privately, and directly — without hinting or sugar-coating it away?
+      zh: 是否及时、私下、直接地提出问题，而不是拐弯抹角或含糊带过？
+    - en: Did you describe the facts and the business impact, rather than criticising the person?
+      zh: 是否客观描述事实和业务影响，而不是批评对方本人？
+    - en: Did you invite his explanation before proposing a fix?
+      zh: 在提出解决办法之前，是否先请对方说明情况？
+    - en: Did you agree on a specific, workable prevention step rather than a vague promise to be more careful?
+      zh: 是否商定了具体可行的预防措施，而不是一句空泛的“下次小心”？
+    - en: Did you end by reaffirming trust and the working relationship?
+      zh: 结尾是否重申了信任与合作关系？
+- id: biz-s-008
+  track: business
+  partType: business_scenario
+  title: Pitching a Process Improvement to Your Manager
+  titleZh: 向经理提议流程改进
+  promptEn: "You have caught your manager between meetings — you have about ninety seconds. You want to propose automating the weekly sales report, which you and a colleague currently compile by hand every Friday from three different systems. It takes the two of you about four hours in total, and small errors keep slipping in. You estimate the automation would take about three days to build using the reporting tool the team already pays for. Make the pitch: open with the problem in numbers, present the solution and its cost, deal with the obvious objection — who covers your work for those three days — and close with a specific request."
+  promptZh: 你在会议间隙拦住了经理——大约只有九十秒。你想提议将每周销售报表自动化：目前每周五你和一位同事要从三个不同的系统手工汇总数据，两人合计约花四个小时，而且小错误不断。你估计用团队已付费的报表工具，大约三天就能完成自动化开发。请完成这次提议：用数字点明问题，给出方案和成本，回应显而易见的顾虑——这三天你的日常工作由谁来顶——并以一个具体的请求收尾。
+  prepSeconds: 30
+  speakSeconds: 90
+  modelAnswer: |-
+    Claire, have you got ninety seconds? I'd like to run a quick proposal past you.
+
+    Every Friday, Tom and I build the weekly sales report by hand — pulling numbers from the CRM, the billing system, and the web dashboard into one spreadsheet. That costs the two of us about four hours a week, so roughly two hundred hours a year. And because it's manual, errors keep creeping in — you'll remember the mismatched regional totals from two weeks ago.
+
+    Here's my proposal: let me automate it. The reporting tool we already license can pull from all three systems, so there's no new spend — just my time, and I estimate three days to build and test it. From then on the report generates itself every Friday morning, in the same format, and Tom does a five-minute sanity check instead of a half-day of copying.
+
+    I know the concern is coverage while I'm heads-down. I'd do it the week after the quarter closes — our quietest week — and Tom has already agreed to handle my account queries for those three days.
+
+    So the ask is three days of my time, week after next. It pays for itself within a month. Can I go ahead and block it out, or would you rather see a short written plan first?
+  checklist:
+    - en: Did you quantify the problem — hours lost, error examples — before proposing anything?
+      zh: 在提出方案之前，是否先用数字量化了问题——耗费的工时、出错的实例？
+    - en: Did you state the solution and its full cost honestly, including your own time?
+      zh: 是否如实说明了方案及其全部成本，包括你自己投入的时间？
+    - en: Did you anticipate the manager's main objection and answer it before being asked?
+      zh: 是否预判了经理的主要顾虑，并在对方开口之前就作了回应？
+    - en: Did you close with one specific, easy-to-approve request?
+      zh: 结尾是否提出了一个具体、易于批准的请求？
+    - en: Did you let the numbers, not adjectives, do the selling — and stay within the time?
+      zh: 是否用数字而非形容词来说服对方，并控制在时间之内？
+- id: biz-s-009
+  track: business
+  partType: business_scenario
+  title: Handling a Client's Objection on a Sales Call
+  titleZh: 通话中回应客户的异议
+  promptEn: "You are on a video call with Mr. Ito, the operations director of a mid-sized retailer interested in your inventory-management software. He likes the product but says the switch itself feels too risky — he fears that migrating stock data and retraining forty warehouse staff could disrupt operations for weeks. Respond to the objection: acknowledge the concern genuinely instead of brushing it aside, reframe it with facts (migration runs in parallel with the old system and typically takes ten working days; training is two hours per person, delivered on site), offer proof such as a comparable customer, and propose a low-risk next step."
+  promptZh: 你正与一家中型零售企业的运营总监 Ito 先生视频通话，对方对你们的库存管理软件很感兴趣。他认可产品本身，但认为切换过程风险太大——他担心迁移库存数据和重新培训四十名仓库员工会让运营中断数周。请回应这一异议：真诚地承认对方的顾虑而不是敷衍带过，用事实重新说明情况（迁移与旧系统并行进行，通常只需十个工作日；培训为每人两小时、上门开展），提供类似客户的实例作为佐证，并提出一个低风险的下一步。
+  prepSeconds: 20
+  speakSeconds: 60
+  modelAnswer: "Mr. Ito, that's a completely fair concern — and honestly, if switching meant weeks of disruption, I wouldn't recommend it either. So let me explain how the transition actually works. We never switch you over in one jump. The new system runs in parallel with your current one, syncing data in the background, and that phase typically takes ten working days — your warehouses keep operating exactly as they do today. Nothing goes live until your own team has confirmed the stock counts match. As for training, it's two hours per person, on site, in small groups — for forty staff that spreads over about a week, scheduled around your shifts. Redfern Homeware — about your size, three warehouses — went live in March, and their operations director told me the floor never noticed the cutover; I'd be glad to introduce you. And rather than deciding today, how about a pilot in your smallest warehouse first? Two weeks, real stock, and you judge the results yourself."
+  checklist:
+    - en: Did you acknowledge the concern as legitimate before countering it?
+      zh: 是否先承认对方的顾虑合理，再进行回应？
+    - en: Did you reframe the risk with concrete facts about parallel running and training time?
+      zh: 是否用并行迁移和培训时长等具体事实重新界定了风险？
+    - en: Did you offer verifiable proof, such as a reference customer you can introduce?
+      zh: 是否提供了可验证的佐证，例如可引荐的现有客户？
+    - en: Did you propose a low-risk next step instead of pushing for the full commitment?
+      zh: 是否提出了低风险的下一步，而不是急于让对方做出全部承诺？
+    - en: Did you stay calm and unhurried, with no defensiveness or sales pressure?
+      zh: 语气是否从容不迫，没有辩解或强行推销的意味？
+- id: biz-s-010
+  track: business
+  partType: business_scenario
+  title: Briefing a Colleague Before Your Annual Leave
+  titleZh: 休假前向同事交接工作
+  promptEn: "You start two weeks of annual leave on Monday, and your colleague Dana has agreed to cover your client accounts. Brief her before you go: hand over the two live items (the Redwood contract renewal, which is awaiting the client's signature and may need a gentle chase on Thursday; and a billing-error complaint from Marlowe Ltd, promised a resolution by Wednesday), tell her where the documents live and who can help if she gets stuck, explain when you genuinely want to be contacted and when not, and check she is comfortable with all of it."
+  promptZh: 你从周一开始休两周年假，同事 Dana 已同意接手你的客户账户。请在休假前向她交接：交代两件正在进行的事（Redwood 的合同续约正在等客户签字，周四可能需要礼貌地催一下；以及 Marlowe Ltd 投诉的计费错误，已承诺周三前给出解决方案），告诉她文件放在哪里、遇到困难可以找谁，说明什么情况下你确实希望被联系、什么情况下不需要，最后确认她对这些安排没有疑问。
+  prepSeconds: 30
+  speakSeconds: 90
+  modelAnswer: |-
+    Dana, thanks again for covering for me — let me walk you through everything now so nothing lands on you cold.
+
+    There are two live items. The big one is the Redwood contract renewal. The terms are agreed and the contract is with their legal team for signature. If it hasn't come back by Thursday, send their procurement lead, Ms. Vane, a friendly nudge — there's a draft chaser in the Redwood folder, so it's two minutes' work. Please don't reopen any terms, though; if they ask for changes, that waits for me.
+
+    The second is Marlowe Ltd. We overcharged them on their April invoice, and I've promised a corrected invoice and a credit note by Wednesday. Finance is preparing both — Rui has the details — so your job is just to check they went out and confirm with Marlowe that they're satisfied.
+
+    Everything lives in the shared drive under Handover-July: one page per account, with contacts and links to the client portals. And if you're ever stuck, Rui knows these accounts almost as well as I do.
+
+    On contacting me — for anything routine, please don't. The notes should cover it, and I trust your judgement completely. But if Redwood wants to change terms, or any client threatens to escalate, call me straight away; I'd rather lose an hour of holiday than a client.
+
+    So — Redwood chase on Thursday, Marlowe check on Wednesday. Anything you'd like me to go over again?
+  checklist:
+    - en: Did you hand over each live item with its status, the exact action needed, and the day it is due?
+      zh: 交接每件事时是否说明了当前状态、需要采取的具体动作和时间节点？
+    - en: Did you say clearly what your colleague should not do, as well as what she should?
+      zh: 除了该做什么，是否也明确说明了不该做什么？
+    - en: Did you point out where documents live and who can help, so she need not rely on memory?
+      zh: 是否告知了文件位置和可求助的人，让对方不必单凭记忆行事？
+    - en: Did you set explicit contact rules — when to call you and when to decide alone?
+      zh: 是否定下了明确的联系规则——什么情况打电话给你，什么情况自行决定？
+    - en: Did you close by summarising the key dates and inviting questions?
+      zh: 结尾是否总结了关键日期，并主动询问对方是否还有疑问？
