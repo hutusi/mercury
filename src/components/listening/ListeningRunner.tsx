@@ -17,11 +17,13 @@ import { TtsPlayer } from "./TtsPlayer";
 export function ListeningRunner({
   exerciseId,
   script,
+  audioUrl,
   questions,
   crossPromo,
 }: {
   exerciseId: string;
   script: ScriptLine[];
+  audioUrl?: string | null;
   questions: SanitizedQuestion[];
   crossPromo?: React.ReactNode;
 }) {
@@ -110,7 +112,7 @@ export function ListeningRunner({
 
   return (
     <div className="space-y-6">
-      <TtsPlayer script={script} />
+      <TtsPlayer script={script} audioUrl={audioUrl} />
       <div className="border border-dashed border-border p-3 text-center text-xs text-muted-foreground">
         <span aria-hidden>
           <Lock className="inline size-4" />

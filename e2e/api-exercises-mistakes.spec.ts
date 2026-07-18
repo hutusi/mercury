@@ -133,5 +133,12 @@ test.describe("API exercises + mistakes notebook", () => {
     const detail = JSON.parse(text);
     expect(detail.script.length).toBeGreaterThan(0);
     expect(detail.questions.length).toBeGreaterThan(0);
+    // audioUrl is part of the contract: a /audio/ path when pre-generated
+    // neural audio exists (ADR 0021), null when the client should fall back
+    // to speaking the script on-device.
+    expect(detail).toHaveProperty("audioUrl");
+    if (detail.audioUrl !== null) {
+      expect(detail.audioUrl).toMatch(/^\/audio\/listening\//);
+    }
   });
 });

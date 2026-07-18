@@ -272,6 +272,8 @@ const zh = {
     submitAnswers: "提交答案",
     ttsUnsupported: "当前浏览器不支持语音合成，请使用 Chrome / Edge",
     listenFirst: "请先听音频，再作答",
+    resume: "继续播放",
+    usingBrowserTts: "音频加载失败，已切换为浏览器语音",
   },
   writing: {
     subtitle: "AI 批改，逐条讲解",
@@ -695,6 +697,8 @@ const en: Dictionary = {
     submitAnswers: "Submit answers",
     ttsUnsupported: "Your browser does not support speech synthesis. Please use Chrome / Edge.",
     listenFirst: "Listen to the audio before answering",
+    resume: "Resume",
+    usingBrowserTts: "Audio failed to load — using the browser voice instead",
   },
   writing: {
     subtitle: "AI-graded with line-by-line guidance",
