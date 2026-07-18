@@ -156,7 +156,10 @@ without a configured audio base). Treat it as an opaque URL: immutable per URL (
 content hash) and served with year-long cache headers, so cache aggressively. Play it when present;
 when it is `null` or the fetch/decode fails, fall back to speaking `script` line-by-line with
 on-device TTS (AVSpeechSynthesizer). The script always ships regardless, and doubles as the
-post-submit transcript.
+post-submit transcript. The same contract covers mock-exam attempts (each sanitized listening
+group carries its own nullable `audioUrl` next to `script`) and study-queue cards (`audioUrl` is
+the headword pronunciation; example sentences are always spoken on-device —
+[ADR 0023](adr/0023-exam-and-headword-audio.md)).
 
 ## Odds and ends
 
