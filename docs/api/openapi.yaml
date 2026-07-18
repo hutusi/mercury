@@ -393,9 +393,11 @@ paths:
                       allOf:
                         - { $ref: "#/components/schemas/VocabWord" }
                         - type: object
+                          required: [wordId, isNew, srs]
                           properties:
                             wordId: { type: string }
                             isNew: { type: boolean }
+                            srs: { $ref: "#/components/schemas/SrsState" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/vocab/grade:
@@ -414,13 +416,15 @@ paths:
                 grade: { type: integer, enum: [1, 3, 4, 5] }
       responses:
         "200":
-          description: New interval.
+          description: New interval and post-review scheduler state.
           content:
             application/json:
               schema:
                 type: object
+                required: [intervalDays, srs]
                 properties:
                   intervalDays: { type: integer }
+                  srs: { $ref: "#/components/schemas/SrsState" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
@@ -1190,6 +1194,17 @@ components:
         ipa: { type: string }
         pos: { type: string }
         translationZh: { type: string }
+    SrsState:
+      type: object
+      description: >-
+        Per-user SM-2 scheduler state — enough for clients to preview what each
+        grade would schedule using the same deterministic SM-2 rules.
+      required: [easeFactor, intervalDays, repetitions, lapses]
+      properties:
+        easeFactor: { type: number }
+        intervalDays: { type: integer }
+        repetitions: { type: integer }
+        lapses: { type: integer }
     QuizQuestion:
       type: object
       description: Opaque server-owned question; no content id or answer-key signal.

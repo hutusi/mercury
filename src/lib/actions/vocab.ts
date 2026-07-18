@@ -3,12 +3,12 @@
 import { requireUser } from "../auth/session";
 import { answerQuizSessionForUser } from "../services/vocab-quiz";
 import { gradeCardForUser } from "../services/vocab";
-import type { ReviewGrade } from "../srs";
+import type { ReviewGrade, SrsState } from "../srs";
 
 export async function gradeCard(input: {
   wordId: string;
   grade: ReviewGrade;
-}): Promise<{ intervalDays: number }> {
+}): Promise<{ intervalDays: number; srs: SrsState }> {
   const user = await requireUser();
   return gradeCardForUser(user.id, input);
 }

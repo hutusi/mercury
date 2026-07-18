@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "../db";
 import { reviewLogs, srsCards, vocabWords } from "../db/schema";
-import { scheduleReview } from "../srs";
+import { scheduleReview, type SrsState } from "../srs";
 import { recordActivityWith } from "../streak";
 import { NotFoundError } from "./errors";
 
@@ -15,7 +15,7 @@ export const GradeCardSchema = z.object({
 export async function gradeCardForUser(
   userId: string,
   input: unknown,
-): Promise<{ intervalDays: number }> {
+): Promise<{ intervalDays: number; srs: SrsState }> {
   const { wordId, grade } = GradeCardSchema.parse(input);
 
   const word = await db.query.vocabWords.findFirst({ where: eq(vocabWords.id, wordId) });
@@ -79,5 +79,15 @@ export async function gradeCardForUser(
     return scheduled;
   });
 
-  return { intervalDays: next.intervalDays };
+  // The post-review state lets the client keep a re-queued lapse's interval
+  // hints truthful without refetching the study queue.
+  return {
+    intervalDays: next.intervalDays,
+    srs: {
+      easeFactor: next.easeFactor,
+      intervalDays: next.intervalDays,
+      repetitions: next.repetitions,
+      lapses: next.lapses,
+    },
+  };
 }

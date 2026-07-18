@@ -13,6 +13,8 @@ test.describe("API vocab/SRS", () => {
     const { cards } = await queueRes.json();
     expect(cards.length).toBeGreaterThan(0);
     expect(cards[0].isNew).toBe(true);
+    // Unseen words carry the fresh-card scheduler state for interval previews.
+    expect(cards[0].srs).toEqual({ easeFactor: 2.5, intervalDays: 0, repetitions: 0, lapses: 0 });
 
     // Grade the first card "easy" — SM-2 schedules it days out.
     const gradeRes = await request.post("/api/v1/vocab/grade", {
@@ -20,8 +22,10 @@ test.describe("API vocab/SRS", () => {
       data: { wordId: cards[0].wordId, grade: 5 },
     });
     expect(gradeRes.status()).toBe(200);
-    const { intervalDays } = await gradeRes.json();
+    const { intervalDays, srs } = await gradeRes.json();
     expect(intervalDays).toBeGreaterThanOrEqual(1);
+    expect(srs.repetitions).toBe(1);
+    expect(srs.intervalDays).toBe(intervalDays);
 
     // Overview reflects the started card.
     const overviewRes = await request.get("/api/v1/vocab/overview", {

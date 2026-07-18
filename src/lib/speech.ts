@@ -143,6 +143,43 @@ export function createScriptSpeaker(
   };
 }
 
+export interface WordSpeaker {
+  speak(text: string): void;
+  stop(): void;
+}
+
+/**
+ * Single-utterance speaker for headwords and example sentences. speak()
+ * cancels anything in flight so a repeat click restarts; the generation
+ * counter drops stale async voice loads after stop() or a newer speak().
+ * Always call stop() on unmount to prevent zombie audio across navigation.
+ */
+export function createWordSpeaker(options: { rate?: number } = {}): WordSpeaker {
+  const rate = options.rate ?? 0.95;
+  let generation = 0;
+
+  return {
+    speak(text: string) {
+      if (!ttsSupported()) return;
+      const mine = ++generation;
+      window.speechSynthesis.cancel();
+      void loadVoices().then((voices) => {
+        if (mine !== generation) return;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        utterance.rate = rate;
+        const voice = pickEnglishVoices(voices)[0];
+        if (voice) utterance.voice = voice;
+        window.speechSynthesis.speak(utterance);
+      });
+    },
+    stop() {
+      generation++;
+      if (ttsSupported()) window.speechSynthesis.cancel();
+    },
+  };
+}
+
 export interface Recognizer {
   start(): void;
   stop(): void;

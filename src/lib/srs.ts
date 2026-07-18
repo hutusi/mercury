@@ -23,6 +23,17 @@ const MIN_EASE = 1.3;
 const AGAIN_DELAY_MS = 10 * 60 * 1000; // failed cards come back in 10 minutes
 const DAY_MS = 24 * 60 * 60 * 1000;
 
+export interface IntervalPreview {
+  unit: "minutes" | "days";
+  value: number;
+}
+
+/** What pressing `grade` right now would schedule — hint labels under rating buttons. */
+export function previewInterval(state: SrsState, grade: ReviewGrade): IntervalPreview {
+  if (grade < 3) return { unit: "minutes", value: AGAIN_DELAY_MS / 60_000 };
+  return { unit: "days", value: scheduleReview(state, grade).intervalDays };
+}
+
 export function scheduleReview(
   state: SrsState,
   grade: ReviewGrade,

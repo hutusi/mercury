@@ -74,6 +74,16 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
   writing/speaking cadence → mock-exam checkpoint), fitted to `dailyMinutes`. `href` values are
   unlocalized web paths; native clients should map `kind`/`refId` to their own screens.
 
+## Vocabulary SRS
+
+- `GET /api/v1/vocab/study-queue` cards include `srs` (`easeFactor`, `intervalDays`,
+  `repetitions`, `lapses`) so clients can preview what each grade would schedule with the
+  same deterministic SM-2 rules (the web uses `previewInterval` for the hints under the
+  grade buttons; new cards carry the fresh-card state).
+- `POST /api/v1/vocab/grade` returns `{intervalDays, srs}` — the post-review state, so a
+  lapsed ("Forgot") card re-shown in the same session previews truthful intervals without
+  refetching the queue.
+
 ## Vocabulary quiz integrity
 
 The server-owned session model is recorded in
