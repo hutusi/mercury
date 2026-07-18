@@ -43,7 +43,9 @@ export const AudioManifestEntrySchema = z.object({
   hash: z.string().regex(/^[0-9a-f]{12}$/),
   file: z.string().startsWith("/audio/"),
   model: z.string(),
-  voices: z.object({ A: z.string(), B: z.string(), narrator: z.string() }),
+  // Role → voice name. Listening/exam entries use the A/B/narrator cast;
+  // vocab entries record their single voice under "narrator".
+  voices: z.record(z.string(), z.string()),
   generatedAt: z.string(),
   characters: z.number().int().nonnegative(),
 });
@@ -95,4 +97,79 @@ export function resolveAudioUrl(
   return entry.hash === scriptAudioHash(script, config)
     ? listeningAudioFile(exerciseId, entry.hash)
     : null;
+}
+
+// ── Mock-exam listening groups ──────────────────────────────────────────────
+// Same voice cast and renderer settings as practice listening; group ids are
+// unique per exam but the exam id joins the key/path anyway for greppability.
+
+export function examManifestKey(examId: string, groupId: string): string {
+  return `exam:${examId}:${groupId}`;
+}
+
+export function examAudioFile(examId: string, groupId: string, hash: string): string {
+  return `/audio/exams/${examId}.${groupId}.${hash}.mp3`;
+}
+
+/** Exam-group audio URL, or null when none was generated or it's stale. */
+export function resolveExamAudioUrl(
+  examId: string,
+  groupId: string,
+  script: ScriptLine[],
+  manifest: AudioManifest,
+  config: AudioConfig = LISTENING_AUDIO_CONFIG,
+): string | null {
+  const entry = manifest[examManifestKey(examId, groupId)];
+  if (!entry) return null;
+  return entry.hash === scriptAudioHash(script, config)
+    ? examAudioFile(examId, groupId, entry.hash)
+    : null;
+}
+
+// ── Vocab headwords ─────────────────────────────────────────────────────────
+// One short utterance per word in a single consistent voice. Example
+// sentences deliberately stay on browser TTS (ADR 0023).
+
+export interface WordAudioConfig {
+  model: string;
+  voice: string;
+  languageType: string;
+  mp3Kbps: number;
+}
+
+export const VOCAB_AUDIO_CONFIG: WordAudioConfig = {
+  model: "qwen3-tts-flash",
+  voice: "Jennifer",
+  languageType: "English",
+  mp3Kbps: 64,
+};
+
+export function wordAudioHash(text: string, config: WordAudioConfig): string {
+  const canonical = JSON.stringify({
+    model: config.model,
+    voice: config.voice,
+    renderer: [config.languageType, config.mp3Kbps],
+    text,
+  });
+  return createHash("sha256").update(canonical).digest("hex").slice(0, 12);
+}
+
+export function vocabManifestKey(wordId: string): string {
+  return `vocab:${wordId}`;
+}
+
+export function vocabAudioFile(wordId: string, hash: string): string {
+  return `/audio/vocab/${wordId}.${hash}.mp3`;
+}
+
+/** Headword audio URL, or null when none was generated or it's stale. */
+export function resolveVocabAudioUrl(
+  wordId: string,
+  headword: string,
+  manifest: AudioManifest,
+  config: WordAudioConfig = VOCAB_AUDIO_CONFIG,
+): string | null {
+  const entry = manifest[vocabManifestKey(wordId)];
+  if (!entry) return null;
+  return entry.hash === wordAudioHash(headword, config) ? vocabAudioFile(wordId, entry.hash) : null;
 }
