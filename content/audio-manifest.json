@@ -1,0 +1,218 @@
+{
+  "listening:biz-l-001": {
+    "hash": "91dcedc12422",
+    "file": "/audio/listening/biz-l-001.91dcedc12422.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:42:10.059Z",
+    "characters": 1321
+  },
+  "listening:biz-l-002": {
+    "hash": "80873ef45b1e",
+    "file": "/audio/listening/biz-l-002.80873ef45b1e.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:42:47.995Z",
+    "characters": 1362
+  },
+  "listening:biz-l-003": {
+    "hash": "d9ec9c90de99",
+    "file": "/audio/listening/biz-l-003.d9ec9c90de99.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:43:21.489Z",
+    "characters": 1212
+  },
+  "listening:biz-l-004": {
+    "hash": "970626399f44",
+    "file": "/audio/listening/biz-l-004.970626399f44.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:43:47.214Z",
+    "characters": 850
+  },
+  "listening:biz-l-005": {
+    "hash": "c45a3d14c26e",
+    "file": "/audio/listening/biz-l-005.c45a3d14c26e.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:44:22.588Z",
+    "characters": 1582
+  },
+  "listening:biz-l-006": {
+    "hash": "cab04ae56e60",
+    "file": "/audio/listening/biz-l-006.cab04ae56e60.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:44:59.344Z",
+    "characters": 1215
+  },
+  "listening:ielts-l-001": {
+    "hash": "839c11438418",
+    "file": "/audio/listening/ielts-l-001.839c11438418.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:38:25.749Z",
+    "characters": 1392
+  },
+  "listening:ielts-l-002": {
+    "hash": "439914c16f48",
+    "file": "/audio/listening/ielts-l-002.439914c16f48.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:39:01.840Z",
+    "characters": 1508
+  },
+  "listening:ielts-l-003": {
+    "hash": "b47510a9b235",
+    "file": "/audio/listening/ielts-l-003.b47510a9b235.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:39:36.147Z",
+    "characters": 1392
+  },
+  "listening:ielts-l-004": {
+    "hash": "70ffef2e0206",
+    "file": "/audio/listening/ielts-l-004.70ffef2e0206.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:40:15.973Z",
+    "characters": 1190
+  },
+  "listening:ielts-l-005": {
+    "hash": "a9368ddac2fd",
+    "file": "/audio/listening/ielts-l-005.a9368ddac2fd.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:40:55.302Z",
+    "characters": 1243
+  },
+  "listening:ielts-l-006": {
+    "hash": "b138132adf08",
+    "file": "/audio/listening/ielts-l-006.b138132adf08.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:41:33.108Z",
+    "characters": 1422
+  },
+  "listening:toeic-l-001": {
+    "hash": "67f4900143aa",
+    "file": "/audio/listening/toeic-l-001.67f4900143aa.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:35:27.482Z",
+    "characters": 1113
+  },
+  "listening:toeic-l-002": {
+    "hash": "33ead540c405",
+    "file": "/audio/listening/toeic-l-002.33ead540c405.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:35:56.819Z",
+    "characters": 1143
+  },
+  "listening:toeic-l-003": {
+    "hash": "de2609abee83",
+    "file": "/audio/listening/toeic-l-003.de2609abee83.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:36:21.064Z",
+    "characters": 793
+  },
+  "listening:toeic-l-004": {
+    "hash": "103dda3d6b03",
+    "file": "/audio/listening/toeic-l-004.103dda3d6b03.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:36:55.068Z",
+    "characters": 1204
+  },
+  "listening:toeic-l-005": {
+    "hash": "d1bb24ab2da6",
+    "file": "/audio/listening/toeic-l-005.d1bb24ab2da6.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:37:22.019Z",
+    "characters": 1133
+  },
+  "listening:toeic-l-006": {
+    "hash": "85d8f0036d8f",
+    "file": "/audio/listening/toeic-l-006.85d8f0036d8f.mp3",
+    "model": "qwen3-tts-flash",
+    "voices": {
+      "A": "Aiden",
+      "B": "Jennifer",
+      "narrator": "Neil"
+    },
+    "generatedAt": "2026-07-18T03:37:44.795Z",
+    "characters": 1031
+  }
+}
