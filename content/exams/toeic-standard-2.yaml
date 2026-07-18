@@ -1,0 +1,702 @@
+# yaml-language-server: $schema=../.schemas/exam.schema.json
+id: exam-toeic-standard-2
+track: toeic
+title: TOEIC Standard Practice Test 2
+titleZh: 托业标准模考（二）
+descriptionZh: 共 50 题：听力 25 题（四段对话 + 两段短讲）+ 阅读 25 题（电子邮件、在线讨论、新闻报道、招聘广告、备忘录、专题文章各一篇），全程约 54 分钟。结构与《托业标准模考》完全一致、题目全部更新，适合再次模考检验训练成果。
+sections:
+  - id: toeic-standard-2-listening-1
+    kind: listening
+    title: Listening — Part 1
+    titleZh: 听力第一部分
+    durationSeconds: 660
+    groups:
+      - id: ts2-lg1
+        script:
+          - speaker: A
+            text: Facilities services, this is Renata speaking. What can I do for you?
+          - speaker: B
+            text: Hi Renata, it's Colin Pratt in the sales department. The air conditioning in the west-wing conference room has stopped working.
+          - speaker: A
+            text: I'm sorry to hear that. Is the room in use at the moment?
+          - speaker: B
+            text: Not right now, but I'm hosting a client presentation there at two o'clock. It's already quite warm inside.
+          - speaker: A
+            text: Our technician is repairing an elevator in the annex, so he can't get to the unit before three.
+          - speaker: B
+            text: That's too late. Is there another room I could use instead?
+          - speaker: A
+            text: The training room on the sixth floor is open all afternoon. I can unlock it for you within the hour.
+          - speaker: B
+            text: That would help. Does it have video-conferencing equipment? Two of the clients are joining remotely.
+          - speaker: A
+            text: Yes, a new system was installed last month. I'll send someone up at one thirty to help you set it up.
+        questions:
+          - id: ts2-l-q01
+            stem: Why is the man calling?
+            options:
+              - To reserve a conference room
+              - To report a printing problem
+              - To report a broken air conditioner
+              - To reschedule a client visit
+            correctIndex: 2
+            explanationZh: 男士说 "The air conditioning in the west-wing conference room has stopped working"，即报修会议室的空调故障。客户来访并没有改期，属于干扰项。
+          - id: ts2-l-q02
+            stem: What will happen at two o'clock?
+            options:
+              - A client presentation will begin
+              - A technician will arrive
+              - An elevator will be repaired
+              - A training session will end
+            correctIndex: 0
+            explanationZh: 男士说 "I'm hosting a client presentation there at two o'clock"，即两点有客户演示。技术员三点之后才能来修空调，属于干扰项。
+          - id: ts2-l-q03
+            stem: What does the woman say about the technician?
+            options:
+              - He is away on vacation
+              - He has already fixed the unit
+              - He works in a different company
+              - He is busy with another repair
+            correctIndex: 3
+            explanationZh: 女士解释 "Our technician is repairing an elevator in the annex, so he can't get to the unit before three"，即技术员正忙于另一处维修，抽不开身。
+          - id: ts2-l-q04
+            stem: What does the woman say she will do at one thirty?
+            options:
+              - Unlock the west-wing room
+              - Send someone to help with the equipment
+              - Call the remote clients
+              - Turn the air conditioning back on
+            correctIndex: 1
+            explanationZh: 女士说 "I'll send someone up at one thirty to help you set it up"，即派人协助调试视频会议设备。开门是一小时内就会做的另一件事，属于干扰项。
+      - id: ts2-lg2
+        script:
+          - speaker: A
+            text: Glenview Print Studio, this is Rosa. How can I help you today?
+          - speaker: B
+            text: Hi Rosa, this is Victor Lam from Fairway Sporting Goods. Our store is reopening after a remodel in two weeks, and I need some banners.
+          - speaker: A
+            text: Congratulations on the reopening. Were you thinking of vinyl or fabric banners?
+          - speaker: B
+            text: Fabric, please. We'd like to reuse them for indoor promotions later in the year.
+          - speaker: A
+            text: Good choice. How many do you need, and is your artwork ready?
+          - speaker: B
+            text: Three large banners with our logo and the reopening date. I can send the design over today.
+          - speaker: A
+            text: Please make sure the logo file is high resolution — at least three hundred dpi. Otherwise the colors can look blurry at that size.
+          - speaker: B
+            text: Understood. And could you deliver the banners to the store? We'll be busy restocking shelves all that week.
+          - speaker: A
+            text: Certainly. Delivery within the city is free on any order over three hundred dollars, and yours will be well above that.
+        questions:
+          - id: ts2-l-q05
+            stem: Why is the man calling?
+            options:
+              - To complain about a printing error
+              - To order banners for a reopening
+              - To request a catalog of sporting goods
+              - To change a delivery address
+            correctIndex: 1
+            explanationZh: 男士说商店改造后两周内将重新开业，"I need some banners"，即为重新开业订购横幅。
+          - id: ts2-l-q06
+            stem: Why does the man prefer fabric banners?
+            options:
+              - They are cheaper than vinyl
+              - They can be printed more quickly
+              - They look brighter outdoors
+              - They can be reused later
+            correctIndex: 3
+            explanationZh: 男士说 "We'd like to reuse them for indoor promotions later in the year"，即布质横幅之后还能重复用于店内促销。价格因素原文并未提及。
+          - id: ts2-l-q07
+            stem: What does the woman ask the man to do?
+            options:
+              - Provide a high-resolution logo file
+              - Visit the studio in person
+              - Pay a deposit in advance
+              - Confirm the store's address
+            correctIndex: 0
+            explanationZh: 女士叮嘱 "make sure the logo file is high resolution — at least three hundred dpi"，否则放大印刷后颜色会显得模糊，即要求提供高分辨率的标志文件。
+          - id: ts2-l-q08
+            stem: What does the woman say about delivery?
+            options:
+              - It takes five business days
+              - It is only available on weekends
+              - It is free for orders over a certain amount
+              - It requires an extra fee
+            correctIndex: 2
+            explanationZh: 女士说 "Delivery within the city is free on any order over three hundred dollars"，即订单满三百美元市内免费配送，而男士的订单金额远超此数。
+      - id: ts2-lg3
+        script:
+          - speaker: narrator
+            text: Hello, this message is for Naomi Fischer. This is Grant Willis calling from Falcon Auto Service.
+          - speaker: narrator
+            text: Your car is here for its scheduled oil change, and that work has just been completed.
+          - speaker: narrator
+            text: However, while the car was on the lift, our mechanic noticed that the front brake pads are badly worn.
+          - speaker: narrator
+            text: We strongly recommend replacing them before the winter. Parts and labor together would come to about one hundred eighty dollars.
+          - speaker: narrator
+            text: If you'd like us to do the work, please call me back before four o'clock today. That way the car will be ready by tomorrow at noon.
+          - speaker: narrator
+            text: If you'd rather wait, you're welcome to pick the car up any time before we close at six.
+          - speaker: narrator
+            text: Please keep in mind that we'll be closed on Monday for the public holiday.
+          - speaker: narrator
+            text: Also, our courtesy shuttle can pick you up anywhere downtown — just mention it when you call back. Thank you, and have a good day.
+        questions:
+          - id: ts2-l-q09
+            stem: Why is the speaker calling?
+            options:
+              - To recommend an additional repair
+              - To reschedule an appointment
+              - To report that a part is out of stock
+              - To confirm a payment
+            correctIndex: 0
+            explanationZh: 换油已完成，但技师发现 "the front brake pads are badly worn"，讲话人说 "We strongly recommend replacing them"，即来电目的是建议追加一项维修。
+          - id: ts2-l-q10
+            stem: What should the listener do before four o'clock?
+            options:
+              - Pay for the oil change
+              - Drop off her car
+              - Call back to approve the work
+              - Fill out an online form
+            correctIndex: 2
+            explanationZh: 讲话人说 "If you'd like us to do the work, please call me back before four o'clock today"，即四点前回电确认是否维修，这样车明天中午就能取。
+          - id: ts2-l-q11
+            stem: What does the speaker say about Monday?
+            options:
+              - A new mechanic will start
+              - The business will be closed
+              - A discount will begin
+              - The shuttle will not run
+            correctIndex: 1
+            explanationZh: 讲话人提醒 "we'll be closed on Monday for the public holiday"，即周一因公共假日歇业。
+          - id: ts2-l-q12
+            stem: What does the speaker offer the listener?
+            options:
+              - A loaner car
+              - A free brake inspection
+              - A discount coupon
+              - A shuttle ride
+            correctIndex: 3
+            explanationZh: 结尾说 "our courtesy shuttle can pick you up anywhere downtown"，即提供市中心范围内的免费接送服务，回电时说明即可。
+  - id: toeic-standard-2-listening-2
+    kind: listening
+    title: Listening — Part 2
+    titleZh: 听力第二部分
+    durationSeconds: 720
+    groups:
+      - id: ts2-lg4
+        script:
+          - speaker: A
+            text: Paulo, have you looked at the renewal contract from our office-supply vendor yet?
+          - speaker: B
+            text: I have, and I'm not happy. They're raising their prices by twelve percent across the board.
+          - speaker: A
+            text: That's a big jump. I actually requested a quote from Brixton Supply last week so we could compare.
+          - speaker: B
+            text: And how do their prices look?
+          - speaker: A
+            text: About eight percent lower than what we pay now. The catch is that they need three days for delivery, while our current vendor delivers next-day.
+          - speaker: B
+            text: Hmm, that matters for printer toner. When a cartridge runs out, we can't wait three days.
+          - speaker: A
+            text: Then how about splitting the order? Paper and general supplies from Brixton, and toner from the current vendor.
+          - speaker: B
+            text: That could work. The purchasing committee meets on Thursday — could you put the numbers into a one-page comparison?
+          - speaker: A
+            text: Sure, I'll have it ready by Wednesday afternoon so you can look it over first.
+        questions:
+          - id: ts2-l-q13
+            stem: What are the speakers mainly discussing?
+            options:
+              - A printer malfunction
+              - A delivery schedule for clients
+              - An office renovation budget
+              - A contract with a supplier
+            correctIndex: 3
+            explanationZh: 两人围绕现有办公用品供应商的续约涨价，以及是否改用 Brixton Supply 展开讨论，主题是供应商合同的取舍。
+          - id: ts2-l-q14
+            stem: What problem does the man mention?
+            options:
+              - A shipment arrived damaged
+              - Prices are being increased
+              - A committee meeting was canceled
+              - An invoice is missing
+            correctIndex: 1
+            explanationZh: 男士说现有供应商 "raising their prices by twelve percent across the board"，即全线涨价百分之十二，令他很不满意。
+          - id: ts2-l-q15
+            stem: According to the woman, what is the drawback of Brixton Supply?
+            options:
+              - Its catalog is limited
+              - Its minimum order is large
+              - Its delivery is slower
+              - Its quality is lower
+            correctIndex: 2
+            explanationZh: 女士说 Brixton 的报价低约八个百分点，"The catch is that they need three days for delivery"，而现供应商次日送达，即缺点是配送更慢。
+          - id: ts2-l-q16
+            stem: What will the woman prepare before Thursday?
+            options:
+              - A price-comparison document
+              - A revised delivery route
+              - A new toner order
+              - A meeting agenda
+            correctIndex: 0
+            explanationZh: 男士请她 "put the numbers into a one-page comparison"，女士答应周三下午前备好一页纸的比价材料，供他在周四采购会前先行审阅。
+      - id: ts2-lg5
+        script:
+          - speaker: A
+            text: Good morning, welcome to the Regional Marketing Forum. May I have your name, please?
+          - speaker: B
+            text: Sabine Duval. I registered by phone last week, but I don't see my badge on the table.
+          - speaker: A
+            text: Let me check the list. I'm afraid I don't have a Duval here — could the booking be under another name?
+          - speaker: B
+            text: Oh, my assistant made the booking, so it might be under our company, Brightstone Media.
+          - speaker: A
+            text: Here it is, one registration under Brightstone Media. I'll print your badge right away.
+          - speaker: B
+            text: Thank you. Also, is there still space in the afternoon workshop on social-media analytics?
+          - speaker: A
+            text: That session is full at the moment, but I can put you on the waiting list. Seats often open up when people leave early — I'll text you if one does.
+          - speaker: B
+            text: Please do. One last thing — is lunch included with my registration?
+          - speaker: A
+            text: Yes, your badge comes with a voucher for the restaurant on the second floor, served from noon to two.
+        questions:
+          - id: ts2-l-q17
+            stem: Where does the conversation most likely take place?
+            options:
+              - At an event registration desk
+              - At a hotel restaurant
+              - At a mobile phone shop
+              - At a media company's office
+            correctIndex: 0
+            explanationZh: 男士开口欢迎对方来到 Regional Marketing Forum，随后核对名单、打印胸牌，场景显然是活动签到处。
+          - id: ts2-l-q18
+            stem: Why was the woman's name not on the list?
+            options:
+              - She registered after the deadline
+              - Her payment did not go through
+              - The registration was made under a company name
+              - Her badge was given to someone else
+            correctIndex: 2
+            explanationZh: 女士想起 "my assistant made the booking, so it might be under our company, Brightstone Media"，男士随即在公司名下找到了报名记录。
+          - id: ts2-l-q19
+            stem: What does the man say about the afternoon workshop?
+            options:
+              - It has been canceled
+              - It was moved to the morning
+              - It requires an extra fee
+              - It is currently full
+            correctIndex: 3
+            explanationZh: 男士说 "That session is full at the moment"，但可以把她加入候补名单。讲座并没有被取消，属于干扰项。
+          - id: ts2-l-q20
+            stem: What will the man do if a seat becomes available?
+            options:
+              - Print a new badge
+              - Send the woman a text message
+              - Make an announcement
+              - Refund the registration fee
+            correctIndex: 1
+            explanationZh: 男士说常有人提前离场空出座位，"I'll text you if one does"，即一有空位就发短信通知她。
+      - id: ts2-lg6
+        script:
+          - speaker: narrator
+            text: Good afternoon, Hartley's shoppers, and thank you for visiting us today.
+          - speaker: narrator
+            text: Please note that the store will be closing early tonight, at six o'clock instead of nine.
+          - speaker: narrator
+            text: Our staff will be carrying out the annual inventory count, which we complete in a single evening.
+          - speaker: narrator
+            text: We will reopen tomorrow at eight a.m. with our autumn clearance event.
+          - speaker: narrator
+            text: For three days, all outerwear on the third floor will be reduced by up to forty percent.
+          - speaker: narrator
+            text: If you have items on hold at any counter, please collect them from the customer service desk before we close today.
+          - speaker: narrator
+            text: Holders of a Hartley's rewards card will earn double points on every purchase made during the clearance event.
+          - speaker: narrator
+            text: All registers will close in twenty minutes, so please bring your final purchases to the front of the store. Thank you for shopping at Hartley's.
+        questions:
+          - id: ts2-l-q21
+            stem: Where is the announcement being made?
+            options:
+              - At an airport
+              - At a department store
+              - At a sports stadium
+              - At a farmers' market
+            correctIndex: 1
+            explanationZh: 讲话人称听众为 "Hartley's shoppers"，并提到楼层、收银台和外套清仓特卖，场景是一家百货商店。
+          - id: ts2-l-q22
+            stem: Why will the business close early?
+            options:
+              - A holiday begins tomorrow
+              - The building is being repaired
+              - Staff are attending a banquet
+              - An inventory count will take place
+            correctIndex: 3
+            explanationZh: 原文说 "Our staff will be carrying out the annual inventory count"，即为在当晚完成年度盘点而提前到六点闭店。
+          - id: ts2-l-q23
+            stem: What will happen tomorrow morning?
+            options:
+              - A clearance event will begin
+              - A new floor will open
+              - Store hours will be shortened
+              - A fashion show will be held
+            correctIndex: 0
+            explanationZh: 讲话人说 "We will reopen tomorrow at eight a.m. with our autumn clearance event"，即明早八点开门并开始秋季清仓特卖，三楼外套最低六折。
+          - id: ts2-l-q24
+            stem: What should shoppers with items on hold do?
+            options:
+              - Return after the weekend
+              - Call the store hotline
+              - Pick them up before closing today
+              - Pay for them online
+            correctIndex: 2
+            explanationZh: 原文提醒 "please collect them from the customer service desk before we close today"，即今天闭店前到客服台取回预留商品。
+          - id: ts2-l-q25
+            stem: What benefit will rewards-card holders receive?
+            options:
+              - Double points on purchases
+              - Free gift wrapping
+              - An extra ten percent off
+              - Early access to the sale
+            correctIndex: 0
+            explanationZh: 讲话人说 "Holders of a Hartley's rewards card will earn double points on every purchase made during the clearance event"，即特卖期间消费可获双倍积分，并非额外折扣。
+  - id: toeic-standard-2-reading-1
+    kind: reading
+    title: Reading — Part 1
+    titleZh: 阅读第一部分
+    durationSeconds: 900
+    groups:
+      - id: ts2-rg1
+        passage: |-
+          From: Member Services, Oakline Fitness Center
+          To: Adele Kwan
+          Subject: Your membership and some upcoming changes
+
+          Dear Ms. Kwan,
+
+          Our records show that your annual membership will expire on June 30. Please note that on July 1, the monthly rate for a standard membership will increase from fifty-two to fifty-eight dollars. If you renew on or before June 30, however, you will keep the current rate for a further twelve months. You can renew at the front desk or through your online account.
+
+          Please also be aware that the swimming pool will be closed from July 7 to July 20 while its tiles are replaced. During that period, Oakline members may use the pool at our Riverside branch at no charge — simply show your membership card at the entrance. All other facilities, including the sauna, will remain open as usual.
+
+          Finally, from August 1, group classes may be booked only through the new Oakline mobile app, which is free to download. Telephone bookings will be discontinued on that date. If you need help installing the app, our front-desk staff will be glad to assist.
+
+          Thank you for being a member, and we look forward to seeing you soon.
+
+          Kind regards,
+          Judith Payne
+          Member Services, Oakline Fitness Center
+        questions:
+          - id: ts2-r-q01
+            stem: What is one purpose of the e-mail?
+            options:
+              - To announce the opening of a new branch
+              - To apologize for a billing error
+              - To remind a member to renew before a price increase
+              - To advertise personal training sessions
+            correctIndex: 2
+            explanationZh: 邮件提醒会籍 6 月 30 日到期、月费 7 月 1 日上调，并说明 "If you renew on or before June 30, you will keep the current rate"，即敦促会员赶在涨价前续费。
+          - id: ts2-r-q02
+            stem: What will happen on July 1?
+            options:
+              - The monthly rate will increase
+              - The pool will reopen
+              - A new branch will open
+              - The center will close for repairs
+            correctIndex: 0
+            explanationZh: 原文写明 "on July 1, the monthly rate for a standard membership will increase from fifty-two to fifty-eight dollars"。泳池 7 月 7 日才开始闭馆维修，属于干扰项。
+          - id: ts2-r-q03
+            stem: What can members do while the pool is closed?
+            options:
+              - Attend extra sauna sessions
+              - Swim at another branch for free
+              - Receive a partial refund
+              - Book private swimming lessons
+            correctIndex: 1
+            explanationZh: 邮件说明闭馆期间 "members may use the pool at our Riverside branch at no charge"，出示会员卡即可，即可免费使用 Riverside 分店的泳池。
+          - id: ts2-r-q04
+            stem: According to the e-mail, what will be discontinued in August?
+            options:
+              - Weekend group classes
+              - The mobile app
+              - Front-desk assistance
+              - Telephone booking of classes
+            correctIndex: 3
+            explanationZh: 原文说自 8 月 1 日起团课只能通过新的手机应用预订，"Telephone bookings will be discontinued on that date"，即停止电话预订。应用本身是新推出的，属于干扰项。
+      - id: ts2-rg2
+        passage: |-
+          Noah Bergstrom (7:58 A.M.): Farah, bad news — the espresso machine at the Oak Street shop just stopped heating. The morning rush starts in half an hour.
+
+          Farah Aziz (8:00 A.M.): Oh no. Did you call the service company?
+
+          Noah Bergstrom (8:01 A.M.): Yes, but their technician can't come until one o'clock. We'll lose most of our morning sales without espresso drinks.
+
+          Farah Aziz (8:03 A.M.): Not necessarily. The old machine from our Cedar Avenue shop is still in my storeroom, and it worked fine when we replaced it.
+
+          Noah Bergstrom (8:04 A.M.): That would save us! But I can't leave to get it — I'm the only keyholder here today.
+
+          Farah Aziz (8:06 A.M.): No problem. Omar drives in at eight thirty; I'll have him drop it off on his way. You should have it before nine.
+
+          Noah Bergstrom (8:07 A.M.): Wonderful. Until then I'll offer free refills on drip coffee and explain the situation to customers.
+
+          Farah Aziz (8:10 A.M.): Good plan. Remember, we got through the street-fair weekend — this is nothing.
+
+          Noah Bergstrom (8:11 A.M.): Ha, true. Talk at the managers' call this afternoon.
+        questions:
+          - id: ts2-r-q05
+            stem: What problem does Mr. Bergstrom report?
+            options:
+              - A shop key has been lost
+              - A supplier canceled a delivery
+              - An employee is late for work
+              - A machine has stopped working
+            correctIndex: 3
+            explanationZh: 诺亚开头说 "the espresso machine at the Oak Street shop just stopped heating"，即咖啡机出了故障，而早高峰半小时后就要开始。
+          - id: ts2-r-q06
+            stem: What does Ms. Aziz offer to do?
+            options:
+              - Call the service company again
+              - Lend equipment from her location
+              - Cover the morning shift
+              - Close her own shop early
+            correctIndex: 1
+            explanationZh: 法拉说 Cedar Avenue 店换下来的旧咖啡机还在她的储藏室里，"it worked fine when we replaced it"，即主动把自己店里的备用设备借给对方应急。
+          - id: ts2-r-q07
+            stem: Who will bring the machine to Oak Street?
+            options:
+              - Omar
+              - Mr. Bergstrom
+              - Ms. Aziz
+              - A service technician
+            correctIndex: 0
+            explanationZh: 法拉说 "Omar drives in at eight thirty; I'll have him drop it off on his way"，即让奥马尔上班顺路把机器送过去。技术员一点钟才能到，属于干扰项。
+          - id: ts2-r-q08
+            stem: At 8:10 A.M., what does Ms. Aziz most likely mean when she writes, "this is nothing"?
+            options:
+              - The machine is not worth repairing
+              - The morning rush has been canceled
+              - The team can handle the situation
+              - The street fair was poorly attended
+            correctIndex: 2
+            explanationZh: 她先说 "we got through the street-fair weekend"，连街头集市那个周末都撑过来了，言下之意今天这点麻烦不算什么，团队完全应付得来。
+      - id: ts2-rg3
+        passage: |-
+          Norwood Courier — May 22
+
+          Altavia Air to Begin Daily Flights from Norwood Regional Airport
+
+          Altavia Air announced on Tuesday that it will operate two daily nonstop flights between Norwood Regional Airport and Granton starting September 5. The morning and evening departures are timed for business travelers, allowing a full day of meetings in Granton without an overnight stay.
+
+          The airline said the route was chosen after it surveyed more than two hundred companies in the Norwood valley. A majority reported that their employees currently drive two and a half hours to Eastfield International Airport whenever they travel for business.
+
+          To prepare for the new service, the airport is adding two hundred parking spaces and enlarging its security screening area. Airport director Irene Vance said both projects will be finished by the end of August. Altavia also plans to hire about thirty ground staff locally; applications are being accepted on the airline's website, and an open house will be held in the terminal on July 10.
+
+          Until now, Norwood Regional has handled only seasonal holiday charters. "Scheduled daily service puts our region on the map," said Mayor Edwin Cole. "It will save local firms hours of driving and bring visitors to our hotels and restaurants."
+        questions:
+          - id: ts2-r-q09
+            stem: What is the article mainly about?
+            options:
+              - The merger of two airlines
+              - New flight service from a regional airport
+              - An increase in airport parking fees
+              - The retirement of an airport director
+            correctIndex: 1
+            explanationZh: 文章报道 Altavia Air 将于 9 月 5 日起在 Norwood 地区机场开通每日两班直飞 Granton 的航线，全文围绕新航线及机场的配套准备展开。
+          - id: ts2-r-q10
+            stem: Why did Altavia Air choose the Norwood route?
+            options:
+              - A survey showed strong local demand
+              - A competitor abandoned the route
+              - The airport offered lower landing fees
+              - A new highway increased traffic
+            correctIndex: 0
+            explanationZh: 原文说航线是在调查了山谷地区两百多家公司后确定的，多数公司表示员工出差需开车两个半小时前往 Eastfield 国际机场，即调查显示本地商务需求旺盛。
+          - id: ts2-r-q11
+            stem: What is scheduled to be completed by the end of August?
+            options:
+              - The hiring of ground staff
+              - A new hotel near the terminal
+              - Improvements to the airport
+              - The first daily flight
+            correctIndex: 2
+            explanationZh: 机场正在增加两百个停车位并扩建安检区，机场主管说 "both projects will be finished by the end of August"，即机场改造工程八月底前完工。首航日期是 9 月 5 日，属于干扰项。
+          - id: ts2-r-q12
+            stem: What is indicated about Norwood Regional Airport?
+            options:
+              - It is the largest airport in the region
+              - It opened two years ago
+              - It is owned by Altavia Air
+              - It has offered only seasonal flights
+            correctIndex: 3
+            explanationZh: 文末指出 "Until now, Norwood Regional has handled only seasonal holiday charters"，即此前只有节假日的季节性包机，从未有过每日定期航班。
+  - id: toeic-standard-2-reading-2
+    kind: reading
+    title: Reading — Part 2
+    titleZh: 阅读第二部分
+    durationSeconds: 960
+    groups:
+      - id: ts2-rg4
+        passage: |-
+          HARBORLIGHT HOTELS — Event Coordinator (Full-Time)
+
+          Harborlight Hotels, a family-owned group of three waterfront properties, is seeking an event coordinator to be based at our Bayside location.
+
+          The coordinator plans and oversees weddings, conferences, and company banquets from the first client meeting to the end of the event. Responsibilities include preparing cost estimates, coordinating with caterers and audiovisual vendors, supervising room setup on event days, and reporting monthly booking figures to the director of sales.
+
+          Applicants must have at least three years of experience in event planning or hotel operations and must be available to work occasional evenings and weekends, as most events take place outside regular office hours. A degree in hospitality management is an advantage but is not essential.
+
+          The position offers a base salary with a quarterly performance bonus, meals during shifts, and discounted stays for employees and their families at all three Harborlight properties.
+
+          Applications must be submitted through the careers page of our website by October 1; applications sent by post or e-mail will not be considered. Shortlisted candidates will be invited to an interview in mid-October, which includes a short event-planning exercise.
+        questions:
+          - id: ts2-r-q13
+            stem: What is indicated about Harborlight Hotels?
+            options:
+              - It operates three hotels
+              - It recently opened a new location
+              - It specializes in business travel
+              - It is looking for a director of sales
+            correctIndex: 0
+            explanationZh: 广告开头介绍公司是 "a family-owned group of three waterfront properties"，即拥有三家滨水酒店的家族企业。招聘的是活动统筹专员，而非销售总监，属于干扰项。
+          - id: ts2-r-q14
+            stem: What is a stated requirement for the position?
+            options:
+              - A degree in hospitality management
+              - Availability outside regular office hours
+              - Fluency in a second language
+              - Five years of hotel experience
+            correctIndex: 1
+            explanationZh: 广告要求应聘者 "must be available to work occasional evenings and weekends"，因为多数活动在办公时间之外举行。酒店管理学位只是加分项（"an advantage but is not essential"），属于干扰项。
+          - id: ts2-r-q15
+            stem: What benefit is mentioned in the advertisement?
+            options:
+              - A company car
+              - A paid gym membership
+              - Reduced room rates for family members
+              - Extra vacation days
+            correctIndex: 2
+            explanationZh: 福利包括 "discounted stays for employees and their families at all three Harborlight properties"，即员工及其家属可在三家酒店享受住宿折扣。
+          - id: ts2-r-q16
+            stem: How should candidates apply for the position?
+            options:
+              - By e-mailing the director of sales
+              - By mailing a printed résumé
+              - By visiting the Bayside location
+              - By using the company's website
+            correctIndex: 3
+            explanationZh: 广告要求 "Applications must be submitted through the careers page of our website"，并明确说明邮寄或电邮的申请不予受理，属于反向干扰项。
+      - id: ts2-rg5
+        passage: |-
+          MEMO
+
+          To: All Redwood Analytics employees
+          From: Derek Boone, Director of Facilities and Security
+          Date: November 3
+          Re: New building-access badges
+
+          On December 1, our current door badges will be deactivated and replaced with new photo identification badges. The new badges respond faster at the readers and, unlike the current ones, also operate the gate of the parking garage. Employees who now carry a separate garage card should return it to the reception desk once their new badge is active.
+
+          To receive a new badge, please visit the security office in Suite 110 between November 10 and November 21 to have your photograph taken. The process takes about five minutes, and no appointment is necessary. Employees who work at client sites should ask their managers to e-mail the security office so that a photo session can be arranged during the all-staff meeting on November 24.
+
+          Please note a related change for guests: beginning December 1, all visitors must be registered in advance through the online visitor portal. Registered visitors will receive a one-day pass at the front desk; unregistered guests can no longer be signed in at the door.
+
+          Questions about the new system may be directed to the security office at extension 88.
+        questions:
+          - id: ts2-r-q17
+            stem: What is the purpose of the memo?
+            options:
+              - To announce a new security director
+              - To explain a move to a new building
+              - To report a security incident
+              - To introduce a new badge system
+            correctIndex: 3
+            explanationZh: 备忘录说明 12 月 1 日起旧门禁卡停用、改用带照片的新工卡，并交代办理流程和访客新规，目的是介绍新的门禁系统。公司并没有搬迁，属于干扰项。
+          - id: ts2-r-q18
+            stem: What should most employees do between November 10 and 21?
+            options:
+              - Have a photograph taken
+              - Return their garage cards
+              - Register in the visitor portal
+              - Attend a security briefing
+            correctIndex: 0
+            explanationZh: 原文要求员工在此期间 "visit the security office in Suite 110 ... to have your photograph taken"，约五分钟即可，无需预约。交还车库卡是新卡启用之后的事，属于干扰项。
+          - id: ts2-r-q19
+            stem: What is stated about the new badges?
+            options:
+              - They must be renewed each year
+              - They cost employees a small fee
+              - They also open the parking garage gate
+              - They are issued at the reception desk
+            correctIndex: 2
+            explanationZh: 备忘录说新工卡 "unlike the current ones, also operate the gate of the parking garage"，因此原先单独的车库卡应交回前台。
+          - id: ts2-r-q20
+            stem: According to the memo, what will change for visitors?
+            options:
+              - They must show identification twice
+              - They must be registered in advance
+              - They must park outside the garage
+              - They must be escorted at all times
+            correctIndex: 1
+            explanationZh: 原文规定 12 月 1 日起 "all visitors must be registered in advance through the online visitor portal"，未提前登记的访客将无法在门口临时签到。
+      - id: ts2-rg6
+        passage: |-
+          Growing Up: Skyfield Greens Takes Farming to the Rooftops
+
+          Five years ago, Skyfield Greens installed its first greenhouse on the roof of a parking garage in central Averton and sold lettuce to two neighborhood restaurants. Today the company operates greenhouses on six buildings around the city and delivers salad greens and fresh herbs year-round to more than forty restaurants and two supermarket chains.
+
+          Founder Tomas Ribeiro says two things made the growth possible. The first was the city's green-roof incentive, introduced three years ago, which reimburses building owners for half the cost of installing a rooftop farm. The second was demand from chefs, who increasingly advertise the origin of their ingredients on their menus.
+
+          "Our greens are cut at sunrise and on the plate by dinner," Ribeiro said. "Nothing we sell ever spends a day in a truck, so it stays fresher than anything shipped from out of state."
+
+          Last month the company signed a lease for its seventh rooftop, on top of Averton General Hospital, whose cafeteria will become a customer when the greenhouse opens next spring. Skyfield is also testing a weekly subscription box that would deliver salad mixes directly to home cooks — about three hundred households have joined the trial.
+
+          The business is not without difficulties. Heating the greenhouses through Averton's long winters is by far the company's largest expense. In February, Skyfield began fitting each greenhouse with insulating thermal curtains, which are drawn at night and have already cut heating costs by nearly a third.
+        questions:
+          - id: ts2-r-q21
+            stem: What is the article mainly about?
+            options:
+              - A change in a city's food regulations
+              - A hospital's new cafeteria menu
+              - The growth of an urban farming company
+              - A shortage of fresh produce
+            correctIndex: 2
+            explanationZh: 文章从 Skyfield Greens 五年前的第一座屋顶温室讲到如今遍布六栋建筑的经营规模、扩张计划和成本挑战，主题是一家城市农业公司的成长历程。
+          - id: ts2-r-q22
+            stem: According to Mr. Ribeiro, what helped the company expand?
+            options:
+              - Falling energy prices
+              - A city incentive program
+              - A national advertising campaign
+              - A partnership with a university
+            correctIndex: 1
+            explanationZh: 里贝罗提到两大助力，其一是市政府的绿色屋顶补贴，"reimburses building owners for half the cost of installing a rooftop farm"，其二是主厨对本地食材日益增长的需求。
+          - id: ts2-r-q23
+            stem: What advantage of the company's produce does Mr. Ribeiro mention?
+            options:
+              - It is cheaper than imported produce
+              - It comes in recyclable packaging
+              - It is available in larger quantities
+              - It does not travel long distances
+            correctIndex: 3
+            explanationZh: 里贝罗说 "Nothing we sell ever spends a day in a truck"，蔬菜清晨采摘、当天上桌，因此比外州长途运来的更新鲜。价格优势文中并未提及，属于干扰项。
+          - id: ts2-r-q24
+            stem: What is Skyfield Greens currently testing?
+            options:
+              - A home-delivery subscription box
+              - A solar-powered heating system
+              - A new variety of lettuce
+              - An online cooking course
+            correctIndex: 0
+            explanationZh: 原文说公司 "is also testing a weekly subscription box that would deliver salad mixes directly to home cooks"，已有约三百户家庭参加试用。
+          - id: ts2-r-q25
+            stem: How is the company reducing its largest expense?
+            options:
+              - By closing some greenhouses in winter
+              - By moving to a warmer region
+              - By installing insulating curtains
+              - By raising its delivery fees
+            correctIndex: 2
+            explanationZh: 冬季供暖是公司最大的开支，二月起 "Skyfield began fitting each greenhouse with insulating thermal curtains"，夜间拉上保温帘后供暖成本已降低近三分之一。

@@ -451,3 +451,483 @@
         - The app will launch without it, described as "coming this summer"
       correctIndex: 3
       explanationZh: 风险预案写得非常具体："If it is not stable by 20 April, we launch without it and communicate it as 'coming this summer'"——发布照常进行，只是砍掉该功能并以“今夏推出”对外表述。选项 C 与 "under no circumstances do we announce a date we are not certain of" 直接矛盾；推迟整个发布不在预案之中（排除 A）。
+- id: biz-r-009
+  track: business
+  title: "Post-Mortem: The Atlas Analytics Launch"
+  titleZh: 复盘报告：Atlas Analytics 发布失利
+  genre: Report
+  passage: |-
+    Atlas Analytics — Launch Post-Mortem (Internal)
+
+    Summary. Atlas Analytics, our dashboard add-on for enterprise accounts, launched on 4 November. The target was activation by 15 percent of eligible accounts within six weeks; actual activation reached 4 percent. This review explains the gap and sets corrective actions. In line with our blameless post-mortem policy, it names causes, not individuals.
+
+    What happened. Three factors compounded. First, timing: most eligible accounts are retailers, and we launched at the start of their busiest trading season, when their admin teams freeze all non-essential changes. Second, activation required a workspace administrator to switch the feature on, but our launch emails went to end users, most of whom had no permission to act — support logged 63 tickets asking where Atlas was. Third, the beta gave us false confidence: all nine beta customers came from the logistics segment and had volunteered precisely because their administrators had spare capacity, so the setup friction never surfaced.
+
+    What went well. Infrastructure held. There was no downtime, and query latency stayed within target throughout the period.
+
+    Corrective actions. Launch dates will be checked against a customer seasonality calendar maintained by account management (owner R. Iyer, due 15 December). In-product setup prompts shown directly to administrators will replace email as the primary activation channel. Future betas must cover at least three customer segments before a go decision. Atlas itself will be re-promoted to retail accounts in late January, once their trading season has ended.
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: What is the main purpose of this report?
+      options:
+        - To identify which employees were responsible for the failed launch
+        - To explain why activation missed the target and set out corrective actions
+        - To announce that Atlas will be withdrawn from the market
+        - To demonstrate that the infrastructure team performed well
+      correctIndex: 1
+      explanationZh: 报告开篇即说明目的："This review explains the gap and sets corrective actions"，并强调遵循无问责复盘原则——"it names causes, not individuals"，与选项 A 恰好相反。Atlas 并未下架，一月底还将向零售客户重新推广（排除 C）；基础设施表现只是 "What went well" 一小节，不是全文目的（排除 D）。
+    - id: q2
+      stem: According to the report, why did the launch emails fail to drive activation?
+      options:
+        - The emails were sent during a public holiday
+        - The tracking links in the emails were broken
+        - Most retailers had unsubscribed from marketing emails
+        - They reached end users who lacked the permission to enable the feature
+      correctIndex: 3
+      explanationZh: 原文指出激活需要工作区管理员手动开启，"but our launch emails went to end users, most of whom had no permission to act"——邮件发给了无权操作的终端用户，以致客服收到 63 张询问 Atlas 在哪里的工单。其余选项文中均未提及，属于无中生有的干扰项。
+    - id: q3
+      stem: Why did the beta program give the team false confidence?
+      options:
+        - All beta customers came from one segment and happened to have administrators with spare capacity
+        - The beta period was too short to produce meaningful data
+        - Beta customers were rewarded for giving positive reviews
+        - The beta version was more stable than the final release
+      correctIndex: 0
+      explanationZh: 报告解释 "all nine beta customers came from the logistics segment and had volunteered precisely because their administrators had spare capacity, so the setup friction never surfaced"——样本集中在单一行业，且报名者恰是有余力的管理员，设置摩擦因此从未暴露，属于典型的样本偏差。时长、付费好评等说法文中均无依据。
+    - id: q4
+      stem: What does the report say will happen in late January?
+      options:
+        - The seasonality calendar will be retired
+        - A new beta program will begin with logistics customers
+        - Atlas will be promoted to retail accounts again
+        - R. Iyer will leave the account management team
+      correctIndex: 2
+      explanationZh: 整改措施最后一条写明 "Atlas itself will be re-promoted to retail accounts in late January, once their trading season has ended"——等零售客户的销售旺季结束后重新推广。季节性日历是要新建并持续维护的工具（R. Iyer 负责、12 月 15 日前完成），并非退役（排除 A）；未来的 beta 要求覆盖至少三个客户群，而不是再次只面向物流行业（排除 B）。
+- id: biz-r-010
+  track: business
+  title: "Email Thread: Renewing the DataHarbor Licence"
+  titleZh: 邮件往来：DataHarbor 软件续约谈判
+  genre: Email thread
+  passage: |-
+    From: Priya Nair, IT Procurement, Calder & Moss
+    To: Sam Whitfield, Account Manager, DataHarbor
+    Subject: Renewal quotation — proposed 18 percent increase
+
+    Dear Sam,
+
+    Thank you for the renewal quotation. I will be direct: an 18 percent increase is difficult to justify internally. Our active seats have fallen from 500 to 380 since we merged two teams last year, and two comparable platforms have quoted us flat pricing to switch. I would still prefer to renew with DataHarbor — the cost of migrating our dashboards alone argues for staying — but I need something I can defend. If you can hold the increase to low single digits and re-base the contract at 400 seats, I am ready to recommend renewal at next week's budget meeting.
+
+    Best regards,
+    Priya
+
+    From: Sam Whitfield
+    To: Priya Nair
+    Subject: RE: Renewal quotation — proposed 18 percent increase
+
+    Dear Priya,
+
+    I appreciate the openness. The proposed increase reflects two years of platform investment, but I recognise that your usage has genuinely changed. Here is what I can offer. On a two-year term: a 6 percent increase, re-based at 400 seats, with the Advanced Audit module — which you currently pay for separately — included at no charge. On a one-year term, the best I can do is 12 percent.
+
+    Kind regards,
+    Sam
+
+    From: Priya Nair
+    To: Sam Whitfield
+    Subject: RE: RE: Renewal quotation — proposed 18 percent increase
+
+    Dear Sam,
+
+    The two-year option works, on one condition: a mid-term review clause letting us reduce to 350 seats after year one if headcount falls further. Confirm that in writing and send the revised order form; I will present it on Tuesday and expect signature by the end of the month.
+
+    Best regards,
+    Priya
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: Why does Priya write the first email?
+      options:
+        - To announce that Calder & Moss has already chosen a competitor
+        - To ask for the Advanced Audit module to be removed from the contract
+        - To challenge the proposed price increase while signalling she prefers to stay
+        - To complain that DataHarbor's platform has become less reliable
+      correctIndex: 2
+      explanationZh: Priya 一面反对涨幅——"an 18 percent increase is difficult to justify internally"——一面明确表示 "I would still prefer to renew with DataHarbor"，并给出可接受的条件（个位数涨幅、按 400 席重定基数）。她提到竞品报出平价只是谈判筹码，并未决定转投竞品（排除 A）；全文没有任何关于平台可靠性的抱怨（排除 D）。
+    - id: q2
+      stem: What leverage does Priya cite to support her position?
+      options:
+        - Falling seat numbers and flat-price quotes from comparable platforms
+        - A contractual clause allowing her to exit without penalty
+        - DataHarbor's recent service outages
+        - A better offer from Sam's own manager
+      correctIndex: 0
+      explanationZh: 她给出的两个事实是 "Our active seats have fallen from 500 to 380" 和 "two comparable platforms have quoted us flat pricing to switch"——用量下降说明按旧规模付费不合理，竞品平价报价则构成可信的替代方案。这是采购谈判中典型的“数据加备选方案”组合。其余选项文中均未出现。
+    - id: q3
+      stem: What is the difference between Sam's two offers?
+      options:
+        - The one-year term includes the Advanced Audit module free of charge
+        - The two-year term keeps the original 500-seat basis
+        - Both terms carry the same 6 percent increase
+        - The two-year term has a lower increase and includes an extra module at no charge
+      correctIndex: 3
+      explanationZh: Sam 的报价分两档：两年期是 6% 涨幅、按 400 席重定基数，并免费附带 Advanced Audit 模块（"included at no charge"）；一年期则是 "the best I can do is 12 percent"。免费模块只随两年期方案赠送（排除 A），两档涨幅也并不相同（排除 C）——供应商用更优条件换取更长的合约承诺，是续约谈判的常见结构。
+    - id: q4
+      stem: What will most likely happen next if Sam confirms the review clause in writing?
+      options:
+        - Priya will restart negotiations from the original 18 percent
+        - Priya will present the order form on Tuesday and sign by the end of the month
+        - The contract will automatically renew at 500 seats
+        - Calder & Moss will run a formal tender with other vendors
+      correctIndex: 1
+      explanationZh: 最后一封邮件说得很具体："Confirm that in writing and send the revised order form; I will present it on Tuesday and expect signature by the end of the month"——条件一旦以书面确认，就进入签署流程。她已表示 "The two-year option works, on one condition"，只差这一步确认，不会推翻已谈定的价格（排除 A），更不需要再去招标（排除 D）。
+- id: biz-r-011
+  track: business
+  title: "Minutes: Leadership Meeting on Hiring Controls, 9 October"
+  titleZh: 会议纪要：管理层招聘管控会议（10 月 9 日）
+  genre: Minutes
+  passage: |-
+    Leadership Team — Minutes
+
+    Date: Thursday 9 October, 14:00–15:00
+    Present: L. Fontaine (chair, CEO), K. Adeyemi (CFO), S. Brandt (People), M. Rossi (Engineering), H. Tanaka (Sales)
+    Apologies: C. Novak (Operations)
+
+    1. Hiring freeze proposal (K. Adeyemi)
+    Finance presented September figures showing operating costs growing faster than revenue for the third consecutive quarter. The CFO proposed pausing all recruitment for the remainder of the year. Engineering objected that two open platform roles are tied to a contractual delivery date in February. After discussion, the committee approved a freeze on all new positions effective 13 October, with two exceptions: backfills for customer-facing roles that directly generate revenue, and the two contracted platform roles. Every exception requires the CFO's written approval. Conversions of contractors to permanent staff are paused entirely.
+    ACTION: S. Brandt to publish a managers' FAQ by 17 October and brief all team leads before the freeze is announced company-wide on 20 October.
+
+    2. Internal mobility (S. Brandt)
+    People noted that the freeze does not apply to internal transfers. Managers with critical gaps should look internally first; the vacant-roles list moves to the intranet and will be updated weekly.
+
+    3. Review
+    The freeze will be reviewed at the January leadership meeting, when December results are available. The chair closed by stressing that the freeze is a cost measure, not a judgement on any team's performance.
+
+    Next meeting: Thursday 6 November, 14:00.
+  suggestedMinutes: 7
+  questions:
+    - id: q1
+      stem: What did the committee decide about recruitment?
+      options:
+        - To pause recruitment for the engineering department only
+        - To reject the CFO's proposal until January
+        - To freeze hiring for the rest of the year with no exceptions
+        - To freeze new positions with two exceptions requiring the CFO's written approval
+      correctIndex: 3
+      explanationZh: 决议原文是 "the committee approved a freeze on all new positions effective 13 October, with two exceptions"，且 "Every exception requires the CFO's written approval"。选项 C 的 "no exceptions" 与两项例外直接矛盾——读制度类文本要特别留意例外条款；提案是经修改后通过的，并未被否决或推迟（排除 B）。
+    - id: q2
+      stem: Which roles can still be filled during the freeze?
+      options:
+        - Any role a department head considers critical
+        - Revenue-generating customer-facing backfills and the two contracted platform roles
+        - Contractor conversions approved by the People team
+        - All roles advertised before 13 October
+      correctIndex: 1
+      explanationZh: 两项例外写得很具体："backfills for customer-facing roles that directly generate revenue, and the two contracted platform roles"，且每一项都需 CFO 书面批准——不是部门负责人自认为关键即可（排除 A）。合同工转正被完全暂停（"Conversions of contractors to permanent staff are paused entirely"，排除 C）。
+    - id: q3
+      stem: What must S. Brandt do before 20 October?
+      options:
+        - Present December results to the committee
+        - Approve exception requests from managers
+        - Publish a managers' FAQ and brief all team leads
+        - Chair the next leadership meeting
+      correctIndex: 2
+      explanationZh: ACTION 一行写明 S. Brandt 要 "publish a managers' FAQ by 17 October and brief all team leads before the freeze is announced company-wide on 20 October"——先出 FAQ、再向团队负责人吹风，20 日才全员公布。例外的审批权在 CFO 而非 People（排除 B）；十二月业绩要到一月会议才有（排除 A）。
+    - id: q4
+      stem: Why did the chair make the closing remark in item 3?
+      options:
+        - To prevent the freeze being read as criticism of any team's performance
+        - To warn managers that the freeze may become permanent
+        - To announce that December results were disappointing
+        - To encourage teams to reduce headcount further
+      correctIndex: 0
+      explanationZh: 主席特意强调 "the freeze is a cost measure, not a judgement on any team's performance"——目的是安抚各团队，避免把成本管控误读为绩效批评，这类收尾表态常用于防止政策打击士气。冻结将在一月复议而非永久化（排除 B）；十二月业绩当时尚未产生（排除 C）。
+- id: biz-r-012
+  track: business
+  title: "Case Study: Cutting Warehouse Turnover Without Raising Pay"
+  titleZh: 案例研究：不靠涨薪降低仓库员工流失
+  genre: Case study
+  passage: |-
+    Solvex Logistics runs fourteen fulfilment centres and, like most of its industry, loses new warehouse staff at an alarming rate: in 2024, 34 percent of new hires left within their first ninety days. Exit surveys pointed overwhelmingly at pay. Yet Solvex pays slightly above the regional median, and a trial pay premium at one site the previous year had barely moved the number. The people analytics team suspected the surveys were capturing an easy answer rather than the real one, and designed an experiment to find out.
+
+    For six months, twelve sites were split into three groups of four. In the first group, every new hire was paired with a trained "anchor" — an experienced colleague paid a small stipend to check in daily for the first month. The second group introduced fixed two-week schedules published fourteen days in advance, replacing rotas that could change with three days' notice. The third group changed nothing and served as the control.
+
+    The results were unambiguous. Ninety-day attrition fell to 21 percent in the anchor sites and to 24 percent in the fixed-schedule sites, against 33 percent in the control group. In follow-up interviews, leavers from the control sites rarely mentioned pay unprompted; what they described was not knowing whom to ask for help and being unable to plan childcare around shifting rotas.
+
+    Solvex is now rolling both practices out to all fourteen sites. The deeper lesson, the team argues, is methodological: exit surveys tell you what is easy to say, while experiments tell you what actually works.
+  suggestedMinutes: 9
+  questions:
+    - id: q1
+      stem: Why did the people analytics team distrust the exit survey results?
+      options:
+        - Pay was already above the regional median and a pay premium trial had barely reduced turnover
+        - Too few leavers had completed the surveys
+        - The surveys were conducted by an external agency
+        - Warehouse staff refused to answer questions about pay
+      correctIndex: 0
+      explanationZh: 离职调查把原因指向薪酬，但公司 "pays slightly above the regional median"，而且前一年 "a trial pay premium at one site... had barely moved the number"——如果薪酬真是主因，加薪试点应该见效。团队据此怀疑问卷捕捉到的是 "an easy answer rather than the real one"。选项 B、C、D 文中均无依据。
+    - id: q2
+      stem: Which group recorded the lowest ninety-day attrition?
+      options:
+        - The sites with fixed two-week schedules
+        - The control sites that changed nothing
+        - The sites where new hires were paired with trained "anchor" mentors
+        - The sites that combined both interventions
+      correctIndex: 2
+      explanationZh: 结果段给出三组数字：anchor 导师组降到 21%，固定排班组降到 24%，对照组仍是 33%——最低的是导师组。注意实验设计里两项干预分别在不同门店进行，并不存在叠加实施的组别，选项 D 描述的分组根本不在实验之中。
+    - id: q3
+      stem: What did leavers from the control sites describe in follow-up interviews?
+      options:
+        - Dissatisfaction with the pay premium
+        - Not knowing whom to ask for help and being unable to plan childcare around changing rotas
+        - A wish to transfer to the anchor sites
+        - Conflicts with the experienced mentors
+      correctIndex: 1
+      explanationZh: 访谈发现对照组离职者 "rarely mentioned pay unprompted; what they described was not knowing whom to ask for help and being unable to plan childcare around shifting rotas"——真正的痛点是无人可问和排班不可预期。这与离职问卷里的“薪酬”答案形成对照，正是本案例的核心证据。
+    - id: q4
+      stem: Which statement best captures the methodological lesson of the case?
+      options:
+        - Pay increases never affect employee turnover
+        - Exit surveys should be made anonymous
+        - Fourteen sites are too few for a valid experiment
+        - Surveys reveal what is easy to say, while experiments reveal what actually works
+      correctIndex: 3
+      explanationZh: 结尾点题："exit surveys tell you what is easy to say, while experiments tell you what actually works"——问卷给出的往往是顺口的归因，实验才能验证真正起作用的因素。选项 A 属于过度引申：案例只说明在薪酬已高于中位数时小幅加薪收效甚微，并未断言涨薪永远无效。
+- id: biz-r-013
+  track: business
+  title: "Policy Update: Introducing Departmental Anchor Days"
+  titleZh: 制度更新：推行部门固定到岗日
+  genre: Memo
+  passage: |-
+    To: All employees
+    From: Office of the COO
+    Subject: Attendance policy update — anchor days from 3 November
+
+    Since 2022, attendance at our offices has been fully flexible. After eighteen months of measuring how that policy is working, we are adjusting it: from 3 November, each department will set two weekly "anchor days" on which its members work from the office together.
+
+    Why change a popular policy? Individual output has held steady — this is not about people working less from home. But two indicators have worsened year over year: new joiners are taking roughly 30 percent longer to reach full productivity, and participation in cross-team projects has fallen by a quarter. Both problems concentrate in teams whose members rarely overlap in person.
+
+    How it will work. Departments choose their own anchor days and register them with People Operations by 17 October. We considered mandating the same weekdays company-wide and rejected the idea: collaboration patterns differ too much between departments for one rule to fit all. Outside anchor days, attendance remains a personal choice. The 41 employees hired on fully remote contracts keep that status, with two team onsites per year.
+
+    Finally, we know some of you will read this as the first step toward five mandated days. It is not. Leadership has no such plan, and to keep ourselves honest we will publish the collaboration metrics behind this decision every six months, so you can see what we see. Bring your questions to the all-hands session on 24 October.
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: What is the main purpose of the memo?
+      options:
+        - To require all employees to work five days in the office
+        - To report that individual productivity has declined
+        - To announce department-level anchor days and explain the reasoning behind them
+        - To invite employees to choose their own working hours
+      correctIndex: 2
+      explanationZh: 备忘录宣布 "from 3 November, each department will set two weekly 'anchor days'"，并用新员工上手变慢、跨团队协作下降两组数据解释原因。选项 A 恰是结尾特意否认的解读（"It is not"）；个人产出保持稳定（"Individual output has held steady"），选项 B 与原文相反。
+    - id: q2
+      stem: According to the memo, why is the policy changing?
+      options:
+        - Employees have complained about the fully flexible policy
+        - The company is reducing its office space
+        - Individual output has fallen sharply since 2022
+        - New joiners ramp up more slowly and cross-team collaboration has declined
+      correctIndex: 3
+      explanationZh: 原文给出的两项恶化指标是 "new joiners are taking roughly 30 percent longer to reach full productivity, and participation in cross-team projects has fallen by a quarter"。备忘录明确排除了个人产出下滑这一理由——"this is not about people working less from home"（排除 C）；员工投诉、办公空间等文中均未提及。
+    - id: q3
+      stem: Why will anchor days not be the same weekdays across the company?
+      options:
+        - Because the offices cannot hold every department at once
+        - Because departments' collaboration patterns differ too much for one rule to fit all
+        - Because People Operations rejected a company-wide registration system
+        - Because remote employees objected to fixed days
+      correctIndex: 1
+      explanationZh: 备忘录写明公司考虑过全公司统一到岗日但予以否决："collaboration patterns differ too much between departments for one rule to fit all"——因此由各部门自选，并在 10 月 17 日前向 People Operations 登记。办公位容量、远程员工反对等理由听来合理，但文中均未出现，属于脑补型干扰项。
+    - id: q4
+      stem: What is the purpose of the final paragraph?
+      options:
+        - To reassure employees that this is not a step toward a full office mandate
+        - To warn that stricter rules will follow if attendance stays low
+        - To announce that the collaboration metrics will be kept confidential
+        - To postpone the policy until after the session on 24 October
+      correctIndex: 0
+      explanationZh: 结尾直接回应员工可能的担忧——"we know some of you will read this as the first step toward five mandated days. It is not"——并承诺每六个月公开决策所依据的协作指标，用透明度换取信任。选项 C 与公开指标的承诺相反；政策生效日仍是 11 月 3 日，24 日的全员会只是答疑渠道（排除 D）。
+- id: biz-r-014
+  track: business
+  title: Why Dropping the Degree Requirement Is the Easy Part
+  titleZh: 取消学历要求只是容易的那一步
+  genre: Article
+  passage: |-
+    Over the past five years, a long list of employers — from banks to software firms to state governments — have removed university-degree requirements from their job postings, a movement usually described as skills-based hiring. The logic is straightforward: a degree is a proxy, and often a poor one, for what a role actually demands, and it screens out millions of capable candidates who took a different path.
+
+    The postings changed faster than the hiring did. Studies that tracked companies after they dropped degree requirements found that the share of new hires without degrees rose far less than the wording suggested — in many firms, hardly at all. The bottleneck was rarely policy. It was habit: recruiters skimming hundreds of applications still reached for the degree as a familiar shortcut, and hiring managers, who carry the risk of a bad hire, defaulted to the credential that had always protected them.
+
+    The organisations that closed the gap did more than edit postings. They rewrote job descriptions around observable skills — "builds financial models in Excel" rather than "strong analytical background". They introduced structured work samples, asking candidates to complete a small slice of the actual job. And they trained interviewers to score those samples against fixed criteria before looking at a CV.
+
+    The companies that persisted report one further result: the people hired this way tend to stay longer. For employers facing chronic shortages the prize is real — but it goes to those who treat skills-based hiring as an operating change, not a slogan.
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: What is the main idea of the article?
+      options:
+        - University degrees no longer predict job performance in any field
+        - Removing degree requirements changes little unless hiring practices are redesigned around skills
+        - Structured interviews should replace CVs entirely
+        - Skills-based hiring mainly benefits state governments
+      correctIndex: 1
+      explanationZh: 文章的核心对比是 "The postings changed faster than the hiring did"——删掉学历要求后，无学位新员工的比例 "rose far less than the wording suggested"；真正缩小差距的公司改写了职位描述、引入工作样本测试并培训面试官。选项 A 过度绝对化：文章只说学历是 "a proxy, and often a poor one"，并未否定其全部价值。
+    - id: q2
+      stem: What did studies find about companies that dropped degree requirements?
+      options:
+        - The share of new hires without degrees rose far less than the postings suggested
+        - Their overall hiring volumes fell sharply
+        - They reinstated the requirements within a year
+        - Their recruiters stopped reading CVs
+      correctIndex: 0
+      explanationZh: 研究追踪这些公司后发现，无学位新员工的占比 "rose far less than the wording suggested — in many firms, hardly at all"——启事改了，录用结果几乎没变。文章进一步解释瓶颈不在政策而在习惯（"The bottleneck was rarely policy. It was habit"）。其余选项均无原文依据。
+    - id: q3
+      stem: According to the article, why do hiring managers keep defaulting to the degree?
+      options:
+        - They are unaware that the postings have changed
+        - They believe degrees guarantee technical skills
+        - Company policy still requires them to check credentials
+        - They carry the risk of a bad hire, and the credential has always protected them
+      correctIndex: 3
+      explanationZh: 原文解释 "hiring managers, who carry the risk of a bad hire, defaulted to the credential that had always protected them"——学历是替他们分担用人风险的“护身符”，招聘人员面对海量简历时也把它当作 "a familiar shortcut"。选项 C 正好说反：政策已经改了，惯性才是瓶颈。
+    - id: q4
+      stem: The word "proxy" in paragraph 1 is closest in meaning to
+      options:
+        - an obstacle
+        - a formal qualification
+        - an indirect substitute
+        - an authorization to vote on someone's behalf
+      correctIndex: 2
+      explanationZh: 上下文说 "a degree is a proxy, and often a poor one, for what a role actually demands"——学历只是用来间接推测胜任力的替代指标，故 proxy 在此指“间接的替代物”。选项 D 利用了 proxy 在公司治理语境中“委托投票”的常见含义，是典型的一词多义陷阱。
+- id: biz-r-015
+  track: business
+  title: "Market Entry Brief: Kestrel Payroll in Vietnam"
+  titleZh: 市场进入简报：Kestrel Payroll 进军越南
+  genre: Brief
+  passage: |-
+    Kestrel Payroll — Vietnam Market Entry Brief (Internal)
+
+    Product. Kestrel is a cloud payroll service for small and mid-sized companies. The Vietnam release adds local tax and social-insurance calculations and Vietnamese-language payslips.
+
+    Objective. Convert 60 paying companies within two quarters of go-live, concentrated in Ho Chi Minh City and Hanoi.
+
+    Route to market. We will not build a direct sales team this year. Distribution runs through accounting practices: our research found that over 70 percent of target companies outsource payroll to their accountant, who effectively chooses the software. We are signing revenue-share agreements with three mid-sized practices; their staff will be certified on Kestrel in October.
+
+    Timing. Our operating licence application is with the regulator, and approval is expected in September. Until the licence is granted, no contracts may be signed and no pricing may be published — pilot conversations must be framed as product previews. Go-live is planned for 1 November.
+
+    Roles. Product owns localisation and the tax-engine certification. Marketing produces Vietnamese-language onboarding materials by mid-October. The partnerships team owns the accounting-practice agreements and their certification schedule.
+
+    Known risk. The tax engine must be certified by an independent local auditor before go-live, and the audit requires two compliance specialists we have not yet hired. If both are not in post by 15 August, go-live moves to January — we will not launch with manual tax workarounds under any circumstances.
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: What is the objective of the market entry?
+      options:
+        - To open direct sales offices in Ho Chi Minh City and Hanoi
+        - To certify three accounting practices by September
+        - To replace the existing payroll regulations in Vietnam
+        - To convert 60 paying companies within two quarters of go-live
+      correctIndex: 3
+      explanationZh: Objective 一栏写明 "Convert 60 paying companies within two quarters of go-live, concentrated in Ho Chi Minh City and Hanoi"。两座城市是目标客户的集中地，并不意味着设立直销机构——简报明确说今年不组建直销团队（"We will not build a direct sales team this year"，排除 A）；事务所认证培训安排在十月，且只是手段而非目标（排除 B）。
+    - id: q2
+      stem: Why will Kestrel sell through accounting practices?
+      options:
+        - Because the regulator requires payroll software to be sold by accountants
+        - Because the practices offered to work without a revenue share
+        - Because most target companies outsource payroll to accountants, who effectively choose the software
+        - Because Kestrel's product is too complex for companies to use directly
+      correctIndex: 2
+      explanationZh: 调研发现 "over 70 percent of target companies outsource payroll to their accountant, who effectively chooses the software"——采购决策实际掌握在会计师手中，所以公司与三家中型事务所签订收入分成协议。选项 A 把商业选择说成了监管要求，文中的监管事项只是运营牌照；分成协议恰恰说明合作是有偿的（排除 B）。
+    - id: q3
+      stem: What is permitted before the operating licence is granted?
+      options:
+        - Product-preview conversations with potential pilot customers
+        - Signing contracts with companies that accept the extra risk
+        - Publishing an introductory price list
+        - No customer contact of any kind
+      correctIndex: 0
+      explanationZh: Timing 一栏规定 "Until the licence is granted, no contracts may be signed and no pricing may be published — pilot conversations must be framed as product previews"——不能签约、不能公布价格，但可以用“产品预览”的名义接触潜在试点客户。选项 D 的 "No customer contact of any kind" 过于绝对，忽略了这一被明确允许的形式；签约没有任何“客户自担风险”的通道（排除 B）。
+    - id: q4
+      stem: What will happen if the two compliance specialists are not in post by 15 August?
+      options:
+        - The tax engine will be certified by an overseas auditor instead
+        - Go-live will move to January rather than launching with manual workarounds
+        - The accounting practices will take over the certification work
+        - The launch will proceed with manual tax calculations as a temporary measure
+      correctIndex: 1
+      explanationZh: 风险预案写明 "If both are not in post by 15 August, go-live moves to January — we will not launch with manual tax workarounds under any circumstances"——宁可推迟也不带人工方案上线。选项 D 恰是被明确排除的做法；认证必须由独立的本地审计方完成，文中没有海外审计或事务所代劳的替代安排（排除 A、C）。
+- id: biz-r-016
+  track: business
+  title: "Email Thread: A Delayed Shipment Before Opening Day"
+  titleZh: 邮件往来：新店开业前的到货延误
+  genre: Email thread
+  passage: |-
+    From: Elena Vasquez, Operations Manager, Harbor & Pine
+    To: Customer Care, Nordvik Furnishings
+    Subject: Order NV-88214 — delivery date moved, urgent
+
+    Dear Nordvik team,
+
+    Order NV-88214 was confirmed for delivery on 14 June. Your tracking page now shows 28 June. We open our third store on 20 June, and this order contains the display shelving for the entire shop floor — without it, the store cannot open. I would rather have a solution than compensation. Please tell me today what options exist.
+
+    Regards,
+    Elena Vasquez
+
+    From: Jonas Lindqvist, Senior Account Specialist, Nordvik Furnishings
+    To: Elena Vasquez
+    Subject: RE: Order NV-88214 — delivery date moved, urgent
+
+    Dear Ms Vasquez,
+
+    I have looked into the order personally. The delay comes from a port strike holding the container that carries your full order, and I cannot restore the original date for everything. What I can do is this. The shelving units are also stocked at our Rotterdam warehouse, and I can dispatch 80 percent of your shelving from there by road, arriving 17 June, with the remaining items following on 28 June as currently tracked. Given the disruption, we will waive the delivery charges on both shipments. If you confirm by 16:00 tomorrow, I can reserve the Rotterdam stock before it is released to other orders.
+
+    Kind regards,
+    Jonas Lindqvist
+
+    From: Elena Vasquez
+    To: Jonas Lindqvist
+    Subject: RE: RE: Order NV-88214 — delivery date moved, urgent
+
+    Dear Jonas,
+
+    Please proceed with the split delivery — 80 percent by 17 June is enough to open. Send written confirmation with tracking numbers today, and make sure the June invoice reflects the waived charges. Thank you for moving quickly on this; responses like yours are why we consolidated our suppliers last year.
+
+    Regards,
+    Elena
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: Why does Elena write the first email?
+      options:
+        - To cancel order NV-88214 and demand a refund
+        - To get a same-day answer about options for a delay that threatens her store opening
+        - To ask for financial compensation for the late delivery
+        - To move the store opening from 20 June to 28 June
+      correctIndex: 1
+      explanationZh: 邮件先说明利害——新店 6 月 20 日开业，而整个卖场的陈列货架都在这批订单里（"without it, the store cannot open"）——再要求当天答复："Please tell me today what options exist"。她明确表示 "I would rather have a solution than compensation"，要的是解决方案而非赔偿（排除 C），更没有取消订单或推迟开业（排除 A、D）。
+    - id: q2
+      stem: According to Jonas, what caused the delay?
+      options:
+        - The shelving was out of stock at every warehouse
+        - Harbor & Pine submitted the order too late
+        - A port strike held up the container carrying the full order
+        - The Rotterdam warehouse released the goods to another customer
+      correctIndex: 2
+      explanationZh: Jonas 调查后说明 "The delay comes from a port strike holding the container that carries your full order"——是港口罢工扣住了集装箱。货架在 Rotterdam 仓库仍有库存，这正是拆分发货方案可行的前提（排除 A）；他只是提醒若不在次日 16:00 前确认，库存才可能被释放给其他订单，事情尚未发生（排除 D）。
+    - id: q3
+      stem: What does Jonas offer?
+      options:
+        - Dispatching most of the shelving early from another warehouse, with delivery charges waived on both shipments
+        - A full refund and cancellation of the order
+        - Restoring the original 14 June delivery date for the whole order
+        - A discount on the customer's next order
+      correctIndex: 0
+      explanationZh: 方案的关键数字要读准：从 Rotterdam 仓库以陆运发出 80% 的货架、6 月 17 日到达，其余部分 6 月 28 日照现有跟踪信息送达，并且 "we will waive the delivery charges on both shipments"。他明确说 "I cannot restore the original date for everything"（排除 C）；减免的是两批货的运费，不是下一单的折扣（排除 D）。
+    - id: q4
+      stem: What will most likely happen after Elena's final email?
+      options:
+        - Elena will start looking for a new furniture supplier
+        - The store opening will be postponed to late June
+        - Nordvik will ship the entire order together on 28 June
+        - Jonas will reserve the Rotterdam stock and send written confirmation with tracking numbers
+      correctIndex: 3
+      explanationZh: Elena 已确认方案（"Please proceed with the split delivery"）并提出两项后续要求：当天发出带追踪号的书面确认、六月账单体现减免的运费——接下来自然是 Jonas 锁定 Rotterdam 库存并发出确认。她的结尾是在肯定这次服务（"responses like yours are why we consolidated our suppliers"），与更换供应商相反（排除 A）；80% 货架 17 日到达已足以开业（排除 B）。

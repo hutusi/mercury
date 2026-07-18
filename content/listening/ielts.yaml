@@ -423,3 +423,411 @@
         - It is only possible in shallow water
       correctIndex: 1
       explanationZh: 讲座结尾告诫："it cannot keep pace with warming on its own"，并用“地震中重建房屋”作比喻——海水持续升温时，只靠修复无法奏效，必须首先减排，修复只是为幸存者争取时间。选项 D 的水深限制讲座中并未提及。
+- id: ielts-l-007
+  track: ielts
+  title: Renting an Allotment Garden Plot
+  titleZh: 咨询租用社区菜园地块
+  style: 对话 · Dialogue
+  script:
+    - speaker: A
+      text: Good morning, Greenfield Council parks department. What can I do for you?
+    - speaker: B
+      text: Hello. I'm ringing about the allotment gardens — I'd like to rent a plot to grow some vegetables.
+    - speaker: A
+      text: Certainly. We rent out two sizes, a full plot and a half plot.
+    - speaker: B
+      text: I've never done this before, so a half plot sounds more realistic. How much would that cost?
+    - speaker: A
+      text: A half plot is thirty-five pounds a year, and a full plot is sixty. The rent includes water from the shared tanks, but you provide your own tools.
+    - speaker: B
+      text: That's very reasonable. Is there a site near the town centre?
+    - speaker: A
+      text: The closest one is Elm Lane, but I'm afraid there's a waiting list of about four months for that site.
+    - speaker: B
+      text: Four months? Oh dear.
+    - speaker: A
+      text: However, the Riverside site has three half plots free right now. It's a little further out, but it's next to the number seven bus route.
+    - speaker: B
+      text: Riverside would suit me fine, actually. What do I need to do?
+    - speaker: A
+      text: I'll post you an application form today. Before you take the plot on, you'll also need to attend a short induction session — we run one on the first Saturday of every month.
+    - speaker: B
+      text: That's no problem. Does the session cost anything?
+    - speaker: A
+      text: No, it's free, and it covers the site rules, the compost bins, and how to book the communal shed.
+    - speaker: B
+      text: Wonderful. My name is David Sharp, that's S-H-A-R-P, and I'll look out for the form.
+  questions:
+    - id: q1
+      stem: Why is the man calling the parks department?
+      options:
+        - To report a problem at the Elm Lane site
+        - To book the communal shed for an event
+        - To ask about renting an allotment plot
+        - To complain about the waiting list
+      correctIndex: 2
+      explanationZh: 男士开头说明来意："I'm ringing about the allotment gardens — I'd like to rent a plot to grow some vegetables"——他想租一块菜园地种菜。公用工具棚和等候名单都是对话后半才出现的细节，并非来电目的（排除 B、D）。
+    - id: q2
+      stem: How much does a half plot cost per year?
+      options:
+        - Thirty-five pounds
+        - Sixty pounds
+        - Forty-five pounds
+        - Twenty-five pounds
+      correctIndex: 0
+      explanationZh: 工作人员报价："A half plot is thirty-five pounds a year, and a full plot is sixty"——半块地年租 35 英镑。60 英镑是整块地的价格，属于典型的数字互扰；45 和 25 在对话中并未出现。
+    - id: q3
+      stem: What does the woman say about the Riverside site?
+      options:
+        - It has a four-month waiting list
+        - It is the closest site to the town centre
+        - It only has full plots left
+        - It has half plots available immediately
+      correctIndex: 3
+      explanationZh: 工作人员说："the Riverside site has three half plots free right now"——Riverside 目前就有三块半地空着，可以立即租用。四个月的等候名单和“离市中心最近”说的都是 Elm Lane（排除 A、B），IELTS 常把两处地点的信息互相调换来设置干扰。
+    - id: q4
+      stem: What must the man do before taking on the plot?
+      options:
+        - Buy his own water tank
+        - Attend a free induction session
+        - Pay a deposit at the town hall
+        - Provide a reference from a neighbour
+      correctIndex: 1
+      explanationZh: 工作人员交代："you'll also need to attend a short induction session — we run one on the first Saturday of every month"，且该课程免费，内容包括场地规则、堆肥箱和公用工具棚的预订方法。需要自备的是工具而不是水箱——用水由共享水箱提供、已含在租金里（排除 A）；押金和推荐信对话中均未提及。
+- id: ielts-l-008
+  track: ielts
+  title: Booking a Place on an Evening Pottery Course
+  titleZh: 报名晚间陶艺课程
+  style: 对话 · Dialogue
+  script:
+    - speaker: A
+      text: Good afternoon, Hartley Arts Centre. How can I help?
+    - speaker: B
+      text: Hi. A friend of mine did your pottery course last year, and I'd love to join the next one for beginners.
+    - speaker: A
+      text: You're just in time — the autumn beginners' course starts on Tuesday the third of October.
+    - speaker: B
+      text: And is it one evening a week?
+    - speaker: A
+      text: That's right, every Tuesday from seven to nine, for eight weeks in total.
+    - speaker: B
+      text: How much does the course cost?
+    - speaker: A
+      text: It's ninety-six pounds. That covers the clay and the firing of your finished pieces, but not aprons — most people just bring an old shirt.
+    - speaker: B
+      text: Fair enough. Do I need to bring anything else?
+    - speaker: A
+      text: Just an old towel for cleaning your hands. All the tools and the wheels are provided in the studio.
+    - speaker: B
+      text: Great. Are there still places left?
+    - speaker: A
+      text: Let me check. Yes — the class is limited to twelve people, and there are three places remaining.
+    - speaker: B
+      text: In that case, how do I book?
+    - speaker: A
+      text: You pay a twenty-pound deposit through our website to hold your place, and the balance on the first evening. Oh, and if you drive, parking behind the centre is free after six.
+    - speaker: B
+      text: Perfect, I'll pay the deposit tonight. Thanks so much.
+  questions:
+    - id: q1
+      stem: When does the beginners' course begin?
+      options:
+        - On Tuesday the thirteenth of October
+        - On Tuesday the third of October
+        - On Thursday the third of November
+        - On Tuesday the eighth of October
+      correctIndex: 1
+      explanationZh: 接待员说："the autumn beginners' course starts on Tuesday the third of October"——十月三日星期二开课。IELTS Section 1 常用 third 与 thirteenth 这类读音相近的日期互设干扰，要仔细听辨；eight 是课程持续的周数，不是日期。
+    - id: q2
+      stem: What does the course fee include?
+      options:
+        - An apron for each student
+        - A set of tools to take home
+        - Free parking at all times
+        - The clay and the firing of finished pieces
+      correctIndex: 3
+      explanationZh: 原文说："That covers the clay and the firing of your finished pieces, but not aprons"——96 英镑包含陶土和成品烧制，但不含围裙，学员通常自带旧衬衫。工具和拉坯轮由工作室提供、只限课上使用而非带回家（排除 B）；免费停车仅限六点以后（排除 C）。
+    - id: q3
+      stem: What should the caller bring to the class?
+      options:
+        - An old towel
+        - Her own clay
+        - A twenty-pound note
+        - A pottery wheel
+      correctIndex: 0
+      explanationZh: 接待员建议："Just an old towel for cleaning your hands"——只需带一条擦手的旧毛巾，工具和设备都由工作室提供（排除 D）。20 英镑是通过网站支付的订金，不是要带到课堂的现金（排除 C）；陶土已含在课程费里（排除 B）。
+    - id: q4
+      stem: How can the caller secure a place on the course?
+      options:
+        - By paying the full fee at reception
+        - By arriving early on the first evening
+        - By paying a deposit on the website
+        - By emailing the course tutor
+      correctIndex: 2
+      explanationZh: 预订方式为 "You pay a twenty-pound deposit through our website to hold your place, and the balance on the first evening"——先在网站付 20 英镑订金锁定名额，余款第一节课再交。费用并非当场一次付清（排除 A），全靠先到先得更是没有提及（排除 B）。
+- id: ielts-l-009
+  track: ielts
+  title: Planning a Field-Trip Report on River Data
+  titleZh: 两名学生讨论野外考察报告
+  style: 对话 · Dialogue
+  script:
+    - speaker: A
+      text: Right, Priya, we should sort out the report on the river field trip. The deadline's in two weeks.
+    - speaker: B
+      text: I know. I typed up all our measurements last night, and there's a problem with the second day.
+    - speaker: A
+      text: The flow-speed readings?
+    - speaker: B
+      text: Exactly. The probe wasn't calibrated properly after lunch, so all the afternoon figures are far too high.
+    - speaker: A
+      text: I wondered about that. Should we just leave those numbers out and not mention it?
+    - speaker: B
+      text: I don't think we should hide it. My tutor always says examiners give credit when you discuss problems with your method honestly.
+    - speaker: A
+      text: You're right — we can exclude the faulty readings but explain in the methodology why we did that.
+    - speaker: B
+      text: Agreed. That actually gives us more to write in the discussion section, too.
+    - speaker: A
+      text: Good. Now, how shall we split the rest of the work?
+    - speaker: B
+      text: You're better at the software, so could you do the graphs and the site map? Remember the tutor said every map needs a scale and a north arrow.
+    - speaker: A
+      text: Fine, I'll do those. Then you could draft the methodology and the introduction, since you took most of the notes.
+    - speaker: B
+      text: That works. Shall we swap our sections by Friday and then meet to put it all together?
+    - speaker: A
+      text: Let's say Monday morning in the library instead — Friday's a bit tight with my lab class.
+    - speaker: B
+      text: Monday it is. I'll book one of the study rooms.
+  questions:
+    - id: q1
+      stem: What problem does Priya mention about their data?
+      options:
+        - Some measurements were lost on the way home
+        - The first day's notes were incomplete
+        - They forgot to measure the river's depth
+        - Some afternoon readings are inaccurate
+      correctIndex: 3
+      explanationZh: Priya 指出第二天的数据有问题："The probe wasn't calibrated properly after lunch, so all the afternoon figures are far too high"——探头午后没有正确校准，下午的流速读数全部偏高。数据是不准确而不是丢失（排除 A），出问题的是第二天下午而不是第一天（排除 B）。
+    - id: q2
+      stem: What do the students agree to do about the faulty readings?
+      options:
+        - Repeat the measurements at the weekend
+        - Exclude them but explain why in the methodology
+        - Adjust the figures to more likely values
+        - Leave them out without mentioning it
+      correctIndex: 1
+      explanationZh: 两人商定的做法是 "we can exclude the faulty readings but explain in the methodology why we did that"——剔除有误的读数，并在方法部分如实说明原因。Tom 起初提议“直接删掉、不提这事”，被 Priya 以“诚实讨论方法问题反而能得分”说服（排除 D），这正是 Section 3 常考的“最终共识”题。
+    - id: q3
+      stem: What will Tom be responsible for?
+      options:
+        - Drafting the introduction
+        - Writing the methodology section
+        - Producing the graphs and the site map
+        - Booking a study room in the library
+      correctIndex: 2
+      explanationZh: Priya 提议："You're better at the software, so could you do the graphs and the site map?"，Tom 回答 "Fine, I'll do those"——他负责图表和考察地点地图。方法部分和引言由 Priya 起草，预订自习室也是 Priya 的任务（排除 A、B、D）。
+    - id: q4
+      stem: When will the students meet to put the report together?
+      options:
+        - On Monday morning
+        - On Friday afternoon
+        - In two weeks' time
+        - After Tom's lab class on Thursday
+      correctIndex: 0
+      explanationZh: Priya 先提议周五交换稿件后见面，Tom 因实验课时间太紧改期："Let's say Monday morning in the library instead"，Priya 回应 "Monday it is"。周五只是各自交换初稿的期限（排除 B）；两周后是报告的提交截止日期，不是见面时间（排除 C）。
+- id: ielts-l-010
+  track: ielts
+  title: "Lecture: Beekeeping in the City"
+  titleZh: 讲座：城市养蜂
+  style: 讲座 · Lecture
+  script:
+    - speaker: narrator
+      text: Good morning. Today's lecture looks at a surprising trend in food production — beekeeping in the middle of large cities.
+    - speaker: narrator
+      text: Twenty years ago, hives on office rooftops would have seemed absurd. Today, cities such as London, Paris, and Tokyo have thousands of them.
+    - speaker: narrator
+      text: At first glance, a city seems a terrible home for bees. In fact, urban bees often do better than their rural cousins.
+    - speaker: narrator
+      text: There are two main reasons. First, city parks and gardens contain an enormous variety of flowering plants, so food is available almost all year round.
+    - speaker: narrator
+      text: Second, urban green spaces are usually sprayed with far fewer pesticides than farmland, where a single crop may dominate for miles.
+    - speaker: narrator
+      text: One study of hives in Paris found that city bees produced more honey per hive than bees in the surrounding countryside.
+    - speaker: narrator
+      text: However, I want to add a note of caution. Honeybees are, essentially, livestock.
+    - speaker: narrator
+      text: When too many hives are packed into one district, they compete for nectar with wild pollinators such as bumblebees and hoverflies.
+    - speaker: narrator
+      text: Some researchers now argue that several European capitals already have more hives than their parks can feed.
+    - speaker: narrator
+      text: So if you want to help pollinators, the best step is not necessarily to keep bees. Planting a variety of flowers, and mowing lawns less often, does far more good.
+    - speaker: narrator
+      text: Next week, we'll turn from insects to city trees, and ask why some species cope with street life better than others.
+  questions:
+    - id: q1
+      stem: Why do bees often do well in cities, according to the lecturer?
+      options:
+        - Gardens offer varied flowers and fewer pesticides
+        - City air is warmer all year round
+        - There are no wild pollinators to compete with
+        - Rooftop hives are safe from disease
+      correctIndex: 0
+      explanationZh: 讲座给出两个原因："city parks and gardens contain an enormous variety of flowering plants" 且 "urban green spaces are usually sprayed with far fewer pesticides than farmland"——花源多样、农药更少。气温和疾病讲座均未提及；选项 C 与后文“与野生传粉者争夺花蜜”的告诫直接矛盾。
+    - id: q2
+      stem: What did the study of hives in Paris find?
+      options:
+        - City honey contained traces of pesticides
+        - Rural hives held more bees than city ones
+        - City hives produced more honey than rural ones
+        - Parisian bees flew further than country bees
+      correctIndex: 2
+      explanationZh: 原文说："One study of hives in Paris found that city bees produced more honey per hive than bees in the surrounding countryside"——巴黎城区蜂箱的单箱产蜜量高于周边乡村。其余选项听起来都像合理的研究结论，但讲座中并无依据——IELTS 听力要求严格以原文为准。
+    - id: q3
+      stem: What danger does the lecturer mention about having too many hives?
+      options:
+        - Bees may sting more people in crowded areas
+        - They compete with wild pollinators for nectar
+        - Honey production becomes too expensive
+        - Diseases spread from wild bees to hives
+      correctIndex: 1
+      explanationZh: 讲座告诫："When too many hives are packed into one district, they compete for nectar with wild pollinators such as bumblebees and hoverflies"——蜂箱过密会与熊蜂、食蚜蝇等野生传粉者争夺花蜜，一些欧洲首都的蜂箱数量可能已超出公园的供养能力。蜇人、成本和疾病都未被提及。
+    - id: q4
+      stem: What does the lecturer suggest is the best way to help pollinators?
+      options:
+        - Keeping a hive on every rooftop
+        - Moving hives from cities to farmland
+        - Banning beekeeping in city centres
+        - Planting varied flowers and mowing less often
+      correctIndex: 3
+      explanationZh: 结尾建议："the best step is not necessarily to keep bees. Planting a variety of flowers, and mowing lawns less often, does far more good"——比起养蜂，种植多样花卉、减少割草对传粉者帮助更大。讲座并未主张禁止城市养蜂（排除 C），只是提醒蜂箱不宜过密。
+- id: ielts-l-011
+  track: ielts
+  title: "Lecture: A Short History of Mapmaking"
+  titleZh: 讲座：地图绘制简史
+  style: 讲座 · Lecture
+  script:
+    - speaker: narrator
+      text: Good afternoon. In today's lecture I'd like to trace the history of mapmaking, and to ask what maps really show us.
+    - speaker: narrator
+      text: The oldest surviving world map is a Babylonian clay tablet, made around two and a half thousand years ago. It shows Babylon at the centre, ringed by a circular ocean.
+    - speaker: narrator
+      text: That choice of centre is revealing. Throughout history, mapmakers have placed their own world in the middle of the picture.
+    - speaker: narrator
+      text: Medieval European maps, for example, usually put east at the top and Jerusalem at the centre. They were designed to express religious belief, not to guide travellers.
+    - speaker: narrator
+      text: Practical mapping advanced in the fifteenth century, when Ptolemy's ancient system of latitude and longitude lines was rediscovered and printed.
+    - speaker: narrator
+      text: Yet one great problem remained. At sea, sailors had no reliable way of measuring longitude — their east-west position.
+    - speaker: narrator
+      text: The breakthrough came in the eighteenth century, when John Harrison built a clock that kept accurate time on a rolling ship. Comparing local time with the clock finally revealed a ship's longitude, and sea charts improved rapidly.
+    - speaker: narrator
+      text: Today, satellites map the planet in extraordinary detail, and most of us carry maps on our phones.
+    - speaker: narrator
+      text: You might think this makes maps neutral at last. It does not.
+    - speaker: narrator
+      text: Every map must still flatten a round world onto a page, and every projection distorts something — size, shape, or distance.
+    - speaker: narrator
+      text: So here is the point I want you to remember. A map is always an argument about what matters, made by leaving certain things out.
+    - speaker: narrator
+      text: Next week, we'll test that idea by comparing three modern maps of the same city.
+  questions:
+    - id: q1
+      stem: What does the lecturer say about medieval European maps?
+      options:
+        - They were mainly used by sailors
+        - They showed latitude and longitude lines
+        - They expressed religious belief rather than guiding travel
+        - They placed Babylon at the centre of the world
+      correctIndex: 2
+      explanationZh: 讲座指出中世纪欧洲地图 "were designed to express religious belief, not to guide travellers"——为表达宗教信仰而绘，通常东方朝上、耶路撒冷居中。把巴比伦放在世界中心的是更早的巴比伦泥板地图（排除 D）；经纬网要到十五世纪托勒密体系重新流行才普及（排除 B）。
+    - id: q2
+      stem: What made it possible to measure longitude at sea?
+      options:
+        - A clock that kept accurate time on board ship
+        - The rediscovery of Ptolemy's writings
+        - A new type of circular ocean chart
+        - Observations taken from satellites
+      correctIndex: 0
+      explanationZh: 讲座说突破出现在十八世纪："John Harrison built a clock that kept accurate time on a rolling ship"——把当地时间与这台船钟对比即可求出经度。托勒密体系的重新发现是十五世纪的进展，解决的并不是海上经度难题（排除 B）；卫星测绘是现代才有的技术（排除 D）。
+    - id: q3
+      stem: What does the lecturer say about map projections?
+      options:
+        - Modern projections no longer contain errors
+        - Sailors invented the first projection
+        - Projections only distort very small maps
+        - Every projection distorts size, shape, or distance
+      correctIndex: 3
+      explanationZh: 讲座解释："every map must still flatten a round world onto a page, and every projection distorts something — size, shape, or distance"——任何投影都必然在大小、形状或距离上有所失真，卫星时代也不例外。选项 A 恰与讲座 "It does not"（地图并未因此变得中立）的判断相反。
+    - id: q4
+      stem: What is the main point of the lecture?
+      options:
+        - Satellite technology has made older maps worthless
+        - Maps always involve choices about what to show
+        - The Babylonians were the most skilful mapmakers
+        - Longitude was the hardest problem in science
+      correctIndex: 1
+      explanationZh: 结论句点题："A map is always an argument about what matters, made by leaving certain things out"——地图从来不是中立的画面，而是取舍的结果，从巴比伦泥板到手机地图的整条线索都在支撑这一主旨。其余选项都只是讲座中的局部细节或过度引申。
+- id: ielts-l-012
+  track: ielts
+  title: Campus Radio Talk on the Volunteering Fair
+  titleZh: 校园电台：志愿服务集市介绍
+  style: 独白 · Monologue
+  script:
+    - speaker: narrator
+      text: Good evening, and welcome back to Campus FM. I'm Leo from the Students' Union, and tonight I want to tell you about next week's Volunteering Fair.
+    - speaker: narrator
+      text: The fair takes place this coming Thursday in the Great Hall, from eleven in the morning until three in the afternoon.
+    - speaker: narrator
+      text: More than thirty local organisations will be there, and every one of them is looking for student volunteers.
+    - speaker: narrator
+      text: To give you a flavour, the city hospital wants presenters for its bedside radio station, and the Wildlife Trust is recruiting for its monthly riverbank clean-ups.
+    - speaker: narrator
+      text: There's also the homework club at the central library, where volunteers help schoolchildren with reading and maths on Saturday mornings.
+    - speaker: narrator
+      text: One important note about the homework club. Because it involves working with children, you'll need a background check, and that takes about three weeks to come through.
+    - speaker: narrator
+      text: So if you're interested in that one, apply at the fair itself rather than waiting until later in the term.
+    - speaker: narrator
+      text: For most of the other roles, no experience is needed at all — the organisations provide their own training.
+    - speaker: narrator
+      text: And here's an extra reason to get involved. Volunteering counts towards the university's Skills Award, as long as you log at least twenty-five hours and attend one reflection workshop.
+    - speaker: narrator
+      text: Finally, if you register your interest on the union website before Thursday, you can skip the queue at the door. See you at the Great Hall!
+  questions:
+    - id: q1
+      stem: What is the main purpose of the talk?
+      options:
+        - To recruit presenters for Campus FM
+        - To encourage students to attend the Volunteering Fair
+        - To explain changes to the Skills Award
+        - To announce the opening of the Great Hall
+      correctIndex: 1
+      explanationZh: 说话人来自学生会，整段讲话围绕下周四的志愿服务集市展开——时间地点、参展机构、报名建议，属于典型的 Section 2 活动介绍。医院电台招主持人只是他举的志愿岗位例子，并非为校园电台自身招人（排除 A）；Skills Award 只是顺带提到的参与激励（排除 C）。
+    - id: q2
+      stem: When will the Volunteering Fair be held?
+      options:
+        - On Saturday morning
+        - On Thursday from three until eleven
+        - On Monday at the Students' Union
+        - On Thursday from eleven a.m. to three p.m.
+      correctIndex: 3
+      explanationZh: 原文说："The fair takes place this coming Thursday in the Great Hall, from eleven in the morning until three in the afternoon"——周四上午十一点至下午三点，地点在 Great Hall。选项 B 把起止时间前后颠倒，是数字顺序干扰；周六上午是图书馆作业辅导班的活动时间，不是集市时间（排除 A）。
+    - id: q3
+      stem: Why should students interested in the homework club apply early?
+      options:
+        - The required background check takes about three weeks
+        - There are only a few places available
+        - The club starts before the fair
+        - Training sessions fill up quickly
+      correctIndex: 0
+      explanationZh: 说话人特别提醒：作业辅导班要与儿童打交道，"you'll need a background check, and that takes about three weeks to come through"——背景审查约需三周才能办妥，因此最好在集市当天就提交申请。名额有限和培训报满讲话中都未提及；大多数岗位反而无需经验、由机构自行培训。
+    - id: q4
+      stem: What must students do to gain the Skills Award through volunteering?
+      options:
+        - Volunteer for more than thirty organisations
+        - Register on the union website before Thursday
+        - Log twenty-five hours and attend one workshop
+        - Complete a background check first
+      correctIndex: 2
+      explanationZh: 条件在原文中很明确："Volunteering counts towards the university's Skills Award, as long as you log at least twenty-five hours and attend one reflection workshop"——记录至少 25 小时志愿服务并参加一次反思工作坊。提前在网站登记只是免排队的小福利（排除 B）；“三十多家机构”是参展数量，不是要求（排除 A）。

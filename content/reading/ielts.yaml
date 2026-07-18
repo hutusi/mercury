@@ -436,3 +436,456 @@
         - The city's electricity costs doubled
       correctIndex: 2
       explanationZh: 原文写道，图森市改造路灯后 "cut its light output by seven per cent, with residents barely noticing the change"——灯光输出减少了 7%，居民几乎没有察觉。选项 A 与 "barely noticing" 相反；犯罪率和电费翻倍文中均未提及，属于无中生有。
+- id: ielts-r-009
+  track: ielts
+  title: Storing the Sun and Wind
+  titleZh: 储存太阳与风
+  genre: Academic
+  passage: |-
+    Wind turbines and solar panels have become dramatically cheaper over the past two decades, and in many countries they now generate electricity more cheaply than coal or gas. Yet a stubborn problem stands between these technologies and a fully renewable grid: the sun sets and the wind drops, often when demand is highest. A power system built on renewables must therefore be able to store energy on a vast scale, releasing it hours — or even days — after it was captured.
+
+    The oldest and still the largest solution is pumped hydroelectric storage. When electricity is plentiful, it drives pumps that lift water into a high reservoir; when demand rises, the water is released back down through turbines. The method is remarkably efficient, returning about eighty per cent of the energy put in, but it requires two large reservoirs at different heights, and suitable mountain sites are limited and often far from cities.
+
+    Lithium-ion batteries, the same chemistry that powers phones and electric cars, have filled part of the gap. Their cost has fallen by roughly ninety per cent since 2010, and enormous battery installations can now smooth out the daily peaks and troughs of a grid. Their weakness is duration: most discharge fully within a few hours, making them ill-suited to the long, still, overcast weeks that can occur in winter.
+
+    For that longer challenge, researchers are pursuing alternatives. Surplus electricity can split water into hydrogen, which stores well but wastes much of the original energy when converted back. Others are testing flow batteries, molten salt, and even towers of stacked concrete blocks raised and lowered by cranes. None is yet cheap enough to dominate. The consensus among engineers is that no single technology will win outright; instead, a future grid will layer several methods, each matched to the timescale it serves best.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: What is the main idea of the passage?
+      options:
+        - Renewable electricity has become too cheap for utilities to profit from
+        - Storing renewable energy at scale is the key obstacle to a renewable grid, and no single method solves it
+        - Pumped hydroelectric storage should be built in every country
+        - Lithium-ion batteries will soon make all other storage methods obsolete
+      correctIndex: 1
+      explanationZh: 文章开头指出可再生能源虽已便宜，但 "the sun sets and the wind drops"，因此必须大规模储能；随后逐一评述各种储能方式的利弊，结尾点明 "no single technology will win outright"。故 B 最全面。选项 D 与末段直接矛盾——锂电池的短板正是持续时间短；A 曲解了"便宜"这一前提，文中从未说便宜到无利可图。
+    - id: q2
+      stem: What does the passage say about pumped hydroelectric storage?
+      options:
+        - It returns about eighty per cent of the energy put into it
+        - It is the cheapest form of storage available
+        - It works best in flat, coastal regions
+        - It has been made obsolete by lithium-ion batteries
+      correctIndex: 0
+      explanationZh: 第二段写道，抽水蓄能 "returning about eighty per cent of the energy put in"——回收约八成能量，效率很高。它需要两个不同高度的大型水库，适合山区而非平坦沿海（排除 C）；文中说合适的山地厂址有限且常远离城市，并未称其最便宜（排除 B）。
+    - id: q3
+      stem: According to the passage, the main weakness of lithium-ion batteries for grid storage is that
+      options:
+        - they are far more expensive than they were in 2010
+        - they cannot be used in electric cars
+        - they can only release energy for a few hours
+        - they lose most of their stored energy as heat
+      correctIndex: 2
+      explanationZh: 第三段指出锂电池 "most discharge fully within a few hours, making them ill-suited to the long, still, overcast weeks"——大多在数小时内放完电，难以应对漫长无风的阴天。其成本自 2010 年以来下降约九成，是变便宜而非变贵（排除 A）；把能量当热量浪费说的是氢气路线（排除 D）。
+    - id: q4
+      stem: The word "stubborn" in the first paragraph is closest in meaning to
+      options:
+        - persistent
+        - expensive
+        - unexpected
+        - dangerous
+      correctIndex: 0
+      explanationZh: 原句 "a stubborn problem stands between these technologies and a fully renewable grid" 中，stubborn 形容这个问题顽固难解、始终横亘，故与 persistent（持续存在的）最接近。它并不指代价高（B）或危险（D），也不表示出人意料（C）。
+    - id: q5
+      stem: What is the engineers' view of the future of energy storage, according to the final paragraph?
+      options:
+        - Hydrogen will eventually replace all other methods
+        - Storage will never become cheap enough to be practical
+        - A future grid will combine several methods, each suited to a different timescale
+        - Concrete-block towers are the most promising solution
+      correctIndex: 2
+      explanationZh: 末段总结工程师的共识："no single technology will win outright; instead, a future grid will layer several methods, each matched to the timescale it serves best"——未来电网会分层组合多种技术，各司其时。氢气、混凝土塔都只是"正在测试的替代方案"之一，文中并未断言谁将胜出（排除 A、D）。
+- id: ielts-r-010
+  track: ielts
+  title: The Longest Journeys
+  titleZh: 最漫长的旅程
+  genre: Academic
+  passage: |-
+    Every autumn, the bar-tailed godwit, a wading bird little larger than a pigeon, undertakes one of the most extraordinary journeys in the natural world. Leaving Alaska, it flies south across the open Pacific to New Zealand — a distance of more than eleven thousand kilometres — without once stopping to feed, drink, or rest. Before departing, the bird nearly doubles its body weight in fat and shrinks its digestive organs, which it will not need in flight, to save weight. The voyage takes eight or nine days of continuous flapping.
+
+    How migrating animals find their way has puzzled scientists for centuries. Many species appear to carry several navigational tools at once. Birds can read the position of the setting sun, memorise the pattern of the stars, and, most remarkably, sense the Earth's magnetic field, which tells them both direction and, through its changing angle, rough latitude. Sea turtles and some fish possess a similar magnetic sense, allowing them to return, decades later, to the very beach where they hatched.
+
+    Not all navigation is inherited. While a young godwit seems to fly its first migration on instinct alone, other species learn their routes from older individuals. Whooping cranes raised in captivity, having no adults to follow, famously had to be taught a migration path by conservationists flying ahead in a microlight aircraft.
+
+    Migration is now under growing pressure. Climate change is shifting the timing of the seasons, so that some birds arrive at their breeding grounds to find that the insects their chicks depend on have already peaked. Light pollution disorients night-flyers, and the draining of wetlands removes the refuelling stops on which long journeys depend. Conservationists increasingly argue that protecting a migratory species means protecting an entire chain of sites, sometimes spread across a dozen countries — a challenge as much diplomatic as ecological.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: What does the bar-tailed godwit do before its migration, according to the passage?
+      options:
+        - It joins a large flock led by older birds
+        - It nearly doubles its weight and shrinks its digestive organs
+        - It feeds continuously for eight or nine days
+        - It follows a microlight aircraft south
+      correctIndex: 1
+      explanationZh: 第一段写道，出发前这种鸟 "nearly doubles its body weight in fat and shrinks its digestive organs, which it will not need in flight, to save weight"——增肥近一倍并缩小飞行中用不上的消化器官以减重。八九天是不进食的连续飞行时间，而非进食（排除 C）；跟随轻型飞机的是人工繁育的美洲鹤（排除 D）。
+    - id: q2
+      stem: According to the passage, how do many migrating birds find their way?
+      options:
+        - By relying entirely on a single, inherited instinct
+        - By following rivers and coastlines
+        - By using several methods, including a sense of the Earth's magnetic field
+        - By memorising landmarks passed on previous journeys
+      correctIndex: 2
+      explanationZh: 第二段说许多物种 "appear to carry several navigational tools at once"，包括太阳、星象，以及 "sense the Earth's magnetic field"——同时携带多种导航工具，其中包含感知地磁场。"完全依赖单一本能"与"多种工具"相矛盾（排除 A）；沿河与海岸线、记忆地标文中均未提及（排除 B、D）。
+    - id: q3
+      stem: The example of the whooping cranes is used to show that
+      options:
+        - aircraft disturb migrating birds
+        - captivity permanently damages a bird's sense of direction
+        - young godwits cannot migrate without adults
+        - some species must learn their migration route rather than inherit it
+      correctIndex: 3
+      explanationZh: 第三段用美洲鹤说明 "Not all navigation is inherited"——并非所有导航都靠遗传：人工繁育、无成鸟可循的美洲鹤必须由人驾驶轻型飞机在前领飞、教它们迁徙路线。文中恰恰说幼年斑尾塍鹬 "seems to fly its first migration on instinct alone"，与选项 C 相反。
+    - id: q4
+      stem: The word "disorients" in the final paragraph is closest in meaning to
+      options:
+        - attracts
+        - confuses
+        - exhausts
+        - blinds
+      correctIndex: 1
+      explanationZh: 原句 "Light pollution disorients night-flyers" 指光污染使夜间迁徙的鸟迷失方向、辨不清方位，故与 confuses（使困惑、使迷惑）最接近。它强调方向感被扰乱，而非吸引（A）、使精疲力竭（C）或使失明（D）。
+    - id: q5
+      stem: What do conservationists increasingly argue, according to the final paragraph?
+      options:
+        - Migration should be discouraged to protect birds from danger
+        - Climate change has had no measurable effect on migration
+        - Protecting a migratory species requires protecting many linked sites across different countries
+        - Wetlands are less important than breeding grounds
+      correctIndex: 2
+      explanationZh: 末段结尾指出，保护候鸟意味着 "protecting an entire chain of sites, sometimes spread across a dozen countries"——要保护横跨多国的一整条站点链，是一项既涉外交又涉生态的难题。气候变化正改变季节时序、对迁徙影响显著，与选项 B 矛盾；湿地正是关键的补给站，文中并未贬低其重要性（排除 D）。
+- id: ielts-r-011
+  track: ielts
+  title: The Tyranny of Too Much Choice
+  titleZh: 选择过多的暴政
+  genre: Academic
+  passage: |-
+    Standard economic theory has long assumed that more choice is always better: a rational shopper offered more options can simply ignore the ones they dislike and is never worse off. Over the past twenty-five years, psychologists have gathered evidence that this comfortable assumption often fails to describe how real people behave.
+
+    The best-known demonstration came from a supermarket in California. On one day, shoppers were offered a tasting table displaying twenty-four varieties of jam; on another, just six. The larger display attracted more passers-by, but with a surprising result: of those who stopped at the big table, only three per cent went on to buy a jar, compared with nearly a third of those who saw the smaller selection. Faced with too many options, many shoppers found it easier to walk away and buy nothing at all.
+
+    Researchers call this choice overload. When the alternatives are numerous and hard to compare, the effort of deciding rises, and so does the fear of picking wrongly and later regretting it. The result can be paralysis, dissatisfaction with whatever is eventually chosen, or a retreat to the familiar. The effect is strongest, studies suggest, when the chooser is not an expert and the options differ in complicated ways.
+
+    This does not mean people prefer to have their choices made for them. Feeling in control matters a great deal to human well-being. The practical lesson, rather, is that choices are easier to make when they are well organised — grouped into sensible categories, or presented with a sensible default. Pension schemes illustrate the point: when employees must actively opt in, many never get around to joining, but when enrolment is automatic and they are free to leave, participation rises sharply, even though the underlying freedom is unchanged.
+  suggestedMinutes: 9
+  questions:
+    - id: q1
+      stem: What is the writer's main point in the passage?
+      options:
+        - People always make better decisions when given fewer options
+        - Economic theory has been completely abandoned by psychologists
+        - Shoppers should never be offered free samples
+        - More choice does not always benefit people, contrary to standard economic theory
+      correctIndex: 3
+      explanationZh: 首段指出传统经济学假设 "more choice is always better"，而心理学证据表明 "this comfortable assumption often fails"，全文围绕"选择过载"展开，故 D 最贴切。选项 A 过于绝对——文中说选择过多只在特定条件下才有害，并非越少越好；心理学是修正而非"彻底抛弃"经济学（排除 B）。
+    - id: q2
+      stem: What did the jam-tasting experiment find?
+      options:
+        - The larger display led to far fewer purchases than the smaller one
+        - Shoppers preferred jam to other products
+        - The smaller display attracted more passers-by
+        - Most shoppers bought jam regardless of the number of varieties
+      correctIndex: 0
+      explanationZh: 第二段的结果是：陈列 24 种果酱的大展台虽吸引更多人驻足，但 "only three per cent went on to buy a jar, compared with nearly a third of those who saw the smaller selection"——大展台购买率仅 3%，远低于小展台的近三分之一。大展台吸引的路人更多（与 C 相反），且多数人反而什么都没买（排除 D）。
+    - id: q3
+      stem: The word "paralysis" in paragraph 3 is closest in meaning to
+      options:
+        - regret
+        - excitement
+        - an inability to act
+        - physical illness
+      correctIndex: 2
+      explanationZh: 原句说选择过载 "can be paralysis, dissatisfaction... or a retreat to the familiar"，此处 paralysis 是比喻义，指因难以取舍而"无法作出决定、动弹不得"，故与 an inability to act 最接近。它并非指身体疾病（D），也不同于句中另行列出的 dissatisfaction 与 regret（A）。
+    - id: q4
+      stem: Why does the writer mention pension schemes in the final paragraph?
+      options:
+        - To argue that people should not be allowed to leave a pension scheme
+        - To show that people prefer having decisions made for them
+        - To illustrate how the way a choice is presented can change what people do
+        - To prove that automatic enrolment reduces overall savings
+      correctIndex: 2
+      explanationZh: 末段用养老金计划说明"选择如何呈现"至关重要：需主动加入时很多人一直拖着不办，而改为自动加入、可自由退出后 "participation rises sharply, even though the underlying freedom is unchanged"——自由并未改变，参与率却大增。作者特别强调人们并非愿意让别人替自己决定（与 B 相反），且自动加入是提高而非减少参与（排除 D）。
+- id: ielts-r-012
+  track: ielts
+  title: Life Without Sunlight
+  titleZh: 没有阳光的生命
+  genre: Academic
+  passage: |-
+    The deep ocean — the world below about two hundred metres, where sunlight fails — is the largest living space on Earth, yet it remains less thoroughly mapped than the surface of Mars. For most of scientific history, biologists assumed that the sea floor was a cold, dark desert, sparsely populated because all life ultimately depends on energy from the sun. A single discovery in 1977 overturned that belief.
+
+    Exploring a volcanic ridge near the Galápagos Islands in a small submersible, scientists found cracks in the sea floor gushing water heated by the magma below. Clustered around these hydrothermal vents was an astonishing community of life: metre-long tube worms, ghostly crabs, and dense mats of bacteria, thriving in total darkness. The bacteria, it turned out, were the foundation of the whole system. Rather than using sunlight, they extract energy from the chemicals dissolved in the venting water, particularly hydrogen sulphide — a process known as chemosynthesis. Here was an entire ecosystem powered not by the sun but by the heat of the planet itself.
+
+    The finding transformed several fields at once. It widened the range of conditions under which life is thought possible, encouraging astrobiologists to look more seriously at the ice-covered oceans of moons such as Europa. It also drew commercial attention, because the mineral-rich chimneys that vents build up are laden with copper, zinc, and other metals in growing demand.
+
+    That interest now poses a dilemma. Mining companies have obtained licences to explore parts of the deep sea floor, arguing that its metals are needed for batteries and wind turbines. Marine scientists counter that we understand these ecosystems too poorly to disturb them safely; many vent species are found nowhere else, and the animals of the deep, living in cold and dark, tend to grow and reproduce with extraordinary slowness, so damage could take centuries to heal.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: Before 1977, what did biologists generally believe about the deep sea floor?
+      options:
+        - That it was rich in life powered by chemicals
+        - That it was a barren desert because life depends on sunlight
+        - That it contained valuable metals worth mining
+        - That it was warmer than the surface of the ocean
+      correctIndex: 1
+      explanationZh: 第一段说，长期以来生物学家假设海底是 "a cold, dark desert, sparsely populated because all life ultimately depends on energy from the sun"——因一切生命最终依赖阳光，海底应是荒芜之地。靠化学能维持的丰富生命恰恰是 1977 年才推翻旧观点的发现（排除 A）；金属与温度并非当时的核心认知（排除 C、D）。
+    - id: q2
+      stem: How do the bacteria around hydrothermal vents obtain energy?
+      options:
+        - From sunlight filtering down through the water
+        - By feeding on tube worms and crabs
+        - From chemicals dissolved in the venting water
+        - From the heat of the water alone
+      correctIndex: 2
+      explanationZh: 第二段解释，这些细菌 "extract energy from the chemicals dissolved in the venting water, particularly hydrogen sulphide"——从喷口水中溶解的化学物质（尤其是硫化氢）获取能量，即化能合成。深海无阳光可用（排除 A）；管虫、螃蟹反而依赖细菌构成的食物基础（排除 B）；热量是水被加热的原因，并非细菌的能量来源（排除 D）。
+    - id: q3
+      stem: Why did the discovery interest astrobiologists?
+      options:
+        - It proved that life exists on the moon Europa
+        - It revealed new metals that could fuel spacecraft
+        - It suggested the sun is unnecessary for life on Earth's surface
+        - It showed that life can survive in a wider range of conditions than assumed
+      correctIndex: 3
+      explanationZh: 第三段说这一发现 "widened the range of conditions under which life is thought possible"，促使天体生物学家更认真地考察木卫二等冰封海洋。它只是"鼓励研究"，并未"证明"欧罗巴上存在生命（排除 A）；金属吸引的是采矿业，而非用作航天燃料（排除 B）。
+    - id: q4
+      stem: The word "laden" in paragraph 3 is closest in meaning to
+      options:
+        - loaded
+        - covered
+        - stained
+        - surrounded
+      correctIndex: 0
+      explanationZh: 原句 "the mineral-rich chimneys... are laden with copper, zinc, and other metals" 中，laden 意为"满载、富含"，故与 loaded 最接近。它强调内部富含大量金属，而非表面被覆盖（B）、被沾污（C）或被环绕（D）。
+    - id: q5
+      stem: What concern do marine scientists raise about deep-sea mining?
+      options:
+        - The metals involved are not actually valuable
+        - Mining would be too expensive to be profitable
+        - Damaged vent ecosystems could take centuries to recover
+        - Mining companies have been refused all licences
+      correctIndex: 2
+      explanationZh: 末段指出，深海生物"生长繁殖极其缓慢"，因此 "damage could take centuries to heal"——一旦破坏，可能需数百年才能恢复，且许多喷口物种别处没有。矿企其实已获得勘探许可（与 D 相反）；金属正因电池、风机需求上升而被视为有价值（排除 A）。
+- id: ielts-r-013
+  track: ielts
+  title: When a Language Falls Silent
+  titleZh: 当一门语言归于沉寂
+  genre: Academic
+  passage: |-
+    There are roughly seven thousand languages spoken in the world today, but they are vanishing at an alarming rate. Linguists estimate that one language falls silent every few weeks, as its last fluent speaker dies, and that by the end of this century as many as half of all languages may be gone. A striking imbalance underlies these figures: a mere handful of languages, led by Mandarin, English, and Spanish, are spoken by most of humanity, while thousands of others are maintained by only a few hundred or even a few dozen people.
+
+    Languages usually die not because they are forbidden — though that has happened — but through a quieter process. Parents in a minority community, wanting their children to prosper, choose to raise them in a dominant national or global language that promises schooling and employment. Within two or three generations, the ancestral tongue survives only among the elderly, and then not at all.
+
+    To an outsider the loss may seem regrettable but minor. Linguists argue otherwise. Each language encodes a distinct way of organising human experience, and some carry knowledge found nowhere else — detailed classifications of local plants, navigational techniques, or ecological observations accumulated over centuries. When such a language disappears, that knowledge often disappears with it, unrecorded.
+
+    Efforts to reverse the trend are growing, and a few have succeeded spectacularly. Hebrew, confined for centuries to religious texts, was revived as an everyday spoken language and now has millions of native speakers. More modest projects — recording elders, producing dictionaries, running immersion schools where young children hear only the endangered language — have brought others back from the edge. Revival, linguists caution, ultimately depends less on scholars than on a community deciding that its language is worth passing on to its children.
+  suggestedMinutes: 9
+  questions:
+    - id: q1
+      stem: What is the main idea of the passage?
+      options:
+        - Most of the world's languages are spoken by millions of people
+        - Languages are disappearing rapidly, and their loss matters, though revival is sometimes possible
+        - Governments are the main cause of language death
+        - Only Hebrew has ever been successfully revived
+      correctIndex: 1
+      explanationZh: 全文先讲语言正快速消失，以及为何这种损失重要（承载独特知识），再谈复兴的努力与个别成功案例，故 B 最全面。现实是少数语言被多数人使用、成千上万种语言仅剩极少数使用者（与 A 相反）；语言多因家长自愿选择而消亡，并非主要因政府（排除 C）。
+    - id: q2
+      stem: According to the passage, how do languages usually die?
+      options:
+        - Governments forbid people from speaking them
+        - Wars destroy the communities that speak them
+        - Their speakers move abroad and forget them
+        - Parents raise children in a dominant language that offers better prospects
+      correctIndex: 3
+      explanationZh: 第二段说语言消亡通常是个"更安静的过程"：少数族群的家长为让孩子获得教育和就业机会，"choose to raise them in a dominant national or global language"——用主流语言抚养孩子，两三代后母语便无人使用。被禁止使用 "though that has happened" 只是例外而非常态（排除 A）。
+    - id: q3
+      stem: The word "confined" in the final paragraph is closest in meaning to
+      options:
+        - translated
+        - restricted
+        - forgotten
+        - forbidden
+      correctIndex: 1
+      explanationZh: 原句 "Hebrew, confined for centuries to religious texts" 指希伯来语数百年来被"局限、限定"于宗教典籍之中，故与 restricted（受限的）最接近。它说的是使用范围狭窄，而非被翻译（A）、被遗忘（C）或被禁止（D）——事实上它一直在宗教场合使用。
+    - id: q4
+      stem: What does the passage suggest is essential for reviving an endangered language?
+      options:
+        - The work of scholars above all else
+        - A community's decision to pass the language on to its children
+        - Government funding for dictionaries
+        - Making the language compulsory in schools
+      correctIndex: 1
+      explanationZh: 末段强调，复兴 "ultimately depends less on scholars than on a community deciding that its language is worth passing on to its children"——关键不在学者，而在社区是否决心把语言传给下一代。学者的工作只是辅助（与 A 相反）；强制入学、政府拨款文中未作为决定性因素提出（排除 C、D）。
+- id: ielts-r-014
+  track: ielts
+  title: The Hidden Network of the Forest
+  titleZh: 森林中隐藏的网络
+  genre: Academic
+  passage: |-
+    A walk through a forest gives the impression of individual trees competing for light and water, each standing alone. Beneath the soil, however, lies a hidden system that complicates this picture. The roots of most trees are wrapped in fine threads of fungi, in a partnership so ancient that it may have helped plants colonise land in the first place. The fungi extract water and nutrients such as phosphorus from the soil and pass them to the tree; in return, the tree supplies the fungi with sugars it makes through photosynthesis, which the fungi cannot produce themselves.
+
+    What makes this arrangement remarkable is its scale. A single fungal network can link many trees together, threading through the soil across an entire woodland. Using radioactive tracers, the Canadian ecologist Suzanne Simard showed that carbon could travel through these fungal threads from one tree to another — for instance, from a birch standing in sunlight to a shaded fir seedling struggling to make enough food of its own. Older, well-connected trees, sometimes called hub trees, appeared especially generous, supporting the seedlings growing up around them.
+
+    These findings have captured the public imagination, and the network is now popularly known as the "wood wide web". Some writers have gone further, describing forests as cooperative communities or even as single organisms. Here many scientists urge caution. It is not clear that trees intend to help one another; the fungi, after all, have their own interests, and may simply be moving resources in ways that benefit themselves. Sceptics also note that some of the most dramatic claims rest on a small number of studies.
+
+    What is not in doubt is that a forest is far more interconnected than it looks, and that the soil beneath our feet is not an inert backdrop but a living network on which the trees above depend.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: In the partnership between trees and fungi, what do the trees provide?
+      options:
+        - Water drawn up from deep in the soil
+        - Phosphorus and other soil nutrients
+        - Sugars made through photosynthesis
+        - Protection from radioactive tracers
+      correctIndex: 2
+      explanationZh: 第一段说，作为回报，树木 "supplies the fungi with sugars it makes through photosynthesis, which the fungi cannot produce themselves"——把光合作用制成的糖分给真菌，因为真菌自己造不出。水和磷等养分是真菌提供给树木的（正好相反，排除 A、B）；放射性示踪剂是研究手段，并非交换物（排除 D）。
+    - id: q2
+      stem: What did Suzanne Simard's research demonstrate?
+      options:
+        - That carbon could move through fungi from one tree to another
+        - That birch trees always grow faster than firs
+        - That fungi harm the seedlings growing near hub trees
+        - That forests are made up of a single species of tree
+      correctIndex: 0
+      explanationZh: 第二段说 Simard 用放射性示踪剂证明 "carbon could travel through these fungal threads from one tree to another"——碳可经真菌菌丝在树木间传递，例如从阳光下的桦树传给荫蔽处的冷杉幼苗。所谓"枢纽树"是在帮助而非伤害周围幼苗（与 C 相反）。
+    - id: q3
+      stem: Why do many scientists urge caution about the "wood wide web"?
+      options:
+        - The fungal networks have never actually been observed
+        - It is unclear whether trees truly intend to help one another
+        - Radioactive tracers make the results unreliable
+        - Trees and fungi do not really exchange anything
+      correctIndex: 1
+      explanationZh: 第三段指出科学家谨慎的原因："It is not clear that trees intend to help one another"——尚不清楚树木是否真有互助的"意图"，真菌可能只是按对自己有利的方式搬运资源，且某些惊人结论只基于少数研究。网络确实被观测到、树与菌确有交换（排除 A、D）。
+    - id: q4
+      stem: The word "inert" in the final paragraph is closest in meaning to
+      options:
+        - fertile
+        - shallow
+        - hidden
+        - lifeless
+      correctIndex: 3
+      explanationZh: 原句说土壤 "is not an inert backdrop but a living network"——用 "not... but a living network"（不是……而是有生命的网络）与 inert 形成对照，可知 inert 意为"无生命的、不活动的"，故 lifeless 最接近。fertile（肥沃）、hidden（隐蔽）、shallow（浅的）都不符合这一对比。
+    - id: q5
+      stem: What is the writer's overall conclusion?
+      options:
+        - Forests are best understood as single organisms
+        - Trees compete with one another and nothing more
+        - A forest is far more interconnected than it appears
+        - Fungi are harmful to most trees
+      correctIndex: 2
+      explanationZh: 末段的定论是 "a forest is far more interconnected than it looks"——森林远比表面看上去更加相互连接，脚下的土壤是一张支撑树木的活网络。把森林说成"单一生物"是作者提醒要谨慎看待的夸张说法（排除 A）；开头"各自竞争"的印象正是全文要复杂化、修正的（排除 B）。
+- id: ielts-r-015
+  track: ielts
+  title: The World Within Us
+  titleZh: 我们体内的世界
+  genre: Academic
+  passage: |-
+    The human body is home to a vast population of microorganisms — bacteria, viruses, and fungi — that live on the skin, in the mouth, and above all in the gut. Collectively known as the microbiome, they number in the trillions, rivalling the body's own cells. For a long time medicine viewed such microbes chiefly as a threat, something to be eliminated with disinfectants and antibiotics. That attitude is now giving way to a more nuanced view, in which many of these residents are recognised as essential partners.
+
+    The gut bacteria earn their keep in several ways. They break down fibres that human enzymes cannot digest, releasing compounds the body can absorb; they manufacture certain vitamins; and they help train the immune system, teaching it to distinguish genuine threats from harmless material. A disrupted microbiome — thrown off balance by illness, poor diet, or a heavy course of antibiotics — has been associated with conditions ranging from digestive disorders to allergies.
+
+    More surprising is the growing evidence of a link between the gut and the brain. The two are connected by nerves and by the chemical signals that gut bacteria release, and experiments in mice suggest that altering the microbiome can change behaviour, including levels of anxiety. Researchers are careful, however, to distinguish such findings in animals from firm conclusions about people, where the evidence is still preliminary and much harder to interpret.
+
+    Much of the science remains young, and popular enthusiasm has run ahead of the evidence. Shops now sell probiotic supplements promising to remedy all manner of ailments, most of them poorly supported by trials. What is clear is that diet shapes the microbiome powerfully: a varied diet rich in plants and fibre tends to foster a diverse community of microbes, and diversity, on current evidence, appears to be a reliable marker of a healthy gut.
+  suggestedMinutes: 9
+  questions:
+    - id: q1
+      stem: What change in attitude does the passage describe?
+      options:
+        - From seeing microbes mainly as threats to recognising many as essential partners
+        - From ignoring gut bacteria to trying to eliminate them all
+        - From trusting probiotics to distrusting them
+        - From studying the skin to studying only the gut
+      correctIndex: 0
+      explanationZh: 首段说医学过去主要把微生物视为威胁、想用消毒剂和抗生素清除，如今 "giving way to a more nuanced view, in which many of these residents are recognised as essential partners"——转向承认许多微生物是不可或缺的伙伴，故 A 正确。选项 B 把方向搞反了（过去才想清除，如今才认识到其价值）。
+    - id: q2
+      stem: According to the passage, gut bacteria help the body by
+      options:
+        - replacing the body's own cells
+        - producing antibiotics
+        - eliminating the need for a varied diet
+        - breaking down fibres and helping train the immune system
+      correctIndex: 3
+      explanationZh: 第二段列举肠道细菌的作用：分解人体酶无法消化的纤维、制造某些维生素，并 "help train the immune system"——帮助训练免疫系统辨别真正的威胁。它们数量堪比人体细胞，但并非"取代"人体细胞（排除 A）；文末恰恰强调多样化饮食的重要（与 C 相反）。
+    - id: q3
+      stem: What does the passage say about the link between the gut and the brain?
+      options:
+        - It has been firmly proven in humans
+        - It exists only in mice, not in other animals
+        - Evidence in mice is suggestive, but conclusions about people remain preliminary
+        - Gut bacteria have no effect on behaviour
+      correctIndex: 2
+      explanationZh: 第三段说小鼠实验 "suggest that altering the microbiome can change behaviour"，但研究者谨慎地区分动物结果与人体结论，指出关于人的证据 "still preliminary and much harder to interpret"——尚属初步、更难解读。故并未在人身上得到确证（排除 A）；小鼠实验恰恰显示细菌能影响行为（与 D 相反）。
+    - id: q4
+      stem: The word "foster" in the final paragraph is closest in meaning to
+      options:
+        - encourage
+        - replace
+        - measure
+        - resist
+      correctIndex: 0
+      explanationZh: 原句说富含植物和纤维的多样饮食 "tends to foster a diverse community of microbes"——有助于培育、促进多样的微生物群落，故 foster 与 encourage（促进）最接近。它表示"扶持、助长"，而非取代（B）、测量（C）或抵制（D）。
+- id: ielts-r-016
+  track: ielts
+  title: The First Writing
+  titleZh: 最早的文字
+  genre: Academic
+  passage: |-
+    Writing is such a familiar part of daily life that it is easy to assume it was always destined to be invented. In fact, full writing systems — capable of recording anything that could be spoken — emerged independently only a handful of times in human history, and the earliest known example arose for a strikingly practical reason: accounting.
+
+    In the cities of ancient Mesopotamia, more than five thousand years ago, temple administrators needed to keep track of grain, livestock, and taxes. For centuries they had used small clay tokens of different shapes to represent quantities of goods, sealing them inside clay envelopes as records of a transaction. Eventually someone realised that pressing the tokens into the soft surface of the envelope, before enclosing them, made the same marks more conveniently — and that the tokens themselves were then unnecessary. The marks became signs; the signs, pressed with a reed stylus, became the wedge-shaped script known as cuneiform.
+
+    At first these signs could record only objects and numbers. The decisive step came when scribes began using a sign not just for the thing it depicted but for the sound of its name, so that signs could be combined to spell out words that no picture could easily show — personal names, for example, or abstract ideas. With that innovation, writing broke free of the account book. Within a few centuries it was being used for laws, letters, and the world's first works of literature.
+
+    Because writing was difficult to learn, mastering it conferred power, and scribes formed a respected and privileged class. Yet the technology's ultimate significance lay elsewhere. For the first time, knowledge could be stored outside a human memory and passed intact across generations and distances. Every library and database since rests on that Mesopotamian breakthrough: the discovery that speech could be made to leave a permanent trace.
+  suggestedMinutes: 10
+  questions:
+    - id: q1
+      stem: According to the passage, the earliest known writing system was developed in order to
+      options:
+        - record laws and works of literature
+        - keep accounts of goods and taxes
+        - allow scribes to gain political power
+        - preserve religious ceremonies
+      correctIndex: 1
+      explanationZh: 首段末句指出，已知最早的文字 "arose for a strikingly practical reason"——为记账（accounting）这一极其实际的需要而生；第二段进一步说神庙管理者要清点粮食、牲畜与税收。记录法律与文学是文字后来才有的用途（排除 A）；抄写员的权力是文字带来的结果，而非发明目的（排除 C）。
+    - id: q2
+      stem: How did cuneiform signs originally develop, according to the passage?
+      options:
+        - By copying the shapes of animals and plants
+        - From marks made by pressing clay tokens into clay
+        - From an alphabet borrowed from a neighbouring people
+        - From drawings painted on temple walls
+      correctIndex: 1
+      explanationZh: 第二段描述：人们本用不同形状的黏土代币记数并封入黏土信封，后来发现 "pressing the tokens into the soft surface of the envelope... made the same marks more conveniently"——把代币压进信封表面留下印痕更方便，代币遂被弃用，这些印痕经芦苇笔书写演变为楔形文字。它并非源自动植物摹形（A）或邻族字母（C）。
+    - id: q3
+      stem: What was the "decisive step" described in the third paragraph?
+      options:
+        - Carving signs into stone instead of clay
+        - Replacing the reed stylus with a metal pen
+        - Teaching writing to ordinary citizens
+        - Using a sign for the sound of its name, not just the object it showed
+      correctIndex: 3
+      explanationZh: 第三段说关键一步是抄写员开始 "using a sign not just for the thing it depicted but for the sound of its name"——让符号不仅表示所画之物，还表示其名称的读音，从而能拼出图画难以表达的人名与抽象概念，文字由此摆脱账本。金属笔、普及教育、改刻石头等选项文中均未提及。
+    - id: q4
+      stem: The word "conferred" in the final paragraph is closest in meaning to
+      options:
+        - demanded
+        - granted
+        - discussed
+        - limited
+      correctIndex: 1
+      explanationZh: 原句 "mastering it conferred power" 指掌握文字"授予、带来"了权力，故 conferred 与 granted（给予）最接近。confer 在此是"授予"义，而非其"商议"的另一义项（排除 C），也不表示要求（A）或限制（D）。
+    - id: q5
+      stem: What does the writer say was the ultimate significance of writing?
+      options:
+        - It made scribes the most powerful class in society
+        - It was quickly adopted all over the ancient world
+        - It replaced spoken language in daily life
+        - It allowed knowledge to be stored outside human memory and passed on intact
+      correctIndex: 3
+      explanationZh: 末段点明文字最深远的意义在于："For the first time, knowledge could be stored outside a human memory and passed intact across generations and distances"——知识首次能存于人脑之外、完好地跨代跨地传递。抄写员的权力被明确称为次要意义（其真正意义 "lay elsewhere"，排除 A）；文字是记录言语而非取代言语（排除 C）。

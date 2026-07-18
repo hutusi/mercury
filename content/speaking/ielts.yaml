@@ -150,3 +150,147 @@
       zh: 是否使用了自然的讨论语言（in a way、as for、I'd say），并在适当处留有余地？
     - en: Did you keep speaking fluently for the full time, developing each question before moving on?
       zh: 是否流畅地讲满全程，每个问题都充分展开后再进入下一个？
+- id: ielts-s-006
+  track: ielts
+  partType: ielts_part1
+  title: "Part 1: Your Hometown"
+  titleZh: 第一部分：你的家乡
+  promptEn: "Let's talk about your hometown. Answer these questions naturally, as if chatting with the examiner: Where is your hometown? What do you like most about it? Has it changed much since you were a child? Would you like to live there in the future?"
+  promptZh: 我们来谈谈你的家乡。请像与考官闲聊一样自然地回答以下问题：你的家乡在哪里？你最喜欢它的哪一点？和你小时候相比，它变化大吗？你将来愿意回去生活吗？
+  prepSeconds: 0
+  speakSeconds: 60
+  modelAnswer: I come from a mid-sized city on the southern coast — it's not famous at all, but it was a lovely place to grow up. What I like most is probably the pace of life; people actually have time to stop and chat, and you're never more than ten minutes from the sea. It has changed a lot since I was a child, though. The old harbour used to be all fishing boats and warehouses, and now it's full of coffee shops and apartment blocks, which I have mixed feelings about, to be honest. As for moving back — maybe one day. My career keeps me in the capital for now, but I could easily imagine retiring there, close to my parents and the seafront I grew up on.
+  checklist:
+    - en: Did you answer every question asked, extending each answer by one or two sentences?
+      zh: 是否回答了所有问题，并把每个回答扩展一到两句？
+    - en: Did you sound conversational and relaxed rather than reciting a memorized speech?
+      zh: 听起来是否像自然聊天，而不是在背诵事先准备好的稿子？
+    - en: Did you add small personal details (the harbour, the seafront) that make answers feel genuine?
+      zh: 是否加入了让回答显得真实的个人细节（海港、海滨）？
+    - en: Did you use everyday spoken expressions (to be honest, as for) and contractions?
+      zh: 是否使用了日常口语表达（to be honest、as for）和缩略形式？
+- id: ielts-s-007
+  track: ielts
+  partType: ielts_part2
+  title: "Part 2: A Trip You Remember Well"
+  titleZh: 第二部分：一次难忘的旅行
+  promptEn: |-
+    Describe a journey or trip that you remember well.
+    You should say:
+    - where you went
+    - who you travelled with
+    - what you did during the trip
+    and explain why this trip was so memorable for you.
+  promptZh: |-
+    描述一次你记忆深刻的旅行。
+    你应当谈到：
+    - 你去了哪里
+    - 你和谁一起去的
+    - 旅途中你做了什么
+    并说明这次旅行为什么让你如此难忘。
+  prepSeconds: 60
+  speakSeconds: 120
+  modelAnswer: |-
+    The trip I remember best is a week of hiking I did in the mountains in the west of the country, about four years ago.
+
+    I went with two friends from university. We'd been talking about doing a proper trekking trip for years and kept putting it off, and then one of them changed jobs and suddenly had two free weeks, so we booked everything in about three days, almost on impulse. Looking back, that spontaneity was part of the magic.
+
+    As for what we did — we walked between mountain villages for five days, staying in small family guesthouses each night. There were no cars involved at all; everything we needed was in our backpacks. The days had a lovely rhythm: walk all morning, a long lunch somewhere with a view, then a shorter walk to the next village before dark. In the evenings we played cards with the guesthouse owners and went to bed ridiculously early. My phone lost signal on the second day, and after the initial panic I honestly stopped missing it.
+
+    Why was it so memorable? Partly the scenery, of course — one morning we climbed above the cloud line before sunrise, and watching the light spread across a sea of clouds is something I'll never forget. But mainly it was the quality of the time. Without screens or schedules, the three of us talked properly for the first time in years — real conversations, not just catching up. We still call it 'the trip' as if there had never been another one, and we've promised ourselves to do it again before we turn forty.
+  checklist:
+    - en: Did you cover all four points on the cue card, including the final 'explain' point?
+      zh: 是否覆盖了提示卡上的全部四个要点，包括最后的“说明”部分？
+    - en: Did you speak for close to the full two minutes without drying up?
+      zh: 是否讲满了接近两分钟，而没有中途无话可说？
+    - en: Did you structure the story with a timeline (four years ago, on the second day, looking back)?
+      zh: 是否按时间线组织故事（四年前、第二天、回头看）？
+    - en: Did you include one vivid specific moment (the sunrise above the clouds) rather than only generalities?
+      zh: 是否讲到了一个生动的具体瞬间（云海之上的日出），而不是泛泛而谈？
+    - en: Did you use natural spoken linkers (as for, honestly, of course) rather than essay language?
+      zh: 是否使用了自然的口语连接词（as for、honestly、of course），而不是书面语？
+- id: ielts-s-008
+  track: ielts
+  partType: ielts_part1
+  title: "Part 1: Food and Cooking"
+  titleZh: 第一部分：饮食与烹饪
+  promptEn: "Let's talk about food and cooking. Answer these questions naturally, as if chatting with the examiner: What kind of food do you enjoy most? Do you cook at home, or do you prefer eating out? Who did the cooking in your family when you were growing up? Is there a dish you would like to learn to make?"
+  promptZh: 我们来谈谈饮食与烹饪。请像与考官闲聊一样自然地回答以下问题：你最喜欢什么样的食物？你在家做饭吗，还是更喜欢外出就餐？你小时候家里是谁做饭？有没有一道菜是你想学会做的？
+  prepSeconds: 0
+  speakSeconds: 60
+  modelAnswer: I'd say I enjoy simple home-style food more than anything fancy — the kind of dishes my grandmother used to make, lots of vegetables, rice, and slow-cooked soups. I do cook at home, most weeknights actually; partly it saves money, but mainly I find it relaxing after a whole day of staring at screens. At weekends, though, my friends and I usually eat out and try somewhere new. Growing up, it was definitely my grandmother who ruled the kitchen — both my parents worked late, so she cooked for the whole family, and the smell of her cooking is basically the smell of my childhood. One dish I'd really love to master is her braised fish. I've attempted it a few times, and somehow it never tastes quite the same.
+  checklist:
+    - en: Did you answer every question asked, extending each answer by one or two sentences?
+      zh: 是否回答了所有问题，并把每个回答扩展一到两句？
+    - en: Did you give reasons or small examples, not just yes/no answers?
+      zh: 是否给出了原因或小例子，而不是简单地回答是或否？
+    - en: Did you use everyday spoken expressions (I'd say, actually, definitely) and contractions?
+      zh: 是否使用了日常口语表达（I'd say、actually、definitely）和缩略形式？
+    - en: Did you keep a light, personal tone rather than giving a formal description of food culture?
+      zh: 是否保持了轻松的个人化语气，而不是正式地介绍饮食文化？
+- id: ielts-s-009
+  track: ielts
+  partType: ielts_part2
+  title: "Part 2: A Book That Impressed You"
+  titleZh: 第二部分：一本给你留下深刻印象的书
+  promptEn: |-
+    Describe a book that made a strong impression on you.
+    You should say:
+    - what the book was about
+    - when and why you read it
+    - what you liked or disliked about it
+    and explain why it made such a strong impression on you.
+  promptZh: |-
+    描述一本给你留下深刻印象的书。
+    你应当谈到：
+    - 这本书讲了什么
+    - 你是什么时候、为什么读它的
+    - 你喜欢或不喜欢它的哪些方面
+    并说明它为什么给你留下如此深刻的印象。
+  prepSeconds: 60
+  speakSeconds: 120
+  modelAnswer: |-
+    The book I'd like to talk about is a memoir written by a young surgeon who discovered, right at the peak of his training, that he had terminal cancer. It's essentially about what makes a life meaningful when you know your time is short — he keeps operating, he and his wife decide to have a child, and he writes the book itself in his final months.
+
+    I read it about three years ago, and the timing was no accident. I'd just come through a rough patch at work — long hours, no clear purpose — and a friend pressed it into my hands and said, read this before you complain to me again. I finished it in two sittings, which almost never happens with me.
+
+    What did I like about it? Mostly the honesty. The author never pretends to be brave or wise; he admits he was terrified and sometimes petty, and that made his moments of courage feel real rather than performed. The writing is beautiful too — he'd studied literature before medicine, and it shows. If I had to name a criticism, the medical detail occasionally slowed me down, though even that added to the sense that you were inside his world.
+
+    As for why it impressed me so deeply — I think it reframed a question I'd been asking badly. I kept asking myself whether I was successful; the book made me ask instead whether the way I spend an ordinary Tuesday reflects what I actually value. I can't say it changed my life overnight, but I did start saying no to work that means nothing to me, and I've reread the final chapter several times since. Very few books survive a second reading like that.
+  checklist:
+    - en: Did you cover all four points on the cue card, including the final 'explain' point?
+      zh: 是否覆盖了提示卡上的全部四个要点，包括最后的“说明”部分？
+    - en: Did you speak for close to the full two minutes, with a clear beginning, middle, and end?
+      zh: 是否讲满接近两分钟，并有清晰的开头、展开和结尾？
+    - en: Did you summarize the book briefly and spend most of the time on your personal connection to it?
+      zh: 是否简要概括书的内容，而把大部分时间留给你与这本书的个人联系？
+    - en: Did you evaluate the book with nuance, mentioning a weakness as well as strengths?
+      zh: 是否对这本书做了有层次的评价，既讲优点也提到不足？
+    - en: Did you describe its effect on you concretely (saying no to meaningless work) rather than in vague praise?
+      zh: 是否具体描述了它对你的影响（拒绝无意义的工作），而不是空泛地赞美？
+- id: ielts-s-010
+  track: ielts
+  partType: ielts_part3
+  title: "Part 3: Travel and Tourism"
+  titleZh: 第三部分：旅行与旅游业
+  promptEn: "Now let's discuss some more general questions about travel and tourism. Why do you think travelling has become so much more popular in recent decades? Does tourism mainly benefit the places that tourists visit, or does it cause more harm than good? And how do you think the way people travel will change in the future?"
+  promptZh: 现在我们来讨论一些关于旅行与旅游业的更宏观的问题。你认为近几十年来旅行为什么变得如此流行？旅游业主要是让旅游目的地受益，还是弊大于利？你认为未来人们的旅行方式会发生怎样的变化？
+  prepSeconds: 0
+  speakSeconds: 90
+  modelAnswer: |-
+    Why has travel exploded? Mostly because the barriers collapsed, I'd say. Flights that once cost a month's salary now cost a weekend's, budget airlines and online booking removed the mystery, and social media added a new motive — people don't just want to see places anymore, they want to be seen seeing them. Rising incomes in developing countries have also turned international travel from a luxury for the few into a normal ambition for the many.
+
+    As for whether tourism helps or harms the destination, honestly, it depends on the dose. A steady flow of visitors funds jobs, restores old buildings and can even keep local traditions alive because there's an audience for them. But past a certain point the logic flips — think of those European cities where residents are priced out of their own neighbourhoods and the historic centre becomes a kind of theme park. So the question isn't really tourism yes or no, it's whether the numbers are managed.
+
+    Looking ahead, I suspect travel will become slower and more deliberate. Concern about flights and their emissions is already changing behaviour — trains are fashionable again in Europe — and remote work means people can stay a month in one place instead of racing through five countries in a week. Ironically, the future of travel might look rather like its past: fewer trips, taken more seriously.
+  checklist:
+    - en: Did you discuss society-level causes and trends rather than only your own holidays?
+      zh: 是否讨论了社会层面的原因和趋势，而不是只谈自己的度假经历？
+    - en: Did you give a balanced answer on tourism's effects, covering benefits and harms with examples?
+      zh: 在旅游业影响的问题上是否给出了平衡的回答，用例子兼顾利与弊？
+    - en: Did you use speculative language for the future question (I suspect, might, looking ahead)?
+      zh: 在展望未来时是否使用了推测性表达（I suspect、might、looking ahead）？
+    - en: Did you justify each opinion with an example or consequence (priced-out residents, trains in Europe)?
+      zh: 每个观点是否都用例子或后果加以论证（居民被挤出、欧洲的火车热）？
+    - en: Did you keep a natural discussion tone rather than delivering a formal lecture?
+      zh: 是否保持了自然的讨论语气，而不是像发表正式演讲？

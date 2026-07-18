@@ -1009,3 +1009,1013 @@
   translationZh: 交接
   exampleEn: Write clear notes so the night team gets a smooth handoff.
   exampleZh: 写清备注，让夜班团队顺利交接。
+# hiring (招聘)
+- id: biz-w-101
+  track: business
+  topic: hiring
+  headword: onboarding
+  ipa: /ˈɑːnbɔːrdɪŋ/
+  pos: n.
+  definitionEn: The process of helping a new employee settle into a company.
+  translationZh: 入职培训；新人融入
+  exampleEn: A structured onboarding program helps new hires become productive within a month.
+  exampleZh: 系统的入职培训能帮助新员工在一个月内进入状态。
+- id: biz-w-102
+  track: business
+  topic: hiring
+  headword: candidate
+  ipa: /ˈkændɪdət/
+  pos: n.
+  definitionEn: A person being considered for a job or position.
+  translationZh: 候选人；应聘者
+  exampleEn: We interviewed six candidates before making an offer to the strongest one.
+  exampleZh: 我们面试了六位候选人，最后向最出色的一位发出了录用通知。
+- id: biz-w-103
+  track: business
+  topic: hiring
+  headword: headhunt
+  ipa: /ˈhedhʌnt/
+  pos: v.
+  definitionEn: To recruit someone who already works for another company.
+  translationZh: 猎头挖角
+  exampleEn: She was headhunted by a competitor offering a significantly higher salary.
+  exampleZh: 一家竞争对手以高得多的薪水把她挖走了。
+- id: biz-w-104
+  track: business
+  topic: hiring
+  headword: shortlist
+  ipa: /ˈʃɔːrtlɪst/
+  pos: v.
+  definitionEn: To select a small group of candidates for final consideration.
+  translationZh: 列入候选名单；初选
+  exampleEn: HR shortlisted five applicants for the final round of interviews.
+  exampleZh: 人力资源部初选出五名应聘者进入终面。
+- id: biz-w-105
+  track: business
+  topic: hiring
+  headword: job description
+  ipa: /ˈdʒɑːb dɪˌskrɪpʃn/
+  pos: n.
+  definitionEn: A document listing the duties and requirements of a position.
+  translationZh: 职位描述
+  exampleEn: Update the job description before posting the opening on hiring platforms.
+  exampleZh: 在招聘平台发布职位之前，先更新职位描述。
+- id: biz-w-106
+  track: business
+  topic: hiring
+  headword: compensation
+  ipa: /ˌkɑːmpenˈseɪʃn/
+  pos: n.
+  definitionEn: The pay and benefits an employee receives for work.
+  translationZh: 薪酬；报酬
+  exampleEn: The compensation package includes base salary, bonuses, and stock options.
+  exampleZh: 薪酬方案包括基本工资、奖金和股票期权。
+- id: biz-w-107
+  track: business
+  topic: hiring
+  headword: probation
+  ipa: /proʊˈbeɪʃn/
+  pos: n.
+  definitionEn: A trial period at the start of a new job.
+  translationZh: 试用期
+  exampleEn: New employees receive a formal review at the end of their three-month probation.
+  exampleZh: 新员工在三个月试用期结束时会接受正式考核。
+- id: biz-w-108
+  track: business
+  topic: hiring
+  headword: talent pool
+  ipa: /ˈtælənt puːl/
+  pos: n.
+  definitionEn: A group of qualified people available for hiring.
+  translationZh: 人才库
+  exampleEn: Internships help the company build a talent pool for future openings.
+  exampleZh: 实习项目帮助公司为未来的职位储备人才。
+- id: biz-w-109
+  track: business
+  topic: hiring
+  headword: offer letter
+  ipa: /ˈɔːfər ˌletər/
+  pos: n.
+  definitionEn: A formal document offering someone a job.
+  translationZh: 录用通知书
+  exampleEn: She signed the offer letter the same day it arrived.
+  exampleZh: 录用通知书当天送达，她当天就签了。
+- id: biz-w-110
+  track: business
+  topic: hiring
+  headword: attrition
+  ipa: /əˈtrɪʃn/
+  pos: n.
+  definitionEn: The gradual loss of employees who are not replaced.
+  translationZh: 人员自然流失
+  exampleEn: High attrition in the support team is driving up hiring costs.
+  exampleZh: 客服团队人员流失严重，推高了招聘成本。
+# budgeting (预算管理)
+- id: biz-w-111
+  track: business
+  topic: budgeting
+  headword: forecast
+  ipa: /ˈfɔːrkæst/
+  pos: n.
+  definitionEn: An estimate of future figures based on current data.
+  translationZh: 预测
+  exampleEn: The revenue forecast for next quarter looks more conservative than last year's.
+  exampleZh: 下季度的收入预测比去年保守。
+- id: biz-w-112
+  track: business
+  topic: budgeting
+  headword: overhead
+  ipa: /ˈoʊvərhed/
+  pos: n.
+  definitionEn: Regular business costs not tied to a specific product.
+  translationZh: 间接费用；管理费用
+  exampleEn: Moving to a smaller office cut our overhead by thirty percent.
+  exampleZh: 搬到更小的办公室后，我们的间接费用降低了三成。
+- id: biz-w-113
+  track: business
+  topic: budgeting
+  headword: allocate
+  ipa: /ˈæləkeɪt/
+  pos: v.
+  definitionEn: To officially assign money or resources for a purpose.
+  translationZh: 分配；拨给
+  exampleEn: The board allocated two million dollars to the digital marketing budget.
+  exampleZh: 董事会为数字营销预算拨款两百万美元。
+- id: biz-w-114
+  track: business
+  topic: budgeting
+  headword: expenditure
+  ipa: /ɪkˈspendɪtʃər/
+  pos: n.
+  definitionEn: The amount of money an organization spends.
+  translationZh: 支出；开支
+  exampleEn: Finance flagged the rise in travel expenditure during the quarterly review.
+  exampleZh: 财务部在季度审核中指出差旅支出有所上升。
+- id: biz-w-115
+  track: business
+  topic: budgeting
+  headword: cost-effective
+  ipa: /ˌkɔːst ɪˈfektɪv/
+  pos: adj.
+  definitionEn: Giving good value compared with the money spent.
+  translationZh: 划算的；成本效益高的
+  exampleEn: Outsourcing payroll proved more cost-effective than hiring an in-house team.
+  exampleZh: 事实证明，工资核算外包比组建内部团队更划算。
+- id: biz-w-116
+  track: business
+  topic: budgeting
+  headword: write off
+  ipa: /ˌraɪt ˈɔːf/
+  pos: phr.
+  definitionEn: To accept that money is lost and remove it from accounts.
+  translationZh: 核销；注销
+  exampleEn: The company wrote off the unpaid invoices as bad debt.
+  exampleZh: 公司将这些未付账单作为坏账核销。
+- id: biz-w-117
+  track: business
+  topic: budgeting
+  headword: fiscal year
+  ipa: /ˌfɪskl ˈjɪr/
+  pos: n.
+  definitionEn: A twelve-month period used for accounting and budgets.
+  translationZh: 财政年度
+  exampleEn: Our fiscal year ends in March, so budget planning starts in January.
+  exampleZh: 我们的财年三月结束，所以预算规划一月就要启动。
+- id: biz-w-118
+  track: business
+  topic: budgeting
+  headword: variance
+  ipa: /ˈveriəns/
+  pos: n.
+  definitionEn: The difference between planned and actual figures.
+  translationZh: 差异；偏差
+  exampleEn: The report explains the variance between forecast and actual spending.
+  exampleZh: 报告解释了预测支出与实际支出之间的差异。
+- id: biz-w-119
+  track: business
+  topic: budgeting
+  headword: cash flow
+  ipa: /ˈkæʃ floʊ/
+  pos: n.
+  definitionEn: The movement of money into and out of a business.
+  translationZh: 现金流
+  exampleEn: Late client payments put serious pressure on our cash flow.
+  exampleZh: 客户付款延迟给我们的现金流带来很大压力。
+- id: biz-w-120
+  track: business
+  topic: budgeting
+  headword: cut back
+  ipa: /ˌkʌt ˈbæk/
+  pos: phr.
+  definitionEn: To reduce spending or the amount of something.
+  translationZh: 削减；缩减
+  exampleEn: We had to cut back on conference travel to stay within budget.
+  exampleZh: 为了不超预算，我们不得不削减参会差旅。
+# branding (品牌)
+- id: biz-w-121
+  track: business
+  topic: branding
+  headword: positioning
+  ipa: /pəˈzɪʃənɪŋ/
+  pos: n.
+  definitionEn: The way a product is presented to stand out in customers' minds.
+  translationZh: 品牌定位
+  exampleEn: Our positioning targets small businesses that find enterprise software too complex.
+  exampleZh: 我们的定位面向那些觉得企业级软件过于复杂的小微企业。
+- id: biz-w-122
+  track: business
+  topic: branding
+  headword: tagline
+  ipa: /ˈtæɡlaɪn/
+  pos: n.
+  definitionEn: A short memorable phrase used in brand marketing.
+  translationZh: 品牌口号；广告语
+  exampleEn: The agency proposed a new tagline for the spring campaign.
+  exampleZh: 广告公司为春季推广提出了一句新口号。
+- id: biz-w-123
+  track: business
+  topic: branding
+  headword: differentiate
+  ipa: /ˌdɪfəˈrenʃieɪt/
+  pos: v.
+  definitionEn: To make a product clearly different from competitors'.
+  translationZh: 使差异化；区分
+  exampleEn: Excellent after-sales service differentiates us from cheaper rivals.
+  exampleZh: 出色的售后服务使我们有别于价格更低的竞争对手。
+- id: biz-w-124
+  track: business
+  topic: branding
+  headword: target audience
+  ipa: /ˌtɑːrɡɪt ˈɔːdiəns/
+  pos: n.
+  definitionEn: The specific group of people a product or message is aimed at.
+  translationZh: 目标受众
+  exampleEn: The ad performs well because it speaks directly to our target audience.
+  exampleZh: 这则广告效果很好，因为它直接打动了我们的目标受众。
+- id: biz-w-125
+  track: business
+  topic: branding
+  headword: rebrand
+  ipa: /ˌriːˈbrænd/
+  pos: v.
+  definitionEn: To change a company's name, logo, or public image.
+  translationZh: 品牌重塑
+  exampleEn: The firm rebranded after the merger to signal a fresh start.
+  exampleZh: 合并后公司进行了品牌重塑，以示全新开始。
+- id: biz-w-126
+  track: business
+  topic: branding
+  headword: brand equity
+  ipa: /ˌbrænd ˈekwəti/
+  pos: n.
+  definitionEn: The commercial value that comes from a brand's reputation.
+  translationZh: 品牌资产
+  exampleEn: Decades of consistent quality built enormous brand equity for the label.
+  exampleZh: 数十年如一日的品质为该品牌积累了巨大的品牌资产。
+- id: biz-w-127
+  track: business
+  topic: branding
+  headword: endorsement
+  ipa: /ɪnˈdɔːrsmənt/
+  pos: n.
+  definitionEn: Public support for a product from a well-known person.
+  translationZh: 代言；背书
+  exampleEn: The athlete's endorsement doubled sales of the running shoes.
+  exampleZh: 这位运动员的代言让跑鞋销量翻番。
+- id: biz-w-128
+  track: business
+  topic: branding
+  headword: visibility
+  ipa: /ˌvɪzəˈbɪləti/
+  pos: n.
+  definitionEn: The degree to which something is noticed by the public.
+  translationZh: 曝光度；关注度
+  exampleEn: Sponsoring the tech summit gave the startup valuable visibility.
+  exampleZh: 赞助这场科技峰会为这家初创公司带来了宝贵的曝光度。
+- id: biz-w-129
+  track: business
+  topic: branding
+  headword: perception
+  ipa: /pərˈsepʃn/
+  pos: n.
+  definitionEn: The way something is understood or seen by people.
+  translationZh: 认知；印象
+  exampleEn: One viral complaint can damage public perception of a brand overnight.
+  exampleZh: 一条疯传的投诉可能一夜之间损害品牌的公众形象。
+- id: biz-w-130
+  track: business
+  topic: branding
+  headword: brand loyalty
+  ipa: /ˌbrænd ˈlɔɪəlti/
+  pos: n.
+  definitionEn: Customers' tendency to keep buying the same brand.
+  translationZh: 品牌忠诚度
+  exampleEn: Strong brand loyalty lets the company charge a premium price.
+  exampleZh: 强大的品牌忠诚度让公司能够收取溢价。
+# operations (运营)
+- id: biz-w-131
+  track: business
+  topic: operations
+  headword: supply chain
+  ipa: /səˈplaɪ tʃeɪn/
+  pos: n.
+  definitionEn: The network that moves a product from suppliers to customers.
+  translationZh: 供应链
+  exampleEn: The port strike disrupted our supply chain for six weeks.
+  exampleZh: 港口罢工使我们的供应链中断了六周。
+- id: biz-w-132
+  track: business
+  topic: operations
+  headword: procurement
+  ipa: /prəˈkjʊrmənt/
+  pos: n.
+  definitionEn: The process of buying goods and services for an organization.
+  translationZh: 采购
+  exampleEn: All contracts above ten thousand dollars must go through procurement.
+  exampleZh: 一万美元以上的合同都必须走采购流程。
+- id: biz-w-133
+  track: business
+  topic: operations
+  headword: logistics
+  ipa: /ləˈdʒɪstɪks/
+  pos: n.
+  definitionEn: The organization of moving, storing, and delivering goods.
+  translationZh: 物流
+  exampleEn: We partnered with a logistics provider to speed up overseas delivery.
+  exampleZh: 我们与一家物流公司合作，加快海外配送。
+- id: biz-w-134
+  track: business
+  topic: operations
+  headword: inventory
+  ipa: /ˈɪnvəntɔːri/
+  pos: n.
+  definitionEn: The goods a business keeps in stock.
+  translationZh: 库存
+  exampleEn: The warehouse counts inventory at the end of every month.
+  exampleZh: 仓库每月月底盘点库存。
+- id: biz-w-135
+  track: business
+  topic: operations
+  headword: throughput
+  ipa: /ˈθruːpʊt/
+  pos: n.
+  definitionEn: The amount of work or products processed in a given time.
+  translationZh: 处理量；产出量
+  exampleEn: The new packing line raised daily throughput by forty percent.
+  exampleZh: 新包装线使日处理量提高了四成。
+- id: biz-w-136
+  track: business
+  topic: operations
+  headword: downtime
+  ipa: /ˈdaʊntaɪm/
+  pos: n.
+  definitionEn: Time when equipment or systems are not working.
+  translationZh: 停机时间
+  exampleEn: Scheduled maintenance keeps unplanned downtime to a minimum.
+  exampleZh: 定期维护将意外停机时间降到最低。
+- id: biz-w-137
+  track: business
+  topic: operations
+  headword: capacity
+  ipa: /kəˈpæsəti/
+  pos: n.
+  definitionEn: The maximum amount that can be produced or handled.
+  translationZh: 产能；容量
+  exampleEn: The factory is running at full capacity through the holiday season.
+  exampleZh: 整个假日季工厂都在满负荷运转。
+- id: biz-w-138
+  track: business
+  topic: operations
+  headword: lead time
+  ipa: /ˈliːd taɪm/
+  pos: n.
+  definitionEn: The time between placing an order and receiving it.
+  translationZh: 交货周期
+  exampleEn: Choosing a local supplier cut the lead time from weeks to days.
+  exampleZh: 改用本地供应商后，交货周期从数周缩短到几天。
+- id: biz-w-139
+  track: business
+  topic: operations
+  headword: standardize
+  ipa: /ˈstændərdaɪz/
+  pos: v.
+  definitionEn: To make processes or products follow the same fixed rules.
+  translationZh: 标准化；统一
+  exampleEn: We standardized the reporting templates across all regional offices.
+  exampleZh: 我们统一了各区域办公室的报告模板。
+- id: biz-w-140
+  track: business
+  topic: operations
+  headword: ramp up
+  ipa: /ˌræmp ˈʌp/
+  pos: phr.
+  definitionEn: To increase activity or output quickly.
+  translationZh: 快速提升；加大
+  exampleEn: The plant is ramping up production ahead of the product launch.
+  exampleZh: 工厂正在产品发布前加紧提高产量。
+# product (产品管理)
+- id: biz-w-141
+  track: business
+  topic: product
+  headword: iteration
+  ipa: /ˌɪtəˈreɪʃn/
+  pos: n.
+  definitionEn: One version in a repeated cycle of improving a product.
+  translationZh: 迭代
+  exampleEn: Each iteration of the app fixed issues reported by early users.
+  exampleZh: 应用的每次迭代都修复了早期用户反馈的问题。
+- id: biz-w-142
+  track: business
+  topic: product
+  headword: backlog
+  ipa: /ˈbæklɔːɡ/
+  pos: n.
+  definitionEn: A prioritized list of work waiting to be done.
+  translationZh: 待办清单；积压任务
+  exampleEn: The team reviews the backlog every Monday to plan the sprint.
+  exampleZh: 团队每周一梳理待办清单来规划冲刺。
+- id: biz-w-143
+  track: business
+  topic: product
+  headword: prototype
+  ipa: /ˈproʊtətaɪp/
+  pos: n.
+  definitionEn: An early model built to test an idea or design.
+  translationZh: 原型
+  exampleEn: We showed users a clickable prototype before writing any code.
+  exampleZh: 在写任何代码之前，我们先给用户看了可点击的原型。
+- id: biz-w-144
+  track: business
+  topic: product
+  headword: pain point
+  ipa: /ˈpeɪn pɔɪnt/
+  pos: n.
+  definitionEn: A specific problem that frustrates customers or users.
+  translationZh: 痛点
+  exampleEn: Slow refunds were the biggest pain point in our checkout survey.
+  exampleZh: 结算调研显示，退款慢是最大的痛点。
+- id: biz-w-145
+  track: business
+  topic: product
+  headword: roll out
+  ipa: /ˌroʊl ˈaʊt/
+  pos: phr.
+  definitionEn: To launch a product or service gradually to users.
+  translationZh: 逐步推出；上线
+  exampleEn: We will roll out the new dashboard to ten percent of users first.
+  exampleZh: 新仪表盘将先向百分之十的用户逐步开放。
+- id: biz-w-146
+  track: business
+  topic: product
+  headword: usability
+  ipa: /ˌjuːzəˈbɪləti/
+  pos: n.
+  definitionEn: How easy and pleasant a product is to use.
+  translationZh: 易用性
+  exampleEn: Usability testing revealed that users couldn't find the export button.
+  exampleZh: 易用性测试发现用户找不到导出按钮。
+- id: biz-w-147
+  track: business
+  topic: product
+  headword: spec
+  ipa: /spek/
+  pos: n.
+  definitionEn: A detailed description of how a product should work.
+  translationZh: 规格说明；需求文档
+  exampleEn: Engineering can't estimate the work until the spec is final.
+  exampleZh: 规格说明定稿之前，工程团队无法评估工作量。
+- id: biz-w-148
+  track: business
+  topic: product
+  headword: edge case
+  ipa: /ˈedʒ keɪs/
+  pos: n.
+  definitionEn: An unusual situation that happens only under extreme conditions.
+  translationZh: 边缘情况；极端用例
+  exampleEn: The bug only appears in an edge case involving leap years.
+  exampleZh: 这个缺陷只在涉及闰年的边缘情况下出现。
+- id: biz-w-149
+  track: business
+  topic: product
+  headword: beta
+  ipa: /ˈbeɪtə/
+  pos: n.
+  definitionEn: A nearly finished version released to a limited group for testing.
+  translationZh: 测试版
+  exampleEn: Two hundred customers joined the beta before the public release.
+  exampleZh: 公开发布前，有两百名客户参与了测试版试用。
+- id: biz-w-150
+  track: business
+  topic: product
+  headword: use case
+  ipa: /ˈjuːs keɪs/
+  pos: n.
+  definitionEn: A specific situation in which a product could be used.
+  translationZh: 使用场景
+  exampleEn: Invoice automation is the strongest use case for our new tool.
+  exampleZh: 发票自动化是我们新工具最有说服力的使用场景。
+# analytics (数据分析)
+- id: biz-w-151
+  track: business
+  topic: analytics
+  headword: metric
+  ipa: /ˈmetrɪk/
+  pos: n.
+  definitionEn: A number used to measure and track performance.
+  translationZh: 指标
+  exampleEn: Pick one north-star metric and review it every week.
+  exampleZh: 选定一个北极星指标，每周复盘。
+- id: biz-w-152
+  track: business
+  topic: analytics
+  headword: dashboard
+  ipa: /ˈdæʃbɔːrd/
+  pos: n.
+  definitionEn: A screen showing key data in one visual display.
+  translationZh: 数据仪表盘
+  exampleEn: The sales dashboard updates in real time during the campaign.
+  exampleZh: 活动期间销售仪表盘实时更新。
+- id: biz-w-153
+  track: business
+  topic: analytics
+  headword: KPI
+  ipa: /ˌkeɪ piː ˈaɪ/
+  pos: n.
+  definitionEn: A key number that shows how well goals are being met.
+  translationZh: 关键绩效指标
+  exampleEn: Customer retention is the KPI we report to the board monthly.
+  exampleZh: 客户留存是我们每月向董事会汇报的关键绩效指标。
+- id: biz-w-154
+  track: business
+  topic: analytics
+  headword: data-driven
+  ipa: /ˌdeɪtə ˈdrɪvn/
+  pos: adj.
+  definitionEn: Based on data analysis rather than opinion or guesswork.
+  translationZh: 数据驱动的
+  exampleEn: We moved to data-driven pricing instead of copying competitors.
+  exampleZh: 我们改用数据驱动的定价，而不是照搬竞争对手。
+- id: biz-w-155
+  track: business
+  topic: analytics
+  headword: correlation
+  ipa: /ˌkɔːrəˈleɪʃn/
+  pos: n.
+  definitionEn: A relationship in which two things change together.
+  translationZh: 相关性
+  exampleEn: There is a strong correlation between response speed and customer ratings.
+  exampleZh: 响应速度与客户评分之间存在很强的相关性。
+- id: biz-w-156
+  track: business
+  topic: analytics
+  headword: segment
+  ipa: /ˈseɡmənt/
+  pos: n.
+  definitionEn: A group of customers who share similar characteristics.
+  translationZh: 细分群体
+  exampleEn: The premium segment generates most of our profit despite its small size.
+  exampleZh: 高端细分群体虽小，却贡献了我们大部分利润。
+- id: biz-w-157
+  track: business
+  topic: analytics
+  headword: outlier
+  ipa: /ˈaʊtlaɪər/
+  pos: n.
+  definitionEn: A data point very different from the rest.
+  translationZh: 异常值
+  exampleEn: Remove the outliers before calculating the average order value.
+  exampleZh: 计算平均订单金额之前，先剔除异常值。
+- id: biz-w-158
+  track: business
+  topic: analytics
+  headword: baseline
+  ipa: /ˈbeɪslaɪn/
+  pos: n.
+  definitionEn: A starting measurement used for later comparison.
+  translationZh: 基线；基准值
+  exampleEn: Record a baseline this month so we can measure the campaign's impact.
+  exampleZh: 本月先记录基线数据，以便衡量活动效果。
+- id: biz-w-159
+  track: business
+  topic: analytics
+  headword: granular
+  ipa: /ˈɡrænjələr/
+  pos: adj.
+  definitionEn: Showing a high level of fine detail.
+  translationZh: 细粒度的；精细的
+  exampleEn: The new report gives granular data on usage by feature and region.
+  exampleZh: 新报告提供了按功能和地区细分的精细数据。
+- id: biz-w-160
+  track: business
+  topic: analytics
+  headword: insight
+  ipa: /ˈɪnsaɪt/
+  pos: n.
+  definitionEn: A useful understanding gained from analyzing information.
+  translationZh: 洞察
+  exampleEn: The survey produced a key insight that users value speed over design.
+  exampleZh: 调研得出一个关键洞察：用户看重速度胜过设计。
+# customer-success (客户成功)
+- id: biz-w-161
+  track: business
+  topic: customer-success
+  headword: touchpoint
+  ipa: /ˈtʌtʃpɔɪnt/
+  pos: n.
+  definitionEn: Any moment when a customer interacts with a company.
+  translationZh: 接触点
+  exampleEn: Map every touchpoint from the first ad to the renewal email.
+  exampleZh: 梳理从第一条广告到续约邮件的每个客户接触点。
+- id: biz-w-162
+  track: business
+  topic: customer-success
+  headword: renewal
+  ipa: /rɪˈnuːəl/
+  pos: n.
+  definitionEn: The act of continuing a contract or subscription.
+  translationZh: 续约；续订
+  exampleEn: The account manager starts renewal conversations ninety days in advance.
+  exampleZh: 客户经理提前九十天启动续约沟通。
+- id: biz-w-163
+  track: business
+  topic: customer-success
+  headword: adoption
+  ipa: /əˈdɑːpʃn/
+  pos: n.
+  definitionEn: The process of starting to use a new product or feature.
+  translationZh: 采用；使用率
+  exampleEn: Feature adoption jumped after we added in-app tutorials.
+  exampleZh: 增加应用内教程后，功能使用率大幅上升。
+- id: biz-w-164
+  track: business
+  topic: customer-success
+  headword: advocate
+  ipa: /ˈædvəkət/
+  pos: n.
+  definitionEn: A loyal customer who actively recommends a product.
+  translationZh: 拥护者；推荐者
+  exampleEn: Turning happy users into advocates is cheaper than paid advertising.
+  exampleZh: 把满意用户变成品牌拥护者比投放广告更省钱。
+- id: biz-w-165
+  track: business
+  topic: customer-success
+  headword: satisfaction
+  ipa: /ˌsætɪsˈfækʃn/
+  pos: n.
+  definitionEn: The feeling of being pleased with a product or service.
+  translationZh: 满意度
+  exampleEn: Customer satisfaction scores rose after we shortened wait times.
+  exampleZh: 缩短等待时间后，客户满意度评分上升了。
+- id: biz-w-166
+  track: business
+  topic: customer-success
+  headword: testimonial
+  ipa: /ˌtestɪˈmoʊniəl/
+  pos: n.
+  definitionEn: A customer's written or spoken recommendation of a product.
+  translationZh: 用户推荐语；好评
+  exampleEn: We added three client testimonials to the landing page.
+  exampleZh: 我们在落地页上加了三条客户好评。
+- id: biz-w-167
+  track: business
+  topic: customer-success
+  headword: proactive
+  ipa: /ˌproʊˈæktɪv/
+  pos: adj.
+  definitionEn: Acting before problems happen rather than reacting afterwards.
+  translationZh: 主动的；未雨绸缪的
+  exampleEn: Proactive check-ins caught the issue before the client complained.
+  exampleZh: 主动回访让我们在客户投诉之前就发现了问题。
+- id: biz-w-168
+  track: business
+  topic: customer-success
+  headword: win back
+  ipa: /ˌwɪn ˈbæk/
+  pos: phr.
+  definitionEn: To regain customers who stopped buying from you.
+  translationZh: 挽回（流失客户）
+  exampleEn: A personalized discount helped us win back lapsed subscribers.
+  exampleZh: 个性化折扣帮助我们挽回了流失的订阅用户。
+- id: biz-w-169
+  track: business
+  topic: customer-success
+  headword: response time
+  ipa: /rɪˈspɑːns taɪm/
+  pos: n.
+  definitionEn: How long it takes to reply to a customer request.
+  translationZh: 响应时间
+  exampleEn: Cutting average response time to one hour lifted our support ratings.
+  exampleZh: 把平均响应时间缩短到一小时后，客服评分明显提升。
+- id: biz-w-170
+  track: business
+  topic: customer-success
+  headword: customer journey
+  ipa: /ˌkʌstəmər ˈdʒɜːrni/
+  pos: n.
+  definitionEn: The complete experience a customer has with a company over time.
+  translationZh: 客户旅程
+  exampleEn: We redesigned onboarding after mapping the full customer journey.
+  exampleZh: 在梳理完整客户旅程之后，我们重新设计了新手引导。
+# startups (创业)
+- id: biz-w-171
+  track: business
+  topic: startups
+  headword: runway
+  ipa: /ˈrʌnweɪ/
+  pos: n.
+  definitionEn: The time a startup can operate before its money runs out.
+  translationZh: 资金可维持时间
+  exampleEn: With current spending, the company has eighteen months of runway.
+  exampleZh: 按目前的开支水平，公司的资金还能维持十八个月。
+- id: biz-w-172
+  track: business
+  topic: startups
+  headword: burn rate
+  ipa: /ˈbɜːrn reɪt/
+  pos: n.
+  definitionEn: The speed at which a company spends its cash.
+  translationZh: 资金消耗率
+  exampleEn: Investors asked us to cut the burn rate before the next round.
+  exampleZh: 投资人要求我们在下一轮融资前降低资金消耗率。
+- id: biz-w-173
+  track: business
+  topic: startups
+  headword: bootstrap
+  ipa: /ˈbuːtstræp/
+  pos: v.
+  definitionEn: To build a company using personal funds without outside investment.
+  translationZh: 自筹资金创业
+  exampleEn: They bootstrapped the business for three years before taking any funding.
+  exampleZh: 他们靠自有资金运营了三年才接受融资。
+- id: biz-w-174
+  track: business
+  topic: startups
+  headword: venture capital
+  ipa: /ˌventʃər ˈkæpɪtl/
+  pos: n.
+  definitionEn: Money invested in young companies with high growth potential.
+  translationZh: 风险投资
+  exampleEn: The startup raised venture capital to expand into Southeast Asia.
+  exampleZh: 这家初创公司融得风险投资，用于拓展东南亚市场。
+- id: biz-w-175
+  track: business
+  topic: startups
+  headword: valuation
+  ipa: /ˌvæljuˈeɪʃn/
+  pos: n.
+  definitionEn: The estimated financial worth of a company.
+  translationZh: 估值
+  exampleEn: The new round values the company at double its previous valuation.
+  exampleZh: 新一轮融资使公司估值较上一轮翻倍。
+- id: biz-w-176
+  track: business
+  topic: startups
+  headword: pivot
+  ipa: /ˈpɪvət/
+  pos: v.
+  definitionEn: To change a company's strategy or product direction significantly.
+  translationZh: 转型；调整方向
+  exampleEn: The team pivoted from consumer sales to enterprise software.
+  exampleZh: 团队从面向消费者转型做企业软件。
+- id: biz-w-177
+  track: business
+  topic: startups
+  headword: founder
+  ipa: /ˈfaʊndər/
+  pos: n.
+  definitionEn: A person who starts a company.
+  translationZh: 创始人
+  exampleEn: Both founders still interview every new hire personally.
+  exampleZh: 两位创始人至今仍亲自面试每位新员工。
+- id: biz-w-178
+  track: business
+  topic: startups
+  headword: incubator
+  ipa: /ˈɪŋkjubeɪtər/
+  pos: n.
+  definitionEn: An organization that supports early startups with resources and advice.
+  translationZh: 孵化器
+  exampleEn: The incubator provides office space, mentoring, and seed funding.
+  exampleZh: 孵化器提供办公场地、导师辅导和种子资金。
+- id: biz-w-179
+  track: business
+  topic: startups
+  headword: traction
+  ipa: /ˈtrækʃn/
+  pos: n.
+  definitionEn: Early evidence that customers want a product.
+  translationZh: 市场吸引力；增长势头
+  exampleEn: Show investors traction, such as steady week-over-week user growth.
+  exampleZh: 要向投资人展示增长势头，比如用户数周环比稳定上升。
+- id: biz-w-180
+  track: business
+  topic: startups
+  headword: seed round
+  ipa: /ˈsiːd raʊnd/
+  pos: n.
+  definitionEn: A startup's first formal round of investment funding.
+  translationZh: 种子轮融资
+  exampleEn: The seed round closed at one and a half million dollars.
+  exampleZh: 种子轮融资以一百五十万美元完成交割。
+# feedback (反馈沟通)
+- id: biz-w-181
+  track: business
+  topic: feedback
+  headword: constructive
+  ipa: /kənˈstrʌktɪv/
+  pos: adj.
+  definitionEn: Intended to help someone improve rather than to criticize.
+  translationZh: 建设性的
+  exampleEn: She gave constructive feedback that focused on specific behaviors, not personality.
+  exampleZh: 她给出的反馈很有建设性，针对具体行为而非个性。
+- id: biz-w-182
+  track: business
+  topic: feedback
+  headword: candid
+  ipa: /ˈkændɪd/
+  pos: adj.
+  definitionEn: Honest and direct, even when the truth is uncomfortable.
+  translationZh: 坦率的
+  exampleEn: The manager was candid about the project's chances of being cancelled.
+  exampleZh: 经理坦率地谈了项目被取消的可能性。
+- id: biz-w-183
+  track: business
+  topic: feedback
+  headword: commend
+  ipa: /kəˈmend/
+  pos: v.
+  definitionEn: To praise someone formally for doing something well.
+  translationZh: 表扬；称赞
+  exampleEn: The director commended the team for delivering under a tight deadline.
+  exampleZh: 总监表扬了团队在紧迫期限内完成交付。
+- id: biz-w-184
+  track: business
+  topic: feedback
+  headword: critique
+  ipa: /krɪˈtiːk/
+  pos: n.
+  definitionEn: A careful judgment of strengths and weaknesses.
+  translationZh: 评析；点评
+  exampleEn: The design team invites open critique at every Friday review.
+  exampleZh: 设计团队在每周五的评审会上欢迎大家公开点评。
+- id: biz-w-185
+  track: business
+  topic: feedback
+  headword: actionable
+  ipa: /ˈækʃənəbl/
+  pos: adj.
+  definitionEn: Clear and specific enough to act on.
+  translationZh: 可执行的；可落实的
+  exampleEn: Turn the survey results into three actionable recommendations.
+  exampleZh: 把调研结果提炼成三条可执行的建议。
+- id: biz-w-186
+  track: business
+  topic: feedback
+  headword: performance review
+  ipa: /pərˈfɔːrməns rɪˌvjuː/
+  pos: n.
+  definitionEn: A formal meeting to evaluate an employee's work.
+  translationZh: 绩效考核
+  exampleEn: Set measurable goals at the start so the performance review is fair.
+  exampleZh: 一开始就设定可衡量的目标，绩效考核才公平。
+- id: biz-w-187
+  track: business
+  topic: feedback
+  headword: blind spot
+  ipa: /ˈblaɪnd spɑːt/
+  pos: n.
+  definitionEn: A weakness someone cannot see in themselves.
+  translationZh: 盲点
+  exampleEn: Peer feedback revealed a blind spot in how he ran meetings.
+  exampleZh: 同事的反馈让他发现了自己主持会议方式上的盲点。
+- id: biz-w-188
+  track: business
+  topic: feedback
+  headword: follow through
+  ipa: /ˌfɑːloʊ ˈθruː/
+  pos: phr.
+  definitionEn: To complete what was promised or started.
+  translationZh: 落实到底；兑现
+  exampleEn: Feedback only matters if managers follow through on the changes.
+  exampleZh: 只有管理者把改进落实到底，反馈才有意义。
+- id: biz-w-189
+  track: business
+  topic: feedback
+  headword: debrief
+  ipa: /ˌdiːˈbriːf/
+  pos: v.
+  definitionEn: To discuss an event afterwards in order to learn from it.
+  translationZh: 复盘讨论；事后总结
+  exampleEn: Let's debrief right after the client call while details are fresh.
+  exampleZh: 客户电话一结束我们就趁热复盘。
+- id: biz-w-190
+  track: business
+  topic: feedback
+  headword: receptive
+  ipa: /rɪˈseptɪv/
+  pos: adj.
+  definitionEn: Willing to listen to and consider new ideas or criticism.
+  translationZh: 乐于接受的
+  exampleEn: The new director is receptive to suggestions from junior staff.
+  exampleZh: 新总监乐于听取基层员工的建议。
+# careers (职业发展)
+- id: biz-w-191
+  track: business
+  topic: careers
+  headword: promotion
+  ipa: /prəˈmoʊʃn/
+  pos: n.
+  definitionEn: A move to a higher position with more responsibility.
+  translationZh: 晋升
+  exampleEn: She earned a promotion to regional manager after two strong years.
+  exampleZh: 凭借两年出色的业绩，她晋升为区域经理。
+- id: biz-w-192
+  track: business
+  topic: careers
+  headword: upskill
+  ipa: /ˈʌpskɪl/
+  pos: v.
+  definitionEn: To learn new skills to stay effective at work.
+  translationZh: 提升技能
+  exampleEn: The company pays for courses so staff can upskill in data analysis.
+  exampleZh: 公司报销课程费用，让员工提升数据分析技能。
+- id: biz-w-193
+  track: business
+  topic: careers
+  headword: lateral move
+  ipa: /ˌlætərəl ˈmuːv/
+  pos: n.
+  definitionEn: A job change at the same level rather than a promotion.
+  translationZh: 平级调动
+  exampleEn: A lateral move into marketing broadened her experience before management.
+  exampleZh: 平级调到市场部拓宽了她走上管理岗前的历练。
+- id: biz-w-194
+  track: business
+  topic: careers
+  headword: career ladder
+  ipa: /kəˈrɪr ˌlædər/
+  pos: n.
+  definitionEn: The series of positions leading to more senior roles.
+  translationZh: 职业晋升通道
+  exampleEn: The firm publishes a clear career ladder for every department.
+  exampleZh: 公司为每个部门公布了清晰的晋升通道。
+- id: biz-w-195
+  track: business
+  topic: careers
+  headword: transferable
+  ipa: /trænsˈfɜːrəbl/
+  pos: adj.
+  definitionEn: Useful in many different jobs or situations.
+  translationZh: 可迁移的
+  exampleEn: Project management is a transferable skill valued in every industry.
+  exampleZh: 项目管理是各行各业都看重的可迁移技能。
+- id: biz-w-196
+  track: business
+  topic: careers
+  headword: sabbatical
+  ipa: /səˈbætɪkl/
+  pos: n.
+  definitionEn: An extended break from work, often for study or rest.
+  translationZh: 长假；进修假
+  exampleEn: After seven years, he took a six-month sabbatical to travel and recharge.
+  exampleZh: 工作七年后，他休了六个月长假去旅行充电。
+- id: biz-w-197
+  track: business
+  topic: careers
+  headword: burnout
+  ipa: /ˈbɜːrnaʊt/
+  pos: n.
+  definitionEn: Exhaustion caused by long-term work stress.
+  translationZh: 职业倦怠
+  exampleEn: The company added mental health days to reduce burnout.
+  exampleZh: 公司增设心理健康假，以缓解职业倦怠。
+- id: biz-w-198
+  track: business
+  topic: careers
+  headword: work-life balance
+  ipa: /ˌwɜːrk laɪf ˈbæləns/
+  pos: n.
+  definitionEn: A healthy division of time between job and personal life.
+  translationZh: 工作与生活的平衡
+  exampleEn: Flexible hours improved work-life balance across the team.
+  exampleZh: 弹性工时改善了整个团队的工作生活平衡。
+- id: biz-w-199
+  track: business
+  topic: careers
+  headword: notice period
+  ipa: /ˈnoʊtɪs ˌpɪriəd/
+  pos: n.
+  definitionEn: The time you must keep working after resigning.
+  translationZh: 离职通知期
+  exampleEn: Her contract requires a one-month notice period before leaving.
+  exampleZh: 按合同规定，她离职前须提前一个月通知。
+- id: biz-w-200
+  track: business
+  topic: careers
+  headword: resign
+  ipa: /rɪˈzaɪn/
+  pos: v.
+  definitionEn: To formally leave a job by choice.
+  translationZh: 辞职
+  exampleEn: He resigned to join a startup founded by a former colleague.
+  exampleZh: 他辞职加入了前同事创办的初创公司。

@@ -178,3 +178,188 @@
       zh: 是否包含“做得好的地方”，让复盘保持客观、可信？
     - en: Does every recommended action have an owner and a deadline?
       zh: 每项改进措施是否都有明确的责任人和完成期限？
+- id: biz-wr-006
+  track: business
+  taskType: business_email
+  title: "E-mail: Requesting Overdue Input from a Senior Stakeholder"
+  titleZh: 邮件：向资深相关方催要逾期材料
+  promptEn: "You are preparing a sales proposal for a prospective client, Meridian Logistics, which must be submitted by 5 p.m. this Friday. On Monday you asked the finance team for updated pricing for your enterprise service tier, but two polite chat reminders have gone unanswered, and without the figures you cannot finish the cost section. Write an e-mail to the head of finance, Mr. Alan Reyes: explain exactly what you need and why it is urgent, give a clear deadline, make responding as easy as possible, and keep the tone courteous — he is senior to you and genuinely busy. Write at least 100 words."
+  promptZh: 你正在为潜在客户 Meridian Logistics 准备一份销售提案，必须在本周五下午 5 点前提交。周一你已请财务团队提供企业版服务的最新报价，但两次礼貌的即时消息提醒都没有回音；没有这些数字，你就无法完成成本部分。请给财务负责人 Alan Reyes 先生写一封邮件：说清你需要什么、为何紧急，给出明确的期限，尽量让对方容易回复，并保持礼貌得体的语气——他职位比你高，也确实很忙。不少于 100 词。
+  minWords: 100
+  suggestedMinutes: 15
+  modelAnswer: |-
+    Dear Mr. Reyes,
+
+    I hope your week is going well. I am writing about the updated enterprise-tier pricing I requested on Monday for the Meridian Logistics proposal — chat messages are easily buried in a busy week, so please forgive the follow-up by e-mail.
+
+    The proposal must reach Meridian by 5 p.m. this Friday, and the cost section is the only part still open. Meridian would be our largest logistics account this year, so I would much rather the numbers came from your team than from my own estimates.
+
+    To keep this quick, I need only three figures: the per-user monthly rate, the volume-discount thresholds, and the one-off onboarding fee. I have attached last year's pricing sheet with those three cells highlighted — updating the attachment directly would be ideal, and of course anyone on your team could do it.
+
+    Could you send the figures by Thursday noon? That leaves me a day for internal review before submission. If a two-minute call would be faster, I am happy to ring whenever suits you.
+
+    Thank you very much for your help.
+
+    Kind regards,
+    Lin Yan
+    Account Executive
+  checklist:
+    - en: Did you state exactly what you need, narrowed down to the smallest possible request?
+      zh: 是否说清了你到底需要什么，并把请求缩小到最小范围？
+    - en: Did you explain the urgency with a concrete deadline and what is at stake for the business?
+      zh: 是否用具体期限和业务上的利害关系说明了紧迫性？
+    - en: Did you make responding easy — an attachment to fill in, or the offer of a quick call?
+      zh: 是否让对方容易回复——例如提供可直接填写的附件，或提出快速通话？
+    - en: Is the tone courteous and blame-free, acknowledging that the recipient is busy?
+      zh: 语气是否礼貌、不带指责，并体谅对方的繁忙？
+    - en: Did you set your internal deadline early enough to leave yourself a buffer?
+      zh: 你要求的时间点是否足够提前，为自己留出了缓冲？
+- id: biz-wr-007
+  track: business
+  taskType: business_email
+  title: "E-mail: Introducing Your Successor to a Key Client"
+  titleZh: 邮件：向重要客户介绍你的接任者
+  promptEn: "After four years as the account manager for Bluepine Foods, you are moving to a new internal role at the end of this month. Write an e-mail to your main client contact, Ms. Hana Sato: announce the change in a positive way, introduce your successor, Marco Ruiz, with the credentials that matter to her, explain the handover arrangements so that nothing gets dropped, and thank her for the years of collaboration. Write at least 100 words."
+  promptZh: 你担任客户 Bluepine Foods 的客户经理已有四年，本月底将调任公司内部的新岗位。请给你的主要客户联系人 Hana Sato 女士写一封邮件：以积极的方式告知这一变动，介绍接任者 Marco Ruiz 并突出她所关心的资历，说明交接安排以确保工作无缝衔接，并感谢多年来的合作。不少于 100 词。
+  minWords: 100
+  suggestedMinutes: 15
+  modelAnswer: |-
+    Dear Ms. Sato,
+
+    I am writing with some personal news: at the end of this month I will be moving into a new role leading our supplier-quality program, and I wanted you to hear it from me first.
+
+    The good news is that Bluepine will be in excellent hands. Marco Ruiz, who takes over as your account manager, has spent five years in our food-and-beverage division and managed the cold-chain accounts you and I have often discussed — he knows the seasonal pressures of your business well.
+
+    To make the transition seamless, Marco and I will run your account together for the next three weeks. He will join our regular Tuesday call from next week, and I have briefed him in detail on the current promotion calendar and the packaging project. Nothing in the current plan changes, and I remain reachable until the handover is complete.
+
+    Working with you these past four years has been a genuine pleasure — the trust you placed in us during the warehouse relocation is something I will not forget. Thank you, and I am confident you and Marco will work very well together.
+
+    Warm regards,
+    Zhou Fan
+    Account Manager
+  checklist:
+    - en: Did you announce the change directly and frame it positively, without creating alarm?
+      zh: 是否直接、正面地告知变动，而没有引起客户不安？
+    - en: Did you introduce the successor with credentials relevant to this client's business?
+      zh: 介绍接任者时是否突出了与该客户业务相关的资历？
+    - en: Did you describe concrete handover arrangements (overlap period, joining calls, briefings)?
+      zh: 是否说明了具体的交接安排（重叠期、参加例会、情况通报）？
+    - en: Did you reassure the client that current plans and commitments stay unchanged?
+      zh: 是否让客户放心——现有计划与承诺不会改变？
+    - en: Did you thank the client with a specific shared memory rather than a generic phrase?
+      zh: 是否用具体的共同经历而非客套话向客户表达感谢？
+- id: biz-wr-008
+  track: business
+  taskType: business_email
+  title: "E-mail: Chasing an Overdue Invoice"
+  titleZh: 邮件：催收逾期账款
+  promptEn: "Your client Farrow & Webb has not paid invoice INV-2077 for 12,400 euros, which fell due on 18 June — thirty days ago. A friendly first reminder sent ten days ago received no reply, which is unusual: this client has paid on time for three years. Write a second reminder to their accounts manager, Mr. Oliver Grant: restate the facts precisely, ask for payment or a firm payment date, leave room for an explanation in case something lies behind the silence, and signal the next step if there is still no response — all while keeping the relationship intact. Write at least 100 words."
+  promptZh: 客户 Farrow & Webb 尚未支付 6 月 18 日到期、金额 12,400 欧元的发票 INV-2077，至今已逾期三十天。十天前发出的第一封友好提醒没有得到回复——这很反常：该客户三年来一直按时付款。请给对方的财务经理 Oliver Grant 先生写第二封催款邮件：准确重述事实，要求付款或给出确定的付款日期，同时留出余地，询问沉默背后是否另有原因，并说明若仍无回应你们将采取的下一步——所有这些都要以维护双方关系为前提。不少于 100 词。
+  minWords: 100
+  suggestedMinutes: 15
+  modelAnswer: |-
+    Dear Mr. Grant,
+
+    I am writing about invoice INV-2077 for 12,400 euros, which fell due on 18 June and remains unpaid. I sent a reminder on 8 July but have not heard back, so I wanted to follow up with you personally.
+
+    I will be honest: the silence is what concerns me most. Farrow & Webb has settled every invoice on time for three years, which is exactly why I would rather ask than assume. If the invoice has gone astray, a copy is attached with our bank details. If anything on it is unclear or in dispute, tell me and we will sort it out quickly. And if cash flow is simply tight this quarter, I would much rather agree on a payment schedule than leave things unresolved.
+
+    Could you either arrange payment or confirm a firm payment date by Friday 25 July? I should mention that if we have not heard from you by then, our standard process requires us to place new orders on hold — an outcome I am keen to avoid.
+
+    Thank you, and I look forward to hearing from you.
+
+    Kind regards,
+    Shen Rui
+    Finance Coordinator
+  checklist:
+    - en: Did you restate the facts precisely — invoice number, amount, due date, and the earlier reminder?
+      zh: 是否准确重述了事实——发票号、金额、到期日和此前的提醒？
+    - en: Did you acknowledge the client's good payment history instead of treating them as a bad payer?
+      zh: 是否肯定了客户一贯良好的付款记录，而不是把对方当作恶意拖欠者？
+    - en: Did you leave room for an explanation — a lost invoice, a dispute, or a cash-flow problem?
+      zh: 是否留出了解释空间——发票遗失、存在争议或资金紧张？
+    - en: Did you ask for payment or a firm payment date by a specific deadline?
+      zh: 是否要求在明确期限前付款或给出确定的付款日期？
+    - en: Did you state the next step calmly as standard process, without personal threats?
+      zh: 是否把下一步平静地表述为公司的标准流程，而没有个人威胁的意味？
+- id: biz-wr-009
+  track: business
+  taskType: business_report
+  title: "Recommendation Report: Choosing a New Helpdesk Platform"
+  titleZh: 建议报告：是否更换客服工单系统
+  promptEn: "Your customer-support team has finished an eight-week trial of Zenith Desk, a new helpdesk platform, run alongside your current system. The results: average first-response time fell from 5.1 hours to 3.2 hours, and seven of the nine agents prefer the new tool; however, the subscription costs about 20% more per year, and the integration with your billing system failed twice during the trial. Write a recommendation report for your department head: summarise the background and the trial results, weigh the benefits against the costs and risks, and close with a clear recommendation and proposed next steps. Write at least 120 words."
+  promptZh: 你的客服团队刚结束对新工单系统 Zenith Desk 为期八周的试用，试用期间与现有系统并行运行。结果显示：平均首次响应时间从 5.1 小时降至 3.2 小时，九名客服中有七人更喜欢新工具；但订阅费用每年高出约 20%，且与计费系统的集成在试用期间出过两次故障。请给部门负责人写一份建议报告：概述背景与试用结果，权衡收益与成本、风险，并以明确的建议和后续步骤收尾。不少于 120 词。
+  minWords: 120
+  suggestedMinutes: 20
+  modelAnswer: |-
+    Subject: Recommendation — Adoption of Zenith Desk for Customer Support
+
+    Background
+    Our current helpdesk contract expires on 30 September. From 20 April to 15 June we ran Zenith Desk in parallel with the existing system, with all nine agents handling half of their tickets in each tool.
+
+    Trial results
+    Average first-response time fell from 5.1 hours to 3.2 hours, largely thanks to Zenith's automatic routing and reply templates. Seven of the nine agents would prefer to keep the new tool, citing faster search and a cleaner interface. The end-of-week ticket backlog averaged 14% lower than in comparable weeks on the old system.
+
+    Costs and risks
+    The subscription is $21,600 per year, roughly 20% above what we pay today. More seriously, the integration with our billing system failed twice during the trial, each time requiring manual reconciliation. Zenith attributes both failures to an API version mismatch and has scheduled a fix for its August release.
+
+    Recommendation
+    I recommend we adopt Zenith Desk, on the condition that the August release passes a two-week retest of the billing integration. The response-time gain directly supports our service-level targets and, at current ticket volumes, is worth considerably more than the additional subscription cost.
+
+    Next steps
+    1. Retest the billing integration during the first two weeks of August — support operations.
+    2. If the retest passes, sign a one-year (not three-year) agreement by 15 September to retain flexibility.
+    3. Schedule agent training for the last week of September, before the current contract lapses.
+
+    Xu Qiao
+  checklist:
+    - en: Did you structure the report with clear headings, ending in a decisive recommendation?
+      zh: 报告是否结构清晰、层层递进，并以明确的建议收尾？
+    - en: Did you present both the gains and the drawbacks with numbers, not impressions?
+      zh: 是否用数字而非主观印象同时呈现了收益与不足？
+    - en: Did you weigh the extra cost against a quantified benefit?
+      zh: 是否将增加的成本与可量化的收益进行了权衡？
+    - en: Did you tie the recommendation to a condition that manages the known risk?
+      zh: 建议是否附带了管控已知风险的前提条件？
+    - en: Does every next step have an owner and a date?
+      zh: 每个后续步骤是否都有责任方和时间点？
+- id: biz-wr-010
+  track: business
+  taskType: business_report
+  title: "Quarterly Report: Engineering Hiring Update"
+  titleZh: 季度报告：工程团队招聘进展
+  promptEn: "Write the quarterly hiring update for your leadership team. The plan called for six new engineering hires this quarter; two have started. The funnel: 340 applications, 41 first interviews, 9 final rounds, 4 offers, 2 acceptances. Both declined offers were for the senior platform engineer role, and both candidates cited compensation below market. Average time-to-hire has grown from 38 to 52 days, mainly because interview feedback keeps arriving late. Cover: progress against target, the funnel figures, an analysis of the two bottlenecks, and what you propose or need from leadership. Write at least 120 words."
+  promptZh: 请为管理层撰写本季度的招聘进展报告。原计划本季度为工程团队招聘六人，目前已入职两人。招聘漏斗数据：340 份简历、41 场初面、9 场终面、4 份 offer、2 人接受。被拒的两份 offer 均为高级平台工程师岗位，两位候选人都表示薪酬低于市场水平。平均招聘周期从 38 天延长至 52 天，主要原因是面试反馈总是迟迟不交。报告需涵盖：目标完成情况、漏斗数据、对两个瓶颈的分析，以及你的建议或需要管理层支持的事项。不少于 120 词。
+  minWords: 120
+  suggestedMinutes: 20
+  modelAnswer: |-
+    Subject: Engineering Hiring — Quarterly Update
+
+    Progress against target
+    The plan called for six engineering hires this quarter; two have started (one backend, one QA). We closed the quarter at two of six, and the shortfall is concentrated in one role: both remaining offers went to senior platform engineer candidates, and both were declined.
+
+    Pipeline
+    This quarter we processed 340 applications, held 41 first interviews and 9 final rounds, and made 4 offers, of which 2 were accepted. Top-of-funnel volume is healthy; conversion breaks down at the offer stage and in scheduling speed.
+
+    Bottlenecks
+    First, both declined offers were for the senior platform engineer role, and both candidates named compensation as the reason. The salary band for this role has not been reviewed since early last year, and recruiter benchmarks now place it roughly 12% below the market median.
+
+    Second, average time-to-hire has grown from 38 to 52 days. The delay is internal: interview feedback that should arrive within two days is averaging six, and two strong candidates withdrew during the wait.
+
+    Proposals and support needed
+    1. Approve a market review of the senior platform engineer band before we re-open the search — decision needed by 8 August, or we lose the current shortlist.
+    2. Back a 48-hour feedback rule: no new interviews are scheduled for anyone with feedback outstanding. I will report compliance monthly.
+    3. Keep the target at six. With the two fixes above, we project reaching five by the end of next quarter and closing the gap the quarter after.
+
+    Gao Yuan
+  checklist:
+    - en: Did you state progress against the original target honestly, right at the top?
+      zh: 是否在开头就如实说明了与原定目标的差距？
+    - en: Did you show the funnel stage by stage with real numbers?
+      zh: 是否用真实数字逐级展示了招聘漏斗？
+    - en: Did you diagnose each bottleneck with evidence, rather than assigning blame?
+      zh: 对每个瓶颈的分析是否基于证据，而不是追究个人责任？
+    - en: Is each request to leadership a specific decision with a deadline?
+      zh: 向管理层提出的每项请求是否都是带期限的具体决策？
+    - en: Did you close with a realistic forecast of what the proposed fixes will achieve?
+      zh: 结尾是否对改进措施的效果给出了务实的预测？

@@ -1009,3 +1009,1013 @@
   translationZh: 回音室（效应）
   exampleEn: Personalised feeds can trap users inside an echo chamber.
   exampleZh: 个性化推送可能把用户困在回音室里。
+# energy (能源)
+- id: ielts-w-101
+  track: ielts
+  topic: energy
+  headword: depletion
+  ipa: /dɪˈpliːʃn/
+  pos: n.
+  definitionEn: The reduction of something valuable through overuse.
+  translationZh: 消耗；枯竭
+  exampleEn: The rapid depletion of oil reserves has forced nations to seek alternatives.
+  exampleZh: 石油储备的迅速枯竭迫使各国寻找替代能源。
+- id: ielts-w-102
+  track: ielts
+  topic: energy
+  headword: consumption
+  ipa: /kənˈsʌmpʃn/
+  pos: n.
+  definitionEn: The amount of energy, goods, or resources used.
+  translationZh: 消耗；消费
+  exampleEn: Household energy consumption typically peaks during the coldest winter months.
+  exampleZh: 家庭能源消耗通常在最寒冷的冬季达到峰值。
+- id: ielts-w-103
+  track: ielts
+  topic: energy
+  headword: fossil fuel
+  ipa: /ˈfɑːsl fjuːəl/
+  pos: n.
+  definitionEn: Fuel such as coal or oil formed from ancient organisms.
+  translationZh: 化石燃料
+  exampleEn: Reducing dependence on fossil fuels is central to most national climate strategies.
+  exampleZh: 减少对化石燃料的依赖是多数国家气候战略的核心。
+- id: ielts-w-104
+  track: ielts
+  topic: energy
+  headword: turbine
+  ipa: /ˈtɜːrbaɪn/
+  pos: n.
+  definitionEn: A machine with blades turned by wind, water, or steam to generate power.
+  translationZh: 涡轮机
+  exampleEn: Offshore wind turbines can supply electricity to hundreds of thousands of homes.
+  exampleZh: 海上风力涡轮机可为数十万户家庭供电。
+- id: ielts-w-105
+  track: ielts
+  topic: energy
+  headword: grid
+  ipa: /ɡrɪd/
+  pos: n.
+  definitionEn: A network of cables supplying electricity across a region.
+  translationZh: 电网
+  exampleEn: Solar panels allow households to sell surplus power back to the national grid.
+  exampleZh: 太阳能电池板让家庭能把多余电力回售给国家电网。
+- id: ielts-w-106
+  track: ielts
+  topic: energy
+  headword: efficiency
+  ipa: /ɪˈfɪʃnsi/
+  pos: n.
+  definitionEn: Achieving maximum output with minimum waste of energy or effort.
+  translationZh: 效率；能效
+  exampleEn: Improving the energy efficiency of old buildings could cut heating bills dramatically.
+  exampleZh: 提高老旧建筑的能效可大幅降低取暖费用。
+- id: ielts-w-107
+  track: ielts
+  topic: energy
+  headword: harness
+  ipa: /ˈhɑːrnɪs/
+  pos: v.
+  definitionEn: To control and use a natural force to produce power.
+  translationZh: 利用；驾驭
+  exampleEn: Engineers have long sought better ways to harness the power of the tides.
+  exampleZh: 工程师们长期以来一直在寻找更好的方法来利用潮汐能。
+- id: ielts-w-108
+  track: ielts
+  topic: energy
+  headword: finite
+  ipa: /ˈfaɪnaɪt/
+  pos: adj.
+  definitionEn: Having a limit; not endless.
+  translationZh: 有限的
+  exampleEn: Coal and natural gas are finite resources that will eventually run out.
+  exampleZh: 煤炭和天然气是终将耗尽的有限资源。
+- id: ielts-w-109
+  track: ielts
+  topic: energy
+  headword: photovoltaic
+  ipa: /ˌfoʊtoʊvɑːlˈteɪɪk/
+  pos: adj.
+  definitionEn: Converting sunlight directly into electricity.
+  translationZh: 光伏的
+  exampleEn: Falling prices have made photovoltaic panels affordable for ordinary homeowners.
+  exampleZh: 价格下降使普通家庭也能用得起光伏板。
+- id: ielts-w-110
+  track: ielts
+  topic: energy
+  headword: reactor
+  ipa: /riˈæktər/
+  pos: n.
+  definitionEn: A large device that produces nuclear energy.
+  translationZh: 反应堆
+  exampleEn: The country plans to build four new reactors to secure its electricity supply.
+  exampleZh: 该国计划新建四座反应堆以保障电力供应。
+# agriculture (农业)
+- id: ielts-w-111
+  track: ielts
+  topic: agriculture
+  headword: irrigation
+  ipa: /ˌɪrɪˈɡeɪʃn/
+  pos: n.
+  definitionEn: Supplying water to land so that crops can grow.
+  translationZh: 灌溉
+  exampleEn: Drip irrigation delivers water directly to the roots and wastes far less.
+  exampleZh: 滴灌把水直接送到作物根部，浪费大大减少。
+- id: ielts-w-112
+  track: ielts
+  topic: agriculture
+  headword: pesticide
+  ipa: /ˈpestɪsaɪd/
+  pos: n.
+  definitionEn: A chemical used to kill insects, weeds, or other organisms harmful to crops.
+  translationZh: 农药；杀虫剂
+  exampleEn: Excessive use of pesticides has been blamed for the decline in bee populations.
+  exampleZh: 农药的过度使用被认为是蜜蜂数量减少的原因。
+- id: ielts-w-113
+  track: ielts
+  topic: agriculture
+  headword: fertilizer
+  ipa: /ˈfɜːrtəlaɪzər/
+  pos: n.
+  definitionEn: A substance added to soil to help plants grow.
+  translationZh: 肥料
+  exampleEn: Nitrogen fertilizer washed from fields is polluting rivers and coastal waters.
+  exampleZh: 从农田流失的氮肥正在污染河流和近海水域。
+- id: ielts-w-114
+  track: ielts
+  topic: agriculture
+  headword: yield
+  ipa: /jiːld/
+  pos: n.
+  definitionEn: The amount of a crop that is produced.
+  translationZh: 产量
+  exampleEn: New drought-resistant varieties have doubled wheat yields in arid regions.
+  exampleZh: 新的抗旱品种使干旱地区的小麦产量翻了一番。
+- id: ielts-w-115
+  track: ielts
+  topic: agriculture
+  headword: arable
+  ipa: /ˈærəbl/
+  pos: adj.
+  definitionEn: Suitable for growing crops.
+  translationZh: 可耕的；适于耕种的
+  exampleEn: Soil erosion is steadily reducing the amount of arable land available.
+  exampleZh: 水土流失正不断减少可耕地的面积。
+- id: ielts-w-116
+  track: ielts
+  topic: agriculture
+  headword: livestock
+  ipa: /ˈlaɪvstɑːk/
+  pos: n.
+  definitionEn: Farm animals such as cattle, sheep, and pigs.
+  translationZh: 牲畜
+  exampleEn: Raising livestock accounts for a significant share of global greenhouse gas emissions.
+  exampleZh: 饲养牲畜占全球温室气体排放的很大一部分。
+- id: ielts-w-117
+  track: ielts
+  topic: agriculture
+  headword: cultivate
+  ipa: /ˈkʌltɪveɪt/
+  pos: v.
+  definitionEn: To prepare land and grow crops on it.
+  translationZh: 耕作；种植；培养
+  exampleEn: Farmers in the region have cultivated rice terraces for over a thousand years.
+  exampleZh: 该地区的农民耕种梯田水稻已有一千多年。
+- id: ielts-w-118
+  track: ielts
+  topic: agriculture
+  headword: organic
+  ipa: /ɔːrˈɡænɪk/
+  pos: adj.
+  definitionEn: Produced without artificial chemicals.
+  translationZh: 有机的
+  exampleEn: Demand for organic vegetables has grown despite their higher prices.
+  exampleZh: 尽管价格更高，有机蔬菜的需求仍在增长。
+- id: ielts-w-119
+  track: ielts
+  topic: agriculture
+  headword: monoculture
+  ipa: /ˈmɑːnoʊkʌltʃər/
+  pos: n.
+  definitionEn: The practice of growing only one crop on a large area.
+  translationZh: 单一栽培
+  exampleEn: Monoculture leaves entire harvests vulnerable to a single pest or disease.
+  exampleZh: 单一栽培使整季收成容易毁于一种病虫害。
+- id: ielts-w-120
+  track: ielts
+  topic: agriculture
+  headword: subsistence
+  ipa: /səbˈsɪstəns/
+  pos: n.
+  definitionEn: The state of having just enough food or money to stay alive.
+  translationZh: 勉强维持生计；自给
+  exampleEn: Millions of families still depend on subsistence farming for their daily meals.
+  exampleZh: 数百万家庭仍靠自给农业维持日常饮食。
+# transport (交通运输)
+- id: ielts-w-121
+  track: ielts
+  topic: transport
+  headword: freight
+  ipa: /freɪt/
+  pos: n.
+  definitionEn: Goods transported by ship, train, truck, or aircraft.
+  translationZh: 货运；货物
+  exampleEn: Moving freight by rail produces far less pollution than road transport.
+  exampleZh: 铁路货运产生的污染远少于公路运输。
+- id: ielts-w-122
+  track: ielts
+  topic: transport
+  headword: transit
+  ipa: /ˈtrænzɪt/
+  pos: n.
+  definitionEn: The system of moving people on public vehicles.
+  translationZh: 公共交通；运输
+  exampleEn: Investment in public transit reduces both traffic jams and air pollution.
+  exampleZh: 对公共交通的投资能同时缓解交通堵塞和空气污染。
+- id: ielts-w-123
+  track: ielts
+  topic: transport
+  headword: logistics
+  ipa: /ləˈdʒɪstɪks/
+  pos: n.
+  definitionEn: The detailed organization of moving goods or people.
+  translationZh: 物流
+  exampleEn: Advanced logistics allow retailers to deliver online orders within hours.
+  exampleZh: 先进的物流使零售商能在数小时内送达网上订单。
+- id: ielts-w-124
+  track: ielts
+  topic: transport
+  headword: detour
+  ipa: /ˈdiːtʊr/
+  pos: n.
+  definitionEn: A longer route used when the direct one is closed.
+  translationZh: 绕行路线
+  exampleEn: Drivers faced lengthy detours while the main bridge was under repair.
+  exampleZh: 主桥维修期间，司机们不得不长距离绕行。
+- id: ielts-w-125
+  track: ielts
+  topic: transport
+  headword: toll
+  ipa: /toʊl/
+  pos: n.
+  definitionEn: Money paid to use a road or bridge.
+  translationZh: 通行费
+  exampleEn: Electronic tolls have eliminated queues at the motorway entrance.
+  exampleZh: 电子收费消除了高速公路入口的排队现象。
+- id: ielts-w-126
+  track: ielts
+  topic: transport
+  headword: accessibility
+  ipa: /əkˌsesəˈbɪləti/
+  pos: n.
+  definitionEn: How easy a place or service is to reach or use.
+  translationZh: 可达性；无障碍程度
+  exampleEn: Low-floor buses have greatly improved accessibility for elderly passengers.
+  exampleZh: 低地板公交车大大改善了老年乘客的乘车便利性。
+- id: ielts-w-127
+  track: ielts
+  topic: transport
+  headword: autonomous
+  ipa: /ɔːˈtɑːnəməs/
+  pos: adj.
+  definitionEn: Able to operate without human control.
+  translationZh: 自动驾驶的；自主的
+  exampleEn: Autonomous vehicles could reduce accidents caused by human error.
+  exampleZh: 自动驾驶汽车有望减少人为失误造成的事故。
+- id: ielts-w-128
+  track: ielts
+  topic: transport
+  headword: mobility
+  ipa: /moʊˈbɪləti/
+  pos: n.
+  definitionEn: The ability to move or travel easily.
+  translationZh: 移动性；出行能力
+  exampleEn: Shared bicycles offer cheap urban mobility for short journeys.
+  exampleZh: 共享单车为短途出行提供了廉价的城市交通方式。
+- id: ielts-w-129
+  track: ielts
+  topic: transport
+  headword: fleet
+  ipa: /fliːt/
+  pos: n.
+  definitionEn: A group of vehicles operated by one organization.
+  translationZh: 车队；船队
+  exampleEn: The city is replacing its ageing bus fleet with electric models.
+  exampleZh: 该市正用电动车型替换老化的公交车队。
+- id: ielts-w-130
+  track: ielts
+  topic: transport
+  headword: aviation
+  ipa: /ˌeɪviˈeɪʃn/
+  pos: n.
+  definitionEn: The industry of designing and flying aircraft.
+  translationZh: 航空（业）
+  exampleEn: Aviation accounts for a growing share of global carbon emissions.
+  exampleZh: 航空业在全球碳排放中所占比重日益上升。
+# tourism (旅游)
+- id: ielts-w-131
+  track: ielts
+  topic: tourism
+  headword: itinerary
+  ipa: /aɪˈtɪnəreri/
+  pos: n.
+  definitionEn: A plan of the places visited on a journey.
+  translationZh: 行程（表）
+  exampleEn: The guided tour follows a fixed itinerary covering five historic cities.
+  exampleZh: 这条跟团路线按固定行程游览五座历史名城。
+- id: ielts-w-132
+  track: ielts
+  topic: tourism
+  headword: destination
+  ipa: /ˌdestɪˈneɪʃn/
+  pos: n.
+  definitionEn: A place that people travel to.
+  translationZh: 目的地
+  exampleEn: The island has become a popular destination for honeymooning couples.
+  exampleZh: 该岛已成为新婚夫妇热门的蜜月目的地。
+- id: ielts-w-133
+  track: ielts
+  topic: tourism
+  headword: hospitality
+  ipa: /ˌhɑːspɪˈtæləti/
+  pos: n.
+  definitionEn: Friendly treatment of guests; the hotel and catering industry.
+  translationZh: 热情好客；酒店服务业
+  exampleEn: The hospitality industry employs one in ten workers in the region.
+  exampleZh: 酒店服务业雇用了该地区十分之一的劳动者。
+- id: ielts-w-134
+  track: ielts
+  topic: tourism
+  headword: excursion
+  ipa: /ɪkˈskɜːrʒn/
+  pos: n.
+  definitionEn: A short trip made for pleasure.
+  translationZh: 短途旅行；远足
+  exampleEn: The cruise offers optional excursions to nearby fishing villages.
+  exampleZh: 这条邮轮航线提供前往附近渔村的自选短途游。
+- id: ielts-w-135
+  track: ielts
+  topic: tourism
+  headword: souvenir
+  ipa: /ˌsuːvəˈnɪr/
+  pos: n.
+  definitionEn: An object kept as a reminder of a place visited.
+  translationZh: 纪念品
+  exampleEn: Stalls near the temple sell handmade souvenirs to passing tourists.
+  exampleZh: 寺庙附近的摊位向过往游客出售手工纪念品。
+- id: ielts-w-136
+  track: ielts
+  topic: tourism
+  headword: ecotourism
+  ipa: /ˈiːkoʊtʊrɪzəm/
+  pos: n.
+  definitionEn: Tourism designed to protect nature and support local people.
+  translationZh: 生态旅游
+  exampleEn: Ecotourism gives villagers an income that depends on preserving the rainforest.
+  exampleZh: 生态旅游让村民的收入与保护雨林息息相关。
+- id: ielts-w-137
+  track: ielts
+  topic: tourism
+  headword: off-season
+  ipa: /ˈɔːf siːzn/
+  pos: adj.
+  definitionEn: Happening at a time of year when few tourists visit.
+  translationZh: 淡季的
+  exampleEn: Off-season travellers enjoy lower prices and far smaller crowds.
+  exampleZh: 淡季出行的游客能享受更低的价格和少得多的人流。
+- id: ielts-w-138
+  track: ielts
+  topic: tourism
+  headword: commercialize
+  ipa: /kəˈmɜːrʃəlaɪz/
+  pos: v.
+  definitionEn: To run something mainly to make a profit.
+  translationZh: 使商业化
+  exampleEn: Critics argue the ancient festival has been commercialized beyond recognition.
+  exampleZh: 批评者认为这个古老的节日已被商业化得面目全非。
+- id: ielts-w-139
+  track: ielts
+  topic: tourism
+  headword: picturesque
+  ipa: /ˌpɪktʃəˈresk/
+  pos: adj.
+  definitionEn: Attractive and charming to look at, like a picture.
+  translationZh: 风景如画的
+  exampleEn: The picturesque harbour attracts photographers from all over the world.
+  exampleZh: 风景如画的港口吸引着世界各地的摄影师。
+- id: ielts-w-140
+  track: ielts
+  topic: tourism
+  headword: overcrowding
+  ipa: /ˌoʊvərˈkraʊdɪŋ/
+  pos: n.
+  definitionEn: The presence of too many people in one place.
+  translationZh: 过度拥挤
+  exampleEn: Overcrowding at the ancient site forced officials to limit daily visitor numbers.
+  exampleZh: 古迹的过度拥挤迫使官方限制每日游客数量。
+# psychology (心理学)
+- id: ielts-w-141
+  track: ielts
+  topic: psychology
+  headword: cognition
+  ipa: /kɑːɡˈnɪʃn/
+  pos: n.
+  definitionEn: The mental process of gaining knowledge and understanding.
+  translationZh: 认知
+  exampleEn: Regular sleep plays a crucial role in memory and cognition.
+  exampleZh: 规律的睡眠对记忆和认知起着关键作用。
+- id: ielts-w-142
+  track: ielts
+  topic: psychology
+  headword: perception
+  ipa: /pərˈsepʃn/
+  pos: n.
+  definitionEn: The way something is noticed or understood.
+  translationZh: 感知；看法
+  exampleEn: Advertising subtly shapes public perception of what a healthy lifestyle looks like.
+  exampleZh: 广告潜移默化地塑造公众对健康生活方式的看法。
+- id: ielts-w-143
+  track: ielts
+  topic: psychology
+  headword: motivation
+  ipa: /ˌmoʊtɪˈveɪʃn/
+  pos: n.
+  definitionEn: The desire or reason to do something.
+  translationZh: 动机；积极性
+  exampleEn: Intrinsic motivation predicts academic success better than external rewards.
+  exampleZh: 内在动机比外部奖励更能预示学业成功。
+- id: ielts-w-144
+  track: ielts
+  topic: psychology
+  headword: resilience
+  ipa: /rɪˈzɪliəns/
+  pos: n.
+  definitionEn: The ability to recover quickly from difficulties.
+  translationZh: 心理韧性；恢复力
+  exampleEn: Children who learn to cope with small setbacks develop greater resilience.
+  exampleZh: 学会应对小挫折的孩子能培养出更强的心理韧性。
+- id: ielts-w-145
+  track: ielts
+  topic: psychology
+  headword: introvert
+  ipa: /ˈɪntrəvɜːrt/
+  pos: n.
+  definitionEn: A quiet person who prefers being alone or with few people.
+  translationZh: 内向的人
+  exampleEn: Open-plan offices can be exhausting environments for introverts.
+  exampleZh: 开放式办公室对内向者来说可能非常消耗精力。
+- id: ielts-w-146
+  track: ielts
+  topic: psychology
+  headword: subconscious
+  ipa: /ˌsʌbˈkɑːnʃəs/
+  pos: adj.
+  definitionEn: Existing in the mind without one's full awareness.
+  translationZh: 潜意识的
+  exampleEn: Subconscious biases can influence hiring decisions without recruiters realizing it.
+  exampleZh: 潜意识偏见会在招聘者毫无察觉的情况下影响录用决定。
+- id: ielts-w-147
+  track: ielts
+  topic: psychology
+  headword: procrastinate
+  ipa: /prəˈkræstɪneɪt/
+  pos: v.
+  definitionEn: To delay doing something that should be done.
+  translationZh: 拖延
+  exampleEn: Students who procrastinate often produce rushed work of lower quality.
+  exampleZh: 爱拖延的学生往往交出仓促完成、质量较低的作业。
+- id: ielts-w-148
+  track: ielts
+  topic: psychology
+  headword: empathy
+  ipa: /ˈempəθi/
+  pos: n.
+  definitionEn: The ability to understand and share another person's feelings.
+  translationZh: 同理心；共情
+  exampleEn: Reading fiction has been shown to strengthen empathy in young readers.
+  exampleZh: 研究表明，阅读小说能增强青少年读者的同理心。
+- id: ielts-w-149
+  track: ielts
+  topic: psychology
+  headword: peer pressure
+  ipa: /ˈpɪr ˌpreʃər/
+  pos: n.
+  definitionEn: Influence from people of one's own age or group.
+  translationZh: 同伴压力
+  exampleEn: Teenagers often take up smoking because of peer pressure rather than curiosity.
+  exampleZh: 青少年吸烟往往是出于同伴压力而非好奇。
+- id: ielts-w-150
+  track: ielts
+  topic: psychology
+  headword: temperament
+  ipa: /ˈtemprəmənt/
+  pos: n.
+  definitionEn: A person's basic nature and usual way of behaving.
+  translationZh: 气质；性情
+  exampleEn: Studies of twins suggest that temperament is partly inherited.
+  exampleZh: 双胞胎研究表明，气质在一定程度上是遗传的。
+# history (历史)
+- id: ielts-w-151
+  track: ielts
+  topic: history
+  headword: archaeology
+  ipa: /ˌɑːrkiˈɑːlədʒi/
+  pos: n.
+  definitionEn: The study of the past through buried objects and remains.
+  translationZh: 考古学
+  exampleEn: Advances in archaeology have rewritten the early history of the region.
+  exampleZh: 考古学的进展改写了该地区的早期历史。
+- id: ielts-w-152
+  track: ielts
+  topic: history
+  headword: artifact
+  ipa: /ˈɑːrtɪfækt/
+  pos: n.
+  definitionEn: An object made by humans, especially one of historical interest.
+  translationZh: 人工制品；文物
+  exampleEn: The museum returned hundreds of artifacts to their country of origin.
+  exampleZh: 博物馆将数百件文物归还给了原属国。
+- id: ielts-w-153
+  track: ielts
+  topic: history
+  headword: dynasty
+  ipa: /ˈdaɪnəsti/
+  pos: n.
+  definitionEn: A series of rulers from the same family.
+  translationZh: 王朝
+  exampleEn: The palace complex was built at the height of the dynasty's power.
+  exampleZh: 这处宫殿建筑群建于王朝鼎盛时期。
+- id: ielts-w-154
+  track: ielts
+  topic: history
+  headword: excavate
+  ipa: /ˈekskəveɪt/
+  pos: v.
+  definitionEn: To dig carefully to find ancient objects or buildings.
+  translationZh: 发掘；挖掘
+  exampleEn: The team spent three summers excavating the remains of the Roman villa.
+  exampleZh: 考古队花了三个夏天发掘这座罗马别墅的遗迹。
+- id: ielts-w-155
+  track: ielts
+  topic: history
+  headword: chronology
+  ipa: /krəˈnɑːlədʒi/
+  pos: n.
+  definitionEn: The order in which a series of events happened.
+  translationZh: 年表；时间顺序
+  exampleEn: Tree-ring dating helped establish an accurate chronology of the settlement.
+  exampleZh: 树木年轮测定法帮助确定了这处聚落的准确年代序列。
+- id: ielts-w-156
+  track: ielts
+  topic: history
+  headword: civilization
+  ipa: /ˌsɪvələˈzeɪʃn/
+  pos: n.
+  definitionEn: An organized society with developed culture, laws, and technology.
+  translationZh: 文明
+  exampleEn: The river valley nurtured one of the world's earliest civilizations.
+  exampleZh: 这条河谷孕育了世界上最早的文明之一。
+- id: ielts-w-157
+  track: ielts
+  topic: history
+  headword: colonial
+  ipa: /kəˈloʊniəl/
+  pos: adj.
+  definitionEn: Relating to the control of one country by another.
+  translationZh: 殖民（时期）的
+  exampleEn: Many street names still reflect the city's colonial past.
+  exampleZh: 许多街道名称仍映射出这座城市的殖民历史。
+- id: ielts-w-158
+  track: ielts
+  topic: history
+  headword: monument
+  ipa: /ˈmɑːnjumənt/
+  pos: n.
+  definitionEn: A structure built to remind people of an event or person.
+  translationZh: 纪念碑；历史遗迹
+  exampleEn: The stone monument commemorates the soldiers who died in the war.
+  exampleZh: 这座石碑纪念在战争中阵亡的士兵。
+- id: ielts-w-159
+  track: ielts
+  topic: history
+  headword: medieval
+  ipa: /ˌmediˈiːvl/
+  pos: adj.
+  definitionEn: Relating to the Middle Ages in Europe.
+  translationZh: 中世纪的
+  exampleEn: The old town's medieval walls remain almost completely intact.
+  exampleZh: 老城的中世纪城墙几乎完好无损。
+- id: ielts-w-160
+  track: ielts
+  topic: history
+  headword: manuscript
+  ipa: /ˈmænjuskrɪpt/
+  pos: n.
+  definitionEn: A document written by hand, especially an old one.
+  translationZh: 手稿；抄本
+  exampleEn: Scholars digitized the fragile manuscript so researchers worldwide could study it.
+  exampleZh: 学者们将这份脆弱的手稿数字化，供全球研究者研读。
+# wildlife (野生动物)
+- id: ielts-w-161
+  track: ielts
+  topic: wildlife
+  headword: extinction
+  ipa: /ɪkˈstɪŋkʃn/
+  pos: n.
+  definitionEn: The dying out of an entire species.
+  translationZh: 灭绝
+  exampleEn: Rhinos face extinction unless illegal hunting is brought under control.
+  exampleZh: 若非法捕猎得不到遏制，犀牛将面临灭绝。
+- id: ielts-w-162
+  track: ielts
+  topic: wildlife
+  headword: endangered
+  ipa: /ɪnˈdeɪndʒərd/
+  pos: adj.
+  definitionEn: At serious risk of dying out completely.
+  translationZh: 濒危的
+  exampleEn: The reserve shelters several endangered species, including the snow leopard.
+  exampleZh: 该保护区庇护着包括雪豹在内的多种濒危物种。
+- id: ielts-w-163
+  track: ielts
+  topic: wildlife
+  headword: predator
+  ipa: /ˈpredətər/
+  pos: n.
+  definitionEn: An animal that hunts and eats other animals.
+  translationZh: 捕食者；天敌
+  exampleEn: Removing top predators such as wolves upsets the balance of nature.
+  exampleZh: 清除狼等顶级捕食者会打破自然界的平衡。
+- id: ielts-w-164
+  track: ielts
+  topic: wildlife
+  headword: poaching
+  ipa: /ˈpoʊtʃɪŋ/
+  pos: n.
+  definitionEn: The illegal hunting of wild animals.
+  translationZh: 偷猎
+  exampleEn: Ivory poaching has halved the elephant population in a single decade.
+  exampleZh: 象牙偷猎使大象数量在短短十年间减半。
+- id: ielts-w-165
+  track: ielts
+  topic: wildlife
+  headword: conservation
+  ipa: /ˌkɑːnsərˈveɪʃn/
+  pos: n.
+  definitionEn: The protection of nature and wild animals.
+  translationZh: （自然）保护
+  exampleEn: Local communities play a vital role in successful conservation programmes.
+  exampleZh: 当地社区在成功的保护项目中发挥着关键作用。
+- id: ielts-w-166
+  track: ielts
+  topic: wildlife
+  headword: ecosystem
+  ipa: /ˈiːkoʊsɪstəm/
+  pos: n.
+  definitionEn: All the living things in an area and their environment.
+  translationZh: 生态系统
+  exampleEn: Coral reefs are among the most fragile ecosystems on the planet.
+  exampleZh: 珊瑚礁是地球上最脆弱的生态系统之一。
+- id: ielts-w-167
+  track: ielts
+  topic: wildlife
+  headword: sanctuary
+  ipa: /ˈsæŋktʃueri/
+  pos: n.
+  definitionEn: A protected area where animals can live safely.
+  translationZh: 保护区；庇护所
+  exampleEn: Rescued orangutans are gradually reintroduced to the wild from the sanctuary.
+  exampleZh: 获救的红毛猩猩会从保护区逐步放归野外。
+- id: ielts-w-168
+  track: ielts
+  topic: wildlife
+  headword: migratory
+  ipa: /ˈmaɪɡrətɔːri/
+  pos: adj.
+  definitionEn: Moving regularly from one region to another with the seasons.
+  translationZh: 迁徙的
+  exampleEn: Wind farms are sited carefully to avoid the routes of migratory birds.
+  exampleZh: 风电场的选址经过仔细考量，以避开候鸟的迁徙路线。
+- id: ielts-w-169
+  track: ielts
+  topic: wildlife
+  headword: captivity
+  ipa: /kæpˈtɪvəti/
+  pos: n.
+  definitionEn: The state of being kept and unable to live freely.
+  translationZh: 圈养；囚禁
+  exampleEn: Some animals rarely breed in captivity, which makes zoo programmes difficult.
+  exampleZh: 有些动物在圈养环境中很少繁殖，这使动物园的繁育项目困难重重。
+- id: ielts-w-170
+  track: ielts
+  topic: wildlife
+  headword: species
+  ipa: /ˈspiːʃiːz/
+  pos: n.
+  definitionEn: A group of similar living things that can breed together.
+  translationZh: 物种
+  exampleEn: Scientists estimate that thousands of insect species remain undiscovered.
+  exampleZh: 科学家估计仍有数千种昆虫尚未被发现。
+# globalization (全球化)
+- id: ielts-w-171
+  track: ielts
+  topic: globalization
+  headword: multinational
+  ipa: /ˌmʌltiˈnæʃnəl/
+  pos: adj.
+  definitionEn: Operating in many different countries.
+  translationZh: 跨国的
+  exampleEn: Multinational corporations often shift production to countries with lower labour costs.
+  exampleZh: 跨国公司常把生产转移到劳动力成本更低的国家。
+- id: ielts-w-172
+  track: ielts
+  topic: globalization
+  headword: outsourcing
+  ipa: /ˈaʊtsɔːrsɪŋ/
+  pos: n.
+  definitionEn: Paying an outside company to do work for you.
+  translationZh: 外包
+  exampleEn: Outsourcing customer service overseas cut costs but frustrated many customers.
+  exampleZh: 把客服外包到海外降低了成本，却让许多客户不满。
+- id: ielts-w-173
+  track: ielts
+  topic: globalization
+  headword: tariff
+  ipa: /ˈtærɪf/
+  pos: n.
+  definitionEn: A tax on goods entering or leaving a country.
+  translationZh: 关税
+  exampleEn: Higher tariffs on imported steel raised costs for domestic manufacturers.
+  exampleZh: 对进口钢材加征关税抬高了国内制造商的成本。
+- id: ielts-w-174
+  track: ielts
+  topic: globalization
+  headword: interdependence
+  ipa: /ˌɪntərdɪˈpendəns/
+  pos: n.
+  definitionEn: A situation in which countries or people rely on each other.
+  translationZh: 相互依存
+  exampleEn: The pandemic exposed the deep economic interdependence of modern nations.
+  exampleZh: 疫情暴露了现代国家之间深度的经济相互依存。
+- id: ielts-w-175
+  track: ielts
+  topic: globalization
+  headword: free trade
+  ipa: /ˌfriː ˈtreɪd/
+  pos: n.
+  definitionEn: International trade without taxes or restrictions.
+  translationZh: 自由贸易
+  exampleEn: Supporters claim free trade lowers prices and widens consumer choice.
+  exampleZh: 支持者称自由贸易能降低物价并扩大消费者的选择。
+- id: ielts-w-176
+  track: ielts
+  topic: globalization
+  headword: assimilate
+  ipa: /əˈsɪməleɪt/
+  pos: v.
+  definitionEn: To become part of a new culture or group.
+  translationZh: 同化；融入
+  exampleEn: Second-generation immigrants often assimilate more quickly than their parents.
+  exampleZh: 第二代移民往往比父母更快融入当地社会。
+- id: ielts-w-177
+  track: ielts
+  topic: globalization
+  headword: supply chain
+  ipa: /səˈplaɪ tʃeɪn/
+  pos: n.
+  definitionEn: The series of steps that move a product from producer to buyer.
+  translationZh: 供应链
+  exampleEn: A single factory closure can disrupt the entire global supply chain.
+  exampleZh: 一家工厂停工就可能扰乱整个全球供应链。
+- id: ielts-w-178
+  track: ielts
+  topic: globalization
+  headword: cosmopolitan
+  ipa: /ˌkɑːzməˈpɑːlɪtən/
+  pos: adj.
+  definitionEn: Containing people and influences from many different countries.
+  translationZh: 世界性的；国际化的
+  exampleEn: The port grew into a cosmopolitan city where dozens of languages were spoken.
+  exampleZh: 这座港口发展成一座通行数十种语言的国际化都市。
+- id: ielts-w-179
+  track: ielts
+  topic: globalization
+  headword: protectionism
+  ipa: /prəˈtekʃənɪzəm/
+  pos: n.
+  definitionEn: Shielding domestic industries by restricting foreign trade.
+  translationZh: 贸易保护主义
+  exampleEn: Rising protectionism threatens decades of progress toward open markets.
+  exampleZh: 抬头的贸易保护主义威胁着数十年来市场开放的成果。
+- id: ielts-w-180
+  track: ielts
+  topic: globalization
+  headword: integration
+  ipa: /ˌɪntɪˈɡreɪʃn/
+  pos: n.
+  definitionEn: The process of combining groups or systems into one whole.
+  translationZh: 融合；一体化
+  exampleEn: Regional economic integration has boosted trade among neighbouring countries.
+  exampleZh: 区域经济一体化促进了邻国之间的贸易。
+# employment (就业)
+- id: ielts-w-181
+  track: ielts
+  topic: employment
+  headword: recruitment
+  ipa: /rɪˈkruːtmənt/
+  pos: n.
+  definitionEn: The process of finding new people to join an organization.
+  translationZh: 招聘
+  exampleEn: Online platforms have transformed graduate recruitment in recent years.
+  exampleZh: 近年来，线上平台改变了毕业生招聘的方式。
+- id: ielts-w-182
+  track: ielts
+  topic: employment
+  headword: remuneration
+  ipa: /rɪˌmjuːnəˈreɪʃn/
+  pos: n.
+  definitionEn: Payment given for work that has been done.
+  translationZh: 报酬；薪酬
+  exampleEn: Executives' remuneration has risen far faster than average wages.
+  exampleZh: 高管薪酬的增长远快于平均工资。
+- id: ielts-w-183
+  track: ielts
+  topic: employment
+  headword: internship
+  ipa: /ˈɪntɜːrnʃɪp/
+  pos: n.
+  definitionEn: A period of work experience offered to a student or graduate.
+  translationZh: 实习
+  exampleEn: A well-chosen internship often leads to a permanent job offer.
+  exampleZh: 一段选择得当的实习往往能带来正式工作机会。
+- id: ielts-w-184
+  track: ielts
+  topic: employment
+  headword: apprenticeship
+  ipa: /əˈprentɪʃɪp/
+  pos: n.
+  definitionEn: A period of learning a skilled trade while working.
+  translationZh: 学徒期；学徒制
+  exampleEn: Apprenticeships combine classroom study with paid on-the-job training.
+  exampleZh: 学徒制将课堂学习与带薪在岗培训相结合。
+- id: ielts-w-185
+  track: ielts
+  topic: employment
+  headword: retention
+  ipa: /rɪˈtenʃn/
+  pos: n.
+  definitionEn: The ability to keep employees or customers over time.
+  translationZh: 留任；保留
+  exampleEn: Flexible hours have noticeably improved staff retention at the firm.
+  exampleZh: 弹性工时明显提高了该公司的员工留任率。
+- id: ielts-w-186
+  track: ielts
+  topic: employment
+  headword: turnover
+  ipa: /ˈtɜːrnoʊvər/
+  pos: n.
+  definitionEn: The rate at which employees leave and are replaced.
+  translationZh: 人员流动率；营业额
+  exampleEn: High staff turnover forces companies to spend heavily on training.
+  exampleZh: 高人员流动率迫使企业在培训上投入大量资金。
+- id: ielts-w-187
+  track: ielts
+  topic: employment
+  headword: work-life balance
+  ipa: /ˌwɜːrk laɪf ˈbæləns/
+  pos: n.
+  definitionEn: Dividing time sensibly between one's job and personal life.
+  translationZh: 工作与生活的平衡
+  exampleEn: Remote working has improved work-life balance for many office employees.
+  exampleZh: 远程办公改善了许多职员的工作与生活平衡。
+- id: ielts-w-188
+  track: ielts
+  topic: employment
+  headword: morale
+  ipa: /məˈræl/
+  pos: n.
+  definitionEn: The level of confidence and enthusiasm in a group.
+  translationZh: 士气
+  exampleEn: Repeated pay cuts have damaged morale throughout the department.
+  exampleZh: 接连降薪挫伤了整个部门的士气。
+- id: ielts-w-189
+  track: ielts
+  topic: employment
+  headword: incentive
+  ipa: /ɪnˈsentɪv/
+  pos: n.
+  definitionEn: Something that encourages a person to act or work harder.
+  translationZh: 激励；诱因
+  exampleEn: Performance bonuses give employees a strong incentive to meet targets.
+  exampleZh: 绩效奖金有力地激励员工达成目标。
+- id: ielts-w-190
+  track: ielts
+  topic: employment
+  headword: credential
+  ipa: /krəˈdenʃl/
+  pos: n.
+  definitionEn: A qualification or achievement proving someone's ability.
+  translationZh: 资历；证书
+  exampleEn: Employers increasingly value practical skills over formal credentials.
+  exampleZh: 雇主越来越看重实际技能而非正式文凭。
+# space (太空探索)
+- id: ielts-w-191
+  track: ielts
+  topic: space
+  headword: orbit
+  ipa: /ˈɔːrbɪt/
+  pos: n.
+  definitionEn: The curved path of an object around a planet or star.
+  translationZh: 轨道
+  exampleEn: Thousands of pieces of debris now circle the Earth in low orbit.
+  exampleZh: 如今有成千上万块碎片在近地轨道上环绕地球。
+- id: ielts-w-192
+  track: ielts
+  topic: space
+  headword: satellite
+  ipa: /ˈsætəlaɪt/
+  pos: n.
+  definitionEn: An object sent into space to circle the Earth.
+  translationZh: 卫星
+  exampleEn: Weather satellites give forecasters several days' warning of approaching storms.
+  exampleZh: 气象卫星能让预报员提前数天预警来袭的风暴。
+- id: ielts-w-193
+  track: ielts
+  topic: space
+  headword: astronaut
+  ipa: /ˈæstrənɔːt/
+  pos: n.
+  definitionEn: A person trained to travel and work in space.
+  translationZh: 宇航员
+  exampleEn: Astronauts must exercise daily to slow the loss of muscle and bone.
+  exampleZh: 宇航员必须每天锻炼，以减缓肌肉和骨骼的流失。
+- id: ielts-w-194
+  track: ielts
+  topic: space
+  headword: probe
+  ipa: /proʊb/
+  pos: n.
+  definitionEn: An unmanned spacecraft sent to explore space.
+  translationZh: 探测器
+  exampleEn: The probe sent back detailed images of the comet's icy surface.
+  exampleZh: 探测器传回了彗星冰冻表面的清晰图像。
+- id: ielts-w-195
+  track: ielts
+  topic: space
+  headword: gravity
+  ipa: /ˈɡrævəti/
+  pos: n.
+  definitionEn: The force that pulls objects toward the Earth or other bodies.
+  translationZh: 重力；引力
+  exampleEn: Living without gravity for months changes the human body in unexpected ways.
+  exampleZh: 数月的失重生活会以意想不到的方式改变人体。
+- id: ielts-w-196
+  track: ielts
+  topic: space
+  headword: telescope
+  ipa: /ˈtelɪskoʊp/
+  pos: n.
+  definitionEn: An instrument that makes distant objects appear closer.
+  translationZh: 望远镜
+  exampleEn: The space telescope has captured light from galaxies billions of years old.
+  exampleZh: 这台太空望远镜捕捉到了数十亿年前星系发出的光。
+- id: ielts-w-197
+  track: ielts
+  topic: space
+  headword: launch
+  ipa: /lɔːntʃ/
+  pos: v.
+  definitionEn: To send a rocket or spacecraft into the sky or space.
+  translationZh: 发射
+  exampleEn: The agency plans to launch its next Mars mission within two years.
+  exampleZh: 该机构计划在两年内发射下一次火星任务。
+- id: ielts-w-198
+  track: ielts
+  topic: space
+  headword: interstellar
+  ipa: /ˌɪntərˈstelər/
+  pos: adj.
+  definitionEn: Existing or travelling between the stars.
+  translationZh: 星际的
+  exampleEn: Interstellar travel remains far beyond the reach of current technology.
+  exampleZh: 星际旅行仍远超当前技术的能力范围。
+- id: ielts-w-199
+  track: ielts
+  topic: space
+  headword: colonize
+  ipa: /ˈkɑːlənaɪz/
+  pos: v.
+  definitionEn: To settle in and take control of a new area or planet.
+  translationZh: 移居；在……建立定居点
+  exampleEn: Some scientists doubt humans will ever colonize Mars permanently.
+  exampleZh: 一些科学家怀疑人类能否在火星永久定居。
+- id: ielts-w-200
+  track: ielts
+  topic: space
+  headword: celestial
+  ipa: /səˈlestʃl/
+  pos: adj.
+  definitionEn: Relating to the sky or outer space.
+  translationZh: 天体的；天空的
+  exampleEn: Ancient navigators steered by the positions of celestial bodies.
+  exampleZh: 古代航海者依靠天体的位置导航。

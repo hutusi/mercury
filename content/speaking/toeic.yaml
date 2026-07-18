@@ -98,3 +98,102 @@
       zh: 是否简要承认了另一选项的优势，然后回到自己的立场？
     - en: Did you finish with a short concluding sentence before time ran out?
       zh: 是否在时间结束前用一句简短的话收尾？
+- id: toeic-s-006
+  track: toeic
+  partType: qa_response
+  title: "Respond to a Question: Shopping Online"
+  titleZh: 回答问题：网购习惯
+  promptEn: 'Imagine that a market research firm is doing a telephone survey about shopping habits in your area. Answer the following question in a natural, complete way: "How often do you shop online, and what kinds of products do you usually buy online?"'
+  promptZh: 假设一家市场调研公司正在你所在的地区做一项关于购物习惯的电话调查。请自然、完整地回答以下问题："你多久网购一次？通常在网上购买哪些种类的商品？"
+  prepSeconds: 15
+  speakSeconds: 45
+  modelAnswer: Well, I'd say I shop online at least once or twice a week — it's become pretty much a habit. Mostly I buy everyday things, like books, phone accessories, and a lot of household stuff such as detergent and paper towels, because it's cheaper in bulk and I don't have to carry it home. I also order clothes sometimes, though I'm more careful with those, since sizes can be hit or miss. The main reason I shop online is convenience — I can compare prices in a couple of minutes, and most orders arrive the next day. The only things I still buy in actual stores are fresh food and shoes, because I really want to see and try those before paying.
+  checklist:
+    - en: Did you answer both parts of the question (how often AND what kinds of products)?
+      zh: 是否回答了问题的两个部分（多久一次、买哪些商品）？
+    - en: Did you add specific details (frequency, product types, reasons) instead of one-sentence answers?
+      zh: 是否加入了具体细节（频率、商品种类、原因），而不是一句话带过？
+    - en: Did you keep speaking for most of the 45 seconds, perhaps adding an exception or extra example?
+      zh: 是否在 45 秒内持续表达，例如补充一个例外情况或额外例子？
+    - en: Did you use natural spoken connectors (well, though, so) and contractions?
+      zh: 是否使用了自然的口语衔接词（well、though、so）和缩略形式？
+- id: toeic-s-007
+  track: toeic
+  partType: qa_response
+  title: "Express an Opinion: Experience or a Degree"
+  titleZh: 表达观点：经验还是学历
+  promptEn: Do you agree or disagree with the following statement? "When hiring a new employee, work experience is more important than a university degree." Give specific reasons or examples to support your opinion. You will have 30 seconds to prepare and 60 seconds to speak.
+  promptZh: 你是否同意以下说法？"招聘新员工时，工作经验比大学学历更重要。"请给出具体的理由或例子来支持你的观点。你有 30 秒准备时间和 60 秒作答时间。
+  prepSeconds: 30
+  speakSeconds: 60
+  modelAnswer: I mostly agree that work experience matters more than a university degree when hiring, and let me explain why. First, experience proves that someone can actually do the job, not just study it. When we hired two junior designers last year, the one who'd freelanced through college was productive from her first week, while the one with better grades but no practice needed months of coaching. Second, a lot of real work simply isn't taught in class — dealing with difficult clients, meeting deadlines, fixing things when a plan falls apart. You only learn those by doing them. Now, I'll admit degrees still matter in some fields — I wouldn't want a self-taught surgeon — and for fresh graduates a degree may be all they have to show. But for most office jobs, if I had to pick one signal, I'd trust two years of real experience over a diploma every time.
+  checklist:
+    - en: Did you state your position clearly in the first sentence?
+      zh: 第一句话是否清楚表明了你的立场？
+    - en: Did you give at least two distinct reasons, each with an example?
+      zh: 是否给出了至少两个不同的理由，并各配一个例子？
+    - en: Did you briefly acknowledge when a degree does matter before returning to your position?
+      zh: 是否简要承认了学历确实重要的情形，然后回到自己的立场？
+    - en: Did you use signposting language (first, second, so if I had to pick) to structure your answer?
+      zh: 是否使用了结构性信号词（first、second、so if I had to pick）组织回答？
+    - en: Did you finish with a short concluding sentence before time ran out?
+      zh: 是否在时间结束前用一句简短的话收尾？
+- id: toeic-s-008
+  track: toeic
+  partType: qa_response
+  title: "Respond to a Voicemail: A Repair Deadline"
+  titleZh: 回复语音留言：维修期限
+  promptEn: 'You work at the service desk of a computer repair shop. A customer has left the following voicemail: "Hello, this is Victor Ramos. I dropped off my laptop on Monday because the screen kept flickering. I have an important presentation on Thursday morning, and I need to know whether the laptop will be ready by Wednesday evening. Please call me back." Respond as if you were returning his call. In your response, give him an update and explain what will happen next.'
+  promptZh: 你在一家电脑维修店的服务台工作。一位顾客留下了这样一条语音留言："你好，我是 Victor Ramos。我周一送修了我的笔记本电脑，因为屏幕一直闪烁。我周四上午有一个重要的演示，需要知道电脑能否在周三晚上之前修好。请回电。"请以回电的口吻作答：向他说明最新进展，并解释接下来的安排。
+  prepSeconds: 30
+  speakSeconds: 60
+  modelAnswer: Hi Mr. Ramos, this is Li Na calling back from QuickFix Computer Repair — thanks for your message about the laptop with the flickering screen. So, good news on the whole. Our technician found that the display cable was damaged, and the replacement part arrived this morning, so the repair itself is straightforward. We'll install the new cable and run a full test tomorrow, which means your laptop should be ready by Wednesday around three in the afternoon — comfortably before your Thursday presentation. I'll text you the moment it's done, so you don't have to call and check. And just in case anything unexpected comes up, we can lend you a loaner laptop with your files copied over, so either way you'll have a working machine on Thursday morning. If you have any questions, just call me back on this number. Thanks, and talk soon.
+  checklist:
+    - en: Did you greet the caller by name and say who you are and why you are calling?
+      zh: 是否称呼对方姓名，并说明自己是谁、为何来电？
+    - en: Did you restate the problem to show you understood it (flickering screen, needed before Thursday)?
+      zh: 是否复述了问题以表明你理解了情况（屏幕闪烁、周四之前要用）？
+    - en: Did you give a clear status update and a completion time that beats the customer's deadline?
+      zh: 是否给出了明确的维修进展，以及一个早于客户期限的完成时间？
+    - en: Did you offer a backup plan or reassurance, then invite a follow-up call?
+      zh: 是否提供了备用方案或安心保证，最后邀请对方随时回电？
+    - en: Did it sound like natural speech, with contractions and a calm, helpful tone?
+      zh: 听起来是否像自然口语——有缩略形式，语气冷静而乐于助人？
+- id: toeic-s-009
+  track: toeic
+  partType: qa_response
+  title: "Respond to a Question: Staying Active"
+  titleZh: 回答问题：运动习惯
+  promptEn: 'Imagine that a health magazine is doing a telephone survey about lifestyle habits in your country. Answer the following question in a natural, complete way: "How often do you exercise, and what kind of exercise do you enjoy most?"'
+  promptZh: 假设一家健康杂志正在你所在的国家做一项关于生活方式的电话调查。请自然、完整地回答以下问题："你多久锻炼一次？你最喜欢哪种运动方式？"
+  prepSeconds: 15
+  speakSeconds: 45
+  modelAnswer: To be honest, I'm not really a gym person, but I do try to exercise three or four times a week. My favorite is jogging — there's a park about ten minutes from my apartment, and I usually run for half an hour before dinner, mostly to clear my head after work. On weekends I like something more social, so I play badminton with a couple of friends on Saturday mornings; we've been doing that for two years now, and honestly the chatting is half the fun. The one thing I keep meaning to add is swimming, since everyone says it's easier on the knees, but the pool's schedule never matches mine. So overall, I'd say I'm fairly active, mainly because I pick exercise I actually enjoy.
+  checklist:
+    - en: Did you answer both parts of the question (how often AND what kind of exercise)?
+      zh: 是否回答了问题的两个部分（多久锻炼一次、最喜欢哪种运动）？
+    - en: Did you include specific details such as place, schedule, or people you exercise with?
+      zh: 是否加入了地点、时间安排或一起运动的人等具体细节？
+    - en: Did you keep speaking for most of the 45 seconds, perhaps mentioning a plan or exception?
+      zh: 是否在 45 秒内持续表达，例如提到一个打算或例外情况？
+    - en: Did you use natural spoken connectors (to be honest, so, honestly) and contractions?
+      zh: 是否使用了自然的口语衔接词（to be honest、so、honestly）和缩略形式？
+- id: toeic-s-010
+  track: toeic
+  partType: qa_response
+  title: "Express an Opinion: A Job with Frequent Travel"
+  titleZh: 表达观点：频繁出差的工作
+  promptEn: If you had to choose between a job with a higher salary that requires frequent business trips and a job with a lower salary and no travel, which one would you choose? Give specific reasons or examples to support your opinion. You will have 30 seconds to prepare and 60 seconds to speak.
+  promptZh: 如果你必须在两份工作之间做出选择——一份薪水更高但需要频繁出差，另一份薪水较低但无需出差——你会选择哪一份？请给出具体的理由或例子来支持你的观点。你有 30 秒准备时间和 60 秒作答时间。
+  prepSeconds: 30
+  speakSeconds: 60
+  modelAnswer: For me, I'd take the job with the lower salary and no travel, and the main reason is what constant travel actually does to your life. My former team lead flew out to see clients two or three times a month, and while the pay was great, he was permanently tired — early flights, hotel food, missed birthdays — and after two years he transferred out and told us the extra money had mostly gone on takeout and taxis anyway. Second, staying in one place lets you build a routine. I exercise regularly and have dinner with my family every evening, and I honestly do better work when the rest of my life is stable. Now, I'll admit frequent travel can be exciting when you're young — you see new cities and build a wider network. But for me, time and energy are worth more than the salary difference, so I'd choose the stable job without hesitation.
+  checklist:
+    - en: Did you state your choice clearly in the first sentence?
+      zh: 第一句话是否清楚说出了你的选择？
+    - en: Did you support your choice with a specific example, such as a real person or experience?
+      zh: 是否用具体例子（比如真实的人或经历）支撑你的选择？
+    - en: Did you briefly acknowledge the advantages of the other option before returning to your position?
+      zh: 是否简要承认了另一选项的优势，然后回到自己的立场？
+    - en: Did you finish with a short concluding sentence before time ran out?
+      zh: 是否在时间结束前用一句简短的话收尾？

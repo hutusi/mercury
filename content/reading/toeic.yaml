@@ -475,3 +475,474 @@
         - exclusively reserved
       correctIndex: 3
       explanationZh: dedicated 修饰 vehicles 时意为“专用的”，页面随即给出解释——"kept exclusively for your company"，即专为贵公司保留。选项 A（hardworking）、C（committed）是 dedicated 形容“人”时“敬业尽责”的含义，属于一词多义陷阱。
+- id: toeic-r-009
+  track: toeic
+  title: Workshop Invitation from the Ashford Small Business Forum
+  titleZh: Ashford 小企业论坛的工作坊邀请函
+  genre: Email
+  passage: |-
+    From: Hannah Osei, Program Chair, Ashford Small Business Forum
+    To: Victor Lindqvist, Founder, Lindqvist Digital Consulting
+    Subject: Invitation to Lead a Workshop
+    Date: 15 June
+
+    Dear Mr. Lindqvist,
+
+    On behalf of the organizing committee, I would like to invite you to lead a ninety-minute workshop at the Ashford Small Business Forum, which will be held at the Calder Convention Center on 18 and 19 September. Your recent webinar on low-budget online advertising received excellent feedback from our members, and we believe an in-person session on the same topic would be one of the highlights of this year's program.
+
+    The workshop is scheduled for the afternoon of the first day. We expect about sixty participants, mostly owners of small shops and restaurants with little marketing experience, so a practical, non-technical approach would suit the audience best. We are able to offer an honorarium of $600, two nights of accommodation at the Calder Plaza Hotel, and reimbursement of travel expenses up to $250 upon receipt of your tickets.
+
+    If you accept, please send a short session description and a speaker photograph by 8 July so that we can include them in the printed program. Our audiovisual coordinator, Ben Ruiz, will then contact you in August about your equipment needs.
+
+    We sincerely hope you can join us and look forward to your reply by 30 June.
+
+    Kind regards,
+    Hannah Osei
+    Program Chair, Ashford Small Business Forum
+  suggestedMinutes: 7
+  questions:
+    - id: q1
+      stem: Why did Ms. Osei write the email?
+      options:
+        - To request feedback on a recent webinar
+        - To ask Mr. Lindqvist to conduct a workshop
+        - To confirm a reservation at the Calder Plaza Hotel
+        - To advertise a new consulting service
+      correctIndex: 1
+      explanationZh: 邮件首段明确写道 "I would like to invite you to lead a ninety-minute workshop at the Ashford Small Business Forum"，即邀请对方主持工作坊。选项 A 具有迷惑性：网络研讨会（webinar）只是发出邀请的缘由——因为它 "received excellent feedback"，并不是要征求反馈；酒店住宿是随邀请提供的待遇，不是写信目的。
+    - id: q2
+      stem: What is indicated about the expected participants?
+      options:
+        - They all attended Mr. Lindqvist's webinar
+        - They must register no later than 8 July
+        - They mainly run small shops and restaurants
+        - They number more than one hundred
+      correctIndex: 2
+      explanationZh: 原文描述听众为 "about sixty participants, mostly owners of small shops and restaurants with little marketing experience"，即多为小店铺和餐馆的经营者。人数约六十人，排除选项 D；8 July 是讲者提交材料的截止日期，与参会者报名无关，属于日期干扰项。
+    - id: q3
+      stem: What is Mr. Lindqvist asked to provide by 8 July?
+      options:
+        - A session description and a photograph
+        - A list of his equipment needs
+        - His travel ticket receipts
+        - A signed speaker contract
+      correctIndex: 0
+      explanationZh: 邮件第三段要求 "please send a short session description and a speaker photograph by 8 July"，以便印入会议手册。选项 B 有迷惑性：设备需求是八月由视听协调员 Ben Ruiz 主动联系确认的事项，并非 7 月 8 日前要提交的材料；车票收据用于事后报销，也没有设定这一期限。
+    - id: q4
+      stem: According to the email, what will most likely happen in August?
+      options:
+        - The printed program will be mailed to members
+        - Mr. Lindqvist will deliver another webinar
+        - The forum will move to a larger venue
+        - A staff member will contact Mr. Lindqvist about equipment
+      correctIndex: 3
+      explanationZh: 原文写道 "Our audiovisual coordinator, Ben Ruiz, will then contact you in August about your equipment needs"——八月将有工作人员联系讲者确认设备需求。这是典型的“接下来会发生什么”题：答案通常在邮件末尾描述后续安排的句子里，其余选项在原文中都没有对应时间信息。
+- id: toeic-r-010
+  track: toeic
+  title: "Memo: Parking Permit Renewal and Carpool Program"
+  titleZh: 内部备忘录：停车证续期与拼车计划
+  genre: Memo
+  passage: |-
+    MEMO
+
+    To: All Employees, Fairview Campus
+    From: Renata Silva, Facilities Manager
+    Date: 2 February
+    Subject: Parking Permit Renewal and New Carpool Program
+
+    All parking permits for the Fairview campus garage expire on 31 March. To renew, log in to the facilities portal, confirm your license plate number, and pay the annual fee of $180 no later than 15 March. Renewals completed after that date will incur a $25 late charge, and from 1 April vehicles without a valid permit will not be admitted to the garage.
+
+    This year we are also introducing a carpool program. Groups of three or more employees who commute in one vehicle may register together, share a single permit fee, and park in the newly marked spaces on Level 1, closest to the lobby entrance. Carpool applications require the names and employee numbers of all members and are submitted through the same portal.
+
+    Please note that the visitor lot beside Building C will be resurfaced during the first week of March. Visitors will be directed to Level 5 of the garage that week, so employees who normally park on Level 5 should expect fewer available spaces there.
+
+    Direct questions about renewal to the facilities help desk at extension 2280. Questions about paying the fee through payroll deduction should go to Human Resources.
+  suggestedMinutes: 6
+  questions:
+    - id: q1
+      stem: What is the main purpose of the memo?
+      options:
+        - To announce the closure of the campus garage
+        - To report the results of a commuting survey
+        - To explain parking permit renewal procedures
+        - To introduce a new facilities manager
+      correctIndex: 2
+      explanationZh: 备忘录开篇即指出所有停车证 3 月 31 日到期，并说明续期步骤、费用和逾期后果，主体内容是停车证续期的流程安排，拼车计划是附带介绍的新政策。选项 A 与原文矛盾：车库并未关闭，只是无有效停车证的车辆自 4 月 1 日起不得进入。
+    - id: q2
+      stem: The word "incur" in paragraph 1 is closest in meaning to
+      options:
+        - become subject to
+        - avoid
+        - calculate
+        - refund
+      correctIndex: 0
+      explanationZh: incur 意为“招致、承担（费用或后果）”。"Renewals completed after that date will incur a $25 late charge" 是说逾期续费将被加收 25 美元滞纳金，与 become subject to（需承担）最接近。incur 在 TOEIC 中几乎总与 cost、charge、fee、penalty 等搭配，方向是“产生费用”而非“免除费用”，据此可排除 avoid 和 refund。
+    - id: q3
+      stem: According to the memo, what is a benefit of joining the carpool program?
+      options:
+        - A free annual permit for each member
+        - Access to the visitor lot beside Building C
+        - Guaranteed admission after 1 April
+        - Parking spaces close to the lobby entrance
+      correctIndex: 3
+      explanationZh: 原文说明拼车小组可以 "park in the newly marked spaces on Level 1, closest to the lobby entrance"，即使用离大堂入口最近的专属车位。选项 A 有迷惑性：拼车成员是"share a single permit fee"（分摊一份费用），并非人人免费；访客停车场与拼车计划无关。
+    - id: q4
+      stem: What is suggested about the first week of March?
+      options:
+        - The facilities portal will be unavailable
+        - Parking spaces on Level 5 will be harder to find
+        - Visitors will not be allowed on campus
+        - Building C will be closed for resurfacing
+      correctIndex: 1
+      explanationZh: 备忘录提醒访客停车场翻修期间 "Visitors will be directed to Level 5 of the garage that week, so employees who normally park on Level 5 should expect fewer available spaces there"——访客车辆分流到五层，该层车位将更紧张。翻修的是楼旁的访客停车场（visitor lot），不是 Building C 本身，选项 D 偷换了对象。
+- id: toeic-r-011
+  track: toeic
+  title: "Seminar Advertisement: Present with Confidence"
+  titleZh: 培训广告：自信演讲一日研讨课
+  genre: Advertisement
+  passage: |-
+    PRESENT WITH CONFIDENCE
+    A One-Day Seminar from the Hartwell Speaker Academy
+
+    Does your mind go blank the moment you stand up in a meeting? Join presentation coach Dr. Alicia Fontaine, who has trained executives at more than fifty companies, for one practical day that will change how you speak in public.
+
+    Saturday, 9 May, 9:30 a.m. to 4:30 p.m.
+    Room 210, Lakeside Business Institute, 44 Harbor Street
+
+    In the morning, you will learn how to structure a talk around one clear message, design slides that audiences actually remember, and stay calm when equipment fails. In the afternoon, every participant delivers a five-minute talk and receives individual feedback from Dr. Fontaine. Each talk is recorded so that you can review your progress at home.
+
+    Enrollment is limited to twenty participants so that everyone has time to present. The $220 fee includes lunch, all course materials, and a copy of Dr. Fontaine's book, The Quiet Presenter. Register at hartwellacademy.com/may by 24 April and pay just $180. Groups of four or more from the same company receive an additional ten percent off each registration.
+
+    This seminar is designed for beginners, and no previous training is required. Graduates may continue with our two-evening course, Presenting Data, offered in June.
+  suggestedMinutes: 6
+  questions:
+    - id: q1
+      stem: What is the main purpose of the advertisement?
+      options:
+        - To promote a one-day training event
+        - To announce the publication of a new book
+        - To recruit a presentation coach
+        - To offer meeting rooms for rent
+      correctIndex: 0
+      explanationZh: 广告宣传的是 Hartwell Speaker Academy 于 5 月 9 日举办的 "A One-Day Seminar"——一场面向公众的演讲培训课。选项 B 有迷惑性：Dr. Fontaine 的书 The Quiet Presenter 只是包含在课程费用里的赠品，不是广告的宣传对象；Room 210 是上课地点，并非出租的会议室。
+    - id: q2
+      stem: According to the advertisement, what will participants do in the afternoon?
+      options:
+        - Watch recordings of famous speakers
+        - Tour the Lakeside Business Institute
+        - Give a short presentation
+        - Design slides in small groups
+      correctIndex: 2
+      explanationZh: 原文写明下午的安排是 "every participant delivers a five-minute talk and receives individual feedback"——每位学员做一次五分钟演讲并获得点评。录像（recorded）指的是录下学员自己的演讲供课后复习，不是观看名人演讲视频；设计幻灯片属于上午的教学内容。
+    - id: q3
+      stem: How can a registrant pay only $180 for the seminar?
+      options:
+        - By enrolling in the June course as well
+        - By signing up before 24 April
+        - By bringing a copy of Dr. Fontaine's book
+        - By presenting for more than five minutes
+      correctIndex: 1
+      explanationZh: 优惠条件是 "Register at hartwellacademy.com/may by 24 April and pay just $180"——4 月 24 日前报名即可享受早鸟价，原价为 $220。另一项优惠“同一公司四人以上再享九折”针对团体报名，与选项 A 所说的连报六月课程无关。
+    - id: q4
+      stem: What is NOT included in the seminar fee?
+      options:
+        - Lunch
+        - A book written by the instructor
+        - Course materials
+        - Hotel accommodation
+      correctIndex: 3
+      explanationZh: 原文列明费用包含三项："The $220 fee includes lunch, all course materials, and a copy of Dr. Fontaine's book"。住宿从头到尾未被提及——这是单日（One-Day）课程，本就无需过夜。NOT 题的解法是逐项在原文中打勾，剩下没有出现的即为答案。
+- id: toeic-r-012
+  track: toeic
+  title: "Notice: Relocation of the Westgate Branch"
+  titleZh: 通知：Summit 社区银行 Westgate 支行迁址
+  genre: Notice
+  passage: |-
+    NOTICE TO CUSTOMERS OF SUMMIT COMMUNITY BANK
+
+    Relocation of the Westgate Branch
+
+    On Friday, 17 July, our Westgate branch at 12 Ferry Road will close at 3:00 p.m. and will reopen on Monday, 20 July, at its new address, 305 Kingsway Avenue, on the ground floor of Compass Plaza. The new location is directly across from Kingsway subway station and about a ten-minute walk from the current one.
+
+    The new premises will allow us to serve you better. The branch will have six teller windows instead of four, a private room for loan consultations, and, for the first time, Saturday morning hours from 9:00 a.m. to 12:30 p.m. A self-service area with machines that accept both cash and check deposits will be open around the clock.
+
+    Safe-deposit boxes will be transferred by a licensed security firm on 18 and 19 July. Box holders do not need to take any action, but please note that boxes cannot be accessed on those two days. Account numbers, bank cards, and online banking details remain unchanged.
+
+    The automated teller machine at Ferry Road will stay in service until the end of August. After that, the nearest machine will be inside the Westgate Shopping Mall. To mark the move, we invite all customers to an open house at the new branch on Saturday, 25 July, from 10:00 a.m. to 2:00 p.m., where staff will demonstrate the self-service machines and refreshments will be served.
+  suggestedMinutes: 7
+  questions:
+    - id: q1
+      stem: What is the main purpose of the notice?
+      options:
+        - To announce a merger between two banks
+        - To inform customers that a branch is moving
+        - To introduce a new type of savings account
+        - To explain changes to online banking fees
+      correctIndex: 1
+      explanationZh: 标题即为 "Relocation of the Westgate Branch"，正文首段说明 Ferry Road 旧址 7 月 17 日停业、7 月 20 日在 Kingsway Avenue 新址重新营业——通知的核心是支行迁址。选项 D 与原文相反：账号、银行卡和网银信息都 "remain unchanged"，更没有提到费用调整。
+    - id: q2
+      stem: What is indicated about the new branch location?
+      options:
+        - It has four teller windows
+        - It is inside the Westgate Shopping Mall
+        - It charges a fee for safe-deposit boxes
+        - It will open on Saturday mornings
+      correctIndex: 3
+      explanationZh: 原文强调新支行 "for the first time, Saturday morning hours from 9:00 a.m. to 12:30 p.m."——首次开设周六上午营业时段。柜台窗口从四个增加到六个，选项 A 用的是旧址的数字；Westgate Shopping Mall 是八月底之后最近的 ATM 所在地，与新支行地址（Compass Plaza）无关。
+    - id: q3
+      stem: What is stated about the safe-deposit boxes?
+      options:
+        - They will be unavailable on 18 and 19 July
+        - Holders must move the contents themselves
+        - They will be stored at a security firm
+        - New keys will be mailed to all holders
+      correctIndex: 0
+      explanationZh: 原文写道 "boxes cannot be accessed on those two days"，即 7 月 18、19 日搬迁期间无法使用保管箱。选项 B 与原文直接矛盾——"Box holders do not need to take any action"，搬运由持牌保安公司负责；保安公司只是承运方，不是存放地点，选项 C 偷换了概念。
+    - id: q4
+      stem: According to the notice, what will happen at the end of August?
+      options:
+        - An open house will be held at Compass Plaza
+        - Customers will receive new account numbers
+        - The Ferry Road cash machine will stop operating
+        - The Kingsway subway station will reopen
+      correctIndex: 2
+      explanationZh: 原文说明 "The automated teller machine at Ferry Road will stay in service until the end of August"——旧址的 ATM 只保留到八月底，之后最近的机器在 Westgate Shopping Mall 内。开放日活动在 7 月 25 日举行，属于日期错配的干扰项；账号明确保持不变，排除选项 B。
+- id: toeic-r-013
+  track: toeic
+  title: "Text-Message Chain: Projector Trouble Before a Client Meeting"
+  titleZh: 短信对话：客户会议前投影仪故障
+  genre: Text-message chain
+  passage: |-
+    Lena Vogel (9:12 a.m.)
+    Tomas, small emergency — the projector in Meeting Room A just died. The Keystone presentation starts at 10:30.
+
+    Tomas Ricci (9:13 a.m.)
+    Did you try the spare cable in the cabinet? Sometimes it's just the connection.
+
+    Lena Vogel (9:15 a.m.)
+    First thing I checked. The lamp indicator is blinking red, so the bulb is gone. IT says a replacement won't arrive until Thursday.
+
+    Tomas Ricci (9:16 a.m.)
+    Room C has the new wall-mounted screen, and I don't see any booking for it this morning. Want me to reserve it?
+
+    Lena Vogel (9:17 a.m.)
+    Would you? Nine people are coming, though. Isn't Room C a bit tight?
+
+    Tomas Ricci (9:18 a.m.)
+    It seats twelve if we take out the whiteboard easel. I'll ask Facilities to set up extra chairs and move the coffee cart over.
+
+    Lena Vogel (9:20 a.m.)
+    Perfect. I'll email the Keystone team about the room change and update the signs at reception. Could you also load my slides onto the room computer? The file is on the shared drive under Keystone_Q3.
+
+    Tomas Ricci (9:21 a.m.)
+    On it. Everything will be ready by ten.
+  suggestedMinutes: 6
+  questions:
+    - id: q1
+      stem: What problem does Ms. Vogel report?
+      options:
+        - A meeting has been cancelled
+        - A presentation file has been deleted
+        - A piece of equipment is not working
+        - A meeting room was double-booked
+      correctIndex: 2
+      explanationZh: 9:12 的第一条消息就点明问题："the projector in Meeting Room A just died"——投影仪坏了，而客户演示 10:30 就要开始。会议并没有取消，而是换到了 Room C（排除 A）；幻灯片文件好好地存在共享盘上（排除 B）；Room C 上午恰恰没有人预订（排除 D）。
+    - id: q2
+      stem: At 9:15 a.m., what does Ms. Vogel most likely mean when she writes, "First thing I checked"?
+      options:
+        - She has already tested the spare cable
+        - She inspected Room C earlier that morning
+        - She confirmed the booking schedule first
+        - She contacted the Keystone team right away
+      correctIndex: 0
+      explanationZh: 这句话直接回应上一条消息中 Tomas 的建议 "Did you try the spare cable in the cabinet?"——意思是“那是我第一个检查的东西”，即备用线缆已经试过、不是接触问题。意图题的关键是看上下文衔接：她接着说灯泡指示灯闪红，说明她已经排除了线缆故障，其余选项都与前一条消息对不上。
+    - id: q3
+      stem: What will Mr. Ricci ask the Facilities department to do?
+      options:
+        - Replace the projector bulb
+        - Print copies of the presentation
+        - Repair the wall-mounted screen
+        - Arrange additional seating
+      correctIndex: 3
+      explanationZh: Tomas 在 9:18 说 "I'll ask Facilities to set up extra chairs and move the coffee cart over"——请后勤部门加椅子并把咖啡车挪过去。灯泡要等到周四由 IT 的备件解决，与后勤无关（排除 A）；Room C 的挂墙幕布是新装好的，不需要维修（排除 C）。
+    - id: q4
+      stem: What does Ms. Vogel say she will do?
+      options:
+        - Order a replacement projector
+        - Notify the visitors about the room change
+        - Move the whiteboard easel out of Room C
+        - Upload her slides to the shared drive
+      correctIndex: 1
+      explanationZh: 她在 9:20 明确分工："I'll email the Keystone team about the room change and update the signs at reception"——由她通知来访的客户团队换了会议室。选项 D 是易错点：幻灯片本来就已在共享盘上（"The file is on the shared drive"），需要做的是把它装载到会议室电脑上，而这件事是拜托 Tomas 做的。
+- id: toeic-r-014
+  track: toeic
+  title: Orino Kitchenware Names New Chief Executive
+  titleZh: Orino 厨具公司任命新任首席执行官
+  genre: Article
+  passage: |-
+    HALVERTON DAILY TRIBUNE — 2 November
+
+    Orino Kitchenware, the Halverton-based maker of cookware and small kitchen appliances, announced on Monday that Ingrid Halloran will become its chief executive officer on 1 January. She succeeds founder Paolo Orino, who is retiring after leading the company for thirty-two years.
+
+    Ms. Halloran joins Orino from Fenwick Home Products, where she has served as vice president of international sales for the past six years and nearly doubled the company's overseas revenue. Earlier in her career, she spent eight years at an advertising agency, experience that former colleagues say sharpened her sense of how products should be presented to shoppers.
+
+    In a statement released after the announcement, Ms. Halloran said her first priority will be expanding online sales, which currently account for only twelve percent of Orino's revenue. "Customers fell in love with our pans by picking them up in department stores," she said. "Now we have to earn that same trust on a screen."
+
+    Mr. Orino, who started the business in his garage with a single cast-iron skillet, will remain on the board of directors and continue to advise the product design team. Industry analysts welcomed the appointment, and the company's share price rose four percent on Tuesday. Orino Kitchenware operates three factories in the region and employs about 1,100 people.
+  suggestedMinutes: 7
+  questions:
+    - id: q1
+      stem: What is the article mainly about?
+      options:
+        - A review of a new line of cookware
+        - The construction of a fourth factory
+        - A company's declining share price
+        - A change in company leadership
+      correctIndex: 3
+      explanationZh: 文章首段即宣布 "Ingrid Halloran will become its chief executive officer on 1 January. She succeeds founder Paolo Orino"——报道的核心是首席执行官换人。股价其实上涨了四个百分点，选项 C 与原文相反；工厂数量只是结尾的背景信息，文中并没有建新厂的计划。
+    - id: q2
+      stem: What is indicated about Ms. Halloran?
+      options:
+        - She founded an advertising agency
+        - She currently works at Fenwick Home Products
+        - She has served on Orino's board for six years
+        - She began her career as a product designer
+      correctIndex: 1
+      explanationZh: 原文写道 "Ms. Halloran joins Orino from Fenwick Home Products, where she has served as vice president of international sales for the past six years"——她现任 Fenwick 的国际销售副总裁，即将跳槽到 Orino。她早年在广告公司工作过八年，但只是雇员而非创办人，选项 A 拔高了原文信息；六年指的是她在 Fenwick 的任职时间，不是董事会任期。
+    - id: q3
+      stem: According to the article, what will Ms. Halloran focus on first?
+      options:
+        - Increasing sales through online channels
+        - Opening stores in more department stores
+        - Redesigning the company's best-selling pans
+        - Reducing spending on advertising
+      correctIndex: 0
+      explanationZh: 她在声明中表示 "her first priority will be expanding online sales, which currently account for only twelve percent of Orino's revenue"——首要任务是把仅占营收 12% 的线上销售做大。选项 B 是反向干扰：百货商店是顾客过去爱上产品的渠道，她要做的恰恰是把这种信任搬到线上（"earn that same trust on a screen"）。
+    - id: q4
+      stem: What is suggested about Mr. Orino?
+      options:
+        - He will leave the company completely in January
+        - He plans to start another business
+        - He will keep advising the product design team
+        - He disagreed with the choice of his successor
+      correctIndex: 2
+      explanationZh: 末段说明 "Mr. Orino ... will remain on the board of directors and continue to advise the product design team"——他退休后仍留在董事会并继续指导产品设计团队，因此并非彻底离开公司，选项 A 与原文矛盾。文中没有任何信息支持他反对继任者或另起炉灶。
+- id: toeic-r-015
+  track: toeic
+  title: "Member Review: Fulton Works Coworking Space"
+  titleZh: 会员评论：Fulton Works 共享办公空间
+  genre: Online review
+  passage: |-
+    OfficeScout Reviews
+
+    Fulton Works Coworking — Melbourne
+    Rating: 3 out of 5 | Reviewed by Owen McCrae on 21 February
+
+    My design studio rented two desks at Fulton Works for three months while our own office was being renovated, so we got to know the space as everyday members rather than casual visitors.
+
+    There is plenty to like. The building is a converted textile mill with high ceilings and generous natural light, the desks are large, and every member gets a lockable storage cabinet. The location could not be better — two blocks from Central Station and surrounded by affordable lunch spots. The community events are genuinely useful, too. A contract-basics workshop in January answered questions we had been struggling with for months.
+
+    Unfortunately, the daily experience does not quite live up to the beautiful photographs on the website. The open area becomes noisy after 10 a.m., and with only two phone booths for more than eighty members, I sometimes waited twenty minutes just to make a client call. Worse, the air conditioning broke down twice during the February heat wave. Management sent an apologetic email both times but provided no fans, and by mid-afternoon the studio was unbearable.
+
+    The staff are friendly, and the front desk tells me three additional phone booths are planned for April. Until they are installed, though, I would recommend Fulton Works to individual freelancers rather than to a whole team.
+  suggestedMinutes: 7
+  questions:
+    - id: q1
+      stem: Why did Mr. McCrae's studio use the coworking space?
+      options:
+        - The studio was hiring new employees
+        - Its own office was being renovated
+        - He was visiting Melbourne on a business trip
+        - Its lease at another space had ended
+      correctIndex: 1
+      explanationZh: 评论开头写道 "My design studio rented two desks at Fulton Works for three months while our own office was being renovated"——租用共享办公位是因为自己的办公室在装修。他强调自己是 "everyday members rather than casual visitors"，即长期使用者而非出差过客，排除选项 C。
+    - id: q2
+      stem: What does Mr. McCrae mention as an advantage of Fulton Works?
+      options:
+        - The low cost of membership
+        - The number of phone booths
+        - The quiet working atmosphere
+        - Its location near public transportation
+      correctIndex: 3
+      explanationZh: 优点部分明确称赞 "The location could not be better — two blocks from Central Station"，即紧邻火车站、交通便利。选项 B、C 都是反向干扰：电话亭只有两个、要排队二十分钟，开放区 10 点后就变得吵闹，这些恰恰是他抱怨的缺点。
+    - id: q3
+      stem: According to the review, what happened during the heat wave in February?
+      options:
+        - The air conditioning stopped working
+        - A workshop had to be cancelled
+        - The storage cabinets were removed
+        - The website showed incorrect prices
+      correctIndex: 0
+      explanationZh: 原文写道 "the air conditioning broke down twice during the February heat wave"——热浪期间空调坏了两次，管理方只发了道歉邮件却连风扇都没提供。合同基础工作坊在一月如期举行且很有用（排除 B）；网站的问题是照片过于美化，而不是价格标错（排除 D）。
+    - id: q4
+      stem: The word "genuinely" in paragraph 2 is closest in meaning to
+      options:
+        - occasionally
+        - surprisingly
+        - truly
+        - partly
+      correctIndex: 2
+      explanationZh: genuinely 意为“确实地、真正地”，"The community events are genuinely useful" 是说社区活动实实在在地有用，与 truly 同义。作者随即举例佐证——一月的合同基础工作坊解答了困扰数月的问题，可见是发自内心的肯定，而不是“偶尔有用”或“部分有用”（排除 A、D）。
+- id: toeic-r-016
+  track: toeic
+  title: "Web Page: Pacific Food Expo Exhibitor Information"
+  titleZh: 网页：Pacific 食品博览会参展商信息
+  genre: Web page
+  passage: |-
+    https://www.pacificfoodexpo.com/exhibitors
+
+    PACIFIC FOOD EXPO — EXHIBITOR INFORMATION
+    Harborside Exhibition Center, 14-16 October
+
+    The Pacific Food Expo brings together more than 300 producers, importers, and packaging suppliers with the buyers who stock the region's supermarkets, hotels, and restaurants. Last year's expo welcomed over 9,000 trade visitors across three days.
+
+    Booth options
+    STANDARD BOOTH (9 square meters) — $1,200. Includes a table, two chairs, a printed company sign, and an electrical outlet.
+    CORNER BOOTH (9 square meters) — $1,500. Open on two sides for extra foot traffic; otherwise identical to the standard booth.
+
+    Reservations open on 1 May. Exhibitors who reserve before 1 June receive a free listing in the printed show directory; after that date, a listing costs $150.
+
+    Important requirements
+    All exhibitors must upload a certificate of product liability insurance to their account page no later than 15 September. Booths without a certificate on file may still exhibit but will not be permitted to offer food samples. Refrigerated display cases can be rented for $95 for all three days; rental orders close on 30 September.
+
+    Booth setup takes place on 13 October between 8:00 a.m. and 8:00 p.m. Delivery vehicles require a loading-dock pass, which can be downloaded from your account page.
+
+    New this year, the Meet the Buyer program offers fifteen-minute appointments with purchasing managers from four supermarket chains. Appointment slots are limited and are assigned in the order in which booths are reserved — one more reason to book early.
+  suggestedMinutes: 8
+  questions:
+    - id: q1
+      stem: For whom is the web page most likely intended?
+      options:
+        - Businesses planning to exhibit at a trade fair
+        - Chefs looking for restaurant positions
+        - Members of the public buying entry tickets
+        - Companies that rent out exhibition furniture
+      correctIndex: 0
+      explanationZh: 页面标题即 "EXHIBITOR INFORMATION"，内容围绕展位价格、预订时间、保险要求和布展安排展开，服务对象是打算参展的食品生产商、进口商等企业。页面完全没有涉及门票购买或招聘信息，桌椅是展位自带的配置，不是在向家具租赁商采购（排除 B、C、D）。
+    - id: q2
+      stem: What is an advantage of reserving a booth before 1 June?
+      options:
+        - A discount on corner booths
+        - A free refrigerated display case
+        - A complimentary directory listing
+        - An extra table and chairs
+      correctIndex: 2
+      explanationZh: 原文写明 "Exhibitors who reserve before 1 June receive a free listing in the printed show directory; after that date, a listing costs $150"——6 月 1 日前预订可免费登入会刊名录，之后要收费 150 美元。冷藏展示柜任何时候都是 95 美元的付费租赁项目，与预订早晚无关（排除 B）。
+    - id: q3
+      stem: What will happen if an exhibitor has not submitted an insurance certificate by 15 September?
+      options:
+        - The booth reservation will be cancelled
+        - The exhibitor cannot offer food samples
+        - A late fee of $150 will be charged
+        - The loading-dock pass will be revoked
+      correctIndex: 1
+      explanationZh: 原文规定 "Booths without a certificate on file may still exhibit but will not be permitted to offer food samples"——没有保险证明仍可参展，但不得提供试吃样品。选项 A 过度推断：展位并不会被取消；$150 是逾期购买会刊名录的价格，与保险无关，属于数字错配干扰。
+    - id: q4
+      stem: What is indicated about the Meet the Buyer program?
+      options:
+        - It takes place at supermarkets around the city
+        - It is available only to corner-booth exhibitors
+        - Each appointment lasts one hour
+        - Earlier booth reservations receive appointment priority
+      correctIndex: 3
+      explanationZh: 页面最后说明 "Appointment slots are limited and are assigned in the order in which booths are reserved"——洽谈名额按展位预订先后分配，越早预订越优先，这也呼应了 "one more reason to book early"。每场洽谈是十五分钟而非一小时（排除 C）；页面未对展位类型设置任何门槛（排除 B）。

@@ -1009,3 +1009,1013 @@
   translationZh: 备份
   exampleEn: The system creates an automatic backup every night at midnight.
   exampleZh: 系统每天午夜自动创建备份。
+# retail (零售)
+- id: toeic-w-101
+  track: toeic
+  topic: retail
+  headword: merchandise
+  ipa: /ˈmɜːrtʃəndaɪs/
+  pos: n.
+  definitionEn: Goods that are bought and sold in stores.
+  translationZh: 商品；货品
+  exampleEn: Staff arranged the new merchandise on shelves near the store entrance.
+  exampleZh: 店员把新到的商品摆放在靠近门口的货架上。
+- id: toeic-w-102
+  track: toeic
+  topic: retail
+  headword: checkout
+  ipa: /ˈtʃekaʊt/
+  pos: n.
+  definitionEn: The place in a store where customers pay for goods.
+  translationZh: 收银台；结账处
+  exampleEn: Please form a single line at the checkout during busy hours.
+  exampleZh: 高峰时段请在收银台前排成一队。
+- id: toeic-w-103
+  track: toeic
+  topic: retail
+  headword: receipt
+  ipa: /rɪˈsiːt/
+  pos: n.
+  definitionEn: A printed proof of payment for goods or services.
+  translationZh: 收据；小票
+  exampleEn: Keep your receipt in case you need to return the item.
+  exampleZh: 请保留小票，以便需要时退货。
+- id: toeic-w-104
+  track: toeic
+  topic: retail
+  headword: voucher
+  ipa: /ˈvaʊtʃər/
+  pos: n.
+  definitionEn: A printed ticket that can be exchanged for goods or a discount.
+  translationZh: 代金券；抵用券
+  exampleEn: This voucher gives you ten dollars off your next purchase.
+  exampleZh: 凭这张代金券，下次购物可减免十美元。
+- id: toeic-w-105
+  track: toeic
+  topic: retail
+  headword: aisle
+  ipa: /aɪl/
+  pos: n.
+  definitionEn: A passage between rows of shelves in a store.
+  translationZh: （货架间的）通道
+  exampleEn: Cleaning supplies are in aisle five, next to the paper goods.
+  exampleZh: 清洁用品在五号通道，纸制品旁边。
+- id: toeic-w-106
+  track: toeic
+  topic: retail
+  headword: clearance
+  ipa: /ˈklɪrəns/
+  pos: n.
+  definitionEn: A sale to get rid of remaining stock at reduced prices.
+  translationZh: 清仓（特卖）
+  exampleEn: All winter coats are half price during the clearance sale.
+  exampleZh: 清仓特卖期间，所有冬季外套一律半价。
+- id: toeic-w-107
+  track: toeic
+  topic: retail
+  headword: out of stock
+  ipa: /ˌaʊt əv ˈstɑːk/
+  pos: phr.
+  definitionEn: Not available because all items have been sold.
+  translationZh: 缺货；无库存
+  exampleEn: The blue model is out of stock until next Thursday.
+  exampleZh: 蓝色款目前缺货，下周四才会到货。
+- id: toeic-w-108
+  track: toeic
+  topic: retail
+  headword: retailer
+  ipa: /ˈriːteɪlər/
+  pos: n.
+  definitionEn: A business that sells goods directly to the public.
+  translationZh: 零售商
+  exampleEn: The electronics retailer opened three new branches this year.
+  exampleZh: 这家电子产品零售商今年新开了三家分店。
+- id: toeic-w-109
+  track: toeic
+  topic: retail
+  headword: barcode
+  ipa: /ˈbɑːrkoʊd/
+  pos: n.
+  definitionEn: A pattern of printed lines that a scanner reads for product information.
+  translationZh: 条形码
+  exampleEn: Scan the barcode to check the price of the item.
+  exampleZh: 扫描条形码即可查询商品价格。
+- id: toeic-w-110
+  track: toeic
+  topic: retail
+  headword: fitting room
+  ipa: /ˈfɪtɪŋ ruːm/
+  pos: n.
+  definitionEn: A small room in a store where customers try on clothes.
+  translationZh: 试衣间
+  exampleEn: Customers may take up to five garments into the fitting room.
+  exampleZh: 顾客最多可携带五件衣服进入试衣间。
+# banking (银行业务)
+- id: toeic-w-111
+  track: toeic
+  topic: banking
+  headword: deposit
+  ipa: /dɪˈpɑːzɪt/
+  pos: n.
+  definitionEn: Money placed into a bank account.
+  translationZh: 存款；押金
+  exampleEn: She made a cash deposit at the branch before it closed.
+  exampleZh: 她在银行网点关门前存了一笔现金。
+- id: toeic-w-112
+  track: toeic
+  topic: banking
+  headword: withdraw
+  ipa: /wɪðˈdrɔː/
+  pos: v.
+  definitionEn: To take money out of a bank account.
+  translationZh: 取款；提取
+  exampleEn: You can withdraw up to five hundred dollars a day from this ATM.
+  exampleZh: 这台取款机每天最多可取五百美元。
+- id: toeic-w-113
+  track: toeic
+  topic: banking
+  headword: mortgage
+  ipa: /ˈmɔːrɡɪdʒ/
+  pos: n.
+  definitionEn: A loan from a bank used to buy property.
+  translationZh: 按揭贷款；抵押贷款
+  exampleEn: The couple applied for a twenty-year mortgage on the apartment.
+  exampleZh: 这对夫妇为这套公寓申请了二十年期按揭贷款。
+- id: toeic-w-114
+  track: toeic
+  topic: banking
+  headword: interest rate
+  ipa: /ˈɪntrəst reɪt/
+  pos: n.
+  definitionEn: The percentage a bank charges or pays on money.
+  translationZh: 利率
+  exampleEn: The bank lowered its interest rate on savings accounts last month.
+  exampleZh: 该银行上个月下调了储蓄账户利率。
+- id: toeic-w-115
+  track: toeic
+  topic: banking
+  headword: balance
+  ipa: /ˈbæləns/
+  pos: n.
+  definitionEn: The amount of money in a bank account.
+  translationZh: 余额
+  exampleEn: Check your account balance before setting up the automatic payment.
+  exampleZh: 设置自动扣款前请先查询账户余额。
+- id: toeic-w-116
+  track: toeic
+  topic: banking
+  headword: overdraft
+  ipa: /ˈoʊvərdræft/
+  pos: n.
+  definitionEn: Money withdrawn from a bank account beyond the available balance.
+  translationZh: 透支
+  exampleEn: The bank charges a fee whenever your account goes into overdraft.
+  exampleZh: 账户一旦透支，银行就会收取费用。
+- id: toeic-w-117
+  track: toeic
+  topic: banking
+  headword: collateral
+  ipa: /kəˈlætərəl/
+  pos: n.
+  definitionEn: Property promised to a lender in case a loan is not repaid.
+  translationZh: 抵押品；担保物
+  exampleEn: The company offered its warehouse as collateral for the loan.
+  exampleZh: 公司以仓库作为贷款的抵押品。
+- id: toeic-w-118
+  track: toeic
+  topic: banking
+  headword: teller
+  ipa: /ˈtelər/
+  pos: n.
+  definitionEn: A bank employee who serves customers at the counter.
+  translationZh: 银行柜员
+  exampleEn: The teller helped me exchange dollars for euros at the counter.
+  exampleZh: 柜员在柜台帮我把美元兑换成欧元。
+- id: toeic-w-119
+  track: toeic
+  topic: banking
+  headword: currency
+  ipa: /ˈkɜːrənsi/
+  pos: n.
+  definitionEn: The system of money used in a particular country.
+  translationZh: 货币
+  exampleEn: The airport bank exchanges foreign currency at competitive rates.
+  exampleZh: 机场银行以优惠汇率兑换外币。
+- id: toeic-w-120
+  track: toeic
+  topic: banking
+  headword: wire transfer
+  ipa: /ˈwaɪər ˌtrænsfɜːr/
+  pos: n.
+  definitionEn: An electronic method of sending money between bank accounts.
+  translationZh: 电汇
+  exampleEn: Please pay the invoice by wire transfer within seven business days.
+  exampleZh: 请在七个工作日内以电汇方式支付该发票款项。
+# property (房产租赁)
+- id: toeic-w-121
+  track: toeic
+  topic: property
+  headword: tenant
+  ipa: /ˈtenənt/
+  pos: n.
+  definitionEn: A person who pays rent to use a building or land.
+  translationZh: 租户；房客
+  exampleEn: Tenants must report any water leaks to the building manager.
+  exampleZh: 租户须向楼宇管理员报告任何漏水情况。
+- id: toeic-w-122
+  track: toeic
+  topic: property
+  headword: landlord
+  ipa: /ˈlændlɔːrd/
+  pos: n.
+  definitionEn: A person who owns property and rents it to others.
+  translationZh: 房东
+  exampleEn: The landlord agreed to repaint the office before we move in.
+  exampleZh: 房东同意在我们搬入前重新粉刷办公室。
+- id: toeic-w-123
+  track: toeic
+  topic: property
+  headword: lease
+  ipa: /liːs/
+  pos: n.
+  definitionEn: A legal agreement to rent property for a fixed period.
+  translationZh: 租约；租赁合同
+  exampleEn: Our company signed a five-year lease for the downtown office.
+  exampleZh: 我们公司签了市中心办公室的五年租约。
+- id: toeic-w-124
+  track: toeic
+  topic: property
+  headword: utilities
+  ipa: /juːˈtɪlətiz/
+  pos: n.
+  definitionEn: Basic services for a building, such as water, electricity, and gas.
+  translationZh: 水电燃气等公用事业服务
+  exampleEn: The monthly rent includes utilities but not internet service.
+  exampleZh: 月租金包含水电燃气费，但不含网络费。
+- id: toeic-w-125
+  track: toeic
+  topic: property
+  headword: down payment
+  ipa: /ˈdaʊn ˌpeɪmənt/
+  pos: n.
+  definitionEn: An initial partial payment made when buying something expensive.
+  translationZh: 首付款
+  exampleEn: They saved for years to make the down payment on the house.
+  exampleZh: 他们攒了多年钱才付上这套房子的首付。
+- id: toeic-w-126
+  track: toeic
+  topic: property
+  headword: occupancy
+  ipa: /ˈɑːkjəpənsi/
+  pos: n.
+  definitionEn: The use of a building, or the number of people using it.
+  translationZh: 占用；入住率
+  exampleEn: The office tower reached full occupancy within six months of opening.
+  exampleZh: 这座写字楼开业六个月内即全部租满。
+- id: toeic-w-127
+  track: toeic
+  topic: property
+  headword: real estate
+  ipa: /ˈriːəl ɪˌsteɪt/
+  pos: n.
+  definitionEn: Land and buildings considered as property.
+  translationZh: 房地产
+  exampleEn: Real estate prices near the new subway line rose sharply.
+  exampleZh: 新地铁沿线的房价大幅上涨。
+- id: toeic-w-128
+  track: toeic
+  topic: property
+  headword: furnished
+  ipa: /ˈfɜːrnɪʃt/
+  pos: adj.
+  definitionEn: Containing furniture and ready for use.
+  translationZh: 配备家具的
+  exampleEn: The agency rents furnished apartments to employees on short-term assignments.
+  exampleZh: 该中介向短期外派员工出租带家具的公寓。
+- id: toeic-w-129
+  track: toeic
+  topic: property
+  headword: eviction
+  ipa: /ɪˈvɪkʃn/
+  pos: n.
+  definitionEn: The legal removal of a tenant from a property.
+  translationZh: 驱逐；强制迁出
+  exampleEn: The tenant faced eviction after missing three months of rent.
+  exampleZh: 这名房客拖欠三个月房租后面临被强制迁出。
+- id: toeic-w-130
+  track: toeic
+  topic: property
+  headword: maintenance
+  ipa: /ˈmeɪntənəns/
+  pos: n.
+  definitionEn: The work of keeping a building or equipment in good condition.
+  translationZh: 维护；保养
+  exampleEn: The elevator is closed for scheduled maintenance until Friday.
+  exampleZh: 电梯正在进行定期保养，周五前暂停使用。
+# dining (餐饮)
+- id: toeic-w-131
+  track: toeic
+  topic: dining
+  headword: cuisine
+  ipa: /kwɪˈziːn/
+  pos: n.
+  definitionEn: A style of cooking, especially of a country or region.
+  translationZh: 菜肴；烹饪风格
+  exampleEn: The new restaurant near our office serves authentic Thai cuisine.
+  exampleZh: 我们办公室附近新开的餐厅供应地道的泰国菜。
+- id: toeic-w-132
+  track: toeic
+  topic: dining
+  headword: appetizer
+  ipa: /ˈæpɪtaɪzər/
+  pos: n.
+  definitionEn: A small dish served before the main course.
+  translationZh: 开胃菜；前菜
+  exampleEn: We ordered two appetizers to share while discussing the contract.
+  exampleZh: 讨论合同时，我们点了两份开胃菜一起分享。
+- id: toeic-w-133
+  track: toeic
+  topic: dining
+  headword: beverage
+  ipa: /ˈbevərɪdʒ/
+  pos: n.
+  definitionEn: Any drink, such as coffee, juice, or soda.
+  translationZh: 饮料
+  exampleEn: The conference fee includes lunch and unlimited beverages.
+  exampleZh: 会议费用包含午餐和不限量饮品。
+- id: toeic-w-134
+  track: toeic
+  topic: dining
+  headword: catering
+  ipa: /ˈkeɪtərɪŋ/
+  pos: n.
+  definitionEn: The business of providing food and drinks for events.
+  translationZh: 餐饮服务；宴会承办
+  exampleEn: We hired a catering company for the year-end staff dinner.
+  exampleZh: 我们请了一家餐饮公司承办年终员工晚宴。
+- id: toeic-w-135
+  track: toeic
+  topic: dining
+  headword: gratuity
+  ipa: /ɡrəˈtuːəti/
+  pos: n.
+  definitionEn: A small extra payment for good service; a tip.
+  translationZh: 小费
+  exampleEn: A fifteen percent gratuity is added for parties of eight or more.
+  exampleZh: 八人及以上用餐将加收百分之十五的小费。
+- id: toeic-w-136
+  track: toeic
+  topic: dining
+  headword: patron
+  ipa: /ˈpeɪtrən/
+  pos: n.
+  definitionEn: A regular customer of a restaurant, shop, or business.
+  translationZh: 顾客；老主顾
+  exampleEn: Regular patrons of the café receive a free drink every month.
+  exampleZh: 这家咖啡馆的老顾客每月可获赠一杯免费饮品。
+- id: toeic-w-137
+  track: toeic
+  topic: dining
+  headword: banquet
+  ipa: /ˈbæŋkwɪt/
+  pos: n.
+  definitionEn: A large formal meal for many guests.
+  translationZh: 宴会
+  exampleEn: The awards banquet will be held in the hotel's grand ballroom.
+  exampleZh: 颁奖宴会将在酒店大宴会厅举行。
+- id: toeic-w-138
+  track: toeic
+  topic: dining
+  headword: takeout
+  ipa: /ˈteɪkaʊt/
+  pos: n.
+  definitionEn: Food bought from a restaurant to eat somewhere else.
+  translationZh: 外卖
+  exampleEn: The team ordered takeout and kept working on the proposal.
+  exampleZh: 团队点了外卖，继续赶方案。
+- id: toeic-w-139
+  track: toeic
+  topic: dining
+  headword: ingredient
+  ipa: /ɪnˈɡriːdiənt/
+  pos: n.
+  definitionEn: One of the foods used to make a dish.
+  translationZh: 食材；原料
+  exampleEn: The chef buys fresh ingredients from the local market every morning.
+  exampleZh: 主厨每天早上从本地市场采购新鲜食材。
+- id: toeic-w-140
+  track: toeic
+  topic: dining
+  headword: complimentary
+  ipa: /ˌkɑːmplɪˈmentri/
+  pos: adj.
+  definitionEn: Given free of charge.
+  translationZh: 赠送的；免费的
+  exampleEn: Diners receive a complimentary dessert on their birthday.
+  exampleZh: 顾客生日当天用餐可获赠甜点一份。
+# events (活动会展)
+- id: toeic-w-141
+  track: toeic
+  topic: events
+  headword: venue
+  ipa: /ˈvenjuː/
+  pos: n.
+  definitionEn: The place where an event is held.
+  translationZh: 会场；场地
+  exampleEn: The organizers changed the venue to accommodate more participants.
+  exampleZh: 主办方更换了场地，以容纳更多参会者。
+- id: toeic-w-142
+  track: toeic
+  topic: events
+  headword: exhibition
+  ipa: /ˌeksɪˈbɪʃn/
+  pos: n.
+  definitionEn: A public display of products, art, or information.
+  translationZh: 展览；展会
+  exampleEn: Our booth at the trade exhibition attracted hundreds of visitors.
+  exampleZh: 我们在贸易展上的展位吸引了数百名参观者。
+- id: toeic-w-143
+  track: toeic
+  topic: events
+  headword: registration
+  ipa: /ˌredʒɪˈstreɪʃn/
+  pos: n.
+  definitionEn: The process of signing up officially for an event or service.
+  translationZh: 报名；注册
+  exampleEn: Early registration for the conference closes at the end of May.
+  exampleZh: 会议的早鸟报名将于五月底截止。
+- id: toeic-w-144
+  track: toeic
+  topic: events
+  headword: keynote
+  ipa: /ˈkiːnoʊt/
+  pos: n.
+  definitionEn: The most important speech at a conference.
+  translationZh: 主旨演讲
+  exampleEn: The CEO will deliver the keynote at this year's technology summit.
+  exampleZh: 首席执行官将在今年的科技峰会上发表主旨演讲。
+- id: toeic-w-145
+  track: toeic
+  topic: events
+  headword: attendee
+  ipa: /əˌtenˈdiː/
+  pos: n.
+  definitionEn: A person who is present at an event.
+  translationZh: 与会者；出席者
+  exampleEn: Each attendee will receive a name badge and a program.
+  exampleZh: 每位与会者都将获得姓名牌和会议手册。
+- id: toeic-w-146
+  track: toeic
+  topic: events
+  headword: booth
+  ipa: /buːθ/
+  pos: n.
+  definitionEn: A small stand where a company shows its products at a fair.
+  translationZh: 展位；摊位
+  exampleEn: Visit our booth to see a live demonstration of the software.
+  exampleZh: 欢迎莅临我们的展位，观看软件现场演示。
+- id: toeic-w-147
+  track: toeic
+  topic: events
+  headword: postpone
+  ipa: /ˌpoʊstˈpoʊn/
+  pos: v.
+  definitionEn: To delay an event until a later time.
+  translationZh: 推迟；延期
+  exampleEn: The outdoor product launch was postponed because of heavy rain.
+  exampleZh: 由于大雨，户外产品发布会被推迟了。
+- id: toeic-w-148
+  track: toeic
+  topic: events
+  headword: sign up
+  ipa: /ˌsaɪn ˈʌp/
+  pos: phr.
+  definitionEn: To add your name to a list to join something.
+  translationZh: 报名；登记参加
+  exampleEn: Employees can sign up for the workshop through the company portal.
+  exampleZh: 员工可通过公司门户网站报名参加研讨会。
+- id: toeic-w-149
+  track: toeic
+  topic: events
+  headword: admission
+  ipa: /ədˈmɪʃn/
+  pos: n.
+  definitionEn: The price or right of entry to an event or place.
+  translationZh: 入场（费）；准入
+  exampleEn: Admission to the exhibition is free for registered members.
+  exampleZh: 注册会员可免费入场参观展览。
+- id: toeic-w-150
+  track: toeic
+  topic: events
+  headword: reception
+  ipa: /rɪˈsepʃn/
+  pos: n.
+  definitionEn: A formal social event to welcome guests.
+  translationZh: 招待会
+  exampleEn: A welcome reception will follow the opening ceremony at six o'clock.
+  exampleZh: 开幕式后六点将举行欢迎招待会。
+# healthcare (医疗健康)
+- id: toeic-w-151
+  track: toeic
+  topic: healthcare
+  headword: appointment
+  ipa: /əˈpɔɪntmənt/
+  pos: n.
+  definitionEn: An arranged time to see a doctor or other professional.
+  translationZh: 预约
+  exampleEn: I rescheduled my dental appointment because of the client meeting.
+  exampleZh: 因为要开客户会议，我改约了看牙的时间。
+- id: toeic-w-152
+  track: toeic
+  topic: healthcare
+  headword: prescription
+  ipa: /prɪˈskrɪpʃn/
+  pos: n.
+  definitionEn: A doctor's written order for medicine.
+  translationZh: 处方
+  exampleEn: The pharmacist filled my prescription in about fifteen minutes.
+  exampleZh: 药剂师大约十五分钟就为我配好了处方药。
+- id: toeic-w-153
+  track: toeic
+  topic: healthcare
+  headword: pharmacy
+  ipa: /ˈfɑːrməsi/
+  pos: n.
+  definitionEn: A store where medicines are prepared and sold.
+  translationZh: 药房；药店
+  exampleEn: The pharmacy on the ground floor stays open until midnight.
+  exampleZh: 一楼的药房营业到午夜。
+- id: toeic-w-154
+  track: toeic
+  topic: healthcare
+  headword: checkup
+  ipa: /ˈtʃekʌp/
+  pos: n.
+  definitionEn: A general medical examination to check your health.
+  translationZh: 体检
+  exampleEn: All employees are entitled to a free annual checkup.
+  exampleZh: 所有员工每年都享有一次免费体检。
+- id: toeic-w-155
+  track: toeic
+  topic: healthcare
+  headword: symptom
+  ipa: /ˈsɪmptəm/
+  pos: n.
+  definitionEn: A sign in the body showing illness.
+  translationZh: 症状
+  exampleEn: Stay home and rest if you have any flu symptoms.
+  exampleZh: 如有任何流感症状，请在家休息。
+- id: toeic-w-156
+  track: toeic
+  topic: healthcare
+  headword: vaccination
+  ipa: /ˌvæksɪˈneɪʃn/
+  pos: n.
+  definitionEn: An injection that protects against a disease.
+  translationZh: 疫苗接种
+  exampleEn: The clinic offers free flu vaccinations to staff every October.
+  exampleZh: 诊所每年十月为员工免费接种流感疫苗。
+- id: toeic-w-157
+  track: toeic
+  topic: healthcare
+  headword: physician
+  ipa: /fɪˈzɪʃn/
+  pos: n.
+  definitionEn: A medical doctor who treats illnesses.
+  translationZh: 内科医生；医师
+  exampleEn: Consult your physician before returning to work after the surgery.
+  exampleZh: 手术后复工前请先咨询医生。
+- id: toeic-w-158
+  track: toeic
+  topic: healthcare
+  headword: sick leave
+  ipa: /ˈsɪk liːv/
+  pos: n.
+  definitionEn: Time off work allowed because of illness.
+  translationZh: 病假
+  exampleEn: He took two days of sick leave to recover from a cold.
+  exampleZh: 他请了两天病假养好感冒。
+- id: toeic-w-159
+  track: toeic
+  topic: healthcare
+  headword: diagnosis
+  ipa: /ˌdaɪəɡˈnoʊsɪs/
+  pos: n.
+  definitionEn: A doctor's identification of an illness.
+  translationZh: 诊断
+  exampleEn: The doctor confirmed the diagnosis after reviewing the test results.
+  exampleZh: 医生查看化验结果后确认了诊断。
+- id: toeic-w-160
+  track: toeic
+  topic: healthcare
+  headword: wellness
+  ipa: /ˈwelnəs/
+  pos: n.
+  definitionEn: The state of being healthy in body and mind.
+  translationZh: 健康；身心健康
+  exampleEn: The company launched a wellness program that includes yoga classes.
+  exampleZh: 公司推出了包含瑜伽课的健康计划。
+# insurance (保险)
+- id: toeic-w-161
+  track: toeic
+  topic: insurance
+  headword: premium
+  ipa: /ˈpriːmiəm/
+  pos: n.
+  definitionEn: The regular amount paid for an insurance policy.
+  translationZh: 保险费；保费
+  exampleEn: Your monthly premium rises if you file too many claims.
+  exampleZh: 如果理赔次数过多，月保费就会上涨。
+- id: toeic-w-162
+  track: toeic
+  topic: insurance
+  headword: policyholder
+  ipa: /ˈpɑːləsiˌhoʊldər/
+  pos: n.
+  definitionEn: A person who owns an insurance policy.
+  translationZh: 投保人；保单持有人
+  exampleEn: Policyholders must notify the insurer within a week of any accident.
+  exampleZh: 投保人须在事故发生后一周内通知保险公司。
+- id: toeic-w-163
+  track: toeic
+  topic: insurance
+  headword: coverage
+  ipa: /ˈkʌvərɪdʒ/
+  pos: n.
+  definitionEn: The protection an insurance policy provides.
+  translationZh: 保险范围；保障
+  exampleEn: The travel plan includes coverage for lost luggage and delays.
+  exampleZh: 该旅行保险涵盖行李丢失和延误。
+- id: toeic-w-164
+  track: toeic
+  topic: insurance
+  headword: claim
+  ipa: /kleɪm/
+  pos: n.
+  definitionEn: A formal request for payment under an insurance policy.
+  translationZh: 索赔
+  exampleEn: She submitted a claim for the laptop damaged during the flight.
+  exampleZh: 她就航班途中损坏的笔记本电脑提出了索赔。
+- id: toeic-w-165
+  track: toeic
+  topic: insurance
+  headword: deductible
+  ipa: /dɪˈdʌktəbl/
+  pos: n.
+  definitionEn: The amount you pay before insurance covers the rest.
+  translationZh: 免赔额
+  exampleEn: Choosing a higher deductible lowers your annual premium.
+  exampleZh: 选择较高的免赔额可以降低年度保费。
+- id: toeic-w-166
+  track: toeic
+  topic: insurance
+  headword: beneficiary
+  ipa: /ˌbenɪˈfɪʃieri/
+  pos: n.
+  definitionEn: A person who receives money from an insurance policy or will.
+  translationZh: 受益人
+  exampleEn: He named his wife as the beneficiary of his life insurance.
+  exampleZh: 他指定妻子为其人寿保险的受益人。
+- id: toeic-w-167
+  track: toeic
+  topic: insurance
+  headword: underwrite
+  ipa: /ˌʌndərˈraɪt/
+  pos: v.
+  definitionEn: To accept financial responsibility for an insurance risk.
+  translationZh: 承保
+  exampleEn: The insurer declined to underwrite the aging cargo ship.
+  exampleZh: 保险公司拒绝为这艘老旧货船承保。
+- id: toeic-w-168
+  track: toeic
+  topic: insurance
+  headword: renewal
+  ipa: /rɪˈnuːəl/
+  pos: n.
+  definitionEn: The act of continuing an agreement for a further period.
+  translationZh: 续保；续期
+  exampleEn: You will receive a renewal notice one month before the policy expires.
+  exampleZh: 保单到期前一个月您会收到续保通知。
+- id: toeic-w-169
+  track: toeic
+  topic: insurance
+  headword: payout
+  ipa: /ˈpeɪaʊt/
+  pos: n.
+  definitionEn: A large sum of money paid, especially by an insurer.
+  translationZh: 赔付金；支付款
+  exampleEn: The family received a full payout after the fire destroyed the shop.
+  exampleZh: 火灾烧毁店铺后，这家人获得了全额赔付。
+- id: toeic-w-170
+  track: toeic
+  topic: insurance
+  headword: insure
+  ipa: /ɪnˈʃʊr/
+  pos: v.
+  definitionEn: To protect against loss by buying insurance.
+  translationZh: 投保；给……上保险
+  exampleEn: The gallery insured the paintings before shipping them overseas.
+  exampleZh: 画廊在把画作运往海外前为其投保。
+# hospitality (酒店服务)
+- id: toeic-w-171
+  track: toeic
+  topic: hospitality
+  headword: amenity
+  ipa: /əˈmenəti/
+  pos: n.
+  definitionEn: A useful feature or service that makes a place comfortable.
+  translationZh: 便利设施
+  exampleEn: Hotel amenities include a gym, a pool, and free breakfast.
+  exampleZh: 酒店设施包括健身房、游泳池和免费早餐。
+- id: toeic-w-172
+  track: toeic
+  topic: hospitality
+  headword: concierge
+  ipa: /ˌkɑːnsiˈerʒ/
+  pos: n.
+  definitionEn: A hotel employee who assists guests with services and information.
+  translationZh: 礼宾员
+  exampleEn: The concierge booked theater tickets for the visiting executives.
+  exampleZh: 礼宾员为来访的高管们订好了剧院门票。
+- id: toeic-w-173
+  track: toeic
+  topic: hospitality
+  headword: check-in
+  ipa: /ˈtʃek ɪn/
+  pos: n.
+  definitionEn: The process of registering on arrival at a hotel or airport.
+  translationZh: 入住登记；值机
+  exampleEn: Online check-in lets guests go straight to their rooms.
+  exampleZh: 在线办理入住让客人可以直接进房间。
+- id: toeic-w-174
+  track: toeic
+  topic: hospitality
+  headword: housekeeping
+  ipa: /ˈhaʊskiːpɪŋ/
+  pos: n.
+  definitionEn: The hotel department responsible for cleaning rooms.
+  translationZh: 客房清洁部
+  exampleEn: Call housekeeping if you need extra towels or pillows.
+  exampleZh: 如需额外的毛巾或枕头，请致电客房部。
+- id: toeic-w-175
+  track: toeic
+  topic: hospitality
+  headword: suite
+  ipa: /swiːt/
+  pos: n.
+  definitionEn: A set of connected rooms in a hotel.
+  translationZh: 套房
+  exampleEn: The visiting director stayed in a suite overlooking the harbor.
+  exampleZh: 来访的总监住在一间可俯瞰海港的套房里。
+- id: toeic-w-176
+  track: toeic
+  topic: hospitality
+  headword: front desk
+  ipa: /ˌfrʌnt ˈdesk/
+  pos: n.
+  definitionEn: The hotel counter where guests register and ask for help.
+  translationZh: 前台
+  exampleEn: Please leave your key card at the front desk when you check out.
+  exampleZh: 退房时请将房卡交回前台。
+- id: toeic-w-177
+  track: toeic
+  topic: hospitality
+  headword: wake-up call
+  ipa: /ˈweɪk ʌp ˌkɔːl/
+  pos: n.
+  definitionEn: A phone call from the hotel to wake a guest.
+  translationZh: 叫醒服务
+  exampleEn: I requested a wake-up call at six for the early flight.
+  exampleZh: 为赶早班机，我预约了六点的叫醒服务。
+- id: toeic-w-178
+  track: toeic
+  topic: hospitality
+  headword: luggage
+  ipa: /ˈlʌɡɪdʒ/
+  pos: n.
+  definitionEn: Bags and suitcases used when traveling.
+  translationZh: 行李
+  exampleEn: The porter took our luggage up to the room.
+  exampleZh: 行李员把我们的行李送到了房间。
+- id: toeic-w-179
+  track: toeic
+  topic: hospitality
+  headword: overbook
+  ipa: /ˌoʊvərˈbʊk/
+  pos: v.
+  definitionEn: To sell more reservations than there are places available.
+  translationZh: 超额预订
+  exampleEn: The hotel overbooked and had to move two guests to a nearby property.
+  exampleZh: 酒店超额预订，只得把两位客人安排到附近的酒店。
+- id: toeic-w-180
+  track: toeic
+  topic: hospitality
+  headword: valet
+  ipa: /væˈleɪ/
+  pos: n.
+  definitionEn: A hotel employee who parks cars for guests.
+  translationZh: 泊车员
+  exampleEn: Leave your car with the valet at the main entrance.
+  exampleZh: 请将车辆交给正门的泊车员。
+# legal (法律事务)
+- id: toeic-w-181
+  track: toeic
+  topic: legal
+  headword: attorney
+  ipa: /əˈtɜːrni/
+  pos: n.
+  definitionEn: A lawyer who represents clients in legal matters.
+  translationZh: 律师
+  exampleEn: Our attorney reviewed the merger documents before signing.
+  exampleZh: 我们的律师在签署前审阅了并购文件。
+- id: toeic-w-182
+  track: toeic
+  topic: legal
+  headword: lawsuit
+  ipa: /ˈlɔːsuːt/
+  pos: n.
+  definitionEn: A legal case brought to a court by one party against another.
+  translationZh: 诉讼
+  exampleEn: The supplier filed a lawsuit over the unpaid deliveries.
+  exampleZh: 供应商就拖欠的货款提起了诉讼。
+- id: toeic-w-183
+  track: toeic
+  topic: legal
+  headword: plaintiff
+  ipa: /ˈpleɪntɪf/
+  pos: n.
+  definitionEn: The person who starts a legal case against someone.
+  translationZh: 原告
+  exampleEn: The plaintiff claims the company broke the licensing agreement.
+  exampleZh: 原告声称该公司违反了许可协议。
+- id: toeic-w-184
+  track: toeic
+  topic: legal
+  headword: settlement
+  ipa: /ˈsetlmənt/
+  pos: n.
+  definitionEn: An official agreement ending a dispute without a trial.
+  translationZh: 和解（协议）
+  exampleEn: The two firms reached a settlement before the case went to court.
+  exampleZh: 两家公司在案件开庭前达成了和解。
+- id: toeic-w-185
+  track: toeic
+  topic: legal
+  headword: copyright
+  ipa: /ˈkɑːpiraɪt/
+  pos: n.
+  definitionEn: The legal right to control the use of a creative work.
+  translationZh: 版权；著作权
+  exampleEn: The publisher holds the copyright to all training materials.
+  exampleZh: 出版商拥有全部培训材料的版权。
+- id: toeic-w-186
+  track: toeic
+  topic: legal
+  headword: trademark
+  ipa: /ˈtreɪdmɑːrk/
+  pos: n.
+  definitionEn: A registered name or symbol identifying a company's products.
+  translationZh: 商标
+  exampleEn: The company registered its new logo as a trademark in twelve countries.
+  exampleZh: 该公司在十二个国家注册了新标志的商标。
+- id: toeic-w-187
+  track: toeic
+  topic: legal
+  headword: confidentiality
+  ipa: /ˌkɑːnfɪˌdenʃiˈæləti/
+  pos: n.
+  definitionEn: The duty to keep information secret.
+  translationZh: 保密（性）
+  exampleEn: All contractors sign a confidentiality agreement before the project begins.
+  exampleZh: 所有承包商在项目开始前都要签署保密协议。
+- id: toeic-w-188
+  track: toeic
+  topic: legal
+  headword: regulation
+  ipa: /ˌreɡjuˈleɪʃn/
+  pos: n.
+  definitionEn: An official rule made by a government or authority.
+  translationZh: 规章；法规
+  exampleEn: New safety regulations require monthly inspections of all equipment.
+  exampleZh: 新的安全法规要求每月检查所有设备。
+- id: toeic-w-189
+  track: toeic
+  topic: legal
+  headword: sue
+  ipa: /suː/
+  pos: v.
+  definitionEn: To start a legal case against a person or company.
+  translationZh: 起诉
+  exampleEn: The contractor threatened to sue the developer for unpaid fees.
+  exampleZh: 承包商威胁要就拖欠的费用起诉开发商。
+- id: toeic-w-190
+  track: toeic
+  topic: legal
+  headword: patent
+  ipa: /ˈpætnt/
+  pos: n.
+  definitionEn: The exclusive legal right to make or sell an invention.
+  translationZh: 专利
+  exampleEn: The startup filed a patent for its battery technology.
+  exampleZh: 这家初创公司为其电池技术申请了专利。
+# media (媒体广告)
+- id: toeic-w-191
+  track: toeic
+  topic: media
+  headword: advertisement
+  ipa: /ˌædvərˈtaɪzmənt/
+  pos: n.
+  definitionEn: A public notice promoting a product, service, or event.
+  translationZh: 广告
+  exampleEn: The company placed a full-page advertisement in the business daily.
+  exampleZh: 该公司在商业日报上刊登了整版广告。
+- id: toeic-w-192
+  track: toeic
+  topic: media
+  headword: broadcast
+  ipa: /ˈbrɔːdkæst/
+  pos: v.
+  definitionEn: To send out a program on television or radio.
+  translationZh: 播出；广播
+  exampleEn: The interview with the CEO will be broadcast live on Thursday evening.
+  exampleZh: 对首席执行官的采访将于周四晚间直播。
+- id: toeic-w-193
+  track: toeic
+  topic: media
+  headword: press release
+  ipa: /ˈpres rɪˌliːs/
+  pos: n.
+  definitionEn: An official statement given to the media by an organization.
+  translationZh: 新闻稿
+  exampleEn: The firm issued a press release announcing the new partnership.
+  exampleZh: 公司发布新闻稿，宣布了新的合作关系。
+- id: toeic-w-194
+  track: toeic
+  topic: media
+  headword: circulation
+  ipa: /ˌsɜːrkjəˈleɪʃn/
+  pos: n.
+  definitionEn: The number of copies of a newspaper or magazine sold.
+  translationZh: 发行量
+  exampleEn: The magazine's circulation doubled after its redesign last year.
+  exampleZh: 该杂志去年改版后发行量翻了一番。
+- id: toeic-w-195
+  track: toeic
+  topic: media
+  headword: editorial
+  ipa: /ˌedɪˈtɔːriəl/
+  pos: n.
+  definitionEn: A newspaper article giving the editor's opinion.
+  translationZh: 社论
+  exampleEn: Today's editorial criticizes the proposed increase in parking fees.
+  exampleZh: 今天的社论批评了上调停车费的提案。
+- id: toeic-w-196
+  track: toeic
+  topic: media
+  headword: commercial
+  ipa: /kəˈmɜːrʃl/
+  pos: n.
+  definitionEn: An advertisement broadcast on television or radio.
+  translationZh: （电视或广播）广告
+  exampleEn: The thirty-second commercial will air during the evening news.
+  exampleZh: 这条三十秒的广告将在晚间新闻时段播出。
+- id: toeic-w-197
+  track: toeic
+  topic: media
+  headword: journalist
+  ipa: /ˈdʒɜːrnəlɪst/
+  pos: n.
+  definitionEn: A person who writes news reports for the media.
+  translationZh: 记者
+  exampleEn: Several journalists attended the product launch to interview the designers.
+  exampleZh: 多名记者出席产品发布会并采访了设计师。
+- id: toeic-w-198
+  track: toeic
+  topic: media
+  headword: sponsor
+  ipa: /ˈspɑːnsər/
+  pos: v.
+  definitionEn: To pay for an event or program in exchange for publicity.
+  translationZh: 赞助
+  exampleEn: A local bank agreed to sponsor the city marathon this year.
+  exampleZh: 一家本地银行同意赞助今年的城市马拉松。
+- id: toeic-w-199
+  track: toeic
+  topic: media
+  headword: headline
+  ipa: /ˈhedlaɪn/
+  pos: n.
+  definitionEn: The title printed in large letters above a news story.
+  translationZh: （新闻）标题；头条
+  exampleEn: The merger made headlines in all the major financial papers.
+  exampleZh: 这起并购登上了各大财经报纸的头条。
+- id: toeic-w-200
+  track: toeic
+  topic: media
+  headword: feature
+  ipa: /ˈfiːtʃər/
+  pos: v.
+  definitionEn: To include someone or something as a special part.
+  translationZh: 以……为特色；重点介绍
+  exampleEn: The trade magazine will feature our new product line next month.
+  exampleZh: 这本行业杂志下个月将重点介绍我们的新产品线。
