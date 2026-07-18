@@ -369,3 +369,385 @@
         - A discount offer expires tonight
       correctIndex: 0
       explanationZh: 留言结尾说明了紧迫性："please call me back ... before the end of the day, since the printers are scheduled to run Thursday morning"——印刷机周四一早开印，今天之内必须回电。周五只是承诺的交货日期，“周五提前下班”（选项 C）留言中从未提到。
+- id: toeic-l-007
+  track: toeic
+  title: Calling About a Delayed Furniture Delivery
+  titleZh: 致电询问办公家具延迟送货
+  style: 对话 · Conversation
+  script:
+    - speaker: A
+      text: Hello, this is Susan Reyes from Halverson Consulting. I'm calling about order number 4127 — twelve standing desks and twenty office chairs.
+    - speaker: B
+      text: Good morning, Ms. Reyes, this is Tomas at Corewood Office Furnishings. Let me pull up your order.
+    - speaker: A
+      text: They were supposed to arrive yesterday morning, but nothing has been delivered. We're moving into our new office on Monday.
+    - speaker: B
+      text: I see the issue here. The desks are shipped from our regional warehouse, and a staffing shortage there has delayed all deliveries by about a week.
+    - speaker: A
+      text: A week is too late, I'm afraid. Our old lease ends this weekend, so the staff will have nowhere to work.
+    - speaker: B
+      text: I understand. The chairs are stocked locally, so I can have those sent to you tomorrow afternoon.
+    - speaker: A
+      text: That helps, but what about the desks?
+    - speaker: B
+      text: We keep a few display models at our downtown showroom. I could lend you six of those at no charge until your order arrives.
+    - speaker: A
+      text: Six would at least cover the design team. Could your drivers set them up as well?
+    - speaker: B
+      text: Certainly. I'll schedule the loaner desks and the chairs on the same truck for tomorrow.
+    - speaker: A
+      text: Great. I'll email you the floor plan this afternoon so the crew knows where everything goes.
+    - speaker: B
+      text: Perfect. And I'll apply a ten percent discount to the order for the trouble.
+  questions:
+    - id: q1
+      stem: Why is the woman calling?
+      options:
+        - To change her order to a larger one
+        - To ask about a delivery that has not arrived
+        - To cancel a furniture order
+        - To complain about damaged chairs
+      correctIndex: 1
+      explanationZh: 女士说明来意："They were supposed to arrive yesterday morning, but nothing has been delivered"——订购的家具昨天就该送到却没有到货，她是来追问送货情况的。她既没有取消订单也没有加购（排除 A、C）；家具还没送到，更谈不上损坏（排除 D）。
+    - id: q2
+      stem: What caused the delay?
+      options:
+        - A truck broke down on the highway
+        - The order form had the wrong address
+        - The chairs are out of stock
+        - A staffing shortage at a warehouse
+      correctIndex: 3
+      explanationZh: 男士解释 "a staffing shortage there has delayed all deliveries by about a week"——区域仓库人手不足，所有发货都推迟了大约一周。椅子本地有现货、明天就能送（排除 C）；卡车故障和地址错误都没有被提及。
+    - id: q3
+      stem: What does the man offer to do?
+      options:
+        - Lend the woman some display desks
+        - Refund the entire order
+        - Deliver the desks over the weekend
+        - Upgrade the chairs to a newer model
+      correctIndex: 0
+      explanationZh: 男士主动提出 "I could lend you six of those at no charge until your order arrives"——把展厅的样品桌免费借给对方过渡。他给的补偿是打九折，不是全额退款（排除 B）；桌子要等约一周，周末送到做不到（排除 C）。
+    - id: q4
+      stem: What will the woman most likely do this afternoon?
+      options:
+        - Visit the downtown showroom
+        - Sign a new office lease
+        - Email a floor plan
+        - Interview warehouse staff
+      correctIndex: 2
+      explanationZh: 女士在结尾说 "I'll email you the floor plan this afternoon so the crew knows where everything goes"——下午把办公室平面图发给对方，方便工人明天按图摆放。去展厅看样品桌是男士那边的事，签租约、面试仓库员工更是无从谈起。
+- id: toeic-l-008
+  track: toeic
+  title: Welcome to the Maritime Museum Tour
+  titleZh: 海事博物馆导览欢迎词
+  style: 导览 · Guided Tour
+  script:
+    - speaker: narrator
+      text: Good morning, everyone, and welcome to the Harborview Maritime Museum. My name is Elena, and I'll be your guide for the next ninety minutes.
+    - speaker: narrator
+      text: Before we set off, a few quick reminders. Photography is welcome in most galleries, but please turn off your flash, as it can damage the older paintings.
+    - speaker: narrator
+      text: Our tour begins in the Age of Sail gallery, where you'll see a full-size replica of a nineteenth-century trading ship.
+    - speaker: narrator
+      text: After that, we'll move to the lighthouse exhibit, which reopened last month after a two-year restoration.
+    - speaker: narrator
+      text: The final stop is the shipwreck hall on the second floor. Divers recovered most of those objects from the harbor floor only a few kilometers from here.
+    - speaker: narrator
+      text: If you'd like more detail at your own pace, audio guides are available at the information desk for five dollars.
+    - speaker: narrator
+      text: We'll finish at the museum cafe, where tour members receive a free hot drink with any dessert.
+    - speaker: narrator
+      text: If you get separated from the group, just ask any staff member in a blue uniform to point you back to us. All right, follow me, everyone.
+  questions:
+    - id: q1
+      stem: Who most likely is the speaker?
+      options:
+        - A ship captain
+        - A museum director
+        - A tour guide
+        - A cafe manager
+      correctIndex: 2
+      explanationZh: 说话人自我介绍 "My name is Elena, and I'll be your guide for the next ninety minutes"——她是带队讲解九十分钟路线的导览员。博物馆馆长通常不会亲自带团逐个展厅讲解（排除 B），船长和咖啡店经理更与导览词内容不符。
+    - id: q2
+      stem: What are the listeners asked to do?
+      options:
+        - Turn off their camera flash
+        - Leave their bags at the information desk
+        - Stay off the replica ship
+        - Buy tickets for the shipwreck hall
+      correctIndex: 0
+      explanationZh: 提醒事项里说 "please turn off your flash, as it can damage the older paintings"——拍照可以，但要关闭闪光灯以保护老画作。寄存背包、给沉船展厅单独买票等要求都没有出现；复制帆船只是参观内容，没有说不能登船。
+    - id: q3
+      stem: According to the speaker, what happened last month?
+      options:
+        - A trading ship arrived at the harbor
+        - The museum cafe changed its menu
+        - Divers recovered new objects
+        - The lighthouse exhibit reopened
+      correctIndex: 3
+      explanationZh: 说话人介绍 "the lighthouse exhibit, which reopened last month after a two-year restoration"——灯塔展区经过两年修缮，上个月重新开放。沉船文物是从港口海底打捞的馆藏，说话人并没有说是上个月的事（排除 C）。
+    - id: q4
+      stem: What can tour members receive at the cafe?
+      options:
+        - A discounted audio guide
+        - A free hot drink with any dessert
+        - A souvenir photograph
+        - A voucher for a future visit
+      correctIndex: 1
+      explanationZh: 结尾提到 "tour members receive a free hot drink with any dessert"——跟团游客点任意甜品即可免费获赠一杯热饮。语音导览器要在服务台花五美元租借，并没有折扣（排除 A）。
+- id: toeic-l-009
+  track: toeic
+  title: Planning a Retirement Lunch for a Colleague
+  titleZh: 为同事筹划退休午餐会
+  style: 对话 · Conversation
+  script:
+    - speaker: A
+      text: Carla, have you heard? Margaret in accounting is retiring at the end of the month, after twenty-six years with the company.
+    - speaker: B
+      text: I did hear that. We should organize a farewell lunch for her — she trained half the people on this floor.
+    - speaker: A
+      text: My thought exactly. What about Rosetti's, the Italian place across the street with a private room in the back?
+    - speaker: B
+      text: I love their food, but the private room only takes fifteen people. I'd guess at least twenty-five will want to come.
+    - speaker: A
+      text: Good point — then how about the Harbor Grill? Their upstairs area seats forty, and they gave us a group discount for the holiday party.
+    - speaker: B
+      text: That's better. Margaret's last day is Friday the twenty-eighth, so we should book for that Thursday.
+    - speaker: A
+      text: Could you collect contributions for a gift? People can leave cash with you or pay through the office app.
+    - speaker: B
+      text: Sure. I saw a beautiful set of gardening tools she'd love — she talks about her garden all the time.
+    - speaker: A
+      text: She'll be thrilled. I'll call the restaurant this afternoon and reserve the upstairs area for noon.
+    - speaker: B
+      text: One more thing, Ben — let's keep it a surprise. I'll mark the invitation as a regular team meeting.
+    - speaker: A
+      text: Perfect. Just make sure Margaret's calendar is free before you send it.
+  questions:
+    - id: q1
+      stem: What are the speakers mainly discussing?
+      options:
+        - Organizing a farewell lunch
+        - Hiring a new accountant
+        - Booking a holiday party
+        - Redesigning the office garden
+      correctIndex: 0
+      explanationZh: 对话围绕 "We should organize a farewell lunch for her" 展开——为月底退休的 Margaret 筹办告别午餐。假日聚会只是提到 Harbor Grill 折扣时的往事（排除 C），花园是 Margaret 的个人爱好、只是选礼物的灵感来源（排除 D）。
+    - id: q2
+      stem: Why do the speakers decide against Rosetti's?
+      options:
+        - The food is too expensive
+        - It is closed on Thursdays
+        - The private room is too small
+        - It is too far from the office
+      correctIndex: 2
+      explanationZh: 女士指出 "the private room only takes fifteen people. I'd guess at least twenty-five will want to come"——包间只坐得下十五人，预计到场的人远不止这些。她还夸了那里的食物，价格并不是问题（排除 A）；餐厅就在街对面，距离更不是理由（排除 D）。
+    - id: q3
+      stem: What does the man ask the woman to do?
+      options:
+        - Reserve the upstairs area
+        - Collect money for a gift
+        - Buy gardening tools
+        - Invite the accounting department
+      correctIndex: 1
+      explanationZh: 男士请求 "Could you collect contributions for a gift?"——由女士负责收集大家凑的礼金，现金或办公软件转账都行。订餐厅是男士自己下午要做的事（排除 A）；园艺工具只是女士看中的礼物人选，还没到购买那一步（排除 C）。
+    - id: q4
+      stem: What will the man do this afternoon?
+      options:
+        - Send a calendar invitation
+        - Visit Margaret's office
+        - Choose a gift online
+        - Call the Harbor Grill
+      correctIndex: 3
+      explanationZh: 男士说 "I'll call the restaurant this afternoon and reserve the upstairs area for noon"——下午打电话给 Harbor Grill 预订楼上区域。发送伪装成例会的日历邀请是女士负责的（排除 A），而且要先确认 Margaret 当天有空。
+- id: toeic-l-010
+  track: toeic
+  title: Voicemail from the Pharmacy About a Prescription
+  titleZh: 药房关于处方药的语音留言
+  style: 电话留言 · Voicemail
+  script:
+    - speaker: narrator
+      text: Hello, this message is for Mr. Alvarez. This is Joyce calling from Greenfield Pharmacy on Maple Street about the prescription you dropped off this morning.
+    - speaker: narrator
+      text: Your order has two medications, and one of them is ready for pickup now.
+    - speaker: narrator
+      text: Unfortunately, the second one, the blood pressure tablets, is out of stock at our branch. Our supplier's next delivery won't arrive until Monday.
+    - speaker: narrator
+      text: However, our Riverside location has it on the shelf right now. If you'd like, I can transfer the prescription there, and it would be ready within an hour.
+    - speaker: narrator
+      text: Otherwise, we can hold everything here and fill the complete order when the delivery arrives Monday afternoon.
+    - speaker: narrator
+      text: Please call us back at 555-0129 to let us know which option you prefer. We're open until nine tonight.
+    - speaker: narrator
+      text: Also, a quick reminder — please bring your insurance card when you come, since your plan was renewed this month. Thank you, and have a good day.
+  questions:
+    - id: q1
+      stem: Where does the speaker most likely work?
+      options:
+        - At a doctor's office
+        - At an insurance company
+        - At a delivery service
+        - At a pharmacy
+      correctIndex: 3
+      explanationZh: 说话人自报家门："This is Joyce calling from Greenfield Pharmacy on Maple Street"——她在药房工作，留言内容也全部围绕配药和取药。保险卡只是取药时需要出示的证件，说话人并不在保险公司（排除 B）。
+    - id: q2
+      stem: What problem does the speaker mention?
+      options:
+        - A prescription form was filled out incorrectly
+        - A medication is out of stock
+        - The pharmacy is closing early
+        - An insurance claim was rejected
+      correctIndex: 1
+      explanationZh: 问题在于 "the second one, the blood pressure tablets, is out of stock at our branch"——降压药在本店缺货，供应商周一才补货。处方本身没有问题（排除 A），药房今晚照常营业到九点（排除 C），保险只是提醒带卡、并没有被拒赔（排除 D）。
+    - id: q3
+      stem: What does the speaker offer to do?
+      options:
+        - Deliver the medication to Mr. Alvarez's home
+        - Ask the doctor to change the prescription
+        - Transfer the prescription to another branch
+        - Give a discount on the next order
+      correctIndex: 2
+      explanationZh: 说话人提出 "I can transfer the prescription there, and it would be ready within an hour"——把处方转到 Riverside 分店，一小时内即可取药。送药上门、联系医生改处方、下次打折都不在她给出的两个选项里。
+    - id: q4
+      stem: What is Mr. Alvarez reminded to bring?
+      options:
+        - His insurance card
+        - A photo ID
+        - The original prescription
+        - A payment receipt
+      correctIndex: 0
+      explanationZh: 留言结尾提醒 "please bring your insurance card when you come, since your plan was renewed this month"——保险计划本月刚续期，取药时需要出示新的保险卡。证件照、处方原件、付款收据都没有被提及。
+- id: toeic-l-011
+  track: toeic
+  title: Touring a New Office Space
+  titleZh: 实地考察新办公场地
+  style: 对话 · Conversation
+  script:
+    - speaker: B
+      text: Ms. Ito, I'm Greg Fowler from Beacon Commercial Realty. Thanks for coming out to see the space today.
+    - speaker: A
+      text: My pleasure. Our current office is bursting — we've hired eleven people since January and there's simply no room left.
+    - speaker: B
+      text: Then you'll like this floor. It's nearly twice the size of your current space, and the whole east wall is floor-to-ceiling windows.
+    - speaker: A
+      text: The natural light is wonderful. Is the open area large enough to fit about forty desks?
+    - speaker: B
+      text: Easily, and there are two enclosed rooms in the corner you could use for meetings or video calls.
+    - speaker: A
+      text: I do have one concern. I didn't see a parking garage when I arrived, and many of our staff drive to work.
+    - speaker: B
+      text: The building itself has no garage, that's true. But there's a public garage one block north, and the landlord has arranged discounted monthly passes for tenants.
+    - speaker: A
+      text: That could work. What about the rent — is the owner flexible?
+    - speaker: B
+      text: For a three-year lease, the landlord will offer two months rent-free and cover the cost of repainting.
+    - speaker: A
+      text: That's quite generous. I'd like my business partner to see the space before we decide anything.
+    - speaker: B
+      text: Of course. I'm showing it to another company on Friday morning, so earlier in the week would be safer.
+    - speaker: A
+      text: Then let's say Wednesday at ten. I'll bring our partner and our office designer along.
+  questions:
+    - id: q1
+      stem: Who most likely is the man?
+      options:
+        - A building security guard
+        - A real estate agent
+        - An interior designer
+        - A parking attendant
+      correctIndex: 1
+      explanationZh: 男士自我介绍 "I'm Greg Fowler from Beacon Commercial Realty"，并全程带看场地、介绍租约优惠——他是商业地产经纪人。室内设计师是女士周三要带来的人（排除 C）。
+    - id: q2
+      stem: Why is the woman looking for a new office?
+      options:
+        - Her company has outgrown its current space
+        - Her current rent has doubled
+        - Her lease was cancelled by the landlord
+        - Her staff want a shorter commute
+      correctIndex: 0
+      explanationZh: 女士解释 "we've hired eleven people since January and there's simply no room left"——公司扩张太快，现有办公室已经装不下了。租金上涨、租约被取消、通勤距离都不是她给出的原因。
+    - id: q3
+      stem: What concern does the woman raise?
+      options:
+        - The windows let in too much sun
+        - The meeting rooms are too small
+        - The rent must be paid yearly
+        - The building has no parking garage
+      correctIndex: 3
+      explanationZh: 女士提出 "I didn't see a parking garage when I arrived, and many of our staff drive to work"——大楼没有车库，而很多员工开车通勤。男士也证实 "The building itself has no garage"，并用一街之隔的公共车库加租户月卡折扣来化解。落地窗和采光是女士称赞的优点（排除 A）。
+    - id: q4
+      stem: What will the woman probably do on Wednesday?
+      options:
+        - Sign a three-year lease
+        - Visit the public garage
+        - Return with her business partner
+        - Meet the other interested company
+      correctIndex: 2
+      explanationZh: 女士最后敲定 "let's say Wednesday at ten. I'll bring our partner and our office designer along"——周三上午十点带合伙人和设计师再看一次场地。她明确说决定之前要先让合伙人看过，不会当场签约（排除 A）；另一家有意向的公司是周五来看房，与她无关（排除 D）。
+- id: toeic-l-012
+  track: toeic
+  title: Arriving Early at the Hotel
+  titleZh: 提前抵达酒店办理入住
+  style: 对话 · Conversation
+  script:
+    - speaker: A
+      text: Good morning. I have a reservation under the name Novak, but I know I'm quite early — my flight landed at seven.
+    - speaker: B
+      text: Welcome to the Grandview Hotel, Ms. Novak, my name is Andre. I'm afraid your room won't be ready until around noon, since check-in normally begins at three.
+    - speaker: A
+      text: I was worried about that. The problem is I'm speaking at a conference at the convention center at eleven, and I'd hoped to change and drop off my luggage first.
+    - speaker: B
+      text: We can certainly store your luggage — the bell desk will keep it as long as you need. And you're welcome to use the fitness center changing rooms on the second floor to freshen up.
+    - speaker: A
+      text: That would be a great help. Is there somewhere I can print my presentation handouts as well?
+    - speaker: B
+      text: The business center is right behind the elevators, and it's open twenty-four hours. You won't need a room key at this hour — just enter the code printed on this card.
+    - speaker: A
+      text: Wonderful. And how do I get to the convention center from here?
+    - speaker: B
+      text: Our shuttle leaves from the main entrance every half hour, and the ride takes about ten minutes. The next one departs at nine fifteen.
+    - speaker: A
+      text: Perfect, I'll take that one. Could you send me a message when my room is ready?
+    - speaker: B
+      text: Absolutely. We'll text the number on your reservation, and your key will be waiting here at the front desk.
+    - speaker: A
+      text: Thank you so much. I'll leave my suitcase with the bell desk now and grab a quick coffee before the shuttle.
+    - speaker: B
+      text: The cafe is just across the lobby, and conference guests get ten percent off with their event badge.
+  questions:
+    - id: q1
+      stem: Where most likely are the speakers?
+      options:
+        - At an airport information desk
+        - At a convention center
+        - At a print shop
+        - At a hotel front desk
+      correctIndex: 3
+      explanationZh: 男士说 "Welcome to the Grandview Hotel"，对话围绕客房未备好、寄存行李、酒店班车和前台取钥匙展开——两人正在酒店前台。会展中心是女士稍后要去演讲的地方，不是对话发生地（排除 B）。
+    - id: q2
+      stem: What is the woman's problem?
+      options:
+        - Her flight was delayed
+        - Her luggage was lost at the airport
+        - Her room is not ready yet
+        - Her presentation file was deleted
+      correctIndex: 2
+      explanationZh: 男士告知 "your room won't be ready until around noon"——她到得太早，客房中午前无法入住，而她十一点就要在会展中心演讲。航班早上七点已正常落地（排除 A）；行李就在身边、正准备寄存（排除 B）。
+    - id: q3
+      stem: What does the man suggest the woman do to freshen up?
+      options:
+        - Use the fitness center changing rooms
+        - Wait in the cafe across the lobby
+        - Book a day-use room
+        - Change at the convention center
+      correctIndex: 0
+      explanationZh: 男士建议 "you're welcome to use the fitness center changing rooms on the second floor to freshen up"——用二楼健身中心的更衣室梳洗更衣。大堂对面的咖啡店是女士自己想去喝咖啡的地方，不是男士给出的更衣建议（排除 B）。
+    - id: q4
+      stem: What will the woman probably do next?
+      options:
+        - Print handouts in the business center
+        - Leave her suitcase at the bell desk
+        - Board the shuttle immediately
+        - Check in and go to her room
+      correctIndex: 1
+      explanationZh: 女士最后说 "I'll leave my suitcase with the bell desk now and grab a quick coffee before the shuttle"——now 表明她接下来先去行李台寄存箱子，再喝杯咖啡，九点十五分才上班车（排除 C）。房间要到中午才能入住（排除 D）。

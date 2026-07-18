@@ -391,3 +391,397 @@
         - It will be reviewed every Friday
       correctIndex: 1
       explanationZh: 关于折扣，Maria 只答应十月再谈，并叮嘱："please don't make any commitments before I'm back"——Tom 只需记录客户的诉求，不能许诺任何条件。选项 A 无中生有；每周五更新的是共享表格里的销售管道数据，与折扣无关（排除 D）。
+- id: biz-l-007
+  track: business
+  title: "One-on-One: A Missed Deadline"
+  titleZh: 一对一沟通：错过的截止日期
+  style: 一对一 · One-on-one
+  script:
+    - speaker: A
+      text: Come in, Marcus. I wanted to talk about the vendor comparison report — it was due to the leadership team on Monday, and it's now Thursday.
+    - speaker: B
+      text: I know, and I'm sorry. I should have flagged it earlier instead of hoping I could catch up.
+    - speaker: A
+      text: What got in the way? You've never missed a deadline before, so I'd rather understand than assign blame.
+    - speaker: B
+      text: Honestly, two things. Procurement sent their pricing data five days late, and I was also covering support tickets for Dana while she was out.
+    - speaker: A
+      text: The support cover was my request, so that's partly on me. But why didn't I hear about the procurement delay?
+    - speaker: B
+      text: I mentioned it in the team channel, but I didn't message you directly. I assumed you'd seen it.
+    - speaker: A
+      text: That's the lesson here. When a deadline is at risk, tell me directly — a message buried in a channel doesn't count as raising a flag.
+    - speaker: B
+      text: Understood. From now on I'll send you a direct note the moment something starts slipping.
+    - speaker: A
+      text: Good. Now, where is the report today?
+    - speaker: B
+      text: The analysis is done, and I'm formatting the final tables. I can send you a complete draft by tomorrow at noon.
+    - speaker: A
+      text: Make it tomorrow morning, and I'll review it over lunch. I'll tell leadership they'll have it Friday afternoon with my comments.
+    - speaker: B
+      text: That works. And thank you for keeping this constructive.
+  questions:
+    - id: q1
+      stem: What is the main problem discussed in the conversation?
+      options:
+        - Marcus wants to transfer to another team
+        - A report for the leadership team missed its Monday deadline
+        - Dana's support tickets were left unanswered
+        - The leadership team rejected the vendor comparison report
+      correctIndex: 1
+      explanationZh: 经理开场点明主题："I wanted to talk about the vendor comparison report — it was due to the leadership team on Monday, and it's now Thursday"——报告本应周一交给管理层，如今已拖到周四。报告是逾期未交，而不是被管理层否决（排除 D）；Dana 的工单实际由 Marcus 代管，并没有无人处理（排除 C）。
+    - id: q2
+      stem: What does the manager imply about the message in the team channel?
+      options:
+        - It was posted in the wrong channel
+        - It contained incorrect information about procurement
+        - Marcus should have posted it several days earlier
+        - It was not an adequate way to warn the manager about the risk
+      correctIndex: 3
+      explanationZh: 经理说："a message buried in a channel doesn't count as raising a flag"——淹没在群聊里的一条消息不算真正的预警，言外之意是这种方式不足以让上级知晓风险。raise a flag 意为“发出预警”。经理强调的是应当直接私信告知，而不是发帖时间早晚的问题（排除 C）。
+    - id: q3
+      stem: What does Marcus agree to do in the future?
+      options:
+        - Send the manager a direct message as soon as work starts slipping
+        - Stop covering support tickets for colleagues
+        - Post daily updates in the team channel
+        - Ask procurement for data one week earlier
+      correctIndex: 0
+      explanationZh: Marcus 承诺："From now on I'll send you a direct note the moment something starts slipping"——今后一旦进度开始延误就立刻直接私信经理。slip 在这里指“（进度）滑坡、延误”。支援同事本是经理自己布置的安排，并没有被取消（排除 B）。
+    - id: q4
+      stem: What will happen on Friday afternoon?
+      options:
+        - Marcus will send the manager his first complete draft
+        - Dana will return to the support rotation
+        - The leadership team will receive the report with the manager's comments
+        - The manager will hold another one-on-one with Marcus
+      correctIndex: 2
+      explanationZh: 经理安排的时间线是：Marcus 明早交稿，经理中午审阅，"I'll tell leadership they'll have it Friday afternoon with my comments"——周五下午管理层拿到附有经理意见的报告。Marcus 交完整初稿是在明天上午，不是周五（排除 A）。
+- id: biz-l-008
+  track: business
+  title: Negotiating Extra Scope with a Client
+  titleZh: 与客户协商追加需求
+  style: 谈判 · Negotiation
+  script:
+    - speaker: A
+      text: Hi Laura, thanks for jumping on a call at short notice. You mentioned the mobile app scope in your email?
+    - speaker: B
+      text: Yes. Our sales director tried the beta and loves it, but he's asking for two additions — offline mode and a barcode scanner.
+    - speaker: A
+      text: I appreciate the enthusiasm, but I have to be upfront. Neither feature is in the signed statement of work.
+    - speaker: B
+      text: I understand. How big an effort are we talking about?
+    - speaker: A
+      text: The barcode scanner is small — roughly a week, since we can use a standard library. Offline mode is a different story.
+    - speaker: B
+      text: How so?
+    - speaker: A
+      text: It touches data sync, storage, and conflict handling across the whole app. Realistically that's six weeks and would push your September release into November.
+    - speaker: B
+      text: November is impossible. The September date is tied to our sales kickoff.
+    - speaker: A
+      text: Then here's my suggestion. We add the barcode scanner to the current phase for a small change order, and we scope offline mode as a phase two starting in October.
+    - speaker: B
+      text: Would phase two need a new contract?
+    - speaker: A
+      text: Just an addendum. I can have an estimate for offline mode on your desk within a week, so you can budget for it now.
+    - speaker: B
+      text: That works. Send the change order for the scanner first — I can approve anything under five thousand myself.
+    - speaker: A
+      text: Understood, I'll keep it under that. You'll have both documents by Friday.
+    - speaker: B
+      text: Perfect. Better one good release in September than a rushed one with everything.
+  questions:
+    - id: q1
+      stem: What is the main problem discussed in the call?
+      options:
+        - The beta version of the app has serious bugs
+        - The client wants to cancel the September release
+        - The client is requesting features that are not in the signed statement of work
+        - The vendor wants to raise the project price
+      correctIndex: 2
+      explanationZh: 客户转达销售总监想要两个新功能，而项目负责人直言："Neither feature is in the signed statement of work"——离线模式和条码扫描都不在已签署的工作说明书范围内，这正是双方要解决的矛盾。statement of work（SOW）指“工作说明书”。销售总监试用 beta 版后其实非常喜欢（"loves it"，排除 A）。
+    - id: q2
+      stem: What do the speakers decide about the two features?
+      options:
+        - Add the barcode scanner now and move offline mode to a second phase
+        - Deliver both features in the September release
+        - Drop both features to protect the schedule
+        - Let the sales director choose which feature to build first
+      correctIndex: 0
+      explanationZh: 项目负责人提议："We add the barcode scanner to the current phase for a small change order, and we scope offline mode as a phase two starting in October"，客户回应 "That works"——扫描功能通过变更单并入当前阶段，离线模式放到十月启动的第二阶段。两个功能都保留了，只是分阶段实施（排除 C）。
+    - id: q3
+      stem: What does the client imply about a change order under five thousand?
+      options:
+        - It must be reviewed by the sales director
+        - She can approve it without asking anyone else
+        - It would not be worth the paperwork
+        - Her budget for this year is already spent
+      correctIndex: 1
+      explanationZh: 客户说："I can approve anything under five thousand myself"——五千以下的金额她本人就有权批准，言外之意是无需再走额外审批。这也解释了对方回答 "I'll keep it under that" 的用意：把变更单金额控制在她的审批权限内，流程就能走得快。
+    - id: q4
+      stem: What will the client receive by Friday?
+      options:
+        - A revised statement of work for the whole project
+        - A discounted invoice for phase two
+        - The finished barcode scanner feature
+        - The change order and the estimate for offline mode
+      correctIndex: 3
+      explanationZh: 结尾处项目负责人承诺："You'll have both documents by Friday"——两份文件即此前提到的扫描功能变更单和离线模式的报价估算。扫描功能本身约需一周开发，周五前送达的只是文件而非做好的功能（排除 C）。
+- id: biz-l-009
+  track: business
+  title: "Incident Review: Monday's Login Outage"
+  titleZh: 事故复盘：周一的登录故障
+  style: 复盘 · Incident review
+  script:
+    - speaker: A
+      text: Alright, Nadia, let's review Monday's login outage while it's still fresh. Walk me through the timeline.
+    - speaker: B
+      text: The alarms fired at 9:04, right after the morning deploy. Login requests started failing for about forty percent of users.
+    - speaker: A
+      text: What was the root cause in the end?
+    - speaker: B
+      text: A configuration change. The deploy doubled the connection limit to the user database, but the database itself was still capped at the old value, so connections were refused.
+    - speaker: A
+      text: How long until service was restored?
+    - speaker: B
+      text: Twenty-six minutes. We rolled back the deploy at 9:30, and errors dropped to zero almost immediately.
+    - speaker: A
+      text: Rollback was the right call. What worries me is that the config change skipped review — how did that happen?
+    - speaker: B
+      text: Config files aren't covered by our review rule. Code needs two approvals, but config can be merged by one person.
+    - speaker: A
+      text: Then that's our real lesson. The gap isn't one person's mistake; it's a process that treats config as less risky than code.
+    - speaker: B
+      text: Agreed. I propose we require the same two approvals for config changes, and add a staging check that compares limits against the database settings.
+    - speaker: A
+      text: Approved on both. Can you write up the incident report with those two actions and circulate it by Thursday?
+    - speaker: B
+      text: Yes, I'll have the draft ready tomorrow and send the final version Thursday morning.
+  questions:
+    - id: q1
+      stem: What caused Monday's outage?
+      options:
+        - The user database was accidentally deleted
+        - A configuration change raised a limit the database could not accept
+        - A surge of login attempts from new users
+        - The morning deploy contained untested application code
+      correctIndex: 1
+      explanationZh: Nadia 定位了根因："The deploy doubled the connection limit to the user database, but the database itself was still capped at the old value, so connections were refused"——应用侧连接上限翻倍，数据库端却仍是旧上限，连接因此被拒。问题出在配置而非应用代码本身（排除 D）。
+    - id: q2
+      stem: What does the team lead imply about responsibility for the incident?
+      options:
+        - Nadia should have asked for a second approval
+        - The on-call engineer reacted too slowly
+        - The process is at fault rather than any individual
+        - The database team ignored the warning signs
+      correctIndex: 2
+      explanationZh: 主管总结道："The gap isn't one person's mistake; it's a process that treats config as less risky than code"——漏洞在于流程把配置视作比代码低风险，而不是某个人的失误。这正是成熟事故复盘“对事不对人”的原则。回滚处置还被主管称赞为 "the right call"，没有人反应迟缓（排除 B）。
+    - id: q3
+      stem: What do the speakers decide to change?
+      options:
+        - To move all deploys to the afternoon
+        - To give the database team control of config files
+        - To double the database connection limit permanently
+        - To require two approvals for config changes and add a staging check
+      correctIndex: 3
+      explanationZh: Nadia 提议："we require the same two approvals for config changes, and add a staging check that compares limits against the database settings"，主管回答 "Approved on both"——配置变更双人审批、预发环境对比检查两条改进全部通过。会上并没有讨论部署时段的调整（排除 A）。
+    - id: q4
+      stem: What will Nadia do next?
+      options:
+        - Draft the incident report and circulate the final version by Thursday
+        - Roll back Monday's deploy a second time
+        - Interview the users affected by the outage
+        - Rewrite the configuration file from scratch
+      correctIndex: 0
+      explanationZh: 对应主管的请求，Nadia 承诺："I'll have the draft ready tomorrow and send the final version Thursday morning"——明天完成初稿，周四上午发出正式版事故报告。回滚在事发当天 9:30 就已完成，无需再做一次（排除 B）。
+- id: biz-l-010
+  track: business
+  title: "All-Hands: Announcing the New Team Structure"
+  titleZh: 全员大会：宣布新的团队架构
+  style: 全员会 · All-hands
+  script:
+    - speaker: narrator
+      text: Good morning, everyone, and welcome to this special all-hands. I'm Victor Osei, your chief operating officer, and today I want to walk you through a change to how we organise our teams.
+    - speaker: narrator
+      text: First, the important part. This is a reorganisation, not a reduction — nobody is losing their job, and salaries and benefits are not affected.
+    - speaker: narrator
+      text: Today we are organised by function, with separate departments for engineering, design, and marketing. From the first of August, we will move to product-based teams instead.
+    - speaker: narrator
+      text: That means each of our three products — Payments, Analytics, and the mobile app — will have its own dedicated team with all the skills it needs.
+    - speaker: narrator
+      text: Why are we doing this? Over the past year, projects have slowed down because every piece of work needs sign-off from three department heads.
+    - speaker: narrator
+      text: Product teams will make most decisions themselves, which we expect to cut delivery times significantly.
+    - speaker: narrator
+      text: So what happens next? This week, your current manager will meet each of you one-on-one to discuss which product team fits your skills and your preferences.
+    - speaker: narrator
+      text: Team assignments will be confirmed by the fifteenth of July, and the new structure goes live on the first of August.
+    - speaker: narrator
+      text: We'll hold a question-and-answer session this Friday at three, and you can submit questions anonymously through the intranet from today. Thank you.
+  questions:
+    - id: q1
+      stem: What is the main purpose of the all-hands?
+      options:
+        - To announce a round of job cuts
+        - To introduce a new chief operating officer
+        - To present the results of the past year's projects
+        - To explain a move from functional departments to product-based teams
+      correctIndex: 3
+      explanationZh: 讲话核心是宣布组织架构调整："From the first of August, we will move to product-based teams instead"——由职能部门制转为按产品组建团队。讲话人一开始就澄清 "This is a reorganisation, not a reduction"，明确不是裁员（排除 A）；他本人是现任首席运营官，不是新上任（排除 B）。
+    - id: q2
+      stem: According to the speaker, why is the company reorganising?
+      options:
+        - Projects slowed because every piece of work needs three department heads' sign-off
+        - The company is preparing to launch three new products
+        - Employees asked for more flexible working arrangements
+        - The current offices cannot hold the growing departments
+      correctIndex: 0
+      explanationZh: 讲话人自问自答："Why are we doing this? Over the past year, projects have slowed down because every piece of work needs sign-off from three department heads"——跨部门层层审批拖慢了项目，这是改革的直接动因。Payments、Analytics 和移动应用是现有的三条产品线，不是即将发布的新品（排除 B）。
+    - id: q3
+      stem: What does the speaker emphasise about the change?
+      options:
+        - It will reduce salaries but protect jobs
+        - Nobody will lose their job, and pay and benefits stay the same
+        - It only affects the engineering department
+        - It has already taken effect
+      correctIndex: 1
+      explanationZh: 讲话人把最重要的信息放在最前面："nobody is losing their job, and salaries and benefits are not affected"——不裁员、薪酬福利不变，这是全场员工最关心的定心丸。新架构要到八月一日才生效，尚未开始实施（排除 D）。
+    - id: q4
+      stem: What will happen this week?
+      options:
+        - Team assignments will be publicly announced
+        - The new structure will go live
+        - Managers will meet each employee one-on-one about team placement
+        - Employees will vote on the product team names
+      correctIndex: 2
+      explanationZh: 关于下一步安排，讲话人说："This week, your current manager will meet each of you one-on-one to discuss which product team fits your skills and your preferences"——本周先进行一对一沟通。分组名单要到七月十五日才确定（排除 A），新架构八月一日才启用（排除 B）。本题考查把日期与事件正确配对。
+- id: biz-l-011
+  track: business
+  title: Onboarding a New Platform Engineer
+  titleZh: 新工程师的入职引导
+  style: 入职 · Onboarding
+  script:
+    - speaker: A
+      text: Welcome aboard, Jun. I'm Alice, your onboarding buddy for the first month, so anything you're unsure about comes to me first.
+    - speaker: B
+      text: Great to meet you, Alice. I've got my laptop set up — where should I start?
+    - speaker: A
+      text: Start with the developer guide on the wiki. It walks you through checking out the code, running the test suite, and our branch naming rules.
+    - speaker: B
+      text: I skimmed it this morning. One thing surprised me — it says every change needs a ticket number, even a one-line fix.
+    - speaker: A
+      text: That rule is strict, and here's why. We're audited twice a year, and the auditors trace every production change back to a ticket.
+    - speaker: B
+      text: Got it. What about releases? At my last company anyone could deploy at any time.
+    - speaker: A
+      text: Here it's different. Releases go out on Tuesdays and Thursdays at two, and only the release manager on duty presses the button.
+    - speaker: B
+      text: So if I merge something on Friday, it waits until Tuesday?
+    - speaker: A
+      text: Exactly, unless it's an emergency fix, which needs sign-off from the on-duty manager. It feels slow at first, but our payment clients value predictability over speed.
+    - speaker: B
+      text: That makes sense for payments. What should I aim to finish this week?
+    - speaker: A
+      text: There's a starter ticket with your name on it — a small logging improvement. The goal isn't the code; it's to walk the whole process once, from ticket to release.
+    - speaker: B
+      text: Perfect. I'll read the guide properly this afternoon and pick up the ticket tomorrow.
+  questions:
+    - id: q1
+      stem: What is the main purpose of the conversation?
+      options:
+        - To review Jun's performance in his first month
+        - To plan the next release for a payment client
+        - To introduce a new team member to the team's working process
+        - To decide who will be the next release manager
+      correctIndex: 2
+      explanationZh: Alice 自我介绍是 "your onboarding buddy for the first month"，随后逐一讲解开发指南、工单规则和发布流程——这是一次帮助新人熟悉团队工作方式的入职引导。onboarding 指“新人入职融入”。Jun 才刚入职第一天，谈不上绩效评估（排除 A）。
+    - id: q2
+      stem: Why does every change need a ticket number?
+      options:
+        - It helps the release manager schedule deploys
+        - The wiki cannot be updated without one
+        - Tickets are used to measure each developer's workload
+        - Auditors trace every production change back to a ticket
+      correctIndex: 3
+      explanationZh: Alice 解释了规则背后的原因："We're audited twice a year, and the auditors trace every production change back to a ticket"——公司每年接受两次审计，审计师要求每一次生产变更都能追溯到工单，哪怕只是一行代码的修复。选项 A、C 文中均未提及。
+    - id: q3
+      stem: What does Alice imply about the starter ticket?
+      options:
+        - Its real purpose is to let Jun practise the whole process once
+        - It is the most difficult task on the team's list
+        - It must be released as an emergency fix
+        - Jun may skip it if he reads the developer guide
+      correctIndex: 0
+      explanationZh: Alice 点明用意："The goal isn't the code; it's to walk the whole process once, from ticket to release"——这张新手工单的价值不在代码本身，而在于让 Jun 完整走一遍从建单到发布的流程。它只是一个小的日志改进，并非难题（排除 B）。
+    - id: q4
+      stem: What will Jun do tomorrow?
+      options:
+        - Deploy his first change to production
+        - Pick up the starter ticket
+        - Meet the release manager on duty
+        - Set up his laptop with Alice's help
+      correctIndex: 1
+      explanationZh: Jun 在结尾安排了自己的计划："I'll read the guide properly this afternoon and pick up the ticket tomorrow"——今天下午细读文档，明天领取新手工单。pick up a ticket 意为“认领一张工单”。发布只在周二、周四进行且由值班发布经理操作，Jun 明天不可能自己部署（排除 A）；笔记本他早已配置完毕（排除 D）。
+- id: biz-l-012
+  track: business
+  title: "Recorded Briefing: Second-Quarter OKR Results"
+  titleZh: 录播简报：第二季度 OKR 结果
+  style: 简报 · Briefing
+  script:
+    - speaker: narrator
+      text: Hello team, this is Grace Lin, head of operations, with our recorded briefing on the second-quarter OKR results. It runs about five minutes, so grab a coffee.
+    - speaker: narrator
+      text: We set three objectives this quarter — grow recurring revenue, improve customer retention, and reduce infrastructure costs.
+    - speaker: narrator
+      text: Revenue first. We aimed for twenty percent growth in recurring revenue and reached seventeen, which we're scoring as largely met.
+    - speaker: narrator
+      text: The shortfall came almost entirely from the delayed enterprise plan, which launched six weeks later than planned.
+    - speaker: narrator
+      text: Retention is the clear win of the quarter. Monthly churn fell from three point one percent to two point two, beating our target — the new onboarding emails deserve much of the credit.
+    - speaker: narrator
+      text: Infrastructure is where we missed. Costs actually rose eight percent instead of falling, mainly because the migration to the new cloud region ran over budget.
+    - speaker: narrator
+      text: Please don't read the cost result as wasted effort — once the migration finishes in August, we expect a lasting monthly saving.
+    - speaker: narrator
+      text: For the third quarter, we're carrying the cost objective over unchanged, and we're raising the retention target now that the onboarding emails have proved themselves.
+    - speaker: narrator
+      text: Full scorecards are on the intranet from today, and please bring your questions to Monday's operations review. Thank you for a strong quarter, everyone.
+  questions:
+    - id: q1
+      stem: What is the main purpose of the briefing?
+      options:
+        - To announce next year's budget
+        - To report the results of the second-quarter objectives
+        - To explain the delay to the enterprise plan
+        - To introduce a new head of operations
+      correctIndex: 1
+      explanationZh: 开场即说明主题："our recorded briefing on the second-quarter OKR results"——这是一份汇报第二季度目标完成情况的录播简报，随后逐项讲解营收、留存与成本三个目标。企业版计划的延迟只是营收未达标的原因，属于细节而非主旨（排除 C）。
+    - id: q2
+      stem: Why did recurring revenue miss its target?
+      options:
+        - Monthly churn rose faster than expected
+        - The onboarding emails performed poorly
+        - Infrastructure costs cut into revenue
+        - The enterprise plan launched six weeks late
+      correctIndex: 3
+      explanationZh: 讲话人指出："The shortfall came almost entirely from the delayed enterprise plan, which launched six weeks later than planned"——缺口几乎全部来自企业版计划晚上线六周。shortfall 意为“缺口、差额”。留存率和入职邮件恰恰是本季度的亮点，方向正好相反（排除 A、B）。
+    - id: q3
+      stem: What does the speaker imply about the rise in infrastructure costs?
+      options:
+        - It is temporary, and savings will come once the migration finishes
+        - It was caused by careless overspending
+        - It means the migration will be cancelled
+        - It will be offset by raising prices
+      correctIndex: 0
+      explanationZh: 讲话人特别提醒："Please don't read the cost result as wasted effort — once the migration finishes in August, we expect a lasting monthly saving"——成本上升是迁移期的暂时现象，八月迁移完成后将带来持续的月度节省。迁移会继续推进而不是被叫停（排除 C）。
+    - id: q4
+      stem: What are listeners asked to do next?
+      options:
+        - Vote on the third-quarter objectives
+        - Email their questions to Grace directly
+        - Read the scorecards and bring questions to Monday's operations review
+        - Pause all infrastructure spending until August
+      correctIndex: 2
+      explanationZh: 结尾给出行动指引："Full scorecards are on the intranet from today, and please bring your questions to Monday's operations review"——先在内网查看完整评分卡，再把问题带到周一的运营例会。提问方式是带到会上讨论，而不是直接发邮件给 Grace（排除 B）。
