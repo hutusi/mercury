@@ -38,6 +38,7 @@ export default async function ListeningExercisePage({
       <ListeningRunner
         exerciseId={exercise.id}
         script={exercise.script}
+        audioUrl={exercise.audioUrl}
         questions={exercise.questions}
         crossPromo={<CrossPromoCard track={goalTrack} />}
       />

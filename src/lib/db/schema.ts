@@ -196,6 +196,9 @@ export const listeningExercises = pgTable(
     style: text("style").notNull(),
     script: jsonb("script").$type<ScriptLine[]>().notNull(),
     questions: jsonb("questions").$type<McqQuestion[]>().notNull(),
+    // Pre-generated neural audio (ADR 0021); null degrades to browser TTS.
+    // Seed-owned: linked only when the manifest hash matches the seeded script.
+    audioUrl: text("audio_url"),
   },
   (t) => [index("listening_exercises_track_idx").on(t.track)],
 );

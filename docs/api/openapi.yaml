@@ -531,12 +531,16 @@ paths:
         "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/listening/{exerciseId}:
     get:
-      summary: One listening exercise; includes the script for on-device TTS
+      summary: One listening exercise; pre-generated audio plus the script for TTS fallback
+      description: >
+        audioUrl (nullable) is an origin-relative path to pre-generated neural
+        audio (ADR 0021). Clients play it when present; when null or when the
+        fetch fails they fall back to speaking the script with on-device TTS.
       tags: [exercises]
       parameters: [{ $ref: "#/components/parameters/exerciseId" }]
       responses:
         "200":
-          description: Sanitized exercise (script + questions without keys).
+          description: Sanitized exercise (audioUrl + script + questions without keys).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
   /api/v1/exercises/{kind}/{exerciseId}/attempts:

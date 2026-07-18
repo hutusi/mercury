@@ -37,7 +37,9 @@ Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001`
 
 **Reading** — a passage (~180–350 words depending on track) plus 4-option MCQs. Explanations (`explanationZh`) are teaching content: quote the passage and say why distractors are wrong.
 
-**Listening** — a `script` of `{ speaker, text }` lines where `speaker` is `"A"`, `"B"`, or `"narrator"`. Keep each line to 1–2 sentences: the TTS player speaks **one utterance per line**, and Chrome silently cuts long utterances (~15s). Speakers A and B get distinct voices.
+**Listening** — a `script` of `{ speaker, text }` lines where `speaker` is `"A"`, `"B"`, or `"narrator"`. Keep each line to 1–2 sentences: the fallback TTS player speaks **one utterance per line**, and Chrome silently cuts long utterances (~15s); the DashScope renderer also synthesizes per line (~600-char request cap). Speakers A and B get distinct voices in both paths.
+
+**After editing listening scripts, regenerate the audio** ([ADR 0021](adr/0021-pregenerated-listening-audio.md)): `bun run content:audio` (needs `DASHSCOPE_API_KEY`; idempotent — only changed scripts re-render, ~$0.10 per 10k characters) and commit the MP3s under `public/audio/listening/` together with `content/audio-manifest.json`. Forgetting is safe but audible: the seed detects the stale hash, warns, and nulls `audio_url`, so the exercise falls back to browser TTS until someone regenerates.
 
 **Writing** — `taskType` is an enum (`ielts_task1`, `ielts_task2`, `opinion_essay`, `business_email`, `business_report`) that selects the AI examiner persona in `src/lib/ai/prompts.ts`. `modelAnswer` must be genuinely good at the target length — it doubles as the fallback when AI grading is unavailable. `checklist` needs ≥3 bilingual self-assessment items.
 

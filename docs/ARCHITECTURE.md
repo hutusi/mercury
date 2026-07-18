@@ -14,7 +14,7 @@ Everything is bilingual by design: learning material is English, scaffolding (tr
 | Database  | Postgres (Neon in prod) via node-postgres + Drizzle ORM — see [ADR 0007](adr/0007-postgres-neon-for-serverless.md)                                       |
 | Auth      | better-auth (email/password)                                                                                                                             |
 | AI        | Claude (`@anthropic-ai/sdk`) or Bailian GLM (`openai` SDK, OpenAI-compatible endpoint), server-side only — see [ADR 0011](adr/0011-multi-provider-ai.md) |
-| Speech    | Browser Web Speech API (TTS + STT), no audio hosting                                                                                                     |
+| Speech    | Pre-generated DashScope audio for listening ([ADR 0021](adr/0021-pregenerated-listening-audio.md)); Web Speech API for TTS fallback + flashcards + STT   |
 
 **Bun is the package manager and script runner; Node runs Next.js.** Next runs under Node (`bun run dev` executes the `next` binary under Node), matching Vercel's build; the seed script is `bunx tsx src/lib/db/seed.ts`, and Playwright runs under Node. Bun's own runtime is used for `bun test`. The database driver is now `node-postgres` (pure JS, Bun-loadable), so DB-touching code no longer _crashes_ under Bun as it did with better-sqlite3 — but unit tests stay DB-free by convention to keep them hermetic and fast (see [ADR 0001](adr/0001-bun-package-manager-node-runtime.md) and [ADR 0007](adr/0007-postgres-neon-for-serverless.md)).
 
@@ -161,6 +161,8 @@ a time. Identical retries are idempotent, conflicting retries fail with 409, and
 writes the practice attempt or mistake clear. Normal quizzes and vocab mistake re-tests share this
 module and its 30-minute lifetime.
 
-## Browser speech
+## Listening audio & browser speech
 
-`src/lib/speech.ts` wraps SpeechSynthesis (TTS) and SpeechRecognition (STT, Chrome/Edge only). Components using them are client-only and render behind a mounted-gate (`setMounted(true)` in an effect) because the APIs don't exist during SSR — rendering capability-dependent UI before mount would mismatch hydration. TTS speaks one utterance per script line since Chrome silently cuts long utterances, and always cancels on unmount to prevent zombie audio.
+Listening exercises play pre-generated neural audio ([ADR 0021](adr/0021-pregenerated-listening-audio.md)): `bun run content:audio` renders each script to one MP3 via DashScope `qwen3-tts-flash` (distinct A/B/narrator voices), committed under `public/audio/listening/` with `content/audio-manifest.json` keying each file by a hash of (model, voice cast, script). The seed links `listening_exercises.audio_url` only when that hash still matches the seeded script, so stale audio can never play against an edited transcript — it degrades instead. `TtsPlayer` plays the MP3 through a chrome-less `<audio>` element (no native controls: seeking would bypass the exam single-play rule) and falls back to browser TTS when `audio_url` is null or the file fails to load, mirroring the AI degradation philosophy.
+
+`src/lib/speech.ts` wraps SpeechSynthesis (TTS) and SpeechRecognition (STT, Chrome/Edge only). Components using them are client-only and render behind a mounted-gate (`setMounted(true)` in an effect) because the APIs don't exist during SSR — rendering capability-dependent UI before mount would mismatch hydration. TTS speaks one utterance per script line since Chrome silently cuts long utterances, and always cancels on unmount to prevent zombie audio. Voice selection is quality-first (`pickEnglishVoices`): neural/natural voices (Edge "Online (Natural)"), then Apple Premium/Enhanced/Siri, then Chrome's remote Google voices, then legacy system voices last — remote-voice failures are survivable because `onerror` advances to the next line, so locality earns no ranking bonus.

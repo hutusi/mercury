@@ -44,7 +44,11 @@ export async function listListeningExercises(userId: string, track: Track | null
   return { exercises, bestByExercise };
 }
 
-/** One exercise with answers stripped; the script stays — clients need it for TTS. */
+/**
+ * One exercise with answers stripped. audioUrl (nullable) points at the
+ * pre-generated neural audio (ADR 0021); the script stays regardless —
+ * clients need it for the browser-TTS fallback and the post-submit transcript.
+ */
 export async function getListeningExerciseSanitized(exerciseId: string) {
   const exercise = await db.query.listeningExercises.findFirst({
     where: eq(listeningExercises.id, exerciseId),
@@ -58,6 +62,7 @@ export async function getListeningExerciseSanitized(exerciseId: string) {
     titleZh: exercise.titleZh,
     style: exercise.style,
     script: exercise.script,
+    audioUrl: exercise.audioUrl,
     questions: exercise.questions.map(({ id, stem, options }) => ({ id, stem, options })),
   };
 }

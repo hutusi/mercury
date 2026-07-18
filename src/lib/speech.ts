@@ -59,15 +59,28 @@ export function loadVoices(timeoutMs = 2000): Promise<SpeechSynthesisVoice[]> {
   });
 }
 
-/** Distinct English voices so dialogue speakers A/B sound different. */
+/**
+ * English voices ranked best-first so dialogue speakers A/B sound natural and
+ * different. Quality beats locality: Edge's "Online (Natural)" neural voices,
+ * Apple's Premium/Enhanced/Siri variants, and Chrome's remote Google voices all
+ * outclass the legacy localService voices, which sound robotic. A remote voice
+ * that fails mid-script is survivable — utterance.onerror advances to the next
+ * line — so there is no reliability reason to prefer local voices.
+ */
 export function pickEnglishVoices(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice[] {
   const english = voices.filter((v) => v.lang.toLowerCase().startsWith("en"));
   if (english.length === 0) return [];
-  // Prefer local/default voices first for reliability.
-  return [...english].sort((a, b) => {
-    const score = (v: SpeechSynthesisVoice) => (v.localService ? 2 : 0) + (v.default ? 1 : 0);
-    return score(b) - score(a);
-  });
+  const tier = (v: SpeechSynthesisVoice) => {
+    if (/natural|neural/i.test(v.name)) return 4;
+    if (/premium|enhanced|siri/i.test(v.name)) return 3;
+    if (/^google/i.test(v.name)) return 2;
+    return v.default ? 1 : 0;
+  };
+  const isUs = (v: SpeechSynthesisVoice) => /^en[-_]us/i.test(v.lang);
+  return [...english].sort(
+    (a, b) =>
+      tier(b) - tier(a) || Number(isUs(b)) - Number(isUs(a)) || a.name.localeCompare(b.name),
+  );
 }
 
 export interface ScriptSpeaker {
@@ -97,10 +110,12 @@ export function createScriptSpeaker(
   async function assignVoices() {
     const english = pickEnglishVoices(await loadVoices());
     if (english.length === 0) return;
+    const primary = english[0];
+    const distinct = english.find((v) => v.name !== primary.name) ?? primary;
     voiceBySpeaker = {
-      A: english[0],
-      narrator: english[0],
-      B: english[1] ?? english[0],
+      A: primary,
+      narrator: primary,
+      B: distinct,
     };
   }
 

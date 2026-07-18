@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { listeningManifestKey, resolveAudioUrl } from "../../content/audio-hash";
 import {
   allExams,
   allListening,
@@ -6,6 +7,7 @@ import {
   allSpeaking,
   allVocab,
   allWriting,
+  audioManifest,
 } from "../../content/load";
 import {
   examQuestionCount,
@@ -71,10 +73,20 @@ async function seed() {
     }
 
     for (const ex of listening) {
+      // Link pre-generated audio only when its manifest hash matches this
+      // exact script — stale audio degrades to browser TTS, never mismatched
+      // playback. audioUrl rides the update set so revocations propagate.
+      const audioUrl = resolveAudioUrl(ex.id, ex.script, audioManifest);
+      if (!audioUrl && audioManifest[listeningManifestKey(ex.id)]) {
+        console.warn(
+          `  listening ${ex.id}: audio is stale (script changed) — run bun run content:audio`,
+        );
+      }
+      const row = { ...ex, audioUrl };
       await tx
         .insert(listeningExercises)
-        .values(ex)
-        .onConflictDoUpdate({ target: listeningExercises.id, set: ex });
+        .values(row)
+        .onConflictDoUpdate({ target: listeningExercises.id, set: row });
     }
 
     for (const prompt of writing) {
@@ -97,10 +109,16 @@ async function seed() {
     }
   });
 
+  const withAudio = listening.filter((ex) =>
+    resolveAudioUrl(ex.id, ex.script, audioManifest),
+  ).length;
+
   console.log("Seed complete:");
   console.log(`  vocab_words:         ${vocab.length}`);
   console.log(`  reading_exercises:   ${reading.length}`);
-  console.log(`  listening_exercises: ${listening.length}`);
+  console.log(
+    `  listening_exercises: ${listening.length} (${withAudio} with audio, ${listening.length - withAudio} browser TTS)`,
+  );
   console.log(`  writing_prompts:     ${writing.length}`);
   console.log(`  speaking_prompts:    ${speaking.length}`);
   console.log(
