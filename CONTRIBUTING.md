@@ -35,6 +35,8 @@ bun run dev           # http://localhost:3000
 | `bun run db:migrate` / `db:generate` / `db:seed` / `db:studio` | Apply migrations / snapshot a schema change / content seed / DB browser   |
 | `bun run db:push`                                              | Push schema directly, no migration file — **local prototyping only**      |
 | `bun run content:schemas`                                      | Regenerate `content/.schemas/` after editing `src/content/types.ts`       |
+| `bun run content:book-ingest`                                  | Gutenberg `.txt` → chapter YAML skeletons (see docs/CONTENT.md)           |
+| `bun run content:book-questions`                               | AI-draft book questions for review (needs an AI provider key)             |
 
 ## Changing the database schema
 
