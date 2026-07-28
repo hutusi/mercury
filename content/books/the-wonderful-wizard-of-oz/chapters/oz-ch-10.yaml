@@ -178,8 +178,8 @@ quiz:
   - id: oz-ch-10-q1
     stem: Why were the people in the green houses afraid to come near the travelers?
     options:
-      - The travelers carried weapons
       - The great Lion frightened them
+      - The travelers carried weapons
       - They had been warned about strangers
       - Dorothy was wearing red shoes
     correctIndex: 0

@@ -3,6 +3,7 @@ import {
   boolean,
   check,
   doublePrecision,
+  foreignKey,
   index,
   integer,
   jsonb,
@@ -309,6 +310,9 @@ export const bookChapters = pgTable(
   },
   (t) => [
     uniqueIndex("book_chapters_book_order_idx").on(t.bookId, t.sortOrder),
+    // Redundant with the id PK, but Postgres requires a unique constraint on
+    // exactly this pair for book_quiz_attempts' composite FK below.
+    uniqueIndex("book_chapters_book_id_id_idx").on(t.bookId, t.id),
     check("book_chapters_order_check", sql`${t.sortOrder} >= 1`),
     check("book_chapters_word_count_check", sql`${t.wordCount} > 0`),
   ],
@@ -420,12 +424,8 @@ export const bookQuizAttempts = pgTable(
     userId: text("user_id")
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
-    bookId: text("book_id")
-      .notNull()
-      .references(() => books.id, { onDelete: "cascade" }),
-    chapterId: text("chapter_id")
-      .notNull()
-      .references(() => bookChapters.id, { onDelete: "cascade" }),
+    bookId: text("book_id").notNull(),
+    chapterId: text("chapter_id").notNull(),
     answers: jsonb("answers").$type<AnswerMap>().notNull(),
     score: integer("score").notNull(),
     total: integer("total").notNull(),
@@ -436,6 +436,15 @@ export const bookQuizAttempts = pgTable(
     inputHash: text("input_hash"),
   },
   (t) => [
+    // Composite FK: bookId is denormalized (queries group/filter on it), so
+    // the pair must reference the SAME chapter row — independent FKs would
+    // accept a bookId paired with another book's chapter. Book deletion
+    // still cascades transitively (books → book_chapters → attempts).
+    foreignKey({
+      name: "book_quiz_attempts_book_chapter_fk",
+      columns: [t.bookId, t.chapterId],
+      foreignColumns: [bookChapters.bookId, bookChapters.id],
+    }).onDelete("cascade"),
     index("book_quiz_attempts_user_book_idx").on(t.userId, t.bookId, t.chapterId),
     index("book_quiz_attempts_user_idx").on(t.userId, t.completedAt),
     uniqueIndex("book_quiz_attempts_request_idx")

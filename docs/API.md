@@ -70,8 +70,8 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
   never branch on null.
 - **`targetScore` encoding**: TOEIC is the raw 10–990 score; **IELTS is band×10** (`65` = band
   6.5) because the column is an integer — divide by 10 for display when `goalTrack === "ielts"`.
-- `GET /api/v1/plan` — the deterministic 今日计划 (due vocab → mistakes → continue the current
-  book → weakest skill → writing/speaking cadence → mock-exam checkpoint), fitted to
+- `GET /api/v1/plan` — the deterministic daily plan (今日计划: due vocab → mistakes → continue
+  the current book → weakest skill → writing/speaking cadence → mock-exam checkpoint), fitted to
   `dailyMinutes`. `href` values are unlocalized web paths; native clients should map
   `kind`/`refId` to their own screens.
 
