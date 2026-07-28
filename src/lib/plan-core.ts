@@ -5,14 +5,16 @@ import { daysUntil, SKILL_KEYS, type SkillEstimates, type SkillKey } from "./lea
  * Pure daily-plan engine (今日计划): decides what the learner should do today
  * so they never have to browse the catalog. Deterministic and DB-free —
  * priorities are rules, not AI — so it is unit-testable, costs nothing, and
- * works keyless. Priority: due vocab → mistakes → weakest skill → writing/
- * speaking cadence → mock-exam checkpoint ramping toward the exam date.
+ * works keyless. Priority: due vocab → mistakes → continue the current book
+ * → weakest skill → writing/speaking cadence → mock-exam checkpoint ramping
+ * toward the exam date.
  */
 
 export type PlanItemKind =
   | "vocab_review"
   | "vocab_new"
   | "mistakes"
+  | "book_chapter"
   | "reading"
   | "listening"
   | "writing"
@@ -23,6 +25,7 @@ export type PlanReasonKey =
   | "dueVocab"
   | "newWords"
   | "clearMistakes"
+  | "continueBook"
   | "weakSkill"
   | "writingCadence"
   | "speakingCadence"
@@ -59,6 +62,8 @@ export interface PlanInput {
     writing: { id: string; suggestedMinutes: number } | null;
     speaking: { id: string } | null;
     examId: string | null;
+    /** Current chapter of the most-recently-active unfinished book, if any. */
+    bookChapter: { bookId: string; chapterId: string; estMinutes: number } | null;
   };
   today: Date;
 }
@@ -118,7 +123,21 @@ export function buildDailyPlan(input: PlanInput): PlanItem[] {
     });
   }
 
-  // 3. Skill practice, weakest first. Exercises are always eligible; writing
+  // 3. Continue the current book — habit continuity beats new input, so it
+  //    outranks skill practice. The plan continues books, it never starts
+  //    them: discovery stays on /books, and fresh accounts are unaffected.
+  if (input.available.bookChapter) {
+    const book = input.available.bookChapter;
+    candidates.push({
+      kind: "book_chapter",
+      refId: book.chapterId,
+      href: `/books/${book.bookId}/chapters/${book.chapterId}`,
+      estMinutes: book.estMinutes,
+      reasonKey: "continueBook",
+    });
+  }
+
+  // 4. Skill practice, weakest first. Exercises are always eligible; writing
   //    and speaking join only on cadence (they cost real effort) but jump the
   //    queue when they are the weakest skill.
   const order = practiceOrder(input.profile?.skillEstimates ?? null);
@@ -180,7 +199,7 @@ export function buildDailyPlan(input: PlanInput): PlanItem[] {
     spent += c.estMinutes;
   }
 
-  // 4. Exam checkpoint: appended outside the minutes budget (a 20-minute plan
+  // 5. Exam checkpoint: appended outside the minutes budget (a 20-minute plan
   //    should still surface it) when the goal is an exam track and the spacing
   //    rule says it's time.
   const profile = input.profile;

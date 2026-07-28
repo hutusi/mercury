@@ -70,9 +70,34 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
   never branch on null.
 - **`targetScore` encoding**: TOEIC is the raw 10–990 score; **IELTS is band×10** (`65` = band
   6.5) because the column is an integer — divide by 10 for display when `goalTrack === "ielts"`.
-- `GET /api/v1/plan` — the deterministic 今日计划 (due vocab → mistakes → weakest skill →
-  writing/speaking cadence → mock-exam checkpoint), fitted to `dailyMinutes`. `href` values are
-  unlocalized web paths; native clients should map `kind`/`refId` to their own screens.
+- `GET /api/v1/plan` — the deterministic 今日计划 (due vocab → mistakes → continue the current
+  book → weakest skill → writing/speaking cadence → mock-exam checkpoint), fitted to
+  `dailyMinutes`. `href` values are unlocalized web paths; native clients should map
+  `kind`/`refId` to their own screens.
+
+## Book reading
+
+Extensive reading — curated public-domain books with pre-generated recall questions
+([ADR 0024](adr/0024-book-reading-pregenerated-recall.md)).
+
+- `GET /api/v1/books` — the library. **Track-agnostic**: no track filter; difficulty is a CEFR
+  level plus genre tags. Includes per-book `completedChapters`.
+- `GET /api/v1/books/{bookId}` — chapter list with `completed`/`locked`/`best`. Chapters unlock
+  sequentially: submitting chapter N's quiz (any score) unlocks N+1 — completion-gated, not
+  mastery-gated.
+- `GET /api/v1/books/{bookId}/chapters/{chapterId}` — the sanitized reader payload: prose
+  sections with optional check-in questions plus the end-of-chapter quiz, never any
+  `correctIndex`/`explanationZh`. `409 chapter_locked` while the previous chapter's quiz is
+  unsubmitted (the lock is server-enforced).
+- `POST …/chapters/{chapterId}/check-ins` `{questionId, chosenIndex}` — stateless reveal for one
+  check-in after the learner commits an answer. Nothing is recorded (no mistakes, no streak);
+  quiz question ids 404 here, so the endpoint cannot be used as a quiz answer oracle.
+- `POST …/chapters/{chapterId}/quiz-attempts` `{requestId, answers, durationSeconds}` —
+  server-graded recall quiz, idempotent by `requestId` like exercise attempts
+  (`409 book_quiz_request_conflict` when a request id is reused with different answers).
+- **Contract additions clients must tolerate**: `PlanItem.kind` gains `book_chapter` (reason
+  `continueBook`); the mistakes list and `POST /api/v1/mistakes/retest` gain kind `book_quiz`,
+  whose `refId` is a **chapter id** and whose source has no track.
 
 ## Vocabulary SRS
 

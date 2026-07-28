@@ -63,4 +63,11 @@ test("book reading: library → detail, chapter lock, check-in reveal", async ({
   // Missed quiz questions land in the notebook under the books group.
   await page.goto("/mistakes");
   await expect(page.getByRole("heading", { name: t.nav.books })).toBeVisible();
+
+  // With a book in progress, the daily plan offers to continue it,
+  // deep-linking to the now-current chapter 2.
+  await page.goto("/dashboard");
+  const planBookItem = page.getByRole("link", { name: new RegExp(t.plan.itemBookChapter) });
+  await expect(planBookItem).toBeVisible();
+  await expect(planBookItem).toHaveAttribute("href", "/zh/books/book-oz/chapters/oz-ch-02");
 });

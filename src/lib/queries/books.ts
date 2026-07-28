@@ -1,6 +1,7 @@
 import { and, countDistinct, desc, eq, max, sql } from "drizzle-orm";
 import type { AnyPgColumn } from "drizzle-orm/pg-core";
 import {
+  currentChapterId,
   deriveChapterStates,
   estimateChapterMinutes,
   sanitizeChapter,
@@ -196,4 +197,48 @@ export async function getBookChapterForReader(
 
 function countJsonbArray(column: AnyPgColumn) {
   return sql<number>`jsonb_array_length(${column})`.mapWith(Number);
+}
+
+/**
+ * The daily plan's book input: the current chapter of the most-recently-
+ * active unfinished book, or null. Null keeps books out of the plan until
+ * the learner has started one — the plan continues books, it never starts
+ * them (discovery stays on /books).
+ */
+export async function getContinueReading(
+  userId: string,
+): Promise<{ bookId: string; chapterId: string; estMinutes: number } | null> {
+  const [latest] = await db
+    .select({ bookId: bookQuizAttempts.bookId, lastAt: max(bookQuizAttempts.completedAt) })
+    .from(bookQuizAttempts)
+    .where(eq(bookQuizAttempts.userId, userId))
+    .groupBy(bookQuizAttempts.bookId)
+    .orderBy(desc(max(bookQuizAttempts.completedAt)))
+    .limit(1);
+  if (!latest) return null;
+
+  const [chapters, bestByChapter] = await Promise.all([
+    db
+      .select({
+        id: bookChapters.id,
+        sortOrder: bookChapters.sortOrder,
+        wordCount: bookChapters.wordCount,
+        quizCount: countJsonbArray(bookChapters.quiz),
+      })
+      .from(bookChapters)
+      .where(eq(bookChapters.bookId, latest.bookId))
+      .orderBy(bookChapters.sortOrder),
+    bestAttemptsByChapter(userId, latest.bookId),
+  ]);
+
+  const states = deriveChapterStates(chapters, new Set(bestByChapter.keys()));
+  const chapterId = currentChapterId(states);
+  if (!chapterId) return null; // book finished — nothing to continue
+  const current = chapters.find((c) => c.id === chapterId);
+  if (!current) return null;
+  return {
+    bookId: latest.bookId,
+    chapterId,
+    estMinutes: estimateChapterMinutes(current.wordCount, current.quizCount),
+  };
 }
