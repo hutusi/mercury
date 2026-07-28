@@ -126,10 +126,10 @@ sections:
       stem: How did the travelers get rid of the two Kalidahs?
       options:
         - The Lion fought and defeated them in battle.
-        - The Tin Woodman chopped away the tree bridge so they fell into the ditch.
         - The Scarecrow pushed them into the river.
         - Dorothy scared them away with fire.
-      correctIndex: 1
+        - The Tin Woodman chopped away the tree bridge so they fell into the ditch.
+      correctIndex: 3
       explanationZh: 当 Kalidahs 正走过倒下的树桥时，Scarecrow 让铁皮樵夫砍断他们这一侧的树端，树掉进深渊，两头猛兽也跟着摔碎在岩石上。狮子只是勇敢地面对它们，真正解决它们的是砍断树桥这一招。
 quiz:
   - id: oz-ch-07-q1
@@ -145,19 +145,19 @@ quiz:
     stem: Who suggested that the Lion could carry everyone across the first ditch on his back, one at a time?
     options:
       - Dorothy
-      - The Scarecrow
       - The Tin Woodman
       - Toto
-    correctIndex: 1
+      - The Scarecrow
+    correctIndex: 3
     explanationZh: 狮子说自己也许能跳过去之后，是 Scarecrow 接话说「you can carry us all over on your back, one at a time」。他在这段里展现了安排行动的本领。
   - id: oz-ch-07-q3
     stem: What did the Lion do when the two Kalidahs rushed toward the travelers on the tree bridge?
     options:
       - He ran away immediately into the forest.
-      - He turned to face them and gave a loud, terrible roar.
       - He pushed the tree into the ditch himself.
       - He hid behind the Tin Woodman.
-    correctIndex: 1
+      - He turned to face them and gave a loud, terrible roar.
+    correctIndex: 3
     explanationZh: 原文写狮子虽然害怕，却「turned to face the Kalidahs」并发出一声可怕的吼叫，吓得 Dorothy 尖叫、Scarecrow 后仰摔倒，猛兽也短暂停住。砍树桥是后面 Scarecrow 指挥铁皮樵夫做的，不是狮子做的。
   - id: oz-ch-07-q4
     stem: After escaping the Kalidahs, what did the travelers find on the other side of the broad river?

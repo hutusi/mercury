@@ -89,10 +89,10 @@ sections:
       stem: Why did Boq believe Dorothy must be a friendly witch?
       options:
         - She carried a magic basket
-        - Her dress had white in it, and only witches and sorceresses wear white
         - She arrived walking on the yellow brick road
         - Toto could understand human speech
-      correctIndex: 1
+        - Her dress had white in it, and only witches and sorceresses wear white
+      correctIndex: 3
       explanationZh: 博克说：蓝色是芒奇金人的颜色，白色是女巫的颜色。多萝西的格子裙是蓝白相间的，"所以我们知道你是一个友好的女巫"。她穿银鞋、又"杀死"了恶女巫，更让人深信不疑。
   - id: oz-ch-03-s4
     text: |-
@@ -177,10 +177,10 @@ quiz:
     stem: How did Dorothy find the right road among the several nearby?
     options:
       - Boq walked with her and pointed it out
-      - She looked for the road paved with yellow bricks
       - Toto ran ahead and led the way
       - The silver shoes turned her feet toward it
-    correctIndex: 1
+      - She looked for the road paved with yellow bricks
+    correctIndex: 3
     explanationZh: 北方女巫说过"去翡翠城的路是用黄砖铺成的，你不会错过"。附近有好几条路，但多萝西很快找到了铺着黄砖的那一条，银鞋在坚硬的黄色路面上发出清脆的声响。
   - id: oz-ch-03-q2
     stem: Why did the Munchkins come out of their houses and bow low to Dorothy?
@@ -213,8 +213,8 @@ quiz:
     stem: Why was it easy for Dorothy to lift the Scarecrow off the pole?
     options:
       - The pole was already broken
-      - Being stuffed with straw, he was very light
       - The silver shoes gave her great strength
       - The Scarecrow climbed down by himself
-    correctIndex: 1
+      - Being stuffed with straw, he was very light
+    correctIndex: 3
     explanationZh: 稻草人请多萝西帮他取下背后的木杆。她"伸出双臂把他从杆子上抱了下来，因为他是稻草填的，非常轻"。落地后稻草人说自己"像换了一个人"。

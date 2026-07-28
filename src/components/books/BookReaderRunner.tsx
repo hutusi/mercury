@@ -64,6 +64,7 @@ export function BookReaderRunner({
         requestRef.current = request;
         const graded = await submitBookQuiz({
           requestId: request.requestId,
+          bookId,
           chapterId,
           answers,
           durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),

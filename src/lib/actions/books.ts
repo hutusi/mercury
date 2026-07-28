@@ -12,6 +12,7 @@ export type { CheckInResult, GradedBookQuiz } from "../services/books";
 
 export async function submitBookQuiz(input: {
   requestId: string;
+  bookId: string;
   chapterId: string;
   answers: Record<string, number>;
   durationSeconds: number;
@@ -21,6 +22,7 @@ export async function submitBookQuiz(input: {
 }
 
 export async function answerBookCheckIn(input: {
+  bookId: string;
   chapterId: string;
   questionId: string;
   chosenIndex: number;

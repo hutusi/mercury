@@ -117,10 +117,10 @@ quiz:
     stem: Why did the Scarecrow keep falling into holes on the road?
     options:
       - He could not see well in the dark.
-      - He had no brains, so he walked straight ahead.
       - Toto pushed him over.
       - The road was too narrow for two people.
-    correctIndex: 1
+      - He had no brains, so he walked straight ahead.
+    correctIndex: 3
     explanationZh: 原文说 "having no brains, he walked straight ahead"，所以他直接踩进坑里摔倒。选项 He could not see well in the dark 看似合理，但摔倒发生在白天，原因是没脑子而非天黑。
   - id: oz-ch-04-q2
     stem: Why couldn't the Scarecrow understand why Dorothy wanted to go back to Kansas?

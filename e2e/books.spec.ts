@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { apiSignUp } from "./api-helpers";
 import { answerAllQuestions, registerAndOnboard, t } from "./helpers";
 
 test("book reading: library → detail, chapter lock, check-in reveal", async ({ page }) => {
@@ -70,4 +71,29 @@ test("book reading: library → detail, chapter lock, check-in reveal", async ({
   const planBookItem = page.getByRole("link", { name: new RegExp(t.plan.itemBookChapter) });
   await expect(planBookItem).toBeVisible();
   await expect(planBookItem).toHaveAttribute("href", "/zh/books/book-oz/chapters/oz-ch-02");
+});
+
+test("book API: a chapter under the wrong book is a 404 on both mutations", async ({ request }) => {
+  const user = await apiSignUp();
+
+  // The valid pair works (chapter 1 is never locked).
+  const ok = await request.post("/api/v1/books/book-oz/chapters/oz-ch-01/check-ins", {
+    headers: user.authHeaders,
+    data: { questionId: "oz-ch-01-s1-c1", chosenIndex: 1 },
+  });
+  expect(ok.status()).toBe(200);
+
+  // Chapter ids are global PKs, but the URL names the pair — a mismatched
+  // bookId must 404 exactly like the reader GET, not resolve the chapter.
+  const wrongCheckIn = await request.post("/api/v1/books/not-a-book/chapters/oz-ch-01/check-ins", {
+    headers: user.authHeaders,
+    data: { questionId: "oz-ch-01-s1-c1", chosenIndex: 1 },
+  });
+  expect(wrongCheckIn.status()).toBe(404);
+
+  const wrongQuiz = await request.post("/api/v1/books/not-a-book/chapters/oz-ch-01/quiz-attempts", {
+    headers: user.authHeaders,
+    data: { requestId: crypto.randomUUID(), answers: {}, durationSeconds: 1 },
+  });
+  expect(wrongQuiz.status()).toBe(404);
 });

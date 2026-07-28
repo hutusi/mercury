@@ -204,10 +204,10 @@ sections:
       stem: What form does Oz take when the Scarecrow enters the Throne Room?
       options:
         - A great Head
-        - A lovely Lady
         - A terrible Beast
         - A Ball of Fire
-      correctIndex: 1
+        - A lovely Lady
+      correctIndex: 3
       explanationZh: 稻草人看到的是一位“most lovely Lady”，有翅膀和珠宝冠冕。Head 是多萝西看到的形象，Beast 和 Ball of Fire 是后续铁皮人和狮子见到的。
   - id: oz-ch-11-s7
     text: |-
@@ -318,10 +318,10 @@ quiz:
     stem: What is the same task Oz gives to every one of the four friends?
     options:
       - Bring him the silver shoes
-      - Kill the Wicked Witch of the West
       - Find the Land of the Winkies
       - Build a new throne
-    correctIndex: 1
+      - Kill the Wicked Witch of the West
+    correctIndex: 3
     explanationZh: 奥兹对多萝西、稻草人、铁皮人和狮子都提出同一个条件：杀死西方恶女巫。“Kill the Wicked Witch of the West”在四段对话中反复出现，其余选项均非奥兹的要求。
   - id: oz-ch-11-q4
     stem: How did the Scarecrow spend the night in his room?

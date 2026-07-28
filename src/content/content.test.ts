@@ -111,6 +111,34 @@ describe("books", () => {
         expect(chapterWordCount(chapter)).toBeGreaterThan(0);
       }
     });
+
+    test(`${book.id}: correct answers are spread across option positions`, () => {
+      // Position bias is gameable (review finding: D held ~5% of correct
+      // answers pre-rebalance, so always-guessing-B beat chance handily).
+      // Pooled floor per position plus a per-chapter quiz diversity minimum.
+      const positions = [0, 0, 0, 0];
+      const undiverseChapters: string[] = [];
+      for (const chapter of book.chapters) {
+        const questions = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
+          ...chapter.quiz,
+        ];
+        for (const q of questions) positions[q.correctIndex] += 1;
+        if (new Set(chapter.quiz.map((q) => q.correctIndex)).size < 2) {
+          undiverseChapters.push(chapter.id);
+        }
+      }
+      expect(undiverseChapters).toEqual([]);
+      const total = positions.reduce((a, b) => a + b, 0);
+      if (total >= 40) {
+        for (const [position, count] of positions.entries()) {
+          expect(
+            count / total,
+            `position ${position} holds ${count}/${total} correct answers`,
+          ).toBeGreaterThanOrEqual(0.15);
+        }
+      }
+    });
   }
 });
 

@@ -650,8 +650,9 @@ paths:
       description: >
         Submitting completes the chapter and unlocks the next one regardless
         of score (completion-gated). Missed questions land in the mistakes
-        notebook as kind book_quiz with a null track. 409 chapter_locked if
-        the chapter itself is not yet readable;
+        notebook as kind book_quiz with a null track. Both path ids are
+        checked — a chapter under a different book is a 404. 409
+        chapter_locked if the chapter itself is not yet readable;
         book_quiz_request_conflict when a requestId is reused with different
         answers.
       tags: [books]
@@ -694,7 +695,8 @@ paths:
         Stateless by design — returns correct/correctIndex/explanationZh and
         records nothing (check-ins are zero-stakes; the chapter quiz is the
         persisted event). Quiz question ids 404 here so this endpoint cannot
-        be used as an answer oracle for the end-of-chapter quiz.
+        be used as an answer oracle for the end-of-chapter quiz; a chapter
+        under a different book is a 404 too.
       tags: [books]
       parameters:
         - { $ref: "#/components/parameters/bookId" }

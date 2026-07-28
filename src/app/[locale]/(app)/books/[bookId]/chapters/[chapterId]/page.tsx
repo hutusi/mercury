@@ -63,7 +63,9 @@ export default async function BookChapterPage({
             <div className="space-y-4 font-serif leading-relaxed whitespace-pre-line text-foreground/90">
               {section.text}
             </div>
-            {section.checkIn && <CheckInCard chapterId={chapter.id} question={section.checkIn} />}
+            {section.checkIn && (
+              <CheckInCard bookId={book.id} chapterId={chapter.id} question={section.checkIn} />
+            )}
           </section>
         ))}
       </BookReaderRunner>

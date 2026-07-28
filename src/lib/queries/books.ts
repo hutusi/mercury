@@ -201,44 +201,47 @@ function countJsonbArray(column: AnyPgColumn) {
 
 /**
  * The daily plan's book input: the current chapter of the most-recently-
- * active unfinished book, or null. Null keeps books out of the plan until
- * the learner has started one — the plan continues books, it never starts
- * them (discovery stays on /books).
+ * active UNFINISHED book, or null. Started books are tried in recency order
+ * — a finished recent book must not hide an older unfinished one. Null keeps
+ * books out of the plan until the learner has started one — the plan
+ * continues books, it never starts them (discovery stays on /books).
  */
 export async function getContinueReading(
   userId: string,
 ): Promise<{ bookId: string; chapterId: string; estMinutes: number } | null> {
-  const [latest] = await db
+  // Bounded by the library size — a learner can only have started seeded books.
+  const started = await db
     .select({ bookId: bookQuizAttempts.bookId, lastAt: max(bookQuizAttempts.completedAt) })
     .from(bookQuizAttempts)
     .where(eq(bookQuizAttempts.userId, userId))
     .groupBy(bookQuizAttempts.bookId)
-    .orderBy(desc(max(bookQuizAttempts.completedAt)))
-    .limit(1);
-  if (!latest) return null;
+    .orderBy(desc(max(bookQuizAttempts.completedAt)));
 
-  const [chapters, bestByChapter] = await Promise.all([
-    db
-      .select({
-        id: bookChapters.id,
-        sortOrder: bookChapters.sortOrder,
-        wordCount: bookChapters.wordCount,
-        quizCount: countJsonbArray(bookChapters.quiz),
-      })
-      .from(bookChapters)
-      .where(eq(bookChapters.bookId, latest.bookId))
-      .orderBy(bookChapters.sortOrder),
-    bestAttemptsByChapter(userId, latest.bookId),
-  ]);
+  for (const { bookId } of started) {
+    const [chapters, bestByChapter] = await Promise.all([
+      db
+        .select({
+          id: bookChapters.id,
+          sortOrder: bookChapters.sortOrder,
+          wordCount: bookChapters.wordCount,
+          quizCount: countJsonbArray(bookChapters.quiz),
+        })
+        .from(bookChapters)
+        .where(eq(bookChapters.bookId, bookId))
+        .orderBy(bookChapters.sortOrder),
+      bestAttemptsByChapter(userId, bookId),
+    ]);
 
-  const states = deriveChapterStates(chapters, new Set(bestByChapter.keys()));
-  const chapterId = currentChapterId(states);
-  if (!chapterId) return null; // book finished — nothing to continue
-  const current = chapters.find((c) => c.id === chapterId);
-  if (!current) return null;
-  return {
-    bookId: latest.bookId,
-    chapterId,
-    estMinutes: estimateChapterMinutes(current.wordCount, current.quizCount),
-  };
+    const states = deriveChapterStates(chapters, new Set(bestByChapter.keys()));
+    const chapterId = currentChapterId(states);
+    if (!chapterId) continue; // this book is finished — try the next one
+    const current = chapters.find((c) => c.id === chapterId);
+    if (!current) continue;
+    return {
+      bookId,
+      chapterId,
+      estMinutes: estimateChapterMinutes(current.wordCount, current.quizCount),
+    };
+  }
+  return null;
 }

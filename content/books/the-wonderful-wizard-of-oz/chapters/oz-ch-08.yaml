@@ -68,10 +68,10 @@ sections:
       stem: How does the Lion help get the raft to shore?
       options:
         - He calls a stork to carry the raft.
-        - He swims to the shore and pulls the raft by his tail.
         - He builds a new raft from logs.
         - He asks Dorothy to steer with her pole.
-      correctIndex: 1
+        - He swims to the shore and pulls the raft by his tail.
+      correctIndex: 3
       explanationZh: 狮子说“I think I can swim to the shore and pull the raft after me, if you will only hold fast to the tip of my tail”，于是他下水拖着木筏靠岸。选项只是第二节里狮子采取的行动。
   - id: oz-ch-08-s3
     text: |-
@@ -109,10 +109,10 @@ sections:
       stem: Why is the Stork willing to rescue the Scarecrow?
       options:
         - The Scarecrow promises to give her food.
-        - The Scarecrow is stuffed with straw, so he is not heavy.
         - The Stork wants to travel to the Emerald City too.
         - Dorothy pays the Stork with a flower.
-      correctIndex: 1
+        - The Scarecrow is stuffed with straw, so he is not heavy.
+      correctIndex: 3
       explanationZh: 鹳鸟原本担心稻草人太重搬不动，多萝西急忙解释“he is stuffed with straw”，并不重，鹳鸟才答应试试。别的选项在本节都没有依据。
   - id: oz-ch-08-s4
     text: |-
@@ -177,28 +177,28 @@ quiz:
     stem: What were the travelers trying to reach by crossing the river?
     options:
       - The Country of the Winkies
-      - The Emerald City
       - Kansas
       - The dark forest
-    correctIndex: 1
+      - The Emerald City
+    correctIndex: 3
     explanationZh: 他们一直要去的“Emerald City”就在河对岸，稻草人也说“We must certainly get to the Emerald City if we can”。 Kansas是多萝西的最终老家，不是过河的直接目标。
   - id: oz-ch-08-q2
     stem: Why did the Tin Woodman begin to cry after the Scarecrow was left behind, but then quickly stop?
     options:
       - He was afraid the Wicked Witch would see his tears.
-      - He remembered that tears might make him rust.
       - He was sad there was no one to push the raft.
       - Dorothy told him crying was useless.
-    correctIndex: 1
+      - He remembered that tears might make him rust.
+    correctIndex: 3
     explanationZh: 铁皮樵夫哭了起来，但“fortunately remembered that he might rust”，便赶紧用多萝西的围裙擦干眼泪。这说明他怕生锈，不是因为怕女巫。
   - id: oz-ch-08-q3
     stem: Why could the Scarecrow and the Tin Woodman keep walking through the poppy field without falling asleep?
     options:
       - They held their breath the whole way.
-      - They were not made of flesh.
       - They wore cloths over their faces.
       - They had eaten the poppies first.
-    correctIndex: 1
+      - They were not made of flesh.
+    correctIndex: 3
     explanationZh: 文中说“the Scarecrow and the Tin Woodman, not being made of flesh, were not troubled by the scent of the flowers”，所以他们不怕花香。憋气、蒙脸等都不是文中给出的原因。
   - id: oz-ch-08-q4
     stem: How did the Scarecrow and the Tin Woodman carry the sleeping Dorothy out of the poppies?
@@ -213,10 +213,10 @@ quiz:
     stem: What happened to the Lion in the poppy field?
     options:
       - He ran straight out and waited on the grass.
-      - He fell asleep before reaching the end of the poppies.
       - He carried Toto to safety.
       - He turned back to rescue the Scarecrow.
-    correctIndex: 1
+      - He fell asleep before reaching the end of the poppies.
+    correctIndex: 3
     explanationZh: 狮子虽拼命向前跑，但“the flowers had been too strong for the huge beast”，他在离花田尽头不远的地方睡着了。他没能跑出去，也没回去救人。
   - id: oz-ch-08-q6
     stem: What did the Scarecrow and the Tin Woodman do with Dorothy after carrying her out of the poppy field?

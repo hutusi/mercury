@@ -60,10 +60,10 @@ sections:
       stem: Why did the little old woman call Dorothy a noble sorceress?
       options:
         - Dorothy had arrived flying through the sky
-        - Dorothy's house had killed the Wicked Witch of the East and freed the Munchkins
         - Dorothy wore the silver shoes of a witch
         - Dorothy could speak to her dog Toto
-      correctIndex: 1
+        - Dorothy's house had killed the Wicked Witch of the East and freed the Munchkins
+      correctIndex: 3
       explanationZh: 老妇人说："感谢你杀死了东方恶女巫，把我们的人民从奴役中解救出来。"多萝西否认杀过人，老妇人笑着回答"是你的房子干的，那也一样"，还指给她看压在房角下的两只穿银鞋的脚。
   - id: oz-ch-02-s3
     text: |-
@@ -137,9 +137,9 @@ sections:
       options:
         - The Wicked Witch of the West guarded every road
         - She had promised the Munchkins she would stay
-        - A great desert that no one could live to cross surrounded the whole land
         - The Munchkins refused to show her the way
-      correctIndex: 2
+        - A great desert that no one could live to cross surrounded the whole land
+      correctIndex: 3
       explanationZh: 芒奇金人一个个摇头：东、南、西三面都是同样的大沙漠，"没有人能活着穿过去"；北方女巫也说她的家乡北方边缘同样被这片环绕奥兹国的大沙漠挡住。
   - id: oz-ch-02-s5
     text: |-
@@ -173,10 +173,10 @@ sections:
       stem: How did the Witch of the North protect Dorothy for the journey?
       options:
         - She gave Dorothy a magic wand
-        - She kissed Dorothy's forehead, leaving a shining mark no one would dare to harm
         - She sent the three Munchkins to walk with her
         - She turned Toto into a guard dog
-      correctIndex: 1
+        - She kissed Dorothy's forehead, leaving a shining mark no one would dare to harm
+      correctIndex: 3
       explanationZh: 女巫说自己不能同行，"但我会给你我的吻，没有人敢伤害被北方女巫吻过的人"。她轻吻多萝西的额头，留下一个圆圆的、发亮的印记。
 quiz:
   - id: oz-ch-02-q1
@@ -184,9 +184,9 @@ quiz:
     options:
       - The Munchkins buried her under the house
       - The house crushed her into dust at once
-      - She was so old that she quickly dried up in the sun, leaving only the silver shoes
       - She melted away in the rain
-    correctIndex: 2
+      - She was so old that she quickly dried up in the sun, leaving only the silver shoes
+    correctIndex: 3
     explanationZh: 芒奇金人惊呼时，恶女巫的双脚已完全消失。北方女巫笑着解释："她太老了，在太阳下很快就干掉了。"最后只剩下那双银鞋，女巫把鞋交给了多萝西。
   - id: oz-ch-02-q2
     stem: According to the Witch of the North, why does Oz still have witches and wizards?
@@ -201,10 +201,10 @@ quiz:
     stem: What appeared on the slate when the Witch balanced her cap on her nose?
     options:
       - A map of the road to the Emerald City
-      - The words "LET DOROTHY GO TO THE CITY OF EMERALDS"
       - The name of the Great Wizard
       - A picture of Kansas
-    correctIndex: 1
+      - The words "LET DOROTHY GO TO THE CITY OF EMERALDS"
+    correctIndex: 3
     explanationZh: 女巫摘下帽子把尖顶立在鼻尖上，数了"一、二、三"，帽子立刻变成一块石板，上面用白粉笔写着大字："让多萝西去翡翠城"。
   - id: oz-ch-02-q4
     stem: What did the Munchkins know about the silver shoes?
@@ -220,7 +220,7 @@ quiz:
     options:
       - She flew away on a broomstick
       - She walked away through the trees with the Munchkins
-      - She whirled around on her left heel three times and disappeared
       - She vanished in a puff of smoke
-    correctIndex: 2
+      - She whirled around on her left heel three times and disappeared
+    correctIndex: 3
     explanationZh: 三个芒奇金人鞠躬后从树林间走开，而女巫朝多萝西友好地点点头，"用左脚跟旋转了三圈，随即消失了"。托托吓了一跳，大声吠叫；多萝西知道她是女巫，一点也不惊讶。

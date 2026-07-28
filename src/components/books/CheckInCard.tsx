@@ -15,9 +15,11 @@ const LETTERS = ["A", "B", "C", "D"];
  * refresh is fine by design. Never blocks reading on.
  */
 export function CheckInCard({
+  bookId,
   chapterId,
   question,
 }: {
+  bookId: string;
   chapterId: string;
   question: SanitizedQuestion;
 }) {
@@ -34,7 +36,12 @@ export function CheckInCard({
     startTransition(async () => {
       try {
         setResult(
-          await answerBookCheckIn({ chapterId, questionId: question.id, chosenIndex: index }),
+          await answerBookCheckIn({
+            bookId,
+            chapterId,
+            questionId: question.id,
+            chosenIndex: index,
+          }),
         );
       } catch {
         setChosen(null);

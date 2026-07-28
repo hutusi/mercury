@@ -72,10 +72,10 @@ sections:
       stem: Who fights the pack of wolves sent by the Witch?
       options:
         - The Scarecrow
-        - The Tin Woodman
         - The Cowardly Lion
         - Dorothy
-      correctIndex: 1
+        - The Tin Woodman
+      correctIndex: 3
       explanationZh: 铁皮人说 "This is my fight"，然后用他磨得很锋利的斧头砍死了四十只狼。稻草人那时和他一起守夜，但战斗是铁皮人完成的。
   - id: oz-ch-12-s3
     text: |-
@@ -105,10 +105,10 @@ sections:
       stem: How do the Scarecrow and the Tin Woodman protect Dorothy, Toto, and the Lion from the black bees?
       options:
         - They hide everyone in a cave
-        - They cover them with straw from the Scarecrow
         - They fight the bees with an axe
         - They run into a river
-      correctIndex: 1
+        - They cover them with straw from the Scarecrow
+      correctIndex: 3
       explanationZh: 稻草人让铁皮人把自己的稻草抽出来，盖在小女孩、狗和狮子身上，蜜蜂就蜇不到他们了。蜜蜂只能蜇铁皮人，结果折断了刺，全都死了。
   - id: oz-ch-12-s4
     text: |-
@@ -136,10 +136,10 @@ sections:
       stem: Why does the Witch not want to use the Golden Cap until now?
       options:
         - She lost it many years ago
-        - She can only use it three times, and only once is left
         - The Winged Monkeys hate her
         - The cap is too heavy to wear
-      correctIndex: 1
+        - She can only use it three times, and only once is left
+      correctIndex: 3
       explanationZh: 金帽的法力是只能召唤飞猴三次。她已经用了两次——一次奴役了温基人，一次赶走了奥兹，所以她不想轻易用最后一次。现在狼、乌鸦、蜜蜂都失败了，奴隶也被吓跑了，她别无选择。
   - id: oz-ch-12-s5
     text: |-
@@ -165,10 +165,10 @@ sections:
       stem: Why do the Winged Monkeys not harm Dorothy?
       options:
         - She is too small to carry
-        - They see the mark of the Good Witch's kiss on her forehead
         - She hides inside a house
         - The Lion protects her
-      correctIndex: 1
+        - They see the mark of the Good Witch's kiss on her forehead
+      correctIndex: 3
       explanationZh: 飞猴首领看到多萝西额头上北方好女巫的吻痕，知道她受到善的力量保护，不敢伤害她，只能把她送到女巫的城堡门口。
   - id: oz-ch-12-s6
     text: |-
@@ -215,10 +215,10 @@ sections:
       stem: How does Dorothy keep the Lion from starving in his yard?
       options:
         - The Witch gives him food every noon
-        - Dorothy secretly brings him food at night
         - The Winkies feed him through the fence
         - He finds food in the yard
-      correctIndex: 1
+        - Dorothy secretly brings him food at night
+      correctIndex: 3
       explanationZh: 女巫白天不给狮子食物，想饿得他屈服。但每天夜里多萝西趁女巫睡着，从橱柜里拿食物偷偷送给狮子吃。
   - id: oz-ch-12-s8
     text: |-
@@ -282,28 +282,28 @@ quiz:
     stem: What trick does the Witch use to get one of Dorothy's Silver Shoes?
     options:
       - She steals it while Dorothy is bathing
-      - She puts an invisible iron bar on the floor to make Dorothy trip
       - She offers to trade food for the shoe
       - She asks the Winkies to grab it
-    correctIndex: 1
+      - She puts an invisible iron bar on the floor to make Dorothy trip
+    correctIndex: 3
     explanationZh: 女巫在厨房地板中央放了一根铁条，用魔法让它隐形。多萝西走过时被绊倒，一只银鞋掉了，女巫立刻抢走穿在自己脚上。女巫不敢在夜里偷鞋，因为她怕黑，更怕水，不敢靠近多萝西洗澡的地方。
   - id: oz-ch-12-q4
     stem: What did the Witch use the Golden Cap's charm for the first two times?
     options:
       - To build her castle and find gold
-      - To make the Winkies her slaves and to drive Oz out of the West
       - To fight Dorothy and to steal the Silver Shoes
       - To summon wolves and to call the crows
-    correctIndex: 1
+      - To make the Winkies her slaves and to drive Oz out of the West
+    correctIndex: 3
     explanationZh: 第一次她用飞猴奴役了温基人，统治了他们的国家；第二次她用飞猴和奥兹本人作战，把他赶出了西方之地。金帽只能用三次，所以这是最后一次了。
   - id: oz-ch-12-q5
     stem: What do the Winged Monkeys do to the Scarecrow?
     options:
-      - They drop him on sharp rocks
       - They pull out his straw and throw his clothes into a tree
+      - They drop him on sharp rocks
       - They tie him up with rope and put him in a yard
       - They carry him gently to the castle door
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: 飞猴抓住了稻草人，用长手指把他衣服和头里的稻草全抽出来，然后把帽子、靴子和衣服捆成一团扔到一棵大树的树顶。对铁皮人，他们把他扔到尖石上；对狮子，他们用绳子绑住他关进院子。只有多萝西他们不敢碰。
   - id: oz-ch-12-q6
     stem: Why is Dorothy able to melt the Witch so easily?

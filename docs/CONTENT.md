@@ -61,14 +61,14 @@ bun run content:book-questions -- --book the-wonderful-wizard-of-oz
 # 4. REVIEW EVERY QUESTION before committing (checklist below), then seed
 ```
 
-Review checklist for generated questions: the answer is truly stated in the text (re-read the section); exactly one option is defensible; `explanationZh` teaches (points at the text, dismisses the tempting distractor) rather than asserts; `correctIndex` spreads across A–D over the chapter; check-ins only reference their own section; `titleZh` follows the book's published translation conventions. Runtime never calls AI for books — what you commit is what learners get, so the review **is** the quality bar. Never regenerate a shipped chapter: its question ids key learner answer maps and mistakes.
+Review checklist for generated questions: the answer is truly stated in the text (re-read the section); exactly one option is defensible; `explanationZh` teaches (points at the text, dismisses the tempting distractor **by content, never by letter/position** — option order is script-assigned, and a content test enforces the position spread) rather than asserts; check-ins only reference their own section; `titleZh` follows the book's published translation conventions. Runtime never calls AI for books — what you commit is what learners get, so the review **is** the quality bar. Never regenerate a shipped chapter: its question ids key learner answer maps and mistakes.
 
 ## Validation
 
 Three layers enforce the same invariants:
 
 - The editor, live: the `$schema` directive validates shape as you type (advisory — zod is the authority).
-- `bun run test` → `src/content/content.test.ts`: every file loads through `src/content/load.ts` (zod parse with file-scoped errors), id uniqueness, per-exam question-id uniqueness, section-kind coverage, per-track coverage of all five practice areas, and the book invariants (chapter/section ids unique, per-chapter question ids unique across check-ins + quiz, `bookId` cross-checks). It also guards the pipeline itself: app code must not import the loader (runtime content comes from Postgres), and the committed JSON Schemas must match the zod model.
+- `bun run test` → `src/content/content.test.ts`: every file loads through `src/content/load.ts` (zod parse with file-scoped errors), id uniqueness, per-exam question-id uniqueness, section-kind coverage, per-track coverage of all five practice areas, and the book invariants (chapter/section ids unique, per-chapter question ids unique across check-ins + quiz, `bookId` cross-checks, correct-answer position spread). It also guards the pipeline itself: app code must not import the loader (runtime content comes from Postgres), and the committed JSON Schemas must match the zod model.
 - `bun run db:seed` re-validates before writing and refuses duplicate ids.
 
 MCQs are exactly 4 options with `correctIndex` in 0–3 (schema-enforced).

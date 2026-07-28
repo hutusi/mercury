@@ -29,10 +29,15 @@ const SCHEMA_HEADER =
 // Skeletons have an empty quiz — relax only that constraint for reading.
 const SkeletonSchema = BookChapterSchema.extend({ quiz: z.array(McqQuestionSchema) });
 
+// The model names the correct answer and three distractors but NEVER picks
+// positions: placement is assigned deterministically below. This removes two
+// whole failure classes seen in review — position clustering (the model
+// ignores "distribute" instructions) and a correctIndex that contradicts the
+// explanation.
 const DraftQuestionSchema = z.object({
   stem: z.string(),
-  options: z.array(z.string()).length(4),
-  correctIndex: z.number().int().min(0).max(3),
+  correct: z.string(),
+  distractors: z.array(z.string()).length(3),
   explanationZh: z.string(),
 });
 
@@ -52,9 +57,9 @@ Given one chapter, produce:
 4. quiz — 4 to 6 end-of-chapter recall questions spanning the whole chapter (3 is acceptable for a very short chapter): plot causality (why things happened), character motivation, and memorable concrete details. Learners answer with the book closed.
 
 Rules for every question:
-- stem and all four options in English at or below B1 difficulty; options plausible, mutually exclusive, exactly one correct.
-- Vary correctIndex across the whole set — spread correct answers over positions 0-3, never cluster them.
-- explanationZh in Simplified Chinese: teach rather than assert — point to what happens in the text (short English quotes are welcome) and briefly dismiss the most tempting distractor.
+- stem, the correct answer, and all three distractors in English at or below B1 difficulty; distractors plausible and mutually exclusive with the correct answer.
+- Option order is assigned by tooling, never by you: give the correct answer in \`correct\` and the three wrong answers in \`distractors\`.
+- explanationZh in Simplified Chinese: teach rather than assert — point to what happens in the text (short English quotes are welcome) and briefly dismiss the most tempting distractor BY ITS CONTENT. Never refer to options by letter or position (no 选项A/选项1/option B) — positions are not known when you write.
 - Never ask about wording trivia, chapter numbers, or anything outside this chapter.`;
 
 interface Args {
@@ -125,6 +130,28 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
     }
   }
 
+  // Placement is script-owned: a per-chapter rotation seeded by the chapter
+  // id walks 0-3 across the chapter's questions in order, so every position
+  // is used and re-runs are reproducible.
+  let seed = 0;
+  for (let i = 0; i < chapter.id.length; i++) seed = (seed * 31 + chapter.id.charCodeAt(i)) % 997;
+  let ordinal = 0;
+  const place = (question: z.infer<typeof DraftQuestionSchema>, id: string) => {
+    const correctIndex = (seed + ordinal) % 4;
+    ordinal += 1;
+    return {
+      id,
+      stem: question.stem,
+      options: [
+        ...question.distractors.slice(0, correctIndex),
+        question.correct,
+        ...question.distractors.slice(correctIndex),
+      ],
+      correctIndex,
+      explanationZh: question.explanationZh,
+    };
+  };
+
   const assembled = {
     id: chapter.id,
     bookId: chapter.bookId,
@@ -136,42 +163,31 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
       return {
         id: section.id,
         text: section.text,
-        ...(checkIn
-          ? {
-              checkIn: {
-                id: `${section.id}-c1`,
-                stem: checkIn.stem,
-                options: checkIn.options,
-                correctIndex: checkIn.correctIndex,
-                explanationZh: checkIn.explanationZh,
-              },
-            }
-          : {}),
+        ...(checkIn ? { checkIn: place(checkIn, `${section.id}-c1`) } : {}),
       };
     }),
-    quiz: draft.quiz.map((question, i) => ({
-      id: `${chapter.id}-q${i + 1}`,
-      stem: question.stem,
-      options: question.options,
-      correctIndex: question.correctIndex,
-      explanationZh: question.explanationZh,
-    })),
+    quiz: draft.quiz.map((question, i) => place(question, `${chapter.id}-q${i + 1}`)),
   };
 
   const missing = assembled.sections.filter((s) => !s.checkIn).map((s) => s.id);
   if (missing.length) console.warn(`  ! sections without a check-in: ${missing.join(", ")}`);
-  const spread = new Set(assembled.quiz.map((q) => q.correctIndex));
-  if (spread.size < 3) {
-    console.warn(`  ! quiz correctIndex clusters on ${[...spread].join(",")} — review closely`);
-  }
-  // The JSON-repair path can silently truncate strings; catch gutted output.
   const allQuestions = [
     ...assembled.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
     ...assembled.quiz,
   ];
+  // The JSON-repair path can silently truncate strings; catch gutted output.
   const gutted = allQuestions.filter((q) => q.explanationZh.trim().length < 10).map((q) => q.id);
   if (gutted.length) {
     console.warn(`  ! empty/truncated explanationZh: ${gutted.join(", ")} — redraft with --force`);
+  }
+  // Positional references break whenever tooling (re)assigns placement.
+  const positional = allQuestions
+    .filter((q) => /选项\s*[A-D0-3①②③④]|option\s+[A-D]\b/i.test(q.explanationZh))
+    .map((q) => q.id);
+  if (positional.length) {
+    console.warn(
+      `  ! explanationZh references options by position: ${positional.join(", ")} — reword before committing`,
+    );
   }
 
   fs.writeFileSync(

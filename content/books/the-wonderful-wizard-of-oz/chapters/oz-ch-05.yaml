@@ -121,10 +121,10 @@ sections:
       stem: Why does the Tin Woodman want a heart instead of brains?
       options:
         - Because he never had brains before
-        - Because he once had both and prefers having a heart
         - Because Oz told him he could only get one thing
         - Because the Scarecrow told him hearts are better
-      correctIndex: 1
+        - Because he once had both and prefers having a heart
+      correctIndex: 3
       explanationZh: 铁皮人说他曾经既有脑子又有心："I had brains, and a heart also; so, having tried them both, I should much rather have a heart." 他是凭亲身经历做出的选择。
   - id: oz-ch-05-s4
     text: |-
@@ -178,28 +178,28 @@ quiz:
     stem: Who asked the Wicked Witch to stop the Tin Woodman's marriage?
     options:
       - The beautiful Munchkin girl herself
-      - An old woman who was too lazy to do her own work
       - The tinsmith who made the tin body
       - The Tin Woodman's mother
-    correctIndex: 1
+      - An old woman who was too lazy to do her own work
+    correctIndex: 3
     explanationZh: 那个和女孩住在一起的老妇人太懒了，不想让女孩嫁人离开她，所以去找东方恶女巫帮忙阻止这门婚事。
   - id: oz-ch-05-q3
     stem: What happened the last time the Wicked Witch used the enchanted axe?
     options:
       - It cut off his head
-      - It cut right through his body, splitting him in two
       - It cut off both legs at once
       - It cut off his hands
-    correctIndex: 1
+      - It cut right through his body, splitting him in two
+    correctIndex: 3
     explanationZh: 女巫最后一次让斧子滑落时，"it cut right through my body, splitting me into two halves"。之后铁匠给他做了完整的锡身体，但他也从此失去了心。
   - id: oz-ch-05-q4
     stem: Why was the Tin Woodman stuck in the forest for over a year?
     options:
       - A tree fell on him and he could not move
-      - He was caught in a rainstorm and forgot to oil himself, so his joints rusted
       - The Wicked Witch trapped him there on purpose
       - He lost his axe and could not find his way home
-    correctIndex: 1
+      - He was caught in a rainstorm and forgot to oil himself, so his joints rusted
+    correctIndex: 3
     explanationZh: 他平时会给自己上油防锈，但有一天他忘了，又被暴雨淋到，关节就锈住了，在森林里站了一年多，直到多萝西来帮忙。
   - id: oz-ch-05-q5
     stem: What useful thing does the Tin Woodman do for the party soon after joining?

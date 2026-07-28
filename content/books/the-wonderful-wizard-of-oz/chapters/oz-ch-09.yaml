@@ -35,10 +35,10 @@ sections:
       stem: Why does the Tin Woodman say he tries to help those who need a friend?
       options:
         - Because he wants to be rewarded
-        - Because he has no heart and wants to do right
         - Because the Queen ordered him to help
         - Because the Scarecrow told him to
-      correctIndex: 1
+        - Because he has no heart and wants to do right
+      correctIndex: 3
       explanationZh: 铁皮人说 "I have no heart, you know, so I am careful to help all those who may need a friend"。他因为没有心，所以格外注意多做好事，而不是为了回报。
   - id: oz-ch-09-s2
     text: |-
@@ -143,10 +143,10 @@ quiz:
     stem: Why does the Queen fear the Cowardly Lion at first?
     options:
       - She thinks he is too heavy to carry
-      - She thinks he would eat all the mice
       - She thinks he is not really a coward
       - She thinks he will steal their string
-    correctIndex: 1
+      - She thinks he would eat all the mice
+    correctIndex: 3
     explanationZh: 女王一听到狮子就喊 "he would eat us all up"。Scarecrow 解释这只狮子自称胆小、不会伤害朋友，女王才答应帮忙。
   - id: oz-ch-09-q4
     stem: What does the Queen ask each mouse to bring?
@@ -161,17 +161,17 @@ quiz:
     stem: Why does the Queen hurry the mice away from the poppy bed?
     options:
       - Because she wants the mice to go home for dinner
-      - Because she fears the mice will also fall asleep
       - Because Toto is chasing them again
       - Because a new wildcat is coming
-    correctIndex: 1
+      - Because she fears the mice will also fall asleep
+    correctIndex: 3
     explanationZh: 书中写道女王急忙下令出发，"for she feared if the mice stayed among the poppies too long they also would fall asleep"。罂粟花的气味会让人昏睡，所以她要尽快撤离。
   - id: oz-ch-09-q6
     stem: What does the Queen tell Dorothy's group before she leaves?
     options:
       - Never come to the field again
-      - Call out in the field if you ever need us
       - Bring Toto to meet us tomorrow
       - Follow the yellow brick road alone
-    correctIndex: 1
+      - Call out in the field if you ever need us
+    correctIndex: 3
     explanationZh: 女王临别说 "If ever you need us again, come out into the field and call, and we shall hear you and come to your assistance." 她承诺只要在田野里呼唤，田鼠们就会来帮忙。

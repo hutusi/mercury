@@ -32,11 +32,11 @@ sections:
       id: oz-ch-13-s1-c1
       stem: Who did Dorothy and the Winkies rescue first?
       options:
-        - The Scarecrow
         - The Tin Woodman
+        - The Scarecrow
         - The Cowardly Lion
         - Toto
-      correctIndex: 1
+      correctIndex: 0
       explanationZh: 他们先找到躺在岩石平原上、被砸弯变形的铁皮人（"the Tin Woodman lay, all battered and bent"），把他抬回黄色城堡后由锡匠修好。稻草人是在第二节才被找到的。
   - id: oz-ch-13-s2
     text: |-
@@ -100,11 +100,11 @@ quiz:
   - id: oz-ch-13-q1
     stem: Why were the Winkies so happy and willing to help Dorothy?
     options:
-      - She gave them a lot of gold
       - She had freed them from slavery
+      - She gave them a lot of gold
       - She promised to rule over them
       - She brought food from the Emerald City
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: 温基人多年来被迫做苦工，多萝西告诉他们不再是奴隶了，所以他们心怀感激，愿为解放他们的多萝西竭尽全力（"do all in their power for Dorothy, who had set them free from bondage"）。
   - id: oz-ch-13-q2
     stem: What did Dorothy have to do when the Tin Woodman wept tears of joy?
@@ -127,11 +127,11 @@ quiz:
   - id: oz-ch-13-q4
     stem: What did the Winkies ask the Tin Woodman to do before he left?
     options:
-      - To fix their tools
       - To stay and rule over them
+      - To fix their tools
       - To teach them tinsmithing
       - To find them a new ruler
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: 温基人非常喜欢铁皮人，恳求他留下来统治他们和西方的黄色土地（"begged him to stay and rule over them and the Yellow Land of the West"），但他决心要跟伙伴们一起离开。
   - id: oz-ch-13-q5
     stem: What did Dorothy find in the Witch's cupboard and decide to wear?

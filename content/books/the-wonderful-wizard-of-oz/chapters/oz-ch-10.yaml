@@ -74,10 +74,10 @@ sections:
       stem: What does the man in the farmhouse say about Oz's appearance?
       options:
         - Oz always looks like a bird
-        - Oz can take on any form he wishes
         - Oz looks like an ordinary man
         - Oz is invisible to everyone
-      correctIndex: 1
+        - Oz can take on any form he wishes
+      correctIndex: 3
       explanationZh: 农夫说 "Oz is a Great Wizard, and can take on any form he wishes"——有人觉得他像鸟、像象、像猫等。正因如此，没人知道他真正的样子。
   - id: oz-ch-10-s3
     text: |-
@@ -148,10 +148,10 @@ sections:
       stem: Why does the Guardian of the Gates sit down after Dorothy says she wants to see Oz?
       options:
         - He is angry with her
-        - He is surprised because no one has asked in years
         - He wants to charge them money
         - He thinks it is a foolish joke
-      correctIndex: 1
+        - He is surprised because no one has asked in years
+      correctIndex: 3
       explanationZh: 守门人坐下来思考，并说 "It has been many years since anyone asked me to see Oz"，可见他不是因为生气或要钱，而是因为太久没人提出这样的要求。
   - id: oz-ch-10-s5
     text: |-
@@ -188,19 +188,19 @@ quiz:
     stem: How did Dorothy convince the woman to let the Lion inside?
     options:
       - She said the Lion was chained up
-      - She said the Lion was tame and a great coward
       - She said the Lion would wait outside
       - She said Oz had sent the Lion
-    correctIndex: 1
+      - She said the Lion was tame and a great coward
+    correctIndex: 3
     explanationZh: 多萝西告诉那女人，狮子很温顺，而且 "he is a great coward, too"，"he will be more afraid of you than you are of him"。女人这才同意让他们进来。
   - id: oz-ch-10-q3
     stem: What did the Lion eat for supper, and how did he feel about it?
     options:
       - He ate meat and loved it
-      - He ate porridge but did not care for it
       - He ate nothing at all
       - He ate eggs and enjoyed them
-    correctIndex: 1
+      - He ate porridge but did not care for it
+    correctIndex: 3
     explanationZh: 狮子吃了些粥，但 "did not care for it"，说粥是燕麦做的，燕麦是马的食物，不是狮子的。锡樵夫和稻草人什么都没吃。
   - id: oz-ch-10-q4
     stem: What did the man in the farmhouse say Oz keeps in his Throne Room for the Lion?
@@ -215,10 +215,10 @@ quiz:
     stem: What was at the end of the yellow brick road?
     options:
       - A small green farmhouse
-      - A big gate studded with emeralds
       - A dark forest
       - A river crossing
-    correctIndex: 1
+      - A big gate studded with emeralds
+    correctIndex: 3
     explanationZh: 黄砖路尽头是 "a big gate, all studded with emeralds"，翡翠在阳光下闪闪发光。小农舍是路上经过的地方，不是路尽头。
   - id: oz-ch-10-q6
     stem: What happens when the spectacles are locked on?

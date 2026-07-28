@@ -21,6 +21,7 @@ export type { GradedBookQuiz } from "../book-core";
 
 export const SubmitBookQuizSchema = z.object({
   requestId: z.string().uuid(),
+  bookId: z.string(),
   chapterId: z.string(),
   answers: z.record(z.string(), z.number().int().min(0).max(3)),
   durationSeconds: z
@@ -29,6 +30,18 @@ export const SubmitBookQuizSchema = z.object({
     .nonnegative()
     .max(60 * 60 * 6),
 });
+
+/** Chapter ids are global PKs, but the URL/action contract names the pair —
+ * a mismatched bookId must 404 exactly like the reader GET does. */
+async function findChapterInBook(bookId: string, chapterId: string) {
+  const chapter = await db.query.bookChapters.findFirst({
+    where: eq(bookChapters.id, chapterId),
+  });
+  if (!chapter || chapter.bookId !== bookId) {
+    throw new NotFoundError(`Unknown book chapter: ${bookId}/${chapterId}`);
+  }
+  return chapter;
+}
 
 /**
  * Grade the end-of-chapter recall quiz, persist the attempt, and hook the
@@ -40,12 +53,10 @@ export async function submitBookQuizForUser(
   userId: string,
   input: unknown,
 ): Promise<GradedBookQuiz> {
-  const { requestId, chapterId, answers, durationSeconds } = SubmitBookQuizSchema.parse(input);
+  const { requestId, bookId, chapterId, answers, durationSeconds } =
+    SubmitBookQuizSchema.parse(input);
 
-  const chapter = await db.query.bookChapters.findFirst({
-    where: eq(bookChapters.id, chapterId),
-  });
-  if (!chapter) throw new NotFoundError(`Unknown book chapter: ${chapterId}`);
+  const chapter = await findChapterInBook(bookId, chapterId);
 
   if (!(await isChapterUnlockedForUser(userId, chapter))) {
     throw new ConflictError("Previous chapter quiz not submitted", "chapter_locked");
@@ -125,6 +136,7 @@ export async function submitBookQuizForUser(
 }
 
 export const CheckInSchema = z.object({
+  bookId: z.string(),
   chapterId: z.string(),
   questionId: z.string(),
   chosenIndex: z.number().int().min(0).max(3),
@@ -140,12 +152,9 @@ export async function answerBookCheckInForUser(
   userId: string,
   input: unknown,
 ): Promise<CheckInResult> {
-  const { chapterId, questionId, chosenIndex } = CheckInSchema.parse(input);
+  const { bookId, chapterId, questionId, chosenIndex } = CheckInSchema.parse(input);
 
-  const chapter = await db.query.bookChapters.findFirst({
-    where: eq(bookChapters.id, chapterId),
-  });
-  if (!chapter) throw new NotFoundError(`Unknown book chapter: ${chapterId}`);
+  const chapter = await findChapterInBook(bookId, chapterId);
 
   // A locked chapter's content is never readable, so its keys are not either.
   if (!(await isChapterUnlockedForUser(userId, chapter))) {

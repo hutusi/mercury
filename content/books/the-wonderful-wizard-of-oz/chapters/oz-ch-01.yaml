@@ -19,10 +19,10 @@ sections:
       stem: Why did everything around Dorothy's home look gray?
       options:
         - The family had painted the house and fences gray on purpose
-        - The sun had burned and faded the land, the grass, and the house
         - Constant rain kept the sky and fields dark
         - Dust storms covered everything in gray ash
-      correctIndex: 1
+        - The sun had burned and faded the land, the grass, and the house
+      correctIndex: 3
       explanationZh: 文中反复出现 gray：烈日把耕地晒成灰色、草叶尖被晒焦，房子的油漆被太阳晒起泡又被雨水冲掉，连婶婶和叔叔也变得灰白憔悴——一切都是烈日和艰苦生活造成的。
   - id: oz-ch-01-s2
     text: |-
@@ -74,9 +74,9 @@ sections:
       options:
         - She kept trying to open the trap door to escape
         - She cried loudly with Toto beside her
-        - She calmly lay down on her bed and fell asleep
         - She watched the storm through the window all night
-      correctIndex: 2
+        - She calmly lay down on her bed and fell asleep
+      correctIndex: 3
       explanationZh: 几个小时过去后，多萝西克服了恐惧，决定"平静地等着，看未来会怎样"。她爬到床上躺下，托托跟过来卧在她身边，尽管房子摇晃、风声呼啸，她还是睡着了。
 quiz:
   - id: oz-ch-01-q1
@@ -102,18 +102,18 @@ quiz:
     options:
       - climbed into the cellar with Aunt Em
       - carried Dorothy into the house
-      - ran to the sheds to look after the cows and horses
       - stood in the doorway watching the sky
-    correctIndex: 2
+      - ran to the sheds to look after the cows and horses
+    correctIndex: 3
     explanationZh: 亨利叔叔对婶婶喊了一声 "There's a cyclone coming, Em. I'll go look after the stock."，随即跑向关着牛马的棚子。先下地窖的是爱姆婶婶，多萝西因为去抓托托而没来得及下去。
   - id: oz-ch-01-q4
     stem: Why was Dorothy still inside the house when it flew away?
     options:
       - She wanted to save her basket of bread
-      - She was catching Toto, who had hidden under the bed
       - The trap door was stuck shut
       - She did not believe the cyclone was dangerous
-    correctIndex: 1
+      - She was catching Toto, who had hidden under the bed
+    correctIndex: 3
     explanationZh: 婶婶让她快跑进地窖时，托托从她怀里跳出来躲到了床下。等她终于抓住托托走到房间中间，狂风让房子剧烈摇晃，她一下子坐到地板上——紧接着房子就升上了天空。
   - id: oz-ch-01-q5
     stem: What happened when Toto fell through the open trap door?
