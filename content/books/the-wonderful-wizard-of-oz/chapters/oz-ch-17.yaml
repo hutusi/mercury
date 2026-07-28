@@ -34,12 +34,12 @@ sections:
       id: oz-ch-17-s1-c1
       stem: Why can't Oz use gas to fill the balloon?
       options:
-        - He doesn't know how to make gas.
         - There is no gas in this country.
+        - He doesn't know how to make gas.
         - Gas is too expensive for him.
         - Gas would make the balloon too heavy.
-      correctIndex: 1
-      explanationZh: 原文说 in all this country there is no gas to fill the balloon with，所以只能改用热空气。选项1（不会制造）不是原因，他缺的不是技术而是气体本身。
+      correctIndex: 0
+      explanationZh: 原文说 in all this country there is no gas to fill the balloon with，所以只能改用热空气。"不会制造"不是原因——他缺的不是技术而是气体本身。
   - id: oz-ch-17-s2
     text: |-
       “We!” exclaimed the girl. “Are you going with me?”
@@ -66,11 +66,11 @@ sections:
       stem: Why does Oz want to leave the Emerald City with Dorothy?
       options:
         - He misses Kansas very much.
-        - He is tired of being a humbug.
         - He wants to join a circus right away.
+        - He is tired of being a humbug.
         - He is afraid of the Wicked Witch.
-      correctIndex: 1
-      explanationZh: Oz 说 I am tired of being such a humbug——他一直假装巫师，担心一旦走出宫殿就会被人识破，所以想离开。选项3（马戏团）是他想回 Kansas 后的目标，不是离开的直接原因。
+      correctIndex: 2
+      explanationZh: Oz 说 I am tired of being such a humbug——他一直假装巫师，担心一旦走出宫殿就会被人识破，所以想离开。加入马戏团是他回 Kansas 之后的打算，不是离开的直接原因。
   - id: oz-ch-17-s3
     text: |-
       “I am now going away to make a visit. While I am gone the Scarecrow will rule over you. I command you to obey him as you would me.”
@@ -100,62 +100,62 @@ sections:
       options:
         - The crowd blocks her way.
         - Oz leaves without warning her.
-        - She can't find Toto and has to chase him.
         - The rope breaks before she is called.
-      correctIndex: 2
-      explanationZh: Toto 跑进人群去追一只小猫，Dorothy 花时间才找到他，等她跑回来时绳子已断，气球升空。选项4顺序反了——绳子是在她快到篮子时才断的。
+        - She can't find Toto and has to chase him.
+      correctIndex: 3
+      explanationZh: Toto 跑进人群去追一只小猫，Dorothy 花时间才找到他，等她跑回来时绳子已断，气球升空。"绳子先断她才被叫"顺序反了——绳子是在她快到篮子时才断的。
 quiz:
   - id: oz-ch-17-q1
     stem: During the three days before Oz calls Dorothy, how do her friends feel?
     options:
+      - Happy and contented
       - Sad and worried
       - Angry at Oz
-      - Happy and contented
       - Eager to leave
-    correctIndex: 2
+    correctIndex: 0
     explanationZh: 原文明确说 her friends were all quite happy and contented——稻草人有了想法，铁皮人觉得心更善良，狮子什么都不怕。只有 Dorothy 仍然难过，想回 Kansas。
   - id: oz-ch-17-q2
     stem: How does Oz say he first came to this country?
     options:
       - By a cyclone
-      - By a balloon
       - On foot
       - By a ship
-    correctIndex: 1
-    explanationZh: Oz 说 when I came to this country it was in a balloon，并由此认为气球也能带 Dorothy 飞越沙漠。选项1是 Dorothy 乘旋风来的方式，不是 Oz 的。
+      - By a balloon
+    correctIndex: 3
+    explanationZh: Oz 说 when I came to this country it was in a balloon，并由此认为气球也能带 Dorothy 飞越沙漠。乘旋风而来的是 Dorothy，不是 Oz。
   - id: oz-ch-17-q3
     stem: What does Oz use to make the balloon airtight?
     options:
-      - A coat of thin glue
       - A layer of green paint
+      - A coat of thin glue
       - Wax from the Palace
       - Oil from the Tin Woodman
-    correctIndex: 0
-    explanationZh: Oz painted it on the inside with a coat of thin glue, to make it airtight，涂胶水是为了防止漏气。选项2（绿漆）只是外观颜色，不是密封手段。
+    correctIndex: 1
+    explanationZh: Oz painted it on the inside with a coat of thin glue, to make it airtight，涂胶水是为了防止漏气。绿漆只是气球外观的颜色，不是密封手段。
   - id: oz-ch-17-q4
     stem: What keeps the balloon from flying away before Oz is ready?
     options:
       - A wooden pole
-      - A rope
       - A chain
+      - A rope
       - A wall
-    correctIndex: 1
+    correctIndex: 2
     explanationZh: 原文说 the balloon was tugging hard at the rope that held it to the ground，正是这根绳子把气球固定住，直到它最终断裂。
   - id: oz-ch-17-q5
     stem: What does Oz tell the people about the Scarecrow before leaving?
     options:
       - He will guard the Palace
-      - He will rule over them
       - He should go to Kansas too
+      - He will rule over them
       - He will build a new city
-    correctIndex: 1
-    explanationZh: Oz 当众宣布 While I am gone the Scarecrow will rule over you，并命令大家像服从他一样服从稻草人。选项4（建新城）文中未提，原文说的是他已建了 Emerald City。
+    correctIndex: 2
+    explanationZh: Oz 当众宣布 While I am gone the Scarecrow will rule over you，并命令大家像服从他一样服从稻草人。"建新城"文中未提，原文说的是他已建了 Emerald City。
   - id: oz-ch-17-q6
     stem: What is Toto doing when Dorothy can't find him?
     options:
-      - Sleeping under the balloon
       - Chasing a kitten in the crowd
+      - Sleeping under the balloon
       - Barking at the Lion
       - Running toward the Palace
-    correctIndex: 1
-    explanationZh: Toto had run into the crowd to bark at a kitten，Dorothy 找他耽误了时间，导致她没赶上篮子。选项3（冲狮子叫）文中没有，且狮子在场并未引起 Toto 反应。
+    correctIndex: 0
+    explanationZh: Toto had run into the crowd to bark at a kitten，Dorothy 找他耽误了时间，导致她没赶上篮子。"冲狮子叫"文中没有，狮子在场并未引起 Toto 反应。

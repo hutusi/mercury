@@ -36,11 +36,11 @@ sections:
       id: oz-ch-23-s1-c1
       stem: What does Glinda ask Dorothy to give her in return for telling her how to get back to Kansas?
       options:
-        - The Silver Shoes
         - The Golden Cap
+        - The Silver Shoes
         - Her basket
         - Toto
-      correctIndex: 1
+      correctIndex: 0
       explanationZh: Glinda says, "if I do, you must give me the Golden Cap." Dorothy gladly hands it over because it lets the owner command the Winged Monkeys three times. 银鞋是后来送多萝西回家的工具，Glinda 不会要它。
   - id: oz-ch-23-s2
     text: |-
@@ -77,9 +77,9 @@ sections:
       options:
         - Keep it as a treasure
         - Give it to Dorothy again
-        - Give it to the King of the Monkeys so his band is free forever
         - Throw it into the desert
-      correctIndex: 2
+        - Give it to the King of the Monkeys so his band is free forever
+      correctIndex: 3
       explanationZh: Glinda says she will give the cap to the King of the Monkeys, "that he and his band may thereafter be free for evermore." 她用完三次命令后就让飞猴们永远自由，而不是自己留着。
   - id: oz-ch-23-s3
     text: |-
@@ -113,29 +113,29 @@ sections:
       stem: How does Dorothy make the Silver Shoes carry her to Kansas?
       options:
         - She says a magic word
-        - She knocks the heels together three times
         - She puts them on and runs
         - She asks Glinda to do it for her
-      correctIndex: 1
+        - She knocks the heels together three times
+      correctIndex: 3
       explanationZh: Glinda tells her to "knock the heels together three times and command the shoes to carry you wherever you wish to go." Dorothy 照做并说 "Take me home to Aunt Em!" 就瞬间飞回堪萨斯了。
 quiz:
   - id: oz-ch-23-q1
     stem: Why does Dorothy say Aunt Em will think something dreadful has happened to her?
     options:
-      - Because Dorothy wrote her a sad letter
       - Because Aunt Em will think she is dead and wear mourning clothes
+      - Because Dorothy wrote her a sad letter
       - Because Uncle Henry told Aunt Em a lie
       - Because the cyclone destroyed the new house
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: Dorothy 说 Aunt Em 会以为她出了事而穿上丧服（"put on mourning"），还担心叔叔庄稼不好付不起这费用。Dorothy 并没有写信，也没有谁撒谎。
   - id: oz-ch-23-q2
     stem: What problem does the Scarecrow worry about when he says he wants to return to the Emerald City?
     options:
       - He has no brain to rule with
-      - The people there do not like him
       - He does not know how to cross the hill of the Hammer-Heads
+      - The people there do not like him
       - He is afraid of the Winkies
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 稻草人想回翡翠城当统治者，但他担心的是 "how to cross the hill of the Hammer-Heads"。他已经有脑子了，人们也喜欢他，所以他担忧的不是这些。
   - id: oz-ch-23-q3
     stem: Where will the Winged Monkeys carry the Tin Woodman?
@@ -151,25 +151,25 @@ quiz:
     options:
       - They are angry at her
       - They say they wish she had left right away
-      - They point out that then they would never have gotten their brains, heart, or courage
       - They offer to go with her to Kansas
-    correctIndex: 2
+      - They point out that then they would never have gotten their brains, heart, or courage
+    correctIndex: 3
     explanationZh: 每个朋友都说如果她第一天就回家，自己就不会得到最渴望的东西：稻草人不会有脑子，铁皮人不会有心，狮子永远只是胆小鬼。他们并不是生气或想让她走。
   - id: oz-ch-23-q5
     stem: What happens to the Silver Shoes during Dorothy's flight through the air?
     options:
-      - They turn into ruby slippers
       - They fall off and are lost forever in the desert
+      - They turn into ruby slippers
       - They are given to Toto
       - They bring Glinda to Kansas too
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: 多萝西落地后发现自己只穿着袜子（"in her stocking-feet"），因为银鞋在飞行中掉了，"were lost forever in the desert"。它们没有变色，也没给任何人。
   - id: oz-ch-23-q6
     stem: How many steps do the Silver Shoes take to carry Dorothy across the desert?
     options:
-      - Three
       - One
       - Two
+      - Three
       - Twelve
-    correctIndex: 0
+    correctIndex: 2
     explanationZh: Glinda 说银鞋三步就能带你去世界上任何地方（"in three steps"），每一步一眨眼就到。多萝西敲鞋跟三下后，鞋子果然只走了三步就到了堪萨斯。

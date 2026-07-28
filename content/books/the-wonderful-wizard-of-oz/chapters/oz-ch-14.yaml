@@ -32,9 +32,9 @@ sections:
       options:
         - Because the Wicked Witch put a spell on them.
         - Because they forgot to bring a map.
-        - Because at noon the sun was over their heads and they could not tell east from west.
         - Because the flowers blocked their view.
-      correctIndex: 2
+        - Because at noon the sun was over their heads and they could not tell east from west.
+      correctIndex: 3
       explanationZh: 原文说他们本知道要朝东走，但正午太阳在头顶时，他们分不清东西方向，因此迷了路。其他选项在文中都没有提到。
   - id: oz-ch-14-s2
     text: |-
@@ -76,10 +76,10 @@ sections:
       stem: Who tells Dorothy about the charm of the Golden Cap?
       options:
         - The Scarecrow
-        - The Queen of the Mice
         - The Tin Woodman
+        - The Queen of the Mice
         - The King of the Winged Monkeys
-      correctIndex: 1
+      correctIndex: 2
       explanationZh: 田鼠女王注意到多萝西的金帽，告诉她帽子里面写着咒语，可以召唤飞猴。猴王是在她念完咒语后才出现的。
   - id: oz-ch-14-s3
     text: |-
@@ -101,10 +101,10 @@ sections:
       stem: What was the Winged Monkeys' life like before they became slaves?
       options:
         - They served the Wicked Witch and hated it.
-        - They lived freely and happily in the forest doing as they pleased.
         - They worked for Gayelette in her ruby palace.
+        - They lived freely and happily in the forest doing as they pleased.
         - They guarded the Emerald City gates.
-      correctIndex: 1
+      correctIndex: 2
       explanationZh: 猴王说他们曾经是自由的民众，住在森林里，吃坚果和水果，随心所欲，没有人是他们的主人。其他选项都与他们当时的生活无关。
   - id: oz-ch-14-s4
     text: |-
@@ -121,11 +121,11 @@ sections:
       id: oz-ch-14-s4-c1
       stem: Why did Gayelette punish the Winged Monkeys?
       options:
-        - Because they stole the Golden Cap from her palace.
         - Because they dropped Quelala into the river and ruined his clothes.
+        - Because they stole the Golden Cap from her palace.
         - Because they attacked her ruby palace.
         - Because they refused to come to her wedding.
-      correctIndex: 1
+      correctIndex: 0
       explanationZh: 猴王的祖父在婚礼前带着猴群把 Quelala 扔进河里，弄坏了他丝绸和天鹅绒的衣服，Gayelette 因此大怒并惩罚了他们。
   - id: oz-ch-14-s5
     text: |-
@@ -141,47 +141,47 @@ sections:
       stem: What did the Wicked Witch of the West use the Winged Monkeys to do?
       options:
         - Build her castle
-        - Guard the Winkies
         - Enslave the Winkies and drive Oz out of the Land of the West
+        - Guard the Winkies
         - Find the Golden Cap for her
-      correctIndex: 2
+      correctIndex: 1
       explanationZh: 猴王说西方恶女巫用金帽命令他们奴役温基人，之后又把奥兹本人赶出了西方之地。其他选项文中没有提到。
 quiz:
   - id: oz-ch-14-q1
     stem: What did Dorothy suggest calling when the travelers were lost and losing heart?
     options:
       - The Winged Monkeys
-      - The field mice
       - The Winkies
       - The Queen of the Mice only
-    correctIndex: 1
+      - The field mice
+    correctIndex: 3
     explanationZh: 多萝西说也许可以叫田鼠来帮忙，因为它们可能知道去翡翠城的路。她当时还没有想到金帽和飞猴。
   - id: oz-ch-14-q2
     stem: How many times can the owner of the Golden Cap command the Winged Monkeys?
     options:
       - As many times as they want
-      - Five times
       - Three times
+      - Five times
       - Only once
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 猴王明确说金帽的主人有权命令飞猴三次——这是 Gayelette 当年定下的条件。
   - id: oz-ch-14-q3
     stem: What did Quelala order the Winged Monkeys to do with his first wish?
     options:
-      - Build a palace for Gayelette
       - Stay away from his bride forever
+      - Build a palace for Gayelette
       - Carry him across the river
       - Guard the ruby palace
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: Quelala 的妻子不愿看到飞猴，于是他命令飞猴永远躲在她看不到的地方，飞猴们也很乐意照做。
   - id: oz-ch-14-q4
     stem: What did the Monkey King say was the reason the Monkeys must obey the Golden Cap?
     options:
       - Because they lost a war against Gayelette
-      - Because Gayelette spared their lives on that condition
       - Because Oz commanded it
       - Because they promised the Wicked Witch
-    correctIndex: 1
+      - Because Gayelette spared their lives on that condition
+    correctIndex: 3
     explanationZh: Gayelette 原本要惩罚飞猴，但猴王苦苦哀求，Quelala 也替他们说了好话，于是她放过他们，条件是飞猴永远要服从金帽主人三次命令。
   - id: oz-ch-14-q5
     stem: How did Dorothy feel during the flight with the Winged Monkeys?

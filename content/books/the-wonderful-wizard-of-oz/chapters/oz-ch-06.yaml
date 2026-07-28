@@ -33,7 +33,7 @@ sections:
         - She rushed forward and slapped the Lion's nose.
         - She picked up Toto and held him high.
       correctIndex: 2
-      explanationZh: 原文写道 Dorothy "rushed forward and slapped the Lion upon his nose as hard as she could"，因为怕 Toto 被咬。选项0和1都是退缩，不符合她当时的勇敢举动。
+      explanationZh: 原文写道 Dorothy "rushed forward and slapped the Lion upon his nose as hard as she could"，因为怕 Toto 被咬。逃进树林或喊铁皮人帮忙都是退缩的做法，不符合她当时的勇敢举动。
   - id: oz-ch-06-s2
     text: |-
       “I didn’t bite him,” said the Lion, as he rubbed his nose with his paw where Dorothy had hit it.
@@ -73,10 +73,10 @@ sections:
       options:
         - He gets angry and roars at her.
         - He denies it and walks away.
-        - He hangs his head in shame and says he has always known it.
         - He laughs and thinks it is a joke.
-      correctIndex: 2
-      explanationZh: 狮子低头承认 "I know it … I've always known it"，说明他并不否认。选项0、3不符合他的羞愧态度，选项1则完全相反。
+        - He hangs his head in shame and says he has always known it.
+      correctIndex: 3
+      explanationZh: 狮子低头承认 "I know it … I've always known it"，说明他并不否认。发怒吼叫或当成玩笑都不符合他的羞愧态度，而"矢口否认走开"更是与原文完全相反。
   - id: oz-ch-06-s3
     text: |-
       “I know it,” returned the Lion, wiping a tear from his eye with the tip of his tail. “It is my great sorrow, and makes my life very unhappy. But whenever there is danger, my heart begins to beat fast.”
@@ -131,35 +131,35 @@ sections:
         - The Lion had scratched his jaw.
         - He swallowed a piece of metal.
       correctIndex: 1
-      explanationZh: 铁皮人因踩死甲虫而伤心流泪，泪水流到下巴铰链上生了锈，嘴就张不开了。选项2是之前狮子的爪子造成的，与这一段无关。
+      explanationZh: 铁皮人因踩死甲虫而伤心流泪，泪水流到下巴铰链上生了锈，嘴就张不开了。狮子的爪子确实抓过他，但那是之前的事，与这一段无关。
 quiz:
   - id: oz-ch-06-q1
     stem: Why could the Lion's claws make no impression on the Tin Woodman?
     options:
+      - The Woodman was made of tin.
       - The Woodman wore heavy armor.
       - The Lion's claws were too blunt.
-      - The Woodman was made of tin.
       - The Scarecrow blocked the blow.
-    correctIndex: 2
-    explanationZh: 铁皮人全身是铁皮做的，狮子的利爪抓上去只打滑，还让他脊背发凉。选项0提到的盔甲在本章并不存在。
+    correctIndex: 0
+    explanationZh: 铁皮人全身是铁皮做的，狮子的利爪抓上去只打滑，还让他脊背发凉。文中并没有什么沉重盔甲——挡住利爪的就是他的锡皮身体。
   - id: oz-ch-06-q2
     stem: Why does Dorothy say the Lion should feel ashamed?
     options:
       - He ran away from a small dog.
-      - He tried to bite a poor little dog.
       - He could not roar loudly enough.
+      - He tried to bite a poor little dog.
       - He broke the yellow brick road.
-    correctIndex: 1
-    explanationZh: 多萝西斥责狮子作为如此大的猛兽竟想咬 Toto 这样的小狗，应感到羞耻。选项0是说他逃跑，但原文的指责重点在他张嘴要咬 Toto。
+    correctIndex: 2
+    explanationZh: 多萝西斥责狮子作为如此大的猛兽竟想咬 Toto 这样的小狗，应感到羞耻。"从小狗身边逃跑"说的是逃避，但原文的指责重点在他张嘴要咬 Toto。
   - id: oz-ch-06-q3
     stem: According to the Lion, what usually happens when he roars at other animals?
     options:
       - They fight him bravely.
-      - They laugh at him.
       - They get frightened and run away.
+      - They laugh at him.
       - They ignore him completely.
-    correctIndex: 2
-    explanationZh: 狮子说自己大声吼叫后，所有生物都会害怕并躲开他，所以他从没真正交过手。选项0与原文相反，他若被挑战反而会自己逃跑。
+    correctIndex: 1
+    explanationZh: 狮子说自己大声吼叫后，所有生物都会害怕并躲开他，所以他从没真正交过手。"勇敢迎战"与原文相反——他若真被挑战，反而会自己逃跑。
   - id: oz-ch-06-q4
     stem: What does the Tin Woodman say proves that the Lion has a heart?
     options:
@@ -168,13 +168,13 @@ quiz:
       - The Lion cares about other animals.
       - The Lion wants to go to Oz.
     correctIndex: 1
-    explanationZh: 铁皮人听说狮子遇险心跳加快，便认为这也许是心脏病，而这也说明他有心。选项2看似有理，但原文的逻辑是心跳快等于有心。
+    explanationZh: 铁皮人听说狮子遇险心跳加快，便认为这也许是心脏病，而这也说明他有心。"关心其他动物"看似有理，但原文的逻辑是心跳快等于有心。
   - id: oz-ch-06-q5
     stem: What lesson does the Tin Woodman learn after crying over the beetle?
     options:
       - Never walk on the yellow brick road.
-      - Never cry, because tears rust his jaws.
       - Always carry more oil.
       - Never let the Lion walk ahead.
-    correctIndex: 1
-    explanationZh: 铁皮人说以后要小心看路，因为若再踩死虫子就会哭，而哭会使下巴生锈说不出话。选项2虽合理，但不是他总结的教训。
+      - Never cry, because tears rust his jaws.
+    correctIndex: 3
+    explanationZh: 铁皮人说以后要小心看路，因为若再踩死虫子就会哭，而哭会使下巴生锈说不出话。"多带油"听起来合理，但不是他总结的教训。

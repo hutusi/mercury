@@ -27,12 +27,15 @@ test("book reading: library → detail, chapter lock, check-in reveal", async ({
   expect(await page.content()).not.toContain("correctIndex");
 
   // Check-in: choosing an option reveals the key + explanation, and the
-  // options lock. Option A on the first check-in is a distractor, so the
-  // "not quite" state must show — proving the reveal round-trip, not a guess.
+  // options lock. The explanation and verdict chip only exist in the server
+  // reveal, proving the round-trip; which verdict shows is deliberately not
+  // asserted — answer positions are tooling-assigned and may be reassigned.
   const checkIn = page.getByRole("complementary", { name: t.books.checkInLabel }).first();
   await checkIn.getByRole("button").first().click();
   await expect(checkIn.getByText(`${t.reading.explanation}：`)).toBeVisible();
-  await expect(checkIn.getByText(t.books.checkInIncorrect)).toBeVisible();
+  await expect(
+    checkIn.getByText(new RegExp(`${t.books.checkInCorrect}|${t.books.checkInIncorrect}`)),
+  ).toBeVisible();
   await expect(checkIn.getByRole("button").first()).toBeDisabled();
 
   // End-of-chapter quiz: entering it hides the prose (recall, book closed).

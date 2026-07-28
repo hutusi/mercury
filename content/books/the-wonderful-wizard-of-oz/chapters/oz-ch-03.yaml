@@ -30,11 +30,11 @@ sections:
       id: oz-ch-03-s1-c1
       stem: Why did Dorothy decide to wear the silver shoes for the journey?
       options:
-        - Her own shoes were old and worn, and the silver ones could not wear out
         - The Witch of the North ordered her to wear them
         - She wanted the Munchkins to think she was a sorceress
+        - Her own shoes were old and worn, and the silver ones could not wear out
         - They were the only shoes that matched her dress
-      correctIndex: 0
+      correctIndex: 2
       explanationZh: 出发前多萝西低头发现自己的鞋又旧又破，"走远路肯定不行"。她想起桌上的银鞋："拿它们走长路正合适，因为它们不会磨坏。"一试之下正合脚，像专门为她做的一样。
   - id: oz-ch-03-s2
     text: |-
@@ -89,10 +89,10 @@ sections:
       stem: Why did Boq believe Dorothy must be a friendly witch?
       options:
         - She carried a magic basket
+        - Her dress had white in it, and only witches and sorceresses wear white
         - She arrived walking on the yellow brick road
         - Toto could understand human speech
-        - Her dress had white in it, and only witches and sorceresses wear white
-      correctIndex: 3
+      correctIndex: 1
       explanationZh: 博克说：蓝色是芒奇金人的颜色，白色是女巫的颜色。多萝西的格子裙是蓝白相间的，"所以我们知道你是一个友好的女巫"。她穿银鞋、又"杀死"了恶女巫，更让人深信不疑。
   - id: oz-ch-03-s4
     text: |-
@@ -141,9 +141,9 @@ sections:
       options:
         - He was tired of the cornfield and wanted adventure
         - He wanted to thank the Great Oz for making him alive
-        - He hoped to find the farmer who made him
         - He hoped Oz would give him brains instead of straw in his head
-      correctIndex: 3
+        - He hoped to find the farmer who made him
+      correctIndex: 2
       explanationZh: 稻草人坦白说自己是填充稻草的，"根本没有脑子"。他问多萝西：如果跟她一起去翡翠城，奥兹会不会给他一些脑子？他最怕的是被人叫作傻瓜。
   - id: oz-ch-03-s5
     text: |-
@@ -166,39 +166,39 @@ sections:
       id: oz-ch-03-s5-c1
       stem: What is the only thing in the world the Scarecrow is afraid of?
       options:
-        - A lighted match
         - Toto's growling
         - Crows and other birds
         - The Munchkin farmer who made him
-      correctIndex: 0
+        - A lighted match
+      correctIndex: 3
       explanationZh: 稻草人主动帮多萝西提篮子，因为他"不会累"，也不怕托托——"他伤不了稻草"。接着他吐露了一个秘密：世界上他只怕一样东西，就是一根点燃的火柴。
 quiz:
   - id: oz-ch-03-q1
     stem: How did Dorothy find the right road among the several nearby?
     options:
       - Boq walked with her and pointed it out
+      - She looked for the road paved with yellow bricks
       - Toto ran ahead and led the way
       - The silver shoes turned her feet toward it
-      - She looked for the road paved with yellow bricks
-    correctIndex: 3
+    correctIndex: 1
     explanationZh: 北方女巫说过"去翡翠城的路是用黄砖铺成的，你不会错过"。附近有好几条路，但多萝西很快找到了铺着黄砖的那一条，银鞋在坚硬的黄色路面上发出清脆的声响。
   - id: oz-ch-03-q2
     stem: Why did the Munchkins come out of their houses and bow low to Dorothy?
     options:
       - They bowed to every stranger on the road
       - They wanted to see the silver shoes up close
-      - They thought she was the Witch of the North
       - They knew she had destroyed the Wicked Witch and set them free
-    correctIndex: 3
+      - They thought she was the Witch of the North
+    correctIndex: 2
     explanationZh: 文中写道，人们出来看她、向她深深鞠躬，"因为每个人都知道，是她消灭了恶女巫，把他们从奴役中解救出来"。
   - id: oz-ch-03-q3
     stem: Why was Toto such a curiosity to the Munchkin people?
     options:
-      - They had never seen a dog before
       - Black animals were sacred in the East
       - They thought he could do magic tricks
       - Dogs were forbidden by the Wicked Witch
-    correctIndex: 0
+      - They had never seen a dog before
+    correctIndex: 3
     explanationZh: 早餐时一个芒奇金小婴儿拉托托的尾巴、朝他又笑又叫。文中解释：托托对所有人来说都是个稀罕物，"因为他们从来没有见过狗"。
   - id: oz-ch-03-q4
     stem: What did Boq tell Dorothy about the way to the Emerald City?
@@ -212,9 +212,9 @@ quiz:
   - id: oz-ch-03-q5
     stem: Why was it easy for Dorothy to lift the Scarecrow off the pole?
     options:
+      - Being stuffed with straw, he was very light
       - The pole was already broken
       - The silver shoes gave her great strength
       - The Scarecrow climbed down by himself
-      - Being stuffed with straw, he was very light
-    correctIndex: 3
+    correctIndex: 0
     explanationZh: 稻草人请多萝西帮他取下背后的木杆。她"伸出双臂把他从杆子上抱了下来，因为他是稻草填的，非常轻"。落地后稻草人说自己"像换了一个人"。

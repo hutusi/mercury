@@ -71,11 +71,11 @@ sections:
       id: oz-ch-21-s2-c1
       stem: How does the Lion kill the great spider?
       options:
+        - He jumps on its back and knocks its head off.
         - He bites off all its long legs one by one.
         - He waits for it to wake up and then fights it.
-        - He jumps on its back and knocks its head off.
         - He pushes a tree onto the monster.
-      correctIndex: 2
+      correctIndex: 0
       explanationZh: 狮子趁蜘蛛睡着时跳到它背上，一掌打掉了它的头（"knocked the spider's head from its body"），因为蜘蛛的脖子细得像黄蜂腰，这是关键弱点。
 quiz:
   - id: oz-ch-21-q1
@@ -92,34 +92,34 @@ quiz:
     options:
       - The animals must give him food every day.
       - The animals must help Dorothy get home.
-      - The animals must bow down to him and obey him as King.
       - The animals must find another lion to help him.
-    correctIndex: 2
+      - The animals must bow down to him and obey him as King.
+    correctIndex: 3
     explanationZh: 狮子问："If I put an end to your enemy, will you bow down to me and obey me as King of the Forest?" 百兽齐声答应。狮子关心的是成为百兽之王，而不是要食物或帮多萝西回家。
   - id: oz-ch-21-q3
     stem: Why does the Lion attack the spider while it is sleeping?
     options:
       - Because the spider can only be hurt while asleep.
-      - Because it is easier to fight it asleep than awake.
       - Because the spider hunts only at night.
+      - Because it is easier to fight it asleep than awake.
       - Because the spider asked not to be woken up.
-    correctIndex: 1
+    correctIndex: 2
     explanationZh: 原文说 "he knew it was easier to fight it asleep than awake"，狮子选择在蜘蛛沉睡时进攻。
   - id: oz-ch-21-q4
     stem: What gives the Lion the idea of how to attack the spider?
     options:
-      - The spider's neck is as slender as a wasp's waist.
       - The spider's legs are as long as tree trunks.
       - The spider's body is as big as an elephant.
       - The spider's teeth are a foot long.
-    correctIndex: 0
+      - The spider's neck is as slender as a wasp's waist.
+    correctIndex: 3
     explanationZh: 狮子注意到蜘蛛的头和身体之间只有一根像黄蜂腰一样细的脖子（"a neck as slender as a wasp's waist"），这让他想到打掉蜘蛛的头。其他选项虽然也是蜘蛛的特征，但没有直接给他攻击的灵感。
   - id: oz-ch-21-q5
     stem: After killing the spider, what does the Lion tell the animals?
     options:
-      - He will stay and rule them forever.
       - He will return to rule them after Dorothy is safely on her way home.
+      - He will stay and rule them forever.
       - He wants them to find him a new home in the forest.
       - He asks them to guide his friends out of the forest.
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: 狮子答应等多萝西安全踏上回堪萨斯的旅途后，再回来统治百兽（"he promised to come back and rule over them as soon as Dorothy was safely on her way to Kansas"）。他此刻并不留下，因为还要继续陪伴多萝西。

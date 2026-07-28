@@ -34,12 +34,12 @@ sections:
       id: oz-ch-18-s1-c1
       stem: Why does the Tin Woodman ask Dorothy to wipe away his tears while he cries for Oz?
       options:
-        - Because he is afraid the tears will make him rust.
         - Because he wants to show off his new heart.
         - Because Dorothy needs something to keep her hands busy.
         - Because the tears will hurt his metal face.
-      correctIndex: 0
-      explanationZh: 铁皮人说 "if you will kindly wipe away my tears, so that I shall not rust"，他哭完后还特意用油罐给自己上油以防生锈。选项 1 看似合理，但他需要擦泪的直接原因是防锈，而不是炫耀。
+        - Because he is afraid the tears will make him rust.
+      correctIndex: 3
+      explanationZh: 铁皮人说 "if you will kindly wipe away my tears, so that I shall not rust"，他哭完后还特意用油罐给自己上油以防生锈。"炫耀新的心"看似合理，但他需要擦泪的直接原因是防锈，而不是炫耀。
   - id: oz-ch-18-s2
     text: |-
       The Scarecrow decided to think, and he thought so hard that the pins and needles began to stick out of his brains. Finally he said:
@@ -87,10 +87,10 @@ sections:
       options:
         - They are afraid of the wild beasts on the way.
         - They have already used up all their magic.
-        - They only belong to this country and cannot leave it.
         - They do not know the way to Kansas.
-      correctIndex: 2
-      explanationZh: 猴王明确说 "We belong to this country alone, and cannot leave it"，并指出从来没有飞猴去过堪萨斯。选项 1 说他们害怕野兽，文中没有提及；选项 3 的 "不知道路" 也不是原因——他们根本无法离开这片土地。
+        - They only belong to this country and cannot leave it.
+      correctIndex: 3
+      explanationZh: 猴王明确说 "We belong to this country alone, and cannot leave it"，并指出从来没有飞猴去过堪萨斯。文中没有提到他们害怕野兽；"不知道路"也不是原因——他们根本无法离开这片土地。
   - id: oz-ch-18-s3
     text: |-
       “Glinda is a Good Witch, isn’t she?” asked the child.
@@ -131,25 +131,25 @@ sections:
         - A wide river that no one can cross.
         - A dark forest full of magic spells.
       correctIndex: 1
-      explanationZh: 士兵说路上有 "wild beasts in the woods, and a race of queer men who do not like strangers to cross their country"，即野兽和不喜欢陌生人的怪人。选项 1 只提到野兽，漏掉了怪人这一威胁，因此不完整。
+      explanationZh: 士兵说路上有 "wild beasts in the woods, and a race of queer men who do not like strangers to cross their country"，即野兽和不喜欢陌生人的怪人。"只有野兽"漏掉了怪人这一威胁，因此不完整。
 quiz:
   - id: oz-ch-18-q1
     stem: What did the people of the Emerald City say they were proud of about the Scarecrow as ruler?
     options:
       - He was the cleverest man in the world.
-      - No other city was ruled by a stuffed man.
       - He was the bravest ruler they had ever known.
+      - No other city was ruled by a stuffed man.
       - He had the most beautiful palace in the world.
-    correctIndex: 1
-    explanationZh: 人们说 "there is not another city in all the world that is ruled by a stuffed man"，觉得被一个稻草人统治很独特。选项 2 似合理，但文中人们引以为豪的是 "稻草人" 统治者这件事本身，而非勇敢。
+    correctIndex: 2
+    explanationZh: 人们说 "there is not another city in all the world that is ruled by a stuffed man"，觉得被一个稻草人统治很独特。"最勇敢的统治者"似乎合理，但文中人们引以为豪的是"稻草人"统治者这件事本身，而非勇敢。
   - id: oz-ch-18-q2
     stem: What does the Scarecrow use to think so hard that it shows on the outside?
     options:
       - His heart beats faster and faster.
       - His eyes flash brightly.
-      - Pins and needles stick out of his brains.
       - His mouth opens and shuts rapidly.
-    correctIndex: 2
+      - Pins and needles stick out of his brains.
+    correctIndex: 3
     explanationZh: 文中说 "he thought so hard that the pins and needles began to stick out of his brains"，因为他的大脑里塞满了钉子和针。后来又一次想得太厉害，头都鼓了起来。
   - id: oz-ch-18-q3
     stem: Who first suggests that Glinda might be able to help Dorothy?
@@ -159,7 +159,7 @@ quiz:
       - The Monkey King
       - The Tin Woodman
     correctIndex: 1
-    explanationZh: 当多萝西问有没有人能帮她时，士兵建议 "Glinda might"，随后介绍她是南方女巫。选项 1 有迷惑性，因为稻草人之前也在想办法，但提出格林达这个名字的是士兵。
+    explanationZh: 当多萝西问有没有人能帮她时，士兵建议 "Glinda might"，随后介绍她是南方女巫。稻草人虽然之前也在苦苦思索，但提出格林达这个名字的是士兵。
   - id: oz-ch-18-q4
     stem: Why does the Lion want to go with Dorothy to the South?
     options:
@@ -168,22 +168,22 @@ quiz:
       - He is tired of city life and wants to protect Dorothy.
       - He hopes to become even braver on the journey.
     correctIndex: 2
-    explanationZh: 狮子说他 "tired of your city and long for the woods"，同时强调 "Dorothy will need someone to protect her"，既厌倦城市生活又想保护多萝西。选项 3 只提到无聊而漏了保护，不够完整。
+    explanationZh: 狮子说他 "tired of your city and long for the woods"，同时强调 "Dorothy will need someone to protect her"，既厌倦城市生活又想保护多萝西。"厌倦城市想找新冒险"只说了一半，漏了保护多萝西这层原因。
   - id: oz-ch-18-q5
     stem: Why does the Scarecrow decide to join Dorothy on the journey?
     options:
-      - Because he wants to see the Land of the South.
       - Because he owes his good luck to Dorothy and will never leave her.
+      - Because he wants to see the Land of the South.
       - Because the people of the city told him to go.
       - Because he wants to ask Glinda for better brains.
-    correctIndex: 1
-    explanationZh: 稻草人说 "my good luck is all due to her"，因为多萝西把他从玉米田的杆子上放下来并带到绿宝石城，他绝不离开她。选项 3 有迷惑性，因为他确实有了大脑，但他出行的原因是感恩而非继续求助。
+    correctIndex: 0
+    explanationZh: 稻草人说 "my good luck is all due to her"，因为多萝西把他从玉米田的杆子上放下来并带到绿宝石城，他绝不离开她。"向格林达要更好的脑子"有迷惑性——他确实有了脑子，但他出行的原因是感恩而非继续求助。
   - id: oz-ch-18-q6
     stem: When do the travelers plan to start their journey to the South?
     options:
       - That same night.
-      - The next morning.
       - After three days of preparation.
       - As soon as the Winged Monkeys return.
-    correctIndex: 1
-    explanationZh: 稻草人说 "We shall go tomorrow morning"，并让大家做好准备，因为旅途很长。选项 4 有迷惑性，因为飞猴已经飞走不会再来，出发时间与飞猴无关。
+      - The next morning.
+    correctIndex: 3
+    explanationZh: 稻草人说 "We shall go tomorrow morning"，并让大家做好准备，因为旅途很长。"等飞猴回来"有迷惑性——飞猴已经飞走不会再来，出发时间与他们无关。

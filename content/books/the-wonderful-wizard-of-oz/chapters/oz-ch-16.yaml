@@ -46,12 +46,12 @@ sections:
       id: oz-ch-16-s1-c1
       stem: What did Oz put inside the Scarecrow's head to make his new brains?
       options:
-        - Pure straw, with nothing added
         - Bran mixed with many pins and needles
+        - Pure straw, with nothing added
         - Sawdust mixed with silk
         - Green liquid from a bottle
-      correctIndex: 1
-      explanationZh: 文中说奥兹取了 bran 拌入大量 pins and needles，填进稻草人头顶。选项0 只是原有的稻草，选项2和3 分别是铁皮人和狮子的情节，不在此节出现。
+      correctIndex: 0
+      explanationZh: 文中说奥兹取了 bran 拌入大量 pins and needles，填进稻草人头顶。原有的稻草被倒了出来；锯末拌丝绸和绿瓶里的液体分别是铁皮人和狮子的情节，不在此节出现。
   - id: oz-ch-16-s2
     text: |-
       “Come in,” called Oz, and the Woodman entered and said, “I have come for my heart.”
@@ -104,11 +104,11 @@ sections:
       stem: How did Oz give the Lion his courage?
       options:
         - He gave the Lion a medal to wear
+        - He poured liquid from a green bottle into a dish for the Lion to drink
         - He put a silk heart in the Lion's chest
         - He told the Lion a brave story
-        - He poured liquid from a green bottle into a dish for the Lion to drink
-      correctIndex: 3
-      explanationZh: 奥兹从柜子高处取下一个 square green bottle，把里面的东西倒入 green-gold dish，让狮子喝下。选项1 是铁皮人的方式，选项0 和3 都不在此节出现。
+      correctIndex: 1
+      explanationZh: 奥兹从柜子高处取下一个 square green bottle，把里面的东西倒入 green-gold dish，让狮子喝下。丝绸做的心是给铁皮人的；奖章和讲勇敢的故事都不在此节出现。
 quiz:
   - id: oz-ch-16-q1
     stem: Why did Oz have to take off the Scarecrow's head?
@@ -118,42 +118,42 @@ quiz:
       - To see what was wrong with it
       - To make the Scarecrow look bigger
     correctIndex: 1
-    explanationZh: 奥兹说要 take your head off，目的很明确——把新的 brains 放到 proper place。选项0 虽然与清理稻草相关，但并非主因，文中明确说“in order to put your brains in their proper place”。
+    explanationZh: 奥兹说要 take your head off，目的很明确——把新的 brains 放到 proper place。"清理旧稻草"虽然相关，但并非主因，文中明确说 "in order to put your brains in their proper place"。
   - id: oz-ch-16-q2
     stem: After receiving his brains, what did the Scarecrow say he felt?
     options:
       - Very tired
-      - Wise indeed
       - Rather hungry
+      - Wise indeed
       - Still afraid
-    correctIndex: 1
-    explanationZh: 稻草人回到朋友身边时说 I feel wise indeed。选项3 仍是胆小狮子的特征；选项0 和2 文中没有出现。
+    correctIndex: 2
+    explanationZh: 稻草人回到朋友身边时说 I feel wise indeed。"仍然害怕"是胆小狮子的特征；疲倦和饥饿文中都没有出现。
   - id: oz-ch-16-q3
     stem: What did Oz use to cut a hole in the Tin Woodman's breast?
     options:
+      - Tinsmith's shears
       - A knife
       - An axe
-      - Tinsmith's shears
       - A hammer
-    correctIndex: 2
-    explanationZh: 文中明确说 Oz brought a pair of tinsmith's shears 来剪开铁皮。选项0 太笼统，选项1 是铁皮人旧日工具，不在此处。
+    correctIndex: 0
+    explanationZh: 文中明确说 Oz brought a pair of tinsmith's shears 来剪开铁皮。"小刀"太笼统，斧子则是铁皮人自己的旧日工具，不在此处。
   - id: oz-ch-16-q4
     stem: After all three friends had received their gifts, what was Oz's biggest worry?
     options:
       - How to get more straw for the Scarecrow
       - How to make another heart
-      - How to carry Dorothy back to Kansas
       - How to fix the Lion's dish
-    correctIndex: 2
+      - How to carry Dorothy back to Kansas
+    correctIndex: 3
     explanationZh: 奥兹自言自语：It will take more than imagination to carry Dorothy back to Kansas。三个朋友的愿望都好办，真正难的是送多萝西回家。
   - id: oz-ch-16-q5
     stem: When the Tin Woodman saw his new heart, what did he first want to know?
     options:
-      - If it was a kind heart
       - If it was made of gold
       - If it could last forever
+      - If it was a kind heart
       - If it would hurt him
-    correctIndex: 0
+    correctIndex: 2
     explanationZh: 铁皮人看到心后问：But is it a kind heart? 他最在意的不是外表或材质，而是心是否善良，这正呼应他一贯的愿望。
   - id: oz-ch-16-q6
     stem: Why did Oz say the Lion must drink the liquid before it could be called courage?
@@ -163,4 +163,4 @@ quiz:
       - Because the Lion asked for it
       - Because it was too hot to touch
     correctIndex: 0
-    explanationZh: 奥兹解释：courage is always inside one，所以这东西只有被 Lion 吞下后才算真正的 courage。选项3 与“inside”无关，文中也没有提到热度或盘子会碎。
+    explanationZh: 奥兹解释：courage is always inside one，所以这东西只有被 Lion 吞下后才算真正的 courage。"太烫"与 "inside" 无关，文中也没有提到热度或盘子会碎。

@@ -64,10 +64,10 @@ sections:
       stem: How did the Tin Woodman get the Scarecrow's clothes down from the tall tree?
       options:
         - He asked the Winged Monkeys to fetch them
-        - He climbed the smooth trunk
         - He chopped the tree down
+        - He climbed the smooth trunk
         - He shook the tree until the clothes fell
-      correctIndex: 2
+      correctIndex: 1
       explanationZh: 树干太光滑没人能爬上去，铁皮人说他要把树砍倒（"I'll chop it down"），很快树倒下，衣服从树枝里掉了出来。
   - id: oz-ch-13-s3
     text: |-
@@ -92,28 +92,28 @@ sections:
       options:
         - A golden collar
         - A silver oil-can
-        - A gold-headed walking stick
         - A diamond-studded bracelet
-      correctIndex: 3
+        - A gold-headed walking stick
+      correctIndex: 2
       explanationZh: 温基人给多萝西的是镶满钻石的美丽手镯（"a beautiful bracelet studded with diamonds"）。金项圈给了托托和狮子，金头手杖给了稻草人，镶金嵌宝石的银油罐给了铁皮人。
 quiz:
   - id: oz-ch-13-q1
     stem: Why were the Winkies so happy and willing to help Dorothy?
     options:
-      - She had freed them from slavery
       - She gave them a lot of gold
       - She promised to rule over them
       - She brought food from the Emerald City
-    correctIndex: 0
+      - She had freed them from slavery
+    correctIndex: 3
     explanationZh: 温基人多年来被迫做苦工，多萝西告诉他们不再是奴隶了，所以他们心怀感激，愿为解放他们的多萝西竭尽全力（"do all in their power for Dorothy, who had set them free from bondage"）。
   - id: oz-ch-13-q2
     stem: What did Dorothy have to do when the Tin Woodman wept tears of joy?
     options:
       - Give him a new axe
-      - Oil his joints immediately
       - Wipe each tear carefully from his face
+      - Oil his joints immediately
       - Tell him to stop crying
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 铁皮人流下喜悦的泪水后，多萝西必须用围裙仔细擦去他脸上的每一滴眼泪，否则他的关节会生锈（"so his joints would not be rusted"）。
   - id: oz-ch-13-q3
     stem: What was special about the Tin Woodman's new axe handle?
@@ -127,27 +127,27 @@ quiz:
   - id: oz-ch-13-q4
     stem: What did the Winkies ask the Tin Woodman to do before he left?
     options:
-      - To stay and rule over them
       - To fix their tools
       - To teach them tinsmithing
+      - To stay and rule over them
       - To find them a new ruler
-    correctIndex: 0
+    correctIndex: 2
     explanationZh: 温基人非常喜欢铁皮人，恳求他留下来统治他们和西方的黄色土地（"begged him to stay and rule over them and the Yellow Land of the West"），但他决心要跟伙伴们一起离开。
   - id: oz-ch-13-q5
     stem: What did Dorothy find in the Witch's cupboard and decide to wear?
     options:
+      - The Golden Cap
       - A pair of silver shoes
       - A magic wand
-      - The Golden Cap
       - A diamond bracelet
-    correctIndex: 2
+    correctIndex: 0
     explanationZh: 多萝西在女巫的橱柜里装食物时发现了金冠（"the Golden Cap"），试戴后发现大小正好。她当时不知道金冠的法力，只觉得好看，便决定戴上它，把遮阳帽放进篮子里。
   - id: oz-ch-13-q6
     stem: What does each traveler want to get from Oz when they return to the Emerald City?
     options:
       - Gold, food, tools, and shelter
-      - A heart, brains, courage, and a trip home
       - A new axe, new straw, a tail, and a basket
       - Magic shoes, a crown, a collar, and a stick
-    correctIndex: 1
+      - A heart, brains, courage, and a trip home
+    correctIndex: 3
     explanationZh: 铁皮人想要心（"my heart"），稻草人想要脑子（"my brains"），狮子想要勇气（"my courage"），多萝西想回堪萨斯（"back to Kansas"），各自对应奥兹曾许下的承诺。

@@ -26,20 +26,20 @@ quiz:
   - id: oz-ch-24-q1
     stem: Where did Dorothy say she came from?
     options:
-      - From the Land of Oz
       - From a big city
       - From a farm next door
       - From a school trip
-    correctIndex: 0
+      - From the Land of Oz
+    correctIndex: 3
     explanationZh: 多萝西明确回答 “From the Land of Oz”。其他选项只是常见干扰，原文并没有提到城市或学校。
   - id: oz-ch-24-q2
     stem: Who came back home together with Dorothy?
     options:
-      - The Scarecrow
       - Toto
+      - The Scarecrow
       - The Cowardly Lion
       - The Tin Woodman
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: 多萝西说 “And here is Toto, too”，所以和她一起回来的是小狗 Toto。稻草人、铁皮人和胆小狮都没有跟她回到堪萨斯。
   - id: oz-ch-24-q3
     stem: How did Aunt Em feel when she saw Dorothy?

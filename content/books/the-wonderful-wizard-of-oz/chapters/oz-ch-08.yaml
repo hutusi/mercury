@@ -68,10 +68,10 @@ sections:
       stem: How does the Lion help get the raft to shore?
       options:
         - He calls a stork to carry the raft.
+        - He swims to the shore and pulls the raft by his tail.
         - He builds a new raft from logs.
         - He asks Dorothy to steer with her pole.
-        - He swims to the shore and pulls the raft by his tail.
-      correctIndex: 3
+      correctIndex: 1
       explanationZh: 狮子说“I think I can swim to the shore and pull the raft after me, if you will only hold fast to the tip of my tail”，于是他下水拖着木筏靠岸。选项只是第二节里狮子采取的行动。
   - id: oz-ch-08-s3
     text: |-
@@ -110,9 +110,9 @@ sections:
       options:
         - The Scarecrow promises to give her food.
         - The Stork wants to travel to the Emerald City too.
-        - Dorothy pays the Stork with a flower.
         - The Scarecrow is stuffed with straw, so he is not heavy.
-      correctIndex: 3
+        - Dorothy pays the Stork with a flower.
+      correctIndex: 2
       explanationZh: 鹳鸟原本担心稻草人太重搬不动，多萝西急忙解释“he is stuffed with straw”，并不重，鹳鸟才答应试试。别的选项在本节都没有依据。
   - id: oz-ch-08-s4
     text: |-
@@ -166,21 +166,21 @@ sections:
       id: oz-ch-08-s5-c1
       stem: Why do the Scarecrow and the Tin Woodman leave the Lion sleeping in the poppies?
       options:
-        - He is too heavy for them to lift.
         - He tells them to go on without him.
         - They think he has already found courage.
         - The stork refuses to help him.
-      correctIndex: 0
+        - He is too heavy for them to lift.
+      correctIndex: 3
       explanationZh: 铁皮樵夫说“We can do nothing for him … for he is much too heavy to lift”，只好把他留下。稻草人和铁皮樵夫不是血肉之躯，所以不受花香影响，但抬不动狮子。
 quiz:
   - id: oz-ch-08-q1
     stem: What were the travelers trying to reach by crossing the river?
     options:
+      - The Emerald City
       - The Country of the Winkies
       - Kansas
       - The dark forest
-      - The Emerald City
-    correctIndex: 3
+    correctIndex: 0
     explanationZh: 他们一直要去的“Emerald City”就在河对岸，稻草人也说“We must certainly get to the Emerald City if we can”。 Kansas是多萝西的最终老家，不是过河的直接目标。
   - id: oz-ch-08-q2
     stem: Why did the Tin Woodman begin to cry after the Scarecrow was left behind, but then quickly stop?
@@ -196,34 +196,34 @@ quiz:
     options:
       - They held their breath the whole way.
       - They wore cloths over their faces.
-      - They had eaten the poppies first.
       - They were not made of flesh.
-    correctIndex: 3
+      - They had eaten the poppies first.
+    correctIndex: 2
     explanationZh: 文中说“the Scarecrow and the Tin Woodman, not being made of flesh, were not troubled by the scent of the flowers”，所以他们不怕花香。憋气、蒙脸等都不是文中给出的原因。
   - id: oz-ch-08-q4
     stem: How did the Scarecrow and the Tin Woodman carry the sleeping Dorothy out of the poppies?
     options:
       - They put her on the raft.
-      - They rolled her in a blanket.
       - They made a chair with their hands and arms.
+      - They rolled her in a blanket.
       - The Lion carried her on his back.
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 稻草人说“Let us make a chair with our hands and carry her”，两人用手当座、用胳膊当扶手把睡着的多萝西抬走。狮子此时已经跑开，不能帮忙。
   - id: oz-ch-08-q5
     stem: What happened to the Lion in the poppy field?
     options:
       - He ran straight out and waited on the grass.
       - He carried Toto to safety.
-      - He turned back to rescue the Scarecrow.
       - He fell asleep before reaching the end of the poppies.
-    correctIndex: 3
+      - He turned back to rescue the Scarecrow.
+    correctIndex: 2
     explanationZh: 狮子虽拼命向前跑，但“the flowers had been too strong for the huge beast”，他在离花田尽头不远的地方睡着了。他没能跑出去，也没回去救人。
   - id: oz-ch-08-q6
     stem: What did the Scarecrow and the Tin Woodman do with Dorothy after carrying her out of the poppy field?
     options:
-      - They left her beside the river where the fresh air could wake her.
       - They put her back on the raft and sailed away.
+      - They left her beside the river where the fresh air could wake her.
       - They hid her under the poppies to keep her safe.
       - They carried her all the way to the Emerald City.
-    correctIndex: 0
+    correctIndex: 1
     explanationZh: 他们把她抬到“a pretty spot beside the river, far enough from the poppy field”，等新鲜微风把她唤醒。他们没有继续进城，也没有把她留在花田里。

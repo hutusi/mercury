@@ -28,11 +28,11 @@ sections:
       id: oz-ch-11-s1-c1
       stem: What color were the people's clothes and skin in the City of Oz?
       options:
-        - Green
         - Blue
+        - Green
         - Red
         - Yellow
-      correctIndex: 0
+      correctIndex: 1
       explanationZh: 原文说城中男女老少“were all dressed in green clothes and had greenish skins”，所以答案是绿色。其他颜色在书中属于别的国度，不适用于翡翠城。
   - id: oz-ch-11-s2
     text: |-
@@ -56,11 +56,11 @@ sections:
       stem: What did the soldier say about seeing Oz?
       options:
         - Oz stood in front of the screen
-        - Oz sat behind a screen
         - Oz stood on the throne
+        - Oz sat behind a screen
         - Oz stood outside the door
-      correctIndex: 1
-      explanationZh: 士兵说“I spoke to him as he sat behind his screen”，即奥兹坐在屏风后面。选项A正好相反，其他两项原文未提。
+      correctIndex: 2
+      explanationZh: 士兵说"I spoke to him as he sat behind his screen"，即奥兹坐在屏风后面。"站在屏风前"正好相反，其余两个位置原文都未提到。
   - id: oz-ch-11-s3
     text: |-
       The next morning, after breakfast, the green maiden came to fetch Dorothy, and she dressed her in one of the prettiest gowns, made of green brocaded satin. Dorothy put on a green silk apron and tied a green ribbon around Toto’s neck, and they started for the Throne Room of the Great Oz.
@@ -82,11 +82,11 @@ sections:
       id: oz-ch-11-s3-c1
       stem: What did Dorothy see sitting in the throne?
       options:
+        - An enormous Head
         - A lovely Lady
         - A terrible Beast
         - A Ball of Fire
-        - An enormous Head
-      correctIndex: 3
+      correctIndex: 0
       explanationZh: 多萝西进入宝殿时，看到王座中央是一颗“enormous Head, without a body”。Lady、Beast、Ball of Fire 分别是后续稻草人、铁皮人和狮子见到的形象，不在本节出现。
   - id: oz-ch-11-s4
     text: |-
@@ -130,10 +130,10 @@ sections:
       stem: When Oz asked why he should help her, how did Dorothy answer?
       options:
         - Because her friends told her to ask
-        - Because she paid him gold
         - Because he is strong and she is weak
+        - Because she paid him gold
         - Because the silver shoes gave her power
-      correctIndex: 2
+      correctIndex: 1
       explanationZh: 多萝西说“Because you are strong and I am weak; because you are a Great Wizard and I am only a little girl”，因此选C。银鞋虽被奥兹提及，但多萝西并未拿它作为理由。
   - id: oz-ch-11-s5
     text: |-
@@ -166,11 +166,11 @@ sections:
       id: oz-ch-11-s5-c1
       stem: What does Oz tell Dorothy to do before he will send her home?
       options:
-        - Kill the Wicked Witch of the West
         - Find the Good Witch of the South
         - Give him the silver shoes
         - Bring him the magic of the East
-      correctIndex: 0
+        - Kill the Wicked Witch of the West
+      correctIndex: 3
       explanationZh: 奥兹的回答很明确：“Kill the Wicked Witch of the West.” 只有西方恶女巫死了，他才肯送多萝西回堪萨斯。其他选项在本节中都没有出现。
   - id: oz-ch-11-s6
     text: |-
@@ -204,10 +204,10 @@ sections:
       stem: What form does Oz take when the Scarecrow enters the Throne Room?
       options:
         - A great Head
+        - A lovely Lady
         - A terrible Beast
         - A Ball of Fire
-        - A lovely Lady
-      correctIndex: 3
+      correctIndex: 1
       explanationZh: 稻草人看到的是一位“most lovely Lady”，有翅膀和珠宝冠冕。Head 是多萝西看到的形象，Beast 和 Ball of Fire 是后续铁皮人和狮子见到的。
   - id: oz-ch-11-s7
     text: |-
@@ -240,9 +240,9 @@ sections:
       options:
         - A lovely Lady
         - A great Head
-        - A most terrible Beast
         - A Ball of Fire
-      correctIndex: 2
+        - A most terrible Beast
+      correctIndex: 3
       explanationZh: 铁皮人看到奥兹变成了“a most terrible Beast”，像犀牛，有五只眼睛、五条长臂和五条长腿。Lady 是稻草人见到的，Ball of Fire 是狮子见到的。
   - id: oz-ch-11-s8
     text: |-
@@ -299,47 +299,47 @@ quiz:
   - id: oz-ch-11-q1
     stem: Why did Oz decide to see Dorothy after first being angry?
     options:
-      - Because she had silver shoes and a mark on her forehead
       - Because her friends begged him
       - Because she brought him a gift
       - Because she promised to serve him
-    correctIndex: 0
+      - Because she had silver shoes and a mark on her forehead
+    correctIndex: 3
     explanationZh: 士兵告诉多萝西，奥兹听说她的银鞋后很感兴趣，得知她额头上的印记后“decided he would admit you to his presence”。礼物和朋友的请求都不是原因。
   - id: oz-ch-11-q2
     stem: Oz appears in a different form to each visitor. Which order is correct?
     options:
-      - Head, Lady, Beast, Ball of Fire
       - Lady, Head, Ball of Fire, Beast
       - Ball of Fire, Head, Lady, Beast
+      - Head, Lady, Beast, Ball of Fire
       - Beast, Ball of Fire, Head, Lady
-    correctIndex: 0
-    explanationZh: 多萝西见到 Head，稻草人见到 Lady，铁皮人见到 Beast，狮子见到 Ball of Fire，顺序为 Head → Lady → Beast → Ball of Fire。选项B、C、D均打乱了这一顺序。
+    correctIndex: 2
+    explanationZh: 多萝西见到 Head，稻草人见到 Lady，铁皮人见到 Beast，狮子见到 Ball of Fire，顺序为 Head → Lady → Beast → Ball of Fire。其余几种排列都打乱了这一顺序。
   - id: oz-ch-11-q3
     stem: What is the same task Oz gives to every one of the four friends?
     options:
+      - Kill the Wicked Witch of the West
       - Bring him the silver shoes
       - Find the Land of the Winkies
       - Build a new throne
-      - Kill the Wicked Witch of the West
-    correctIndex: 3
+    correctIndex: 0
     explanationZh: 奥兹对多萝西、稻草人、铁皮人和狮子都提出同一个条件：杀死西方恶女巫。“Kill the Wicked Witch of the West”在四段对话中反复出现，其余选项均非奥兹的要求。
   - id: oz-ch-11-q4
     stem: How did the Scarecrow spend the night in his room?
     options:
       - He lay on the bed and slept
-      - He sharpened his axe
       - He stood in one spot and watched a spider
+      - He sharpened his axe
       - He read the little green books
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 原文说稻草人“stood stupidly in one spot … to wait till morning”，整夜盯着角落里织网的蜘蛛。他无法躺下睡觉，也没有斧头可磨；绿色小书是多萝西房间里的东西。
   - id: oz-ch-11-q5
     stem: How did the Tin Woodman spend the night in his room?
     options:
-      - He moved his joints up and down all night
       - He read green books by the fountain
       - He stood still in the doorway
       - He rolled up on the bed like a cat
-    correctIndex: 0
+      - He moved his joints up and down all night
+    correctIndex: 3
     explanationZh: 铁皮人躺在床上后睡不着，便“passed the night moving his joints up and down to make sure they kept in good working order”。读书和站门口是多萝西和稻草人的情节，蜷缩如猫是狮子的睡姿。
   - id: oz-ch-11-q6
     stem: What woke the friends the next morning?

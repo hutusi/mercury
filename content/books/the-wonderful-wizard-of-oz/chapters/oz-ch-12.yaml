@@ -32,11 +32,11 @@ sections:
       id: oz-ch-12-s1-c1
       stem: What does the Guardian of the Gates say will happen when the Witch knows the friends are in her country?
       options:
-        - She will find them and make them her slaves
         - She will run away from the West
         - She will send them to the Emerald City
         - She will give them a map to her castle
-      correctIndex: 0
+        - She will find them and make them her slaves
+      correctIndex: 3
       explanationZh: 守门人说 "she will find you, and make you all her slaves"。他以为没人能打败女巫，所以认为她会让来者沦为奴隶，就像对其他人一样。
   - id: oz-ch-12-s2
     text: |-
@@ -73,9 +73,9 @@ sections:
       options:
         - The Scarecrow
         - The Cowardly Lion
-        - Dorothy
         - The Tin Woodman
-      correctIndex: 3
+        - Dorothy
+      correctIndex: 2
       explanationZh: 铁皮人说 "This is my fight"，然后用他磨得很锋利的斧头砍死了四十只狼。稻草人那时和他一起守夜，但战斗是铁皮人完成的。
   - id: oz-ch-12-s3
     text: |-
@@ -105,10 +105,10 @@ sections:
       stem: How do the Scarecrow and the Tin Woodman protect Dorothy, Toto, and the Lion from the black bees?
       options:
         - They hide everyone in a cave
+        - They cover them with straw from the Scarecrow
         - They fight the bees with an axe
         - They run into a river
-        - They cover them with straw from the Scarecrow
-      correctIndex: 3
+      correctIndex: 1
       explanationZh: 稻草人让铁皮人把自己的稻草抽出来，盖在小女孩、狗和狮子身上，蜜蜂就蜇不到他们了。蜜蜂只能蜇铁皮人，结果折断了刺，全都死了。
   - id: oz-ch-12-s4
     text: |-
@@ -137,9 +137,9 @@ sections:
       options:
         - She lost it many years ago
         - The Winged Monkeys hate her
-        - The cap is too heavy to wear
         - She can only use it three times, and only once is left
-      correctIndex: 3
+        - The cap is too heavy to wear
+      correctIndex: 2
       explanationZh: 金帽的法力是只能召唤飞猴三次。她已经用了两次——一次奴役了温基人，一次赶走了奥兹，所以她不想轻易用最后一次。现在狼、乌鸦、蜜蜂都失败了，奴隶也被吓跑了，她别无选择。
   - id: oz-ch-12-s5
     text: |-
@@ -191,11 +191,11 @@ sections:
       id: oz-ch-12-s6-c1
       stem: What does the Witch make Dorothy do after bringing her to the castle?
       options:
-        - Work in the kitchen cleaning pots and sweeping the floor
         - Harness the Lion like a horse
         - Guard the castle gate
         - Make silver shoes for the Witch
-      correctIndex: 0
+        - Work in the kitchen cleaning pots and sweeping the floor
+      correctIndex: 3
       explanationZh: 女巫把多萝西带到厨房，让她擦锅、扫地、添柴火。女巫不敢伤害她，因为她额头上有吻痕的保护。
   - id: oz-ch-12-s7
     text: |-
@@ -216,9 +216,9 @@ sections:
       options:
         - The Witch gives him food every noon
         - The Winkies feed him through the fence
-        - He finds food in the yard
         - Dorothy secretly brings him food at night
-      correctIndex: 3
+        - He finds food in the yard
+      correctIndex: 2
       explanationZh: 女巫白天不给狮子食物，想饿得他屈服。但每天夜里多萝西趁女巫睡着，从橱柜里拿食物偷偷送给狮子吃。
   - id: oz-ch-12-s8
     text: |-
@@ -253,48 +253,48 @@ sections:
       id: oz-ch-12-s8-c1
       stem: How does the Wicked Witch finally melt away?
       options:
-        - Dorothy pours a bucket of water over her
         - The Lion bites her leg
         - She falls into a river
+        - Dorothy pours a bucket of water over her
         - Toto knocks her into a pot
-      correctIndex: 0
+      correctIndex: 2
       explanationZh: 女巫用隐形的铁条绊倒多萝西，抢走了一只银鞋。多萝西气愤地拿起一桶水泼在女巫身上，女巫立刻开始融化，最终变成地上一摊棕色的东西。
 quiz:
   - id: oz-ch-12-q1
     stem: Why does the Witch send wolves instead of making the travelers her slaves?
     options:
-      - She thinks none of them is fit to work
       - She already has too many slaves
       - The wolves are hungry and need food
       - The travelers attacked her castle first
-    correctIndex: 0
+      - She thinks none of them is fit to work
+    correctIndex: 3
     explanationZh: 女巫对狼群首领说："one is of tin, and one of straw; one is a girl and another a Lion. None of them is fit to work"，所以她要狼把他们撕碎，而不是奴役他们。
   - id: oz-ch-12-q2
     stem: Why doesn't the Witch dare to strike Dorothy during her captivity?
     options:
+      - The mark of the Good Witch's kiss protects Dorothy
       - Dorothy is too strong to beat
       - The Witch's umbrella is broken
-      - The mark of the Good Witch's kiss protects Dorothy
       - The Winkies would stop her
-    correctIndex: 2
+    correctIndex: 0
     explanationZh: 女巫虽然常威胁要打多萝西，但"she did not dare to strike Dorothy, because of the mark upon her forehead"——额头上好女巫的吻痕保护着多萝西。多萝西自己并不知道这一点。
   - id: oz-ch-12-q3
     stem: What trick does the Witch use to get one of Dorothy's Silver Shoes?
     options:
       - She steals it while Dorothy is bathing
+      - She puts an invisible iron bar on the floor to make Dorothy trip
       - She offers to trade food for the shoe
       - She asks the Winkies to grab it
-      - She puts an invisible iron bar on the floor to make Dorothy trip
-    correctIndex: 3
+    correctIndex: 1
     explanationZh: 女巫在厨房地板中央放了一根铁条，用魔法让它隐形。多萝西走过时被绊倒，一只银鞋掉了，女巫立刻抢走穿在自己脚上。女巫不敢在夜里偷鞋，因为她怕黑，更怕水，不敢靠近多萝西洗澡的地方。
   - id: oz-ch-12-q4
     stem: What did the Witch use the Golden Cap's charm for the first two times?
     options:
       - To build her castle and find gold
       - To fight Dorothy and to steal the Silver Shoes
-      - To summon wolves and to call the crows
       - To make the Winkies her slaves and to drive Oz out of the West
-    correctIndex: 3
+      - To summon wolves and to call the crows
+    correctIndex: 2
     explanationZh: 第一次她用飞猴奴役了温基人，统治了他们的国家；第二次她用飞猴和奥兹本人作战，把他赶出了西方之地。金帽只能用三次，所以这是最后一次了。
   - id: oz-ch-12-q5
     stem: What do the Winged Monkeys do to the Scarecrow?
@@ -310,7 +310,7 @@ quiz:
     options:
       - She knew water would destroy the Witch
       - She used a magic spell from the Silver Shoes
-      - She was angry about losing her shoe and threw water on the Witch
       - The Lion told her the Witch's secret weakness
-    correctIndex: 2
+      - She was angry about losing her shoe and threw water on the Witch
+    correctIndex: 3
     explanationZh: 女巫抢走了多萝西的一只银鞋，还嘲笑她，多萝西非常生气，就抓起旁边的一桶水泼了过去。她当时并不知道水会要了女巫的命——女巫问她"Didn't you know water would be the end of me?"，多萝西说"Of course not."

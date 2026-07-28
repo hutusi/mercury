@@ -37,11 +37,11 @@ sections:
       stem: Why did Oz finally agree to see the travelers the next morning?
       options:
         - The green girl begged him to let them in.
-        - He was frightened by their threat to call the Winged Monkeys.
         - The soldier told him the Wicked Witch was melted.
         - He wanted to give them their gifts right away.
-      correctIndex: 1
-      explanationZh: 稻草人让绿衣女孩传话说，如果奥兹不立刻见他们，他们就叫飞猴来帮忙（"they would call the Winged Monkeys to help them"）。奥兹曾在西方之地遇到过飞猴，不想再惹他们，这才害怕地召见他们。选项③虽然也与情节相关，但不是奥兹改变态度的直接原因。
+        - He was frightened by their threat to call the Winged Monkeys.
+      correctIndex: 3
+      explanationZh: 稻草人让绿衣女孩传话说，如果奥兹不立刻见他们，他们就叫飞猴来帮忙（"they would call the Winged Monkeys to help them"）。奥兹曾在西方之地遇到过飞猴，不想再惹他们，这才害怕地召见他们。"士兵报告女巫已融化"虽然也与情节相关，但不是奥兹改变态度的直接原因。
   - id: oz-ch-15-s2
     text: |-
       The four travelers passed a sleepless night, each thinking of the gift Oz had promised to bestow on him. Dorothy fell asleep only once, and then she dreamed she was in Kansas, where Aunt Em was telling her how glad she was to have her little girl at home again.
@@ -88,11 +88,11 @@ sections:
       stem: How was the little old man behind the screen discovered?
       options:
         - Toto pulled back a curtain.
-        - The Tin Woodman broke the screen with his axe.
         - The Lion's loud roar made Toto jump and tip over the screen.
+        - The Tin Woodman broke the screen with his axe.
         - Dorothy pushed the screen aside to find the Voice.
-      correctIndex: 2
-      explanationZh: 狮子想吓唬巫师，发出一声大吼，托托受惊跳开，撞倒了角落里的屏风（"Toto jumped away from him in alarm and tipped over the screen"），屏风后面站着一个矮小的秃头老人。选项①把功劳归给托托，但托托不是故意拉开帘子，而是被狮子的吼声吓到才撞翻了屏风。
+      correctIndex: 1
+      explanationZh: 狮子想吓唬巫师，发出一声大吼，托托受惊跳开，撞倒了角落里的屏风（"Toto jumped away from him in alarm and tipped over the screen"），屏风后面站着一个矮小的秃头老人。"托托拉开帘子"把功劳归给托托，但他不是故意的——是被狮子的吼声吓到才撞翻了屏风。
   - id: oz-ch-15-s3
     text: |-
       “I am Oz, the Great and Terrible,” said the little man, in a trembling voice. “But don’t strike me—please don’t—and I’ll do anything you want me to.”
@@ -144,12 +144,12 @@ sections:
       id: oz-ch-15-s3-c1
       stem: What did the little old man admit he was?
       options:
-        - A real wizard with weak powers
         - A humbug
+        - A real wizard with weak powers
         - The Wicked Witch in disguise
         - One of the Winged Monkeys
-      correctIndex: 1
-      explanationZh: 矮个子老人承认自己是个骗子（"I am a humbug"），还说"I'm just a common man"。稻草球认为他不仅是个普通人，更是个humbug，老人也愉快地承认了。选项①与原文"I have no magical powers"直接矛盾。
+      correctIndex: 0
+      explanationZh: 矮个子老人承认自己是个骗子（"I am a humbug"），还说"I'm just a common man"。稻草人认为他不仅是个普通人，更是个 humbug，老人也愉快地承认了。"法力弱的真巫师"与原文 "I have no magical powers" 直接矛盾。
   - id: oz-ch-15-s4
     text: |-
       “But how about the voice?” she inquired.
@@ -181,12 +181,12 @@ sections:
       id: oz-ch-15-s4-c1
       stem: What was the Ball of Fire that the travelers had seen?
       options:
-        - A burning ball of cotton hung from the ceiling
         - A magic light controlled by a hidden switch
         - A real fire spirit trapped in a glass case
+        - A burning ball of cotton hung from the ceiling
         - A painted paper ball with a candle inside
-      correctIndex: 0
-      explanationZh: 奥兹解释说那团火球其实是一个棉花球挂在天花板上（"a ball of cotton"），浇上油后就会猛烈燃烧，看起来像火球。选项②和③都与原文不符——没有魔法也没有精灵。
+      correctIndex: 2
+      explanationZh: 奥兹解释说那团火球其实是一个棉花球挂在天花板上（"a ball of cotton"），浇上油后就会猛烈燃烧，看起来像火球。文中既没有魔法开关，也没有被困的火焰精灵——那只是棉花和油的把戏。
   - id: oz-ch-15-s5
     text: |-
       “Just to amuse myself, and keep the good people busy, I ordered them to build this City, and my Palace; and they did it all willingly and well. Then I thought, as the country was so green and beautiful, I would call it the Emerald City; and to make the name fit better I put green spectacles on all the people, so that everything they saw was green.”
@@ -204,11 +204,11 @@ sections:
       id: oz-ch-15-s5-c1
       stem: Why did Oz make all the people in the city wear green spectacles?
       options:
-        - To protect their eyes from the bright sun
         - To make everything they saw look green
+        - To protect their eyes from the bright sun
         - To hide his own face from them
         - To help them see invisible things
-      correctIndex: 1
+      correctIndex: 0
       explanationZh: 奥兹说为了让"翡翠城"这个名字更贴切，他给所有人都戴上了绿眼镜，这样他们看到的一切都是绿色的（"when you wear green spectacles, why of course everything you see looks green to you"）。其实城市本身并不比别的城市更绿。
   - id: oz-ch-15-s6
     text: |-
@@ -251,37 +251,37 @@ sections:
       options:
         - To bring him more jewels from the Witches
         - To help him build a new throne
-        - To keep his secret and tell no one he was a humbug
         - To serve in his Palace for a year
-      correctIndex: 2
+        - To keep his secret and tell no one he was a humbug
+      correctIndex: 3
       explanationZh: 奥兹说他唯一的要求是他们保守秘密，不要告诉任何人他是个骗子（"You must keep my secret and tell no one I am a humbug"）。作为回报，他会在宫中款待他们，并想办法帮多萝西回堪萨斯。
 quiz:
   - id: oz-ch-15-q1
     stem: How did Dorothy destroy the Wicked Witch of the West?
     options:
       - She dropped a house on her.
-      - She melted her with a bucket of water.
       - She set fire to her castle.
       - She used a magic spell she learned from Glinda.
-    correctIndex: 1
-    explanationZh: 多萝西在第一章告诉守门人和奥兹，她用一桶水融化了恶女巫（"I melted her with a bucket of water"）。选项①是东方恶女巫的死法，不是西方恶女巫的死因，容易混淆。
+      - She melted her with a bucket of water.
+    correctIndex: 3
+    explanationZh: 多萝西在第一章告诉守门人和奥兹，她用一桶水融化了恶女巫（"I melted her with a bucket of water"）。"被房子压死"是东方恶女巫的死法，不是西方恶女巫的，容易混淆。
   - id: oz-ch-15-q2
     stem: Why did the four travelers have to wait several days before Oz would see them?
     options:
+      - Oz made no reply and did not send for them.
       - Oz was traveling to another country.
       - Oz was busy preparing their gifts.
-      - Oz made no reply and did not send for them.
       - Oz was hiding behind a locked door.
-    correctIndex: 2
+    correctIndex: 0
     explanationZh: 士兵立刻把消息传给奥兹，但奥兹没有回复（"Oz made no reply"），一天又一天过去，他们等得越来越不耐烦，最后稻草人用飞猴来威胁，奥兹才同意召见。
   - id: oz-ch-15-q3
     stem: What four shapes had Oz taken when each traveler first met him?
     options:
-      - A Head, a Lady, a Beast, and a Ball of Fire
       - A Head, a Giant, a Dragon, and a Ball of Fire
       - A Lady, a Beast, a Ghost, and a Head
+      - A Head, a Lady, a Beast, and a Ball of Fire
       - A Ball of Fire, a Beast, a Lady, and a Ghost
-    correctIndex: 0
+    correctIndex: 2
     explanationZh: 多萝西见过巨大的头，稻草人见过美丽的女士，铁皮人见过可怕的野兽，狮子见过火球（"I thought Oz was a great Head / a lovely Lady / a terrible Beast / a Ball of Fire"）。奥兹承认这些都是他用纸、衣服、兽皮和棉花做出来的把戏。
   - id: oz-ch-15-q4
     stem: Where was Oz originally from, and how did he arrive in the Land of Oz?
@@ -296,17 +296,17 @@ quiz:
     stem: Why had Oz been especially afraid of the Witches?
     options:
       - Because they owed him money
-      - Because they could do real magic and he had none
       - Because they knew his secret
       - Because they wanted his Palace
-    correctIndex: 1
+      - Because they could do real magic and he had none
+    correctIndex: 3
     explanationZh: 奥兹说虽然自己毫无魔力，但女巫们确实能做到神奇的事情（"I had no magical powers at all... the Witches were really able to do wonderful things"）。东西方恶女巫之所以没杀他，只是因为误以为他比她们更强大。
   - id: oz-ch-15-q6
     stem: What reason did Oz give for why the Scarecrow already had brains?
     options:
-      - A baby has brains but doesn't know much; experience brings knowledge.
       - He was made by a clever farmer who gave him brains.
       - He already defeated the Wicked Witch.
+      - A baby has brains but doesn't know much; experience brings knowledge.
       - The Wizard secretly put brains in him long ago.
-    correctIndex: 0
-    explanationZh: 奥兹说稻草球每天都在学习，婴儿虽然有脑子但知道的也不多，只有经验才能带来知识（"Experience is the only thing that brings knowledge"）。但稻草球仍然坚持要他给脑子，奥兹只好答应第二天往他头里塞东西。
+    correctIndex: 2
+    explanationZh: 奥兹说稻草人每天都在学习，婴儿虽然有脑子但知道的也不多，只有经验才能带来知识（"Experience is the only thing that brings knowledge"）。但稻草人仍然坚持要他给脑子，奥兹只好答应第二天往他头里塞东西。

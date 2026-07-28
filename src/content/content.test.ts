@@ -113,22 +113,34 @@ describe("books", () => {
     });
 
     test(`${book.id}: correct answers are spread across option positions`, () => {
-      // Position bias is gameable (review finding: D held ~5% of correct
-      // answers pre-rebalance, so always-guessing-B beat chance handily).
-      // Pooled floor per position plus a per-chapter quiz diversity minimum.
+      // Position bias is gameable, and a learner sees one chapter's quiz at
+      // a time, so balance must hold per chapter, not just pooled (review
+      // findings: D held ~5% pooled; later a chapter quiz was 4/5 D).
       const positions = [0, 0, 0, 0];
-      const undiverseChapters: string[] = [];
+      const violations: string[] = [];
       for (const chapter of book.chapters) {
         const questions = [
           ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
           ...chapter.quiz,
         ];
         for (const q of questions) positions[q.correctIndex] += 1;
-        if (new Set(chapter.quiz.map((q) => q.correctIndex)).size < 2) {
-          undiverseChapters.push(chapter.id);
+
+        const quizCounts = [0, 0, 0, 0];
+        for (const q of chapter.quiz) quizCounts[q.correctIndex] += 1;
+        const n = chapter.quiz.length;
+        const cap = Math.ceil(n / 4);
+        const distinct = quizCounts.filter((c) => c > 0).length;
+        if (distinct < Math.min(n, 4)) {
+          violations.push(`${chapter.id}: quiz uses ${distinct} positions for ${n} questions`);
+        }
+        for (const [position, count] of quizCounts.entries()) {
+          if (count > cap) {
+            violations.push(`${chapter.id}: position ${position} holds ${count}/${n} (cap ${cap})`);
+          }
         }
       }
-      expect(undiverseChapters).toEqual([]);
+      expect(violations).toEqual([]);
+
       const total = positions.reduce((a, b) => a + b, 0);
       if (total >= 40) {
         for (const [position, count] of positions.entries()) {
@@ -138,6 +150,25 @@ describe("books", () => {
           ).toBeGreaterThanOrEqual(0.15);
         }
       }
+    });
+
+    test(`${book.id}: explanations never reference options by position`, () => {
+      // Option order is tooling-assigned and may be reassigned; an
+      // explanation saying 选项A/选项4 breaks silently on any reorder, so
+      // distractors must be dismissed by content instead.
+      const positional =
+        /选项\s*[0-9０-９①-⑩]|选项\s*[A-D](?![A-Za-z])|option\s*[0-9]|option\s+[a-d](?![a-z])/i;
+      const offenders: string[] = [];
+      for (const chapter of book.chapters) {
+        const questions = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
+          ...chapter.quiz,
+        ];
+        for (const q of questions) {
+          if (positional.test(q.explanationZh)) offenders.push(q.id);
+        }
+      }
+      expect(offenders).toEqual([]);
     });
   }
 });

@@ -38,11 +38,11 @@ sections:
       id: oz-ch-05-s1-c1
       stem: Why does Dorothy want to find water in the morning?
       options:
-        - To wash her face and drink with her dry bread
         - To give Toto a bath after chasing squirrels
+        - To wash her face and drink with her dry bread
         - To water the trees in the forest
         - To clean the tin man's rusty joints
-      correctIndex: 0
+      correctIndex: 1
       explanationZh: 多萝西说要找水 "to wash my face clean after the dust of the road, and to drink"，还为了让干面包不会卡在嗓子里。给铁皮人上油是后来才发生的事。
   - id: oz-ch-05-s2
     text: |-
@@ -82,10 +82,10 @@ sections:
       stem: What does the Tin Woodman ask Dorothy to do for him first?
       options:
         - Find him a new axe
-        - Carry him to the road
         - Get an oil-can and oil his joints
+        - Carry him to the road
         - Bring him food from the cottage
-      correctIndex: 2
+      correctIndex: 1
       explanationZh: 铁皮人说 "Get an oil-can and oil my joints"，因为关节锈住了无法动弹。油罐就在他小屋的架子上，多萝西找来后先给脖子上了油。
   - id: oz-ch-05-s3
     text: |-
@@ -120,11 +120,11 @@ sections:
       id: oz-ch-05-s3-c1
       stem: Why does the Tin Woodman want a heart instead of brains?
       options:
+        - Because he once had both and prefers having a heart
         - Because he never had brains before
         - Because Oz told him he could only get one thing
         - Because the Scarecrow told him hearts are better
-        - Because he once had both and prefers having a heart
-      correctIndex: 3
+      correctIndex: 0
       explanationZh: 铁皮人说他曾经既有脑子又有心："I had brains, and a heart also; so, having tried them both, I should much rather have a heart." 他是凭亲身经历做出的选择。
   - id: oz-ch-05-s4
     text: |-
@@ -137,11 +137,11 @@ sections:
       id: oz-ch-05-s4-c1
       stem: Why did the Tin Woodman stop caring about marrying the Munchkin girl?
       options:
+        - Because he lost his heart when he got a tin body
         - Because the girl married someone else
         - Because the old woman sent her away
-        - Because he lost his heart when he got a tin body
         - Because he forgot her face after getting a tin head
-      correctIndex: 2
+      correctIndex: 0
       explanationZh: 当铁匠给他做了锡身体后，他感叹 "I had now no heart, so that I lost all my love for the Munchkin girl"。失去心之后，他就不在乎是否娶她了。
   - id: oz-ch-05-s5
     text: |-
@@ -159,63 +159,63 @@ sections:
       stem: What worries Dorothy most at the end of the chapter?
       options:
         - That the Tin Woodman might rust again
+        - That the bread is nearly gone
         - That the road is too long
         - That she cannot decide who is right
-        - That the bread is nearly gone
-      correctIndex: 3
+      correctIndex: 1
       explanationZh: 章节结尾说 "What worried her most was that the bread was nearly gone"，因为稻草人和铁皮人都不吃东西，但她需要食物才能活下去。
 quiz:
   - id: oz-ch-05-q1
     stem: How did the Wicked Witch of the East harm the Tin Woodman?
     options:
-      - She enchanted his axe so it slipped and cut off his body parts
       - She put a curse on his house
       - She sent a rainstorm to rust his joints
       - She turned him into tin directly
-    correctIndex: 0
+      - She enchanted his axe so it slipped and cut off his body parts
+    correctIndex: 3
     explanationZh: 东方恶女巫 "enchanted my axe"，让斧子一次次滑落，砍掉他的腿、手臂、甚至头和身体。生锈是后来他自己忘记上油才发生的。
   - id: oz-ch-05-q2
     stem: Who asked the Wicked Witch to stop the Tin Woodman's marriage?
     options:
       - The beautiful Munchkin girl herself
       - The tinsmith who made the tin body
-      - The Tin Woodman's mother
       - An old woman who was too lazy to do her own work
-    correctIndex: 3
+      - The Tin Woodman's mother
+    correctIndex: 2
     explanationZh: 那个和女孩住在一起的老妇人太懒了，不想让女孩嫁人离开她，所以去找东方恶女巫帮忙阻止这门婚事。
   - id: oz-ch-05-q3
     stem: What happened the last time the Wicked Witch used the enchanted axe?
     options:
       - It cut off his head
+      - It cut right through his body, splitting him in two
       - It cut off both legs at once
       - It cut off his hands
-      - It cut right through his body, splitting him in two
-    correctIndex: 3
+    correctIndex: 1
     explanationZh: 女巫最后一次让斧子滑落时，"it cut right through my body, splitting me into two halves"。之后铁匠给他做了完整的锡身体，但他也从此失去了心。
   - id: oz-ch-05-q4
     stem: Why was the Tin Woodman stuck in the forest for over a year?
     options:
+      - He was caught in a rainstorm and forgot to oil himself, so his joints rusted
       - A tree fell on him and he could not move
       - The Wicked Witch trapped him there on purpose
       - He lost his axe and could not find his way home
-      - He was caught in a rainstorm and forgot to oil himself, so his joints rusted
-    correctIndex: 3
+    correctIndex: 0
     explanationZh: 他平时会给自己上油防锈，但有一天他忘了，又被暴雨淋到，关节就锈住了，在森林里站了一年多，直到多萝西来帮忙。
   - id: oz-ch-05-q5
     stem: What useful thing does the Tin Woodman do for the party soon after joining?
     options:
       - He carries Dorothy across a river
-      - He finds food for Toto
       - He chops through thick branches blocking the road
+      - He finds food for Toto
       - He scares away wild animals with his axe
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 他们上路不久就遇到树枝挡路，铁皮人用斧子 "chopped so well that soon he cleared a passage for the entire party"。这正是他作为铁皮樵夫的特长。
   - id: oz-ch-05-q6
     stem: What do the Scarecrow and the Tin Woodman disagree about at the end?
     options:
+      - Whether brains or a heart is more important
       - Whether Oz can really help them
       - Which road to take to the Emerald City
-      - Whether brains or a heart is more important
       - Whether Dorothy should go back to Kansas
-    correctIndex: 2
+    correctIndex: 0
     explanationZh: 稻草人认为脑子更重要，因为傻瓜有了心也不知道怎么用；铁皮人认为心更重要，因为 "happiness is the best thing in the world"。多萝西拿不定主意谁对。

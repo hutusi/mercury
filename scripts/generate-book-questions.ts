@@ -62,6 +62,43 @@ Rules for every question:
 - explanationZh in Simplified Chinese: teach rather than assert — point to what happens in the text (short English quotes are welcome) and briefly dismiss the most tempting distractor BY ITS CONTENT. Never refer to options by letter or position (no 选项A/选项1/option B) — positions are not known when you write.
 - Never ask about wording trivia, chapter numbers, or anything outside this chapter.`;
 
+function hashStr(s: string): number {
+  let h = 0;
+  for (const c of s) h = (h * 31 + c.charCodeAt(0)) | 0;
+  return h || 1;
+}
+
+/** Deterministic PRNG (mulberry32) — placement must be reproducible. */
+function mulberry32(seed: number): () => number {
+  return () => {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function shuffled<T>(items: T[], rand: () => number): T[] {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/** n correct-answer positions spread as evenly as possible over 0-3. */
+function balancedTargets(n: number, rand: () => number): number[] {
+  const extras = shuffled([0, 1, 2, 3], rand).slice(0, n % 4);
+  const list: number[] = [];
+  for (let position = 0; position < 4; position++) {
+    const count = Math.floor(n / 4) + (extras.includes(position) ? 1 : 0);
+    for (let i = 0; i < count; i++) list.push(position);
+  }
+  return shuffled(list, rand);
+}
+
 interface Args {
   book: string | null;
   chapter: string | null;
@@ -130,15 +167,17 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
     }
   }
 
-  // Placement is script-owned: a per-chapter rotation seeded by the chapter
-  // id walks 0-3 across the chapter's questions in order, so every position
-  // is used and re-runs are reproducible.
-  let seed = 0;
-  for (let i = 0; i < chapter.id.length; i++) seed = (seed * 31 + chapter.id.charCodeAt(i)) % 997;
-  let ordinal = 0;
-  const place = (question: z.infer<typeof DraftQuestionSchema>, id: string) => {
-    const correctIndex = (seed + ordinal) % 4;
-    ordinal += 1;
+  // Placement is script-owned and reproducible: each pool (check-ins, quiz)
+  // gets a balanced multiset of positions — spread as evenly as possible
+  // over 0-3, so a chapter quiz always satisfies the content-test cap of
+  // ceil(n/4) per position — shuffled by a PRNG seeded from the chapter id
+  // so the sequence is balanced but not a predictable A→B→C→D walk.
+  const placedCheckIns = chapter.sections.filter((s) => checkInBySection.has(s.id)).length;
+  const checkInTargets = balancedTargets(placedCheckIns, mulberry32(hashStr(`${chapter.id}:ci`)));
+  const quizTargets = balancedTargets(draft.quiz.length, mulberry32(hashStr(`${chapter.id}:quiz`)));
+  const place = (question: z.infer<typeof DraftQuestionSchema>, id: string, targets: number[]) => {
+    const correctIndex = targets.shift();
+    if (correctIndex === undefined) throw new Error(`ran out of position targets at ${id}`);
     return {
       id,
       stem: question.stem,
@@ -163,10 +202,10 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
       return {
         id: section.id,
         text: section.text,
-        ...(checkIn ? { checkIn: place(checkIn, `${section.id}-c1`) } : {}),
+        ...(checkIn ? { checkIn: place(checkIn, `${section.id}-c1`, checkInTargets) } : {}),
       };
     }),
-    quiz: draft.quiz.map((question, i) => place(question, `${chapter.id}-q${i + 1}`)),
+    quiz: draft.quiz.map((question, i) => place(question, `${chapter.id}-q${i + 1}`, quizTargets)),
   };
 
   const missing = assembled.sections.filter((s) => !s.checkIn).map((s) => s.id);
@@ -180,9 +219,13 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
   if (gutted.length) {
     console.warn(`  ! empty/truncated explanationZh: ${gutted.join(", ")} — redraft with --force`);
   }
-  // Positional references break whenever tooling (re)assigns placement.
+  // Positional references break whenever tooling (re)assigns placement —
+  // the content test rejects them, so flag drafts early. The letter branch
+  // needs the lookahead: "选项 Because…" names content, not position B.
+  const positionalRe =
+    /选项\s*[0-9０-９①-⑩]|选项\s*[A-D](?![A-Za-z])|option\s*[0-9]|option\s+[a-d](?![a-z])/i;
   const positional = allQuestions
-    .filter((q) => /选项\s*[A-D0-3①②③④]|option\s+[A-D]\b/i.test(q.explanationZh))
+    .filter((q) => positionalRe.test(q.explanationZh))
     .map((q) => q.id);
   if (positional.length) {
     console.warn(

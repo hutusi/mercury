@@ -18,11 +18,11 @@ sections:
       id: oz-ch-01-s1-c1
       stem: Why did everything around Dorothy's home look gray?
       options:
+        - The sun had burned and faded the land, the grass, and the house
         - The family had painted the house and fences gray on purpose
         - Constant rain kept the sky and fields dark
         - Dust storms covered everything in gray ash
-        - The sun had burned and faded the land, the grass, and the house
-      correctIndex: 3
+      correctIndex: 0
       explanationZh: 文中反复出现 gray：烈日把耕地晒成灰色、草叶尖被晒焦，房子的油漆被太阳晒起泡又被雨水冲掉，连婶婶和叔叔也变得灰白憔悴——一切都是烈日和艰苦生活造成的。
   - id: oz-ch-01-s2
     text: |-
@@ -51,11 +51,11 @@ sections:
       id: oz-ch-01-s2-c1
       stem: Why did the house rise into the air instead of being smashed?
       options:
-        - It stood at the exact center of the cyclone, where the winds pressed it upward
         - The wind blew the roof off first, making the house light enough to fly
+        - It stood at the exact center of the cyclone, where the winds pressed it upward
         - The Witch of the North lifted it with magic
         - The cyclone cellar pushed it up from below
-      correctIndex: 0
+      correctIndex: 1
       explanationZh: 书中解释：南北两股风正好在房子所在的位置相遇，使它处于气旋的正中心。气旋中心的空气通常是静止的，但四周强大的风压把房子越抬越高，最后"像羽毛一样"被轻轻带走。
   - id: oz-ch-01-s3
     text: |-
@@ -72,11 +72,11 @@ sections:
       id: oz-ch-01-s3-c1
       stem: How did Dorothy spend the last hours of the flight?
       options:
+        - She calmly lay down on her bed and fell asleep
         - She kept trying to open the trap door to escape
         - She cried loudly with Toto beside her
         - She watched the storm through the window all night
-        - She calmly lay down on her bed and fell asleep
-      correctIndex: 3
+      correctIndex: 0
       explanationZh: 几个小时过去后，多萝西克服了恐惧，决定"平静地等着，看未来会怎样"。她爬到床上躺下，托托跟过来卧在她身边，尽管房子摇晃、风声呼啸，她还是睡着了。
 quiz:
   - id: oz-ch-01-q1
@@ -84,9 +84,9 @@ quiz:
     options:
       - Storing vegetables and milk in hot weather
       - Keeping Toto safe while the family worked
-      - Collecting rainwater under the house
       - Sheltering the family from whirlwinds strong enough to crush buildings
-    correctIndex: 3
+      - Collecting rainwater under the house
+    correctIndex: 2
     explanationZh: 开篇写道：地板正中有一扇活板门，下面的小地洞叫 cyclone cellar（旋风地窖），是在"威力大到足以压垮沿途任何建筑"的大旋风袭来时全家避难的地方。
   - id: oz-ch-01-q2
     stem: Who kept Dorothy from becoming as gray as everything around her?
@@ -101,10 +101,10 @@ quiz:
     stem: When Uncle Henry saw the storm coming, he ______.
     options:
       - climbed into the cellar with Aunt Em
+      - ran to the sheds to look after the cows and horses
       - carried Dorothy into the house
       - stood in the doorway watching the sky
-      - ran to the sheds to look after the cows and horses
-    correctIndex: 3
+    correctIndex: 1
     explanationZh: 亨利叔叔对婶婶喊了一声 "There's a cyclone coming, Em. I'll go look after the stock."，随即跑向关着牛马的棚子。先下地窖的是爱姆婶婶，多萝西因为去抓托托而没来得及下去。
   - id: oz-ch-01-q4
     stem: Why was Dorothy still inside the house when it flew away?
@@ -118,9 +118,9 @@ quiz:
   - id: oz-ch-01-q5
     stem: What happened when Toto fell through the open trap door?
     options:
-      - The strong air pressure held him up, and Dorothy pulled him back by the ear
       - He landed safely in the cyclone cellar below
       - Dorothy jumped down after him
       - He was lost in the storm until the house landed
-    correctIndex: 0
+      - The strong air pressure held him up, and Dorothy pulled him back by the ear
+    correctIndex: 3
     explanationZh: 托托掉进敞开的活板门时，强大的气压把他托住，一只耳朵还露在洞口。多萝西爬过去抓住他的耳朵把他拖了回来，然后关上活板门，防止再出意外。

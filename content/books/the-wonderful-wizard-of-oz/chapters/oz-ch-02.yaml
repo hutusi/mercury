@@ -21,10 +21,10 @@ sections:
       stem: How were the strange people different from the grown people Dorothy was used to?
       options:
         - They were much taller and thinner
+        - They were only about as tall as Dorothy, yet looked many years older
         - They were dressed exactly like Kansas farmers
         - They were children about Dorothy's age
-        - They were only about as tall as Dorothy, yet looked many years older
-      correctIndex: 3
+      correctIndex: 1
       explanationZh: 文中说这群人"不像她惯常见到的大人那么高大，但也不算很矮"，大约和多萝西一样高，可从外表看却年长许多——三个男人戴蓝色尖顶帽，老妇人戴白帽、穿缀着小星星的白袍。
   - id: oz-ch-02-s2
     text: |-
@@ -59,11 +59,11 @@ sections:
       id: oz-ch-02-s2-c1
       stem: Why did the little old woman call Dorothy a noble sorceress?
       options:
+        - Dorothy's house had killed the Wicked Witch of the East and freed the Munchkins
         - Dorothy had arrived flying through the sky
         - Dorothy wore the silver shoes of a witch
         - Dorothy could speak to her dog Toto
-        - Dorothy's house had killed the Wicked Witch of the East and freed the Munchkins
-      correctIndex: 3
+      correctIndex: 0
       explanationZh: 老妇人说："感谢你杀死了东方恶女巫，把我们的人民从奴役中解救出来。"多萝西否认杀过人，老妇人笑着回答"是你的房子干的，那也一样"，还指给她看压在房角下的两只穿银鞋的脚。
   - id: oz-ch-02-s3
     text: |-
@@ -172,11 +172,11 @@ sections:
       id: oz-ch-02-s5-c1
       stem: How did the Witch of the North protect Dorothy for the journey?
       options:
+        - She kissed Dorothy's forehead, leaving a shining mark no one would dare to harm
         - She gave Dorothy a magic wand
         - She sent the three Munchkins to walk with her
         - She turned Toto into a guard dog
-        - She kissed Dorothy's forehead, leaving a shining mark no one would dare to harm
-      correctIndex: 3
+      correctIndex: 0
       explanationZh: 女巫说自己不能同行，"但我会给你我的吻，没有人敢伤害被北方女巫吻过的人"。她轻吻多萝西的额头，留下一个圆圆的、发亮的印记。
 quiz:
   - id: oz-ch-02-q1
@@ -184,18 +184,18 @@ quiz:
     options:
       - The Munchkins buried her under the house
       - The house crushed her into dust at once
-      - She melted away in the rain
       - She was so old that she quickly dried up in the sun, leaving only the silver shoes
-    correctIndex: 3
+      - She melted away in the rain
+    correctIndex: 2
     explanationZh: 芒奇金人惊呼时，恶女巫的双脚已完全消失。北方女巫笑着解释："她太老了，在太阳下很快就干掉了。"最后只剩下那双银鞋，女巫把鞋交给了多萝西。
   - id: oz-ch-02-q2
     stem: According to the Witch of the North, why does Oz still have witches and wizards?
     options:
-      - The Land of Oz was never civilized, for it is cut off from the rest of the world
       - The Great Oz protects all witches from harm
+      - The Land of Oz was never civilized, for it is cut off from the rest of the world
       - Witches from other countries fled to Oz long ago
       - The desert air keeps magic alive
-    correctIndex: 0
+    correctIndex: 1
     explanationZh: 听说堪萨斯是个文明国家后，女巫说"那就说得通了"——文明国家已经没有女巫、巫师和魔法师，而奥兹国与世隔绝，从未被文明化，所以仍然有女巫和巫师。
   - id: oz-ch-02-q3
     stem: What appeared on the slate when the Witch balanced her cap on her nose?
@@ -209,18 +209,18 @@ quiz:
   - id: oz-ch-02-q4
     stem: What did the Munchkins know about the silver shoes?
     options:
+      - They carried some charm, but nobody knew what it was
       - They would carry the wearer anywhere in three steps
       - They could never be taken off
       - They made the wearer invisible
-      - They carried some charm, but nobody knew what it was
-    correctIndex: 3
+    correctIndex: 0
     explanationZh: 一个芒奇金人说："东方女巫对这双银鞋非常自豪，鞋上有某种法力，但究竟是什么，我们从来不知道。"这为后文埋下了伏笔。
   - id: oz-ch-02-q5
     stem: How did the Witch of the North leave at the end of the chapter?
     options:
+      - She whirled around on her left heel three times and disappeared
       - She flew away on a broomstick
       - She walked away through the trees with the Munchkins
       - She vanished in a puff of smoke
-      - She whirled around on her left heel three times and disappeared
-    correctIndex: 3
+    correctIndex: 0
     explanationZh: 三个芒奇金人鞠躬后从树林间走开，而女巫朝多萝西友好地点点头，"用左脚跟旋转了三圈，随即消失了"。托托吓了一跳，大声吠叫；多萝西知道她是女巫，一点也不惊讶。

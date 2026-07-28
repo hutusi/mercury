@@ -79,9 +79,9 @@ sections:
       options:
         - Bring them food and water
         - Carry them across the river
-        - Save the Cowardly Lion from the poppy bed
         - Find the yellow brick road
-      correctIndex: 2
+        - Save the Cowardly Lion from the poppy bed
+      correctIndex: 3
       explanationZh: Scarecrow 想到狮子还昏睡在罂粟花田里，于是请田鼠们帮忙救出他。女王一开始害怕狮子会吃掉他们，Scarecrow 解释这只狮子很胆小，不会伤害朋友。
   - id: oz-ch-09-s3
     text: |-
@@ -114,11 +114,11 @@ sections:
       id: oz-ch-09-s3-c1
       stem: What does the Tin Woodman build for the mice?
       options:
-        - A wooden truck with wheels
         - A small house for the Queen
         - A bridge over the river
         - A cage to hold Toto
-      correctIndex: 0
+        - A wooden truck with wheels
+      correctIndex: 3
       explanationZh: Scarecrow 让铁皮人去河边用树枝做一辆 truck，铁皮人砍掉枝叶、用木钉固定，还用树干做了四个轮子。这辆车用来拉走昏睡的狮子。
 quiz:
   - id: oz-ch-09-q1
@@ -133,38 +133,38 @@ quiz:
   - id: oz-ch-09-q2
     stem: What problem does Toto cause when the mice first gather?
     options:
-      - He barks and jumps into the mice
       - He runs away into the forest
       - He eats the mice's string
+      - He barks and jumps into the mice
       - He wakes up the Lion
-    correctIndex: 0
+    correctIndex: 2
     explanationZh: Toto 醒来后开心地叫了一声就跳进鼠群中间，吓得田鼠们四处逃散。铁皮人赶紧把他抱住，让田鼠们回来。
   - id: oz-ch-09-q3
     stem: Why does the Queen fear the Cowardly Lion at first?
     options:
+      - She thinks he would eat all the mice
       - She thinks he is too heavy to carry
       - She thinks he is not really a coward
       - She thinks he will steal their string
-      - She thinks he would eat all the mice
-    correctIndex: 3
+    correctIndex: 0
     explanationZh: 女王一听到狮子就喊 "he would eat us all up"。Scarecrow 解释这只狮子自称胆小、不会伤害朋友，女王才答应帮忙。
   - id: oz-ch-09-q4
     stem: What does the Queen ask each mouse to bring?
     options:
-      - A piece of string
       - A handful of food
       - A tree branch
       - A flower from the poppy bed
-    correctIndex: 0
+      - A piece of string
+    correctIndex: 3
     explanationZh: Scarecrow 请女王让每只田鼠各带一根长绳。后来田鼠们赶到时，每只嘴里都叼着一根绳子，绳子一头系在田鼠脖子上，另一头系在车上。
   - id: oz-ch-09-q5
     stem: Why does the Queen hurry the mice away from the poppy bed?
     options:
       - Because she wants the mice to go home for dinner
+      - Because she fears the mice will also fall asleep
       - Because Toto is chasing them again
       - Because a new wildcat is coming
-      - Because she fears the mice will also fall asleep
-    correctIndex: 3
+    correctIndex: 1
     explanationZh: 书中写道女王急忙下令出发，"for she feared if the mice stayed among the poppies too long they also would fall asleep"。罂粟花的气味会让人昏睡，所以她要尽快撤离。
   - id: oz-ch-09-q6
     stem: What does the Queen tell Dorothy's group before she leaves?

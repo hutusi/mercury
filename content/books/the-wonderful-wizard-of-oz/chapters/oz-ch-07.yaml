@@ -97,10 +97,10 @@ sections:
       stem: What was the Scarecrow's plan to cross the second, wider ditch?
       options:
         - Have the Lion jump across with each person.
-        - Build a raft from branches.
         - Chop down a tall tree so it falls across the ditch.
+        - Build a raft from branches.
         - Walk along the rocks at the bottom of the ditch.
-      correctIndex: 2
+      correctIndex: 1
       explanationZh: 面对更宽的沟，Scarecrow 指着旁边的大树说：如果铁皮樵夫把它砍倒，树会倒向对面，就能当桥走过去。「让狮子跳」是第一条沟的旧办法，这里已经跳不过去了。
   - id: oz-ch-07-s4
     text: |-
@@ -127,46 +127,46 @@ sections:
       options:
         - The Lion fought and defeated them in battle.
         - The Scarecrow pushed them into the river.
-        - Dorothy scared them away with fire.
         - The Tin Woodman chopped away the tree bridge so they fell into the ditch.
-      correctIndex: 3
+        - Dorothy scared them away with fire.
+      correctIndex: 2
       explanationZh: 当 Kalidahs 正走过倒下的树桥时，Scarecrow 让铁皮樵夫砍断他们这一侧的树端，树掉进深渊，两头猛兽也跟着摔碎在岩石上。狮子只是勇敢地面对它们，真正解决它们的是砍断树桥这一招。
 quiz:
   - id: oz-ch-07-q1
     stem: Why did the Tin Woodman beg the Lion not to kill a deer for breakfast?
     options:
       - He thought the meat would make Dorothy sick.
-      - He did not want to wait for the Lion to return.
       - He would weep and his jaws would rust again.
+      - He did not want to wait for the Lion to return.
       - He wanted to eat nuts instead of meat.
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 铁皮樵夫说如果狮子杀了可怜的鹿，他一定会哭，然后「my jaws would rust again」——下巴会再次生锈。他并不是在讨论食物偏好或时间问题。
   - id: oz-ch-07-q2
     stem: Who suggested that the Lion could carry everyone across the first ditch on his back, one at a time?
     options:
+      - The Scarecrow
       - Dorothy
       - The Tin Woodman
       - Toto
-      - The Scarecrow
-    correctIndex: 3
+    correctIndex: 0
     explanationZh: 狮子说自己也许能跳过去之后，是 Scarecrow 接话说「you can carry us all over on your back, one at a time」。他在这段里展现了安排行动的本领。
   - id: oz-ch-07-q3
     stem: What did the Lion do when the two Kalidahs rushed toward the travelers on the tree bridge?
     options:
       - He ran away immediately into the forest.
       - He pushed the tree into the ditch himself.
-      - He hid behind the Tin Woodman.
       - He turned to face them and gave a loud, terrible roar.
-    correctIndex: 3
+      - He hid behind the Tin Woodman.
+    correctIndex: 2
     explanationZh: 原文写狮子虽然害怕，却「turned to face the Kalidahs」并发出一声可怕的吼叫，吓得 Dorothy 尖叫、Scarecrow 后仰摔倒，猛兽也短暂停住。砍树桥是后面 Scarecrow 指挥铁皮樵夫做的，不是狮子做的。
   - id: oz-ch-07-q4
     stem: After escaping the Kalidahs, what did the travelers find on the other side of the broad river?
     options:
       - A dark and gloomy forest
       - The Emerald City gates
-      - A beautiful country with green meadows and fruit trees
       - A deep ditch full of rocks
-    correctIndex: 2
+      - A beautiful country with green meadows and fruit trees
+    correctIndex: 3
     explanationZh: 到了河边对面，他们看到「green meadows dotted with bright flowers」和结满美味果实的树木——一片美丽的乡野。黑暗森林是身后刚离开的地方，翡翠城还未到。
   - id: oz-ch-07-q5
     stem: Why could the travelers not cross the river that same day?

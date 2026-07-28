@@ -30,11 +30,11 @@ sections:
       id: oz-ch-04-s1-c1
       stem: Why did the Scarecrow refuse to eat bread?
       options:
-        - He was not hungry and his mouth was only painted.
         - He had already eaten a big meal.
+        - He was not hungry and his mouth was only painted.
         - He did not like the taste of bread.
         - He was saving the bread for Toto.
-      correctIndex: 0
+      correctIndex: 1
       explanationZh: 稻草人说 "I am never hungry"，并解释如果挖洞吃东西，塞在头里的稻草会掉出来，毁了他的头形。选项 He was saving the bread for Toto 听起来合理，但原文没提到这一点。
   - id: oz-ch-04-s2
     text: |-
@@ -65,9 +65,9 @@ sections:
       options:
         - The eyes
         - The nose
-        - The ears
         - The mouth
-      correctIndex: 2
+        - The ears
+      correctIndex: 3
       explanationZh: 稻草人说 farmer 做头时最先画的是耳朵，这样他就能听到周围的声音。选项 The eyes 很诱人，因为紧接着才画眼睛，但耳朵才是第一个。
   - id: oz-ch-04-s3
     text: |-
@@ -111,34 +111,34 @@ sections:
         - An old crow
         - Dorothy
       correctIndex: 2
-      explanationZh: 一只老乌鸦落在稻草人肩上，指出他只是稻草做的，并安慰他说 "Brains are the only things worth having in this world"。选项 A Munchkin 容易混淆，因为旁观的 Munchkin 也说过话，但这番关于 brains 的话是老乌鸦说的。
+      explanationZh: 一只老乌鸦落在稻草人肩上，指出他只是稻草做的，并安慰他说 "Brains are the only things worth having in this world"。容易误选旁观的 Munchkin，因为他也说过话，但这番关于 brains 的话是老乌鸦说的。
 quiz:
   - id: oz-ch-04-q1
     stem: Why did the Scarecrow keep falling into holes on the road?
     options:
       - He could not see well in the dark.
       - Toto pushed him over.
-      - The road was too narrow for two people.
       - He had no brains, so he walked straight ahead.
-    correctIndex: 3
+      - The road was too narrow for two people.
+    correctIndex: 2
     explanationZh: 原文说 "having no brains, he walked straight ahead"，所以他直接踩进坑里摔倒。选项 He could not see well in the dark 看似合理，但摔倒发生在白天，原因是没脑子而非天黑。
   - id: oz-ch-04-q2
     stem: Why couldn't the Scarecrow understand why Dorothy wanted to go back to Kansas?
     options:
       - Because he had never seen a house before.
       - Because he thought Kansas was too far away.
-      - Because he had no brains.
       - Because he hated beautiful countries.
-    correctIndex: 2
-    explanationZh: 多萝西解释说 "That is because you have no brains"——稻草人无法理解有血有肉的人对家的眷恋。选项 Because he thought Kansas was too far away 有道理但不对，原文直接把原因归结为他没有脑子。
+      - Because he had no brains.
+    correctIndex: 3
+    explanationZh: 多萝西解释说 "That is because you have no brains"——稻草人无法理解有血有肉的人对家的眷恋。"嫌堪萨斯太远"看似有道理但不对，原文直接把原因归结为他没有脑子。
   - id: oz-ch-04-q3
     stem: How did the Scarecrow feel when the birds ate the corn after the old crow spoke?
     options:
+      - Sad that he was not a good Scarecrow
       - Happy and proud
       - Angry at the farmer
-      - Sad that he was not a good Scarecrow
       - Afraid of the crows
-    correctIndex: 2
+    correctIndex: 0
     explanationZh: 稻草人说 "I felt sad at this, for it showed I was not such a good Scarecrow after all"。选项 Happy and proud 是之前鸟儿害怕他时的感受，老乌鸦来了之后情况就变了。
   - id: oz-ch-04-q4
     stem: What did the Scarecrow say when Dorothy pointed out that anyone would know the road goes through the forest?
@@ -157,4 +157,4 @@ quiz:
       - By the little brook where they had lunch
       - In the farmer's house
     correctIndex: 1
-    explanationZh: 稻草人看到右边有一间 "built of logs and branches" 的小屋，两人便去那里过夜。选项 By the little brook where they had lunch 容易混淆，因为那个小溪确实出现了，但那是中午休息的地方，不是过夜处。
+    explanationZh: 稻草人看到右边有一间 "built of logs and branches" 的小屋，两人便去那里过夜。容易误选小溪边，因为那条小溪确实出现过，但那是中午休息的地方，不是过夜处。

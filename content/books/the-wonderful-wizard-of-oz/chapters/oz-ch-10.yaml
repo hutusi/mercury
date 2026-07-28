@@ -28,11 +28,11 @@ sections:
       id: oz-ch-10-s1-c1
       stem: Who saved the Cowardly Lion from the poppy field?
       options:
-        - The field mice
         - The Tin Woodman
         - The Scarecrow
         - Dorothy carried him
-      correctIndex: 0
+        - The field mice
+      correctIndex: 3
       explanationZh: 文中说他们告诉狮子，是 field mice "generously saved him from death"。锡樵夫和稻草人都没有救他。
   - id: oz-ch-10-s2
     text: |-
@@ -73,11 +73,11 @@ sections:
       id: oz-ch-10-s2-c1
       stem: What does the man in the farmhouse say about Oz's appearance?
       options:
+        - Oz can take on any form he wishes
         - Oz always looks like a bird
         - Oz looks like an ordinary man
         - Oz is invisible to everyone
-        - Oz can take on any form he wishes
-      correctIndex: 3
+      correctIndex: 0
       explanationZh: 农夫说 "Oz is a Great Wizard, and can take on any form he wishes"——有人觉得他像鸟、像象、像猫等。正因如此，没人知道他真正的样子。
   - id: oz-ch-10-s3
     text: |-
@@ -149,9 +149,9 @@ sections:
       options:
         - He is angry with her
         - He wants to charge them money
-        - He thinks it is a foolish joke
         - He is surprised because no one has asked in years
-      correctIndex: 3
+        - He thinks it is a foolish joke
+      correctIndex: 2
       explanationZh: 守门人坐下来思考，并说 "It has been many years since anyone asked me to see Oz"，可见他不是因为生气或要钱，而是因为太久没人提出这样的要求。
   - id: oz-ch-10-s5
     text: |-
@@ -168,11 +168,11 @@ sections:
       id: oz-ch-10-s5-c1
       stem: Why must everyone wear green spectacles in the Emerald City?
       options:
-        - To protect them from being blinded by the brightness
         - To hide their faces from Oz
+        - To protect them from being blinded by the brightness
         - To help them see in the dark
         - To make them look like Munchkins
-      correctIndex: 0
+      correctIndex: 1
       explanationZh: 守门人解释说，不戴眼镜的话 "the brightness and glory of the Emerald City would blind you"，连城里的居民都必须日夜戴着。
 quiz:
   - id: oz-ch-10-q1
@@ -189,9 +189,9 @@ quiz:
     options:
       - She said the Lion was chained up
       - She said the Lion would wait outside
-      - She said Oz had sent the Lion
       - She said the Lion was tame and a great coward
-    correctIndex: 3
+      - She said Oz had sent the Lion
+    correctIndex: 2
     explanationZh: 多萝西告诉那女人，狮子很温顺，而且 "he is a great coward, too"，"he will be more afraid of you than you are of him"。女人这才同意让他们进来。
   - id: oz-ch-10-q3
     stem: What did the Lion eat for supper, and how did he feel about it?
@@ -215,17 +215,17 @@ quiz:
     stem: What was at the end of the yellow brick road?
     options:
       - A small green farmhouse
+      - A big gate studded with emeralds
       - A dark forest
       - A river crossing
-      - A big gate studded with emeralds
-    correctIndex: 3
+    correctIndex: 1
     explanationZh: 黄砖路尽头是 "a big gate, all studded with emeralds"，翡翠在阳光下闪闪发光。小农舍是路上经过的地方，不是路尽头。
   - id: oz-ch-10-q6
     stem: What happens when the spectacles are locked on?
     options:
-      - The Guardian keeps the key himself
       - Dorothy can take them off anytime
+      - The Guardian keeps the key himself
       - They fall off after one hour
       - They turn clear when you leave
-    correctIndex: 0
+    correctIndex: 1
     explanationZh: 守门人用脖子上的链子挂着的小钥匙把眼镜锁好，"Dorothy could not take them off had she wished"——钥匙由守门人保管，佩戴者自己摘不下来。

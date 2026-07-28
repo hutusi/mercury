@@ -81,9 +81,9 @@ sections:
       options:
         - They fought the Hammer-Heads.
         - They climbed at night.
-        - They called the Winged Monkeys.
         - They found a secret tunnel.
-      correctIndex: 2
+        - They called the Winged Monkeys.
+      correctIndex: 3
       explanationZh: 锡樵夫提醒多萝西还能用金帽召唤飞猴。飞猴把四人托起飞过山坡，锤头怪虽奋力伸头却够不到飞猴。直接战斗已被证明无效，故选飞猴。
 quiz:
   - id: oz-ch-22-q1
@@ -91,27 +91,27 @@ quiz:
     options:
       - Tall and thin with long arms.
       - A small man with wings on his back.
-      - An old man with a white beard.
       - Short and stout with no arms at all.
-    correctIndex: 3
+      - An old man with a white beard.
+    correctIndex: 2
     explanationZh: 文中描写他「quite short and stout」，头部大而顶部扁平，最关键的是「he had no arms at all」。正是没有手臂才让稻草人以为他无威胁，结果被弹射的头撞倒。
   - id: oz-ch-22-q2
     stem: What happened when the Lion rushed up the hill?
     options:
-      - He defeated the Hammer-Heads.
       - He was knocked down by a shooting head.
+      - He defeated the Hammer-Heads.
       - He found a path around the rocks.
       - He reached the top before anyone.
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: 狮子被笑声激怒后冲上山坡，又被弹射的头击中，像被炮弹打中一样滚了下去。他后来承认「It is useless to fight people with shooting heads」。选项说狮子打败锤头怪与原文相反。
   - id: oz-ch-22-q3
     stem: How many more times can Dorothy command the Winged Monkeys after this chapter?
     options:
       - One more time.
-      - Two more times.
       - None — this was the last time.
+      - Two more times.
       - As many as she wishes.
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 飞猴首领临别时说「This is the last time you can summon us」，说明金帽的三次许愿机会已全部用完。三次和无限次都是干扰项。
   - id: oz-ch-22-q4
     stem: What color are the houses and fences in the country of the Quadlings?
@@ -126,17 +126,17 @@ quiz:
     stem: Who answers the door at the farmhouse near where the Monkeys land?
     options:
       - A young girl soldier.
-      - A farmer's wife.
       - A Winged Monkey.
       - A Quadling farmer.
-    correctIndex: 1
+      - A farmer's wife.
+    correctIndex: 3
     explanationZh: 飞猴把他们放在一处农舍附近，门由「the farmer's wife」打开，还给他们做了丰盛的晚餐。三位穿红色制服的女兵是在城堡门口出现的，不是农舍。
   - id: oz-ch-22-q6
     stem: What must Dorothy do to reach the Castle of Glinda from the farmhouse?
     options:
       - Follow the road to the North.
-      - Follow the road to the South.
       - Cross the river to the East.
       - Go back through the forest.
-    correctIndex: 1
+      - Follow the road to the South.
+    correctIndex: 3
     explanationZh: 农妇告诉他们「Take the road to the South and you will soon reach it」。选北方或其他方向与原文指引不符。

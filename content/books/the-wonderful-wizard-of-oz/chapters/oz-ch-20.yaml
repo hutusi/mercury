@@ -33,10 +33,10 @@ sections:
       stem: What did the travelers see when they climbed to the top of the wall?
       options:
         - A forest full of tall trees
-        - A country made entirely of china
         - A river as smooth as glass
         - A city made of gold
-      correctIndex: 1
+        - A country made entirely of china
+      correctIndex: 3
       explanationZh: 原文说他们看到一片 "a great stretch of country"，地面光滑洁白，房屋、动物和居民都是瓷器做的。选gold city是 tempting，但这里不是翡翠城，而是瓷器国。
   - id: oz-ch-20-s2
     text: |-
@@ -67,11 +67,11 @@ sections:
       id: oz-ch-20-s2-c1
       stem: What happened when Dorothy and her friends walked near the china milkmaid?
       options:
-        - The cow kicked over the milkmaid and broke her leg
         - The milkmaid invited them to tea
         - The cow ran away and hid behind a tree
+        - The cow kicked over the milkmaid and broke her leg
         - The milkmaid dropped her pail on purpose
-      correctIndex: 0
+      correctIndex: 2
       explanationZh: 原文写 "the cow suddenly gave a kick and kicked over the stool, the pail, and even the milkmaid herself"，结果cow的腿摔断了，milkmaid的肘部也磕出了缺口。选hid behind a tree没有依据。
   - id: oz-ch-20-s3
     text: |-
@@ -110,11 +110,11 @@ sections:
       id: oz-ch-20-s3-c1
       stem: Why did the china Princess refuse Dorothy's offer to take her to Kansas?
       options:
+        - She would stiffen and could no longer talk or move freely
         - She did not like Dorothy
         - She was afraid of Aunt Em
-        - She would stiffen and could no longer talk or move freely
         - She was too heavy to carry
-      correctIndex: 2
+      correctIndex: 0
       explanationZh: 公主解释说，被带走后 "our joints at once stiffen, and we can only stand straight and look pretty"，再也不能自由活动和说话了。说too heavy没有依据——她只有多萝西膝盖那么高。
   - id: oz-ch-20-s4
     text: |-
@@ -144,28 +144,28 @@ quiz:
     stem: Why did the Scarecrow fall off the wall and the others jump down onto him?
     options:
       - He wanted to test if the floor was safe
-      - The ladder was too heavy to pull up, and he cushioned their fall
       - He slipped on the smooth wall
       - The wind blew him off the wall
-    correctIndex: 1
+      - The ladder was too heavy to pull up, and he cushioned their fall
+    correctIndex: 3
     explanationZh: 原文说梯子太重拉不上来，于是稻草人先掉下去，其他人跳到他身上，这样"the hard floor would not hurt their feet"。说he slipped或wind blew him off都没有依据。
   - id: oz-ch-20-q2
     stem: What was special about Mr. Joker, the clown?
     options:
       - He could juggle china plates
-      - He had never been broken in his life
       - He was always trying to stand on his head and had been mended many times
+      - He had never been broken in his life
       - He was the tallest person in the china country
-    correctIndex: 2
+    correctIndex: 1
     explanationZh: 公主介绍Mr. Joker时说他"always trying to stand upon his head"，因为摔碎太多次，"he is mended in a hundred places"，满是裂痕。选juggle plates没有原文支持。
   - id: oz-ch-20-q3
     stem: What did the Lion's tail do when he jumped onto the second wall?
     options:
-      - It knocked over a china church and smashed it
       - It broke the wall itself
       - It scared away a china dog
+      - It knocked over a china church and smashed it
       - It hit the Scarecrow
-    correctIndex: 0
+    correctIndex: 2
     explanationZh: 狮子跳上墙时，尾巴把一座瓷器教堂撞倒了（"he upset a china church with his tail and smashed it all to pieces"）。全章共损坏了两样东西：奶牛的腿和教堂。
   - id: oz-ch-20-q4
     stem: Why were the china people so afraid of the travelers?
@@ -179,18 +179,18 @@ quiz:
   - id: oz-ch-20-q5
     stem: What did the milkmaid plan to do about her cow's broken leg?
     options:
-      - Throw the cow away and get a new one
       - Take the cow to the mender's shop to have the leg glued on again
+      - Throw the cow away and get a new one
       - Ask Dorothy to fix it
       - Leave it broken and keep milking
-    correctIndex: 1
+    correctIndex: 0
     explanationZh: 牛奶女生气地说要带奶牛去修理铺"have it glued on again"。瓷器国的东西可以粘合修复，只是修过后就没那么漂亮了，Mr. Joker就是例子。
   - id: oz-ch-20-q6
     stem: How tall was the tallest china person compared to Dorothy?
     options:
       - As high as her waist
-      - As high as her knee
       - As high as her shoulder
       - As high as her ankle
-    correctIndex: 1
+      - As high as her knee
+    correctIndex: 3
     explanationZh: 原文说瓷器人"so small that the tallest of them was no higher than Dorothy's knee"。注意房屋最高才到多萝西腰部，而人最高只到她膝盖，别把两者搞混。
