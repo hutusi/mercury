@@ -1,0 +1,179 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: oz-ch-07
+bookId: book-oz
+title: The Journey to the Great Oz
+titleZh: 前往伟大的奥兹之旅
+summaryZh: 多萝西和伙伴们在森林中宿营过夜，第二天接连遇到深沟和猛兽Kalidahs的威胁。他们靠狮子的跳跃和铁皮樵夫的砍树本领一次次脱险，最终来到一条宽阔的河边，准备造木筏渡河前往翡翠城。
+sections:
+  - id: oz-ch-07-s1
+    text: |-
+      They were obliged to camp out that night under a large tree in the forest, for there were no houses near. The tree made a good, thick covering to protect them from the dew, and the Tin Woodman chopped a great pile of wood with his axe and Dorothy built a splendid fire that warmed her and made her feel less lonely. She and Toto ate the last of their bread, and now she did not know what they would do for breakfast.
+
+      “If you wish,” said the Lion, “I will go into the forest and kill a deer for you. You can roast it by the fire, since your tastes are so peculiar that you prefer cooked food, and then you will have a very good breakfast.”
+
+      “Don’t! Please don’t,” begged the Tin Woodman. “I should certainly weep if you killed a poor deer, and then my jaws would rust again.”
+
+      But the Lion went away into the forest and found his own supper, and no one ever knew what it was, for he didn’t mention it. And the Scarecrow found a tree full of nuts and filled Dorothy’s basket with them, so that she would not be hungry for a long time. She thought this was very kind and thoughtful of the Scarecrow, but she laughed heartily at the awkward way in which the poor creature picked up the nuts. His padded hands were so clumsy and the nuts were so small that he dropped almost as many as he put in the basket. But the Scarecrow did not mind how long it took him to fill the basket, for it enabled him to keep away from the fire, as he feared a spark might get into his straw and burn him up. So he kept a good distance away from the flames, and only came near to cover Dorothy with dry leaves when she lay down to sleep. These kept her very snug and warm, and she slept soundly until morning.
+
+      When it was daylight, the girl bathed her face in a little rippling brook, and soon after they all started toward the Emerald City.
+
+      This was to be an eventful day for the travelers. They had hardly been walking an hour when they saw before them a great ditch that crossed the road and divided the forest as far as they could see on either side. It was a very wide ditch, and when they crept up to the edge and looked into it they could see it was also very deep, and there were many big, jagged rocks at the bottom. The sides were so steep that none of them could climb down, and for a moment it seemed that their journey must end.
+    checkIn:
+      id: oz-ch-07-s1-c1
+      stem: Why did the Scarecrow stay far from the fire while picking nuts?
+      options:
+        - He was afraid a spark would burn his straw.
+        - He did not like the smell of the fire.
+        - He wanted to watch the forest for danger.
+        - He was too heavy to sit near the fire.
+      correctIndex: 0
+      explanationZh: 原文说 Scarecrow 担心「a spark might get into his straw and burn him up」，所以故意远离火焰。选项里「不喜欢烟味」看似有理，但文中明确写的是怕被火星烧着。
+  - id: oz-ch-07-s2
+    text: |-
+      “What shall we do?” asked Dorothy despairingly.
+
+      “I haven’t the faintest idea,” said the Tin Woodman, and the Lion shook his shaggy mane and looked thoughtful.
+
+      But the Scarecrow said, “We cannot fly, that is certain. Neither can we climb down into this great ditch. Therefore, if we cannot jump over it, we must stop where we are.”
+
+      “I think I could jump over it,” said the Cowardly Lion, after measuring the distance carefully in his mind.
+
+      “Then we are all right,” answered the Scarecrow, “for you can carry us all over on your back, one at a time.”
+
+      “Well, I’ll try it,” said the Lion. “Who will go first?”
+
+      “I will,” declared the Scarecrow, “for, if you found that you could not jump over the gulf, Dorothy would be killed, or the Tin Woodman badly dented on the rocks below. But if I am on your back it will not matter so much, for the fall would not hurt me at all.”
+
+      “I am terribly afraid of falling, myself,” said the Cowardly Lion, “but I suppose there is nothing to do but try it. So get on my back and we will make the attempt.”
+
+      The Scarecrow sat upon the Lion’s back, and the big beast walked to the edge of the gulf and crouched down.
+
+      “Why don’t you run and jump?” asked the Scarecrow.
+
+      “Because that isn’t the way we Lions do these things,” he replied. Then giving a great spring, he shot through the air and landed safely on the other side. They were all greatly pleased to see how easily he did it, and after the Scarecrow had got down from his back the Lion sprang across the ditch again.
+
+      Dorothy thought she would go next; so she took Toto in her arms and climbed on the Lion’s back, holding tightly to his mane with one hand. The next moment it seemed as if she were flying through the air; and then, before she had time to think about it, she was safe on the other side. The Lion went back a third time and got the Tin Woodman, and then they all sat down for a few moments to give the beast a chance to rest, for his great leaps had made his breath short, and he panted like a big dog that has been running too long.
+
+      They found the forest very thick on this side, and it looked dark and gloomy. After the Lion had rested they started along the road of yellow brick, silently wondering, each in his own mind, if ever they would come to the end of the woods and reach the bright sunshine again. To add to their discomfort, they soon heard strange noises in the depths of the forest, and the Lion whispered to them that it was in this part of the country that the Kalidahs lived.
+    checkIn:
+      id: oz-ch-07-s2-c1
+      stem: Why did the Scarecrow volunteer to be the first one the Lion carried across the ditch?
+      options:
+        - He was the lightest one in the group.
+        - He wanted to see what was on the other side.
+        - A fall would not hurt him at all.
+        - He was the bravest member of the group.
+      correctIndex: 2
+      explanationZh: Scarecrow 主动提出先过，因为「if I am on your back it will not matter so much, for the fall would not hurt me at all」——摔了也不会受伤。他并非自称勇敢，也不仅仅因为体重轻。
+  - id: oz-ch-07-s3
+    text: |-
+      “What are the Kalidahs?” asked the girl.
+
+      “They are monstrous beasts with bodies like bears and heads like tigers,” replied the Lion, “and with claws so long and sharp that they could tear me in two as easily as I could kill Toto. I’m terribly afraid of the Kalidahs.”
+
+      “I’m not surprised that you are,” returned Dorothy. “They must be dreadful beasts.”
+
+      The Lion was about to reply when suddenly they came to another gulf across the road. But this one was so broad and deep that the Lion knew at once he could not leap across it.
+
+      So they sat down to consider what they should do, and after serious thought the Scarecrow said:
+
+      “Here is a great tree, standing close to the ditch. If the Tin Woodman can chop it down, so that it will fall to the other side, we can walk across it easily.”
+
+      “That is a first-rate idea,” said the Lion. “One would almost suspect you had brains in your head, instead of straw.”
+
+      The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through. Then the Lion put his strong front legs against the tree and pushed with all his might, and slowly the big tree tipped and fell with a crash across the ditch, with its top branches on the other side.
+
+      They had just started to cross this queer bridge when a sharp growl made them all look up, and to their horror they saw running toward them two great beasts with bodies like bears and heads like tigers.
+
+      “They are the Kalidahs!” said the Cowardly Lion, beginning to tremble.
+
+      “Quick!” cried the Scarecrow. “Let us cross over.”
+
+      So Dorothy went first, holding Toto in her arms, the Tin Woodman followed, and the Scarecrow came next. The Lion, although he was certainly afraid, turned to face the Kalidahs, and then he gave so loud and terrible a roar that Dorothy screamed and the Scarecrow fell over backward, while even the fierce beasts stopped short and looked at him in surprise.
+
+      But, seeing they were bigger than the Lion, and remembering that there were two of them and only one of him, the Kalidahs again rushed forward, and the Lion crossed over the tree and turned to see what they would do next. Without stopping an instant the fierce beasts also began to cross the tree. And the Lion said to Dorothy:
+    checkIn:
+      id: oz-ch-07-s3-c1
+      stem: What was the Scarecrow's plan to cross the second, wider ditch?
+      options:
+        - Have the Lion jump across with each person.
+        - Build a raft from branches.
+        - Chop down a tall tree so it falls across the ditch.
+        - Walk along the rocks at the bottom of the ditch.
+      correctIndex: 2
+      explanationZh: 面对更宽的沟，Scarecrow 指着旁边的大树说：如果铁皮樵夫把它砍倒，树会倒向对面，就能当桥走过去。「让狮子跳」是第一条沟的旧办法，这里已经跳不过去了。
+  - id: oz-ch-07-s4
+    text: |-
+      “We are lost, for they will surely tear us to pieces with their sharp claws. But stand close behind me, and I will fight them as long as I am alive.”
+
+      “Wait a minute!” called the Scarecrow. He had been thinking what was best to be done, and now he asked the Woodman to chop away the end of the tree that rested on their side of the ditch. The Tin Woodman began to use his axe at once, and, just as the two Kalidahs were nearly across, the tree fell with a crash into the gulf, carrying the ugly, snarling brutes with it, and both were dashed to pieces on the sharp rocks at the bottom.
+
+      “Well,” said the Cowardly Lion, drawing a long breath of relief, “I see we are going to live a little while longer, and I am glad of it, for it must be a very uncomfortable thing not to be alive. Those creatures frightened me so badly that my heart is beating yet.”
+
+      “Ah,” said the Tin Woodman sadly, “I wish I had a heart to beat.”
+
+      This adventure made the travelers more anxious than ever to get out of the forest, and they walked so fast that Dorothy became tired, and had to ride on the Lion’s back. To their great joy the trees became thinner the farther they advanced, and in the afternoon they suddenly came upon a broad river, flowing swiftly just before them. On the other side of the water they could see the road of yellow brick running through a beautiful country, with green meadows dotted with bright flowers and all the road bordered with trees hanging full of delicious fruits. They were greatly pleased to see this delightful country before them.
+
+      “How shall we cross the river?” asked Dorothy.
+
+      “That is easily done,” replied the Scarecrow. “The Tin Woodman must build us a raft, so we can float to the other side.”
+
+      So the Woodman took his axe and began to chop down small trees to make a raft, and while he was busy at this the Scarecrow found on the riverbank a tree full of fine fruit. This pleased Dorothy, who had eaten nothing but nuts all day, and she made a hearty meal of the ripe fruit.
+
+      But it takes time to make a raft, even when one is as industrious and untiring as the Tin Woodman, and when night came the work was not done. So they found a cozy place under the trees where they slept well until the morning; and Dorothy dreamed of the Emerald City, and of the good Wizard Oz, who would soon send her back to her own home again.
+    checkIn:
+      id: oz-ch-07-s4-c1
+      stem: How did the travelers get rid of the two Kalidahs?
+      options:
+        - The Lion fought and defeated them in battle.
+        - The Tin Woodman chopped away the tree bridge so they fell into the ditch.
+        - The Scarecrow pushed them into the river.
+        - Dorothy scared them away with fire.
+      correctIndex: 1
+      explanationZh: 当 Kalidahs 正走过倒下的树桥时，Scarecrow 让铁皮樵夫砍断他们这一侧的树端，树掉进深渊，两头猛兽也跟着摔碎在岩石上。狮子只是勇敢地面对它们，真正解决它们的是砍断树桥这一招。
+quiz:
+  - id: oz-ch-07-q1
+    stem: Why did the Tin Woodman beg the Lion not to kill a deer for breakfast?
+    options:
+      - He thought the meat would make Dorothy sick.
+      - He did not want to wait for the Lion to return.
+      - He would weep and his jaws would rust again.
+      - He wanted to eat nuts instead of meat.
+    correctIndex: 2
+    explanationZh: 铁皮樵夫说如果狮子杀了可怜的鹿，他一定会哭，然后「my jaws would rust again」——下巴会再次生锈。他并不是在讨论食物偏好或时间问题。
+  - id: oz-ch-07-q2
+    stem: Who suggested that the Lion could carry everyone across the first ditch on his back, one at a time?
+    options:
+      - Dorothy
+      - The Scarecrow
+      - The Tin Woodman
+      - Toto
+    correctIndex: 1
+    explanationZh: 狮子说自己也许能跳过去之后，是 Scarecrow 接话说「you can carry us all over on your back, one at a time」。他在这段里展现了安排行动的本领。
+  - id: oz-ch-07-q3
+    stem: What did the Lion do when the two Kalidahs rushed toward the travelers on the tree bridge?
+    options:
+      - He ran away immediately into the forest.
+      - He turned to face them and gave a loud, terrible roar.
+      - He pushed the tree into the ditch himself.
+      - He hid behind the Tin Woodman.
+    correctIndex: 1
+    explanationZh: 原文写狮子虽然害怕，却「turned to face the Kalidahs」并发出一声可怕的吼叫，吓得 Dorothy 尖叫、Scarecrow 后仰摔倒，猛兽也短暂停住。砍树桥是后面 Scarecrow 指挥铁皮樵夫做的，不是狮子做的。
+  - id: oz-ch-07-q4
+    stem: After escaping the Kalidahs, what did the travelers find on the other side of the broad river?
+    options:
+      - A dark and gloomy forest
+      - The Emerald City gates
+      - A beautiful country with green meadows and fruit trees
+      - A deep ditch full of rocks
+    correctIndex: 2
+    explanationZh: 到了河边对面，他们看到「green meadows dotted with bright flowers」和结满美味果实的树木——一片美丽的乡野。黑暗森林是身后刚离开的地方，翡翠城还未到。
+  - id: oz-ch-07-q5
+    stem: Why could the travelers not cross the river that same day?
+    options:
+      - The water was frozen solid.
+      - The Lion refused to swim across.
+      - Building the raft took too long and night came.
+      - There were no trees nearby to build a raft.
+    correctIndex: 2
+    explanationZh: 铁皮樵夫忙着砍小树造木筏，但「it takes time to make a raft」，天黑了还没完成，他们只好在树下再睡一夜。河边确实有树，也不是水冻住了。

@@ -1,0 +1,177 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: oz-ch-09
+bookId: book-oz
+title: The Queen of the Field Mice
+titleZh: 田鼠女王
+summaryZh: 铁皮人救下了一只被野猫追杀的田鼠，没想到她竟然是田鼠女王。女王召集成千上万的田鼠，用细绳拉动一辆木车，齐心协力把昏睡在罂粟花田里的胆小狮子救了出来。
+sections:
+  - id: oz-ch-09-s1
+    text: |-
+      “We cannot be far from the road of yellow brick, now,” remarked the Scarecrow, as he stood beside the girl, “for we have come nearly as far as the river carried us away.”
+
+      The Tin Woodman was about to reply when he heard a low growl, and turning his head (which worked beautifully on hinges) he saw a strange beast come bounding over the grass toward them. It was, indeed, a great yellow Wildcat, and the Woodman thought it must be chasing something, for its ears were lying close to its head and its mouth was wide open, showing two rows of ugly teeth, while its red eyes glowed like balls of fire. As it came nearer the Tin Woodman saw that running before the beast was a little gray field mouse, and although he had no heart he knew it was wrong for the Wildcat to try to kill such a pretty, harmless creature.
+
+      So the Woodman raised his axe, and as the Wildcat ran by he gave it a quick blow that cut the beast’s head clean off from its body, and it rolled over at his feet in two pieces.
+
+      The field mouse, now that it was freed from its enemy, stopped short; and coming slowly up to the Woodman it said, in a squeaky little voice:
+
+      “Oh, thank you! Thank you ever so much for saving my life.”
+
+      “Don’t speak of it, I beg of you,” replied the Woodman. “I have no heart, you know, so I am careful to help all those who may need a friend, even if it happens to be only a mouse.”
+
+      “Only a mouse!” cried the little animal, indignantly. “Why, I am a Queen—the Queen of all the Field Mice!”
+
+      “Oh, indeed,” said the Woodman, making a bow.
+
+      “Therefore you have done a great deed, as well as a brave one, in saving my life,” added the Queen.
+
+      At that moment several mice were seen running up as fast as their little legs could carry them, and when they saw their Queen they exclaimed:
+
+      “Oh, your Majesty, we thought you would be killed! How did you manage to escape the great Wildcat?” They all bowed so low to the little Queen that they almost stood upon their heads.
+
+      “This funny tin man,” she answered, “killed the Wildcat and saved my life. So hereafter you must all serve him, and obey his slightest wish.”
+    checkIn:
+      id: oz-ch-09-s1-c1
+      stem: Why does the Tin Woodman say he tries to help those who need a friend?
+      options:
+        - Because he wants to be rewarded
+        - Because he has no heart and wants to do right
+        - Because the Queen ordered him to help
+        - Because the Scarecrow told him to
+      correctIndex: 1
+      explanationZh: 铁皮人说 "I have no heart, you know, so I am careful to help all those who may need a friend"。他因为没有心，所以格外注意多做好事，而不是为了回报。
+  - id: oz-ch-09-s2
+    text: |-
+      “We will!” cried all the mice, in a shrill chorus. And then they scampered in all directions, for Toto had awakened from his sleep, and seeing all these mice around him he gave one bark of delight and jumped right into the middle of the group. Toto had always loved to chase mice when he lived in Kansas, and he saw no harm in it.
+
+      But the Tin Woodman caught the dog in his arms and held him tight, while he called to the mice, “Come back! Come back! Toto shall not hurt you.”
+
+      At this the Queen of the Mice stuck her head out from underneath a clump of grass and asked, in a timid voice, “Are you sure he will not bite us?”
+
+      “I will not let him,” said the Woodman; “so do not be afraid.”
+
+      One by one the mice came creeping back, and Toto did not bark again, although he tried to get out of the Woodman’s arms, and would have bitten him had he not known very well he was made of tin. Finally one of the biggest mice spoke.
+
+      “Is there anything we can do,” it asked, “to repay you for saving the life of our Queen?”
+
+      “Nothing that I know of,” answered the Woodman; but the Scarecrow, who had been trying to think, but could not because his head was stuffed with straw, said, quickly, “Oh, yes; you can save our friend, the Cowardly Lion, who is asleep in the poppy bed.”
+
+      “A Lion!” cried the little Queen. “Why, he would eat us all up.”
+
+      “Oh, no,” declared the Scarecrow; “this Lion is a coward.”
+
+      “Really?” asked the Mouse.
+
+      “He says so himself,” answered the Scarecrow, “and he would never hurt anyone who is our friend. If you will help us to save him I promise that he shall treat you all with kindness.”
+
+      “Very well,” said the Queen, “we trust you. But what shall we do?”
+
+      “Are there many of these mice which call you Queen and are willing to obey you?”
+
+      “Oh, yes; there are thousands,” she replied.
+
+      “Then send for them all to come here as soon as possible, and let each one bring a long piece of string.”
+
+      The Queen turned to the mice that attended her and told them to go at once and get all her people. As soon as they heard her orders they ran away in every direction as fast as possible.
+    checkIn:
+      id: oz-ch-09-s2-c1
+      stem: What does the Scarecrow ask the mice to do to repay the Woodman?
+      options:
+        - Bring them food and water
+        - Carry them across the river
+        - Save the Cowardly Lion from the poppy bed
+        - Find the yellow brick road
+      correctIndex: 2
+      explanationZh: Scarecrow 想到狮子还昏睡在罂粟花田里，于是请田鼠们帮忙救出他。女王一开始害怕狮子会吃掉他们，Scarecrow 解释这只狮子很胆小，不会伤害朋友。
+  - id: oz-ch-09-s3
+    text: |-
+      “Now,” said the Scarecrow to the Tin Woodman, “you must go to those trees by the riverside and make a truck that will carry the Lion.”
+
+      So the Woodman went at once to the trees and began to work; and he soon made a truck out of the limbs of trees, from which he chopped away all the leaves and branches. He fastened it together with wooden pegs and made the four wheels out of short pieces of a big tree trunk. So fast and so well did he work that by the time the mice began to arrive the truck was all ready for them.
+
+      They came from all directions, and there were thousands of them: big mice and little mice and middle-sized mice; and each one brought a piece of string in his mouth. It was about this time that Dorothy woke from her long sleep and opened her eyes. She was greatly astonished to find herself lying upon the grass, with thousands of mice standing around and looking at her timidly. But the Scarecrow told her about everything, and turning to the dignified little Mouse, he said:
+
+      “Permit me to introduce to you her Majesty, the Queen.”
+
+      Dorothy nodded gravely and the Queen made a curtsy, after which she became quite friendly with the little girl.
+
+      The Scarecrow and the Woodman now began to fasten the mice to the truck, using the strings they had brought. One end of a string was tied around the neck of each mouse and the other end to the truck. Of course the truck was a thousand times bigger than any of the mice who were to draw it; but when all the mice had been harnessed, they were able to pull it quite easily. Even the Scarecrow and the Tin Woodman could sit on it, and were drawn swiftly by their queer little horses to the place where the Lion lay asleep.
+
+      After a great deal of hard work, for the Lion was heavy, they managed to get him up on the truck. Then the Queen hurriedly gave her people the order to start, for she feared if the mice stayed among the poppies too long they also would fall asleep.
+
+      At first the little creatures, many though they were, could hardly stir the heavily loaded truck; but the Woodman and the Scarecrow both pushed from behind, and they got along better. Soon they rolled the Lion out of the poppy bed to the green fields, where he could breathe the sweet, fresh air again, instead of the poisonous scent of the flowers.
+
+      Dorothy came to meet them and thanked the little mice warmly for saving her companion from death. She had grown so fond of the big Lion she was glad he had been rescued.
+
+      Then the mice were unharnessed from the truck and scampered away through the grass to their homes. The Queen of the Mice was the last to leave.
+
+      “If ever you need us again,” she said, “come out into the field and call, and we shall hear you and come to your assistance. Good-bye!”
+
+      “Good-bye!” they all answered, and away the Queen ran, while Dorothy held Toto tightly lest he should run after her and frighten her.
+
+      After this they sat down beside the Lion until he should awaken; and the Scarecrow brought Dorothy some fruit from a tree near by, which she ate for her dinner.
+    checkIn:
+      id: oz-ch-09-s3-c1
+      stem: What does the Tin Woodman build for the mice?
+      options:
+        - A wooden truck with wheels
+        - A small house for the Queen
+        - A bridge over the river
+        - A cage to hold Toto
+      correctIndex: 0
+      explanationZh: Scarecrow 让铁皮人去河边用树枝做一辆 truck，铁皮人砍掉枝叶、用木钉固定，还用树干做了四个轮子。这辆车用来拉走昏睡的狮子。
+quiz:
+  - id: oz-ch-09-q1
+    stem: What was the Wildcat chasing when the Tin Woodman killed it?
+    options:
+      - A little gray field mouse
+      - Toto the dog
+      - A yellow bird
+      - Another wildcat
+    correctIndex: 0
+    explanationZh: 书中写道 "running before the beast was a little gray field mouse"，野猫正在追一只灰色小田鼠，铁皮人看到后挥斧救了她。
+  - id: oz-ch-09-q2
+    stem: What problem does Toto cause when the mice first gather?
+    options:
+      - He barks and jumps into the mice
+      - He runs away into the forest
+      - He eats the mice's string
+      - He wakes up the Lion
+    correctIndex: 0
+    explanationZh: Toto 醒来后开心地叫了一声就跳进鼠群中间，吓得田鼠们四处逃散。铁皮人赶紧把他抱住，让田鼠们回来。
+  - id: oz-ch-09-q3
+    stem: Why does the Queen fear the Cowardly Lion at first?
+    options:
+      - She thinks he is too heavy to carry
+      - She thinks he would eat all the mice
+      - She thinks he is not really a coward
+      - She thinks he will steal their string
+    correctIndex: 1
+    explanationZh: 女王一听到狮子就喊 "he would eat us all up"。Scarecrow 解释这只狮子自称胆小、不会伤害朋友，女王才答应帮忙。
+  - id: oz-ch-09-q4
+    stem: What does the Queen ask each mouse to bring?
+    options:
+      - A piece of string
+      - A handful of food
+      - A tree branch
+      - A flower from the poppy bed
+    correctIndex: 0
+    explanationZh: Scarecrow 请女王让每只田鼠各带一根长绳。后来田鼠们赶到时，每只嘴里都叼着一根绳子，绳子一头系在田鼠脖子上，另一头系在车上。
+  - id: oz-ch-09-q5
+    stem: Why does the Queen hurry the mice away from the poppy bed?
+    options:
+      - Because she wants the mice to go home for dinner
+      - Because she fears the mice will also fall asleep
+      - Because Toto is chasing them again
+      - Because a new wildcat is coming
+    correctIndex: 1
+    explanationZh: 书中写道女王急忙下令出发，"for she feared if the mice stayed among the poppies too long they also would fall asleep"。罂粟花的气味会让人昏睡，所以她要尽快撤离。
+  - id: oz-ch-09-q6
+    stem: What does the Queen tell Dorothy's group before she leaves?
+    options:
+      - Never come to the field again
+      - Call out in the field if you ever need us
+      - Bring Toto to meet us tomorrow
+      - Follow the yellow brick road alone
+    correctIndex: 1
+    explanationZh: 女王临别说 "If ever you need us again, come out into the field and call, and we shall hear you and come to your assistance." 她承诺只要在田野里呼唤，田鼠们就会来帮忙。

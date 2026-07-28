@@ -1,0 +1,221 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: oz-ch-05
+bookId: book-oz
+title: The Rescue of the Tin Woodman
+titleZh: 拯救铁皮樵夫
+summaryZh: 多萝西和稻草人在林中发现一个锈住的铁皮人，给他上了油后，他讲述了自己被东方恶女巫诅咒的悲惨身世。他决定加入他们前往翡翠城，请求奥兹给他一颗心。
+sections:
+  - id: oz-ch-05-s1
+    text: |-
+      When Dorothy awoke the sun was shining through the trees and Toto had long been out chasing birds around him and squirrels. She sat up and looked around her. There was the Scarecrow, still standing patiently in his corner, waiting for her.
+
+      “We must go and search for water,” she said to him.
+
+      “Why do you want water?” he asked.
+
+      “To wash my face clean after the dust of the road, and to drink, so the dry bread will not stick in my throat.”
+
+      “It must be inconvenient to be made of flesh,” said the Scarecrow thoughtfully, “for you must sleep, and eat and drink. However, you have brains, and it is worth a lot of bother to be able to think properly.”
+
+      They left the cottage and walked through the trees until they found a little spring of clear water, where Dorothy drank and bathed and ate her breakfast. She saw there was not much bread left in the basket, and the girl was thankful the Scarecrow did not have to eat anything, for there was scarcely enough for herself and Toto for the day.
+
+      When she had finished her meal, and was about to go back to the road of yellow brick, she was startled to hear a deep groan near by.
+
+      “What was that?” she asked timidly.
+
+      “I cannot imagine,” replied the Scarecrow; “but we can go and see.”
+
+      Just then another groan reached their ears, and the sound seemed to come from behind them. They turned and walked through the forest a few steps, when Dorothy discovered something shining in a ray of sunshine that fell between the trees. She ran to the place and then stopped short, with a little cry of surprise.
+
+      One of the big trees had been partly chopped through, and standing beside it, with an uplifted axe in his hands, was a man made entirely of tin. His head and arms and legs were jointed upon his body, but he stood perfectly motionless, as if he could not stir at all.
+
+      Dorothy looked at him in amazement, and so did the Scarecrow, while Toto barked sharply and made a snap at the tin legs, which hurt his teeth.
+
+      “Did you groan?” asked Dorothy.
+
+      “Yes,” answered the tin man, “I did. I’ve been groaning for more than a year, and no one has ever heard me before or come to help me.”
+    checkIn:
+      id: oz-ch-05-s1-c1
+      stem: Why does Dorothy want to find water in the morning?
+      options:
+        - To wash her face and drink with her dry bread
+        - To give Toto a bath after chasing squirrels
+        - To water the trees in the forest
+        - To clean the tin man's rusty joints
+      correctIndex: 0
+      explanationZh: 多萝西说要找水 "to wash my face clean after the dust of the road, and to drink"，还为了让干面包不会卡在嗓子里。给铁皮人上油是后来才发生的事。
+  - id: oz-ch-05-s2
+    text: |-
+      “What can I do for you?” she inquired softly, for she was moved by the sad voice in which the man spoke.
+
+      “Get an oil-can and oil my joints,” he answered. “They are rusted so badly that I cannot move them at all; if I am well oiled I shall soon be all right again. You will find an oil-can on a shelf in my cottage.”
+
+      Dorothy at once ran back to the cottage and found the oil-can, and then she returned and asked anxiously, “Where are your joints?”
+
+      “Oil my neck, first,” replied the Tin Woodman. So she oiled it, and as it was quite badly rusted the Scarecrow took hold of the tin head and moved it gently from side to side until it worked freely, and then the man could turn it himself.
+
+      “Now oil the joints in my arms,” he said. And Dorothy oiled them and the Scarecrow bent them carefully until they were quite free from rust and as good as new.
+
+      The Tin Woodman gave a sigh of satisfaction and lowered his axe, which he leaned against the tree.
+
+      “This is a great comfort,” he said. “I have been holding that axe in the air ever since I rusted, and I’m glad to be able to put it down at last. Now, if you will oil the joints of my legs, I shall be all right once more.”
+
+      So they oiled his legs until he could move them freely; and he thanked them again and again for his release, for he seemed a very polite creature, and very grateful.
+
+      “I might have stood there always if you had not come along,” he said; “so you have certainly saved my life. How did you happen to be here?”
+
+      “We are on our way to the Emerald City to see the Great Oz,” she answered, “and we stopped at your cottage to pass the night.”
+
+      “Why do you wish to see Oz?” he asked.
+
+      “I want him to send me back to Kansas, and the Scarecrow wants him to put a few brains into his head,” she replied.
+
+      The Tin Woodman appeared to think deeply for a moment. Then he said:
+
+      “Do you suppose Oz could give me a heart?”
+
+      “Why, I guess so,” Dorothy answered. “It would be as easy as to give the Scarecrow brains.”
+
+      “True,” the Tin Woodman returned. “So, if you will allow me to join your party, I will also go to the Emerald City and ask Oz to help me.”
+    checkIn:
+      id: oz-ch-05-s2-c1
+      stem: What does the Tin Woodman ask Dorothy to do for him first?
+      options:
+        - Find him a new axe
+        - Carry him to the road
+        - Get an oil-can and oil his joints
+        - Bring him food from the cottage
+      correctIndex: 2
+      explanationZh: 铁皮人说 "Get an oil-can and oil my joints"，因为关节锈住了无法动弹。油罐就在他小屋的架子上，多萝西找来后先给脖子上了油。
+  - id: oz-ch-05-s3
+    text: |-
+      “Come along,” said the Scarecrow heartily, and Dorothy added that she would be pleased to have his company. So the Tin Woodman shouldered his axe and they all passed through the forest until they came to the road that was paved with yellow brick.
+
+      The Tin Woodman had asked Dorothy to put the oil-can in her basket. “For,” he said, “if I should get caught in the rain, and rust again, I would need the oil-can badly.”
+
+      It was a bit of good luck to have their new comrade join the party, for soon after they had begun their journey again they came to a place where the trees and branches grew so thick over the road that the travelers could not pass. But the Tin Woodman set to work with his axe and chopped so well that soon he cleared a passage for the entire party.
+
+      Dorothy was thinking so earnestly as they walked along that she did not notice when the Scarecrow stumbled into a hole and rolled over to the side of the road. Indeed he was obliged to call to her to help him up again.
+
+      “Why didn’t you walk around the hole?” asked the Tin Woodman.
+
+      “I don’t know enough,” replied the Scarecrow cheerfully. “My head is stuffed with straw, you know, and that is why I am going to Oz to ask him for some brains.”
+
+      “Oh, I see,” said the Tin Woodman. “But, after all, brains are not the best things in the world.”
+
+      “Have you any?” inquired the Scarecrow.
+
+      “No, my head is quite empty,” answered the Woodman. “But once I had brains, and a heart also; so, having tried them both, I should much rather have a heart.”
+
+      “And why is that?” asked the Scarecrow.
+
+      “I will tell you my story, and then you will know.”
+
+      So, while they were walking through the forest, the Tin Woodman told the following story:
+
+      “I was born the son of a woodman who chopped down trees in the forest and sold the wood for a living. When I grew up, I too became a wood-chopper, and after my father died I took care of my old mother as long as she lived. Then I made up my mind that instead of living alone I would marry, so that I might not become lonely.
+
+      “There was one of the Munchkin girls who was so beautiful that I soon grew to love her with all my heart. She, on her part, promised to marry me as soon as I could earn enough money to build a better house for her; so I set to work harder than ever. But the girl lived with an old woman who did not want her to marry anyone, for she was so lazy she wished the girl to remain with her and do the cooking and the housework. So the old woman went to the Wicked Witch of the East, and promised her two sheep and a cow if she would prevent the marriage. Thereupon the Wicked Witch enchanted my axe, and when I was chopping away at my best one day, for I was anxious to get the new house and my wife as soon as possible, the axe slipped all at once and cut off my left leg.
+    checkIn:
+      id: oz-ch-05-s3-c1
+      stem: Why does the Tin Woodman want a heart instead of brains?
+      options:
+        - Because he never had brains before
+        - Because he once had both and prefers having a heart
+        - Because Oz told him he could only get one thing
+        - Because the Scarecrow told him hearts are better
+      correctIndex: 1
+      explanationZh: 铁皮人说他曾经既有脑子又有心："I had brains, and a heart also; so, having tried them both, I should much rather have a heart." 他是凭亲身经历做出的选择。
+  - id: oz-ch-05-s4
+    text: |-
+      “This at first seemed a great misfortune, for I knew a one-legged man could not do very well as a wood-chopper. So I went to a tinsmith and had him make me a new leg out of tin. The leg worked very well, once I was used to it. But my action angered the Wicked Witch of the East, for she had promised the old woman I should not marry the pretty Munchkin girl. When I began chopping again, my axe slipped and cut off my right leg. Again I went to the tinsmith, and again he made me a leg out of tin. After this the enchanted axe cut off my arms, one after the other; but, nothing daunted, I had them replaced with tin ones. The Wicked Witch then made the axe slip and cut off my head, and at first I thought that was the end of me. But the tinsmith happened to come along, and he made me a new head out of tin.
+
+      “I thought I had beaten the Wicked Witch then, and I worked harder than ever; but I little knew how cruel my enemy could be. She thought of a new way to kill my love for the beautiful Munchkin maiden, and made my axe slip again, so that it cut right through my body, splitting me into two halves. Once more the tinsmith came to my help and made me a body of tin, fastening my tin arms and legs and head to it, by means of joints, so that I could move around as well as ever. But, alas! I had now no heart, so that I lost all my love for the Munchkin girl, and did not care whether I married her or not. I suppose she is still living with the old woman, waiting for me to come after her.
+
+      “My body shone so brightly in the sun that I felt very proud of it and it did not matter now if my axe slipped, for it could not cut me. There was only one danger—that my joints would rust; but I kept an oil-can in my cottage and took care to oil myself whenever I needed it. However, there came a day when I forgot to do this, and, being caught in a rainstorm, before I thought of the danger my joints had rusted, and I was left to stand in the woods until you came to help me. It was a terrible thing to undergo, but during the year I stood there I had time to think that the greatest loss I had known was the loss of my heart. While I was in love I was the happiest man on earth; but no one can love who has not a heart, and so I am resolved to ask Oz to give me one. If he does, I will go back to the Munchkin maiden and marry her.”
+    checkIn:
+      id: oz-ch-05-s4-c1
+      stem: Why did the Tin Woodman stop caring about marrying the Munchkin girl?
+      options:
+        - Because the girl married someone else
+        - Because the old woman sent her away
+        - Because he lost his heart when he got a tin body
+        - Because he forgot her face after getting a tin head
+      correctIndex: 2
+      explanationZh: 当铁匠给他做了锡身体后，他感叹 "I had now no heart, so that I lost all my love for the Munchkin girl"。失去心之后，他就不在乎是否娶她了。
+  - id: oz-ch-05-s5
+    text: |-
+      Both Dorothy and the Scarecrow had been greatly interested in the story of the Tin Woodman, and now they knew why he was so anxious to get a new heart.
+
+      “All the same,” said the Scarecrow, “I shall ask for brains instead of a heart; for a fool would not know what to do with a heart if he had one.”
+
+      “I shall take the heart,” returned the Tin Woodman; “for brains do not make one happy, and happiness is the best thing in the world.”
+
+      Dorothy did not say anything, for she was puzzled to know which of her two friends was right, and she decided if she could only get back to Kansas and Aunt Em, it did not matter so much whether the Woodman had no brains and the Scarecrow no heart, or each got what he wanted.
+
+      What worried her most was that the bread was nearly gone, and another meal for herself and Toto would empty the basket. To be sure, neither the Woodman nor the Scarecrow ever ate anything, but she was not made of tin nor straw, and could not live unless she was fed.
+    checkIn:
+      id: oz-ch-05-s5-c1
+      stem: What worries Dorothy most at the end of the chapter?
+      options:
+        - That the Tin Woodman might rust again
+        - That the road is too long
+        - That she cannot decide who is right
+        - That the bread is nearly gone
+      correctIndex: 3
+      explanationZh: 章节结尾说 "What worried her most was that the bread was nearly gone"，因为稻草人和铁皮人都不吃东西，但她需要食物才能活下去。
+quiz:
+  - id: oz-ch-05-q1
+    stem: How did the Wicked Witch of the East harm the Tin Woodman?
+    options:
+      - She enchanted his axe so it slipped and cut off his body parts
+      - She put a curse on his house
+      - She sent a rainstorm to rust his joints
+      - She turned him into tin directly
+    correctIndex: 0
+    explanationZh: 东方恶女巫 "enchanted my axe"，让斧子一次次滑落，砍掉他的腿、手臂、甚至头和身体。生锈是后来他自己忘记上油才发生的。
+  - id: oz-ch-05-q2
+    stem: Who asked the Wicked Witch to stop the Tin Woodman's marriage?
+    options:
+      - The beautiful Munchkin girl herself
+      - An old woman who was too lazy to do her own work
+      - The tinsmith who made the tin body
+      - The Tin Woodman's mother
+    correctIndex: 1
+    explanationZh: 那个和女孩住在一起的老妇人太懒了，不想让女孩嫁人离开她，所以去找东方恶女巫帮忙阻止这门婚事。
+  - id: oz-ch-05-q3
+    stem: What happened the last time the Wicked Witch used the enchanted axe?
+    options:
+      - It cut off his head
+      - It cut right through his body, splitting him in two
+      - It cut off both legs at once
+      - It cut off his hands
+    correctIndex: 1
+    explanationZh: 女巫最后一次让斧子滑落时，"it cut right through my body, splitting me into two halves"。之后铁匠给他做了完整的锡身体，但他也从此失去了心。
+  - id: oz-ch-05-q4
+    stem: Why was the Tin Woodman stuck in the forest for over a year?
+    options:
+      - A tree fell on him and he could not move
+      - He was caught in a rainstorm and forgot to oil himself, so his joints rusted
+      - The Wicked Witch trapped him there on purpose
+      - He lost his axe and could not find his way home
+    correctIndex: 1
+    explanationZh: 他平时会给自己上油防锈，但有一天他忘了，又被暴雨淋到，关节就锈住了，在森林里站了一年多，直到多萝西来帮忙。
+  - id: oz-ch-05-q5
+    stem: What useful thing does the Tin Woodman do for the party soon after joining?
+    options:
+      - He carries Dorothy across a river
+      - He finds food for Toto
+      - He chops through thick branches blocking the road
+      - He scares away wild animals with his axe
+    correctIndex: 2
+    explanationZh: 他们上路不久就遇到树枝挡路，铁皮人用斧子 "chopped so well that soon he cleared a passage for the entire party"。这正是他作为铁皮樵夫的特长。
+  - id: oz-ch-05-q6
+    stem: What do the Scarecrow and the Tin Woodman disagree about at the end?
+    options:
+      - Whether Oz can really help them
+      - Which road to take to the Emerald City
+      - Whether brains or a heart is more important
+      - Whether Dorothy should go back to Kansas
+    correctIndex: 2
+    explanationZh: 稻草人认为脑子更重要，因为傻瓜有了心也不知道怎么用；铁皮人认为心更重要，因为 "happiness is the best thing in the world"。多萝西拿不定主意谁对。
