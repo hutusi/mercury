@@ -3,6 +3,8 @@ import { cache } from "react";
 import type { SanitizedQuestion, ScriptLine, Track } from "@/content/types";
 import { db } from "./db";
 import {
+  bookChapters,
+  books,
   listeningExercises,
   mistakeStates,
   mockExams,
@@ -18,7 +20,7 @@ import type { MistakeStatus } from "./mistakes-core";
  */
 
 export interface McqMistakeVM {
-  kind: "reading" | "listening" | "exam";
+  kind: "reading" | "listening" | "exam" | "book_quiz";
   refId: string;
   questionId: string;
   sourceTitle: string;
@@ -53,7 +55,8 @@ async function listStatuses(userId: string, track: Track | null): Promise<Mistak
   const rows = await db.query.mistakeStates.findMany({
     where: and(
       eq(mistakeStates.userId, userId),
-      track ? eq(mistakeStates.track, track) : undefined,
+      // Null-track rows are track-agnostic (books) and show under every filter.
+      track ? or(eq(mistakeStates.track, track), isNull(mistakeStates.track)) : undefined,
       gt(mistakeStates.wrongCount, 0),
     ),
     orderBy: desc(mistakeStates.lastWrongAt),
@@ -81,7 +84,7 @@ export const countActiveMistakes = cache(
       .where(
         and(
           eq(mistakeStates.userId, userId),
-          track ? eq(mistakeStates.track, track) : undefined,
+          track ? or(eq(mistakeStates.track, track), isNull(mistakeStates.track)) : undefined,
           gt(mistakeStates.wrongCount, 0),
           or(
             isNull(mistakeStates.clearedAt),
@@ -100,14 +103,15 @@ export async function getMistakesPageData(
   const statuses = await listStatuses(userId, track);
 
   const wordIds = statuses.filter((s) => s.kind === "vocab_quiz").map((s) => s.questionId);
-  const mcqRefIds = (kind: "reading" | "listening" | "exam") => [
+  const mcqRefIds = (kind: "reading" | "listening" | "exam" | "book_quiz") => [
     ...new Set(statuses.filter((s) => s.kind === kind).map((s) => s.refId)),
   ];
   const readingIds = mcqRefIds("reading");
   const listeningIds = mcqRefIds("listening");
   const examIds = mcqRefIds("exam");
+  const chapterIds = mcqRefIds("book_quiz");
 
-  const [words, reading, listening, exams] = await Promise.all([
+  const [words, reading, listening, exams, chapters] = await Promise.all([
     wordIds.length
       ? db.query.vocabWords.findMany({ where: inArray(vocabWords.id, wordIds) })
       : Promise.resolve([]),
@@ -122,12 +126,28 @@ export async function getMistakesPageData(
     examIds.length
       ? db.query.mockExams.findMany({ where: inArray(mockExams.id, examIds) })
       : Promise.resolve([]),
+    chapterIds.length
+      ? db
+          .select({
+            id: bookChapters.id,
+            title: bookChapters.title,
+            titleZh: bookChapters.titleZh,
+            sortOrder: bookChapters.sortOrder,
+            quiz: bookChapters.quiz,
+            bookTitle: books.title,
+            bookTitleZh: books.titleZh,
+          })
+          .from(bookChapters)
+          .innerJoin(books, eq(bookChapters.bookId, books.id))
+          .where(inArray(bookChapters.id, chapterIds))
+      : Promise.resolve([]),
   ]);
 
   const wordById = new Map(words.map((w) => [w.id, w]));
   const readingById = new Map(reading.map((e) => [e.id, e]));
   const listeningById = new Map(listening.map((e) => [e.id, e]));
   const examById = new Map(exams.map((e) => [e.id, e]));
+  const chapterById = new Map(chapters.map((c) => [c.id, c]));
 
   const vms: MistakeVM[] = [];
   for (const status of statuses) {
@@ -172,6 +192,25 @@ export async function getMistakesPageData(
           });
         }
       }
+      continue;
+    }
+
+    if (status.kind === "book_quiz") {
+      const chapter = chapterById.get(status.refId);
+      if (!chapter) continue;
+      const q = chapter.quiz.find((question) => question.id === status.questionId);
+      if (!q) continue;
+      vms.push({
+        ...base,
+        kind: "book_quiz",
+        refId: chapter.id,
+        questionId: q.id,
+        sourceTitle: `${chapter.bookTitle} · Ch. ${chapter.sortOrder}`,
+        sourceTitleZh: `${chapter.bookTitleZh}《${chapter.titleZh}》`,
+        question: { id: q.id, stem: q.stem, options: q.options },
+        // Deliberately no passage context: these are recall questions.
+        context: null,
+      });
       continue;
     }
 

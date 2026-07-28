@@ -644,6 +644,49 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
         "409": { $ref: "#/components/responses/Conflict" }
+  /api/v1/books/{bookId}/chapters/{chapterId}/quiz-attempts:
+    post:
+      summary: Grade the end-of-chapter recall quiz server-side
+      description: >
+        Submitting completes the chapter and unlocks the next one regardless
+        of score (completion-gated). Missed questions land in the mistakes
+        notebook as kind book_quiz with a null track. 409 chapter_locked if
+        the chapter itself is not yet readable;
+        book_quiz_request_conflict when a requestId is reused with different
+        answers.
+      tags: [books]
+      parameters:
+        - { $ref: "#/components/parameters/bookId" }
+        - { $ref: "#/components/parameters/chapterId" }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [requestId, answers, durationSeconds]
+              properties:
+                requestId:
+                  type: string
+                  format: uuid
+                  description: >-
+                    Client-generated idempotency key. Replaying the same id
+                    with the same answers returns the original grade without
+                    recording a second attempt.
+                answers:
+                  type: object
+                  additionalProperties: { type: integer, minimum: 0, maximum: 3 }
+                durationSeconds: { type: integer, minimum: 0 }
+      responses:
+        "200":
+          description: Graded result with per-question key and explanation.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/GradedExercise" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
   /api/v1/books/{bookId}/chapters/{chapterId}/check-ins:
     post:
       summary: Reveal one check-in's key after committing an answer
@@ -707,8 +750,10 @@ paths:
               type: object
               required: [kind, refId, questionId, chosenIndex]
               properties:
-                kind: { type: string, enum: [reading, listening, exam] }
-                refId: { type: string }
+                kind: { type: string, enum: [reading, listening, exam, book_quiz] }
+                refId:
+                  type: string
+                  description: Exercise id, exam id, or (book_quiz) chapter id.
                 questionId: { type: string }
                 chosenIndex: { type: integer, minimum: 0, maximum: 3 }
       responses:

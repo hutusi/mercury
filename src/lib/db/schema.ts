@@ -678,7 +678,7 @@ export const mistakeClears = pgTable(
     uniqueIndex("mistake_clears_user_question_idx").on(t.userId, t.kind, t.refId, t.questionId),
     check(
       "mistake_clears_kind_check",
-      sql`${t.kind} in ('reading', 'listening', 'vocab_quiz', 'exam')`,
+      sql`${t.kind} in ('reading', 'listening', 'vocab_quiz', 'exam', 'book_quiz')`,
     ),
   ],
 );
@@ -693,7 +693,8 @@ export const mistakeStates = pgTable(
     userId: text("user_id")
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
-    track: text("track").$type<Track>().notNull(),
+    /** Null = track-agnostic source (books) — visible under every track filter. */
+    track: text("track").$type<Track>(),
     kind: text("kind").$type<MistakeKind>().notNull(),
     refId: text("ref_id").notNull(),
     questionId: text("question_id").notNull(),
@@ -707,10 +708,13 @@ export const mistakeStates = pgTable(
   (t) => [
     primaryKey({ columns: [t.userId, t.kind, t.refId, t.questionId] }),
     index("mistake_states_user_track_idx").on(t.userId, t.track, t.lastWrongAt),
-    check("mistake_states_track_check", sql`${t.track} in ('toeic', 'ielts', 'business')`),
+    check(
+      "mistake_states_track_check",
+      sql`${t.track} is null or ${t.track} in ('toeic', 'ielts', 'business')`,
+    ),
     check(
       "mistake_states_kind_check",
-      sql`${t.kind} in ('reading', 'listening', 'vocab_quiz', 'exam')`,
+      sql`${t.kind} in ('reading', 'listening', 'vocab_quiz', 'exam', 'book_quiz')`,
     ),
     check("mistake_states_wrong_count_check", sql`${t.wrongCount} >= 0`),
     check(

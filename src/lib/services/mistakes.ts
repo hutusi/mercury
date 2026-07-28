@@ -3,6 +3,7 @@ import { z } from "zod";
 import type { McqQuestion, Track } from "@/content/types";
 import { db, type DbExecutor } from "../db";
 import {
+  bookChapters,
   listeningExercises,
   mistakeClears,
   mockExams,
@@ -15,7 +16,7 @@ import { IntegrityError, NotFoundError } from "./errors";
 import { clearMistakeState } from "./mistake-state";
 
 export const RetestSchema = z.object({
-  kind: z.enum(["reading", "listening", "exam"]),
+  kind: z.enum(["reading", "listening", "exam", "book_quiz"]),
   refId: z.string(),
   questionId: z.string(),
   chosenIndex: z.number().int().min(0).max(3),
@@ -57,7 +58,7 @@ async function upsertClear(
  */
 async function isActiveMistake(
   userId: string,
-  kind: "reading" | "listening" | "exam",
+  kind: "reading" | "listening" | "exam" | "book_quiz",
   refId: string,
   questionId: string,
 ): Promise<boolean> {
@@ -75,12 +76,13 @@ async function isActiveMistake(
   return Boolean(row);
 }
 
-/** Re-test a reading/listening/exam mistake; a correct answer clears it. */
+/** Re-test a reading/listening/exam/book mistake; a correct answer clears it. */
 export async function retestMistakeForUser(userId: string, input: unknown): Promise<RetestResult> {
   const { kind, refId, questionId, chosenIndex } = RetestSchema.parse(input);
 
   let questions: McqQuestion[] | undefined;
-  let track: Track | undefined;
+  // Null = track-agnostic source (books); undefined = source not found.
+  let track: Track | null | undefined;
   if (kind === "reading" || kind === "listening") {
     const exercise =
       kind === "reading"
@@ -88,6 +90,15 @@ export async function retestMistakeForUser(userId: string, input: unknown): Prom
         : await db.query.listeningExercises.findFirst({ where: eq(listeningExercises.id, refId) });
     questions = exercise?.questions;
     track = exercise?.track;
+  } else if (kind === "book_quiz") {
+    // Only the end-of-chapter quiz: check-ins are never recorded as
+    // mistakes, so they can never be retested (or leak keys) here.
+    const chapter = await db.query.bookChapters.findFirst({
+      columns: { quiz: true },
+      where: eq(bookChapters.id, refId),
+    });
+    questions = chapter?.quiz;
+    track = chapter ? null : undefined;
   } else {
     const exam = await db.query.mockExams.findFirst({ where: eq(mockExams.id, refId) });
     questions = exam?.sections.flatMap((s) => s.groups).flatMap((g) => g.questions);
@@ -104,7 +115,7 @@ export async function retestMistakeForUser(userId: string, input: unknown): Prom
   if (correct) {
     await db.transaction(async (tx) => {
       await upsertClear(tx, userId, kind, refId, questionId);
-      if (!track) throw new NotFoundError(`Unknown ${kind} source: ${refId}`);
+      if (track === undefined) throw new NotFoundError(`Unknown ${kind} source: ${refId}`);
       await clearMistakeState(tx, { userId, track, kind, refId, questionId });
       await recordActivityWith(tx, userId);
     });

@@ -1,9 +1,24 @@
 "use server";
 
 import { requireUser } from "../auth/session";
-import { answerBookCheckInForUser, type CheckInResult } from "../services/books";
+import {
+  answerBookCheckInForUser,
+  submitBookQuizForUser,
+  type CheckInResult,
+  type GradedBookQuiz,
+} from "../services/books";
 
-export type { CheckInResult } from "../services/books";
+export type { CheckInResult, GradedBookQuiz } from "../services/books";
+
+export async function submitBookQuiz(input: {
+  requestId: string;
+  chapterId: string;
+  answers: Record<string, number>;
+  durationSeconds: number;
+}): Promise<GradedBookQuiz> {
+  const user = await requireUser();
+  return submitBookQuizForUser(user.id, input);
+}
 
 export async function answerBookCheckIn(input: {
   chapterId: string;
