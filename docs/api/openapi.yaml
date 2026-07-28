@@ -590,6 +590,99 @@ paths:
         "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
 
+  # ── books (extensive reading, ADR 0024) ───────────────────────────────────
+  /api/v1/books:
+    get:
+      summary: Book library with per-book reading progress
+      description: >
+        Books are track-agnostic — no track filter applies. Difficulty is a
+        CEFR level plus genre tags. completedChapters counts chapters whose
+        end-of-chapter quiz has been submitted at least once.
+      tags: [books]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  books:
+                    type: array
+                    items: { $ref: "#/components/schemas/BookSummary" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/books/{bookId}:
+    get:
+      summary: One book with its chapter list, lock states, and best scores
+      description: >
+        Chapters unlock sequentially — chapter N+1 is locked until chapter N's
+        quiz has been submitted (any score). Chapter rows never include
+        section text or questions; fetch the chapter endpoint to read.
+      tags: [books]
+      parameters: [{ $ref: "#/components/parameters/bookId" }]
+      responses:
+        "200":
+          description: Book metadata plus per-chapter completed/locked/best.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /api/v1/books/{bookId}/chapters/{chapterId}:
+    get:
+      summary: Chapter reader payload, sanitized (no answer keys)
+      description: >
+        Sections carry prose plus optional check-in questions; the quiz array
+        holds the end-of-chapter questions. Neither group includes
+        correctIndex or explanationZh. 409 chapter_locked until the previous
+        chapter's quiz is submitted — the lock is server-enforced.
+      tags: [books]
+      parameters:
+        - { $ref: "#/components/parameters/bookId" }
+        - { $ref: "#/components/parameters/chapterId" }
+      responses:
+        "200":
+          description: Sanitized chapter (sections + check-ins + quiz, no keys).
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+  /api/v1/books/{bookId}/chapters/{chapterId}/check-ins:
+    post:
+      summary: Reveal one check-in's key after committing an answer
+      description: >
+        Stateless by design — returns correct/correctIndex/explanationZh and
+        records nothing (check-ins are zero-stakes; the chapter quiz is the
+        persisted event). Quiz question ids 404 here so this endpoint cannot
+        be used as an answer oracle for the end-of-chapter quiz.
+      tags: [books]
+      parameters:
+        - { $ref: "#/components/parameters/bookId" }
+        - { $ref: "#/components/parameters/chapterId" }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [questionId, chosenIndex]
+              properties:
+                questionId: { type: string }
+                chosenIndex: { type: integer, minimum: 0, maximum: 3 }
+      responses:
+        "200":
+          description: The reveal for this check-in.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [correct, correctIndex, explanationZh]
+                properties:
+                  correct: { type: boolean }
+                  correctIndex: { type: integer, minimum: 0, maximum: 3 }
+                  explanationZh: { type: string }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
   # ── mistakes notebook ─────────────────────────────────────────────────────
   /api/v1/mistakes:
     get:
@@ -1015,6 +1108,16 @@ components:
       in: path
       required: true
       schema: { type: string }
+    bookId:
+      name: bookId
+      in: path
+      required: true
+      schema: { type: string }
+    chapterId:
+      name: chapterId
+      in: path
+      required: true
+      schema: { type: string }
     trackFilter:
       name: track
       in: query
@@ -1261,6 +1364,24 @@ components:
               correctIndex: { type: integer }
               explanationZh: { type: string }
               correct: { type: boolean }
+    BookSummary:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        titleZh: { type: string }
+        author: { type: string }
+        cefrLevel: { type: string, enum: [A1, A2, B1, B2, C1, C2] }
+        genres:
+          type: array
+          items: { type: string }
+        chapterCount: { type: integer }
+        wordCount: { type: integer }
+        completedChapters: { type: integer }
+        lastActivityAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: "null" }
     SectionDeadline:
       type: object
       description: Epoch-ms timestamps issued by the server.
