@@ -8,6 +8,7 @@ import {
   vocabManifestKey,
 } from "../../content/audio-hash";
 import {
+  allBooks,
   allExams,
   allListening,
   allReading,
@@ -17,6 +18,7 @@ import {
   audioManifest,
 } from "../../content/load";
 import {
+  chapterWordCount,
   examQuestionCount,
   ListeningExerciseSchema,
   MockExamSchema,
@@ -24,9 +26,12 @@ import {
   SpeakingPromptSchema,
   VocabWordSchema,
   WritingPromptSchema,
+  type Book,
 } from "../../content/types";
 import { db } from "./index";
 import {
+  bookChapters,
+  books,
   listeningExercises,
   mockExams,
   readingExercises,
@@ -59,6 +64,25 @@ async function seed() {
     );
     if (new Set(qids).size !== qids.length) {
       throw new Error(`exam ${exam.id}: duplicate question ids`);
+    }
+  }
+
+  // Books arrive pre-validated per file by the loader; re-check the id
+  // invariants that span files (chapter ids and per-chapter question ids).
+  const seededBooks: Book[] = allBooks;
+  const chapterIds = seededBooks.flatMap((b) => b.chapters.map((c) => c.id));
+  if (new Set(chapterIds).size !== chapterIds.length) {
+    throw new Error("books: duplicate chapter ids");
+  }
+  for (const book of seededBooks) {
+    for (const chapter of book.chapters) {
+      const qids = [
+        ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn.id] : [])),
+        ...chapter.quiz.map((q) => q.id),
+      ];
+      if (new Set(qids).size !== qids.length) {
+        throw new Error(`book chapter ${chapter.id}: duplicate question ids`);
+      }
     }
   }
 
@@ -117,6 +141,28 @@ async function seed() {
         .onConflictDoUpdate({ target: speakingPrompts.id, set: prompt });
     }
 
+    for (const book of seededBooks) {
+      const { chapters, ...manifest } = book;
+      const row = {
+        ...manifest,
+        chapterCount: chapters.length,
+        wordCount: chapters.reduce((n, c) => n + chapterWordCount(c), 0),
+      };
+      await tx.insert(books).values(row).onConflictDoUpdate({ target: books.id, set: row });
+
+      for (const [i, chapter] of chapters.entries()) {
+        const chapterRow = {
+          ...chapter,
+          sortOrder: i + 1,
+          wordCount: chapterWordCount(chapter),
+        };
+        await tx
+          .insert(bookChapters)
+          .values(chapterRow)
+          .onConflictDoUpdate({ target: bookChapters.id, set: chapterRow });
+      }
+    }
+
     for (const exam of exams) {
       // Listening groups carry their render's path under the same
       // hash-freshness rule as exercises; attempt snapshots copy it along.
@@ -150,6 +196,11 @@ async function seed() {
   );
   console.log(`  writing_prompts:     ${writing.length}`);
   console.log(`  speaking_prompts:    ${speaking.length}`);
+  console.log(
+    `  books:               ${seededBooks.length} (${seededBooks
+      .map((b) => `${b.id}: ${b.chapters.length}ch`)
+      .join(", ")})`,
+  );
   console.log(
     `  mock_exams:          ${exams.length} (${exams
       .map((e) => `${e.id}: ${examQuestionCount(e)}Q`)

@@ -14,6 +14,8 @@ import {
 } from "drizzle-orm/pg-core";
 import type {
   Bilingual,
+  BookSection,
+  CefrLevel,
   ExamTrack,
   McqQuestion,
   ScriptLine,
@@ -253,6 +255,65 @@ export const mockExams = pgTable("mock_exams", {
   totalQuestions: integer("total_questions").notNull(),
 });
 
+/**
+ * Books are track-agnostic (ADR 0024): difficulty is CEFR, not an exam track.
+ * origin/ownerUserId keep the table BYOB-tolerant — seeded rows are global,
+ * a future user-uploaded book would be origin 'user' with an owner.
+ */
+export const books = pgTable(
+  "books",
+  {
+    id: text("id").primaryKey(),
+    title: text("title").notNull(),
+    titleZh: text("title_zh").notNull(),
+    author: text("author").notNull(),
+    authorZh: text("author_zh"),
+    descriptionZh: text("description_zh").notNull(),
+    cefrLevel: text("cefr_level").$type<CefrLevel>().notNull(),
+    genres: jsonb("genres").$type<string[]>().notNull(),
+    source: text("source").notNull(),
+    /** Computed at seed time from the loaded chapters. */
+    chapterCount: integer("chapter_count").notNull(),
+    wordCount: integer("word_count").notNull(),
+    origin: text("origin").$type<"seeded" | "user">().notNull().default("seeded"),
+    ownerUserId: text("owner_user_id").references(() => user.id, { onDelete: "cascade" }),
+  },
+  (t) => [
+    check("books_cefr_check", sql`${t.cefrLevel} in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')`),
+    check("books_origin_check", sql`${t.origin} in ('seeded', 'user')`),
+    check(
+      "books_owner_check",
+      sql`(${t.origin} = 'seeded' and ${t.ownerUserId} is null) or (${t.origin} = 'user' and ${t.ownerUserId} is not null)`,
+    ),
+    check("books_counts_check", sql`${t.chapterCount} > 0 and ${t.wordCount} > 0`),
+  ],
+);
+
+export const bookChapters = pgTable(
+  "book_chapters",
+  {
+    id: text("id").primaryKey(),
+    bookId: text("book_id")
+      .notNull()
+      .references(() => books.id, { onDelete: "cascade" }),
+    /** 1-based reading order, from the manifest's chapterFiles position. */
+    sortOrder: integer("sort_order").notNull(),
+    title: text("title").notNull(),
+    titleZh: text("title_zh").notNull(),
+    summaryZh: text("summary_zh"),
+    /** Full sections including check-in answers — never sent raw to the client. */
+    sections: jsonb("sections").$type<BookSection[]>().notNull(),
+    /** End-of-chapter quiz including answers — never sent raw to the client. */
+    quiz: jsonb("quiz").$type<McqQuestion[]>().notNull(),
+    wordCount: integer("word_count").notNull(),
+  },
+  (t) => [
+    uniqueIndex("book_chapters_book_order_idx").on(t.bookId, t.sortOrder),
+    check("book_chapters_order_check", sql`${t.sortOrder} >= 1`),
+    check("book_chapters_word_count_check", sql`${t.wordCount} > 0`),
+  ],
+);
+
 // ---------------------------------------------------------------------------
 // User progress
 // ---------------------------------------------------------------------------
@@ -343,6 +404,48 @@ export const exerciseAttempts = pgTable(
       sql`${t.total} > 0 and ${t.score} between 0 and ${t.total}`,
     ),
     check("exercise_attempts_duration_check", sql`${t.durationSeconds} >= 0`),
+  ],
+);
+
+/**
+ * End-of-chapter recall quiz attempts. Deliberately separate from
+ * exercise_attempts: books have no truthful track (its track column is
+ * NOT NULL by design), and real FKs survive per-user books later. Completion,
+ * unlock state, and "current chapter" are all derived from these rows.
+ */
+export const bookQuizAttempts = pgTable(
+  "book_quiz_attempts",
+  {
+    id: text("id").primaryKey().$defaultFn(uuid),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    bookId: text("book_id")
+      .notNull()
+      .references(() => books.id, { onDelete: "cascade" }),
+    chapterId: text("chapter_id")
+      .notNull()
+      .references(() => bookChapters.id, { onDelete: "cascade" }),
+    answers: jsonb("answers").$type<AnswerMap>().notNull(),
+    score: integer("score").notNull(),
+    total: integer("total").notNull(),
+    durationSeconds: integer("duration_seconds").notNull().default(0),
+    completedAt: ts("completed_at").notNull().$defaultFn(now),
+    /** Client-supplied idempotency key + graded-input fingerprint. */
+    requestId: text("request_id"),
+    inputHash: text("input_hash"),
+  },
+  (t) => [
+    index("book_quiz_attempts_user_book_idx").on(t.userId, t.bookId, t.chapterId),
+    index("book_quiz_attempts_user_idx").on(t.userId, t.completedAt),
+    uniqueIndex("book_quiz_attempts_request_idx")
+      .on(t.userId, t.requestId)
+      .where(sql`${t.requestId} is not null`),
+    check(
+      "book_quiz_attempts_score_check",
+      sql`${t.total} > 0 and ${t.score} between 0 and ${t.total}`,
+    ),
+    check("book_quiz_attempts_duration_check", sql`${t.durationSeconds} >= 0`),
   ],
 );
 

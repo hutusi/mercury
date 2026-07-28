@@ -3,8 +3,18 @@ import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import { buildContentSchemas } from "../../scripts/generate-content-schemas";
-import { allExams, allListening, allReading, allSpeaking, allVocab, allWriting } from "./load";
 import {
+  allBooks,
+  allExams,
+  allListening,
+  allReading,
+  allSpeaking,
+  allVocab,
+  allWriting,
+} from "./load";
+import {
+  BookChapterSchema,
+  chapterWordCount,
   examQuestionCount,
   ListeningExerciseSchema,
   MockExamSchema,
@@ -56,6 +66,52 @@ describe("seed content", () => {
       expect(allSpeaking.some((p) => p.track === track)).toBe(true);
     }
   });
+});
+
+describe("books", () => {
+  test("book ids are unique", () => {
+    const ids = allBooks.map((b) => b.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  test("chapter ids are unique across all books", () => {
+    const ids = allBooks.flatMap((b) => b.chapters.map((c) => c.id));
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  for (const book of allBooks) {
+    test(`${book.id}: chapters parse and belong to the book`, () => {
+      for (const chapter of book.chapters) {
+        expect(() => BookChapterSchema.parse(chapter)).not.toThrow();
+        expect(chapter.bookId).toBe(book.id);
+      }
+    });
+
+    test(`${book.id}: section ids are unique within each chapter`, () => {
+      for (const chapter of book.chapters) {
+        const ids = chapter.sections.map((s) => s.id);
+        expect(new Set(ids).size).toBe(ids.length);
+      }
+    });
+
+    test(`${book.id}: question ids are unique across check-ins and quiz per chapter`, () => {
+      // Question ids key the attempt answer map and mistake_states — a
+      // duplicate would silently merge answers, like exam question ids.
+      for (const chapter of book.chapters) {
+        const qids = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn.id] : [])),
+          ...chapter.quiz.map((q) => q.id),
+        ];
+        expect(new Set(qids).size).toBe(qids.length);
+      }
+    });
+
+    test(`${book.id}: every chapter has prose`, () => {
+      for (const chapter of book.chapters) {
+        expect(chapterWordCount(chapter)).toBeGreaterThan(0);
+      }
+    });
+  }
 });
 
 describe("mock exams", () => {

@@ -158,3 +158,61 @@ export function examQuestionCount(exam: Pick<MockExam, "sections">): number {
     0,
   );
 }
+
+// ---------------------------------------------------------------------------
+// Books (ADR 0024): extensive reading with pre-generated recall questions.
+// Track-agnostic — difficulty is CEFR, not an exam track.
+// ---------------------------------------------------------------------------
+
+export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
+export const CefrLevelSchema = z.enum(CEFR_LEVELS);
+export type CefrLevel = z.infer<typeof CefrLevelSchema>;
+
+export const BookSectionSchema = z.object({
+  id: z.string(),
+  /** English prose; paragraphs separated by blank lines. */
+  text: z.string().min(1),
+  /** Low-stakes recall check-in shown at this section's break. */
+  checkIn: McqQuestionSchema.optional(),
+});
+export type BookSection = z.infer<typeof BookSectionSchema>;
+
+export const BookChapterSchema = z.object({
+  id: z.string(),
+  /** Must match the parent manifest's id — cross-checked at load time. */
+  bookId: z.string(),
+  title: z.string(),
+  titleZh: z.string(),
+  /** 1-2 句中文章节导读。 */
+  summaryZh: z.string().optional(),
+  sections: z.array(BookSectionSchema).min(1),
+  /** End-of-chapter recall quiz, taken with the prose hidden. */
+  quiz: z.array(McqQuestionSchema).min(3),
+});
+export type BookChapter = z.infer<typeof BookChapterSchema>;
+
+export const BookManifestSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  titleZh: z.string(),
+  author: z.string(),
+  authorZh: z.string().optional(),
+  descriptionZh: z.string(),
+  cefrLevel: CefrLevelSchema,
+  genres: z.array(z.string()).min(1),
+  /** Provenance, e.g. "Project Gutenberg eBook #55 (public domain)". */
+  source: z.string(),
+  /** Ordered chapter file names under chapters/ — array position is load-bearing. */
+  chapterFiles: z.array(z.string()).min(1),
+});
+export type BookManifest = z.infer<typeof BookManifestSchema>;
+
+/** Assembled book the loader exports: manifest plus its chapters, in order. */
+export type Book = Omit<BookManifest, "chapterFiles"> & { chapters: BookChapter[] };
+
+export function chapterWordCount(chapter: Pick<BookChapter, "sections">): number {
+  return chapter.sections.reduce(
+    (total, section) => total + section.text.split(/\s+/).filter(Boolean).length,
+    0,
+  );
+}
