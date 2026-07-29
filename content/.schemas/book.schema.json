@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "titleZh": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "authorZh": {
+      "type": "string"
+    },
+    "descriptionZh": {
+      "type": "string"
+    },
+    "cefrLevel": {
+      "type": "string",
+      "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+    },
+    "genres": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source": {
+      "type": "string"
+    },
+    "chapterFiles": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "titleZh",
+    "author",
+    "descriptionZh",
+    "cefrLevel",
+    "genres",
+    "source",
+    "chapterFiles"
+  ],
+  "additionalProperties": false
+}

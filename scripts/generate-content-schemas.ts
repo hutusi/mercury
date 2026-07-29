@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import {
+  BookChapterSchema,
+  BookManifestSchema,
   ListeningExerciseSchema,
   MockExamSchema,
   ReadingExerciseSchema,
@@ -32,14 +34,18 @@ export function buildContentSchemas(): Record<string, unknown> {
     "speaking.schema.json": z.toJSONSchema(z.array(SpeakingPromptSchema), opts),
     // Exam files hold a single exam object, not an array.
     "exam.schema.json": z.toJSONSchema(MockExamSchema, opts),
+    // Book files hold single objects too: one manifest, one chapter per file.
+    "book.schema.json": z.toJSONSchema(BookManifestSchema, opts),
+    "book-chapter.schema.json": z.toJSONSchema(BookChapterSchema, opts),
   };
 }
 
 if (import.meta.main) {
   const dir = path.join(process.cwd(), "content", ".schemas");
   fs.mkdirSync(dir, { recursive: true });
-  for (const [name, schema] of Object.entries(buildContentSchemas())) {
+  const schemas = Object.entries(buildContentSchemas());
+  for (const [name, schema] of schemas) {
     fs.writeFileSync(path.join(dir, name), JSON.stringify(schema, null, 2) + "\n");
   }
-  console.log("Wrote 6 schemas to content/.schemas/");
+  console.log(`Wrote ${schemas.length} schemas to content/.schemas/`);
 }

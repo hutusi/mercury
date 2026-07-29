@@ -6,14 +6,15 @@ All learning content is authored as YAML in the top-level `content/` directory, 
 
 Schemas and types live in `src/content/types.ts`; `src/content/load.ts` reads and validates the YAML files and exposes the `all*` aggregates to the seed script and tests. Every content kind follows the bilingual convention: **learning material in English, scaffolding in Simplified Chinese** — titles carry both (`title` / `titleZh`), prompts carry both (`promptEn` / `promptZh`), explanations are Chinese (`explanationZh`), and checklists are `{ en, zh }` pairs.
 
-| Kind       | File pattern                                                                                | Document shape     | Schema                    |
-| ---------- | ------------------------------------------------------------------------------------------- | ------------------ | ------------------------- |
-| Vocabulary | `content/vocab/{toeic,ielts,business}.yaml`                                                 | array of words     | `VocabWordSchema`         |
-| Reading    | `content/reading/{track}.yaml`                                                              | array of exercises | `ReadingExerciseSchema`   |
-| Listening  | `content/listening/{track}.yaml`                                                            | array of exercises | `ListeningExerciseSchema` |
-| Writing    | `content/writing/{track}.yaml`                                                              | array of prompts   | `WritingPromptSchema`     |
-| Speaking   | `content/speaking/{track}.yaml`                                                             | array of prompts   | `SpeakingPromptSchema`    |
-| Mock exams | `content/exams/<track>-<paper>.yaml` (currently `{toeic,ielts}-{mini,standard,standard-2}`) | one exam object    | `MockExamSchema`          |
+| Kind       | File pattern                                                                                | Document shape     | Schema                                     |
+| ---------- | ------------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------ |
+| Vocabulary | `content/vocab/{toeic,ielts,business}.yaml`                                                 | array of words     | `VocabWordSchema`                          |
+| Reading    | `content/reading/{track}.yaml`                                                              | array of exercises | `ReadingExerciseSchema`                    |
+| Listening  | `content/listening/{track}.yaml`                                                            | array of exercises | `ListeningExerciseSchema`                  |
+| Writing    | `content/writing/{track}.yaml`                                                              | array of prompts   | `WritingPromptSchema`                      |
+| Speaking   | `content/speaking/{track}.yaml`                                                             | array of prompts   | `SpeakingPromptSchema`                     |
+| Mock exams | `content/exams/<track>-<paper>.yaml` (currently `{toeic,ielts}-{mini,standard,standard-2}`) | one exam object    | `MockExamSchema`                           |
+| Books      | `content/books/<slug>/book.yaml` + `content/books/<slug>/chapters/<id>.yaml`                | one object each    | `BookManifestSchema` / `BookChapterSchema` |
 
 New files must be registered in `src/content/load.ts` — file order there is deliberate and hardcoded (vocabulary `sort_order` derives from array position; never load by directory order).
 
@@ -27,7 +28,7 @@ New files must be registered in `src/content/load.ts` — file order there is de
 
 ## Id conventions — ids are load-bearing
 
-Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001` (listening), `toeic-wr-001` (writing), `ielts-s-003` (speaking), `exam-toeic-mini` (exam). Exam internals use prefixed ids: sections (`toeic-mini-listening`), groups (`tm-lg1`), questions (`tm-l-q01`).
+Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001` (listening), `toeic-wr-001` (writing), `ielts-s-003` (speaking), `exam-toeic-mini` (exam). Exam internals use prefixed ids: sections (`toeic-mini-listening`), groups (`tm-lg1`), questions (`tm-l-q01`). Books nest hierarchically: book `book-oz`, chapter `oz-ch-01`, section `oz-ch-01-s1`, check-in `oz-ch-01-s1-c1`, quiz question `oz-ch-01-q1`.
 
 **Never rename an id once shipped.** Progress rows reference them: `srs_cards.word_id`, `exercise_attempts.ref_id`, submissions' `prompt_id`, and mock-exam `answers` maps are keyed by question id. Renaming orphans user data. Exam attempts freeze a complete section snapshot when they start, so later edits cannot corrupt those attempts, but stable ids remain necessary for progress, mistakes, analytics, and cross-release continuity. Add new ids, don't recycle old ones.
 
@@ -47,12 +48,27 @@ Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001`
 
 **Mock exams** — `sections[]` (each `listening` or `reading`, with `durationSeconds`) → `groups[]` (a group carries a `script` for listening or a `passage` for reading) → 4-option `questions[]`. **Question ids must be unique across the whole exam** — they key the flat answer map on the attempt row. Every exam needs at least one listening and one reading section (the TOEIC estimator sums per kind). Distribute `correctIndex` across positions; clustering on one letter is a tell.
 
+**Books** ([ADR 0024](adr/0024-book-reading-pregenerated-recall.md)) — track-agnostic extensive reading: a `book.yaml` manifest (bilingual titles, author, `descriptionZh`, CEFR level, genres, provenance in `source`, and the **ordered** `chapterFiles` list — array position is reading order, like vocab sort order) plus one YAML per chapter. A chapter is `sections[]` of prose (400–800 words each, `|-` block scalars, blank lines between paragraphs), each optionally carrying one `checkIn` MCQ anchored at its break, and a `quiz` of ≥3 end-of-chapter recall MCQs. Question ids must be unique across a chapter's check-ins **and** quiz combined (they share the attempt answer map and `mistake_states`). Register new book directories in `BOOK_DIRS` in `src/content/load.ts`.
+
+The authoring workflow is script-assisted, human-reviewed:
+
+```bash
+# 1. Skeletons: strip Gutenberg boilerplate, split chapters, pack sections
+bun run content:book-ingest -- --file pg55.txt --slug the-wonderful-wizard-of-oz --prefix oz --book-id book-oz
+# 2. Hand-adjust awkward section breaks; write book.yaml; register in load.ts
+# 3. Draft questions via the configured AI provider (rewrites the YAML)
+bun run content:book-questions -- --book the-wonderful-wizard-of-oz
+# 4. REVIEW EVERY QUESTION before committing (checklist below), then seed
+```
+
+Review checklist for generated questions: the answer is truly stated in the text (re-read the section); exactly one option is defensible; `explanationZh` teaches (points at the text, dismisses the tempting distractor **by content, never by letter/position** — option order is script-assigned, and a content test enforces the position spread) rather than asserts; check-ins only reference their own section; `titleZh` follows the book's published translation conventions. Runtime never calls AI for books — what you commit is what learners get, so the review **is** the quality bar. Never regenerate a shipped chapter: its question ids key learner answer maps and mistakes.
+
 ## Validation
 
 Three layers enforce the same invariants:
 
 - The editor, live: the `$schema` directive validates shape as you type (advisory — zod is the authority).
-- `bun run test` → `src/content/content.test.ts`: every file loads through `src/content/load.ts` (zod parse with file-scoped errors), id uniqueness, per-exam question-id uniqueness, section-kind coverage, per-track coverage of all five practice areas. It also guards the pipeline itself: app code must not import the loader (runtime content comes from Postgres), and the committed JSON Schemas must match the zod model.
+- `bun run test` → `src/content/content.test.ts`: every file loads through `src/content/load.ts` (zod parse with file-scoped errors), id uniqueness, per-exam question-id uniqueness, section-kind coverage, per-track coverage of all five practice areas, and the book invariants (chapter/section ids unique, per-chapter question ids unique across check-ins + quiz, `bookId` cross-checks, correct-answer position spread). It also guards the pipeline itself: app code must not import the loader (runtime content comes from Postgres), and the committed JSON Schemas must match the zod model.
 - `bun run db:seed` re-validates before writing and refuses duplicate ids.
 
 MCQs are exactly 4 options with `correctIndex` in 0–3 (schema-enforced).

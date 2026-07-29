@@ -4,12 +4,15 @@ import { parse } from "yaml";
 import { z } from "zod";
 import { AudioManifestSchema, type AudioManifest } from "./audio-hash";
 import {
+  BookChapterSchema,
+  BookManifestSchema,
   ListeningExerciseSchema,
   MockExamSchema,
   ReadingExerciseSchema,
   SpeakingPromptSchema,
   VocabWordSchema,
   WritingPromptSchema,
+  type Book,
 } from "./types";
 
 /**
@@ -53,6 +56,24 @@ export const allExams = [
   "exams/ielts-standard.yaml",
   "exams/ielts-standard-2.yaml",
 ].map((file) => loadFile(file, MockExamSchema));
+
+// Chapter order derives from the manifest's chapterFiles array position, so
+// each book directory owns its own ordering; only the directory list is here.
+const BOOK_DIRS = ["the-wonderful-wizard-of-oz"] as const;
+
+export const allBooks: Book[] = BOOK_DIRS.map((dir) => {
+  const { chapterFiles, ...manifest } = loadFile(`books/${dir}/book.yaml`, BookManifestSchema);
+  const chapters = chapterFiles.map((file) => {
+    const chapter = loadFile(`books/${dir}/chapters/${file}`, BookChapterSchema);
+    if (chapter.bookId !== manifest.id) {
+      throw new Error(
+        `content/books/${dir}/chapters/${file}: bookId ${chapter.bookId} != ${manifest.id}`,
+      );
+    }
+    return chapter;
+  });
+  return { ...manifest, chapters };
+});
 
 // Machine-written by `bun run content:audio` (ADR 0021); absent until audio
 // is first generated, and tolerated — exercises then seed without audio.

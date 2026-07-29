@@ -26,6 +26,7 @@ function baseInput(overrides: Partial<PlanInput> = {}): PlanInput {
       writing: { id: "w-1", suggestedMinutes: 20 },
       speaking: { id: "s-1" },
       examId: "exam-1",
+      bookChapter: null,
     },
     today: NOW,
     ...overrides,
@@ -66,6 +67,51 @@ describe("buildDailyPlan", () => {
   test("mistakes retest comes right after vocab", () => {
     const items = buildDailyPlan(baseInput({ dueCount: 4, activeMistakes: 5 }));
     expect(items[1]).toMatchObject({ kind: "mistakes", href: "/mistakes", estMinutes: 5 });
+  });
+
+  test("an in-progress book slots after mistakes and before skill practice", () => {
+    const items = buildDailyPlan(
+      baseInput({
+        dueCount: 4,
+        activeMistakes: 3,
+        available: {
+          ...baseInput().available,
+          bookChapter: { bookId: "book-oz", chapterId: "oz-ch-02", estMinutes: 12 },
+        },
+      }),
+    );
+    expect(items.map((i) => i.kind).slice(0, 3)).toEqual([
+      "vocab_review",
+      "mistakes",
+      "book_chapter",
+    ]);
+    expect(items[2]).toMatchObject({
+      refId: "oz-ch-02",
+      href: "/books/book-oz/chapters/oz-ch-02",
+      estMinutes: 12,
+      reasonKey: "continueBook",
+    });
+  });
+
+  test("no book item without an in-progress book — fresh accounts unchanged", () => {
+    // The plan continues books, it never starts them (bookChapter is null
+    // until a first quiz attempt exists).
+    expect(buildDailyPlan(baseInput()).some((i) => i.kind === "book_chapter")).toBe(false);
+  });
+
+  test("the book item competes inside the minutes budget", () => {
+    const items = buildDailyPlan(
+      baseInput({
+        dueCount: 30,
+        activeMistakes: 10,
+        available: {
+          ...baseInput().available,
+          bookChapter: { bookId: "book-oz", chapterId: "oz-ch-02", estMinutes: 12 },
+        },
+      }),
+    );
+    // 15 (vocab) + 10 (mistakes) = 25 ≥ 20 → the budget closes before the book.
+    expect(items.map((i) => i.kind)).toEqual(["vocab_review", "mistakes"]);
   });
 
   test("weakest skill drives practice choice", () => {

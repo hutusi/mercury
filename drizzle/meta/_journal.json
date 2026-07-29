@@ -134,6 +134,27 @@
       "when": 1784358267803,
       "tag": "0018_brainy_the_executioner",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1785248337617,
+      "tag": "0019_nostalgic_tyger_tiger",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1785249478765,
+      "tag": "0020_flimsy_nuke",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1785281697338,
+      "tag": "0021_greedy_redwing",
+      "breakpoints": true
     }
   ]
 }

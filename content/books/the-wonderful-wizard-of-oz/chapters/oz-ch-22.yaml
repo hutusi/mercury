@@ -1,0 +1,142 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: oz-ch-22
+bookId: book-oz
+title: The Country of the Quadlings
+titleZh: 夸德林人的国度
+summaryZh: 多萝西一行离开森林后遇到一座陡峭的山坡，山上的“锤头人”用能弹射的脑袋拦住了去路。无奈之下多萝西最后一次召唤飞猴，带他们越过山丘，来到富庶的夸德林人国度，前往好女巫格林达的城堡。
+sections:
+  - id: oz-ch-22-s1
+    text: |-
+      The four travelers passed through the rest of the forest in safety, and when they came out from its gloom saw before them a steep hill, covered from top to bottom with great pieces of rock.
+
+      “That will be a hard climb,” said the Scarecrow, “but we must get over the hill, nevertheless.”
+
+      So he led the way and the others followed. They had nearly reached the first rock when they heard a rough voice cry out, “Keep back!”
+
+      “Who are you?” asked the Scarecrow.
+
+      Then a head showed itself over the rock and the same voice said, “This hill belongs to us, and we don’t allow anyone to cross it.”
+
+      “But we must cross it,” said the Scarecrow. “We’re going to the country of the Quadlings.”
+
+      “But you shall not!” replied the voice, and there stepped from behind the rock the strangest man the travelers had ever seen.
+
+      He was quite short and stout and had a big head, which was flat at the top and supported by a thick neck full of wrinkles. But he had no arms at all, and, seeing this, the Scarecrow did not fear that so helpless a creature could prevent them from climbing the hill. So he said, “I’m sorry not to do as you wish, but we must pass over your hill whether you like it or not,” and he walked boldly forward.
+
+      As quick as lightning the man’s head shot forward and his neck stretched out until the top of the head, where it was flat, struck the Scarecrow in the middle and sent him tumbling, over and over, down the hill. Almost as quickly as it came the head went back to the body, and the man laughed harshly as he said, “It isn’t as easy as you think!”
+
+      A chorus of boisterous laughter came from the other rocks, and Dorothy saw hundreds of the armless Hammer-Heads upon the hillside, one behind every rock.
+
+      The Lion became quite angry at the laughter caused by the Scarecrow’s mishap, and giving a loud roar that echoed like thunder, he dashed up the hill.
+
+      Again a head shot swiftly out, and the great Lion went rolling down the hill as if he had been struck by a cannon ball.
+
+      Dorothy ran down and helped the Scarecrow to his feet, and the Lion came up to her, feeling rather bruised and sore, and said, “It is useless to fight people with shooting heads; no one can withstand them.”
+    checkIn:
+      id: oz-ch-22-s1-c1
+      stem: Why could the Scarecrow and Lion not climb the hill?
+      options:
+        - The rocks were too slippery.
+        - The Hammer-Heads shot their heads out and knocked them down.
+        - A strong wind pushed them back.
+        - The hill was too steep for their legs.
+      correctIndex: 1
+      explanationZh: 锤头怪虽然没有手臂，但他们的脖子能像闪电一样把头弹射出去，把稻草人撞得滚下山。狮子冲上去时也被「shot swiftly out」的头击退。石头滑或坡太陡只是干扰项。
+  - id: oz-ch-22-s2
+    text: |-
+      “What can we do, then?” she asked.
+
+      “Call the Winged Monkeys,” suggested the Tin Woodman. “You have still the right to command them once more.”
+
+      “Very well,” she answered, and putting on the Golden Cap she uttered the magic words. The Monkeys were as prompt as ever, and in a few moments the entire band stood before her.
+
+      “What are your commands?” inquired the King of the Monkeys, bowing low.
+
+      “Carry us over the hill to the country of the Quadlings,” answered the girl.
+
+      “It shall be done,” said the King, and at once the Winged Monkeys caught the four travelers and Toto up in their arms and flew away with them. As they passed over the hill the Hammer-Heads yelled with vexation, and shot their heads high in the air, but they could not reach the Winged Monkeys, which carried Dorothy and her comrades safely over the hill and set them down in the beautiful country of the Quadlings.
+
+      “This is the last time you can summon us,” said the leader to Dorothy; “so good-bye and good luck to you.”
+
+      “Good-bye, and thank you very much,” returned the girl; and the Monkeys rose into the air and were out of sight in a twinkling.
+
+      The country of the Quadlings seemed rich and happy. There was field upon field of ripening grain, with well-paved roads running between, and pretty rippling brooks with strong bridges across them. The fences and houses and bridges were all painted bright red, just as they had been painted yellow in the country of the Winkies and blue in the country of the Munchkins. The Quadlings themselves, who were short and fat and looked chubby and good-natured, were dressed all in red, which showed bright against the green grass and the yellowing grain.
+
+      The Monkeys had set them down near a farmhouse, and the four travelers walked up to it and knocked at the door. It was opened by the farmer’s wife, and when Dorothy asked for something to eat the woman gave them all a good dinner, with three kinds of cake and four kinds of cookies, and a bowl of milk for Toto.
+
+      “How far is it to the Castle of Glinda?” asked the child.
+
+      “It is not a great way,” answered the farmer’s wife. “Take the road to the South and you will soon reach it.”
+
+      Thanking the good woman, they started afresh and walked by the fields and across the pretty bridges until they saw before them a very beautiful Castle. Before the gates were three young girls, dressed in handsome red uniforms trimmed with gold braid; and as Dorothy approached, one of them said to her:
+
+      “Why have you come to the South Country?”
+
+      “To see the Good Witch who rules here,” she answered. “Will you take me to her?”
+
+      “Let me have your name, and I will ask Glinda if she will receive you.” They told who they were, and the girl soldier went into the Castle. After a few moments she came back to say that Dorothy and the others were to be admitted at once.
+    checkIn:
+      id: oz-ch-22-s2-c1
+      stem: How did the travelers get over the hill?
+      options:
+        - They fought the Hammer-Heads.
+        - They climbed at night.
+        - They found a secret tunnel.
+        - They called the Winged Monkeys.
+      correctIndex: 3
+      explanationZh: 锡樵夫提醒多萝西还能用金帽召唤飞猴。飞猴把四人托起飞过山坡，锤头怪虽奋力伸头却够不到飞猴。直接战斗已被证明无效，故选飞猴。
+quiz:
+  - id: oz-ch-22-q1
+    stem: What did the strange man on the hill look like?
+    options:
+      - Tall and thin with long arms.
+      - A small man with wings on his back.
+      - Short and stout with no arms at all.
+      - An old man with a white beard.
+    correctIndex: 2
+    explanationZh: 文中描写他「quite short and stout」，头部大而顶部扁平，最关键的是「he had no arms at all」。正是没有手臂才让稻草人以为他无威胁，结果被弹射的头撞倒。
+  - id: oz-ch-22-q2
+    stem: What happened when the Lion rushed up the hill?
+    options:
+      - He was knocked down by a shooting head.
+      - He defeated the Hammer-Heads.
+      - He found a path around the rocks.
+      - He reached the top before anyone.
+    correctIndex: 0
+    explanationZh: 狮子被笑声激怒后冲上山坡，又被弹射的头击中，像被炮弹打中一样滚了下去。他后来承认「It is useless to fight people with shooting heads」。选项说狮子打败锤头怪与原文相反。
+  - id: oz-ch-22-q3
+    stem: How many more times can Dorothy command the Winged Monkeys after this chapter?
+    options:
+      - One more time.
+      - None — this was the last time.
+      - Two more times.
+      - As many as she wishes.
+    correctIndex: 1
+    explanationZh: 飞猴首领临别时说「This is the last time you can summon us」，说明金帽的三次许愿机会已全部用完。三次和无限次都是干扰项。
+  - id: oz-ch-22-q4
+    stem: What color are the houses and fences in the country of the Quadlings?
+    options:
+      - Red.
+      - Yellow.
+      - Blue.
+      - Green.
+    correctIndex: 0
+    explanationZh: 四角人的房屋、篱笆、桥梁「all painted bright red」，正如温基人用黄色、芒奇金人用蓝色。文中把三种颜色并列，易混淆，但四角人对应的是红色。
+  - id: oz-ch-22-q5
+    stem: Who answers the door at the farmhouse near where the Monkeys land?
+    options:
+      - A young girl soldier.
+      - A Winged Monkey.
+      - A Quadling farmer.
+      - A farmer's wife.
+    correctIndex: 3
+    explanationZh: 飞猴把他们放在一处农舍附近，门由「the farmer's wife」打开，还给他们做了丰盛的晚餐。三位穿红色制服的女兵是在城堡门口出现的，不是农舍。
+  - id: oz-ch-22-q6
+    stem: What must Dorothy do to reach the Castle of Glinda from the farmhouse?
+    options:
+      - Follow the road to the North.
+      - Cross the river to the East.
+      - Go back through the forest.
+      - Follow the road to the South.
+    correctIndex: 3
+    explanationZh: 农妇告诉他们「Take the road to the South and you will soon reach it」。选北方或其他方向与原文指引不符。

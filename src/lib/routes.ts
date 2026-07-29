@@ -10,6 +10,7 @@ export const PROTECTED_PATHS = [
   "/onboarding",
   "/vocabulary",
   "/reading",
+  "/books",
   "/listening",
   "/writing",
   "/speaking",

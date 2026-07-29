@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "bookId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "titleZh": {
+      "type": "string"
+    },
+    "summaryZh": {
+      "type": "string"
+    },
+    "sections": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checkIn": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "stem": {
+                "type": "string"
+              },
+              "options": {
+                "minItems": 4,
+                "maxItems": 4,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "correctIndex": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "explanationZh": {
+                "type": "string"
+              }
+            },
+            "required": ["id", "stem", "options", "correctIndex", "explanationZh"],
+            "additionalProperties": false
+          }
+        },
+        "required": ["id", "text"],
+        "additionalProperties": false
+      }
+    },
+    "quiz": {
+      "minItems": 3,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "stem": {
+            "type": "string"
+          },
+          "options": {
+            "minItems": 4,
+            "maxItems": 4,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "correctIndex": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "explanationZh": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "stem", "options", "correctIndex", "explanationZh"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["id", "bookId", "title", "titleZh", "sections", "quiz"],
+  "additionalProperties": false
+}

@@ -11,7 +11,8 @@ export interface MistakeOutcome {
 
 export interface RecordMistakeOutcomesInput {
   userId: string;
-  track: Track;
+  /** Null for track-agnostic sources (books). */
+  track: Track | null;
   kind: MistakeKind;
   refId: string;
   outcomes: readonly MistakeOutcome[];

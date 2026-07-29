@@ -20,7 +20,7 @@ export type VocabMistakeRetestAnswer =
   { ok: true; result: QuizAnswerResult } | { ok: false; reason: "stale" };
 
 export async function retestMistake(input: {
-  kind: "reading" | "listening" | "exam";
+  kind: "reading" | "listening" | "exam" | "book_quiz";
   refId: string;
   questionId: string;
   chosenIndex: number;

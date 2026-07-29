@@ -20,6 +20,8 @@
     "content:schemas": "bun scripts/generate-content-schemas.ts && prettier --write content/.schemas",
     "content:audio": "bun scripts/generate-audio.ts && prettier --write content/audio-manifest.json",
     "content:audio:prune": "bun scripts/generate-audio.ts --prune && prettier --write content/audio-manifest.json",
+    "content:book-ingest": "bun scripts/ingest-book.ts",
+    "content:book-questions": "bun scripts/generate-book-questions.ts && prettier --write content/books",
     "test": "bun test src",
     "test:e2e": "playwright test"
   },

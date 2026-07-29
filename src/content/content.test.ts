@@ -3,8 +3,18 @@ import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import { buildContentSchemas } from "../../scripts/generate-content-schemas";
-import { allExams, allListening, allReading, allSpeaking, allVocab, allWriting } from "./load";
 import {
+  allBooks,
+  allExams,
+  allListening,
+  allReading,
+  allSpeaking,
+  allVocab,
+  allWriting,
+} from "./load";
+import {
+  BookChapterSchema,
+  chapterWordCount,
   examQuestionCount,
   ListeningExerciseSchema,
   MockExamSchema,
@@ -56,6 +66,113 @@ describe("seed content", () => {
       expect(allSpeaking.some((p) => p.track === track)).toBe(true);
     }
   });
+});
+
+describe("books", () => {
+  test("book ids are unique", () => {
+    const ids = allBooks.map((b) => b.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  test("chapter ids are unique across all books", () => {
+    const ids = allBooks.flatMap((b) => b.chapters.map((c) => c.id));
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  for (const book of allBooks) {
+    test(`${book.id}: chapters parse and belong to the book`, () => {
+      for (const chapter of book.chapters) {
+        expect(() => BookChapterSchema.parse(chapter)).not.toThrow();
+        expect(chapter.bookId).toBe(book.id);
+      }
+    });
+
+    test(`${book.id}: section ids are unique within each chapter`, () => {
+      for (const chapter of book.chapters) {
+        const ids = chapter.sections.map((s) => s.id);
+        expect(new Set(ids).size).toBe(ids.length);
+      }
+    });
+
+    test(`${book.id}: question ids are unique across check-ins and quiz per chapter`, () => {
+      // Question ids key the attempt answer map and mistake_states — a
+      // duplicate would silently merge answers, like exam question ids.
+      for (const chapter of book.chapters) {
+        const qids = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn.id] : [])),
+          ...chapter.quiz.map((q) => q.id),
+        ];
+        expect(new Set(qids).size).toBe(qids.length);
+      }
+    });
+
+    test(`${book.id}: every chapter has prose`, () => {
+      for (const chapter of book.chapters) {
+        expect(chapterWordCount(chapter)).toBeGreaterThan(0);
+      }
+    });
+
+    test(`${book.id}: correct answers are spread across option positions`, () => {
+      // Position bias is gameable, and a learner sees one chapter's quiz at
+      // a time, so balance must hold per chapter, not just pooled (review
+      // findings: D held ~5% pooled; later a chapter quiz was 4/5 D).
+      const positions = [0, 0, 0, 0];
+      const violations: string[] = [];
+      for (const chapter of book.chapters) {
+        const questions = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
+          ...chapter.quiz,
+        ];
+        for (const q of questions) positions[q.correctIndex] += 1;
+
+        const quizCounts = [0, 0, 0, 0];
+        for (const q of chapter.quiz) quizCounts[q.correctIndex] += 1;
+        const n = chapter.quiz.length;
+        const cap = Math.ceil(n / 4);
+        const distinct = quizCounts.filter((c) => c > 0).length;
+        if (distinct < Math.min(n, 4)) {
+          violations.push(`${chapter.id}: quiz uses ${distinct} positions for ${n} questions`);
+        }
+        for (const [position, count] of quizCounts.entries()) {
+          if (count > cap) {
+            violations.push(`${chapter.id}: position ${position} holds ${count}/${n} (cap ${cap})`);
+          }
+        }
+      }
+      expect(violations).toEqual([]);
+
+      const total = positions.reduce((a, b) => a + b, 0);
+      if (total >= 40) {
+        for (const [position, count] of positions.entries()) {
+          const share = count / total;
+          const label = `position ${position} holds ${count}/${total} correct answers`;
+          expect(share, label).toBeGreaterThanOrEqual(0.15);
+          // Floor alone still admits a 55/15/15/15 split — cap the peak too.
+          expect(share, label).toBeLessThanOrEqual(0.35);
+        }
+      }
+    });
+
+    test(`${book.id}: explanations never reference options by position`, () => {
+      // Option order is tooling-assigned and may be reassigned; an
+      // explanation saying 选项A/第一个选项/答案为 B breaks silently on any
+      // reorder, so distractors must be dismissed by content instead.
+      // Mirrored in scripts/generate-book-questions.ts (draft-time warning).
+      const positional =
+        /(?:选项|答案)\s*(?:是|为)?\s*[0-9０-９①-⑩]|(?:选项|答案)\s*(?:是|为)?\s*[A-D](?![A-Za-z])|第\s*(?:[0-9０-９]+|[一二三四五六七八九十])\s*(?:个)?\s*(?:选项|答案)|option\s*[0-9]|option\s+[a-d](?![a-z])|(?:first|second|third|fourth)\s+option/i;
+      const offenders: string[] = [];
+      for (const chapter of book.chapters) {
+        const questions = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
+          ...chapter.quiz,
+        ];
+        for (const q of questions) {
+          if (positional.test(q.explanationZh)) offenders.push(q.id);
+        }
+      }
+      expect(offenders).toEqual([]);
+    });
+  }
 });
 
 describe("mock exams", () => {

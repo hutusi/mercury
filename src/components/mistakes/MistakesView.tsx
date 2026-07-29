@@ -10,7 +10,7 @@ import type { MistakeVM } from "@/lib/mistakes";
 import { MistakeItem } from "./MistakeItem";
 import { VocabMistakeItem } from "./VocabMistakeItem";
 
-const GROUP_ORDER = ["reading", "listening", "vocab_quiz", "exam"] as const;
+const GROUP_ORDER = ["reading", "listening", "vocab_quiz", "exam", "book_quiz"] as const;
 
 function vmKey(m: MistakeVM): string {
   return m.kind === "vocab_quiz" ? `${m.kind}-${m.wordId}` : `${m.kind}-${m.refId}-${m.questionId}`;
@@ -39,6 +39,7 @@ export function MistakesView({
     listening: t.nav.listening,
     vocab_quiz: t.vocab.quiz,
     exam: t.nav.exams,
+    book_quiz: t.nav.books,
   };
 
   const clearedView: MistakeVM[] = [

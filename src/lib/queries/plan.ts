@@ -5,6 +5,7 @@ import { mockExamAttempts, mockExams, speakingSubmissions, writingSubmissions } 
 import { countActiveMistakes } from "../mistakes";
 import { buildDailyPlan, type PlanItem } from "../plan-core";
 import { calendarDay, getUserTimeZone } from "../streak";
+import { getContinueReading } from "./books";
 import { getLearnerProfile } from "./profile";
 import { listListeningExercises } from "./listening";
 import { listReadingExercises } from "./reading";
@@ -38,6 +39,7 @@ export async function getDailyPlan(
     profile,
     vocab,
     activeMistakes,
+    bookChapter,
     reading,
     listening,
     writing,
@@ -50,6 +52,7 @@ export async function getDailyPlan(
     getLearnerProfile(userId),
     getVocabOverview(userId, track),
     countActiveMistakes(userId, track),
+    getContinueReading(userId),
     listReadingExercises(userId, track),
     listListeningExercises(userId, track),
     listWritingPrompts(userId, track),
@@ -116,6 +119,7 @@ export async function getDailyPlan(
         : null,
       speaking: nextSpeaking ? { id: nextSpeaking.id } : null,
       examId: exam?.id ?? null,
+      bookChapter,
     },
     today: planToday,
   });

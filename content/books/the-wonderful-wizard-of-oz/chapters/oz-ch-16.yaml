@@ -1,0 +1,166 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: oz-ch-16
+bookId: book-oz
+title: The Magic Art of the Great Humbug
+titleZh: 大骗子的魔法
+summaryZh: 稻草人、铁皮人和狮子依次来到奥兹面前，领取他们最渴望的东西——大脑、心和勇气。奥兹用自己的方式满足了三人，但他心里清楚，真正困难的是如何把多萝西送回堪萨斯。
+sections:
+  - id: oz-ch-16-s1
+    text: |-
+      Next morning the Scarecrow said to his friends:
+
+      “Congratulate me. I am going to Oz to get my brains at last. When I return I shall be as other men are.”
+
+      “I have always liked you as you were,” said Dorothy simply.
+
+      “It is kind of you to like a Scarecrow,” he replied. “But surely you will think more of me when you hear the splendid thoughts my new brain is going to turn out.” Then he said good-bye to them all in a cheerful voice and went to the Throne Room, where he rapped upon the door.
+
+      “Come in,” said Oz.
+
+      The Scarecrow went in and found the little man sitting down by the window, engaged in deep thought.
+
+      “I have come for my brains,” remarked the Scarecrow, a little uneasily.
+
+      “Oh, yes; sit down in that chair, please,” replied Oz. “You must excuse me for taking your head off, but I shall have to do it in order to put your brains in their proper place.”
+
+      “That’s all right,” said the Scarecrow. “You are quite welcome to take my head off, as long as it will be a better one when you put it on again.”
+
+      So the Wizard unfastened his head and emptied out the straw. Then he entered the back room and took up a measure of bran, which he mixed with a great many pins and needles. Having shaken them together thoroughly, he filled the top of the Scarecrow’s head with the mixture and stuffed the rest of the space with straw, to hold it in place.
+
+      When he had fastened the Scarecrow’s head on his body again he said to him, “Hereafter you will be a great man, for I have given you a lot of bran-new brains.”
+
+      The Scarecrow was both pleased and proud at the fulfillment of his greatest wish, and having thanked Oz warmly he went back to his friends.
+
+      Dorothy looked at him curiously. His head was quite bulged out at the top with brains.
+
+      “How do you feel?” she asked.
+
+      “I feel wise indeed,” he answered earnestly. “When I get used to my brains I shall know everything.”
+
+      “Why are those needles and pins sticking out of your head?” asked the Tin Woodman.
+
+      “That is proof that he is sharp,” remarked the Lion.
+
+      “Well, I must go to Oz and get my heart,” said the Woodman. So he walked to the Throne Room and knocked at the door.
+    checkIn:
+      id: oz-ch-16-s1-c1
+      stem: What did Oz put inside the Scarecrow's head to make his new brains?
+      options:
+        - Bran mixed with many pins and needles
+        - Pure straw, with nothing added
+        - Sawdust mixed with silk
+        - Green liquid from a bottle
+      correctIndex: 0
+      explanationZh: 文中说奥兹取了 bran 拌入大量 pins and needles，填进稻草人头顶。原有的稻草被倒了出来；锯末拌丝绸和绿瓶里的液体分别是铁皮人和狮子的情节，不在此节出现。
+  - id: oz-ch-16-s2
+    text: |-
+      “Come in,” called Oz, and the Woodman entered and said, “I have come for my heart.”
+
+      “Very well,” answered the little man. “But I shall have to cut a hole in your breast, so I can put your heart in the right place. I hope it won’t hurt you.”
+
+      “Oh, no,” answered the Woodman. “I shall not feel it at all.”
+
+      So Oz brought a pair of tinsmith’s shears and cut a small, square hole in the left side of the Tin Woodman’s breast. Then, going to a chest of drawers, he took out a pretty heart, made entirely of silk and stuffed with sawdust.
+
+      “Isn’t it a beauty?” he asked.
+
+      “It is, indeed!” replied the Woodman, who was greatly pleased. “But is it a kind heart?”
+
+      “Oh, very!” answered Oz. He put the heart in the Woodman’s breast and then replaced the square of tin, soldering it neatly together where it had been cut.
+
+      “There,” said he; “now you have a heart that any man might be proud of. I’m sorry I had to put a patch on your breast, but it really couldn’t be helped.”
+
+      “Never mind the patch,” exclaimed the happy Woodman. “I am very grateful to you, and shall never forget your kindness.”
+
+      “Don’t speak of it,” replied Oz.
+
+      Then the Tin Woodman went back to his friends, who wished him every joy on account of his good fortune.
+
+      The Lion now walked to the Throne Room and knocked at the door.
+
+      “Come in,” said Oz.
+
+      “I have come for my courage,” announced the Lion, entering the room.
+
+      “Very well,” answered the little man; “I will get it for you.”
+
+      He went to a cupboard and reaching up to a high shelf took down a square green bottle, the contents of which he poured into a green-gold dish, beautifully carved. Placing this before the Cowardly Lion, who sniffed at it as if he did not like it, the Wizard said:
+
+      “Drink.”
+
+      “What is it?” asked the Lion.
+
+      “Well,” answered Oz, “if it were inside of you, it would be courage. You know, of course, that courage is always inside one; so that this really cannot be called courage until you have swallowed it. Therefore I advise you to drink it as soon as possible.”
+
+      The Lion hesitated no longer, but drank till the dish was empty.
+
+      “How do you feel now?” asked Oz.
+
+      “Full of courage,” replied the Lion, who went joyfully back to his friends to tell them of his good fortune.
+
+      Oz, left to himself, smiled to think of his success in giving the Scarecrow and the Tin Woodman and the Lion exactly what they thought they wanted. “How can I help being a humbug,” he said, “when all these people make me do things that everybody knows can’t be done? It was easy to make the Scarecrow and the Lion and the Woodman happy, because they imagined I could do anything. But it will take more than imagination to carry Dorothy back to Kansas, and I’m sure I don’t know how it can be done.”
+    checkIn:
+      id: oz-ch-16-s2-c1
+      stem: How did Oz give the Lion his courage?
+      options:
+        - He gave the Lion a medal to wear
+        - He poured liquid from a green bottle into a dish for the Lion to drink
+        - He put a silk heart in the Lion's chest
+        - He told the Lion a brave story
+      correctIndex: 1
+      explanationZh: 奥兹从柜子高处取下一个 square green bottle，把里面的东西倒入 green-gold dish，让狮子喝下。丝绸做的心是给铁皮人的；奖章和讲勇敢的故事都不在此节出现。
+quiz:
+  - id: oz-ch-16-q1
+    stem: Why did Oz have to take off the Scarecrow's head?
+    options:
+      - To clean out all the old straw
+      - To put the new brains in the right place
+      - To see what was wrong with it
+      - To make the Scarecrow look bigger
+    correctIndex: 1
+    explanationZh: 奥兹说要 take your head off，目的很明确——把新的 brains 放到 proper place。"清理旧稻草"虽然相关，但并非主因，文中明确说 "in order to put your brains in their proper place"。
+  - id: oz-ch-16-q2
+    stem: After receiving his brains, what did the Scarecrow say he felt?
+    options:
+      - Very tired
+      - Rather hungry
+      - Wise indeed
+      - Still afraid
+    correctIndex: 2
+    explanationZh: 稻草人回到朋友身边时说 I feel wise indeed。"仍然害怕"是胆小狮子的特征；疲倦和饥饿文中都没有出现。
+  - id: oz-ch-16-q3
+    stem: What did Oz use to cut a hole in the Tin Woodman's breast?
+    options:
+      - Tinsmith's shears
+      - A knife
+      - An axe
+      - A hammer
+    correctIndex: 0
+    explanationZh: 文中明确说 Oz brought a pair of tinsmith's shears 来剪开铁皮。"小刀"太笼统，斧子则是铁皮人自己的旧日工具，不在此处。
+  - id: oz-ch-16-q4
+    stem: After all three friends had received their gifts, what was Oz's biggest worry?
+    options:
+      - How to get more straw for the Scarecrow
+      - How to make another heart
+      - How to fix the Lion's dish
+      - How to carry Dorothy back to Kansas
+    correctIndex: 3
+    explanationZh: 奥兹自言自语：It will take more than imagination to carry Dorothy back to Kansas。三个朋友的愿望都好办，真正难的是送多萝西回家。
+  - id: oz-ch-16-q5
+    stem: When the Tin Woodman saw his new heart, what did he first want to know?
+    options:
+      - If it was made of gold
+      - If it could last forever
+      - If it was a kind heart
+      - If it would hurt him
+    correctIndex: 2
+    explanationZh: 铁皮人看到心后问：But is it a kind heart? 他最在意的不是外表或材质，而是心是否善良，这正呼应他一贯的愿望。
+  - id: oz-ch-16-q6
+    stem: Why did Oz say the Lion must drink the liquid before it could be called courage?
+    options:
+      - Because courage only works inside one's body
+      - Because the dish would break soon
+      - Because the Lion asked for it
+      - Because it was too hot to touch
+    correctIndex: 0
+    explanationZh: 奥兹解释：courage is always inside one，所以这东西只有被 Lion 吞下后才算真正的 courage。"太烫"与 "inside" 无关，文中也没有提到热度或盘子会碎。

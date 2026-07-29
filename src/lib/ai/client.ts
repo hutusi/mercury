@@ -50,6 +50,22 @@ async function requestStructuredFeedback<Schema extends z.ZodType>(
 }
 
 /**
+ * Tooling-grade structured call for authoring-time scripts (e.g.
+ * scripts/generate-book-questions.ts): same provider resolution, transports,
+ * schema enforcement, and AiUnavailableError as the graders, but with a
+ * caller-supplied prompt. Runtime app code must not use this — feature calls
+ * get a dedicated wrapper with a reviewed prompt (and for books, ADR 0024
+ * forbids runtime generation outright).
+ */
+export async function getStructuredDraft<Schema extends z.ZodType>(req: {
+  system: string;
+  userContent: string;
+  schema: Schema;
+}): Promise<z.infer<Schema>> {
+  return requestStructuredFeedback(req.system, req.userContent, req.schema);
+}
+
+/**
  * Server-composed learner context (formatLearnerContext output) becomes the
  * <learner_profile> block; memo strings inside were sanitized at compose time.
  */

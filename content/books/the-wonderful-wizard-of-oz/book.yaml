@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=../../.schemas/book.schema.json
+id: book-oz
+title: The Wonderful Wizard of Oz
+titleZh: 绿野仙踪
+author: L. Frank Baum
+authorZh: 莱曼·弗兰克·鲍姆
+descriptionZh: 堪萨斯女孩多萝西被龙卷风带到神奇的奥兹国。为了回家，她沿着黄砖路前往翡翠城寻找大魔法师奥兹，途中结识了想要脑子的稻草人、想要心的铁皮人和想要勇气的狮子。句子简洁、对话丰富，是英语进阶读者的经典入门原著。
+cefrLevel: B1
+genres:
+  - fantasy
+  - classic
+  - adventure
+source: "Project Gutenberg eBook #55 (public domain)"
+chapterFiles:
+  - oz-ch-01.yaml
+  - oz-ch-02.yaml
+  - oz-ch-03.yaml
+  - oz-ch-04.yaml
+  - oz-ch-05.yaml
+  - oz-ch-06.yaml
+  - oz-ch-07.yaml
+  - oz-ch-08.yaml
+  - oz-ch-09.yaml
+  - oz-ch-10.yaml
+  - oz-ch-11.yaml
+  - oz-ch-12.yaml
+  - oz-ch-13.yaml
+  - oz-ch-14.yaml
+  - oz-ch-15.yaml
+  - oz-ch-16.yaml
+  - oz-ch-17.yaml
+  - oz-ch-18.yaml
+  - oz-ch-19.yaml
+  - oz-ch-20.yaml
+  - oz-ch-21.yaml
+  - oz-ch-22.yaml
+  - oz-ch-23.yaml
+  - oz-ch-24.yaml
