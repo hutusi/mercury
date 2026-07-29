@@ -222,8 +222,9 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
   // Positional references break whenever tooling (re)assigns placement —
   // the content test rejects them, so flag drafts early. The letter branch
   // needs the lookahead: "选项 Because…" names content, not position B.
+  // Keep in sync with the matcher in src/content/content.test.ts.
   const positionalRe =
-    /选项\s*[0-9０-９①-⑩]|选项\s*[A-D](?![A-Za-z])|option\s*[0-9]|option\s+[a-d](?![a-z])/i;
+    /(?:选项|答案)\s*(?:是|为)?\s*[0-9０-９①-⑩]|(?:选项|答案)\s*(?:是|为)?\s*[A-D](?![A-Za-z])|第\s*(?:[0-9０-９]+|[一二三四五六七八九十])\s*(?:个)?\s*(?:选项|答案)|option\s*[0-9]|option\s+[a-d](?![a-z])|(?:first|second|third|fourth)\s+option/i;
   const positional = allQuestions
     .filter((q) => positionalRe.test(q.explanationZh))
     .map((q) => q.id);

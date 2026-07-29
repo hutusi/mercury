@@ -144,20 +144,22 @@ describe("books", () => {
       const total = positions.reduce((a, b) => a + b, 0);
       if (total >= 40) {
         for (const [position, count] of positions.entries()) {
-          expect(
-            count / total,
-            `position ${position} holds ${count}/${total} correct answers`,
-          ).toBeGreaterThanOrEqual(0.15);
+          const share = count / total;
+          const label = `position ${position} holds ${count}/${total} correct answers`;
+          expect(share, label).toBeGreaterThanOrEqual(0.15);
+          // Floor alone still admits a 55/15/15/15 split — cap the peak too.
+          expect(share, label).toBeLessThanOrEqual(0.35);
         }
       }
     });
 
     test(`${book.id}: explanations never reference options by position`, () => {
       // Option order is tooling-assigned and may be reassigned; an
-      // explanation saying 选项A/选项4 breaks silently on any reorder, so
-      // distractors must be dismissed by content instead.
+      // explanation saying 选项A/第一个选项/答案为 B breaks silently on any
+      // reorder, so distractors must be dismissed by content instead.
+      // Mirrored in scripts/generate-book-questions.ts (draft-time warning).
       const positional =
-        /选项\s*[0-9０-９①-⑩]|选项\s*[A-D](?![A-Za-z])|option\s*[0-9]|option\s+[a-d](?![a-z])/i;
+        /(?:选项|答案)\s*(?:是|为)?\s*[0-9０-９①-⑩]|(?:选项|答案)\s*(?:是|为)?\s*[A-D](?![A-Za-z])|第\s*(?:[0-9０-９]+|[一二三四五六七八九十])\s*(?:个)?\s*(?:选项|答案)|option\s*[0-9]|option\s+[a-d](?![a-z])|(?:first|second|third|fourth)\s+option/i;
       const offenders: string[] = [];
       for (const chapter of book.chapters) {
         const questions = [
