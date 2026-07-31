@@ -71,6 +71,7 @@ const BOOK_DIRS = [
   // it can seed. Unregistered content never reaches the database or learners.
   "o-henry-selected-stories",
   "the-autobiography-of-benjamin-franklin",
+  "the-great-gatsby",
 ] as const;
 
 export const allBooks: Book[] = BOOK_DIRS.map((dir) => {

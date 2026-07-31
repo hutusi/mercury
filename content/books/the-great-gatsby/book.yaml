@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=../../.schemas/book.schema.json
+id: book-gatsby
+title: The Great Gatsby
+titleZh: 了不起的盖茨比
+author: F. Scott Fitzgerald
+authorZh: 弗朗西斯·斯科特·菲茨杰拉德
+descriptionZh: 爵士时代的西卵岛上，盖茨比夜夜笙歌，只为对岸那盏绿灯。尼克·卡拉威旁观了这场盛大幻梦的升起与破灭。菲茨杰拉德的文字华美而精准，是难度阶梯的顶端，也是无数读者心中"最伟大的美国小说"。
+cefrLevel: C1
+genres:
+  - novel
+  - classic
+source: "Standard Ebooks: The Great Gatsby by F. Scott Fitzgerald (public domain)"
+chapterFiles:
+  - gg-ch-01.yaml
+  - gg-ch-02.yaml
+  - gg-ch-03.yaml
+  - gg-ch-04.yaml
+  - gg-ch-05.yaml
+  - gg-ch-06.yaml
+  - gg-ch-07.yaml
+  - gg-ch-08.yaml
+  - gg-ch-09.yaml
