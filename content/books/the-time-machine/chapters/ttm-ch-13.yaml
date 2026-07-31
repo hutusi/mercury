@@ -3,7 +3,7 @@ id: ttm-ch-13
 bookId: book-time-machine
 title: Epilogue
 titleZh: 尾声
-summaryZh: 本章由叙述者独自收尾。他猜测时间旅行者究竟是回到了远古的蛮荒时代，还是去了更未来的文明阶段。叙述者手边留着两朵枯萎的白花，作为时间旅行者讲述的最后见证。
+summaryZh: 故事之外，叙述者独自写下这段收尾。时间旅行者一去不返，留给人们的只有种种猜测，和一点小小的、意味深长的纪念。
 sections:
   - id: ttm-ch-13-s1
     text: "One cannot choose but wonder. Will he ever return? It may be that he swept back into the past, and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone; into the abysses of the Cretaceous Sea; or among the grotesque saurians, the huge reptilian brutes of the Jurassic times. He may even now—if I may use the phrase—be wandering on some plesiosaurus-haunted Oolitic coral reef, or beside the lonely saline lakes of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved? Into the manhood of the race: for I, for my own part, cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord are indeed man’s culminating time! I say, for my own part. He, I know—for the question had been discussed among us long before the Time Machine was made—thought but cheerlessly of the Advancement of Mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so. But to me the future is still black and blank—is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me, for my comfort, two strange white flowers—shrivelled now, and brown and flat and brittle—to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man."
@@ -19,14 +19,14 @@ sections:
       explanationZh: 原文列举了多种可能：回到"the past"的荒蛮时代，或去到"one of the nearer ages"。说书里确定去了侏罗纪、一定去了人类巅峰时代、或留在当下，都把猜测说成了确定的事实。
 quiz:
   - id: ttm-ch-13-q1
-    stem: What does the narrator wonder about the Time Traveller's fate?
+    stem: If the Traveller went into the past, where does the narrator imagine he may have ended up?
     options:
-      - Whether he has died in the Cretaceous Sea
-      - Whether he went into the remote past or forward into a future age
-      - Whether he has escaped to another planet
-      - Whether he is hiding in London
+      - In a medieval castle under siege
+      - Among savages and giant saurians
+      - In the Morlocks' underground caverns
+      - On the dying beach he had described
     correctIndex: 1
-    explanationZh: 原文提出两种方向：回到远古如"the Abyss of the Cretaceous Sea"，或走向未来"one of the nearer ages"。逃到别的星球或在伦敦躲藏都不是文中的设想；说死于白垩纪海也不对，那只是回过去的举例之一。
+    explanationZh: 叙述者想象他可能落入“blood-drinking, hairy savages”之中，坠入白垩纪的海洋，或身处侏罗纪巨型爬行动物之间。中世纪城堡与莫洛克人的洞穴不在他的设想里；垂死的海滩属于已经讲过的未来，不是过去。
   - id: ttm-ch-13-q2
     stem: According to the narrator, how did the Time Traveller view the advancement of civilization?
     options:
@@ -39,7 +39,7 @@ quiz:
   - id: ttm-ch-13-q3
     stem: What does the narrator mean by describing the future as "black and blank"?
     options:
-      - He feels vast ignorance about what lies ahead, lit only by a few memories of the traveller's story.
+      - He feels vast ignorance, lit only by memories of the story
       - He believes the future will be dark because the sun will die.
       - He thinks the future is completely empty of all life.
       - He is certain the future holds nothing but war and discord.
@@ -51,6 +51,6 @@ quiz:
       - That nature will always survive human civilization.
       - That the Time Traveller will certainly return one day.
       - That the Eloi were superior to the Morlocks.
-      - That gratitude and mutual tenderness still lived in the human heart, even when mind and strength had gone.
+      - That gratitude and tenderness survived in man's heart
     correctIndex: 3
     explanationZh: 原文说两朵白花"witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man"。它们见证的是人性中的感恩与温情。自然永恒、必定归来、或埃洛伊优于莫洛克，都不是花所象征的。

@@ -23,7 +23,7 @@ sections:
         - He had no model to show his friends at the dinner.
         - He refused to explain how the machine worked.
         - His friends had never seen him build anything before.
-        - He was too clever, and people always suspected some hidden trick behind his frankness.
+        - He seemed too clever to be believed
       correctIndex: 3
       explanationZh: 原文说他是 "too clever to be believed"，人们总觉得他坦率的外表下藏有机关。而提到模型的人是 Filby，并非时间旅行者没有模型可展示，排除该项即可。
   - id: ttm-ch-02-s2
@@ -99,7 +99,7 @@ sections:
       id: ttm-ch-02-s5-c1
       stem: What happened as the Time Traveller told his story in the smoking-room?
       options:
-        - The listeners stopped glancing at each other and looked only at his face.
+        - They stopped glancing about and watched only his face
         - The listeners kept whispering questions to each other.
         - The listeners fell asleep because they were bored.
         - The listeners laughed at his ridiculous story.
@@ -152,11 +152,11 @@ quiz:
     correctIndex: 3
     explanationZh: 他在吸烟室里明确要求 "no interruptions"，众人齐声应允。他没有要求等到次日再提问，也没有要求禁止记录或必须事先相信他的故事。
   - id: ttm-ch-02-q6
-    stem: Where did the Time Traveller say he had been since four o'clock that day?
+    stem: How long did the Time Traveller say he had lived since four o'clock that afternoon?
     options:
-      - He had been lost in the woods for eight hours.
-      - He had been working in his laboratory all day.
-      - He had visited a foreign country for a week.
-      - He had lived eight days in that time.
+      - He had been lost in the woods for eight hours
+      - He had spent barely a few hours in his laboratory
+      - He had travelled abroad for a week
+      - He had lived eight days in that time
     correctIndex: 3
-    explanationZh: 他说自己四点钟在实验室，之后 "I've lived eight days"。这是时间旅行造成的奇特经历，不是迷路、在实验室待了一天，也不是出国旅行了一周。
+    explanationZh: 他说自己四点钟还在实验室，之后却“lived eight days”。旁人眼中只过了几个小时，但按他的亲身经历算是八天——这正是时间旅行的怪异之处，而不是迷路八小时或出国一周。

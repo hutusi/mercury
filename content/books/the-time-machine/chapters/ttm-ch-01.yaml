@@ -3,7 +3,7 @@ id: ttm-ch-01
 bookId: book-time-machine
 title: Chapter 1
 titleZh: 第一章
-summaryZh: 时间旅行者在一顿晚餐后向客人们阐释：时间其实是第四维度，既然我们能在三维空间中移动，理论上也可以在时间中穿行。为了证明自己不是空谈，他拿出一台小巧的机器模型，当众做了一场出人意料的演示。
+summaryZh: 晚餐过后，时间旅行者向客人们抛出一个颠覆常识的观点，并用几何学一步步为它辩护。为了证明自己不是空谈，他还拿出一台小巧的机器模型，当众做了一场出人意料的演示。
 sections:
   - id: ttm-ch-01-s1
     text: |-
@@ -92,7 +92,7 @@ sections:
       options:
         - People can already fly freely in all directions of Space.
         - Time has no connection to Space at all.
-        - Our consciousness is already passing along the Time-Dimension from cradle to grave.
+        - Our consciousness is already travelling along Time
         - Gravitation prevents all vertical movement.
       correctIndex: 2
       explanationZh: 他回答：我们“are always getting away from the present moment”，意识正以均匀速度沿时间维度从出生滑向死亡。他只是承认引力限制上下移动，并非说人类可自由飞行。
@@ -151,7 +151,7 @@ sections:
       options:
         - A full-sized time machine made of nickel.
         - A conjuring trick from Burslem.
-        - A glittering metallic model, scarcely larger than a small clock.
+        - A glittering model no bigger than a clock
         - A weather diagram on paper.
       correctIndex: 2
       explanationZh: 文中说他拿着“a glittering metallic framework, scarcely larger than a small clock”，比小钟还小，显然是模型。与后文实验室里的大机器并非同一件。
@@ -240,20 +240,20 @@ sections:
       explanationZh: 在实验室里，客人们看到“a larger edition of the little mechanism”，由镍、象牙和水晶制成，几近完成。医学人士虽提到去年的鬼把戏，但那只是质疑，并非被展示的对象。
 quiz:
   - id: ttm-ch-01-q1
-    stem: Why does the Time Traveller say people usually overlook Time as a dimension?
+    stem: What money-making scheme did the Very Young Man suggest time travel would allow?
     options:
-      - Because Time has no mathematical properties at all.
-      - Because people can move freely in all three dimensions of Space.
-      - Because gravity prevents any awareness of duration.
-      - Because their consciousness moves along Time in only one direction.
+      - Selling the machine to the government
+      - Bringing back treasure from the past
+      - Betting on races whose results he knew
+      - Investing money and hurrying on ahead
     correctIndex: 3
-    explanationZh: 他说人们因“natural infirmity of the flesh”而忽略第四维度，因为意识只沿时间单向流动。并非时间无数学属性，也不是因为重力影响感知。
+    explanationZh: 年轻人喊道：“One might invest all one's money, leave it to accumulate at interest, and hurry on ahead!”叙述者接话说，冲到前面只会发现一个建立在严格共产主义之上的社会。卖机器、取宝藏、赌赛马都不是文中提出的主意。
   - id: ttm-ch-01-q2
     stem: What comparison does the Time Traveller use to show that limited freedom of movement does not prove a dimension is impassable?
     options:
       - A flat-surface figure cannot represent a three-dimensional solid.
       - A bullet flying through the air cannot be seen by the eye.
-      - A savage or animal cannot stay six feet above the ground, yet a civilized man uses a balloon.
+      - A savage cannot stay off the ground, but a balloonist can
       - A portrait at eight years old differs from one at twenty-three.
     correctIndex: 2
     explanationZh: 他用气球类比：原始人不能悬空六尺，文明人却可借气球克服引力上升；同理，人虽不能久留于过去，却不意味着将来无法在时间中主动移动。轮辐与子弹的比喻出现在别处，用来解释看不见高速时间旅行。
@@ -278,7 +278,7 @@ quiz:
   - id: ttm-ch-01-q5
     stem: What happens to the model after the lever is pressed?
     options:
-      - It swings round, becomes indistinct, and vanishes from the table.
+      - It grows indistinct and vanishes from the table
       - It falls through the table and lands on the floor.
       - It bursts into flames and burns to ash.
       - It changes into a small clock and stops ticking.

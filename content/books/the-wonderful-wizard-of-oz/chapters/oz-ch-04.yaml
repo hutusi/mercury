@@ -3,7 +3,7 @@ id: oz-ch-04
 bookId: book-oz
 title: The Road Through the Forest
 titleZh: 穿过森林的路
-summaryZh: 多萝西和稻草人沿着黄砖路继续前行，路面越来越难走，四周也越发荒凉。稻草人讲述了自己被制作出来的经过，以及一只老乌鸦让他渴望得到 brains 的故事。傍晚他们走进一片漆黑的森林，在林中找到一间小屋过夜。
+summaryZh: 多萝西和稻草人沿着黄砖路继续前行，路面越来越难走，四周也越发荒凉。稻草人讲述了自己被制作出来的经过，以及他为什么如此渴望得到脑子。傍晚他们走进一片漆黑的森林，在林中找到一间小屋过夜。
 sections:
   - id: oz-ch-04-s1
     text: |-
@@ -31,7 +31,7 @@ sections:
       stem: Why did the Scarecrow refuse to eat bread?
       options:
         - He had already eaten a big meal.
-        - He was not hungry and his mouth was only painted.
+        - His mouth was only painted on
         - He did not like the taste of bread.
         - He was saving the bread for Toto.
       correctIndex: 1
@@ -134,7 +134,7 @@ quiz:
   - id: oz-ch-04-q3
     stem: How did the Scarecrow feel when the birds ate the corn after the old crow spoke?
     options:
-      - Sad that he was not a good Scarecrow
+      - Sad and useless
       - Happy and proud
       - Angry at the farmer
       - Afraid of the crows

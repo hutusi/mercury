@@ -3,7 +3,7 @@ id: oz-ch-18
 bookId: book-oz
 title: Away to the South
 titleZh: 前往南方
-summaryZh: 奥兹乘气球飞走后，多萝西悲痛不已，但很快她便庆幸自己没有跟着升空。稻草人现在成了绿宝石城的统治者，他召集伙伴们一起商量如何帮多萝西回到堪萨斯。他们先后尝试了飞猴和绿胡子士兵的建议，最终决定南下寻找南方女巫格林达的帮助。
+summaryZh: 奥兹乘气球飞走后，多萝西的归家之路似乎又断了。如今统治绿宝石城的稻草人召集伙伴们一起想办法，一个个主意被提出又被否决，最终他们敲定了新的目的地——南方。
 sections:
   - id: oz-ch-18-s1
     text: |-
@@ -127,7 +127,7 @@ sections:
       stem: What danger did the soldier warn Dorothy about on the road to the South?
       options:
         - Only wild beasts in the woods.
-        - Wild beasts and a race of queer men who dislike strangers.
+        - Wild beasts and queer, rude men
         - A wide river that no one can cross.
         - A dark forest full of magic spells.
       correctIndex: 1
@@ -155,7 +155,7 @@ quiz:
     stem: Who first suggests that Glinda might be able to help Dorothy?
     options:
       - The Scarecrow
-      - The soldier with the green whiskers
+      - The soldier
       - The Monkey King
       - The Tin Woodman
     correctIndex: 1

@@ -18,7 +18,7 @@ sections:
       options:
         - Mrs. Watchett spoke to him and told him the time.
         - The nickel bar glowed with a strange light.
-        - The laboratory clock had jumped from just past ten to nearly half-past three.
+        - The laboratory clock had jumped ahead by hours
         - The machine had moved to a different room.
       correctIndex: 2
       explanationZh: 他说自己按下了启动杆又立刻按停止杆，怀疑什么也没发生，然后“注意到了时钟”：从“past ten”跳到了“nearly half-past three”，说明时间确实在推移。关于 Mrs. Watchett 的选项有迷惑性，但她只是后来穿越中看到的人影，并没有和他说话。
@@ -36,7 +36,7 @@ sections:
         - The machine was already cracked and might fall apart at high speed.
         - Stopping would cut off his air supply and suffocate him.
         - He had no braking lever and could only slow down very gradually.
-        - Stopping could force his atoms into whatever occupied that space, causing a violent explosion.
+        - His atoms might jam into matter and cause an explosion
       correctIndex: 3
       explanationZh: 原文解释，高速穿越时他像蒸气一样从物体缝隙间滑过，但停下来意味着“molecule by molecule”地挤入障碍物，可能引发剧烈的化学反应甚至爆炸。关于机器损坏的选项听起来合理，但原文真正强调的危险是空间被占的问题。
   - id: ttm-ch-03-s3
@@ -72,7 +72,7 @@ sections:
       stem: What is the first living person from the future that the Time Traveller sees up close?
       options:
         - A tall, armoured soldier carrying a spear.
-        - A small, frail figure about four feet tall, wearing a purple tunic and a leather belt.
+        - A frail little figure in a purple tunic
         - A white-robed figure standing on the sphinx's pedestal.
         - A child in ragged clothes with no shoes at all.
       correctIndex: 1
@@ -110,7 +110,7 @@ quiz:
     options:
       - He worried they might have forgotten how to speak any language.
       - He feared they might have evolved into giant insects.
-      - He feared humanity might have become something inhuman, cruel, and overwhelmingly powerful.
+      - He feared men had grown inhuman, cruel, and mighty
       - He worried they might worship him as a god and refuse to let him leave.
     correctIndex: 2
     explanationZh: 他看着白色斯芬克斯，心中涌起恐惧：“What if cruelty had grown into a common passion?”，担心人类已变成“inhuman, unsympathetic, and overwhelmingly powerful”。关于语言退化的选项虽然有一定合理性，但原文明确聚焦于残忍和非人化。

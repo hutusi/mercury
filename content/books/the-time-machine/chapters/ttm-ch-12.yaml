@@ -3,7 +3,7 @@ id: ttm-ch-12
 bookId: book-time-machine
 title: Chapter 12
 titleZh: 第十二章
-summaryZh: 时间旅行者讲述了旅程的终点：他驾驶时间机器返回现在，向朋友们展示了两朵干枯的白花和伤痕累累的拳头作为证据。客人们对故事半信半疑，纷纷离去。第二天，叙述者再来拜访时，时间旅行者带着相机和背包准备再次出发——而这一次，他再也没有回来。
+summaryZh: 时间旅行者讲完了他的故事，把仅有的几件物证摆在朋友们面前，客人们却仍半信半疑，各自散去。第二天，叙述者再次登门拜访——他在实验室门口看到的一幕，成了这个故事真正的结尾。
 sections:
   - id: ttm-ch-12-s1
     text: |-
@@ -20,7 +20,7 @@ sections:
       id: ttm-ch-12-s1-c1
       stem: What did the Time Traveller notice when he passed through the moment of Mrs. Watchett's crossing during his return?
       options:
-        - Her every motion seemed the exact reverse of what he had seen on departure.
+        - Her every motion seemed exactly reversed
         - She was frozen completely still for that instant.
         - She had changed into different clothing entirely.
         - She walked much faster than he remembered.
@@ -111,7 +111,7 @@ sections:
       options:
         - The Traveller unconscious on the floor with broken tools.
         - An intruder in a dark coat leaving by the skylight.
-        - A faint, semi-transparent figure sitting in a whirling mass of black and brass.
+        - A ghostly figure in a whirling mass of black and brass
         - A cloud of smoke from a small fire on the bench.
       correctIndex: 2
       explanationZh: 叙述者开门时听到一声被截断的惊呼，随后看到“a ghostly, indistinct figure sitting in a whirling mass of black and brass”——旋即消失，机器也不见了。说他看到旅行者昏倒在地、陌生黑衣人离开、或烟雾起火，都与原文不符。
@@ -128,27 +128,27 @@ quiz:
   - id: ttm-ch-12-q2
     stem: Why does the Medical Man ask to keep the withered white flowers?
     options:
-      - He cannot identify their natural order and wants to examine them more closely.
+      - He cannot identify the flowers' natural order
       - He wants to sell them to a collector of rare plants.
       - He recognizes them as common daisies from the garden.
       - He thinks they are poisoned and needs to test them.
     correctIndex: 0
     explanationZh: 医生检查后说 “I certainly don't know the natural order of these flowers”，因此想留下来研究。他想卖给收藏家、认出是普通雏菊、怀疑有毒，都没有原文依据。
   - id: ttm-ch-12-q3
-    stem: When the guests go to the corridor and look at the machine, what detail on it suggests it has been somewhere far away?
+    stem: Why did the narrator find it hard to dismiss the story that night?
     options:
-      - Bits of grass and moss on its lower parts, plus a bent rail.
-      - A layer of red dust covering the entire quartz frame.
-      - Fresh ivory inlays that look newly polished.
-      - A handwritten note pinned to the saddle.
+      - The wild tale was told soberly and credibly
+      - The Editor had confirmed several of the details
+      - He had once ridden the machine himself
+      - The Traveller swore a solemn oath it was true
     correctIndex: 0
-    explanationZh: 叙述者看到象牙上有棕色斑点和污迹，底部有碎草和苔藓，一根栏杆弯曲——这些痕迹说明它经历过长途。红色尘土、新象牙、手写便条都未出现于原文。
+    explanationZh: 叙述者说“The story was so fantastic and incredible, the telling so credible and sober”——内容离奇，讲述却冷静克制，这种反差让他整夜辗转难眠。编辑其实公开表示不信，叙述者也从未乘过时间机器，更没有什么誓言。
   - id: ttm-ch-12-q4
     stem: When the narrator returns the next day and touches the machine's lever, what happens?
     options:
       - The lever snaps off and clatters to the floor.
       - The machine gives off a bright flash of light.
-      - The heavy-looking machine sways like a branch shaken by wind.
+      - The machine sways like a wind-shaken branch
       - Nothing happens because the machine is locked.
     correctIndex: 2
     explanationZh: 他只是轻轻触碰操控杆，这台看起来结实的机器就 “swayed like a bough shaken by the wind”，这种不稳定让他很吃惊。说杠杆折断、闪光、因锁死毫无反应，都与原文描写不符。
@@ -156,7 +156,7 @@ quiz:
     stem: What is the Traveller carrying when he meets the narrator in the smoking-room before his final departure?
     options:
       - A bundle of Weena's flowers and a medical kit.
-      - A small camera under one arm and a knapsack under the other.
+      - A small camera and a knapsack
       - A rifle and a box of matches.
       - A rolled-up map and a brass compass.
     correctIndex: 1
@@ -169,4 +169,4 @@ quiz:
       - A pane of the skylight appears to have just been blown in.
       - The skylight has been replaced with a new pane of glass.
     correctIndex: 2
-    explanationZh: 机器消失后，叙述者注意到 “a pane of the skylight had, apparently, just been blown in”，说明机器从上方冲出。说天窗从外打开重锁、完全粉碎、换了新玻璃，都不符合原文。
+    explanationZh: 机器消失后，叙述者注意到“a pane of the skylight had, apparently, just been blown in”——玻璃是向屋内破的，多半是机器骤然消失时空气猛灌进来留下的痕迹。说天窗被从外面打开又锁好、完全粉碎或换了新玻璃，都不符合原文。

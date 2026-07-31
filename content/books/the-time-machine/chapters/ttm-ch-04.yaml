@@ -57,7 +57,7 @@ sections:
         - Cooked meat and bread
         - A thin soup with vegetables
         - Fish and roasted grains
-        - Various fruits, some resembling large raspberries and oranges
+        - Piles of strange fruits
       correctIndex: 3
       explanationZh: 大厅的石桌上堆满水果，有的像特大号覆盆子和橙子。肉汤、鱼或烤谷物在本章并未出现。
   - id: ttm-ch-04-s4
@@ -94,7 +94,7 @@ sections:
       options:
         - Men were much taller and stronger than women
         - Women wore brighter clothing than men
-        - Men and women looked almost the same in costume, face, and limbs
+        - Men and women looked almost exactly alike
         - Men had beards while women had no facial hair
       correctIndex: 2
       explanationZh: 他突然发现这些未来人在服装、面容和四肢上都极为相似，两性差异几乎消失。这与我们所熟悉的男女在体格、服饰上的差异截然不同。
@@ -152,7 +152,7 @@ sections:
       stem: What happened to human energy when life became perfectly safe and comfortable?
       options:
         - It was used to build spaceships for travel
-        - It first turned to art and pleasure, then faded into inactivity
+        - It turned to art, then faded into idleness
         - It was directed toward constant warfare
         - It was used to invent new machines for farming
       correctIndex: 1
@@ -163,23 +163,23 @@ quiz:
     options:
       - They attacked him as soon as he arrived
       - They refused to share any food with him
-      - They asked if he had come from the sun in a thunderstorm, showing a childlike mind
+      - They asked if he came from the sun
       - They could not speak or make any sounds
     correctIndex: 2
     explanationZh: 他曾期待未来人远比自己文明智慧，但一个小人竟问他是否在雷暴中从太阳而来，智力如同五岁孩童，这让他大失所望。攻击、拒食或无法发声都不合文意。
   - id: ttm-ch-04-q2
-    stem: What did the Time Traveller remove from the Time Machine and put in his pocket?
+    stem: What did the Time Traveller notice about the Eloi children?
     options:
-      - The saddle and the compass dial
-      - The brass rods that supported the seat
-      - The small levers that would set it in motion
-      - The crystal panel showing the date
+      - They were kept apart in a separate palace
+      - They were far more curious than their elders
+      - They looked like miniatures of their parents
+      - They wore darker robes than the adults
     correctIndex: 2
-    explanationZh: 原文写道，他伸手越过栏杆拧下起动杆放进口袋，以防小人误启动机器。表盘、座椅或晶体并非被取走的部件。
+    explanationZh: 他注意到这些孩子在他眼中“seemed to be but the miniatures of their parents”，只是小一号的大人。文中没有说孩子被单独安置或衣着不同；他们和大人一样容易对事物失去兴趣，谈不上更有好奇心。
   - id: ttm-ch-04-q3
     stem: What struck the Time Traveller most about the great hall during the fruit dinner?
     options:
-      - Its dilapidated and worn condition
+      - Its worn, ruinous state
       - Its extremely low ceilings
       - The lack of any windows
       - The strong smell of meat
@@ -191,7 +191,7 @@ quiz:
       - They insisted on teaching him for hours
       - They fell asleep as soon as he began
       - They corrected his grammar angrily
-      - They soon grew tired and wandered away like children
+      - They soon tired and wandered off
     correctIndex: 3
     explanationZh: 他发现未来人像孩子一样很快对事物失去兴趣，稍加尝试便疲倦离去。坚持数小时、睡着或生气纠正语法都不合原文。
   - id: ttm-ch-04-q5
@@ -200,7 +200,7 @@ quiz:
       - They were built underground to avoid the sun
       - They were stacked in enormous towers
       - They were hidden behind tall hedges
-      - They had vanished; only large palace-like buildings remained
+      - They were gone; only palaces remained
     correctIndex: 3
     explanationZh: 他注意到没有小房屋的踪迹，只有宫殿般的大建筑散布其间，于是自言"共产主义"。地下城、巨型塔楼或高篱在原文均未出现。
   - id: ttm-ch-04-q6

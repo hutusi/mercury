@@ -3,7 +3,7 @@ id: oz-ch-10
 bookId: book-oz
 title: The Guardian of the Gate
 titleZh: 守门人
-summaryZh: 一行人终于抵达翡翠城外的高墙，被要求戴上绿色眼镜才能入城。守门人告诫他们：大巫师奥兹已有多年未接见任何人，而且他对不诚实的来客极为可怕。
+summaryZh: 一行人终于抵达翡翠城外的高墙，见到了守门人。进城的规矩出人意料，而关于大巫师奥兹的种种传闻，更让这次求见显得凶多吉少。
 sections:
   - id: oz-ch-10-s1
     text: |-
@@ -149,7 +149,7 @@ sections:
       options:
         - He is angry with her
         - He wants to charge them money
-        - He is surprised because no one has asked in years
+        - Nobody has asked that in years
         - He thinks it is a foolish joke
       correctIndex: 2
       explanationZh: 守门人坐下来思考，并说 "It has been many years since anyone asked me to see Oz"，可见他不是因为生气或要钱，而是因为太久没人提出这样的要求。
@@ -169,7 +169,7 @@ sections:
       stem: Why must everyone wear green spectacles in the Emerald City?
       options:
         - To hide their faces from Oz
-        - To protect them from being blinded by the brightness
+        - To guard eyes against the glare
         - To help them see in the dark
         - To make them look like Munchkins
       correctIndex: 1
@@ -199,13 +199,13 @@ quiz:
       - He ate meat and loved it
       - He ate nothing at all
       - He ate eggs and enjoyed them
-      - He ate porridge but did not care for it
+      - Porridge, which he disliked
     correctIndex: 3
     explanationZh: 狮子吃了些粥，但 "did not care for it"，说粥是燕麦做的，燕麦是马的食物，不是狮子的。锡樵夫和稻草人什么都没吃。
   - id: oz-ch-10-q4
     stem: What did the man in the farmhouse say Oz keeps in his Throne Room for the Lion?
     options:
-      - A pot of courage under a golden plate
+      - A pot of courage
       - A box of brains
       - A collection of hearts
       - A magic map of Kansas
@@ -215,7 +215,7 @@ quiz:
     stem: What was at the end of the yellow brick road?
     options:
       - A small green farmhouse
-      - A big gate studded with emeralds
+      - An emerald-studded gate
       - A dark forest
       - A river crossing
     correctIndex: 1

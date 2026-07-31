@@ -3,7 +3,7 @@ id: oz-ch-21
 bookId: book-oz
 title: The Lion Becomes the King of Beasts
 titleZh: 狮子成为百兽之王
-summaryZh: 旅行者们穿过泥泞的沼泽地，进入一片古老的大森林，遇见成百上千只正在集会的野兽。野兽们正为一只巨型蜘蛛怪物所困扰，狮子挺身而出，前去与怪物搏斗。
+summaryZh: 穿过泥泞的沼泽，旅行者们走进一片古老的大森林。森林里的野兽们正聚在一起商量一件大事，而这次集会，给了狮子一个证明自己的机会。
 sections:
   - id: oz-ch-21-s1
     text: |-
@@ -31,7 +31,7 @@ sections:
       stem: How does the Lion feel about the big, old forest?
       options:
         - He finds it gloomy and scary.
-        - He thinks it is delightful and would like to live there.
+        - He finds it delightful and homelike
         - He wants to leave as soon as possible.
         - He thinks the trees are too small.
       correctIndex: 1
@@ -82,7 +82,7 @@ quiz:
     stem: Why did the animals of the forest gather together?
     options:
       - To welcome Dorothy and her friends.
-      - To decide how to deal with a terrible spider monster.
+      - To plan against a spider monster
       - To choose a new king of the forest.
       - To find food for the winter.
     correctIndex: 1

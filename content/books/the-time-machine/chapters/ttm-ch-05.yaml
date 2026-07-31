@@ -3,7 +3,7 @@ id: ttm-ch-05
 bookId: book-time-machine
 title: Chapter 5
 titleZh: 第五章
-summaryZh: 时间旅行者发现时间机器不见了，惊慌失措，在斯芬克斯像的铜座中找到了线索。他在这个看似太平的未来世界里努力了解小人族的生活，结识了小女孩薇娜，并最终发现人类已分化为地上和地下两个种族。
+summaryZh: 时间旅行者发现时间机器不见了，惊慌之余开始在这个看似太平的世界里搜寻线索。他努力了解小人族的生活，结识了薇娜，而一连串奇怪的发现，正把他一步步引向这个世界埋得最深的秘密。
 sections:
   - id: ttm-ch-05-s1
     text: |-
@@ -56,7 +56,7 @@ sections:
       options:
         - The little people tell him where to find it.
         - He sees a light shining from inside the pedestal.
-        - He finds a groove in the turf and narrow footprints leading toward the pedestal.
+        - A groove and narrow footprints leading toward it
         - He finds the missing levers near the pedestal.
       correctIndex: 2
       explanationZh: 他在草地上发现了一道被拖拽出的沟痕和类似树懒的窄小脚印，都指向铜座。他敲了敲铜座发现它是空心的，由此推断机器被藏在里面。
@@ -73,7 +73,7 @@ sections:
       options:
         - They offer to help him open it together.
         - They show him a hidden key to the panels.
-        - They act as if they have been deeply insulted and walk away.
+        - They act deeply insulted and walk away
         - They run away screaming in terror.
       correctIndex: 2
       explanationZh: 当他指向铜座示意想打开时，小人族的反应就像受到了极大侮辱一样走开了。文中用了一个比喻，说就像对一个体面的人做了粗俗的手势，他们显得既厌恶又难堪。
@@ -87,7 +87,7 @@ sections:
       stem: What strange feature does the Time Traveller notice about the circular wells on the hillsides?
       options:
         - They are filled with glowing blue water.
-        - They have no visible water and a strong downward current of air.
+        - No visible water, and air rushing steadily down
         - They are used to store food for the little people.
         - They emit a bright light from deep below.
       correctIndex: 1
@@ -140,7 +140,7 @@ sections:
         - They prefer to sleep outdoors under the stars.
         - They become aggressive and violent at night.
         - They can see perfectly well in complete darkness.
-        - They are deeply afraid of the dark and never go outside after sunset.
+        - They dread the dark and never go out after sunset
       correctIndex: 3
       explanationZh: 薇娜在白天不怕任何事，但极度害怕黑暗、阴影和黑色的东西。他发现天黑后小人族全部聚在大屋里睡觉，从不在室外或独自过夜，说明黑暗是他们唯一恐惧的东西。
   - id: ttm-ch-05-s9
@@ -237,7 +237,7 @@ quiz:
       - The machine can only move forward in time, not backward
       - He sees tracks showing it was dragged across the grass
       - The little people tell him they saw it being moved
-      - The removed levers prevent anyone from tampering with the time mechanism
+      - Without the levers, no one could move it through time
     correctIndex: 3
     explanationZh: 他解释说杠杆被拆下后，没人能用那种方式操纵机器在时间上移动，因此机器只是在空间上被搬走了，而不是在时间上消失了。他后来也确实在草地上发现了拖痕。
   - id: ttm-ch-05-q2
@@ -252,7 +252,7 @@ quiz:
   - id: ttm-ch-05-q3
     stem: What physical traits of the underground creature suggest it has lived in darkness for a long time?
     options:
-      - Its bleached white skin and large, light-reflecting eyes
+      - Bleached skin and large reflective eyes
       - Its strong muscular body and sharp teeth
       - Its thick fur and long claws
       - Its small size and childlike face
@@ -273,14 +273,14 @@ quiz:
       - The little people threaten him with weapons
       - He breaks through the panels but finds nothing inside
       - He is told the machine will be returned the next day
-      - He realizes he must be patient and learn the ways of this world first
+      - He decides to be patient and study this world first
     correctIndex: 3
     explanationZh: 他敲打铜板毫无效果后冷静下来，对自己说必须离开斯芬克斯，耐心地了解这个世界。他意识到如果对方打算归还机器，砸坏铜板没用；如果不打算归还，更需要智慧和策略。
   - id: ttm-ch-05-q6
     stem: What does the Time Traveller conclude about the 'triumph of Humanity' he had expected to find in the future?
     options:
       - It was a triumph of moral education and universal cooperation
-      - It was actually an aristocracy that triumphed over both Nature and fellow humans
+      - An aristocracy triumphing over Nature and fellow man
       - It was a peaceful democracy where everyone was equal
       - It was a technological utopia where machines did all the work
     correctIndex: 1

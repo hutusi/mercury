@@ -3,7 +3,7 @@ id: ttm-ch-06
 bookId: book-time-machine
 title: Chapter 6
 titleZh: 第六章
-summaryZh: 时间旅行者克服内心的恐惧，终于下到井中探索莫洛克人的地下世界。他发现这些地下生物有着适应黑暗的大眼睛，对火光极度敏感，并在一座巨大的洞穴里闻到了血腥味。当莫洛克人开始围拢过来时，他不得不在黑暗中拼命逃生。
+summaryZh: 时间旅行者克服内心的恐惧，终于沿着井壁下到了莫洛克人的地下世界。黑暗中的所见所闻让他不寒而栗，而这次冒险也差点让他有去无回。
 sections:
   - id: ttm-ch-06-s1
     text: |-
@@ -16,7 +16,7 @@ sections:
       id: ttm-ch-06-s1-c1
       stem: What did the Time Traveller see in the distance that made him plan a trip for the next day before changing his mind?
       options:
-        - A vast green structure with an Oriental look, like Chinese porcelain
+        - A vast green building like porcelain
         - A tall white tower built of aluminium
         - A ruined bridge over a dry riverbed
         - A small temple on a hilltop
@@ -34,7 +34,7 @@ sections:
       stem: How did Weena react when the Time Traveller leaned over the well mouth and prepared to descend?
       options:
         - She happily waved goodbye to him
-        - She cried piteously and tried to pull him back with her little hands
+        - She wept and tried to pull him back
         - She ran away and did not return
         - She tried to climb down ahead of him
       correctIndex: 1
@@ -53,7 +53,7 @@ sections:
         - Their skin was covered in thick dark fur
         - They had no eyes at all
         - They had extremely long arms and legs
-        - Their eyes were abnormally large and sensitive, reflecting light like those of deep-sea fish
+        - Abnormally large, light-reflecting eyes
       correctIndex: 3
       explanationZh: 原文说地下生物的眼睛“abnormally large and sensitive”，并拿深海鱼类作类比。原文没有提到它们有毛发、没有眼睛或四肢异常修长，因此这些干扰项都不符合文意。
   - id: ttm-ch-06-s4
@@ -68,7 +68,7 @@ sections:
         - A map of ancient ruins
         - A second time machine
         - A large supply of food and water
-        - Arms, medicine, tobacco, enough matches, and a camera (Kodak)
+        - Arms, medicine, and a camera
       correctIndex: 3
       explanationZh: 原文明确列出了他后悔没有携带的物品：武器、药品、烟草、足够的火柴，以及一架Kodak照相机。地图、第二台时间机器和大量食物饮水都不在原文的列举中。
   - id: ttm-ch-06-s5
@@ -82,7 +82,7 @@ sections:
       options:
         - He fought them off with a metal bar he found
         - The Eloi came down and rescued him
-        - He lit matches to dazzle them, kicked violently to break free, and climbed quickly up the shaft
+        - He dazzled them with matches and broke free
         - He hid in a side tunnel until they left
       correctIndex: 2
       explanationZh: 原文写他在井口被抓住脚后划亮火柴晃他们的脸，趁他们眼花时猛烈踢腿挣脱，然后迅速攀爬上井。其他选项——用金属棒打斗、被埃洛伊人营救、躲进侧隧道——都没有发生。
@@ -93,7 +93,7 @@ quiz:
       - He needed time to repair his Time Machine first
       - He was waiting for Weena to learn enough English to guide him
       - He wanted to explore the Palace of Green Porcelain before anything else
-      - He felt a shrinking dread of the pale Morlocks and the dark underground, and lacked a companion's support
+      - He dreaded the pale Morlocks and the dark, and had no companion
     correctIndex: 3
     explanationZh: 原文说他两天没行动，原因是看到莫洛克人苍白冰冷的身体产生了一种本能的退缩，而且他独自身感恐惧——“If only I had had a companion it would have been different”。他并不是在修机器、等Weena学英语或优先探查绿瓷宫。
   - id: ttm-ch-06-q2
@@ -101,14 +101,14 @@ quiz:
     options:
       - Piles of animal bones stacked along the walls
       - A hunting weapon left beside the machinery
-      - A faint smell of freshly shed blood and a meal of red meat on a white metal table
+      - The smell of blood and a joint of red meat
       - The remains of an Eloi body in the tunnel
     correctIndex: 2
     explanationZh: 原文写道空气中有“the faint halitus of freshly shed blood”，并看到白色金属小桌上摆着像是饭食的东西，其中有一块“red joint”（红肉），由此推断莫洛克人是食肉的。原文未提到成堆骨头、武器或埃洛伊人遗体。
   - id: ttm-ch-06-q3
     stem: Why did the Time Traveller have only four matches left when he entered the Under-world?
     options:
-      - He had wasted almost half the box amazing the Eloi, to whom fire was a novelty
+      - He had wasted half the box astonishing the Eloi
       - He had lost half the box while travelling through time
       - He had used many matches to light fires at night for warmth
       - He had given most of them away to the Eloi as gifts
@@ -118,7 +118,7 @@ quiz:
     stem: What happened when the Time Traveller shouted at the Morlocks in the dark?
     options:
       - They fled and never came back
-      - They started away but returned more boldly, making a strange laughing noise
+      - They returned more boldly, with a queer laugh
       - They attacked him immediately in a swarm
       - They began speaking to him in their own language
     correctIndex: 1

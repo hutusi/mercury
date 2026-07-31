@@ -3,7 +3,7 @@ id: ttm-ch-11
 bookId: book-time-machine
 title: Chapter 11
 titleZh: 第十一章
-summaryZh: 时间旅行者继续向遥远的未来飞行，目睹地球逐渐停止自转、太阳变得又大又红。他在一片荒凉的海滩停下，遇到了巨大的蟹状怪物，随后又看到了日食、飞雪以及一个在浅滩上跳动的黑色球状生物。
+summaryZh: 下一段旅程把时间旅行者带到了难以想象的遥远未来。他在一片荒凉的海滩上停下机器，那里的天空、海洋和“居民”都与他熟悉的世界彻底两样——地球暮年的图景正在他眼前徐徐展开。
 sections:
   - id: ttm-ch-11-s1
     text: |-
@@ -15,7 +15,7 @@ sections:
       stem: When the Time Traveller checks the dials, what does he discover about his direction of travel?
       options:
         - He has returned to his own time by mistake.
-        - He has accidentally sent the machine forward into the far future.
+        - He has accidentally flown into the far future
         - He is travelling backward into the deep past.
         - He has stopped in the age of the Eloi.
       correctIndex: 1
@@ -96,7 +96,7 @@ quiz:
     stem: What effect does the thin air have on the Time Traveller when he stops in the far future?
     options:
       - He feels energetic and unusually strong.
-      - He feels oppressed, breathes fast, and compares it to mountaineering.
+      - He feels oppressed and breathes fast
       - He falls asleep for a long time.
       - He loses his eyesight for a while.
     correctIndex: 1
@@ -107,7 +107,7 @@ quiz:
       - A white bird with broken wings trying to fly.
       - A small boat drifting toward the shore.
       - A human figure waving at him.
-      - A round, football-sized black thing with tentacles, hopping about.
+      - A hopping black thing with trailing tentacles
     correctIndex: 3
     explanationZh: 日食结束后他再次看到浅滩上的移动物体：“a round thing, the size of a football perhaps... and tentacles trailed down from it... it was hopping fitfully about”。那不是鸟或船，而是一个带触手的黑色球状生物。
   - id: ttm-ch-11-q5
@@ -124,7 +124,7 @@ quiz:
     options:
       - The entire ocean has frozen solid into ice.
       - All the green plants have turned to red dust.
-      - There are no moving creatures; only green slime on the rocks remains.
+      - Nothing moved; only green slime remained
       - The beach is crowded with tiny white insects.
     correctIndex: 2
     explanationZh: 他环顾四周，在天空、大地和海洋中都没有看到任何移动的东西，“The green slime on the rocks alone testified that life was not extinct”。岩上的绿色黏液是生命仅存的痕迹，海洋并未完全冻结。

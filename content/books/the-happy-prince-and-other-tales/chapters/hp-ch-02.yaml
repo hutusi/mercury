@@ -3,7 +3,7 @@ id: hp-ch-02
 bookId: book-happy-prince
 title: The Nightingale and the Rose
 titleZh: 夜莺与玫瑰
-summaryZh: 年轻的学生为心上人寻找一朵红玫瑰，却遍寻不得。夜莺为成全这份爱情，用自己的心血和歌声培育出一朵红玫瑰，然而最终的结果却令人心碎。
+summaryZh: 年轻的学生为心上人寻找一朵红玫瑰，却遍寻不得。他的叹息被一只夜莺听见——在夜莺心中，这正是她歌唱了一生的真爱。为了成全这份爱情，她做出了一个重大的决定。
 sections:
   - id: hp-ch-02-s1
     text: |-
@@ -219,7 +219,7 @@ quiz:
     options:
       - She waters the tree with river water all night.
       - She flies to the Sun and brings back its fire.
-      - Her heart's blood flows into the tree as she sings against a thorn.
+      - Her heart's blood flows in as she sings on a thorn
       - She asks the Moon to color the rose with her light.
     correctIndex: 2
     explanationZh: 玫瑰树说“stain it with your own heart's-blood”，夜莺胸口抵着刺整夜歌唱，心血流入树枝，玫瑰才从白色变深红。浇水、借日光、借月光都未在文中出现。
@@ -237,7 +237,7 @@ quiz:
     options:
       - She is already engaged to the Student.
       - She only likes white roses, not red ones.
-      - She has received real jewels from the Chamberlain's nephew.
+      - She has been sent real jewels instead
       - She is allergic to flowers.
     correctIndex: 2
     explanationZh: 女孩说“the Chamberlain's nephew has sent me some real jewels, and everybody knows that jewels cost far more than flowers”，还嫌玫瑰和裙子不配。她并未与学生订婚，也没说只喜欢白花或对花过敏。
@@ -247,6 +247,6 @@ quiz:
       - He plants it in his garden.
       - He gives it to the Nightingale.
       - He puts it in a vase in his room.
-      - He throws it into the street, and a cartwheel goes over it.
+      - He throws it into the street
     correctIndex: 3
     explanationZh: 学生生气地把玫瑰扔到街上，“it fell into the gutter, and a cartwheel went over it”。他并没有种花、给夜莺或插在花瓶里。

@@ -26,7 +26,7 @@ sections:
       id: hp-ch-05-s1-c1
       stem: Why did the King give orders to double the young Page's salary?
       options:
-        - The Page said the Princess looked like a white rose and then a red rose.
+        - The Page compared the Princess to a rose
         - The Page played the flute beautifully at the Ball.
         - The Page found the Princess's lost silver cap.
         - The Page served the crystal cup at the banquet.
@@ -274,7 +274,7 @@ sections:
       options:
         - He can plough the fields like an ox if needed.
         - He can draw a cart like a horse.
-        - A person of his position is never useful; accomplishments are enough.
+        - A person of his position is never useful
         - He can look after sheep like a collie-dog.
       correctIndex: 2
       explanationZh: 鸭子夸牛能耕田、马能拉车、牧羊犬能看羊，火箭骄傲地说自己那样的人从不做有用的事，有才艺就够了。
@@ -327,21 +327,21 @@ sections:
       explanationZh: 两个男孩捡到火箭后说把它放进火里帮助烧水（put it into the fire, it will help to boil the kettle）。不是送回宫廷，也不是扔进沟渠。
 quiz:
   - id: hp-ch-05-q1
-    stem: Why could the Rocket not go off during the midnight fireworks display?
+    stem: Why did no one ever tell the King that he played the flute badly?
     options:
-      - His gunpowder was old and useless.
-      - The Royal Pyrotechnist forgot to light him.
-      - He was too wet from crying.
-      - His stick was broken by a workman.
+      - He only ever played in his private rooms
+      - The whole court truly loved his music
+      - No one dared to, because he was the King
+      - The Page always played in his place
     correctIndex: 2
-    explanationZh: 火箭之前大哭，泪水流下棍子、打湿了火药（the gunpowder was so wet with tears），所以无法发射。不是火药老旧或工人弄坏了棍子。
+    explanationZh: 国王笛子吹得很糟，但“no one had ever dared to tell him so, because he was the King”，人人都跟着喊“魅力十足”。宫廷并非真心喜爱他的演奏，他也不是只在私下吹奏。
   - id: hp-ch-05-q2
     stem: What did the Rocket's mother do that made her famous?
     options:
       - She flew higher than any rocket before.
       - She danced with the King at a ball.
       - She fell into a ditch and met a frog.
-      - She spun round nineteen times and threw pink stars into the air.
+      - She spun nineteen times, throwing stars
     correctIndex: 3
     explanationZh: 火箭说他的母亲是最出名的轮转烟花，公开亮相时旋转十九圈，每圈抛出七颗粉色星星。飞得很高的是他父亲。
   - id: hp-ch-05-q3
@@ -350,7 +350,7 @@ quiz:
       - Someone who weeps when others are happy.
       - Someone who always keeps dry at night.
       - Someone who never argues with a frog.
-      - Someone who has corns and treads on other people's toes.
+      - Someone with corns who treads on toes
     correctIndex: 3
     explanationZh: 罗马烛小声说敏感的人就是自己长了鸡眼却总踩别人脚趾（has corns himself, always treads on other people's toes），暗讽火箭自以为是。
   - id: hp-ch-05-q4
@@ -363,14 +363,14 @@ quiz:
     correctIndex: 0
     explanationZh: 火箭坚信 BAD 和 GRAND 听起来几乎一样，所以工人说的一定是 grand rocket（了不起的火箭）。gold 是他后来把男孩说的 old stick 听成 gold stick，那是另一次自我安慰，不是工人的话。
   - id: hp-ch-05-q5
-    stem: What did the two boys do with the Rocket after finding him in the ditch?
+    stem: Where did the Rocket's stick fall after he finally went off?
     options:
-      - They threw him over a wall into a ditch.
-      - They put him on top of a fire to help boil their kettle.
-      - They took him back to the King's Court.
-      - They gave him to a farmer's wife.
+      - Onto the roof of the King's palace
+      - On the back of a Goose walking by the ditch
+      - Into the middle of the wedding fireworks
+      - Into the kettle over the boys' fire
     correctIndex: 1
-    explanationZh: 两个男孩捡到火箭后说把它放进火里帮助烧水（put it into the fire, it will help to boil the kettle）。不是送回宫廷，也不是扔过墙。
+    explanationZh: 火箭终于爆炸后，棍子掉下来砸在一只正在沟边散步的鹅背上，鹅惊叫“It is going to rain sticks”后赶紧跳进水里。棍子没有落在王宫或烟火表演场上，也没有掉进男孩们烧水的壶里。
   - id: hp-ch-05-q6
     stem: What happened when the Rocket finally exploded?
     options:

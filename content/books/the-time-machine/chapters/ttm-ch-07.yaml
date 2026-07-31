@@ -51,7 +51,7 @@ sections:
       stem: Why did the Time Traveller hesitate before entering the thick wood at night?
       options:
         - He heard Morlocks calling inside it.
-        - He could see no end to it in either direction.
+        - He could see no end to it either way
         - He had already reached the palace.
         - Weena refused to walk any further.
       correctIndex: 1

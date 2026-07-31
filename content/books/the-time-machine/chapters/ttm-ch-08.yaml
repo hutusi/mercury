@@ -3,7 +3,7 @@ id: ttm-ch-08
 bookId: book-time-machine
 title: Chapter 8
 titleZh: 第八章
-summaryZh: 时间旅行者带着威娜来到了废墟般的绿瓷宫——一座未来的博物馆。他在这里探索了化石、矿物、机械和图书馆的遗迹，并找到了几件关键的防身之物。随着夜幕降临，他开始为迎接黑夜、夺回时间机做准备。
+summaryZh: 时间旅行者带着薇娜走进了废墟般的绿瓷宫。这座建筑的真实身份让他既惊讶又感慨；更重要的是，他在这里找到了迎接黑夜、夺回时间机器所需的几样东西。
 sections:
   - id: ttm-ch-08-s1
     text: |-
@@ -33,7 +33,7 @@ sections:
       id: ttm-ch-08-s2-c1
       stem: Why does the Time Traveller linger among the old machines?
       options:
-        - He hopes solving their puzzles might give him powers useful against the Morlocks.
+        - Their secrets might yield powers against the Morlocks
         - He wants to repair one so he can travel back home.
         - He is trying to find a hidden door to the Morlocks' tunnels.
         - He believes the machines contain explosives.
@@ -131,15 +131,15 @@ quiz:
       - He throws it away because it has gone bad.
       - He eats a small piece to refresh himself.
       - He uses it to patch a leak in the roof.
-      - He keeps it because it burns with a good bright flame, like an excellent candle.
+      - He keeps it to burn like a bright candle
     correctIndex: 3
     explanationZh: 文中说他起初想丢掉，但记起它“inflammable and burned with a good bright flame”，于是放进口袋当蜡烛用。他并非丢弃或食用。
   - id: ttm-ch-08-q6
-    stem: Why are the dynamite cartridges ultimately useless to the Time Traveller?
+    stem: What stood in the palaeontology gallery of the Palace of Green Porcelain?
     options:
-      - They are too old and have rotted into dust.
-      - He cannot find anything to strike a match near them.
-      - They are fakes placed in the display.
-      - They are locked in a case he cannot break.
+      - Cages that had once held living animals
+      - Wax figures of the Eloi's ancestors
+      - Huge fossil skeletons such as the Brontosaurus
+      - Shelves of ancient farming tools
     correctIndex: 2
-    explanationZh: 文中说等了半天没有爆炸，原因是“the things were dummies”。它们不是受潮失效的真炸药，而是陈列用的假货。
+    explanationZh: 绿瓷宫其实是一座古老的博物馆，古生物展厅里立着巨大的化石骨架，包括雷龙（Brontosaurus）的巨大骨桶，只是不可避免的腐朽正在侵蚀它们。馆里没有关活物的笼子，也没有蜡像和农具架。

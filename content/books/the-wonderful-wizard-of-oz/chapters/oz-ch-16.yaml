@@ -3,7 +3,7 @@ id: oz-ch-16
 bookId: book-oz
 title: The Magic Art of the Great Humbug
 titleZh: 大骗子的魔法
-summaryZh: 稻草人、铁皮人和狮子依次来到奥兹面前，领取他们最渴望的东西——大脑、心和勇气。奥兹用自己的方式满足了三人，但他心里清楚，真正困难的是如何把多萝西送回堪萨斯。
+summaryZh: 稻草人、铁皮人和狮子依次走进觐见室，领取奥兹许诺的礼物。这位“大骗子”自有他的一套办法，让每个人都心满意足。
 sections:
   - id: oz-ch-16-s1
     text: |-
@@ -104,7 +104,7 @@ sections:
       stem: How did Oz give the Lion his courage?
       options:
         - He gave the Lion a medal to wear
-        - He poured liquid from a green bottle into a dish for the Lion to drink
+        - He made the Lion drink a green liquid
         - He put a silk heart in the Lion's chest
         - He told the Lion a brave story
       correctIndex: 1
@@ -131,7 +131,7 @@ quiz:
   - id: oz-ch-16-q3
     stem: What did Oz use to cut a hole in the Tin Woodman's breast?
     options:
-      - Tinsmith's shears
+      - Shears
       - A knife
       - An axe
       - A hammer

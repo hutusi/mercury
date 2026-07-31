@@ -3,7 +3,7 @@ id: hp-ch-03
 bookId: book-happy-prince
 title: The Selfish Giant
 titleZh: 自私的巨人
-summaryZh: 巨人把孩子们赶出花园、筑起高墙，花园因此长年被寒冬笼罩。直到孩子们重新偷跑进来，春天才随之回归，巨人也由此发生改变。
+summaryZh: 巨人把孩子们赶出花园、筑起高墙，花园里从此只剩下呼啸的北风和不化的冰雪。这场漫长的冬天因何而起、又如何结束，正是这个故事最动人的地方。
 sections:
   - id: hp-ch-03-s1
     text: |-
@@ -50,7 +50,7 @@ sections:
         - The North Wind refused to leave that corner of the garden.
         - The Giant had locked that corner with a noticeboard.
         - The Snow and Frost wanted to stay there all year.
-        - A little boy was too small to climb the tree, so that tree stayed covered in frost and snow.
+        - A little boy too small to climb was crying under that tree
       correctIndex: 3
       explanationZh: 文中写那个小男孩 "so small that he could not reach up to the branches"，围绕树哭泣，那棵树仍被霜雪覆盖。North Wind 在角落呼啸是因为孩子无法上树，并非北风不肯走。
   - id: hp-ch-03-s3
@@ -111,7 +111,7 @@ quiz:
   - id: hp-ch-03-q1
     stem: Why did Spring not come to the Giant's garden after he built the wall?
     options:
-      - There were no children in the garden, and Spring came only with the children.
+      - Spring came only where the children were
       - The Cornish ogre had put a curse on the garden.
       - The Snow and Frost had chased Spring away forever.
       - The Giant had cut down all the peach-trees.
@@ -122,7 +122,7 @@ quiz:
     options:
       - Build a bigger wall to keep the North Wind out.
       - Go back to visit the Cornish ogre for another seven years.
-      - Put the little boy into the tree, knock down the wall, and give the garden to the children forever.
+      - Give the garden to the children and knock down the wall
       - Ask the children to find the little boy's home.
     correctIndex: 2
     explanationZh: 巨人反省 "How selfish I have been"，计划把孩子放上树、推倒墙，让花园永远成为孩子们的游乐场。他并非要筑更大的墙，也不是再去找食人魔。
@@ -141,18 +141,18 @@ quiz:
       - Because the boy brought the Giant golden fruit.
       - Because the boy was the tallest of all the children.
       - Because the boy told the Giant where he lived.
-      - Because the boy had put his arms round the Giant's neck and kissed him.
+      - Because the boy had hugged and kissed him
     correctIndex: 3
     explanationZh: 文中明确写 "The Giant loved him the best because he had kissed him"——男孩曾搂住巨人脖子吻他。孩子并没有带来金果，也不知道住在哪里。
   - id: hp-ch-03-q5
-    stem: Years later, what made the Giant realize who the little boy really was?
+    stem: Where had the Giant been during the seven years before he came home?
     options:
-      - The boy was carrying a great axe to knock down a wall.
-      - The boy had a great white cloak like the Snow.
-      - The boy was dressed in grey like the Hail.
-      - The boy had nail prints on his hands and feet, and said they were the wounds of Love.
+      - Travelling around the world
+      - Building a new castle in another country
+      - Sleeping through seven long winters
+      - Visiting his friend the Cornish ogre
     correctIndex: 3
-    explanationZh: 多年后巨人看到孩子掌心和脚上的钉痕，问 "Who hath dared to wound thee"，孩子回答 "these are the wounds of Love"。这让孩子身份带有神圣意味。大斧是巨人曾用之物，白雪与冰雹是寒冬拟人角色。
+    explanationZh: 故事开头说巨人“had been to visit his friend the Cornish ogre, and had stayed with him for seven years”，话说完了才决定回自己的城堡。环游世界、造新城堡、沉睡过冬都不是原文的说法。
   - id: hp-ch-03-q6
     stem: What did the child promise the Giant at the end of the story?
     options:

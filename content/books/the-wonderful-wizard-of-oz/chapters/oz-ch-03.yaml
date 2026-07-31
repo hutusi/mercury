@@ -3,7 +3,7 @@ id: oz-ch-03
 bookId: book-oz
 title: How Dorothy Saved the Scarecrow
 titleZh: 多萝西救了稻草人
-summaryZh: 多萝西穿上银鞋，带着托托踏上黄砖路，在芒奇金富人博克家借宿。第二天她把稻草人从玉米地的木杆上救了下来——他决定同去翡翠城，向奥兹要一副脑子。
+summaryZh: 多萝西穿上银鞋，带着托托踏上黄砖路，在芒奇金富人博克家借宿。第二天，她在一块玉米地里遇见了一个会说话的稻草人，一段新的同行就此开始。
 sections:
   - id: oz-ch-03-s1
     text: |-
@@ -89,7 +89,7 @@ sections:
       stem: Why did Boq believe Dorothy must be a friendly witch?
       options:
         - She carried a magic basket
-        - Her dress had white in it, and only witches and sorceresses wear white
+        - Her dress showed white, the witches' color
         - She arrived walking on the yellow brick road
         - Toto could understand human speech
       correctIndex: 1
@@ -187,7 +187,7 @@ quiz:
     options:
       - They bowed to every stranger on the road
       - They wanted to see the silver shoes up close
-      - They knew she had destroyed the Wicked Witch and set them free
+      - She had destroyed the Witch and freed them
       - They thought she was the Witch of the North
     correctIndex: 2
     explanationZh: 文中写道，人们出来看她、向她深深鞠躬，"因为每个人都知道，是她消灭了恶女巫，把他们从奴役中解救出来"。
@@ -205,7 +205,7 @@ quiz:
     options:
       - It was only two days' easy walk
       - He drew her a map of the whole road
-      - It was a long journey through country that was sometimes rough and dangerous
+      - A long journey, rough and dangerous
       - The road ended at a great desert
     correctIndex: 2
     explanationZh: 博克严肃地说自己从没去过翡翠城："路很远，要走许多天。这里的乡村富饶宜人，但到达终点之前，你必须穿过艰险的地方。"这让多萝西有些担心，但她没有回头。

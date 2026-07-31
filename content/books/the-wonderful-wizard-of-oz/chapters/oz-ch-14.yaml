@@ -3,7 +3,7 @@ id: oz-ch-14
 bookId: book-oz
 title: The Winged Monkeys
 titleZh: 飞猴
-summaryZh: 四位伙伴在返回翡翠城的途中迷了路，田鼠女王提醒多萝西使用金帽召唤飞猴。飞猴将他们送回翡翠城，途中猴王讲述了金帽的来历。
+summaryZh: 四位伙伴在返回翡翠城的途中迷了路，绿色的原野一望无际，连方向都辨认不清。一位老朋友的提醒帮他们摆脱了困境，而这段旅程还让他们听到了一个关于金帽的古老故事。
 sections:
   - id: oz-ch-14-s1
     text: |-
@@ -33,7 +33,7 @@ sections:
         - Because the Wicked Witch put a spell on them.
         - Because they forgot to bring a map.
         - Because the flowers blocked their view.
-        - Because at noon the sun was over their heads and they could not tell east from west.
+        - At noon the overhead sun gave no directions
       correctIndex: 3
       explanationZh: 原文说他们本知道要朝东走，但正午太阳在头顶时，他们分不清东西方向，因此迷了路。其他选项在文中都没有提到。
   - id: oz-ch-14-s2
@@ -102,7 +102,7 @@ sections:
       options:
         - They served the Wicked Witch and hated it.
         - They worked for Gayelette in her ruby palace.
-        - They lived freely and happily in the forest doing as they pleased.
+        - They lived free and happy in the forest
         - They guarded the Emerald City gates.
       correctIndex: 2
       explanationZh: 猴王说他们曾经是自由的民众，住在森林里，吃坚果和水果，随心所欲，没有人是他们的主人。其他选项都与他们当时的生活无关。
@@ -141,7 +141,7 @@ sections:
       stem: What did the Wicked Witch of the West use the Winged Monkeys to do?
       options:
         - Build her castle
-        - Enslave the Winkies and drive Oz out of the Land of the West
+        - Enslave the Winkie people
         - Guard the Winkies
         - Find the Golden Cap for her
       correctIndex: 1

@@ -3,7 +3,7 @@ id: oz-ch-23
 bookId: book-oz
 title: Glinda The Good Witch Grants Dorothy’s Wish
 titleZh: 好女巫格林达满足多萝西的愿望
-summaryZh: 多萝西和同伴们来到南方女巫格林达的城堡。格林达答应送多萝西回堪萨斯，条件是多萝西把金帽交给她。格林达用金帽命令飞猴分别送稻草人、铁皮人和狮子回到各自的王国，然后告诉多萝西银鞋的秘密——只要把鞋跟磕三下就能回家。
+summaryZh: 多萝西和同伴们终于见到了南方好女巫格林达。格林达不仅为每位伙伴的归宿做了安排，还揭开了一个多萝西从旅程第一天起就一直带在身上的秘密。
 sections:
   - id: oz-ch-23-s1
     text: |-
@@ -78,7 +78,7 @@ sections:
         - Keep it as a treasure
         - Give it to Dorothy again
         - Throw it into the desert
-        - Give it to the King of the Monkeys so his band is free forever
+        - Free the Monkeys forever
       correctIndex: 3
       explanationZh: Glinda says she will give the cap to the King of the Monkeys, "that he and his band may thereafter be free for evermore." 她用完三次命令后就让飞猴们永远自由，而不是自己留着。
   - id: oz-ch-23-s3
@@ -122,7 +122,7 @@ quiz:
   - id: oz-ch-23-q1
     stem: Why does Dorothy say Aunt Em will think something dreadful has happened to her?
     options:
-      - Because Aunt Em will think she is dead and wear mourning clothes
+      - Aunt Em will believe she is dead
       - Because Dorothy wrote her a sad letter
       - Because Uncle Henry told Aunt Em a lie
       - Because the cyclone destroyed the new house
@@ -132,7 +132,7 @@ quiz:
     stem: What problem does the Scarecrow worry about when he says he wants to return to the Emerald City?
     options:
       - He has no brain to rule with
-      - He does not know how to cross the hill of the Hammer-Heads
+      - Crossing the Hammer-Heads' hill
       - The people there do not like him
       - He is afraid of the Winkies
     correctIndex: 1
@@ -152,13 +152,13 @@ quiz:
       - They are angry at her
       - They say they wish she had left right away
       - They offer to go with her to Kansas
-      - They point out that then they would never have gotten their brains, heart, or courage
+      - Then they would never have got their gifts
     correctIndex: 3
     explanationZh: 每个朋友都说如果她第一天就回家，自己就不会得到最渴望的东西：稻草人不会有脑子，铁皮人不会有心，狮子永远只是胆小鬼。他们并不是生气或想让她走。
   - id: oz-ch-23-q5
     stem: What happens to the Silver Shoes during Dorothy's flight through the air?
     options:
-      - They fall off and are lost forever in the desert
+      - They fell off over the desert
       - They turn into ruby slippers
       - They are given to Toto
       - They bring Glinda to Kansas too

@@ -3,7 +3,7 @@ id: oz-ch-09
 bookId: book-oz
 title: The Queen of the Field Mice
 titleZh: 田鼠女王
-summaryZh: 铁皮人救下了一只被野猫追杀的田鼠，没想到她竟然是田鼠女王。女王召集成千上万的田鼠，用细绳拉动一辆木车，齐心协力把昏睡在罂粟花田里的胆小狮子救了出来。
+summaryZh: 在罂粟花田边，铁皮樵夫的一次出手相救带来了意想不到的回报。成千上万的小小盟友赶来帮忙，沉睡不醒的狮子终于有了获救的希望。
 sections:
   - id: oz-ch-09-s1
     text: |-
@@ -80,7 +80,7 @@ sections:
         - Bring them food and water
         - Carry them across the river
         - Find the yellow brick road
-        - Save the Cowardly Lion from the poppy bed
+        - Rescue the sleeping Lion
       correctIndex: 3
       explanationZh: Scarecrow 想到狮子还昏睡在罂粟花田里，于是请田鼠们帮忙救出他。女王一开始害怕狮子会吃掉他们，Scarecrow 解释这只狮子很胆小，不会伤害朋友。
   - id: oz-ch-09-s3
@@ -124,7 +124,7 @@ quiz:
   - id: oz-ch-09-q1
     stem: What was the Wildcat chasing when the Tin Woodman killed it?
     options:
-      - A little gray field mouse
+      - A field mouse
       - Toto the dog
       - A yellow bird
       - Another wildcat

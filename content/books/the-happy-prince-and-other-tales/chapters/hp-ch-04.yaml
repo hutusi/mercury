@@ -63,7 +63,7 @@ sections:
       options:
         - Sacks of flour
         - Milk and wool
-        - Flowers, sweet herbs, or fruit
+        - Flowers
         - Bread and nuts
       correctIndex: 2
       explanationZh: 磨坊主每次经过都会摘一大束花、一把香草，或在水果季装满口袋的李子和樱桃。面粉、牛奶和羊毛是磨坊主自己拥有却不肯给汉斯的东西。
@@ -149,7 +149,7 @@ sections:
       stem: What does the Miller ask for in return for giving Hans the wheelbarrow?
       options:
         - A sack of flour
-        - A plank of wood and a basket of flowers
+        - A plank of wood
         - Help with the sheep
         - A silver chain
       correctIndex: 1
@@ -186,7 +186,7 @@ sections:
         - He feels angry and refuses to do it
         - He feels happy because he loves the Miller
         - He feels afraid the Miller will steal them
-        - He feels sorrowful because he will have no flowers left to sell
+        - He is sad to lose all his flowers
       correctIndex: 3
       explanationZh: 汉斯 "rather sorrowfully" 地问 "Quite full?"，因为篮子太大，装满后他就没花可卖去赎回银纽扣了。他最终还是把花全给了磨坊主，所以生气拒绝不正确。
   - id: hp-ch-04-s7
@@ -249,7 +249,7 @@ sections:
       options:
         - Mend the barn roof
         - Carry flour to market
-        - Drive his sheep to the mountain
+        - Herd his sheep
         - Fetch the Doctor
       correctIndex: 2
       explanationZh: 修完屋顶后磨坊主说 "I want you to drive my sheep to the mountain tomorrow"。修屋顶是当天刚做完的，扛面粉和请医生分别是前后的任务。
@@ -354,7 +354,7 @@ quiz:
   - id: hp-ch-04-q2
     stem: What does Hans sell first to buy bread during the hard winter?
     options:
-      - The silver buttons off his Sunday coat
+      - His coat buttons
       - His wheelbarrow
       - His big pipe
       - His silver chain
@@ -379,14 +379,14 @@ quiz:
     correctIndex: 2
     explanationZh: 暴风雨越来越大，汉斯迷了路，走上满是深坑的荒野，最终 "poor little Hans was drowned"。第二天牧羊人发现他浮在一个大水塘里。摔下梯子受伤的是磨坊主的儿子，不是汉斯。
   - id: hp-ch-04-q5
-    stem: At Hans's funeral, what is the Miller's main complaint?
+    stem: How did the Miller react when his little son wanted to invite Hans and share his porridge?
     options:
-      - He feels guilty about sending Hans into the storm
-      - He does not know what to do with the wheelbarrow
-      - He must now pay the Doctor's bill himself
-      - He wishes he had given Hans more flowers
+      - He praised the boy for his kind heart
+      - He called the boy silly and doubted the use of school
+      - He agreed to invite Hans at once
+      - He sent the boy to Hans with a sack of flour
     correctIndex: 1
-    explanationZh: 磨坊主当首席送葬人，还说汉斯对他是个大损失，因为 "I had as good as given him my wheelbarrow"，现在推车坏得卖不掉，放着碍事。他毫无愧疚，只心疼自己没法处理的破推车。
+    explanationZh: 小儿子提议请汉斯来家里，还愿意分他一半麦片粥、给他看白兔。磨坊主却骂道“What a silly boy you are!”，说真不知道送他上学有什么用。满口友谊大道理的磨坊主，对真正的善意反而嗤之以鼻；他既没有夸奖孩子，也没有请汉斯来。
   - id: hp-ch-04-q6
     stem: What makes the Water-rat go back into his hole at the end?
     options:

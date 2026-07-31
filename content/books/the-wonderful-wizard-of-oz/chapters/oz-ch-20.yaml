@@ -3,7 +3,7 @@ id: oz-ch-20
 bookId: book-oz
 title: The Dainty China Country
 titleZh: 精美的瓷国
-summaryZh: 一行人爬过瓷墙，发现墙的另一边是一个由瓷器构成的小世界：房屋、动物和居民全都精致易碎。在穿越这个国家的途中，多萝西不小心吓到一头瓷牛，弄断了它的腿，又遇到一位怕摔碎而不愿被带去堪萨斯的瓷公主。
+summaryZh: 翻过白墙，墙的另一边是一个完全出乎意料的小世界：这里的一切都精致而易碎。对多萝西一行这样的“庞然大物”来说，想不闯祸地穿过去，比想象中难得多。
 sections:
   - id: oz-ch-20-s1
     text: |-
@@ -110,7 +110,7 @@ sections:
       id: oz-ch-20-s3-c1
       stem: Why did the china Princess refuse Dorothy's offer to take her to Kansas?
       options:
-        - She would stiffen and could no longer talk or move freely
+        - She would stiffen at once
         - She did not like Dorothy
         - She was afraid of Aunt Em
         - She was too heavy to carry
@@ -146,14 +146,14 @@ quiz:
       - He wanted to test if the floor was safe
       - He slipped on the smooth wall
       - The wind blew him off the wall
-      - The ladder was too heavy to pull up, and he cushioned their fall
+      - He cushioned everyone's jump down
     correctIndex: 3
     explanationZh: 原文说梯子太重拉不上来，于是稻草人先掉下去，其他人跳到他身上，这样"the hard floor would not hurt their feet"。说he slipped或wind blew him off都没有依据。
   - id: oz-ch-20-q2
     stem: What was special about Mr. Joker, the clown?
     options:
       - He could juggle china plates
-      - He was always trying to stand on his head and had been mended many times
+      - He kept standing on his head and broke often
       - He had never been broken in his life
       - He was the tallest person in the china country
     correctIndex: 1
@@ -163,7 +163,7 @@ quiz:
     options:
       - It broke the wall itself
       - It scared away a china dog
-      - It knocked over a china church and smashed it
+      - It smashed a china church
       - It hit the Scarecrow
     correctIndex: 2
     explanationZh: 狮子跳上墙时，尾巴把一座瓷器教堂撞倒了（"he upset a china church with his tail and smashed it all to pieces"）。全章共损坏了两样东西：奶牛的腿和教堂。
@@ -179,7 +179,7 @@ quiz:
   - id: oz-ch-20-q5
     stem: What did the milkmaid plan to do about her cow's broken leg?
     options:
-      - Take the cow to the mender's shop to have the leg glued on again
+      - Have the mender glue the leg back on
       - Throw the cow away and get a new one
       - Ask Dorothy to fix it
       - Leave it broken and keep milking
