@@ -202,6 +202,7 @@ export function extractSeChapter(xhtml: string): {
   const heading = { ordinal: [] as string[], title: [] as string[] };
   let headingSink: string[] | null = null;
   let suppress = 0;
+  let inTable = 0;
 
   const flush = () => {
     if (!current) return;
@@ -233,18 +234,22 @@ export function extractSeChapter(xhtml: string): {
     .on(
       "section > p, article > p, section > blockquote p, article > blockquote p, section > ol li p, article > ol li p, section > ul li p, article > ul li p",
       {
+        // A <p> inside a blockquote-nested table also matches this selector;
+        // yielding to the table handlers keeps one-row-one-paragraph and stops
+        // the same text being pushed twice (once per matching text handler).
         element(el) {
+          if (inTable > 0) return;
           flush();
           current = [];
           el.onEndTag(flush);
         },
         text(t) {
-          if (suppress === 0) current?.push(t.text);
+          if (suppress === 0 && inTable === 0) current?.push(t.text);
         },
       },
     )
     .on(
-      "section > p a, article > p a, section > blockquote p a, article > blockquote p a, section > ol li p a, article > ol li p a, section > ul li p a, article > ul li p a",
+      "section > p a, article > p a, section > blockquote p a, article > blockquote p a, section > ol li p a, article > ol li p a, section > ul li p a, article > ul li p a, section table a, article table a",
       {
         element(el) {
           if ((el.getAttribute("epub:type") ?? "").includes("noteref")) {
@@ -260,6 +265,14 @@ export function extractSeChapter(xhtml: string): {
     // daily plan): one row = one paragraph, cells separated by spaces. Pure
     // symbol grids (Franklin's virtue-examination dots) come out as noise and
     // are hand-cleaned during skeleton review.
+    .on("section table, article table", {
+      element(el) {
+        inTable += 1;
+        el.onEndTag(() => {
+          inTable -= 1;
+        });
+      },
+    })
     .on("section table tr, article table tr", {
       element(el) {
         flush();
