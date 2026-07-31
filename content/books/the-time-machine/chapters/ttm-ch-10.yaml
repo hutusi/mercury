@@ -3,7 +3,7 @@ id: ttm-ch-10
 bookId: book-time-machine
 title: Chapter 10
 titleZh: 第十章
-summaryZh: 时间旅行者回到最初抵达时坐过的山坡，静静整理自己对这个世界的全部推想。想通了前因后果之后，他起身走向白色斯芬克斯像——在那里，一个意想不到的局面正等着他。
+summaryZh: 早上八九点钟，他又坐回那把黄色金属椅上——正是抵达那晚俯瞰全景的地方。同样的河谷，同样的宫殿，他却再也笑不出来了。
 sections:
   - id: ttm-ch-10-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       “So, as I see it, the Upper-world man had drifted towards his feeble prettiness, and the Under-world to mere mechanical industry. But that perfect state had lacked one thing even for mechanical perfection—absolute permanency. Apparently as time went on, the feeding of the Under-world, however it was effected, had become disjointed. Mother Necessity, who had been staved off for a few thousand years, came back again, and she began below. The Under-world being in contact with machinery, which, however perfect, still needs some little thought outside habit, had probably retained perforce rather more initiative, if less of every other human character, than the Upper. And when other meat failed them, they turned to what old habit had hitherto forbidden. So I say I saw it in my last view of the world of Eight Hundred and Two Thousand Seven Hundred and One. It may be as wrong an explanation as mortal wit could invent. It is how the thing shaped itself to me, and as that I give it to you.
     checkIn:
       id: ttm-ch-10-s1-c1
-      stem: What did the Time Traveller realize about the beautiful people of the Over-world?
+      stem: What did the Time Traveller now understand the Eloi's beauty covered?
       options:
-        - They lived like cattle, with no enemies and no needs to prepare for.
-        - They secretly controlled the Morlocks from above the ground.
-        - They had built the palaces to defend themselves against danger.
-        - They were planning to take back the Under-world by force.
-      correctIndex: 0
-      explanationZh: 原文说 "Like the cattle, they knew of no enemies and provided against no needs"，说明地上人像牲畜一样无忧无虑、毫无防备。说他们秘密控制或计划进攻地下人的选项都没有文本依据。
+        - That they had once ruled the Morlocks as their slaves
+        - That their days were as pleasant, and as brief, as cattle's
+        - That the palaces had been built to keep them penned
+        - That they had chosen this life for themselves ages ago now
+      correctIndex: 1
+      explanationZh: 他望着河边沐浴的人群说 "Very pleasant was their day, as pleasant as the day of the cattle in the field. Like the cattle, they knew of no enemies and provided against no needs. And their end was the same"。
   - id: ttm-ch-10-s2
     text: |-
       “After the fatigues, excitements, and terrors of the past days, and in spite of my grief, this seat and the tranquil view and the warm sunlight were very pleasant. I was very tired and sleepy, and soon my theorizing passed into dozing. Catching myself at that, I took my own hint, and spreading myself out upon the turf I had a long and refreshing sleep.
@@ -47,57 +47,57 @@ sections:
       “But at last the lever was fitted and pulled over. The clinging hands slipped from me. The darkness presently fell from my eyes. I found myself in the same grey light and tumult I have already described.
     checkIn:
       id: ttm-ch-10-s2-c1
-      stem: Why did the Time Traveller throw away his iron crowbar?
+      stem: What did the Time Traveller find when he came down to the sphinx?
       options:
-        - He used it to break the bronze panels of the Sphinx.
-        - He gave it to a Morlock as a sign of peace.
-        - The bronze valves of the Sphinx were already open, so he no longer needed it.
-        - It was too heavy to carry any further.
-      correctIndex: 2
-      explanationZh: 他原本准备"围攻"白色斯芬克斯，但发现铜门已经滑开、时间机就在里面，所以他"threw my iron bar away, almost sorry not to use it"。说用来砸门或送给地下人的选项都与原文矛盾。
+        - The Morlocks waiting in a ring around the pedestal
+        - Weena's flowers scattered over the bronze panels
+        - His iron crowbar already broken against the doors
+        - The bronze valves open, and the machine inside
+      correctIndex: 3
+      explanationZh: 原文写 "As I approached the pedestal of the sphinx I found the bronze valves were open. They had slid down into grooves"——里屋高台上正是时间机器。他随手把铁棒丢开，"almost sorry not to use it"。
 quiz:
   - id: ttm-ch-10-q1
-    stem: According to the Time Traveller, what causes intellectual versatility to develop?
+    stem: What did the Time Traveller call intellectual versatility the compensation for?
     options:
-      - Change, danger, and trouble.
-      - Absolute safety and permanent comfort.
-      - A balanced society with no social problems.
-      - Living in perfect harmony with the environment.
-    correctIndex: 0
-    explanationZh: 原文明确说 "intellectual versatility is the compensation for change, danger, and trouble"，而 "Nature never appeals to intelligence until habit and instinct are useless"。安全和安逸恰恰会消磨智力，因此那两个看似合理的干扰项正好是反面。
-  - id: ttm-ch-10-q2
-    stem: Why does the Time Traveller think the Morlocks retained more initiative than the Eloi?
-    options:
-      - They were naturally more intelligent from birth
-      - Machine work still required a little thought
-      - They had learned to read the books of the past
-      - They were taught by the Eloi to operate machines
-    correctIndex: 1
-    explanationZh: 他的推理是：地下人接触机械，而机械再完美也"needs some little thought outside habit"，所以他们"retained perforce rather more initiative"。这并非天生聪明或被教育的结果，而是环境所迫。
-  - id: ttm-ch-10-q3
-    stem: What did the Time Traveller discover when he examined the Time Machine inside the Sphinx?
-    options:
-      - It had been completely destroyed by the Morlocks.
-      - It had been taken apart and scattered across the room.
-      - It had been carefully oiled and cleaned.
-      - It had been replaced by a Morlock-built copy.
+      - For the long boredom of a life without work
+      - For the loss of instinct in a tame animal
+      - For change, and for danger, and for trouble
+      - For the quarrels of a divided society
     correctIndex: 2
-    explanationZh: 他看到机器后"surprised to find it had been carefully oiled and cleaned"，还猜测地下人曾试图拆开它以理解其用途。说被毁或被复制都不符合原文。
-  - id: ttm-ch-10-q4
-    stem: What went wrong when the Time Traveller tried to light a match in the dark?
+    explanationZh: 他说这是我们忽略的一条自然律——"intellectual versatility is the compensation for change, danger, and trouble"，而 "Nature never appeals to intelligence until habit and instinct are useless"。
+  - id: ttm-ch-10-q2
+    stem: Why did the Morlocks keep more initiative than the Eloi?
     options:
-      - The matches were the kind that only light on the box, which he did not have.
-      - The matches were all wet from the river.
-      - The Morlocks had stolen his matches while he slept.
-      - The matches were too old and damp to strike.
+      - Machinery, however perfect, still needs some thought
+      - They had kept the books of the old world underground
+      - The Eloi had taught them to work the great pumps
+      - They were born of a hardier stock to begin with
     correctIndex: 0
-    explanationZh: 原文写 "The matches were of that abominable kind that light only on the box"，他手边没有火柴盒，所以划不着。并非受潮或被偷，而是火柴本身的设计问题。
-  - id: ttm-ch-10-q5
-    stem: How did the Time Traveller recover the lever that almost slipped from his hand?
+    explanationZh: 他推想地下人天天与机械打交道，而机械 "however perfect, still needs some little thought outside habit"，因此他们 "retained perforce rather more initiative, if less of every other human character, than the Upper"。
+  - id: ttm-ch-10-q3
+    stem: What did the Time Traveller say had happened to the Under-world's food?
     options:
-      - He struck the Morlock with his iron crowbar
-      - He lit a match and blinded the Morlocks temporarily
-      - He kicked the Morlock away with his foot
-      - He butted the Morlock with his head in the dark
+      - The Eloi had begun to hide themselves at night
+      - The machines had stopped grinding their corn
+      - The wells had all been sealed up by the Upper-worlders
+      - It had failed, and old habit no longer held them back
     correctIndex: 3
-    explanationZh: 原文写 "I had to butt in the dark with my head—I could hear the Morlock's skull ring—to recover it"，是用头撞。铁棒早已扔掉，火柴又划不着，所以他只能徒手搏斗。
+    explanationZh: 他说必要性 "came back again, and she began below"——"when other meat failed them, they turned to what old habit had hitherto forbidden"。
+  - id: ttm-ch-10-q4
+    stem: What surprised him about the machine when he reached it?
+    options:
+      - The Morlocks had bent the rails out of shape
+      - It had been carefully oiled and cleaned
+      - The ivory bars had all been stripped away
+      - It stood exactly where he had left it on the lawn
+    correctIndex: 1
+    explanationZh: 他 "surprised to find it had been carefully oiled and cleaned"；后来还怀疑莫洛克人曾把它拆开一部分，想弄明白这东西是干什么用的。
+  - id: ttm-ch-10-q5
+    stem: Why could he not strike a light once the panels clanged shut?
+    options:
+      - The Morlocks had taken the matches out of his own pocket
+      - He had dropped the box while fitting on the levers
+      - The matches were of the kind that light only on the box
+      - The camphor had used up the last of his matches
+    correctIndex: 2
+    explanationZh: 他本打算划着火柴、装上杆子，像鬼影一样离开，可 "I had overlooked one little thing. The matches were of that abominable kind that light only on the box"——最后是在黑暗里用头撞、靠手摸，才把杆子插上去的。

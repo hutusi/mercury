@@ -3,7 +3,7 @@ id: ttm-ch-06
 bookId: book-time-machine
 title: Chapter 6
 titleZh: 第六章
-summaryZh: 时间旅行者克服内心的恐惧，终于沿着井壁下到了莫洛克人的地下世界。黑暗中的所见所闻让他不寒而栗，而这次冒险也差点让他有去无回。
+summaryZh: 要拿回机器，只有下到井里去——这一点他心里很清楚。可井口就在那儿，他却一连两天绕着它走。
 sections:
   - id: ttm-ch-06-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       “It was this restlessness, this insecurity, perhaps, that drove me further and further afield in my exploring expeditions. Going to the southwestward towards the rising country that is now called Combe Wood, I observed far off, in the direction of nineteenth-century Banstead, a vast green structure, different in character from any I had hitherto seen. It was larger than the largest of the palaces or ruins I knew, and the façade had an Oriental look: the face of it having the lustre, as well as the pale-green tint, a kind of bluish-green, of a certain type of Chinese porcelain. This difference in aspect suggested a difference in use, and I was minded to push on and explore. But the day was growing late, and I had come upon the sight of the place after a long and tiring circuit; so I resolved to hold over the adventure for the following day, and I returned to the welcome and the caresses of little Weena. But next morning I perceived clearly enough that my curiosity regarding the Palace of Green Porcelain was a piece of self-deception, to enable me to shirk, by another day, an experience I dreaded. I resolved I would make the descent without further waste of time, and started out in the early morning towards a well near the ruins of granite and aluminium.
     checkIn:
       id: ttm-ch-06-s1-c1
-      stem: What did the Time Traveller see in the distance that made him plan a trip for the next day before changing his mind?
+      stem: Why did he call his interest in the green palace self-deception?
       options:
-        - A vast green building like porcelain
-        - A tall white tower built of aluminium
-        - A ruined bridge over a dry riverbed
-        - A small temple on a hilltop
-      correctIndex: 0
-      explanationZh: 原文明确写道他在远处看到一座巨大的绿色建筑，外观像某种中国瓷器，被称为“Palace of Green Porcelain”。他本想第二天去探查，但第二天早上意识到那只是拖延下井的借口，便立即动身去了井边。其他选项都不是他在这一节中看到的东西。
+        - He had already explored it on an earlier day
+        - Weena had begged him not to go so far away
+        - It was one more day's excuse to put off the descent
+        - The building was much too far to reach before dark
+      correctIndex: 2
+      explanationZh: 第二天早上他就看穿了自己——"my curiosity regarding the Palace of Green Porcelain was a piece of self-deception, to enable me to shirk, by another day, an experience I dreaded"，于是当即动身去了井边。
   - id: ttm-ch-06-s2
     text: |-
       “Little Weena ran with me. She danced beside me to the well, but when she saw me lean over the mouth and look downward, she seemed strangely disconcerted. ‘Goodbye, little Weena,’ I said, kissing her; and then putting her down, I began to feel over the parapet for the climbing hooks. Rather hastily, I may as well confess, for I feared my courage might leak away! At first she watched me in amazement. Then she gave a most piteous cry, and running to me, she began to pull at me with her little hands. I think her opposition nerved me rather to proceed. I shook her off, perhaps a little roughly, and in another moment I was in the throat of the well. I saw her agonized face over the parapet, and smiled to reassure her. Then I had to look down at the unstable hooks to which I clung.
@@ -31,14 +31,14 @@ sections:
       “I was in an agony of discomfort. I had some thought of trying to go up the shaft again, and leave the Under-world alone. But even while I turned this over in my mind I continued to descend. At last, with intense relief, I saw dimly coming up, a foot to the right of me, a slender loophole in the wall. Swinging myself in, I found it was the aperture of a narrow horizontal tunnel in which I could lie down and rest. It was not too soon. My arms ached, my back was cramped, and I was trembling with the prolonged terror of a fall. Besides this, the unbroken darkness had had a distressing effect upon my eyes. The air was full of the throb and hum of machinery pumping air down the shaft.
     checkIn:
       id: ttm-ch-06-s2-c1
-      stem: How did Weena react when the Time Traveller leaned over the well mouth and prepared to descend?
+      stem: What went wrong on the way down the shaft?
       options:
-        - She happily waved goodbye to him
-        - She wept and tried to pull him back
-        - She ran away and did not return
-        - She tried to climb down ahead of him
-      correctIndex: 1
-      explanationZh: 原文说Weena“gave a most piteous cry”并跑过来用小手拉他，试图阻止他下井。她并没有高兴挥手，也没有跑开或抢先下井。
+        - A bar bent under his weight and nearly threw him off
+        - His last match fell from his pocket into the dark
+        - Weena climbed in after him and had to be sent back up
+        - The pumping stopped and the air grew unbreathable
+      correctIndex: 0
+      explanationZh: 井壁的金属横档是给比他小得多的生物用的，"One of the bars bent suddenly under my weight, and almost swung me off into the blackness beneath"——他一只手吊了片刻，此后再不敢停下歇息。
   - id: ttm-ch-06-s3
     text: |-
       “I do not know how long I lay. I was roused by a soft hand touching my face. Starting up in the darkness I snatched at my matches and, hastily striking one, I saw three stooping white creatures similar to the one I had seen above ground in the ruin, hastily retreating before the light. Living, as they did, in what appeared to me impenetrable darkness, their eyes were abnormally large and sensitive, just as are the pupils of the abysmal fishes, and they reflected the light in the same way. I have no doubt they could see me in that rayless obscurity, and they did not seem to have any fear of me apart from the light. But, so soon as I struck a match in order to see them, they fled incontinently, vanishing into dark gutters and tunnels, from which their eyes glared at me in the strangest fashion.
@@ -48,14 +48,14 @@ sections:
       “Necessarily my memory is vague. Great shapes like big machines rose out of the dimness, and cast grotesque black shadows, in which dim spectral Morlocks sheltered from the glare. The place, by the by, was very stuffy and oppressive, and the faint halitus of freshly shed blood was in the air. Some way down the central vista was a little table of white metal, laid with what seemed a meal. The Morlocks at any rate were carnivorous! Even at the time, I remember wondering what large animal could have survived to furnish the red joint I saw. It was all very indistinct: the heavy smell, the big unmeaning shapes, the obscene figures lurking in the shadows, and only waiting for the darkness to come at me again! Then the match burned down, and stung my fingers, and fell, a wriggling red spot in the blackness.
     checkIn:
       id: ttm-ch-06-s3-c1
-      stem: What physical feature of the Morlocks showed they were adapted to life in darkness?
+      stem: What sent the Morlocks fleeing from him in the tunnel?
       options:
-        - Their skin was covered in thick dark fur
-        - They had no eyes at all
-        - They had extremely long arms and legs
-        - Abnormally large, light-reflecting eyes
-      correctIndex: 3
-      explanationZh: 原文说地下生物的眼睛“abnormally large and sensitive”，并拿深海鱼类作类比。原文没有提到它们有毛发、没有眼睛或四肢异常修长，因此这些干扰项都不符合文意。
+        - The sound of his voice in the dark
+        - The light of the match he hastily struck
+        - The smell of the Upper-world on his clothes
+        - The noise of the machinery starting up again
+      correctIndex: 1
+      explanationZh: 他们在漆黑里显然看得见他，"they did not seem to have any fear of me apart from the light"；可火柴一亮，就 "fled incontinently, vanishing into dark gutters and tunnels"，只剩眼睛在暗处发光。
   - id: ttm-ch-06-s4
     text: |-
       “I have thought since how particularly ill-equipped I was for such an experience. When I had started with the Time Machine, I had started with the absurd assumption that the men of the Future would certainly be infinitely ahead of ourselves in all their appliances. I had come without arms, without medicine, without anything to smoke—at times I missed tobacco frightfully—even without enough matches. If only I had thought of a Kodak! I could have flashed that glimpse of the Under-world in a second, and examined it at leisure. But, as it was, I stood there with only the weapons and the powers that Nature had endowed me with—hands, feet, and teeth; these, and four safety-matches that still remained to me.
@@ -63,14 +63,14 @@ sections:
       “I was afraid to push my way in among all this machinery in the dark, and it was only with my last glimpse of light I discovered that my store of matches had run low. It had never occurred to me until that moment that there was any need to economize them, and I had wasted almost half the box in astonishing the Upper-worlders, to whom fire was a novelty. Now, as I say, I had four left, and while I stood in the dark, a hand touched mine, lank fingers came feeling over my face, and I was sensible of a peculiar unpleasant odour. I fancied I heard the breathing of a crowd of those dreadful little beings about me. I felt the box of matches in my hand being gently disengaged, and other hands behind me plucking at my clothing. The sense of these unseen creatures examining me was indescribably unpleasant. The sudden realization of my ignorance of their ways of thinking and doing came home to me very vividly in the darkness. I shouted at them as loudly as I could. They started away, and then I could feel them approaching me again. They clutched at me more boldly, whispering odd sounds to each other. I shivered violently, and shouted again—rather discordantly. This time they were not so seriously alarmed, and they made a queer laughing noise as they came back at me. I will confess I was horribly frightened. I determined to strike another match and escape under the protection of its glare. I did so, and eking out the flicker with a scrap of paper from my pocket, I made good my retreat to the narrow tunnel. But I had scarce entered this when my light was blown out and in the blackness I could hear the Morlocks rustling like wind among leaves, and pattering like the rain, as they hurried after me.
     checkIn:
       id: ttm-ch-06-s4-c1
-      stem: What did the Time Traveller regret not bringing to the future?
+      stem: What did the Time Traveller wish he had brought with him?
       options:
-        - A map of ancient ruins
-        - A second time machine
-        - A large supply of food and water
-        - Arms, medicine, and a camera
+        - A rope long enough to reach the bottom
+        - A companion who knew the Eloi tongue
+        - The two levers he had hidden in his pocket
+        - Arms, medicine, tobacco — and a Kodak
       correctIndex: 3
-      explanationZh: 原文明确列出了他后悔没有携带的物品：武器、药品、烟草、足够的火柴，以及一架Kodak照相机。地图、第二台时间机器和大量食物饮水都不在原文的列举中。
+      explanationZh: 他说出发时荒唐地假定未来人样样胜过今人，于是 "I had come without arms, without medicine, without anything to smoke… even without enough matches. If only I had thought of a Kodak!"。
   - id: ttm-ch-06-s5
     text: |-
       “In a moment I was clutched by several hands, and there was no mistaking that they were trying to haul me back. I struck another light, and waved it in their dazzled faces. You can scarce imagine how nauseatingly inhuman they looked—those pale, chinless faces and great, lidless, pinkish-grey eyes!—as they stared in their blindness and bewilderment. But I did not stay to look, I promise you: I retreated again, and when my second match had ended, I struck my third. It had almost burned through when I reached the opening into the shaft. I lay down on the edge, for the throb of the great pump below made me giddy. Then I felt sideways for the projecting hooks, and, as I did so, my feet were grasped from behind, and I was violently tugged backward. I lit my last match … and it incontinently went out. But I had my hand on the climbing bars now, and, kicking violently, I disengaged myself from the clutches of the Morlocks and was speedily clambering up the shaft, while they stayed peering and blinking up at me: all but one little wretch who followed me for some way, and well-nigh secured my boot as a trophy.
@@ -78,66 +78,66 @@ sections:
       “That climb seemed interminable to me. With the last twenty or thirty feet of it a deadly nausea came upon me. I had the greatest difficulty in keeping my hold. The last few yards was a frightful struggle against this faintness. Several times my head swam, and I felt all the sensations of falling. At last, however, I got over the well-mouth somehow, and staggered out of the ruin into the blinding sunlight. I fell upon my face. Even the soil smelt sweet and clean. Then I remember Weena kissing my hands and ears, and the voices of others among the Eloi. Then, for a time, I was insensible.
     checkIn:
       id: ttm-ch-06-s5-c1
-      stem: How did the Time Traveller finally escape from the Morlocks at the shaft opening?
+      stem: How did the Time Traveller get free at the mouth of the shaft?
       options:
-        - He fought them off with a metal bar he found
-        - The Eloi came down and rescued him
-        - He dazzled them with matches and broke free
-        - He hid in a side tunnel until they left
+        - The Eloi hauled him out by the arms from above
+        - He struck the great pump and stopped its throb
+        - He lit his last match and kicked himself loose
+        - He threw his boot down the tunnel as a decoy
       correctIndex: 2
-      explanationZh: 原文写他在井口被抓住脚后划亮火柴晃他们的脸，趁他们眼花时猛烈踢腿挣脱，然后迅速攀爬上井。其他选项——用金属棒打斗、被埃洛伊人营救、躲进侧隧道——都没有发生。
+      explanationZh: 双脚被从后面拽住时 "I lit my last match… and it incontinently went out"；好在手已抓住横档，"kicking violently, I disengaged myself from the clutches of the Morlocks"——只有一个小家伙追了一程，险些扒走他的靴子。
 quiz:
   - id: ttm-ch-06-q1
-    stem: Why did the Time Traveller delay for two days before going down into the well?
+    stem: Why did two days pass before he went down the well?
     options:
-      - He needed time to repair his Time Machine first
-      - He was waiting for Weena to learn enough English to guide him
-      - He wanted to explore the Palace of Green Porcelain before anything else
-      - He dreaded the pale Morlocks and the dark, and had no companion
-    correctIndex: 3
-    explanationZh: 原文说他两天没行动，原因是看到莫洛克人苍白冰冷的身体产生了一种本能的退缩，而且他独自身感恐惧——“If only I had had a companion it would have been different”。他并不是在修机器、等Weena学英语或优先探查绿瓷宫。
-  - id: ttm-ch-06-q2
-    stem: What evidence in the underground cavern suggested the Morlocks were carnivorous?
-    options:
-      - Piles of animal bones stacked along the walls
-      - A hunting weapon left beside the machinery
-      - The smell of blood and a joint of red meat
-      - The remains of an Eloi body in the tunnel
-    correctIndex: 2
-    explanationZh: 原文写道空气中有“the faint halitus of freshly shed blood”，并看到白色金属小桌上摆着像是饭食的东西，其中有一块“red joint”（红肉），由此推断莫洛克人是食肉的。原文未提到成堆骨头、武器或埃洛伊人遗体。
-  - id: ttm-ch-06-q3
-    stem: Why did the Time Traveller have only four matches left when he entered the Under-world?
-    options:
-      - He had wasted half the box astonishing the Eloi
-      - He had lost half the box while travelling through time
-      - He had used many matches to light fires at night for warmth
-      - He had given most of them away to the Eloi as gifts
+      - He shrank from the Morlocks, and had no companion
+      - He was waiting for the moon to reach its last quarter
+      - Weena would not let him out of her sight for a day
+      - He first had to find a well close to the White Sphinx
     correctIndex: 0
-    explanationZh: 原文明确说他之前“astonishing the Upper-worlders, to whom fire was a novelty”，即用火柴给从未见过火的埃洛伊人表演，浪费了大半盒。并非穿越时丢失、取暖或当作礼物送出。
+    explanationZh: 那些苍白冰冷的身体让他本能地退缩，加上 "I was so horribly alone… If only I had had a companion it would have been different"。月亮转到下弦反倒是他担心的事——夜会更黑更长。
+  - id: ttm-ch-06-q2
+    stem: What did the Time Traveller see on the little table of white metal?
+    options:
+      - A row of small lamps burning with a blue flame
+      - Something like a meal, including a joint of red meat
+      - The two little levers he had taken from the Time Machine
+      - Tools of the same metal, laid out in order
+    correctIndex: 1
+    explanationZh: 借着一根火柴的光，他看见 "a little table of white metal, laid with what seemed a meal"——"The Morlocks at any rate were carnivorous!"；空气里还浮着一丝新鲜血腥气。
+  - id: ttm-ch-06-q3
+    stem: Why had his matches run so low?
+    options:
+      - The damp of the tunnels had spoiled most of them
+      - He had dropped the box while climbing down the shaft
+      - Weena had taken a handful of them away to play with
+      - He had wasted half the box amusing the Eloi
+    correctIndex: 3
+    explanationZh: 火对地上的小人来说是稀罕物，"I had wasted almost half the box in astonishing the Upper-worlders"；等下到地下才发现只剩四根。
   - id: ttm-ch-06-q4
-    stem: What happened when the Time Traveller shouted at the Morlocks in the dark?
+    stem: What happened when he shouted at the Morlocks in the dark?
     options:
-      - They fled and never came back
-      - They returned more boldly, with a queer laugh
-      - They attacked him immediately in a swarm
-      - They began speaking to him in their own language
-    correctIndex: 1
-    explanationZh: 原文写道他大声喝斥后他们退开，随即又围上来，还发出一种“queer laughing noise”。他因此更加恐惧。他们并没有一去不返，也没有立刻群起攻击或用语言与他交流。
-  - id: ttm-ch-06-q5
-    stem: What did the Time Traveller notice in the underground cavern that made him wonder what large animal had survived to supply it?
-    options:
-      - A large pile of bones near a machine
-      - A red joint of meat on a white metal table
-      - The skin of an unknown beast hanging on a wall
-      - A whole animal carcass on the floor
-    correctIndex: 1
-    explanationZh: 原文写他看到白色金属小桌上有一块“red joint”（红色大块肉），并自问“what large animal could have survived to furnish”它。原文并未提到骨头堆、兽皮或整只动物尸体。
-  - id: ttm-ch-06-q6
-    stem: How did the Time Traveller feel when he finally emerged from the well into daylight?
-    options:
-      - He immediately wanted to go back down with more matches
-      - He walked calmly back to the Eloi without difficulty
-      - He fell on his face and passed out for a time
-      - He was too angry to rest and started planning revenge
+      - They answered him in the language of the Eloi
+      - They swarmed over him and pinned down both of his arms
+      - They drew back, then came on again, laughing oddly
+      - They put out every light in the great cavern
     correctIndex: 2
-    explanationZh: 原文写他爬出井口后“fell upon my face”，之前经历了“deadly nausea”和眩晕，然后被Weena亲吻手和耳朵、听到埃洛伊人的声音后“for a time I was insensible”（一度失去知觉）。他并没有想立刻再下去，也不是平静走回，更没有马上计划报复。
+    explanationZh: 头一声喊，他们退开了；再喊，"This time they were not so seriously alarmed, and they made a queer laughing noise as they came back at me"——手也伸得更放肆了。
+  - id: ttm-ch-06-q5
+    stem: What did the Morlocks look like in the light of the match?
+    options:
+      - Pale chinless faces with great lidless pinkish-grey eyes
+      - Faces almost exactly like the Eloi, but smeared with soot
+      - Bodies covered with flaxen hair from head to foot
+      - Long-armed shapes with no faces that he could make out
+    correctIndex: 0
+    explanationZh: 他把火举到他们脸前——"those pale, chinless faces and great, lidless, pinkish-grey eyes!"——那模样他形容为 "nauseatingly inhuman"，看一眼就往回退。
+  - id: ttm-ch-06-q6
+    stem: What happened once he had climbed out of the well?
+    options:
+      - He set off at once towards the Palace of Green Porcelain
+      - He sealed the mouth of the well with a slab of stone
+      - He counted his matches and prepared to go down again
+      - He fell on his face and for a time lost consciousness
+    correctIndex: 3
+    explanationZh: 最后二三十英尺他头晕欲呕，好不容易翻出井口，"I fell upon my face. Even the soil smelt sweet and clean"；随后只记得薇娜亲他的手和耳朵，接着 "for a time, I was insensible"。

@@ -3,7 +3,7 @@ id: ttm-ch-02
 bookId: book-time-machine
 title: Chapter 2
 titleZh: 第二章
-summaryZh: 时间旅行者缺席了周四的晚宴，客人们先行开席。他随后才现身，模样让在场的客人大吃一惊，还声称自己刚刚从时间旅行中归来。在狼吞虎咽地吃完晚餐后，他邀请众人进入吸烟室，准备讲述他那段令人难以置信的经历。
+summaryZh: 又是一个星期四。主人迟迟不见人影，一桌客人先开了席；正说得起劲，走廊那扇门无声无息地开了。
 sections:
   - id: ttm-ch-02-s1
     text: |-
@@ -18,14 +18,14 @@ sections:
       “It seems a pity to let the dinner spoil,” said the Editor of a well-known daily paper; and thereupon the Doctor rang the bell.
     checkIn:
       id: ttm-ch-02-s1-c1
-      stem: Why did the guests find it hard to believe the Time Traveller?
+      stem: Why did the narrator say they all distrusted the Time Traveller?
       options:
-        - He had no model to show his friends at the dinner
-        - He refused to explain how the machine worked
-        - His friends had never seen him build anything before
-        - He seemed too clever to be believed
+        - He had refused to let anyone touch the model
+        - He had played a ghost trick on them one Christmas Eve
+        - He never explained where his money came from
+        - He was too clever, and things came too easily to him
       correctIndex: 3
-      explanationZh: 原文说他是 "too clever to be believed"，人们总觉得他坦率的外表下藏有机关。而提到模型的人是 Filby，并非时间旅行者没有模型可展示，排除该项即可。
+      explanationZh: 叙述者说他是 "one of those men who are too clever to be believed"，总让人觉得坦率背后另有埋伏——"It is a mistake to do things too easily"。同样的话若由菲尔比来讲，大家反倒会信。
   - id: ttm-ch-02-s2
     text: |-
       The Psychologist was the only person besides the Doctor and myself who had attended the previous dinner. The other men were Blank, the Editor aforementioned, a certain journalist, and another—a quiet, shy man with a beard—whom I didn’t know, and who, as far as my observation went, never opened his mouth all the evening. There was some speculation at the dinner-table about the Time Traveller’s absence, and I suggested time travelling, in a half-jocular spirit. The Editor wanted that explained to him, and the Psychologist volunteered a wooden account of the “ingenious paradox and trick” we had witnessed that day week. He was in the midst of his exposition when the door from the corridor opened slowly and without noise. I was facing the door, and saw it first. “Hallo!” I said. “At last!” And the door opened wider, and the Time Traveller stood before us. I gave a cry of surprise. “Good heavens! man, what’s the matter?” cried the Medical Man, who saw him next. And the whole tableful turned towards the door.
@@ -35,14 +35,14 @@ sections:
       He said not a word, but came painfully to the table, and made a motion towards the wine. The Editor filled a glass of champagne, and pushed it towards him. He drained it, and it seemed to do him good: for he looked round the table, and the ghost of his old smile flickered across his face. “What on earth have you been up to, man?” said the Doctor. The Time Traveller did not seem to hear. “Don’t let me disturb you,” he said, with a certain faltering articulation. “I’m all right.” He stopped, held out his glass for more, and took it off at a draught. “That’s good,” he said. His eyes grew brighter, and a faint colour came into his cheeks. His glance flickered over our faces with a certain dull approval, and then went round the warm and comfortable room. Then he spoke again, still as it were feeling his way among his words. “I’m going to wash and dress, and then I’ll come down and explain things … Save me some of that mutton. I’m starving for a bit of meat.”
     checkIn:
       id: ttm-ch-02-s2-c1
-      stem: What did the Time Traveller do right after he entered the dining room?
+      stem: What was the first thing the Time Traveller did on coming into the room?
       options:
-        - He sat down and started eating the mutton immediately.
-        - He reached for the wine and drank a glass of champagne.
-        - He told the guests about his time travel adventure.
-        - He went upstairs to wash and change his clothes first.
+        - He apologised at once for having kept them all waiting
+        - He made a motion towards the wine and drained a glass
+        - He sat down and began to eat the mutton at once
+        - He went straight upstairs to wash and change
       correctIndex: 1
-      explanationZh: 文中写他走到桌边，朝酒做了个动作，编辑给他倒了杯香槟，他一饮而尽。他确实说要上楼换洗，但那是在喝完酒之后才说的，所以先吃肉或先上楼都不对。
+      explanationZh: 他一言不发走到桌边，"made a motion towards the wine"，编辑倒了杯香槟，他一口喝干，脸上才有了点血色。上楼梳洗是又喝一杯之后才提的。
   - id: ttm-ch-02-s3
     text: |-
       He looked across at the Editor, who was a rare visitor, and hoped he was all right. The Editor began a question. “Tell you presently,” said the Time Traveller. “I’m—funny! Be all right in a minute.”
@@ -54,14 +54,14 @@ sections:
       The first to recover completely from this surprise was the Medical Man, who rang the bell—the Time Traveller hated to have servants waiting at dinner—for a hot plate. At that the Editor turned to his knife and fork with a grunt, and the Silent Man followed suit. The dinner was resumed. Conversation was exclamatory for a little while, with gaps of wonderment; and then the Editor got fervent in his curiosity. “Does our friend eke out his modest income with a crossing? or has he his Nebuchadnezzar phases?” he inquired. “I feel assured it’s this business of the Time Machine,” I said, and took up the Psychologist’s account of our previous meeting. The new guests were frankly incredulous. The Editor raised objections. “What was this time travelling? A man couldn’t cover himself with dust by rolling in a paradox, could he?” And then, as the idea came home to him, he resorted to caricature. Hadn’t they any clothes-brushes in the Future? The Journalist too, would not believe at any price, and joined the Editor in the easy work of heaping ridicule on the whole thing. They were both the new kind of journalist—very joyous, irreverent young men. “Our Special Correspondent in the Day after Tomorrow reports,” the Journalist was saying—or rather shouting—when the Time Traveller came back. He was dressed in ordinary evening clothes, and nothing save his haggard look remained of the change that had startled me.
     checkIn:
       id: ttm-ch-02-s3-c1
-      stem: What did the narrator notice about the Time Traveller's feet as he walked out?
+      stem: What did the narrator see on the Time Traveller's feet?
       options:
-        - He wore only tattered, bloodstained socks.
-        - He had no shoes or socks on at all.
-        - He wore one shoe and one sock.
-        - He wore a pair of worn-out boots.
+        - Nothing but a pair of tattered, bloodstained socks
+        - A pair of boots caked with green mud
+        - One boot gone, and the other split from toe to heel
+        - Bandages wound round both his ankles
       correctIndex: 0
-      explanationZh: 叙述者站起来时看到他出门时的脚，文中写 "He had nothing on them but a pair of tattered, bloodstained socks"。所以并非完全赤脚，也不是只穿了一只鞋袜。
+      explanationZh: 他站起身来看，那双脚 "had nothing on them but a pair of tattered, bloodstained socks"；脚步声软软的，人也一瘸一拐——旁人似乎谁都没有留意。
   - id: ttm-ch-02-s4
     text: |-
       “I say,” said the Editor hilariously, “these chaps here say you have been travelling into the middle of next week! Tell us all about little Rosebery, will you? What will you take for the lot?”
@@ -85,78 +85,78 @@ sections:
       “I can’t argue tonight. I don’t mind telling you the story, but I can’t argue. I will,” he went on, “tell you the story of what has happened to me, if you like, but you must refrain from interruptions. I want to tell it. Badly. Most of it will sound like lying. So be it! It’s true—every word of it, all the same. I was in my laboratory at four o’clock, and since then … I’ve lived eight days … such days as no human being ever lived before! I’m nearly worn out, but I shan’t sleep till I’ve told this thing over to you. Then I shall go to bed. But no interruptions! Is it agreed?”
     checkIn:
       id: ttm-ch-02-s4-c1
-      stem: What did the Time Traveller demand before he would tell his story?
+      stem: What did the Time Traveller say when the Editor called for the story?
       options:
-        - He wanted the Editor to pay him a shilling a line first.
-        - He asked everyone to move to the smoking-room and smoke cigars.
-        - He needed to eat first and insisted that no one interrupt him.
-        - He wanted the Medical Man to examine him before talking.
+        - That he would tell it for a shilling a line
+        - That the Editor should ask the Psychologist instead
+        - That he would not say a word until he had eaten
+        - That the whole thing had been a paradox after all
       correctIndex: 2
-      explanationZh: 他说 "I won't say a word until I get some peptone into my arteries"，要求先吃饭；之后到吸烟室又说 "no interruptions"。编辑提出的一先令一行的报价是他自己的主意，时间旅行者并未接受。
+      explanationZh: 他答 "Story be damned! I want something to eat. I won't say a word until I get some peptone into my arteries"，说完还要了盐。一先令一行是编辑自己开的价。
   - id: ttm-ch-02-s5
     text: “Agreed,” said the Editor, and the rest of us echoed “Agreed.” And with that the Time Traveller began his story as I have set it forth. He sat back in his chair at first, and spoke like a weary man. Afterwards he got more animated. In writing it down I feel with only too much keenness the inadequacy of pen and ink—and, above all, my own inadequacy—to express its quality. You read, I will suppose, attentively enough; but you cannot see the speaker’s white, sincere face in the bright circle of the little lamp, nor hear the intonation of his voice. You cannot know how his expression followed the turns of his story! Most of us hearers were in shadow, for the candles in the smoking-room had not been lighted, and only the face of the Journalist and the legs of the Silent Man from the knees downward were illuminated. At first we glanced now and again at each other. After a time we ceased to do that, and looked only at the Time Traveller’s face.
     checkIn:
       id: ttm-ch-02-s5-c1
-      stem: What happened as the Time Traveller told his story in the smoking-room?
+      stem: What happened to the listeners as the story went on?
       options:
+        - They lit the candles so as to see him better
+        - They began writing down what he said
+        - They drew their chairs into a close ring round the little lamp
         - They stopped glancing about and watched only his face
-        - The listeners kept whispering questions to each other
-        - The listeners fell asleep because they were bored
-        - The listeners laughed at his ridiculous story
-      correctIndex: 0
-      explanationZh: 文中说起初大家偶尔对视，但后来 "we ceased to do that, and looked only at the Time Traveller's face"。这说明大家被他的讲述吸引了，而非互相低语或发笑。
+      correctIndex: 3
+      explanationZh: 吸烟室的蜡烛并没有点上，多数人坐在暗处；"At first we glanced now and again at each other. After a time we ceased to do that, and looked only at the Time Traveller's face"。
 quiz:
   - id: ttm-ch-02-q1
-    stem: Why did the guests decide to start dinner without the Time Traveller?
+    stem: Why did the guests sit down to dinner without their host?
     options:
-      - The Medical Man decided the food was going to spoil.
-      - The Editor insisted they should not wait any longer.
-      - He left a note asking them to begin at seven if he was not back.
-      - The guests were too hungry to keep waiting.
+      - The Medical Man judged that the whole dinner would spoil
+      - The Editor refused to wait past half-past seven
+      - A note asked them to begin at seven if he was not back
+      - The servants had already carried in the soup
     correctIndex: 2
-    explanationZh: 文中医学家说时间旅行者留了便条，请他在七点未归时就先开饭。虽然编辑也说过别让晚餐坏掉，但这只是附和，真正的原因是那张便条。
+    explanationZh: 医生一手拿着那张便条说 "He asks me in this note to lead off with dinner at seven if he's not back"。编辑那句"别让晚餐坏掉"不过是附和。
   - id: ttm-ch-02-q2
-    stem: What condition was the Time Traveller in when he first appeared at the dinner?
+    stem: How did the Time Traveller look when he appeared in the doorway?
     options:
-      - Dirty, pale, limping, and with a half-healed cut on his chin.
-      - Clean and well-dressed but very tired and quiet.
-      - Covered in snow and shivering from the cold.
-      - Perfectly healthy but extremely angry and rude.
+      - Dusty and pale, limping, with a half-healed cut on his chin
+      - Neatly dressed as always, but too tired to speak at all
+      - Wet through, as though he had walked home in the rain
+      - Exactly as usual, which was what surprised everyone
     correctIndex: 0
-    explanationZh: 原文详细描写了他的样子：外套满是灰尘、脸色惨白、走路一瘸一拐、下巴上有一道半愈合的伤口。干净整洁或满身冰雪都不是文中描述的状态。
+    explanationZh: 他外套满是尘土、袖子上抹着绿痕，头发散乱，"His face was ghastly pale; his chin had a brown cut on it—a cut half healed"，走起路来像个走破了脚的流浪汉。
   - id: ttm-ch-02-q3
-    stem: How did the new guests, especially the Editor and Journalist, react to the idea of time travel?
+    stem: How did the Editor and the Journalist treat the idea of time travel?
     options:
-      - They were excited and begged to hear the full story.
-      - They were openly unbelieving and mocked the whole idea.
-      - They were frightened and wanted to leave the house.
-      - They were silent and refused to discuss it at all.
+      - They wrote it down carefully for the next day's paper
+      - They heaped ridicule on it, joking about the Future
+      - They asked the Psychologist to explain it properly
+      - They said nothing until the Time Traveller returned
     correctIndex: 1
-    explanationZh: 新客人们 "frankly incredulous"，编辑和记者还用挖苦的方式嘲弄时间旅行的说法，比如问未来有没有衣服刷。这与他们兴奋求故事或害怕想离开的反应截然不同。
+    explanationZh: 两人 "frankly incredulous"：编辑打趣说难道未来连衣刷都没有，记者则嚷着 "Our Special Correspondent in the Day after Tomorrow reports"。
   - id: ttm-ch-02-q4
-    stem: How did the Time Traveller explain why he needed to eat before telling his story?
+    stem: What did the Silent Man do during the meal?
     options:
-      - He said he was simply starving and needed food in his arteries.
-      - He said the story was too short to bother telling before dinner.
-      - He said the Medical Man had told him never to talk on an empty stomach.
-      - He said he had already eaten but wanted to buy time.
-    correctIndex: 0
-    explanationZh: 他直言 "I was simply starving"，又说要在把营养送进血管之前一个字都不说。他确实是饥饿难耐，而非借口拖延或受医嘱。
+      - He asked the only question of the whole evening
+      - He left the table before the mutton was served
+      - He took notes on the back of the Medical Man's paper
+      - He drank champagne steadily out of sheer nervousness
+    correctIndex: 3
+    explanationZh: 他整晚没开口，只是 "drank champagne with regularity and determination out of sheer nervousness"；时间旅行家用指甲敲了敲杯子，他才猛地一惊，替人斟上酒。
   - id: ttm-ch-02-q5
-    stem: What did the Time Traveller ask his listeners to agree to before he began his story?
+    stem: What did the Time Traveller say about the story he was going to tell?
     options:
-      - No questions until the next morning.
-      - No one was allowed to write anything down.
-      - Everyone had to promise to believe his story.
-      - No interruptions while he spoke.
-    correctIndex: 3
-    explanationZh: 他在吸烟室里明确要求 "no interruptions"，众人齐声应允。他没有要求等到次日再提问，也没有要求禁止记录或必须事先相信他的故事。
+      - That most of it would sound like lying, but every word was true
+      - That he would tell only the parts they were able to believe
+      - That the Psychologist had already told it better than he ever could
+      - That he would rather write it out than tell it aloud
+    correctIndex: 0
+    explanationZh: 他说 "Most of it will sound like lying. So be it! It's true—every word of it, all the same"，唯一的条件是谁也不许打断。
   - id: ttm-ch-02-q6
-    stem: How long did the Time Traveller say he had lived since four o'clock that afternoon?
+    stem: How long had the Time Traveller lived since four o'clock that afternoon?
     options:
-      - He had been lost in the woods for eight hours
-      - He had spent barely a few hours in his laboratory
-      - He had travelled abroad for a week
-      - He had lived eight days in that time
-    correctIndex: 3
-    explanationZh: 他说自己四点钟还在实验室，之后却“lived eight days”。旁人眼中只过了几个小时，但按他的亲身经历算是八天——这正是时间旅行的怪异之处，而不是迷路八小时或出国一周。
+      - A single afternoon, though it felt much longer
+      - About a week, spent walking home from the southern coast
+      - Eight days, such as no human being ever lived before
+      - Eight hours, which had aged him a great deal
+    correctIndex: 2
+    explanationZh: 他说 "I was in my laboratory at four o'clock, and since then… I've lived eight days… such days as no human being ever lived before"——而座上诸位这边只过了几个钟头。

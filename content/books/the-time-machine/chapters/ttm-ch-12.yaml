@@ -3,7 +3,7 @@ id: ttm-ch-12
 bookId: book-time-machine
 title: Chapter 12
 titleZh: 第十二章
-summaryZh: 时间旅行者讲完了他的故事，把仅有的几件物证摆在朋友们面前，客人们却仍半信半疑，各自散去。第二天，叙述者再次登门拜访——他在实验室门口看到的一幕，成了这个故事真正的结尾。
+summaryZh: 昼夜重新闪烁起来，太阳又变成金色，天空又变回蓝色。指针在表盘上倒着转，实验室的那几堵旧墙慢慢围拢了回来。
 sections:
   - id: ttm-ch-12-s1
     text: |-
@@ -18,14 +18,14 @@ sections:
       “For a time my brain went stagnant. Presently I got up and came through the passage here, limping, because my heel was still painful, and feeling sorely begrimed. I saw the Pall Mall Gazette on the table by the door. I found the date was indeed today, and looking at the timepiece, saw the hour was almost eight o’clock. I heard your voices and the clatter of plates. I hesitated—I felt so sick and weak. Then I sniffed good wholesome meat, and opened the door on you. You know the rest. I washed, and dined, and now I am telling you the story.
     checkIn:
       id: ttm-ch-12-s1-c1
-      stem: What did the Time Traveller notice when he passed through the moment of Mrs. Watchett's crossing during his return?
+      stem: What did the Time Traveller notice about Mrs. Watchett on the way back?
       options:
-        - Her every motion seemed exactly reversed
-        - She was frozen completely still for that instant
-        - She had changed into different clothing entirely
-        - She walked much faster than he remembered
-      correctIndex: 0
-      explanationZh: 回程时他再次经过那一瞬间，但一切都是颠倒的：她倒着退出门外，“the exact inversion of her previous ones”。她既没有静止不动，也没有换衣服或走得更快。
+        - She was standing exactly where she had been before
+        - She had aged by all the years he had been away
+        - She walked past him twice, once in each direction
+        - Her every motion was the exact inversion of before
+      correctIndex: 3
+      explanationZh: 回程经过那一分钟时，"her every motion appeared to be the exact inversion of her previous ones"——她背朝前滑过实验室，退回原先那扇门里去了。
   - id: ttm-ch-12-s2
     text: |-
       “I know,” he said, after a pause, “that all this will be absolutely incredible to you. To me the one incredible thing is that I am here tonight in this old familiar room looking into your friendly faces and telling you these strange adventures.”
@@ -55,14 +55,14 @@ sections:
       “It’s a curious thing,” said the Medical Man; “but I certainly don’t know the natural order of these flowers. May I have them?”
     checkIn:
       id: ttm-ch-12-s2-c1
-      stem: How does the Time Traveller invite his guests to treat his story if they cannot believe it?
+      stem: How did the Time Traveller tell his guests to take the story?
       options:
-        - He demands they believe every word immediately.
-        - He promises to bring physical proof within the hour.
-        - He asks them to sign a paper confirming its truth.
-        - Take it as a lie, a dream, or a fiction told for interest.
-      correctIndex: 3
-      explanationZh: 他明确说可以当成谎言、预言或梦中故事，甚至把声称真实视为提升趣味的艺术手法（“a mere stroke of art”）。选项他要求立刻全部相信、一小时取证、签确认书都与原文相反。
+        - As a warning of what their own century was coming to
+        - As a lie, or a prophecy, or a dream hatched in the workshop
+        - As the plain truth, or else as an insult to his intelligence
+        - As a puzzle, of which he would give the answer next Thursday
+      correctIndex: 1
+      explanationZh: 他说 "Take it as a lie—or a prophecy. Say I dreamed it in the workshop"，甚至说自己坚称属实也不过是 "a mere stroke of art to enhance its interest"，然后问：就当故事听，你们觉得如何？
   - id: ttm-ch-12-s3
     text: |-
       The Time Traveller hesitated. Then suddenly: “Certainly not.”
@@ -80,14 +80,14 @@ sections:
       I shared a cab with the Editor. He thought the tale a “gaudy lie.” For my own part I was unable to come to a conclusion. The story was so fantastic and incredible, the telling so credible and sober. I lay awake most of the night thinking about it. I determined to go next day and see the Time Traveller again. I was told he was in the laboratory, and being on easy terms in the house, I went up to him. The laboratory, however, was empty. I stared for a minute at the Time Machine and put out my hand and touched the lever. At that the squat substantial-looking mass swayed like a bough shaken by the wind. Its instability startled me extremely, and I had a queer reminiscence of the childish days when I used to be forbidden to meddle. I came back through the corridor. The Time Traveller met me in the smoking-room. He was coming from the house. He had a small camera under one arm and a knapsack under the other. He laughed when he saw me, and gave me an elbow to shake. “I’m frightfully busy,” said he, “with that thing in there.”
     checkIn:
       id: ttm-ch-12-s3-c1
-      stem: What physical evidence on the Time Machine itself helps confirm the Traveller's story when they go to look at it?
+      stem: What did the narrator see on the machine out in the corridor?
       options:
-        - A fresh coat of paint applied while he was away.
-        - Bits of grass and moss on the lower parts, and a bent rail.
-        - The machine's dials are permanently locked at zero.
-        - A label attached showing the year 802,701.
-      correctIndex: 1
-      explanationZh: 叙述者亲眼看到机器上有棕色斑点、底部有碎草和苔藓、一根栏杆弯曲，这些都是远途归来留下的痕迹。选项中提到的新油漆、表盘锁死零、年份标签都不存在于原文。
+        - Brown stains on the ivory, moss below, and one rail bent awry
+        - A fresh label with the date of the journey upon it
+        - The two little levers lying loose across the saddle
+        - A thick coat of dust, as though untouched for years
+      correctIndex: 0
+      explanationZh: 灯光下那台机器 "squat, ugly, and askew; a thing of brass, ebony, ivory, and translucent glimmering quartz"；象牙上有褐色污渍，底部沾着草叶和青苔，一根栏杆歪了——叙述者伸手摸过，确实是实的。
   - id: ttm-ch-12-s4
     text: |-
       “But is it not some hoax?” I said. “Do you really travel through time?”
@@ -107,66 +107,66 @@ sections:
       At that I understood. At the risk of disappointing Richardson I stayed on, waiting for the Time Traveller; waiting for the second, perhaps still stranger story, and the specimens and photographs he would bring with him. But I am beginning now to fear that I must wait a lifetime. The Time Traveller vanished three years ago. And, as everybody knows now, he has never returned.
     checkIn:
       id: ttm-ch-12-s4-c1
-      stem: What does the narrator glimpse for an instant when he opens the laboratory door?
+      stem: What did the narrator find when he pushed open the laboratory door?
       options:
-        - The Traveller unconscious on the floor with broken tools
-        - An intruder in a dark coat leaving by the skylight
+        - The Time Traveller asleep across his workbench
+        - The machine standing exactly where it had been
         - A ghostly figure in a whirling mass of black and brass
-        - A cloud of smoke from a small fire on the bench
+        - The manservant sweeping up the broken glass
       correctIndex: 2
-      explanationZh: 叙述者开门时听到一声被截断的惊呼，随后看到“a ghostly, indistinct figure sitting in a whirling mass of black and brass”——旋即消失，机器也不见了。说他看到旅行者昏倒在地、陌生黑衣人离开、或烟雾起火，都与原文不符。
+      explanationZh: 他先听见一声戛然而止的惊呼、一记咔哒和一声闷响；门一开，一股风打着旋扑面而来——"I seemed to see a ghostly, indistinct figure sitting in a whirling mass of black and brass for a moment"，揉一揉眼，机器已经不见了。
 quiz:
   - id: ttm-ch-12-q1
-    stem: Why does the Time Traveller mention that his machine started from the southeast corner but came to rest in the northwest of the laboratory?
+    stem: What did the distance between the machine's two positions tell the listeners?
     options:
-      - It proves the laboratory floor had shifted during his absence.
-      - It shows that the Morlocks had tried to move the machine underground.
-      - It explains why the machine needed repairs before he could use it again.
-      - It lets the listeners calculate the distance from his lawn to the White Sphinx's pedestal.
-    correctIndex: 3
-    explanationZh: 他解释说，出发点和着陆点之间的位置差正好等于他家小草坪到白色狮身人面像底座的距离——这正是 Morlocks 把机器搬走后所停的位置。说地板移位、证明地下搬运需要维修等，都不是原文所给理由。
-  - id: ttm-ch-12-q2
-    stem: Why does the Medical Man ask to keep the withered white flowers?
-    options:
-      - He cannot identify the flowers' natural order
-      - He wants to sell them to a collector of rare plants
-      - He recognizes them as common daisies from the garden
-      - He thinks they are poisoned and needs to test them
-    correctIndex: 0
-    explanationZh: 医生检查后说 “I certainly don't know the natural order of these flowers”，因此想留下来研究。他想卖给收藏家、认出是普通雏菊、怀疑有毒，都没有原文依据。
-  - id: ttm-ch-12-q3
-    stem: Why did the narrator find it hard to dismiss the story that night?
-    options:
-      - The wild tale was told soberly and credibly
-      - The Editor had confirmed several of the details
-      - He had once ridden the machine himself
-      - The Traveller swore a solemn oath it was true
-    correctIndex: 0
-    explanationZh: 叙述者说“The story was so fantastic and incredible, the telling so credible and sober”——内容离奇，讲述却冷静克制，这种反差让他整夜辗转难眠。编辑其实公开表示不信，叙述者也从未乘过时间机器，更没有什么誓言。
-  - id: ttm-ch-12-q4
-    stem: When the narrator returns the next day and touches the machine's lever, what happens?
-    options:
-      - The lever snaps off and clatters to the floor
-      - The machine gives off a bright flash of light
-      - The machine sways like a wind-shaken branch
-      - Nothing happens because the machine is locked
-    correctIndex: 2
-    explanationZh: 他只是轻轻触碰操控杆，这台看起来结实的机器就 “swayed like a bough shaken by the wind”，这种不稳定让他很吃惊。说杠杆折断、闪光、因锁死毫无反应，都与原文描写不符。
-  - id: ttm-ch-12-q5
-    stem: What is the Traveller carrying when he meets the narrator in the smoking-room before his final departure?
-    options:
-      - A bundle of Weena's flowers and a medical kit
-      - A small camera and a knapsack
-      - A rifle and a box of matches
-      - A rolled-up map and a brass compass
+      - How far the earth had shifted in eight hundred thousand years
+      - The exact distance from his lawn to the sphinx's pedestal
+      - How far the Morlocks could drag a weight in one night
+      - How badly the machine had been damaged in the fall
     correctIndex: 1
-    explanationZh: 原文明确写他“had a small camera under one arm and a knapsack under the other”，并笑着说正忙着。携带花朵和药箱、步枪与火柴、地图与罗盘，都不属于此处描写。
-  - id: ttm-ch-12-q6
-    stem: After the narrator opens the laboratory door and sees the empty space, what does he notice about the skylight?
+    explanationZh: 机器出发时在实验室东南角，回来却停在西北角靠墙处——"That gives you the exact distance from my little lawn to the pedestal of the White Sphinx, into which the Morlocks had carried my machine"。
+  - id: ttm-ch-12-q2
+    stem: How did the Editor take the story?
     options:
-      - The skylight has been carefully opened and relocked from outside.
-      - The skylight is shattered and all the glass is missing.
-      - A pane of the skylight appears to have just been blown in.
-      - The skylight has been replaced with a new pane of glass.
+      - He asked for the exclusive rights to print it
+      - He offered to pay a shilling a line as promised
+      - He said he would sleep on it and decide later
+      - He said what a pity it was the man was not a writer
+    correctIndex: 3
+    explanationZh: 他叹了口气站起来，把手搭在讲述者肩上：“What a pity it is you're not a writer of stories!”；后来在马车上，他管这故事叫 a gaudy lie。
+  - id: ttm-ch-12-q3
+    stem: What did the Medical Man say about the white flowers?
+    options:
+      - That they had come from the garden at Richmond
+      - That the Psychologist should keep them for study
+      - That he did not know their natural order at all
+      - That they had been pressed in a book for years
     correctIndex: 2
-    explanationZh: 机器消失后，叙述者注意到“a pane of the skylight had, apparently, just been blown in”——玻璃是向屋内破的，多半是机器骤然消失时空气猛灌进来留下的痕迹。说天窗被从外面打开又锁好、完全粉碎或换了新玻璃，都不符合原文。
+    explanationZh: 他把花拿到灯下看了看，先说 "The gynaeceum's odd"，随后又说 "I certainly don't know the natural order of these flowers. May I have them?"——却被时间旅行家一口回绝。
+  - id: ttm-ch-12-q4
+    stem: Why could the narrator not make up his mind that night?
+    options:
+      - The tale was fantastic, but the telling sober and credible
+      - He had felt the moss on the machine with his own hand
+      - The Editor had privately admitted that he believed it
+      - The Medical Man had recognised the flowers after all
+    correctIndex: 0
+    explanationZh: 他说 "The story was so fantastic and incredible, the telling so credible and sober"——内容荒唐，讲法却冷静克制。他几乎一夜没睡，天亮就决定再去一趟。
+  - id: ttm-ch-12-q5
+    stem: What did the machine do when the narrator touched the lever?
+    options:
+      - It flung a spray of sparks across the laboratory
+      - It swayed like a bough shaken by the wind
+      - It slid a few inches along the floor and stopped
+      - It rang like a bell struck somewhere deep inside
+    correctIndex: 1
+    explanationZh: 那台看着敦实的机器 "swayed like a bough shaken by the wind"，稳当得很不像话；他吓了一跳，忽然想起小时候被大人禁止乱碰东西的日子。
+  - id: ttm-ch-12-q6
+    stem: How long ago had the Time Traveller vanished, as the narrator writes?
+    options:
+      - Only that same afternoon, just before lunch
+      - A year ago, on the day of the great storm
+      - Long enough for the white flowers to crumble away
+      - Three years ago, and he has never returned
+    correctIndex: 3
+    explanationZh: 叙述者说自己一直在等那第二个更奇特的故事、等着标本和照片，"But I am beginning now to fear that I must wait a lifetime. The Time Traveller vanished three years ago. And, as everybody knows now, he has never returned"。

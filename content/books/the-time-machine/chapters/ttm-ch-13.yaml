@@ -3,54 +3,54 @@ id: ttm-ch-13
 bookId: book-time-machine
 title: Epilogue
 titleZh: 尾声
-summaryZh: 故事之外，叙述者独自写下这段收尾。时间旅行者一去不返，留给人们的只有种种猜测，和一点小小的、意味深长的纪念。
+summaryZh: 他还会回来吗？谁也说不准。叙述者只能一遍遍去想：那台机器究竟把他带去了哪一头。
 sections:
   - id: ttm-ch-13-s1
     text: "One cannot choose but wonder. Will he ever return? It may be that he swept back into the past, and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone; into the abysses of the Cretaceous Sea; or among the grotesque saurians, the huge reptilian brutes of the Jurassic times. He may even now—if I may use the phrase—be wandering on some plesiosaurus-haunted Oolitic coral reef, or beside the lonely saline lakes of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved? Into the manhood of the race: for I, for my own part, cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord are indeed man’s culminating time! I say, for my own part. He, I know—for the question had been discussed among us long before the Time Machine was made—thought but cheerlessly of the Advancement of Mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so. But to me the future is still black and blank—is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me, for my comfort, two strange white flowers—shrivelled now, and brown and flat and brittle—to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man."
     checkIn:
       id: ttm-ch-13-s1-c1
-      stem: Where does the narrator think the Time Traveller might have gone?
+      stem: What did the Time Traveller think of the Advancement of Mankind?
       options:
-        - The narrator is sure he went to the Jurassic times.
-        - The narrator says he definitely went forward to man's culminating time.
-        - The narrator believes he stayed in the present.
-        - He may have gone back into the remote past or forward into a future age.
-      correctIndex: 3
-      explanationZh: 原文列举了多种可能：回到"the past"的荒蛮时代，或去到"one of the nearer ages"。说书里确定去了侏罗纪、一定去了人类巅峰时代、或留在当下，都把猜测说成了确定的事实。
+        - That it would soon answer the riddles of our own time
+        - That the growing pile must fall back and destroy its makers
+        - That it had already reached the manhood of the race
+        - That it was too slow to matter one way or the other
+      correctIndex: 1
+      explanationZh: 早在机器造出来以前，这问题他们就讨论过——他 "thought but cheerlessly of the Advancement of Mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end"。
 quiz:
   - id: ttm-ch-13-q1
-    stem: If the Traveller went into the past, where does the narrator imagine he may have ended up?
+    stem: Where does the narrator imagine the Traveller may be, if he went back?
     options:
-      - In a medieval castle under siege
-      - Among savages and giant saurians
-      - In the Morlocks' underground caverns
-      - On the dying beach he had described
-    correctIndex: 1
-    explanationZh: 叙述者想象他可能落入“blood-drinking, hairy savages”之中，坠入白垩纪的海洋，或身处侏罗纪巨型爬行动物之间。中世纪城堡与莫洛克人的洞穴不在他的设想里；垂死的海滩属于已经讲过的未来，不是过去。
-  - id: ttm-ch-13-q2
-    stem: According to the narrator, how did the Time Traveller view the advancement of civilization?
-    options:
-      - He believed it would lead to man's culminating time.
-      - He thought it would solve all of humanity's problems.
-      - He saw it as a foolish pile that would eventually destroy its makers.
-      - He considered it weak experiment and fragmentary theory.
-    correctIndex: 2
-    explanationZh: 原文说时间旅行者"saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end"。把文明看作必然毁灭制造者的东西正是他的悲观看法。说成巅峰时代、能解决一切问题，或"weak experiment"，要么与他观点相反，要么是叙述者用来形容当时代的词而非旅行者的文明观。
-  - id: ttm-ch-13-q3
-    stem: What does the narrator mean by describing the future as "black and blank"?
-    options:
-      - He feels vast ignorance, lit only by memories of the story
-      - He believes the future will be dark because the sun will die
-      - He thinks the future is completely empty of all life
-      - He is certain the future holds nothing but war and discord
+      - On a coral reef haunted by plesiosaurs, or beside Triassic lakes
+      - In the streets of London a hundred years before
+      - In the great hall where the Eloi slept in droves
+      - On the beach with the crabs and the dull red sun
     correctIndex: 0
-    explanationZh: 原文说"the future is still black and blank—is a vast ignorance, lit at a few casual places by the memory of his story"，强调的是无知与不确定，只靠旅行者的故事点亮零星片段。太阳熄灭、毫无生命、或只有战争纷争，都不是这里的含义。
-  - id: ttm-ch-13-q4
-    stem: What do the two strange white flowers symbolize for the narrator?
+    explanationZh: 他一一设想：落进 "the blood-drinking, hairy savages of the Age of Unpolished Stone"、白垩纪的深海、侏罗纪的巨蜥之间，或者 "wandering on some plesiosaurus-haunted Oolitic coral reef, or beside the lonely saline lakes of the Triassic Age"。
+  - id: ttm-ch-13-q2
+    stem: What does the narrator refuse to believe about his own century?
     options:
-      - That nature will always survive human civilization
-      - That the Time Traveller will certainly return one day
-      - That the Eloi were superior to the Morlocks
-      - That gratitude and tenderness survived in man's heart
+      - That it will end in fire, as the Traveller foretold
+      - That its problems can ever be solved by machines
+      - That these days of weak experiment are man's best
+      - That the Eloi are the only future left to the race
+    correctIndex: 2
+    explanationZh: 他愿意设想一个更近的未来，那里 "men are still men, but with the riddles of our own time answered"；因为 "I cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord are indeed man's culminating time!"。
+  - id: ttm-ch-13-q3
+    stem: What does the narrator say we should do if the Traveller was right?
+    options:
+      - Set down everything he said, in case he never returns
+      - Build a second machine and go after him at once
+      - Give up the growing pile of civilization altogether
+      - Live our lives as though it were not so
     correctIndex: 3
-    explanationZh: 原文说两朵白花"witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man"。它们见证的是人性中的感恩与温情。自然永恒、必定归来、或埃洛伊优于莫洛克，都不是花所象征的。
+    explanationZh: 他写道，倘若文明当真会反噬造它的人，"it remains for us to live as though it were not so"。
+  - id: ttm-ch-13-q4
+    stem: What do the two withered flowers stand as witness to?
+    options:
+      - That the Traveller really did visit another age
+      - That gratitude and tenderness outlived mind and strength
+      - That the Eloi could still be taught to read and write
+      - That Weena had understood everything he told her
+    correctIndex: 1
+    explanationZh: 他把这两朵花留在身边聊以自慰，"to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man"。

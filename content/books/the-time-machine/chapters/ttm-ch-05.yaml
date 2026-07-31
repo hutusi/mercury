@@ -3,7 +3,7 @@ id: ttm-ch-05
 bookId: book-time-machine
 title: Chapter 5
 titleZh: 第五章
-summaryZh: 时间旅行者发现时间机器不见了，惊慌之余开始在这个看似太平的世界里搜寻线索。他努力了解小人族的生活，结识了薇娜，而一连串奇怪的发现，正把他一步步引向这个世界埋得最深的秘密。
+summaryZh: 月亮升起来时，他决定下山找个地方过夜。目光顺着白色斯芬克斯落到底下那片草地——他先是不肯相信，接着一阵寒意从心口窜了上来。
 sections:
   - id: ttm-ch-05-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       “At once, like a lash across the face, came the possibility of losing my own age, of being left helpless in this strange new world. The bare thought of it was an actual physical sensation. I could feel it grip me at the throat and stop my breathing. In another moment I was in a passion of fear and running with great leaping strides down the slope. Once I fell headlong and cut my face; I lost no time in stanching the blood, but jumped up and ran on, with a warm trickle down my cheek and chin. All the time I ran I was saying to myself: ‘They have moved it a little, pushed it under the bushes out of the way.’ Nevertheless, I ran with all my might. All the time, with the certainty that sometimes comes with excessive dread, I knew that such assurance was folly, knew instinctively that the machine was removed out of my reach. My breath came with pain. I suppose I covered the whole distance from the hill crest to the little lawn, two miles perhaps, in ten minutes. And I am not a young man. I cursed aloud, as I ran, at my confident folly in leaving the machine, wasting good breath thereby. I cried aloud, and none answered. Not a creature seemed to be stirring in that moonlit world.
     checkIn:
       id: ttm-ch-05-s1-c1
-      stem: When the Time Traveller realizes the Time Machine is gone, how does he react?
+      stem: How did the Time Traveller first realise that something was wrong?
       options:
-        - He calmly walks back to the palace to ask for help.
-        - He stays on the hill and waits for morning.
-        - He sits down and writes a note to the little people.
-        - He panics and runs down the slope to the lawn.
-      correctIndex: 3
-      explanationZh: 他一意识到机器不见了，就陷入极度恐惧，拼命跑下山坡。文中说他跑了大约两英里，甚至摔倒划破了脸，体现出惊慌而非冷静。
+        - The lawn beneath the sphinx no longer held the machine
+        - The moon rose in the wrong quarter of the sky
+        - The little figures down below had all of them stopped moving
+        - An owl flew past him without making any sound
+      correctIndex: 0
+      explanationZh: 他借着月光一处处认路——白色斯芬克斯、银桦、杜鹃丛，最后落到那片草地上，"A queer doubt chilled my complacency"，随后便是那句 "The Time Machine was gone!"。
   - id: ttm-ch-05-s2
     text: |-
       “When I reached the lawn my worst fears were realized. Not a trace of the thing was to be seen. I felt faint and cold when I faced the empty space among the black tangle of bushes. I ran round it furiously, as if the thing might be hidden in a corner, and then stopped abruptly, with my hands clutching my hair. Above me towered the sphinx, upon the bronze pedestal, white, shining, leprous, in the light of the rising moon. It seemed to smile in mockery of my dismay.
@@ -35,14 +35,14 @@ sections:
       “There I found a second great hall covered with cushions, upon which, perhaps, a score or so of the little people were sleeping. I have no doubt they found my second appearance strange enough, coming suddenly out of the quiet darkness with inarticulate noises and the splutter and flare of a match. For they had forgotten about matches. ‘Where is my Time Machine?’ I began, bawling like an angry child, laying hands upon them and shaking them up together. It must have been very queer to them. Some laughed, most of them looked sorely frightened. When I saw them standing round me, it came into my head that I was doing as foolish a thing as it was possible for me to do under the circumstances, in trying to revive the sensation of fear. For, reasoning from their daylight behaviour, I thought that fear must be forgotten.
     checkIn:
       id: ttm-ch-05-s2-c1
-      stem: Why does the Time Traveller rule out the idea that the little people hid the machine themselves?
+      stem: Why was he sure the machine had not been moved through time?
       options:
-        - He saw them moving it during the night.
-        - He believes they are physically and mentally incapable of doing so.
-        - They told him directly that they had not touched it.
-        - He found evidence that it had traveled to another time period.
+        - Only he knew how to work the two levers
+        - He had taken the levers away in his pocket
+        - The dials would have recorded such a journey
+        - No other age could have built a duplicate
       correctIndex: 1
-      explanationZh: 他认为小人族在体力和智力上都不足以搬动机器，因此一定是某种他所不知道的力量介入了。文中说 'their physical and intellectual inadequacy'，排除了小人自己搬动的可能。
+      explanationZh: 他说杠杆一旦取下，那套机关就 "prevented anyone from tampering with it in that way"——所以 "It had moved, and was hid, only in space"。真正让他心惊的是：小人族根本没有搬动它的力气和头脑。
   - id: ttm-ch-05-s3
     text: |-
       “Abruptly, I dashed down the match, and, knocking one of the people over in my course, went blundering across the big dining-hall again, out under the moonlight. I heard cries of terror and their little feet running and stumbling this way and that. I do not remember all I did as the moon crept up the sky. I suppose it was the unexpected nature of my loss that maddened me. I felt hopelessly cut off from my own kind—a strange animal in an unknown world. I must have raved to and fro, screaming and crying upon God and Fate. I have a memory of horrible fatigue, as the long night of despair wore away; of looking in this impossible place and that; of groping among moonlit ruins and touching strange creatures in the black shadows; at last, of lying on the ground near the sphinx and weeping with absolute wretchedness. I had nothing left but misery. Then I slept, and when I woke again it was full day, and a couple of sparrows were hopping round me on the turf within reach of my arm.
@@ -52,14 +52,14 @@ sections:
       “But probably, the machine had only been taken away. Still, I must be calm and patient, find its hiding-place, and recover it by force or cunning. And with that I scrambled to my feet and looked about me, wondering where I could bathe. I felt weary, stiff, and travel-soiled. The freshness of the morning made me desire an equal freshness. I had exhausted my emotion. Indeed, as I went about my business, I found myself wondering at my intense excitement overnight. I made a careful examination of the ground about the little lawn. I wasted some time in futile questionings, conveyed, as well as I was able, to such of the little people as came by. They all failed to understand my gestures; some were simply stolid, some thought it was a jest and laughed at me. I had the hardest task in the world to keep my hands off their pretty laughing faces. It was a foolish impulse, but the devil begotten of fear and blind anger was ill curbed and still eager to take advantage of my perplexity. The turf gave better counsel. I found a groove ripped in it, about midway between the pedestal of the sphinx and the marks of my feet where, on arrival, I had struggled with the overturned machine. There were other signs of removal about, with queer narrow footprints like those I could imagine made by a sloth. This directed my closer attention to the pedestal. It was, as I think I have said, of bronze. It was not a mere block, but highly decorated with deep framed panels on either side. I went and rapped at these. The pedestal was hollow. Examining the panels with care I found them discontinuous with the frames. There were no handles or keyholes, but possibly the panels, if they were doors, as I supposed, opened from within. One thing was clear enough to my mind. It took no very great mental effort to infer that my Time Machine was inside that pedestal. But how it got there was a different problem.
     checkIn:
       id: ttm-ch-05-s3-c1
-      stem: What evidence leads the Time Traveller to conclude that the Time Machine is inside the bronze pedestal of the Sphinx?
+      stem: What did the turf tell him when he examined it in the morning?
       options:
-        - The little people tell him where to find it
-        - He sees a light shining from inside the pedestal
-        - A groove and narrow footprints leading toward it
-        - He finds the missing levers near the pedestal
+        - That the machine had somehow been lifted away through the air
+        - That someone had dug a pit underneath the lawn
+        - A groove ran towards the pedestal, with narrow footprints
+        - That the little people had danced there all night
       correctIndex: 2
-      explanationZh: 他在草地上发现了一道被拖拽出的沟痕和类似树懒的窄小脚印，都指向铜座。他敲了敲铜座发现它是空心的，由此推断机器被藏在里面。
+      explanationZh: 他找到 "a groove ripped in it, about midway between the pedestal of the sphinx and the marks of my feet"，旁边还有 "queer narrow footprints like those I could imagine made by a sloth"；敲一敲那座青铜底座，是空心的。
   - id: ttm-ch-05-s4
     text: |-
       “I saw the heads of two orange-clad people coming through the bushes and under some blossom-covered apple-trees towards me. I turned smiling to them and beckoned them to me. They came, and then, pointing to the bronze pedestal, I tried to intimate my wish to open it. But at my first gesture towards this they behaved very oddly. I don’t know how to convey their expression to you. Suppose you were to use a grossly improper gesture to a delicate-minded woman—it is how she would look. They went off as if they had received the last possible insult. I tried a sweet-looking little chap in white next, with exactly the same result. Somehow, his manner made me feel ashamed of myself. But, as you know, I wanted the Time Machine, and I tried him once more. As he turned off, like the others, my temper got the better of me. In three strides I was after him, had him by the loose part of his robe round the neck, and began dragging him towards the sphinx. Then I saw the horror and repugnance of his face, and all of a sudden I let him go.
@@ -69,14 +69,14 @@ sections:
       “I got up after a time, and began walking aimlessly through the bushes towards the hill again. ‘Patience,’ said I to myself. ‘If you want your machine again you must leave that sphinx alone. If they mean to take your machine away, it’s little good your wrecking their bronze panels, and if they don’t, you will get it back as soon as you can ask for it. To sit among all those unknown things before a puzzle like that is hopeless. That way lies monomania. Face this world. Learn its ways, watch it, be careful of too hasty guesses at its meaning. In the end you will find clues to it all.’ Then suddenly the humour of the situation came into my mind: the thought of the years I had spent in study and toil to get into the future age, and now my passion of anxiety to get out of it. I had made myself the most complicated and the most hopeless trap that ever a man devised. Although it was at my own expense, I could not help myself. I laughed aloud.
     checkIn:
       id: ttm-ch-05-s4-c1
-      stem: How do the little people respond when the Time Traveller points at the bronze pedestal and tries to open it?
+      stem: How did the little people react when he pointed at the bronze pedestal?
       options:
-        - They offer to help him open it together
-        - They show him a hidden key to the panels
-        - They act deeply insulted and walk away
-        - They run away screaming in terror
-      correctIndex: 2
-      explanationZh: 当他指向铜座示意想打开时，小人族的反应就像受到了极大侮辱一样走开了。文中用了一个比喻，说就像对一个体面的人做了粗俗的手势，他们显得既厌恶又难堪。
+        - They fetched a tool and tried to help him open it
+        - They pretended not to understand and offered him fruit
+        - They shrieked and ran to hide in the great hall
+        - They went off as if they had been grossly insulted
+      correctIndex: 3
+      explanationZh: 他说那神情就像对一位讲究的女士做了个粗鄙手势后会看到的表情——"They went off as if they had received the last possible insult"；换一个人再试，结果一模一样。
   - id: ttm-ch-05-s5
     text: |-
       “Going through the big palace, it seemed to me that the little people avoided me. It may have been my fancy, or it may have had something to do with my hammering at the gates of bronze. Yet I felt tolerably sure of the avoidance. I was careful, however, to show no concern and to abstain from any pursuit of them, and in the course of a day or two things got back to the old footing. I made what progress I could in the language, and in addition I pushed my explorations here and there. Either I missed some subtle point or their language was excessively simple—almost exclusively composed of concrete substantives and verbs. There seemed to be few, if any, abstract terms, or little use of figurative language. Their sentences were usually simple and of two words, and I failed to convey or understand any but the simplest propositions. I determined to put the thought of my Time Machine and the mystery of the bronze doors under the sphinx as much as possible in a corner of memory, until my growing knowledge would lead me back to them in a natural way. Yet a certain feeling, you may understand, tethered me in a circle of a few miles round the point of my arrival.
@@ -84,14 +84,14 @@ sections:
       “So far as I could see, all the world displayed the same exuberant richness as the Thames valley. From every hill I climbed I saw the same abundance of splendid buildings, endlessly varied in material and style, the same clustering thickets of evergreens, the same blossom-laden trees and tree-ferns. Here and there water shone like silver, and beyond, the land rose into blue undulating hills, and so faded into the serenity of the sky. A peculiar feature, which presently attracted my attention, was the presence of certain circular wells, several, as it seemed to me, of a very great depth. One lay by the path up the hill, which I had followed during my first walk. Like the others, it was rimmed with bronze, curiously wrought, and protected by a little cupola from the rain. Sitting by the side of these wells, and peering down into the shafted darkness, I could see no gleam of water, nor could I start any reflection with a lighted match. But in all of them I heard a certain sound: a thud—thud—thud, like the beating of some big engine; and I discovered, from the flaring of my matches, that a steady current of air set down the shafts. Further, I threw a scrap of paper into the throat of one, and, instead of fluttering slowly down, it was at once sucked swiftly out of sight.
     checkIn:
       id: ttm-ch-05-s5-c1
-      stem: What strange feature does the Time Traveller notice about the circular wells on the hillsides?
+      stem: What did the Time Traveller find when he peered into the round wells?
       options:
-        - They are filled with glowing blue water
-        - No visible water, and air rushing steadily down
-        - They are used to store food for the little people
-        - They emit a bright light from deep below
-      correctIndex: 1
-      explanationZh: 他在井边探望，看不到水面也照不出反光，却听到砰砰声并把纸片扔进去后被迅速吸入。这说明井里有一股向下的气流，而不是水。
+        - No water, but a thud-thud and air pulled downward
+        - Deep water that swallowed his lighted matches
+        - A soft green light burning far down at the very bottom
+        - Faint voices speaking the language of the Eloi
+      correctIndex: 0
+      explanationZh: 他看不见水光，火柴也照不出反射，却听见 "a thud—thud—thud, like the beating of some big engine"；扔下一片纸，纸不是慢慢飘落，而是 "at once sucked swiftly out of sight"。
   - id: ttm-ch-05-s6
     text: |-
       “After a time, too, I came to connect these wells with tall towers standing here and there upon the slopes; for above them there was often just such a flicker in the air as one sees on a hot day above a sun-scorched beach. Putting things together, I reached a strong suggestion of an extensive system of subterranean ventilation, whose true import it was difficult to imagine. I was at first inclined to associate it with the sanitary apparatus of these people. It was an obvious conclusion, but it was absolutely wrong.
@@ -101,14 +101,14 @@ sections:
       “In the matter of sepulture, for instance, I could see no signs of crematoria nor anything suggestive of tombs. But it occurred to me that, possibly, there might be cemeteries (or crematoria) somewhere beyond the range of my explorings. This, again, was a question I deliberately put to myself, and my curiosity was at first entirely defeated upon the point. The thing puzzled me, and I was led to make a further remark, which puzzled me still more: that aged and infirm among this people there were none.
     checkIn:
       id: ttm-ch-05-s6-c1
-      stem: What puzzling observation does the Time Traveller make about the population of this future world?
+      stem: What did the Time Traveller find most puzzling about these people?
       options:
-        - They all look exactly the same.
-        - They are all children under ten years old.
-        - There are no old or infirm people among them.
-        - They are all female and no males are visible.
-      correctIndex: 2
-      explanationZh: 他在探索中找不到任何 crematoria（火葬场）或坟墓的痕迹，更令他困惑的是这个人群当中完全没有年老或体弱的人。
+        - That they had no word at all for fear
+        - That there were no aged or infirm among them
+        - That not one of them could swim a stroke in the river
+        - That they never lit a fire, even at night
+      correctIndex: 1
+      explanationZh: 他找不到火葬场，也找不到坟墓；更让他纳闷的是 "that aged and infirm among this people there were none"。
   - id: ttm-ch-05-s7
     text: |-
       “I must confess that my satisfaction with my first theories of an automatic civilization and a decadent humanity did not long endure. Yet I could think of no other. Let me put my difficulties. The several big palaces I had explored were mere living places, great dining-halls and sleeping apartments. I could find no machinery, no appliances of any kind. Yet these people were clothed in pleasant fabrics that must at times need renewal, and their sandals, though undecorated, were fairly complex specimens of metalwork. Somehow such things must be made. And the little people displayed no vestige of a creative tendency. There were no shops, no workshops, no sign of importations among them. They spent all their time in playing gently, in bathing in the river, in making love in a half-playful fashion, in eating fruit and sleeping. I could not see how things were kept going.
@@ -118,14 +118,14 @@ sections:
       “That day, too, I made a friend—of a sort. It happened that, as I was watching some of the little people bathing in a shallow, one of them was seized with cramp and began drifting downstream. The main current ran rather swiftly, but not too strongly for even a moderate swimmer. It will give you an idea, therefore, of the strange deficiency in these creatures, when I tell you that none made the slightest attempt to rescue the weakly crying little thing which was drowning before their eyes. When I realized this, I hurriedly slipped off my clothes, and, wading in at a point lower down, I caught the poor mite and drew her safe to land. A little rubbing of the limbs soon brought her round, and I had the satisfaction of seeing she was all right before I left her. I had got to such a low estimate of her kind that I did not expect any gratitude from her. In that, however, I was wrong.
     checkIn:
       id: ttm-ch-05-s7-c1
-      stem: How does the Time Traveller first meet the little creature he later calls Weena?
+      stem: What made the Time Traveller doubt his theory of an automatic civilization?
       options:
-        - He rescues her from drowning in the river.
-        - He finds her sleeping inside the Sphinx pedestal.
-        - She brings him food while he is exploring the ruins.
-        - She approaches him to ask about his matches.
-      correctIndex: 0
-      explanationZh: 他在河边看到小人们在浅水中洗澡时，其中一人抽筋被水流冲走，没有人去救她。他赶紧脱衣下水把她救上岸来，这个小人就是薇娜。
+        - The Eloi remembered nothing at all of their history
+        - The palaces were far older than he had first supposed
+        - Their clothes and sandals had to be made somewhere
+        - The wells were too deep to have been dug by hand
+      correctIndex: 2
+      explanationZh: 他在宫殿里 "could find no machinery, no appliances of any kind"，可这些人穿的织物要更换，凉鞋也是相当复杂的金属活——"Somehow such things must be made"，而他们身上看不出半点创造的迹象。
   - id: ttm-ch-05-s8
     text: |-
       “This happened in the morning. In the afternoon I met my little woman, as I believe it was, as I was returning towards my centre from an exploration, and she received me with cries of delight and presented me with a big garland of flowers—evidently made for me and me alone. The thing took my imagination. Very possibly I had been feeling desolate. At any rate I did my best to display my appreciation of the gift. We were soon seated together in a little stone arbour, engaged in conversation, chiefly of smiles. The creature’s friendliness affected me exactly as a child’s might have done. We passed each other flowers, and she kissed my hands. I did the same to hers. Then I tried talk, and found that her name was Weena, which, though I don’t know what it meant, somehow seemed appropriate enough. That was the beginning of a queer friendship which lasted a week, and ended—as I will tell you!
@@ -135,14 +135,14 @@ sections:
       “It was from her, too, that I learned that fear had not yet left the world. She was fearless enough in the daylight, and she had the oddest confidence in me; for once, in a foolish moment, I made threatening grimaces at her, and she simply laughed at them. But she dreaded the dark, dreaded shadows, dreaded black things. Darkness to her was the one thing dreadful. It was a singularly passionate emotion, and it set me thinking and observing. I discovered then, among other things, that these little people gathered into the great houses after dark, and slept in droves. To enter upon them without a light was to put them into a tumult of apprehension. I never found one out of doors, or one sleeping alone within doors, after dark. Yet I was still such a blockhead that I missed the lesson of that fear, and in spite of Weena’s distress I insisted upon sleeping away from these slumbering multitudes.
     checkIn:
       id: ttm-ch-05-s8-c1
-      stem: What does the Time Traveller learn from Weena about the little people's relationship with darkness?
+      stem: What was the one thing Weena dreaded?
       options:
-        - They prefer to sleep outdoors under the stars
-        - They become aggressive and violent at night
-        - They can see perfectly well in complete darkness
-        - They dread the dark and never go out after sunset
+        - Deep water, ever since her rescue in the river
+        - The White Sphinx and its hollow bronze pedestal
+        - Being left alone among the ruined palaces
+        - The dark, and shadows, and black things
       correctIndex: 3
-      explanationZh: 薇娜在白天不怕任何事，但极度害怕黑暗、阴影和黑色的东西。他发现天黑后小人族全部聚在大屋里睡觉，从不在室外或独自过夜，说明黑暗是他们唯一恐惧的东西。
+      explanationZh: 白天她什么都不怕，他扮鬼脸吓她也只换来一笑，"But she dreaded the dark, dreaded shadows, dreaded black things"。他因此发现，天一黑，小人族就成群挤进大屋里睡觉。
   - id: ttm-ch-05-s9
     text: |-
       “It troubled her greatly, but in the end her odd affection for me triumphed, and for five of the nights of our acquaintance, including the last night of all, she slept with her head pillowed on my arm. But my story slips away from me as I speak of her. It must have been the night before her rescue that I was awakened about dawn. I had been restless, dreaming most disagreeably that I was drowned, and that sea anemones were feeling over my face with their soft palps. I woke with a start, and with an odd fancy that some greyish animal had just rushed out of the chamber. I tried to get to sleep again, but I felt restless and uncomfortable. It was that dim grey hour when things are just creeping out of darkness, when everything is colourless and clear cut, and yet unreal. I got up, and went down into the great hall, and so out upon the flagstones in front of the palace. I thought I would make a virtue of necessity, and see the sunrise.
@@ -152,14 +152,14 @@ sections:
       “As the eastern sky grew brighter, and the light of the day came on and its vivid colouring returned upon the world once more, I scanned the view keenly. But I saw no vestige of my white figures. They were mere creatures of the half light. ‘They must have been ghosts,’ I said; ‘I wonder whence they dated.’ For a queer notion of Grant Allen’s came into my head, and amused me. If each generation die and leave ghosts, he argued, the world at last will get overcrowded with them. On that theory they would have grown innumerable some Eight Hundred Thousand Years hence, and it was no great wonder to see four at once. But the jest was unsatisfying, and I was thinking of these figures all the morning, until Weena’s rescue drove them out of my head. I associated them in some indefinite way with the white animal I had startled in my first passionate search for the Time Machine. But Weena was a pleasant substitute. Yet all the same, they were soon destined to take far deadlier possession of my mind.
     checkIn:
       id: ttm-ch-05-s9-c1
-      stem: What does the Time Traveller think he sees on the hillside at dawn?
+      stem: What did the Time Traveller see on the hillside in the half-light before dawn?
       options:
-        - White, apelike figures moving quickly among the bushes
-        - A group of little people dancing in the moonlight
-        - A large animal grazing near the ruins
-        - A fire burning near the White Sphinx
+        - White apelike figures, one group carrying something dark
+        - Weena searching for him along the cold flagstones
+        - The bronze panels under the sphinx standing wide open
+        - A column of smoke rising out of one of the wells
       correctIndex: 0
-      explanationZh: 黎明前他在灰暗中看到山坡上有白色的、类似猿猴的身影。他们快速跑上山，有一群还似乎抬着什么东西。他一度怀疑自己眼花，但这个印象一直留在脑海中。
+      explanationZh: 他两次看见 "a solitary white, apelike creature running rather quickly up the hill"，还有一次看见 "a leash of them carrying some dark body"。天一亮就什么都没有了，他便用格兰特·艾伦那个关于鬼魂的玩笑话哄自己。
   - id: ttm-ch-05-s10
     text: |-
       “I think I have said how much hotter than our own was the weather of this Golden Age. I cannot account for it. It may be that the sun was hotter, or the earth nearer the sun. It is usual to assume that the sun will go on cooling steadily in the future. But people, unfamiliar with such speculations as those of the younger Darwin, forget that the planets must ultimately fall back one by one into the parent body. As these catastrophes occur, the sun will blaze with renewed energy; and it may be that some inner planet had suffered this fate. Whatever the reason, the fact remains that the sun was very much hotter than we know it.
@@ -171,14 +171,14 @@ sections:
       “My impression of it is, of course, imperfect; but I know it was a dull white, and had strange large greyish-red eyes; also that there was flaxen hair on its head and down its back. But, as I say, it went too fast for me to see distinctly. I cannot even say whether it ran on all-fours, or only with its forearms held very low. After an instant’s pause I followed it into the second heap of ruins. I could not find it at first; but, after a time in the profound obscurity, I came upon one of those round well-like openings of which I have told you, half closed by a fallen pillar. A sudden thought came to me. Could this Thing have vanished down the shaft? I lit a match, and, looking down, I saw a small, white, moving creature, with large bright eyes which regarded me steadfastly as it retreated. It made me shudder. It was so like a human spider! It was clambering down the wall, and now I saw for the first time a number of metal foot and hand rests forming a kind of ladder down the shaft. Then the light burned my fingers and fell out of my hand, going out as it dropped, and when I had lit another the little monster had disappeared.
     checkIn:
       id: ttm-ch-05-s10-c1
-      stem: When the Time Traveller enters a dark gallery in the ruins, what does he encounter?
+      stem: What did the Time Traveller meet in the dark gallery among the ruins?
       options:
-        - A group of little people sleeping on cushions
-        - A large mirror reflecting his own face
-        - A pile of stolen Time Machine parts
-        - A pair of luminous eyes watching him from the darkness
-      correctIndex: 3
-      explanationZh: 他从明亮处走进黑暗的廊道时，看到黑暗中有一对反射日光的眼睛盯着他。他伸手触摸到柔软的东西，一个白色的小身影从他身旁跑过，躲进了废墟的阴影中。
+        - A wall of glass that threw back his own reflection
+        - A pair of luminous eyes watching him out of the dark
+        - The little people, hiding there from the midday heat
+        - A shaft of light falling on the two missing levers
+      correctIndex: 1
+      explanationZh: 他从烈日下摸黑走进去，忽然定住了——"A pair of eyes, luminous by reflection against the daylight without, was watching me out of the darkness"；他伸手一摸，触到软软的东西，一个白影从身边窜了出去。
   - id: ttm-ch-05-s11
     text: |-
       “I do not know how long I sat peering down that well. It was not for some time that I could succeed in persuading myself that the thing I had seen was human. But, gradually, the truth dawned on me: that Man had not remained one species, but had differentiated into two distinct animals: that my graceful children of the Upper-world were not the sole descendants of our generation, but that this bleached, obscene, nocturnal Thing, which had flashed before me, was also heir to all the ages.
@@ -190,14 +190,14 @@ sections:
       “Here was the new view. Plainly, this second species of Man was subterranean. There were three circumstances in particular which made me think that its rare emergence above ground was the outcome of a long-continued underground habit. In the first place, there was the bleached look common in most animals that live largely in the dark—the white fish of the Kentucky caves, for instance. Then, those large eyes, with that capacity for reflecting light, are common features of nocturnal things—witness the owl and the cat. And last of all, that evident confusion in the sunshine, that hasty yet fumbling awkward flight towards dark shadow, and that peculiar carriage of the head while in the light—all reinforced the theory of an extreme sensitiveness of the retina.
     checkIn:
       id: ttm-ch-05-s11-c1
-      stem: What conclusion does the Time Traveller reach about humanity after seeing the creature in the well?
+      stem: Which three signs told him the creature had long lived in the dark?
       options:
-        - Humans have evolved into a single perfect race
-        - All humans have become underground dwellers
-        - Humanity has been destroyed and replaced by apes
-        - Humanity has split into two distinct species
-      correctIndex: 3
-      explanationZh: 他逐渐意识到人类并没有保持单一物种，而是分化成了两种不同的动物：地上的优雅种族和他刚见到的这种白色地下生物，两者都是人类的后代。
+        - Its silence, its small size, and its flaxen hair
+        - Its cold white skin, its long claws, and its very sharp teeth
+        - Bleached skin, light-reflecting eyes, dread of sunshine
+        - Its metal ladder, its speed, and its low-held head
+      correctIndex: 2
+      explanationZh: 他列了三条：像肯塔基洞穴白鱼那样褪了色的皮肤；像猫头鹰和猫那样会反光的大眼睛；还有阳光下的慌乱与低垂着头的姿态——都指向 "an extreme sensitiveness of the retina"。
   - id: ttm-ch-05-s12
     text: |-
       “Beneath my feet, then, the earth must be tunnelled enormously, and these tunnellings were the habitat of the new race. The presence of ventilating shafts and wells along the hill slopes—everywhere, in fact, except along the river valley—showed how universal were its ramifications. What so natural, then, as to assume that it was in this artificial Under-world that such work as was necessary to the comfort of the daylight race was done? The notion was so plausible that I at once accepted it, and went on to assume the how of this splitting of the human species. I dare say you will anticipate the shape of my theory; though, for myself, I very soon felt that it fell far short of the truth.
@@ -207,14 +207,14 @@ sections:
       “Again, the exclusive tendency of richer people—due, no doubt, to the increasing refinement of their education, and the widening gulf between them and the rude violence of the poor—is already leading to the closing, in their interest, of considerable portions of the surface of the land. About London, for instance, perhaps half the prettier country is shut in against intrusion. And this same widening gulf—which is due to the length and expense of the higher educational process and the increased facilities for and temptations towards refined habits on the part of the rich—will make that exchange between class and class, that promotion by intermarriage which at present retards the splitting of our species along lines of social stratification, less and less frequent. So, in the end, above ground you must have the Haves, pursuing pleasure and comfort and beauty, and below ground the Have-nots, the Workers getting continually adapted to the conditions of their labour. Once they were there, they would no doubt have to pay rent, and not a little of it, for the ventilation of their caverns; and if they refused, they would starve or be suffocated for arrears. Such of them as were so constituted as to be miserable and rebellious would die; and, in the end, the balance being permanent, the survivors would become as well adapted to the conditions of underground life, and as happy in their way, as the Upper-world people were to theirs. As it seemed to me, the refined beauty and the etiolated pallor followed naturally enough.
     checkIn:
       id: ttm-ch-05-s12-c1
-      stem: According to the Time Traveller's theory, what originally caused humanity to split into two groups?
+      stem: What did the Time Traveller suppose had first split humanity in two?
       options:
-        - The widening social gap between Capitalists and Labourers
-        - A natural disaster that forced people underground
-        - A war between two rival human nations
-        - A disease that killed off half the population
-      correctIndex: 0
-      explanationZh: 他认为当时的资本家与劳工之间暂时性的社会差异不断扩大，最终导致阶级之间完全分离。他举例说伦敦已经有越来越多的地下设施，说明工业活动有向地下转移的趋势。
+        - A plague that drove the healthy underground
+        - The Eloi's decision to give up all labour
+        - The failing of the sun, which forced men into caves
+        - The widening gulf between Capitalist and Labourer
+      correctIndex: 3
+      explanationZh: 他从当下推想开去：工业一步步搬进越来越大的地下工厂，富人则把地面一块块圈起来，于是 "above ground you must have the Haves… and below ground the Have-nots, the Workers"。
   - id: ttm-ch-05-s13
     text: |-
       “The great triumph of Humanity I had dreamed of took a different shape in my mind. It had been no such triumph of moral education and general cooperation as I had imagined. Instead, I saw a real aristocracy, armed with a perfected science and working to a logical conclusion the industrial system of today. Its triumph had not been simply a triumph over Nature, but a triumph over Nature and the fellowman. This, I must warn you, was my theory at the time. I had no convenient cicerone in the pattern of the Utopian books. My explanation may be absolutely wrong. I still think it is the most plausible one. But even on this supposition the balanced civilization that was at last attained must have long since passed its zenith, and was now far fallen into decay. The too-perfect security of the Upper-worlders had led them to a slow movement of degeneration, to a general dwindling in size, strength, and intelligence. That I could see clearly enough already. What had happened to the Under-grounders I did not yet suspect; but from what I had seen of the Morlocks—that, by the by, was the name by which these creatures were called—I could imagine that the modification of the human type was even far more profound than among the ‘Eloi,’ the beautiful race that I already knew.
@@ -222,66 +222,66 @@ sections:
       “Then came troublesome doubts. Why had the Morlocks taken my Time Machine? For I felt sure it was they who had taken it. Why, too, if the Eloi were masters, could they not restore the machine to me? And why were they so terribly afraid of the dark? I proceeded, as I have said, to question Weena about this Under-world, but here again I was disappointed. At first she would not understand my questions, and presently she refused to answer them. She shivered as though the topic was unendurable. And when I pressed her, perhaps a little harshly, she burst into tears. They were the only tears, except my own, I ever saw in that Golden Age. When I saw them I ceased abruptly to trouble about the Morlocks, and was only concerned in banishing these signs of the human inheritance from Weena’s eyes. And very soon she was smiling and clapping her hands, while I solemnly burned a match.
     checkIn:
       id: ttm-ch-05-s13-c1
-      stem: What are the names the Time Traveller gives to the two species of humanity?
+      stem: Which name belongs to which race?
       options:
-        - The Morlocks are the Upper-worlders, and the Eloi are the Under-worlders
-        - The Eloi are the Upper-worlders, and the Morlocks are the Under-worlders
-        - The Eloi and Morlocks are both names for the underground race
-        - The Eloi are the rulers and the Morlocks are their pets
-      correctIndex: 1
-      explanationZh: 他把地上的美丽种族叫做 Eloi，把地下的白色生物叫做 Morlocks。他注意到地上种族因过于安逸而退化，而地下种族的变化可能更为深刻。
+        - Eloi above ground, Morlocks below it
+        - Morlocks above ground, Eloi below it
+        - Eloi for the children, Morlocks for the adults
+        - Both names belong to the Under-world race
+      correctIndex: 0
+      explanationZh: 地下那种白色生物 "that, by the by, was the name by which these creatures were called"——Morlocks；地上那个美丽的种族则叫 Eloi。
 quiz:
   - id: ttm-ch-05-q1
-    stem: Why does the Time Traveller feel certain the Time Machine has not traveled to another time?
+    stem: What did the Time Traveller do on the night he found the machine gone?
     options:
-      - The machine can only move forward in time, not backward
-      - He sees tracks showing it was dragged across the grass
-      - The little people tell him they saw it being moved
-      - Without the levers, no one could move it through time
-    correctIndex: 3
-    explanationZh: 他解释说杠杆被拆下后，没人能用那种方式操纵机器在时间上移动，因此机器只是在空间上被搬走了，而不是在时间上消失了。他后来也确实在草地上发现了拖痕。
+      - He sat by the sphinx until the sun came up
+      - He shook the sleeping little people, bawling for it
+      - He climbed back up the hill to fetch a light
+      - He struck match after match and searched down the wells
+    correctIndex: 1
+    explanationZh: 他闯进第二个大厅，那里睡着二十来个小人。"Where is my Time Machine?" 他一边喊一边把他们摇醒，"bawling like an angry child"；有人笑，多数人吓坏了。
   - id: ttm-ch-05-q2
-    stem: When the Time Traveller tries to question Weena about the underground creatures, how does she react?
+    stem: What did he decide to do if the machine were truly lost?
     options:
-      - She describes them in great detail
-      - She laughs and pretends they do not exist
-      - She refuses to answer and bursts into tears
-      - She runs away and never comes back
+      - Ask the Eloi to lead him to another traveller
+      - Look for a way down one of the wells at once
+      - Learn the people's ways and try to build another
+      - Wait beside the sphinx for whoever it was that had taken it
     correctIndex: 2
-    explanationZh: 薇娜起初不理解他的问题，后来拒绝回答，浑身发抖，当他追问时她哭了起来。这是他在这段未来中见到的唯一泪水，说明这个话题对她来说是极其可怕的。
+    explanationZh: 天亮后他对自己说 "Suppose the machine altogether lost—perhaps destroyed?"，那就 "learn the way of the people… so that in the end, perhaps, I may make another"——总好过绝望。
   - id: ttm-ch-05-q3
-    stem: What physical traits of the underground creature suggest it has lived in darkness for a long time?
+    stem: What finally made him stop hammering at the bronze panels?
     options:
-      - Bleached skin and large reflective eyes
-      - Its strong muscular body and sharp teeth
-      - Its thick fur and long claws
-      - Its small size and childlike face
-    correctIndex: 0
-    explanationZh: 他总结了三个特征：苍白的皮肤（类似穴居动物）、大而能反光的眼睛（类似猫头鹰和猫），以及在阳光下显得困惑、匆忙躲入阴影的行为，都指向长期地下生活的适应。
-  - id: ttm-ch-05-q4
-    stem: What does the Time Traveller notice about the Eloi's daily life that puzzles him about how their world functions?
-    options:
-      - Everyone works alone instead of in groups
-      - There are no shops, workshops, or signs of productive work
-      - They only eat meat and never eat fruit
-      - They build their houses from materials they find underground
-    correctIndex: 1
-    explanationZh: 他发现小人族整日只是在玩耍、沐浴、恋爱、吃水果和睡觉，没有任何创造性倾向。没有商店、作坊或进口的痕迹，但他穿的衣服和凉鞋却需要制作和更新，这令他困惑不解。
-  - id: ttm-ch-05-q5
-    stem: Why does the Time Traveller eventually stop hammering at the bronze panels of the Sphinx?
-    options:
-      - The little people threaten him with weapons
-      - He breaks through the panels but finds nothing inside
-      - He is told the machine will be returned the next day
-      - He decides to be patient and study this world first
+      - He heard something like a chuckle from inside
+      - The Eloi gathered on the slopes above and jeered at him
+      - His pebble broke and he could find no other
+      - He told himself that patience would serve him better
     correctIndex: 3
-    explanationZh: 他敲打铜板毫无效果后冷静下来，对自己说必须离开斯芬克斯，耐心地了解这个世界。他意识到如果对方打算归还机器，砸坏铜板没用；如果不打算归还，更需要智慧和策略。
-  - id: ttm-ch-05-q6
-    stem: What does the Time Traveller conclude about the 'triumph of Humanity' he had expected to find in the future?
+    explanationZh: 敲到铜绿掉成粉末也没有动静，他便劝自己 "Patience… If you want your machine again you must leave that sphinx alone"；想到自己费尽心力钻进未来、如今却拼命想出去，他忍不住笑出了声。
+  - id: ttm-ch-05-q4
+    stem: What did the Time Traveller notice about the Eloi language?
     options:
-      - It was a triumph of moral education and universal cooperation
-      - An aristocracy triumphing over Nature and fellow man
-      - It was a peaceful democracy where everyone was equal
-      - It was a technological utopia where machines did all the work
+      - It had few abstract terms, and sentences of two words
+      - It was written down but almost never spoken aloud
+      - It had a separate word for every single plant in the garden
+      - It changed completely from one palace to the next
+    correctIndex: 0
+    explanationZh: 他说那种语言 "almost exclusively composed of concrete substantives and verbs"，抽象词极少，"Their sentences were usually simple and of two words"。
+  - id: ttm-ch-05-q5
+    stem: How did the Time Traveller come to know Weena?
+    options:
+      - She brought him a garland made for him alone
+      - He pulled her out of the river as she was drowning
+      - She followed him down from the hill crest at dusk one day
+      - He found her asleep in the great hall of stone
     correctIndex: 1
-    explanationZh: 他原本梦想的人类伟大胜利并非道德教育和合作的结果，而是一个以 perfected science 武装的贵族阶层，将当今的工业体系推演到逻辑极致的结果——它不仅征服了自然，也征服了同类。
+    explanationZh: 有人在浅水里抽了筋，顺流漂走，同伴竟无一人施救；他脱下外衣下水，"I caught the poor mite and drew her safe to land"。花环是当天下午她捧来道谢的。
+  - id: ttm-ch-05-q6
+    stem: What did the Time Traveller now think the great triumph of humanity had been?
+    options:
+      - A triumph of moral education and cooperation
+      - A triumph of machines over all human labour
+      - A triumph over Nature and over fellow man alike
+      - A triumph of the Under-world over the Upper-world
+    correctIndex: 2
+    explanationZh: 他说那并非自己梦想的道德与协作的胜利，而是 "a real aristocracy, armed with a perfected science"——"Its triumph had not been simply a triumph over Nature, but a triumph over Nature and the fellowman"。

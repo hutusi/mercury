@@ -3,7 +3,7 @@ id: ttm-ch-03
 bookId: book-time-machine
 title: Chapter 3
 titleZh: 第三章
-summaryZh: 时间旅行者向客人们描述了他首次驾驶时间机器的经历：从实验室出发，一路飞速穿越漫长的岁月，最终在遥远未来的一处花园中狼狈停下。等待他的，是一场突如其来的冰雹，和一个完全陌生的世界。
+summaryZh: 今天上午十点，第一台时间机器开始了它的旅程。他坐上鞍座，一手握启动杆，一手握停止杆——先按下前一个，几乎立刻又按下了后一个。
 sections:
   - id: ttm-ch-03-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       “I am afraid I cannot convey the peculiar sensations of time travelling. They are excessively unpleasant. There is a feeling exactly like that one has upon a switchback—of a helpless headlong motion! I felt the same horrible anticipation, too, of an imminent smash. As I put on pace, night followed day like the flapping of a black wing. The dim suggestion of the laboratory seemed presently to fall away from me, and I saw the sun hopping swiftly across the sky, leaping it every minute, and every minute marking a day. I supposed the laboratory had been destroyed and I had come into the open air. I had a dim impression of scaffolding, but I was already going too fast to be conscious of any moving things. The slowest snail that ever crawled dashed by too fast for me. The twinkling succession of darkness and light was excessively painful to the eye. Then, in the intermittent darknesses, I saw the moon spinning swiftly through her quarters from new to full, and had a faint glimpse of the circling stars. Presently, as I went on, still gaining velocity, the palpitation of night and day merged into one continuous greyness; the sky took on a wonderful deepness of blue, a splendid luminous color like that of early twilight; the jerking sun became a streak of fire, a brilliant arch, in space; the moon a fainter fluctuating band; and I could see nothing of the stars, save now and then a brighter circle flickering in the blue.
     checkIn:
       id: ttm-ch-03-s1-c1
-      stem: How did the Time Traveller confirm that the machine had worked after his very first, brief test?
+      stem: How did the Time Traveller know his first short test had worked?
       options:
-        - Mrs. Watchett spoke to him and told him the time
-        - The nickel bar glowed with a strange light
-        - The laboratory clock had jumped ahead by hours
-        - The machine had moved to a different room
-      correctIndex: 2
-      explanationZh: 他说自己按下了启动杆又立刻按停止杆，怀疑什么也没发生，然后“注意到了时钟”：从“past ten”跳到了“nearly half-past three”，说明时间确实在推移。关于 Mrs. Watchett 的选项有迷惑性，但她只是后来穿越中看到的人影，并没有和他说话。
+        - Mrs. Watchett crossed the room like a rocket
+        - The quartz rod had grown warm under his hand
+        - The laboratory had gone hazy and dark around him, then bright
+        - The clock had jumped from just past ten to half-past three
+      correctIndex: 3
+      explanationZh: 他按下启动杆又立刻按停，环顾四周 "I saw the laboratory exactly as before"，还以为自己出了幻觉；直到看见钟——"A moment before, as it seemed, it had stood at a minute or so past ten; now it was nearly half-past three!"。
   - id: ttm-ch-03-s2
     text: |-
       “The landscape was misty and vague. I was still on the hillside upon which this house now stands, and the shoulder rose above me grey and dim. I saw trees growing and changing like puffs of vapour, now brown, now green; they grew, spread, shivered, and passed away. I saw huge buildings rise up faint and fair, and pass like dreams. The whole surface of the earth seemed changed—melting and flowing under my eyes. The little hands upon the dials that registered my speed raced round faster and faster. Presently I noted that the sun belt swayed up and down, from solstice to solstice, in a minute or less, and that consequently my pace was over a year a minute; and minute by minute the white snow flashed across the world, and vanished, and was followed by the bright, brief green of spring.
@@ -31,14 +31,14 @@ sections:
       “The peculiar risk lay in the possibility of my finding some substance in the space which I, or the machine, occupied. So long as I travelled at a high velocity through time, this scarcely mattered; I was, so to speak, attenuated—was slipping like a vapour through the interstices of intervening substances! But to come to a stop involved the jamming of myself, molecule by molecule, into whatever lay in my way; meant bringing my atoms into such intimate contact with those of the obstacle that a profound chemical reaction—possibly a far-reaching explosion—would result, and blow myself and my apparatus out of all possible dimensions—into the Unknown. This possibility had occurred to me again and again while I was making the machine; but then I had cheerfully accepted it as an unavoidable risk—one of the risks a man has got to take! Now the risk was inevitable, I no longer saw it in the same cheerful light. The fact is that, insensibly, the absolute strangeness of everything, the sickly jarring and swaying of the machine, above all, the feeling of prolonged falling, had absolutely upset my nerve. I told myself that I could never stop, and with a gust of petulance I resolved to stop forthwith. Like an impatient fool, I lugged over the lever, and incontinently the thing went reeling over, and I was flung headlong through the air.
     checkIn:
       id: ttm-ch-03-s2-c1
-      stem: What made stopping the machine especially dangerous?
+      stem: Why was stopping the machine so dangerous?
       options:
-        - The machine was already cracked and might fall apart at high speed
-        - Stopping would cut off his air supply and suffocate him
-        - He had no braking lever and could only slow down very gradually
-        - His atoms might jam into matter and cause an explosion
-      correctIndex: 3
-      explanationZh: 原文解释，高速穿越时他像蒸气一样从物体缝隙间滑过，但停下来意味着“molecule by molecule”地挤入障碍物，可能引发剧烈的化学反应甚至爆炸。关于机器损坏的选项听起来合理，但原文真正强调的危险是空间被占的问题。
+        - The levers might snap off in his hands at speed
+        - His atoms could jam into whatever occupied that space
+        - The machine would sink into the ground if it slowed
+        - He might arrive before the laboratory had ever been built
+      correctIndex: 1
+      explanationZh: 高速穿行时他 "was slipping like a vapour through the interstices of intervening substances"；可一停下来，就意味着 "jamming of myself, molecule by molecule, into whatever lay in my way"，后果可能是一场把人和机器一起炸进未知的爆炸。
   - id: ttm-ch-03-s3
     text: |-
       “There was the sound of a clap of thunder in my ears. I may have been stunned for a moment. A pitiless hail was hissing round me, and I was sitting on soft turf in front of the overset machine. Everything still seemed grey, but presently I remarked that the confusion in my ears was gone. I looked round me. I was on what seemed to be a little lawn in a garden, surrounded by rhododendron bushes, and I noticed that their mauve and purple blossoms were dropping in a shower under the beating of the hailstones. The rebounding, dancing hail hung in a cloud over the machine, and drove along the ground like smoke. In a moment I was wet to the skin. ‘Fine hospitality,’ said I, ‘to a man who has travelled innumerable years to see you.’
@@ -50,14 +50,14 @@ sections:
       “I looked up again at the crouching white shape, and the full temerity of my voyage came suddenly upon me. What might appear when that hazy curtain was altogether withdrawn? What might not have happened to men? What if cruelty had grown into a common passion? What if in this interval the race had lost its manliness and had developed into something inhuman, unsympathetic, and overwhelmingly powerful? I might seem some old-world savage animal, only the more dreadful and disgusting for our common likeness—a foul creature to be incontinently slain.
     checkIn:
       id: ttm-ch-03-s3-c1
-      stem: What large object does the Time Traveller see through the hail beyond the rhododendron bushes?
+      stem: What did the Time Traveller make out through the thinning hail?
       options:
-        - A white marble figure shaped like a winged sphinx on a bronze pedestal.
-        - A colossal stone statue of a man holding a sword.
-        - A white marble fountain with angels carved on its sides.
-        - A great bronze gate covered with green verdigris.
+        - A weatherworn white figure like a winged sphinx
+        - A row of bronze gates thick with green verdigris
+        - A silver birch-tree with soft turf beneath it
+        - A group of figures in rich robes, watching him
       correctIndex: 0
-      explanationZh: 原文说那是一座白色大理石雕像，“shape something like a winged sphinx”，底座是青铜的，布满铜绿（verdigris）。关于青铜门的选项利用了文中提到的 verdigris，但那是底座的特征，而非独立物体。
+      explanationZh: 那是一座巨大的白色大理石像，"in shape something like a winged sphinx"，翅膀张开像要悬停；青铜底座满是铜绿，风化得厉害，嘴角还留着一丝笑意。
   - id: ttm-ch-03-s4
     text: |-
       “Already I saw other vast shapes—huge buildings with intricate parapets and tall columns, with a wooded hillside dimly creeping in upon me through the lessening storm. I was seized with a panic fear. I turned frantically to the Time Machine, and strove hard to readjust it. As I did so the shafts of the sun smote through the thunderstorm. The grey downpour was swept aside and vanished like the trailing garments of a ghost. Above me, in the intense blue of the summer sky, some faint brown shreds of cloud whirled into nothingness. The great buildings about me stood out clear and distinct, shining with the wet of the thunderstorm, and picked out in white by the unmelted hailstones piled along their courses. I felt naked in a strange world. I felt as perhaps a bird may feel in the clear air, knowing the hawk wings above and will swoop. My fear grew to frenzy. I took a breathing space, set my teeth, and again grappled fiercely, wrist and knee, with the machine. It gave under my desperate onset and turned over. It struck my chin violently. One hand on the saddle, the other on the lever, I stood panting heavily in attitude to mount again.
@@ -69,57 +69,57 @@ sections:
       “He struck me as being a very beautiful and graceful creature, but indescribably frail. His flushed face reminded me of the more beautiful kind of consumptive—that hectic beauty of which we used to hear so much. At the sight of him I suddenly regained confidence. I took my hands from the machine.
     checkIn:
       id: ttm-ch-03-s4-c1
-      stem: What is the first living person from the future that the Time Traveller sees up close?
+      stem: What was the first person of the future like at close quarters?
       options:
-        - A tall, armoured soldier carrying a spear
-        - A frail little figure in a purple tunic
-        - A white-robed figure standing on the sphinx's pedestal
-        - A child in ragged clothes with no shoes at all
-      correctIndex: 1
-      explanationZh: 原文描写此人“perhaps four feet high”，穿紫色长袍，腰间系着皮带。关于白袍人物的选项有迷惑性，因为之前在建筑高处确实看到了穿袍子的人群，但走近他身边的是这个穿紫色长袍的小个子。
+        - Tall and armoured, carrying a bright spear and shield
+        - Wrapped in a white robe, and quite silent
+        - Slight, about four feet high, in a purple tunic
+        - Bent and grey, leaning on a wooden staff
+      correctIndex: 2
+      explanationZh: 那是 "a slight creature—perhaps four feet high—clad in a purple tunic, girdled at the waist with a leather belt"，小腿赤裸，头上什么也没戴——正因为对方这般柔弱，时间旅行家反倒定下神来。
 quiz:
   - id: ttm-ch-03-q1
-    stem: What delayed the completion of the Time Machine until the morning of the journey?
+    stem: What had held the machine up until the very morning of the journey?
     options:
-      - A brass rail was bent and needed to be straightened before use.
-      - One of the nickel bars was exactly one inch too short and had to be remade.
-      - The quartz rod cracked and had to be replaced entirely.
-      - The saddle was unstable and required extra screws.
+      - The ivory bars had cracked while he was fitting them
+      - A nickel bar proved an inch too short and was remade
+      - The quartz rod needed a fresh drop of oil each day
+      - Mrs. Watchett had tidied the workshop and lost a screw
     correctIndex: 1
-    explanationZh: 原文说周五快装好时发现“one of the nickel bars was exactly one inch too short”，只好重做，直到今早才完工。关于黄铜杆弯曲的选项有迷惑性，文中确实提到了“a brass rail bent”，但那是后来的磨损，不是导致延迟的原因。
+    explanationZh: 他本打算周五完工，却发现 "one of the nickel bars was exactly one inch too short, and this I had to get remade"；直到今早十点，第一台时间机器才开始它的旅程。
   - id: ttm-ch-03-q2
-    stem: When the Time Traveller accelerated through time, how did the alternating day and night eventually appear to his eyes?
+    stem: What did the sky look like once he had picked up speed?
     options:
-      - They stayed as a rapid flicker of black and white that never blended.
-      - They turned into a deep red glow with no visible sun at all.
-      - They became a solid sheet of unbroken darkness.
-      - They merged into a continuous greyness, and the sun became a brilliant arch of fire.
+      - Black from end to end, with the stars standing perfectly still
+      - Striped, like a flag flapping over his head
+      - Dark all the time, as though the sun had gone out
+      - A deep luminous blue, with the sun a brilliant arch of fire
     correctIndex: 3
-    explanationZh: 随着速度加快，“night and day merged into one continuous greyness”，太阳变成“a streak of fire, a brilliant arch”。关于黑白持续闪烁的选项有迷惑性，但那是早期较慢时的感受，最终日夜确实融为一片灰。
+    explanationZh: 昼夜先像黑翅膀那样拍打，随后 "merged into one continuous greyness"；天空是早霞般的深蓝，"the jerking sun became a streak of fire, a brilliant arch, in space"，月亮成了一条淡淡的光带。
   - id: ttm-ch-03-q3
-    stem: Why did the Time Traveller describe his first stop as reckless and foolish?
+    stem: How fast was he going when the sun swayed from solstice to solstice in a minute?
     options:
-      - He yanked the lever in a sudden fit of impatience instead of stopping carefully.
-      - He forgot to bring the stopping lever with him on the journey.
-      - He had never tested the stopping mechanism before leaving.
-      - He tried to stop the machine while still travelling at maximum speed.
+      - Something over a year a minute
+      - About one day a minute
+      - Roughly a century a minute
+      - Some ten thousand years an hour
     correctIndex: 0
-    explanationZh: 原文说恐惧让他变得烦躁，于是“Like an impatient fool, I lugged over the lever”，结果机器翻倒，他被抛了出去。关于忘记停止杆的选项有迷惑性，但他一直手握启动杆和停止杆，问题在于他太粗暴地扳动了。
+    explanationZh: 他由此算出 "consequently my pace was over a year a minute"——白雪一闪而过，紧接着就是短促鲜亮的春绿。
   - id: ttm-ch-03-q4
-    stem: After the thunderstorm and hail began to clear, what worry seized the Time Traveller about the future inhabitants?
+    stem: How did the Time Traveller finally bring the machine to a stop?
     options:
-      - He worried they might have forgotten how to speak any language
-      - He feared they might have evolved into giant insects
-      - He feared men had grown inhuman, cruel, and mighty
-      - He worried they might worship him as a god and refuse to let him leave
+      - He eased the lever back a little at a time
+      - He waited until the machine had slowed of its own accord
+      - He lugged the lever over like an impatient fool
+      - He jumped clear and let the machine run on
     correctIndex: 2
-    explanationZh: 他看着白色斯芬克斯，心中涌起恐惧：“What if cruelty had grown into a common passion?”，担心人类已变成“inhuman, unsympathetic, and overwhelmingly powerful”。关于语言退化的选项虽然有一定合理性，但原文明确聚焦于残忍和非人化。
+    explanationZh: 神经早已绷断，他赌气似的 "Like an impatient fool, I lugged over the lever"——机器一个翻滚，把他甩了出去。
   - id: ttm-ch-03-q5
-    stem: When the small future person appeared, why did the Time Traveller suddenly regain his confidence?
+    stem: What did he fear as he looked up at the white shape?
     options:
-      - The being looked so frail and delicate that it seemed to pose no threat.
-      - The person spoke to him in perfect English and welcomed him warmly.
-      - The person was armed only with a wooden staff, which looked harmless.
-      - The person bowed low and offered him food and drink.
-    correctIndex: 0
-    explanationZh: 他形容这个未来人为“indescribably frail”，脸上有“hectic beauty”般的病态美，看到他后“suddenly regained confidence”。关于英语欢迎的选项有迷惑性，但当时对方只是跑过来，并没有说话。
+      - That the statue itself was watching him and would move
+      - That men might have grown inhuman, cruel and mighty
+      - That the hail would rust the machine past repair
+      - That he had gone forward only a few dozen years
+    correctIndex: 1
+    explanationZh: 他想 "What if cruelty had grown into a common passion? What if in this interval the race had lost its manliness and had developed into something inhuman, unsympathetic, and overwhelmingly powerful?"——那样他就成了该被就地宰掉的野兽。

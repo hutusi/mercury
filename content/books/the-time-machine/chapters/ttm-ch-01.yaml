@@ -3,7 +3,7 @@ id: ttm-ch-01
 bookId: book-time-machine
 title: Chapter 1
 titleZh: 第一章
-summaryZh: 晚餐过后，时间旅行者向客人们抛出一个颠覆常识的观点，并用几何学一步步为它辩护。为了证明自己不是空谈，他还拿出一台小巧的机器模型，当众做了一场出人意料的演示。
+summaryZh: 壁炉烧得正旺，晚餐后的谈兴也正浓。主人用一根瘦长的食指点着要点，要在座几位先答应他一件事：把学校里教过的一两条常识暂且放下。
 sections:
   - id: ttm-ch-01-s1
     text: |-
@@ -30,14 +30,14 @@ sections:
       Filby became pensive. “Clearly,” the Time Traveller proceeded, “any real body must have extension in four directions: it must have Length, Breadth, Thickness, and—Duration. But through a natural infirmity of the flesh, which I will explain to you in a moment, we incline to overlook this fact. There are really four dimensions, three which we call the three planes of Space, and a fourth, Time. There is, however, a tendency to draw an unreal distinction between the former three dimensions and the latter, because it happens that our consciousness moves intermittently in one direction along the latter from the beginning to the end of our lives.”
     checkIn:
       id: ttm-ch-01-s1-c1
-      stem: According to the Time Traveller, what is the fourth dimension that any real body must have?
+      stem: What four dimensions did the Time Traveller say any real body must have?
       options:
-        - A mathematical plane.
-        - Thickness only.
-        - A second form of breadth.
-        - Duration, or Time.
-      correctIndex: 3
-      explanationZh: 时间旅行家明确说任何真实物体都须具备四个方向：“Length, Breadth, Thickness, and—Duration”，其中 Duration 即 Time。说“数学平面”不对，因为那是二维抽象，不是第四维度。
+        - Length, Breadth, Thickness and Duration
+        - Length, Breadth, Thickness and Gravitation
+        - Height, Width, Depth and Consciousness
+        - Line, Plane, Cube and Mathematics
+      correctIndex: 0
+      explanationZh: 他从"没有厚度的线"和"瞬间的立方体"一步步推出结论——"any real body must have extension in four directions… Length, Breadth, Thickness, and—Duration"，而 Duration 就是时间。
   - id: ttm-ch-01-s2
     text: |-
       “That,” said a very young man, making spasmodic efforts to relight his cigar over the lamp; “that … very clear indeed.”
@@ -55,14 +55,14 @@ sections:
       “Scientific people,” proceeded the Time Traveller, after the pause required for the proper assimilation of this, “know very well that Time is only a kind of Space. Here is a popular scientific diagram, a weather record. This line I trace with my finger shows the movement of the barometer. Yesterday it was so high, yesterday night it fell, then this morning it rose again, and so gently upward to here. Surely the mercury did not trace this line in any of the dimensions of Space generally recognized? But certainly it traced such a line, and that line, therefore, we must conclude was along the Time-Dimension.”
     checkIn:
       id: ttm-ch-01-s2-c1
-      stem: What does the Time Traveller use the barometer weather record to show?
+      stem: What did the Time Traveller say a row of portraits taken at different ages really was?
       options:
-        - That weather forecasting is unreliable.
-        - That the Fourth Dimension is too dangerous.
-        - That portraits can predict the future.
-        - That Time can be treated like a dimension of Space.
-      correctIndex: 3
-      explanationZh: 他用气压计曲线说明 mercury 沿“Time-Dimension”划出一条线，从而把时间视作类似空间的方向。该段与天气预测、时间旅行的危险都无关。
+        - Proof that Time itself runs faster for children than for adults
+        - Three-dimensional sections of one four-dimensioned being
+        - The best way of teaching four-dimension geometry
+        - Evidence that a man's face travels through Space
+      correctIndex: 1
+      explanationZh: 他摆出八岁、十五岁、十七岁、二十三岁的画像，说 "All these are evidently sections, as it were, Three-Dimensional representations of his Four-Dimensioned being, which is a fixed and unalterable thing"。
   - id: ttm-ch-01-s3
     text: |-
       “But,” said the Medical Man, staring hard at a coal in the fire, “if Time is really only a fourth dimension of Space, why is it, and why has it always been, regarded as something different? And why cannot we move in Time as we move about in the other dimensions of Space?”
@@ -88,14 +88,14 @@ sections:
       “Oh, this,” began Filby, “is all—”
     checkIn:
       id: ttm-ch-01-s3-c1
-      stem: When the Medical Man says people cannot move in Time, what does the Time Traveller answer?
+      stem: How did the Time Traveller answer the objection that we cannot move in Time?
       options:
-        - People can already fly freely in all directions of Space
-        - Time has no connection to Space at all
-        - Our consciousness is already travelling along Time
-        - Gravitation prevents all vertical movement
+        - He said memory can hold a man in the past for hours
+        - He said the balloon proves Space is not free either
+        - He said we are always getting away from the present moment
+        - He said that gravitation works upon Time just as it does on Space
       correctIndex: 2
-      explanationZh: 他回答：我们“are always getting away from the present moment”，意识正以均匀速度沿时间维度从出生滑向死亡。他只是承认引力限制上下移动，并非说人类可自由飞行。
+      explanationZh: 他说 "We are always getting away from the present moment"——意识以匀速沿时间维度从摇篮滑向坟墓；人生动地回忆某一刻时甚至会"跳回去"片刻，也就是所谓的走神。
   - id: ttm-ch-01-s4
     text: |-
       “Why not?” said the Time Traveller.
@@ -147,14 +147,14 @@ sections:
       The thing the Time Traveller held in his hand was a glittering metallic framework, scarcely larger than a small clock, and very delicately made. There was ivory in it, and some transparent crystalline substance. And now I must be explicit, for this that follows—unless his explanation is to be accepted—is an absolutely unaccountable thing. He took one of the small octagonal tables that were scattered about the room, and set it in front of the fire, with two legs on the hearthrug. On this table he placed the mechanism. Then he drew up a chair, and sat down. The only other object on the table was a small shaded lamp, the bright light of which fell upon the model. There were also perhaps a dozen candles about, two in brass candlesticks upon the mantel and several in sconces, so that the room was brilliantly illuminated. I sat in a low armchair nearest the fire, and I drew this forward so as to be almost between the Time Traveller and the fireplace. Filby sat behind him, looking over his shoulder. The Medical Man and the Provincial Mayor watched him in profile from the right, the Psychologist from the left. The Very Young Man stood behind the Psychologist. We were all on the alert. It appears incredible to me that any kind of trick, however subtly conceived and however adroitly done, could have been played upon us under these conditions.
     checkIn:
       id: ttm-ch-01-s4-c1
-      stem: What does the Time Traveller bring back from his laboratory after the guests ask to see the experiment?
+      stem: What did the Psychologist say time travel would be convenient for?
       options:
-        - A full-sized time machine made of nickel
-        - A conjuring trick from Burslem
-        - A glittering model no bigger than a clock
-        - A weather diagram on paper
-      correctIndex: 2
-      explanationZh: 文中说他拿着“a glittering metallic framework, scarcely larger than a small clock”，几乎不比小钟大，显然是一台模型，而不是能载人的机器。
+        - Learning to speak Greek from the very lips of Homer and Plato
+        - Investing money and hurrying on ahead of it
+        - Seeing a society built on a communistic basis
+        - Verifying the accepted account of the Battle of Hastings
+      correctIndex: 3
+      explanationZh: 他说 "It would be remarkably convenient for the historian. One might travel back and verify the accepted account of the Battle of Hastings"。想跟荷马和柏拉图学希腊语的是那位年轻人，共产主义社会那句则出自叙述者。
   - id: ttm-ch-01-s5
     text: |-
       The Time Traveller looked at us, and then at the mechanism. “Well?” said the Psychologist.
@@ -172,14 +172,14 @@ sections:
       The Psychologist recovered from his stupor, and suddenly looked under the table. At that the Time Traveller laughed cheerfully. “Well?” he said, with a reminiscence of the Psychologist. Then, getting up, he went to the tobacco jar on the mantel, and with his back to us began to fill his pipe.
     checkIn:
       id: ttm-ch-01-s5-c1
-      stem: Who actually presses the lever that sends the model time machine on its voyage?
+      stem: Why did the Time Traveller suddenly ask for the Psychologist's hand?
       options:
-        - The Psychologist.
-        - The Medical Man.
-        - The Very Young Man.
-        - Filby.
+        - So that a guest, and not he, would press the lever
+        - So that the Psychologist could steady the model
+        - So that the Psychologist would stop objecting
+        - So that everyone could see his own hands were empty
       correctIndex: 0
-      explanationZh: 时间旅行家特意拉着心理学家的手，让其伸出一根手指按杠杆，于是“it was the Psychologist himself who sent forth the model”。这样安排是为了证明没有戏法。
+      explanationZh: 他先让大家检查桌子，"satisfy yourselves there is no trickery"，临按之际忽然说 "Lend me your hand"——于是 "it was the Psychologist himself who sent forth the model Time Machine on its interminable voyage"。
   - id: ttm-ch-01-s6
     text: |-
       We stared at each other. “Look here,” said the Medical Man, “are you in earnest about this? Do you seriously believe that that machine has travelled into time?”
@@ -207,14 +207,14 @@ sections:
       We sat and stared at the vacant table for a minute or so. Then the Time Traveller asked us what we thought of it all.
     checkIn:
       id: ttm-ch-01-s6-c1
-      stem: How does the Psychologist explain why no one can see the machine after it begins travelling through time?
+      stem: How did the Psychologist explain that nobody could see the machine any more?
       options:
-        - It becomes completely invisible because it leaves the physical world.
-        - It moves through time so fast that it creates only a tiny, diluted impression.
-        - It turns into a ghost made of brass and ivory.
-        - It sinks below the table and stays hidden there.
+        - It had left the physical world along a fourth axis
+        - Travelling so fast in Time, it makes only a diluted impression
+        - It had shrunk away until it was smaller than a single speck of dust
+        - The lamp on the table had dazzled everyone's eyes
       correctIndex: 1
-      explanationZh: 心理学家用“presentation below the threshold”解释：若机器一分钟走完别人一秒的时间，留下的印象只有正常的一小部分，就像看不清旋转的轮辐或飞行的子弹。不是变成幽灵或离开物理世界。
+      explanationZh: 他搬出 "presentation below the threshold"——若机器一分钟走完我们一秒的路程，留下的印象就只有五十分之一或百分之一，就像看不清旋转的轮辐或飞行的子弹。
   - id: ttm-ch-01-s7
     text: |-
       “It sounds plausible enough tonight,” said the Medical Man; “but wait until tomorrow. Wait for the common sense of the morning.”
@@ -230,66 +230,66 @@ sections:
       I caught Filby’s eye over the shoulder of the Medical Man, and he winked at me solemnly.
     checkIn:
       id: ttm-ch-01-s7-c1
-      stem: What does the Time Traveller show the guests in his laboratory at the end of the chapter?
+      stem: What did the guests see in the laboratory?
       options:
-        - A larger, nearly complete version of the little mechanism.
-        - A ghost trick like the one he showed last Christmas.
-        - A set of portrait photographs at different ages.
-        - A barometer weather record on paper.
-      correctIndex: 0
-      explanationZh: 在实验室里，客人们看到“a larger edition of the little mechanism”，由镍、象牙和水晶制成，几近完成。医学人士虽提到去年的鬼把戏，但那只是质疑，并非被展示的对象。
+        - A workbench covered with weather diagrams
+        - The little model, returned from its voyage
+        - A larger edition of the mechanism, nearly complete
+        - The ghost the Time Traveller showed last Christmas
+      correctIndex: 2
+      explanationZh: 他们看见 "a larger edition of the little mechanism which we had seen vanish"，镍、象牙和水晶做成，大体完工，只剩几根扭曲的水晶杆还摊在工作台上。
 quiz:
   - id: ttm-ch-01-q1
-    stem: What money-making scheme did the Very Young Man suggest time travel would allow?
+    stem: What did the Time Traveller say was wrong with the geometry taught at school?
     options:
-      - Selling the machine to the government
-      - Bringing back treasure from the past
-      - Betting on races whose results he knew
-      - Investing money and hurrying on ahead
+      - It leaves out the geometry of four dimensions
+      - It teaches that a cube can exist instantaneously
+      - It was never proved by Professor Simon Newcomb
+      - It is founded on a misconception, he said
     correctIndex: 3
-    explanationZh: 年轻人喊道：“One might invest all one's money, leave it to accumulate at interest, and hurry on ahead!”叙述者接话说，冲到前面只会发现一个建立在严格共产主义之上的社会。卖机器、取宝藏、赌赛马都不是文中提出的主意。
+    explanationZh: 开场第一句主张就是 "The geometry, for instance, they taught you at school is founded on a misconception"，接着他用没有厚度的线、瞬间的立方体一步步逼出第四维。
   - id: ttm-ch-01-q2
-    stem: What comparison does the Time Traveller use to show that limited freedom of movement does not prove a dimension is impassable?
+    stem: What did the barometer record prove, in the Time Traveller's argument?
     options:
-      - A flat-surface figure cannot represent a three-dimensional solid
-      - A bullet flying through the air cannot be seen by the eye
-      - A savage cannot stay off the ground, but a balloonist can
-      - A portrait at eight years old differs from one at twenty-three
-    correctIndex: 2
-    explanationZh: 他用气球类比：原始人不能悬空六尺，文明人却可借气球克服引力上升；同理，人虽不能久留于过去，却不意味着将来无法在时间中主动移动。轮辐与子弹的比喻出现在别处，用来解释看不见高速时间旅行。
+      - The mercury had traced a line along the Time-Dimension
+      - That the weather can be predicted a fortnight ahead
+      - That mathematicians had miscounted the dimensions
+      - That a barometer must itself move through all four dimensions
+    correctIndex: 0
+    explanationZh: 他用手指沿曲线划过去，问那条线画在哪一个公认的空间维度上——既然都不是，"that line, therefore, we must conclude was along the Time-Dimension"。
   - id: ttm-ch-01-q3
-    stem: Which guest is described as argumentative and has red hair?
+    stem: What did the Time Traveller say about our freedom to move up and down?
     options:
-      - The Psychologist.
-      - The Provincial Mayor.
-      - The Very Young Man.
-      - Filby.
-    correctIndex: 3
-    explanationZh: 文中说“Filby, an argumentative person with red hair”。菲尔比在讨论中多次反驳，也质疑时间旅行。
-  - id: ttm-ch-01-q4
-    stem: Why does the Time Traveller ask the Psychologist to press the lever instead of doing it himself?
-    options:
-      - Because he is afraid the machine will explode.
-      - So that the guests can be sure there is no trickery.
-      - Because the Psychologist is the only one who understands the mechanism.
-      - Because he needs both hands to hold the model still.
+      - That men have always moved freely in three dimensions
+      - That gravitation limits it, though balloons help
+      - That jumping proves we are free of gravitation
+      - That going up is easier than coming down
     correctIndex: 1
-    explanationZh: 他先让众人检查桌面“satisfy yourselves there is no trickery”，再请心理学家亲手按下杠杆，以确保由客人亲自启动，不能归为戏法。
+    explanationZh: 他承认人在平面上来去自如，"But how about up and down? Gravitation limits us there"；医生举出气球，他便说有气球以前人几乎无法垂直移动，何况 "Easier, far easier down than up"。
+  - id: ttm-ch-01-q4
+    stem: What did Filby say when the Time Traveller pressed his argument?
+    options:
+      - That the machine would be remarkably convenient for historians
+      - That the whole thing was some sleight-of-hand trick
+      - That black can be shown white, and still not convince him
+      - That he had once seen a conjurer at Burslem
+    correctIndex: 2
+    explanationZh: 他的原话是 "You can show black is white by argument, but you will never convince me"。伯斯勒姆的魔术师是他后来讲了个开头就被打断的闲话。
   - id: ttm-ch-01-q5
-    stem: What happens to the model after the lever is pressed?
+    stem: What happened in the room at the moment the model vanished?
     options:
-      - It grows indistinct and vanishes from the table
-      - It falls through the table and lands on the floor
-      - It bursts into flames and burns to ash
-      - It changes into a small clock and stops ticking
-    correctIndex: 0
-    explanationZh: 原文描写：一阵风、烛火跳动，机器“swung round, became indistinct…as a ghost for a second…vanished”。桌上除灯外空无一物。不是掉落或燃烧。
+      - The lamp went out and the room fell dark
+      - The table tipped forward onto the hearthrug
+      - Everyone reached out and touched the empty air
+      - A breath of wind blew out one of the candles
+    correctIndex: 3
+    explanationZh: 原文写 "There was a breath of wind, and the lamp flame jumped. One of the candles on the mantel was blown out"；机器随即模糊成一团黄铜与象牙的影子，不见了。
   - id: ttm-ch-01-q6
-    stem: When the Psychologist argues the machine must have gone into the past, what objection does the narrator raise?
+    stem: What did the narrator object when the Psychologist said the machine had gone into the past?
     options:
-      - If it went into the past, it should have been visible in the room on previous Thursdays.
-      - If it went into the past, it would have arrived before the house was built.
-      - If it went into the past, it would have stopped working immediately.
-      - If it went into the past, it would have left a trail of smoke on the table.
-    correctIndex: 0
-    explanationZh: 叙述者质疑：若去往过去，那么众人第一次进此屋时、上周四等都应看到它，“and so forth”。于是心理学家用“presentation below the threshold”化解。
+      - That the machine had not moved in space at all
+      - That the past cannot be reached without a saddle
+      - That they should have seen it in the room on earlier Thursdays
+      - That the Time Traveller himself did not know which way it had gone
+    correctIndex: 2
+    explanationZh: 叙述者说，若真去了过去，"it would have been visible when we came first into this room; and last Thursday when we were here; and the Thursday before that"。省长觉得这反驳有分量，时间旅行家却只回了一句 "Not a bit"。

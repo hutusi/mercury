@@ -3,7 +3,7 @@ id: ttm-ch-04
 bookId: book-time-machine
 title: Chapter 4
 titleZh: 第四章
-summaryZh: 时间旅行者抵达公元802701年，遇到了娇弱、温和的未来人类，他们在花园般的世界里过着无忧无虑的生活。夕阳之下，他开始构建一套理论，试图解释这个文明的起源与走向。
+summaryZh: 面对面站着的，是他和这个来自未来的脆弱生物。对方径直走上前来，笑着看进他的眼睛——那神情里没有半点害怕。
 sections:
   - id: ttm-ch-04-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       “As they made no effort to communicate with me, but simply stood round me smiling and speaking in soft cooing notes to each other, I began the conversation. I pointed to the Time Machine and to myself. Then hesitating for a moment how to express time, I pointed to the sun. At once a quaintly pretty little figure in chequered purple and white followed my gesture, and then astonished me by imitating the sound of thunder.
     checkIn:
       id: ttm-ch-04-s1-c1
-      stem: What did the Time Traveller do when he saw the little people touching his Time Machine?
+      stem: What did the Time Traveller do when the little people began fingering the machine?
       options:
-        - He removed the starting levers and put them in his pocket
-        - He pushed the little people away with his hands
-        - He climbed into the machine and flew away
-        - He asked them to carry the machine inside
+        - He unscrewed the levers and put them in his pocket
+        - He pushed them back and stood in front of it
+        - He showed them how the starting lever worked
+        - He wheeled it in among the thick rhododendron bushes
       correctIndex: 0
-      explanationZh: 文中明确写道，他突然想到一个此前遗忘的危险，便伸手越过栏杆拧下起动杆放进口袋。这既保护了机器，也说明他仍保持警觉。
+      explanationZh: 他忽然想起一个先前忘掉的危险，"reaching over the bars of the machine I unscrewed the little levers that would set it in motion, and put these in my pocket"——没有这两根小杆，谁也开不走它。
   - id: ttm-ch-04-s2
     text: |-
       “For a moment I was staggered, though the import of his gesture was plain enough. The question had come into my mind abruptly: were these creatures fools? You may hardly understand how it took me. You see I had always anticipated that the people of the year Eight Hundred and Two Thousand odd would be incredibly in front of us in knowledge, art, everything. Then one of them suddenly asked me a question that showed him to be on the intellectual level of one of our five-year-old children—asked me, in fact, if I had come from the sun in a thunderstorm! It let loose the judgment I had suspended upon their clothes, their frail light limbs, and fragile features. A flow of disappointment rushed across my mind. For a moment I felt that I had built the Time Machine in vain.
@@ -33,14 +33,14 @@ sections:
       “The building had a huge entry, and was altogether of colossal dimensions. I was naturally most occupied with the growing crowd of little people, and with the big open portals that yawned before me shadowy and mysterious. My general impression of the world I saw over their heads was a tangled waste of beautiful bushes and flowers, a long neglected and yet weedless garden. I saw a number of tall spikes of strange white flowers, measuring a foot perhaps across the spread of the waxen petals. They grew scattered, as if wild, among the variegated shrubs, but, as I say, I did not examine them closely at this time. The Time Machine was left deserted on the turf among the rhododendrons.
     checkIn:
       id: ttm-ch-04-s2-c1
-      stem: How did the little people respond after the Time Traveller pointed to the sun and made a thunderclap sound?
+      stem: What question made the Time Traveller wonder whether these creatures were fools?
       options:
-        - They ran away in terror and hid inside
-        - They stepped back, bowed, and gave him a garland of flowers
-        - They laughed and tried to copy the thunder sound
-        - They ignored him and went back to eating fruit
+        - Whether he had brought them any new flowers
+        - Whether he had come from the sun in a thunderstorm
+        - Whether his machine could carry them all away
+        - Whether he would stay and dine with them in the great hall
       correctIndex: 1
-      explanationZh: 他被一个小人问是否在雷暴中从太阳而来，便点头并模仿雷声；小人退后一鞠躬，随后给他戴上花链。因此戴花环是他模仿雷声之后小人的反应，而不是嘲笑或逃跑。
+      explanationZh: 他本以为八十万年后的人类必定远胜今人，谁知对方提的问题 "showed him to be on the intellectual level of one of our five-year-old children"——问他是不是在雷暴中从太阳上下来的。
   - id: ttm-ch-04-s3
     text: |-
       “The arch of the doorway was richly carved, but naturally I did not observe the carving very narrowly, though I fancied I saw suggestions of old Phoenician decorations as I passed through, and it struck me that they were very badly broken and weatherworn. Several more brightly clad people met me in the doorway, and so we entered, I, dressed in dingy nineteenth-century garments, looking grotesque enough, garlanded with flowers, and surrounded by an eddying mass of bright, soft-colored robes and shining white limbs, in a melodious whirl of laughter and laughing speech.
@@ -52,14 +52,14 @@ sections:
       “And perhaps the thing that struck me most was its dilapidated look. The stained-glass windows, which displayed only a geometrical pattern, were broken in many places, and the curtains that hung across the lower end were thick with dust. And it caught my eye that the corner of the marble table near me was fractured. Nevertheless, the general effect was extremely rich and picturesque. There were, perhaps, a couple of hundred people dining in the hall, and most of them, seated as near to me as they could come, were watching me with interest, their little eyes shining over the fruit they were eating. All were clad in the same soft and yet strong, silky material.
     checkIn:
       id: ttm-ch-04-s3-c1
-      stem: What kind of food was being served in the great hall?
+      stem: What was the floor of the great hall made of?
       options:
-        - Cooked meat and bread
-        - A thin soup with vegetables
-        - Fish and roasted grains
-        - Piles of strange fruits
-      correctIndex: 3
-      explanationZh: 大厅的石桌上堆满水果，有的像特大号覆盆子和橙子。肉汤、鱼或烤谷物在本章并未出现。
+        - Polished stone slabs, laid out like a great chessboard
+        - Beaten earth strewn with cushions and peel
+        - Blocks of a hard white metal, worn into channels
+        - Coloured glass, matching the broken windows
+      correctIndex: 2
+      explanationZh: 地面是 "huge blocks of some very hard white metal, not plates nor slabs—blocks"，被世世代代的脚步磨出深深的凹槽；抛光石板做的是那些矮桌子。
   - id: ttm-ch-04-s4
     text: |-
       “Fruit, by the by, was all their diet. These people of the remote future were strict vegetarians, and while I was with them, in spite of some carnal cravings, I had to be frugivorous also. Indeed, I found afterwards that horses, cattle, sheep, dogs, had followed the Ichthyosaurus into extinction. But the fruits were very delightful; one, in particular, that seemed to be in season all the time I was there—a floury thing in a three-sided husk—was especially good, and I made it my staple. At first I was puzzled by all these strange fruits, and by the strange flowers I saw, but later I began to perceive their import.
@@ -69,14 +69,14 @@ sections:
       “A queer thing I soon discovered about my little hosts, and that was their lack of interest. They would come to me with eager cries of astonishment, like children, but like children they would soon stop examining me and wander away after some other toy. The dinner and my conversational beginnings ended, I noted for the first time that almost all those who had surrounded me at first were gone. It is odd, too, how speedily I came to disregard these little people. I went out through the portal into the sunlit world again as soon as my hunger was satisfied. I was continually meeting more of these men of the future, who would follow me a little distance, chatter and laugh about me, and, having smiled and gesticulated in a friendly way, leave me again to my own devices.
     checkIn:
       id: ttm-ch-04-s4-c1
-      stem: What did the Time Traveller discover about the little people's diet?
+      stem: What had become of the animals in this future?
       options:
-        - They ate mostly fish from the river
-        - They ate bread made from strange grains
-        - They ate both fruit and small amounts of meat
-        - They ate only fruit and were strict vegetarians
+        - They had all been tamed and lived in the palaces
+        - They had been bred much larger than in his own day
+        - They were kept out of the gardens by high fences
+        - Horses, cattle, sheep and dogs had gone extinct
       correctIndex: 3
-      explanationZh: 他明确指出未来人是严格的素食者，自己也不得不跟着以水果为主食。马、牛、羊、狗等动物都已灭绝，因此不可能吃鱼或肉类。
+      explanationZh: 未来人是严格的素食者，他也只好跟着以水果为食；后来他才发现 "horses, cattle, sheep, dogs, had followed the Ichthyosaurus into extinction"。
   - id: ttm-ch-04-s5
     text: |-
       “The calm of evening was upon the world as I emerged from the great hall, and the scene was lit by the warm glow of the setting sun. At first things were very confusing. Everything was so entirely different from the world I had known—even the flowers. The big building I had left was situated on the slope of a broad river valley, but the Thames had shifted perhaps a mile from its present position. I resolved to mount to the summit of a crest, perhaps a mile and a half away, from which I could get a wider view of this our planet in the year Eight Hundred and Two Thousand Seven Hundred and One AD. For that, I should explain, was the date the little dials of my machine recorded.
@@ -90,14 +90,14 @@ sections:
       “And on the heels of that came another thought. I looked at the half-dozen little figures that were following me. Then, in a flash, I perceived that all had the same form of costume, the same soft hairless visage, and the same girlish rotundity of limb. It may seem strange, perhaps, that I had not noticed this before. But everything was so strange. Now, I saw the fact plainly enough. In costume, and in all the differences of texture and bearing that now mark off the sexes from each other, these people of the future were alike. And the children seemed to my eyes to be but the miniatures of their parents. I judged, then, that the children of that time were extremely precocious, physically at least, and I found afterwards abundant verification of my opinion.
     checkIn:
       id: ttm-ch-04-s5-c1
-      stem: What did the Time Traveller notice about the sexes of the future people?
+      stem: What did the Time Traveller notice was missing from the landscape?
       options:
-        - Men were much taller and stronger than women
-        - Women wore brighter clothing than men
-        - Men and women looked almost exactly alike
-        - Men had beards while women had no facial hair
-      correctIndex: 2
-      explanationZh: 他突然发现这些未来人在服装、面容和四肢上都极为相似，两性差异几乎消失。这与我们所熟悉的男女在体格、服饰上的差异截然不同。
+        - Any small houses or cottages at all
+        - The river Thames, which had dried up
+        - Every tree taller than a man's head
+        - Any building less than a century old
+      correctIndex: 0
+      explanationZh: 在露台上歇脚时他忽然发觉 "there were no small houses to be seen"——绿荫间只有宫殿般的大屋，英国乡野常见的农舍小屋一概不见，于是他对自己说了一句 Communism。
   - id: ttm-ch-04-s6
     text: |-
       “Seeing the ease and security in which these people were living, I felt that this close resemblance of the sexes was after all what one would expect; for the strength of a man and the softness of a woman, the institution of the family, and the differentiation of occupations are mere militant necessities of an age of physical force; where population is balanced and abundant, much childbearing becomes an evil rather than a blessing to the State; where violence comes but rarely and offspring are secure, there is less necessity—indeed there is no necessity—for an efficient family, and the specialization of the sexes with reference to their children’s needs disappears. We see some beginnings of this even in our own time, and in this future age it was complete. This, I must remind you, was my speculation at the time. Later, I was to appreciate how far it fell short of the reality.
@@ -107,14 +107,14 @@ sections:
       “There I found a seat of some yellow metal that I did not recognize, corroded in places with a kind of pinkish rust and half smothered in soft moss, the armrests cast and filed into the resemblance of griffins’ heads. I sat down on it, and I surveyed the broad view of our old world under the sunset of that long day. It was as sweet and fair a view as I have ever seen. The sun had already gone below the horizon and the west was flaming gold, touched with some horizontal bars of purple and crimson. Below was the valley of the Thames, in which the river lay like a band of burnished steel. I have already spoken of the great palaces dotted about among the variegated greenery, some in ruins and some still occupied. Here and there rose a white or silvery figure in the waste garden of the earth, here and there came the sharp vertical line of some cupola or obelisk. There were no hedges, no signs of proprietary rights, no evidences of agriculture; the whole earth had become a garden.
     checkIn:
       id: ttm-ch-04-s6-c1
-      stem: What did the Time Traveller conclude about the relationship between security and the sexes?
+      stem: Why did the Time Traveller think the two sexes had grown so alike?
       options:
-        - Men and women become different because of competition for food
-        - Women become stronger than men in times of peace
-        - When life is safe and population is balanced, the sexes become more alike
-        - Security causes men to become more aggressive
-      correctIndex: 2
-      explanationZh: 他认为在安全、人口稳定的环境下，家庭不再必要，两性分工随之消失，因此男女趋于相似。竞争、攻击性增大性别差异的解释与原文相反。
+        - Because the future people no longer had children
+        - Because strength and family are needs of a violent age
+        - Because they had all of them been bred from a single stock
+        - Because their clothes were woven on the same looms
+      correctIndex: 1
+      explanationZh: 他推想男人的力气、女人的柔弱、家庭制度和分工，都不过是 "mere militant necessities of an age of physical force"；一旦人口稳定、暴力罕见，两性的分化也就失去了理由。
   - id: ttm-ch-04-s7
     text: |-
       “So watching, I began to put my interpretation upon the things I had seen, and as it shaped itself to me that evening, my interpretation was something in this way. (Afterwards I found I had got only a half-truth—or only a glimpse of one facet of the truth.)
@@ -126,14 +126,14 @@ sections:
       “This adjustment, I say, must have been done, and done well; done indeed for all Time, in the space of Time across which my machine had leaped. The air was free from gnats, the earth from weeds or fungi; everywhere were fruits and sweet and delightful flowers; brilliant butterflies flew hither and thither. The ideal of preventive medicine was attained. Diseases had been stamped out. I saw no evidence of any contagious diseases during all my stay. And I shall have to tell you later that even the processes of putrefaction and decay had been profoundly affected by these changes.
     checkIn:
       id: ttm-ch-04-s7-c1
-      stem: What did the Time Traveller see as evidence that humanity had conquered Nature?
+      stem: What did the Time Traveller take as proof that Nature had been subdued?
       options:
-        - There were no weeds, gnats, diseases, or fungi
-        - There were huge factories producing chemicals
-        - There were enormous walls protecting the gardens
-        - There were robots tending the plants everywhere
-      correctIndex: 0
-      explanationZh: 他注意到空气中没有蚊蚋，地上没有杂草和真菌，也没有传染病的迹象，这正是人类征服自然的成果。工厂、城墙或机器人在本章中并未出现。
+        - The palaces had been built without any windows in them at all
+        - The Thames had been moved a mile from its bed
+        - No gnats in the air, no weeds or fungi on the earth
+        - The little people could no longer feel any pain
+      correctIndex: 2
+      explanationZh: 他说这场对自然的调整 "must have been done, and done well"——"The air was free from gnats, the earth from weeds or fungi"，到处是果实与鲜花，传染病也绝了迹。
   - id: ttm-ch-04-s8
     text: |-
       “Social triumphs, too, had been effected. I saw mankind housed in splendid shelters, gloriously clothed, and as yet I had found them engaged in no toil. There were no signs of struggle, neither social nor economical struggle. The shop, the advertisement, traffic, all that commerce which constitutes the body of our world, was gone. It was natural on that golden evening that I should jump at the idea of a social paradise. The difficulty of increasing population had been met, I guessed, and population had ceased to increase.
@@ -149,66 +149,66 @@ sections:
       “As I stood there in the gathering dark I thought that in this simple explanation I had mastered the problem of the world—mastered the whole secret of these delicious people. Possibly the checks they had devised for the increase of population had succeeded too well, and their numbers had rather diminished than kept stationary. That would account for the abandoned ruins. Very simple was my explanation, and plausible enough—as most wrong theories are!
     checkIn:
       id: ttm-ch-04-s8-c1
-      stem: What happened to human energy when life became perfectly safe and comfortable?
+      stem: What did the Time Traveller say becomes of human energy once life is quite safe?
       options:
-        - It was used to build spaceships for travel
-        - It turned to art, then faded into idleness
-        - It was directed toward constant warfare
-        - It was used to invent new machines for farming
-      correctIndex: 1
-      explanationZh: 他总结道，在绝对安全中，剩余能量先转向艺术与享乐，最终走向倦怠与衰败。原文明确说制造飞船、战争或新农具都不符合——安全之后这些驱动力都消失了。
+        - It is spent on ever larger and stronger buildings
+        - It goes into war between the idle and the strong
+        - It is turned to farming, since nothing else is left
+        - It takes to art, and then to languor and decay
+      correctIndex: 3
+      explanationZh: 他说 "This has ever been the fate of energy in security; it takes to art and to eroticism, and then come languor and decay"——到他所见的年代，剩下的只有戴花、跳舞、在阳光下唱歌。
 quiz:
   - id: ttm-ch-04-q1
-    stem: Why did the Time Traveller feel disappointed soon after meeting the little people?
+    stem: How did the little people answer the Time Traveller's thunderclap?
     options:
-      - They attacked him as soon as he arrived
-      - They refused to share any food with him
-      - They asked if he came from the sun
-      - They could not speak or make any sounds
-    correctIndex: 2
-    explanationZh: 他曾期待未来人远比自己文明智慧，但一个小人竟问他是否在雷暴中从太阳而来，智力如同五岁孩童，这让他大失所望。攻击、拒食或无法发声都不合文意。
+      - They ran indoors and barred the great portals
+      - They tried to copy the sound and laughed at him
+      - They knelt down and would not look at him
+      - They drew back, bowed, and hung flowers on him
+    correctIndex: 3
+    explanationZh: 他点头指着太阳，学了一声吓人的雷响；"They all withdrew a pace or so and bowed"，随后有人笑着捧来花环替他戴上，众人纷纷跑去采花，几乎把他埋进花堆。
   - id: ttm-ch-04-q2
-    stem: What did the Time Traveller notice about the Eloi children?
+    stem: What struck the Time Traveller most about the great hall?
     options:
-      - They were kept apart in a separate palace
-      - They were far more curious than their elders
-      - They looked like miniatures of their parents
-      - They wore darker robes than the adults
-    correctIndex: 2
-    explanationZh: 他注意到这些孩子在他眼中“seemed to be but the miniatures of their parents”，只是小一号的大人。文中没有说孩子被单独安置或衣着不同；他们和大人一样容易对事物失去兴趣，谈不上更有好奇心。
-  - id: ttm-ch-04-q3
-    stem: What struck the Time Traveller most about the great hall during the fruit dinner?
-    options:
-      - Its worn, ruinous state
-      - Its extremely low ceilings
-      - The lack of any windows
-      - The strong smell of meat
+      - How worn and dilapidated it was
+      - The number of servants at table
+      - The heat of the fires in it
+      - The silence in which they ate
     correctIndex: 0
-    explanationZh: 他最强烈的印象是大厅的破败，彩色玻璃多处破碎，窗帘积灰，大理石桌角断裂。矮顶、无窗或肉味与原文不符。
-  - id: ttm-ch-04-q4
-    stem: What did the Time Traveller notice about the little people's attention span when he tried to teach himself their language?
+    explanationZh: 大厅富丽如画，可 "perhaps the thing that struck me most was its dilapidated look"——彩窗多处破碎，帘子积满灰尘，连身边那张大理石桌的一角也缺了。
+  - id: ttm-ch-04-q3
+    stem: How did the Time Traveller set about learning their language?
     options:
-      - They insisted on teaching him for hours
-      - They fell asleep as soon as he began
-      - They corrected his grammar angrily
-      - They soon tired and wandered off
-    correctIndex: 3
-    explanationZh: 他发现未来人像孩子一样很快对事物失去兴趣，稍加尝试便疲倦离去。坚持数小时、睡着或生气纠正语法都不合原文。
-  - id: ttm-ch-04-q5
-    stem: What did the Time Traveller conclude about the houses and cottages of the future world?
-    options:
-      - They were built underground to avoid the sun
-      - They were stacked in enormous towers
-      - They were hidden behind tall hedges
-      - They were gone; only palaces remained
-    correctIndex: 3
-    explanationZh: 他注意到没有小房屋的踪迹，只有宫殿般的大建筑散布其间，于是自言"共产主义"。地下城、巨型塔楼或高篱在原文均未出现。
-  - id: ttm-ch-04-q6
-    stem: What was the Time Traveller's overall theory about the future civilization as he stood in the gathering dark?
-    options:
-      - A great war had destroyed most of their technology
-      - Comfort and security had made humanity weak and unintelligent
-      - A plague had killed off the most intelligent people
-      - Aliens had conquered and enslaved the population
+      - He drew pictures of the objects in the dust
+      - He held up a fruit and made questioning sounds
+      - He repeated everything they said back to them
+      - He asked the fair-haired one to teach him alone
     correctIndex: 1
-    explanationZh: 他认为人类战胜自然后进入绝对安全状态，原有力量与智慧失去意义，因而衰弱迟钝。战争、瘟疫或外星人入侵并非他当时提出的解释，且原文暗示这些并不存在。
+    explanationZh: 他举起一只水果，"began a series of interrogative sounds and gestures"；起初换来一片惊讶和大笑，直到一个金发小人明白过来，报出了名称。他很快记住二十来个名词，又学会指示代词和动词 to eat。
+  - id: ttm-ch-04-q4
+    stem: Why did the language lessons go so slowly?
+    options:
+      - The little people had no words for most things
+      - Their tongue had no sounds a European could make
+      - They soon tired and wandered off after other toys
+      - They thought it rude to teach a stranger their speech
+    correctIndex: 2
+    explanationZh: 他说自己 "never met people more indolent or more easily fatigued"——他们像孩子一样惊叹着围上来，又像孩子一样很快丢下他去玩别的。
+  - id: ttm-ch-04-q5
+    stem: What did the Time Traveller find at the top of the crest?
+    options:
+      - A seat of yellow metal with griffins' heads for arms
+      - A little well under a cupola, deep and dark
+      - A great heap of granite bound together with masses of aluminium
+      - A white marble figure watching over the valley
+    correctIndex: 0
+    explanationZh: 山顶上有一把陌生的黄色金属椅，"corroded in places with a kind of pinkish rust and half smothered in soft moss, the armrests cast and filed into the resemblance of griffins' heads"。那口井和花岗岩堆是他上山途中所见。
+  - id: ttm-ch-04-q6
+    stem: What was the Time Traveller's evening theory about this world?
+    options:
+      - That a plague had carried off the cleverest of them
+      - That machines had taken over all of the work
+      - That security had made humanity feeble and idle
+      - That the race had been conquered from outside
+    correctIndex: 2
+    explanationZh: 他的结论是 "Strength is the outcome of need; security sets a premium on feebleness"——人类战胜自然之后，力量与智慧都失去了用处。他自己也承认 "Very simple was my explanation, and plausible enough—as most wrong theories are!"。

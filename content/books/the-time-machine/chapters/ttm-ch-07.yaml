@@ -3,7 +3,7 @@ id: ttm-ch-07
 bookId: book-time-machine
 title: Chapter 7
 titleZh: 第七章
-summaryZh: 新月将至，黑暗的夜晚一天天逼近。时间旅行者决定武装自己并寻找安全的避难所，带着薇娜踏上前往绿瓷宫的漫长路途，途中不得不在露天山坡过夜。仰望陌生的星空时，一个骇人的念头在他脑中逐渐成形。
+summaryZh: 月亮一夜比一夜亏得厉害，黑夜也一夜比一夜长。他对自己说：这一回，我至少要能自卫。
 sections:
   - id: ttm-ch-07-s1
     text: |-
@@ -12,14 +12,14 @@ sections:
       “The enemy I dreaded may surprise you. It was the darkness of the new moon. Weena had put this into my head by some at first incomprehensible remarks about the Dark Nights. It was not now such a very difficult problem to guess what the coming Dark Nights might mean. The moon was on the wane: each night there was a longer interval of darkness. And I now understood to some slight degree at least the reason of the fear of the little Upper-world people for the dark. I wondered vaguely what foul villainy it might be that the Morlocks did under the new moon. I felt pretty sure now that my second hypothesis was all wrong. The Upper-world people might once have been the favoured aristocracy, and the Morlocks their mechanical servants: but that had long since passed away. The two species that had resulted from the evolution of man were sliding down towards, or had already arrived at, an altogether new relationship. The Eloi, like the Carolingian kings, had decayed to a mere beautiful futility. They still possessed the earth on sufferance: since the Morlocks, subterranean for innumerable generations, had come at last to find the daylit surface intolerable. And the Morlocks made their garments, I inferred, and maintained them in their habitual needs, perhaps through the survival of an old habit of service. They did it as a standing horse paws with his foot, or as a man enjoys killing animals in sport: because ancient and departed necessities had impressed it on the organism. But, clearly, the old order was already in part reversed. The Nemesis of the delicate ones was creeping on apace. Ages ago, thousands of generations ago, man had thrust his brother man out of the ease and the sunshine. And now that brother was coming back changed! Already the Eloi had begun to learn one old lesson anew. They were becoming reacquainted with Fear. And suddenly there came into my head the memory of the meat I had seen in the Under-world. It seemed odd how it floated into my mind: not stirred up as it were by the current of my meditations, but coming in almost like a question from outside. I tried to recall the form of it. I had a vague sense of something familiar, but I could not tell what it was at the time.
     checkIn:
       id: ttm-ch-07-s1-c1
-      stem: What did the Time Traveller dread most as the new moon approached?
+      stem: What enemy did the Time Traveller now dread?
       options:
-        - The childish simplicity of the Eloi.
-        - The loss of his Time Machine.
-        - The darkness of the new moon.
-        - The bright light of the full moon.
-      correctIndex: 2
-      explanationZh: 文中明确说他最害怕的敌人是“the darkness of the new moon”，薇娜关于“Dark Nights”的提醒让他意识到月亏期间莫洛克人将会到来。关于失去时间机的焦虑是此前的感受，不是此处新发现的恐惧来源。
+        - That the Eloi would turn against him and drive him out
+        - The darkness that would come with the new moon
+        - That the Morlocks had already destroyed the machine
+        - That Weena would follow him down into the wells
+      correctIndex: 1
+      explanationZh: 他自己也说这敌人会让人意外——"It was the darkness of the new moon"。薇娜提过的 Dark Nights 让他明白：月亮一天天亏下去，黑夜就一天天变长。
   - id: ttm-ch-07-s2
     text: |-
       “Still, however helpless the little people in the presence of their mysterious Fear, I was differently constituted. I came out of this age of ours, this ripe prime of the human race, when Fear does not paralyse and mystery has lost its terrors. I at least would defend myself. Without further delay I determined to make myself arms and a fastness where I might sleep. With that refuge as a base, I could face this strange world with some of that confidence I had lost in realizing to what creatures night by night I lay exposed. I felt I could never sleep again until my bed was secure from them. I shuddered with horror to think how they must already have examined me.
@@ -31,14 +31,14 @@ sections:
       The Time Traveller paused, put his hand into his pocket, and silently placed two withered flowers, not unlike very large white mallows, upon the little table. Then he resumed his narrative.
     checkIn:
       id: ttm-ch-07-s2-c1
-      stem: What did Weena believe the Time Traveller's pockets were for?
+      stem: What did Weena decide his pockets were?
       options:
-        - A kind of vase for floral decoration.
-        - A place to store extra food.
-        - A hiding spot from the Morlocks.
-        - A tool for carrying water.
-      correctIndex: 0
-      explanationZh: 薇娜一直对口袋感到困惑，最终认定它们是“an eccentric kind of vase for floral decoration”，并把摘来的花插进去。她并不理解口袋是衣物上的实用储物结构。
+        - A place where he kept his matches hidden
+        - Somewhere to carry fruit and nuts for the journey
+        - A kind of pouch that all Upper-worlders lacked
+        - An eccentric kind of vase for floral decoration
+      correctIndex: 3
+      explanationZh: 口袋始终让她纳闷，最后她认定那是 "an eccentric kind of vase for floral decoration"，于是一路摘花往里插——讲到这里，时间旅行家从口袋里掏出两朵枯萎的白花，放在了小桌上。
   - id: ttm-ch-07-s3
     text: |-
       “As the hush of evening crept over the world and we proceeded over the hill crest towards Wimbledon, Weena grew tired and wanted to return to the house of grey stone. But I pointed out the distant pinnacles of the Palace of Green Porcelain to her, and contrived to make her understand that we were seeking a refuge there from her Fear. You know that great pause that comes upon things before the dusk? Even the breeze stops in the trees. To me there is always an air of expectation about that evening stillness. The sky was clear, remote, and empty save for a few horizontal bars far down in the sunset. Well, that night the expectation took the colour of my fears. In that darkling calm my senses seemed preternaturally sharpened. I fancied I could even feel the hollowness of the ground beneath my feet: could, indeed, almost see through it the Morlocks on their anthill going hither and thither and waiting for the dark. In my excitement I fancied that they would receive my invasion of their burrows as a declaration of war. And why had they taken my Time Machine?
@@ -48,14 +48,14 @@ sections:
       “From the brow of the next hill I saw a thick wood spreading wide and black before me. I hesitated at this. I could see no end to it, either to the right or the left. Feeling tired—my feet, in particular, were very sore—I carefully lowered Weena from my shoulder as I halted, and sat down upon the turf. I could no longer see the Palace of Green Porcelain, and I was in doubt of my direction. I looked into the thickness of the wood and thought of what it might hide. Under that dense tangle of branches one would be out of sight of the stars. Even were there no other lurking danger—a danger I did not care to let my imagination loose upon—there would still be all the roots to stumble over and the tree-boles to strike against.
     checkIn:
       id: ttm-ch-07-s3-c1
-      stem: Why did the Time Traveller hesitate before entering the thick wood at night?
+      stem: Why did the Time Traveller halt at the brow of the hill?
       options:
-        - He heard Morlocks calling inside it
-        - He could see no end to it either way
-        - He had already reached the palace
-        - Weena refused to walk any further
-      correctIndex: 1
-      explanationZh: 他在山坡上停下，因为前方“a thick wood spreading wide and black”，左右都看不到尽头；他又累又脚痛，对林中可能隐藏的危险心生顾虑。此时他尚未听到莫洛克人的声音，也没到达绿瓷宫。
+        - The wood before him ran black and endless to left and right
+        - Weena had fallen asleep upon his shoulder
+        - He had lost sight of the Thames valley
+        - The moon had not yet risen over the trees
+      correctIndex: 0
+      explanationZh: 他说 "I could see no end to it, either to the right or the left"；那片密林底下连星光也照不进来，何况还有树根绊脚、树干挡路，而他的脚已经痛得厉害。
   - id: ttm-ch-07-s4
     text: |-
       “I was very tired, too, after the excitements of the day; so I decided that I would not face it, but would pass the night upon the open hill.
@@ -67,14 +67,14 @@ sections:
       “Through that long night I held my mind off the Morlocks as well as I could, and whiled away the time by trying to fancy I could find signs of the old constellations in the new confusion. The sky kept very clear, except for a hazy cloud or so. No doubt I dozed at times. Then, as my vigil wore on, came a faintness in the eastward sky, like the reflection of some colourless fire, and the old moon rose, thin and peaked and white. And close behind, and overtaking it, and overflowing it, the dawn came, pale at first, and then growing pink and warm. No Morlocks had approached us. Indeed, I had seen none upon the hill that night. And in the confidence of renewed day it almost seemed to me that my fear had been unreasonable. I stood up and found my foot with the loose heel swollen at the ankle and painful under the heel; so I sat down again, took off my shoes, and flung them away.
     checkIn:
       id: ttm-ch-07-s4-c1
-      stem: What thought came to the Time Traveller as he gazed at the stars and thought about the two species?
+      stem: What did the Time Traveller notice about the night sky?
       options:
-        - He forgot all about the Morlocks entirely.
-        - He saw a familiar constellation in the sky.
-        - He decided to return to his own time alone.
-        - He realized what the meat in the Under-world was.
-      correctIndex: 3
-      explanationZh: 仰望星空时，他思考两类生物之间的巨大恐惧，第一次清楚地意识到地下世界看到的肉是什么——暗示莫洛克人以埃洛伊人为食。他望着熟睡的薇娜，立刻试图驱散这个可怕的念头。
+        - The Milky Way had faded to a faint smear
+        - The moon rose full, and much larger than before
+        - The old constellations had been rearranged
+        - Not one star was to be seen anywhere
+      correctIndex: 2
+      explanationZh: 星星依旧闪烁，"But the old constellations had gone from the sky"——漫长岁月里那种察觉不到的移动，早把它们重排过了。银河倒还是从前那条破絮般的星尘带。
   - id: ttm-ch-07-s5
     text: |-
       “I awakened Weena, and we went down into the wood, now green and pleasant instead of black and forbidding. We found some fruit wherewith to break our fast. We soon met others of the dainty ones, laughing and dancing in the sunlight as though there was no such thing in nature as the night. And then I thought once more of the meat that I had seen. I felt assured now of what it was, and from the bottom of my heart I pitied this last feeble rill from the great flood of humanity. Clearly, at some time in the Long-Ago of human decay the Morlocks’ food had run short. Possibly they had lived on rats and suchlike vermin. Even now man is far less discriminating and exclusive in his food than he was—far less than any monkey. His prejudice against human flesh is no deep-seated instinct. And so these inhuman sons of men—! I tried to look at the thing in a scientific spirit. After all, they were less human and more remote than our cannibal ancestors of three or four thousand years ago. And the intelligence that would have made this state of things a torment had gone. Why should I trouble myself? These Eloi were mere fatted cattle, which the ant-like Morlocks preserved and preyed upon—probably saw to the breeding of. And there was Weena dancing at my side!
@@ -84,66 +84,66 @@ sections:
       “I had at that time very vague ideas as to the course I should pursue. My first was to secure some safe place of refuge, and to make myself such arms of metal or stone as I could contrive. That necessity was immediate. In the next place, I hoped to procure some means of fire, so that I should have the weapon of a torch at hand, for nothing, I knew, would be more efficient against these Morlocks. Then I wanted to arrange some contrivance to break open the doors of bronze under the White Sphinx. I had in mind a battering ram. I had a persuasion that if I could enter those doors and carry a blaze of light before me I should discover the Time Machine and escape. I could not imagine the Morlocks were strong enough to move it far away. Weena I had resolved to bring with me to our own time. And turning such schemes over in my mind I pursued our way towards the building which my fancy had chosen as our dwelling.
     checkIn:
       id: ttm-ch-07-s5-c1
-      stem: What did the Time Traveller conclude about the Eloi in relation to the Morlocks?
+      stem: What did the Time Traveller now believe the Eloi were to the Morlocks?
       options:
-        - They were fatted cattle preyed upon by the Morlocks.
-        - They were the masters of the Morlocks.
-        - They were planning a war against the Morlocks.
-        - They were teaching the Morlocks to farm.
-      correctIndex: 0
-      explanationZh: 他总结道，埃洛伊人不过是“fatted cattle, which the ant-like Morlocks preserved and preyed upon”，莫洛克人甚至可能控制他们的繁殖。他试图用科学态度和 Carlyle 式的轻蔑来疏解恐惧，但发现这种态度无法维持。
+        - The masters they had served for countless ages
+        - Fatted cattle, which the Morlocks kept and preyed upon
+        - A rival species they had driven underground
+        - The children they had stolen from the surface
+      correctIndex: 1
+      explanationZh: 他的原话是 "These Eloi were mere fatted cattle, which the ant-like Morlocks preserved and preyed upon—probably saw to the breeding of"。说这话时，薇娜正在他身边跳舞。
 quiz:
   - id: ttm-ch-07-q1
-    stem: Why did the Time Traveller feel his situation was now worse than before?
+    stem: Why did his position now seem worse than before?
     options:
-      - The Eloi had turned against him openly.
-      - He had lost all his food and supplies.
-      - The Morlocks possessed an inhuman and malign quality.
-      - The Time Machine was completely destroyed.
-    correctIndex: 2
-    explanationZh: 此前他只觉得是被孩子般单纯的种族和未知力量所阻碍，但莫洛克人身上“something inhuman and malign”让他感到一种全新的、令人作呕的威胁，从掉入坑里变成困兽之态。文中未说埃洛伊人公开与他对立，时间机也只是被搬走而非被毁。
+      - The Eloi had begun to avoid him after the well
+      - He had used up the last of his matches underground
+      - Weena could no longer be persuaded to follow him
+      - The Morlocks had something inhuman and malign in them
+    correctIndex: 3
+    explanationZh: 从前他像掉进坑里的人，只想着怎么爬出去；如今 "I felt like a beast in a trap, whose enemy would come upon him soon"——莫洛克人身上那种 "something inhuman and malign" 是全新的东西。
   - id: ttm-ch-07-q2
-    stem: Why did the Time Traveller head for the Palace of Green Porcelain?
+    stem: Why did he set out for the Palace of Green Porcelain?
     options:
-      - He hoped to find his Time Machine inside it.
-      - He wanted a refuge that would be hard to reach.
-      - He knew the Morlocks lived far beneath it.
-      - He wanted to show Weena the sunset from there.
-    correctIndex: 1
-    explanationZh: 他沿泰晤士河谷寻找却找不到合适的防御地点，因为莫洛克人善于攀爬；绿瓷宫“tall pinnacles”和光滑墙面使它成为他记忆中可能不易接近的避难所。夺回时间机是后来的计划，与此刻寻找住处的目的不同。
-  - id: ttm-ch-07-q3
-    stem: What caused the Time Traveller to walk much farther than he expected?
-    options:
-      - He had misjudged the distance on a moist afternoon.
-      - He took a wrong turn at the river.
-      - Weena kept stopping to pick flowers.
-      - He was chased by Morlocks into the hills.
+      - He wanted a fastness the Morlocks could not climb into
+      - He had seen the Time Machine glinting on one of its terraces
+      - Weena had told him her people once lived there
+      - He hoped to find tools for forcing the bronze doors
     correctIndex: 0
-    explanationZh: 他曾在一个潮湿的下午远望绿瓷宫，潮湿空气会使距离“deceptively diminished”，所以他估算七八英里，实际将近十八英里。鞋底松动和脚痛也拖慢了速度，但距离估算错误才是主因。
+    explanationZh: 他在泰晤士河谷找了一下午，"found nothing that commended itself to my mind as inaccessible"——连井壁都爬得上去的莫洛克人，寻常房屋树木自然拦不住；这才想起绿瓷宫那高耸光滑的墙。
+  - id: ttm-ch-07-q3
+    stem: Why did the walk turn out so much longer than he had reckoned?
+    options:
+      - Weena kept stopping to gather flowers on the way
+      - He had to carry Weena the whole distance
+      - He had judged the distance on a moist afternoon
+      - He had circled back twice to avoid the dark wood
+    correctIndex: 2
+    explanationZh: 他估的是七八英里，实际将近十八——"I had first seen the place on a moist afternoon when distances are deceptively diminished"；加上鞋跟松脱、鞋钉扎脚，他一路瘸着走。
   - id: ttm-ch-07-q4
-    stem: What had the Time Traveller resolved to do about Weena?
+    stem: What had the Time Traveller resolved about Weena?
     options:
-      - Leave her with her people at the great hall
-      - Bring her back with him to his own time
-      - Hide her inside the Palace of Green Porcelain
-      - Ask her to guard the Time Machine at night
+      - To leave her safely among her own people
+      - To bring her back with him to his own time
+      - To teach her enough English to give evidence
+      - To hide her inside the Palace of Green Porcelain
     correctIndex: 1
-    explanationZh: 他明确说“Weena I had resolved to bring with me to our own time”——他已决定带薇娜回到自己的时代。把她留下、藏进绿瓷宫或让她守机器，都不是他的打算。
+    explanationZh: 他盘算着造武器、取火、做一具撞锤去撞开白斯芬克斯下的铜门；这一串计划的末尾是一句 "Weena I had resolved to bring with me to our own time"。
   - id: ttm-ch-07-q5
-    stem: What did the Time Traveller notice about the stars in the future night sky?
+    stem: What weapon did he think would serve best against the Morlocks?
     options:
-      - They had all completely disappeared.
-      - They were identical to his own time.
-      - They were dimmer than the moon.
-      - The old constellations had been rearranged.
+      - A battering ram of stone and wood
+      - A spear beaten out of white metal
+      - A pit dug across the mouth of one of the wells
+      - A torch, if only he could get fire
     correctIndex: 3
-    explanationZh: 他看到星辰依旧闪烁，但“all the old constellations had gone from the sky”，因为地球进动在漫长岁月中重新排列了星群。不过银河仍像旧日一样，还有一颗比天狼星更灿烂的红色新星。
+    explanationZh: 他打算设法弄到火，"for nothing, I knew, would be more efficient against these Morlocks"。撞锤另有用处——那是留着撞开铜门的。
   - id: ttm-ch-07-q6
-    stem: What weapon did the Time Traveller believe would be most effective against the Morlocks?
+    stem: What did he find he could not do, however hard he tried?
     options:
-      - A battering ram of stone.
-      - A metal spear he had forged.
-      - A deep ditch around his camp.
-      - A torch made with fire.
-    correctIndex: 3
-    explanationZh: 他列出计划时说要设法取火：对付莫洛克人，没有什么比火把更有效（“nothing would be more efficient against these Morlocks”）。撞锤是另一回事，用来撞开白狮身人面像下的铜门，并非直接对付莫洛克人的武器。
+      - Look on the Eloi with a Carlyle-like scorn
+      - Keep Weena from following him each morning
+      - Put the thought of the Under-world out of his head
+      - Remember which of the wells he had climbed down
+    correctIndex: 0
+    explanationZh: 他试着把这一切看作对人类自私的惩罚，甚至学卡莱尔那样嘲讽这个衰败的贵族阶级，可是做不到——"the Eloi had kept too much of the human form not to claim my sympathy"。
