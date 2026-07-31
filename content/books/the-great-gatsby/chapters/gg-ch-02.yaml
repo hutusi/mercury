@@ -3,7 +3,7 @@ id: gg-ch-02
 bookId: book-gatsby
 title: Chapter 2
 titleZh: 第二章
-summaryZh: 本章带读者穿过西蛋与纽约之间的“灰烬谷”，跟随汤姆·布坎南走进他情妇所在的汽修铺，再一同前往他们在纽约的公寓聚会。派对上酒气弥漫、话题纷乱，而玛特尔一次次提及一个不该提的名字，最终引发了一场突如其来的暴力。
+summaryZh: 西蛋和纽约之间有一段路，公路匆匆挨到铁道边上跑一阵，像是要躲开那片荒地——灰烬在那里像麦子一样长成田垄和山丘，连走动的人都是灰的。汤姆有个情妇，这事凡认得他的人都知道；尼克本来只是好奇，并不想见。
 sections:
   - id: gg-ch-02-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       The fact that he had one was insisted upon wherever he was known. His acquaintances resented the fact that he turned up in popular cafés with her and, leaving her at a table, sauntered about, chatting with whomsoever he knew. Though I was curious to see her, I had no desire to meet her—but I did. I went up to New York with Tom on the train one afternoon, and when we stopped by the ash-heaps he jumped to his feet and, taking hold of my elbow, literally forced me from the car.
     checkIn:
       id: gg-ch-02-s1-c1
-      stem: What does Nick first see above the valley of ashes?
+      stem: What rises above the grey land and the drifting dust?
       options:
-        - A line of grey cars crawling along an invisible track.
-        - The giant blue eyes of Doctor T. J. Eckleburg.
-        - A small foul river with a drawbridge for barges.
-        - A yellow brick building with three shops.
-      correctIndex: 1
-      explanationZh: 原文写“you perceive … the eyes of Doctor T. J. Eckleburg”，并形容其“blue and gigantic”。灰色汽车、小河与黄砖建筑虽都在附近出现，但尼克最先注意到的标志性意象是那双巨眼。
+        - A line of grey cars crawling along an invisible track
+        - A small foul river spanned by a drawbridge for barges
+        - The blue and gigantic eyes of Doctor T. J. Eckleburg
+        - A block of yellow brick holding three little shops
+      correctIndex: 2
+      explanationZh: 灰尘之上望得见的是 "the eyes of Doctor T. J. Eckleburg... blue and gigantic—their retinas are one yard high"。它们没有脸，只有一副巨大的黄眼镜架在并不存在的鼻梁上——大约是哪个爱开玩笑的眼科医生立在那里招揽生意的，如今日晒雨淋，褪了色还照旧俯视着这片倒渣场。
   - id: gg-ch-02-s2
     text: |-
       “We’re getting off,” he insisted. “I want you to meet my girl.”
@@ -49,14 +49,14 @@ sections:
       His voice faded off and Tom glanced impatiently around the garage. Then I heard footsteps on a stairs, and in a moment the thickish figure of a woman blocked out the light from the office door. She was in the middle thirties, and faintly stout, but she carried her flesh sensuously as some women can. Her face, above a spotted dress of dark blue crêpe-de-chine, contained no facet or gleam of beauty, but there was an immediately perceptible vitality about her as if the nerves of her body were continually smouldering. She smiled slowly and, walking through her husband as if he were a ghost, shook hands with Tom, looking him flush in the eye. Then she wet her lips, and without turning around spoke to her husband in a soft, coarse voice:
     checkIn:
       id: gg-ch-02-s2-c1
-      stem: How does Wilson react when Tom threatens to sell the car somewhere else?
+      stem: How does Wilson take it when Tom threatens to sell the car elsewhere?
       options:
-        - He angrily demands the car by the end of the week.
-        - He offers to pay Tom a higher price on the spot.
-        - He quickly backtracks and says he did not mean it.
-        - He silently walks back into the little office.
-      correctIndex: 2
-      explanationZh: 原文写“I don’t mean that,” explained Wilson quickly，“His voice faded off”。他急于收回自己的话，生怕得罪汤姆。发怒要求、加价或沉默离开都与他卑微讨好、怯懦退缩的态度不符。
+        - He backtracks at once and says he did not mean it
+        - He asks for the car to be delivered by the week's end
+        - He offers to pay a higher price on the spot for it
+        - He turns without a word and goes into the office
+      correctIndex: 0
+      explanationZh: 他先挖苦了一句 "Works pretty slow, don't he?"，汤姆冷冷回敬说那就卖给别人算了；他立刻改口——"I don't mean that," explained Wilson quickly. "I just meant—"，声音就这么低了下去。
   - id: gg-ch-02-s3
     text: |-
       “Get some chairs, why don’t you, so somebody can sit down.”
@@ -94,14 +94,14 @@ sections:
       “What kind are they?” asked Mrs. Wilson eagerly, as he came to the taxi-window.
     checkIn:
       id: gg-ch-02-s3-c1
-      stem: What does Mrs. Wilson do as soon as Tom tells her to get on the next train?
+      stem: What does Mrs. Wilson do when Tom tells her to take the next train?
       options:
-        - She refuses and insists on staying at the garage.
-        - She immediately shouts for her husband to come over.
-        - She asks Nick to bring her into another car.
-        - She nods and moves away from him just as Wilson returns.
+        - She refuses, and says she cannot leave the garage
+        - She calls out for her husband to come and hear it
+        - She asks Nick to see her onto a different carriage
+        - She nods and moves off just as Wilson comes back with chairs
       correctIndex: 3
-      explanationZh: 原文写“She nodded and moved away from him just as George Wilson emerged with two chairs”。她干脆顺从，并在丈夫走出前自然离开汤姆身边。拒绝、喊丈夫或请尼克帮忙都与这一从容应对不符。
+      explanationZh: 汤姆说 "I want to see you. Get on the next train."，她只答一句 All right——"She nodded and moved away from him just as George Wilson emerged with two chairs from his office door."。丈夫始终就在几步之外。
   - id: gg-ch-02-s4
     text: |-
       “All kinds. What kind do you want, lady?”
@@ -143,14 +143,14 @@ sections:
       The apartment was on the top floor—a small living-room, a small dining-room, a small bedroom, and a bath. The living-room was crowded to the doors with a set of tapestried furniture entirely too large for it, so that to move about was to stumble continually over scenes of ladies swinging in the gardens of Versailles. The only picture was an over-enlarged photograph, apparently a hen sitting on a blurred rock. Looked at from a distance, however, the hen resolved itself into a bonnet, and the countenance of a stout old lady beamed down into the room. Several old copies of Town Tattle lay on the table together with a copy of Simon Called Peter, and some of the small scandal magazines of Broadway. Mrs. Wilson was first concerned with the dog. A reluctant elevator boy went for a box full of straw and some milk, to which he added on his own initiative a tin of large, hard dog biscuits—one of which decomposed apathetically in the saucer of milk all afternoon. Meanwhile Tom brought out a bottle of whisky from a locked bureau door.
     checkIn:
       id: gg-ch-02-s4-c1
-      stem: What does Tom insist about the dog after Mrs. Wilson asks if it is male or female?
+      stem: How does Tom settle the question of the puppy's sex?
       options:
-        - He agrees it is a boy and pays the full price quietly.
-        - He demands the seller bring a real police dog instead.
-        - He declares it is a bitch and tells the seller to buy ten more dogs.
-        - He refuses to pay more than five dollars for it.
+        - He agrees it is a boy and hands over the ten dollars
+        - He tells the man to fetch a proper police dog instead
+        - He says it is a bitch, and hands the money over anyway
+        - He beats the man down to five dollars before paying
       correctIndex: 2
-      explanationZh: 原文写“‘It’s a bitch,’ said Tom decisively. ‘Here’s your money. Go and buy ten more dogs with it.’”。他语气专断，用钱打发卖狗人。认同是公狗、要求换警犬或只付半价都与他的果断霸道不符。
+      explanationZh: 卖狗的说 "That dog's a boy."，汤姆一句 "It's a bitch," said Tom decisively. "Here's your money. Go and buy ten more dogs with it." 就把人打发了。那狗也不是什么警犬——卖的人自己承认 "It's more of an Airedale."。
   - id: gg-ch-02-s5
     text: |-
       I have been drunk just twice in my life, and the second time was that afternoon; so everything that happened has a dim, hazy cast over it, although until after eight o’clock the apartment was full of cheerful sun. Sitting on Tom’s lap Mrs. Wilson called up several people on the telephone; then there were no cigarettes, and I went out to buy some at the drugstore on the corner. When I came back they had both disappeared, so I sat down discreetly in the living-room and read a chapter of Simon Called Peter—either it was terrible stuff or the whisky distorted things, because it didn’t make any sense to me.
@@ -164,14 +164,14 @@ sections:
       Mrs. Wilson had changed her costume some time before, and was now attired in an elaborate afternoon dress of cream-coloured chiffon, which gave out a continual rustle as she swept about the room. With the influence of the dress her personality had also undergone a change. The intense vitality that had been so remarkable in the garage was converted into impressive hauteur. Her laughter, her gestures, her assertions became more violently affected moment by moment, and as she expanded the room grew smaller around her, until she seemed to be revolving on a noisy, creaking pivot through the smoky air.
     checkIn:
       id: gg-ch-02-s5-c1
-      stem: How does Mrs. Wilson's personality change after she puts on the cream-coloured chiffon dress?
+      stem: What does the cream-coloured chiffon dress do to Myrtle?
       options:
-        - She becomes shy and withdrawn around the new guests.
-        - Her intense vitality converts into impressive hauteur.
-        - She grows cheerful and informal with everyone present.
-        - She turns anxious and excuses herself to the bedroom.
+        - She grows shy and keeps to the edge
+        - Her vitality turns into an impressive hauteur
+        - She becomes easy and familiar with all the guests
+        - She grows anxious and slips away into the bedroom
       correctIndex: 1
-      explanationZh: 原文写“her personality had also undergone a change. The intense vitality … was converted into impressive hauteur”，并说她举止越发矫揉造作。变羞怯、更随和或焦虑退场都与原文描述相反。
+      explanationZh: 换上那身衣裳之后，"With the influence of the dress her personality had also undergone a change. The intense vitality that had been so remarkable in the garage was converted into impressive hauteur."——笑声、手势、口气一分钟比一分钟做作，屋子在她身边越缩越小。
   - id: gg-ch-02-s6
     text: |-
       “My dear,” she told her sister in a high, mincing shout, “most of these fellas will cheat you every time. All they think of is money. I had a woman up here last week to look at my feet, and when she gave me the bill you’d of thought she had my appendicitis out.”
@@ -213,14 +213,14 @@ sections:
       “Two studies. One of them I call Montauk Point—The Gulls, and the other I call Montauk Point—The Sea.”
     checkIn:
       id: gg-ch-02-s6-c1
-      stem: How does Mrs. Wilson respond when Mrs. McKee compliments her dress?
+      stem: How does Myrtle receive Mrs. McKee's compliment on the dress?
       options:
-        - She thanks Mrs. McKee warmly and offers to lend it to her.
-        - She ignores the remark and changes the subject entirely.
-        - She asks Mr. McKee to photograph her in it right away.
-        - She rejects the compliment by raising her eyebrow in disdain.
+        - She thanks Mrs. McKee and offers to lend it to her
+        - She lets it pass and turns the talk to something else
+        - She asks Mr. McKee to photograph her in it at once
+        - She raises an eyebrow in disdain and calls it an old thing
       correctIndex: 3
-      explanationZh: 原文写“Mrs. Wilson rejected the compliment by raising her eyebrow in disdain”，随后轻描淡写说这只是“a crazy old thing”。热情致谢、置之不理或立刻请人拍照都与她刻意摆出的高傲姿态不符。
+      explanationZh: 原文写 "Mrs. Wilson rejected the compliment by raising her eyebrow in disdain."，随口说 "It's just a crazy old thing. I just slip it on sometimes when I don't care what I look like."。拍照的话头是 McKee 太太起的，她丈夫接过去还琢磨起该怎么打光。
   - id: gg-ch-02-s7
     text: |-
       The sister Catherine sat down beside me on the couch.
@@ -276,14 +276,14 @@ sections:
       “Oh, do you like Europe?” she exclaimed surprisingly. “I just got back from Monte Carlo.”
     checkIn:
       id: gg-ch-02-s7-c1
-      stem: What does Catherine claim is the real reason Tom and Myrtle cannot marry?
+      stem: What does Catherine say is really keeping Tom and Myrtle apart?
       options:
-        - She says Tom refuses to support Myrtle financially.
-        - She says George Wilson threatens to harm anyone who interferes.
-        - She says Myrtle is still legally bound to a first husband.
-        - She says Daisy is a Catholic who does not believe in divorce.
-      correctIndex: 3
-      explanationZh: 原文写“It’s really his wife that’s keeping them apart. She’s a Catholic, and they don’t believe in divorce.”。尼克还补充黛西并非天主教徒，暗示这是编造的借口。经济问题、威尔逊威胁或另有前夫都无原文依据。
+        - That Daisy is a Catholic, and Catholics allow no divorce
+        - That Tom will not put up the money to keep Myrtle
+        - That George Wilson has threatened anyone who meddles
+        - That Myrtle is still tied to a husband from before
+      correctIndex: 0
+      explanationZh: 她压低声音说 "It's really his wife that's keeping them apart. She's a Catholic, and they don't believe in divorce."。尼克在旁边心里明白——黛西并不是天主教徒；他说自己有点吃惊的，是这谎撒得如此周全。
   - id: gg-ch-02-s8
     text: |-
       “Really.”
@@ -323,14 +323,14 @@ sections:
       The bottle of whisky—a second one—was now in constant demand by all present, excepting Catherine, who “felt just as good on nothing at all.” Tom rang for the janitor and sent him for some celebrated sandwiches, which were a complete supper in themselves. I wanted to get out and walk eastward toward the park through the soft twilight, but each time I tried to go I became entangled in some wild, strident argument which pulled me back, as if with ropes, into my chair. Yet high over the city our line of yellow windows must have contributed their share of human secrecy to the casual watcher in the darkening streets, and I saw him too, looking up and wondering. I was within and without, simultaneously enchanted and repelled by the inexhaustible variety of life.
     checkIn:
       id: gg-ch-02-s8-c1
-      stem: Why does Myrtle say she married Wilson in the first place?
+      stem: Why does Myrtle say she married Wilson?
       options:
-        - She married him because her family pressured her into it.
-        - She thought he was a gentleman who knew something about breeding.
-        - She married him because he had a successful garage business.
-        - She married him because he had borrowed a large sum of money.
+        - Her family had pushed her into taking him for a husband
+        - She took him for a gentleman who knew about breeding
+        - His garage was doing well when he asked her
+        - He had lent her family a large sum of money
       correctIndex: 1
-      explanationZh: 原文写“I married him because I thought he was a gentleman … but he wasn’t fit to lick my shoe”。家庭施压、生意成功或借款嫁人都不在原文中；她随即提到的是他借西装结婚的事。
+      explanationZh: 原文写 "I married him because I thought he was a gentleman... I thought he knew something about breeding, but he wasn't fit to lick my shoe."。接着她讲了那套借来结婚的西装——原主人上门讨要的那天，她哭了一整个下午。
   - id: gg-ch-02-s9
     text: |-
       Myrtle pulled her chair close to mine, and suddenly her warm breath poured over me the story of her first meeting with Tom.
@@ -346,14 +346,14 @@ sections:
       The little dog was sitting on the table looking with blind eyes through the smoke, and from time to time groaning faintly. People disappeared, reappeared, made plans to go somewhere, and then lost each other, searched for each other, found each other a few feet away. Some time toward midnight Tom Buchanan and Mrs. Wilson stood face to face discussing, in impassioned voices, whether Mrs. Wilson had any right to mention Daisy’s name.
     checkIn:
       id: gg-ch-02-s9-c1
-      stem: What is Myrtle doing when Nick notices the time has jumped from nine to ten o'clock?
+      stem: What is Myrtle busy with as the hour slips from nine to ten?
       options:
-        - She is making a list of all the things she has got to get.
-        - She is arguing with Tom about whether she may say Daisy's name.
-        - She is telling Mrs. McKee about her first train ride with Tom.
-        - She is playing with the little dog on the table in the smoke.
+        - She is drawing up a list of everything she has to get
+        - She is quarrelling with Tom over saying Daisy's name
+        - She is telling Mrs. McKee about the train ride with Tom
+        - She is playing with the little dog up on the table
       correctIndex: 0
-      explanationZh: 原文写“I’m going to make a list of all the things I’ve got to get … a wreath with a black silk bow for mother’s grave”。提及黛西名字的争执、回忆初次相遇以及逗狗都发生在不同时间段，不在九到十点这一刻。
+      explanationZh: 她转向 McKee 太太，先许下这条裙子，接着数起要办的事——"A massage and a wave, and a collar for the dog, and one of those cute little ashtrays where you touch a spring, and a wreath with a black silk bow for mother's grave that'll last all summer."。为黛西的名字吵起来，要到午夜前后。
   - id: gg-ch-02-s10
     text: |-
       “Daisy! Daisy! Daisy!” shouted Mrs. Wilson. “I’ll say it whenever I want to! Daisy! Dai—”
@@ -381,66 +381,66 @@ sections:
       Then I was lying half asleep in the cold lower level of the Pennsylvania Station, staring at the morning Tribune, and waiting for the four o’clock train.
     checkIn:
       id: gg-ch-02-s10-c1
-      stem: What does Tom do when Myrtle keeps shouting Daisy's name?
+      stem: What does Tom do when Myrtle will not stop saying Daisy's name?
       options:
-        - He breaks her nose with a short deft movement of his open hand.
-        - He orders her out of the apartment and slams the door shut.
-        - He grabs her arm and pulls her into the small bedroom.
-        - He throws his whisky glass at the wall beside her head.
-      correctIndex: 0
-      explanationZh: 原文写“Making a short deft movement, Tom Buchanan broke her nose with his open hand”。随后满地血毛巾，众人手忙脚乱。逐出门外、拉进卧室或摔酒杯都与原文描写的这一掌不符。
+        - He orders her out of the flat and slams the door
+        - He takes hold of her arm and drags her to the bedroom
+        - He breaks her nose with one short movement of his open hand
+        - He flings his whisky glass at the wall just beside her head
+      correctIndex: 2
+      explanationZh: 她喊着 "Daisy! Daisy! Daisy! I'll say it whenever I want to!"，随后是 "Making a short deft movement, Tom Buchanan broke her nose with his open hand."。接下来便是浴室地上的血毛巾、女人们的斥骂，和乱声之上一道拖得很长的哀号。
 quiz:
   - id: gg-ch-02-q1
-    stem: Why does the train always halt near the valley of ashes?
+    stem: Why do the trains always stop beside the valley of ashes?
     options:
-      - The grey cars ahead break down and block the track completely.
-      - The drawbridge is raised to let barges pass through the foul river.
-      - The ash-grey men swarm the tracks to shovel cargo onto trains.
-      - The conductor switches cars to avoid the desolate area.
+      - The grey cars ahead break down and stop the whole line
+      - The drawbridge goes up to let the barges through
+      - The ash-grey men swarm the track to shovel cargo aboard
+      - The conductor changes cars to skirt the desolate ground
     correctIndex: 1
-    explanationZh: 原文说“when the drawbridge is up to let barges through, the passengers on waiting trains can stare at the dismal scene”，并由此引出尼克初次遇见汤姆情妇的契机。灰车故障、工人装货或换轨绕行都不是原文给出的停车原因。
+    explanationZh: 灰烬谷一边临着一条肮脏的小河，"when the drawbridge is up to let barges through, the passengers on waiting trains can stare at the dismal scene for as long as half an hour"。那里每回至少要停一分钟——正是这一停，让尼克撞上了汤姆的情妇。
   - id: gg-ch-02-q2
-    stem: What does Wilson believe his wife does when she goes to New York?
+    stem: What does Wilson suppose his wife goes to New York for?
     options:
-      - He thinks she goes to shop for used cars in New York.
-      - He thinks she goes to visit her mother in New York.
-      - He thinks she goes to work a shift at a New York restaurant.
-      - He thinks she goes to see her sister in New York.
+      - That she goes to New York to look at used cars for the shop
+      - That she goes up to New York to nurse her ailing mother
+      - That she goes up to New York for a shift at a restaurant
+      - That she goes up to New York to see her sister there
     correctIndex: 3
-    explanationZh: 原文写“Wilson? He thinks she goes to see her sister in New York. He’s so dumb he doesn’t know he’s alive.”。买旧车、看母亲或餐厅打工都无文本依据；正是威尔逊的不知情让玛特尔得以和汤姆私会。
+    explanationZh: 汤姆的原话是 "Wilson? He thinks she goes to see her sister in New York. He's so dumb he doesn't know he's alive."。凯瑟琳确实是她姐妹，只是那天并不在灰烬谷。
   - id: gg-ch-02-q3
-    stem: How do Tom, Myrtle, and Nick travel into New York so that she is not seen with Tom?
+    stem: How is the trip into New York managed?
     options:
-      - They all ride together in a single private compartment.
-      - Myrtle disguises herself in a dark veil before boarding.
-      - Myrtle sits discreetly in a separate car from Tom and Nick.
-      - Tom and Myrtle leave at different times from separate stations.
+      - They all take one private compartment together
+      - Myrtle puts on a dark veil before she boards the train
+      - Myrtle rides discreetly in a separate car from the two men
+      - Tom and Myrtle set out at different hours from different stations
     correctIndex: 2
-    explanationZh: 原文写“Mrs. Wilson sat discreetly in another car. Tom deferred that much to the sensibilities of those East Eggers who might be on the train.”。同车厢、戴面纱或分站错峰出发都与原文不符——她只是另坐一节车厢。
+    explanationZh: 原文写 "So Tom Buchanan and his girl and I went up together to New York—or not quite together, for Mrs. Wilson sat discreetly in another car. Tom deferred that much to the sensibilities of those East Eggers who might be on the train."。
   - id: gg-ch-02-q4
-    stem: What does Mrs. Wilson buy at the station drugstore before they take a taxi?
+    stem: What does Mrs. Wilson buy in the station drugstore?
     options:
-      - A box of chocolates and a bottle of champagne.
-      - A silk scarf and a pair of leather gloves.
-      - A copy of Town Tattle and a dog biscuit.
-      - Cold cream and a small flask of perfume.
-    correctIndex: 3
-    explanationZh: 原文写“in the station drugstore some cold cream and a small flask of perfume”。《Town Tattle》她也在报摊买了，但不在药店；狗饼干是后来电梯童自作主张加上去的。
+      - Some cold cream and a small flask of perfume
+      - A box of chocolates and a bottle of champagne
+      - A silk scarf and a pair of leather gloves
+      - A copy of Town Tattle and a picture magazine
+    correctIndex: 0
+    explanationZh: 报摊上她买的是 Town Tattle 和一本电影杂志；"in the station drugstore some cold cream and a small flask of perfume" 才是药店里那一份。狗饼干是电梯童后来自作主张添的。
   - id: gg-ch-02-q5
-    stem: How does Myrtle describe the moment she first met Tom on the train?
+    stem: How does Myrtle tell the story of first meeting Tom?
     options:
-      - He wore a dress suit, and she could not keep her eyes off him.
-      - He gave her his seat and tipped his hat to her politely.
-      - He carried her heavy bags and walked her to a taxi.
-      - He handed her a note with his address before they parted.
-    correctIndex: 0
-    explanationZh: 原文写“He had on a dress suit and patent leather shoes, and I couldn’t keep my eyes off him”。让座、帮忙提包或递地址条都不在原文里；她反复假装看头顶广告来掩饰自己的注视。
+      - He gave up his seat to her and touched his hat
+      - He wore a dress suit, and she could not look away
+      - He carried her bags for her and walked her out to a taxi
+      - He slipped her a note with his address before they parted
+    correctIndex: 1
+    explanationZh: 那是火车上面对面的两个座位，总是最后才有人坐的那一对。"He had on a dress suit and patent leather shoes, and I couldn't keep my eyes off him, but every time he looked at me I had to pretend to be looking at the advertisement over his head."。
   - id: gg-ch-02-q6
-    stem: What does Myrtle recall thinking as she got into a taxi with Tom for the first time?
+    stem: How does Nick describe his own position at the party?
     options:
-      - She kept thinking you can't live forever over and over.
-      - She kept wondering whether he was already married.
-      - She kept hoping Wilson would not find out about it.
-      - She kept planning what she would buy with his money.
-    correctIndex: 0
-    explanationZh: 原文写“All I kept thinking about, over and over, was ‘You can’t live forever; you can’t live forever.’”。纠结他是否已婚、怕威尔逊发现或盘算花钱购物都不是她当时反复出现的念头。
+      - He felt at home among them for the first time that summer
+      - He resolved never to drink again after that afternoon
+      - He slipped out early and walked eastward through the park
+      - He was within and without, at once enchanted and repelled
+    correctIndex: 3
+    explanationZh: 他几次想抽身走开，每次都被某场激烈的争论像绳子一样拽回椅子里。抬头看那排高悬的黄窗户，他想到街上也有人抬头张望——"I was within and without, simultaneously enchanted and repelled by the inexhaustible variety of life."。这也是他一生中第二次喝醉。

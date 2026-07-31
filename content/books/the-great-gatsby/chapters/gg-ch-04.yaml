@@ -3,7 +3,7 @@ id: gg-ch-04
 bookId: book-gatsby
 title: Chapter 4
 titleZh: 第四章
-summaryZh: 盖茨比的豪宅继续迎来络绎不绝的宾客，而他却主动找到尼克，邀请他共进午餐。在路上，盖茨比讲述了自己的身世，还引荐了一位背景复杂的朋友。随后，乔丹向尼克揭开了一段尘封往事——盖茨比与黛西早年的渊源，以及他此番安排的真正目的。
+summaryZh: 星期天上午，海边村子里的教堂钟声响着，全世界连同它的情妇又回到盖茨比家的草坪上闪闪发亮。尼克曾在一张旧列车时刻表的空白处，记下那年夏天上他家来的人名——如今纸已在折痕处散开，那些灰色的名字却还认得出来。
 sections:
   - id: gg-ch-04-s1
     text: |-
@@ -20,14 +20,14 @@ sections:
       From West Egg came the Poles and the Mulreadys and Cecil Roebuck and Cecil Schoen and Gulick the State senator and Newton Orchid, who controlled Films Par Excellence, and Eckhaust and Clyde Cohen and Don S. Schwartz (the son) and Arthur McCarty, all connected with the movies in one way or another. And the Catlips and the Bembergs and G. Earl Muldoon, brother to that Muldoon who afterward strangled his wife. Da Fontano the promoter came there, and Ed Legros and James B. (“Rot-Gut”) Ferret and the De Jongs and Ernest Lilly—they came to gamble, and when Ferret wandered into the garden it meant he was cleaned out and Associated Traction would have to fluctuate profitably next day.
     checkIn:
       id: gg-ch-04-s1-c1
-      stem: What rumor do the young ladies spread about Gatsby at his party?
+      stem: What do the young ladies say of Gatsby on the lawn?
       options:
-        - He is a bootlegger.
-        - He is a Wall Street banker.
-        - He is a retired army general.
-        - He is a European aristocrat.
-      correctIndex: 0
-      explanationZh: 文中女士们一边喝鸡尾酒一边说“He's a bootlegger”，并添油加醋地说他杀过人。“银行家”“将军”或“贵族”都是干扰项，原文并未提及。
+        - That he is a Wall Street man who never sleeps
+        - That he came out of an old European family
+        - That he is a bootlegger who once killed a man
+        - That he was a general before the armistice
+      correctIndex: 2
+      explanationZh: 她们在鸡尾酒和花丛之间走动，一边说 "He's a bootlegger... One time he killed a man who had found out that he was nephew to Von Hindenburg and second cousin to the devil."。尼克说，这些人受了他的款待，回敬他的却是对他一无所知。
   - id: gg-ch-04-s2
     text: |-
       A man named Klipspringer was there so often that he became known as “the boarder”—I doubt if he had any other home. Of theatrical people there were Gus Waize and Horace O’Donavan and Lester Myer and George Duckweed and Francis Bull. Also from New York were the Chromes and the Backhyssons and the Dennickers and Russel Betty and the Corrigans and the Kellehers and the Dewars and the Scullys and S. W. Belcher and the Smirkes and the young Quinns, divorced now, and Henry L. Palmetto, who killed himself by jumping in front of a subway train in Times Square.
@@ -47,14 +47,14 @@ sections:
       He was balancing himself on the dashboard of his car with that resourcefulness of movement that is so peculiarly American—that comes, I suppose, with the absence of lifting work in youth and, even more, with the formless grace of our nervous, sporadic games. This quality was continually breaking through his punctilious manner in the shape of restlessness. He was never quite still; there was always a tapping foot somewhere or the impatient opening and closing of a hand.
     checkIn:
       id: gg-ch-04-s2-c1
-      stem: Who is Klipspringer?
+      stem: Who was Klipspringer among the summer's guests?
       options:
-        - A film producer who visits on weekends.
-        - A gambler who loses money at the parties.
-        - A frequent guest who is nicknamed the boarder.
-        - A chauffeur who drives Gatsby's car.
-      correctIndex: 2
-      explanationZh: 原文说Klipspringer来得太频繁，以至于被称为"the boarder"（寄宿者），作者甚至怀疑他没有别的家。“电影制片人”“赌徒”和“司机”都是后文出现的其他宾客或角色，不符合此处描述。
+        - A guest so constant that they called him the boarder
+        - A film man from the Films Par Excellence crowd
+        - One of the players who came only to gamble
+        - The chauffeur who fetched guests from the trains
+      correctIndex: 0
+      explanationZh: 原文写 "A man named Klipspringer was there so often that he became known as 'the boarder'—I doubt if he had any other home."。
   - id: gg-ch-04-s3
     text: |-
       He saw me looking with admiration at his car.
@@ -90,14 +90,14 @@ sections:
       His voice was solemn, as if the memory of that sudden extinction of a clan still haunted him. For a moment I suspected that he was pulling my leg, but a glance at him convinced me otherwise.
     checkIn:
       id: gg-ch-04-s3-c1
-      stem: When Gatsby claims to come from the Middle West, what city does he name?
+      stem: What city does Gatsby name when Nick asks which part of the Middle West?
       options:
-        - San Francisco.
-        - Chicago.
-        - St. Louis.
-        - Detroit.
-      correctIndex: 0
-      explanationZh: 尼克问盖茨比中西部具体是哪里，盖茨比回答"San Francisco"。这个答案暴露了他的谎言，因为旧金山并不在中西部，这让尼克一度以为他在开玩笑。
+        - Chicago, where his people are said to have made their money
+        - St. Louis, and he had gone to school out there
+        - Detroit, where the last of the family had died
+        - San Francisco, of all the cities in the country
+      correctIndex: 3
+      explanationZh: 尼克随口一问，他答 "San Francisco."，尼克只回了句 I see。就在这之前，他说到 educated at Oxford 时急急带过——两下一凑，整段自述便散了架。
   - id: gg-ch-04-s4
     text: |-
       “After that I lived like a young rajah in all the capitals of Europe—Paris, Venice, Rome—collecting jewels, chiefly rubies, hunting big game, painting a little, things for myself only, and trying to forget something very sad that had happened to me long ago.”
@@ -125,14 +125,14 @@ sections:
       Then it was all true. I saw the skins of tigers flaming in his palace on the Grand Canal; I saw him opening a chest of rubies to ease, with their crimson-lighted depths, the gnawings of his broken heart.
     checkIn:
       id: gg-ch-04-s4-c1
-      stem: What does Gatsby show Nick to prove he was decorated for valor?
+      stem: What does Gatsby put into Nick's hand as proof?
       options:
-        - A signed letter from the president.
-        - A military photograph from the Argonne.
-        - A medal from Montenegro.
-        - A ceremonial sword from Italy.
+        - A letter of thanks signed by the president himself
+        - A photograph of his machine-gun battalion in the Argonne
+        - A medal from Montenegro, on a ribbon, out of his pocket
+        - A ceremonial sword the Italian government had sent him
       correctIndex: 2
-      explanationZh: 盖茨比从口袋里掏出一枚挂有绶带的金属勋章，上面刻着"Orderi di Danilo"和"Montenegro, Nicolas Rex"。尼克翻过勋章看到"Major Jay Gatsby"和"For Valour Extraordinary"。干扰项中提到的总统信函、阿贡照片或仪式剑在原文中均未出现。
+      explanationZh: 那块系着绶带的金属正面刻着 "Orderi di Danilo... Montenegro, Nicolas Rex"，翻过来是 "Major Jay Gatsby, For Valour Extraordinary"。随后他又拿出一张三一学院方庭的合影——他手里握着一支板球拍。
   - id: gg-ch-04-s5
     text: |-
       “I’m going to make a big request of you today,” he said, pocketing his souvenirs with satisfaction, “so I thought you ought to know something about me. I didn’t want you to think I was just some nobody. You see, I usually find myself among strangers because I drift here and there trying to forget the sad things that happened to me.” He hesitated. “You’ll hear about it this afternoon.”
@@ -162,14 +162,14 @@ sections:
       Over the great bridge, with the sunlight through the girders making a constant flicker upon the moving cars, with the city rising up across the river in white heaps and sugar lumps all built with a wish out of nonolfactory money. The city seen from the Queensboro Bridge is always the city seen for the first time, in its first wild promise of all the mystery and the beauty in the world.
     checkIn:
       id: gg-ch-04-s5-c1
-      stem: How does Gatsby get out of a traffic ticket on the way to lunch?
+      stem: How does Gatsby get the motorcycle policeman off?
       options:
-        - He shows the policeman a white card from his wallet.
-        - He pays the policeman a large bribe in cash.
-        - He reveals his Oxford University identification.
-        - He gives the policeman the commissioner's phone number.
-      correctIndex: 0
-      explanationZh: 警察追上他们后，盖茨比从钱包里掏出一张白卡在警察眼前晃了晃，警察立刻行礼放行。尼克问是不是牛津的照片，盖茨比说并非如此，而是他曾经帮过 commissioner 一个忙，对方每年寄圣诞卡。
+        - He hands the man a folded bill with the licence
+        - He shows a white card out of his own wallet
+        - He gives the commissioner's telephone number
+        - He holds up the photograph taken at Oxford
+      correctIndex: 1
+      explanationZh: 他从钱包里抽出一张白卡在警察眼前一晃，对方立刻脱帽——"Right you are. Know you next time, Mr. Gatsby. Excuse me!"。尼克问是不是牛津那张照片，他说 "I was able to do the commissioner a favour once, and he sends me a Christmas card every year."。
   - id: gg-ch-04-s6
     text: |-
       A dead man passed us in a hearse heaped with blooms, followed by two carriages with drawn blinds, and by more cheerful carriages for friends. The friends looked out at us with the tragic eyes and short upper lips of southeastern Europe, and I was glad that the sight of Gatsby’s splendid car was included in their sombre holiday. As we crossed Blackwell’s Island a limousine passed us, driven by a white chauffeur, in which sat three modish negroes, two bucks and a girl. I laughed aloud as the yolks of their eyeballs rolled toward us in haughty rivalry.
@@ -209,14 +209,14 @@ sections:
       “The old Metropole,” brooded Mr. Wolfshiem gloomily. “Filled with faces dead and gone. Filled with friends gone now forever. I can’t forget so long as I live the night they shot Rosy Rosenthal there. It was six of us at the table, and Rosy had eat and drunk a lot all evening. When it was almost morning the waiter came up to him with a funny look and says somebody wants to speak to him outside. ‘All right,’ says Rosy, and begins to get up, and I pulled him down in his chair.
     checkIn:
       id: gg-ch-04-s6-c1
-      stem: What story does Meyer Wolfshiem tell Nick about the old Metropole?
+      stem: What does Wolfshiem remember about the old Metropole?
       options:
-        - The night Rosy Rosenthal was shot outside the restaurant.
-        - A card game that lasted for three days straight.
-        - A fight between two rival bootlegging gangs.
-        - A wealthy patron who lost his fortune at the tables.
+        - The night they shot Rosy Rosenthal on the sidewalk
+        - A card game there that ran three days together
+        - A fight between two rival crowds over the liquor
+        - A rich man who lost everything at the tables there
       correctIndex: 0
-      explanationZh: 沃尔夫谢姆看着街对面的老Metropole餐厅，感叹那里满是逝去的面孔，说他一辈子忘不了"the night they shot Rosy Rosenthal there"，并讲起当晚六人同桌吃饭的情形。牌局、帮派火拼或赌场破产都不是他讲述的内容。
+      explanationZh: 他望着街对面说 "Filled with faces dead and gone. Filled with friends gone now forever. I can't forget so long as I live the night they shot Rosy Rosenthal there."，接着讲起那晚同桌六个人、侍者上来说外头有人找他的经过。
   - id: gg-ch-04-s7
     text: |-
       “ ‘Let the bastards come in here if they want you, Rosy, but don’t you, so help me, move outside this room.’
@@ -268,14 +268,14 @@ sections:
       “It’s one of the most famous colleges in the world.”
     checkIn:
       id: gg-ch-04-s7-c1
-      stem: How does Wolfshiem react when Gatsby leaves to make a phone call?
+      stem: What does Wolfshiem say once Gatsby has gone to telephone?
       options:
-        - He warns Nick not to trust Gatsby's stories.
-        - He complains that Gatsby left without paying the bill.
-        - He confesses that he barely knows Gatsby at all.
-        - He praises Gatsby as a fine gentleman and an Oxford man.
+        - He warns Nick to put no faith in Gatsby's stories
+        - He grumbles that Gatsby went off without settling
+        - He owns that he hardly knows Gatsby at all
+        - He calls him a perfect gentleman and an Oggsford man
       correctIndex: 3
-      explanationZh: 盖茨比起身去打电话后，沃尔夫谢姆注视着他，称赞他是"a fine fellow"和"a perfect gentleman"，并特别强调他是"an Oggsford man"。他并未警告尼克、抱怨账单或声称不认识盖茨比。
+      explanationZh: 他目送着说 "Fine fellow, isn't he? Handsome to look at and a perfect gentleman."，接着强调 "He's an Oggsford man... It's one of the most famous colleges in the world."。
   - id: gg-ch-04-s8
     text: |-
       “Have you known Gatsby for a long time?” I inquired.
@@ -315,14 +315,14 @@ sections:
       The idea staggered me. I remembered, of course, that the World’s Series had been fixed in 1919, but if I had thought of it at all I would have thought of it as a thing that merely happened, the end of some inevitable chain. It never occurred to me that one man could start to play with the faith of fifty million people—with the single-mindedness of a burglar blowing a safe.
     checkIn:
       id: gg-ch-04-s8-c1
-      stem: What unusual items are Wolfshiem's cuff buttons made of?
+      stem: What are Wolfshiem's cuff buttons made of?
       options:
-        - Ivory tusks.
-        - Human molars.
-        - Polished gemstones.
-        - Gold coins.
+        - Ivory cut from an elephant's tusk
+        - The finest specimens of human molars
+        - Polished stones out of some Eastern mine
+        - Two gold coins beaten flat and mounted
       correctIndex: 1
-      explanationZh: 沃尔夫谢姆主动让尼克看他的袖扣，并告知它们是"Finest specimens of human molars"（最好的人臼齿标本）。象牙、宝石或金币都不是他展示的东西。
+      explanationZh: 话头是他自己挑起的——"I see you're looking at my cuff buttons."。尼克本来没在看，这才看过去：一对眼熟的象牙片。"Finest specimens of human molars," he informed me.。
   - id: gg-ch-04-s9
     text: |-
       “How did he happen to do that?” I asked after a minute.
@@ -366,14 +366,14 @@ sections:
       I was flattered that she wanted to speak to me, because of all the older girls I admired her most. She asked me if I was going to the Red Cross to make bandages. I was. Well, then, would I tell them that she couldn’t come that day? The officer looked at Daisy while she was speaking, in a way that every young girl wants to be looked at sometime, and because it seemed romantic to me I have remembered the incident ever since. His name was Jay Gatsby, and I didn’t lay eyes on him again for over four years—even after I’d met him on Long Island I didn’t realize it was the same man.
     checkIn:
       id: gg-ch-04-s9-c1
-      stem: What happens when Nick introduces Gatsby to Tom Buchanan at the restaurant?
+      stem: What happens after Nick introduces Gatsby to Tom Buchanan?
       options:
-        - Gatsby and Tom get into a heated argument.
-        - Gatsby invites Tom to join them for lunch.
-        - Gatsby disappears before the conversation continues.
-        - Tom fails to recognize Gatsby at all.
+        - Gatsby asks Tom to sit down and take a highball
+        - Tom looks straight through him and does not know him
+        - Gatsby is gone by the time Nick turns back round
+        - The two fall to quarrelling before Nick can stop it
       correctIndex: 2
-      explanationZh: 汤姆抱怨尼克好久没打电话，尼克介绍两人握手后，盖茨比脸上露出尴尬的神情，随后当尼克转身时就发现盖茨比已经不在那里了。两人没有争吵，盖茨比也没有邀请汤姆共进午餐。
+      explanationZh: 两人只匆匆握了握手，"a strained, unfamiliar look of embarrassment came over Gatsby's face"。汤姆问他怎么跑这么远来吃饭，尼克答 "I've been having lunch with Mr. Gatsby."——"I turned toward Mr. Gatsby, but he was no longer there."。
   - id: gg-ch-04-s10
     text: |-
       That was nineteen-seventeen. By the next year I had a few beaux myself, and I began to play in tournaments, so I didn’t see Daisy very often. She went with a slightly older crowd—when she went with anyone at all. Wild rumours were circulating about her—how her mother had found her packing her bag one winter night to go to New York and say goodbye to a soldier who was going overseas. She was effectually prevented, but she wasn’t on speaking terms with her family for several weeks. After that she didn’t play around with the soldiers any more, but only with a few flat-footed, shortsighted young men in town, who couldn’t get into the army at all.
@@ -393,14 +393,14 @@ sections:
       She began to cry—she cried and cried. I rushed out and found her mother’s maid, and we locked the door and got her into a cold bath. She wouldn’t let go of the letter. She took it into the tub with her and squeezed it up in a wet ball, and only let me leave it in the soap-dish when she saw that it was coming to pieces like snow.
     checkIn:
       id: gg-ch-04-s10-c1
-      stem: What did Daisy do with the pearl necklace Tom gave her before the wedding?
+      stem: What did Daisy do with the pearls on the eve of the wedding?
       options:
-        - She locked it in a safe and refused to wear it.
-        - She tried to give it back, saying she had changed her mind.
-        - She threw it out the window into the garden.
-        - She gave it to Jordan as a wedding gift.
-      correctIndex: 1
-      explanationZh: 婚礼前 Daisy 醉酒，从床上摸出那串珍珠叫人拿走，反复念叨"Daisy's change' her mine"。她没有把珍珠锁进保险箱、扔出窗外或送给乔丹。
+        - She tried to send them back, saying she had changed her mind
+        - She locked them away in a drawer and would not put them on
+        - She flung them out of the window into the garden
+        - She pressed them on Jordan as a present for being a bridesmaid
+      correctIndex: 0
+      explanationZh: 婚宴前半个钟头，乔丹推门进去，看见她穿着花裙躺在床上，一手一瓶苏泰恩酒，一手攥着一封信。她从床上的废纸篓里摸出那串珍珠——"Take 'em downstairs and give 'em back to whoever they belong to. Tell 'em all Daisy's change' her mine."，接着就哭个不停。
   - id: gg-ch-04-s11
     text: |-
       But she didn’t say another word. We gave her spirits of ammonia and put ice on her forehead and hooked her back into her dress, and half an hour later, when we walked out of the room, the pearls were around her neck and the incident was over. Next day at five o’clock she married Tom Buchanan without so much as a shiver, and started off on a three months’ trip to the South Seas.
@@ -412,14 +412,14 @@ sections:
       Well, about six weeks ago, she heard the name Gatsby for the first time in years. It was when I asked you—do you remember?—if you knew Gatsby in West Egg. After you had gone home she came into my room and woke me up, and said: “What Gatsby?” and when I described him—I was half asleep—she said in the strangest voice that it must be the man she used to know. It wasn’t until then that I connected this Gatsby with the officer in her white car.
     checkIn:
       id: gg-ch-04-s11-c1
-      stem: What scandal emerged from Tom's car accident in Santa Barbara?
+      stem: What got into the papers after Tom's crash on the Ventura road?
       options:
-        - Tom was arrested for drunk driving on the highway.
-        - Tom's car was stolen and stripped for parts.
-        - Tom hit a pedestrian and fled the scene.
-        - A hotel chambermaid traveling with him broke her arm.
+        - Tom was taken up for driving drunk on the highway
+        - Tom's car was stolen that night and stripped for parts
+        - Tom knocked down a man on foot and drove off
+        - A hotel chambermaid was in the car, and broke her arm
       correctIndex: 3
-      explanationZh: 乔丹说汤姆在 Ventura 路上撞上了一辆马车，撞掉了汽车的一个前轮。和他同车的女孩也上了报纸，因为她的胳膊断了——她是圣巴巴拉酒店的一名客房女侍。原文并未提到他被捕、车被偷或撞到行人。
+      explanationZh: 原文写 "A week after I left Santa Barbara Tom ran into a wagon on the Ventura road one night, and ripped a front wheel off his car. The girl who was with him got into the papers, too, because her arm was broken—she was one of the chambermaids in the Santa Barbara Hotel."。就在一周前，乔丹还觉得从没见过哪个姑娘这样迷自己的丈夫。
   - id: gg-ch-04-s12
     text: |-
       When Jordan Baker had finished telling all this we had left the Plaza for half an hour and were driving in a victoria through Central Park. The sun had gone down behind the tall apartments of the movie stars in the West Fifties, and the clear voices of children, already gathered like crickets on the grass, rose through the hot twilight:
@@ -459,14 +459,14 @@ sections:
       “When I said you were a particular friend of Tom’s, he started to abandon the whole idea. He doesn’t know very much about Tom, though he says he’s read a Chicago paper for years just on the chance of catching a glimpse of Daisy’s name.”
     checkIn:
       id: gg-ch-04-s12-c1
-      stem: What does Jordan reveal about Gatsby's reason for buying his house in West Egg?
+      stem: Why did Gatsby buy the house at West Egg?
       options:
-        - He bought it to be close to his business in the city.
-        - He bought it because it reminded him of his childhood home.
-        - He bought it to host extravagant parties for new friends.
-        - He bought it so that Daisy would be just across the bay.
-      correctIndex: 3
-      explanationZh: 乔丹明确告诉尼克："Gatsby bought that house so that Daisy would be just across the bay." 这让尼克意识到盖茨比的所有奢华并非漫无目的。买房与城里生意、童年记忆或单纯办派对无关。
+        - Because it stood close to his business in the city
+        - Because it put him in reach of the people who mattered
+        - Because it put Daisy just across the bay from him
+        - Because it was big enough for the parties he meant to give
+      correctIndex: 2
+      explanationZh: 尼克说这真是巧，乔丹答 "But it wasn't a coincidence at all... Gatsby bought that house so that Daisy would be just across the bay."。尼克这才明白，那个六月的夜里他伸手够的并不只是星星。
   - id: gg-ch-04-s13
     text: |-
       It was dark now, and as we dipped under a little bridge I put my arm around Jordan’s golden shoulder and drew her toward me and asked her to dinner. Suddenly I wasn’t thinking of Daisy and Gatsby any more, but of this clean, hard, limited person, who dealt in universal scepticism, and who leaned back jauntily just within the circle of my arm. A phrase began to beat in my ears with a sort of heady excitement: “There are only the pursued, the pursuing, the busy, and the tired.”
@@ -480,66 +480,66 @@ sections:
       We passed a barrier of dark trees, and then the façade of Fifty-Ninth Street, a block of delicate pale light, beamed down into the park. Unlike Gatsby and Tom Buchanan, I had no girl whose disembodied face floated along the dark cornices and blinding signs, and so I drew up the girl beside me, tightening my arms. Her wan, scornful mouth smiled, and so I drew her up again closer, this time to my face.
     checkIn:
       id: gg-ch-04-s13-c1
-      stem: What condition does Gatsby set for the planned meeting with Daisy?
+      stem: What condition does Gatsby attach to the meeting?
       options:
-        - Daisy must bring Tom along to keep things casual.
-        - Daisy must not be told about him beforehand.
-        - Daisy must agree to have dinner at a restaurant in New York.
-        - Daisy must visit Gatsby's house before meeting him.
+        - That Daisy bring Tom along, to keep it looking casual
+        - That Daisy is not to be told anything beforehand
+        - That they dine somewhere in New York rather than at home
+        - That Daisy be shown over his house before they meet
       correctIndex: 1
-      explanationZh: 乔丹说"She's not to know about it. Gatsby doesn't want her to know."尼克只需以喝茶的名义邀请Daisy，然后让Gatsby过来。盖茨比并不想让Daisy带Tom、去纽约餐厅或先参观他的房子。
+      explanationZh: 乔丹的话是 "She's not to know about it. Gatsby doesn't want her to know. You're just supposed to invite her to tea."。他要的只是隔壁的一个下午——等了五年，买下一座整夜把星光洒给过路飞蛾的大宅，为的不过是能过来一趟。
 quiz:
   - id: gg-ch-04-q1
-    stem: Why does Gatsby tell Nick his life story during the car ride into the city?
+    stem: Why does Gatsby tell Nick his history in the car?
     options:
-      - He wants to make a big request of Nick later that day.
-      - He needs Nick to invest in a new business venture.
-      - He wants Nick to write a magazine profile about him.
-      - He hopes Nick will introduce him to influential people.
+      - Because he had a big request to make of Nick that day
+      - Because he wanted Nick's money in a new venture
+      - Because he hoped for a magazine piece about himself
+      - Because he wanted an introduction to men of influence
     correctIndex: 0
-    explanationZh: 盖茨比说"I'm going to make a big request of you today"，所以先让尼克了解他的身世，不想被当成无名小卒。投资、杂志专访或社交引荐都不是他的目的。
+    explanationZh: 收起那些纪念品之后他心满意足地说 "I'm going to make a big request of you today, so I thought you ought to know something about me. I didn't want you to think I was just some nobody."，还预告了一句 "You'll hear about it this afternoon."。
   - id: gg-ch-04-q2
-    stem: What detail first makes Nick doubt Gatsby's claim about being educated at Oxford?
+    stem: What first makes Nick doubt the Oxford story?
     options:
-      - Gatsby mispronounces the name of the college.
-      - Gatsby cannot name any of his classmates from Oxford.
-      - Gatsby says Oxford is located in the Middle West.
-      - Gatsby hurries through the phrase as if it bothered him.
+      - He could not name a single man from his own college there
+      - He put Oxford somewhere out in the Middle West
+      - He got the name of the college wrong twice over
+      - He hurried the phrase, or swallowed it, as if it hurt
     correctIndex: 3
-    explanationZh: 尼克注意到盖茨比在说到"educated at Oxford"时含糊其辞，好像吞掉了这句话，这让他想起乔丹也曾怀疑盖茨比在撒谎。他并没有念错校名、说不出同学名字或把牛津说成在中西部。
+    explanationZh: 原文写 "He hurried the phrase 'educated at Oxford,' or swallowed it, or choked on it, as though it had bothered him before. And with this doubt, his whole statement fell to pieces"。乔丹为什么不信，尼克这一刻懂了。
   - id: gg-ch-04-q3
-    stem: What does Gatsby reveal about Meyer Wolfshiem that staggers Nick?
+    stem: What does Gatsby say Wolfshiem did that staggers Nick?
     options:
-      - Wolfshiem had smuggled liquor across the Canadian border.
-      - Wolfshiem fixed the World's Series in 1919.
-      - Wolfshiem had bribed a United States senator.
-      - Wolfshiem had orchestrated a major bank robbery.
-    correctIndex: 1
-    explanationZh: 盖茨比平静地说沃尔夫谢姆"fixed the World's Series back in 1919"，尼克对此震惊不已，没想到一个人能如此玩弄五千万人的信任。走私酒、贿赂参议员或银行抢劫都不是原文提及的内容。
+      - He had run liquor across the Canadian border for years
+      - He had bought a United States senator outright
+      - He fixed the World's Series back in the year 1919
+      - He had planned out a very large bank robbery
+    correctIndex: 2
+    explanationZh: 尼克问这人是不是演员、是不是牙医，盖茨比说 "Meyer Wolfshiem? No, he's a gambler."，顿了顿又冷冷补上 "He's the man who fixed the World's Series back in 1919."。尼克说自己从没想过，一个人竟能像撬保险箱那样，去玩弄五千万人的信念。
   - id: gg-ch-04-q4
-    stem: How did Jordan first meet Jay Gatsby when she was a teenager in Louisville?
+    stem: How did Jordan first set eyes on Jay Gatsby in Louisville?
     options:
-      - He was a soldier stationed at Camp Taylor.
-      - He was a guest at Daisy's debutante party.
-      - He was a lieutenant sitting in Daisy's white roadster.
-      - He was a classmate visiting from New Orleans.
-    correctIndex: 2
-    explanationZh: 乔丹回忆1917年路过Daisy家门口，看到Daisy的白roadster里坐着一个她从未见过的中尉，那军官看Daisy的眼神令她终生难忘。她后来知道他叫Jay Gatsby，此后四年再没见过他。
-  - id: gg-ch-04-q5
-    stem: Why did Daisy stop playing with soldiers after one winter night?
-    options:
-      - Her mother caught her packing to see off a soldier going overseas.
-      - She received an engagement proposal from a wealthy New Orleans man.
-      - She had a public argument with her father about her behavior.
-      - She was caught drinking alcohol at a military dance.
+      - A lieutenant sitting in Daisy's white roadster
+      - A soldier at the Camp Taylor dances that autumn
+      - A guest at the party for Daisy's coming out
+      - A schoolfellow of hers over from New Orleans
     correctIndex: 0
-    explanationZh: 乔丹说传闻Daisy的母亲在一个冬夜发现她在收拾行李，要去纽约给一个即将赴海外的士兵送行。她被拦下后与家人冷战了几个星期，之后只跟那些扁平足、近视、进不了军队的本地年轻人来往。新奥尔良的求婚发生在停战后的二月，不是她不再与士兵来往的原因。
-  - id: gg-ch-04-q6
-    stem: What does Jordan say Gatsby did on the chance of catching a glimpse of Daisy's name?
+    explanationZh: 1917 年十月的一个早上，她走到黛西家门口，看见那辆白色小跑车停在路边，车里坐着一个她从没见过的中尉。"The officer looked at Daisy while she was speaking, in a way that every young girl wants to be looked at sometime." 那人叫 Jay Gatsby，此后四年多她再没见过他。
+  - id: gg-ch-04-q5
+    stem: What ended Daisy's going about with soldiers?
     options:
-      - He traveled to Chicago under a false name.
-      - He subscribed to several Louisville society magazines.
-      - He read a Chicago paper for years.
-      - He wrote letters to her former school friends.
-    correctIndex: 2
-    explanationZh: 乔丹说盖茨比虽然对Tom不太了解，但他"read a Chicago paper for years just on the chance of catching a glimpse of Daisy's name"。他并未用假名去芝加哥、订阅Louisville社交杂志或写信给她同学。
+      - A New Orleans man had proposed to her that February
+      - Her mother caught her packing to see a soldier off
+      - She quarrelled with her father in front of everyone
+      - She was found drinking at one of the army dances
+    correctIndex: 1
+    explanationZh: 传闻是 "how her mother had found her packing her bag one winter night to go to New York and say goodbye to a soldier who was going overseas. She was effectually prevented, but she wasn't on speaking terms with her family for several weeks."。那位新奥尔良来的求婚者，是停战之后二月间的事。
+  - id: gg-ch-04-q6
+    stem: What did Gatsby do on the chance of seeing Daisy's name?
+    options:
+      - He went up to Chicago under another name to look
+      - He took several Louisville society papers by post
+      - He wrote round to the girls she had been at school with
+      - He read a Chicago paper for years on the chance of it
+    correctIndex: 3
+    explanationZh: 乔丹说他对汤姆其实所知不多，"though he says he's read a Chicago paper for years just on the chance of catching a glimpse of Daisy's name"。

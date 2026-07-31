@@ -3,7 +3,7 @@ id: gg-ch-06
 bookId: book-gatsby
 title: Chapter 6
 titleZh: 第六章
-summaryZh: 一位记者的突然到访，引出了盖茨比刻意隐藏的身世与少年时代的抱负。与此同时，汤姆·布坎南偶然造访盖茨比宅邸，随后又携黛西出席晚宴——社交场上的暗流与盖茨比对旧梦的执念逐渐交织在一起。
+summaryZh: 一天早上，纽约来的一个年轻记者敲开了盖茨比的门，问他有没有什么话要说。那年夏天，受过他款待的几百号人早已把他讲成了各式各样的模样——他离上报纸只差一点点。
 sections:
   - id: gg-ch-06-s1
     text: |-
@@ -22,14 +22,14 @@ sections:
       I suppose he’d had the name ready for a long time, even then. His parents were shiftless and unsuccessful farm people—his imagination had never really accepted them as his parents at all. The truth was that Jay Gatsby of West Egg, Long Island, sprang from his Platonic conception of himself. He was a son of God—a phrase which, if it means anything, means just that—and he must be about His Father’s business, the service of a vast, vulgar, and meretricious beauty. So he invented just the sort of Jay Gatsby that a seventeen-year-old boy would be likely to invent, and to this conception he was faithful to the end.
     checkIn:
       id: gg-ch-06-s1-c1
-      stem: What was Gatsby's real, legal name before he adopted his famous one?
+      stem: Which tale about Gatsby does Nick call the persistent one?
       options:
-        - His real name was Jimmy Gads.
-        - His real name was Jay Cody.
-        - His real name was James Gatz.
-        - His real name was James Carter.
+        - That he ran an underground pipeline all the way to Canada
+        - That he had been decorated by every Allied government
+        - That he lived in a boat that only looked like a house
+        - That he had a brother who kept the place while he was abroad
       correctIndex: 2
-      explanationZh: 原文明确说 "James Gatz—that was really, or at least legally, his name"，他在十七岁时才改名为 Jay Gatsby。其他选项都是捏造的相似名字。
+      explanationZh: 当时流行的说法里有 "underground pipeline to Canada"，此外还有 "one persistent story that he didn't live in a house at all, but in a boat that looked like a house and was moved secretly up and down the Long Island shore"。尼克说，这些编造为什么让北达科他来的 James Gatz 觉得受用，可不好讲。
   - id: gg-ch-06-s2
     text: |-
       For over a year he had been beating his way along the south shore of Lake Superior as a clam-digger and a salmon-fisher or in any other capacity that brought him food and bed. His brown, hardening body lived naturally through the half-fierce, half-lazy work of the bracing days. He knew women early, and since they spoiled him he became contemptuous of them, of young virgins because they were ignorant, of the others because they were hysterical about things which in his overwhelming self-absorption he took for granted.
@@ -41,14 +41,14 @@ sections:
       Cody was fifty years old then, a product of the Nevada silver fields, of the Yukon, of every rush for metal since seventy-five. The transactions in Montana copper that made him many times a millionaire found him physically robust but on the verge of soft-mindedness, and, suspecting this, an infinite number of women tried to separate him from his money. The none too savoury ramifications by which Ella Kaye, the newspaper woman, played Madame de Maintenon to his weakness and sent him to sea in a yacht, were common property of the turgid journalism in 1902. He had been coasting along all too hospitable shores for five years when he turned up as James Gatz’s destiny in Little Girl Bay.
     checkIn:
       id: gg-ch-06-s2-c1
-      stem: Why did young Gatz leave St. Olaf's College after only two weeks?
+      stem: Why did young Gatz quit St. Olaf's after two weeks?
       options:
-        - It was indifferent to his destiny, and he hated the janitor work.
-        - He ran out of tuition money and had to return to fishing.
-        - He was expelled for fighting with another student.
-        - He left because Dan Cody offered him a job on the spot.
+        - Its fierce indifference to his destiny, and the janitor work
+        - The money ran out and he had to go back to the fishing
+        - He was sent down after a fight with another student
+        - Cody offered him a place on the yacht then and there
       correctIndex: 0
-      explanationZh: 原文说他待了两周就离开了，原因是 "dismayed at its ferocious indifference to the drums of his destiny" 并鄙视以此抵学费的看门人工作。科迪的游艇是他离开之后才出现的。
+      explanationZh: 他在明尼苏达南部那所小小的路德会学院只待了两星期，"dismayed at its ferocious indifference to the drums of his destiny, to destiny itself, and despising the janitor's work with which he was to pay his way through"。随后他又漂回苏必利尔湖——科迪的游艇是这之后才下锚的。
   - id: gg-ch-06-s3
     text: |-
       To young Gatz, resting on his oars and looking up at the railed deck, that yacht represented all the beauty and glamour in the world. I suppose he smiled at Cody—he had probably discovered that people liked him when he smiled. At any rate Cody asked him a few questions (one of them elicited the brand new name) and found that he was quick and extravagantly ambitious. A few days later he took him to Duluth and bought him a blue coat, six pairs of white duck trousers, and a yachting cap. And when the Tuolomee left for the West Indies and the Barbary Coast, Gatsby left too.
@@ -62,14 +62,14 @@ sections:
       He told me all this very much later, but I’ve put it down here with the idea of exploding those first wild rumours about his antecedents, which weren’t even faintly true. Moreover he told it to me at a time of confusion, when I had reached the point of believing everything and nothing about him. So I take advantage of this short halt, while Gatsby, so to speak, caught his breath, to clear this set of misconceptions away.
     checkIn:
       id: gg-ch-06-s3-c1
-      stem: What did Gatsby inherit from Dan Cody, and did he actually receive it?
+      stem: What did Cody leave Gatsby, and how did it end?
       options:
-        - He inherited Cody's yacht but had to sell it immediately.
-        - He inherited the entire Tuolomee and sailed it himself.
-        - He inherited twenty-five thousand dollars but never got it.
-        - He inherited one million dollars and started his business.
+        - The Tuolomee itself, which he sold within the month
+        - A million out of the Montana copper, and he took it
+        - Twenty-five thousand dollars, and he never got a cent
+        - The portrait and the yachting clothes, and nothing more
       correctIndex: 2
-      explanationZh: 科迪留给盖茨比两万五千美元的遗产，但 "He didn't get it"——某种法律手段让钱归了 Ella Kaye。其他选项虚构了游艇或巨额遗产。
+      explanationZh: 原文写 "And it was from Cody that he inherited money—a legacy of twenty-five thousand dollars. He didn't get it."——那套对付他的法律手段他始终没弄明白，剩下的几百万整整齐齐归了 Ella Kaye。留给他的，是那份 singularly appropriate education。
   - id: gg-ch-06-s4
     text: |-
       It was a halt, too, in my association with his affairs. For several weeks I didn’t see him or hear his voice on the phone—mostly I was in New York, trotting around with Jordan and trying to ingratiate myself with her senile aunt—but finally I went over to his house one Sunday afternoon. I hadn’t been there two minutes when somebody brought Tom Buchanan in for a drink. I was startled, naturally, but the really surprising thing was that it hadn’t happened before.
@@ -125,14 +125,14 @@ sections:
       “Please don’t hurry,” Gatsby urged them. He had control of himself now, and he wanted to see more of Tom. “Why don’t you—why don’t you stay for supper? I wouldn’t be surprised if some other people dropped in from New York.”
     checkIn:
       id: gg-ch-06-s4-c1
-      stem: What favor does Gatsby ask Tom and his companions to do when they prepare to leave?
+      stem: What does Gatsby press on the riding party as they rise to go?
       options:
-        - He asks them to tour his library.
-        - He asks them to go riding with him.
-        - He asks them to stay for supper.
-        - He asks them to meet Daisy Buchanan.
-      correctIndex: 2
-      explanationZh: 盖茨比挽留他们说 "Why don't you stay for supper?"，并猜测也许有纽约的客人会来。其他选项在原文中均未出现。
+        - He asks to be taken over their stables next morning
+        - He presses them to stay and take supper with him
+        - He offers to show the three of them his library
+        - He asks whether Mrs. Buchanan might come as well
+      correctIndex: 1
+      explanationZh: 见斯隆先生要起身，他连忙留人——"Please don't hurry... Why don't you—why don't you stay for supper? I wouldn't be surprised if some other people dropped in from New York."。这时他已经稳住了神，只想多见汤姆一会儿。
   - id: gg-ch-06-s5
     text: |-
       “You come to supper with me,” said the lady enthusiastically. “Both of you.”
@@ -172,14 +172,14 @@ sections:
       Tom was evidently perturbed at Daisy’s running around alone, for on the following Saturday night he came with her to Gatsby’s party. Perhaps his presence gave the evening its peculiar quality of oppressiveness—it stands out in my memory from Gatsby’s other parties that summer. There were the same people, or at least the same sort of people, the same profusion of champagne, the same many-coloured, many-keyed commotion, but I felt an unpleasantness in the air, a pervading harshness that hadn’t been there before. Or perhaps I had merely grown used to it, grown to accept West Egg as a world complete in itself, with its own standards and its own great figures, second to nothing because it had no consciousness of being so, and now I was looking at it again, through Daisy’s eyes. It is invariably saddening to look through new eyes at things upon which you have expended your own powers of adjustment.
     checkIn:
       id: gg-ch-06-s5-c1
-      stem: What does Tom wonder about as Gatsby prepares to follow the riders by car?
+      stem: What is Tom turning over in his mind out on the porch?
       options:
-        - He wonders where Gatsby met Daisy.
-        - He wonders where Gatsby bought his car.
-        - He wonders why Gatsby never learned to ride.
-        - He wonders how Gatsby became so wealthy.
+        - Where in the devil the man had ever met Daisy
+        - Where the man had come by so expensive a car
+        - Why the man had never learned to sit a horse
+        - How the man had come by so much money so fast
       correctIndex: 0
-      explanationZh: 汤姆在门廊上低声说 "I wonder where in the devil he met Daisy"——他开始对黛西与盖茨比的关系产生警觉。其他选项不是汤姆此刻关注的焦点。
+      explanationZh: 他先说 "My God, I believe the man's coming. Doesn't he know she doesn't want him?"，接着皱起眉——"I wonder where in the devil he met Daisy. By God, I may be old-fashioned in my ideas, but women run around too much these days to suit me."。
   - id: gg-ch-06-s6
     text: |-
       They arrived at twilight, and, as we strolled out among the sparkling hundreds, Daisy’s voice was playing murmurous tricks in her throat.
@@ -225,14 +225,14 @@ sections:
       “Go ahead,” answered Daisy genially, “and if you want to take down any addresses here’s my little gold pencil.” … She looked around after a moment and told me the girl was “common but pretty,” and I knew that except for the half-hour she’d been alone with Gatsby she wasn’t having a good time.
     checkIn:
       id: gg-ch-06-s6-c1
-      stem: What label does Gatsby repeatedly attach to Tom when introducing him at the party?
+      stem: What tag does Gatsby hang on Tom as he takes them round?
       options:
-        - He calls him the football star.
-        - He calls him the polo player.
-        - He calls him the horseman.
-        - He calls him the golf champion.
-      correctIndex: 1
-      explanationZh: 盖茨比介绍汤姆时加上了 "the polo player"，而且 "the polo player" 这个称呼此后整晚都伴随着汤姆。汤姆本人对此表示异议。其他运动项目都不是原文所写的。
+        - The football star, out of his New Haven days
+        - The horseman, on account of the riding clothes he wore
+        - The golf champion, by way of a joke on Jordan
+        - The polo player, which stuck to him all evening
+      correctIndex: 3
+      explanationZh: 他一路把人领着介绍过去——"Mrs. Buchanan... and Mr. Buchanan—"，顿了一瞬又添上一句 "the polo player."。汤姆连忙否认，可这称呼显然合了盖茨比的意，"Tom remained 'the polo player' for the rest of the evening"。
   - id: gg-ch-06-s7
     text: |-
       We were at a particularly tipsy table. That was my fault—Gatsby had been called to the phone, and I’d enjoyed these same people only two weeks before. But what had amused me then turned septic on the air now.
@@ -268,14 +268,14 @@ sections:
       I sat on the front steps with them while they waited for their car. It was dark here in front; only the bright door sent ten square feet of light volleying out into the soft black morning. Sometimes a shadow moved against a dressing-room blind above, gave way to another shadow, an indefinite procession of shadows, who rouged and powdered in an invisible glass.
     checkIn:
       id: gg-ch-06-s7-c1
-      stem: What had Miss Baedeker's friends done to her earlier in the evening?
+      stem: What had been done to Miss Baedeker earlier that evening?
       options:
-        - They had locked her in a guest room.
-        - They had stuck her head in the pool.
-        - They had carried her to the garden.
-        - They had left her asleep on the porch.
+        - They had shut her into one of the guest rooms upstairs
+        - They had stuck her head into the swimming pool
+        - They had carried her out and left her in the garden
+        - They had let her sleep it off out on the front porch
       correctIndex: 1
-      explanationZh: 有人指出 "you got her dress all wet when you stuck her head in the pool"，贝德克小姐本人也抱怨被人把头按进水池里。其他选项都是无关的捏造。
+      explanationZh: 有人替她辩护，另一位不客气地补上 "you got her dress all wet when you stuck her head in the pool"；她自己也咕哝 "Anything I hate is to get my head stuck in a pool. They almost drowned me once over in New Jersey."。
   - id: gg-ch-06-s8
     text: |-
       “Who is this Gatsby anyhow?” demanded Tom suddenly. “Some big bootlegger?”
@@ -319,14 +319,14 @@ sections:
       I stayed late that night. Gatsby asked me to wait until he was free, and I lingered in the garden until the inevitable swimming party had run up, chilled and exalted, from the black beach, until the lights were extinguished in the guestrooms overhead. When he came down the steps at last the tanned skin was drawn unusually tight on his face, and his eyes were bright and tired.
     checkIn:
       id: gg-ch-06-s8-c1
-      stem: What explanation does Daisy give when Tom demands to know what Gatsby does?
+      stem: What does Daisy say Gatsby does, when Tom presses the point?
       options:
-        - She says he owns drugstores, a lot of drugstores.
-        - She says he runs an import-export business.
-        - She says he manages hotels and restaurants.
-        - She says he invests in oil and copper.
+        - That he owned drugstores, a lot of them, and built them up
+        - That he brought goods in from abroad and sold them on
+        - That he had hotels and restaurants up and down the whole coast
+        - That his money lay in oil and in Montana copper
       correctIndex: 0
-      explanationZh: 黛西主动替盖茨比解释："He owned some drugstores, a lot of drugstores." 其他选项都是虚构的商业领域。
+      explanationZh: 汤姆说 "I'd like to know who he is and what he does. And I think I'll make a point of finding out."，黛西立刻替他答了——"He owned some drugstores, a lot of drugstores. He built them up himself."。
   - id: gg-ch-06-s9
     text: |-
       “She didn’t like it,” he said immediately.
@@ -362,14 +362,14 @@ sections:
       … One autumn night, five years before, they had been walking down the street when the leaves were falling, and they came to a place where there were no trees and the sidewalk was white with moonlight. They stopped here and turned toward each other. Now it was a cool night with that mysterious excitement in it which comes at the two changes of the year. The quiet lights in the houses were humming out into the darkness and there was a stir and bustle among the stars. Out of the corner of his eye Gatsby saw that the blocks of the sidewalks really formed a ladder and mounted to a secret place above the trees—he could climb to it, if he climbed alone, and once there he could suck on the pap of life, gulp down the incomparable milk of wonder.
     checkIn:
       id: gg-ch-06-s9-c1
-      stem: What does Gatsby want Daisy to tell Tom?
+      stem: What does Gatsby want Daisy to say to Tom?
       options:
-        - He wants her to say she is leaving tomorrow.
-        - He wants her to say she wants a divorce.
-        - He wants her to say she never married him.
-        - He wants her to say she never loved him.
+        - That she is leaving with him first thing tomorrow
+        - That she means to have a divorce out of him
+        - That she was never really married to him at all
+        - That she never loved him, and that she never had
       correctIndex: 3
-      explanationZh: 盖茨比希望黛西对汤姆说出 "I never loved you"，从而抹去四年的婚姻，回到五年前在路易斯维尔重新开始。其他选项在措辞和内容上都不符合他的具体要求。
+      explanationZh: 他要的一点不少——"He wanted nothing less of Daisy than that she should go to Tom and say, 'I never loved you.' After she had obliterated four years with that sentence they could decide upon the more practical measures to be taken."。其中一项，是等她自由之后回路易斯维尔，从她娘家把婚结了，就像五年前一样。
   - id: gg-ch-06-s10
     text: |-
       His heart beat faster as Daisy’s white face came up to his own. He knew that when he kissed this girl, and forever wed his unutterable visions to her perishable breath, his mind would never romp again like the mind of God. So he waited, listening for a moment longer to the tuning-fork that had been struck upon a star. Then he kissed her. At his lips’ touch she blossomed for him like a flower and the incarnation was complete.
@@ -377,66 +377,66 @@ sections:
       Through all he said, even through his appalling sentimentality, I was reminded of something—an elusive rhythm, a fragment of lost words, that I had heard somewhere a long time ago. For a moment a phrase tried to take shape in my mouth and my lips parted like a dumb man’s, as though there was more struggling upon them than a wisp of startled air. But they made no sound, and what I had almost remembered was uncommunicable forever.
     checkIn:
       id: gg-ch-06-s10-c1
-      stem: What did Gatsby know would happen to his mind once he kissed Daisy?
+      stem: What did Gatsby know the kiss would cost him?
       options:
-        - His mind would become sharper and more focused than ever.
-        - His mind would lose all memory of his former ambitions.
-        - His mind would finally be at peace with his humble origins.
-        - His mind would never romp again like the mind of God.
-      correctIndex: 3
-      explanationZh: 原文说他知道亲吻黛西后 "his mind would never romp again like the mind of God"——他将不可言说的幻想与她易逝的气息永远结合在了一起。其他选项与原文的情感逻辑无关。
+        - That his mind would at last make peace with where he came from
+        - That his mind would keep sharper than it had ever been
+        - That his mind would never romp again like the mind of God
+        - That his mind would lose every trace of his old ambitions
+      correctIndex: 2
+      explanationZh: 原文写 "He knew that when he kissed this girl, and forever wed his unutterable visions to her perishable breath, his mind would never romp again like the mind of God. So he waited, listening for a moment longer to the tuning-fork that had been struck upon a star. Then he kissed her."。
 quiz:
   - id: gg-ch-06-q1
-    stem: At what age and on what occasion did James Gatz change his name to Jay Gatsby?
+    stem: When did James Gatz become Jay Gatsby?
     options:
-      - At twenty-one, when he first arrived in New York City.
-      - At seventeen, when Dan Cody's yacht anchored near him on Lake Superior.
-      - At twenty-five, when he inherited money from Ella Kaye.
-      - At thirty, when he bought his house in West Egg.
+      - At twenty-one, on the day he first reached New York
+      - At seventeen, when Cody's yacht dropped anchor off the flat
+      - At twenty-five, when the money came down from Ella Kaye
+      - At thirty, on the day he took the house at West Egg
     correctIndex: 1
-    explanationZh: 原文说他十七岁时改名，那一刻正是他看见 Dan Cody 的游艇在苏必利尔湖上下锚——"the specific moment that witnessed the beginning of his career"。其他选项的时间节点都与原文不符。
+    explanationZh: 原文写 "He had changed it at the age of seventeen and at the specific moment that witnessed the beginning of his career—when he saw Dan Cody's yacht drop anchor over the most insidious flat on Lake Superior." 划着借来的小船出去报信的那一刻，穿破绿运动衫的还是 James Gatz，开口的已经是 Jay Gatsby。
   - id: gg-ch-06-q2
-    stem: What practical arrangement did Cody make because of his drinking problem?
+    stem: How did Cody provide against his own drinking?
     options:
-      - He paid Gatsby extra to keep all liquor off the boat.
-      - He made Gatsby sign a contract to never let him drink.
-      - He sent Gatsby ahead to each port to screen his hosts.
-      - He gave Gatsby increasing trust to manage things when Cody was drunk.
+      - He paid Gatsby extra to keep all the liquor off the boat
+      - He had Gatsby sign an article never to let him drink
+      - He sent Gatsby ahead into each port to look over the hosts there
+      - He put more and more trust in Gatsby against his own drunk hours
     correctIndex: 3
-    explanationZh: 科迪清醒时知道醉酒后可能挥霍胡闹，于是 "reposing more and more trust in Gatsby" 来防范此类意外。盖茨比也因此养成了几乎不沾酒的习惯。其他选项虚构了禁酒契约或提前筛查的做法。
+    explanationZh: 原文写 "Dan Cody sober knew what lavish doings Dan Cody drunk might soon be about, and he provided for such contingencies by reposing more and more trust in Gatsby." 五年里盖茨比先后当过管事、大副、船长、秘书，甚至看守。他后来几乎不沾酒，也是间接拜科迪所赐。
   - id: gg-ch-06-q3
-    stem: Why was Gatsby especially affected by Tom's unexpected visit on Sunday afternoon?
+    stem: Why did Tom's dropping in tell so on Gatsby?
     options:
-      - Gatsby wanted Tom to invest in his drugstore business.
-      - Gatsby was seeing the man whose wife he was trying to win back.
-      - Gatsby had once worked for Tom and felt indebted to him.
-      - Gatsby hoped Tom would introduce him to society people.
+      - Gatsby had once worked for Tom and still owed him for it
+      - Gatsby was standing before the husband of the woman he wanted
+      - Gatsby hoped Tom would take him about among the society people
+      - Gatsby wanted Tom's money into the drugstore business
     correctIndex: 1
-    explanationZh: 盖茨比正与汤姆的妻子黛西暗中交往，汤姆的出现让局面骤然紧张——他上前说 "I know your wife" 时几乎带有攻击性。其他选项的商业或社会动机与本章情节无关。
+    explanationZh: 原文写 "He was profoundly affected by the fact that Tom was there." 稳住神之后他还是忍不住开口——"I believe we've met somewhere before, Mr. Buchanan"，接着几乎带着挑衅地补上一句 "I know your wife."。
   - id: gg-ch-06-q4
-    stem: How does Mr. Sloane and the woman actually regard Gatsby's attempt to join them for supper?
+    stem: How did the riding party really take Gatsby's coming to supper?
     options:
-      - They do not really want him, despite the spoken invitation.
-      - They warmly insist that he follow them on horseback.
-      - They invite him only if he can bring Nick along too.
-      - They agree to come back and fetch him in an hour.
+      - They did not want him at all, whatever the lady said
+      - They pressed him warmly to ride along with the three
+      - They would take him only if Nick would come as well
+      - They promised to turn back and fetch him within the hour
     correctIndex: 0
-    explanationZh: 女人嘴上邀请，但汤姆和斯隆都明白她并非真心——"My God, I believe the man's coming. Doesn't he know she doesn't want him?"。斯隆还低声对她耳语催促出发。其他选项描述的热诚或折中方案在原文中不存在。
+    explanationZh: 那位女士嘴上一再邀请，汤姆在门廊上却说 "My God, I believe the man's coming. Doesn't he know she doesn't want him?"。斯隆先生只在她耳边低声说话，末了丢下一句 "Tell him we couldn't wait, will you?" 就上马走了——那时盖茨比正拿着帽子和大衣从前门出来。
   - id: gg-ch-06-q5
-    stem: Why did the ambitious young reporter turn up at Gatsby's door one morning?
+    stem: What brought the young reporter to Gatsby's door?
     options:
-      - He had heard Gatsby's name at his office and hurried out to see.
-      - His paper had assigned him to cover the next big party.
-      - He wanted to confirm the underground pipeline to Canada.
-      - Gatsby had telephoned the paper offering a statement.
-    correctIndex: 0
-    explanationZh: 一位年轻记者趁休息日主动登门，问盖茨比「有没有什么要发表的」。原来他在报社里听人提起过盖茨比的名字，具体缘由他不肯说或自己也没弄清，便凭着可嘉的干劲跑来「看看」。报社并未指派他来，「通往加拿大的地下管道」只是当时众多传说之一。
-  - id: gg-ch-06-q6
-    stem: When Nick cautions Gatsby that he cannot repeat the past, how does Gatsby respond?
-    options:
-      - He agrees and says he will build a new future instead.
-      - He admits the past is gone but vows to avenge it.
-      - He insists that of course you can repeat the past.
-      - He says he will ask Daisy to decide for them both.
+      - The paper had put him on to cover the next of the big parties
+      - He came to check the story of the pipeline to Canada
+      - He had heard the name at his office and came out to see
+      - Gatsby had rung the paper up offering them a statement
     correctIndex: 2
-    explanationZh: 盖茨比难以置信地反问 "Can't repeat the past?"，然后坚定地说 "Why of course you can!"——他要 "fix everything just the way it was before"。其他选项表现出的妥协或转移都与他的执拗相悖。
+    explanationZh: 原文写 "the man had heard Gatsby's name around his office in a connection which he either wouldn't reveal or didn't fully understand. This was his day off and with laudable initiative he had hurried out 'to see.'" 尼克说这一枪是瞎打的，可记者的鼻子没错。
+  - id: gg-ch-06-q6
+    stem: How does Gatsby answer when told the past cannot be repeated?
+    options:
+      - He allows it, and says he will build something new instead
+      - He owns the past is gone, but swears to get even for it
+      - He says he will leave it to Daisy to decide for them both
+      - He cries that of course you can, and will fix it as before
+    correctIndex: 3
+    explanationZh: 尼克劝他别对黛西要求太多——"You can't repeat the past."；他难以置信地反问 "Can't repeat the past? Why of course you can!"，又四下张望，像是过去就藏在自家屋影里、伸手可及——"I'm going to fix everything just the way it was before. She'll see."。

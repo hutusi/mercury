@@ -3,7 +3,7 @@ id: gg-ch-07
 bookId: book-gatsby
 title: Chapter 7
 titleZh: 第七章
-summaryZh: 盖茨比家的晚宴戛然而止，府上换了一批新面孔。一个酷热难当的夏日午后，一行人进城避暑，积压已久的紧张情绪在酒店房间里爆发为正面冲突；而灰烬谷的修车铺里，另一场风暴也在悄然酝酿。从纽约返程途中，一场致命的车祸彻底改变了所有人的命运。
+summaryZh: 外头对他的好奇正盛的时候，某个星期六夜里，盖茨比家的灯忽然没有亮起来——那场以特里马乔为名的排场，就这样不声不响地收了场。开进车道的汽车停上一分钟，便悻悻地掉头走了。
 sections:
   - id: gg-ch-07-s1
     text: |-
@@ -46,14 +46,14 @@ sections:
       The next day was broiling, almost the last, certainly the warmest, of the summer. As my train emerged from the tunnel into sunlight, only the hot whistles of the National Biscuit Company broke the simmering hush at noon. The straw seats of the car hovered on the edge of combustion; the woman next to me perspired delicately for a while into her white shirtwaist, and then, as her newspaper dampened under her fingers, lapsed despairingly into deep heat with a desolate cry. Her pocketbook slapped to the floor.
     checkIn:
       id: gg-ch-07-s1-c1
-      stem: Why did Gatsby dismiss his old servants and hire new ones through Wolfshiem?
+      stem: Why had Gatsby turned off every servant in the house?
       options:
-        - He wanted people who would not gossip about Daisy's visits.
-        - He could no longer afford to keep a large household staff.
-        - He wanted servants who were trained in fine cuisine and etiquette.
-        - He suspected the old staff of stealing from him.
-      correctIndex: 0
-      explanationZh: Gatsby 明确说 "I wanted somebody who wouldn't gossip. Daisy comes over quite often—in the afternoons."，为了不让佣人到处嚼舌根，他才换了 Wolfshiem 介绍的人。
+        - The old staff had been caught taking things from the house
+        - He wanted people who would not gossip about the afternoons
+        - He could no longer keep so large a household on his hands
+        - He wanted a kitchen that could feed a hundred at short notice
+      correctIndex: 1
+      explanationZh: 他在电话里说 "I wanted somebody who wouldn't gossip. Daisy comes over quite often—in the afternoons."。新来的六个人是 Wolfshiem 想照应的一家兄弟姐妹，从前开过小旅馆；村里的说法是，这些人根本不像佣人。
   - id: gg-ch-07-s2
     text: |-
       “Oh, my!” she gasped.
@@ -93,14 +93,14 @@ sections:
       “Holding down the receiver,” said Daisy cynically.
     checkIn:
       id: gg-ch-07-s2-c1
-      stem: What is the butler talking about when he shouts about "the master's body" on the phone?
+      stem: What was really going on at the hall telephone?
       options:
-        - A medical emergency that has struck the household.
-        - Tom's plan to exercise in the afternoon heat.
-        - A business deal about selling Tom's car.
-        - A funeral arrangement for a family friend.
-      correctIndex: 2
-      explanationZh: 管家说 "the master's body" 其实是在跟买家谈 Tom 那辆旧车的买卖，后面 Tom 自己也在电话里嚷 "I won't sell you the car at all"，可见是车的事。说成医疗紧急事件或葬礼安排是把"body"字面化了。
+        - Selling Tom's old car to somebody who keeps ringing up
+        - An emergency in the household that has to be seen to
+        - An undertaker's arrangements for a friend of the family
+        - Tom's plan to take some exercise in the afternoon heat
+      correctIndex: 0
+      explanationZh: 管家那句 "The master's body?" 是尼克在热昏头时替他编的台词——"What he really said was, 'Yes … Yes … I'll see.'"。真正在电话上发火的是汤姆："Very well, then, I won't sell you the car at all... and as for your bothering me about it at lunch time, I won't stand that at all!"。乔丹疑心线那头是汤姆的女人，尼克说这确是一桩正经买卖。
   - id: gg-ch-07-s3
     text: |-
       “No, he’s not,” I assured her. “It’s a bona-fide deal. I happen to know about it.”
@@ -158,14 +158,14 @@ sections:
       “They certainly look cool,” he said, with visible tension.
     checkIn:
       id: gg-ch-07-s3-c1
-      stem: What is Gatsby's reaction when he actually meets Daisy's daughter?
+      stem: How does Gatsby take the sight of Daisy's little girl?
       options:
-        - He looks at the child with surprise.
-        - He ignores the child completely and turns away.
-        - He tells Daisy the child looks exactly like Tom.
-        - He hands the child a gift he had brought along.
-      correctIndex: 0
-      explanationZh: 原文说 Gatsby "kept looking at the child with surprise"，因为 "he had never really believed in its existence before"，他此前从未真正想象过黛西有个孩子。
+        - He takes the small hand and asks the child her name
+        - He looks away and will not turn round until she goes
+        - He keeps looking at the child, surprised she exists at all
+        - He tells Daisy the girl has her father's eyes exactly
+      correctIndex: 2
+      explanationZh: 他和尼克依次弯腰握了那只不情愿的小手，"Afterward he kept looking at the child with surprise. I don't think he had ever really believed in its existence before."。
   - id: gg-ch-07-s4
     text: |-
       We drank in long, greedy swallows.
@@ -207,14 +207,14 @@ sections:
       “You resemble the advertisement of the man,” she went on innocently. “You know the advertisement of the man—”
     checkIn:
       id: gg-ch-07-s4-c1
-      stem: What does Tom suddenly realize when Daisy tells Gatsby, "You always look so cool"?
+      stem: What does Tom take in across the luncheon table?
       options:
-        - She is planning to leave for New York immediately.
-        - She wants to borrow Gatsby's car for the drive.
-        - She is trying to impress Jordan with her wit.
-        - She has told Gatsby she loves him.
+        - That she is set on leaving for New York this minute
+        - That she means to take Gatsby's car for the drive
+        - That she is showing off her wit for Jordan's sake
+        - That she has told Gatsby, in front of him, that she loves him
       correctIndex: 3
-      explanationZh: 黛西反复对盖茨比说 "You always look so cool"，两人四目相对，"Tom Buchanan saw"——Tom 此刻意识到黛西已向盖茨比表白了爱意。
+      explanationZh: 她那句 "You always look so cool" 说了两遍，两人隔桌对望——"She had told him that she loved him, and Tom Buchanan saw. He was astounded. His mouth opened a little, and he looked at Gatsby, and then back at Daisy as if he had just recognized her as someone he knew a long time ago."。
   - id: gg-ch-07-s5
     text: |-
       “All right,” broke in Tom quickly, “I’m perfectly willing to go to town. Come on—we’re all going to town.”
@@ -272,14 +272,14 @@ sections:
       “Well, you take my coupé and let me drive your car to town.”
     checkIn:
       id: gg-ch-07-s5-c1
-      stem: What does Gatsby mean when he says Daisy's voice is "full of money"?
+      stem: What does Gatsby mean by saying her voice is full of money?
       options:
-        - Her charm comes from the sound of wealth.
-        - She is constantly asking him for financial help.
-        - She talks too much about her family's business.
-        - Her voice sounds like a popular radio singer.
-      correctIndex: 0
-      explanationZh: 盖茨比说 "Her voice is full of money"，Nick 顿时领悟这正是她声音中那取之不尽的魅力来源——金钱的叮当与铙钹之声，而非在谈论生意或求助。
+        - That she is forever asking him to help her out with money
+        - That the charm in it is the sound of money itself
+        - That she talks of nothing but her family's business
+        - That it carries like the voice of a singer on the radio
+      correctIndex: 1
+      explanationZh: 尼克说她的嗓音里有点什么，一时说不上来；盖茨比忽然接口 "Her voice is full of money."——"That was it. I'd never understood before. It was full of money—that was the inexhaustible charm that rose and fell in it, the jingle of it, the cymbals' song of it…"。
   - id: gg-ch-07-s6
     text: |-
       The suggestion was distasteful to Gatsby.
@@ -333,14 +333,14 @@ sections:
       We were all irritable now with the fading ale, and aware of it we drove for a while in silence. Then as Doctor T. J. Eckleburg’s faded eyes came into sight down the road, I remembered Gatsby’s caution about gasoline.
     checkIn:
       id: gg-ch-07-s6-c1
-      stem: Why does Tom want to drive Gatsby's car into town?
+      stem: Why does Tom insist on driving Gatsby's car to town?
       options:
-        - He thinks his own car does not have enough gasoline.
-        - He wants to assert control over Gatsby and the situation.
-        - He wants to show Gatsby how a luxury car handles.
-        - He suspects Gatsby is too drunk to drive safely.
-      correctIndex: 1
-      explanationZh: Tom 提出开盖茨比的车，表面上是"换着开"，实际上他刚察觉黛西与盖茨比的暧昧，正试图夺回掌控权。盖茨比对此感到不快，以"没多少油"推辞，但 Tom 不依不饶。
+        - His own coupé was low on gas and would not reach town
+        - He wanted to show Gatsby how the coupé took the open road home
+        - He was taking hold of the situation, and of Gatsby with it
+        - He judged Gatsby had drunk too much to drive at all
+      correctIndex: 2
+      explanationZh: 盖茨比嫌这提议不受用，推说 "I don't think there's much gas"；汤姆偏要 "Well, you take my coupé and let me drive your car to town."，还嚷 "Plenty of gas... And if it runs out I can stop at a drugstore. You can buy anything at a drugstore nowadays."——那句话意有所指，盖茨比脸上闪过一种说不清的神色。刚刚在桌上看清的事，正逼着他把局面抓回手里。
   - id: gg-ch-07-s7
     text: |-
       “We’ve got enough to get us to town,” said Tom.
@@ -392,14 +392,14 @@ sections:
       The relentless beating heat was beginning to confuse me and I had a bad moment there before I realized that so far his suspicions hadn’t alighted on Tom. He had discovered that Myrtle had some sort of life apart from him in another world, and the shock had made him physically sick. I stared at him and then at Tom, who had made a parallel discovery less than an hour before—and it occurred to me that there was no difference between men, in intelligence or race, so profound as the difference between the sick and the well. Wilson was so sick that he looked guilty, unforgivably guilty—as if he had just got some poor girl with child.
     checkIn:
       id: gg-ch-07-s7-c1
-      stem: What does Wilson reveal when Tom stops for gas at the garage?
+      stem: What does Wilson let out while he fills the tank?
       options:
-        - He has found a new job offer in Chicago and plans to leave.
-        - He has discovered Myrtle's secret life and wants to move West.
-        - He has decided to sell the garage and retire comfortably.
-        - He has learned that Tom is having an affair with Myrtle.
-      correctIndex: 1
-      explanationZh: Wilson 说 "I just got wised up to something funny"，发现 Myrtle 另有隐秘的生活，因此决定带她去西部。他还不知道 Myrtle 的情人就是眼前的 Tom。
+        - That something funny has come out, and he means to go West
+        - That a place has been offered him out in Chicago
+        - That he is selling the garage and giving up the work for good
+        - That he knows who his wife has been going to New York for
+      correctIndex: 0
+      explanationZh: 他说 "I've been here too long. I want to get away. My wife and I want to go West."，又补一句 "I just got wised up to something funny the last two days. That's why I want to get away."。尼克在旁看得明白——他的疑心还没落到汤姆身上，他只是发现妻子在另一个世界里另有一份生活。
   - id: gg-ch-07-s8
     text: |-
       “I’ll let you have that car,” said Tom. “I’ll send it over tomorrow afternoon.”
@@ -423,14 +423,14 @@ sections:
       “We can’t argue about it here,” Tom said impatiently, as a truck gave out a cursing whistle behind us. “You follow me to the south side of Central Park, in front of the Plaza.”
     checkIn:
       id: gg-ch-07-s8-c1
-      stem: Who does Myrtle think Jordan Baker is when she peers out the garage window?
+      stem: Who does Myrtle take Jordan Baker for, up at the window?
       options:
-        - A new neighbor who just moved nearby.
-        - A relative of Wilson's from the West.
-        - Tom's wife.
-        - A saleswoman delivering a dress from New York.
-      correctIndex: 2
-      explanationZh: Myrtle 从窗口凝视车内，目光充满嫉妒与恐惧，"fixed not on Tom, but on Jordan Baker, whom she took to be his wife"——她误以为 Jordan 是 Tom 的妻子。
+        - Some new neighbour who had just taken a house near by
+        - A relation of Wilson's come over from out West
+        - A saleswoman bringing a dress down from New York
+        - Tom's wife, which is why her eyes were so wide
+      correctIndex: 3
+      explanationZh: 车棚上头那扇窗的窗帘掀开了一点，她看得太出神，压根不知道自己也被人看着——"her eyes, wide with jealous terror, were fixed not on Tom, but on Jordan Baker, whom she took to be his wife"。
   - id: gg-ch-07-s9
     text: |-
       Several times he turned his head and looked back for their car, and if the traffic delayed them he slowed up until they came into sight. I think he was afraid they would dart down a side-street and out of his life forever.
@@ -525,14 +525,14 @@ sections:
       Another pause. A waiter knocked and came in with crushed mint and ice but the silence was unbroken by his “thank you” and the soft closing of the door. This tremendous detail was to be cleared up at last.
     checkIn:
       id: gg-ch-07-s10-c1
-      stem: What did "Blocks" Biloxi claim that Tom and Nick knew to be false?
+      stem: What did Biloxi claim that Tom and Nick knew to be false?
       options:
-        - That he had fainted at Daisy's wedding on purpose.
-        - That he was Daisy's cousin from Memphis.
-        - That he had been president of Tom's class at Yale.
-        - That he owned the private car he arrived in.
-      correctIndex: 2
-      explanationZh: 乔丹说 Biloxi 自称当过汤姆在耶鲁的班级主席（"president of your class at Yale"）。汤姆和尼克面面相觑——他们班根本没有主席。这个在婚礼上晕倒、又在乔丹家白住三周的"做盒子的 Biloxi"显然一路都在招摇撞骗。
+        - That he had fainted at the wedding on purpose
+        - That he had been president of Tom's class at Yale
+        - That he was a cousin of Daisy's out of Memphis
+        - That the private car he came down in belonged to him
+      correctIndex: 1
+      explanationZh: 乔丹笑说他多半是一路蹭回家去的，"He told me he was president of your class at Yale."。汤姆和尼克面面相觑——"First place, we didn't have any president—"。这位在婚礼上晕过去、又在乔丹家白住三周的做盒子的 Biloxi，看来一路都在招摇。
   - id: gg-ch-07-s11
     text: |-
       “I told you I went there,” said Gatsby.
@@ -580,14 +580,14 @@ sections:
       “I want to know what Mr. Gatsby has to tell me.”
     checkIn:
       id: gg-ch-07-s11-c1
-      stem: How does Gatsby explain his connection to Oxford when Tom presses him?
+      stem: How does Gatsby account for Oxford when Tom presses him?
       options:
-        - He earned a full degree there over three years.
-        - He attended for five months after the armistice as an officer.
-        - He visited briefly as a guest lecturer in history.
-        - He never went there and admits the claim is a lie.
-      correctIndex: 1
-      explanationZh: 盖茨比说 1919 年停战后军官有机会去英法大学，他在 Oxford 只待了五个月，所以 "I can't really call myself an Oxford man"。不是拿学位，也不是客座讲师，更不是撒谎。
+        - He took a full degree there over three years' residence
+        - He went over as a guest lecturer in modern history
+        - Five months in nineteen-nineteen, on an officers' scheme
+        - He never went at all, and owns the whole thing was a lie
+      correctIndex: 2
+      explanationZh: 原文写 "It was in nineteen-nineteen, I only stayed five months. That's why I can't really call myself an Oxford man... It was an opportunity they gave to some of the officers after the armistice. We could go to any of the universities in England or France."。尼克说，那一刻他真想站起来拍拍他的背。
   - id: gg-ch-07-s12
     text: |-
       “Your wife doesn’t love you,” said Gatsby. “She’s never loved you. She loves me.”
@@ -705,14 +705,14 @@ sections:
       The voice begged again to go.
     checkIn:
       id: gg-ch-07-s14-c1
-      stem: What does Tom claim to have uncovered about Gatsby's business activities?
+      stem: What does Tom say he has found out about the drugstores?
       options:
-        - Gatsby inherited a fortune from a European relative.
-        - Gatsby made his money through legitimate Wall Street trading.
-        - Gatsby stole bonds from a bank in New Jersey.
-        - Gatsby and Wolfshiem ran drugstores to sell grain alcohol.
+        - That he came into a fortune from a relation over in Europe
+        - That his money was made in straight Wall Street dealing
+        - That he had taken bonds out of a bank over in New Jersey
+        - That he and Wolfshiem sold grain alcohol over the counter
       correctIndex: 3
-      explanationZh: Tom 说盖茨比和 Wolfshiem 买下了一批街边药房，"sold grain alcohol over the counter"，即非法贩酒。说成合法华尔街交易或继承遗产都不符合原文。
+      explanationZh: 他说 "I found out what your 'drugstores' were... He and this Wolfshiem bought up a lot of side-street drugstores here and in Chicago and sold grain alcohol over the counter."，又说这不过是零头，眼下手里那桩买卖，连 Walter Chase 都不敢开口讲。
   - id: gg-ch-07-s15
     text: |-
       “Please, Tom! I can’t stand this any more.”
@@ -752,14 +752,14 @@ sections:
       “I’ve got my wife locked in up there,” explained Wilson calmly. “She’s going to stay there till the day after tomorrow, and then we’re going to move away.”
     checkIn:
       id: gg-ch-07-s15-c1
-      stem: What does Tom tell Daisy to do after the confrontation in the hotel room?
+      stem: What does Tom tell Daisy to do once the room has emptied of fight?
       options:
-        - Stay at the hotel overnight without Gatsby.
-        - Ride back with Tom and Jordan in his car.
-        - Drive home in Gatsby's car.
-        - Take a train home and leave the cars behind.
-      correctIndex: 2
-      explanationZh: Tom 以"宽宏的轻蔑"让黛西和盖茨比开盖茨比的车先回去："You two start on home, Daisy, in Mr. Gatsby's car." 他认为盖茨比"轻浮的小调情"已经结束了。
+        - To drive home with Gatsby, in Gatsby's own car
+        - To ride back with Tom and Jordan in the coupé
+        - To stay the night in the hotel and come out tomorrow
+        - To take the train back and leave both cars in town
+      correctIndex: 0
+      explanationZh: 他用一种宽宏的轻蔑说 "You two start on home, Daisy. In Mr. Gatsby's car... Go on. He won't annoy you. I think he realizes that his presumptuous little flirtation is over."。两人一句话没说就走了。
   - id: gg-ch-07-s16
     text: |-
       Michaelis was astonished; they had been neighbours for four years, and Wilson had never seemed faintly capable of such a statement. Generally he was one of these worn-out men: when he wasn’t working, he sat on a chair in the doorway and stared at the people and the cars that passed along the road. When anyone spoke to him he invariably laughed in an agreeable, colourless way. He was his wife’s man and not his own.
@@ -777,14 +777,14 @@ sections:
       We saw the three or four automobiles and the crowd when we were still some distance away.
     checkIn:
       id: gg-ch-07-s16-c1
-      stem: What had Wilson done to Myrtle before she escaped and ran into the road?
+      stem: What had Wilson done with Myrtle that afternoon?
       options:
-        - He had beaten her and left her on the floor.
-        - He had threatened her with a gun in the garage.
-        - He had chained her to the office radiator.
-        - He had locked her in a room upstairs.
-      correctIndex: 3
-      explanationZh: Wilson 对 Michaelis 说 "I've got my wife locked in up there"，把 Myrtle 关在楼上，打算后天带她离开。Myrtle 冲出来后喊的"Beat me!"是激将法，不是他已经打了她。
+        - He had knocked her down and left her on the floor
+        - He had shut her up in the room above the garage
+        - He had chained her to the radiator in the office
+        - He had held a pistol on her there in the garage
+      correctIndex: 1
+      explanationZh: 他对 Michaelis 说 "I've got my wife locked in up there. She's going to stay there till the day after tomorrow, and then we're going to move away."。七点过后，Michaelis 在店外听见她在楼下车棚里高声喊 "Beat me! Throw me down and beat me, you dirty little coward!"——那是她冲进路上之前的事。
   - id: gg-ch-07-s17
     text: |-
       “Wreck!” said Tom. “That’s good. Wilson’ll have a little business at last.”
@@ -988,56 +988,56 @@ sections:
       He put his hands in his coat pockets and turned back eagerly to his scrutiny of the house, as though my presence marred the sacredness of the vigil. So I walked away and left him standing there in the moonlight—watching over nothing.
 quiz:
   - id: gg-ch-07-q1
-    stem: Why is the day of the lunch at the Buchanans' significant for Nick?
+    stem: What did Nick remember about that day on the drive back?
     options:
-      - It is his thirtieth birthday.
-      - It is his first day at a new job.
-      - It is the anniversary of his move West.
-      - It is his college reunion day.
+      - It was his thirtieth birthday, as he suddenly remembered
+      - It was his first day in a new place of business downtown
+      - It was a year to the day since he had come East
+      - It was the day of his class reunion at New Haven
     correctIndex: 0
-    explanationZh: 事故现场回程途中 Nick 才想起"today's my birthday"，随即说他三十岁了。之前没有任何铺垫提醒，读者和 Nick 一起猝然意识到这个里程碑。
+    explanationZh: 汤姆问他要不要来点威士忌，他答 "No... I just remembered that today's my birthday."——"I was thirty. Before me stretched the portentous, menacing road of a new decade."。
   - id: gg-ch-07-q2
-    stem: When Gatsby insists Daisy never loved Tom, what does Daisy ultimately admit?
+    stem: What does Daisy finally own to in the hotel room?
     options:
-      - She never loved anyone except Gatsby, as he claims.
-      - She did love Tom once, and she also loved Gatsby.
-      - She only married Tom because Gatsby was too poor.
-      - She loved Tom but only until she met Gatsby again.
+      - That she never loved anyone but Gatsby, exactly as he said
+      - That she did love Tom once, and that she loved Gatsby too
+      - That she took Tom only because Gatsby had no money
+      - That she loved Tom until the day Gatsby came back
     correctIndex: 1
-    explanationZh: 黛西崩溃喊道"I did love him once—but I loved you too"，同时承认对两人的爱，彻底击碎了盖茨比"她从未爱过 Tom"的执念。
+    explanationZh: 她先是勉强说了句 "I never loved him"；汤姆一提 Kapiolani、一提抱她下 Punch Bowl 免得湿鞋的那一天，她就撑不住了——"Oh, you want too much! I love you now—isn't that enough? I can't help what's past... I did love him once—but I loved you too."。
   - id: gg-ch-07-q3
-    stem: Who was actually driving Gatsby's yellow car when it struck and killed Myrtle?
+    stem: Who had the wheel of the yellow car?
     options:
-      - Jay Gatsby.
-      - Tom Buchanan.
-      - Daisy Buchanan.
-      - A passing stranger who had stolen the car.
+      - Jay Gatsby, with Daisy sitting beside him all the way
+      - Tom Buchanan, in the yellow car
+      - Daisy, who had asked to drive to steady herself
+      - A stranger who had taken the car off the road
     correctIndex: 2
-    explanationZh: Nick 问"Was Daisy driving?"，盖茨比答"Yes"——当时黛西精神紧张，主动要求开车，撞人后是盖茨比拉下手刹才停住的。盖茨比打算替她顶罪。
+    explanationZh: 尼克猜到之后直接问 "Was Daisy driving?"，他停了一下才答 "Yes, but of course I'll say I was. You see, when we left New York she was very nervous and she thought it would steady her to drive."。撞上之后，是他伸手拉的手刹。
   - id: gg-ch-07-q4
-    stem: What does Gatsby intend to do about the death of Myrtle Wilson?
+    stem: What does Gatsby mean to do about the accident?
     options:
-      - Tell the authorities that he was the one driving.
-      - Flee the country with Daisy before anyone finds out.
-      - Report the truth to the police and let Daisy face it.
-      - Confront Tom and demand he take responsibility.
-    correctIndex: 0
-    explanationZh: 盖茨比对 Nick 说"of course I'll say I was"，他要向官方声称自己当时在开车，以此替黛西承担罪责。
-  - id: gg-ch-07-q5
-    stem: What does Nick observe when he looks through the pantry window at the Buchanans' house?
-    options:
-      - Tom is on the phone arguing with the police about the crash.
-      - Daisy is alone and crying in the dark kitchen.
-      - Gatsby has broken in and is pleading with Daisy.
-      - Tom and Daisy sit together over cold chicken, in quiet conspiracy.
+      - To get Daisy out of the country before it comes out
+      - To lay the truth before the police and let her face it
+      - To go to Tom and make him take the blame himself
+      - To say that he was the one at the wheel himself
     correctIndex: 3
-    explanationZh: Nick 透过窗缝看到 Tom 和黛西隔着厨房桌面对面坐着，中间摆着冷炸鸡和啤酒，"they were conspiring together"——两人似乎已达成某种和解。
-  - id: gg-ch-07-q6
-    stem: What is Gatsby doing when Nick leaves him at the end of the chapter?
+    explanationZh: 他的原话是 "of course I'll say I was"——开车的名分他要揽到自己身上。此外他还打算守在门外，看汤姆会不会为下午那场事去为难她。
+  - id: gg-ch-07-q5
+    stem: What does Nick see through the rift at the pantry blind?
     options:
-      - Packing his bags to leave West Egg before dawn.
-      - Standing in the moonlight, watching the Buchanan house.
-      - Sitting in his car, ready to chase down Tom.
-      - Walking to the police station to confess.
-    correctIndex: 1
-    explanationZh: 结尾盖茨比"turned back eagerly to his scrutiny of the house"，独自站在月光下守望着黛西的窗户，Nick 走开时留他"watching over nothing"。
+      - Tom on the telephone, wrangling with the police about it
+      - Daisy alone in the dark kitchen, crying to herself
+      - Gatsby inside already, pleading with Daisy at the table
+      - Tom and Daisy over cold chicken, an air of conspiring
+    correctIndex: 3
+    explanationZh: 原文写 "Daisy and Tom were sitting opposite each other at the kitchen table, with a plate of cold fried chicken between them, and two bottles of ale." 鸡和啤酒谁也没动；"They weren't happy... and yet they weren't unhappy either. There was an unmistakable air of natural intimacy about the picture, and anybody would have said that they were conspiring together."。
+  - id: gg-ch-07-q6
+    stem: How does the chapter leave Gatsby?
+    options:
+      - Standing in the moonlight, keeping watch on the house
+      - Packing his things to be out of West Egg by daylight
+      - Sitting in his car with the engine running, waiting for Tom
+      - Walking down the road toward the police station to own it
+    correctIndex: 0
+    explanationZh: 尼克劝他回去睡，他摇头说 "I want to wait here till Daisy goes to bed. Good night, old sport."，随即把手插回口袋，转身继续盯着那所房子，"as though my presence marred the sacredness of the vigil. So I walked away and left him standing there in the moonlight—watching over nothing."。

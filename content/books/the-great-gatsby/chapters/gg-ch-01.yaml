@@ -3,7 +3,7 @@ id: gg-ch-01
 bookId: book-gatsby
 title: Chapter 1
 titleZh: 第一章
-summaryZh: 尼克·卡拉威从中西部来到东部谋生，在东西两个蛋形半岛之间安顿下来。他应邀前往东蛋赴宴，拜访表妹黛西和她的丈夫汤姆·布坎南，却在席间察觉到这个看似光鲜的家庭暗藏裂痕。夜归时，他与神秘的邻居盖茨比遥遥相望。
+summaryZh: 父亲给过他一句话，他翻来覆去想了许多年——你想挑剔谁的时候，先记着这世上不是人人都有过你这样的条件。一九二二年春天，他从中西部搬到长岛那两只蛋形半岛中的一只上住下；对岸东蛋的白色宫殿，正沿着水边闪着光。
 sections:
   - id: gg-ch-01-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       And, after boasting this way of my tolerance, I come to the admission that it has a limit. Conduct may be founded on the hard rock or the wet marshes, but after a certain point I don’t care what it’s founded on. When I came back from the East last autumn I felt that I wanted the world to be in uniform and at a sort of moral attention forever; I wanted no more riotous excursions with privileged glimpses into the human heart. Only Gatsby, the man who gives his name to this book, was exempt from my reaction—Gatsby, who represented everything for which I have an unaffected scorn. If personality is an unbroken series of successful gestures, then there was something gorgeous about him, some heightened sensitivity to the promises of life, as if he were related to one of those intricate machines that register earthquakes ten thousand miles away. This responsiveness had nothing to do with that flabby impressionability which is dignified under the name of the “creative temperament”—it was an extraordinary gift for hope, a romantic readiness such as I have never found in any other person and which it is not likely I shall ever find again. No—Gatsby turned out all right at the end; it is what preyed on Gatsby, what foul dust floated in the wake of his dreams that temporarily closed out my interest in the abortive sorrows and short-winded elations of men.
     checkIn:
       id: gg-ch-01-s1-c1
-      stem: What habit did Nick's father's advice lead Nick to develop?
+      stem: What habit did his father's advice leave Nick with?
       options:
-        - He feels compelled to criticize everyone he meets.
-        - He makes a point of seeking out intimate revelations.
-        - He pretends to be asleep whenever strangers approach.
-        - He is inclined to reserve all judgements.
+        - To seek out the intimate revelations of young men
+        - To feign sleep whenever a stranger drew near him
+        - To criticize freely, since he had had the advantages
+        - To reserve all judgements, a matter of infinite hope
       correctIndex: 3
-      explanationZh: 父亲告诫他不要轻易批评别人，因为并非人人都有过他那样的优越条件。尼克由此养成了「reserve all judgements」——即克制评判——的习惯，这也让很多人向他敞开心扉。
+      explanationZh: 父亲的话是 "just remember that all the people in this world haven't had the advantages that you've had"。尼克由此 "inclined to reserve all judgements"，并说 "Reserving judgements is a matter of infinite hope"。这习惯替他打开了许多古怪的性情，也害他做了不少老牌闷嘴葫芦的听众——真碰上有人要掏心窝子，他常常装睡或装忙躲开。
   - id: gg-ch-01-s2
     text: |-
       My family have been prominent, well-to-do people in this Middle Western city for three generations. The Carraways are something of a clan, and we have a tradition that we’re descended from the Dukes of Buccleuch, but the actual founder of my line was my grandfather’s brother, who came here in fifty-one, sent a substitute to the Civil War, and started the wholesale hardware business that my father carries on today.
@@ -39,14 +39,14 @@ sections:
       I told him. And as I walked on I was lonely no longer. I was a guide, a pathfinder, an original settler. He had casually conferred on me the freedom of the neighbourhood.
     checkIn:
       id: gg-ch-01-s2-c1
-      stem: Why did Nick decide to go East after returning from the war?
+      stem: Why did Nick come East in the spring of twenty-two?
       options:
-        - He wanted to learn the bond business.
-        - He wanted to be closer to his extended family.
-        - He planned to take over the family hardware store.
-        - He intended to study literature at a university.
+        - To learn the bond business, like everyone he knew
+        - To be nearer the aunts and uncles who had advised him
+        - To take over the wholesale hardware business at home
+        - To go back to writing, as he had for the Yale News
       correctIndex: 0
-      explanationZh: 战后尼克回到中西部，却觉得家乡变成了「the ragged edge of the universe」，于是决定去东部从事债券业务。
+      explanationZh: 打完仗回来，中西部在他眼里 "seemed like the ragged edge of the universe"，于是 "I decided to go East and learn the bond business. Everybody I knew was in the bond business, so I supposed it could support one more single man."。姑姑叔叔们像挑预科学校一样商量了一番，父亲答应供他一年。
   - id: gg-ch-01-s3
     text: |-
       And so with the sunshine and the great bursts of leaves growing on the trees, just as things grow in fast movies, I had that familiar conviction that life was beginning over again with the summer.
@@ -58,14 +58,14 @@ sections:
       I lived at West Egg, the—well, the less fashionable of the two, though this is a most superficial tag to express the bizarre and not a little sinister contrast between them. My house was at the very tip of the egg, only fifty yards from the Sound, and squeezed between two huge places that rented for twelve or fifteen thousand a season. The one on my right was a colossal affair by any standard—it was a factual imitation of some Hôtel de Ville in Normandy, with a tower on one side, spanking new under a thin beard of raw ivy, and a marble swimming pool, and more than forty acres of lawn and garden. It was Gatsby’s mansion. Or, rather, as I didn’t know Mr. Gatsby, it was a mansion inhabited by a gentleman of that name. My own house was an eyesore, but it was a small eyesore, and it had been overlooked, so I had a view of the water, a partial view of my neighbour’s lawn, and the consoling proximity of millionaires—all for eighty dollars a month.
     checkIn:
       id: gg-ch-01-s3-c1
-      stem: How does Nick describe the contrast between West Egg and East Egg?
+      stem: What did Nick's own house at West Egg amount to?
       options:
-        - West Egg is the less fashionable of the two.
-        - West Egg is the more fashionable of the two.
-        - West Egg is the more rural of the two.
-        - West Egg is the more crowded of the two.
-      correctIndex: 0
-      explanationZh: 尼克住在西蛋，他说西蛋是「the less fashionable of the two」，并与东蛋之间形成了一种既诡异又略带不祥的对比。
+        - A colossal imitation of a Normandy Hôtel de Ville
+        - A rented room in the city, taken for the summer
+        - A small eyesore at eighty a month, with a view of the water
+        - A weather-beaten bungalow shared with a man from the office
+      correctIndex: 2
+      explanationZh: 他的房子夹在两座一季租金一万二到一万五的大宅之间——"My own house was an eyesore, but it was a small eyesore, and it had been overlooked, so I had a view of the water, a partial view of my neighbour's lawn, and the consoling proximity of millionaires—all for eighty dollars a month."。右手那座诺曼底市政厅的仿制品是盖茨比的；合租平房的计划则在最后关头黄了，同事被调去了华盛顿。
   - id: gg-ch-01-s4
     text: |-
       Across the courtesy bay the white palaces of fashionable East Egg glittered along the water, and the history of the summer really begins on the evening I drove over there to have dinner with the Tom Buchanans. Daisy was my second cousin once removed, and I’d known Tom in college. And just after the war I spent two days with them in Chicago.
@@ -79,14 +79,14 @@ sections:
       He had changed since his New Haven years. Now he was a sturdy straw-haired man of thirty, with a rather hard mouth and a supercilious manner. Two shining arrogant eyes had established dominance over his face and gave him the appearance of always leaning aggressively forward. Not even the effeminate swank of his riding clothes could hide the enormous power of that body—he seemed to fill those glistening boots until he strained the top lacing, and you could see a great pack of muscle shifting when his shoulder moved under his thin coat. It was a body capable of enormous leverage—a cruel body.
     checkIn:
       id: gg-ch-01-s4-c1
-      stem: What was Tom Buchanan's most notable physical accomplishment at New Haven?
+      stem: What had Tom Buchanan been at New Haven?
       options:
-        - He was one of the most powerful football ends ever.
-        - He was a champion polo player for the university.
-        - He was the strongest wrestler in his senior class.
-        - He was the fastest rower on the varsity crew.
+        - One of the most powerful football ends ever at New Haven
+        - The best polo player the university had ever turned out
+        - The strongest wrestler in his class at New Haven
+        - The fastest man on the varsity rowing crew
       correctIndex: 0
-      explanationZh: 汤姆在大学时是橄榄球端锋，被认为是纽黑文有史以来最强壮的端锋之一。他在二十一岁就达到了这种顶尖运动成就，此后一切都显得虎头蛇尾。
+      explanationZh: 他 "had been one of the most powerful ends that ever played football at New Haven—a national figure in a way, one of those men who reach such an acute limited excellence at twenty-one that everything afterward savours of anticlimax"。马球是后来的排场——他从森林湖运了一整串马球小马过来。
   - id: gg-ch-01-s5
     text: |-
       His speaking voice, a gruff husky tenor, added to the impression of fractiousness he conveyed. There was a touch of paternal contempt in it, even toward people he liked—and there were men at New Haven who had hated his guts.
@@ -108,14 +108,14 @@ sections:
       The younger of the two was a stranger to me. She was extended full length at her end of the divan, completely motionless, and with her chin raised a little, as if she were balancing something on it which was quite likely to fall. If she saw me out of the corner of her eyes she gave no hint of it—indeed, I was almost surprised into murmuring an apology for having disturbed her by coming in.
     checkIn:
       id: gg-ch-01-s5-c1
-      stem: Who previously owned the Buchanans' house before Tom bought it?
+      stem: What did Tom's sweeping hand take in as he showed the place?
       options:
-        - Gatsby, the mysterious neighbour.
-        - Carraway, the hardware merchant.
-        - Demaine, the oil man.
-        - Goddard, the scientific author.
+        - A string of polo ponies brought down from Lake Forest
+        - A marble swimming pool and forty acres of lawn and garden
+        - A sunken Italian garden, roses, and a snub-nosed motorboat
+        - A tower under a thin beard of raw ivy, spanking new
       correctIndex: 2
-      explanationZh: 汤姆带尼克参观房产时说这地方属于「Demaine, the oil man」。
+      explanationZh: 他把尼克扳过身去，一只宽大的手扫过整片景致，"including in its sweep a sunken Italian garden, a half acre of deep, pungent roses, and a snub-nosed motorboat that bumped the tide offshore"，还补上一句：这地方原是 Demaine, the oil man 的。大理石泳池、四十英亩草坪和那座新塔，都属于隔壁那栋房子。
   - id: gg-ch-01-s6
     text: |-
       The other girl, Daisy, made an attempt to rise—she leaned slightly forward with a conscientious expression—then she laughed, an absurd, charming little laugh, and I laughed too and came forward into the room.
@@ -147,14 +147,14 @@ sections:
       Tom Buchanan, who had been hovering restlessly about the room, stopped and rested his hand on my shoulder.
     checkIn:
       id: gg-ch-01-s6-c1
-      stem: What does Daisy want to do after hearing that Chicago misses her?
+      stem: How did Daisy answer Nick's news that Chicago missed her?
       options:
-        - She says they should sell their East Egg house.
-        - She says they should invite more guests over.
-        - She says they should go back to Chicago tomorrow.
-        - She says they should move to California.
-      correctIndex: 2
-      explanationZh: 当黛西兴奋地问「他们想我吗」，尼克调侃说整个城市都一片凄凉，黛西立刻高呼「How gorgeous! Let's go back, Tom. Tomorrow!」想回芝加哥。
+        - She asks Nick to carry her love back to everyone there
+        - She cries that they should go back to Chicago tomorrow
+        - She says they ought to sell the East Egg house at once
+        - She proposes they invite the whole town out for a week
+      correctIndex: 1
+      explanationZh: 尼克逗她说全城一片凄凉，车子左后轮都漆黑了当作挽花，北岸整夜都是哀声；她立刻嚷起来 "How gorgeous! Let's go back, Tom. Tomorrow!"，随即又没头没脑地添了一句 "You ought to see the baby."。
   - id: gg-ch-01-s7
     text: |-
       “What you doing, Nick?”
@@ -202,14 +202,14 @@ sections:
       “Why candles?” objected Daisy, frowning. She snapped them out with her fingers. “In two weeks it’ll be the longest day in the year.” She looked at us all radiantly. “Do you always watch for the longest day of the year and then miss it? I always watch for the longest day in the year and then miss it.”
     checkIn:
       id: gg-ch-01-s7-c1
-      stem: What does Miss Baker refuse, saying she is "absolutely in training"?
+      stem: What did Miss Baker turn down, saying she was in training?
       options:
-        - A slice of the dinner's first course.
-        - Tom's offer to show her the stables.
-        - A cigarette offered across the table.
-        - The four cocktails just in from the pantry.
-      correctIndex: 3
-      explanationZh: 女佣端来四杯鸡尾酒，贝克小姐对着它们说「No, thanks... I'm absolutely in training」。她拒绝的明确是刚端上来的酒；参观马厩是汤姆晚些时候对尼克提的，菜肴和香烟在此处均未出现。
+        - A cigarette that Tom pushed across the table to her
+        - A drive into New York that Daisy had pressed all day
+        - The four cocktails just brought in from the pantry
+        - Tom's offer to walk down and look at the stables
+      correctIndex: 2
+      explanationZh: 酒刚从备餐间端出来，她冲着那四杯说 "No, thanks... I'm absolutely in training."。进城的事是黛西缠了她一下午的另一件事；马厩要到晚饭桌上汤姆才提起。
   - id: gg-ch-01-s8
     text: |-
       “We ought to plan something,” yawned Miss Baker, sitting down at the table as if she were getting into bed.
@@ -245,14 +245,14 @@ sections:
       “Well, these books are all scientific,” insisted Tom, glancing at her impatiently. “This fellow has worked out the whole thing. It’s up to us, who are the dominant race, to watch out or these other races will have control of things.”
     checkIn:
       id: gg-ch-01-s8-c1
-      stem: How does Daisy describe the injury on her little finger?
+      stem: How did Daisy account for the bruise on her little finger?
       options:
-        - She says she burned it while lighting the candles.
-        - She says Tom caused the black-and-blue knuckle.
-        - She says she bumped it on the wicker settee outside.
-        - She says she scraped it while playing golf.
+        - She says she caught it on the candles
+        - She says Tom did it, brute of a man that he is
+        - She says she bumped it against the wicker settee
+        - She says she scraped it at the Westchester tournament
       correctIndex: 1
-      explanationZh: 黛西指着发青的指关节说「You did it, Tom」，并自嘲这是嫁给一个粗野壮汉的下场。
+      explanationZh: 指关节青了一块，她指着汤姆说 "You did it, Tom. I know you didn't mean to, but you did do it. That's what I get for marrying a brute of a man, a great, big, hulking physical specimen of a—"。汤姆偏偏受不了 hulking 这个词，她就又说了一遍。
   - id: gg-ch-01-s9
     text: |-
       “We’ve got to beat them down,” whispered Daisy, winking ferociously toward the fervent sun.
@@ -282,14 +282,14 @@ sections:
       This was untrue. I am not even faintly like a rose. She was only extemporizing, but a stirring warmth flowed from her, as if her heart was trying to come out to you concealed in one of those breathless, thrilling words. Then suddenly she threw her napkin on the table and excused herself and went into the house.
     checkIn:
       id: gg-ch-01-s9-c1
-      stem: What does Daisy reveal about the butler's nose?
+      stem: What had happened to the butler's nose?
       options:
-        - Years of serving red wine had permanently stained it.
-        - Years of polishing silver wore it down until he had to quit.
-        - Years of butlering in cold hallways had given him frostbite.
-        - Years of inhaling cleaning chemicals had ruined his sense of smell.
-      correctIndex: 1
-      explanationZh: 黛西讲了一个家庭秘闻：管家曾在纽约为拥有两百人银器餐具的雇主擦银器，从早擦到晚，直到鼻子都受了影响，不得不辞职。
+        - Polishing silver morning till night wore it away
+        - Serving red wine year after year had stained it dark
+        - Cold hallways had left it frostbitten one bad winter
+        - Cleaning chemicals had killed his sense of smell
+      correctIndex: 0
+      explanationZh: 黛西说这是一桩家庭秘闻——他从前替纽约一户人家擦银器，那家的银餐具够两百人用，"He had to polish it from morning till night, until finally it began to affect his nose"，末了只好辞了工。乔丹在旁边接了一句 "Things went from bad to worse."。
   - id: gg-ch-01-s10
     text: |-
       Miss Baker and I exchanged a short glance consciously devoid of meaning. I was about to speak when she sat up alertly and said “Sh!” in a warning voice. A subdued impassioned murmur was audible in the room beyond, and Miss Baker leaned forward unashamed, trying to hear. The murmur trembled on the verge of coherence, sank down, mounted excitedly, and then ceased altogether.
@@ -325,14 +325,14 @@ sections:
       The horses, needless to say, were not mentioned again. Tom and Miss Baker, with several feet of twilight between them, strolled back into the library, as if to a vigil beside a perfectly tangible body, while, trying to look pleasantly interested and a little deaf, I followed Daisy around a chain of connecting verandas to the porch in front. In its deep gloom we sat down side by side on a wicker settee.
     checkIn:
       id: gg-ch-01-s10-c1
-      stem: What does Miss Baker reveal to Nick during Tom's absence?
+      stem: What did Miss Baker tell Nick while Tom was out of the room?
       options:
-        - Tom is secretly planning to sell the estate.
-        - Tom is about to enter a polo tournament abroad.
-        - Tom is planning to move back to Chicago secretly.
-        - Tom is having an affair with a woman in New York.
+        - That Tom means to sell the estate
+        - That Tom is off to a polo tournament abroad next month
+        - That Tom and Daisy are moving back to Chicago in secret
+        - That Tom has got some woman over in New York
       correctIndex: 3
-      explanationZh: 贝克小姐压低声音告诉尼克：「Tom's got some woman in New York」，并批评那个女人不该在晚饭时间打电话来。
+      explanationZh: 她压低嗓子说 "Tom's got some woman in New York."，还添了一句 "She might have the decency not to telephone him at dinner time. Don't you think?"。那第五位客人尖利的金属声，此后一直压在这张餐桌上。
   - id: gg-ch-01-s11
     text: |-
       Daisy took her face in her hands as if feeling its lovely shape, and her eyes moved gradually out into the velvet dusk. I saw that turbulent emotions possessed her, so I asked what I thought would be some sedative questions about her little girl.
@@ -360,14 +360,14 @@ sections:
       Inside, the crimson room bloomed with light. Tom and Miss Baker sat at either end of the long couch and she read aloud to him from the Saturday Evening Post—the words, murmurous and uninflected, running together in a soothing tune. The lamplight, bright on his boots and dull on the autumn-leaf yellow of her hair, glinted along the paper as she turned a page with a flutter of slender muscles in her arms.
     checkIn:
       id: gg-ch-01-s11-c1
-      stem: What did Daisy say she hoped her newborn daughter would be?
+      stem: What did Daisy say she hoped for her newborn daughter?
       options:
-        - She hoped the girl would be a famous tennis champion.
-        - She hoped the girl would be a brilliant businesswoman.
-        - She hoped the girl would be a beautiful little fool.
-        - She hoped the girl would be a talented concert pianist.
+        - That she should grow up a champion
+        - That she should never marry a man of Tom's kind
+        - That she should be a beautiful little fool
+        - That she should be brought up out West, away from all this
       correctIndex: 2
-      explanationZh: 黛西回忆女儿出生不到一小时时，她从麻醉中醒来哭了，说希望女儿将来做一个「beautiful little fool」，因为在这个世界里，漂亮的小傻瓜是女孩最好的出路。
+      explanationZh: 女儿出生不到一个钟头，汤姆不知在哪儿；她从麻药里醒来，问护士是男是女，听说是女孩就扭过头去哭了——"'All right,' I said, 'I'm glad it's a girl. And I hope she'll be a fool—that's the best thing a girl can be in this world, a beautiful little fool.'"。
   - id: gg-ch-01-s12
     text: |-
       When we came in she held us silent for a moment with a lifted hand.
@@ -417,14 +417,14 @@ sections:
       I said lightly that I had heard nothing at all, and a few minutes later I got up to go home. They came to the door with me and stood side by side in a cheerful square of light. As I started my motor Daisy peremptorily called: “Wait!”
     checkIn:
       id: gg-ch-01-s12-c1
-      stem: What does Daisy announce she will try to arrange between Nick and Jordan?
+      stem: What did Daisy say she would arrange for Nick and Jordan?
       options:
-        - She says she will arrange a marriage.
-        - She says she will arrange a business partnership.
-        - She says she will arrange a golf tournament.
-        - She says she will arrange a double date.
+        - A marriage, with Nick and Jordan flung together
+        - A golf tournament out at Westchester for them both
+        - A business partnership in the bond line for the two
+        - A weekend party with the two of them as the guests
       correctIndex: 0
-      explanationZh: 黛西当着尼克的面半开玩笑地说要替他和乔丹牵线搭桥——「I think I'll arrange a marriage」，还说要把他们锁在亚麻衣橱里之类。
+      explanationZh: 她当着两人的面半玩笑地说 "In fact I think I'll arrange a marriage. Come over often, Nick, and I'll sort of—oh—fling you together. You know—lock you up accidentally in linen closets and push you out to sea in a boat, and all that sort of thing—"。
   - id: gg-ch-01-s13
     text: |-
       “I forgot to ask you something, and it’s important. We heard you were engaged to a girl out West.”
@@ -444,66 +444,66 @@ sections:
       I decided to call to him. Miss Baker had mentioned him at dinner, and that would do for an introduction. But I didn’t call to him, for he gave a sudden intimation that he was content to be alone—he stretched out his arms toward the dark water in a curious way, and, far as I was from him, I could have sworn he was trembling. Involuntarily I glanced seaward—and distinguished nothing except a single green light, minute and far away, that might have been the end of a dock. When I looked once more for Gatsby he had vanished, and I was alone again in the unquiet darkness.
     checkIn:
       id: gg-ch-01-s13-c1
-      stem: What does Nick see Gatsby doing when he first spots him on the lawn?
+      stem: What was Gatsby doing when Nick first made him out on the lawn?
       options:
-        - He kneels down to inspect the lawn for weeds.
-        - He stretches out his arms toward the dark water.
-        - He waves frantically to attract Nick's attention.
-        - He walks toward Nick's house to introduce himself.
+        - He was kneeling in the grass, looking for something lost
+        - He stretched out his arms toward the dark water, trembling
+        - He waved and called until Nick turned to look at him
+        - He was walking across the lawn toward Nick's own door
       correctIndex: 1
-      explanationZh: 尼克看见盖茨比从豪宅的阴影中走出来，以一种奇特的方式向黑暗的水面伸出双臂，身体似乎在颤抖。他既没有招手也没有走近，那种「甘于独处」的姿态让尼克打消了上前招呼的念头。
+      explanationZh: 尼克本想开口招呼，可对方 "gave a sudden intimation that he was content to be alone—he stretched out his arms toward the dark water in a curious way, and, far as I was from him, I could have sworn he was trembling"。
 quiz:
   - id: gg-ch-01-q1
-    stem: How does Nick respond when Daisy and Tom say they heard he was engaged?
+    stem: How did Nick answer the report that he was engaged?
     options:
-      - He admits the engagement but says the wedding is far off.
-      - He laughs and promises to introduce the girl to them.
-      - He calls it a libel and says he is too poor.
-      - He blames Tom for spreading the story out West.
-    correctIndex: 2
-    explanationZh: 黛西临别时追问订婚传闻，汤姆也附和说听说过。尼克回答「It's a libel. I'm too poor.」他清楚流言所指，但根本没有订婚——这桩流言正是他来东部的原因之一。承认订婚、答应引见、指责汤姆均与原文不符。
+      - He owns it, but says the wedding is a long way off
+      - He calls it a libel and says that he is far too poor
+      - He laughs and offers to bring the girl East to meet them
+      - He accuses Tom of having spread the story out West
+    correctIndex: 1
+    explanationZh: 临走时黛西追问，汤姆也帮腔 "We heard that you were engaged."，尼克的答话是 "It's a libel. I'm too poor."。他清楚流言指的是什么——正是这桩流言让他决心东行：不能因为闲话就跟老朋友断交，可也不打算被闲话说成一门亲事。
   - id: gg-ch-01-q2
-    stem: How does Nick characterize Gatsby at the very start of the book?
+    stem: How does Nick set Gatsby apart in his opening pages?
     options:
-      - He is a cynical and bitter man who resents his neighbours.
-      - He has an extraordinary gift for hope and a romantic readiness.
-      - He is a cold and calculating businessman with no sentiment.
-      - He is a shy and timid host who avoids his own parties.
-    correctIndex: 1
-    explanationZh: 尼克在开篇就说盖茨比身上有一种「extraordinary gift for hope, a romantic readiness」，是他从未在别人身上见过的品质。这正是盖茨比与众不同之处。
-  - id: gg-ch-01-q3
-    stem: What makes Miss Baker's face seem familiar to Nick before he learns her full name?
-    options:
-      - She had visited his family in Chicago before the war.
-      - She resembled a portrait hanging in his father's office.
-      - Daisy had shown him a photograph of her at dinner.
-      - Her face had looked out from pictures of the sporting life.
+      - A cold man of business, with no sentiment in him
+      - A bitter and cynical neighbour who resented everyone around him
+      - A shy host who kept away from his own parties
+      - A man with an extraordinary gift for hope and romantic readiness
     correctIndex: 3
-    explanationZh: 听到「Jordan Baker」这个全名，尼克才明白为何觉得面熟——她那副悦目而轻蔑的神情曾从阿什维尔、温泉城、棕榈滩的体育画报上望向过他。他还隐约记得一桩关于她的负面传闻，只是内容早已忘了。
-  - id: gg-ch-01-q4
-    stem: What book does Tom urge everyone at the dinner table to read?
+    explanationZh: 他先说盖茨比恰恰代表了自己打心底瞧不上的一切，接着话锋一转——"there was something gorgeous about him, some heightened sensitivity to the promises of life"，那是 "an extraordinary gift for hope, a romantic readiness such as I have never found in any other person and which it is not likely I shall ever find again"。坏的不是盖茨比，是缠住他的那些东西。
+  - id: gg-ch-01-q3
+    stem: Why did Miss Baker's face seem familiar before Nick heard her full name?
     options:
-      - The Decline of the Nordic Race by a man named Morgan.
-      - The Rise of the Coloured Empires by a man named Goddard.
-      - The Fall of Western Civilization by a man named Maecenas.
-      - The Triumph of the White Race by a man named Demaine.
-    correctIndex: 1
-    explanationZh: 汤姆在餐桌上极力推荐一本书，叫 The Rise of the Coloured Empires，作者是 Goddard，他声称白种人若不警惕就会被其他种族淹没。原文明确提到了书名和作者。
-  - id: gg-ch-01-q5
-    stem: How does Nick feel about Daisy's confession once her voice breaks off?
-    options:
-      - He is moved to tears by her honesty and her pain.
-      - He decides that Tom must never hear what she said.
-      - He senses a basic insincerity, as if the evening were a trick.
-      - He resolves to persuade her to leave East Egg at once.
-    correctIndex: 2
-    explanationZh: 黛西讲完「美丽的小傻瓜」一席话后，声音一停，尼克便觉察到「the basic insincerity of what she had said」，仿佛整晚是一场为博取他情感的把戏；片刻后她脸上果然浮现出得意的假笑，像在宣告自己与汤姆同属某个高贵的秘密会社。感动落泪、替她保密、劝她出走均非文中反应。
-  - id: gg-ch-01-q6
-    stem: What does Nick glimpse in the distance when he looks seaward after seeing Gatsby on the lawn?
-    options:
-      - A single green light, minute and far away.
-      - A white palace glittering across the courtesy bay.
-      - A red-and-white Georgian Colonial mansion on a hill.
-      - A snub-nosed motorboat bumping against the tide.
+      - Her face had looked out at him from the sporting rotogravures
+      - She had stayed with his family in Chicago just after the war
+      - She looked like the hard-boiled portrait in his father's office
+      - Daisy had passed a photograph of her round at the table
     correctIndex: 0
-    explanationZh: 盖茨比向黑暗的水面伸出双臂，尼克不由自主地望向海面，「distinguished nothing except a single green light, minute and far away」。这盏绿灯可能是某个码头的尽头，是本章结尾的标志性意象。
+    explanationZh: 听见 Jordan Baker 这个全名，他才想起来——"its pleasing contemptuous expression had looked out at me from many rotogravure pictures of the sporting life at Asheville and Hot Springs and Palm Beach"。他还依稀记得关于她的一桩不太好听的传闻，只是内容早忘光了。
+  - id: gg-ch-01-q4
+    stem: What book did Tom press on the table?
+    options:
+      - The Decline of the Nordic Race, by one Morgan
+      - The Rise of the Coloured Empires, by one Goddard
+      - The Fall of Western Civilization, by one Maecenas
+      - The Triumph of the White Race, by this man Demaine
+    correctIndex: 1
+    explanationZh: 他突然发作起来 "Civilization's going to pieces"，接着推荐 "The Rise of the Coloured Empires by this man Goddard"，说这是本好书、人人都该读，白种人若不当心就要被彻底淹没，还加了一句 "It's all scientific stuff; it's been proved."。
+  - id: gg-ch-01-q5
+    stem: What did Nick feel the moment Daisy's voice broke off?
+    options:
+      - He is moved to tears by how much she has borne
+      - He decides Tom must never learn what she has told him tonight
+      - He feels a basic insincerity, as if the evening were a trick
+      - He makes up his mind to get her away from East Egg
+    correctIndex: 2
+    explanationZh: 她的声音一停，那股逼人的力量随之退去，他便觉出 "the basic insincerity of what she had said. It made me uneasy, as though the whole evening had been a trick of some sort to exact a contributory emotion from me."。果然过了片刻，她脸上浮起一个十足的假笑，像在宣告自己与汤姆同属某个体面的秘密会社。
+  - id: gg-ch-01-q6
+    stem: What did Nick make out when he looked seaward?
+    options:
+      - A white palace glittering across the courtesy bay
+      - A red-and-white Georgian mansion
+      - The snub-nosed motorboat bumping against the tide
+      - A single green light, minute and far away
+    correctIndex: 3
+    explanationZh: 盖茨比朝黑水伸出双臂，尼克不由自主地也望过去，"distinguished nothing except a single green light, minute and far away, that might have been the end of a dock"。再回头找时，那人已经不见了。

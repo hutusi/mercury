@@ -3,7 +3,7 @@ id: gg-ch-03
 bookId: book-gatsby
 title: Chapter 3
 titleZh: 第三章
-summaryZh: 盖茨比的豪宅又举办了一场盛大派对，尼克首次正式做客。在觥筹交错与流言蜚语中，他终于与这位神秘的主人面对面，却对其身份更添疑惑。派对散场后，尼克回顾自己在纽约的生活，也重新审视了与乔丹·贝克的关系。
+summaryZh: 整个夏天，隔壁那所房子夜夜有音乐。男男女女像飞蛾一样在他那片蓝色的花园里来来去去，穿行在低语、香槟和星光之间。到了周一，八个仆人要花上一整天，才能把前一夜留下的痕迹收拾干净。
 sections:
   - id: gg-ch-03-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       By seven o’clock the orchestra has arrived, no thin five-piece affair, but a whole pitful of oboes and trombones and saxophones and viols and cornets and piccolos, and low and high drums. The last swimmers have come in from the beach now and are dressing upstairs; the cars from New York are parked five deep in the drive, and already the halls and salons and verandas are gaudy with primary colours, and hair bobbed in strange new ways, and shawls beyond the dreams of Castile. The bar is in full swing, and floating rounds of cocktails permeate the garden outside, until the air is alive with chatter and laughter, and casual innuendo and introductions forgotten on the spot, and enthusiastic meetings between women who never knew each other’s names.
     checkIn:
       id: gg-ch-03-s1-c1
-      stem: What happens to the oranges and lemons that arrive at Gatsby's house every Friday?
+      stem: What becomes of the Friday crates of oranges and lemons?
       options:
-        - They leave on Monday as a pyramid of pulpless halves.
-        - They are used to decorate the buffet tables all weekend.
-        - They are sent back to the fruiterer untouched.
-        - They are served whole at the bar for decoration.
-      correctIndex: 0
-      explanationZh: 原文明确说每周一这些橙子和柠檬会从后门运出，只剩半壳残渣（"a pyramid of pulpless halves"），说明被榨汁消耗。其他选项在文本中没有依据。
+        - They are piled on the buffet tables through the weekend
+        - They go out again on Monday as pulpless halves
+        - They go back to the fruiterer untouched
+        - They are set whole along the bar for the look of it
+      correctIndex: 1
+      explanationZh: 每星期五纽约的水果店送来五箱，"every Monday these same oranges and lemons left his back door in a pyramid of pulpless halves"。厨房里那台机器，只要管家的拇指按上两百下，半小时就能榨完两百个橙子。
   - id: gg-ch-03-s2
     text: |-
       The lights grow brighter as the earth lurches away from the sun, and now the orchestra is playing yellow cocktail music, and the opera of voices pitches a key higher. Laughter is easier minute by minute, spilled with prodigality, tipped out at a cheerful word. The groups change more swiftly, swell with new arrivals, dissolve and form in the same breath; already there are wanderers, confident girls who weave here and there among the stouter and more stable, become for a sharp, joyous moment the centre of a group, and then, excited with triumph, glide on through the sea-change of faces and voices and colour under the constantly changing light.
@@ -37,14 +37,14 @@ sections:
       Dressed up in white flannels I went over to his lawn a little after seven, and wandered around rather ill at ease among swirls and eddies of people I didn’t know—though here and there was a face I had noticed on the commuting train. I was immediately struck by the number of young Englishmen dotted about; all well dressed, all looking a little hungry, and all talking in low, earnest voices to solid and prosperous Americans. I was sure that they were selling something: bonds or insurance or automobiles. They were at least agonizingly aware of the easy money in the vicinity and convinced that it was theirs for a few words in the right key.
     checkIn:
       id: gg-ch-03-s2-c1
-      stem: Why does Nick consider himself unusual among the party guests?
+      stem: What made Nick unusual among the guests that first night?
       options:
-        - He was the only guest from East Egg at the party.
-        - He had been Gatsby's childhood friend in Germany.
-        - He arrived in a Rolls-Royce rather than a station wagon.
-        - He was one of the few guests who had actually been invited.
+        - He was the only guest who had come over from East Egg
+        - He had grown up with Gatsby in Germany before the war
+        - He had come in a Rolls-Royce instead of the yellow station wagon
+        - He was one of the few guests who had actually been invited
       correctIndex: 3
-      explanationZh: 尼克明确说自己是最少数真正被邀请的客人之一（"one of the few guests who had actually been invited"），其他人是不请自来的。其他选项与原文描述不符。
+      explanationZh: 原文写 "People were not invited—they went there." 人们钻进汽车，被载到长岛，稀里糊涂就到了他家门口。尼克那天一早却收到一封措辞讲究的短笺，说他若肯赏光，将是盖茨比莫大的荣幸——落款 Jay Gatsby，字迹堂皇。
   - id: gg-ch-03-s3
     text: |-
       As soon as I arrived I made an attempt to find my host, but the two or three people of whom I asked his whereabouts stared at me in such an amazed way, and denied so vehemently any knowledge of his movements, that I slunk off in the direction of the cocktail table—the only place in the garden where a single man could linger without looking purposeless and alone.
@@ -76,14 +76,14 @@ sections:
       “I like to come,” Lucille said. “I never care what I do, so I always have a good time. When I was here last I tore my gown on a chair, and he asked me my name and address—inside of a week I got a package from Croirier’s with a new evening gown in it.”
     checkIn:
       id: gg-ch-03-s3-c1
-      stem: What does Lucille say happened after she tore her gown at a previous party?
+      stem: What came of Lucille tearing her gown at an earlier party?
       options:
-        - Gatsby sent her a new evening gown from Croirier's within a week.
-        - Gatsby handed her cash to pay for the damage on the spot.
-        - Gatsby invited her back the following weekend for tea.
-        - Gatsby had his maid stitch it back together overnight.
+        - A new evening gown came from Croirier's within the week
+        - He put cash into her hand on the spot to cover it
+        - He asked her back the next weekend to take tea
+        - He had a maid sit up and stitch it together again
       correctIndex: 0
-      explanationZh: 露西尔说自己上次在派对上刮破了裙子，盖茨比问了她的名字地址，一周内她就收到一个Croirier's寄来的新晚礼服包裹。其他选项均非原文所述。
+      explanationZh: 她说自己上回把裙子挂在椅子上撕破了，主人问了姓名地址，"inside of a week I got a package from Croirier's with a new evening gown in it"——瓦斯蓝配薰衣草色珠子，二百六十五美元。旁边那个姑娘的评语是 "There's something funny about a fellow that'll do a thing like that. He doesn't want any trouble with anybody."。
   - id: gg-ch-03-s4
     text: |-
       “Did you keep it?” asked Jordan.
@@ -119,14 +119,14 @@ sections:
       We got up, and she explained that we were going to find the host: I had never met him, she said, and it was making me uneasy. The undergraduate nodded in a cynical, melancholy way.
     checkIn:
       id: gg-ch-03-s4-c1
-      stem: What does Lucille suggest is the truth about Gatsby, instead of the murder rumour?
+      stem: What does Lucille put forward against the murder rumour?
       options:
-        - That he killed a man once.
-        - That he was a German spy during the war.
-        - That he made his fortune in Germany.
-        - That he fought for the German army.
+        - That he killed a man once
+        - That he was a German spy all through the war
+        - That he made the whole of his fortune over in Germany
+        - That he fought on the German side and changed his name
       correctIndex: 1
-      explanationZh: 露西尔不太相信“杀过人”的说法，她提出“It's more that he was a German spy during the war”，旁边一位男士还点头附和。随即第一个女孩反驳说不可能——他战时在美国军队服役，并坚持自己的杀人猜测。
+      explanationZh: 她将信将疑地插话 "I don't think it's so much that; It's more that he was a German spy during the war."，旁边一位男客点头附和，说这是从一个自小和他在德国一块儿长大的人口中听来的。第一个姑娘立刻反驳：不可能，战时他在美国陆军。
   - id: gg-ch-03-s5
     text: |-
       The bar, where we glanced first, was crowded, but Gatsby was not there. She couldn’t find him from the top of the steps, and he wasn’t on the veranda. On a chance we tried an important-looking door, and walked into a high Gothic library, panelled with carved English oak, and probably transported complete from some ruin overseas.
@@ -170,14 +170,14 @@ sections:
       There was dancing now on the canvas in the garden; old men pushing young girls backward in eternal graceless circles, superior couples holding each other tortuously, fashionably, and keeping in the corners—and a great number of single girls dancing individually or relieving the orchestra for a moment of the burden of the banjo or the traps. By midnight the hilarity had increased. A celebrated tenor had sung in Italian, and a notorious contralto had sung in jazz, and between the numbers people were doing “stunts” all over the garden, while happy, vacuous bursts of laughter rose toward the summer sky. A pair of stage twins, who turned out to be the girls in yellow, did a baby act in costume, and champagne was served in glasses bigger than finger-bowls. The moon had risen higher, and floating in the Sound was a triangle of silver scales, trembling a little to the stiff, tinny drip of the banjoes on the lawn.
     checkIn:
       id: gg-ch-03-s5-c1
-      stem: What astonishes the stout man with owl-eyed spectacles in the library?
+      stem: What has astonished the owl-eyed man in the library?
       options:
-        - The library was shipped complete from an English ruin.
-        - Gatsby owns a complete set of the Stoddard Lectures.
-        - The books on the shelves are absolutely real with pages.
-        - Nobody has ever read any of the books in the library.
+        - That the whole library came over complete from an English ruin
+        - That Gatsby owns the Stoddard Lectures in a full set
+        - That the books are absolutely real, with pages and everything
+        - That not one book on the shelves has ever been opened
       correctIndex: 2
-      explanationZh: 戴猫头鹰眼镜的胖男子惊讶地发现书架上的书是真的，有真正的页面（"They're real... have pages and everything"），他原以为只是硬纸板做的装饰。其他选项虽与图书馆相关，但不是让他惊讶的点。
+      explanationZh: 他本以为那些不过是耐用的硬纸板——"Absolutely real—have pages and everything... It's a bona-fide piece of printed matter. It fooled me. This fella's a regular Belasco."。他还夸这份分寸拿捏得好：书页并没有裁开。
   - id: gg-ch-03-s6
     text: |-
       I was still with Jordan Baker. We were sitting at a table with a man of about my age and a rowdy little girl, who gave way upon the slightest provocation to uncontrollable laughter. I was enjoying myself now. I had taken two finger-bowls of champagne, and the scene had changed before my eyes into something significant, elemental, and profound.
@@ -215,14 +215,14 @@ sections:
       He smiled understandingly—much more than understandingly. It was one of those rare smiles with a quality of eternal reassurance in it, that you may come across four or five times in life. It faced—or seemed to face—the whole eternal world for an instant, and then concentrated on you with an irresistible prejudice in your favour. It understood you just so far as you wanted to be understood, believed in you as you would like to believe in yourself, and assured you that it had precisely the impression of you that, at your best, you hoped to convey. Precisely at that point it vanished—and I was looking at an elegant young roughneck, a year or two over thirty, whose elaborate formality of speech just missed being absurd. Some time before he introduced himself I’d got a strong impression that he was picking his words with care.
     checkIn:
       id: gg-ch-03-s6-c1
-      stem: How does Nick discover that his new acquaintance is actually Gatsby?
+      stem: How does Nick find out who he has been talking to?
       options:
-        - Nick mentions the invitation, and the man reveals he is Gatsby.
-        - Jordan introduces them formally once the orchestra pauses.
-        - The butler announces Gatsby's name to the whole table.
-        - Nick recognises him from the formal note's handwriting.
+        - Nick mentions the invitation, and the man says he is Gatsby
+        - Jordan comes back and makes the introduction properly
+        - The butler announces Gatsby's name to the whole table
+        - Nick knows the handwriting from the morning's note
       correctIndex: 0
-      explanationZh: 尼克在交谈中提到"这个叫盖茨比的人派司机送了请柬"，对方随即说"我就是盖茨比"（"I'm Gatsby"），尼克此前完全不知情。其他选项与原文不符。
+      explanationZh: 尼克对着这位刚认识的人抱怨 "I haven't even seen the host... this man Gatsby sent over his chauffeur with an invitation."，对方愣了一下，"I'm Gatsby," he said suddenly.。接着是那个一生只碰得上四五回的笑——它 "understood you just so far as you wanted to be understood"。
   - id: gg-ch-03-s7
     text: |-
       Almost at the moment when Mr. Gatsby identified himself a butler hurried toward him with the information that Chicago was calling him on the wire. He excused himself with a small bow that included each of us in turn.
@@ -260,14 +260,14 @@ sections:
       The nature of Mr. Tostoff’s composition eluded me, because just as it began my eyes fell on Gatsby, standing alone on the marble steps and looking from one group to another with approving eyes. His tanned skin was drawn attractively tight on his face and his short hair looked as though it were trimmed every day. I could see nothing sinister about him. I wondered if the fact that he was not drinking helped to set him off from his guests, for it seemed to me that he grew more correct as the fraternal hilarity increased. When the “Jazz History of the World” was over, girls were putting their heads on men’s shoulders in a puppyish, convivial way, girls were swooning backward playfully into men’s arms, even into groups, knowing that someone would arrest their falls—but no one swooned backward on Gatsby, and no French bob touched Gatsby’s shoulder, and no singing quartets were formed with Gatsby’s head for one link.
     checkIn:
       id: gg-ch-03-s7-c1
-      stem: What does Jordan say about Gatsby's claim to be an Oxford man?
+      stem: What does Jordan make of Gatsby's saying he is an Oxford man?
       options:
-        - She believes he studied there for a year.
-        - She believes he was expelled from there.
-        - She believes he earned a degree from there.
-        - She does not believe he went there.
+        - She says he took a degree there before the war
+        - She says he was sent down before the second year
+        - She says he was there a year, and no longer
+        - She says she simply does not think he ever went
       correctIndex: 3
-      explanationZh: 乔丹说盖茨比曾告诉她自己是牛津毕业生，但她紧接着说不信（"I don't believe it"），也说不出具体原因。其他选项都与她的态度相反。
+      explanationZh: 她先说 "he told me once he was an Oxford man"，眼看一个背景要在尼克心里立起来，她又添一句 "However, I don't believe it."；问她为什么，只答 "I don't know. I just don't think he went there."。
   - id: gg-ch-03-s8
     text: |-
       “I beg your pardon.”
@@ -291,14 +291,14 @@ sections:
       I looked around. Most of the remaining women were now having fights with men said to be their husbands. Even Jordan’s party, the quartet from East Egg, were rent asunder by dissension. One of the men was talking with curious intensity to a young actress, and his wife, after attempting to laugh at the situation in a dignified and indifferent way, broke down entirely and resorted to flank attacks—at intervals she appeared suddenly at his side like an angry diamond, and hissed: “You promised!” into his ear.
     checkIn:
       id: gg-ch-03-s8-c1
-      stem: Why does Jordan leave Nick on his own toward two in the morning?
+      stem: Why does Jordan leave Nick by himself toward two o'clock?
       options:
-        - Her East Egg party insists on driving home at once.
-        - The butler says Mr. Gatsby would like to speak to her alone.
-        - She goes to console the weeping singer at the piano.
-        - She joins the undergraduate for a dance on the canvas.
+        - Her East Egg party insist on driving home at once
+        - The butler says Mr. Gatsby would like to speak to her alone
+        - She goes to look after the weeping singer at the piano
+        - She goes off to dance on the canvas with the undergraduate outside
       correctIndex: 1
-      explanationZh: 管家突然出现在两人身边，说「Mr. Gatsby would like to speak to you alone」。乔丹惊讶地扬起眉毛，跟着管家进了屋，尼克这才独自一人，此时已近凌晨两点。她的同伴催她回家和照顾歌手都不是她离开的原因。
+      explanationZh: 管家忽然站到两人身边——"Miss Baker? I beg your pardon, but Mr. Gatsby would like to speak to you alone."。她惊讶地扬起眉毛，慢慢起身跟着进了屋。
   - id: gg-ch-03-s9
     text: |-
       The reluctance to go home was not confined to wayward men. The hall was at present occupied by two deplorably sober men and their highly indignant wives. The wives were sympathizing with each other in slightly raised voices.
@@ -340,14 +340,14 @@ sections:
       “Good night.” He smiled—and suddenly there seemed to be a pleasant significance in having been among the last to go, as if he had desired it all the time. “Good night, old sport … Good night.”
     checkIn:
       id: gg-ch-03-s9-c1
-      stem: What does Gatsby remind Nick of as Nick is leaving the party?
+      stem: What does Gatsby remind Nick of at the door?
       options:
-        - They are going up in the hydroplane at nine o'clock the next morning.
-        - They are going to drive to Philadelphia the next morning.
-        - They are having breakfast together at the Yale Club.
-        - They are meeting Jordan Baker for lunch the next day.
-      correctIndex: 0
-      explanationZh: 告别时盖茨比提醒尼克别忘了明天早上九点一起坐水上飞机（"we're going up in the hydroplane tomorrow morning, at nine o'clock"）。其他选项无原文依据。
+        - That they will drive over to Philadelphia in the morning
+        - That they are to breakfast together at the Yale Club
+        - That they are going up in the hydroplane at nine o'clock
+        - That they are meeting Jordan Baker for lunch tomorrow
+      correctIndex: 2
+      explanationZh: 尼克想为白天没认出主人道个歉，盖茨比抢先说 "Don't mention it. Don't give it another thought, old sport."，紧跟着一句 "And don't forget we're going up in the hydroplane tomorrow morning, at nine o'clock."。费城的电话是管家随后进来传的。
   - id: gg-ch-03-s10
     text: |-
       But as I walked down the steps I saw that the evening was not quite over. Fifty feet from the door a dozen headlights illuminated a bizarre and tumultuous scene. In the ditch beside the road, right side up, but violently shorn of one wheel, rested a new coupé which had left Gatsby’s drive not two minutes before. The sharp jut of a wall accounted for the detachment of the wheel, which was now getting considerable attention from half a dozen curious chauffeurs. However, as they had left their cars blocking the road, a harsh, discordant din from those in the rear had been audible for some time, and added to the already violent confusion of the scene.
@@ -385,14 +385,14 @@ sections:
       Blinded by the glare of the headlights and confused by the incessant groaning of the horns, the apparition stood swaying for a moment before he perceived the man in the duster.
     checkIn:
       id: gg-ch-03-s10-c1
-      stem: What explanation does the man with owl eyes give for the car wreck?
+      stem: How does Owl Eyes account for the coupé in the ditch?
       options:
-        - He lost control because he was trying to avoid a wall.
-        - He was not driving because there is another man in the car.
-        - He ran into the ditch because he was driving too fast.
-        - He swerved to avoid a car blocking the road.
-      correctIndex: 1
-      explanationZh: 猫头鹰眼说撞车时不是他在开车，车里还有另一个人（"I wasn't driving. There's another man in the car"），众人哗然。其他选项都是他未提及的原因。
+        - He was trying to get round a wall and lost the road
+        - He ran into the ditch because he had taken the turn too fast
+        - He swerved to miss a car left standing across the way
+        - He was not driving, for there is another man in the car
+      correctIndex: 3
+      explanationZh: 众人劝他车技这么差就别在夜里开车，他愤愤地辩 "But I wasn't even trying."，四下一片肃然；末了他才道破 "You don't understand. I wasn't driving. There's another man in the car."。车门于是慢慢开了。
   - id: gg-ch-03-s11
     text: |-
       “Wha’s matter?” he inquired calmly. “Did we run outa gas?”
@@ -430,14 +430,14 @@ sections:
       I took dinner usually at the Yale Club—for some reason it was the gloomiest event of my day—and then I went upstairs to the library and studied investments and securities for a conscientious hour. There were generally a few rioters around, but they never came into the library, so it was a good place to work. After that, if the night was mellow, I strolled down Madison Avenue past the old Murray Hill Hotel, and over 33rd Street to the Pennsylvania Station.
     checkIn:
       id: gg-ch-03-s11-c1
-      stem: What does Nick do most mornings during this period of the summer?
+      stem: How does Nick spend most of his mornings that summer?
       options:
-        - He takes the hydroplane across the Sound with Gatsby.
-        - He visits Jordan Baker at her aunt's house.
-        - He walks to the Probity Trust and lunches with young clerks.
-        - He studies investments in the Yale Club library.
+        - He crosses the Sound in the hydroplane with Gatsby
+        - He calls on Jordan Baker at her aunt's house in town
+        - He hurries down to the Probity Trust and works there
+        - He sits in the Yale Club library over investments
       correctIndex: 2
-      explanationZh: 尼克说自己大部分时间在工作，清早穿过纽约下城去Probity Trust上班，与年轻的债券推销员们一起吃午饭。学习投资是晚上在耶鲁俱乐部做的事。其他选项张冠李戴。
+      explanationZh: 原文写 "Most of the time I worked. In the early morning the sun threw my shadow westward as I hurried down the white chasms of lower New York to the Probity Trust."。他和那些年轻的债券推销员直呼其名，中午挤在昏暗的小馆子里吃香肠土豆。耶鲁俱乐部的图书馆是晚饭以后的事。
   - id: gg-ch-03-s12
     text: |-
       I began to like New York, the racy, adventurous feel of it at night, and the satisfaction that the constant flicker of men and women and machines gives to the restless eye. I liked to walk up Fifth Avenue and pick out romantic women from the crowd and imagine that in a few minutes I was going to enter into their lives, and no one would ever know or disapprove. Sometimes, in my mind, I followed them to their apartments on the corners of hidden streets, and they turned and smiled back at me before they faded through a door into warm darkness. At the enchanted metropolitan twilight I felt a haunting loneliness sometimes, and felt it in others—poor young clerks who loitered in front of windows waiting until it was time for a solitary restaurant dinner—young clerks in the dusk, wasting the most poignant moments of night and life.
@@ -447,14 +447,14 @@ sections:
       For a while I lost sight of Jordan Baker, and then in midsummer I found her again. At first I was flattered to go places with her, because she was a golf champion, and everyone knew her name. Then it was something more. I wasn’t actually in love, but I felt a sort of tender curiosity. The bored haughty face that she turned to the world concealed something—most affectations conceal something eventually, even though they don’t in the beginning—and one day I found what it was. When we were on a house-party together up in Warwick, she left a borrowed car out in the rain with the top down, and then lied about it—and suddenly I remembered the story about her that had eluded me that night at Daisy’s. At her first big golf tournament there was a row that nearly reached the newspapers—a suggestion that she had moved her ball from a bad lie in the semifinal round. The thing approached the proportions of a scandal—then died away. A caddy retracted his statement, and the only other witness admitted that he might have been mistaken. The incident and the name had remained together in my mind.
     checkIn:
       id: gg-ch-03-s12-c1
-      stem: What does Nick recall about Jordan's first big golf tournament?
+      stem: What does Nick remember about Jordan's first big tournament?
       options:
-        - She won the finals despite a serious injury.
-        - She was accused of cheating on her scorecard.
-        - She argued with a caddy about the rules of the game.
-        - She was nearly involved in a scandal over moving her ball.
-      correctIndex: 3
-      explanationZh: 尼克回忆起乔丹在首次大型高尔夫锦标赛上差点卷入丑闻，有人指控她在半决赛中移动了球的位置（"moved her ball from a bad lie"）。球童后来撤回证词，另一证人承认可能看错，风波才平息。
+        - She won the final that year in spite of a bad injury
+        - A row nearly reached the papers over her moving her ball
+        - She quarrelled with a caddy about a fine point of the rules
+        - She was accused of putting down a wrong score card
+      correctIndex: 1
+      explanationZh: 沃里克那次她把借来的车顶篷敞着丢在雨里，事后还抵赖；尼克这才想起在黛西家没想起来的那桩旧闻——"a suggestion that she had moved her ball from a bad lie in the semifinal round"。球童后来撤回了证词，另一个见证人也说自己或许看错了，事情才平息下去。
   - id: gg-ch-03-s13
     text: |-
       Jordan Baker instinctively avoided clever, shrewd men, and now I saw that this was because she felt safer on a plane where any divergence from a code would be thought impossible. She was incurably dishonest. She wasn’t able to endure being at a disadvantage and, given this unwillingness, I suppose she had begun dealing in subterfuges when she was very young in order to keep that cool, insolent smile turned to the world and yet satisfy the demands of her hard, jaunty body.
@@ -484,64 +484,64 @@ sections:
       id: gg-ch-03-s13-c1
       stem: What reason does Jordan give for liking Nick?
       options:
-        - She says he is the most honest man she knows.
-        - She says he drives more carefully than anyone.
-        - She says she hates careless people.
-        - She says he never asks her personal questions.
-      correctIndex: 2
-      explanationZh: 乔丹说"我讨厌不小心的人，所以我喜欢你"（"I hate careless people. That's why I like you"），暗示她认为尼克足够谨慎。其他选项无原文依据。
+        - She says she hates careless people, and that is why
+        - She says he is the honestest man she has met
+        - She says he drives more carefully than anyone she knows
+        - She says he never asks her a personal question
+      correctIndex: 0
+      explanationZh: 她的原话是 "I hate careless people. That's why I like you."。尼克说她这一句是有意把两人的关系挪了个位置，那一刻他几乎以为自己爱上了她——只是心里还有一桩老家的牵扯没了断。
 quiz:
   - id: gg-ch-03-q1
-    stem: Why does Nick attach himself to Jordan Baker soon after arriving at the party?
+    stem: Why does Nick fasten on to Jordan as soon as she appears?
     options:
-      - He feels awkward alone and needs someone before greeting strangers.
-      - He recognises her as his neighbour from East Egg.
-      - Gatsby specifically asked her to look after him.
-      - She is the only person he recognises from the commuting train.
+      - He felt awkward alone and had to attach himself to someone
+      - He took her for a neighbour of his over on East Egg
+      - Gatsby had asked her beforehand to look after him
+      - She was the one face he knew from the commuting train home
     correctIndex: 0
-    explanationZh: 尼克说在派对上落单令他很尴尬，他必须找个人"黏"着，否则就要对陌生人说客套话（"attach myself to someone before I should begin to address cordial remarks to the passersby"），因此他大声招呼了乔丹。"通勤火车上见过的面孔"只是他在派对各处偶尔瞥见的，不是找乔丹的原因。
+    explanationZh: 问了两三个人主人在哪儿，得到的只是一脸惊讶和矢口否认，他只好溜向鸡尾酒桌——"the only place in the garden where a single man could linger without looking purposeless and alone"。乔丹一出现，"Welcome or not, I found it necessary to attach myself to someone before I should begin to address cordial remarks to the passersby."。
   - id: gg-ch-03-q2
-    stem: Why does Jordan want to leave the East Egg party she joins for supper?
+    stem: Why does Jordan want away from the supper table she joins?
     options:
-      - She finds the group too polite and stiff for her taste.
-      - The undergraduate is pestering her with unwanted attention.
-      - The food is wasteful and inappropriate for a garden party.
-      - Gatsby has asked her to come inside the library.
-    correctIndex: 0
-    explanationZh: 乔丹在那桌吃晚饭的东蛋客显得过于端庄拘谨，乔丹小声说"这对我来说太礼貌了"（"this is much too polite for me"），提议离开。那个大学生的纠缠让她厌烦，但不是她离席的直接理由。
+      - The undergraduate would not leave off pestering her
+      - Gatsby had sent word asking her to come to the library
+      - The supper was wasteful and out of place at a garden party
+      - The table was much too polite for her taste, she said
+    correctIndex: 3
+    explanationZh: 那一桌是东蛋来的三对夫妇加她的男伴，"this party had preserved a dignified homogeneity, and assumed to itself the function of representing the staid nobility of the countryside—East Egg condescending to West Egg"。半小时后她低声说 "Let's get out; this is much too polite for me."。
   - id: gg-ch-03-q3
-    stem: What detail about Gatsby's appearance does Nick notice while the orchestra plays "Jazz History of the World"?
+    stem: What does Nick notice about Gatsby while the Tostoff piece plays?
     options:
-      - He is wearing a white flannel suit like Nick's.
-      - He is drinking champagne steadily from a large glass.
-      - His tanned skin is drawn attractively tight on his face.
-      - He keeps his hands in his pockets and looks downward.
+      - He was in white flannels, much as Nick himself was
+      - He drank champagne steadily out of a finger-bowl glass all night
+      - His tanned skin was drawn attractively tight on his face
+      - He stood with his hands in his pockets, looking down
     correctIndex: 2
-    explanationZh: 尼克在乐曲声中观察盖茨比，注意到他晒黑的皮肤紧绷在脸上，短发像是每天都修剪过（"tanned skin was drawn attractively tight"）。尼克还注意到盖茨比没有喝酒，因此他从不像其他客人那样放纵。其他选项与原文描写不符。
+    explanationZh: 乐曲刚起，尼克的目光就落到独自站在大理石台阶上的主人身上——"His tanned skin was drawn attractively tight on his face and his short hair looked as though it were trimmed every day. I could see nothing sinister about him."。他还留意到盖茨比始终没喝酒；场面越是喧闹，这个人越显得规矩。
   - id: gg-ch-03-q4
-    stem: What happens to the red-haired young lady from the chorus after she sings in the large room?
+    stem: What becomes of the red-haired singer in the long room?
     options:
-      - She quarrels with the pianist over the choice of song.
-      - She throws champagne at the pianist and storms out.
-      - She collapses on the floor and has to be carried outside.
-      - She weeps during her song and sinks into a deep vinous sleep.
+      - She fell out with the pianist over which song to sing
+      - She flung her champagne at the piano and swept out
+      - She fainted on the floor and had to be carried out of doors
+      - She wept as she sang, then went off into a vinous sleep
     correctIndex: 3
-    explanationZh: 这位红发合唱团女孩喝了很多香槟，唱歌时忽然觉得一切都很悲伤，边唱边哭，泪水和睫毛膏混成黑色细流，最后瘫倒在椅子里沉沉睡去（"sank into a chair, and went off into a deep vinous sleep"）。旁边的姑娘解释说，她此前和一个自称是她丈夫的男人吵了架——那是她伤心的缘由，并非唱歌之后的事。
+    explanationZh: 香槟喝多了，唱到一半她忽然认定一切都非常非常悲伤，于是 "she was not only singing, she was weeping too"；泪水碰上厚厚的睫毛膏，成了缓缓爬下脸颊的黑道子。有人打趣说不如照脸上的音符唱，她一举手，"sank into a chair, and went off into a deep vinous sleep"。
   - id: gg-ch-03-q5
-    stem: What does Nick realise about Jordan during the house-party in Warwick?
+    stem: What did Nick find out about Jordan at the Warwick house-party?
     options:
-      - She cheated at cards with the other guests and was caught.
-      - She had borrowed money from someone and never repaid it.
-      - She had secretly been engaged to the undergraduate.
-      - She left a borrowed car out in the rain and lied about it.
-    correctIndex: 3
-    explanationZh: 在沃里克的乡村别墅聚会上，乔丹把借来的敞篷车在雨中忘了合顶篷，事后还撒谎抵赖。这使尼克想起了她当年高尔夫锦标赛上移动球的传闻，意识到她"不可救药地不诚实"。其他选项均无原文依据。
-  - id: gg-ch-03-q6
-    stem: Why does Nick let his brief relationship with the girl from Jersey City fade away?
-    options:
-      - She moves to New York and starts working at the Probity Trust.
-      - Her brother gave him mean looks, and she went on vacation.
-      - He decides she is too careless for his taste and ends it.
-      - Jordan Baker tells him to stop seeing her immediately.
+      - She was caught cheating at cards with the other guests
+      - She left a borrowed car out in the rain and then lied
+      - She had borrowed money there and never paid it back
+      - She had been secretly engaged to the undergraduate
     correctIndex: 1
-    explanationZh: 尼克在会计部门认识了一个住在新泽西城的女孩，短暂交往后她哥哥开始对他投来不善的目光，七月她去度假时，尼克就顺水推舟让这段关系"悄然消散"（"let it blow quietly away"）。其他选项均非原文所述。
+    explanationZh: 原文写 "she left a borrowed car out in the rain with the top down, and then lied about it"——就是这一下，让他想起了在黛西家没想起来的那桩旧闻。他由此认定她 incurably dishonest：受不了处在下风，年纪很轻就学会拿托词遮掩。
+  - id: gg-ch-03-q6
+    stem: Why did Nick's affair with the Jersey City girl fade out?
+    options:
+      - Her brother took to giving him mean looks, and she went away
+      - She moved into town and took a place at the Probity Trust herself
+      - He judged her too careless for him and broke it off
+      - Jordan Baker told him plainly to stop seeing her
+    correctIndex: 0
+    explanationZh: 那姑娘在会计部门做事，"but her brother began throwing mean looks in my direction, so when she went on her vacation in July I let it blow quietly away"。

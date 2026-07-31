@@ -3,7 +3,7 @@ id: gg-ch-05
 bookId: book-gatsby
 title: Chapter 5
 titleZh: 第五章
-summaryZh: 盖茨比请尼克帮忙安排一场与黛西的重逢茶会。当那个等待了五年的时刻终于到来时，紧张与狂喜交织，而重逢后的余波也悄然展开。
+summaryZh: 那天夜里两点，半岛的这一角亮得像着了火。尼克拐过弯才看清，是隔壁那所房子从塔楼一直亮到地窖——里面却一点声音也没有，只有风吹树、电线晃动，灯一暗一亮，像整座房子在朝黑暗里眨眼。
 sections:
   - id: gg-ch-05-s1
     text: |-
@@ -52,14 +52,14 @@ sections:
       “I thought you didn’t, if you’ll pardon my—you see, I carry on a little business on the side, a sort of side line, you understand. And I thought that if you don’t make very much—You’re selling bonds, aren’t you, old sport?”
     checkIn:
       id: gg-ch-05-s1-c1
-      stem: What does Gatsby offer Nick in the first section?
+      stem: What does Gatsby put to Nick after they settle the day?
       options:
-        - A chance to earn money through a confidential side line.
-        - An invitation to a party at his house that very night.
-        - A ride to Coney Island in his new car.
-        - A partnership in a legitimate bond-selling firm.
-      correctIndex: 0
-      explanationZh: 盖茨比说"I carry on a little business on the side"，提出让尼克赚点外快，并暗示这涉及与Wolfshiem有关的事务。去Coney Island或游泳池只是他掩饰紧张、想拖延时间的借口，并非真正的提议内容。
+        - A partnership in a straight bond house downtown
+        - A share in the house next door for the summer
+        - A confidential bit of business worth a nice piece of money
+        - A run out to Coney Island in his car that night
+      correctIndex: 2
+      explanationZh: 他绕了半天才说到正题——"I carry on a little business on the side, a sort of side line, you understand... It wouldn't take up much of your time and you might pick up a nice bit of money. It happens to be a rather confidential sort of thing."。康尼岛和泳池，是他绕不进正题时随口提的。
   - id: gg-ch-05-s2
     text: |-
       “Trying to.”
@@ -93,14 +93,14 @@ sections:
       “What grass?” he inquired blankly. “Oh, the grass in the yard.” He looked out the window at it, but, judging from his expression, I don’t believe he saw a thing.
     checkIn:
       id: gg-ch-05-s2-c1
-      stem: How does Gatsby prepare Nick's house on the rainy morning before Daisy arrives?
+      stem: What arrived at Nick's house on the rainy morning?
       options:
-        - He sends over a full tea service with a hired waiter.
-        - He has Nick's entire house repainted in white.
-        - He delivers a box of imported lemon cakes from a delicatessen.
-        - He sends a man to mow the lawn and a greenhouse of flowers.
-      correctIndex: 3
-      explanationZh: 文中有两处细节：一是穿雨衣的人拖着割草机来帮尼克割草，二是两点钟一整座温室的花从盖茨比家运来。柠檬蛋糕是尼克自己从熟食店买的，温室花太多反而让尼克的花显得多余。
+        - A man came with a lawn-mower, and then a greenhouse of flowers
+        - A full tea service came over with a waiter to pour it
+        - Painters came and did the whole front of the house over in white
+        - A box of lemon cakes came down from a city delicatessen
+      correctIndex: 0
+      explanationZh: 十一点，一个穿雨衣的人拖着割草机来敲门，说是盖茨比派他来割尼克的草；两点钟，"a greenhouse arrived from Gatsby's, with innumerable receptacles to contain it"，尼克自己买的花登时成了多余。那十二块柠檬蛋糕是尼克从熟食店拿回来的。
   - id: gg-ch-05-s3
     text: |-
       “Looks very good,” he remarked vaguely. “One of the papers said they thought the rain would stop about four. I think it was The Journal. Have you got everything you need in the shape of—of tea?”
@@ -136,14 +136,14 @@ sections:
       “Does the gasoline affect his nose?”
     checkIn:
       id: gg-ch-05-s3-c1
-      stem: What does Gatsby announce just before Daisy's car turns into the lane?
+      stem: What does Gatsby do just before the car turns into the lane?
       options:
-        - He rushes to the front door to greet her immediately.
-        - He hides behind the pantry door and refuses to come out.
-        - He gets up and says he is going home because nobody is coming.
-        - He asks Nick to go out and meet her alone first.
-      correctIndex: 2
-      explanationZh: 盖茨比紧张到极点，等得不耐烦便说"Nobody's coming to tea"，声称要回家。但就在他坐下时，黛西的车驶入了车道。这一反应突出了他五年来积压的焦虑与恐惧。
+        - He runs to the front door to be there when she comes
+        - He shuts himself in the pantry and will not come out
+        - He asks Nick to go out and meet her by himself first
+        - He gets up and says nobody is coming, and goes home
+      correctIndex: 3
+      explanationZh: 雨到三点半才转成雾。他拿着一本 Clay's Economics 却一个字也没看进去，末了站起来说 "Nobody's coming to tea. It's too late! I can't wait all day."——尼克说，离四点还差两分钟。他刚坐下，车就拐进了巷子。
   - id: gg-ch-05-s4
     text: |-
       “I don’t think so,” she said innocently. “Why?”
@@ -183,14 +183,14 @@ sections:
       The automatic quality of Gatsby’s answer set us all back at least another minute. I had them both on their feet with the desperate suggestion that they help me make tea in the kitchen when the demoniac Finn brought it in on a tray.
     checkIn:
       id: gg-ch-05-s4-c1
-      stem: What happens when Gatsby leans against the mantelpiece clock?
+      stem: What happens to the mantelpiece clock behind Gatsby's head?
       options:
-        - It chimes loudly and interrupts the conversation.
-        - It tilts dangerously and he catches it with trembling fingers.
-        - It falls and smashes into pieces on the floor.
-        - It stops ticking the moment he touches it.
+        - It strikes the hour and cuts across what they are saying
+        - It tilts dangerously, and he catches it with trembling fingers
+        - It goes over and smashes to pieces on the hearthstone
+        - It stops dead the moment the back of his head touches it
       correctIndex: 1
-      explanationZh: 原文写道clock在头部的压力下危险地倾斜，盖茨比用颤抖的手指扶住它放回原位。三人一度以为它摔碎了，但实际并未掉落。钟象征时间，也暗示他对这五年等待的执念。
+      explanationZh: 他仰头靠在壁炉架上，后脑正抵着那只早已停摆的钟；"Luckily the clock took this moment to tilt dangerously at the pressure of his head, whereupon he turned and caught it with trembling fingers, and set it back in place."，接着道了声 "I'm sorry about the clock."。三个人都有那么一刻以为它已经碎在地上了。
   - id: gg-ch-05-s5
     text: |-
       Amid the welcome confusion of cups and cakes a certain physical decency established itself. Gatsby got himself into a shadow and, while Daisy and I talked, looked conscientiously from one to the other of us with tense, unhappy eyes. However, as calmness wasn’t an end in itself, I made an excuse at the first possible moment, and got to my feet.
@@ -224,14 +224,14 @@ sections:
       After half an hour, the sun shone again, and the grocer’s automobile rounded Gatsby’s drive with the raw material for his servants’ dinner—I felt sure he wouldn’t eat a spoonful. A maid began opening the upper windows of his house, appeared momentarily in each, and, leaning from the large central bay, spat meditatively into the garden. It was time I went back. While the rain continued it had seemed like the murmur of their voices, rising and swelling a little now and then with gusts of emotion. But in the new silence I felt that silence had fallen within the house too.
     checkIn:
       id: gg-ch-05-s5-c1
-      stem: What does Gatsby whisper to Nick in the kitchen?
+      stem: What does Gatsby whisper once he has shut the kitchen door?
       options:
-        - That Daisy seems even lovelier than he remembered.
-        - That this meeting is a terrible, terrible mistake.
-        - That Nick should take Daisy home at once.
-        - That he has forgotten to order the tea cakes.
-      correctIndex: 1
-      explanationZh: 尼克起身离开时，盖茨比慌忙跟进厨房，关上门低声说「Oh, God!」，摇着头说「This is a terrible mistake... a terrible, terrible mistake.」尼克提醒他黛西也一样窘迫，还批评他失礼——把黛西一个人晾在客厅里。
+        - That Daisy is lovelier than he had let himself remember
+        - That Nick had better take Daisy home before Tom misses her
+        - That the whole thing is a terrible, terrible mistake
+        - That he has forgotten to order anything for the tea
+      correctIndex: 2
+      explanationZh: 尼克一起身，他就慌忙跟进来关上门，低低说了句 "Oh, God!"，摇着头道 "This is a terrible mistake... a terrible, terrible mistake."。尼克说他不过是窘，黛西也一样窘，还嫌他失礼——把人一个人晾在客厅里。
   - id: gg-ch-05-s6
     text: |-
       I went in—after making every possible noise in the kitchen, short of pushing over the stove—but I don’t believe they heard a sound. They were sitting at either end of the couch, looking at each other as if some question had been asked, or was in the air, and every vestige of embarrassment was gone. Daisy’s face was smeared with tears, and when I came in she jumped up and began wiping at it with her handkerchief before a mirror. But there was a change in Gatsby that was simply confounding. He literally glowed; without a word or a gesture of exultation a new well-being radiated from him and filled the little room.
@@ -267,14 +267,14 @@ sections:
       “Oh, I’ve been in several things,” he corrected himself. “I was in the drug business and then I was in the oil business. But I’m not in either one now.” He looked at me with more attention. “Do you mean you’ve been thinking over what I proposed the other night?”
     checkIn:
       id: gg-ch-05-s6-c1
-      stem: When Nick steps outside for half an hour, what does Gatsby do that surprises Nick upon his return?
+      stem: What has come over Gatsby when Nick comes back in?
       options:
-        - He has fallen asleep on the couch with his head in Daisy's lap.
-        - He is quietly weeping in the corner of the room.
-        - He radiates a new well-being and literally glows.
-        - He has already started planning a trip abroad with Daisy.
-      correctIndex: 2
-      explanationZh: 尼克回来后发现两人尴尬全消，黛西脸上沾着泪痕，而盖茨比整个人仿佛发光——"He literally glowed"。这与之前那个面如死灰、紧张到发抖的盖茨比形成了鲜明对比。
+        - He glowed, and a new well-being filled the little room
+        - He had fallen asleep with his head in Daisy's lap
+        - He was crying quietly in the corner by the window
+        - He was already laying out a journey abroad with her for the autumn
+      correctIndex: 0
+      explanationZh: 两人隔着沙发两端对坐，窘迫一丝不剩；黛西满脸泪痕，而 "There was a change in Gatsby that was simply confounding. He literally glowed; without a word or a gesture of exultation a new well-being radiated from him and filled the little room."。
   - id: gg-ch-05-s7
     text: |-
       Before I could answer, Daisy came out of the house and two rows of brass buttons on her dress gleamed in the sunlight.
@@ -298,14 +298,14 @@ sections:
       His bedroom was the simplest room of all—except where the dresser was garnished with a toilet set of pure dull gold. Daisy took the brush with delight, and smoothed her hair, whereupon Gatsby sat down and shaded his eyes and began to laugh.
     checkIn:
       id: gg-ch-05-s7-c1
-      stem: Whom do Nick, Daisy, and Gatsby intrude upon during the tour of the house?
+      stem: Whom do the three walk in on upstairs?
       options:
-        - Mr. Klipspringer, doing liver exercises in pyjamas.
-        - The owl-eyed man, asleep in the Merton College Library.
-        - A gardener, trimming the roses beneath the window.
-        - A maid, polishing the sunken baths upstairs.
-      correctIndex: 0
-      explanationZh: 三人穿过一间间卧室与浴室时闯进一个房间，一个衣衫不整、穿着睡衣的男人正在地板上做「肝部运动」——正是「寄宿者」Klipspringer先生。尼克那天早上还见过他在海滩上转悠。猫头鹰眼先生只是尼克路过图书室时想象中的笑声。
+        - A gardener at the roses just under the window
+        - A maid at work on one of the sunken baths
+        - The owl-eyed man asleep in the Merton College Library
+        - Mr. Klipspringer, at his liver exercises in pyjamas
+      correctIndex: 3
+      explanationZh: 一间间房走过去，他们 "intruding into one chamber where a dishevelled man in pyjamas was doing liver exercises on the floor. It was Mr. Klipspringer, the 'boarder.'"。猫头鹰眼的笑声，只是尼克路过图书室时的错觉。
   - id: gg-ch-05-s8
     text: |-
       “It’s the funniest thing, old sport,” he said hilariously. “I can’t—When I try to—”
@@ -327,14 +327,14 @@ sections:
       Daisy put her arm through his abruptly, but he seemed absorbed in what he had just said. Possibly it had occurred to him that the colossal significance of that light had now vanished forever. Compared to the great distance that had separated him from Daisy it had seemed very near to her, almost touching her. It had seemed as close as a star to the moon. Now it was again a green light on a dock. His count of enchanted objects had diminished by one.
     checkIn:
       id: gg-ch-05-s8-c1
-      stem: Why does Daisy suddenly cry into Gatsby's shirts?
+      stem: Why does Daisy break down over the pile of shirts?
       options:
-        - She is overwhelmed by how beautiful the shirts are.
-        - She realizes Gatsby bought them with illegally earned money.
-        - She remembers Tom used to own the same kind of shirts.
-        - She is sad that Gatsby has been hiding them from her for years.
-      correctIndex: 0
-      explanationZh: 黛西把头埋进那堆衬衫里哭喊着"They're such beautiful shirts"，说从没见过这么美的衬衫。这既是被奢华打动，也隐含着她对盖茨比所拥有的一切的渴望与感慨，但直接原因是衬衫本身。
+        - Because she saw all the money that had gone to buy them
+        - Because she had never seen such beautiful shirts
+        - Because Tom had once owned a whole set just like them
+        - Because he had kept them from her all those years
+      correctIndex: 1
+      explanationZh: 那堆衬衫越叠越高——细亚麻、厚绸、软法兰绒，珊瑚色、苹果绿、淡紫、浅橙，绣着靛蓝的姓名花押。她忽然把脸埋了进去，"They're such beautiful shirts... It makes me sad because I've never seen such—such beautiful shirts before."。
   - id: gg-ch-05-s9
     text: |-
       I began to walk about the room, examining various indefinite objects in the half darkness. A large photograph of an elderly man in yachting costume attracted me, hung on the wall over his desk.
@@ -382,14 +382,14 @@ sections:
       “We’ll go downstairs,” interrupted Gatsby. He flipped a switch. The grey windows disappeared as the house glowed full of light.
     checkIn:
       id: gg-ch-05-s9-c1
-      stem: What does Gatsby show Daisy that he has kept in his bedroom?
+      stem: What does Gatsby produce for Daisy in his own rooms?
       options:
-        - A set of rubies he bought specially for the reunion.
-        - An old diary filled with letters he never sent her.
-        - A portrait of himself painted right after the war.
-        - A collection of newspaper clippings about her.
-      correctIndex: 3
-      explanationZh: 盖茨比迅速拿出一叠剪报说"Here's a lot of clippings—about you"，两人并肩翻看。这揭示了他五年来对黛西的执念与收集。文中提到尼克本想看红宝石，但电话响了，红宝石并未成为展示焦点。
+        - A parcel of rubies bought for the day itself
+        - A journal of letters he had written and never sent
+        - A pile of newspaper clippings, every one about her
+        - A portrait of himself painted just after the war
+      correctIndex: 2
+      explanationZh: 黛西看见那张十八岁上下、头发梳成蓬帕杜式的游艇照，笑说 "You never told me you had a pompadour—or a yacht."；他赶紧岔开——"Look at this. Here's a lot of clippings—about you."，两人便并肩翻了起来。尼克本想开口讨那些红宝石看看，电话就响了。
   - id: gg-ch-05-s10
     text: |-
       In the music-room Gatsby turned on a solitary lamp beside the piano. He lit Daisy’s cigarette from a trembling match, and sat down with her on a couch far across the room, where there was no light save what the gleaming floor bounced in from the hall.
@@ -413,66 +413,66 @@ sections:
       They had forgotten me, but Daisy glanced up and held out her hand; Gatsby didn’t know me now at all. I looked once more at them and they looked back at me, remotely, possessed by intense life. Then I went out of the room and down the marble steps into the rain, leaving them there together.
     checkIn:
       id: gg-ch-05-s10-c1
-      stem: What song does Klipspringer play on the piano at Gatsby's request?
+      stem: What did Klipspringer play first in the music-room?
       options:
-        - Ain't We Got Fun
-        - The Love Nest
-        - In the Morning, In the Evening
-        - The Rich Get Richer
-      correctIndex: 1
-      explanationZh: Klipspringer先弹了"The Love Nest"，然后才转而弹唱"Ain't We Got Fun"及其歌词中的段落。"The Love Nest"是第一首被点名的曲目，其余几首是他随后弹唱内容中的片段或歌词。
+        - The Love Nest, before anything else that evening
+        - Ain't We Got Fun, the one he began with
+        - In the Morning, In the Evening, played twice over
+        - The Rich Get Richer, at Daisy's own asking
+      correctIndex: 0
+      explanationZh: 原文写 "When Klipspringer had played 'The Love Nest' he turned around on the bench and searched unhappily for Gatsby in the gloom"，还再三推说手生。盖茨比一句 "Don't talk so much, old sport. Play!" 之后，才有了 Ain't we got fun 那几句。
 quiz:
   - id: gg-ch-05-q1
-    stem: Why does Gatsby insist on having Nick's grass cut before Daisy comes to tea?
+    stem: Why does Gatsby want the grass cut before the tea?
     options:
-      - He wants everything around Nick's modest house to look presentable.
-      - He needs to hide the sharp border between the two lawns.
-      - He thinks the overgrown grass will attract insects to the tea.
-      - He is required by West Egg regulations to maintain neighboring lawns.
+      - He wanted everything about the place to look well for her
+      - He meant to hide the line where the two lawns met
+      - He was afraid the long grass would bring insects to the tea
+      - West Egg required a man to keep his neighbour's lawn
     correctIndex: 0
-    explanationZh: 盖茨比说"I want to get the grass cut"，两人低头看见两家草坪之间鲜明的分界线——盖茨比保养精良的草坪紧邻尼克杂草丛生的院子。他派人修剪的是尼克的草皮，目的是在黛西到来之前让周围环境体面。草坪分界线只是他注意到的细节，不是割草的原因。
+    explanationZh: 定下日子后他很不情愿地说 "I want to get the grass cut"，两人一齐低头看去——"there was a sharp line where my ragged lawn ended and the darker, well-kept expanse of his began. I suspected that he meant my grass."。第二天上午，割草的人果然来了。
   - id: gg-ch-05-q2
-    stem: What does Gatsby claim about the source of the money that bought his house?
+    stem: What does Gatsby say about the money that bought the house?
     options:
-      - He inherited it entirely from his family in the Midwest.
-      - He won it in a single large business transaction.
-      - He borrowed it from Dan Cody and never repaid the loan.
-      - He earned it himself over three years.
+      - He had it whole from his people out in the Middle West
+      - He made it at one stroke in a single large deal
+      - He had it of Dan Cody and never paid a penny back
+      - He earned it himself, and it took him just three years
     correctIndex: 3
-    explanationZh: 盖茨比告诉尼克"It took me just three years to earn the money that bought it"。但当尼克以为他继承了遗产时，他又习惯性地附和说自己确实继承了但大部分在战时金融恐慌中损失了。这种自相矛盾暗示他的财富来源并不清白。
+    explanationZh: 他望着自家门面说 "It took me just three years to earn the money that bought it."；尼克说不是继承来的吗，他又顺口接上 "I did, old sport, but I lost most of it in the big panic—the panic of the war."。再问他做的什么生意，他脱口 "That's my affair."，随即才觉出这话答得不妥。
   - id: gg-ch-05-q3
-    stem: What realization does Gatsby have about the green light at the end of Daisy's dock?
+    stem: What may have occurred to Gatsby about the green light?
     options:
-      - It has grown brighter since Daisy first came to his house.
-      - Its colossal significance has vanished forever.
-      - It will now guide him safely across the bay each night.
-      - It was never actually visible from his own property.
+      - That it burned brighter than it had all that summer
+      - That its colossal significance had vanished forever
+      - That it would guide him over the bay at night now
+      - That it had never really been visible from his lawn
     correctIndex: 1
-    explanationZh: 原文说"the colossal significance of that light had now vanished forever"——绿灯曾是分隔他与黛西的遥远象征，近如星与月。如今黛西就在身边，绿灯重新变回只是码头上一盏普通的灯，他施了魔法的物件又少了一件。
+    explanationZh: 他说 "If it wasn't for the mist we could see your home across the bay. You always have a green light that burns all night at the end of your dock."，说完却出了神——"Possibly it had occurred to him that the colossal significance of that light had now vanished forever... Now it was again a green light on a dock. His count of enchanted objects had diminished by one."。
   - id: gg-ch-05-q4
-    stem: Who is the elderly man in the yachting costume photograph in Gatsby's bedroom?
+    stem: Who is the elderly man in yachting costume over the desk?
     options:
-      - Meyer Wolfshiem, Gatsby's current business partner.
-      - Gatsby's father, who lives on a farm in the Midwest.
-      - Dan Cody, who used to be Gatsby's best friend.
-      - A former employer who left Gatsby a large inheritance.
+      - Meyer Wolfshiem, the man he does business with now
+      - His own father, still on the farm out in the Middle West
+      - Dan Cody, who used to be his best friend years ago
+      - An old employer who had left him a great deal of money
     correctIndex: 2
-    explanationZh: 盖茨比明确说照片上的人是"Mr. Dan Cody"，已去世，多年前是他最好的朋友。丹·科迪是盖茨比年轻时在游艇上结识的富矿主，对他的人生影响深远。Wolfshiem是他在纽约的商业关联人，并非游艇上的故交。
+    explanationZh: 尼克在半明半暗里看见那张照片，问是谁——"That? That's Mr. Dan Cody, old sport... He's dead now. He used to be my best friend years ago."。那名字在尼克听来隐约耳熟。
   - id: gg-ch-05-q5
-    stem: What story does Nick recall about the brewer who built Gatsby's house?
+    stem: What story hangs about the brewer who built Gatsby's house?
     options:
-      - He lost the house in a card game to Dan Cody.
-      - He built it as a wedding present for his daughter.
-      - He sold it at a great profit during the period craze.
-      - He offered to pay the cottagers' taxes if they thatched their roofs.
+      - He lost the house at cards to a man off a yacht
+      - He put it up as a wedding present for his daughter
+      - He sold it again at a great profit while the period craze lasted
+      - He offered to pay the cottagers' taxes for thatched roofs
     correctIndex: 3
-    explanationZh: 尼克在树下望着盖茨比的豪宅，想起它是十年前一位酿酒商在「复古」热潮初期建造的。传说他曾提出：只要邻近小屋的屋主肯用茅草盖顶，他就替他们付五年的税。屋主们拒绝了，他随之一蹶不振，子女们在门上还挂着黑纱时就把房子卖掉了。
+    explanationZh: 那房子是十年前一位酿酒商在复古风头上盖的，"there was a story that he'd agreed to pay five years' taxes on all the neighbouring cottages if the owners would have their roofs thatched with straw"。人家不肯，他要立门第的心气也就散了；子女卖房时，门上的黑纱还挂着。
   - id: gg-ch-05-q6
-    stem: What conclusion does Nick reach about the quality of Gatsby's present happiness?
+    stem: What does Nick read in Gatsby's face as he says goodbye?
     options:
-      - Gatsby is entirely satisfied and wants nothing more.
-      - A faint doubt has occurred to Gatsby about it.
-      - Gatsby is already planning to ask Daisy to leave Tom.
-      - Gatsby feels regret that he waited so many years for nothing.
+      - That Gatsby is content at last, and wants nothing further
+      - That a faint doubt has come to him about this happiness
+      - That Gatsby means to ask Daisy to leave Tom that week
+      - That Gatsby is sorry to have spent five years on nothing
     correctIndex: 1
-    explanationZh: 尼克在告别时看到盖茨比脸上重新浮现迷惘之色，"as though a faint doubt had occurred to him as to the quality of his present happiness"。尼克判断即使那天下午，黛西也定有跌落幻梦之下的时刻——并非她的过错，而是盖茨比幻想的生命力过于庞大，现实的黛西终究无法完全匹配。
+    explanationZh: 原文写 "the expression of bewilderment had come back into Gatsby's face, as though a faint doubt had occurred to him as to the quality of his present happiness"。尼克断定，即便那个下午也总有黛西跌落在幻梦之下的时刻——不是她的错，是那份幻想 "had gone beyond her, beyond everything"。

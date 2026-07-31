@@ -3,7 +3,7 @@ id: gg-ch-09
 bookId: book-gatsby
 title: Chapter 9
 titleZh: 第九章
-summaryZh: 盖茨比死后，尼克为料理后事四处奔走，见识了世态的炎凉。汤姆关于那场死亡的一番自白，最终促使尼克永远告别了东部。
+summaryZh: 此后两年，那一天、那一夜和第二天，在他记忆里只剩下警察、摄影师和记者从盖茨比家前门进进出出的没完没了的操演。大门口拉起一道绳子，警察挡着看热闹的人；小孩子却很快发现，从尼克的院子能绕进去。
 sections:
   - id: gg-ch-09-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       “Any idea where they are? How I could reach them?”
     checkIn:
       id: gg-ch-09-s1-c1
-      stem: What did Catherine do when she testified at the inquest?
+      stem: What did Catherine say at the inquest?
       options:
-        - She confirmed that her sister was having an affair.
-        - She accused Gatsby of murder directly.
-        - She swore that her sister had never known Gatsby.
-        - She revealed Wilson's plan for revenge.
+        - She owned that her sister had been seeing another man
+        - She laid the death at Gatsby's own door in so many words
+        - She swore her sister had never so much as seen Gatsby
+        - She let out what Wilson had said he would do about it
       correctIndex: 2
-      explanationZh: 文本写道Catherine "swore that her sister had never seen Gatsby"，她用坚定的证词保护了Myrtle的名誉。说她确认婚外情的选项与她的证词正好相反。
+      explanationZh: Michaelis 在庭上把威尔森对妻子的疑心说了出来，尼克以为整件事就要被写成香艳的街谈；可凯瑟琳一个字也没吐——她 "swore that her sister had never seen Gatsby, that her sister was completely happy with her husband, that her sister had been into no mischief whatever"，还哭进了手帕里。于是威尔森成了一个 deranged by grief 的人，案子就在最简单的形状上搁下了。
   - id: gg-ch-09-s2
     text: |-
       “I don’t know. Can’t say.”
@@ -61,14 +61,14 @@ sections:
       Dear Mr. Carraway. This has been one of the most terrible shocks of my life to me I hardly can believe it that it is true at all. Such a mad act as that man did should make us all think. I cannot come down now as I am tied up in some very important business and cannot get mixed up in this thing now. If there is anything I can do a little later let me know in a letter by Edgar. I hardly know where I am when I hear about a thing like this and am completely knocked down and out.
     checkIn:
       id: gg-ch-09-s2-c1
-      stem: What was Wolfshiem's response to Nick's letter urging him to come?
+      stem: What came back from Wolfshiem?
       options:
-        - He arrived on the next train to attend the funeral.
-        - He wrote that he could not get mixed up in it now.
-        - He sent a large sum of money for the arrangements.
-        - He called Nick and promised to come the next day.
-      correctIndex: 1
-      explanationZh: Wolfshiem的回信说自己被重要事务缠身，"cannot get mixed up in this thing now"。说他乘下一班火车赶来的选项与信件内容完全相反。
+        - He wrote that he could not get mixed up in the thing now
+        - He came out on the next train and stayed for the funeral
+        - He wired money to cover whatever had to be arranged
+        - He rang Nick up and promised to be there the next day
+      correctIndex: 0
+      explanationZh: 信上写着 "I cannot come down now as I am tied up in some very important business and cannot get mixed up in this thing now."，落款之后又匆匆添了一句 "Let me know about the funeral etc do not know his family at all."。
   - id: gg-ch-09-s3
     text: |-
       Yours truly
@@ -118,14 +118,14 @@ sections:
       I took him into the drawing-room, where his son lay, and left him there. Some little boys had come up on the steps and were looking into the hall; when I told them who had arrived, they went reluctantly away.
     checkIn:
       id: gg-ch-09-s3-c1
-      stem: Who arrived a few days after Gatsby's death, having seen the news in a Chicago newspaper?
+      stem: Who came out on the third day?
       options:
-        - Gatsby's father, Henry C. Gatz.
-        - Gatsby's old army commander from Montgomery.
-        - A business partner from Chicago named Slagle.
-        - A distant cousin from Minnesota.
-      correctIndex: 0
-      explanationZh: 电报署名Henry C. Gatz，他从明尼苏达赶来，说是在芝加哥的报纸上看到消息的。来自芝加哥的Slagle只是打电话来问债券的事，与盖茨比的家人无关。
+        - An old commanding officer out of the war
+        - His father, Henry C. Gatz, up from Minnesota
+        - A business connection from Chicago named Slagle
+        - A cousin of the family, come the whole way West
+      correctIndex: 1
+      explanationZh: 先到的是一封明尼苏达发来的电报，署名 Henry C. Gatz，只说立刻动身，请把葬礼推迟到他到为止。老人裹着一件廉价长大衣，在九月的暖天里赶来——"I saw it in the Chicago newspaper. It was all in the Chicago newspaper. I started right away."。
   - id: gg-ch-09-s4
     text: |-
       After a little while Mr. Gatz opened the door and came out, his mouth ajar, his face flushed slightly, his eyes leaking isolated and unpunctual tears. He had reached an age where death no longer has the quality of ghastly surprise, and when he looked around him now for the first time and saw the height and splendour of the hall and the great rooms opening out from it into other rooms, his grief began to be mixed with an awed pride. I helped him to a bedroom upstairs; while he took off his coat and vest I told him that all arrangements had been deferred until he came.
@@ -175,14 +175,14 @@ sections:
       “Well, the fact is—the truth of the matter is that I’m staying with some people up here in Greenwich, and they rather expect me to be with them tomorrow. In fact, there’s a sort of picnic or something. Of course I’ll do my best to get away.”
     checkIn:
       id: gg-ch-09-s4-c1
-      stem: How does Klipspringer respond when Nick presses him to attend the funeral?
+      stem: How does Klipspringer meet Nick's question about coming?
       options:
-        - He promises to bring several of Gatsby's old guests.
-        - He makes excuses about a picnic with people in Greenwich.
-        - He agrees at once and asks for the address.
-        - He says the newspapers advised him to stay away.
-      correctIndex: 1
-      explanationZh: 尼克逼问他「How about saying you'll come?」，Klipspringer支吾说自己借住在格林威治的朋友家，明天「有个野餐什么的」，只含糊表示会「尽量脱身」。他既没有一口答应，也没有提到报纸或带别的客人来。
+        - He undertook to bring several of the old guests along
+        - He said the papers had told him to keep well away
+        - He agreed at once and asked for the hour and the place
+        - He talked of a picnic with people up in Greenwich
+      correctIndex: 3
+      explanationZh: 尼克追问 "How about saying you'll come?"，他支吾道 "the truth of the matter is that I'm staying with some people up here in Greenwich, and they rather expect me to be with them tomorrow. In fact, there's a sort of picnic or something."。他打这通电话，为的其实是一双落在盖茨比家的网球鞋。
   - id: gg-ch-09-s5
     text: |-
       I ejaculated an unrestrained “Huh!” and he must have heard me, for he went on nervously:
@@ -220,14 +220,14 @@ sections:
       She vanished. In a moment Meyer Wolfshiem stood solemnly in the doorway, holding out both hands. He drew me into his office, remarking in a reverent voice that it was a sad time for all of us, and offered me a cigar.
     checkIn:
       id: gg-ch-09-s5-c1
-      stem: How does the woman at the Swastika Holding Company office initially try to keep Nick away from Wolfshiem?
+      stem: How is Nick first put off at the Swastika Holding Company?
       options:
-        - She says Wolfshiem is meeting with the police.
-        - She tells Nick that Wolfshiem has already died.
-        - She insists that no one named Wolfshiem works there.
-        - She claims that Wolfshiem has gone to Chicago.
-      correctIndex: 3
-      explanationZh: 那女人声称"Mr. Wolfshiem's gone to Chicago"，但屋里有人开始吹口哨，分明说明他在里面。说她告知Wolfshiem已死的选项在文中没有依据。
+        - She said Wolfshiem was down at the police station
+        - She said there was nobody of that name in the place
+        - She said that Mr. Wolfshiem had gone off to Chicago
+        - She said Wolfshiem had been dead for some days
+      correctIndex: 2
+      explanationZh: 原文写 "Nobody's in," she said. "Mr. Wolfshiem's gone to Chicago."——可屋里正有人走调地吹着 The Rosary，门那头还传来一声 Stella。一提盖茨比的名字，她的脸色就变了，转身进去；片刻之后，Wolfshiem 本人两手一伸站在门口。
   - id: gg-ch-09-s6
     text: |-
       “My memory goes back to when first I met him,” he said. “A young major just out of the army and covered over with medals he got in the war. He was so hard up he had to keep on wearing his uniform because he couldn’t buy some regular clothes. First time I saw him was when he came into Winebrenner’s poolroom at Forty-third Street and asked for a job. He hadn’t eat anything for a couple of days. ‘Come on have some lunch with me,’ I said. He ate more than four dollars’ worth of food in half an hour.”
@@ -265,14 +265,14 @@ sections:
       “Let us learn to show our friendship for a man when he is alive and not after he is dead,” he suggested. “After that my own rule is to let everything alone.”
     checkIn:
       id: gg-ch-09-s6-c1
-      stem: Why does Wolfshiem ultimately refuse to attend Gatsby's funeral?
+      stem: On what ground does Wolfshiem refuse to come to the funeral?
       options:
-        - He has a business emergency in Chicago that he cannot leave.
-        - He is too ill to travel and has been ordered to rest.
-        - He was never truly close to Gatsby and felt nothing.
-        - He keeps out of anything involving a man who has been killed.
-      correctIndex: 3
-      explanationZh: Wolfshiem明确说自己不能卷入其中："When a man gets killed I never like to get mixed up in it in any way." 他说在芝加哥有急事只是为了推托，那只是借口而非真正的原因。
+        - He has business in Chicago he cannot get away from
+        - When a man is killed he never gets mixed up in it
+        - He was never really close to Gatsby, and says so
+        - He is too ill to travel, and has been told to rest
+      correctIndex: 1
+      explanationZh: 原文写 "I can't do it—I can't get mixed up in it... When a man gets killed I never like to get mixed up in it in any way. I keep out."，接着又说年轻时并非如此——朋友无论怎么死，他都会陪到底。临别他留下一句 "Let us learn to show our friendship for a man when he is alive and not after he is dead."。
   - id: gg-ch-09-s7
     text: |-
       When I left his office the sky had turned dark and I got back to West Egg in a drizzle. After changing my clothes I went next door and found Mr. Gatz walking up and down excitedly in the hall. His pride in his son and in his son’s possessions was continually increasing and now he had something to show me.
@@ -326,14 +326,14 @@ sections:
       “It just shows you.”
     checkIn:
       id: gg-ch-09-s7-c1
-      stem: What does Mr. Gatz show Nick from the back of Gatsby's childhood book?
+      stem: What is on the back flyleaf of the old Hopalong Cassidy?
       options:
-        - A photograph of Gatsby's mother as a young woman.
-        - A map of the Minnesota town where Gatsby grew up.
-        - A letter from Dan Cody offering Gatsby a job.
-        - A handwritten schedule and list of general resolves from 1906.
+        - A photograph of his mother when she was a girl
+        - A map of the Minnesota town he had grown up in
+        - A letter from Dan Cody, offering the boy a place
+        - A schedule and a list of general resolves, dated 1906
       correctIndex: 3
-      explanationZh: Gatz先生翻开一本叫Hopalong Cassidy的旧书，最后一页写着"schedule"和1906年的日期，下面列出了作息时间表和自律决心。盖茨比母亲的照片或Dan Cody的信件在文中均未提及。
+      explanationZh: 最后一页衬纸上印着 schedule 和 1906 年 9 月 12 日，底下排着起床、哑铃与爬墙、读电学、做工、打球、练口才、研究需要的发明的钟点；再往下是 General Resolves——不在 Shafters 浪费时间、不再抽烟嚼烟、隔天洗一次澡、每周读一本有益的书、每周存三块钱、对父母好一点。
   - id: gg-ch-09-s8
     text: |-
       “Jimmy was bound to get ahead. He always had some resolves like this or something. Do you notice what he’s got about improving his mind? He was always great for that. He told me I et like a hog once, and I beat him for it.”
@@ -351,14 +351,14 @@ sections:
       We straggled down quickly through the rain to the cars. Owl-eyes spoke to me by the gate.
     checkIn:
       id: gg-ch-09-s8-c1
-      stem: Who unexpectedly arrives at the cemetery in the rain?
+      stem: Who comes splashing after them into the cemetery?
       options:
-        - The man with owl-eyed glasses.
-        - Meyer Wolfshiem's personal secretary.
-        - One of Gatsby's former business partners.
-        - A Lutheran minister from a neighbouring parish.
+        - The man with the owl-eyed glasses, from the library
+        - A secretary sent down on Wolfshiem's behalf
+        - One of the men Gatsby had done business with
+        - A second minister, over from the next parish
       correctIndex: 0
-      explanationZh: 葬礼上唯一的意外来客是那个戴厚眼镜的男人，尼克曾在盖茨比图书馆里见过他对着书惊叹。Wolfshiem的秘书或商业伙伴在文中均未出现在墓地。
+      explanationZh: 三辆车的队伍刚进墓地门，尼克听见后头有车停下、有人踩着湿地追上来——"It was the man with owl-eyed glasses whom I had found marvelling over Gatsby's books in the library one night three months before." 尼克既不知道他怎么听说的，也始终不知道他的名字。
   - id: gg-ch-09-s9
     text: |-
       “I couldn’t get to the house,” he remarked.
@@ -380,14 +380,14 @@ sections:
       Even when the East excited me most, even when I was most keenly aware of its superiority to the bored, sprawling, swollen towns beyond the Ohio, with their interminable inquisitions which spared only the children and the very old—even then it had always for me a quality of distortion. West Egg, especially, still figures in my more fantastic dreams. I see it as a night scene by El Greco: a hundred houses, at once conventional and grotesque, crouching under a sullen, overhanging sky and a lustreless moon. In the foreground four solemn men in dress suits are walking along the sidewalk with a stretcher on which lies a drunken woman in a white evening dress. Her hand, which dangles over the side, sparkles cold with jewels. Gravely the men turn in at a house—the wrong house. But no one knows the woman’s name, and no one cares.
     checkIn:
       id: gg-ch-09-s9-c1
-      stem: What larger conclusion does Nick reach about all the main characters in the story?
+      stem: What does Nick decide the whole story has been?
       options:
-        - They were all corrupted by Eastern wealth and lost their original values.
-        - They were all Westerners, subtly unadapted to Eastern life.
-        - They were all secretly related to one another through old family ties.
-        - They were all unable to form genuine friendships because of social ambition.
+        - That Eastern money had eaten away what they came with
+        - That they were all Westerners, unfit somehow for the East
+        - That old family ties bound the whole of them together
+        - That ambition had left none of them able to keep a friend
       correctIndex: 1
-      explanationZh: 尼克说"this has been a story of the West"，Tom、Gatsby、Daisy、Jordan和他自己都是西部人，或许共有某种让他们无法适应东部生活的缺陷。说他们都被东部财富腐蚀的选项虽然听起来合理，但并非尼克此处论述的重点。
+      explanationZh: 原文写 "I see now that this has been a story of the West, after all—Tom and Gatsby, Daisy and Jordan and I, were all Westerners, and perhaps we possessed some deficiency in common which made us subtly unadaptable to Eastern life."。
   - id: gg-ch-09-s10
     text: |-
       After Gatsby’s death the East was haunted for me like that, distorted beyond my eyes’ power of correction. So when the blue smoke of brittle leaves was in the air and the wind blew the wet laundry stiff on the line I decided to come back home.
@@ -413,14 +413,14 @@ sections:
       One afternoon late in October I saw Tom Buchanan. He was walking ahead of me along Fifth Avenue in his alert, aggressive way, his hands out a little from his body as if to fight off interference, his head moving sharply here and there, adapting itself to his restless eyes. Just as I slowed up to avoid overtaking him he stopped and began frowning into the windows of a jewellery store. Suddenly he saw me and walked back, holding out his hand.
     checkIn:
       id: gg-ch-09-s10-c1
-      stem: What does Jordan tell Nick when he goes to see her before leaving?
+      stem: What does Jordan tell Nick when he has said his piece?
       options:
-        - She says she is moving back to the West permanently.
-        - She says she has quit golf and is taking up a new career.
-        - She says she is engaged to another man.
-        - She says she never wants to speak to him again.
+        - That she is going back West for good this time
+        - That she has given up golf and taken up something new
+        - That she is engaged to be married to another man
+        - That she never wishes to speak with him again
       correctIndex: 2
-      explanationZh: 乔丹告诉尼克她已与别人订婚，尼克对此心存怀疑但假装惊讶。说她要永久搬回西部的选项在文中并未出现。
+      explanationZh: 他把话说完，"she told me without comment that she was engaged to another man"。他不太信，还是装出吃惊的样子。临别她翻出从前那次关于开车的谈话——"I thought you were rather an honest, straightforward person. I thought it was your secret pride."。
   - id: gg-ch-09-s11
     text: |-
       “What’s the matter, Nick? Do you object to shaking hands with me?”
@@ -446,14 +446,14 @@ sections:
       Gatsby’s house was still empty when I left—the grass on his lawn had grown as long as mine. One of the taxi drivers in the village never took a fare past the entrance gate without stopping for a minute and pointing inside; perhaps it was he who drove Daisy and Gatsby over to East Egg the night of the accident, and perhaps he had made a story about it all his own. I didn’t want to hear it and I avoided him when I got off the train.
     checkIn:
       id: gg-ch-09-s11-c1
-      stem: What reason does Tom give for telling Wilson who owned the car?
+      stem: What reason does Tom give for naming the car's owner?
       options:
-        - He wanted to make sure Wilson was punished for his wife's death.
-        - He hoped Wilson would confront Gatsby and scare him away.
-        - Wilson was crazy enough to kill him if he did not reveal the truth.
-        - He believed it was his duty to inform the police of everything.
-      correctIndex: 2
-      explanationZh: Tom声称Wilson闯上门来，手插口袋里握着左轮手枪，"He was crazy enough to kill me if I hadn't told him who owned the car"。说他想让Wilson受惩罚的选项属于因果倒置——Tom的真实动机是自保。
+        - He meant to see Wilson punished for what his wife had done
+        - He hoped Wilson would frighten Gatsby off for good
+        - He held it his plain duty to tell the police everything
+        - Wilson was crazy enough to kill him if he had not told
+      correctIndex: 3
+      explanationZh: 原文写 "He came to the door while we were getting ready to leave, and when I sent down word that we weren't in he tried to force his way upstairs. He was crazy enough to kill me if I hadn't told him who owned the car. His hand was on a revolver in his pocket every minute he was in the house—"。尼克心里只剩一句说不出口的话：那不是真的。
   - id: gg-ch-09-s12
     text: |-
       I spent my Saturday nights in New York because those gleaming, dazzling parties of his were with me so vividly that I could still hear the music and the laughter, faint and incessant, from his garden, and the cars going up and down his drive. One night I did hear a material car there, and saw its lights stop at his front steps. But I didn’t investigate. Probably it was some final guest who had been away at the ends of the earth and didn’t know that the party was over.
@@ -469,66 +469,66 @@ sections:
       So we beat on, boats against the current, borne back ceaselessly into the past.
     checkIn:
       id: gg-ch-09-s12-c1
-      stem: What final image does Nick associate with Gatsby's dream?
+      stem: What does Nick set against Gatsby's dream at the very end?
       options:
-        - The green light at the end of Daisy's dock.
-        - The blue smoke of brittle leaves in the autumn air.
-        - The white steps of Gatsby's mansion in the moonlight.
-        - The shadowy glow of a ferryboat crossing the Sound.
+        - The green light out at the end of Daisy's dock
+        - The blue smoke of brittle leaves in the autumn air
+        - The white steps of the empty house in the moonlight
+        - The moving glow of a ferryboat away across the Sound
       correctIndex: 0
-      explanationZh: 结尾处尼克联想到盖茨比初见码头尽头那盏绿灯时的惊叹，由此引出最后的名句。蓝烟、白色台阶和渡船的灯光虽然都在本章末尾出现过，但与盖茨比的梦想直接对应的只有绿灯。
+      explanationZh: 原文写 "I thought of Gatsby's wonder when he first picked out the green light at the end of Daisy's dock. He had come a long way to this blue lawn, and his dream must have seemed so close that he could hardly fail to grasp it. He did not know that it was already behind him."——由此才有末了那一句 "So we beat on, boats against the current, borne back ceaselessly into the past."。
 quiz:
   - id: gg-ch-09-q1
-    stem: Why does Nick feel personally responsible for Gatsby after the death?
+    stem: Why did Nick find himself answerable for Gatsby?
     options:
-      - He has been named as Gatsby's legal next of kin.
-      - He promised Gatsby he would handle all of the funeral costs.
-      - He believes he caused the accident by not stopping Gatsby in time.
-      - No one else showed the intense personal interest owed at the end.
-    correctIndex: 3
-    explanationZh: 尼克说"I was responsible, because no one else was interested"，他感到自己有责任是因为没有别人表现出对盖茨比的个人关切。说他被指定为法定近亲或承诺承担费用的选项在文中没有依据。
-  - id: gg-ch-09-q2
-    stem: What does the phone caller from Chicago want from Nick right after the death?
-    options:
-      - He wants to offer his condolences and attend the funeral service.
-      - He wants to confirm whether Gatsby's business is still operating.
-      - He wants to warn Nick that someone has been arrested for passing stolen bonds.
-      - He wants to know when Gatsby's estate will be divided up.
-    correctIndex: 2
-    explanationZh: 打电话的Slagle急促地说Young Parke因为传递债券被抓，他来问尼克知不知道这件事。这与葬礼或遗产无关，只是犯罪同伙之间的通风报信。
-  - id: gg-ch-09-q3
-    stem: What does Nick remember about Daisy as he stands at the funeral?
-    options:
-      - She sent a wreath but stayed away herself.
-      - She telephoned Nick but refused to speak of Gatsby.
-      - She had not sent a message or a flower.
-      - She wrote a letter that arrived a day too late.
-    correctIndex: 2
-    explanationZh: 站在墓旁，尼克想起黛西——"Daisy hadn't sent a message or a flower"。她与汤姆早已带着行李不辞而别，连一句吊唁也没有留下。花圈、电话、迟到的信件都是虚构的。
-  - id: gg-ch-09-q4
-    stem: Why does Nick feel a sense of shame for Gatsby when he calls one gentleman about the funeral?
-    options:
-      - The man implies that Gatsby got what he deserved.
-      - The man refuses to give his name and hangs up on Nick.
-      - The man asks Nick to repay the money Gatsby owes him.
-      - The man says he barely knew Gatsby and cannot help.
-    correctIndex: 0
-    explanationZh: 尼克打电话给一位先生，对方暗示盖茨比是罪有应得（"got what he deserved"），尼克为此感到羞耻。他后悔打电话给一个靠盖茨比的酒才敢讥讽盖茨比的人。说对方要求还债的选项在文中并未出现。
-  - id: gg-ch-09-q5
-    stem: What detail from Gatsby's childhood schedule shows his ambition to improve himself?
-    options:
-      - He resolves to practise the violin for two hours each day.
-      - He resolves to read one improving book or magazine per week.
-      - He resolves to write a letter to his father every Sunday morning.
-      - He resolves to study a foreign language before entering college.
+      - Because he had been named next of kin in the will
+      - Because nobody else took that intense personal interest
+      - Because he had promised to see to the funeral costs
+      - Because he blamed himself for not having stopped it
     correctIndex: 1
-    explanationZh: 在1906年的作息表里，盖茨比写下了"Read one improving book or magazine per week"等自律决心，展现了少年时代的雄心。练小提琴、每周给父亲写信、学外语的选项都不在那份日程表上。
-  - id: gg-ch-09-q6
-    stem: How does Nick sum up Tom and Daisy after their last meeting?
+    explanationZh: 原文写 "it grew upon me that I was responsible, because no one else was interested—interested, I mean, with that intense personal interest to which everyone has some vague right at the end."。
+  - id: gg-ch-09-q2
+    stem: What did the long-distance call from Chicago come for?
     options:
-      - They smashed up things and retreated back into their money.
-      - They were victims of the same dream that destroyed Gatsby.
-      - They were too weak to leave the world that had made them.
-      - They were honest with each other but cruel to everyone else.
+      - To offer his sympathies and ask about the service
+      - To make sure the business was still going as before
+      - To pass word that a man had been taken with the bonds
+      - To ask when the estate would be settled and divided
+    correctIndex: 2
+    explanationZh: 那是 Slagle 打来的——"Young Parke's in trouble. They picked him up when he handed the bonds over the counter. They got a circular from New York giving 'em the numbers just five minutes before."。尼克插进去说盖茨比已经死了，线那头静了很久，随即咔一声断了。
+  - id: gg-ch-09-q3
+    stem: What does Nick remember of Daisy at the graveside?
+    options:
+      - That she had sent neither a message nor a flower
+      - That she had sent a wreath but stayed away herself
+      - That she had telephoned but would not speak of him
+      - That a letter of hers came a day too late for it
     correctIndex: 0
-    explanationZh: 尼克最终的论断是："They were careless people, Tom and Daisy—they smashed up things and creatures and then retreated back into their money or their vast carelessness... and let other people clean up the mess they had made." 他无法原谅汤姆，却也明白这一切在汤姆自己看来完全正当。其余选项都不是尼克的原话论断。
+    explanationZh: 原文写 "I tried to think about Gatsby then for a moment, but he was already too far away, and I could only remember, without resentment, that Daisy hadn't sent a message or a flower."。她和汤姆当天下午就带着行李走了，没留下地址。
+  - id: gg-ch-09-q4
+    stem: What made Nick feel a certain shame for Gatsby?
+    options:
+      - The man would not give his name and rang off at once
+      - The man let it be understood that Gatsby got what he deserved
+      - The man asked Nick to make good what Gatsby owed him
+      - The man said he had hardly known Gatsby and could not help
+    correctIndex: 1
+    explanationZh: 原文写 "After that I felt a certain shame for Gatsby—one gentleman to whom I telephoned implied that he had got what he deserved." 尼克说这怪自己——那人从前正是仗着盖茨比的酒劲，把他讥笑得最凶的一个。
+  - id: gg-ch-09-q5
+    stem: Which resolve stands in the boy's list of 1906?
+    options:
+      - To practise the violin two hours out of every day
+      - To write his father a letter every Sunday morning
+      - To read one improving book or magazine every week
+      - To get a foreign language before he went to college
+    correctIndex: 2
+    explanationZh: General Resolves 那几行里有 "Read one improving book or magazine per week"，同列的还有不在 Shafters 浪费时间、戒烟戒嚼烟、隔天洗澡、每周存三块钱、对父母好一点。老人一条条念给尼克听，末了说 "It just shows you, don't it?"。
+  - id: gg-ch-09-q6
+    stem: How does Nick sum up Tom and Daisy at the last?
+    options:
+      - That the same dream that killed Gatsby had used them up
+      - That they were too weak to leave the world that made them
+      - That they were honest with each other, cruel to all others
+      - That they smashed things up and retreated into their money
+    correctIndex: 3
+    explanationZh: 原文写 "They were careless people, Tom and Daisy—they smashed up things and creatures and then retreated back into their money or their vast carelessness, or whatever it was that kept them together, and let other people clean up the mess they had made…"。他既原谅不了这个人，也喜欢不起来，可看得出来：在汤姆自己眼里，这一切完全正当。

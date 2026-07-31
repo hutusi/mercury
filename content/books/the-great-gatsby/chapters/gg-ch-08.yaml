@@ -3,7 +3,7 @@ id: gg-ch-08
 bookId: book-gatsby
 title: Chapter 8
 titleZh: 第八章
-summaryZh: 夜雾弥漫，盖茨比向尼克倾诉他与黛西的初恋往事，以及战争与离别如何让一切滑出轨道。与此同时，在灰烬谷的修车铺里，悲痛欲绝的威尔森彻夜难眠，认定妻子之死绝非意外。当天午后，一场无可挽回的悲剧悄然降临。
+summaryZh: 那一夜尼克没合眼，海湾上的雾号一声接一声地呻吟。天快亮时他听见一辆出租车开上盖茨比的车道，便跳下床穿衣服——他有句话想说，有件事想提醒，只觉得等天亮就来不及了。
 sections:
   - id: gg-ch-08-s1
     text: |-
@@ -28,14 +28,14 @@ sections:
       She was the first “nice” girl he had ever known. In various unrevealed capacities he had come in contact with such people, but always with indiscernible barbed wire between. He found her excitingly desirable. He went to her house, at first with other officers from Camp Taylor, then alone. It amazed him—he had never been in such a beautiful house before. But what gave it an air of breathless intensity, was that Daisy lived there—it was as casual a thing to her as his tent out at camp was to him. There was a ripe mystery about it, a hint of bedrooms upstairs more beautiful and cool than other bedrooms, of gay and radiant activities taking place through its corridors, and of romances that were not musty and laid away already in lavender but fresh and breathing and redolent of this year’s shining motorcars and of dances whose flowers were scarcely withered. It excited him, too, that many men had already loved Daisy—it increased her value in his eyes. He felt their presence all about the house, pervading the air with the shades and echoes of still vibrant emotions.
     checkIn:
       id: gg-ch-08-s1-c1
-      stem: What did Gatsby see Daisy do at her window around four o'clock?
+      stem: What did Gatsby see at Daisy's window about four o'clock?
       options:
-        - She waved to him and then closed the curtains.
-        - She stood there for a minute and then turned out the light.
-        - She opened the window and called his name.
-        - She left the light on and walked away.
-      correctIndex: 1
-      explanationZh: 盖茨比整夜守候，凌晨四点黛西终于出现在窗前站了一分钟，然后关了灯——"turned out the light"。这让他知道一切并未发生。其他选项描述的动作在文中均未出现。
+        - She waved across to him and drew the curtains together
+        - She threw the window up and called down his name
+        - She stood there a minute and then put out the light
+        - She left the light burning and walked away from it
+      correctIndex: 2
+      explanationZh: 尼克赶过去时他正靠在门厅的桌边——"Nothing happened. I waited, and about four o'clock she came to the window and stood there for a minute and then turned out the light."。那所房子从没显得这么大过；两人翻遍各屋，才找出两支干瘪的烟。
   - id: gg-ch-08-s2
     text: |-
       But he knew that he was in Daisy’s house by a colossal accident. However glorious might be his future as Jay Gatsby, he was at present a penniless young man without a past, and at any moment the invisible cloak of his uniform might slip from his shoulders. So he made the most of his time. He took what he could get, ravenously and unscrupulously—eventually he took Daisy one still October night, took her because he had no real right to touch her hand.
@@ -49,14 +49,14 @@ sections:
       “I can’t describe to you how surprised I was to find out I loved her, old sport. I even hoped for a while that she’d throw me over, but she didn’t, because she was in love with me too. She thought I knew a lot because I knew different things from her … Well, there I was, way off my ambitions, getting deeper in love every minute, and all of a sudden I didn’t care. What was the use of doing great things if I could have a better time telling her what I was going to do?”
     checkIn:
       id: gg-ch-08-s2-c1
-      stem: Why did Gatsby feel he had taken Daisy under false pretences?
+      stem: In what sense had Gatsby taken Daisy under false pretences?
       options:
-        - He told her he was already a wealthy man with a large estate.
-        - He pretended to be a fellow officer from her family's circle.
-        - He let her believe he came from her own strata and could care for her.
-        - He claimed to have no obligations to the army overseas.
-      correctIndex: 2
-      explanationZh: 文中说他并没有虚构"幻影百万"，而是故意给了黛西一种安全感——让她相信他出身相近阶层、有能力照顾她，但实际上他既无家世支撑，也可能随时被军队调往世界任何地方。
+        - He let her think he came of her own kind and could keep her
+        - He told her outright that he had a great estate of his own
+        - He passed himself off as an officer out of her own set
+        - He said the army had no further claim upon him at all
+      correctIndex: 0
+      explanationZh: 不是说他拿虚构的百万去骗人——"he had deliberately given Daisy a sense of security; he let her believe that he was a person from much the same strata as herself—that he was fully able to take care of her"。其实他背后并没有家世，随时可能被一纸调令送去世上任何地方。
   - id: gg-ch-08-s3
     text: |-
       On the last afternoon before he went abroad, he sat with Daisy in his arms for a long, silent time. It was a cold fall day, with fire in the room and her cheeks flushed. Now and then she moved and he changed his arm a little, and once he kissed her dark shining hair. The afternoon had made them tranquil for a while, as if to give them a deep memory for the long parting the next day promised. They had never been closer in their month of love, nor communicated more profoundly one with another, than when she brushed silent lips against his coat’s shoulder or when he touched the end of her fingers, gently, as though she were asleep.
@@ -68,14 +68,14 @@ sections:
       Through this twilight universe Daisy began to move again with the season; suddenly she was again keeping half a dozen dates a day with half a dozen men, and drowsing asleep at dawn with the beads and chiffon of an evening-dress tangled among dying orchids on the floor beside her bed. And all the time something within her was crying for a decision. She wanted her life shaped now, immediately—and the decision must be made by some force—of love, of money, of unquestionable practicality—that was close at hand.
     checkIn:
       id: gg-ch-08-s3-c1
-      stem: What happened after the armistice that delayed Gatsby's return home?
+      stem: What kept Gatsby from getting home after the armistice?
       options:
-        - A wound in battle forced him to recover in a French hospital.
-        - His commanding officer detained him for extra months of service.
-        - Transport shortages left him waiting weeks at a French port.
-        - A complication or misunderstanding sent him to Oxford instead.
-      correctIndex: 3
-      explanationZh: 战后盖茨比拼命想回国，但"some complication or misunderstanding sent him to Oxford instead"，这延误让他无法回到黛西身边，而黛西的信中已透出焦躁与绝望。
+        - A wound at the front kept him months in a French hospital
+        - Some complication or misunderstanding sent him to Oxford
+        - His commanding officer held him on for extra service
+        - There were no ships, and he waited weeks at a French port
+      correctIndex: 1
+      explanationZh: 原文写 "After the armistice he tried frantically to get home, but some complication or misunderstanding sent him to Oxford instead." 那时黛西的信里已经透出一种神经质的绝望——她不明白他为什么不能回来。
   - id: gg-ch-08-s4
     text: |-
       That force took shape in the middle of spring with the arrival of Tom Buchanan. There was a wholesome bulkiness about his person and his position, and Daisy was flattered. Doubtless there was a certain struggle and a certain relief. The letter reached Gatsby while he was still at Oxford.
@@ -99,14 +99,14 @@ sections:
       He left feeling that if he had searched harder, he might have found her—that he was leaving her behind. The day-coach—he was penniless now—was hot. He went out to the open vestibule and sat down on a folding-chair, and the station slid away and the backs of unfamiliar buildings moved by. Then out into the spring fields, where a yellow trolley raced them for a minute with people in it who might once have seen the pale magic of her face along the casual street.
     checkIn:
       id: gg-ch-08-s4-c1
-      stem: What did Gatsby say about whether Daisy ever loved Tom?
+      stem: What does Gatsby end by allowing about Daisy and Tom?
       options:
-        - She loved him deeply throughout their entire marriage.
-        - She never loved him and married him only for his money.
-        - She might have loved him for a minute at first.
-        - She loved him only after Gatsby went overseas.
-      correctIndex: 2
-      explanationZh: 盖茨比承认黛西"也许在他们刚结婚那一分钟爱过他"，但随即补充"甚至那时她更爱我"——他在挣扎着维护对黛西之爱的信念。说他从未爱过或一直深爱都不符合他纠结的原话。
+        - That she loved him all through the marriage, and still does
+        - That she never loved him, and took him only for his money
+        - That she came to love him only after Gatsby sailed
+        - That she might have loved him a minute, at the very first
+      correctIndex: 3
+      explanationZh: 他先说 "I don't think she ever loved him"，还替她辩解说下午是被吓住了；坐下之后却退了一步——"Of course she might have loved him just for a minute, when they were first married—and loved me more even then, do you see?"。
   - id: gg-ch-08-s5
     text: |-
       The track curved and now it was going away from the sun, which, as it sank lower, seemed to spread itself in benediction over the vanishing city where she had drawn her breath. He stretched out his hand desperately as if to snatch only a wisp of air, to save a fragment of the spot that she had made lovely for him. But it was all going by too fast now for his blurred eyes and he knew that he had lost that part of it, the freshest and the best, forever.
@@ -144,14 +144,14 @@ sections:
       I’ve always been glad I said that. It was the only compliment I ever gave him, because I disapproved of him from beginning to end. First he nodded politely, and then his face broke into that radiant and understanding smile, as if we’d been in ecstatic cahoots on that fact all the time. His gorgeous pink rag of a suit made a bright spot of colour against the white steps, and I thought of the night when I first came to his ancestral home, three months before. The lawn and drive had been crowded with the faces of those who guessed at his corruption—and he had stood on those steps, concealing his incorruptible dream, as he waved them goodbye.
     checkIn:
       id: gg-ch-08-s5-c1
-      stem: Why did Gatsby tell the gardener not to drain the pool that day?
+      stem: Why did Gatsby stop the gardener draining the pool?
       options:
-        - He was expecting guests who would want to swim that afternoon.
-        - He thought the cold water might help him clear his head.
-        - He had never used the pool all summer and wanted to use it once.
-        - He had promised Daisy they would swim together when she came.
+        - Guests were coming out that afternoon who would want it
+        - He thought a cold plunge might clear his head of it all
+        - He had never once used it all summer, and meant to now
+        - He had promised Daisy they would swim in it together
       correctIndex: 2
-      explanationZh: 园丁说当天要排干泳池水池，盖茨比回答"Don't do it today"并转向尼克说"You know, old sport, I've never used that pool all summer?"——他整个夏天都没用过泳池，这一天他终于想用一次。文中未提及期待客人或承诺黛西同游。
+      explanationZh: 园丁说叶子快落了，管子要出毛病，今天就把水放掉；"Don't do it today," Gatsby answered. He turned to me apologetically. "You know, old sport, I've never used that pool all summer?"。
   - id: gg-ch-08-s6
     text: |-
       I thanked him for his hospitality. We were always thanking him for that—I and the others.
@@ -189,14 +189,14 @@ sections:
       When I passed the ash-heaps on the train that morning I had crossed deliberately to the other side of the car. I supposed there’d be a curious crowd around there all day with little boys searching for dark spots in the dust, and some garrulous man telling over and over what had happened, until it became less and less real even to him and he could tell it no longer, and Myrtle Wilson’s tragic achievement was forgotten. Now I want to go back a little and tell what happened at the garage after we left there the night before.
     checkIn:
       id: gg-ch-08-s6-c1
-      stem: Why was Gatsby's phone line busy when Nick tried to call him around noon?
+      stem: Why could Nick not get through to Gatsby's house at noon?
       options:
-        - Gatsby was on the line talking to Daisy at that moment.
-        - The wire was being kept open for a long-distance call from Detroit.
-        - The butler had taken the phone off the hook deliberately.
-        - Gatsby had asked the operator to block all incoming calls.
-      correctIndex: 1
-      explanationZh: 尼克反复拨打，最终接线员告诉他线路"being kept open for long distance from Detroit"——为底特律长途保持畅通。底特律正是沃尔夫谢姆势力的所在，暗示黑帮世界的介入。
+        - The wire was being kept open for long distance from Detroit
+        - Gatsby was on it that very moment, talking to Daisy
+        - The butler had taken the receiver off the hook on his own account
+        - Gatsby had told the exchange to hold every call that came
+      correctIndex: 0
+      explanationZh: 他一连拨了四次，"finally an exasperated central told me the wire was being kept open for long distance from Detroit"。放下电话，他在时刻表上把三点五十那班车圈了出来。
   - id: gg-ch-08-s7
     text: |-
       They had difficulty in locating the sister, Catherine. She must have broken her rule against drinking that night, for when she arrived she was stupid with liquor and unable to understand that the ambulance had already gone to Flushing. When they convinced her of this, she immediately fainted, as if that was the intolerable part of the affair. Someone, kind or curious, took her in his car and drove her in the wake of her sister’s body.
@@ -216,14 +216,14 @@ sections:
       The hard brown beetles kept thudding against the dull light, and whenever Michaelis heard a car go tearing along the road outside it sounded to him like the car that hadn’t stopped a few hours before. He didn’t like to go into the garage, because the work bench was stained where the body had been lying, so he moved uncomfortably around the office—he knew every object in it before morning—and from time to time sat down beside Wilson trying to keep him more quiet.
     checkIn:
       id: gg-ch-08-s7-c1
-      stem: How did Catherine react when she arrived at the garage?
+      stem: How did Catherine come to the garage that night?
       options:
-        - She was too drunk to grasp that the ambulance had gone.
-        - She was sober and immediately demanded to see her sister's body.
-        - She fainted the moment she saw the garage from the car.
-        - She refused to enter the garage and sat outside in silence.
-      correctIndex: 0
-      explanationZh: 凯瑟琳"stupid with liquor"，烂醉到无法理解救护车早已去了法拉盛；被告知真相后她立刻昏倒，仿佛那才是最难以承受的事实。
+        - She came sober, and asked at once to see her sister
+        - She would not go in, and sat outside without a word
+        - She was too drunk to take in that the ambulance had gone
+        - She fainted the moment the garage came into sight
+      correctIndex: 2
+      explanationZh: 她那晚大约破了自己不喝酒的规矩——"when she arrived she was stupid with liquor and unable to understand that the ambulance had already gone to Flushing. When they convinced her of this, she immediately fainted, as if that was the intolerable part of the affair."。
   - id: gg-ch-08-s8
     text: |-
       “Have you got a church you go to sometimes, George? Maybe even if you haven’t been there for a long time? Maybe I could call up the church and get a priest to come over and he could talk to you, see?”
@@ -275,14 +275,14 @@ sections:
       Michaelis had seen this too, but it hadn’t occurred to him that there was any special significance in it. He believed that Mrs. Wilson had been running away from her husband, rather than trying to stop any particular car.
     checkIn:
       id: gg-ch-08-s8-c1
-      stem: What did Michaelis find in the desk drawer that Wilson pointed to?
+      stem: What was in the drawer Wilson pointed to?
       options:
-        - A small, expensive dog-leash of leather and silver.
-        - A bundle of love letters tied with a ribbon.
-        - A photograph of Myrtle with an unknown man.
-        - A large sum of cash hidden in an envelope.
-      correctIndex: 0
-      explanationZh: 迈克尔里斯打开抽屉，里面只有"a small, expensive dog-leash, made of leather and braided silver"——一条看似全新的贵重狗链。威尔森昨天下午发现了它，觉得妻子说不清来历，加深了猜疑。
+        - A packet of letters done up with a ribbon
+        - A small, expensive dog-leash of leather and silver
+        - A photograph of Myrtle beside a man he did not know
+        - A thick envelope of banknotes pushed to the back
+      correctIndex: 1
+      explanationZh: 抽屉里只有 "a small, expensive dog-leash, made of leather and braided silver. It was apparently new."。威尔森说那是他前一天下午找出来的——"She had it wrapped in tissue paper on her bureau."。妻子想解释，他认定这里头有蹊跷。
   - id: gg-ch-08-s9
     text: |-
       “How could she of been like that?”
@@ -310,14 +310,14 @@ sections:
       His movements—he was on foot all the time—were afterward traced to Port Roosevelt and then to Gad’s Hill, where he bought a sandwich that he didn’t eat, and a cup of coffee. He must have been tired and walking slowly, for he didn’t reach Gad’s Hill until noon. Thus far there was no difficulty in accounting for his time—there were boys who had seen a man “acting sort of crazy,” and motorists at whom he stared oddly from the side of the road. Then for three hours he disappeared from view. The police, on the strength of what he said to Michaelis, that he “had a way of finding out,” supposed that he spent that time going from garage to garage thereabout, inquiring for a yellow car. On the other hand, no garage man who had seen him ever came forward, and perhaps he had an easier, surer way of finding out what he wanted to know. By half-past two he was in West Egg, where he asked someone the way to Gatsby’s house. So by that time he knew Gatsby’s name.
     checkIn:
       id: gg-ch-08-s9-c1
-      stem: What did Wilson believe he was looking at when he stared out the rear window at dawn?
+      stem: What was Wilson looking at through the rear window at dawn?
       options:
-        - The headlights of the yellow car returning to the garage.
-        - The face of the man who had murdered his wife.
-        - The distant lights of the city where Myrtle had gone.
-        - The eyes of Doctor T. J. Eckleburg, taken for the eyes of God.
+        - The headlamps of the yellow car coming back down the road again
+        - The face of the man he was sure had murdered his wife
+        - The far-off lights of the city his wife used to go up to
+        - The eyes of Doctor T. J. Eckleburg, which he took for God's
       correctIndex: 3
-      explanationZh: 威尔森面贴窗玻璃望向灰烬谷，迈克尔里斯震惊地发现他正注视"the eyes of Doctor T. J. Eckleburg"——那幅巨大的广告牌眼睛刚从消散的夜色中浮现。威尔森反复说"God sees everything"，将广告牌当作上帝之眼。迈克尔里斯纠正"That's an advertisement"，但威尔森不以为意。
+      explanationZh: 他把脸贴在玻璃上复述自己对妻子说过的话——"God knows what you've been doing, everything you've been doing. You may fool me, but you can't fool God!"。站在身后的 Michaelis 一惊，看见他望着的正是刚从夜色里浮出来的 "the eyes of Doctor T. J. Eckleburg"。他说那是块广告牌，威尔森只顾对着晨光点头。
   - id: gg-ch-08-s10
     text: |-
       At two o’clock Gatsby put on his bathing-suit and left word with the butler that if anyone phoned word was to be brought to him at the pool. He stopped at the garage for a pneumatic mattress that had amused his guests during the summer, and the chauffeur helped him to pump it up. Then he gave instructions that the open car wasn’t to be taken out under any circumstances—and this was strange, because the front right fender needed repair.
@@ -333,66 +333,66 @@ sections:
       It was after we started with Gatsby toward the house that the gardener saw Wilson’s body a little way off in the grass, and the holocaust was complete.
     checkIn:
       id: gg-ch-08-s10-c1
-      stem: What instruction did Gatsby give about the open car before going to the pool?
+      stem: What order did Gatsby leave about the open car?
       options:
-        - It was not to be taken out under any circumstances.
-        - It was to be brought around to the front immediately.
-        - It was to be sent to the garage for a new paint job.
-        - It was to be driven into the city to pick up Daisy.
+        - It was not to be taken out under any circumstances
+        - It was to be brought round to the front door at once
+        - It was to go to the garage to have the fender seen to
+        - It was to be driven into the city to fetch Daisy out
       correctIndex: 0
-      explanationZh: 盖茨比吩咐敞篷车"wasn't to be taken out under any circumstances"——任何情况下都不得开出。这一点很奇怪，因为车前右挡泥板需要修理，暗示他已无心力顾及这些俗务。
+      explanationZh: 他吩咐 "the open car wasn't to be taken out under any circumstances—and this was strange, because the front right fender needed repair"。随后他扛起那只气垫，一个人往泳池去了。
 quiz:
   - id: gg-ch-08-q1
-    stem: Why couldn't Gatsby bring himself to leave for Atlantic City or Montreal despite Nick's warning?
+    stem: Why would Gatsby not go away, as Nick urged?
     options:
-      - He owed money to people who would find him at home.
-      - He couldn't leave Daisy until he knew what she was going to do.
-      - He was waiting for a phone call from Wolfshiem.
-      - He didn't believe anyone could trace his car.
+      - He owed money to men who would come looking for him at home
+      - He could not leave Daisy till he knew what she meant to do
+      - He was holding on for a telephone call from Wolfshiem
+      - He did not believe anybody could ever trace the car to him
     correctIndex: 1
-    explanationZh: 尼克劝盖茨比离开，因为他觉得车会被追查到。但盖茨比说他不能离开黛西，直到知道她打算怎样做——"He was clutching at some last hope." 他并非在等沃尔夫谢姆的电话，也不否认车的风险，只是无法放弃对黛西最后的期待。
+    explanationZh: 尼克劝他去大西洋城待一星期，或者上蒙特利尔；"He wouldn't consider it. He couldn't possibly leave Daisy until he knew what she was going to do. He was clutching at some last hope and I couldn't bear to shake him free."。
   - id: gg-ch-08-q2
-    stem: What compliment did Nick shout to Gatsby across the lawn as they parted?
+    stem: What did Nick call across the lawn as he left?
     options:
-      - That his parties had been the finest on Long Island.
-      - That he was worth the whole damn bunch put together.
-      - That Daisy would surely telephone him before evening.
-      - That his pink suit made him look like a gentleman.
-    correctIndex: 1
-    explanationZh: 分别时尼克隔着草坪喊道："They're a rotten crowd. You're worth the whole damn bunch put together." 他后来一直庆幸说了这句话——那是他给过盖茨比的唯一恭维，因为从头到尾他其实并不赞成盖茨比的做派。盖茨比先是礼貌地点头，随即绽放出那种心照不宣的灿烂笑容。
+      - That his parties had been the best on all of Long Island
+      - That Daisy would surely telephone before the evening was out
+      - That the pink suit made him look every inch a gentleman
+      - That he was worth the whole damn bunch put together
+    correctIndex: 3
+    explanationZh: 走到树篱边他忽然回头喊——"They're a rotten crowd. You're worth the whole damn bunch put together."。他说自己一直庆幸说了这一句：那是他给过盖茨比的唯一一句赞语，因为他从头到尾并不赞成这个人。
   - id: gg-ch-08-q3
-    stem: What changed Daisy's dating rhythm and eventually led her toward Tom Buchanan?
+    stem: What carried Daisy toward Tom Buchanan?
     options:
-      - Her father arranged a match with Tom for social and financial reasons.
-      - She met Tom at a formal ball and forgot Gatsby the same evening.
-      - Gatsby's absence and social pressure pushed her toward a decisive force.
-      - Tom rescued her from a social scandal that ruined her reputation.
-    correctIndex: 2
-    explanationZh: 盖茨比被送去牛津后，黛西重新投入社交界的约会旋涡，"half a dozen dates a day with half a dozen men"。但她内心渴望某个力量来定型她的生活——"of love, of money, of unquestionable practicality"——这个力量以汤姆的到来成形。她不是被父亲安排，也不是一夜忘情，而是在社交压力与等待绝望中做出了选择。
+      - Her father made the match, for the family's sake and the money
+      - Gatsby's absence, and a wish to have her life shaped at once
+      - She met Tom at a ball and forgot Gatsby the same evening
+      - Tom pulled her out of a scandal that had ruined her name
+    correctIndex: 1
+    explanationZh: 原文写 "And all the time something within her was crying for a decision. She wanted her life shaped now, immediately—and the decision must be made by some force—of love, of money, of unquestionable practicality—that was close at hand." 那股力量在春天中途成了形——汤姆·布坎南到了。
   - id: gg-ch-08-q4
-    stem: Where did Gatsby travel on his remaining army pay after returning from France?
+    stem: Where did Gatsby go on the last of his army pay?
     options:
-      - He went to Louisville and walked the streets they had known together.
-      - He went to New York and stood outside Daisy and Tom's apartment.
-      - He returned to Camp Taylor and visited the officers' old quarters.
-      - He traveled to Washington to ask about Daisy's family background.
+      - To Louisville, to walk the streets they had walked together
+      - To New York, to stand outside the flat Tom had taken
+      - Back to Camp Taylor, to see the officers' old quarters
+      - To Washington, to ask after Daisy's people and their standing
     correctIndex: 0
-    explanationZh: 汤姆和黛西尚在蜜月旅行中时，盖茨比回到美国，用最后的军饷去了路易斯维尔——"a miserable but irresistible journey"。他在那里待了一周，重走他与黛西十一月夜里曾一起走过的街道，重访他们开白色车去过的地方。
+    explanationZh: 汤姆和黛西还在蜜月路上，他从法国回来，做了一趟 "miserable but irresistible journey to Louisville"。他在那里待了一星期，重走十一月夜里两人脚步一同响过的街，重去他们开白车去过的偏僻地方；临走时他觉得，只要再找得仔细些，说不定还能把她找回来。
   - id: gg-ch-08-q5
-    stem: What did Wilson tell Michaelis he had said to Myrtle before she died?
+    stem: What did Wilson say he had told Myrtle?
     options:
-      - He told her he would leave her if she didn't confess everything.
-      - He told her he knew exactly who the man in the yellow car was.
-      - He told her she had destroyed everything he had built for them.
-      - He told her she might fool him but she couldn't fool God.
-    correctIndex: 3
-    explanationZh: 威尔森对迈克尔里斯复述了他对妻子说的话："You may fool me, but you can't fool God!"——他把妻子带到窗前，指着灰烬谷上方埃克尔堡医生的广告牌眼睛说出这番话。他并非威胁离开或宣称已知道凶手身份，而是在一种宗教式的笃信中宣判了因果报应。
+      - That he would leave her unless she owned the whole of it
+      - That he knew exactly who the man in the yellow car was
+      - That she might fool him, but she could not fool God
+      - That she had wrecked everything he had built up for them
+    correctIndex: 2
+    explanationZh: 他一字一句地复述——"I told her she might fool me but she couldn't fool God"，说着还费力站起来走到后窗前，把脸贴了上去。
   - id: gg-ch-08-q6
-    stem: What was Wilson's final known destination and whom did he ask for there?
+    stem: Where did Wilson's day on foot end?
     options:
-      - He arrived in New York and asked for directions to Daisy's home.
-      - He reached Port Roosevelt and searched the marina for a yellow car.
-      - He returned to Gad's Hill and waited by the road for Gatsby's car.
-      - He arrived in West Egg and asked someone the way to Gatsby's house.
+      - He got to New York and asked the way to Daisy's house
+      - He went back to Gad's Hill and waited by the road for the car
+      - He reached Port Roosevelt and worked along the marina
+      - He came into West Egg and asked the way to Gatsby's house
     correctIndex: 3
-    explanationZh: 威尔森一路步行，途经罗斯福港和盖兹山，中间消失三小时（警方推测他在各车行打听黄车主人），下午两点半到达西蛋——"where he asked someone the way to Gatsby's house. So by that time he knew Gatsby's name." 此时他已锁定了盖茨比的身份和住址。
+    explanationZh: 他一路步行，经罗斯福港到盖兹山，中间有三个钟头没了踪影——警方猜他在各处车行打听那辆黄车。"By half-past two he was in West Egg, where he asked someone the way to Gatsby's house. So by that time he knew Gatsby's name."。
