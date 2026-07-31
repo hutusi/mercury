@@ -96,10 +96,10 @@ quiz:
   - id: sm-ch-20-q2
     stem: The old man says a violent woman drives a man to drink, but what does a nagging woman do?
     options:
-      - A violent one makes him drink.
-      - A nagging one drives him crazy.
-      - A silent one helps him focus.
-      - A tearful one softens his heart.
+      - She sends him to sleep at his desk
+      - She drives him crazy
+      - She teaches him to hold his tongue
+      - She drives him deeper into drink
     correctIndex: 1
     explanationZh: 他说 a violent woman drives a fellow to drink, but a nagging one drives him crazy——吵闹型逼人喝酒，唠叨型把人逼疯。 文中还把丈夫的缺点比作拴在狗尾巴上的罐子，越跑越响。
   - id: sm-ch-20-q3

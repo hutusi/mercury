@@ -253,7 +253,7 @@ quiz:
     stem: What is the significance of Jimmy asking Annabel for the rose before opening the vault?
     options:
       - He needs the stem of the rose as a makeshift pick to manipulate the lock
-      - It marks his farewell to the life of Ralph Spencer
+      - He is bidding farewell to the life of Ralph Spencer
       - He plans to hand the rose to Agatha to calm her once the door is open
       - He wants Annabel to remember him by the flower after he turns himself in
     correctIndex: 1

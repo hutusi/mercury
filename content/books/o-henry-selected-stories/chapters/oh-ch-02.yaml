@@ -97,7 +97,7 @@ sections:
         - Promise to drink the broth before Sue goes back to her drawing board.
         - Call Behrman upstairs to pose as the old hermit miner for Sue.
       correctIndex: 1
-      explanationZh: Sue 要 Johnsy 答应闭上眼睛、别看窗外，直到她画完手头的钢笔插图——她明天必须交稿，又需要光线，不肯拉下窗帘。让 Johnsy 睡觉或吃药都不是她提出的请求。
+      explanationZh: Sue 要 Johnsy 答应闭上眼睛、别看窗外，直到她画完手头的钢笔插图——她明天必须交稿，又需要光线，不肯拉下窗帘。搬去另一个房间、先把汤喝掉或叫 Behrman 上楼当模特，都不是她此刻提出的条件。
   - id: oh-ch-02-s4
     text: |-
       Sue found Behrman smelling strongly of juniper berries in his dimly lighted den below. In one corner was a blank canvas on an easel that had been waiting there for twenty-five years to receive the first line of the masterpiece. She told him of Johnsy’s fancy, and how she feared she would, indeed, light and fragile as a leaf herself, float away when her slight hold upon the world grew weaker.
@@ -188,7 +188,7 @@ quiz:
       - He has spent forty years painting nothing but commercial daubs full-time.
       - He has lost his eyesight and can no longer distinguish green from yellow.
     correctIndex: 1
-    explanationZh: 原文说 Behrman 拿了四十年画笔，却始终“没碰到艺术女神的裙边”——“He had been always about to paint a masterpiece, but had never yet begun it.” 他总说要画杰作，却从未动笔，只靠当模特挣些小钱。不是缺少颜料或被人抢了题材。
+    explanationZh: 原文说 Behrman 拿了四十年画笔，却始终“没碰到艺术女神的裙边”——“He had been always about to paint a masterpiece, but had never yet begun it.” 他偶尔画点商业涂鸦、靠给年轻画家当模特挣小钱，但那是零工而非全职；卖掉杰作或失明都不是文中的说法。
   - id: oh-ch-02-q3
     stem: What evidence leads Sue to realize that Behrman painted the last leaf on the wall?
     options:

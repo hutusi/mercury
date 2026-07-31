@@ -110,7 +110,7 @@ quiz:
   - id: oh-ch-04-q1
     stem: Why did Bob and Jimmy originally agree to meet again after exactly twenty years?
     options:
-      - Twenty years was enough to settle each man's destiny
+      - They thought twenty years would settle each man's destiny
       - They wanted to celebrate the opening of a new restaurant together
       - They needed to settle a debt that came due after twenty years
       - They promised to reunite whenever one of them became wealthy
@@ -149,6 +149,6 @@ quiz:
       - Jimmy invites Bob to meet him at a different restaurant the next evening
       - Jimmy confesses that he has secretly been working for the Chicago police
       - Jimmy warns Bob that Chicago detectives are already waiting inside the station
-      - Jimmy was the first officer, and could not arrest his friend himself
+      - Jimmy explains he was the officer and could not arrest his friend
     correctIndex: 3
     explanationZh: 字条署名 Patrolman Wells，说明 Jimmy 就是最初巡逻的那位警察；他认出了 Bob 却不忍亲手抓捕老友，于是另请同事代劳并留下纸条说明原委。约改日见面、自称芝加哥卧底、预告侦探在局里等候，都非信中内容，也与 Jimmy 的处境不符。

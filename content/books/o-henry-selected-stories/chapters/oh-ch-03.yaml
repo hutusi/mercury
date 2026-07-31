@@ -45,14 +45,14 @@ sections:
       “Don’t you figure out that I might have had something to do with it?” said Soapy, not without sarcasm, but friendly, as one greets good fortune.
     checkIn:
       id: oh-ch-03-s2-c1
-      stem: What reason does the policeman give for not arresting Soapy after the window-smashing?
+      stem: Why does Soapy fail to get arrested at the glittering café on Broadway?
       options:
-        - He does not believe Soapy can afford to repair the broken window.
-        - He thinks Soapy is mentally ill and cannot be held responsible for it.
-        - He recognizes Soapy as a regular vagrant and decides to let him go.
-        - He assumes the real culprit fled and instead chases a random man running nearby.
+        - The waiters made him wash dishes instead
+        - The policeman on the corner knew him
+        - The café had closed early for the winter
+        - The head waiter turned him away at the door
       correctIndex: 3
-      explanationZh: 警察心中认定砸窗户的人不会留在原地与法律纠缠，而是拔腿就跑，恰好看到半个街区外有人奔跑去赶车，便提着警棍追了上去。选项中说他因索皮精神失常或认出他是常客而放人，均与原文不符。
+      explanationZh: 索皮刚踏进门，领班的目光就落在他磨破的裤子和寒酸的鞋上，“Strong and ready hands turned him about”——还没坐下就被无声地请了出去，连点烤鸭的机会都没有。他既没吃上饭，也就谈不上赖账被捕；洗盘子和警察都没有出场。
   - id: oh-ch-03-s3
     text: |-
       The policeman’s mind refused to accept Soapy even as a clue. Men who smash windows do not remain to parley with the law’s minions. They take to their heels. The policeman saw a man halfway down the block running to catch a car. With drawn club he joined in the pursuit. Soapy, with disgust in his heart, loafed along, twice unsuccessful.

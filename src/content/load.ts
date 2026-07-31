@@ -65,7 +65,10 @@ const BOOK_DIRS = [
   "the-wonderful-wizard-of-oz",
   "the-happy-prince-and-other-tales",
   "the-time-machine",
-  "letters-from-a-self-made-merchant-to-his-son",
+  // letters-from-a-self-made-merchant-to-his-son is authored and reviewed but
+  // deliberately unregistered: the 1902 text uses a racial slur in 13 places
+  // across 9 letters, held for an editorial decision (elide/keep/drop) before
+  // it can seed. Unregistered content never reaches the database or learners.
   "o-henry-selected-stories",
 ] as const;
 

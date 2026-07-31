@@ -98,12 +98,12 @@ sections:
       id: sm-ch-17-s5-c1
       stem: Why was the boy unusually eager to recite the Sunday-school lesson in front of Doc Hoover?
       options:
-        - His grandmother had punished him and made him memorize the chapter as a condition for leaving his room.
+        - Grandma had punished him and made him memorize the chapter as a condition for leaving his room.
         - Doc Hoover had promised him a prize for reciting the longest verse.
         - He wanted to show off that he could recite the Ten Commandments faster than anyone.
-        - His grandmother had told him to impress the Elder by telling a story.
+        - Grandma had told him to impress the Elder by telling a story.
       correctIndex: 0
-      explanationZh: 奶奶惩罚他偷西瓜后，把他关在房里，要求背出十诫和整章主日学课文才准出来。因为晚饭两小时后就要吃，他拼命背了下来，所以第二天见到Doc Hoover反而盼着被提问。说Doc许诺奖品或奶奶让他去给长老讲故事都没有依据。
+      explanationZh: 信里的“your grandma”是写信人对儿子皮尔庞特的称呼——对故事里的男孩（年轻时的老格雷厄姆）而言，她是自己的母亲。她惩罚他偷西瓜后，把他关在房里，要求背出十诫和整章主日学课文才准出来。因为晚饭两小时后就要开，他拼命背了下来，所以第二天见到 Doc Hoover 反而盼着被提问。
   - id: sm-ch-17-s6
     text: |-
       "Tell 'em, John," she said right out loud, before everybody.
@@ -125,14 +125,14 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-17-s6-c1
-      stem: What did the grandmother tell the boy to tell the whole Sunday-school?
+      stem: What did Grandma tell the boy to tell the whole Sunday-school?
       options:
         - Why he was afraid of the dark.
         - What he had learned about the weather.
         - How he came to have his lesson so nice.
         - How he had helped his mother at home.
       correctIndex: 2
-      explanationZh: 奶奶当众大声说：“Tell 'em, John… Tell 'em how you come to have your lesson so nice.”男孩无路可逃，只好承认自己偷了西瓜。这正是让他痛恨出名的时刻。天气是原文“no switching her off on to the weather”里的比喻，并非她要他讲的内容。
+      explanationZh: 她当众大声说：“Tell 'em, John… Tell 'em how you come to have your lesson so nice.”男孩无路可逃，只好承认自己偷了西瓜。这位“Grandma”是写信人自己的母亲——他对儿子才称她“你奶奶”。天气是原文“no switching her off on to the weather”里的比喻，并非她要他讲的内容。
 quiz:
   - id: sm-ch-17-q1
     stem: Why does the father compare self-promoters to hot air in a balloon?
@@ -173,12 +173,12 @@ quiz:
   - id: sm-ch-17-q5
     stem: Why did memorizing the Ten Commandments and the Sunday-school chapter feel urgent to the boy?
     options:
-      - Supper was near, and grandmother would not let him out before
+      - Supper was near, and Grandma would not let him out before
       - Doc Hoover was coming to test him the very next morning
-      - His grandmother promised him a special dinner if he finished
+      - His Grandma promised him a special dinner if he finished
       - The Elder was waiting outside his room to hear him recite
     correctIndex: 0
-    explanationZh: 原文写“supper was only two hours off”，而奶奶不背完不准出房门，所以他拼命背。Doc Hoover是第二天主日学才出现的，不是催他背书的动力；奶奶和长老都没有承诺奖励或在外面等候。
+    explanationZh: 原文写“supper was only two hours off”，而她母亲（信中的“Grandma”）不背完不准出房门，所以他拼命背。Doc Hoover是第二天主日学才出现的，不是催他背书的动力；家里人和长老都没有承诺奖励或在外面等候。
   - id: sm-ch-17-q6
     stem: What lasting lesson did the boy take from being publicly exposed for stealing a watermelon?
     options:

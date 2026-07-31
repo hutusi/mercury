@@ -56,14 +56,14 @@ sections:
       I've no doubt she thought a lot of Bud, but when a woman has fourteen it sort of unsettles her mind so that she can't focus her affections or play any favorites. And so when Bud's clothes were found at the swimming hole one day, and no Bud inside them, she didn't take on up to the expectations of the neighbors who had brought the news, and who were standing around waiting for her to go off into something special in the way of high-strikes.
     checkIn:
       id: sm-ch-18-s3-c1
-      stem: What does Graham say is the only thing he ever put into business that did not pay dividends in fun or dollars?
+      stem: What does Graham say worrying is even harder than?
       options:
-        - Flattery.
-        - Charity.
-        - Worry.
-        - Advertising.
+        - Running a lard refinery
+        - Keeping a new clerk honest
+        - Picking a winner at horse-racing
+        - Getting elected at college
       correctIndex: 2
-      explanationZh: Graham 在 s2 末尾就说 worry 是唯一没有回报的东西，s3 开头进一步展开，列举种种"担心的事根本没发生"的例子。说广告或慈善，都与这"不回报"的主题不符。
+      explanationZh: 他说“worrying a blamed sight more uncertain than horse-racing—it's harder to pick a winner at it”，接着一口气举了四个“担心的事全没发生”的例子：怕店员忘锁保险柜，烧掉的却是炼油厂；怕 Bill Jones 抢走女友，结果又为他没抢走懊恼了十年。炼油厂和店员都只是例子里的角色。
   - id: sm-ch-18-s4
     text: |-
       She allowed that they were Bud's clothes, all right, but she wanted to know where the remains were. Hinted that there'd be no funeral, or such like expensive goings-on, until some one produced the deceased. Take her by and large, she was a pretty cool, calm cucumber.
