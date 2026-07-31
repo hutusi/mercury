@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: bf-ch-05
+bookId: book-franklin
+title: Early Friends in Philadelphia
+titleZh: 在费城的早年友人
+summaryZh: 富兰克林与印刷所老板基默同吃素食、争论教义，又与三位热爱阅读的年轻友人常在林间散步、吟诗论文。一场精心安排的诗作交换，悄悄改变了其中一人的志向。
+sections:
+  - id: bf-ch-05-s1
+    text: |-
+      Keimer and I lived on a pretty good familiar footing, and agreed tolerably well, for he suspected nothing of my setting up. He retained a great deal of his old enthusiasms and loved argumentation. We therefore had many disputations. I used to work him so with my Socratic method, and had trepanned him so often by questions apparently so distant from any point we had in hand, and yet by degrees led to the point, and brought him into difficulties and contradictions, that at last he grew ridiculously cautious, and would hardly answer me the most common question, without asking first, “What do you intend to infer from that?” However, it gave him so high an opinion of my abilities in the confuting way, that he seriously proposed my being his colleague in a project he had of setting up a new sect. He was to preach the doctrines, and I was to confound all opponents. When he came to explain with me upon the doctrines, I found several conundrums which I objected to, unless I might have my way a little too, and introduce some of mine.
+
+      Keimer wore his beard at full length, because somewhere in the Mosaic law it is said, “Thou shalt not mar the corners of thy beard.” He likewise kept the Seventh day, Sabbath; and these two points were essentials with him. I disliked both; but agreed to admit them upon condition of his adopting the doctrine of using no animal food. “I doubt,” said he, “my constitution will not bear that.” I assured him it would, and that he would be the better for it. He was usually a great glutton, and I promised myself some diversion in half starving him. He agreed to try the practice, if I would keep him company. I did so, and we held it for three months. We had our victuals dressed, and brought to us regularly by a woman in the neighborhood, who had from me a list of forty dishes, to be prepared for us at different times, in all which there was neither fish, flesh, nor fowl, and the whim suited me the better at this time from the cheapness of it, not costing us above eighteenpence sterling each per week. I have since kept several Lents most strictly, leaving the common diet for that, and that for the common, abruptly, without the least inconvenience, so that I think there is little in the advice of making those changes by easy gradations. I went on pleasantly, but poor Keimer suffered grievously, tired of the project, longed for the flesh-pots of Egypt, and ordered a roast pig. He invited me and two women friends to dine with him; but, it being brought too soon upon table, he could not resist the temptation, and ate the whole before we came.
+    checkIn:
+      id: bf-ch-05-s1-c1
+      stem: Why did Keimer finally agree to give up animal food?
+      options:
+        - Keimer wanted to follow the Mosaic law more strictly than before.
+        - Franklin said he would join the diet only if Keimer did too.
+        - Keimer's doctor warned him that meat was harming his health.
+        - Franklin threatened to leave the printing shop otherwise.
+      correctIndex: 1
+      explanationZh: 文本说“I agreed to admit them upon condition of his adopting the doctrine of using no animal food”，而基默答应尝试的前提是“if I would keep him company”。因此关键不是健康或律法本身，而是富兰克林以共同进餐作为条件。
+  - id: bf-ch-05-s2
+    text: |-
+      I had made some courtship during this time to Miss Read. I had a great respect and affection for her, and had some reason to believe she had the same for me; but, as I was about to take a long voyage, and we were both very young, only a little above eighteen, it was thought most prudent by her mother to prevent our going too far at present, as a marriage, if it was to take place, would be more convenient after my return, when I should be, as I expected, set up in my business. Perhaps, too, she thought my expectations not so well founded as I imagined them to be.
+
+      My chief acquaintances at this time were Charles Osborne, Joseph Watson, and James Ralph, all lovers of reading. The two first were clerks to an eminent scrivener or conveyancer in the town, Charles Brockden; the other was clerk to a merchant. Watson was a pious, sensible young man, of great integrity; the others rather more lax in their principles of religion, particularly Ralph, who, as well as Collins, had been unsettled by me, for which they both made me suffer. Osborne was sensible, candid, frank; sincere and affectionate to his friends; but, in literary matters, too fond of criticizing. Ralph was ingenious, genteel in his manners, and extremely eloquent; I think I never knew a prettier talker. Both of them were great admirers of poetry, and began to try their hands in little pieces. Many pleasant walks we four had together on Sundays into the woods, near Schuylkill, where we read to one another, and conferred on what we read.
+
+      Ralph was inclined to pursue the study of poetry, not doubting but he might become eminent in it, and make his fortune by it, alleging that the best poets must, when they first began to write, make as many faults as he did. Osborne dissuaded him, assured him he had no genius for poetry, and advised him to think of nothing beyond the business he was bred to; that, in the mercantile way, though he had no stock, he might, by his diligence and punctuality, recommend himself to employment as a factor, and in time acquire wherewith to trade on his own account. I approved the amusing one’s self with poetry now and then, so far as to improve one’s language, but no farther.
+
+      On this it was proposed that we should each of us, at our next meeting, produce a piece of our own composing, in order to improve by our mutual observations, criticisms, and corrections. As language and expression were what we had in view, we excluded all considerations of invention by agreeing that the task should be a version of the eighteenth Psalm, which describes the descent of a Deity. When the time of our meeting drew nigh, Ralph called on me first, and let me know his piece was ready. I told him I had been busy, and, having little inclination, had done nothing. He then showed me his piece for my opinion, and I much approved it, as it appeared to me to have great merit. “Now,” says he, “Osborne never will allow the least merit in anything of mine, but makes a thousand criticisms out of mere envy. He is not so jealous of you; I wish, therefore, you would take this piece, and produce it as yours; I will pretend not to have had time, and so produce nothing. We shall then see what he will say to it.” It was agreed, and I immediately transcribed it, that it might appear in my own hand.
+    checkIn:
+      id: bf-ch-05-s2-c1
+      stem: Why did Ralph ask Franklin to present Ralph's poem as Franklin's own?
+      options:
+        - He hoped Franklin's handwriting would impress Watson.
+        - He wanted Franklin to rewrite the poem in better style.
+        - He planned to deny later that he had written anything at all.
+        - He wanted to see whether Osborne would judge it fairly.
+      correctIndex: 3
+      explanationZh: Ralph说“Osborne never will allow the least merit in anything of mine, but makes a thousand criticisms out of mere envy. He is not so jealous of you”，可见他想借富兰克林之名测试Osborne的评价是否公允，而非请人改写或炫耀书法。
+  - id: bf-ch-05-s3
+    text: |-
+      We met; Watson’s performance was read; there were some beauties in it, but many defects. Osborne’s was read; it was much better; Ralph did it justice; remarked some faults, but applauded the beauties. He himself had nothing to produce. I was backward; seemed desirous of being excused; had not had sufficient time to correct, etc.; but no excuse could be admitted; produce I must. It was read and repeated; Watson and Osborne gave up the contest, and joined in applauding it. Ralph only made some criticisms, and proposed some amendments; but I defended my text. Osborne was against Ralph, and told him he was no better a critic than poet, so he dropped the argument. As they two went home together, Osborne expressed himself still more strongly in favor of what he thought my production; having restrained himself before, as he said, lest I should think it flattery. “But who would have imagined,” said he, “that Franklin had been capable of such a performance; such painting, such force, such fire! He has even improved the original. In his common conversation he seems to have no choice of words; he hesitates and blunders; and yet, good God! how he writes!” When we next met, Ralph discovered the trick we had played him, and Osborne was a little laughed at.
+
+      This transaction fixed Ralph in his resolution of becoming a poet. I did all I could to dissuade him from it, but he continued scribbling verses till Pope cured him. He became, however, a pretty good prose writer. More of him hereafter. But, as I may not have occasion again to mention the other two, I shall just remark here, that Watson died in my arms a few years after, much lamented, being the best of our set. Osborne went to the West Indies, where he became an eminent lawyer and made money, but died young. He and I had made a serious agreement, that the one who happened first to die should, if possible, make a friendly visit to the other, and acquaint him how he found things in that separate state. But he never fulfilled his promise.
+    checkIn:
+      id: bf-ch-05-s3-c1
+      stem: What effect did the poetry trick have on Ralph?
+      options:
+        - It made him more determined than ever to become a poet.
+        - It pushed him to abandon poetry and study law instead.
+        - It made him stop writing for several years out of shame.
+        - It convinced him to leave Franklin's circle of friends.
+      correctIndex: 0
+      explanationZh: 原文说“This transaction fixed Ralph in his resolution of becoming a poet”，即这次换诗事件反而坚定了他的志向；后来他才被Pope治好写诗的念头，转而成为不错的散文作家。
+quiz:
+  - id: bf-ch-05-q1
+    stem: Why did Keimer end up eating an entire roast pig by himself?
+    options:
+      - He wanted to celebrate finishing a long printing job.
+      - He was testing a new recipe he had received from a neighbor.
+      - He believed the Mosaic law now required him to eat meat.
+      - He grew desperately tired of the three-month vegetarian diet.
+    correctIndex: 3
+    explanationZh: 文本说“poor Keimer suffered grievously, tired of the project, longed for the flesh-pots of Egypt, and ordered a roast pig”，即他在三个月素食后实在受不了了；烧烤上桌太早，他没忍住就一个人吃光了。
+  - id: bf-ch-05-q2
+    stem: What did Keimer seriously propose that Franklin should do in his new sect?
+    options:
+      - Preach the sermons while Keimer printed them.
+      - Confound all opponents in doctrinal disputes.
+      - Translate the Mosaic law into plain English.
+      - Manage the sect's finances and printing press.
+    correctIndex: 1
+    explanationZh: 富兰克林用苏格拉底式提问把Keimer逼得处处小心，令Keimer对他“confuting way”的能力极为赏识，于是提出新教派计划：“He was to preach the doctrines, and I was to confound all opponents。”
+  - id: bf-ch-05-q3
+    stem: Why did Mrs. Read think it prudent to discourage Franklin and her daughter from marrying immediately?
+    options:
+      - She disliked Franklin's habit of arguing with clergymen.
+      - She had already promised Miss Read to another suitor.
+      - Franklin faced a long voyage and both were very young.
+      - She wanted Franklin to convert to her faith first.
+    correctIndex: 2
+    explanationZh: 文本说“as I was about to take a long voyage, and we were both very young, only a little above eighteen”，母亲认为等他远航归来、事业安定后再办婚事更妥当，甚至可能怀疑他对前景的设想并不牢靠。
+  - id: bf-ch-05-q4
+    stem: What task did the four friends agree on for their next meeting?
+    options:
+      - Each would write a version of the eighteenth Psalm.
+      - Each would compose an original love elegy.
+      - Each would translate a chapter from Mosaic law.
+      - Each would write a satirical essay about religion.
+    correctIndex: 0
+    explanationZh: 为专注于语言与表达本身，他们排除了题材创造，约定“the task should be a version of the eighteenth Psalm, which describes the descent of a Deity”。
+  - id: bf-ch-05-q5
+    stem: What became of Osborne after he moved to the West Indies?
+    options:
+      - He became a wealthy merchant and then a poet.
+      - He became a judge and lived to old age.
+      - He became an eminent lawyer but died young.
+      - He became a clergyman and gave up law.
+    correctIndex: 2
+    explanationZh: 文末交代：Watson几年后在富兰克林怀中去世；Osborne“went to the West Indies, where he became an eminent lawyer and made money, but died young”，并且从未兑现死后探望老友的约定。

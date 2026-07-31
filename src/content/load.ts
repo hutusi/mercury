@@ -70,6 +70,7 @@ const BOOK_DIRS = [
   // across 9 letters, held for an editorial decision (elide/keep/drop) before
   // it can seed. Unregistered content never reaches the database or learners.
   "o-henry-selected-stories",
+  "the-autobiography-of-benjamin-franklin",
 ] as const;
 
 export const allBooks: Book[] = BOOK_DIRS.map((dir) => {
