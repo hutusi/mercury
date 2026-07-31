@@ -31,6 +31,15 @@ Prosecuted</p>
 <tr><td>Study electricity</td><td>7:15</td><td>a.m.</td></tr>
 </tbody>
 </table>
+<ol>
+<li>
+<p>Temperance.</p>
+<p>Eat not to dullness; drink not to elevation.<a href="endnotes.xhtml#note-2" id="noteref-2" epub:type="noteref">2</a></p>
+</li>
+<li>
+<p>Silence.</p>
+</li>
+</ol>
 <p>He was a very selfish giant.</p>
 </article>
 </body>
@@ -56,6 +65,14 @@ describe("extractSeChapter", () => {
   test("captures table rows as paragraphs with space-joined cells", () => {
     expect(paragraphs).toContain("Rise from bed 6:00 a.m.");
     expect(paragraphs).toContain("Study electricity 7:15 a.m.");
+  });
+
+  // Bare <ol>/<ul> under the chapter container once vanished entirely —
+  // Franklin's thirteen virtues with their precepts were silently dropped.
+  test("captures bare ordered-list prose, suppressing noterefs inside items", () => {
+    expect(paragraphs).toContain("Temperance.");
+    expect(paragraphs).toContain("Eat not to dullness; drink not to elevation.");
+    expect(paragraphs).toContain("Silence.");
   });
 
   test("keeps document order across plain and blockquote paragraphs", () => {

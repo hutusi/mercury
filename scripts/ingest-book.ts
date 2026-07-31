@@ -226,27 +226,36 @@ export function extractSeChapter(xhtml: string): {
     })
     // Descendant `p` inside blockquote also reaches footer > p signatures;
     // dropping blockquotes once cost After Twenty Years its entire twist
-    // note (letters, signs, and telegrams live in them).
-    .on("section > p, article > p, section > blockquote p, article > blockquote p", {
-      element(el) {
-        flush();
-        current = [];
-        el.onEndTag(flush);
+    // note (letters, signs, and telegrams live in them). Bare <ol>/<ul> lists
+    // carry prose too (Franklin's thirteen virtues with their precepts) —
+    // blockquote-nested lists already match `blockquote p`, so only lists that
+    // are direct children of the container need their own selector.
+    .on(
+      "section > p, article > p, section > blockquote p, article > blockquote p, section > ol li p, article > ol li p, section > ul li p, article > ul li p",
+      {
+        element(el) {
+          flush();
+          current = [];
+          el.onEndTag(flush);
+        },
+        text(t) {
+          if (suppress === 0) current?.push(t.text);
+        },
       },
-      text(t) {
-        if (suppress === 0) current?.push(t.text);
+    )
+    .on(
+      "section > p a, article > p a, section > blockquote p a, article > blockquote p a, section > ol li p a, article > ol li p a, section > ul li p a, article > ul li p a",
+      {
+        element(el) {
+          if ((el.getAttribute("epub:type") ?? "").includes("noteref")) {
+            suppress += 1;
+            el.onEndTag(() => {
+              suppress -= 1;
+            });
+          }
+        },
       },
-    })
-    .on("section > p a, article > p a, section > blockquote p a, article > blockquote p a", {
-      element(el) {
-        if ((el.getAttribute("epub:type") ?? "").includes("noteref")) {
-          suppress += 1;
-          el.onEndTag(() => {
-            suppress -= 1;
-          });
-        }
-      },
-    })
+    )
     // Tables carry prose too (Gatsby's Hopalong Cassidy schedule, Franklin's
     // daily plan): one row = one paragraph, cells separated by spaces. Pure
     // symbol grids (Franklin's virtue-examination dots) come out as noise and
