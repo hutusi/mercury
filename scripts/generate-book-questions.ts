@@ -67,6 +67,7 @@ Given one chapter, produce:
 
 Rules for every question:
 - stem, the correct answer, and all three distractors in English at or below ${cefrLevel} difficulty; distractors plausible and mutually exclusive with the correct answer.
+- Keep all four options similar in length and punctuate them identically (all full sentences or all fragments) — a conspicuously long or differently punctuated correct answer gives itself away.
 - Option order is assigned by tooling, never by you: give the correct answer in \`correct\` and the three wrong answers in \`distractors\`.
 - explanationZh in Simplified Chinese: teach rather than assert — point to what happens in the text (short English quotes are welcome) and briefly dismiss the most tempting distractor BY ITS CONTENT. Never refer to options by letter or position (no 选项A/选项1/option B) — positions are not known when you write.
 - Never ask about wording trivia, chapter numbers, or anything outside this chapter.`;
@@ -224,7 +225,13 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
     ...assembled.quiz,
   ];
   // The JSON-repair path can silently truncate strings; catch gutted output.
-  const gutted = allQuestions.filter((q) => q.explanationZh.trim().length < 10).map((q) => q.id);
+  // Length alone misses mid-sentence cuts, so also require terminal
+  // punctuation — a Chinese explanation never ends on a bare clause.
+  const gutted = allQuestions
+    .filter(
+      (q) => q.explanationZh.trim().length < 10 || !/[。！？”）)]$/.test(q.explanationZh.trim()),
+    )
+    .map((q) => q.id);
   if (gutted.length) {
     console.warn(`  ! empty/truncated explanationZh: ${gutted.join(", ")} — redraft with --force`);
   }
