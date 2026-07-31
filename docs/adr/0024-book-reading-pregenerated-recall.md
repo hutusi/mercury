@@ -4,7 +4,12 @@ Date: 2026-07-28
 
 ## Status
 
-Accepted
+Accepted. Amended 2026-07-31: the "drafted offline by an authoring-time AI
+script" mechanism below was replaced by hand-authoring in a Claude Code
+session against the chapter prose. The decision itself — runtime never
+generates questions, and what is committed is what learners get — is
+unchanged; only how the committed YAML gets written changed. See
+[docs/CONTENT.md](../CONTENT.md#authoring-rules-per-kind).
 
 ## Context
 

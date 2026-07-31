@@ -50,7 +50,7 @@ Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001`
 
 **Books** ([ADR 0024](adr/0024-book-reading-pregenerated-recall.md)) — track-agnostic extensive reading: a `book.yaml` manifest (bilingual titles, author, `descriptionZh`, CEFR level, genres, provenance in `source`, and the **ordered** `chapterFiles` list — array position is reading order, like vocab sort order) plus one YAML per chapter. A chapter is `sections[]` of prose (400–800 words each, `|-` block scalars, blank lines between paragraphs), each optionally carrying one `checkIn` MCQ anchored at its break, and a `quiz` of ≥3 end-of-chapter recall MCQs. Question ids must be unique across a chapter's check-ins **and** quiz combined (they share the attempt answer map and `mistake_states`). Register new book directories in `BOOK_DIRS` in `src/content/load.ts` — **array position is the library's difficulty ladder** (easiest first): the seed derives `books.sort_order` from it, and `/books` renders in that order grouped by CEFR band. The ladder is guidance, never a gate — there is no cross-book lock.
 
-The authoring workflow is script-assisted, human-reviewed:
+The authoring workflow is script-assisted, human-reviewed. **Step 3 is no longer how scaffolding gets written**: as of 2026-07-31 every book's questions, `explanationZh`, `summaryZh` and `titleZh` are authored directly in a Claude Code session against the chapter prose, with no AI API call anywhere. Reviewing a drafted question can remove errors but not raise the ceiling; authoring removes the failure class instead. `scripts/generate-book-questions.ts` is kept for reference and for bootstrapping a new book's skeleton questions — never point it at the Bailian/GLM provider, which is voice-only here.
 
 ```bash
 # 1. Skeletons. Preferred source: a cloned Standard Ebooks repo (proofed XHTML, one
@@ -63,10 +63,15 @@ bun run content:book-ingest -- --se-dir /tmp/h-g-wells_the-time-machine \
 bun run content:book-ingest -- --file pg55.txt --slug the-wonderful-wizard-of-oz --prefix oz --book-id book-oz
 # 2. Hand-adjust awkward section breaks; write book.yaml (its cefrLevel sets the
 #    question-drafting difficulty).
-# 3. Draft questions via the configured AI provider (rewrites the YAML). Invoke the
-#    script directly when passing flags — `bun run content:book-questions -- --book …`
+# 3. Write the scaffolding by hand, chapter by chapter (see checklist below). The
+#    legacy AI drafter still exists but is not the default path; invoke the script
+#    directly when passing flags — `bun run content:book-questions -- --book …`
 #    appends them to the trailing prettier step instead.
 bun scripts/generate-book-questions.ts --book the-time-machine && bunx prettier --write content/books
+# 3b. Audit while writing — pooled position spread and length-skew percentages only
+#     go red once a book passes ~40 questions, so check per chapter, not per book.
+bun run content:book-audit the-time-machine
+bun run content:book-audit -- --review ttm-ch-01   # summaryZh next to every answer
 # 4. REVIEW EVERY QUESTION before committing (checklist below). Only then register
 #    the directory in BOOK_DIRS (skeletons fail the quiz ≥3 floor at load) — its
 #    position is the ladder — and seed.
@@ -74,13 +79,16 @@ bun scripts/generate-book-questions.ts --book the-time-machine && bunx prettier 
 
 Review checklist for generated questions: the answer is truly stated in the text (re-read the section); exactly one option is defensible; `explanationZh` teaches (points at the text, dismisses the tempting distractor **by content, never by letter/position** — option order is script-assigned, and a content test enforces the position spread) rather than asserts; check-ins only reference their own section; `titleZh` follows the book's published translation conventions. Three answer tells surfaced in review, so check for them explicitly (the drafter warns on all three, and a content test caps the length skew): `summaryZh` must **not state any fact a question asks for** (readers see it first); quiz questions must **not repeat a check-in's fact** (its answer was revealed mid-read); the four options must be **similar in length and identically punctuated** — a uniquely long correct answer is gameable (test caps: ≤1.6× the longest distractor per question, ≤45% uniquely-longest pooled per book). Runtime never calls AI for books — what you commit is what learners get, so the review **is** the quality bar. Never regenerate a shipped chapter: its question ids key learner answer maps and mistakes. Wording-only edits to shipped questions and summaries are safe (ids and `correctIndex` untouched); never replace a shipped question with a different fact — recorded mistakes would silently point at a different question.
 
+> **One-time carve-out (2026-07-31).** All seven books' scaffolding was regenerated in place against that rule, user-authorized because no learner had yet answered a book question in production. Question facts and counts changed under the existing id scheme, so **the reseed that ships this must first clear `book_quiz_attempts` and the `mistake_states` rows with kind `book_quiz`** — otherwise a stored answer index points at a question that no longer asks the same thing. This is not a precedent: once learners are on a book, the rule above applies again.
+
 ## Validation
 
-Three layers enforce the same invariants:
+Three layers enforce the same invariants, plus one advisory tool:
 
 - The editor, live: the `$schema` directive validates shape as you type (advisory — zod is the authority).
 - `bun run test` → `src/content/content.test.ts`: every file loads through `src/content/load.ts` (zod parse with file-scoped errors), id uniqueness, per-exam question-id uniqueness, section-kind coverage, per-track coverage of all five practice areas, and the book invariants (chapter/section ids unique, per-chapter question ids unique across check-ins + quiz, `bookId` cross-checks, correct-answer position spread). It also guards the pipeline itself: app code must not import the loader (runtime content comes from Postgres), and the committed JSON Schemas must match the zod model.
 - `bun run db:seed` re-validates before writing and refuses duplicate ids.
+- `bun run content:book-audit [<slug>…]` (advisory, books only) reads the YAML directly — so it also works on directories not yet in `BOOK_DIRS` — and prints what the test can only tell you after a whole book is written: pooled correct-answer positions and uniquely-longest/shortest percentages per book, plus per-chapter hard violations, mixed terminal punctuation, gutted or unterminated `explanationZh`, positional references, and a quiz↔check-in token-overlap heuristic. `--review <chapter-id>` lays that chapter's `summaryZh` beside every stem and correct answer, which is the only practical way to run the no-spoiler check (summaries are Chinese, questions English — no machine can diff them).
 
 MCQs are exactly 4 options with `correctIndex` in 0–3 (schema-enforced).
 
