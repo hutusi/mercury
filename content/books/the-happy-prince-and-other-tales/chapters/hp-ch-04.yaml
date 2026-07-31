@@ -3,7 +3,7 @@ id: hp-ch-04
 bookId: book-happy-prince
 title: The Devoted Friend
 titleZh: 忠实的朋友
-summaryZh: 水鼠自夸懂得真正的友谊，绿红雀于是给他讲了一个故事：穷苦的小汉斯有一位"忠实的朋友"磨坊主。磨坊主满口友谊的大道理，却不断利用汉斯，最终让汉斯付出了惨痛的代价。
+summaryZh: 老水鼠在池塘边夸口说，世上再没有比忠实的友谊更高尚、更难得的东西。柳树上的绿红雀听见了，说要讲一个故事——一个关于友谊该怎么说、又该怎么做的故事。
 sections:
   - id: hp-ch-04-s1
     text: |-
@@ -34,14 +34,14 @@ sections:
       “It is applicable to you,” answered the Linnet; and he flew down, and alighting upon the bank, he told the story of “The Devoted Friend.”
     checkIn:
       id: hp-ch-04-s1-c1
-      stem: What does the Water-rat say is nobler and rarer than love?
+      stem: What did the Water-rat say he expected of a devoted friend?
       options:
-        - Having a family
-        - Being in best society
-        - A devoted friendship
-        - Teaching children to swim
-      correctIndex: 2
-      explanationZh: 水鼠说自己没结过婚也不想结婚，他认为 "friendship is much higher"，世上没有比 "a devoted friendship" 更高尚更稀有的了。提到家庭是他明确表示不要的东西，可排除。
+        - That the friend should simply be devoted to him
+        - That the friend should praise him before the ducks
+        - That the friend should never ask him any questions
+        - That the friend should share his hole in the bank
+      correctIndex: 0
+      explanationZh: 绿红雀问他忠实朋友的本分是什么，他答 "I should expect my devoted friend to be devoted to me, of course"；再问他自己该回报些什么，他只说 "I don't understand you"。
   - id: hp-ch-04-s2
     text: |-
       “Once upon a time,” said the Linnet, “there was an honest little fellow named Hans.”
@@ -59,14 +59,14 @@ sections:
       “So little Hans worked away in his garden. During the spring, the summer, and the autumn he was very happy, but when the winter came, and he had no fruit or flowers to bring to the market, he suffered a good deal from cold and hunger, and often had to go to bed without any supper but a few dried pears or some hard nuts. In the winter, also, he was extremely lonely, as the Miller never came to see him then.
     checkIn:
       id: hp-ch-04-s2-c1
-      stem: What did the Miller always take from Hans when he passed by the garden?
+      stem: What did the neighbours think strange about the rich Miller?
       options:
-        - Sacks of flour
-        - Milk and wool
-        - Flowers
-        - Bread and nuts
-      correctIndex: 2
-      explanationZh: 磨坊主每次经过都会摘一大束花、一把香草，或在水果季装满口袋的李子和樱桃。面粉、牛奶和羊毛是磨坊主自己拥有却不肯给汉斯的东西。
+        - That he kept six milch cows but sold no milk at all
+        - That he talked about friendship more than he worked
+        - That he let his sheep graze in little Hans's garden
+        - That he never gave little Hans anything in return
+      correctIndex: 3
+      explanationZh: 邻居们纳闷的是，磨坊主存着一百袋面粉、六头奶牛和一大群羊，可是 "the rich Miller never gave little Hans anything in return"。汉斯本人倒从不把这些放在心上。
   - id: hp-ch-04-s3
     text: |-
       “ ‘There is no good in my going to see little Hans as long as the snow lasts,’ the Miller used to say to his wife, ‘for when people are in trouble they should be left alone, and not be bothered by visitors. That at least is my idea about friendship, and I am sure I am right. So I shall wait till the spring comes, and then I shall pay him a visit, and he will be able to give me a large basket of primroses and that will make him so happy.’
@@ -82,14 +82,14 @@ sections:
       “ ‘Lots of people act well,’ answered the Miller; ‘but very few people talk well, which shows that talking is much the more difficult thing of the two, and much the finer thing also’; and he looked sternly across the table at his little son, who felt so ashamed of himself that he hung his head down, and grew quite scarlet, and began to cry into his tea. However, he was so young that you must excuse him.”
     checkIn:
       id: hp-ch-04-s3-c1
-      stem: Why does the Miller say he will not invite Hans to his house in winter?
+      stem: What did the Miller's youngest son offer to do for little Hans?
       options:
-        - His house is too small for guests
-        - He fears Hans might become envious
-        - His wife does not like Hans
-        - Hans is too sick to travel
+        - Carry a sack of flour down to the cottage
+        - Give him half his porridge and show his rabbits
+        - Bring him a basket of primroses in the spring
+        - Fetch the clergyman from his three-storied house
       correctIndex: 1
-      explanationZh: 磨坊主说如果汉斯看到温暖的炉火、丰盛的晚餐和大桶红酒，可能会变得嫉妒，而嫉妒会破坏人的本性。房子小、妻子不喜欢、生病都不是文中给出的理由。
+      explanationZh: 小儿子说 "If poor Hans is in trouble I will give him half my porridge, and show him my white rabbits"，换来的却是父亲一句 "What a silly boy you are"，还说不知道送他上学有什么用。
   - id: hp-ch-04-s4
     text: |-
       “Is that the end of the story?” asked the Water-rat.
@@ -121,14 +121,14 @@ sections:
       “ ‘They are certainly very lovely,’ said Hans, ‘and it is a most lucky thing for me that I have so many. I am going to bring them into the market and sell them to the Burgomaster’s daughter, and buy back my wheelbarrow with the money.’
     checkIn:
       id: hp-ch-04-s4-c1
-      stem: What does Hans want to buy back with the money from selling his primroses?
+      stem: What did Hans mean to do with the money from his primroses?
       options:
-        - His Sunday coat
-        - His silver chain
-        - His big pipe
-        - His wheelbarrow
-      correctIndex: 3
-      explanationZh: 汉斯说要把报春花卖给镇长女儿，再用这笔钱买回他的手推车——“I will buy back my wheelbarrow with the money”。这一节里他一心惦记的只有手推车。
+        - Pay the Miller back for the flour he had eaten
+        - Buy a new spade and a basket for the market
+        - Buy back the wheelbarrow he had sold in winter
+        - Send the Burgomaster's daughter a bunch of them
+      correctIndex: 2
+      explanationZh: 他说要把花卖给镇长的女儿，"and buy back my wheelbarrow with the money"。镇长的女儿是买主，不是收花的人。
   - id: hp-ch-04-s5
     text: |-
       “ ‘Buy back your wheelbarrow? You don’t mean to say you have sold it? What a very stupid thing to do!’
@@ -146,14 +146,14 @@ sections:
       “ ‘It is not a very big plank,’ said the Miller, looking at it, ‘and I am afraid that after I have mended my barn roof there won’t be any left for you to mend the wheelbarrow with; but, of course, that is not my fault. And now, as I have given you my wheelbarrow, I am sure you would like to give me some flowers in return. Here is the basket, and mind you fill it quite full.’
     checkIn:
       id: hp-ch-04-s5-c1
-      stem: What does the Miller first ask for in return for giving Hans the wheelbarrow?
+      stem: What did the Miller want the moment Hans mentioned his plank of wood?
       options:
-        - A sack of flour
-        - A plank of wood
-        - Help with the sheep
-        - A silver chain
-      correctIndex: 1
-      explanationZh: 磨坊主先看中了汉斯的一块木板去修谷仓屋顶，接着又让汉斯把篮子装满花。这一次他开口要的既不是面粉，也不是银链子。
+        - The plank itself, to mend the hole in his barn roof
+        - A share of the primroses that grew beside the shed
+        - Hans's help in carrying the plank up the hill to the mill
+        - The silver chain that Hans had sold to buy bread
+      correctIndex: 0
+      explanationZh: 汉斯说家里有块木板，可以自己修车，磨坊主立刻接口 "that is just what I want for the roof of my barn"，还夸赞 "one good action always breeds another"。木板归了谷仓，汉斯的车却再也补不上了。
   - id: hp-ch-04-s6
     text: |-
       “ ‘Quite full?’ said little Hans, rather sorrowfully, for it was really a very big basket, and he knew that if he filled it he would have no flowers left for the market and he was very anxious to get his silver buttons back.
@@ -181,14 +181,14 @@ sections:
       “It was a very hot day, and the road was terribly dusty, and before Hans had reached the sixth milestone he was so tired that he had to sit down and rest. However, he went on bravely, and as last he reached the market. After he had waited there some time, he sold the sack of flour for a very good price, and then he returned home at once, for he was afraid that if he stopped too late he might meet some robbers on the way.
     checkIn:
       id: hp-ch-04-s6-c1
-      stem: How does Hans feel about filling the Miller's big basket with flowers?
+      stem: Why was Hans sorry to fill the big basket quite full?
       options:
-        - He feels angry and refuses to do it
-        - He feels happy because he loves the Miller
-        - He feels afraid the Miller will steal them
-        - He is sad to lose all his flowers
+        - He had promised those flowers to the Burgomaster
+        - The basket was too heavy for him to carry alone
+        - He wanted to keep the primroses for his own porch
+        - Then he would have none left to sell at the market
       correctIndex: 3
-      explanationZh: 汉斯 "rather sorrowfully" 地问 "Quite full?"，因为篮子太大，装满后他就没花可卖去赎回银纽扣了。他最终还是把花全给了磨坊主，所以生气拒绝不正确。
+      explanationZh: 他 "rather sorrowfully" 地问了一句 "Quite full?"——篮子太大，装满了就没有花可卖，银纽扣也就赎不回来。可他最后还是把报春花全摘了下来。
   - id: hp-ch-04-s7
     text: |-
       “ ‘It has certainly been a hard day,’ said little Hans to himself as he was going to bed, ‘but I am glad I did not refuse the Miller, for he is my best friend, and, besides, he is going to give me his wheelbarrow.’
@@ -208,14 +208,14 @@ sections:
       “ ‘Well, really,’ answered the Miller, ‘I do not think it is much to ask of you, considering that I am going to give you my wheelbarrow; but of course if you refuse I will go and do it myself.’
     checkIn:
       id: hp-ch-04-s7-c1
-      stem: When Hans is tired and stays in bed, what does the Miller ask him to do?
+      stem: What did the Miller say a true friend always does?
       options:
-        - Mend the barn roof
-        - Carry flour to market
-        - Drive sheep to the mountain
-        - Fetch the Doctor
-      correctIndex: 0
-      explanationZh: 磨坊主来拿卖面粉的钱，见汉斯还在睡，便教训他懒惰，然后要他去修谷仓屋顶。这一天他吩咐的只有屋顶的活儿；扛面粉是前一天刚做完的事。
+        - Keeps his opinions to himself to spare his friend
+        - Says unpleasant things and does not mind giving pain
+        - Lends whatever he owns without ever being asked
+        - Works beside his friend until the work is finished
+      correctIndex: 1
+      explanationZh: 他一边嫌汉斯睡懒觉，一边说 "a true friend always says unpleasant things, and does not mind giving pain"，还说真正的朋友甚至乐意如此。这番道理刚好为他自己的刻薄开脱。
   - id: hp-ch-04-s8
     text: |-
       “ ‘Oh! on no account,’ cried little Hans and he jumped out of bed, and dressed himself, and went up to the barn.
@@ -245,14 +245,14 @@ sections:
       “So little Hans worked away for the Miller, and the Miller said all kinds of beautiful things about friendship, which Hans took down in a notebook, and used to read over at night, for he was a very good scholar.
     checkIn:
       id: hp-ch-04-s8-c1
-      stem: After Hans mends the roof, what does the Miller ask him to do the next day?
+      stem: What did Hans do with the fine things the Miller said about friendship?
       options:
-        - Mend the barn roof
-        - Carry flour to market
-        - Herd his sheep
-        - Fetch the Doctor
+        - He repeated them to the neighbours at the market stall
+        - He wrote them on the wall of his little cottage
+        - He took them down in a notebook to read at night
+        - He asked the Miller to say them all over again
       correctIndex: 2
-      explanationZh: 修完屋顶后磨坊主说 "I want you to drive my sheep to the mountain tomorrow"。修屋顶是当天刚做完的，扛面粉和请医生分别是前后的任务。
+      explanationZh: 汉斯把那些漂亮话一句句记进本子，夜里拿出来读，"for he was a very good scholar"。他从没把这些句子和自己整天替人跑腿的日子联系起来。
   - id: hp-ch-04-s9
     text: |-
       “Now it happened that one evening little Hans was sitting by his fireside when a loud rap came at the door. It was a very wild night, and the wind was blowing and roaring round the house so terribly that at first he thought it was merely the storm. But a second rap came, and then a third, louder than any of the others.
@@ -282,14 +282,14 @@ sections:
       “ ‘All right!’ said the Doctor; and he ordered his horse, and his big boots, and his lantern, and came downstairs, and rode off in the direction of the Miller’s house, little Hans trudging behind him.
     checkIn:
       id: hp-ch-04-s9-c1
-      stem: Why does the Miller refuse to lend Hans his lantern on the stormy night?
+      stem: Why would the Miller not lend Hans his lantern that night?
       options:
-        - It is new and he is afraid it might get damaged
-        - It is broken and useless
-        - He has already lent it to someone else
-        - He needs it to find the Doctor himself
+        - The lantern was new, and he feared it might be lost
+        - He had left the lantern hanging in the mill that night
+        - He needed it himself to walk back up the hill
+        - The Doctor had borrowed it earlier the same evening
       correctIndex: 0
-      explanationZh: 汉斯求借灯笼，磨坊主说 "it is my new lantern"，怕有损坏会是大损失。灯笼是新的不是坏的，磨坊主自己也不去请医生。
+      explanationZh: 汉斯怕黑夜里跌进沟里，开口借灯，磨坊主答 "it is my new lantern, and it would be a great loss to me if anything happened to it"。那盏灯正提在他手上，他人却站在门口没动。
   - id: hp-ch-04-s10
     text: |-
       “But the storm grew worse and worse, and the rain fell in torrents, and little Hans could not see where he was going, or keep up with the horse. At last he lost his way, and wandered off on the moor, which was a very dangerous place, as it was full of deep holes, and there poor little Hans was drowned. His body was found the next day by some goatherds, floating in a great pool of water, and was brought back by them to the cottage.
@@ -333,66 +333,66 @@ sections:
       And I quite agree with her.
     checkIn:
       id: hp-ch-04-s10-c1
-      stem: What does the Miller say he regrets most about Hans's death?
+      stem: What did the Miller complain of at the inn after the funeral?
       options:
-        - That he never told Hans thank you
-        - That he cannot get rid of the wheelbarrow
-        - That he sent Hans into the storm
-        - That he lost his best friend
+        - That nobody had thanked him for his long black cloak
+        - That he was left with a wheelbarrow he could not use
+        - That Hans had never finished mending the barn roof
+        - That the goatherds had carried the body to his mill
       correctIndex: 1
-      explanationZh: 磨坊主说汉斯是个大损失，因为 "I had as good as given him my wheelbarrow"，现在手推车坏得卖不掉，放在家里还碍事，他说以后再也不大方送东西了。他毫无悔意，完全没有反思是自己的要求害死了汉斯。
+      explanationZh: 他说 "I had as good as given him my wheelbarrow, and now I really don't know what to do with it"——车子坏得卖不出去，放在家里还碍事，末了还叹一句 "One always suffers for being generous"。至于是谁让汉斯在暴风雨里出的门，他一个字也没提。
 quiz:
   - id: hp-ch-04-q1
-    stem: Why does the Miller never visit Hans during the winter?
+    stem: Why did the Miller tell his wife he would not go down to Hans while the snow lasted?
     options:
-      - The road to Hans's cottage is blocked by snow
-      - He is too busy working at his mill
-      - His wife forbids him from going out
-      - He says people in trouble should be left alone
-    correctIndex: 3
-    explanationZh: 磨坊主对妻子说，下雪天不该去探望汉斯，因为 "when people are in trouble they should be left alone"。他还说等到春天再去，那时汉斯就能给他一篮报春花了。路被雪堵、太忙、妻子禁止都不是文中提到的理由。
+      - He had no wish to walk down the hill in the cold
+      - His wife had asked him to stay by the pinewood fire
+      - People in trouble, he said, should be left alone
+      - He had promised the clergyman to call on him instead
+    correctIndex: 2
+    explanationZh: 他的原话是 "when people are in trouble they should be left alone, and not be bothered by visitors"，紧接着又盘算等春天再去，好带回一大篮报春花。
   - id: hp-ch-04-q2
-    stem: What does Hans sell first to buy bread during the hard winter?
+    stem: What was the last thing Hans sold to buy bread that winter?
     options:
-      - His coat buttons
-      - His wheelbarrow
-      - His big pipe
-      - His silver chain
-    correctIndex: 0
-    explanationZh: 汉斯说他先卖了 "the silver buttons off my Sunday coat"，然后卖银链子，再卖大烟斗，最后才卖手推车。手推车是他最后卖掉的东西。
-  - id: hp-ch-04-q3
-    stem: Why does the Miller say he can give Hans his old wheelbarrow?
-    options:
-      - The wheelbarrow is too broken to use anyway
-      - He owes Hans for years of help
-      - His wife told him to give it away
-      - He has already bought a new one for himself
+      - The silver buttons off his Sunday coat
+      - The big pipe he used to smoke by the fire
+      - The silver chain he had worn for years
+      - The wheelbarrow he kept in his garden shed
     correctIndex: 3
-    explanationZh: 磨坊主说自己已经有一辆新推车了，所以旧的可以给汉斯。他嘴上说得大方，但实际上这辆旧车一边坏了、轮辐也有问题，他自己已经不需要了。
+    explanationZh: 汉斯说他先卖银纽扣，再卖银链子，然后是大烟斗，"and at last I sold my wheelbarrow"。正因为它是最后卖掉的，他才最想先把它赎回来。
+  - id: hp-ch-04-q3
+    stem: What did the Miller do to his windmill before walking down to Hans?
+    options:
+      - He tied its sails together with a strong iron chain
+      - He set his youngest son to watch the door for him
+      - He filled a hundred sacks with flour for the market
+      - He locked his new wheelbarrow away in the barn
+    correctIndex: 0
+    explanationZh: 出门前他 "tied the sails of the windmill together with a strong iron chain"，然后挎上妻子提醒他带的那只大篮子下了山。那只篮子后来装走了汉斯所有的花。
   - id: hp-ch-04-q4
-    stem: What happens to Hans on the moor during the storm?
+    stem: What happened to little Hans on the moor that night?
     options:
-      - He falls from a ladder and breaks his leg
-      - Robbers attack him and take his coat
-      - He loses his way and drowns in a deep pool
-      - He freezes to death on the road
-    correctIndex: 2
-    explanationZh: 暴风雨越来越大，汉斯迷了路，走上满是深坑的荒野，最终 "poor little Hans was drowned"。第二天牧羊人发现他浮在一个大水塘里。摔下梯子受伤的是磨坊主的儿子，不是汉斯。
-  - id: hp-ch-04-q5
-    stem: How did the Miller react when his little son wanted to invite Hans and share his porridge?
-    options:
-      - He praised the boy for his kind heart
-      - He called the boy silly and doubted the use of school
-      - He agreed to invite Hans at once
-      - He sent the boy to Hans with a sack of flour
+      - He was robbed of his fur coat and scarlet cap
+      - He lost his way and was drowned in a deep pool
+      - He fell from a ladder and was carried home hurt
+      - He reached the Doctor's house too late to be of use
     correctIndex: 1
-    explanationZh: 小儿子提议请汉斯来家里，还愿意分他一半麦片粥、给他看白兔。磨坊主却骂道“What a silly boy you are!”，说真不知道送他上学有什么用。满口友谊大道理的磨坊主，对真正的善意反而嗤之以鼻；他既没有夸奖孩子，也没有请汉斯来。
-  - id: hp-ch-04-q6
-    stem: What makes the Water-rat go back into his hole at the end?
+    explanationZh: 雨越下越大，他跟不上医生的马，"At last he lost his way, and wandered off on the moor"，第二天牧羊人在一个大水塘里发现了他。从梯子上摔下来的是磨坊主的儿子。
+  - id: hp-ch-04-q5
+    stem: Where did the Miller walk at little Hans's funeral, and why?
     options:
-      - He is bored by the Linnet's long story
-      - He wants to find the Miller and help him
-      - He is angry that the story has a moral
-      - He is sad about Hans's death
+      - Behind the coffin, because he was too sad to lead
+      - At the very back, so that no one would see him weep
+      - At the head, because he called himself the best friend
+      - Beside the Blacksmith, who had known Hans the longest
     correctIndex: 2
-    explanationZh: 水鼠听到故事有道德寓意后非常生气，说早知道就不听了，喊了一声 "Pooh"，甩甩尾巴钻回洞里。他不是无聊或难过，而是觉得被骗听了一个有教育意义的故事。
+    explanationZh: 他说 "As I was his best friend, it is only fair that I should have the best place"，于是披着长长的黑斗篷走在队伍最前头，还不时掏出大手帕擦眼睛。
+  - id: hp-ch-04-q6
+    stem: Why did the Water-rat whisk his tail and go back into his hole?
+    options:
+      - The Duck had called him a confirmed bachelor
+      - He had grown tired of hearing about the Miller
+      - He wanted to write the moral down in a notebook
+      - He was angry to learn that the story had a moral
+    correctIndex: 3
+    explanationZh: 一听说故事有寓意，他就恼了，说早知如此绝不会听，冲着绿红雀喊了一声 "Pooh"，甩甩尾巴钻回洞去。鸭子那句 confirmed bachelor 是在他走掉之后才说的。

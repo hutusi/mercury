@@ -3,7 +3,7 @@ id: hp-ch-03
 bookId: book-happy-prince
 title: The Selfish Giant
 titleZh: 自私的巨人
-summaryZh: 巨人把孩子们赶出花园、筑起高墙，花园里从此只剩下呼啸的北风和不化的冰雪。这场漫长的冬天因何而起、又如何结束，正是这个故事最动人的地方。
+summaryZh: 孩子们放学后总去巨人的花园里玩，直到花园的主人在外做客七年之后回了家。那之后，这座花园里过了很久很久才再听见笑声。
 sections:
   - id: hp-ch-03-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       Then the Spring came, and all over the country there were little blossoms and little birds. Only in the garden of the Selfish Giant it was still winter. The birds did not care to sing in it as there were no children, and the trees forgot to blossom. Once a beautiful flower put its head out from the grass, but when it saw the noticeboard it was so sorry for the children that it slipped back into the ground again, and went off to sleep. The only people who were pleased were the Snow and the Frost. “Spring has forgotten this garden,” they cried, “so we will live here all the year round.” The Snow covered up the grass with her great white cloak, and the Frost painted all the trees silver. Then they invited the North Wind to stay with them, and he came. He was wrapped in furs, and he roared all day about the garden, and blew the chimney-pots down. “This is a delightful spot,” he said, “we must ask the Hail on a visit.” So the Hail came. Every day for three hours he rattled on the roof of the castle till he broke most of the slates, and then he ran round and round the garden as fast as he could go. He was dressed in grey, and his breath was like ice.
     checkIn:
       id: hp-ch-03-s1-c1
-      stem: Why did the Giant build a high wall around his garden?
+      stem: Why did the little flower slip back into the ground and go off to sleep?
       options:
-        - He wanted to keep the Snow and the Frost out of his garden.
-        - He wanted the garden only for himself and would not let children play in it.
-        - He needed to protect his peaches from the Cornish ogre.
-        - He was building a new castle for himself.
+        - The North Wind had frozen it down to the roots
+        - It saw the noticeboard and was sorry for the children
+        - The Giant's high wall had shut out all the sunlight
+        - The Hail had broken every petal that it put out
       correctIndex: 1
-      explanationZh: 文本中巨人明说 "My own garden is my own garden… I will allow nobody to play in it but myself"，于是筑墙。想驱赶冰雪不是他的目的， Frost 和 Snow 反而是因为春天不来才留驻花园。
+      explanationZh: 花刚从草里探出头，"when it saw the noticeboard it was so sorry for the children that it slipped back into the ground again"。冰雹和北风是雪与霜后来才请进花园的客人。
   - id: hp-ch-03-s2
     text: |-
       “I cannot understand why the Spring is so late in coming,” said the Selfish Giant, as he sat at the window and looked out at his cold white garden; “I hope there will be a change in the weather.”
@@ -47,14 +47,14 @@ sections:
       He saw a most wonderful sight. Through a little hole in the wall the children had crept in, and they were sitting in the branches of the trees. In every tree that he could see there was a little child. And the trees were so glad to have the children back again that they had covered themselves with blossoms, and were waving their arms gently above the children’s heads. The birds were flying about and twittering with delight, and the flowers were looking up through the green grass and laughing. It was a lovely scene, only in one corner it was still winter. It was the farthest corner of the garden, and in it was standing a little boy. He was so small that he could not reach up to the branches of the tree, and he was wandering all round it, crying bitterly. The poor tree was still quite covered with frost and snow, and the North Wind was blowing and roaring above it. “Climb up! little boy,” said the Tree, and it bent its branches down as low as it could; but the boy was too tiny.
     checkIn:
       id: hp-ch-03-s2-c1
-      stem: Why was it still winter in one corner of the garden when the children returned?
+      stem: What did the Giant hear one morning that made him jump out of bed?
       options:
-        - The North Wind refused to leave that corner of the garden
-        - The Giant had locked that corner with a noticeboard
-        - The Snow and Frost wanted to stay there all year
-        - A little boy too small to climb was crying under that tree
-      correctIndex: 3
-      explanationZh: 文中写那个小男孩 "so small that he could not reach up to the branches"，围绕树哭泣，那棵树仍被霜雪覆盖。North Wind 在角落呼啸是因为孩子无法上树，并非北风不肯走。
+        - The children laughing in the branches of his trees
+        - The Hail rattling on the roof for three whole hours
+        - A little linnet singing outside his window
+        - The North Wind roaring over the chimney-pots
+      correctIndex: 2
+      explanationZh: 那不过是 "a little linnet singing outside his window"，可他太久没在园里听见鸟叫，还以为是国王的乐师路过。冰雹和北风恰恰在那一刻停了下来。
   - id: hp-ch-03-s3
     text: |-
       And the Giant’s heart melted as he looked out. “How selfish I have been!” he said; “now I know why the Spring would not come here. I will put that poor little boy on the top of the tree, and then I will knock down the wall, and my garden shall be the children’s playground forever and ever.” He was really very sorry for what he had done.
@@ -72,14 +72,14 @@ sections:
       Every afternoon, when school was over, the children came and played with the Giant. But the little boy whom the Giant loved was never seen again. The Giant was very kind to all the children, yet he longed for his first little friend, and often spoke of him. “How I would like to see him!” he used to say.
     checkIn:
       id: hp-ch-03-s3-c1
-      stem: What happened after the Giant put the little boy up into the tree?
+      stem: Why did the little boy alone not run away when the Giant came into the garden?
       options:
-        - The tree broke into blossom, birds sang, and the boy kissed the Giant.
-        - The boy ran away before the Giant could help him.
-        - The other children ran away and never came back.
-        - The wall fell down by itself before the Giant touched it.
-      correctIndex: 0
-      explanationZh: 文中写巨人把孩子放上树后，“the tree broke at once into blossom, and the birds came and sang… and the little boy… kissed him”。孩子没有跑开，墙也不会自己倒下。
+        - He was too small to climb down out of the tree
+        - He knew the Giant had come to lift him into the tree
+        - He was hiding behind the trunk of the tree
+        - His eyes were so full of tears he did not see him
+      correctIndex: 3
+      explanationZh: 别的孩子吓得四散奔逃，"Only the little boy did not run, for his eyes were so full of tears that he did not see the Giant coming"。他个子太小够不着树枝是真的，却不是他没跑的原因。
   - id: hp-ch-03-s4
     text: |-
       Years went over, and the Giant grew very old and feeble. He could not play about any more, so he sat in a huge armchair, and watched the children at their games, and admired his garden. “I have many beautiful flowers,” he said; “but the children are the most beautiful flowers of all.”
@@ -101,66 +101,66 @@ sections:
       And when the children ran in that afternoon, they found the Giant lying dead under the tree, all covered with white blossoms.
     checkIn:
       id: hp-ch-03-s4-c1
-      stem: What did the Giant see on the child's hands and feet when he came close?
+      stem: What did the Giant see in the farthest corner on that winter morning?
       options:
-        - Silver fruit hanging from his branches.
-        - White blossoms covering his whole body.
-        - The prints of nails on his hands and feet.
-        - A big sword in the child's hands.
-      correctIndex: 2
-      explanationZh: 文中写巨人走近后看到 "the prints of two nails" 在孩子掌心，脚上也有钉痕。银果白花属于那棵树；大剑是巨人自己说要拿来惩罚伤人者的。
+        - The little boy he had loved, standing under white blossoms
+        - The children of the town skating on the frozen grass
+        - The North Wind and the Hail dancing round the trunk
+        - A noticeboard that someone had set up again in the night
+      correctIndex: 0
+      explanationZh: 那棵树 "quite covered with lovely white blossoms"，枝条是金的，垂着银色的果子，"underneath it stood the little boy he had loved"。那时正是冬天，园中别处都还睡着。
 quiz:
   - id: hp-ch-03-q1
-    stem: Why did Spring not come to the Giant's garden after he built the wall?
+    stem: What did the Giant put up once the high wall was finished?
     options:
-      - Spring came only where the children were
-      - The Cornish ogre had put a curse on the garden
-      - The Snow and Frost had chased Spring away forever
-      - The Giant had cut down all the peach-trees
-    correctIndex: 0
-    explanationZh: 文中写花看到告示牌后缩回土里，鸟因没有孩子而不愿歌唱，秋也称巨人 "too selfish"。春天和孩子紧密相连，孩子回来春天才来。并非食人魔诅咒或冰雪永远驱逐了春天。
+      - A row of twelve young peach-trees
+      - A noticeboard warning off trespassers
+      - A gate that only he himself could unlock
+      - A bell to call the children in from the road
+    correctIndex: 1
+    explanationZh: 墙筑好之后他还立了一块告示牌，写着 Trespassers Will Be Prosecuted。十二棵桃树本来就长在园子里，是春天开花、秋天结果的那几棵。
   - id: hp-ch-03-q2
-    stem: What did the Giant plan to do after his heart melted?
+    stem: Why did the Autumn give the Giant's garden no golden fruit?
     options:
-      - Build a bigger wall to keep the North Wind out
-      - Go back to visit the Cornish ogre for another seven years
-      - Give the garden to the children and knock down the wall
-      - Ask the children to find the little boy's home
-    correctIndex: 2
-    explanationZh: 巨人反省 "How selfish I have been"，计划把孩子放上树、推倒墙，让花园永远成为孩子们的游乐场。他并非要筑更大的墙，也不是再去找食人魔。
+      - The frost had killed the twelve peach-trees
+      - The children had carried all the fruit away
+      - The Giant had picked it before it was ripe
+      - Autumn said that the Giant was too selfish
+    correctIndex: 3
+    explanationZh: 秋天给每一座花园都送去金色的果子，唯独不给这一座——"He is too selfish," she said。桃树并没有冻死，只是年年不肯开花。
   - id: hp-ch-03-q3
-    stem: Why didn't the little boy run away when the other children saw the Giant and fled?
+    stem: How did the children get back into the walled garden?
     options:
-      - He was not afraid because he was bigger than the Giant.
-      - His eyes were so full of tears that he did not see the Giant coming.
-      - The Giant had already knocked down the wall.
-      - The North Wind was holding him still.
-    correctIndex: 1
-    explanationZh: 文中写别的孩子吓跑了，唯独小男孩没跑，因为 "his eyes were so full of tears that he did not see the Giant coming"。他并非因体型更大而不怕巨人。
+      - The Giant himself opened the door for them
+      - They climbed over the wall on a long garden ladder
+      - They crept in through a little hole in the wall
+      - The North Wind blew a gap in the high wall
+    correctIndex: 2
+    explanationZh: 巨人从窗口望出去，看见 "Through a little hole in the wall the children had crept in"，一个个坐在树枝上。那时他还没有下过楼，更没有替谁开门。
   - id: hp-ch-03-q4
-    stem: Why did the Giant love the little boy the best?
+    stem: What did the Giant do soon after he had lifted the boy into the tree?
     options:
-      - Because the boy brought the Giant golden fruit
-      - Because the boy was the tallest of all the children
-      - Because the boy told the Giant where he lived
-      - Because the boy had hugged and kissed him
-    correctIndex: 3
-    explanationZh: 文中明确写 "The Giant loved him the best because he had kissed him"——男孩曾搂住巨人脖子吻他。孩子并没有带来金果，也不知道住在哪里。
+      - He took a great axe and knocked down the wall
+      - He called the children back from the road outside
+      - He sat down in his armchair to watch them play
+      - He drove the North Wind out of the farthest corner
+    correctIndex: 0
+    explanationZh: 孩子们看出他不再凶恶就跑了回来，春天也跟着回来，他说 "It is your garden now, little children"，随即抡起大斧头推倒了那堵墙。坐进扶手椅是很多年以后的事了。
   - id: hp-ch-03-q5
-    stem: Where had the Giant been during the seven years before he came home?
+    stem: Why did the Giant love that one little friend the best?
     options:
-      - Travelling around the world
-      - Building a new castle in another country
-      - Sleeping through seven long winters
-      - Visiting his friend the Cornish ogre
-    correctIndex: 3
-    explanationZh: 故事开头说巨人“had been to visit his friend the Cornish ogre, and had stayed with him for seven years”，话说完了才决定回自己的城堡。环游世界、造新城堡、沉睡过冬都不是原文的说法。
-  - id: hp-ch-03-q6
-    stem: What did the child promise the Giant at the end of the story?
-    options:
-      - That the Giant would become young again and play with the children.
-      - That the Giant would come with him to Paradise that day.
-      - That the Giant would rule over the garden forever.
-      - That the children would build a new wall for him.
+      - Because the boy had been the smallest child of them all
+      - Because the boy had kissed him and hugged his neck
+      - Because the boy stayed behind when the others left
+      - Because the boy had never been afraid of his voice
     correctIndex: 1
-    explanationZh: 孩子微笑着说 "You let me play once in your garden, today you shall come with me to my garden, which is Paradise"。巨人随后在树下安然离世，对应进入天堂的承诺，而非变年轻或永远掌管花园。
+    explanationZh: 文中直说 "The Giant loved him the best because he had kissed him"——那天孩子伸出双臂搂住他的脖子。别的孩子第二天都回来了，唯独这一个再也没有出现。
+  - id: hp-ch-03-q6
+    stem: What did the child say about the nail-prints on his hands and feet?
+    options:
+      - The North Wind had wounded him
+      - The Giant's axe had struck him
+      - They were the wounds of Love
+      - He had cut them on the tree
+    correctIndex: 2
+    explanationZh: 巨人怒问是谁敢伤他，要提剑去杀那个人，孩子却答 "Nay! but these are the wounds of Love"，随后邀他同去自己的花园。那把斧头从未碰过这个孩子。

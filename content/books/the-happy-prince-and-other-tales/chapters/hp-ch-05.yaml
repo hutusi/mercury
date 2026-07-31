@@ -2,8 +2,8 @@
 id: hp-ch-05
 bookId: book-happy-prince
 title: The Remarkable Rocket
-titleZh: 非凡的火箭
-summaryZh: 王子大婚之夜，宫廷安排了盛大的烟火表演。一枚自命不凡的火箭在同伴面前滔滔不绝地炫耀自己的高贵出身与「深刻情感」，坚信自己将是全场的主角——可这场表演并没有按他的剧本进行。
+titleZh: 了不起的火箭
+summaryZh: 王子大婚当夜，宫廷要在午夜放一场盛大的烟火。花园尽头的架子搭好之后，烟花们开始闲聊——其中一枚清了清嗓子，觉得有必要让在场诸位都听清楚他是谁。
 sections:
   - id: hp-ch-05-s1
     text: |-
@@ -24,14 +24,14 @@ sections:
       After the banquet there was to be a Ball. The bride and bridegroom were to dance the Rose-dance together, and the King had promised to play the flute. He played very badly, but no one had ever dared to tell him so, because he was the King. Indeed, he knew only two airs, and was never quite certain which one he was playing; but it made no matter, for, whatever he did, everybody cried out, “Charming! charming!”
     checkIn:
       id: hp-ch-05-s1-c1
-      stem: Why did the King give orders to double the young Page's salary?
+      stem: What was odd about the King's order to double the Page's salary?
       options:
-        - The Page compared the Princess to a rose
-        - The Page played the flute beautifully at the Ball
-        - The Page found the Princess's lost silver cap
-        - The Page served the crystal cup at the banquet
-      correctIndex: 0
-      explanationZh: 文本说小侍从说公主之前像白玫瑰，脸红后像红玫瑰，国王听了很高兴，下令给他加倍薪水。虽然他根本没有薪水可加倍，但被视为莫大荣誉。
+        - The Page had already left the Court that morning
+        - The King had promised the money to the Pyrotechnist
+        - The Page was too young to be paid anything at all
+        - The Page received no salary at all to be doubled
+      correctIndex: 3
+      explanationZh: 侍从一句 White rose, Red rose 讨得国王欢心，国王便下令给他的薪水加倍——可 "As he received no salary at all this was not of much use to him"，这道旨意还是郑重登上了宫廷公报。
   - id: hp-ch-05-s2
     text: |-
       The last item on the programme was a grand display of fireworks, to be let off exactly at midnight. The little Princess had never seen a firework in her life, so the King had given orders that the Royal Pyrotechnist should be in attendance on the day of her marriage.
@@ -53,14 +53,14 @@ sections:
       But the Catherine Wheel shook her head. “Romance is dead, Romance is dead, Romance is dead,” she murmured. She was one of those people who think that, if you say the same thing over and over a great many times, it becomes true in the end.
     checkIn:
       id: hp-ch-05-s2-c1
-      stem: Why had the King ordered a grand display of fireworks?
+      stem: Why had the King sent for the Royal Pyrotechnist on the wedding day?
       options:
-        - The King wanted to show off his flute-playing skills.
-        - The Prince had asked for fireworks instead of stars.
-        - The Princess had never seen a firework in her life.
-        - The King lost a bet with the Royal Pyrotechnist.
+        - He wanted the Court to admire his own flute-playing
+        - The Royal Pyrotechnist had asked to show his new work
+        - The little Princess had never seen a firework in her life
+        - The Prince had said he preferred fireworks to the stars
       correctIndex: 2
-      explanationZh: 文本明确说小公主从未见过烟火（had never seen a firework in her life），国王才安排皇家烟火师到场。
+      explanationZh: 原文写 "The little Princess had never seen a firework in her life"，国王这才吩咐烟火师当天到场。说自己更喜欢烟火胜过星星的是国王本人——他一向替别人回答问题。
   - id: hp-ch-05-s3
     text: |-
       Suddenly, a sharp, dry cough was heard, and they all looked round.
@@ -82,14 +82,14 @@ sections:
       “It may be so with you,” he answered; “indeed, I have no doubt that it is, but with me it is different. I am a very remarkable Rocket, and come of remarkable parents. My mother was the most celebrated Catherine Wheel of her day, and was renowned for her graceful dancing. When she made her great public appearance she spun round nineteen times before she went out, and each time that she did so she threw into the air seven pink stars. She was three feet and a half in diameter, and made of the very best gunpowder. My father was a Rocket like myself, and of French extraction. He flew so high that the people were afraid that he would never come down again. He did, though, for he was of a kindly disposition, and he made a most brilliant descent in a shower of golden rain. The newspapers wrote about his performance in very flattering terms. Indeed, the Court Gazette called him a triumph of Pylotechnic art.”
     checkIn:
       id: hp-ch-05-s3-c1
-      stem: How does the Rocket explain the coincidence of the wedding and his launch?
+      stem: What did the Rocket say about the timing of the royal wedding?
       options:
-        - He says Princes are always lucky.
-        - He says the Prince personally chose him for the show.
-        - He says his parents arranged the wedding date.
-        - He says the King ordered it to honour his parents.
+        - That the Prince was lucky to marry on the day he was let off
+        - That his own parents had chosen the date many years before
+        - That the Royal Pyrotechnist had arranged it all in his honour
+        - That the wedding should have waited until he was quite ready
       correctIndex: 0
-      explanationZh: 火箭说王子真幸运，恰好在他被发射那天结婚（Princes are always lucky），仿佛一切都是为王子安排好的。他没有说是王子亲自选了他。
+      explanationZh: 他的原话是 "How fortunate it is for the King's son that he is to be married on the very day on which I am to be let off"，末了还加一句 "Princes are always lucky"。小爆竹以为烟火是为王子而放，他偏要反过来说。
   - id: hp-ch-05-s4
     text: |-
       “Pyrotechnic, Pyrotechnic, you mean,” said a Bengal Light; “I know it is Pyrotechnic, for I saw it written on my own canister.”
@@ -119,14 +119,14 @@ sections:
       “Common sense, indeed!” said the Rocket indignantly; “you forget that I am very uncommon, and very remarkable. Why, anybody can have common sense, provided that they have no imagination. But I have imagination, for I never think of things as they really are; I always think of them as being quite different. As for keeping myself dry, there is evidently no one here who can at all appreciate an emotional nature. Fortunately for myself, I don’t care. The only thing that sustains one through life is the consciousness of the immense inferiority of everybody else, and this is a feeling that I have always cultivated. But none of you have any hearts. Here you are laughing and making merry just as if the Prince and Princess had not just been married.”
     checkIn:
       id: hp-ch-05-s4-c1
-      stem: How does the Rocket define 'sympathy'?
+      stem: What did the Rocket call sympathy?
       options:
-        - Feeling happy when other people are happy.
-        - Keeping yourself dry so you can go off properly.
-        - Treading on other people's toes because you have corns.
-        - Thinking about me, and expecting everybody else to do the same.
+        - Weeping whenever a friend of yours is in trouble
+        - Keeping oneself dry so as to please the whole Court
+        - Laughing along with anybody who happens to be happy
+        - Thinking of him, as he always thinks of himself
       correctIndex: 3
-      explanationZh: 火箭说别人应该想着他，他自己也总想着自己，这就叫'sympathy'，是美好的品德。罗马烛说敏感的人是自己有鸡眼就踩别人脚趾，那是对火箭的讽刺，不是火箭自己的定义。
+      explanationZh: 他说 "I am always thinking about myself, and I expect everybody else to do the same. That is what is called sympathy"，还夸这美德自己有得很。罗马烛那句鸡眼与脚趾说的是敏感的人，是冲着他来的讥讽。
   - id: hp-ch-05-s5
     text: |-
       “Well, really,” exclaimed a small Fire-balloon, “why not? It is a most joyful occasion, and when I soar up into the air I intend to tell the stars all about it. You will see them twinkle when I talk to them about the pretty bride.”
@@ -150,14 +150,14 @@ sections:
       “Very important for you, I have no doubt,” answered the Rocket, “but I shall weep if I choose,” and he actually burst into real tears, which flowed down his stick like raindrops, and nearly drowned two little beetles, who were just thinking of setting up house together, and were looking for a nice dry spot to live in.
     checkIn:
       id: hp-ch-05-s5-c1
-      stem: What does the Rocket imagine might happen to the Prince and Princess's future son?
+      stem: Why did the Rocket say he was so very much affected?
       options:
-        - He might grow up to be a famous firework maker.
-        - He might fall into a deep river and be drowned.
-        - He might marry a Russian Princess like his father.
-        - He might run away from the Palace and get lost.
+        - Because the Prince and Princess had lost their only son
+        - Because he thought that they might one day lose a son
+        - Because the Fire-balloon refused to speak to the stars
+        - Because nobody at the stand had heard of his French father
       correctIndex: 1
-      explanationZh: 火箭想象王子夫妇也许会住到一条深河边，独生子可能掉进河里淹死（fall into the deep river and be drowned），他为此感动流泪。实际上什么不幸都没发生，火箭只是在为假想的事情哭泣。
+      explanationZh: 罗马烛提醒他王子夫妇并没有失去孩子，他答 "I never said that they had… I said that they might"，接着真的哭了出来，泪水顺着棍子往下淌，险些淹死两只正要成家的小甲虫。
   - id: hp-ch-05-s6
     text: |-
       “He must have a truly romantic nature,” said the Catherine Wheel, “for he weeps when there is nothing at all to weep about,” and she heaved a deep sigh, and thought about the deal box.
@@ -181,14 +181,14 @@ sections:
       The next day the workmen came to put everything tidy. “This is evidently a deputation,” said the Rocket; “I will receive them with becoming dignity” so he put his nose in the air, and began to frown severely as if he were thinking about some very important subject. But they took no notice of him at all till they were just going away. Then one of them caught sight of him. “Hallo!” he cried, “what a bad rocket!” and he threw him over the wall into the ditch.
     checkIn:
       id: hp-ch-05-s6-c1
-      stem: Why could the Remarkable Rocket not go off during the midnight display?
+      stem: Why was the Remarkable Rocket the one failure of the whole display?
       options:
-        - The Royal Pyrotechnist forgot to light him.
-        - He was too damp with crying to go off.
-        - His stick was broken by a workman before midnight.
-        - The King cancelled his part of the show.
-      correctIndex: 1
-      explanationZh: 火箭之前大哭，泪水流下棍子、打湿了火药（so damp with crying that he could not go off at all），所以无法发射。不是被遗忘或被取消。
+        - The Royal Pyrotechnist had forgotten to set him up
+        - His stick had been broken by one of the six attendants
+        - He was so damp with crying that he could not go off
+        - The King had kept him back for a grander occasion
+      correctIndex: 2
+      explanationZh: 他把自己哭湿了——"The best thing in him was the gunpowder, and that was so wet with tears that it was of no use"。至于留着他到大场面再放，那是他自己想出来安慰自己的说法。
   - id: hp-ch-05-s7
     text: |-
       “Bad Rocket? Bad Rocket?” he said, as he whirled through the air; “impossible! Grand Rocket, that is what the man said. Bad and Grand sound very much the same, indeed they often are the same,” and he fell into the mud.
@@ -216,14 +216,14 @@ sections:
       “I hope not,” said the Frog complacently. “Arguments are extremely vulgar, for everybody in good society holds exactly the same opinions. Goodbye a second time; I see my daughters in the distance,” and the little Frog swam away.
     checkIn:
       id: hp-ch-05-s7-c1
-      stem: Why does the Frog enjoy croaking with his glee-club?
+      stem: What made the Frog so pleased with his glee-club?
       options:
-        - It helps him find his six daughters in the pond.
-        - It scares away the Pike who wants to eat them.
-        - It puts the farmer's wife to sleep every night.
-        - It keeps everybody awake, which makes him feel popular.
+        - The Pike never dares to come near while they sing
+        - The farmer lets them sit in his pond every evening
+        - His six daughters sing the sweetest parts of it
+        - The farmer's wife cannot sleep a wink because of them
       correctIndex: 3
-      explanationZh: 青蛙说蛙鸣太迷人了，所有人都醒着听他们唱；农妇因他们彻夜难眠，他觉得被人喜爱很满足（most gratifying to find oneself so popular）。蛙鸣不是为了找女儿或吓走狗鱼。
+      explanationZh: 他转述农妇的抱怨，说她夜里 "could not get a wink of sleep at night on account of us"，随即心满意足地说 "It is most gratifying to find oneself so popular"。别人的失眠被他当成了受欢迎的证据。
   - id: hp-ch-05-s8
     text: |-
       “You are a very irritating person,” said the Rocket, “and very ill-bred. I hate people who talk about themselves, as you do, when one wants to talk about oneself, as I do. It is what I call selfishness, and selfishness is a most detestable thing, especially to anyone of my temperament, for I am well known for my sympathetic nature. In fact, you should take example by me; you could not possibly have a better model. Now that you have the chance you had better avail yourself of it, for I am going back to Court almost immediately. I am a great favourite at Court; in fact, the Prince and Princess were married yesterday in my honour. Of course you know nothing of these matters, for you are a provincial.”
@@ -243,14 +243,14 @@ sections:
       “It is quite evident that you have always lived in the country,” answered the Rocket, “otherwise you would know who I am. However, I excuse your ignorance. It would be unfair to expect other people to be as remarkable as oneself. You will no doubt be surprised to hear that I can fly up into the sky, and come down in a shower of golden rain.”
     checkIn:
       id: hp-ch-05-s8-c1
-      stem: What mistake does the Rocket make after the Frog leaves?
+      stem: What did the Rocket go on doing after the Frog had swum away?
       options:
-        - He mistakes the Dragonfly for one of the Court dignitaries.
-        - He falls deeper into the mud and cannot get out.
-        - He keeps talking even though nobody is listening.
-        - He forgets what he was saying and has to start over.
-      correctIndex: 2
-      explanationZh: 青蛙离开后，蜻蜓说跟火箭说话没用，因为他已经走了。火箭却不停止说话，说自己喜欢听自己说。蜻蜓指出火箭已无人倾听。
+        - Talking, because he liked hearing himself talk
+        - Coughing, to bring the Dragonfly back to him
+        - Boasting to the Duck about his French father
+        - Weeping, until his stick was wet all over again
+      correctIndex: 0
+      explanationZh: 蜻蜓提醒他青蛙早走了，说了也白说，他却答 "I am not going to stop talking to him merely because he pays no attention. I like hearing myself talk"。白鸭是再过一阵才游过来的。
   - id: hp-ch-05-s9
     text: |-
       “I don’t think much of that,” said the Duck, “as I cannot see what use it is to anyone. Now, if you could plough the fields like the ox, or draw a cart like the horse, or look after the sheep like the collie-dog, that would be something.”
@@ -270,14 +270,14 @@ sections:
       “Come back! come back!” screamed the Rocket, “I have a great deal to say to you,” but the Duck paid no attention to him. “I am glad that she has gone,” he said to himself, “she has a decidedly middle-class mind,” and he sank a little deeper still into the mud, and began to think about the loneliness of genius, when suddenly two little boys in white smocks came running down the bank, with a kettle and some faggots.
     checkIn:
       id: hp-ch-05-s9-c1
-      stem: How does the Rocket explain the usefulness of his position?
+      stem: What did the Rocket say when the Duck asked him to be useful?
       options:
-        - He can plough the fields like an ox if needed
-        - He can draw a cart like a horse
-        - A person of his position is never useful
-        - He can look after sheep like a collie-dog
+        - That he would rather plough a field than boil a kettle
+        - That usefulness was a virtue he had never troubled to learn
+        - That a person of his position is never useful at all
+        - That he meant to take up useful work once back at Court
       correctIndex: 2
-      explanationZh: 鸭子夸牛能耕田、马能拉车、牧羊犬能看羊，火箭骄傲地说自己那样的人从不做有用的事，有才艺就够了。
+      explanationZh: 鸭子举出会耕田的牛、会拉车的马和会看羊的牧羊犬，他答 "A person of my position is never useful"，又说 "hard work is simply the refuge of people who have nothing whatever to do"。
   - id: hp-ch-05-s10
     text: |-
       “This must be the deputation,” said the Rocket, and he tried to look very dignified.
@@ -317,66 +317,66 @@ sections:
       “I knew I should create a great sensation,” gasped the Rocket, and he went out.
     checkIn:
       id: hp-ch-05-s10-c1
-      stem: What did the two boys actually do with the Rocket after finding him?
+      stem: What did the Rocket make of the boy's cry of "old stick"?
       options:
-        - They put him on top of a fire to help boil their kettle.
-        - They threw him back into the ditch and left.
-        - They took him to the King's Court for a show.
-        - They gave him to a Goose walking by the ditch.
-      correctIndex: 0
-      explanationZh: 两个男孩捡到火箭后说把它放进火里帮助烧水（put it into the fire, it will help to boil the kettle）。不是送回宫廷，也不是扔进沟渠。
+        - That the boy had recognised his French father's name
+        - That the boy had said Gold Stick, a title at Court
+        - That the boys had come as a deputation to fetch him
+        - That the boy was complaining about the wet faggots
+      correctIndex: 1
+      explanationZh: 男孩喊的是 "look at this old stick"，他却听成 Gold Stick，还断定对方 "mistakes me for one of the Court dignitaries"。两个孩子随后把他架上柴堆，是拿他来烧水的。
 quiz:
   - id: hp-ch-05-q1
-    stem: Why did no one ever tell the King that he played the flute badly?
+    stem: Why did nobody ever tell the King that he played the flute badly?
     options:
-      - He only ever played in his private rooms
-      - The whole court truly loved his music
-      - No one dared to, because he was the King
-      - The Page always played in his place
-    correctIndex: 2
-    explanationZh: 国王笛子吹得很糟，但“no one had ever dared to tell him so, because he was the King”，人人都跟着喊“魅力十足”。宫廷并非真心喜爱他的演奏，他也不是只在私下吹奏。
+      - He always played behind a screen in the Great Hall
+      - The Court honestly believed his music was charming
+      - The Page had been ordered to praise every air he played
+      - Nobody dared to tell him so, because he was the King
+    correctIndex: 3
+    explanationZh: 原文说他吹得很糟，"but no one had ever dared to tell him so, because he was the King"。他只会两支曲子，还常弄不清自己吹的是哪一支，众人照例齐声喊 "Charming!"。
   - id: hp-ch-05-q2
-    stem: What did the Rocket's mother do that made her famous?
+    stem: What had made the Rocket's mother celebrated in her day?
     options:
-      - She flew higher than any rocket before
-      - She danced with the King at a ball
-      - She fell into a ditch and met a frog
-      - She spun nineteen times, throwing stars
-    correctIndex: 3
-    explanationZh: 火箭说他的母亲是最出名的轮转烟花，公开亮相时旋转十九圈，每圈抛出七颗粉色星星。飞得很高的是他父亲。
-  - id: hp-ch-05-q3
-    stem: How did the Roman Candle define a sensitive person?
-    options:
-      - Someone who weeps when others are happy
-      - Someone who always keeps dry at night
-      - Someone who never argues with a frog
-      - Someone with corns who treads on toes
-    correctIndex: 3
-    explanationZh: 罗马烛小声说敏感的人就是自己长了鸡眼却总踩别人脚趾（has corns himself, always treads on other people's toes），暗讽火箭自以为是。
-  - id: hp-ch-05-q4
-    stem: The workmen called him a bad rocket. What did the Rocket believe they had said?
-    options:
-      - A grand rocket
-      - A gold rocket
-      - A wet rocket
-      - An old rocket
+      - She spun nineteen times, throwing seven pink stars each time
+      - She flew so high that people feared she would never come down
+      - She came down in a shower of golden rain before the whole Court
+      - The Court Gazette had called her a triumph of the art
     correctIndex: 0
-    explanationZh: 火箭坚信 BAD 和 GRAND 听起来几乎一样，所以工人说的一定是 grand rocket（了不起的火箭）。gold 是他后来把男孩说的 old stick 听成 gold stick，那是另一次自我安慰，不是工人的话。
-  - id: hp-ch-05-q5
-    stem: Where did the Rocket's stick fall after he finally went off?
+    explanationZh: 母亲是当年最有名的轮转烟花，"she spun round nineteen times before she went out"，每转一圈抛出七颗粉红星星。飞得极高、落成金雨、被宫廷公报吹捧的，都是他父亲。
+  - id: hp-ch-05-q3
+    stem: What did the Catherine Wheel keep repeating that evening?
     options:
-      - Onto the roof of the King's palace
-      - On the back of a Goose walking by the ditch
-      - Into the middle of the wedding fireworks
-      - Into the kettle over the boys' fire
-    correctIndex: 1
-    explanationZh: 火箭终于爆炸后，棍子掉下来砸在一只正在沟边散步的鹅背上，鹅惊叫“It is going to rain sticks”后赶紧跳进水里。棍子没有落在王宫或烟火表演场上，也没有掉进男孩们烧水的壶里。
-  - id: hp-ch-05-q6
-    stem: What happened when the Rocket finally exploded?
-    options:
-      - The whole world talked about him for a year.
-      - The two boys cheered and clapped.
-      - Nobody saw or heard him.
-      - He set the surrounding field on fire.
+      - That the King's garden was the whole world to her
+      - That travel improves the mind and does away with prejudice
+      - That Romance is dead, said over and over again
+      - That the bride and bridegroom loved each other dearly
     correctIndex: 2
-    explanationZh: 火箭确实爆炸了，但没有任何人看到或听到，连两个熟睡的男孩也没被吵醒（nobody saw him; nobody heard him）。他之前幻想全世界都会谈论他一年，但事实正相反。
+    explanationZh: 她一遍遍念着 "Romance is dead"——原文说她属于那种人，"if you say the same thing over and over a great many times, it becomes true in the end"。说旅行开阔心胸的是小爆竹。
+  - id: hp-ch-05-q4
+    stem: What did the Rocket say about hard work?
+    options:
+      - That it is the only thing that makes a rocket remarkable
+      - That it is the refuge of people with nothing to do
+      - That it should be left to ducks and collie-dogs alone
+      - That it ages one rapidly and distracts the mind
+    correctIndex: 1
+    explanationZh: 他对白鸭说 "hard work is simply the refuge of people who have nothing whatever to do"。至于 "it ages one rapidly, and distracts one's mind from higher things"，他说的是家庭生活。
+  - id: hp-ch-05-q5
+    stem: Where did the Rocket's stick come down at the very end?
+    options:
+      - In the middle of the King's fireworks display
+      - On the roof of the farmer's house beside the duck pond
+      - Into the kettle the two boys had set to boil
+      - On the back of a Goose walking beside the ditch
+    correctIndex: 3
+    explanationZh: 爆炸后剩下的只有那根棍子，"this fell down on the back of a Goose who was taking a walk by the side of the ditch"。鹅大叫一声 "It is going to rain sticks"，转身冲进了水里。
+  - id: hp-ch-05-q6
+    stem: What were the Rocket's last words as he went out?
+    options:
+      - That he knew he should create a great sensation
+      - That the world would talk of him for a whole year
+      - That he had gone higher than the stars and the moon
+      - That the two little boys had let him off in daylight
+    correctIndex: 0
+    explanationZh: 没有人看见，也没有人听见，他却喘着气说 "I knew I should create a great sensation"，随即熄灭。要让全世界谈论他一整年，是他爆炸之前的想象。

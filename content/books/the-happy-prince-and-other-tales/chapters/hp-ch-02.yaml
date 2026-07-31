@@ -3,7 +3,7 @@ id: hp-ch-02
 bookId: book-happy-prince
 title: The Nightingale and the Rose
 titleZh: 夜莺与玫瑰
-summaryZh: 年轻的学生为心上人寻找一朵红玫瑰，却遍寻不得。他的叹息被一只夜莺听见——在夜莺心中，这正是她歌唱了一生的真爱。为了成全这份爱情，她做出了一个重大的决定。
+summaryZh: 花园里，一个年轻学生伏在草地上痛哭；橡树枝头的夜莺听见了，飞下来想要帮他。她一棵一棵地去求园中的玫瑰树，而得到的答复一次比一次让她为难。
 sections:
   - id: hp-ch-02-s1
     text: |-
@@ -22,14 +22,14 @@ sections:
       “The musicians will sit in their gallery,” said the young Student, “and play upon their stringed instruments, and my love will dance to the sound of the harp and the violin. She will dance so lightly that her feet will not touch the floor, and the courtiers in their gay dresses will throng round her. But with me she will not dance, for I have no red rose to give her,” and he flung himself down on the grass, and buried his face in his hands, and wept.
     checkIn:
       id: hp-ch-02-s1-c1
-      stem: What did the girl say she would do if the Student brought her a red rose?
+      stem: What had the Nightingale been doing long before she ever laid eyes on the Student?
       options:
-        - She would sing him a song.
-        - She would marry him.
-        - She would dance with him.
-        - She would give him jewels.
-      correctIndex: 2
-      explanationZh: 学生说“She said that she would dance with me if I brought her red roses”，所以女孩答应的是和他跳舞。唱歌、结婚和珠宝都不是她的许诺。
+        - She had watched the Student read the books of the wise men
+        - She had searched the garden for a rose worthy of her song
+        - She had sat silent in the holm-oak, waiting for the Prince's ball
+        - She had sung of a true lover and told his story to the stars
+      correctIndex: 3
+      explanationZh: 夜莺一见他就说 "Night after night have I sung of him, though I knew him not"，又说自己夜夜把他的故事讲给星星听。她此前并不认识这个学生，也没有为他找过花。
   - id: hp-ch-02-s2
     text: |-
       “Why is he weeping?” asked a little Green Lizard, as he ran past him with his tail in the air.
@@ -71,14 +71,14 @@ sections:
       “My roses are red,” it answered, “as red as the feet of the dove, and redder than the great fans of coral that wave and wave in the ocean-cavern. But the winter has chilled my veins, and the frost has nipped my buds, and the storm has broken my branches, and I shall have no roses at all this year.”
     checkIn:
       id: hp-ch-02-s2-c1
-      stem: What color are the roses on the tree beneath the Student's window?
+      stem: Why can the Rose-tree beneath the Student's window not help the Nightingale?
       options:
-        - Red.
-        - White.
-        - Yellow.
-        - Blue.
-      correctIndex: 0
-      explanationZh: 夜莺依次找到三棵玫瑰树：第一棵白玫瑰，第二棵黄玫瑰，第三棵在学生窗下——它的花是红色的，但因为冬天和霜冻今年不会开花。
+        - Its roses are white, and it has never grown a red one
+        - Winter and frost have left it with no roses this year
+        - Its only rose has already been picked by the Student
+        - It gives roses only to those who sing it a sweet song
+      correctIndex: 1
+      explanationZh: 那棵树的花确实是红的，可它说 "the winter has chilled my veins, and the frost has nipped my buds… I shall have no roses at all this year"。海沫般雪白的玫瑰长在草地中央的另一棵树上。
   - id: hp-ch-02-s3
     text: |-
       “One red rose is all I want,” cried the Nightingale, “only one red rose! Is there no way by which I can get it?”
@@ -102,14 +102,14 @@ sections:
       But the Oak-tree understood, and felt sad, for he was very fond of the little Nightingale who had built her nest in his branches.
     checkIn:
       id: hp-ch-02-s3-c1
-      stem: What must the Nightingale do to create a red rose?
+      stem: What terrible thing does the Tree say the Nightingale must do?
       options:
-        - Find a red rose in another garden.
-        - Water the tree with river water.
-        - Ask the Moon to shine on the tree all night.
-        - Sing all night with her breast against a thorn.
-      correctIndex: 3
-      explanationZh: 玫瑰树说“you must build it out of music by moonlight, and stain it with your own heart's-blood”，必须整夜胸口抵着刺唱歌，心血流入树枝。浇水、找月光都与此无关。
+        - Bring the Tree river water every night until dawn
+        - Carry a white rose up to the Moon before daybreak
+        - Sing all night with her breast against a thorn
+        - Give up her nest in the Oak-tree for a whole year
+      correctIndex: 2
+      explanationZh: 树说这朵花要 "build it out of music by moonlight, and stain it with your own heart's-blood"——整夜歌唱，让刺一点点扎进心脏。夜莺清楚这是拿命去换，仍然说 "Love is better than Life"。
   - id: hp-ch-02-s4
     text: |-
       “Sing me one last song,” he whispered; “I shall feel very lonely when you are gone.”
@@ -131,14 +131,14 @@ sections:
       And a delicate flush of pink came into the leaves of the rose, like the flush in the face of the bridegroom when he kisses the lips of the bride. But the thorn had not yet reached her heart, so the rose’s heart remained white, for only a Nightingale’s heart’s-blood can crimson the heart of a rose.
     checkIn:
       id: hp-ch-02-s4-c1
-      stem: What does the Student think about the Nightingale after hearing her song?
+      stem: What did the Student conclude about the Nightingale as he walked away?
       options:
-        - She is the wisest bird he has ever met.
-        - She has style but no real feeling.
-        - She will sacrifice herself for others.
-        - She should study philosophy too.
-      correctIndex: 1
-      explanationZh: 学生在笔记本上写道她“has form”但“has she got feeling? I am afraid not”，认为她像大多数艺术家一样只有风格而缺乏真诚。说她会牺牲自己恰恰与他本人的判断相反。
+        - That she was all style, without any sincerity
+        - That her song would make him famous if written down
+        - That she had understood every word of his sorrow
+        - That she would sacrifice herself for another's sake
+      correctIndex: 0
+      explanationZh: 他掏出笔记本，一边走一边想 "she is all style, without any sincerity. She would not sacrifice herself for others"。这句话恰好与她当夜正在做的事相反，而他一无所知。
   - id: hp-ch-02-s5
     text: |-
       And the Tree cried to the Nightingale to press closer against the thorn. “Press closer, little Nightingale,” cried the Tree, “or the Day will come before the rose is finished.”
@@ -164,14 +164,14 @@ sections:
       “You said that you would dance with me if I brought you a red rose,” cried the Student. “Here is the reddest rose in all the world. You will wear it tonight next your heart, and as we dance together it will tell you how I love you.”
     checkIn:
       id: hp-ch-02-s5-c1
-      stem: What does the Student do as soon as he sees the red rose outside his window?
+      stem: What did the Student say about the red rose when he opened his window at noon?
       options:
-        - He sells it to buy his books back
-        - He puts it in a vase on his desk
-        - He writes a poem about its beauty
-        - He runs to the Professor's house with it
+        - That the Nightingale must have made it for him in the night
+        - That it had grown from the seeds he planted last spring
+        - That it was too beautiful to be given to any girl
+        - That it was a wonderful piece of luck with a Latin name
       correctIndex: 3
-      explanationZh: 学生看到窗外的红玫瑰，惊呼这是天大的好运，随即“put on his hat, and ran up to the Professor's house with the rose in his hand”。他没有停下来写诗或插瓶欣赏，更没有拿去卖钱。
+      explanationZh: 他推开窗子喊 "Why, what a wonderful piece of luck! here is a red rose"，还断定这样的花一定有个很长的拉丁名字。花是怎么来的，他从头到尾没有想过。
   - id: hp-ch-02-s6
     text: |-
       But the girl frowned.
@@ -187,66 +187,66 @@ sections:
       So he returned to his room and pulled out a great dusty book, and began to read.
     checkIn:
       id: hp-ch-02-s6-c1
-      stem: What does the Student decide to do at the end of the chapter?
+      stem: Why does the Professor's daughter refuse the rose?
       options:
-        - Find another red rose for the girl.
-        - Ask the Chamberlain's nephew for help.
-        - Go back to Philosophy and study Metaphysics.
-        - Leave the city and live in the wood.
-      correctIndex: 2
-      explanationZh: 学生觉得爱情太不实际，说“I shall go back to Philosophy and study Metaphysics”，然后回房间读起一本积灰的大书。他放弃找玫瑰或求助别人。
+        - She had promised the first dance to the Chamberlain
+        - It would not go with her dress, and jewels cost more
+        - The Student had come too late for the Prince's ball
+        - Her little dog had already spoiled it with its paws
+      correctIndex: 1
+      explanationZh: 她皱起眉说 "I am afraid it will not go with my dress"，又搬出宫廷大臣的侄子送来的真珠宝——"jewels cost far more than flowers"。舞会还没开始，小狗也只是躺在她脚边。
 quiz:
   - id: hp-ch-02-q1
-    stem: Why does the Student weep at the beginning of the chapter?
+    stem: Why was the Student weeping in his garden?
     options:
-      - He failed his philosophy exam.
-      - He has no red rose to give the girl he loves.
-      - He lost his notebook in the garden.
-      - The Nightingale refused to sing for him.
-    correctIndex: 1
-    explanationZh: 学生说“for want of a red rose is my life made wretched”，女孩答应带红玫瑰就和他跳舞，而花园里没有红玫瑰。与考试、笔记本或夜莺无关。
-  - id: hp-ch-02-q2
-    stem: Why does the third Rose-tree say it cannot give the Nightingale a rose this year?
-    options:
-      - A bird ate all its buds.
-      - Winter and frost have damaged it.
-      - The Student picked all its roses.
-      - It is too young to grow flowers.
-    correctIndex: 1
-    explanationZh: 第三棵树说“the winter has chilled my veins, and the frost has nipped my buds”，寒冷天气损害了它，今年开不了花。文中未提鸟吃花蕾、学生摘花或树龄问题。
-  - id: hp-ch-02-q3
-    stem: How does the Nightingale make the rose turn red?
-    options:
-      - She waters the tree with river water all night
-      - She flies to the Sun and brings back its fire
-      - Her heart's blood flows in as she sings on a thorn
-      - She asks the Moon to color the rose with her light
-    correctIndex: 2
-    explanationZh: 玫瑰树说“stain it with your own heart's-blood”，夜莺胸口抵着刺整夜歌唱，心血流入树枝，玫瑰才从白色变深红。浇水、借日光、借月光都未在文中出现。
-  - id: hp-ch-02-q4
-    stem: What happens to the Nightingale after she finishes singing?
-    options:
-      - She dies with the thorn in her heart.
-      - She flies away to another garden.
-      - She builds a new nest in the oak tree.
-      - She becomes the Student's pet.
+      - His love had promised to dance only for a red rose
+      - The books of the wise men had all been taken from him
+      - The Prince had not invited him to the ball at all
+      - His garden had been spoiled by the winter storms
     correctIndex: 0
-    explanationZh: 夜莺唱出最后的歌声后，“the Nightingale made no answer, for she was lying dead in the long grass, with the thorn in her heart”。她因心血耗尽而死，并未飞走或筑新巢。
-  - id: hp-ch-02-q5
-    stem: Why does the Professor's daughter reject the red rose?
+    explanationZh: 他喊道 "in all my garden there is no red rose"，而心上人说过带红玫瑰来才肯与他跳舞。舞会他是要去的，他怕的是只能坐着看她从身边走过。
+  - id: hp-ch-02-q2
+    stem: Which creatures thought the Student's sorrow ridiculous?
     options:
-      - She is already engaged to the Student
-      - She only likes white roses, not red ones
-      - She has been sent real jewels instead
-      - She is allergic to flowers
+      - The Oak-tree and the three Rose-trees in the garden
+      - The courtiers who thronged round his love at the ball
+      - The little Green Lizard, the Butterfly and the Daisy
+      - The Moon, the Echo and the reeds of the river
     correctIndex: 2
-    explanationZh: 女孩说“the Chamberlain's nephew has sent me some real jewels, and everybody knows that jewels cost far more than flowers”，还嫌玫瑰和裙子不配。她并未与学生订婚，也没说只喜欢白花或对花过敏。
-  - id: hp-ch-02-q6
-    stem: What does the Student do with the rose after the girl rejects it?
+    explanationZh: 听说他为一朵红玫瑰哭泣，三个小东西齐声说 "how very ridiculous"，那只有些愤世嫉俗的小蜥蜴还放声大笑。橡树恰恰相反，它一直心疼枝头的夜莺。
+  - id: hp-ch-02-q3
+    stem: What colour were the roses of the tree that grew round the old sundial?
     options:
-      - He plants it in his garden
-      - He gives it to the Nightingale
-      - He puts it in a vase in his room
-      - He throws it into the street
+      - As white as the snow upon the mountain
+      - As red as the feet of the dove
+      - As pale as the wings of the dawn
+      - As yellow as a mermaiden's hair
     correctIndex: 3
-    explanationZh: 学生生气地把玫瑰扔到街上，“it fell into the gutter, and a cartwheel went over it”。他并没有种花、给夜莺或插在花瓶里。
+    explanationZh: 日晷旁那棵树答 "My roses are yellow, as yellow as the hair of the mermaiden who sits upon an amber throne"。雪一般的白玫瑰在草地中央，鸽足般的红玫瑰在学生窗下。
+  - id: hp-ch-02-q4
+    stem: What did the Oak-tree ask of the Nightingale before she flew off?
+    options:
+      - To build her nest again in his branches
+      - To sing him one last song before she went
+      - To warn the Student of what she meant to do
+      - To take a message to the Professor's daughter
+    correctIndex: 1
+    explanationZh: 橡树很喜欢在他枝头筑巢的小夜莺，低声说 "Sing me one last song… I shall feel very lonely when you are gone"。他听懂了她的打算，却没有去提醒任何人。
+  - id: hp-ch-02-q5
+    stem: What happened outside as the Nightingale gave her last burst of music?
+    options:
+      - The Moon forgot the dawn and lingered in the sky
+      - The Student woke and ran out into the garden
+      - The three Rose-trees blossomed all at once
+      - The Prince's musicians stopped playing to listen
+    correctIndex: 0
+    explanationZh: 那一串歌声里，"The white Moon heard it, and she forgot the dawn, and lingered on in the sky"，回声把它带进山中紫色的洞穴，惊醒了熟睡的牧羊人。学生那时正睡在自己的小床上。
+  - id: hp-ch-02-q6
+    stem: What did the Student decide about Love at the very end?
+    options:
+      - That it is more precious than emeralds or fine opals
+      - That it is wiser than Philosophy and mightier than Power
+      - That it is less useful than Logic, and quite unpractical
+      - That it must be written down in books to be understood
+    correctIndex: 2
+    explanationZh: 学生的结论是爱情 "is not half as useful as Logic… quite unpractical"，于是回去啃形而上学。说爱比绿宝石珍贵、比哲学更智慧的是夜莺，那些话他从来没有听懂。

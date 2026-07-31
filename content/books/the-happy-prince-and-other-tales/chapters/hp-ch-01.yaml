@@ -3,7 +3,7 @@ id: hp-ch-01
 bookId: book-happy-prince
 title: The Happy Prince
 titleZh: 快乐王子
-summaryZh: 高耸在城市上空的快乐王子雕像受尽全城赞美，却在一个夜晚让前来投宿的小燕子大吃一惊。他请求燕子留下来做他的信使，去帮助城中的穷苦人。冬天一天天临近，这对朋友的故事也走向一个出人意料的结尾。
+summaryZh: 城里最高的石柱上立着镀金的快乐王子雕像，人人抬头称赞，却没有人问过他在高处看见了什么。一个夜里，一只途经此地的小燕子在他脚边落了脚——这一夜之后，"快乐"二字有了另一种解释。
 sections:
   - id: hp-ch-01-s1
     text: |-
@@ -30,14 +30,14 @@ sections:
       After they had gone he felt lonely, and began to tire of his ladylove. “She has no conversation,” he said, “and I am afraid that she is a coquette, for she is always flirting with the wind.” And certainly, whenever the wind blew, the Reed made the most graceful curtseys. “I admit that she is domestic,” he continued, “but I love travelling, and my wife, consequently, should love travelling also.”
     checkIn:
       id: hp-ch-01-s1-c1
-      stem: Why did the little Swallow stay behind when his friends went to Egypt?
+      stem: Why had the little Swallow not gone to Egypt with his friends?
       options:
-        - He wanted to see the city statue.
-        - He was looking for a big yellow moth.
-        - He was too tired to fly to Egypt.
-        - He was in love with a beautiful Reed.
-      correctIndex: 3
-      explanationZh: 文中说燕子留在后面是因为他爱上了一株美丽的芦苇。寻找黄色大飞蛾只是他和芦苇相遇时的情景，不是他留下的原因。
+        - He had hurt his wing chasing a big yellow moth.
+        - He had stayed to admire the famous gilded statue.
+        - He had fallen in love with a beautiful Reed.
+        - He had quarrelled with the other Swallows that autumn.
+      correctIndex: 2
+      explanationZh: 文中说他的朋友六周前就飞往埃及了，"he had stayed behind, for he was in love with the most beautiful Reed"。黄色大飞蛾只是他与芦苇初遇那天追逐的东西，并没有让他受伤。
   - id: hp-ch-01-s2
     text: |-
       “Will you come away with me?” he said finally to her; but the Reed shook her head, she was so attached to her home.
@@ -69,14 +69,14 @@ sections:
       “When I was alive and had a human heart,” answered the statue, “I did not know what tears were, for I lived in the Palace of Sans-Souci, where sorrow is not allowed to enter. In the daytime I played with my companions in the garden, and in the evening I led the dance in the Great Hall. Round the garden ran a very lofty wall, but I never cared to ask what lay beyond it, everything about me was so beautiful. My courtiers called me the Happy Prince, and happy indeed I was, if pleasure be happiness. So I lived, and so I died. And now that I am dead they have set me up here so high that I can see all the ugliness and all the misery of my city, and though my heart is made of lead yet I cannot chose but weep.”
     checkIn:
       id: hp-ch-01-s2-c1
-      stem: Why is the Happy Prince weeping?
+      stem: Why does the Happy Prince weep, though his heart is made of lead?
       options:
-        - He sees the ugliness and misery of his city.
-        - He is sad that he cannot move from his pedestal.
-        - He misses the Palace of Sans-Souci.
-        - He is worried about the cold weather.
+        - From where he stands he can see all the misery of his city.
+        - He is ashamed of the courtiers who once flattered him daily.
+        - He longs for the garden and the great hall where he led the dance.
+        - He is angry that the Swallow has drenched him with rain.
       correctIndex: 0
-      explanationZh: 王子说现在他被放得这么高，能看见城里所有的丑恶和苦难，所以他忍不住哭泣。他确实不能移动，但这不是他哭泣的根本原因。
+      explanationZh: 王子说他们把他立得这么高，"I can see all the ugliness and all the misery of my city"，所以铅做的心也止不住落泪。他提起无忧宫是为了说明自己从前不懂眼泪，那里"sorrow is not allowed to enter"，并非怀念。
   - id: hp-ch-01-s3
     text: |-
       “What! is he not solid gold?” said the Swallow to himself. He was too polite to make any personal remarks out loud.
@@ -96,14 +96,14 @@ sections:
       So the Swallow picked out the great ruby from the Prince’s sword, and flew away with it in his beak over the roofs of the town.
     checkIn:
       id: hp-ch-01-s3-c1
-      stem: What does the Prince ask the Swallow to take from his sword-hilt?
+      stem: What is the sick boy in the poor house asking his mother for?
       options:
-        - A fine gold leaf
-        - A great red ruby
-        - A bright sapphire
-        - A golden coin
+        - A blanket to keep him warm
+        - Oranges to ease his fever
+        - River water to drink
+        - Medicine from a doctor
       correctIndex: 1
-      explanationZh: 王子请燕子把剑柄上的大红宝石带给生病男孩的母亲。蓝宝石是他的眼睛，金币在文中没有出现；此刻他要送出的只有那颗红宝石。
+      explanationZh: 文中写男孩发着烧，"is asking for oranges"，可母亲除了河水什么也拿不出来。河水是母亲能给的东西，不是男孩要的东西。
   - id: hp-ch-01-s4
     text: |-
       He passed by the cathedral tower, where the white marble angels were sculptured. He passed by the palace and heard the sound of dancing. A beautiful girl came out on the balcony with her lover. “How wonderful the stars are,” he said to her, “and how wonderful is the power of love!”
@@ -125,14 +125,14 @@ sections:
       “Swallow, Swallow, little Swallow,” said the Prince, “will you not stay with me one night longer?”
     checkIn:
       id: hp-ch-01-s4-c1
-      stem: How does the Swallow feel after delivering the ruby to the poor house?
+      stem: How did the Swallow feel when he flew back and told the Prince what he had done?
       options:
-        - He feels very cold and angry.
-        - He wants to go back to the Reed.
-        - He is afraid of the Professor.
-        - He feels quite warm.
+        - Proud, and eager to be sent on another errand at once
+        - Sorry that he had woken the mother and the sick boy
+        - Colder than ever before, and impatient to leave the city
+        - Quite warm, although the night itself was still cold
       correctIndex: 3
-      explanationZh: 燕子飞回来后说虽然天气冷，但他觉得挺暖和。王子解释说那是因为他做了一件好事。
+      explanationZh: 燕子回来后说 "I feel quite warm now, although it is so cold"，王子告诉他那是因为做了一件好事。他并没有觉得更冷，也没有惊醒屋里的人——母亲一直睡着。
   - id: hp-ch-01-s5
     text: |-
       “I am waited for in Egypt,” answered the Swallow. “Tomorrow my friends will fly up to the Second Cataract. The river-horse couches there among the bulrushes, and on a great granite throne sits the God Memnon. All night long he watches the stars, and when the morning star shines he utters one cry of joy, and then he is silent. At noon the yellow lions come down to the water’s edge to drink. They have eyes like green beryls, and their roar is louder than the roar of the cataract.”
@@ -154,14 +154,14 @@ sections:
       The next day the Swallow flew down to the harbour. He sat on the mast of a large vessel and watched the sailors hauling big chests out of the hold with ropes. “Heave a-hoy!” they shouted as each chest came up. “I am going to Egypt!” cried the Swallow, but nobody minded, and when the moon rose he flew back to the Happy Prince.
     checkIn:
       id: hp-ch-01-s5-c1
-      stem: What does the Prince ask the Swallow to pluck out and take to the young writer?
+      stem: Why can the young man in the garret not finish his play?
       options:
-        - A leaf of fine gold
-        - The ruby from his sword
-        - One of his sapphire eyes
-        - A piece of his leaden heart
-      correctIndex: 2
-      explanationZh: 王子说红宝石已经没有了，只剩蓝宝石眼睛，请燕子取下一颗送给年轻人。这一次他送出的不是金箔，也不是铅心。
+        - He is too cold to write, and hunger has made him faint
+        - The Director of the Theatre has already refused the play
+        - He has sold his desk and papers to buy food and firewood
+        - He has lost the violets that gave him all his best ideas
+      correctIndex: 0
+      explanationZh: 王子描述他 "too cold to write any more. There is no fire in the grate, and hunger has made him faint"。剧院经理还在等这个剧本，并没有退稿；枯萎的紫罗兰只是插在杯子里的一束花。
   - id: hp-ch-01-s6
     text: |-
       “I am come to bid you goodbye,” he cried.
@@ -187,14 +187,14 @@ sections:
       All the next day he sat on the Prince’s shoulder, and told him stories of what he had seen in strange lands. He told him of the red ibises, who stand in long rows on the banks of the Nile, and catch goldfish in their beaks; of the Sphinx, who is as old as the world itself, and lives in the desert, and knows everything; of the merchants, who walk slowly by the side of their camels, and carry amber beads in their hands; of the King of the Mountains of the Moon, who is as black as ebony, and worships a large crystal; of the great green snake that sleeps in a palm-tree, and has twenty priests to feed it with honey-cakes; and of the pygmies who sail over a big lake on large flat leaves, and are always at war with the butterflies.
     checkIn:
       id: hp-ch-01-s6-c1
-      stem: After the Swallow gives the Prince's second eye to the match-girl, what does he tell the Prince?
+      stem: Why is the little match-girl in the square crying?
       options:
-        - He will fly to Egypt tomorrow.
-        - He will find a new ruby for the Prince.
-        - He will stay with the Prince always.
-        - He will bring the match-girl back.
-      correctIndex: 2
-      explanationZh: 燕子取下王子的第二只眼睛后说：你现在瞎了，我要永远和你在一起。尽管王子让他去埃及，燕子拒绝了。
+        - She has lost her way home in the cold and snowy streets
+        - Her matches are spoiled, and her father will beat her
+        - The other children have taken her matches away from her
+        - Her feet are bare and the square is bitterly cold
+      correctIndex: 1
+      explanationZh: 王子看见她把火柴掉进了阴沟，"they are all spoiled"，而 "Her father will beat her if she does not bring home some money"。她确实光着脚、没戴帽子，但让她哭的是拿不回钱。
   - id: hp-ch-01-s7
     text: |-
       “Dear little Swallow,” said the Prince, “you tell me of marvellous things, but more marvellous than anything is the suffering of men and of women. There is no Mystery so great as Misery. Fly over my city, little Swallow, and tell me what you see there.”
@@ -216,14 +216,14 @@ sections:
       “I am glad that you are going to Egypt at last, little Swallow,” said the Prince, “you have stayed too long here; but you must kiss me on the lips, for I love you.”
     checkIn:
       id: hp-ch-01-s7-c1
-      stem: What does the Prince ask the Swallow to do with the fine gold on his body?
+      stem: What did the Prince tell the Swallow to do with the fine gold that covered him?
       options:
-        - Give it leaf by leaf to the poor
-        - Polish it to make it shine again
-        - Cover the Swallow to keep him warm
-        - Sell it to the jeweller for food
-      correctIndex: 0
-      explanationZh: 王子让燕子把金箔一片一片取下来送给穷人。他相信活着的人总以为金子能让他们快乐。
+        - To trade it in the market for bread and warm furs
+        - To keep it himself so that he could live through the winter
+        - To take it off leaf by leaf and give it to the poor
+        - To carry it to the two boys who lay under the archway
+      correctIndex: 2
+      explanationZh: 王子说 "you must take it off, leaf by leaf, and give it to my poor"，因为 "the living always think that gold can make them happy"。燕子是把金箔直接分送出去，并没有拿到集市上去换东西，受益的也不止桥下那两个孩子。
   - id: hp-ch-01-s8
     text: |-
       “It is not to Egypt that I am going,” said the Swallow. “I am going to the House of Death. Death is the brother of Sleep, is he not?”
@@ -255,66 +255,66 @@ sections:
       “You have rightly chosen,” said God, “for in my garden of Paradise this little bird shall sing forevermore, and in my city of gold the Happy Prince shall praise me.”
     checkIn:
       id: hp-ch-01-s8-c1
-      stem: What happens to the leaden heart inside the statue when the Swallow dies?
+      stem: Why did the workmen at the foundry throw the leaden heart away?
       options:
-        - It turns into pure gold.
-        - It snaps right in two.
-        - It melts in the furnace.
-        - It becomes a sapphire.
-      correctIndex: 1
-      explanationZh: 燕子死后，雕像里发出一声奇异的碎裂声，那颗铅心裂成了两半。后来在熔炉里铅心也无法熔化。
+        - The Mayor had ordered it buried outside the city
+        - It had been cracked long before the statue came down
+        - The Art Professor said that it was no longer beautiful
+        - It would not melt, however hot the furnace was
+      correctIndex: 3
+      explanationZh: 熔炉工头说 "This broken lead heart will not melt in the furnace. We must throw it away"。艺术教授那句 "no longer beautiful" 说的是整座雕像，与铅心无关。
 quiz:
   - id: hp-ch-01-q1
-    stem: Why did the Swallow decide to leave the Reed?
+    stem: Why did the Swallow give up on the Reed and fly away?
     options:
-      - She asked him to go to Egypt alone
-      - She was always flirting with other birds
-      - She told him she did not love him
-      - She refused to leave home and travel
+      - The other Swallows had laughed him out of the match
+      - She told him plainly that she loved the wind instead
+      - Her many relations had crowded him away from the river
+      - She shook her head and would not leave her home
     correctIndex: 3
-    explanationZh: 燕子邀请芦苇和他一起走，但芦苇摇头，因为她离不开家。他还觉得她不会聊天，总是跟风调情。
+    explanationZh: 燕子问 "Will you come away with me?"，芦苇却摇了摇头，"she was so attached to her home"，他这才说她戏弄了自己，飞去了金字塔。说她跟风调情的是燕子自己，芦苇从未开口。
   - id: hp-ch-01-q2
-    stem: Why did the Happy Prince not know tears when he was alive?
+    stem: What happened in the streets after the Swallow carried the gold away, leaf by leaf?
     options:
-      - He lived in a palace where sorrow was not allowed to enter.
-      - He had a heart of lead, not a human heart.
-      - He never left the palace garden to see the city.
-      - He was too busy playing with his companions.
+      - The children had bread, and played and laughed again
+      - The Mayor ordered the statue to be cleaned and regilded
+      - The beggars at the rich men's gates were driven away
+      - The baker gave the Swallow crumbs to thank him for it
     correctIndex: 0
-    explanationZh: 王子活着时住在无忧宫，悲哀不得入内，所以他不懂得眼泪。铅心是雕像现在的心，不是他活着时的情况。
+    explanationZh: 金箔一片片送到穷人手里之后，"the children's faces grew rosier, and they laughed and played games in the street. We have bread now! they cried"。面包师始终不知情——燕子是趁他不注意时捡走面包屑的。
   - id: hp-ch-01-q3
-    stem: What made the sick boy feel better and fall into a deep sleep?
+    stem: What was the beautiful girl on the palace balcony worried about?
     options:
-      - The boy drank the river water his mother gave him.
-      - The Swallow fanned the boy's forehead with his wings.
-      - The boy ate an orange from the Prince.
-      - The Swallow sang a song to the boy.
+      - That her lover cared more for the stars than for her
+      - That her dress would not be ready for the State-ball
+      - That the ball would be held without any music at all
+      - That the Queen's maids-of-honour would outshine her
     correctIndex: 1
-    explanationZh: 燕子把红宝石放在桌上，然后围着床飞，用翅膀给男孩额头扇风。男孩说好凉快，然后就睡着了。
+    explanationZh: 她在阳台上说 "I hope my dress will be ready in time for the State-ball… but the seamstresses are so lazy"。恋人正对她赞叹星星与爱情的力量，她惦记的却只有那条绣西番莲的裙子——而绣裙的正是燕子刚去过的那位女工。
   - id: hp-ch-01-q4
-    stem: Why did the young writer think the sapphire was from a great admirer?
+    stem: What did the young man in the garret think when he found the sapphire?
     options:
-      - He felt appreciated, and never saw the Swallow
-      - The Swallow spoke to him and told him so
-      - A letter came with the jewel explaining everything
-      - The Director of the Theatre sent it as payment
-    correctIndex: 0
-    explanationZh: 年轻人把头埋在手里，没听到鸟翅膀的声音，抬头看见蓝宝石躺在枯萎的紫罗兰上，就以为有欣赏者送来了礼物。
-  - id: hp-ch-01-q5
-    stem: Why did the Mayor and Town Councillors pull down the statue?
-    options:
-      - It was blocking the view of the cathedral
-      - No longer beautiful, it seemed no longer useful
-      - The leaden heart was too heavy for the column
-      - They wanted to build a statue of a bird instead
-    correctIndex: 1
-    explanationZh: 市长和议员们看到雕像红宝石掉了、眼睛没了、金箔也没了，觉得它不再美丽。大学教授说既然不再美，也就不再有用了。
-  - id: hp-ch-01-q6
-    stem: What did God choose as the two most precious things in the city?
-    options:
-      - The fine gold leaves from the statue
-      - The two bright sapphires from the Prince's eyes
-      - The broken leaden heart and the dead Swallow
-      - The red ruby from the sword-hilt
+      - That the Director of the Theatre had paid him early
+      - That a bird had dropped a jewel through the roof hole
+      - That some great admirer had sent it, and he could work
+      - That his withered violets had turned into a blue stone
     correctIndex: 2
-    explanationZh: 上帝让天使把城里最珍贵的两样东西带来，天使选了裂开的铅心和死去的燕子。金箔和宝石早已分散给了穷人。
+    explanationZh: 他把头埋在手里，没听见翅膀的声音，抬头看见宝石便喊 "I am beginning to be appreciated… this is from some great admirer"。屋顶确实破了个洞，但他从头到尾不知道来客是一只燕子。
+  - id: hp-ch-01-q5
+    stem: What did the little match-girl do when the jewel dropped into her hand?
+    options:
+      - She said the Prince had answered her prayers
+      - She called it a lovely bit of glass, and ran home
+      - She cried out that her father would take it away
+      - She asked the Swallow where it had come from
+    correctIndex: 1
+    explanationZh: 她把这颗印度运来的蓝宝石当成了玻璃——"What a lovely bit of glass," cried the little girl; and she ran home, laughing——她既不知道燕子来过，也没有向谁发问。
+  - id: hp-ch-01-q6
+    stem: Which two things did the Angel carry to God as the most precious in the city?
+    options:
+      - The broken leaden heart and the dead Swallow
+      - The gilded statue and the Mayor's proclamation
+      - The two sapphires and the ruby from the sword
+      - The play that the young writer had at last finished
+    correctIndex: 0
+    explanationZh: 上帝要 "the two most precious things in the city"，天使带回的是那颗裂成两半的铅心和死去的小鸟。宝石与金箔早已散给了穷人，雕像本身则被熔进了炉子。

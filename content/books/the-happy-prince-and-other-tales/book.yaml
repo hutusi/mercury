@@ -1,10 +1,10 @@
 # yaml-language-server: $schema=../../.schemas/book.schema.json
 id: book-happy-prince
 title: The Happy Prince and Other Tales
-titleZh: 快乐王子
+titleZh: 快乐王子集
 author: Oscar Wilde
 authorZh: 奥斯卡·王尔德
-descriptionZh: 王尔德1888年的经典童话集：镀金雕像快乐王子与小燕子倾其所有帮助穷人，夜莺用生命换一朵红玫瑰，自私的巨人学会分享花园……五个故事篇幅短小、语言优美，每篇独立成章，适合入门读者按篇精读。
+descriptionZh: 王尔德 1888 年的童话集，五个故事各自独立：高踞石柱的镀金雕像与一只误了行程的燕子，一个学生和一只夜莺，一座上了锁的花园，一段关于友谊的乡间往事，还有一枚等着被点燃的火箭。篇幅短小、语言优美，适合入门读者一篇一篇精读。
 cefrLevel: B1
 genres:
   - fairy-tale
