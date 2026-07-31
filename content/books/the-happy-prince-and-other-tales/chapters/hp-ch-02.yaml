@@ -164,14 +164,14 @@ sections:
       “You said that you would dance with me if I brought you a red rose,” cried the Student. “Here is the reddest rose in all the world. You will wear it tonight next your heart, and as we dance together it will tell you how I love you.”
     checkIn:
       id: hp-ch-02-s5-c1
-      stem: What does the Professor's daughter say when the Student gives her the rose?
+      stem: What does the Student do as soon as he sees the red rose outside his window?
       options:
-        - It is the wrong color.
-        - She already has roses.
-        - She does not like flowers.
-        - It will not go with her dress.
+        - He sells it to buy his books back
+        - He puts it in a vase on his desk
+        - He writes a poem about its beauty
+        - He runs to the Professor's house with it
       correctIndex: 3
-      explanationZh: 女孩皱眉说“I am afraid it will not go with my dress”，还说别人送了她真正的珠宝。她拒绝的理由是玫瑰和裙子不配，并非玫瑰颜色不对或不喜欢花。
+      explanationZh: 学生看到窗外的红玫瑰，惊呼这是天大的好运，随即“put on his hat, and ran up to the Professor's house with the rose in his hand”。他没有停下来写诗或插瓶欣赏，更没有拿去卖钱。
   - id: hp-ch-02-s6
     text: |-
       But the girl frowned.

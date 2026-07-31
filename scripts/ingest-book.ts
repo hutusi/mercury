@@ -70,6 +70,14 @@ function parseArgs(argv: string[]): Args {
   if ((file ? 1 : 0) + (seDir ? 1 : 0) !== 1) usage();
   if (seDir && !files) usage();
   const headingRegex = get("heading-regex");
+  // Group 1 is the contract; without it chapterNumber() would crash later
+  // with an unrelated-looking undefined error.
+  if (headingRegex && !/\((?!\?)/.test(headingRegex)) {
+    console.error(
+      "--heading-regex needs capture group 1 for the chapter number (optional group 2 = same-line title)",
+    );
+    process.exit(1);
+  }
   return {
     file,
     seDir,
@@ -254,13 +262,16 @@ function parseSeChapters(seDir: string, files: string[]): RawChapter[] {
       console.error(`No prose extracted from ${name} — unexpected Standard Ebooks markup?`);
       process.exit(1);
     }
-    if (ordinal && chapterNumber(ordinal) !== number) {
+    // chapterNumber() yields NaN for text that is neither digits nor roman
+    // numerals — fall through to the filename rather than "Chapter NaN".
+    const ordinalNumber = ordinal ? chapterNumber(ordinal) : NaN;
+    if (ordinal && ordinalNumber !== number) {
       console.warn(
         `! ${name}: ordinal "${ordinal}" ≠ list position ${number} — check --files order`,
       );
     }
     let resolved = title;
-    if (!resolved && ordinal) resolved = `Chapter ${chapterNumber(ordinal)}`;
+    if (!resolved && Number.isFinite(ordinalNumber)) resolved = `Chapter ${ordinalNumber}`;
     if (!resolved) {
       resolved = path.basename(name, ".xhtml").replace(/[-_]+/g, " ");
       console.warn(`! ${name}: no heading found — using filename as title`);
