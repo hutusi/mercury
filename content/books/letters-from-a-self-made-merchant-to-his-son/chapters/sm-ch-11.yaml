@@ -3,7 +3,7 @@ id: sm-ch-11
 bookId: book-merchant-letters
 title: Small Orders, Large Expenses
 titleZh: 小订单，大开销
-summaryZh: 老格雷厄姆在信中告诫儿子：做推销不能只满足于刚刚及格，必须把产品从头到尾彻底吃透。他用一个镇上瘦骨嶙峋的乔什的故事来提醒儿子：错过了的机会未必能补救。
+summaryZh: 老人说，儿子上个月那张单子让他想起一个被公牛追上树的孩子——既该道贺，也该慰问。信里还捎带讲了老家那个瘦得只剩骨头的乔什。
 sections:
   - id: sm-ch-11-s1
     text: |-
@@ -12,14 +12,14 @@ sections:
       I don't want to bear down hard on you right at the beginning of your life on the road, but I would feel a good deal happier over your showing if you would make a downright failure or a clean-cut success once in a while, instead of always just skinning through this way. It looks to me as if you were trying only half as hard as you could, and in trying it's the second half that brings results. If there's one piece of knowledge that is of less use to a fellow than knowing when he's beat, it's knowing when he's done just enough work to keep from being fired. Of course, you are bright enough to be a half-way man, and to hold a half-way place on a half-way salary by doing half the work you are capable of, but you've got to add dynamite and ginger and jounce to your equipment if you want to get the other half that's coming to you. You've got to believe that the Lord made the first hog with the Graham brand burned in the skin, and that the drove which rushed down a steep place was packed by a competitor. You've got to know your goods from A to Izzard, from snout to tail, on the hoof and in the can. You've got to know 'em like a young mother knows baby talk, and to be as proud of 'em as the young father of a twelve-pound boy, without really thinking that you're stretching it four pounds. You've got to believe in yourself and make your buyers take stock in you at par and accrued interest. You've got to have the scent of a bloodhound for an order, and the grip of a bulldog on a customer. You've got to feel the same personal solicitude over a bill of goods that strays off to a competitor as a parson over a backslider, and hold special services to bring it back into the fold. You've got to get up every morning with determination if you're going to go to bed with satisfaction. You've got to eat hog, think hog, dream hog--in short, go the whole hog if you're going to win out in the pork-packing business.
     checkIn:
       id: sm-ch-11-s1-c1
-      stem: What does the father compare a salesman's attitude toward his products to?
+      stem: How proud of the goods is a salesman supposed to be?
       options:
-        - A butcher inspecting hogs at the packing house.
-        - A banker collecting interest on a loan.
-        - A boy chased by a bull up a tree.
-        - A young father proudly showing off his twelve-pound boy.
+        - A butcher going over the hogs at the packing house
+        - A banker drawing his interest on a loan he made
+        - A boy up a tree with a disappointed bull below
+        - A young father with a twelve-pound boy to show off
       correctIndex: 3
-      explanationZh: 父亲说推销员要对产品像年轻母亲懂婴儿语一样熟悉，并且像一位年轻父亲自豪地展示十二磅重的婴儿那样以产品为荣——不过心里并不觉得自己夸大了四磅。公牛和树的比喻描述的是儿子勉强达标、处境尴尬的现状，不是对待产品的态度。
+      explanationZh: 原文写 "You've got to know 'em like a young mother knows baby talk, and to be as proud of 'em as the young father of a twelve-pound boy, without really thinking that you're stretching it four pounds." 树上那个孩子和树下那头公牛，说的是儿子眼下这种刚好压线过关的处境。
   - id: sm-ch-11-s2
     text: |-
       That's a pretty liberal receipt, I know, but it's intended for a fellow who wants to make a good-sized pie. And the only thing you ever find in pastry that you don't put in yourself is flies.
@@ -33,14 +33,14 @@ sections:
       You're just about due now to run into a smart Aleck buyer who'll show you a sample of lard which he'll say was made by a competitor, and ask what you think the grand jury ought to do to a house which had the nerve to label it "leaf." Of course, you will nose around it and look wise and say that, while you hesitate to criticize, you are afraid it would smell like a hot-box on a freight if any one tried to fry doughnuts in it. That is the place where the buyer will call for Jack and Charlie to get in on the laugh, and when he has wiped away the tears he will tell you that it is your own lard, and prove it to you. Of course, there won't be anything really the matter with it, and if you had been properly posted you would have looked surprised when he showed it to you and have said:
     checkIn:
       id: sm-ch-11-s2-c1
-      stem: What does the father warn will happen when a buyer shows a sample of lard?
+      stem: How does the lard-sample joke end?
       options:
-        - The buyer will report it to the grand jury.
-        - The buyer will reveal that it is your own lard.
-        - The buyer will demand a full refund.
-        - The buyer will ask you to fry doughnuts in it.
+        - The buyer will carry the sample to the jury
+        - The buyer will prove that the lard is your own
+        - The buyer will hold out for money back on the car
+        - The buyer will set you to frying doughnuts in it
       correctIndex: 1
-      explanationZh: 父亲预演了一个常见陷阱：一个自作聪明的买家拿出一份猪油样品，说它是竞争对手生产的劣质货，问你大陪审团该怎么判。其实那油根本没问题，是你自家产的——如果产品知识扎实，你本该一眼认出来。炸面圈和大陪审团只是买家讲笑话时的夸张说法。
+      explanationZh: 原文写 "That is the place where the buyer will call for Jack and Charlie to get in on the laugh, and when he has wiped away the tears he will tell you that it is your own lard, and prove it to you." 功课做足的人本该一脸诧异地回一句——"that's a blamed sight better lard than I thought Muggins & Co. were making"。
   - id: sm-ch-11-s3
     text: |-
       "I don't quite diagnose the case your way, Mr. Smith; that's a blamed sight better lard than I thought Muggins & Co. were making." And you'd have driven a spike right through that fellow's little joke and have nailed down his order hard and tight with the same blow.
@@ -52,14 +52,14 @@ sections:
       Elder Hoover was a Methodist off the tip of the sirloin. There weren't any evasions or generalities or metaphors in his religion. The lower layers of the hereafter weren't Hades or Gehenna with him, but just plain Hell, and mighty hot, too, you bet. His creed was built of sheet iron and bolted together with inch rivets. He kept the fire going under the boiler night and day, and he was so blamed busy stoking it that he didn't have much time to map out the golden streets. When he blew off it was super-heated steam and you could see the sinners who were in range fairly sizzle and parboil and shrivel up. There was no give in Doc; no compromises with creditors; no fire sales. He wasn't one of those elders who would let a fellow dance the lancers if he'd swear off on waltzing; or tell him it was all right to play whist in the parlor if he'd give up penny-ante at the Dutchman's; or wink at his smoking if he'd quit whisky.
     checkIn:
       id: sm-ch-11-s3-c1
-      stem: How does the father describe Elder Hoover's religion?
+      stem: What was Elder Hoover's creed made of?
       options:
-        - Full of generalities and metaphors.
-        - Willing to compromise on small sins.
-        - Built of sheet iron and bolted with inch rivets.
-        - Soft and forgiving toward backsliders.
+        - It leaned on generalities and comfortable metaphors
+        - It allowed a man a small sin if he gave up a big one
+        - It was sheet iron, bolted together with inch rivets
+        - It went soft and easy on the backsliders in the fold
       correctIndex: 2
-      explanationZh: 父亲形容胡佛长老的信仰是 built of sheet iron and bolted together with inch rivets，毫无妥协余地，地狱就是热得发烫的地狱，绝不用隐喻搪塞。会做小妥协、对小事睁一只眼闭一只眼的那种长老正是他不屑做的人。
+      explanationZh: 原文写 "There weren't any evasions or generalities or metaphors in his religion... His creed was built of sheet iron and bolted together with inch rivets. He kept the fire going under the boiler night and day." 他也从不做那种交换——不肯为了叫人戒掉华尔兹就放过方阵舞。
   - id: sm-ch-11-s4
     text: |-
       Josh knew this, so he kept away from the camp-meeting, though the Elder gunned for him pretty steady for a matter of five years. But one summer when the meetings were extra interesting, it got so lonesome sitting around with the whole town off in the woods that Josh sneaked out to the edge of the camp and hid behind some bushes where he could hear what was going on. The elder was carrying about two hundred and fifty pounds, by the gauge, that day, and with that pressure he naturally traveled into the sinners pretty fast. The first thing Josh knew he was out from under cover and a-hallelujahing down between the seats to the mourners' bench. When the elder saw what was coming he turned on the forced draft. Inside of ten minutes he had Josh under conviction and had taken his pipe and plug away from him.
@@ -71,14 +71,14 @@ sections:
       Said it didn't worry him; that he was bound to lose flesh sooner or later. That he would catch them on the way down, and wear them out one at a time. But when he got up to three hundred and fifty pounds he just stuck. Tried exercise and dieting and foreign waters, but he couldn't budge an ounce. In the end he had to give the clothes to the Widow Doolan, who had fourteen sons in assorted sizes.
     checkIn:
       id: sm-ch-11-s4-c1
-      stem: Why did Josh avoid attending the camp-meeting for so long?
+      stem: What kept Josh away from the camp-meeting all those years?
       options:
-        - He had no decent clothes to wear
-        - He was afraid of being laughed at
-        - He preferred to stay home and eat
-        - He knew the Elder was after him
-      correctIndex: 3
-      explanationZh: 文中说 Josh knew this, so he kept away from the camp-meeting——this 指胡佛长老五年来一直盯着他、一心要感化他。他躲的是长老的执着，不是嘲笑，也不是衣服的问题。
+        - The elder had been gunning for him five years running
+        - He had nothing decent enough to wear out to the camp meeting
+        - He was afraid the whole town would laugh at him
+        - He would rather stop at home and get his meals
+      correctIndex: 0
+      explanationZh: 原文写 "Josh knew this, so he kept away from the camp-meeting, though the Elder gunned for him pretty steady for a matter of five years." 那年是全镇都进了林子、家里坐着实在冷清，他才溜到营地边上，躲在灌木后面听。
   - id: sm-ch-11-s5
     text: |-
       I simply mention Josh in passing as an example of the fact that a fellow can't bank on getting a chance to go back and take up a thing that he has passed over once, and to call your attention to the fact that a man who knows his own business thoroughly will find an opportunity sooner or later of reaching the most hardened cuss of a buyer on his route and of getting a share of his.
@@ -92,66 +92,66 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-11-s5-c1
-      stem: What does the circus performer's act illustrate about learning business?
+      stem: What does the man in pink tights stand for?
       options:
-        - There is no real limit to what a capable fellow can take on.
-        - A man should juggle only glass balls to stay safe.
-        - Business knowledge is shallow and easy to master.
-        - One should learn everything as quickly as possible.
-      correctIndex: 0
-      explanationZh: 父亲用杂技演员的比喻说明：能抛接八个玻璃球只是起步，真正出色的人还能接下煤油灯、菜刀等更多物件而笑容不改；做生意同理，有能力的人总能承担更多额外的事。does not look very deep 恰恰说明生意有很多弯弯绕绕，不是浅显易学的。
+        - A man does well to keep to the glass balls and stop
+        - There is no real limit to the extras a man can take on
+        - The business is shallow enough, and quickly got by heart
+        - The thing to do is learn the whole of it in a hurry
+      correctIndex: 1
+      explanationZh: 蓝紧身衣的女助手会把煤油灯、切肉刀、各色碗碟一件件递上去，那位演员照样接住，笑容不改。"But there's no real limit to the amount of extras a fellow with the right stuff in him will take on without losing his grin."。
 quiz:
   - id: sm-ch-11-q1
-    stem: Why does the father say it took decimal-system help to make Pierrepont's selling cost acceptable?
+    stem: How did last month's selling cost come out?
     options:
-      - His selling cost was far above the limit.
-      - His selling cost was exactly on target.
-      - His selling cost was well below the limit.
-      - His selling cost was just barely within the limit.
+      - It ran a long way over the limit set for the month
+      - It came out square on the figure, to the penny
+      - It came in comfortably under what was allowed
+      - It got inside the limit, but only just barely
     correctIndex: 3
-    explanationZh: 父亲说费用 within the limit，但需要小数系统的帮助才勉强达标，意思就是差一点就超标、只是惊险过关。远超限额、正好达标或远低于限额都不符合这种勉强的语气。
+    explanationZh: 原文写 "You ought to be feeling mighty thankful to-day to the fellow who invented fractions, because while your selling cost for last month was within the limit, it took a good deal of help from the decimal system to get it there." 父亲接着说，他宁可看儿子偶尔来一次干脆的失败或漂亮的成功。
   - id: sm-ch-11-q2
-    stem: What does the father say a salesman must do with a bill of goods that strays to a competitor?
+    stem: What is to be done about a bill of goods that strays off to a competitor?
     options:
-      - Cut the price to win it back immediately.
-      - File a formal complaint with the competitor.
-      - Write it off and focus on new customers.
-      - Hold special services to bring it back into the fold.
-    correctIndex: 3
-    explanationZh: 父亲说推销员要像牧师关心回头的罪人一样关心流失到对手那里的订单，要开特别礼拜把它拉回羊群。降价抢回、正式投诉或直接放弃都是商业手段，但不是这个比喻所说的态度。
+      - Cut the price low enough to win it straight back
+      - Lodge a formal complaint against the competing house
+      - Hold special services to bring it back into the fold
+      - Write it off, and put the time into new customers
+    correctIndex: 2
+    explanationZh: 原文写 "You've got to feel the same personal solicitude over a bill of goods that strays off to a competitor as a parson over a backslider, and hold special services to bring it back into the fold."。
   - id: sm-ch-11-q3
-    stem: What happened to Josh at the camp-meeting when the Elder turned on the forced draft?
+    stem: What became of Josh once the elder turned on the forced draft?
     options:
-      - He was chased out by the congregation
-      - He lost his temper and stormed off
-      - He was converted and gave up tobacco
-      - He was caught smoking behind the bushes
-    correctIndex: 2
-    explanationZh: 文中说十分钟内胡佛长老就让乔什受到感化，并没收了他的烟斗和烟块——也就是说他被成功传教、皈依了。被赶走、发脾气或只是被抓到抽烟都不符合长老强压火力后成功传教的结果。
-  - id: sm-ch-11-q4
-    stem: What ultimately happened to the fourteen suits Josh's wife put away?
-    options:
-      - They were sold to a second-hand shop.
-      - They were worn out one at a time on the way down.
-      - They were given to the Widow Doolan.
-      - They were stored away and never used again.
-    correctIndex: 2
-    explanationZh: 乔什体重涨到三百五十磅后卡住不降，试了运动、节食、矿泉水都不行，最后只能把那十四套衣服送给有十四个不同体型儿子的寡妇杜兰。一路瘦下来轮流穿是乔什原来的打算，但事实是他再也没瘦回去。
-  - id: sm-ch-11-q5
-    stem: What does the father want Pierrepont to become instead of staying among retail trade?
-    options:
-      - A car-lot man too big for the little fellows.
-      - A manager at the packing house.
-      - A buyer for the competitor's firm.
-      - A specialist in small custom orders.
-    correctIndex: 0
-    explanationZh: 父亲明确说想看到儿子成长为整车批发级别的人，希望他实力强到让公司不得不把他从小客户群体中调走。做包装厂经理、跳槽去对手公司或专做小订单都不是信中提到的发展方向。
-  - id: sm-ch-11-q6
-    stem: What reason does the father give for Josh not backsliding after his conversion?
-    options:
-      - He had genuinely found religion
-      - A practical joker fears being laughed at
-      - He was afraid of the Elder's punishment
-      - He had lost his taste for tobacco
+      - The congregation ran him clean off the camp ground
+      - He was converted, and gave up his pipe and plug
+      - He lost his temper and stamped off in a rage
+      - He was caught smoking out behind the bushes
     correctIndex: 1
-    explanationZh: 父亲说自己有点觉得乔什本来会倒退的，如果不是他是个爱开玩笑的人——这种人生怕自己被人笑话，就像小马驹怕蒸汽压路机一样，所以硬撑着没回退。真正虔诚、怕长老惩罚或戒烟了都不是文中给出的理由。
+    explanationZh: 原文写 "When the elder saw what was coming he turned on the forced draft. Inside of ten minutes he had Josh under conviction and had taken his pipe and plug away from him."。
+  - id: sm-ch-11-q4
+    stem: What became of the fourteen suits laid away in the chest?
+    options:
+      - They went off to a second-hand shop in the next town
+      - They were worn out one at a time on the way down
+      - They went to the Widow Doolan and her fourteen sons
+      - They stayed in the chest, and were never got out again
+    correctIndex: 2
+    explanationZh: 他涨到三百五十磅就再也降不下来，"Tried exercise and dieting and foreign waters, but he couldn't budge an ounce. In the end he had to give the clothes to the Widow Doolan, who had fourteen sons in assorted sizes." 一路瘦下来轮流穿，只是他当初的盘算。
+  - id: sm-ch-11-q5
+    stem: What does the father want his son to grow into?
+    options:
+      - A car-lot man, too big to stay among the little fellows
+      - A manager over all the floors at the packing house here
+      - A buyer working for one of the competing houses
+      - A specialist in the small made-to-order trade
+    correctIndex: 0
+    explanationZh: 原文写 "So far, you promise to make a fair to ordinary salesman among our retail trade. I want to see you grow into a car-lot man—so strong and big that you will force us to see that you are out of place among the little fellows. Buck up!"。
+  - id: sm-ch-11-q6
+    stem: What kept Josh from backsliding after his conversion?
+    options:
+      - He had come by religion in dead earnest at last
+      - He had gone right off the taste of tobacco
+      - He was in dread of what the elder would do to him
+      - A practical joker cannot stand a laugh on himself
+    correctIndex: 3
+    explanationZh: 原文写 "I am just a little inclined to think that Josh would have backslid if he hadn't been a practical joker, and a critter of that breed is about as afraid of a laugh on himself as a raw colt of a steam roller. So he stuck it out, and began to take an interest in meal time."。

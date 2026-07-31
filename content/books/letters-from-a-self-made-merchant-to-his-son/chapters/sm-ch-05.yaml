@@ -3,7 +3,7 @@ id: sm-ch-05
 bookId: book-merchant-letters
 title: The Suggestion Withdrawn
 titleZh: 收回建议
-summaryZh: 老格雷厄姆收到儿子来信，对其中简洁的文风表示赞许，并顺势教导他职场说话之道和入行第一年的走法。信里还用旧友查理的故事给他结结实实地上了一课。最后他安排了报到的时间和地点。
+summaryZh: 儿子四号那封信的调子对了路——父亲说，那是他收到过的所有来信里，字数与意思之比最划算的一封。有人拿话遮掩思想，可依他看来，更多的人是拿话顶替思想。
 sections:
   - id: sm-ch-05-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       I simply mention these things in passing because I'm afraid you're apt to be the fellow who's doing the talking; just as I'm a little afraid that you're sometimes like the hungry drummer at the dollar-a-day house--inclined to kill your appetite by eating the cake in the centre of the table before the soup comes on.
     checkIn:
       id: sm-ch-05-s1-c1
-      stem: What does the father say a businessman should do after he has said what he needs to say?
+      stem: What are the rules a business man's talk should keep to?
       options:
-        - He should stop talking.
-        - He should repeat his main point.
-        - He should introduce a new topic.
-        - He should ask for the other fellow's opinion.
-      correctIndex: 0
-      explanationZh: 父亲明确列出商人说话的三条规则：have something to say, say it, stop talking。说完了就住口，拖泥带水只会惹上官司或亏钱。干扰项里"重复要点"最有迷惑性，但父亲强调的是"stop"而非重申。
+        - Say a good deal, and say it twice over for safety
+        - Speak first, and work out what you mean as you go
+        - Have something to say, say it, and stop talking
+        - Let the other fellow talk, and agree with all of it
+      correctIndex: 2
+      explanationZh: 他说商人谈话该守的规矩，比人身上任何一件事都少、都简单，一共三条——Have something to say. Say it. Stop talking.。开口前不知道要说什么、说完了还不住嘴，"lands a merchant in a lawsuit or the poorhouse, and the first is a short cut to the second"。
   - id: sm-ch-05-s2
     text: |-
       Of course, I'm glad to see you swing into line and show the proper spirit about coming on here and going to work; but you mustn't get yourself all "het up" before you take the plunge, because you're bound to find the water pretty cold at first. I've seen a good many young fellows pass through and out of this office. The first week a lot of them go to work they're in a sweat for fear they'll be fired; and the second week for fear they won't be. By the third, a boy that's no good has learned just how little work he can do and keep his job; while the fellow who's got the right stuff in him is holding down his own place with one hand and beginning to reach for the job just ahead of him with the other. I don't mean that he's neglecting his work; but he's beginning to take notice, and that's a mighty hopeful sign in either a young clerk or a young widow.
@@ -43,14 +43,14 @@ sections:
       I've always taken a good deal of stock in what you call "Blood-will-tell" if you're a Methodist, or "Heredity" if you're a Unitarian; and I don't want you to come along at this late day and disturb my religious beliefs. A man's love for his children and his pride are pretty badly snarled up in this world, and he can't always pick them apart. I think a heap of you and a heap of the house, and I want to see you get along well together. To do that you must start right. It's just as necessary to make a good first impression in business as in courting. You'll read a good deal about "love at first sight" in novels, and there may be something in it for all I know; but I'm dead certain there's no such thing as love at first sight in business. A man's got to keep company a long time, and come early and stay late and sit close, before he can get a girl or a job worth having. There's nothing comes without calling in this world, and after you've called you've generally got to go and fetch it yourself.
     checkIn:
       id: sm-ch-05-s2-c1
-      stem: By the third week, what does the father say a no-good boy has figured out?
+      stem: What has a no-good boy found out by the third week?
       options:
-        - How to reach for the job just ahead of him.
-        - How little work he can do and still keep his job.
-        - How to make himself popular with the boss.
-        - How much overtime he needs to earn a raise.
-      correctIndex: 1
-      explanationZh: 原文说第三周时，没出息的男孩会摸清"just how little work he can do and keep his job"，而真正有料的同行则在稳住本职的同时伸手够更高的位置。干扰项"够更高职位"恰恰是优秀员工的行为，与题目所问的庸才相反。
+        - Just how little work he can do and hold the place
+        - How to reach for the job that stands next above him
+        - How to make himself agreeable to the man over him
+        - How much overtime it takes to get his pay raised
+      correctIndex: 0
+      explanationZh: 原文写 "By the third, a boy that's no good has learned just how little work he can do and keep his job; while the fellow who's got the right stuff in him is holding down his own place with one hand and beginning to reach for the job just ahead of him with the other."。
   - id: sm-ch-05-s3
     text: |-
       Our bright young men have discovered how to make a pretty good article of potted chicken, and they don't need any help from hens, either; and you can smell the clover in our butterine if you've developed the poetic side of your nose; but none of the boys have been able to discover anything that will pass as a substitute for work, even in a boarding-house, though I'll give some of them credit for having tried pretty hard.
@@ -62,14 +62,14 @@ sections:
       He dropped by the office last week, a little bent and seedy, but all in a glow and trembling with excitement in the old way. Told me he was President of the Klondike Exploring, Gold Prospecting and Immigration Company, with a capital of ten millions. I guessed that he was the board of directors and the capital stock and the exploring and the prospecting and the immigrating, too--everything, in fact, except the business card he'd sent in; for Charlie always had a gift for nosing out printers who'd trust him. Said that for the sake of old times he'd let me have a few thousand shares at fifty cents, though they would go to par in a year. In the end we compromised on a loan of ten dollars, and Charlie went away happy.
     checkIn:
       id: sm-ch-05-s3-c1
-      stem: What did Charlie Chase offer to let the father in on, if he would provide a few hundred dollars?
+      stem: What did Charlie Chase keep offering in return for a few hundred?
       options:
-        - A partnership in a dry-goods store.
-        - A stake in a real savings bank.
-        - A share of a legal department.
-        - A get-rich-quick scheme on the ground floor.
+        - A half-share in the dry-goods store he clerked at
+        - A place in a savings bank that paid good interest
+        - A partnership in the legal end of some business
+        - A chance to come in on the ground floor of a scheme
       correctIndex: 3
-      explanationZh: 查理每周二晚开始幻想一夜暴富，缺启动资金时便邀请父亲"let you in on the ground floor"。父亲随即总结了一条经验：有人让你"进底层"，你最好"坐电梯到顶层花园"——意即赶紧躲开。
+      explanationZh: 星期二晚上他就开始盘算，一夜之间办杂志、炒小麦，只差几百块本钱起手；到那一步，他就 "decide to let me in on the ground floor"。父亲的经验之谈是 "whenever any one offers to let you in on the ground floor it's a pretty safe rule to take the elevator to the roof garden"。
   - id: sm-ch-05-s4
     text: |-
       The swamps are full of razor-backs like Charlie, fellows who'd rather make a million a night in their heads than five dollars a day in cash. I have always found it cheaper to lend a man of that build a little money than to hire him. As a matter of fact, I have never known a fellow who was smart enough to think for the house days and for himself nights. A man who tries that is usually a pretty poor thinker, and he isn't much good to either; but if there's any choice the house gets the worst of it.
@@ -81,57 +81,57 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-05-s4-c1
-      stem: What does the father say is the best reason to leave some lessons unspoken?
+      stem: Why does the father leave some of the lessons unsaid?
       options:
-        - A smart man never needs to be told twice.
-        - A borrowed dollar teaches more than a lecture.
-        - A lesson learned at the muzzle is never forgotten.
-        - A mistake in business always stays a secret.
-      correctIndex: 2
-      explanationZh: 父亲说他不把每件事都讲明，因为"life is too short"，而且亲手扣扳机看枪是否上膛、在枪口处学到教训，反而让人终生不忘。干扰项"借来的一块钱教得比讲课多"借用了查理借钱的情节，但原文要强调的是亲身试错的力量。
+        - A quick man never has to be told a thing twice
+        - A lesson learned at the muzzle is never forgotten
+        - A dollar lent teaches more than an hour of preaching
+        - A mistake in business always stays between two men
+      correctIndex: 1
+      explanationZh: 有些话他不讲，"because life is too short and because it seems to afford a fellow a heap of satisfaction to pull the trigger for himself to see if it is loaded; and a lesson learned at the muzzle has the virtue of never being forgotten"。
 quiz:
   - id: sm-ch-05-q1
-    stem: What is the father's explanation for maintaining a legal department?
+    stem: What does the father keep a legal department for?
     options:
-      - It helps him draft sales contracts.
-      - It keeps him from going to law.
-      - It gives him a source of business advice.
-      - It keeps the company out of the newspapers.
-    correctIndex: 1
-    explanationZh: 原文说"it costs a lot of money, but it's to keep me from going to law"——养法务部门是为了避免打官司，而打官司很快会让人变穷。
-  - id: sm-ch-05-q2
-    stem: How should a young man pace his first year in business?
-    options:
-      - Sprint from the very start to impress the boss
-      - Hold back until the last quarter, then make one big push
-      - Start steady, ease out mid-race, finish fast
-      - Maintain an even, steady pace from start to finish
+      - It draws up the selling contracts
+      - It keeps the house's name out of the newspapers
+      - It is there to keep him out of the courts
+      - It is where he goes for advice on the trade
     correctIndex: 2
-    explanationZh: 父亲把第一年比作赛马：起步要稳而可控，到四分之一处稍放一挡，半程前不急不松，四分之三处探出头来，最后像特快列车一样冲线。"全程匀速"最有迷惑性，但父亲明确主张后段加速。
+    explanationZh: 原文写 "I maintain a legal department here, and it costs a lot of money, but it's to keep me from going to law." 前一句他刚说过：话没想好就开口、说完了还不住嘴，"lands a merchant in a lawsuit or the poorhouse, and the first is a short cut to the second"。
+  - id: sm-ch-05-q2
+    stem: How should the first year of a business life be paced?
+    options:
+      - Warm up, hold in hand, then let out in the stretch
+      - Break away hard at the post and get in front early
+      - Save everything for one push in the last quarter
+      - Keep one even gait from the post to the wire
+    correctIndex: 0
+    explanationZh: 原文写 "Warm up a little before going to the post—not enough to be in a sweat, but just enough to be limber and eager. Never start off at a gait that you can't improve on... At the three-quarters you ought to be going fast enough to poke your nose out of the other fellow's dust, and running like the Limited in the stretch."。
   - id: sm-ch-05-q3
-    stem: Why does the father want his son to report a day early?
+    stem: Why is the son to be there on the fourteenth?
     options:
-      - So he can take a tour of the yards before work begins.
-      - So Milligan can interview him before the fifteenth.
-      - So he can settle into his new boarding-house room.
-      - So the father can give him tips on staying on Milligan's good side.
+      - So he can walk over the yards before the work starts up
+      - So Milligan can look him over before the fifteenth
+      - So he can get himself settled in his boarding-house
+      - So the old man can coach him on Milligan's mellow side
     correctIndex: 3
-    explanationZh: 信末说最好十四号就到，因为Milligan是"a pretty touchy Irishman"，父亲想先给儿子几条如何与之相处的建议。干扰项"提前面试"看似合理，但父亲安排的是自己给提示，而非让Milligan先考核。
+    explanationZh: 原文写 "You'd better figure on being here on the fourteenth, because Milligan's a pretty touchy Irishman, and I may be able to give you a point or two that will help you to keep on his mellow side. He's apt to feel a little sore at taking on in his department a man whom he hasn't passed on."。
   - id: sm-ch-05-q4
-    stem: What did Charlie ultimately become president of when he visited the office last week?
+    stem: What was Charlie president of when he called at the office?
     options:
-      - A Klondike gold and immigration company
-      - The Cheops Wheat Speculation Syndicate
+      - The Cheops Wheat Speculation and Pyramiding Syndicate of Chicago
+      - The Klondike Exploring, Gold Prospecting and Immigration Company
       - The Chicago Potted Chicken and Butterine Company
       - The Jennings Dry-Goods and Savings Association
-    correctIndex: 0
-    explanationZh: 查理来办公室时自称是"Klondike Exploring, Gold Prospecting and Immigration Company"的总裁，资本一千万。父亲猜他就是整个公司的全部，连名片都是赊账印的。
+    correctIndex: 1
+    explanationZh: 他上周晃进办公室，自称是 "President of the Klondike Exploring, Gold Prospecting and Immigration Company, with a capital of ten millions"。父亲猜他一个人就是董事会、股本、勘探、采矿加移民，唯独名片不是——查理向来有本事找到肯赊账的印刷铺。两人末了以借十块钱了结。
   - id: sm-ch-05-q5
-    stem: What is the father's view of a man who thinks for the house by day and for himself by night?
+    stem: What does the father make of the man who thinks for the house by day and himself by night?
     options:
-      - He is the ideal employee for a growing business
-      - He is smart enough to get rich within a year
-      - He is a poor thinker, of little use to either
-      - He is bound to cheat the house sooner or later
+      - He is just the man that a growing house wants to have about
+      - He is clever enough to be rich inside of a year
+      - He is a poor thinker, and no great use to either side
+      - He is bound to cheat the house before he is done
     correctIndex: 2
-    explanationZh: 原文说"I have never known a fellow who was smart enough to think for the house days and for himself nights"——白天替公司想、晚上替自己算的人通常脑子并不灵光，两边都不讨好，但若要选，公司吃亏更多。
+    explanationZh: 原文写 "As a matter of fact, I have never known a fellow who was smart enough to think for the house days and for himself nights. A man who tries that is usually a pretty poor thinker, and he isn't much good to either; but if there's any choice the house gets the worst of it."。

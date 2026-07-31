@@ -2,8 +2,8 @@
 id: sm-ch-18
 bookId: book-merchant-letters
 title: A Bear on Lard
-titleZh: 猪油上的熊
-summaryZh: 报纸传言老格雷厄姆在猪油期货上被人做空围猎，他在信中一笑置之，顺势谈起生意人该如何对待传闻与压力。信里还讲了一位借地建育婴棚却得寸进尺的女士，以及一位镇上寡妇和她“失踪”儿子的奇事。
+titleZh: 猪油上的空头
+summaryZh: 二十一号那封信连同剪报都收到了。老人说，这类报纸上的动静不必上心——世上有两样东西向来不值得留神：辱骂和奉承。
 sections:
   - id: sm-ch-18-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       There are mighty few people who can see any side to a thing except their own side. I remember once I had a vacant lot out on the Avenue, and a lady came in to my office and in a soothing-syrupy way asked if I would lend it to her, as she wanted to build a crèche on it. I hesitated a little, because I had never heard of a crèche before, and someways it sounded sort of foreign and frisky, though the woman looked like a good, safe, reliable old heifer. But she explained that a crèche was a baby farm, where old maids went to wash and feed and stick pins in other people's children while their mothers were off at work. Of course, there was nothing in that to get our pastor or the police after me, so I told her to go ahead.
     checkIn:
       id: sm-ch-18-s1-c1
-      stem: What does Graham say about the newspaper talk that the Comstock crowd has caught him short on lard?
+      stem: How does the old man take the newspaper talk about the November lard?
       options:
-        - He knows where to find the goods, and he will fight back
-        - He says he has already lost a great deal of money on the deal
-        - He says he plans to sell his lard and leave the market
-        - He says he will ask his friends to lend him some lard
+        - He never sells what he cannot lay hands on, and will fight
+        - He has already dropped a heavy sum on the November line
+        - He means to sell out his lard and quit the market for good
+        - He will go round to his friends and borrow the lard he needs
       correctIndex: 0
-      explanationZh: Graham 明确表示他从不会在不知道货物在哪的情况下卖出，并说如果对方想搞鬼，他也会忘了"餐桌礼仪"予以反击。说他会求朋友借款或已经亏钱，都与原文矛盾。
+      explanationZh: 原文写 "You needn't pay any special attention to this newspaper talk about the Comstock crowd having caught me short a big line of November lard. I never sell goods without knowing where I can find them when I want them, and if these fellows try to put their forefeet in the trough, or start any shoving and crowding, they're going to find me forgetting my table manners, too."。
   - id: sm-ch-18-s2
     text: |-
       She went off happy, but about a week later she dropped in again, looking sort of dissatisfied, to find out if I wouldn't build the crèche itself. It seemed like a worthy object, so I sent some carpenters over to knock together a long frame pavilion. She was mighty grateful, you bet, and I didn't see her again for a fortnight. Then she called by to say that so long as I was in the business and they didn't cost me anything special, would I mind giving her a few cows. She had a surprised and grieved expression on her face as she talked, and the way she put it made me feel that I ought to be ashamed of myself for not having thought of the live stock myself. So I threw in half a dozen cows to provide the refreshments.
@@ -39,14 +39,14 @@ sections:
       I've put a good deal more than work into my business, and I've drawn a good deal more than money out of it; but the only thing I've ever put into it which didn't draw dividends in fun or dollars was worry. That is a branch of the trade which you want to leave to our competitors.
     checkIn:
       id: sm-ch-18-s2-c1
-      stem: What does Graham do after the lady complains about the advertisement painted on the crèche shed?
+      stem: What settled the business of the sign on the shed?
       options:
-        - He has the advertisement painted over at once.
-        - He takes the shed down and moves it away.
-        - He sues the lady for breaking their agreement.
-        - He sends her the money she asks for.
+        - He had the painters go back and cover the lettering
+        - He had the whole shed pulled down and carted off
+        - He went to law with her over the terms of the loan
+        - He sent her a check for the amount she was naming
       correctIndex: 3
-      explanationZh: 那位女士到处说他用棚子做慈善却在上面刷了值钱的广告，缠得他烦了，他干脆寄了支票给她。之后他找到买家把地卖了，退出了"育婴堂行业"。说他把广告刷掉或拆掉棚子，都不符合情节。
+      explanationZh: 她到处说他捐了一座五百块的棚子，却在上面刷了值一千块的广告，"Kept at it till I began to think there might be something in it, after all, and sent her the money. Then I found a fellow who wanted to build in that neighborhood, sold him the lot cheap, and got out of the crèche industry."。
   - id: sm-ch-18-s3
     text: |-
       I've always found worrying a blamed sight more uncertain than horse-racing--it's harder to pick a winner at it. You go home worrying because you're afraid that your fool new clerk forgot to lock the safe after you, and during the night the lard refinery burns down; you spend a year fretting because you think Bill Jones is going to cut you out with your best girl, and then you spend ten worrying because he didn't; you worry over Charlie at college because he's a little wild, and he writes you that he's been elected president of the Y.M.C.A.; and you worry over William because he's so pious that you're afraid he's going to throw up everything and go to China as a missionary, and he draws on you for a hundred; you worry because you're afraid your business is going to smash, and your health busts up instead. Worrying is the one game in which, if you guess right, you don't get any satisfaction out of your smartness. A busy man has no time to bother with it. He can always find plenty of old women in skirts or trousers to spend their days worrying over their own troubles and to sit up nights waking his.
@@ -56,14 +56,14 @@ sections:
       I've no doubt she thought a lot of Bud, but when a woman has fourteen it sort of unsettles her mind so that she can't focus her affections or play any favorites. And so when Bud's clothes were found at the swimming hole one day, and no Bud inside them, she didn't take on up to the expectations of the neighbors who had brought the news, and who were standing around waiting for her to go off into something special in the way of high-strikes.
     checkIn:
       id: sm-ch-18-s3-c1
-      stem: What does Graham say worrying is even harder than?
+      stem: What is worrying harder than, by the old man's reckoning?
       options:
-        - Running a lard refinery
-        - Keeping a new clerk honest
-        - Picking a winner at horse-racing
-        - Getting elected at college
-      correctIndex: 2
-      explanationZh: 他说“worrying a blamed sight more uncertain than horse-racing—it's harder to pick a winner at it”，接着一口气举了四个“担心的事全没发生”的例子：怕店员忘锁保险柜，烧掉的却是炼油厂；怕 Bill Jones 抢走女友，结果又为他没抢走懊恼了十年。炼油厂和店员都只是例子里的角色。
+        - Keeping a raw new clerk honest at the safe
+        - Picking a winner at the horse-racing track
+        - Running a lard refinery through a hard year
+        - Getting a man elected to office at college
+      correctIndex: 1
+      explanationZh: 原文写 "I've always found worrying a blamed sight more uncertain than horse-racing—it's harder to pick a winner at it." 他随即一口气举了几个例子：怕新伙计忘了锁保险柜，烧掉的却是炼油厂；怕 Bill Jones 抢走姑娘，结果又为他没抢走懊恼了十年。
   - id: sm-ch-18-s4
     text: |-
       She allowed that they were Bud's clothes, all right, but she wanted to know where the remains were. Hinted that there'd be no funeral, or such like expensive goings-on, until some one produced the deceased. Take her by and large, she was a pretty cool, calm cucumber.
@@ -77,14 +77,14 @@ sections:
       The Widow was badly disappointed, but she allowed that that was just like Bud. He'd always been a boy that never could be found when any one wanted him. So she went off, saying that she'd had her money's worth in seeing Clytie throw those fancy fits. But next day she came again and paid down four bits, and Clytie reckoned that that ought to fetch Bud sure. Someways though, she didn't have any luck, and finally the Widow suggested that she call up Bud's father--Buck Williams had been dead a matter of ten years--and the old man responded promptly.
     checkIn:
       id: sm-ch-18-s4-c1
-      stem: How does the Widow react when neighbors bring the news that Bud's clothes were found at the swimming hole?
+      stem: How did the Widow take the news brought from the swimming hole?
       options:
-        - She breaks down and weeps before the neighbors
-        - She asks for the remains before any funeral
-        - She immediately joins the river-dragging search
-        - She calls the police to report Bud missing
-      correctIndex: 1
-      explanationZh: 邻居来报丧，寡妇却反问"遗体在哪"，还说没有死者就不办葬礼，被形容为"冷静得像根黄瓜"。说她当众大哭或去报警，都不符合原文。
+        - She asked where the remains were, before any funeral
+        - She broke down and wept in front of the neighbors
+        - She went straight off to help drag the river herself
+        - She sent word to the sheriff that the boy was missing
+      correctIndex: 0
+      explanationZh: 原文写 "She allowed that they were Bud's clothes, all right, but she wanted to know where the remains were. Hinted that there'd be no funeral, or such like expensive goings-on, until some one produced the deceased. Take her by and large, she was a pretty cool, calm cucumber."。
   - id: sm-ch-18-s5
     text: |-
       "Where's Bud?" asked the Widow.
@@ -108,66 +108,66 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-18-s5-c1
-      stem: What does the Widow do when Bud is found hiding behind a rain-barrel the next morning?
+      stem: What happened when the lost lamb turned up behind the rain-barrel?
       options:
-        - She hugs him and thanks the neighbors for searching.
-        - She gives him a beating with a bed slat.
-        - She sends him straight to the river to drag it himself.
-        - She takes him to the police station for punishment.
-      correctIndex: 1
-      explanationZh: 原文说寡妇找到"迷途羔羊"后，"touch him at least a hundred times"，每次都让他泪流满面，用的工具是"bed slat"，是一种强有力的道德教化工具。说她拥抱感谢邻居，与这激烈场面完全相反。
+        - She threw her arms round him and thanked the neighbors
+        - She marched him down to the river to drag it
+        - She took a bed slat to him, and he wept every time
+        - She walked him over to the sheriff to be dealt with
+      correctIndex: 2
+      explanationZh: 原文写 "the Widow must have touched him at least a hundred times and every time he was affected to tears, for she was using a bed slat, which is a powerfully strong moral agent for making a boy see the error of his ways." 此后整整一个月，凡在他"淹死"期间夸过他 noble little fellow 的人，见了他都要赏一记耳刮子。
 quiz:
   - id: sm-ch-18-q1
-    stem: Why does Graham say there has always been a "Gates Ajar" piece ready for him near the Board of Trade?
+    stem: Why has there always been a Gates Ajar piece made up near the Board of Trade?
     options:
-      - Because he has been seriously ill for twenty years and expects to die soon.
-      - Because he has been planning to retire from business for twenty years.
-      - Because for twenty years people have repeatedly tried to ruin him in business.
-      - Because he has owed money to the Board of Trade for twenty years.
-    correctIndex: 2
-    explanationZh: Graham 用"Gates Ajar"（一种悼念花件）打比方，说二十年来总有人在交易所附近为他备好讣告，因为总有人想整垮他。但他强调"安静葬礼的首要条件是一具配合的尸体"，而他至今活得好好的。说他病重或欠债，都是把比喻当字面意思了。
-  - id: sm-ch-18-q2
-    stem: When Graham was bulling the market, how did the longs and the shorts view him differently?
-    options:
-      - Both sides agreed he was helping farmers get a fair price for their hogs
-      - Both sides agreed he was stealing pork from the workingman's pot
-      - The longs called him a philanthropist; the shorts, a robber
-      - The longs called him a robber, while the shorts praised him as a hero
-    correctIndex: 2
-    explanationZh: 原文说多方认为他是好心肠的慈善家，为农民的猪谋高价；空方则骂他是窃取工人锅里猪肉的老强盗。Graham 借此说明：你没法让两边都满意，不如让自己这边满意。说双方一致看法，与情节不符。
-  - id: sm-ch-18-q3
-    stem: How did the crèche lady gradually get Graham to keep adding more to her project?
-    options:
-      - She offered to pay him a share of the crèche's future profits
-      - She threatened to report him to the police and the pastor
-      - She brought in other charity ladies to pressure him together
-      - She kept returning with one new request after another
-    correctIndex: 3
-    explanationZh: 她先借地，再回来问能不能把棚子也搭了，又来要奶牛，又来质问为何不刷漆。每次都带着"惊讶又委屈"的神情，让 Graham 觉得自己该主动想到这些。说她出钱分红或用警察威胁，都不符合。
-  - id: sm-ch-18-q4
-    stem: How did the rest of the town react to the news of Bud's death?
-    options:
-      - They accused the Widow of neglecting him
-      - They dropped work to drag the river
-      - They arranged a funeral straight away
-      - They paid little attention to the story
+      - He has been sick these twenty years and looks for the end
+      - For twenty years men have been going gunning for him
+      - He has been meaning to retire out of the trade for twenty years
+      - He has owed the Board of Trade money for twenty years
     correctIndex: 1
-    explanationZh: 寡妇冷静得出奇，镇上其他人却“mightily stirred up”：人人放下手里的活，互相念叨 Bud 是多好的孩子，一边说一边拖网搜河，整整搜了一个星期。没有人责怪寡妇，葬礼更是被寡妇本人拦下了。
-  - id: sm-ch-18-q5
-    stem: Why does the Widow first go to the voodoo woman Louisiana Clytemnestra?
+    explanationZh: 原文写 "First and last, a good many men have gone gunning for me, but they've always planned the obsequies before they caught the deceased. I reckon there hasn't been a time in twenty years when there wasn't a nice 'Gates Ajar' piece all made up and ready for me in some office near the Board of Trade. But the first essential of a quiet funeral is a willing corpse. And I'm still sitting up and taking nourishment."。
+  - id: sm-ch-18-q2
+    stem: How did the two sides read him the year he was bulling the market?
     options:
-      - Because the town has dragged the river for a week and found nothing but junk.
-      - Because the neighbors told her that Bud had appeared in a dream.
-      - Because the voodoo woman offered to help her free of charge.
-      - Because she wants to learn how to drag the river herself.
-    correctIndex: 0
-    explanationZh: 镇上的人拖网搜了一整周河，只捞到些旧锡罐和死鲶鱼，寡妇这才披上披巾去找降神巫。她想用五毛钱"半价"跟儿子说几句话。说她做了梦或巫婆免费帮忙，都不符合。
-  - id: sm-ch-18-q6
-    stem: Why does the Widow finally march out of Clytie's cabin convinced that Bud "isn't there"?
-    options:
-      - Because Buck Williams' ghost told her he had seen Bud leave town
-      - Because the neighbors interrupted the seance and dragged her home
-      - Because Clytie charged her too much and she ran out of money
-      - Clytie's parade of famous spirits raised no word from Bud
+      - Both sides had him down for the farmer's best friend
+      - Both sides had him down as robbing the poor workingman's pot
+      - The longs called him a robber, and the shorts a hero
+      - The longs called him a philanthropist, the shorts a robber
     correctIndex: 3
-    explanationZh: 老 Buck 的鬼魂说他没见到 Bud，克莱娣又搬出华盛顿、拿破仑等人来证明"没作弊"，却还是听不到 Bud 的动静。寡妇这才断定儿子根本不在"那边"，掉头走了。说 Buck 说看见他离镇，与"没见过"矛盾。
+    explanationZh: 原文写 "Last year, when I was bulling the market, the longs all said that I was a kind-hearted old philanthropist, who was laying awake nights scheming to get the farmers a top price for their hogs; and the shorts allowed that I was an infamous old robber, who was stealing the pork out of the workingman's pot. As long as you can't please both sides in this world, there's nothing like pleasing your own side."。
+  - id: sm-ch-18-q3
+    stem: How did the crèche keep growing at the old man's expense?
+    options:
+      - She came back with one fresh request after another
+      - She offered him a cut of what the place would earn
+      - She held the pastor and the police over his head
+      - She brought a delegation of charity ladies along
+    correctIndex: 0
+    explanationZh: 先是借地，一周后回来问能不能把棚子也搭起来，再过两周来要几头奶牛，木工刚完工又打电话来问为什么不刷漆。每回都带着一副 "surprised and grieved expression"，弄得他觉得自己本该早想到才对。
+  - id: sm-ch-18-q4
+    stem: How did the rest of the town take the news?
+    options:
+      - They laid the blame on the Widow for neglecting him
+      - They quit work to talk him up and drag the river
+      - They got a funeral arranged for him straight away
+      - They took very little notice of the whole story
+    correctIndex: 1
+    explanationZh: 原文写 "But if she showed a little too much Christian resignation, the rest of the town was mightily stirred up over Bud's death, and every one just quit work to tell each other what a noble little fellow he was; and how his mother hadn't deserved to have such a bright little sunbeam in her home; and to drag the river between talks. But they couldn't get a rise."。
+  - id: sm-ch-18-q5
+    stem: What sent the Widow down to Louisiana Clytemnestra's cabin?
+    options:
+      - The neighbors told her the boy had come to them in a dream one night
+      - The voodoo woman had offered to do the work for nothing
+      - A week of dragging had turned up nothing but cans and catfish
+      - She had a mind to learn how to work the drag net herself
+    correctIndex: 2
+    explanationZh: 原文写 "finally, at the end of a week, when they'd strained the whole river through their drags and hadn't anything to show for it but a collection of tin cans and dead catfish, she threw a shawl over her head and went down the street to the cabin of Louisiana Clytemnestra"。她掏出两毛五，说孩子该跟进场一样按半价算。
+  - id: sm-ch-18-q6
+    stem: What made the Widow get up and march out at last?
+    options:
+      - Buck's ghost owned that he had watched the boy leave town alone
+      - The neighbors broke in on the sitting and led her home
+      - Clytie's price ran higher than she had money to meet
+      - Not one of the spirits Clytie called up could raise a word
+    correctIndex: 3
+    explanationZh: 老 Buck 的鬼魂来得很痛快，却说压根没见过 Bud；"Clytie trotted out George Washington, and Napoleon, and Billy Patterson, and Ben Franklin, and Captain Kidd, just to show that there was no deception, but they couldn't get a whisper even from Bud." 寡妇于是断定——Bud 根本不在那边。

@@ -3,7 +3,7 @@ id: sm-ch-08
 bookId: book-merchant-letters
 title: Promoted to the Billing Desk
 titleZh: 升任开票台
-summaryZh: 老格雷厄姆在疗养期间听说儿子升了职，便写信回顾自己用过的几个年轻人——有的被包装得光鲜却不堪大用，有的看似不靠谱反而闯出了名堂。他用这些故事告诉儿子：真本事要经得起别人的眼光来衡量。
+summaryZh: 蒸汽浴把老人的皮都快烫掉一层，风湿倒是松动了；他在疗养地写信，先从一罐玉米腌牛肉说起。信里还捎带回顾了两个他用过的年轻人。
 sections:
   - id: sm-ch-08-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       There's nothing helps convince some men that a thing has merit like a little gold on the label. And it's pretty safe to bet that if a fellow needs a six or seven-syllabled word to describe his profession, he's a corn doctor when you come to look him up in the dictionary. And then you'll generally find him in the back part of the book where they tuck away the doubtful words.
     checkIn:
       id: sm-ch-08-s1-c1
-      stem: What did the company do to sell more canned corned beef when the regular booklet failed?
+      stem: What moved the canned corned beef after the booklet fell through?
       options:
-        - They lowered the price by ten cents a dozen on all cans.
-        - They hired a specialist to redesign the recipes in the booklet.
-        - They printed a fancy gilt label with a fat steer and blue ribbons.
-        - They published a second booklet with ninety new corned-beef recipes.
+        - They cut the price by ten cents a dozen on the cans
+        - They put out a second book of ninety new recipes
+        - They got up a gilt label with a fat steer and blue ribbons
+        - They shipped the surplus down into Texas for the big drought
       correctIndex: 2
-      explanationZh: 文中说他们印了一张花哨的烫金标签，画了一头肥得需要木桩撑腿的公牛、角上系着蓝丝带，贴上"Blue Ribbon Beef"后每罐加价十美分，人们反而抢着买。说降价的那项与原文相反，说第二本小册子的那项混淆了前文那段失败尝试。
+      explanationZh: 原文写 "But one day we got together and had a nice, fancy, appetizing label printed, and we didn't economize on the gilt—a picture of a steer so fat that he looked as if he'd break his legs if they weren't shored up pretty quick with props, and with blue ribbons tied to his horns." 贴上 Blue Ribbon Beef 那张标签的罐头每打多收十美分，"Of course, people just naturally wanted it."。
   - id: sm-ch-08-s2
     text: |-
       But that isn't what I started out to say. I want to tell you that I was very, very glad to learn from your letter that you had been promoted to the billing desk. I have felt all along that when you got a little of the nonsense tried out of you there would be a residue of common-sense, and I am glad to have your boss back up my judgment. There's two things you just naturally don't expect from human nature--that the widow's tombstone estimate of the departed, on which she is trying to convince the neighbors against their better judgment that he went to Heaven, and the father's estimate of the son, on which he is trying to pass him along into a good salary, will be conservative.
@@ -35,14 +35,14 @@ sections:
       I couldn't just reconcile those statements with Clarence's face, but I accepted him at par and had him passed along to the head errand boy. His mother cried a little when she saw him marched off, and asked me to see that he was treated kindly and wasn't bullied by the bigger boys, because he had been "raised a pet."
     checkIn:
       id: sm-ch-08-s2-c1
-      stem: Why did Clarence's mother bring him to the office and ask for a job?
+      stem: What brought Clarence's mother down to the office asking for a job?
       options:
-        - Her husband's life insurance had lapsed the month before he died.
-        - Her husband had asked her to find Clarence an office job.
-        - Clarence had been fired from his Sunday-school for misbehaving.
-        - Clarence wanted to learn bookkeeping from his father's friends.
+        - Her husband's life insurance had lapsed the month before
+        - Her husband had left word that the boy was to have a desk
+        - The boy had been turned out of his Sunday-school for smoking
+        - The boy had a mind to learn the books from his father's friends
       correctIndex: 0
-      explanationZh: 原文写得很清楚：Clarence 的父亲去世后，母亲发现他的人寿保险上个月已经失效，于是把 Clarence 带到办公室求一份差事。说父亲遗愿的那项原文未提；Sunday-school 那段讲的是母亲吹嘘 Clarence 能背经文，并非被开除；想学记账的那项也无据可查。
+      explanationZh: 原文写 "When he died his wife found that his life insurance had lapsed the month before, and so she brought Clarence down to the office and asked me to give him a job." 主日学校那一段讲的是母亲夸他背经文的本事，不是他被赶了出来。
   - id: sm-ch-08-s3
     text: |-
       A number of unusual things happened in the offices that morning, and the head office boy thought Clarence might be able to explain some of them, but he had an alibi ready every time--even when a bookkeeper found the vault filled with cigarette smoke and Clarence in it hunting for something he couldn't describe. But as he was a new boy, no one was disposed to bear down on him very hard, so his cigarettes were taken away from him and he was sent back to his bench with a warning that he had used up all his explanations.
@@ -54,14 +54,14 @@ sections:
       Willie's father canceled his bologna contract and marched off muttering something about "degrading surroundings brutalizing the young;" and Clarence's mother wrote me that I was a bad old man who had held her husband down all his life and now wouldn't give her son a show. For, naturally, after that little incident, I had told the boy who had been raised a pet that he had better go back to the menagerie.
     checkIn:
       id: sm-ch-08-s3-c1
-      stem: What happened to the Boston customer's little boy in the coat-room?
+      stem: What became of the Boston customer's boy in the coat-room?
       options:
-        - The boys stole his black velvet pants and hid them in the vault.
-        - The boys made him eat corned-beef hash until he had convulsions.
-        - The boys locked him inside the vault filled with cigarette smoke.
-        - The errand boys tied a rope to his ankle and hung him upside down.
-      correctIndex: 3
-      explanationZh: Clarence 发明了叫"pig-sticker"的游戏，让 Willie 当猪：用绳子绑住他左脚踝，绕过门楣横杆把他倒吊起来，Clarence 还拿板条剑比划他的脖子。偷裤子、喂玉米牛肉、关保险柜都是无中生有——保险柜烟那件是 Clarence 自己之前被发现的事。
+        - The boys made off with his velvet pants and hid them
+        - The boys fed him corned-beef hash till he had convulsions
+        - The boys roped his ankle and swung him head downward
+        - The boys shut him into the vault full of cigarette smoke
+      correctIndex: 2
+      explanationZh: 新游戏叫 pig-sticker，因为 Willie 是客人，Clarence 说他可以当那头猪——"one end of a rope had been tied around his left ankle and the other end had been passed over a transom bar, and he was dangling headforemost in the air, while Clarence threatened his jugular with a lath sword"。保险柜里的烟是 Clarence 当天早上自己闯的祸。
   - id: sm-ch-08-s4
     text: |-
       I simply mention Clarence in passing as an instance of why I am a little slow to trust my judgment on my own. I have always found that, whenever I thought a heap of anything I owned, there was nothing like getting the other fellow's views expressed in figures; and the other fellow is usually a pessimist when he's buying. The lady on the dollar is the only woman who hasn't any sentiment in her make-up. And if you really want a look at the solid facts of a thing you must strain off the sentiment first.
@@ -73,14 +73,14 @@ sections:
       Boys are a good deal like the pups that fellows sell on street corners--they don't always turn out as represented. You buy a likely setter pup and raise a spotted coach dog from it, and the promising son of an honest butcher is just as like as not to turn out a poet or a professor. I want to say in passing that I have no real prejudice against poets, but I believe that, if you're going to be a Milton, there's nothing like being a mute, inglorious one, as some fellow who was a little sore on the poetry business once put it. Of course, a packer who understands something about the versatility of cottonseed oil need never turn down orders for lard because the run of hogs is light, and a father who understands human nature can turn out an imitation parson from a boy whom the Lord intended to go on the Board of Trade. But on general principles it's best to give your cottonseed oil a Latin name and to market it on its merits, and to let your boy follow his bent, even if it leads him into the wheat pit. If a fellow has got poetry in him it's bound to come out sooner or later in the papers or the street cars; and the longer you keep it bottled up the harder it comes, and the longer it takes the patient to recover. There's no easier way to cure foolishness than to give a man leave to be foolish. And the only way to show a fellow that he's chosen the wrong business is to let him try it. If it really is the wrong thing you won't have to argue with him to quit, and if it isn't you haven't any right to.
     checkIn:
       id: sm-ch-08-s4-c1
-      stem: Why did the father put his son under Milligan rather than trusting his own judgment?
+      stem: Why was the son put under Milligan?
       options:
-        - He wanted Milligan to teach his son about cottonseed oil.
-        - He wanted Milligan to fire his son if he made any mistakes.
-        - He wanted to see his son's value through another person's eyes.
-        - He wanted Milligan to write his son a letter of recommendation.
-      correctIndex: 2
-      explanationZh: 父亲说自己一向觉得，想要看清自己东西的真实价值，最好的办法就是看别人出的价；他把儿子交给 Milligan，正是为了"通过 Milligan 的眼睛来看你"。棉花籽油是后文关于包装的类比，与用 Milligan 考核儿子无关；开除和推荐信原文均未提及。
+        - So Milligan could school him in the cottonseed oil trade
+        - So the old man could get a look at him through other eyes
+        - So Milligan would turn him off at the first bad mistake
+        - So Milligan could write him a character for the next house
+      correctIndex: 1
+      explanationZh: 原文写 "I have always found that, whenever I thought a heap of anything I owned, there was nothing like getting the other fellow's views expressed in figures... I put you under Milligan to get a view of you through his eyes. If he says that you are good enough to be a billing clerk, and to draw twelve dollars a week, I guess there's no doubt about it."。
   - id: sm-ch-08-s5
     text: |-
       Speaking of bull-pups that turned out to be terriers naturally calls to mind the case of my old friend Jeremiah Simpkins' son. There isn't a solider man in the Boston leather trade than Jeremiah, nor a bigger scamp that the law can't touch than his son Ezra. There isn't an ounce of real meanness in Ezra's whole body, but he's just naturally and unintentionally a maverick. When he came out of college his father thought that a few years' experience in the hide department of Graham & Co. would be a good thing for him before he tackled the leather business. So I wrote to send him on and I would give him a job, supposing, of course, that I was getting a yearling of the steady, old, reliable Simpkins strain.
@@ -92,14 +92,14 @@ sections:
       I lost sight of Simpkins for a while, and then he turned up at the office one morning as friendly and familiar as ever. Said he was a reporter and wanted to interview me on the December wheat deal. Of course, I wouldn't talk on that, but I gave him a little fatherly advice--told him he would sleep in a hall bedroom all his life if he didn't quit his foolishness and go back to his father, though I didn't really believe it. He thanked me and went off and wrote a column about what I might have said about December wheat, and somehow gave the impression that I had said it.
     checkIn:
       id: sm-ch-08-s5-c1
-      stem: What did Ezra Simpkins do after he left the packing house?
+      stem: What did Ezra turn up doing after he left the packing house?
       options:
-        - He went back to his father's leather business in Boston.
-        - He became a newspaper reporter and wrote a column about the father.
-        - He opened a hide department of his own in Chicago.
-        - He went to Cuba to fight with the Insurgent army.
-      correctIndex: 1
-      explanationZh: Ezra 辞职后过了一阵回来说自己是记者，要采访父亲关于十二月小麦的交易；父亲没谈，Ezra 却写了一整栏他"可能说过"的话，让人觉得是父亲亲口说的。回波士顿做皮革、在芝加哥开皮革部都是错的；去古巴是后面更远的事，此时刚当上记者。
+        - He went home to Boston and took up the leather trade
+        - He set up a hide department of his own out in Chicago town
+        - He sailed for Cuba to fight along with the insurgents
+        - He turned reporter, and wrote up a wheat-deal interview
+      correctIndex: 3
+      explanationZh: 原文写 "I lost sight of Simpkins for a while, and then he turned up at the office one morning as friendly and familiar as ever. Said he was a reporter and wanted to interview me on the December wheat deal." 父亲没肯谈，他 "went off and wrote a column about what I might have said about December wheat, and somehow gave the impression that I had said it"。古巴是再往后的事。
   - id: sm-ch-08-s6
     text: |-
       The next I heard of Simpkins he was dead. The Associated Press dispatches announced it, the Cuban Junta confirmed it, and last of all, a long dispatch from Simpkins himself detailed the circumstances leading up to the "atrocity," as the headlines in his paper called it.
@@ -111,14 +111,14 @@ sections:
       The account ended: "Then, as the order to fire was given by the lieutenant, Señor Simpkins raised his eyes toward Heaven and cried: 'I protest in the name of my American citizenship!'" At the end of the letter, and not intended for publication, was scrawled: "This is a bully scoop for you, boys, but it's pretty tough on me. Good-by. Simpkins."
     checkIn:
       id: sm-ch-08-s6-c1
-      stem: How did Simpkins manage to report the story of his own execution?
+      stem: How did the account of Simpkins' own execution get out?
       options:
-        - He wrote the account himself and had a bribed sentry carry it out.
-        - He dictated the story to the Cuban Junta before escaping.
-        - He sent the story through the Spanish lieutenant who tried him.
-        - He wrote the story and mailed it from Jacksonville himself.
+        - He wrote it out himself, and a bribed sentry carried it
+        - He gave it to the Cuban Junta before he got away
+        - He passed it out through the Spanish lieutenant who tried him
+        - He posted it himself once he had reached Jacksonville
       correctIndex: 0
-      explanationZh: Ezra 误入西班牙防线被捕后，自己把被捕、审判和被处决的经过全部写好，还想象了自己的行刑场面，然后贿赂看守他的哨兵——哨兵背过身让他写、之后带着信件逃到古巴一方把它发出去。古巴军政府、西班牙中尉、从杰克逊维尔寄出都是对原文的误读——信先由走私船带到杰克逊维尔再转发，但写信和送信的是 Simpkins 本人及被收买的哨兵。
+      explanationZh: 他把被俘、受审、行刑的经过全写了下来，连自己中枪那一幕也想象了出来，然后托给看守他的哨兵——"for a small bribe in hand and the promise of a larger one from the paper, he had turned his back on Simpkins while he wrote out the story, and afterward had deserted and carried it to the Cuban lines"。信随后由走私船带过海，从杰克逊维尔发电报出去。
   - id: sm-ch-08-s7
     text: |-
       The managing editor dashed a tear from his eye when he read this to me, and gulped a little as he said: "I can't help it; he was such a d----d thoughtful boy. Why, he even remembered to inclose descriptions for the pictures!"
@@ -136,66 +136,66 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-08-s7-c1
-      stem: What did the telegram from Jamaica reveal about Simpkins?
+      stem: What did the wire from Jamaica show?
       options:
-        - He had been rescued by a Cuban insurgent party at the last moment.
-        - He had been arrested by the Spanish and needed bail money.
-        - He had found a new job in Jamaica paying ten thousand a year.
-        - He was still alive and wanted a hundred dollars cabled to him.
-      correctIndex: 3
-      explanationZh: 追悼会刚结束，父亲就收到牙买加来的电报，署名 Simpkins，让他汇一百美元并转告父亲一切安好、别让别人知道。说明 Ezra 根本没死。说被古巴武装救援的那项是他后来散布的传言，不是电报内容；说被西班牙逮捕和说在牙买加找到工作都是对后续情节的混淆。
+        - That a rescue party had snatched him at the last moment
+        - That he was alive, and wanted a hundred cabled to him
+        - That the Spaniards had him, and wanted bail money sent
+        - That he had found a place in Jamaica at ten thousand
+      correctIndex: 1
+      explanationZh: 追悼会一散，牙买加就来了电报，落款 Simpkins——"Cable your correspondent here let me have hundred. Notify father all hunk. Keep it dark from others." 至于被救援队从鬼门关拉回来那一说，是 Ezra 自己后来放出去的风声。
 quiz:
   - id: sm-ch-08-q1
-    stem: Why did the father say a specialist costs ten dollars compared to the family doctor's two?
+    stem: What does the father make of the specialist business?
     options:
-      - Because specialists use more expensive medicines than family doctors.
-      - Because specialists have longer training and higher office costs.
-      - Because specialists only treat rich patients who can afford more.
-      - Because specialists charge more to market the surplus of young doctors.
+      - Specialists put up medicines that cost a good deal more
+      - Specialists carry longer training and a heavier office rent to pay
+      - Specialists will look at nobody but patients who are rich
+      - It is about the only outlet for the surplus of young doctors
     correctIndex: 3
-    explanationZh: 父亲调侃说专家就是"年轻医生过剩"的出路，看一眼舌头要收十美元，而家庭医生只要两美元。他讽刺的是靠头衔抬高收费的现象，并非药费或培训成本高，也不是只看富人——后面还说到穷人反而被预言慢两周。
+    explanationZh: 原文写 "He calls himself a specialist, which means that it costs me ten dollars every time he has a look in at my tongue, against two that I would pay the family doctor for gratifying his curiosity. But I guess this specialist business is about the only outlet for marketing the surplus of young doctors."。
   - id: sm-ch-08-q2
-    stem: What was the result of the pig-sticker incident for the Graham business?
+    stem: What did the pig-sticker game cost the house?
     options:
-      - The Boston customer increased his bologna order out of sympathy.
-      - The father gave Clarence a promotion to keep him busy.
-      - The Boston customer canceled his bologna contract and left.
-      - The errand boys were all fired for bullying the customer's son.
+      - The Boston man doubled his bologna order out of pure pity
+      - Clarence was moved up, to keep him out of mischief
+      - The Boston man canceled his bologna contract and left
+      - Every errand boy in the room was turned off for it
     correctIndex: 2
-    explanationZh: Willie 的父亲当场取消了博洛尼亚香肠合同，嘴里嘟囔着"堕落的环境让年轻人变野蛮"，然后走了。Clarence 则被辞退。没有加订单、没有升职、也没有全部开除跑腿男孩——只有 Clarence 被送回了"动物园"。
+    explanationZh: 原文写 "Willie's father canceled his bologna contract and marched off muttering something about 'degrading surroundings brutalizing the young'"。至于 Clarence，父亲说 "I had told the boy who had been raised a pet that he had better go back to the menagerie"。
   - id: sm-ch-08-q3
-    stem: What is the father's view on letting a boy follow his natural bent?
+    stem: What happens when a fellow is left to try the business he has picked?
     options:
-      - If it is the wrong path, he will quit on his own without argument.
-      - If it is the wrong path, his father should argue him out of it.
-      - If it is the wrong path, he should be forced to try something else.
-      - If it is the wrong path, he will never realize it until it is too late.
-    correctIndex: 0
-    explanationZh: 父亲说，"治傻气的最好办法就是让人放手去傻"，让他自己去试；如果真是错路，不用你劝他也会自己退出；如果没错，你也没资格拦他。所以父亲不该替儿子争辩、强迫改行，也不必担心他永远醒不过来。
+      - A father ought to argue him off the wrong road
+      - If it is wrong, he will quit without any arguing
+      - He ought to be made to try something else instead
+      - He will not find out his mistake till it is too late
+    correctIndex: 1
+    explanationZh: 原文写 "There's no easier way to cure foolishness than to give a man leave to be foolish. And the only way to show a fellow that he's chosen the wrong business is to let him try it. If it really is the wrong thing you won't have to argue with him to quit, and if it isn't you haven't any right to."。
   - id: sm-ch-08-q4
-    stem: What did the clerks send as their tribute at Simpkins' memorial service?
+    stem: What did the clerks send to the memorial service?
     options:
-      - A floral wreath with the words "Gone to Heaven" on the ribbon.
-      - A floral cross with the words "Good-by, Simpkins" on the base.
-      - A floral notebook with the words "Gone to Press" on the cover.
-      - A floral steer with the words "Blue Ribbon" on the ribbon.
+      - A floral wreath, with Gone to Heaven done on the ribbon
+      - A floral cross, with Good-by, Simpkins done on the base
+      - A floral notebook, with Gone to Press done on the cover
+      - A floral steer, with Blue Ribbon done across the horns
     correctIndex: 2
-    explanationZh: 办公室里那个爱张罗的人凑了二十美元，送了一个花做的笔记本，封面上用蓝色不朽花拼着"Gone to Press"（已付印），一语双关纪念 Simpkins 的记者身份。"已升天"是原文寡妇比喻里的说法而非花礼上的字；"Good-by, Simpkins"是电报署名；"Blue Ribbon"是前文牛肉标签。
+    explanationZh: 那位专爱替人凑份子的同事在职员里收了二十美元，"they sent a floral notebook, with 'Gone to Press,' done in blue immortelles on the cover, as their 'tribute'"。Good-by, Simpkins 是他那封信末尾的落款，Blue Ribbon 则是前面那批牛肉罐头的标签。
   - id: sm-ch-08-q5
-    stem: What does the father mean by comparing a boy to a pup born to point partridges?
+    stem: What is the point of the pup born to point partridges?
     options:
-      - A person should try many different careers before settling on one.
-      - A person's natural talent determines the career he should pursue.
-      - A person's career should be chosen by his father regardless of talent.
-      - A person's career choice matters less than how hard he works at it.
-    correctIndex: 1
-    explanationZh: 父亲说天生会指鹧鸪的猎犬，你没法拿它去追狐狸；同理，人的天赋决定了他适合干什么，该顺其自然。Ezra 有诗人的想象力，最终在新闻业大放异彩。不是让人多试几条路，也不是父亲说了算，更不是选什么不重要——关键是走对路。
+      - What a man is built for settles what he ought to follow
+      - A man should try a dozen trades before he settles down
+      - A man's father ought to pick the trade for him regardless
+      - The trade matters little beside how hard a man works at it
+    correctIndex: 0
+    explanationZh: 原文写 "When a pup has been born to point partridges there's no use trying to run a fox with him." Ezra 一身诗人的想象力，"once he was turned loose to root for himself, he instinctively smelled out the business where he could use a little poetic license and made a hit in it"。
   - id: sm-ch-08-q6
-    stem: Why does the father say the easiest way to make enemies is to hire friends?
+    stem: Why is hiring friends the easiest way in the world to make enemies?
     options:
-      - Because friends always demand higher pay than other workers.
-      - Because business decisions about them can damage the friendship.
-      - Because friends are usually less productive than ordinary workers.
-      - Because friends tend to steal from the business when given a chance.
-    correctIndex: 1
-    explanationZh: Ezra 的父亲把他托付给 Graham，结果 Ezra 五分钟抢先辞职，Graham 也失去了一位老主顾的生意和友谊，这说明了"雇朋友最容易树敌"。原文的重点是商业决策会牵连私人交情，而不是朋友一定要求高薪、效率低或偷东西。
+      - Friends will always hold out for more pay than others
+      - Friends turn out to be slower workers than strangers do
+      - Friends are apt to help themselves from the till
+      - A business call about them can cost you the friendship
+    correctIndex: 3
+    explanationZh: Ezra 的辞呈比父亲写好的解雇通知早了五分钟递上来，"He and his father split up, temporarily, over it, and, of course, it cost me the old man's trade and friendship. I want to say right here that the easiest way in the world to make enemies is to hire friends."。

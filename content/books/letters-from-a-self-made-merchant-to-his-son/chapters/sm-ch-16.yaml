@@ -3,7 +3,7 @@ id: sm-ch-16
 bookId: book-merchant-letters
 title: On Society Fever
 titleZh: 论社交热
-summaryZh: 老格雷厄姆从欧洲疗养归来，途中发现了一个新的商机，便写信教导刚升任助理经理的儿子如何管理人手、看待职位，并借淘金暴发户汉克闯入波士顿上流社会的故事，提醒他远离虚荣的社交圈。
+summaryZh: 欧洲的水疗把老人的风湿治得差不多了，钱包也差不多空了——他说这里的账单本身就够把风湿吓跑。回程的船上，他倒盘算出一门新生意。
 sections:
   - id: sm-ch-16-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       I wish you would tell our people at the Beef House to look into this export cattle business, and have all the facts and figures ready for me when I get back. There seems to be a good margin in it, and with our English house we are fixed up to handle it all right at this end. It makes me mighty sick to think that we've been sitting back on our hindlegs and letting the other fellow run away with this trade. We are packers, I know, but that's no reason why we can't be shippers, too. I want to milk the critter coming and going, twice a day, and milk her dry. Unless you do the whole thing you can't do anything in business as it runs to-day. There's still plenty of room at the top, but there isn't much anywheres else.
     checkIn:
       id: sm-ch-16-s1-c1
-      stem: Why does the father want the Beef House to look into the export cattle business?
+      stem: Why is the Beef House to look into the export cattle business?
       options:
-        - He wants to compete with the Dutch doctors.
-        - He needs more cattle for the Chicago stockyards.
-        - He plans to open a new restaurant in England.
-        - He believes there is a good profit margin in it.
-      correctIndex: 3
-      explanationZh: 文中明确说“There seems to be a good margin in it”，父亲认为出口活牛利润可观，因此让牛肉公司调研这门生意。说想跟荷兰医生竞争或为芝加哥牧场补充牛源都与本节内容无关。
+        - He wants a bigger run of cattle for the Chicago yards at home
+        - He sees a good margin in it, and the trade is going elsewhere
+        - He means to open an eating house over in England
+        - He wants a line of work to keep him off the baths
+      correctIndex: 1
+      explanationZh: 原文写 "I wish you would tell our people at the Beef House to look into this export cattle business, and have all the facts and figures ready for me when I get back. There seems to be a good margin in it, and with our English house we are fixed up to handle it all right at this end. It makes me mighty sick to think that we've been sitting back on our hindlegs and letting the other fellow run away with this trade."。
   - id: sm-ch-16-s2
     text: |-
       There may be reasons why we haven't been able to tackle this exporting of live cattle, but you can tell our people there that they have got to be mighty good reasons to wipe out the profit I see in it. Of course, I may have missed them, for I've only looked into the business a little by way of recreation, but it won't do to say that it's not in our line, because anything which carries a profit on four legs is in our line.
@@ -37,14 +37,14 @@ sections:
       The one important thing for you to remember all the time is not to forget. It's easier for a boss to do a thing himself than to tell some one twice to do it. Petty details take up just as much room in a manager's head as big ideas; and the more of the first you store for him, the more warehouse room you leave him for the second. When a boss has to spend his days swearing at his assistant and the clerks have to sit up nights hating him, they haven't much time left to swear by the house. Satisfaction is the oil of the business machine.
     checkIn:
       id: sm-ch-16-s2-c1
-      stem: What does the father say is the real trouble when a little success goes to a fellow's head?
+      stem: What does a fellow do when a little success goes to his head?
       options:
-        - He explains his orders to the clerks too often.
-        - He uses his authority like a club to keep his men away.
-        - He brings too much trouble to the manager.
-        - He forgets to hide his authority behind his back.
-      correctIndex: 1
-      explanationZh: 父亲说有些人稍有成就就自大，把权力当棍子把下属推开（"use it as a club to keep them off"），结果办公室里全是满腹怨气的人。向职员解释命令或给经理找借口是后面提到的另一类陷阱，不是此处说的核心问题。
+        - He uses his authority as a club to keep his men off
+        - He goes over every one of his orders with the clerks in detail
+        - He carries his troubles up to the manager instead
+        - He forgets to keep his authority behind his back
+      correctIndex: 0
+      explanationZh: 原文写 "But the great trouble with some fellows is that a little success goes to their heads. Instead of hiding their authority behind their backs and trying to get close to their men, they use it as a club to keep them off. And a boss with a case of big-head will fill an office full of sore heads."。
   - id: sm-ch-16-s3
     text: |-
       Some fellows can only see those above them, and others can only see those under them, but a good man is cross-eyed and can see both ends at once. An assistant who becomes his manager's right hand is going to find the left hand helping him; and it's not hard for a clerk to find good points in a boss who finds good ones in him. Pulling from above and boosting from below make climbing easy.
@@ -58,14 +58,14 @@ sections:
       I want to caution you right here against getting the society bug in your head. I'd sooner you'd smoke these Turkish cigarettes which smell like a fire in the fertilizer factory. You're going to meet a good many stray fools in the course of business every day without going out to hunt up the main herd after dark.
     checkIn:
       id: sm-ch-16-s3-c1
-      stem: What is the father's main complaint about his son playing golf?
+      stem: What is the objection to the afternoon on the links?
       options:
-        - Golf is too dangerous for a man in the lard trade.
-        - Golf balls are too expensive for a junior employee.
-        - A young businessman should not waste daylight on the links.
-        - The game always leads to heavy drinking at the end.
+        - The game is too rough for a man in the lard trade
+        - The balls run to more money than a junior clerk can spare
+        - A boss butcher in the making has no daylight to waste
+        - The game is bound to finish up in heavy drinking
       correctIndex: 2
-      explanationZh: 父亲说想当老板的年轻屠夫没多少日光可以浪费在球场上，白天应忙于正事。他调侃高尔夫的球——开球硬、中途丢、结尾喝——只是为了强调别把工作时间花在消遣上，并非说高尔夫太危险、太贵或必然导致酗酒。
+      explanationZh: 原文写 "Golf's a nice, foolish game, and there ain't any harm in it so far as I know except for the balls—the stiff balls at the beginning, the lost balls in the middle, and the highballs at the end of the game. But a young fellow who wants to be a boss butcher hasn't much daylight to waste on any kind of links except sausage links."。
   - id: sm-ch-16-s4
     text: |-
       Everybody over here in Europe thinks that we haven't any society in America, and a power of people in New York think that we haven't any society in Chicago. But so far as I can see there are just as many ninety-nine-cent men spending million-dollar incomes in one place as another; and the rules that govern the game seem to be the same in all three places--you've got to be a descendant to belong, and the farther you descend the harder you belong. The only difference is that, in Europe, the ancestor who made money enough so that his family could descend, has been dead so long that they have forgotten his shop; in New York he's so recent that they can only pretend to have forgotten it; but in Chicago they can't lose it because the ancestor is hustling on the Board of Trade or out at the Stock Yards. I want to say right here that I don't propose to be an ancestor until after I'm dead. Then, if you want to have some fellow whose grandfather sold bad whiskey to the Indians sniff and smell pork when you come into the room, you can suit yourself.
@@ -77,14 +77,14 @@ sections:
       Hank and I were boys together in Missouri, and he stayed along in the old town after I left. I heard of him on and off as tending store a little, and farming a little, and loafing a good deal. Then I forgot all about him, until one day a few years ago when he turned up in the papers as Captain Henry Smith, the Klondike Gold King, just back from Circle City, with a million in dust and anything you please in claims. There's never any limit to what a miner may be worth in those, except his imagination.
     checkIn:
       id: sm-ch-16-s4-c1
-      stem: What is the main difference between society in Europe, New York, and Chicago?
+      stem: What is the only difference between society in Europe, New York and Chicago?
       options:
-        - European society allows anyone with enough money to join freely
-        - New York society only accepts families from the Mayflower
-        - How long ago the man who made the money died
-        - Chicago society has no people spending large incomes at all
-      correctIndex: 2
-      explanationZh: 父亲指出三地社交圈规则相同，区别只在于发财的祖先死了多久：欧洲早已忘记他的店铺，纽约假装忘记，芝加哥的祖先还在交易所忙活。说欧洲谁有钱都能进、纽约只认五月花号后裔或芝加哥没人挥霍大笔收入都与原文不符。
+        - In Europe money alone will let a man in anywhere
+        - How long back the man who made the money was buried
+        - New York takes in Mayflower families and nobody else
+        - Chicago has nobody at all spending a large income
+      correctIndex: 1
+      explanationZh: 原文写 "The only difference is that, in Europe, the ancestor who made money enough so that his family could descend, has been dead so long that they have forgotten his shop; in New York he's so recent that they can only pretend to have forgotten it; but in Chicago they can't lose it because the ancestor is hustling on the Board of Trade or out at the Stock Yards."。
   - id: sm-ch-16-s5
     text: |-
       I was a little puzzled when, a week later, my office boy brought me a card reading Colonel Henry Augustus Bottes-Smythe, but I supposed it was some distinguished foreigner who had come to size me up so that he could round out his roast on Chicago in his new book, and I told the boy to show the General in.
@@ -96,14 +96,14 @@ sections:
       He located his claim on Beacon Hill, between a Mayflower descendant and a Declaration Signer's great-grandson, breeds which believe that when the Lord made them He was through, and that the rest of us just happened. And he hadn't been in town two hours before he started in to make improvements. There was a high wrought-iron railing in front of his house, and he had that gilded first thing, because, as he said, he wasn't running a receiving vault and he didn't want any mistakes. Then he bought a nice, open barouche, had the wheels painted red, hired a nigger coachman and started out in style to be sociable and get acquainted. Left his card all the way down one side of Beacon Street, and then drove back leaving it on the other. Everywhere he stopped he found that the whole family was out. Kept it up a week, on and off, but didn't seem to have any luck. Thought that the men must be hot sports and the women great gadders to keep on the jump so much. Allowed that they were the liveliest little lot of fleas that he had ever chased. Decided to quit trying to nail 'em one at a time, and planned out something that he reckoned would round up the whole bunch.
     checkIn:
       id: sm-ch-16-s5-c1
-      stem: Why did Hank change his name to Colonel Henry Augustus Bottes-Smythe?
+      stem: What was the point of the new name on Hank's card?
       options:
-        - He thought a double-barreled name would give him an advantage over swells.
-        - He wanted to hide the fact that he had made money in the Klondike.
-        - He was trying to avoid being recognized by his old friends.
-        - He needed a new name to buy his house on Beacon Hill.
-      correctIndex: 0
-      explanationZh: 汉克解释说双姓名片能让人在社交中占上风（"gave you the drop on the swells"），Bottes是Botts的古英语，Smythe是Smith的新美语，Augustus只是锦上添花。他并不想隐瞒淘金发迹，也不为买房或躲老友。
+        - He wanted his Klondike money kept quiet
+        - He was dodging the friends of his old days
+        - The house on Beacon Hill would not sell without it
+        - A brace of names gives you the drop on the swells
+      correctIndex: 3
+      explanationZh: 原文写 "Handed me his new card four times and explained that it was the rawest sort of dog to carry a brace of names in your card holster; that it gave you the drop on the swells every time, and that they just had to throw up both hands and pass you the pot when you showed down. Said that Bottes was old English for Botts, and that Smythe was new American for Smith; the Augustus was just a fancy touch."。
   - id: sm-ch-16-s6
     text: |-
       Hank sent out a thousand invitations to his grand opening, as he called it; left one at every house within a mile. Had a brass band on the front steps and fireworks on the roof. Ordered forty kegs from the brewery and hired a fancy mixer to sling together mild snorts, as he called them, for the ladies. They tell me that, when the band got to going good on the steps and the fireworks on the roof, even Beacon Street looked out the windows to see what was doing. There must have been ten thousand people in the street and not a soul but Hank and his wife and the mixer in the house. Some one yelled speech, and then the whole crowd took it up, till Hank came out on the steps. He shut off the band with one hand and stopped the fireworks with the other. Said that speechmaking wasn't his strangle-hold; that he'd been living on snowballs in the Klondike for so long that his gas-pipe was frozen; but that this welcome started the ice and he thought about three fingers of the plumber's favorite prescription would cut out the frost. Would the crowd join him? He had invited a few friends in for the evening, but there seemed to be some misunderstanding about the date, and he hated to have good stuff curdle on his hands.
@@ -113,14 +113,14 @@ sections:
       After all, Hank did what he started out to do with his party--rounded up all his neighbors in a bunch, though not exactly according to schedule. For next morning there were so many descendants and great-grandsons in the police court to prefer charges that it looked like a reunion of the Pilgrim Fathers. The Judge fined Hank on sixteen counts and bound him over to keep the peace for a hundred years. That afternoon he left for the West on a special, because the Limited didn't get there quick enough. But before going he tacked on the front door of his house a sign which read:
     checkIn:
       id: sm-ch-16-s6-c1
-      stem: What happened when Hank threw his grand opening party on Beacon Hill?
+      stem: How did the grand opening turn out?
       options:
-        - Thousands gathered outside but no guests came into the house.
-        - His neighbors all came inside and drank with him.
-        - The police arrived before anyone in the street noticed.
-        - His wife invited all the neighbors by telephone.
-      correctIndex: 0
-      explanationZh: 汉克发了上千份请柬，街上聚了上万人，但屋里只有他、妻子和调酒师，没有一个被邀请的客人进场。邻居反而从两侧打电话叫警察，最终出动了防暴队。说邻居全进来喝酒或警察在人群注意之前就到都与原文矛盾。
+        - The neighbors all came in and drank with him
+        - Ten thousand filled the street, and nobody came in
+        - The police got there before the street took notice
+        - His wife rang the neighbors up and got them over
+      correctIndex: 1
+      explanationZh: 原文写 "There must have been ten thousand people in the street and not a soul but Hank and his wife and the mixer in the house." 街上那伙人喊着要他讲话，他一手关掉乐队、一手停下烟花，说自己不擅长演说，索性请大家一道喝一杯。
   - id: sm-ch-16-s7
     text: |-
       "Neighbors paying their party calls will please not heave rocks through windows to attract attention. Not in and not going to be. Gone back to Circle City for a little quiet.
@@ -136,66 +136,66 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-16-s7-c1
-      stem: What did Hank put on his front door before leaving Boston?
+      stem: What went up on the front door before he left Boston?
       options:
-        - A sign inviting all neighbors to a new party
-        - A note apologizing for the police trouble
-        - A warning to the police to stay away
-        - A notice that he had gone back to Circle City
-      correctIndex: 3
-      explanationZh: 汉克临走前在门上钉了告示，写明邻居来访请勿砸窗吸引注意，人不在也不打算回来，已回Circle City找点清静。他留的不是新请柬、道歉信或给警察的警告。
+        - A fresh invitation, for a party the following week
+        - A word of apology over the trouble with the police
+        - A notice that he had gone back out to Circle City
+        - A warning to the police to keep off the premises
+      correctIndex: 2
+      explanationZh: 门上那张告示写着——"Neighbors paying their party calls will please not heave rocks through windows to attract attention. Not in and not going to be. Gone back to Circle City for a little quiet." 落款后头还添了一句 "Too swift for your uncle."。
 quiz:
   - id: sm-ch-16-q1
-    stem: What lesson does the father draw from the export cattle business for his son's new job?
+    stem: What general principle comes out of the export cattle case?
     options:
-      - Stick to packing and leave shipping to others.
-      - Only enter a business that is already in your line.
-      - Go for all of the trade, not just part of it.
-      - Wait until a trade is proven before entering it.
-    correctIndex: 2
-    explanationZh: 父亲从出口活牛的观察引出普遍原则：“the way to get a share of the trade is to go for all of it”，要争取全部而非只做一半。说坚持只做包装、只做本行或等别人验证再进，都恰恰违背他“包揽从头到尾”的主张。
-  - id: sm-ch-16-q2
-    stem: What does the father say an assistant should do for his manager?
-    options:
-      - Explain every order to the clerks in detail.
-      - Make friends with the manager's worst enemies.
-      - Excuse the clerks' mistakes to the manager.
-      - Take trouble from him, not bring trouble to him.
-    correctIndex: 3
-    explanationZh: 父亲明确说“A manager needs an assistant to take trouble from him, not to bring it to him”。向职员解释命令会丧失权威，替职员向经理辩解会失去用处，两种做法都不可取。
-  - id: sm-ch-16-q3
-    stem: How does the father describe a good man's ability to see people around him?
-    options:
-      - He can only see those who are above him.
-      - He is cross-eyed and can see both ends at once.
-      - He can only see those who are under him.
-      - He sees only those who agree with him.
-    correctIndex: 1
-    explanationZh: 父亲说好经理要像斗鸡眼一样“can see both ends at once”，同时看到上级和下属。只往上看或只往下看都不够；只看附和自己的人原文未提及。
-  - id: sm-ch-16-q4
-    stem: Why was the father confined to his berth for the first three days of the voyage?
-    options:
-      - He was so seasick he could not look out the porthole.
-      - He was playing poker in the smoking-room.
-      - He was helping the steers between decks.
-      - He was interviewing Dutch doctors on board.
+      - Go for all of the trade, not for a share of it
+      - Stay at packing, and leave the shipping to others
+      - Take up only what is already in the house's line
+      - Wait till a trade has been proved before going in
     correctIndex: 0
-    explanationZh: 头三天他忙着趴在铺位上晕船，连舷窗都顾不上看（"so busy holding himself in his berth"），自嘲除了骆驼没人能比他更会晕船。说他在打牌、照料牛或见荷兰医生都是后来或别处的事。
-  - id: sm-ch-16-q5
-    stem: What did Hank do to the iron railing in front of his Beacon Hill house first?
+    explanationZh: 原文写 "The way to think of a thing in business is to think of it first, and the way to get a share of the trade is to go for all of it. Half the battle's in being on the hilltop first; and the other half's in staying there." 他还说，凡是长着四条腿又带利润的东西，都算这一行里的。
+  - id: sm-ch-16-q2
+    stem: What does a manager need an assistant for?
     options:
-      - He had it painted red to match his barouche wheels.
-      - He tore it down to welcome his new neighbors.
-      - He removed it because it blocked the brass band.
-      - He had it gilded so no one would mistake the house for a vault.
+      - To go over every one of the orders with the clerks in detail
+      - To make friends of the manager's worst enemies
+      - To carry the clerks' excuses up to the manager
+      - To take trouble off the manager, not bring it to him
     correctIndex: 3
-    explanationZh: 汉克把铸铁栏杆镀金，理由是他不是在开收尸库，不想让人误会（"he wasn't running a receiving vault"）。刷红是马车车轮的事，拆栏杆或为乐队移除都不合原文。
-  - id: sm-ch-16-q6
-    stem: How did the neighbors respond when the crowd broke for Hank's house?
+    explanationZh: 原文写 "But if he explains his orders to the clerks he loses his authority, and if he excuses himself to the manager he loses his usefulness. A manager needs an assistant to take trouble from him, not to bring it to him."。
+  - id: sm-ch-16-q3
+    stem: How does a good man look at the people around him?
     options:
-      - They rushed inside to join the speech.
-      - They brought out refreshments for the crowd.
-      - They telephoned for the police from both sides.
-      - They helped Hank shut off the band and fireworks.
+      - He can see only the men who stand above him in rank
+      - He is cross-eyed, and sees both ends at once
+      - He can see only the men who work under him
+      - He sees only the men who fall in with him
+    correctIndex: 1
+    explanationZh: 原文写 "Some fellows can only see those above them, and others can only see those under them, but a good man is cross-eyed and can see both ends at once. An assistant who becomes his manager's right hand is going to find the left hand helping him... Pulling from above and boosting from below make climbing easy."。
+  - id: sm-ch-16-q4
+    stem: What kept the old man in his berth for the first three days out?
+    options:
+      - He was too seasick to get a look out the porthole
+      - He was at poker in the smoking-room with the rest
+      - He was down between decks, minding the steers
+      - He was taking counsel of the Dutch doctors aboard
+    correctIndex: 0
+    explanationZh: 原文写 "They tell me we had a pretty quiet trip across, and I'm not saying that we didn't, because for the first three days I was so busy holding myself in my berth that I couldn't get a chance to look out the porthole to see for myself. I reckon there isn't anything alive that can beat me at being seasick, unless it's a camel, and he's got three stomachs."。
+  - id: sm-ch-16-q5
+    stem: What was the first improvement Hank made to the house?
+    options:
+      - He had it painted red, to go with his new carriage wheels
+      - He pulled it down, to make his neighbors welcome
+      - He had it gilded, so the house would not read as a vault
+      - He took it away because it stood in the band's road
     correctIndex: 2
-    explanationZh: 五月花后裔从一侧、签名人后裔从另一侧打电话报警，最终出动防暴预备队才解散人群。他们既没进来听演讲，也没送点心或帮汉克关掉乐队和烟花。
+    explanationZh: 原文写 "There was a high wrought-iron railing in front of his house, and he had that gilded first thing, because, as he said, he wasn't running a receiving vault and he didn't want any mistakes." 刷红漆的是那辆敞篷马车的车轮。
+  - id: sm-ch-16-q6
+    stem: What did the two neighbors do while the party was going on?
+    options:
+      - They pushed inside to hear the speech out
+      - They handed round refreshments to the crowd
+      - They helped shut off the band and the fireworks overhead
+      - They telephoned for the police, one from each side
+    correctIndex: 3
+    explanationZh: 原文写 "While this was going on, the Mayflower descendant was telephoning for the police from one side and the Signer's great-grandson from the other, and just as the crowd yelled and broke for the house two patrol wagons full of policemen got there. But they had to turn in a riot call and bring out the reserves before they could break up Hank's little Boston tea-party."。

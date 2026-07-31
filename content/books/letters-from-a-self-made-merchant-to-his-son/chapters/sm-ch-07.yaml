@@ -3,7 +3,7 @@ id: sm-ch-07
 bookId: book-merchant-letters
 title: About Milligan's Methods
 titleZh: 关于米利根的做事方法
-summaryZh: 老格雷厄姆回信告诫儿子：与其抱怨上司，不如学会分辨真正值得共处与需要警惕的人。信中还以一头骡子作比喻，提醒他如何拿捏谦逊与自信的分寸。
+summaryZh: 儿子三十号那封信，父亲看着句句不对劲——开口就说自己没法在某人手底下做事，这话本身就露了怯。信里顺手讲了个密苏里的骡子故事。
 sections:
   - id: sm-ch-07-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       Like the old man if you can, but give him no cause to dislike you. Keep your self-respect at any cost, and your upper lip stiff at the same figure. Criticism can properly come only from above, and whenever you discover that your boss is no good you may rest easy that the man who pays his salary shares your secret. Learn to give back a bit from the base-burner, to let the village fathers get their feet on the fender and the sawdust box in range, and you'll find them making a little room for you in turn. Old men have tender feet, and apologies are poor salve for aching corns. Remember that when you're in the right you can afford to keep your temper, and that when you're in the wrong you can't afford to lose it.
     checkIn:
       id: sm-ch-07-s1-c1
-      stem: What does the father say the company really cares about regarding your boss?
+      stem: What is the house interested in knowing about you and your boss?
       options:
-        - The company cares about how you like your boss.
-        - The company cares about what salary you ask for.
-        - The company cares about how your boss likes you.
-        - The company cares about where you are posted.
-      correctIndex: 2
-      explanationZh: 父亲明确写道 the house isn't interested in knowing how you like your boss, but in how he likes you——公司关心的是上司对你的看法，而非你对上司的喜恶。选项说"公司关心你喜不喜欢上司"正好与原意相反。
+        - Not how you like your boss, but how he likes you
+        - Whether the boss is a fair man to work under
+        - What salary a clerk of your standing asks for
+        - Which branch of the house you would rather be at
+      correctIndex: 0
+      explanationZh: 原文写 "I don't like to hear you say that you can't work under Milligan or any other man, for it shows a fundamental weakness. And then, too, the house isn't interested in knowing how you like your boss, but in how he likes you."。
   - id: sm-ch-07-s2
     text: |-
       When you've got an uncertain cow it's all O.K. to tie a figure eight in her tail, if you ain't thirsty, and it's excitement you're after; but if you want peace and her nine quarts, you will naturally approach her from the side, and say, So-boss, in about the same tone that you would use if you were asking your best girl to let you hold her hand.
@@ -35,14 +35,14 @@ sections:
       Next morning at sunup Jeff picked out a bridle and started off whistling Buffalo Gals--he was a powerful pretty whistler and could do the Mocking Bird with variations--to catch the mule and begin his plowing. The animal was feeding as peaceful as a water-color picture, and she didn't budge; but when Jeff began to get nearer, her ears dropped back along her neck as if they had lead in them. He knew that symptom and so he closed up kind of cautious, aiming for her at right angles and gurgling, "Muley, muley, here muley; that's a good muley," sort of soothing and caressing-like. Still she didn't stir and Jeff got right up to her and put one arm over her back and began to reach forward with the bridle, when something happened. He never could explain just what it was, but we judged from the marks on his person that the mule had reached forward and kicked the seat of his trousers with one of her prehensile hind feet; and had reached back and caught him on the last button of his waistcoat with one of her limber fore feet; and had twisted around her elastic neck and bit off a mouthful of his hair. When Jeff regained consciousness, he reckoned that the only really safe way to approach a mule was to drop on it from a balloon.
     checkIn:
       id: sm-ch-07-s2-c1
-      stem: How does Jeff Hankins first try to approach the mule?
+      stem: How did Jeff Hankins go at the mule that morning?
       options:
-        - He drops on her from a balloon
-        - He edges in from the side, talking softly
-        - He ties a figure eight in her tail
-        - He shouts at her to make her stand still
-      correctIndex: 1
-      explanationZh: 文中 Jeff 是"aiming for her at right angles"——从侧面小心翼翼接近，嘴里轻声哄着 "muley, muley"。骡子最终同时动用前蹄、后蹄和嘴攻击他，所以他后来才打趣说唯一的办法是从热气球上空降到骡子背上，那只是事后调侃。
+        - He came down on her out of a balloon overhead
+        - He tied a figure eight in her tail to hold her
+        - He came in at right angles, gurgling at her softly
+        - He hollered at her from the gate to make her stand
+      correctIndex: 2
+      explanationZh: 他日出时挑了副笼头就出门，"aiming for her at right angles and gurgling, 'Muley, muley, here muley; that's a good muley,' sort of soothing and caressing-like"。热气球那句是他挨完踢、醒过来以后的自嘲——"the only really safe way to approach a mule was to drop on it from a balloon"。
   - id: sm-ch-07-s3
     text: |-
       I simply mention this little incident as an example of the fact that there are certain animals with which the Lord didn't intend white men to fool. And you will find that, as a rule, the human varieties of them are not the fellows who go for you rough-shod, like Milligan, when you're wrong. It's when you come across one of those gentlemen who have more oil in their composition than any two-legged animal has a right to have, that you should be on the lookout for concealed deadly weapons.
@@ -56,14 +56,14 @@ sections:
       I don't know anything that a young business man ought to keep more entirely to himself than his dislikes, unless it is his likes. It's generally expensive to have either, but it's bankruptcy to tell about them. It's all right to say nothing about the dead but good, but it's better to apply the rule to the living, and especially to the house which is paying your salary.
     checkIn:
       id: sm-ch-07-s3-c1
-      stem: Why is the father disappointed that his son misjudged Milligan?
+      stem: Why does the misreading of Milligan disappoint the father?
       options:
-        - Because Milligan is the brightest man in the office
-        - Because Milligan always agrees with everyone
-        - Because Milligan has a large market value
-        - Milligan is loyal, and loyalty is invaluable
-      correctIndex: 3
-      explanationZh: 父亲直言 Milligan isn't the brightest man，但他忠诚，而 loyalty 是没有市场价却最值得珍惜的品质。选项"Milligan是办公室最聪明的人"与原文相反；"同意所有人"和"市值很高"都未被提及。
+        - Milligan is the brightest head in the whole office
+        - Milligan is loyal, and loyalty cannot be paid for
+        - Milligan has never been known to cross a soul
+        - Milligan carries the highest market value of them all
+      correctIndex: 1
+      explanationZh: 原文写 "He isn't the brightest man in the office, but he is loyal to me and to the house, and when you have been in business as long as I have you will be inclined to put a pretty high value on loyalty. It is the one commodity that hasn't any market value, and it's the one that you can't pay too much for."。
   - id: sm-ch-07-s4
     text: |-
       Just one word before I close, as old Doc Hoover used to say, when he was coming into the stretch, but still a good ways off from the benediction. I have noticed that you are inclined to be a little chesty and starchy around the office. Of course, it's good business, when a fellow hasn't much behind his forehead, to throw out his chest and attract attention to his shirt-front. But as you begin to meet the men who have done something that makes them worth meeting you will find that there are no "keep off the grass" or "beware of the dog" signs around their premises, and that they don't motion to the orchestra to play slow music while they talk.
@@ -75,66 +75,66 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-07-s4-c1
-      stem: What does the father warn his son about around the office?
+      stem: What has the father noticed about his son's bearing lately?
       options:
-        - He is becoming too chesty and starchy.
-        - He is working too many extra hours.
-        - He is spending too much on clothes.
-        - He is sending too many letters.
-      correctIndex: 0
-      explanationZh: 父亲在结尾直接提醒儿子：you are inclined to be a little chesty and starchy around the office，即举止过于自满、生硬。其余选项在信中均无依据。
+        - He is putting in more hours than the work really wants
+        - He is laying out too much money on his clothes
+        - He is letting his letters run long and wordy
+        - He is getting a little chesty and starchy at the office
+      correctIndex: 3
+      explanationZh: 原文写 "I have noticed that you are inclined to be a little chesty and starchy around the office. Of course, it's good business, when a fellow hasn't much behind his forehead, to throw out his chest and attract attention to his shirt-front."。
 quiz:
   - id: sm-ch-07-q1
-    stem: What does the father warn his son about people who are TOO affable and approachable?
+    stem: What should be done about the man who is too affable and approachable?
     options:
-      - They are always loyal to the house.
-      - They are brighter than everyone else.
-      - They may be concealing deadly weapons.
-      - They have no interest in business.
-    correctIndex: 2
-    explanationZh: 父亲说遇到比正常更有油滑的人，应当警惕"concealed deadly weapons"——表面过分热情者往往暗藏杀机。选项"忠诚"正是 Milligan 的品质，与过度油滑者形成对照。
-  - id: sm-ch-07-q2
-    stem: Why does the father say a young man should keep his likes and dislikes to himself?
-    options:
-      - Having them is costly; telling is bankruptcy
-      - It makes the senior partner raise your salary
-      - It helps you make friends in the office
-      - It shows you are a progressive clerk
+      - Look out for weapons that are being kept out of sight
+      - Count on him being the most loyal man in the house
+      - Take him for the brightest head you will meet there
+      - Set him down as a man with no head at all for business
     correctIndex: 0
-    explanationZh: 原文：It's generally expensive to have either, but it's bankruptcy to tell about them——有喜恶已经代价不菲，四处宣扬则如同破产。选项"让上司加薪""帮你在办公室交友"与原意相反。
-  - id: sm-ch-07-q3
-    stem: According to the father, where does proper criticism come from?
+    explanationZh: 原文写 "It's when you come across one of those gentlemen who have more oil in their composition than any two-legged animal has a right to have, that you should be on the lookout for concealed deadly weapons." 他补一句，可亲近的人本身不必疑，要分的是 affable 和 too affable——"The adverb makes the difference between a good and a bad fellow."。
+  - id: sm-ch-07-q2
+    stem: What does the father say about a young man's likes and dislikes?
     options:
-      - Only from your equals.
-      - Only from the union.
-      - Only from the constable.
-      - Only from above.
-    correctIndex: 3
-    explanationZh: 父亲明确说 Criticism can properly come only from above——批评只能来自上级。选项提到同级、工会、警察都与本章无关；其中 constable 只出现在"除非你当流浪汉，否则总有上司"一句里，并非批评来源。
-  - id: sm-ch-07-q4
-    stem: In the mule story, why didn't Jeff learn anything about the seller's mule?
-    options:
-      - The seller refused to speak to him at all
-      - He was too busy airing his own horse lore
-      - The mule ran away before Jeff could ask
-      - Jeff had never owned any animals before
-    correctIndex: 1
-    explanationZh: 原文说 Jeff 是 a good talker, but a bad listener，卖家讲骡子的性情时，他正忙着说自己懂马，没认真听。其余选项把"没人说话""骡子跑了""从没养过动物"都偏离了文本。
-  - id: sm-ch-07-q5
-    stem: How does the father describe real superiority?
-    options:
-      - Loud claims about one's own importance
-      - Strict rules to keep strangers away
-      - Being courteous without condescension
-      - A fancy four-colored label on the package
+      - Telling them is the surest way to make friends here
+      - Telling them shows a bright, progressive sort of clerk
+      - Having them costs a man, and telling them ruins him
+      - Telling them is how a clerk gets his salary raised
     correctIndex: 2
-    explanationZh: 父亲用排比定义 superiority：courtesy without condescension; affability without familiarity——真正的优越是谦和有礼而不傲慢、亲和而不狎昵。选项"高声自夸""设牌示拒绝他人""靠四色标签包装"正是他所批评的做派。
-  - id: sm-ch-07-q6
-    stem: Why is the father planning to come back to the branch house next month?
+    explanationZh: 原文写 "I don't know anything that a young business man ought to keep more entirely to himself than his dislikes, unless it is his likes. It's generally expensive to have either, but it's bankruptcy to tell about them."。
+  - id: sm-ch-07-q3
+    stem: Where can criticism properly come from?
     options:
-      - He wants to give the head men a large pay raise
-      - Output is lagging, and some head men may be fired
-      - He wants to move all the hogs to Missouri
-      - He is pleased with the branch and plans to retire
+      - It can properly come only from above
+      - It can come from a man's equals
+      - It is the constable's business, not a clerk's
+      - It comes best from the men working under you
+    correctIndex: 0
+    explanationZh: 原文写 "Criticism can properly come only from above, and whenever you discover that your boss is no good you may rest easy that the man who pays his salary shares your secret." constable 出现在另一处——除非做流浪汉，否则谁头上都有个上司，而流浪汉头上还有警察。
+  - id: sm-ch-07-q4
+    stem: Why did Jeff pick up nothing about the animal he had bought?
+    options:
+      - The seller would not say a word to him about her
+      - The mule got loose in the lot before he could ask
+      - He was too busy airing what he knew about horses
+      - He had never had any stock of his own to handle
+    correctIndex: 2
+    explanationZh: 原文写 "Jeff was a good talker, but a bad listener, and so we learned a heap about how things were done in Wisconsin, but he didn't pick up much information about the habits of our Missouri fauna... Her owner didn't give her a very good character, but Jeff was too busy telling how much he knew about horses to pay much attention to what anybody was saying about mules."。
+  - id: sm-ch-07-q5
+    stem: What does real superiority look like?
+    options:
+      - Loud notice taken of a man's own importance
+      - Courtesy without condescension, and no signboards
+      - Rules and signs enough to keep every stranger off
+      - A four-colored label to help the package along
     correctIndex: 1
-    explanationZh: 信末说此地产出不如芝加哥，若下月仍无改善，他将"come back here with a shotgun"，引发高层"heavy mortality"——暗示要开除一些人。选项"加薪""把猪迁去密苏里""满意退休"都与原意相反。
+    explanationZh: 原文写 "Superiority makes every man feel its equal. It is courtesy without condescension; affability without familiarity; self-sufficiency without selfishness; simplicity without snide. It weighs sixteen ounces to the pound without the package, and it doesn't need a four-colored label to make it go." 前一段还说，真正做成过事的人，门口不会挂 keep off the grass 或 beware of the dog 的牌子。
+  - id: sm-ch-07-q6
+    stem: Why may the father come back to this house with a shotgun?
+    options:
+      - The head men here have earned a good raise all round
+      - The hogs are to be shifted into Missouri for the season
+      - He is well pleased with the branch, and means to retire
+      - The branch is behind Chicago, and heads may come off
+    correctIndex: 3
+    explanationZh: 原文写 "I am a little disappointed in the showing that this house has been making. Pound for pound it is not getting nearly so much out of its hogs as we are in Chicago. I don't know just where the leak is, but if they don't do better next month I am coming back here with a shotgun, and there's going to be a pretty heavy mortality among our head men."。

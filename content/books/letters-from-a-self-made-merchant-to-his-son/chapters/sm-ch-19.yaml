@@ -3,7 +3,7 @@ id: sm-ch-19
 bookId: book-merchant-letters
 title: A Girl on the Voyage Home
 titleZh: 归航途中的姑娘
-summaryZh: 老格雷厄姆在返航邮轮上结识了一位令他十分欣赏的女孩，忍不住写信追问儿子对她的心意。信中随之引出他当年代管故人之子杰克时遇到的一桩荒唐情事，借此告诫儿子在感情与婚姻上务必稳重。
+summaryZh: 这位 Helen Heath 究竟是谁，儿子那边又是什么打算？老人在船上跟她认识了；如今他知道的太少，而她知道的又太多。
 sections:
   - id: sm-ch-19-s1
     text: |-
@@ -18,14 +18,14 @@ sections:
       An unmarried man is a good deal like a piece of unimproved real estate--he may be worth a whole lot of money, but he isn't of any particular use except to build on. The great trouble with a lot of these fellows is that they're "made land," and if you dig down a few feet you strike ooze and booze under the layer of dollars that their daddies dumped in on top. Of course, the only way to deal with a proposition of that sort is to drive forty-foot piles clear down to solid rock and then to lay railroad iron and cement till you've got something to build on. But a lot of women will go right ahead without any preliminaries and wonder what's the matter when the walls begin to crack and tumble about their ears.
     checkIn:
       id: sm-ch-19-s1-c1
-      stem: What does the father think of Helen Heath?
+      stem: What does the old man make of Helen Heath?
       options:
-        - She is a girl who cares too much about money.
-        - She is the kind of girl he would like his son to marry.
-        - She is pretty but lacks good sense.
-        - She is too young to be seriously interested in his son.
-      correctIndex: 1
-      explanationZh: 父亲在信中直言 Helen 是 a mighty pretty girl, a mighty nice girl, a mighty sensible girl，甚至说她是“exactly the sort of girl I'd like to see you marry”。干扰项说她只看重金钱、缺乏常识或太年轻，都与原文对她的高度评价相反。
+        - Just the sort of girl he would like his son to marry
+        - A girl with a good deal too keen an eye for money
+        - Pretty enough, but a good deal short on plain good sense
+        - Too young yet to be in earnest about anybody
+      correctIndex: 0
+      explanationZh: 原文写 "She's a mighty pretty girl, and a mighty nice girl, and a mighty sensible girl—in fact she's so exactly the sort of girl I'd like to see you marry that I'm afraid there's nothing in it."。
   - id: sm-ch-19-s2
     text: |-
       I never come across a case of this sort without thinking of Jack Carter, whose father died about ten years ago and left Jack a million dollars, and left me as trustee of both until Jack reached his twenty-fifth birthday. I didn't relish the job particularly, because Jack was one of these charlotte-russe boys, all whipped cream and sponge cake and high-priced flavoring extracts, without any filling qualities. There wasn't any special harm in him, but there wasn't any special good, either, and I always feel that there's more hope for a fellow who's an out and out cuss than for one who's simply made up of a lot of little trifling meannesses. Jack wore mighty warm clothes and mighty hot vests, and the girls all said that he was a perfect dream, but I've never been one who could get a great deal of satisfaction out of dreams.
@@ -35,14 +35,14 @@ sections:
       I happened just then to be pinned into a corner with two or three women who couldn't escape--Edith Curzon, a great big brunette whom I knew Jack had been pretty soft on, and little Mabel Moore, a nice roly-poly blonde, and it didn't take me long to see that they were watching Jack with a hair-pulling itch in their finger-tips. In fact, it looked to me as if the young scamp was a good deal more popular than the facts about him, as I knew them, warranted him in being.
     checkIn:
       id: sm-ch-19-s2-c1
-      stem: How did Jack's father leave his money after he died?
+      stem: How was Jack Carter's million left?
       options:
-        - Jack inherited the full million dollars immediately
-        - Jack's sister received all the money right away
-        - The narrator held Jack's money in trust until he was 25
-        - The money was donated to charity until Jack came of age
+        - The whole million came to Jack the day the will was read
+        - Jack's sister took the money, and Jack got the house
+        - The money was held in trust till Jack turned twenty-five
+        - It all went to charity until Jack should come of age
       correctIndex: 2
-      explanationZh: 原文说 Jack 的父亲去世后留下百万美元，“left me as trustee of both until Jack reached his twenty-fifth birthday”，即由叙述者代管至 Jack 25 岁。干扰项中 Jack 立即全额继承、妹妹全部继承或捐给慈善，都不符合这一安排。
+      explanationZh: 原文写 "I never come across a case of this sort without thinking of Jack Carter, whose father died about ten years ago and left Jack a million dollars, and left me as trustee of both until Jack reached his twenty-fifth birthday."。
   - id: sm-ch-19-s3
     text: |-
       I slipped out early, but next evening, when I was sitting in my little smoking-room, Jack came charging in, and, without any sparring for an opening, burst out with:
@@ -76,14 +76,14 @@ sections:
       "No, no; but I've said things to her which she may have misconstrued, if she's inclined to be literal."
     checkIn:
       id: sm-ch-19-s3-c1
-      stem: Which girl does Jack say is the only one he has ever really loved?
+      stem: Which one does Jack call the only girl he has ever really loved?
       options:
-        - Miss Curzon.
-        - Miss Moore.
-        - Miss Churchill.
-        - Miss Fairfax.
-      correctIndex: 2
-      explanationZh: Jack 在文中承认 Miss Churchill 是“the only girl in the world for me—the only one I've ever really loved”，同时又坦白已暗中等同于与 Edith Curzon 订婚，对 Mabel Moore 也说过暧昧的话。干扰项分别对应已暗定和暧昧对象，不是他声称真正爱上的那位。
+        - Miss Curzon, the big dark one
+        - Miss Churchill, the youngest one
+        - Miss Moore, the roly-poly blonde
+        - Miss Fairfax, the Southern one
+      correctIndex: 1
+      explanationZh: 原文写 "I want to marry her—she's the only girl in the world for me—the only one I've ever really loved, and I've proposed—that is, I want to propose to her, but I'm engaged to Edith Curzon on the quiet." 两周之前，他说的还是另一位是女神。
   - id: sm-ch-19-s4
     text: |-
       "You bet she is," I answered. "I never saw a nice, fat, blonde girl who took a million-dollar offer as a practical joke. What is it you've said to her? 'I love you, darling,' or something about as foxy and noncommittal."
@@ -119,14 +119,14 @@ sections:
       I saw that he was beginning to foam up again, so I shut him off straight at the spigot. Told him to save it till after the ceremony. Set him down to my desk, and dictated two letters, one to Edith Curzon and the other to Mabel Moore, and made him sign and seal them, then and there. He twisted and squirmed and tried to wiggle off the hook, but I wouldn't give him any slack. Made him come right out and say that he was a yellow pup; that he had made a mistake; and that the stuff was all off, though I worded it a little different from that. Slung in some fancy words and high-toned phrases.
     checkIn:
       id: sm-ch-19-s4-c1
-      stem: What excuse did Jack give Miss Curzon for not announcing their engagement?
+      stem: What had Jack told Miss Curzon to put off announcing anything?
       options:
-        - He told her his father had forbidden any marriage before age thirty
-        - He claimed marrying against the trustee's wishes would cost him the money
-        - He said the trustee required him to wait one year before any announcement
-        - He claimed his money was tied up in business investments for six months
-      correctIndex: 1
-      explanationZh: Jack 告诉 Miss Curzon，作为信托人，父亲遗嘱赋予他“certain unpleasant powers”，若违背其意愿结婚，大部分钱将“revert to Sis”。他把同样说辞也用在 Miss Moore 身上，这正是两位姑娘前一晚对叙述者格外殷勤的原因。干扰项所编造的年龄、年限和投资理由文中均无依据。
+        - That his father's will barred any marriage at all before he was thirty
+        - That the trustee wanted a year's wait before announcing
+        - That his money was tied up in business for six months
+        - That a marriage against the trustee's wish would cost the money
+      correctIndex: 3
+      explanationZh: 原文写 "I told her that you, as trustee under father's will, had certain unpleasant powers over my money—in fact, that most of it would revert to Sis if I married against your wishes, and that you disliked her, and that she must work herself into your good graces before we could think of announcing our engagement." 同一套说辞他也对另一位用过——这就是那晚两位姑娘对老人格外殷勤的缘故。
   - id: sm-ch-19-s5
     text: |-
       You see, I had made up my mind that the best of a bad matter was the Churchill girl, and I didn't propose to have her commit herself, too, until I'd sort of cleared away the wreckage. Then I reckoned on copper-riveting their engagement by announcing it myself and standing over Jack with a shotgun to see that there wasn't any more nonsense. They were both so light-headed and light-waisted and light-footed that it seemed to me that they were just naturally mates.
@@ -146,14 +146,14 @@ sections:
       I could see that Jack's curiosity was already getting the best of his scare. After all, he threw out, feeling me, it might be best to hear what she had to say. I thought so, too, and he went to the instrument and shouted "Hello!" in what he tried to make a big, brave voice, but it wobbled a little all the same.
     checkIn:
       id: sm-ch-19-s5-c1
-      stem: Why does the narrator make Jack mail the letters to Miss Curzon and Miss Moore right away?
+      stem: Why were the two letters put in the butler's hands to mail?
       options:
-        - He wants the girls to receive the news before breakfast.
-        - He plans to read them aloud at the dinner table.
-        - He does not trust Jack to actually deliver them.
-        - He needs to send them for official business records.
-      correctIndex: 2
-      explanationZh: Jack 写好信后想揣进口袋，叙述者先一步抢到手，因为他料到信件“might happen to them on their way to the post-office”。于是他叫管家立刻寄出，并留 Jack 过夜。干扰项说成要让对方在早餐前收到、在餐桌上宣读或出于公务存档，都不符合他防备 Jack 暗中毁信的动机。
+        - Those letters might have met with an accident on the way
+        - The girls were to have the news before their breakfast
+        - They were to be read out loud at the dinner table later
+        - The house wanted them on file as a matter of plain record
+      correctIndex: 0
+      explanationZh: 原文写 "Jack reached for those letters when they were addressed and started to put them in his pocket, but I had reached first. I reckon he'd decided that something might happen to them on their way to the post-office; but nothing did, for I called in the butler and made him go right out and mail them then and there."。
   - id: sm-ch-19-s6
     text: |-
       I got the other end of the conversation from him when he was through.
@@ -201,14 +201,14 @@ sections:
       I never really got the straight of it, but I pieced together these particulars later. At the corner there was a flower store. Jack stepped inside and sent a box of roses by special messenger to Miss Curzon, so there might be something to start conversation when he got there. Two blocks farther on he passed a second florist's, turned back and sent some lilies to Miss Moore, for fear she might think he'd forgotten her during the hour or more before he could work around to her house. Then he chased about and found a third florist, from whom he ordered some violets for Miss Churchill, to remind her that she had promised him the first dance at the Blairs' that night. Your Ma told me that Jack had nice instincts about these little things which women like, and always put a good deal of heavy thought into selecting his flowers for them. It's been my experience that a critter who has instincts instead of sense belongs in the bushes with the dicky-birds.
     checkIn:
       id: sm-ch-19-s6-c1
-      stem: What does Jack do on his way to visit the girls that afternoon?
+      stem: What did Jack do on the way to make his calls that afternoon?
       options:
-        - He sends flowers only to Miss Churchill.
-        - He buys jewelry for Miss Curzon and Miss Moore.
-        - He writes a second apology letter to each girl.
-        - He sends flowers to all three girls.
-      correctIndex: 3
-      explanationZh: 尽管父亲嘱咐他要态度坚决，Jack 却在沿途花店分别给 Miss Curzon 送玫瑰、给 Miss Moore 送百合、给 Miss Churchill 送紫罗兰，三人都有份。父亲借此讽刺他有“instincts instead of sense”。干扰项只送一人、买首饰或再写道歉信都与原文不符。
+        - He wrote each of the girls a second and softer letter
+        - He bought a little jewelry for the two he was breaking with
+        - He sent roses, lilies and violets, to all three of them
+        - He sent flowers to Miss Churchill and nobody else
+      correctIndex: 2
+      explanationZh: 街角第一家花店，他给 Miss Curzon 送了玫瑰；再走两条街，回头给 Miss Moore 送了百合；随后又找到第三家花店，给 Miss Churchill 订了紫罗兰，好提醒她答应过把当晚第一支舞留给他。
   - id: sm-ch-19-s7
     text: |-
       No one ever knew just what happened to Jack during the next three hours. He showed up at his club about five o'clock with a mighty conceited set to his jaw, but it dropped as if the spring had broken when he caught sight of me waiting for him in the reading-room.
@@ -236,14 +236,14 @@ sections:
       Jack was talking to Miss Churchill when I came into the room, and he was tending to business so strictly that he didn't see me bearing down on him from one side of the room, nor Edith Curzon's sister, Mrs. Dick, a mighty capable young married woman, bearing down on him from the other, nor Miss Curzon, with one of his roses in her hair, watching him from a corner. There must have been a council of war between the sisters that afternoon, and a change of their plans for the evening.
     checkIn:
       id: sm-ch-19-s7-c1
-      stem: Why does the narrator go to the Blairs' party that evening?
+      stem: Why did the old man go to the Blairs' that evening?
       options:
-        - He expects the affair to come to a head there
-        - He wants to introduce Jack to a new young woman
-        - He plans to announce Jack's engagement publicly
-        - He needs to discuss business with Mr. Blair
-      correctIndex: 0
-      explanationZh: 叙述者破例出席 Blairs 家的舞会，是因为他觉得“the finals might be trotted there”，想亲自在场以防事态恶化。干扰项说成介绍新对象、公开宣布订婚或与 Blair 谈生意，文中均无依据。
+        - He had a new young woman to bring into Jack's way
+        - It looked as though the finals would be run there
+        - He meant to give the engagement out before everybody
+        - He had a matter of business to settle with Mr. Blair
+      correctIndex: 1
+      explanationZh: 原文写 "I surprised your Ma a good deal that evening by allowing that I'd go to the Blairs' myself, for it looked to me as if the finals might be trotted there, and I thought I'd better be around, because, while I didn't see much chance of getting any sense into Jack's head, I felt I ought to do what I could on my friendship account with his father."。
   - id: sm-ch-19-s8
     text: |-
       Mrs. Dick beat me stalking Jack, but I was just behind, a close second. He didn't see her until she got right up to him and rapped him on the arm with her fan.
@@ -269,14 +269,14 @@ sections:
       I had to go to New York on business next day. Jack had already gone there, bought a ticket for Europe, and was just loafing around the pier trying to hurry the steamer off. I went down to see him start, and he looked so miserable that I'd have felt sorry for him if I hadn't seen him look miserable before.
     checkIn:
       id: sm-ch-19-s8-c1
-      stem: Where does Jack go the day after the party?
+      stem: Where did Jack turn up the day after the party?
       options:
-        - He hides at his club for a week.
-        - He goes straight home to the country.
-        - He takes a train west to visit relatives.
-        - He buys a ticket for Europe and waits at the pier.
+        - He shut himself up at his club for the best part of a week
+        - He went straight down home to the country place
+        - He took a train west to stop with some relations
+        - He bought a ticket for Europe and hung about the pier
       correctIndex: 3
-      explanationZh: 第二天叙述者去纽约出差时发现 Jack 已抢先到达，买了去欧洲的船票，在码头“loafing around the pier trying to hurry the steamer off”，急于逃离。干扰项的躲俱乐部一周、回乡下、西行访亲都与原文不符。
+      explanationZh: 原文写 "I had to go to New York on business next day. Jack had already gone there, bought a ticket for Europe, and was just loafing around the pier trying to hurry the steamer off. I went down to see him start, and he looked so miserable that I'd have felt sorry for him if I hadn't seen him look miserable before."。
   - id: sm-ch-19-s9
     text: |-
       "Is it generally known, sir, do you think?" he asked me humbly. "Can't you hush it up somehow?"
@@ -298,66 +298,66 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-19-s9-c1
-      stem: What happens to Jack at the end of the chapter?
+      stem: How does Jack leave off at the end?
       options:
-        - He starts flirting with Fanny Fairfax at once
-        - He boards the ship alone and sails in peace
-        - He reconciles with Miss Churchill on the pier
-        - He asks the narrator to cancel his ticket
+        - His eye lit on Fanny Fairfax, and he began all over again
+        - He went aboard alone, and sailed across in perfect peace
+        - He made it up with Miss Churchill there on the pier
+        - He begged to have the ticket given back to him at the office
       correctIndex: 0
-      explanationZh: 尽管 Jack 声称自己心碎将发疯跳海，但他的目光很快落在了 Fanny Fairfax 身上，又开始旧态复萌地殷勤搭讪，说自己是“the luckiest fellow alive”。最终一位离过婚的女人把他管住了。干扰项说独自安然登船、与 Miss Churchill 和好或要求退票，都与原文矛盾。
+      explanationZh: 他刚说过自己太纤细，撑不到利物浦就要跳海，可 "his grief-dimmed eyes, in straying along the deck, had lit on that pretty little Southern baggage, Fanny Fairfax... 'Think of your being on board!' I heard him say. 'I'm the luckiest fellow alive; by Jove, I am!'"。
 quiz:
   - id: sm-ch-19-q1
-    stem: How did Helen Heath treat the father during the Atlantic crossing?
+    stem: How did Helen Heath use the old man on the crossing?
     options:
-      - She treated him like a father all the way across
-      - She avoided him after the first evening
-      - She quizzed him about the family business
-      - She kept to her cabin for most of the trip
-    correctIndex: 0
-    explanationZh: 父亲说船还没驶出陆地视线，两人就认识了，而她“been treating me like a father clear across the Atlantic”——一路把他当父亲般亲近相待。这正是他忍不住写信盘问儿子心意的原因；躲着他或闭门不出都与原文相反。
+      - She kept out of his way after the first evening
+      - She treated him like a father the whole way across
+      - She pumped him for facts about the family business
+      - She stayed shut in her cabin for most of the trip
+    correctIndex: 1
+    explanationZh: 原文写 "She knows a heap more about you than she ought to know if they're not serious, and I know a heap less about her than I ought to know if they are. Hadn't got out of sight of land before we'd become acquainted somehow, and she's been treating me like a father clear across the Atlantic."。
   - id: sm-ch-19-q2
-    stem: What does the narrator compare an unmarried man to?
+    stem: What is an unmarried man like?
     options:
-      - Unimproved real estate that still needs building on
-      - A finished house waiting for the right tenant to move in
-      - A wild horse that no one has bothered to break in
-      - A locked safe whose combination has been lost
-    correctIndex: 0
-    explanationZh: 父亲把未婚男子比作“unimproved real estate”——可能值很多钱但没什么实际用处，除非在其上建造。干扰项的成品房、野马或保险柜在原文中均未出现。
-  - id: sm-ch-19-q3
-    stem: What is the most damning moment for Jack at the Blairs' party?
-    options:
-      - Miss Churchill publicly rejects his proposal in front of everyone
-      - Miss Curzon's mother accuses Jack of lying about his money
-      - Miss Moore announces she is engaged to another man
-      - Both other girls arrive wearing his flowers
-    correctIndex: 3
-    explanationZh: 关键一击在于 Miss Curzon 头戴他的玫瑰出现，Miss Moore 拿着他的百合被人祝贺，而此时他正陪 Miss Churchill，三人同处一室令他无处可躲。干扰项说 Miss Churchill 当众拒婚、Curzon 家母亲指控或 Miss Moore 宣布与他人订婚，文中均未发生。
-  - id: sm-ch-19-q4
-    stem: Why do Miss Curzon and Miss Moore respond so gently to Jack's break-up letters?
-    options:
-      - They genuinely no longer care about Jack at all.
-      - They have already found other men to marry.
-      - They still believe Jack has a million dollars and hope to secure him.
-      - They think the letters are a joke and plan to laugh at him.
+      - A finished house that waits on the right tenant
+      - A wild horse that nobody has troubled to break in
+      - Unimproved real estate, of no use but to build on
+      - A locked safe whose combination has been mislaid
     correctIndex: 2
-    explanationZh: 两位姑娘收到分手信后非但不恼，反而分别约他面谈，因为叙述者深知她们不会轻易放过百万美元——会“put a tracer after it”。干扰项说她们完全无所谓、已另嫁他人或当笑话看，都不符合她们紧抓不放的态度。
+    explanationZh: 原文写 "An unmarried man is a good deal like a piece of unimproved real estate—he may be worth a whole lot of money, but he isn't of any particular use except to build on. The great trouble with a lot of these fellows is that they're 'made land,' and if you dig down a few feet you strike ooze and booze under the layer of dollars that their daddies dumped in on top."。
+  - id: sm-ch-19-q3
+    stem: What finished Jack off at the Blairs'?
+    options:
+      - Miss Churchill turned him down before the whole room of them
+      - Miss Curzon's mother charged him with lying about money
+      - Miss Moore gave out that she was engaged to another man
+      - Both the other girls turned up wearing the flowers he sent
+    correctIndex: 3
+    explanationZh: 他正陪着 Miss Churchill，先撞上 Mrs. Dick 的道贺，转头看见 "Miss Curzon, with one of his roses in her hair, watching him from a corner"，再往前十步是 "Miss Moore, carrying his lilies"，又被 Blakely 一句 "I congratulate you, Jack" 钉死。Miss Churchill 抽回手，笑着说 "You twice lucky Jack."。
+  - id: sm-ch-19-q4
+    stem: Why did the two girls answer the break-up letters so sweetly?
+    options:
+      - They took him for a million still, and held on to him
+      - They had ceased to care anything at all about him now
+      - They had each already found another man to marry
+      - They read the letters as a joke, and meant to laugh
+    correctIndex: 0
+    explanationZh: 原文写 "I reckon you'll marry her, then... because she strikes me as a young woman who's not going to lose a million dollars without putting a tracer after it." 果然，两封分手信换回来的是一通电话和一张便条，都是约他下午过去把话说清楚。
   - id: sm-ch-19-q5
-    stem: Why does the narrator tell this whole story to Pierrepont at the end?
+    stem: Why is the whole story set down for Pierrepont?
     options:
-      - He wants Pierrepont to find Jack a new wife in Europe.
-      - He wants to make sure his own son does not turn into another Jack.
-      - He wants Pierrepont to lend Jack money to start over.
-      - He wants Pierrepont to apologize to the three girls on Jack's behalf.
+      - So that Pierrepont may find Jack a wife over in Europe
+      - So that no second Jack turns up inside the family
+      - So that Pierrepont may lend Jack money
+      - So that Pierrepont may carry Jack's apologies to the girls
     correctIndex: 1
-    explanationZh: 父亲最后明确写道：“I inherited one Jack—I couldn't help that. But I don't propose to wake up and find another one in the family.”他讲这个故事是为了警告儿子不要重蹈 Jack 的覆辙。干扰项要儿子替 Jack 找妻、借钱或道歉，都与父亲真正关心的对象——自己儿子的品行——无关。
+    explanationZh: 原文写 "I inherited one Jack—I couldn't help that. But I don't propose to wake up and find another one in the family. So you write me what's what by return."。
   - id: sm-ch-19-q6
-    stem: What does the narrator call Jack's way of handling flowers for women?
+    stem: What is the verdict on Jack's care over the flowers?
     options:
-      - He has good taste instead of money.
-      - He has instincts instead of sense.
-      - He has courage instead of caution.
-      - He has charm instead of intelligence.
-    correctIndex: 1
-    explanationZh: 父亲讽刺 Jack 在送花这类事上花了很多心思，但他说“a critter who has instincts instead of sense belongs in the bushes with the dicky-birds”，即有直觉却没头脑。干扰项把评价偷换成品味、勇气或魅力，都不符合原文用词与含义。
+      - He has good taste, if not much money to back it
+      - He has courage where he ought to have caution
+      - He has instincts instead of sense, and no more
+      - He has charm enough to make up for a want of brains
+    correctIndex: 2
+    explanationZh: 母亲说 Jack 在挑花这类小事上向来有 nice instincts，可父亲的看法是——"It's been my experience that a critter who has instincts instead of sense belongs in the bushes with the dicky-birds."。

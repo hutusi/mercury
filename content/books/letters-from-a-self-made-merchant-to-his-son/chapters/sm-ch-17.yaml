@@ -3,7 +3,7 @@ id: sm-ch-17
 bookId: book-merchant-letters
 title: Getting Along Famously
 titleZh: 混得风生水起
-summaryZh: 老格雷厄姆从欧洲疗养归来，在信中告诫儿子少自我吹嘘、多做实事，并解释了他为什么拒绝为 Courtland 谋职。信里还讲了两个关于虚假自尊的故事——家乡男孩 Fatty 的往事，和他自己少年时一段刻骨铭心的糗事。
+summaryZh: 老人终于动身回家了，说那帮荷兰人的话虽难懂，本事却不含糊——右腿如今使得上劲，不必再担心它会断掉。信里只有一件事他懒得再听：儿子对自己的评语。
 sections:
   - id: sm-ch-17-s1
     text: |-
@@ -18,14 +18,14 @@ sections:
       Hot air can take up a balloon a long ways, but it can't keep it there. And when a fellow's turning flip-flops up among the clouds, he's naturally going to have the farmers gaping at him. But in the end there always comes a time when the parachute fails to work. I don't know anything that's quite so dead as a man who's fallen three or four thousand feet off the edge of a cloud.
     checkIn:
       id: sm-ch-17-s1-c1
-      stem: What does the father say about a man who truly does big things?
+      stem: What is true of the man who does big things?
       options:
-        - He is too busy to talk about them.
-        - He should give a hundred doses of talk for every dollar.
-        - He needs to explain himself to everyone he meets.
-        - He must look in the mirror to find good men.
+        - He is too busy at them to talk about them
+        - He gives a hundred doses of talk for every dollar
+        - He explains himself to everybody he meets
+        - He looks in the mirror to find a good man
       correctIndex: 0
-      explanationZh: 父亲明确写道：“A man who does big things is too busy to talk about them.”他把自我吹嘘比作“Sarsaparilla Theory”——用十分钱的本钱换一块钱，还得搭上一百句废话。说真值一块钱的人不必额外解释，因此“忙着解释”是干扰项。
+      explanationZh: 原文写 "There's never any use trying to hide the fact that you're a jim-dandy—you're bound to be found out. Of course, you want to have your eyes open all the time for a good man, but follow the old maid's example—look under the bed and in the closet, not in the mirror, for him. A man who does big things is too busy to talk about them. When the jaws really need exercise, chew gum."。
   - id: sm-ch-17-s2
     text: |-
       The only way to gratify a taste for scenery is to climb a mountain. You don't get up so quick, but you don't come down so sudden. Even then, there's a chance that a fellow may slip and fall over a precipice, but not unless he's foolish enough to try short-cuts over slippery places; though some men can manage to fall down the hall stairs and break their necks. The path isn't the shortest way to the top, but it's usually the safest way.
@@ -37,14 +37,14 @@ sections:
       I speak of these things in a general way, because I want you to keep in mind all the time that steady, quiet, persistent, plain work can't be imitated or replaced by anything just as good, and because your request for a job for Courtland Warrington naturally brings them up. You write that Court says that a man who has occupied his position in the world naturally can't cheapen himself by stepping down into any little piddling job where he'd have to do undignified things.
     checkIn:
       id: sm-ch-17-s2-c1
-      stem: What contrast does the father make between a rooster and a hen?
+      stem: How do the rooster and the hen differ?
       options:
-        - The rooster provides food for the farmyard, while the hen only makes noise.
-        - The rooster works steadily all day, while the hen sleeps through the night.
-        - The rooster takes short-cuts, while the hen climbs the mountain path.
-        - The rooster makes noise but has done nothing, while the hen is quiet but has laid an egg.
+        - The rooster feeds the whole farmyard, the hen only crows
+        - The rooster works all day, the hen sleeps the night through
+        - The rooster takes short-cuts, the hen keeps to the path
+        - The rooster crows over nothing, the hen has laid an egg
       correctIndex: 3
-      explanationZh: 父亲说公鸡日出时叫得像自己制造了光，实际上只是制造了噪音；母鸡叫的时候是真的下了蛋，而且不大张旗鼓。这比喻做事的人安静、空谈的人喧哗。说公鸡提供食物颠倒了原文——那是公鸡自以为是的错觉。
+      explanationZh: 原文写 "He's always strutting and stretching and crowing and bragging about things with which he had nothing to do. When the sun rises, you'd think that he was making all the light, instead of all the noise... But when you hear from a hen, she's laid an egg, and she don't make a great deal of noise about it, either."。
   - id: sm-ch-17-s3
     text: |-
       I want to start right out by saying that I know Court and his whole breed like a glue factory, and that we can't use him in our business. He's one of those fellows who start in at the top and naturally work down to the bottom, because that is where they belong. His father gave him an interest in the concern when he left college, and since the old man failed three years ago and took a salary himself, Court's been sponging on him and waiting for a nice, dignified job to come along and steal him. But we are not in the kidnapping business.
@@ -58,14 +58,14 @@ sections:
       Of course, like most cowards, while Fatty always had an excuse for not doing something that might hurt his skin, he would take a dare to do anything that would hurt his self-respect, for fear the boys would laugh at him, or say that he was afraid, if he refused. So one day during recess Jim Hicks dared him to eat a piece of dirt. Fatty hesitated a little, because, while he was pretty promiscuous about what he put into his stomach, he had never included dirt in his bill-of-fare. But when the boys began to say that he was afraid, Fatty up and swallowed it.
     checkIn:
       id: sm-ch-17-s3-c1
-      stem: What does the father say is the only undignified job?
+      stem: What is the only undignified job the father knows of?
       options:
-        - Eating dirt for money.
-        - Sponging on one's father.
-        - Stepping down from a high position.
-        - Loafing.
-      correctIndex: 3
-      explanationZh: 父亲直言：“The only undignified job I know of is loafing。”他指出靠人供养而不找工作的人已经廉价到底，不可能再被贬低。吃土表演是另一个故事里的情节，不是这里对“不体面工作”的定义。
+        - Working under a man who was once beneath you
+        - Loafing, and sponging instead of hunting work
+        - Stepping down out of a high place in the world
+        - Taking any little piddling job that comes along
+      correctIndex: 1
+      explanationZh: 原文写 "The only undignified job I know of is loafing, and nothing can cheapen a man who sponges instead of hunting any sort of work, because he's as cheap already as they can be made."。
   - id: sm-ch-17-s4
     text: |-
       And when he dared the other boys to do the same thing and none of them would take the dare, it made him mighty proud and puffed up. Got to charging the bigger boys and the lounger around the post-office a cent to see him eat a piece of dirt the size of a hickory-nut. Found there was good money in that, and added grasshoppers, at two cents apiece, as a side line. Found them so popular that he took on chinch bugs at a nickel, and fairly coined money. The last I heard of Fatty he was in a Dime Museum, drawing two salaries--one as "The Fat Man," and the other as "Launcelot, The Locust Eater, the Only Man Alive with a Gizzard."
@@ -77,14 +77,14 @@ sections:
       I never see one of these fellows swelling around with their petty larceny pride that I don't think of a little experience of mine when I was a boy. An old fellow caught me lifting a watermelon in his patch, one afternoon, and instead of cuffing me and letting me go, as I had expected if I got caught, he led me home by the ear to my ma, and told her what I had been up to.
     checkIn:
       id: sm-ch-17-s4-c1
-      stem: What happened after Fatty ate a piece of dirt on a dare?
+      stem: What did Fatty do once nobody else would take the dare?
       options:
-        - He refused to eat anything but candy and cakes.
-        - He began charging other boys a cent to watch him eat dirt.
-        - He dared the other boys to fight him one by one.
-        - He ran away to join a glue factory.
-      correctIndex: 1
-      explanationZh: Fatty吞下泥土后，发现别的男孩不敢接受同样挑战，便得意起来，开始收一分钱让人看他吃土，后来又加上了蚱蜢和臭虫，最后进了廉价博物馆。文中说他把糖果当主食是以前的习惯，胶水厂则是父亲形容自己了解Court“like a glue factory”，与Fatty无关。
+        - He would touch nothing after that but cakes and candy
+        - He dared the other boys to fight him one at a time
+        - He took to charging a cent a head to watch him eat it
+        - He ran off and got taken on at a glue factory
+      correctIndex: 2
+      explanationZh: 原文写 "And when he dared the other boys to do the same thing and none of them would take the dare, it made him mighty proud and puffed up. Got to charging the bigger boys and the lounger around the post-office a cent to see him eat a piece of dirt the size of a hickory-nut." 后来他又添了蚱蜢和臭虫两样。
   - id: sm-ch-17-s5
     text: |-
       Your grandma had been raised on the old-fashioned plan, and she had never heard of these new-fangled theories of reasoning gently with a child till its under lip begins to stick out and its eyes to fill with tears as it sees the error of its ways. She fetched the tears all right, but she did it with a trunk strap or a slipper. And your grandma was a pretty substantial woman. Nothing of the tootsey-wootsey about her foot, and nothing of the airy-fairy trifle about her slipper. When she was through I knew that I'd been licked--polished right off to a point--and then she sent me to my room and told me not to poke my nose out of it till I could recite the Ten Commandments and the Sunday-school lesson by heart.
@@ -96,14 +96,14 @@ sections:
       I had been looking down all the time, feeling mighty proud and scared, but at that I couldn't help glancing up to see the other boys admire me. But the first person my eye lit on was your grandma, standing in the back of the room, where she had stopped for a moment on her way up to church, and glaring at me in a mighty unpleasant way.
     checkIn:
       id: sm-ch-17-s5-c1
-      stem: Why was the boy unusually eager to recite the Sunday-school lesson in front of Doc Hoover?
+      stem: Why was the boy hoping to be called on that Sunday?
       options:
-        - Grandma had punished him and made him memorize the chapter as a condition for leaving his room.
-        - Doc Hoover had promised him a prize for reciting the longest verse.
-        - He wanted to show off that he could recite the Ten Commandments faster than anyone.
-        - Grandma had told him to impress the Elder by telling a story.
+        - He had been shut in his room till he could say it by heart
+        - The Elder had promised a prize for the longest verse recited
+        - He wanted to beat the other boys at the Ten Commandments
+        - His mother had told him to work a story in for the Elder
       correctIndex: 0
-      explanationZh: 信里的“your grandma”是写信人对儿子皮尔庞特的称呼——对故事里的男孩（年轻时的老格雷厄姆）而言，她是自己的母亲。她惩罚他偷西瓜后，把他关在房里，要求背出十诫和整章主日学课文才准出来。因为晚饭两小时后就要开，他拼命背了下来，所以第二天见到 Doc Hoover 反而盼着被提问。
+      explanationZh: 偷西瓜被人揪着耳朵送回家、又挨了一顿之后，"she sent me to my room and told me not to poke my nose out of it till I could recite the Ten Commandments and the Sunday-school lesson by heart"。他拼了命地背，这一章到老还能倒着背下来。
   - id: sm-ch-17-s6
     text: |-
       "Tell 'em, John," she said right out loud, before everybody.
@@ -125,66 +125,66 @@ sections:
       Your affectionate father, JOHN GRAHAM.
     checkIn:
       id: sm-ch-17-s6-c1
-      stem: What did Grandma tell the boy to tell the whole Sunday-school?
+      stem: What was the boy told to tell the whole school?
       options:
-        - Why he was afraid of the dark.
-        - What he had learned about the weather.
-        - How he came to have his lesson so nice.
-        - How he had helped his mother at home.
+        - Why he had taken to being afraid of the dark
+        - What he had picked up about the weather lately
+        - How he came to have his lesson so nice that day
+        - How he had been helping his mother about the house
       correctIndex: 2
-      explanationZh: 她当众大声说：“Tell 'em, John… Tell 'em how you come to have your lesson so nice.”男孩无路可逃，只好承认自己偷了西瓜。这位“Grandma”是写信人自己的母亲——他对儿子才称她“你奶奶”。天气是原文“no switching her off on to the weather”里的比喻，并非她要他讲的内容。
+      explanationZh: 原文写 "'Tell 'em, John,' she said right out loud, before everybody... 'Tell 'em how you come to have your lesson so nice.'" 他闭上眼把话挤了出来——"Hooked a watermelon, mam." 天气那句是原文里的比方，说她要讲宗教时谁也没法把话头岔开。
 quiz:
   - id: sm-ch-17-q1
-    stem: Why does the father compare self-promoters to hot air in a balloon?
+    stem: What is the point of the hot air in the balloon?
     options:
-      - Because they can stay among the clouds as long as they keep talking.
-      - Because they are admired by farmers wherever they go.
-      - Because they rise for a while but are bound to fall eventually.
-      - Because they need a parachute to land safely every time.
-    correctIndex: 2
-    explanationZh: 父亲说热气球能把人送上高空，但没法让人一直待在那儿——“the parachute fails to work”，迟早会摔下来。这比喻靠吹嘘上位的人终会暴露。说他们只要不停说就能留在云端，恰恰与原文明言的“can't keep it there”相反。
+      - They can hold up among the clouds as long as they keep talking
+      - They go up for a while, but they are bound to come down
+      - The farmers admire them wherever they happen to go
+      - They carry a parachute, and always land safe on it
+    correctIndex: 1
+    explanationZh: 原文写 "Hot air can take up a balloon a long ways, but it can't keep it there. And when a fellow's turning flip-flops up among the clouds, he's naturally going to have the farmers gaping at him. But in the end there always comes a time when the parachute fails to work."。
   - id: sm-ch-17-q2
-    stem: What does the father mean by saying life is not a spurt but a long, steady climb?
+    stem: What is meant by saying life is a long, steady climb?
     options:
-      - Men who sprint uphill can reach the top before sitting down.
-      - Men who admire their own work for six days are the most successful.
-      - Men who take short-cuts over slippery places get there fastest.
-      - Men who rush and use up their wind soon peter out and change direction.
+      - A man who sprints up-hill will reach the top before he sits
+      - A man who spends six days admiring one day's work does best
+      - A man who cuts across the slippery places gets there fastest
+      - A man who rushes uses up his wind, and soon peters out
     correctIndex: 3
-    explanationZh: 父亲指出有些人猛冲一下耗尽力气，然后花六天自我欣赏，再换个方向重来——“they simply peter out”。他认为稳健持久的攀登才可靠。说冲刺能先到山顶，或抄捷径最快，都是原文明确否定的做法。
+    explanationZh: 原文写 "Life isn't a spurt, but a long, steady climb. You can't run far up-hill without stopping to sit down. Some men do a day's work and then spend six lolling around admiring it. They rush at a thing with a whoop and use up all their wind in that... They mistake intention for determination, and after they have told you what they propose to do and get right up to doing it, they simply peter out."。
   - id: sm-ch-17-q3
-    stem: Why does the father refuse to hire Courtland Warrington?
+    stem: Why will the house not take Courtland Warrington on?
     options:
-      - Court has too much real work experience for a low position
-      - Court sponges on his father while awaiting a dignified job
-      - Court insists on starting at the bottom to learn the business
-      - Court failed in business and now draws a salary from the old man
-    correctIndex: 1
-    explanationZh: 父亲说Court自父亲破产后一直蹭父亲的钱，等一个体面工作来“偷”他，而公司不做绑架生意。说Court有太多经验或坚持从底层做起，与原文描述的“starting at the top and working down”完全相反。说Court破产后自己拿薪水，则是把父亲的事错安到Court身上。
+      - He sponges on his father, waiting for a dignified job
+      - He has more real experience than a low place would use
+      - He insists on starting at the bottom to learn the trade
+      - He failed in business and now draws a salary himself
+    correctIndex: 0
+    explanationZh: 原文写 "He's one of those fellows who start in at the top and naturally work down to the bottom, because that is where they belong. His father gave him an interest in the concern when he left college, and since the old man failed three years ago and took a salary himself, Court's been sponging on him and waiting for a nice, dignified job to come along and steal him. But we are not in the kidnapping business."。
   - id: sm-ch-17-q4
-    stem: What does Fatty Wilkins' story mainly illustrate about pride?
+    stem: What does Fatty Wilkins show about pride?
     options:
-      - Pride drives a strong person to fight for the big things in life.
-      - Pride can make a weak person eat dirt to avoid being laughed at.
-      - Pride makes a weak person refuse any dare that might hurt his skin.
-      - Pride helps a person appreciate little things and keep his conscience straight.
+      - Pride drives the strong man to fight for the big things
+      - Pride will make a weak man eat dirt rather than be laughed at
+      - Pride makes a weak man refuse any dare that could hurt him
+      - Pride keeps a man's conscience straight and his back bent over his work
     correctIndex: 1
-    explanationZh: Fatty虽怕疼，但为了不被嘲笑，竟然敢吃土，后来还收钱表演。父亲据此说骄傲让弱者做看起来对而非真正对的事，怕人笑话。说骄傲让强者坚持大事，或让弱者拒绝任何冒险，都是把原文对强者的描述错套到弱者身上。
+    explanationZh: 原文写 "Of course, like most cowards, while Fatty always had an excuse for not doing something that might hurt his skin, he would take a dare to do anything that would hurt his self-respect, for fear the boys would laugh at him." 父亲随后说，骄傲对强者是马刺，对弱者是拖累——"it makes the fellow with the retreating forehead do the thing that looks right, instead of the thing that is right"。
   - id: sm-ch-17-q5
-    stem: Why did memorizing the Ten Commandments and the Sunday-school chapter feel urgent to the boy?
+    stem: What made learning that chapter so urgent?
     options:
-      - Supper was near, and Grandma would not let him out before
-      - Doc Hoover was coming to test him the very next morning
-      - His Grandma promised him a special dinner if he finished
-      - The Elder was waiting outside his room to hear him recite
-    correctIndex: 0
-    explanationZh: 原文写“supper was only two hours off”，而她母亲（信中的“Grandma”）不背完不准出房门，所以他拼命背。Doc Hoover是第二天主日学才出现的，不是催他背书的动力；家里人和长老都没有承诺奖励或在外面等候。
+      - Doc Hoover was coming to test him the very next Sunday morning
+      - His mother had promised a special dinner if he got through
+      - Supper was two hours off, and he could not leave until then
+      - The Elder was waiting outside the door to hear him say it
+    correctIndex: 2
+    explanationZh: 原文写 "There was a whole chapter of it, and an Old Testament chapter at that, but I laid right into it because I knew ma, and supper was only two hours off. I can repeat that chapter still, forward and backward, without missing a word or stopping to catch my breath."。
   - id: sm-ch-17-q6
-    stem: What lasting lesson did the boy take from being publicly exposed for stealing a watermelon?
+    stem: What did that Sunday leave the boy with for good?
     options:
-      - He learned humility, which matters more than pride
-      - He learned that notoriety is the quickest path to respect
-      - He learned that false pride can help a boy impress his playmates
-      - He learned that grandmother's theories of gentle reasoning work best
-    correctIndex: 0
-    explanationZh: 父亲总结这剂苦药“sweat more cant and false pride out of my system”，让他学会谦卑，而世上几乎没人需要学怎么骄傲。说出名能赢得尊重、假骄傲能帮人赢得同学佩服，都与原文明言相反；奶奶的gentle reasoning正是原文嘲笑的新花样理论。
+      - Notoriety is the shortest road there is to respect
+      - A little false pride will impress a boy's playmates
+      - Gentle reasoning works better than a trunk strap does
+      - How to be humble, which counts for more than pride
+    correctIndex: 3
+    explanationZh: 原文写 "That was a twelve-grain dose, without any sugar coat, but it sweat more cant and false pride out of my system than I could get back into it for the next twenty years. I learned right there how to be humble, which is a heap more important than knowing how to be proud. There are mighty few men that need any lessons in that."。
