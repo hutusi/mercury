@@ -3,7 +3,7 @@ id: oz-ch-13
 bookId: book-oz
 title: The Rescue
 titleZh: 拯救同伴
-summaryZh: 恶女巫死后，多萝西一行的当务之急是找回失散的两位伙伴。在热心的温基人帮助下，团圆的队伍重新启程返回翡翠城，准备向奥兹兑现承诺。
+summaryZh: 女巫化成一摊水之后，黄城堡里的温基人过起了节。可四个伙伴如今只剩两个，狮子说，要是那两位也在，这一天才算圆满。
 sections:
   - id: oz-ch-13-s1
     text: |-
@@ -30,14 +30,14 @@ sections:
       The tinsmiths looked the Woodman over carefully and then answered that they thought they could mend him so he would be as good as ever. So they set to work in one of the big yellow rooms of the castle and worked for three days and four nights, hammering and twisting and bending and soldering and polishing and pounding at the legs and body and head of the Tin Woodman, until at last he was straightened out into his old form, and his joints worked as well as ever. To be sure, there were several patches on him, but the tinsmiths did a good job, and as the Woodman was not a vain man he did not mind the patches at all.
     checkIn:
       id: oz-ch-13-s1-c1
-      stem: Who did Dorothy and the Winkies rescue first?
+      stem: In what state did they find the Tin Woodman on the rocky plain?
       options:
-        - The Tin Woodman
-        - The Scarecrow
-        - The Cowardly Lion
-        - Toto
-      correctIndex: 0
-      explanationZh: 他们先找到躺在岩石平原上、被砸弯变形的铁皮人（"the Tin Woodman lay, all battered and bent"），把他抬回黄色城堡后由锡匠修好。稻草人是在第二节才被找到的。
+        - Rusted fast, but still able to speak to them
+        - Battered and bent, with his axe blade rusted
+        - Buried under the rocks, with only one arm showing
+        - Sitting up and waiting patiently for their help
+      correctIndex: 1
+      explanationZh: 他躺在乱石地上，"all battered and bent. His axe was near him, but the blade was rusted and the handle broken off short"——既动不了，也发不出声音。
   - id: oz-ch-13-s2
     text: |-
       When, at last, he walked into Dorothy’s room and thanked her for rescuing him, he was so pleased that he wept tears of joy, and Dorothy had to wipe every tear carefully from his face with her apron, so his joints would not be rusted. At the same time her own tears fell thick and fast at the joy of meeting her old friend again, and these tears did not need to be wiped away. As for the Lion, he wiped his eyes so often with the tip of his tail that it became quite wet, and he was obliged to go out into the courtyard and hold it in the sun till it dried.
@@ -61,14 +61,14 @@ sections:
       But one day the girl thought of Aunt Em, and said, “We must go back to Oz, and claim his promise.”
     checkIn:
       id: oz-ch-13-s2-c1
-      stem: How did the Tin Woodman get the Scarecrow's clothes down from the tall tree?
+      stem: How were the Scarecrow's clothes got down from the tall tree?
       options:
-        - He asked the Winged Monkeys to fetch them
-        - He chopped the tree down
-        - He climbed the smooth trunk
-        - He shook the tree until the clothes fell
-      correctIndex: 1
-      explanationZh: 树干太光滑没人能爬上去，铁皮人说他要把树砍倒（"I'll chop it down"），很快树倒下，衣服从树枝里掉了出来。
+        - The Winkies built a ladder out of their spears
+        - Dorothy called the Winged Monkeys back to fetch them
+        - The Tin Woodman chopped down the tree at its root
+        - The Lion shook the smooth trunk until they fell
+      correctIndex: 2
+      explanationZh: 树干光溜溜的，谁也爬不上去，铁皮人当即说 "I'll chop it down, and then we can get the Scarecrow's clothes"。树一倒，那堆衣服就从枝丫里滚了出来。
   - id: oz-ch-13-s3
     text: |-
       “Yes,” said the Woodman, “at last I shall get my heart.”
@@ -88,66 +88,66 @@ sections:
       Then, being prepared for the journey, they all started for the Emerald City; and the Winkies gave them three cheers and many good wishes to carry with them.
     checkIn:
       id: oz-ch-13-s3-c1
-      stem: What gift did the Winkies give to Dorothy when she was leaving?
+      stem: What did Dorothy find in the Witch's cupboard and take away with her?
       options:
-        - A golden collar
-        - A silver oil-can
-        - A diamond-studded bracelet
-        - A gold-headed walking stick
-      correctIndex: 2
-      explanationZh: 温基人给多萝西的是镶满钻石的美丽手镯（"a beautiful bracelet studded with diamonds"）。金项圈给了托托和狮子，金头手杖给了稻草人，镶金嵌宝石的银油罐给了铁皮人。
+        - The silver whistle the Witch blew for her wolves
+        - The old umbrella the Witch always carried
+        - The iron bar she had made invisible
+        - The Golden Cap, which fitted her exactly
+      correctIndex: 3
+      explanationZh: 她去橱柜里装干粮时看见了金帽，戴上正合适。"She did not know anything about the charm of the Golden Cap, but she saw that it was pretty"，就把遮阳帽收进篮子，戴着它上了路。
 quiz:
   - id: oz-ch-13-q1
-    stem: Why were the Winkies so happy and willing to help Dorothy?
+    stem: Why were the Winkies so glad to help Dorothy?
     options:
-      - She gave them a lot of gold
-      - She promised to rule over them
-      - She brought food from the Emerald City
-      - She had freed them from slavery
-    correctIndex: 3
-    explanationZh: 温基人多年来被迫做苦工，多萝西告诉他们不再是奴隶了，所以他们心怀感激，愿为解放他们的多萝西竭尽全力（"do all in their power for Dorothy, who had set them free from bondage"）。
+      - She had told them they were slaves no longer
+      - She had promised each of them a piece of gold
+      - She had brought them food from the Emerald City
+      - She had agreed to rule the Yellow Land herself
+    correctIndex: 0
+    explanationZh: 女巫一死，多萝西头一件事就是召集温基人，宣布他们不再是奴隶。他们把这一天当作节日过，也愿意 "do all in their power for Dorothy, who had set them free from bondage"。
   - id: oz-ch-13-q2
-    stem: What did Dorothy have to do when the Tin Woodman wept tears of joy?
+    stem: How long did the tinsmiths work on the Tin Woodman?
     options:
-      - Give him a new axe
-      - Wipe away each tear
-      - Oil his joints immediately
-      - Tell him to stop crying
-    correctIndex: 1
-    explanationZh: 铁皮人流下喜悦的泪水后，多萝西必须用围裙仔细擦去他脸上的每一滴眼泪，否则他的关节会生锈（"so his joints would not be rusted"）。
-  - id: oz-ch-13-q3
-    stem: What was special about the Tin Woodman's new axe handle?
-    options:
-      - It was made of solid gold
-      - It was made of silver
-      - It was covered in jewels
-      - It was made of straw
-    correctIndex: 0
-    explanationZh: 一位温基金匠打造了一根纯金斧柄（"an axe-handle of solid gold"），装在铁皮人的斧头上，替代旧断裂的斧柄；斧刃也被抛光得像擦亮的银子一样闪闪发光。
-  - id: oz-ch-13-q4
-    stem: What did the Winkies ask the Tin Woodman to do before he left?
-    options:
-      - To fix their tools
-      - To teach them tinsmithing
-      - To stay and rule over them
-      - To find them a new ruler
+      - One long afternoon in the great yellow courtyard
+      - From sunrise to sunset of a single day
+      - Three days and four nights, without stopping
+      - A whole month, while the others waited
     correctIndex: 2
-    explanationZh: 温基人非常喜欢铁皮人，恳求他留下来统治他们和西方的黄色土地（"begged him to stay and rule over them and the Yellow Land of the West"），但他决心要跟伙伴们一起离开。
-  - id: oz-ch-13-q5
-    stem: What did Dorothy find in the Witch's cupboard and decide to wear?
+    explanationZh: 他们 "worked for three days and four nights, hammering and twisting and bending and soldering and polishing and pounding"，终于把他敲回了原样。身上留下几块补丁，他毫不在意。
+  - id: oz-ch-13-q3
+    stem: What did Dorothy have to do while the Woodman wept for joy?
     options:
-      - The Golden Cap
-      - A pair of silver shoes
-      - A magic wand
-      - A diamond bracelet
-    correctIndex: 0
-    explanationZh: 多萝西在女巫的橱柜里装食物时发现了金冠（"the Golden Cap"），试戴后发现大小正好。她当时不知道金冠的法力，只觉得好看，便决定戴上它，把遮阳帽放进篮子里。
-  - id: oz-ch-13-q6
-    stem: What does each traveler want to get from Oz when they return to the Emerald City?
-    options:
-      - Gold, food, tools, and shelter
-      - A new axe, new straw, a tail, and a basket
-      - Magic shoes, a crown, a collar, and a stick
-      - A heart, brains, courage, and a trip home
+      - Fetch the new oil-can from the Winkies
+      - Hold his axe until he had finished crying
+      - Tell him to stop before his eyes were spoiled
+      - Wipe every tear away with her apron
     correctIndex: 3
-    explanationZh: 铁皮人想要心（"my heart"），稻草人想要脑子（"my brains"），狮子想要勇气（"my courage"），多萝西想回堪萨斯（"back to Kansas"），各自对应奥兹曾许下的承诺。
+    explanationZh: 他一高兴就掉眼泪，她只好用围裙把每一滴都仔细擦掉，"so his joints would not be rusted"。她自己的泪倒不用擦；狮子则把尾巴尖哭湿了，跑到院子里晒。
+  - id: oz-ch-13-q4
+    stem: What was new about the Woodman's axe when he chopped the tree?
+    options:
+      - The blade had been replaced with one of silver
+      - A Winkie goldsmith had fitted a handle of solid gold
+      - The Winkies had made it twice as large as before
+      - It had been given a jewelled case to keep it in
+    correctIndex: 1
+    explanationZh: 锡匠修他的时候，另一个会打金的温基人 "had made an axe-handle of solid gold and fitted it to the Woodman's axe"，还有人把锈磨掉，刃口亮得像擦过的银。
+  - id: oz-ch-13-q5
+    stem: What did the Winkies beg the Tin Woodman to do?
+    options:
+      - To stay and rule over the Yellow Land of the West
+      - To teach their tinsmiths how he had been made
+      - To leave his golden axe behind as a keepsake
+      - To come back once he had been given his heart
+    correctIndex: 0
+    explanationZh: 他们跟他处出了感情，"begged him to stay and rule over them and the Yellow Land of the West"。见他执意要走，才捧出礼物、三呼送别。
+  - id: oz-ch-13-q6
+    stem: Which gift did the Winkies give the Scarecrow?
+    options:
+      - A golden collar like the one Toto wore
+      - A silver oil-can inlaid with gold and jewels
+      - A gold-headed walking stick, to save him stumbling
+      - A bracelet studded all over with diamonds
+    correctIndex: 2
+    explanationZh: 给稻草人的是 "a gold-headed walking stick, to keep him from stumbling"。金项圈给了托托和狮子，银油罐给了铁皮人，钻石手镯给了多萝西。

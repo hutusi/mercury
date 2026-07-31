@@ -3,7 +3,7 @@ id: oz-ch-24
 bookId: book-oz
 title: Home Again
 titleZh: 回家
-summaryZh: 多萝西终于回到了堪萨斯的家乡。灰色的草原还是老样子，而对她来说，没有哪里比得上家。
+summaryZh: 三步之后，脚下又是熟悉的堪萨斯草原。多萝西从草地上爬起来，朝那座新盖的农舍跑了过去。
 sections:
   - id: oz-ch-24-s1
     text: |-
@@ -14,39 +14,39 @@ sections:
       “From the Land of Oz,” said Dorothy gravely. “And here is Toto, too. And oh, Aunt Em! I’m so glad to be at home again!”
     checkIn:
       id: oz-ch-24-s1-c1
-      stem: What was Aunt Em doing when she saw Dorothy?
+      stem: What did Dorothy say when Aunt Em asked where she had come from?
       options:
-        - Watering the cabbages
-        - Sweeping the house
-        - Feeding the chickens
-        - Reading a letter
-      correctIndex: 0
-      explanationZh: 原文说 Aunt Em “had just come out of the house to water the cabbages”，所以她在浇卷心菜。“喂鸡”“扫地”在本章都没有出现。
+        - That the cyclone had set her down in the next county
+        - That she had been asleep in the cyclone cellar
+        - That she came from the Land of Oz, and Toto with her
+        - That she had walked all the way across the prairie
+      correctIndex: 2
+      explanationZh: 她一本正经地答 "From the Land of Oz… And here is Toto, too"，接着才说出那句 "I'm so glad to be at home again!"。
 quiz:
   - id: oz-ch-24-q1
-    stem: Where did Dorothy say she came from?
+    stem: What was Aunt Em doing when Dorothy came running?
     options:
-      - From a big city
-      - From a farm next door
-      - From a school trip
-      - From the Land of Oz
-    correctIndex: 3
-    explanationZh: 多萝西明确回答 “From the Land of Oz”。其他选项只是常见干扰，原文并没有提到城市或学校。
-  - id: oz-ch-24-q2
-    stem: Who came back home together with Dorothy?
-    options:
-      - Toto
-      - The Scarecrow
-      - The Cowardly Lion
-      - The Tin Woodman
+      - She had come out to water the cabbages
+      - She was hanging the washing on the line
+      - She was calling Uncle Henry in to supper
+      - She was mending the roof of the new house
     correctIndex: 0
-    explanationZh: 多萝西说 “And here is Toto, too”，所以和她一起回来的是小狗 Toto。稻草人、铁皮人和胆小狮都没有跟她回到堪萨斯。
-  - id: oz-ch-24-q3
-    stem: How did Aunt Em feel when she saw Dorothy?
+    explanationZh: 全章头一句就写 "Aunt Em had just come out of the house to water the cabbages when she looked up and saw Dorothy running toward her"。
+  - id: oz-ch-24-q2
+    stem: What were the last words Dorothy said to her aunt?
     options:
-      - Angry and worried
-      - Bored and tired
-      - Happy and loving
-      - Afraid and nervous
-    correctIndex: 2
-    explanationZh: 婶婶喊 “My darling child!” 并亲吻多萝西的脸，表现出非常开心和充满爱意。“生气”“无聊”与原文的温馨场面相反。
+      - That she would never leave the farm again
+      - That she was so glad to be at home again
+      - That the Land of Oz was lovelier than Kansas
+      - That her shoes were lost out in the desert
+    correctIndex: 1
+    explanationZh: 她先报出自己是从哪儿回来的，又说托托也在，最后才喊出那一句 "And oh, Aunt Em! I'm so glad to be at home again!"。
+  - id: oz-ch-24-q3
+    stem: How did Aunt Em greet her?
+    options:
+      - She scolded her for staying away so long
+      - She asked her at once about the silver shoes
+      - She ran to fetch Uncle Henry from the barnyard
+      - She caught her up and covered her face with kisses
+    correctIndex: 3
+    explanationZh: 她先喊了一声 "My darling child!"，"folding the little girl in her arms and covering her face with kisses"，然后才问她究竟是从哪儿冒出来的。

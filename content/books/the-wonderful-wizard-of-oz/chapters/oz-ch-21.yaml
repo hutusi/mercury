@@ -3,7 +3,7 @@ id: oz-ch-21
 bookId: book-oz
 title: The Lion Becomes the King of Beasts
 titleZh: 狮子成为百兽之王
-summaryZh: 穿过泥泞的沼泽，旅行者们走进一片古老的大森林。森林里的野兽们正聚在一起商量一件大事，而这次集会，给了狮子一个证明自己的机会。
+summaryZh: 翻下瓷墙之后是一片烂泥沼泽，再往前，树木一棵比一棵高大苍老。第二天早上，林子深处传来低沉的吼声，像是许多野兽挤在一处。
 sections:
   - id: oz-ch-21-s1
     text: |-
@@ -28,14 +28,14 @@ sections:
       “Welcome, O King of Beasts! You have come in good time to fight our enemy and bring peace to all the animals of the forest once more.”
     checkIn:
       id: oz-ch-21-s1-c1
-      stem: How does the Lion feel about the big, old forest?
+      stem: What did the Lion say about the great old forest?
       options:
-        - He finds it gloomy and scary
-        - He finds it delightful and homelike
-        - He wants to leave as soon as possible
-        - He thinks the trees are too small
-      correctIndex: 1
-      explanationZh: 狮子说 "This forest is perfectly delightful"，还说愿意一辈子住在这里。稻草人觉得阴暗（gloomy），但狮子完全不同意。
+        - That it was gloomier than the fighting wood
+        - That the beasts in it must all have been eaten
+        - That the moss made the going too slippery
+        - That he should like to live there all his life
+      correctIndex: 3
+      explanationZh: 稻草人嫌它阴森，狮子却说 "This forest is perfectly delightful… I should like to live here all my life"——脚下的干树叶软软的，老树上的青苔又厚又绿。
   - id: oz-ch-21-s2
     text: |-
       “What is your trouble?” asked the Lion quietly.
@@ -69,57 +69,57 @@ sections:
       Then the beasts bowed down to the Lion as their King, and he promised to come back and rule over them as soon as Dorothy was safely on her way to Kansas.
     checkIn:
       id: oz-ch-21-s2-c1
-      stem: How does the Lion kill the great spider?
+      stem: What did the tiger say the forest's enemy was like?
       options:
-        - He jumps on its back and knocks its head off.
-        - He bites off all its long legs one by one.
-        - He waits for it to wake up and then fights it.
-        - He pushes a tree onto the monster.
+        - A great spider, with a body as big as an elephant
+        - A wolf as tall as the oak trees it hides among
+        - A bear with eight legs and the sting of a wasp
+        - A tiger twice the size of any in the forest
       correctIndex: 0
-      explanationZh: 狮子趁蜘蛛睡着时跳到它背上，一掌打掉了它的头（"knocked the spider's head from its body"），因为蜘蛛的脖子细得像黄蜂腰，这是关键弱点。
+      explanationZh: 老虎说林子里来了个 "most tremendous monster, like a great spider, with a body as big as an elephant and legs as long as a tree trunk"，八条腿一伸就把野兽拖进嘴里，像蜘蛛吃苍蝇一样。
 quiz:
   - id: oz-ch-21-q1
-    stem: Why did the animals of the forest gather together?
+    stem: Why had the beasts of the forest called a meeting?
     options:
-      - To welcome Dorothy and her friends
-      - To plan against a spider monster
-      - To choose a new king of the forest
-      - To find food for the winter
+      - To choose which of them should be their king
+      - To decide how to save themselves from an enemy
+      - To divide the forest between tigers and wolves
+      - To welcome the strangers who were coming
     correctIndex: 1
-    explanationZh: 老虎说他们正受到怪物的威胁，于是召集会议商量如何保护自己（"we had called a meeting to decide how to take care of ourselves"）。百兽聚集不是为了迎接多萝西，而是因为危险。
+    explanationZh: 老虎说 "we had called a meeting to decide how to take care of ourselves when you came among us"——那头怪物已经把林子里的狮子吃了个精光。
   - id: oz-ch-21-q2
-    stem: What promise does the Lion ask for before he fights the monster?
+    stem: What did the Lion ask for before he went to fight?
     options:
-      - The animals must give him food every day.
-      - The animals must help Dorothy get home.
-      - The animals must find another lion to help him.
-      - The animals must bow down to him and obey him as King.
+      - That the tigers come with him to the oak trees
+      - That they bring him food when the fight was done
+      - That they never hunt in his part of the wood again
+      - That they bow down and obey him as their King
     correctIndex: 3
-    explanationZh: 狮子问："If I put an end to your enemy, will you bow down to me and obey me as King of the Forest?" 百兽齐声答应。狮子关心的是成为百兽之王，而不是要食物或帮多萝西回家。
+    explanationZh: 他问 "If I put an end to your enemy, will you bow down to me and obey me as King of the Forest?"，老虎一口答应，全场野兽也齐声吼着应下了这桩交易。
   - id: oz-ch-21-q3
-    stem: Why does the Lion attack the spider while it is sleeping?
+    stem: Why did the Lion attack while the spider slept?
     options:
-      - Because the spider can only be hurt while asleep.
-      - Because the spider hunts only at night.
-      - Because it is easier to fight it asleep than awake.
-      - Because the spider asked not to be woken up.
+      - Because the spider's eyes could turn him to stone
+      - Because the beasts had begged him to be quick
+      - Because it is easier to fight one asleep than awake
+      - Because the spider only wakes up after dark
     correctIndex: 2
-    explanationZh: 原文说 "he knew it was easier to fight it asleep than awake"，狮子选择在蜘蛛沉睡时进攻。
+    explanationZh: 原文说 "as he knew it was easier to fight it asleep than awake, he gave a great spring and landed directly upon the monster's back"。
   - id: oz-ch-21-q4
-    stem: What gives the Lion the idea of how to attack the spider?
+    stem: What gave the Lion the hint of how to kill the spider?
     options:
-      - The spider's legs are as long as tree trunks.
-      - The spider's body is as big as an elephant.
-      - The spider's teeth are a foot long.
-      - The spider's neck is as slender as a wasp's waist.
-    correctIndex: 3
-    explanationZh: 狮子注意到蜘蛛的头和身体之间只有一根像黄蜂腰一样细的脖子（"a neck as slender as a wasp's waist"），这让他想到打掉蜘蛛的头。其他选项虽然也是蜘蛛的特征，但没有直接给他攻击的灵感。
-  - id: oz-ch-21-q5
-    stem: After killing the spider, what does the Lion tell the animals?
-    options:
-      - He will return to rule them after Dorothy is safely on her way home.
-      - He will stay and rule them forever.
-      - He wants them to find him a new home in the forest.
-      - He asks them to guide his friends out of the forest.
+      - Its neck was as slender as a wasp's waist
+      - Its eight legs were as long as tree trunks
+      - Its teeth were a foot long and very sharp
+      - Its body was covered with coarse black hair
     correctIndex: 0
-    explanationZh: 狮子答应等多萝西安全踏上回堪萨斯的旅途后，再回来统治百兽（"he promised to come back and rule over them as soon as Dorothy was safely on her way to Kansas"）。他此刻并不留下，因为还要继续陪伴多萝西。
+    explanationZh: 它的头与胖身子之间只连着 "a neck as slender as a wasp's waist"，正是这一点 "gave the Lion a hint of the best way to attack"——一掌下去，头就掉了。
+  - id: oz-ch-21-q5
+    stem: What did the Lion promise the beasts once the monster was dead?
+    options:
+      - To hunt with them every night until winter
+      - To send the Tin Woodman to guard the wood
+      - To bring the Wizard of Oz to visit them
+      - To come back and rule them once Dorothy was safe
+    correctIndex: 3
+    explanationZh: 百兽拜他为王，他则 "promised to come back and rule over them as soon as Dorothy was safely on her way to Kansas"。

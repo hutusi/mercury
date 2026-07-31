@@ -3,7 +3,7 @@ id: oz-ch-01
 bookId: book-oz
 title: The Cyclone
 titleZh: 龙卷风
-summaryZh: 多萝西和小狗托托住在灰色的堪萨斯大草原上。一场龙卷风突然袭来，把她连同整座小屋一起卷上了天空。
+summaryZh: 堪萨斯大草原上，什么都是灰的——除了多萝西和她那只小黑狗托托。这天亨利叔叔抬头望了望比平常更灰的天空，远处传来一声低低的风啸。
 sections:
   - id: oz-ch-01-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       Uncle Henry never laughed. He worked hard from morning till night and did not know what joy was. He was gray also, from his long beard to his rough boots, and he looked stern and solemn, and rarely spoke.
     checkIn:
       id: oz-ch-01-s1-c1
-      stem: Why did everything around Dorothy's home look gray?
+      stem: What had the Kansas sun and wind done to Aunt Em?
       options:
-        - The sun had burned and faded the land, the grass, and the house
-        - The family had painted the house and fences gray on purpose
-        - Constant rain kept the sky and fields dark
-        - Dust storms covered everything in gray ash
-      correctIndex: 0
-      explanationZh: 文中反复出现 gray：烈日把耕地晒成灰色、草叶尖被晒焦，房子的油漆被太阳晒起泡又被雨水冲掉，连婶婶和叔叔也变得灰白憔悴——一切都是烈日和艰苦生活造成的。
+        - They had made her the best cook on the prairie
+        - They had taken the sparkle from her eyes and left her gray
+        - They had driven her indoors for most of the day
+        - They had turned her hair as white as the dry grass
+      correctIndex: 1
+      explanationZh: 她初来时还是个年轻漂亮的媳妇，后来 "They had taken the sparkle from her eyes and left them a sober gray"，脸颊和嘴唇的红色也褪尽了，人瘦得干瘪，再也不笑。头发的颜色书里从未提过。
   - id: oz-ch-01-s2
     text: |-
       It was Toto that made Dorothy laugh, and saved her from growing as gray as her other surroundings. Toto was not gray; he was a little black dog, with long silky hair and small black eyes that twinkled merrily on either side of his funny, wee nose. Toto played all day long, and Dorothy played with him, and loved him dearly.
@@ -49,14 +49,14 @@ sections:
       The north and south winds met where the house stood, and made it the exact center of the cyclone. In the middle of a cyclone the air is generally still, but the great pressure of the wind on every side of the house raised it up higher and higher, until it was at the very top of the cyclone; and there it remained and was carried miles and miles away as easily as you could carry a feather.
     checkIn:
       id: oz-ch-01-s2-c1
-      stem: Why did the house rise into the air instead of being smashed?
+      stem: Why did the house rise instead of being crushed?
       options:
-        - The wind blew the roof off first, making the house light enough to fly
-        - It stood at the exact center of the cyclone, where the winds pressed it upward
-        - The Witch of the North lifted it with magic
-        - The cyclone cellar pushed it up from below
-      correctIndex: 1
-      explanationZh: 书中解释：南北两股风正好在房子所在的位置相遇，使它处于气旋的正中心。气旋中心的空气通常是静止的，但四周强大的风压把房子越抬越高，最后"像羽毛一样"被轻轻带走。
+        - The roof blew off, and the walls flew up after it
+        - Aunt Em had left the trap door wide open below
+        - It stood at the very centre of the cyclone's winds
+        - It was light enough for one gust to carry away
+      correctIndex: 2
+      explanationZh: 南北两股风正好在房子这里相遇，"made it the exact center of the cyclone"，四面的风压把它一层层托高，最后 "carried miles and miles away as easily as you could carry a feather"。屋顶始终好好地在上面。
   - id: oz-ch-01-s3
     text: |-
       It was very dark, and the wind howled horribly around her, but Dorothy found she was riding quite easily. After the first few whirls around, and one other time when the house tipped badly, she felt as if she were being rocked gently, like a baby in a cradle.
@@ -70,57 +70,57 @@ sections:
       In spite of the swaying of the house and the wailing of the wind, Dorothy soon closed her eyes and fell fast asleep.
     checkIn:
       id: oz-ch-01-s3-c1
-      stem: How did Dorothy spend the last hours of the flight?
+      stem: What kept Toto from falling right through the open trap door?
       options:
-        - She calmly lay down on her bed and fell asleep
-        - She kept trying to open the trap door to escape
-        - She cried loudly with Toto beside her
-        - She watched the storm through the window all night
+        - The strong pressure of the air held him up
+        - Dorothy caught his tail as he went over the edge
+        - He landed on the ladder and climbed back up
+        - The door swung shut before he could drop through
       correctIndex: 0
-      explanationZh: 几个小时过去后，多萝西克服了恐惧，决定"平静地等着，看未来会怎样"。她爬到床上躺下，托托跟过来卧在她身边，尽管房子摇晃、风声呼啸，她还是睡着了。
+      explanationZh: 多萝西起先以为小狗没了，可 "the strong pressure of the air was keeping him up"，洞口还露着一只耳朵。她爬过去揪住那只耳朵把他拖回屋里，随后把活板门关上了。
 quiz:
   - id: oz-ch-01-q1
-    stem: What was the cyclone cellar for?
+    stem: What was the cyclone cellar, and how did the family get down to it?
     options:
-      - Storing vegetables and milk in hot weather
-      - Keeping Toto safe while the family worked
-      - Sheltering the family from whirlwinds
-      - Collecting rainwater under the house
-    correctIndex: 2
-    explanationZh: 开篇写道：地板正中有一扇活板门，下面的小地洞叫 cyclone cellar（旋风地窖），是在"威力大到足以压垮沿途任何建筑"的大旋风袭来时全家避难的地方。
-  - id: oz-ch-01-q2
-    stem: Who kept Dorothy from becoming as gray as everything around her?
-    options:
-      - Toto, her little black dog
-      - Aunt Em, with her stories
-      - Uncle Henry, who joked at supper
-      - The neighbors' children
-    correctIndex: 0
-    explanationZh: 文中说 "It was Toto that made Dorothy laugh, and saved her from growing as gray as her other surroundings."——托托浑身黑毛、眼睛亮晶晶，整天陪多萝西玩耍，是灰色世界里唯一的亮色。
-  - id: oz-ch-01-q3
-    stem: When Uncle Henry saw the storm coming, he ______.
-    options:
-      - climbed into the cellar with Aunt Em
-      - ran to the sheds to look after the cows and horses
-      - carried Dorothy into the house
-      - stood in the doorway watching the sky
+      - A shed behind the house, reached across the yard
+      - A small hole in the ground under the trap door
+      - A room beneath the barn, reached by a tunnel
+      - A cupboard by the stove where the dishes went
     correctIndex: 1
-    explanationZh: 亨利叔叔对婶婶喊了一声 "There's a cyclone coming, Em. I'll go look after the stock."，随即跑向关着牛马的棚子。先下地窖的是爱姆婶婶，多萝西因为去抓托托而没来得及下去。
+    explanationZh: 屋里既没有阁楼也没有地窖，"except a small hole dug in the ground, called a cyclone cellar"，人从地板中央的活板门顺梯子下去。碗柜确实有一个，就在同一间屋子里放盘子。
+  - id: oz-ch-01-q2
+    stem: What does the story say Toto saved Dorothy from?
+    options:
+      - From growing as gray as everything around her
+      - From the long walk to school across the prairie
+      - From the loneliness of a house with no windows
+      - From Aunt Em's anger whenever she laughed aloud
+    correctIndex: 0
+    explanationZh: 原文写 "It was Toto that made Dorothy laugh, and saved her from growing as gray as her other surroundings"。爱姆婶婶听见笑声会吓一跳、按住心口，却从没为此生过气。
+  - id: oz-ch-01-q3
+    stem: What did Uncle Henry do the moment he was sure a cyclone was coming?
+    options:
+      - He climbed down the ladder ahead of Aunt Em
+      - He ran to the sheds to look after the stock
+      - He carried Dorothy and Toto to the cellar
+      - He stood in the doorway watching the grass bow
+    correctIndex: 1
+    explanationZh: 他站起身喊了一句 "There's a cyclone coming, Em. I'll go look after the stock."，随即奔向关着牛马的棚子。先下地窖的是爱姆婶婶。
   - id: oz-ch-01-q4
-    stem: Why was Dorothy still inside the house when it flew away?
+    stem: Why was Dorothy still in the room when the house went up?
     options:
-      - She wanted to save her basket of bread
-      - The trap door was stuck shut
-      - She did not believe the cyclone was dangerous
-      - She was catching Toto, who had hidden under the bed
-    correctIndex: 3
-    explanationZh: 婶婶让她快跑进地窖时，托托从她怀里跳出来躲到了床下。等她终于抓住托托走到房间中间，狂风让房子剧烈摇晃，她一下子坐到地板上——紧接着房子就升上了天空。
+      - She had gone back for her bed and her basket
+      - She could not lift the heavy trap door alone
+      - She stopped to catch Toto, who hid under the bed
+      - She did not hear her aunt calling from the cellar
+    correctIndex: 2
+    explanationZh: 婶婶喊她快下地窖，托托却从她怀里跳出来钻进床底。她转身去抓狗，走到屋子当中时房子猛地一震，她跌坐在地板上——房子就在这时升了起来。
   - id: oz-ch-01-q5
-    stem: What happened when Toto fell through the open trap door?
+    stem: How did Dorothy pass the last hours of the flight?
     options:
-      - He landed safely in the cyclone cellar below
-      - Dorothy jumped down after him
-      - He was lost in the storm until the house landed
-      - Air pressure held him up for Dorothy to catch
+      - She kept watch at the window until daylight came
+      - She tried again and again to open the trap door
+      - She sat on the floor holding Toto and crying
+      - She crawled to her bed and fell fast asleep
     correctIndex: 3
-    explanationZh: 托托掉进敞开的活板门时，强大的气压把他托住，一只耳朵还露在洞口。多萝西爬过去抓住他的耳朵把他拖了回来，然后关上活板门，防止再出意外。
+    explanationZh: 几个钟头过去，她不再担心房子落下时会摔碎，决定 "wait calmly and see what the future would bring"，于是爬过摇晃的地板躺上床，托托挨着她卧下，两个都睡着了。

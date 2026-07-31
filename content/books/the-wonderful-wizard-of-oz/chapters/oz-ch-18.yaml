@@ -3,7 +3,7 @@ id: oz-ch-18
 bookId: book-oz
 title: Away to the South
 titleZh: 前往南方
-summaryZh: 奥兹乘气球飞走后，多萝西的归家之路似乎又断了。如今统治绿宝石城的稻草人召集伙伴们一起想办法，一个个主意被提出又被否决，最终他们敲定了新的目的地——南方。
+summaryZh: 气球飞走了，回家的路好像又断了。第二天早上四个人在王座厅碰头——如今坐在那把大王座上的，是从前插在玉米地里的稻草人。
 sections:
   - id: oz-ch-18-s1
     text: |-
@@ -32,14 +32,14 @@ sections:
       “Well, then, what can be done?” inquired the Woodman.
     checkIn:
       id: oz-ch-18-s1-c1
-      stem: Why does the Tin Woodman ask Dorothy to wipe away his tears while he cries for Oz?
+      stem: What did the Tin Woodman do as soon as he had finished weeping for Oz?
       options:
-        - Because he wants to show off his new heart.
-        - Because Dorothy needs something to keep her hands busy.
-        - Because the tears will hurt his metal face.
-        - Because he is afraid the tears will make him rust.
-      correctIndex: 3
-      explanationZh: 铁皮人说 "if you will kindly wipe away my tears, so that I shall not rust"，他哭完后还特意用油罐给自己上油以防生锈。"炫耀新的心"看似合理，但他需要擦泪的直接原因是防锈，而不是炫耀。
+        - He asked Dorothy to make him another heart
+        - He put the towel away in the throne room cupboard
+        - He oiled himself all over with his jewelled can
+        - He went out to look for the balloon in the sky
+      correctIndex: 2
+      explanationZh: 他先请多萝西替他擦泪 "so that I shall not rust"，哭完之后 "oiled himself thoroughly with his jeweled oil-can, to guard against mishap"——那只油罐正是温基人送的。
   - id: oz-ch-18-s2
     text: |-
       The Scarecrow decided to think, and he thought so hard that the pins and needles began to stick out of his brains. Finally he said:
@@ -83,14 +83,14 @@ sections:
       “The Witch of the South. She is the most powerful of all the Witches, and rules over the Quadlings. Besides, her castle stands on the edge of the desert, so she may know a way to cross it.”
     checkIn:
       id: oz-ch-18-s2-c1
-      stem: Why can't the Winged Monkeys carry Dorothy to Kansas?
+      stem: Why could the Winged Monkeys not take Dorothy to Kansas?
       options:
-        - They are afraid of the wild beasts on the way.
-        - They have already used up all their magic.
-        - They do not know the way to Kansas.
-        - They only belong to this country and cannot leave it.
-      correctIndex: 3
-      explanationZh: 猴王明确说 "We belong to this country alone, and cannot leave it"，并指出从来没有飞猴去过堪萨斯。文中没有提到他们害怕野兽；"不知道路"也不是原因——他们根本无法离开这片土地。
+        - The Golden Cap's last wish had already been used
+        - They belong to this country alone and cannot leave it
+        - The desert wind would tear their wings to pieces
+        - They had promised Glinda never to cross the desert
+      correctIndex: 1
+      explanationZh: 猴王摇头说 "We belong to this country alone, and cannot leave it. There has never been a Winged Monkey in Kansas yet"。这是第二次召唤，金帽的机会就这么白白用掉一次。
   - id: oz-ch-18-s3
     text: |-
       “Glinda is a Good Witch, isn’t she?” asked the child.
@@ -124,66 +124,66 @@ sections:
       “We shall go tomorrow morning,” returned the Scarecrow. “So now let us all get ready, for it will be a long journey.”
     checkIn:
       id: oz-ch-18-s3-c1
-      stem: What danger did the soldier warn Dorothy about on the road to the South?
+      stem: What did the soldier say about the road that runs south?
       options:
-        - Only wild beasts in the woods
-        - Wild beasts and queer, rude men
-        - A wide river that no one can cross
-        - A dark forest full of magic spells
-      correctIndex: 1
-      explanationZh: 士兵说路上有 "wild beasts in the woods, and a race of queer men who do not like strangers to cross their country"，即野兽和不喜欢陌生人的怪人。"只有野兽"漏掉了怪人这一威胁，因此不完整。
+        - It is straight, but full of dangers to travellers
+        - It is so overgrown that no one can follow it
+        - It ends at the very edge of the deadly desert
+        - It is watched night and day by the Quadlings
+      correctIndex: 0
+      explanationZh: 他说 "The road is straight to the South, but it is said to be full of dangers to travelers"——林子里有野兽，还有一族不喜欢外人穿过自己国土的怪人；南方的桂特林人也因此从不来翡翠城。
 quiz:
   - id: oz-ch-18-q1
-    stem: What did the people of the Emerald City say they were proud of about the Scarecrow as ruler?
+    stem: What did the people of the city say they were proud of?
     options:
-      - He was the cleverest man in the world.
-      - He was the bravest ruler they had ever known.
-      - No other city was ruled by a stuffed man.
-      - He had the most beautiful palace in the world.
-    correctIndex: 2
-    explanationZh: 人们说 "there is not another city in all the world that is ruled by a stuffed man"，觉得被一个稻草人统治很独特。"最勇敢的统治者"似乎合理，但文中人们引以为豪的是"稻草人"统治者这件事本身，而非勇敢。
+      - That their ruler had once been a great Wizard
+      - That their ruler had killed the Wicked Witch
+      - That their ruler could think without a head
+      - That no other city is ruled by a stuffed man
+    correctIndex: 3
+    explanationZh: 稻草人不是巫师，人们却很得意——"there is not another city in all the world that is ruled by a stuffed man"。就他们所知，这话一点不错。
   - id: oz-ch-18-q2
-    stem: What does the Scarecrow use to think so hard that it shows on the outside?
+    stem: What happened when the Scarecrow thought very hard?
     options:
-      - His heart beats faster and faster.
-      - His eyes flash brightly.
-      - His mouth opens and shuts rapidly.
-      - Pins and needles stick out of his brains.
-    correctIndex: 3
-    explanationZh: 文中说 "he thought so hard that the pins and needles began to stick out of his brains"，因为他的大脑里塞满了钉子和针。后来又一次想得太厉害，头都鼓了起来。
-  - id: oz-ch-18-q3
-    stem: Who first suggests that Glinda might be able to help Dorothy?
-    options:
-      - The Scarecrow
-      - The soldier
-      - The Monkey King
-      - The Tin Woodman
-    correctIndex: 1
-    explanationZh: 当多萝西问有没有人能帮她时，士兵建议 "Glinda might"，随后介绍她是南方女巫。稻草人虽然之前也在苦苦思索，但提出格林达这个名字的是士兵。
-  - id: oz-ch-18-q4
-    stem: Why does the Lion want to go with Dorothy to the South?
-    options:
-      - He wants to see Glinda's beautiful castle.
-      - He is bored with the Emerald City and wants new adventures.
-      - He is tired of city life and wants to protect Dorothy.
-      - He hopes to become even braver on the journey.
+      - His painted eyes shut tight until he was done
+      - He had to sit in the throne to keep his balance
+      - The pins and needles stuck out of his brains
+      - His hat slipped off and rolled across the floor
     correctIndex: 2
-    explanationZh: 狮子说他 "tired of your city and long for the woods"，同时强调 "Dorothy will need someone to protect her"，既厌倦城市生活又想保护多萝西。"厌倦城市想找新冒险"只说了一半，漏了保护多萝西这层原因。
-  - id: oz-ch-18-q5
-    stem: Why does the Scarecrow decide to join Dorothy on the journey?
+    explanationZh: 头一回 "he thought so hard that the pins and needles began to stick out of his brains"；第二回想得更凶，脑袋鼓得多萝西怕它会炸开。
+  - id: oz-ch-18-q3
+    stem: Who was Glinda, according to the soldier?
     options:
-      - Because he owes his good luck to Dorothy and will never leave her.
-      - Because he wants to see the Land of the South.
-      - Because the people of the city told him to go.
-      - Because he wants to ask Glinda for better brains.
+      - The Good Witch who once ruled the Winkies
+      - The Witch of the South, most powerful of all
+      - The sister of the Witch Dorothy had melted
+      - The woman who had taught Oz all his tricks
+    correctIndex: 1
+    explanationZh: 士兵说 "The Witch of the South. She is the most powerful of all the Witches, and rules over the Quadlings"，还说她的城堡就在沙漠边上，也许知道横越沙漠的办法。
+  - id: oz-ch-18-q4
+    stem: Why did the soldier come into the Throne Room so timidly?
+    options:
+      - While Oz lived he was never let past the door
+      - He had lost the key to the great front gate
+      - He was afraid of the Lion sitting by the throne
+      - He had never spoken to a stuffed man before
     correctIndex: 0
-    explanationZh: 稻草人说 "my good luck is all due to her"，因为多萝西把他从玉米田的杆子上放下来并带到绿宝石城，他绝不离开她。"向格林达要更好的脑子"有迷惑性——他确实有了脑子，但他出行的原因是感恩而非继续求助。
-  - id: oz-ch-18-q6
-    stem: When do the travelers plan to start their journey to the South?
+    explanationZh: 原文说 "he entered the Throne Room timidly, for while Oz was alive he never was allowed to come farther than the door"。
+  - id: oz-ch-18-q5
+    stem: Why did the Scarecrow decide to go south with Dorothy?
     options:
-      - That same night.
-      - After three days of preparation.
-      - As soon as the Winged Monkeys return.
-      - The next morning.
+      - He wanted Glinda to give him better brains
+      - The people of the city had asked him to escort her
+      - He was tired of sitting still upon the great throne
+      - He owed his good luck to her, and would not leave her
     correctIndex: 3
-    explanationZh: 稻草人说 "We shall go tomorrow morning"，并让大家做好准备，因为旅途很长。"等飞猴回来"有迷惑性——飞猴已经飞走不会再来，出发时间与他们无关。
+    explanationZh: 他说 "If it wasn't for Dorothy I should never have had brains… my good luck is all due to her, and I shall never leave her until she starts back to Kansas for good and all"。
+  - id: oz-ch-18-q6
+    stem: What reason did the Lion give for going?
+    options:
+      - That Glinda had once been kind to his old father
+      - That he was tired of the city and she needed guarding
+      - That he wanted to test his new courage on the road
+      - That the Woodman's axe would not be enough alone
+    correctIndex: 1
+    explanationZh: 他说 "I am tired of your city and long for the woods and the country again. I am really a wild beast, you know. Besides, Dorothy will need someone to protect her"。

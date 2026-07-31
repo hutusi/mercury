@@ -3,7 +3,7 @@ id: oz-ch-17
 bookId: book-oz
 title: How the Balloon Was Launched
 titleZh: 气球是怎样升空的
-summaryZh: 奥兹终于想出了送多萝西回家的办法：造一只大气球飞越沙漠，他自己也打算一同离开。升空的那一刻却出了岔子——这个计划的结局，和所有人预想的都不一样。
+summaryZh: 一连三天，多萝西没等来奥兹的任何口信。到第四天，他终于派人来请她——说自己想到了一个法子，可以把她带出这个国家。
 sections:
   - id: oz-ch-17-s1
     text: |-
@@ -32,14 +32,14 @@ sections:
       “True,” answered Oz. “But there is another way to make it float, which is to fill it with hot air. Hot air isn’t as good as gas, for if the air should get cold the balloon would come down in the desert, and we should be lost.”
     checkIn:
       id: oz-ch-17-s1-c1
-      stem: Why can't Oz use gas to fill the balloon?
+      stem: Why did Oz have to fill the balloon with hot air?
       options:
-        - There is no gas in this country.
-        - He doesn't know how to make gas.
-        - Gas is too expensive for him.
-        - Gas would make the balloon too heavy.
-      correctIndex: 0
-      explanationZh: 原文说 in all this country there is no gas to fill the balloon with，所以只能改用热空气。"不会制造"不是原因——他缺的不是技术而是气体本身。
+        - Because silk cannot hold gas for very long
+        - Because hot air lifts a balloon much faster
+        - Because a fire was easy for the Woodman to build
+        - Because there was no gas anywhere in this country
+      correctIndex: 3
+      explanationZh: 他说气球用丝绸做、内壁涂胶就能存住气，可 "in all this country there is no gas to fill the balloon with"。热空气终究不如煤气可靠——一旦冷下来，气球就会落进沙漠。
   - id: oz-ch-17-s2
     text: |-
       “We!” exclaimed the girl. “Are you going with me?”
@@ -63,14 +63,14 @@ sections:
       Then Oz got into the basket and said to all the people in a loud voice:
     checkIn:
       id: oz-ch-17-s2-c1
-      stem: Why does Oz want to leave the Emerald City with Dorothy?
+      stem: Why did Oz want to leave the Emerald City himself?
       options:
-        - He misses Kansas very much.
-        - He wants to join a circus right away.
-        - He is tired of being a humbug.
-        - He is afraid of the Wicked Witch.
+        - He wanted to see Kansas before he grew any older
+        - He was afraid the Winged Monkeys would come back
+        - He was tired of being a humbug shut up indoors
+        - He hoped to find a brother Wizard in the clouds
       correctIndex: 2
-      explanationZh: Oz 说 I am tired of being such a humbug——他一直假装巫师，担心一旦走出宫殿就会被人识破，所以想离开。加入马戏团是他回 Kansas 之后的打算，不是离开的直接原因。
+      explanationZh: 他说 "I am tired of being such a humbug"——只要一走出宫门，百姓就会看穿他不是巫师，所以他只能整天关在屋里。他还说，倒不如回堪萨斯再去马戏团。
   - id: oz-ch-17-s3
     text: |-
       “I am now going away to make a visit. While I am gone the Scarecrow will rule over you. I command you to obey him as you would me.”
@@ -96,66 +96,66 @@ sections:
       Still, for many days they grieved over the loss of the Wonderful Wizard, and would not be comforted.
     checkIn:
       id: oz-ch-17-s3-c1
-      stem: Why can't Dorothy get into the basket in time?
+      stem: Why did Dorothy miss the balloon?
       options:
-        - The crowd blocks her way.
-        - Oz leaves without warning her.
-        - The rope breaks before she is called.
-        - She can't find Toto and has to chase him.
+        - The crowd pressed in and she could not get through
+        - Oz cut the rope before she had reached the basket
+        - The Scarecrow called her back to say good-bye
+        - She had gone to look for Toto, who chased a kitten
       correctIndex: 3
-      explanationZh: Toto 跑进人群去追一只小猫，Dorothy 花时间才找到他，等她跑回来时绳子已断，气球升空。"绳子先断她才被叫"顺序反了——绳子是在她快到篮子时才断的。
+      explanationZh: 托托钻进人群去追一只小猫，她好不容易才把他抱回来。原文写 "She was within a few steps of it… when, crack! went the ropes"——绳子是在她快够着篮子时自己断的。
 quiz:
   - id: oz-ch-17-q1
-    stem: During the three days before Oz calls Dorothy, how do her friends feel?
+    stem: How were the Scarecrow, the Woodman and the Lion during those three days?
     options:
-      - Happy and contented
-      - Sad and worried
-      - Angry at Oz
-      - Eager to leave
+      - Quite happy and contented with their gifts
+      - Anxious to set out for their own countries
+      - Angry that Oz had cheated them with tricks
+      - Sad because Dorothy was still far from home
     correctIndex: 0
-    explanationZh: 原文明确说 her friends were all quite happy and contented——稻草人有了想法，铁皮人觉得心更善良，狮子什么都不怕。只有 Dorothy 仍然难过，想回 Kansas。
+    explanationZh: 稻草人满脑子妙想却不肯说，铁皮人觉得新心比从前那颗更善良，狮子声称天下无所畏惧——"each of the little party was satisfied except Dorothy"。
   - id: oz-ch-17-q2
-    stem: How does Oz say he first came to this country?
+    stem: How did Oz say he had first come to this country?
     options:
-      - By a cyclone
-      - On foot
-      - By a ship
-      - By a balloon
-    correctIndex: 3
-    explanationZh: Oz 说 when I came to this country it was in a balloon，并由此认为气球也能带 Dorothy 飞越沙漠。乘旋风而来的是 Dorothy，不是 Oz。
-  - id: oz-ch-17-q3
-    stem: What does Oz use to make the balloon airtight?
-    options:
-      - A layer of green paint
-      - A coat of thin glue
-      - Wax from the Palace
-      - Oil from the Tin Woodman
+      - Blown across the desert by a cyclone
+      - Carried far away in a balloon
+      - On foot, over the sandy waste
+      - In a wagon, with a circus company
     correctIndex: 1
-    explanationZh: Oz painted it on the inside with a coat of thin glue, to make it airtight，涂胶水是为了防止漏气。绿漆只是气球外观的颜色，不是密封手段。
+    explanationZh: 他说 "when I came to this country it was in a balloon"，而多萝西是被旋风带来的——两人都是从空中来的，所以他想到还是走空路。
+  - id: oz-ch-17-q3
+    stem: What colours was the balloon made of?
+    options:
+      - Plain white silk from the Palace store
+      - Yellow, to match the brick road outside
+      - Silver, like the shoes Dorothy wore
+      - Light green, dark green and emerald green
+    correctIndex: 3
+    explanationZh: 奥兹一时兴起，要让气球配上满城的颜色——先一条浅绿，再一条深绿，再一条翠绿。缝了三天，才缝成一只二十多英尺长的大袋子。
   - id: oz-ch-17-q4
-    stem: What keeps the balloon from flying away before Oz is ready?
+    stem: What did Oz tell his people he was going to do?
     options:
-      - A wooden pole
-      - A chain
-      - A rope
-      - A wall
+      - Fetch a new Wizard to rule in his place
+      - Search the desert for a road to Kansas
+      - Visit a brother Wizard who lived in the clouds
+      - Bring back gas enough to fill the balloon
     correctIndex: 2
-    explanationZh: 原文说 the balloon was tugging hard at the rope that held it to the ground，正是这根绳子把气球固定住，直到它最终断裂。
+    explanationZh: 他放出话去，说要 "make a visit to a great brother Wizard who lived in the clouds"。消息一传开，全城的人都赶来看这桩稀罕事。
   - id: oz-ch-17-q5
-    stem: What does Oz tell the people about the Scarecrow before leaving?
+    stem: What did Oz say about the Scarecrow as he stood in the basket?
     options:
-      - He will guard the Palace
-      - He should go to Kansas too
-      - He will rule over them
-      - He will build a new city
-    correctIndex: 2
-    explanationZh: Oz 当众宣布 While I am gone the Scarecrow will rule over you，并命令大家像服从他一样服从稻草人。"建新城"文中未提，原文说的是他已建了 Emerald City。
-  - id: oz-ch-17-q6
-    stem: What is Toto doing when Dorothy can't find him?
-    options:
-      - Chasing a kitten in the crowd
-      - Sleeping under the balloon
-      - Barking at the Lion
-      - Running toward the Palace
+      - That the Scarecrow would rule in his place
+      - That the Scarecrow should follow him by road
+      - That the Scarecrow had the wisest head in Oz
+      - That the Scarecrow must guard the Golden Cap
     correctIndex: 0
-    explanationZh: Toto had run into the crowd to bark at a kitten，Dorothy 找他耽误了时间，导致她没赶上篮子。"冲狮子叫"文中没有，狮子在场并未引起 Toto 反应。
+    explanationZh: 他当众宣布 "While I am gone the Scarecrow will rule over you. I command you to obey him as you would me"——话音刚落，绳子就断了。
+  - id: oz-ch-17-q6
+    stem: What did the people of the city say after the Wizard had gone?
+    options:
+      - That the Scarecrow should be sent after him
+      - That Oz had always been their friend
+      - That the balloon would surely bring him back
+      - That the green spectacles could now come off
+    correctIndex: 1
+    explanationZh: 他们互相说 "Oz was always our friend. When he was here he built for us this beautiful Emerald City, and now he is gone he has left the Wise Scarecrow to rule over us"，可还是难过了好些天。

@@ -3,7 +3,7 @@ id: oz-ch-06
 bookId: book-oz
 title: The Cowardly Lion
 titleZh: 胆小的狮子
-summaryZh: 密林深处突然跳出一头猛狮，向队伍发起攻击。一场交锋过后，这头狮子却让所有人大吃一惊，队伍里又添了一位意想不到的成员。
+summaryZh: 林子越走越暗，树丛里不时传出低沉的吼声。忽然，一头大得像小马的狮子蹿上黄砖路，一巴掌就把稻草人打得团团转。
 sections:
   - id: oz-ch-06-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       “Don’t you dare to bite Toto! You ought to be ashamed of yourself, a big beast like you, to bite a poor little dog!”
     checkIn:
       id: oz-ch-06-s1-c1
-      stem: What did Dorothy do when the Lion opened its mouth to bite Toto?
+      stem: What did the Tin Woodman say would keep Dorothy safe in the forest?
       options:
-        - She ran away into the woods.
-        - She called for the Tin Woodman's help.
-        - She rushed forward and slapped the Lion's nose.
-        - She picked up Toto and held him high.
-      correctIndex: 2
-      explanationZh: 原文写道 Dorothy "rushed forward and slapped the Lion upon his nose as hard as she could"，因为怕 Toto 被咬。逃进树林或喊铁皮人帮忙都是退缩的做法，不符合她当时的勇敢举动。
+        - The axe he carried over his shoulder
+        - The Good Witch's kiss on her forehead
+        - The silver shoes she wore on her feet
+        - The growls that kept wild beasts away
+      correctIndex: 1
+      explanationZh: 他一样样数过来：自己有油罐，稻草人伤不着，"while you bear upon your forehead the mark of the Good Witch's kiss, and that will protect you from harm"。唯独托托没有护身之物，只能由大家照看。
   - id: oz-ch-06-s2
     text: |-
       “I didn’t bite him,” said the Lion, as he rubbed his nose with his paw where Dorothy had hit it.
@@ -69,14 +69,14 @@ sections:
       “But that isn’t right. The King of Beasts shouldn’t be a coward,” said the Scarecrow.
     checkIn:
       id: oz-ch-06-s2-c1
-      stem: How does the Lion react when Dorothy calls him a coward?
+      stem: What did the Lion say happens whenever he meets a man?
       options:
-        - He gets angry and roars at her
-        - He denies it and walks away
-        - He laughs and thinks it is a joke
-        - He hangs his head and admits it
+        - He hides in the trees until the man walks past
+        - He waits for the man to speak to him first
+        - He fights the man, and has never yet been beaten
+        - He is badly scared, but roars, and the man runs
       correctIndex: 3
-      explanationZh: 狮子低头承认 "I know it … I've always known it"，说明他并不否认。发怒吼叫或当成玩笑都不符合他的羞愧态度，而"矢口否认走开"更是与原文完全相反。
+      explanationZh: 他自己坦白 "Whenever I've met a man I've been awfully scared; but I just roared at him, and he has always run away as fast as he could go"。大象、老虎和熊要是真敢动手，他说自己一定先跑。
   - id: oz-ch-06-s3
     text: |-
       “I know it,” returned the Lion, wiping a tear from his eye with the tip of his tail. “It is my great sorrow, and makes my life very unhappy. But whenever there is danger, my heart begins to beat fast.”
@@ -124,57 +124,57 @@ sections:
       “You people with hearts,” he said, “have something to guide you, and need never do wrong; but I have no heart, and so I must be very careful. When Oz gives me a heart of course I needn’t mind so much.”
     checkIn:
       id: oz-ch-06-s3-c1
-      stem: Why could the Tin Woodman not open his mouth after stepping on a beetle?
+      stem: Why did the Tin Woodman's jaws rust shut?
       options:
-        - A branch hit him in the face.
-        - His jaws were rusted shut by tears.
-        - The Lion had scratched his jaw.
-        - He swallowed a piece of metal.
+        - The Lion's claws had bent the hinges out of shape
+        - He wept over the beetle, and the tears ran into them
+        - He had been caught out in the rain a second time
+        - Dorothy had forgotten to oil him that morning
       correctIndex: 1
-      explanationZh: 铁皮人因踩死甲虫而伤心流泪，泪水流到下巴铰链上生了锈，嘴就张不开了。狮子的爪子确实抓过他，但那是之前的事，与这一段无关。
+      explanationZh: 他一脚踩死了路上的甲虫，伤心得掉下几滴泪，"These tears ran slowly down his face and over the hinges of his jaw, and there they rusted"。稻草人从篮子里抓出油罐，给他上了油才又能开口。
 quiz:
   - id: oz-ch-06-q1
-    stem: Why could the Lion's claws make no impression on the Tin Woodman?
+    stem: What did the Lion learn about the Scarecrow after knocking him over?
     options:
-      - The Woodman was made of tin.
-      - The Woodman wore heavy armor.
-      - The Lion's claws were too blunt.
-      - The Scarecrow blocked the blow.
+      - That he was stuffed, which is why he spun so easily
+      - That he was made of tin, like the other traveller
+      - That he felt no fear of lions at all
+      - That he had been standing in a cornfield
     correctIndex: 0
-    explanationZh: 铁皮人全身是铁皮做的，狮子的利爪抓上去只打滑，还让他脊背发凉。文中并没有什么沉重盔甲——挡住利爪的就是他的锡皮身体。
+    explanationZh: 听说稻草人是稻草填的，狮子才恍然大悟 "That's why he went over so easily. It astonished me to see him whirl around so"。铁皮的那一位则抓得他爪子发凉。
   - id: oz-ch-06-q2
-    stem: Why does Dorothy say the Lion should feel ashamed?
+    stem: Why did Dorothy tell the Lion he ought to be ashamed of himself?
     options:
-      - He ran away from a small dog.
-      - He could not roar loudly enough.
-      - He tried to bite a poor little dog.
-      - He broke the yellow brick road.
-    correctIndex: 2
-    explanationZh: 多萝西斥责狮子作为如此大的猛兽竟想咬 Toto 这样的小狗，应感到羞耻。"从小狗身边逃跑"说的是逃避，但原文的指责重点在他张嘴要咬 Toto。
+      - Because he had frightened the birds out of the wood
+      - Because so big a beast had tried to bite a little dog
+      - Because he had knocked the Tin Woodman into the road
+      - Because he had roared before anyone had spoken to him
+    correctIndex: 1
+    explanationZh: 她拍了狮子的鼻子，喊道 "You ought to be ashamed of yourself, a big beast like you, to bite a poor little dog!"。后来狮子自己也说，只有胆小鬼才会想咬这么小的东西。
   - id: oz-ch-06-q3
-    stem: According to the Lion, what usually happens when he roars at other animals?
+    stem: What did the Tin Woodman say the Lion's fast-beating heart proved?
     options:
-      - They fight him bravely.
-      - They get frightened and run away.
-      - They laugh at him.
-      - They ignore him completely.
-    correctIndex: 1
-    explanationZh: 狮子说自己大声吼叫后，所有生物都会害怕并躲开他，所以他从没真正交过手。"勇敢迎战"与原文相反——他若真被挑战，反而会自己逃跑。
+      - That the Lion had been running too hard
+      - That the Lion was younger than he looked
+      - That the Lion had a heart, unlike himself
+      - That the Lion would be brave in a real fight
+    correctIndex: 2
+    explanationZh: 听说狮子一遇危险就心跳加快，他说那也许是心脏病，"you ought to be glad, for it proves you have a heart. For my part, I have no heart; so I cannot have heart disease"。
   - id: oz-ch-06-q4
-    stem: What does the Tin Woodman say proves that the Lion has a heart?
+    stem: Why did Dorothy say the Lion would be welcome in the party?
     options:
-      - The Lion can roar very loudly
-      - His heart beats fast in danger
-      - The Lion cares about other animals
-      - The Lion wants to go to Oz
-    correctIndex: 1
-    explanationZh: 铁皮人听说狮子遇险心跳加快，便认为这也许是心脏病，而这也说明他有心。"关心其他动物"看似有理，但原文的逻辑是心跳快等于有心。
-  - id: oz-ch-06-q5
-    stem: What lesson does the Tin Woodman learn after crying over the beetle?
-    options:
-      - Never walk on the yellow brick road.
-      - Always carry more oil.
-      - Never let the Lion walk ahead.
-      - Never cry, because tears rust his jaws.
+      - He could carry her when the road grew rough
+      - He knew the shortest way out of the forest
+      - He could hunt food when the bread ran out
+      - He would help keep the other wild beasts away
     correctIndex: 3
-    explanationZh: 铁皮人说以后要小心看路，因为若再踩死虫子就会哭，而哭会使下巴生锈说不出话。"多带油"听起来合理，但不是他总结的教训。
+    explanationZh: 她说 "you will help to keep away the other wild beasts"，还说那些野兽既然一听吼声就跑，想必比他更胆小。狮子承认这是实话，可这并不能让他自己勇敢起来。
+  - id: oz-ch-06-q5
+    stem: What did the Tin Woodman say he must do, having no heart?
+    options:
+      - He must let the others decide what is right
+      - He must ask Oz for brains as well as a heart
+      - He must take great care never to be unkind
+      - He must keep the oil-can with him at all times
+    correctIndex: 2
+    explanationZh: 他说 "You people with hearts have something to guide you, and need never do wrong; but I have no heart, and so I must be very careful"，从此走路都盯着地面，连一只蚂蚁也要跨过去。

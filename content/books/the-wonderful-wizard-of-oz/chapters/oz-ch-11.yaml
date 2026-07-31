@@ -3,7 +3,7 @@ id: oz-ch-11
 bookId: book-oz
 title: The Wonderful City of Oz
 titleZh: 奥兹的奇妙魔法城
-summaryZh: 多萝西和伙伴们终于住进了翡翠城的宫殿。大巫师奥兹逐日单独召见他们，每个人见到的奥兹都截然不同——而他开出的条件，让所有人都倒吸一口凉气。
+summaryZh: 整座城里，从房屋、路面到行人的皮肤，没有一样不是绿的。守门人领着他们走到城正中的王宫门前，一个留着长长绿胡子的士兵挡在门口。
 sections:
   - id: oz-ch-11-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       They had to wait a long time before the soldier returned. When, at last, he came back, Dorothy asked:
     checkIn:
       id: oz-ch-11-s1-c1
-      stem: What color were the people's clothes and skin in the City of Oz?
+      stem: What did Dorothy notice about the way people paid in the shops?
       options:
-        - Blue
-        - Green
-        - Red
-        - Yellow
-      correctIndex: 1
-      explanationZh: 原文说城中男女老少“were all dressed in green clothes and had greenish skins”，所以答案是绿色。其他颜色在书中属于别的国度，不适用于翡翠城。
+        - They paid with emeralds prised from the walls
+        - They paid the shopkeeper with green feathers
+        - They paid for the lemonade with green pennies
+        - Nothing in the city was paid for at all
+      correctIndex: 2
+      explanationZh: 一个人在街边卖绿柠檬水，孩子们买的时候她看见 "they paid for it with green pennies"。城里的糖果、爆米花、鞋帽衣裳，也一律是绿的。
   - id: oz-ch-11-s2
     text: |-
       “Have you seen Oz?”
@@ -53,14 +53,14 @@ sections:
       She left Dorothy alone and went back to the others. These she also led to rooms, and each one of them found himself lodged in a very pleasant part of the Palace. Of course this politeness was wasted on the Scarecrow; for when he found himself alone in his room he stood stupidly in one spot, just within the doorway, to wait till morning. It would not rest him to lie down, and he could not close his eyes; so he remained all night staring at a little spider which was weaving its web in a corner of the room, just as if it were not one of the most wonderful rooms in the world. The Tin Woodman lay down on his bed from force of habit, for he remembered when he was made of flesh; but not being able to sleep, he passed the night moving his joints up and down to make sure they kept in good working order. The Lion would have preferred a bed of dried leaves in the forest, and did not like being shut up in a room; but he had too much sense to let this worry him, so he sprang upon the bed and rolled himself up like a cat and purred himself asleep in a minute.
     checkIn:
       id: oz-ch-11-s2-c1
-      stem: What did the soldier say about seeing Oz?
+      stem: On what terms did Oz agree to grant them an audience?
       options:
-        - Oz stood in front of the screen
-        - Oz stood on the throne
-        - Oz sat behind a screen
-        - Oz stood outside the door
-      correctIndex: 2
-      explanationZh: 士兵说"I spoke to him as he sat behind his screen"，即奥兹坐在屏风后面。"站在屏风前"正好相反，其余两个位置原文都未提到。
+        - Each of them must go in alone, one on each day
+        - They must all four enter the Throne Room together
+        - Only the one who wore the silver shoes might enter
+        - They must wait a week before Oz would answer
+      correctIndex: 0
+      explanationZh: 士兵隔着屏风把话带给奥兹，回来说 "each one of you must enter his presence alone, and he will admit but one each day"，所以他们得在宫里住上好几天。
   - id: oz-ch-11-s3
     text: |-
       The next morning, after breakfast, the green maiden came to fetch Dorothy, and she dressed her in one of the prettiest gowns, made of green brocaded satin. Dorothy put on a green silk apron and tied a green ribbon around Toto’s neck, and they started for the Throne Room of the Great Oz.
@@ -80,14 +80,14 @@ sections:
       But what interested Dorothy most was the big throne of green marble that stood in the middle of the room. It was shaped like a chair and sparkled with gems, as did everything else. In the center of the chair was an enormous Head, without a body to support it or any arms or legs whatever. There was no hair upon this head, but it had eyes and a nose and mouth, and was much bigger than the head of the biggest giant.
     checkIn:
       id: oz-ch-11-s3-c1
-      stem: What did Dorothy see sitting in the throne?
+      stem: Why did Oz change his mind and agree to see Dorothy?
       options:
-        - An enormous Head
-        - A lovely Lady
-        - A terrible Beast
-        - A Ball of Fire
-      correctIndex: 0
-      explanationZh: 多萝西进入宝殿时，看到王座中央是一颗“enormous Head, without a body”。Lady、Beast、Ball of Fire 分别是后续稻草人、铁皮人和狮子见到的形象，不在本节出现。
+        - The courtiers outside the door spoke up for her
+        - The green girl asked him on her behalf
+        - The soldier refused to carry any other message
+        - He heard about her silver shoes and the mark
+      correctIndex: 3
+      explanationZh: 士兵说奥兹起初动了怒，要把她打发回去，"Then he asked me what you looked like, and when I mentioned your silver shoes he was very much interested"，听说额上的印记后才点头。
   - id: oz-ch-11-s4
     text: |-
       As Dorothy gazed upon this in wonder and fear, the eyes turned slowly and looked at her sharply and steadily. Then the mouth moved, and Dorothy heard a voice say:
@@ -127,14 +127,14 @@ sections:
       “What must I do?” asked the girl.
     checkIn:
       id: oz-ch-11-s4-c1
-      stem: When Oz asked why he should help her, how did Dorothy answer?
+      stem: How did Dorothy answer when the Head asked why he should help her?
       options:
-        - Because her friends told her to ask
-        - Because he is strong and she is weak
-        - Because she paid him gold
-        - Because the silver shoes gave her power
+        - Because the Good Witch of the North had sent her
+        - Because he was strong and she was only a little girl
+        - Because she had already killed one Wicked Witch
+        - Because she would give him the silver shoes in return
       correctIndex: 1
-      explanationZh: 多萝西说“Because you are strong and I am weak; because you are a Great Wizard and I am only a little girl”，因此选C。银鞋虽被奥兹提及，但多萝西并未拿它作为理由。
+      explanationZh: 她答 "Because you are strong and I am weak; because you are a Great Wizard and I am only a little girl"。奥兹反问她既然能除掉东方女巫，她只说了一句 "That just happened"。
   - id: oz-ch-11-s5
     text: |-
       “Kill the Wicked Witch of the West,” answered Oz.
@@ -164,14 +164,14 @@ sections:
       “I am Oz, the Great and Terrible. Who are you, and why do you seek me?”
     checkIn:
       id: oz-ch-11-s5-c1
-      stem: What does Oz tell Dorothy to do before he will send her home?
+      stem: What did Oz say Dorothy must do before he would send her home?
       options:
-        - Find the Good Witch of the South
-        - Give him the silver shoes
-        - Bring him the magic of the East
+        - Bring him the silver shoes she wore
+        - Fetch the Good Witch of the North to him
+        - Serve a year in his palace as a maid
         - Kill the Wicked Witch of the West
       correctIndex: 3
-      explanationZh: 奥兹的回答很明确：“Kill the Wicked Witch of the West.” 只有西方恶女巫死了，他才肯送多萝西回堪萨斯。其他选项在本节中都没有出现。
+      explanationZh: 他的答复只有一句 "Kill the Wicked Witch of the West"，理由是 "In this country everyone must pay for everything he gets"。多萝西哭着说，自己从没有心杀过任何东西。
   - id: oz-ch-11-s6
     text: |-
       Now the Scarecrow, who had expected to see the great Head Dorothy had told him of, was much astonished; but he answered her bravely.
@@ -201,14 +201,14 @@ sections:
       But when the Woodman entered the great Throne Room he saw neither the Head nor the Lady, for Oz had taken the shape of a most terrible Beast. It was nearly as big as an elephant, and the green throne seemed hardly strong enough to hold its weight. The Beast had a head like that of a rhinoceros, only there were five eyes in its face. There were five long arms growing out of its body, and it also had five long, slim legs. Thick, woolly hair covered every part of it, and a more dreadful-looking monster could not be imagined. It was fortunate the Tin Woodman had no heart at that moment, for it would have beat loud and fast from terror. But being only tin, the Woodman was not at all afraid, although he was much disappointed.
     checkIn:
       id: oz-ch-11-s6-c1
-      stem: What form does Oz take when the Scarecrow enters the Throne Room?
+      stem: What did Oz promise the Scarecrow if the Witch were killed?
       options:
-        - A great Head
-        - A lovely Lady
-        - A terrible Beast
-        - A Ball of Fire
-      correctIndex: 1
-      explanationZh: 稻草人看到的是一位“most lovely Lady”，有翅膀和珠宝冠冕。Head 是多萝西看到的形象，Beast 和 Ball of Fire 是后续铁皮人和狮子见到的。
+        - A head of tin, made by the palace smith
+        - A place at court among the fine ladies
+        - Brains enough to be the wisest man in Oz
+        - The Lady's own crown of jewels to wear
+      correctIndex: 2
+      explanationZh: 那位美丽的夫人说 "I will bestow upon you a great many brains, and such good brains that you will be the wisest man in all the Land of Oz"。稻草人问她不是让多萝西去杀吗，她答 "I don't care who kills her"。
   - id: oz-ch-11-s7
     text: |-
       “I am Oz, the Great and Terrible,” spoke the Beast, in a voice that was one great roar. “Who are you, and why do you seek me?”
@@ -236,14 +236,14 @@ sections:
       Then a low, quiet voice came from the Ball of Fire, and these were the words it spoke:
     checkIn:
       id: oz-ch-11-s7-c1
-      stem: What form does Oz take when the Tin Woodman enters the Throne Room?
+      stem: What did the Beast promise the Tin Woodman?
       options:
-        - A lovely Lady
-        - A great Head
-        - A Ball of Fire
-        - A great Beast
-      correctIndex: 3
-      explanationZh: 铁皮人看到奥兹变成了“a most terrible Beast”，像犀牛，有五只眼睛、五条长臂和五条长腿。Lady 是稻草人见到的，Ball of Fire 是狮子见到的。
+        - The biggest and kindest heart in all the Land of Oz
+        - A new body of silver instead of one of tin
+        - To send him back to the Munchkin girl at once
+        - To oil his joints so they would never rust again
+      correctIndex: 0
+      explanationZh: 野兽说心得靠自己挣——"Help Dorothy to kill the Wicked Witch of the West. When the Witch is dead, come to me, and I will then give you the biggest and kindest and most loving heart in all the Land of Oz"。
   - id: oz-ch-11-s8
     text: |-
       “I am Oz, the Great and Terrible. Who are you, and why do you seek me?”
@@ -287,66 +287,66 @@ sections:
       They went to bed quite early and slept soundly until daylight, when they were awakened by the crowing of a green cock that lived in the back yard of the Palace, and the cackling of a hen that had laid a green egg.
     checkIn:
       id: oz-ch-11-s8-c1
-      stem: What does Oz demand from the Lion before giving him courage?
+      stem: What did the Ball of Fire ask of the Lion?
       options:
-        - Proof that the Wicked Witch is dead
-        - A loud roar
-        - A gift of gold
-        - A promise to serve Oz forever
-      correctIndex: 0
-      explanationZh: 火球说“Bring me proof that the Wicked Witch is dead, and that moment I will give you courage.” 狮子大吼和送礼等选项都不是奥兹的要求。
+        - To roar loudly enough to shake the palace walls
+        - To bring proof that the Wicked Witch is dead
+        - To guard the door of the Throne Room for a year
+        - To go alone into the land of the Winkies
+      correctIndex: 1
+      explanationZh: 那个低沉的声音说 "Bring me proof that the Wicked Witch is dead, and that moment I will give you courage. But as long as the Witch lives, you must remain a coward"。狮子气得说不出话，只好夹着尾巴退出去。
 quiz:
   - id: oz-ch-11-q1
-    stem: Why did Oz decide to see Dorothy after first being angry?
+    stem: In what order did Oz appear to the four friends?
     options:
-      - Because her friends begged him
-      - Because she brought him a gift
-      - Because she promised to serve him
-      - Her silver shoes and her mark
-    correctIndex: 3
-    explanationZh: 士兵告诉多萝西，奥兹听说她的银鞋后很感兴趣，得知她额头上的印记后“decided he would admit you to his presence”。礼物和朋友的请求都不是原因。
+      - Head, then Lady, then Beast, then Ball of Fire
+      - Lady, then Head, then Ball of Fire, then Beast
+      - Ball of Fire, then Beast, then Lady, then Head
+      - Beast, then Ball of Fire, then Head, then Lady
+    correctIndex: 0
+    explanationZh: 多萝西见到的是一颗没有身体的巨大头颅，稻草人见到长着翅膀的美丽夫人，铁皮人见到长了五只眼睛的可怕野兽，狮子见到一团灼人的火球——一天一位，模样各不相同。
   - id: oz-ch-11-q2
-    stem: Oz appears in a different form to each visitor. Which order is correct?
+    stem: How did the Scarecrow pass his first night in the palace?
     options:
-      - Lady, Head, Ball of Fire, Beast
-      - Ball of Fire, Head, Lady, Beast
-      - Head, Lady, Beast, Ball of Fire
-      - Beast, Ball of Fire, Head, Lady
+      - He lay on the green silk bed until daylight
+      - He read the little green books on the shelf
+      - He stood in one spot and watched a spider spin
+      - He wandered the seven passages of the palace
     correctIndex: 2
-    explanationZh: 多萝西见到 Head，稻草人见到 Lady，铁皮人见到 Beast，狮子见到 Ball of Fire，顺序为 Head → Lady → Beast → Ball of Fire。其余几种排列都打乱了这一顺序。
+    explanationZh: 这份周到对他全是白费——"he stood stupidly in one spot, just within the doorway, to wait till morning"，整夜看着墙角的蜘蛛结网。绿色小书是多萝西房里的。
   - id: oz-ch-11-q3
-    stem: What is the same task Oz gives to every one of the four friends?
+    stem: How did the Tin Woodman pass that same night?
     options:
-      - Kill the Wicked Witch of the West
-      - Bring him the silver shoes
-      - Find the Land of the Winkies
-      - Build a new throne
-    correctIndex: 0
-    explanationZh: 奥兹对多萝西、稻草人、铁皮人和狮子都提出同一个条件：杀死西方恶女巫。“Kill the Wicked Witch of the West”在四段对话中反复出现，其余选项均非奥兹的要求。
-  - id: oz-ch-11-q4
-    stem: How did the Scarecrow spend the night in his room?
-    options:
-      - He lay on the bed and slept
-      - He stood in one spot and watched a spider
-      - He sharpened his axe
-      - He read the little green books
+      - He stood beside the door as the Scarecrow did
+      - He worked his joints up and down to keep them free
+      - He curled up on the bed and purred himself to sleep
+      - He sharpened his axe on the green grindstone
     correctIndex: 1
-    explanationZh: 原文说稻草人“stood stupidly in one spot … to wait till morning”，整夜盯着角落里织网的蜘蛛。他无法躺下睡觉，也没有斧头可磨；绿色小书是多萝西房间里的东西。
-  - id: oz-ch-11-q5
-    stem: How did the Tin Woodman spend the night in his room?
+    explanationZh: 他出于旧习惯躺上了床，却睡不着，于是 "passed the night moving his joints up and down to make sure they kept in good working order"。像猫一样蜷起来打呼噜的是狮子。
+  - id: oz-ch-11-q4
+    stem: Why was the Tin Woodman not frightened by the terrible Beast?
     options:
-      - He read green books by the fountain
-      - He stood still in the doorway
-      - He rolled up on the bed like a cat
-      - He moved his joints up and down all night
+      - Its five arms could not reach as far as his axe
+      - The Scarecrow had warned him what he would see
+      - He had faced far worse things in the dark forest
+      - Being only tin, he had no heart to beat with terror
     correctIndex: 3
-    explanationZh: 铁皮人躺在床上后睡不着，便“passed the night moving his joints up and down to make sure they kept in good working order”。读书和站门口是多萝西和稻草人的情节，蜷缩如猫是狮子的睡姿。
-  - id: oz-ch-11-q6
-    stem: What woke the friends the next morning?
+    explanationZh: 原文说 "It was fortunate the Tin Woodman had no heart at that moment, for it would have beat loud and fast from terror. But being only tin, the Woodman was not at all afraid"——他只是失望，因为他本来盼着见到那位夫人。
+  - id: oz-ch-11-q5
+    stem: What did the Lion boast he would do if Oz appeared as the Head?
     options:
-      - A green cock and a hen that laid a green egg
-      - The green girl ringing a bell
-      - The soldier with the green whiskers
-      - A loud roar from the Lion
+      - Roll it about the room until it gave him his wish
+      - Roar until the emeralds fell out of the walls
+      - Spring upon it and pin it against the throne
+      - Ask it politely, and thank it for its trouble
     correctIndex: 0
-    explanationZh: 结尾写他们被“the crowing of a green cock … and the cackling of a hen that had laid a green egg”吵醒。绿衣女孩的铃铛系在托托脖子上，并非叫醒他们的东西。
+    explanationZh: 他给朋友们打气，说若是野兽就大吼一声，若是夫人就假装扑上去，"And if he is the great Head, he will be at my mercy; for I will roll this head all about the room until he promises to give us what we desire"。
+  - id: oz-ch-11-q6
+    stem: What woke the travellers on the morning they were to set out?
+    options:
+      - The soldier with the green whiskers at the door
+      - The little bell tied round Toto's neck
+      - A green cock crowing, and a hen with a green egg
+      - The fountain of green perfume in Dorothy's room
+    correctIndex: 2
+    explanationZh: 他们一觉睡到天亮，被 "the crowing of a green cock that lived in the back yard of the Palace, and the cackling of a hen that had laid a green egg" 吵醒。托托脖子上的铃铛是绿衣姑娘系上去的。

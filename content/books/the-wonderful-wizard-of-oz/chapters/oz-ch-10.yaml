@@ -3,7 +3,7 @@ id: oz-ch-10
 bookId: book-oz
 title: The Guardian of the Gate
 titleZh: 守门人
-summaryZh: 一行人终于抵达翡翠城外的高墙，见到了守门人。进城的规矩出人意料，而关于大巫师奥兹的种种传闻，更让这次求见显得凶多吉少。
+summaryZh: 狮子终于从罂粟花的睡意里醒了过来。重新走上黄砖路以后，一行人发现路边的篱笆、房子和人们的衣裳，忽然全都变成了绿色。
 sections:
   - id: oz-ch-10-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       “Yes,” answered the Scarecrow. “Everything is green here, while in the country of the Munchkins blue was the favorite color. But the people do not seem to be as friendly as the Munchkins, and I’m afraid we shall be unable to find a place to pass the night.”
     checkIn:
       id: oz-ch-10-s1-c1
-      stem: Who saved the Cowardly Lion from the poppy field?
+      stem: What did the Lion say when he heard how he had been rescued?
       options:
-        - The Tin Woodman
-        - The Scarecrow
-        - Dorothy carried him
-        - The field mice
-      correctIndex: 3
-      explanationZh: 文中说他们告诉狮子，是 field mice "generously saved him from death"。锡樵夫和稻草人都没有救他。
+        - That he would never walk through a flower field again
+        - That flowers nearly killed him and mice saved him
+        - That he had run faster than any beast in the forest
+        - That he owed the Tin Woodman his life twice over
+      correctIndex: 1
+      explanationZh: 他笑着感叹 "I have always thought myself very big and terrible; yet such little things as flowers came near to killing me, and such small animals as mice have saved my life"。
   - id: oz-ch-10-s2
     text: |-
       “I should like something to eat besides fruit,” said the girl, “and I’m sure Toto is nearly starved. Let us stop at the next house and talk to the people.”
@@ -71,14 +71,14 @@ sections:
       “That is hard to tell,” said the man thoughtfully. “You see, Oz is a Great Wizard, and can take on any form he wishes. So that some say he looks like a bird; and some say he looks like an elephant; and some say he looks like a cat. To others he appears as a beautiful fairy, or a brownie, or in any other form that pleases him. But who the real Oz is, when he is in his own form, no living person can tell.”
     checkIn:
       id: oz-ch-10-s2-c1
-      stem: What does the man in the farmhouse say about Oz's appearance?
+      stem: What did the man of the house say about seeing the Great Oz?
       options:
-        - Oz can take on any form he wishes
-        - Oz always looks like a bird
-        - Oz looks like an ordinary man
-        - Oz is invisible to everyone
+        - That he had been to the city often but never seen him
+        - That Oz walks the streets in the shape of a cat
+        - That only Munchkins are allowed into the Throne Room
+        - That anyone may see Oz who knocks at the palace door
       correctIndex: 0
-      explanationZh: 农夫说 "Oz is a Great Wizard, and can take on any form he wishes"——有人觉得他像鸟、像象、像猫等。正因如此，没人知道他真正的样子。
+      explanationZh: 他说 "I have been to the Emerald City many times… but I have never been permitted to see the Great Oz, nor do I know of any living person who has seen him"。奥兹终日坐在宫中的大殿里，连伺候他的人也见不到他的脸。
   - id: oz-ch-10-s3
     text: |-
       “That is very strange,” said Dorothy, “but we must try, in some way, to see him, or we shall have made our journey for nothing.”
@@ -110,14 +110,14 @@ sections:
       The woman now gave Dorothy a bed to sleep in, and Toto lay down beside her, while the Lion guarded the door of her room so she might not be disturbed. The Scarecrow and the Tin Woodman stood up in a corner and kept quiet all night, although of course they could not sleep.
     checkIn:
       id: oz-ch-10-s3-c1
-      stem: What does the Cowardly Lion want from Oz?
+      stem: What did the man say Oz keeps under a golden plate?
       options:
-        - Brains
-        - A heart
-        - Courage
-        - A way home
-      correctIndex: 2
-      explanationZh: 狮子明确说 "I want him to give me courage"。要脑子的是稻草人，要心的是锡樵夫，要回家的是多萝西。
+        - The brains he has more of than he needs
+        - The key to the gates of the Emerald City
+        - His collection of hearts of every size
+        - A great pot of courage, lest it run over
+      correctIndex: 3
+      explanationZh: 他说 "Oz keeps a great pot of courage in his Throne Room, which he has covered with a golden plate, to keep it from running over"。心是一大堆各式各样的，脑子则多得他自己都用不完。
   - id: oz-ch-10-s4
     text: |-
       The next morning, as soon as the sun was up, they started on their way, and soon saw a beautiful green glow in the sky just before them.
@@ -145,14 +145,14 @@ sections:
       “So he is,” said the green man, “and he rules the Emerald City wisely and well. But to those who are not honest, or who approach him from curiosity, he is most terrible, and few have ever dared ask to see his face. I am the Guardian of the Gates, and since you demand to see the Great Oz I must take you to his Palace. But first you must put on the spectacles.”
     checkIn:
       id: oz-ch-10-s4-c1
-      stem: Why does the Guardian of the Gates sit down after Dorothy says she wants to see Oz?
+      stem: Why was the Guardian of the Gates so taken aback by Dorothy's answer?
       options:
-        - He is angry with her
-        - He wants to charge them money
-        - Nobody has asked that in years
-        - He thinks it is a foolish joke
+        - He had never seen a dog inside the city walls
+        - The gate had not opened since the City was built
+        - No one had asked to see Oz for many years
+        - He had expected them to come by another road
       correctIndex: 2
-      explanationZh: 守门人坐下来思考，并说 "It has been many years since anyone asked me to see Oz"，可见他不是因为生气或要钱，而是因为太久没人提出这样的要求。
+      explanationZh: 他惊讶得坐下来想了一会儿，说 "It has been many years since anyone asked me to see Oz"，还警告说，若为无聊或愚蠢的事去打扰伟大的巫师，可能被他一怒之下毁掉。
   - id: oz-ch-10-s5
     text: |-
       “Why?” asked Dorothy.
@@ -166,66 +166,66 @@ sections:
       Then the Guardian of the Gates put on his own glasses and told them he was ready to show them to the Palace. Taking a big golden key from a peg on the wall, he opened another gate, and they all followed him through the portal into the streets of the Emerald City.
     checkIn:
       id: oz-ch-10-s5-c1
-      stem: Why must everyone wear green spectacles in the Emerald City?
+      stem: Why did everyone entering the City have to put on spectacles?
       options:
-        - To hide their faces from Oz
-        - To guard eyes against the glare
-        - To help them see in the dark
-        - To make them look like Munchkins
+        - So that the Guardian could tell strangers apart
+        - Because the glory of the City would blind them
+        - Because Oz cannot bear to be looked at directly
+        - So that the green of the City looks brighter still
       correctIndex: 1
-      explanationZh: 守门人解释说，不戴眼镜的话 "the brightness and glory of the Emerald City would blind you"，连城里的居民都必须日夜戴着。
+      explanationZh: 守门人说，不戴的话 "the brightness and glory of the Emerald City would blind you"，连城里的居民也得日夜戴着，而且全都是锁上的。
 quiz:
   - id: oz-ch-10-q1
-    stem: Why were the people in the green houses afraid to come near the travelers?
+    stem: Why did nobody in the green country come near the travellers?
     options:
-      - The great Lion frightened them
-      - The travelers carried weapons
-      - They had been warned about strangers
-      - Dorothy was wearing red shoes
+      - They were every one of them afraid of the great Lion
+      - They had been forbidden to speak to strangers
+      - They could not understand Dorothy's language
+      - They were hurrying to the Emerald City themselves
     correctIndex: 0
-    explanationZh: 文中说 "no one came near them nor spoke to them because of the great Lion, of which they were very much afraid"。人们怕的是狮子，而非武器或红鞋。
+    explanationZh: 有人走到门口张望，"but no one came near them nor spoke to them because of the great Lion, of which they were very much afraid"。那些人穿着翡翠绿的衣裳，戴着芒奇金人那样的尖顶帽。
   - id: oz-ch-10-q2
-    stem: How did Dorothy convince the woman to let the Lion inside?
+    stem: How did Dorothy persuade the farm woman to let the Lion in?
     options:
-      - She said the Lion was chained up
-      - She said the Lion would wait outside
-      - She said the Lion was tame and a great coward
-      - She said Oz had sent the Lion
+      - By promising to keep him tied up all night
+      - By offering to pay for the supper and the bed
+      - By saying he was tame, and a great coward besides
+      - By telling her that Oz himself had sent them
     correctIndex: 2
-    explanationZh: 多萝西告诉那女人，狮子很温顺，而且 "he is a great coward, too"，"he will be more afraid of you than you are of him"。女人这才同意让他们进来。
+    explanationZh: 她说狮子是自己的朋友，绝不会伤人，还添了一句 "he is a great coward, too. He will be more afraid of you than you are of him"。那女人又瞧了狮子一眼，才把门打开。
   - id: oz-ch-10-q3
-    stem: What did the Lion eat for supper, and how did he feel about it?
+    stem: What did the man say about the shape the Great Oz takes?
     options:
-      - He ate meat and loved it
-      - He ate nothing at all
-      - He ate eggs and enjoyed them
-      - Porridge, which he disliked
-    correctIndex: 3
-    explanationZh: 狮子吃了些粥，但 "did not care for it"，说粥是燕麦做的，燕麦是马的食物，不是狮子的。锡樵夫和稻草人什么都没吃。
+      - That he looks like a green man, as everyone here does
+      - That he can take any form he wishes, so nobody knows
+      - That he is a bird, and has been one for many years
+      - That no one may describe him, on pain of his anger
+    correctIndex: 1
+    explanationZh: 他说 "Oz is a Great Wizard, and can take on any form he wishes"——有人说他像鸟，有人说像象，有人说像猫，也有人见到的是仙女或小精灵，"But who the real Oz is, when he is in his own form, no living person can tell"。
   - id: oz-ch-10-q4
-    stem: What did the man in the farmhouse say Oz keeps in his Throne Room for the Lion?
+    stem: What did the Lion say about the porridge at supper?
     options:
-      - A pot of courage
-      - A box of brains
-      - A collection of hearts
-      - A magic map of Kansas
-    correctIndex: 0
-    explanationZh: 农夫说 "Oz keeps a great pot of courage in his Throne Room"，上面盖着金盘子以防勇气溢出来。脑子和心分别对应稻草人和锡樵夫的愿望。
+      - That it was the best meal he had eaten in years
+      - That he would rather have gone hungry than eat it
+      - That it tasted of the poppies he had slept among
+      - That oats are food for horses, and not for lions
+    correctIndex: 3
+    explanationZh: 他吃了一点，却 "did not care for it, saying it was made from oats and oats were food for horses, not for lions"。稻草人和铁皮人一口没动，托托倒是样样都尝了尝。
   - id: oz-ch-10-q5
-    stem: What was at the end of the yellow brick road?
+    stem: What stood at the very end of the road of yellow brick?
     options:
-      - A small green farmhouse
-      - An emerald-studded gate
-      - A dark forest
-      - A river crossing
-    correctIndex: 1
-    explanationZh: 黄砖路尽头是 "a big gate, all studded with emeralds"，翡翠在阳光下闪闪发光。小农舍是路上经过的地方，不是路尽头。
+      - A big gate studded all over with emeralds
+      - The green farmhouse where they had slept
+      - A silver bell hung from a stone archway
+      - The Throne Room of the Great Wizard
+    correctIndex: 0
+    explanationZh: 黄砖路尽头是 "a big gate, all studded with emeralds that glittered so in the sun that even the painted eyes of the Scarecrow were dazzled"。门边有个按钮，一按，里面就响起银铃般的声音。
   - id: oz-ch-10-q6
-    stem: What happens when the spectacles are locked on?
+    stem: What happened once the spectacles had been fitted?
     options:
-      - Dorothy can take them off anytime
-      - The Guardian keeps the key himself
-      - They fall off after one hour
-      - They turn clear when you leave
-    correctIndex: 1
-    explanationZh: 守门人用脖子上的链子挂着的小钥匙把眼镜锁好，"Dorothy could not take them off had she wished"——钥匙由守门人保管，佩戴者自己摘不下来。
+      - The city outside turned from grey to green
+      - They could be taken off only after nightfall
+      - They were locked on, and the Guardian kept the key
+      - Toto's pair fell off before they reached the palace
+    correctIndex: 2
+    explanationZh: 眼镜上两条金带扣在脑后，用守门人挂在颈上的小钥匙锁住——"Dorothy could not take them off had she wished"。连托托也戴上了一副。

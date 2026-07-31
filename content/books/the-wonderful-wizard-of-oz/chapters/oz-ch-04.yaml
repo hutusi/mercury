@@ -3,7 +3,7 @@ id: oz-ch-04
 bookId: book-oz
 title: The Road Through the Forest
 titleZh: 穿过森林的路
-summaryZh: 多萝西和稻草人沿着黄砖路继续前行，路面越来越难走，四周也越发荒凉。稻草人讲述了自己被制作出来的经过，以及他为什么如此渴望得到脑子。傍晚他们走进一片漆黑的森林，在林中找到一间小屋过夜。
+summaryZh: 黄砖路越走越破，两旁的农田也一片荒芜。歇脚时多萝西请稻草人讲讲自己的来历，他这才发现，自己能讲的事情实在少得可怜。
 sections:
   - id: oz-ch-04-s1
     text: |-
@@ -28,14 +28,14 @@ sections:
       “Of course I cannot understand it,” he said. “If your heads were stuffed with straw, like mine, you would probably all live in the beautiful places, and then Kansas would have no people at all. It is fortunate for Kansas that you have brains.”
     checkIn:
       id: oz-ch-04-s1-c1
-      stem: Why did the Scarecrow refuse to eat bread?
+      stem: Why did the Scarecrow turn down the bread Dorothy offered him?
       options:
-        - He had already eaten a big meal
-        - His mouth was only painted on
-        - He did not like the taste of bread
-        - He was saving the bread for Toto
-      correctIndex: 1
-      explanationZh: 稻草人说 "I am never hungry"，并解释如果挖洞吃东西，塞在头里的稻草会掉出来，毁了他的头形。选项 He was saving the bread for Toto 听起来合理，但原文没提到这一点。
+        - He had eaten his fill of corn in the field before she came along
+        - He was keeping it for Toto, who had had nothing all day
+        - He was afraid the crumbs would spoil his faded blue suit
+        - His mouth is painted on, and cutting it would spill the straw
+      correctIndex: 3
+      explanationZh: 他先说 "I am never hungry"，接着解释嘴巴只是画上去的，"if I should cut a hole in it so I could eat, the straw I am stuffed with would come out"，头就走了样。他并不是替谁省下这块面包。
   - id: oz-ch-04-s2
     text: |-
       “Won’t you tell me a story, while we are resting?” asked the child.
@@ -61,14 +61,14 @@ sections:
       “I did not like to be deserted this way. So I tried to walk after them. But my feet would not touch the ground, and I was forced to stay on that pole. It was a lonely life to lead, for I had nothing to think of, having been made such a little while before. Many crows and other birds flew into the cornfield, but as soon as they saw me they flew away again, thinking I was a Munchkin; and this pleased me and made me feel that I was quite an important person. By and by an old crow flew near me, and after looking at me carefully he perched upon my shoulder and said:
     checkIn:
       id: oz-ch-04-s2-c1
-      stem: What was the first thing the farmer painted on the Scarecrow's head?
+      stem: Which part of his face did the farmer paint first?
       options:
-        - The eyes
-        - The nose
-        - The mouth
-        - The ears
-      correctIndex: 3
-      explanationZh: 稻草人说 farmer 做头时最先画的是耳朵，这样他就能听到周围的声音。选项 The eyes 很诱人，因为紧接着才画眼睛，但耳朵才是第一个。
+        - His ears, so that he heard what was said
+        - His eyes, so that he could watch the work
+        - His mouth, so that he could answer at once
+        - His nose, which the Munchkin thought too big
+      correctIndex: 0
+      explanationZh: 他说自己运气好——"when the farmer made my head, one of the first things he did was to paint my ears, so that I heard what was going on"。眼睛是随后画的，先右后左；嘴巴虽然做了，他当时还不知道那是干什么用的。
   - id: oz-ch-04-s3
     text: |-
       “‘I wonder if that farmer thought to fool me in this clumsy manner. Any crow of sense could see that you are only stuffed with straw.’ Then he hopped down at my feet and ate all the corn he wanted. The other birds, seeing he was not harmed by me, came to eat the corn too, so in a short time there was a great flock of them about me.
@@ -104,57 +104,57 @@ sections:
       So the Scarecrow led her through the trees until they reached the cottage, and Dorothy entered and found a bed of dried leaves in one corner. She lay down at once, and with Toto beside her soon fell into a sound sleep. The Scarecrow, who was never tired, stood up in another corner and waited patiently until morning came.
     checkIn:
       id: oz-ch-04-s3-c1
-      stem: Who told the Scarecrow that brains are the only things worth having?
+      stem: What did the old crow tell the Scarecrow once it had eaten its fill?
       options:
-        - The farmer
-        - A Munchkin
-        - An old crow
-        - Dorothy
+        - That a good scarecrow must be painted, not stuffed
+        - That the farmer would soon come back to mend him
+        - That brains are the only things worth having
+        - That the other birds had been laughing at him
       correctIndex: 2
-      explanationZh: 一只老乌鸦落在稻草人肩上，指出他只是稻草做的，并安慰他说 "Brains are the only things worth having in this world"。容易误选旁观的 Munchkin，因为他也说过话，但这番关于 brains 的话是老乌鸦说的。
+      explanationZh: 老乌鸦先揭穿他 "Any crow of sense could see that you are only stuffed with straw"，吃饱之后又安慰他 "Brains are the only things worth having in this world, no matter whether one is a crow or a man"。稻草人从此下定决心要一副脑子。
 quiz:
   - id: oz-ch-04-q1
-    stem: Why did the Scarecrow keep falling into holes on the road?
+    stem: Why did the Scarecrow keep falling on the broken road?
     options:
-      - He could not see well in the dark.
-      - Toto pushed him over.
-      - He had no brains, so he walked straight ahead.
-      - The road was too narrow for two people.
-    correctIndex: 2
-    explanationZh: 原文说 "having no brains, he walked straight ahead"，所以他直接踩进坑里摔倒。选项 He could not see well in the dark 看似合理，但摔倒发生在白天，原因是没脑子而非天黑。
-  - id: oz-ch-04-q2
-    stem: Why couldn't the Scarecrow understand why Dorothy wanted to go back to Kansas?
-    options:
-      - Because he had never seen a house before.
-      - Because he thought Kansas was too far away.
-      - Because he hated beautiful countries.
-      - Because he had no brains.
-    correctIndex: 3
-    explanationZh: 多萝西解释说 "That is because you have no brains"——稻草人无法理解有血有肉的人对家的眷恋。"嫌堪萨斯太远"看似有道理但不对，原文直接把原因归结为他没有脑子。
-  - id: oz-ch-04-q3
-    stem: How did the Scarecrow feel when the birds ate the corn after the old crow spoke?
-    options:
-      - Sad and useless
-      - Happy and proud
-      - Angry at the farmer
-      - Afraid of the crows
-    correctIndex: 0
-    explanationZh: 稻草人说 "I felt sad at this, for it showed I was not such a good Scarecrow after all"。选项 Happy and proud 是之前鸟儿害怕他时的感受，老乌鸦来了之后情况就变了。
-  - id: oz-ch-04-q4
-    stem: What did the Scarecrow say when Dorothy pointed out that anyone would know the road goes through the forest?
-    options:
-      - '"That is why I know it."'
-      - '"You are wrong about that."'
-      - '"I learned it from the crows."'
-      - '"I am not sure at all."'
-    correctIndex: 0
-    explanationZh: 稻草人回答 "Certainly; that is why I know it"，并说如果这需要动脑子，他根本说不出这话。选项 "I learned it from the crows." 听起来像稻草人会说的，但原文的笑点在于：越简单的道理，越不需要 brains。
-  - id: oz-ch-04-q5
-    stem: Where did Dorothy and the Scarecrow spend the night?
-    options:
-      - In a tree by the road
-      - In a cottage built of logs and branches
-      - By the little brook where they had lunch
-      - In the farmer's house
+      - The yellow bricks were slippery after the rain
+      - Having no brains, he walked straight into the holes
+      - Toto kept running between his legs as he walked
+      - His old boots were far too big for his straw feet
     correctIndex: 1
-    explanationZh: 稻草人看到右边有一间 "built of logs and branches" 的小屋，两人便去那里过夜。容易误选小溪边，因为那条小溪确实出现过，但那是中午休息的地方，不是过夜处。
+    explanationZh: 托托跳过坑，多萝西绕着走，"As for the Scarecrow, having no brains, he walked straight ahead, and so stepped into the holes"。摔了也不疼，他还跟着多萝西一起笑。
+  - id: oz-ch-04-q2
+    stem: How did Dorothy answer when the Scarecrow asked why she would leave so beautiful a country?
+    options:
+      - That the Great Oz had promised to send her home
+      - That Kansas was far greener than he imagined
+      - That people of flesh and blood would rather be home
+      - That her aunt and uncle would come to fetch her
+    correctIndex: 2
+    explanationZh: 她说不管家里多么灰暗，"we people of flesh and blood would rather live there than in any other country, be it ever so beautiful. There is no place like home"。稻草人只能叹气说自己当然不懂。
+  - id: oz-ch-04-q3
+    stem: How old was the Scarecrow when Dorothy found him in the cornfield?
+    options:
+      - He had stood in the field since the spring sowing
+      - He could not remember, having no brains to count
+      - He was as old as the farmer who had made him
+      - He had been made only the day before yesterday
+    correctIndex: 3
+    explanationZh: 他说 "My life has been so short that I really know nothing whatever. I was only made day before yesterday"——在那之前世上发生过什么，他一概不知。
+  - id: oz-ch-04-q4
+    stem: What did the Scarecrow say after Dorothy told him that anyone would know the road must come out again?
+    options:
+      - That this was exactly why he had known it himself
+      - That he had learned it from the crows in the field
+      - That he was not really sure of it after all
+      - That Oz had told the Munchkins so long ago
+    correctIndex: 0
+    explanationZh: 他答 "Certainly; that is why I know it"，还补上一句——这道理若需要动脑子，他根本说不出来。笑点正在这儿：他懂的，恰恰是那些不需要脑子的事。
+  - id: oz-ch-04-q5
+    stem: Where did the two travellers spend the night?
+    options:
+      - Under the branches that met over the road
+      - In a little cottage built of logs and branches
+      - Beside the brook where they had eaten at noon
+      - In the cornfield where the Scarecrow had stood
+    correctIndex: 1
+    explanationZh: 天黑之后稻草人说右手边有一间 "built of logs and branches" 的小屋。多萝西在屋角一堆干树叶上睡熟了，稻草人不会累，就在另一个角落站到天亮。

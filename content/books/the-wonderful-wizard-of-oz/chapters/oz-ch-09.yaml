@@ -3,7 +3,7 @@ id: oz-ch-09
 bookId: book-oz
 title: The Queen of the Field Mice
 titleZh: 田鼠女王
-summaryZh: 在罂粟花田边，铁皮樵夫的一次出手相救带来了意想不到的回报。成千上万的小小盟友赶来帮忙，沉睡不醒的狮子终于有了获救的希望。
+summaryZh: 稻草人估摸着黄砖路已经不远了。正说着，草地上蹿出一只黄色的大野猫，眼睛红得像两团火，直朝他们这边扑过来。
 sections:
   - id: oz-ch-09-s1
     text: |-
@@ -32,14 +32,14 @@ sections:
       “This funny tin man,” she answered, “killed the Wildcat and saved my life. So hereafter you must all serve him, and obey his slightest wish.”
     checkIn:
       id: oz-ch-09-s1-c1
-      stem: Why does the Tin Woodman say he tries to help those who need a friend?
+      stem: Why did the Tin Woodman say he takes such care to help anyone in need?
       options:
-        - Because he wants to be rewarded
-        - Because the Queen ordered him to help
-        - Because the Scarecrow told him to
-        - Because he has no heart and wants to do right
-      correctIndex: 3
-      explanationZh: 铁皮人说 "I have no heart, you know, so I am careful to help all those who may need a friend"。他因为没有心，所以格外注意多做好事，而不是为了回报。
+        - Because he has no heart, and must be careful to do right
+        - Because the Queen of the Mice had commanded it
+        - Because he hopes to be rewarded when he reaches Oz
+        - Because the Scarecrow reminds him to at every turn
+      correctIndex: 0
+      explanationZh: 他答 "I have no heart, you know, so I am careful to help all those who may need a friend, even if it happens to be only a mouse"。他挥斧的时候，还不知道对方是位女王。
   - id: oz-ch-09-s2
     text: |-
       “We will!” cried all the mice, in a shrill chorus. And then they scampered in all directions, for Toto had awakened from his sleep, and seeing all these mice around him he gave one bark of delight and jumped right into the middle of the group. Toto had always loved to chase mice when he lived in Kansas, and he saw no harm in it.
@@ -75,14 +75,14 @@ sections:
       The Queen turned to the mice that attended her and told them to go at once and get all her people. As soon as they heard her orders they ran away in every direction as fast as possible.
     checkIn:
       id: oz-ch-09-s2-c1
-      stem: What does the Scarecrow ask the mice to do to repay the Woodman?
+      stem: What did the Scarecrow ask the mice to do in return for the Woodman's help?
       options:
-        - Bring them food and water
-        - Carry them across the river
-        - Find the yellow brick road
-        - Rescue the sleeping Lion
-      correctIndex: 3
-      explanationZh: Scarecrow 想到狮子还昏睡在罂粟花田里，于是请田鼠们帮忙救出他。女王一开始害怕狮子会吃掉他们，Scarecrow 解释这只狮子很胆小，不会伤害朋友。
+        - To lead them back to the road of yellow brick
+        - To rescue the Lion asleep in the poppy bed
+        - To bring Dorothy food while she was sleeping
+        - To keep Toto away from the poppy field
+      correctIndex: 1
+      explanationZh: 铁皮人说不用报答，稻草人却抢着接口 "you can save our friend, the Cowardly Lion, who is asleep in the poppy bed"。女王起初怕被狮子吃掉，听说这是只胆小的狮子才答应。
   - id: oz-ch-09-s3
     text: |-
       “Now,” said the Scarecrow to the Tin Woodman, “you must go to those trees by the riverside and make a truck that will carry the Lion.”
@@ -112,66 +112,66 @@ sections:
       After this they sat down beside the Lion until he should awaken; and the Scarecrow brought Dorothy some fruit from a tree near by, which she ate for her dinner.
     checkIn:
       id: oz-ch-09-s3-c1
-      stem: What does the Tin Woodman build for the mice?
+      stem: What did the Tin Woodman build while the mice were gathering?
       options:
-        - A small house for the Queen
-        - A bridge over the river
-        - A cage to hold Toto
-        - A wooden truck with wheels
-      correctIndex: 3
-      explanationZh: Scarecrow 让铁皮人去河边用树枝做一辆 truck，铁皮人砍掉枝叶、用木钉固定，还用树干做了四个轮子。这辆车用来拉走昏睡的狮子。
+        - A cage of branches to hold Toto safely
+        - A raft to float the Lion down the river
+        - A truck on four wheels cut from a tree trunk
+        - A shelter for Dorothy to sleep under
+      correctIndex: 2
+      explanationZh: 稻草人让他到河边的树林里去做一辆车，他砍去枝叶、用木钉拼合，"made the four wheels out of short pieces of a big tree trunk"，田鼠们赶到时正好完工。
 quiz:
   - id: oz-ch-09-q1
-    stem: What was the Wildcat chasing when the Tin Woodman killed it?
+    stem: What was the Wildcat chasing when the Woodman struck it down?
     options:
-      - A field mouse
-      - Toto the dog
-      - A yellow bird
-      - Another wildcat
-    correctIndex: 0
-    explanationZh: 书中写道 "running before the beast was a little gray field mouse"，野猫正在追一只灰色小田鼠，铁皮人看到后挥斧救了她。
+      - A young rabbit running for its burrow
+      - Toto, who had strayed from the others
+      - A yellow bird fallen out of its nest
+      - A little gray field mouse in the grass
+    correctIndex: 3
+    explanationZh: 铁皮人看见 "running before the beast was a little gray field mouse"——虽然自己没有心，他也知道让野猫杀死这样一只无害的小东西是不对的。
   - id: oz-ch-09-q2
-    stem: What problem does Toto cause when the mice first gather?
+    stem: What did Toto do when he woke and saw the mice?
     options:
-      - He runs away into the forest
-      - He eats the mice's string
-      - He barks and jumps into the mice
-      - He wakes up the Lion
-    correctIndex: 2
-    explanationZh: Toto 醒来后开心地叫了一声就跳进鼠群中间，吓得田鼠们四处逃散。铁皮人赶紧把他抱住，让田鼠们回来。
-  - id: oz-ch-09-q3
-    stem: Why does the Queen fear the Cowardly Lion at first?
-    options:
-      - She thinks he would eat all the mice
-      - She thinks he is too heavy to carry
-      - She thinks he is not really a coward
-      - She thinks he will steal their string
+      - He barked with delight and leapt among them
+      - He hid behind Dorothy and would not come out
+      - He carried one of them gently to the Woodman
+      - He ran off toward the poppy field after them
     correctIndex: 0
-    explanationZh: 女王一听到狮子就喊 "he would eat us all up"。Scarecrow 解释这只狮子自称胆小、不会伤害朋友，女王才答应帮忙。
-  - id: oz-ch-09-q4
-    stem: What does the Queen ask each mouse to bring?
+    explanationZh: 他在堪萨斯时就爱追老鼠，这回 "gave one bark of delight and jumped right into the middle of the group"，吓得田鼠四散。铁皮人一把抱住他，田鼠才敢回来。
+  - id: oz-ch-09-q3
+    stem: Why was the Queen of the Mice afraid to help at first?
     options:
-      - A handful of food
-      - A tree branch
-      - A flower from the poppy bed
-      - A piece of string
-    correctIndex: 3
-    explanationZh: Scarecrow 请女王让每只田鼠各带一根长绳。后来田鼠们赶到时，每只嘴里都叼着一根绳子，绳子一头系在田鼠脖子上，另一头系在车上。
-  - id: oz-ch-09-q5
-    stem: Why does the Queen hurry the mice away from the poppy bed?
-    options:
-      - Because she wants the mice to go home for dinner
-      - Because she fears the mice will also fall asleep
-      - Because Toto is chasing them again
-      - Because a new wildcat is coming
+      - She thought the truck would be too heavy to pull
+      - She was sure a Lion would eat every one of them
+      - She did not believe the tin man had really saved her
+      - She feared Toto more than she feared the Wildcat
     correctIndex: 1
-    explanationZh: 书中写道女王急忙下令出发，"for she feared if the mice stayed among the poppies too long they also would fall asleep"。罂粟花的气味会让人昏睡，所以她要尽快撤离。
-  - id: oz-ch-09-q6
-    stem: What does the Queen tell Dorothy's group before she leaves?
+    explanationZh: 一听说要救的是狮子，她就喊 "Why, he would eat us all up"。稻草人说这只狮子自称胆小，"he would never hurt anyone who is our friend"，她这才点头。
+  - id: oz-ch-09-q4
+    stem: What did each of the thousands of mice bring with it?
     options:
-      - Never come to the field again
-      - Bring Toto to meet us tomorrow
-      - Follow the yellow brick road alone
-      - Call out in the field if you ever need us
-    correctIndex: 3
-    explanationZh: 女王临别说 "If ever you need us again, come out into the field and call, and we shall hear you and come to your assistance." 她承诺只要在田野里呼唤，田鼠们就会来帮忙。
+      - A blade of grass from the green field
+      - A wooden peg for the Woodman's truck
+      - A long piece of string in its mouth
+      - A poppy petal from the deadly field
+    correctIndex: 2
+    explanationZh: 稻草人请女王把所有田鼠都叫来，"let each one bring a long piece of string"。绳子一头系在田鼠脖子上，另一头拴在车上。
+  - id: oz-ch-09-q5
+    stem: Why did the Queen hurry her people once the Lion was loaded?
+    options:
+      - She feared the mice would fall asleep among the poppies
+      - She had heard another Wildcat somewhere in the grass
+      - She wanted to be home again before the sun went down
+      - She was afraid Toto would break free of the tin arms
+    correctIndex: 0
+    explanationZh: 车一装好她就下令出发，"for she feared if the mice stayed among the poppies too long they also would fall asleep"。
+  - id: oz-ch-09-q6
+    stem: What did the Queen say as she left?
+    options:
+      - That she would send mice to guard them at night
+      - That a call in the field would always bring them
+      - That she would never forget the funny tin man
+      - That the Lion must promise never to hunt mice
+    correctIndex: 1
+    explanationZh: 她说 "If ever you need us again, come out into the field and call, and we shall hear you and come to your assistance"，说完撒腿就跑；多萝西赶紧抱紧托托，免得他追上去吓着她。

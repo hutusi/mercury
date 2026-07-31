@@ -3,7 +3,7 @@ id: oz-ch-15
 bookId: book-oz
 title: The Discovery of Oz, the Terrible
 titleZh: 奥兹的真相大白
-summaryZh: 四位旅人带着好消息回到翡翠城，大巫师却迟迟不肯召见。当他们终于走进觐见室，等待他们的不是奖赏，而是全书最大的一个意外。
+summaryZh: 翡翠城的大门再一次为他们打开，守门人吃惊得张大了嘴。消息很快传遍全城，可宫里那位伟大的巫师，一连几天没有半点回音。
 sections:
   - id: oz-ch-15-s1
     text: |-
@@ -34,14 +34,14 @@ sections:
       The soldier had the news carried straight to Oz that Dorothy and the other travelers had come back again, after destroying the Wicked Witch; but Oz made no reply. They thought the Great Wizard would send for them at once, but he did not. They had no word from him the next day, nor the next, nor the next. The waiting was tiresome and wearing, and at last they grew vexed that Oz should treat them in so poor a fashion, after sending them to undergo hardships and slavery. So the Scarecrow at last asked the green girl to take another message to Oz, saying if he did not let them in to see him at once they would call the Winged Monkeys to help them, and find out whether he kept his promises or not. When the Wizard was given this message he was so frightened that he sent word for them to come to the Throne Room at four minutes after nine o’clock the next morning. He had once met the Winged Monkeys in the Land of the West, and he did not wish to meet them again.
     checkIn:
       id: oz-ch-15-s1-c1
-      stem: Why did Oz finally agree to see the travelers the next morning?
+      stem: What finally made Oz agree to see them?
       options:
-        - The green girl begged him to let them in.
-        - The soldier told him the Wicked Witch was melted.
-        - He wanted to give them their gifts right away.
-        - He was frightened by their threat to call the Winged Monkeys.
-      correctIndex: 3
-      explanationZh: 稻草人让绿衣女孩传话说，如果奥兹不立刻见他们，他们就叫飞猴来帮忙（"they would call the Winged Monkeys to help them"）。奥兹曾在西方之地遇到过飞猴，不想再惹他们，这才害怕地召见他们。"士兵报告女巫已融化"虽然也与情节相关，但不是奥兹改变态度的直接原因。
+        - Their threat to call the Winged Monkeys frightened him
+        - The crowd of people that followed them to the palace
+        - The news that Dorothy had melted the Witch
+        - The green girl's pleading on their behalf
+      correctIndex: 0
+      explanationZh: 稻草人托绿衣姑娘带话，说他再不见面就召飞猴来问个明白——"When the Wizard was given this message he was so frightened"，立刻定下第二天九点零四分。他在西方之地领教过飞猴，不想再见第二回。
   - id: oz-ch-15-s2
     text: |-
       The four travelers passed a sleepless night, each thinking of the gift Oz had promised to bestow on him. Dorothy fell asleep only once, and then she dreamed she was in Kansas, where Aunt Em was telling her how glad she was to have her little girl at home again.
@@ -85,14 +85,14 @@ sections:
       The Lion thought it might be as well to frighten the Wizard, so he gave a large, loud roar, which was so fierce and dreadful that Toto jumped away from him in alarm and tipped over the screen that stood in a corner. As it fell with a crash they looked that way, and the next moment all of them were filled with wonder. For they saw, standing in just the spot the screen had hidden, a little old man, with a bald head and a wrinkled face, who seemed to be as much surprised as they were. The Tin Woodman, raising his axe, rushed toward the little man and cried out, “Who are you?”
     checkIn:
       id: oz-ch-15-s2-c1
-      stem: How was the little old man behind the screen discovered?
+      stem: How was the little old man behind the screen found out?
       options:
-        - Toto pulled back a curtain.
-        - The Lion's loud roar made Toto jump and tip over the screen.
-        - The Tin Woodman broke the screen with his axe.
-        - Dorothy pushed the screen aside to find the Voice.
+        - Toto ran behind the throne and dragged him out
+        - The Lion's roar startled Toto, who upset the screen
+        - The Tin Woodman split the screen with his axe
+        - Dorothy walked round the throne looking for the Voice
       correctIndex: 1
-      explanationZh: 狮子想吓唬巫师，发出一声大吼，托托受惊跳开，撞倒了角落里的屏风（"Toto jumped away from him in alarm and tipped over the screen"），屏风后面站着一个矮小的秃头老人。"托托拉开帘子"把功劳归给托托，但他不是故意的——是被狮子的吼声吓到才撞翻了屏风。
+      explanationZh: 狮子想吓一吓巫师，猛吼一声，"Toto jumped away from him in alarm and tipped over the screen that stood in a corner"。屏风哗啦倒下，后面站着个秃头老人，跟他们一样吃惊。
   - id: oz-ch-15-s3
     text: |-
       “I am Oz, the Great and Terrible,” said the little man, in a trembling voice. “But don’t strike me—please don’t—and I’ll do anything you want me to.”
@@ -142,14 +142,14 @@ sections:
       “This I hung from the ceiling by a wire,” said Oz. “I stood behind the screen and pulled a thread, to make the eyes move and the mouth open.”
     checkIn:
       id: oz-ch-15-s3-c1
-      stem: What did the little old man admit he was?
+      stem: How had the little man worked the great Head?
       options:
-        - A humbug
-        - A real wizard with weak powers
-        - The Wicked Witch in disguise
-        - One of the Winged Monkeys
-      correctIndex: 0
-      explanationZh: 矮个子老人承认自己是个骗子（"I am a humbug"），还说"I'm just a common man"。稻草人认为他不仅是个普通人，更是个 humbug，老人也愉快地承认了。"法力弱的真巫师"与原文 "I have no magical powers" 直接矛盾。
+        - He spoke through a tube hidden in the throne
+        - He had a Winkie servant crouching inside it
+        - He hung it by a wire and pulled a thread
+        - He painted a new face on it every morning
+      correctIndex: 2
+      explanationZh: 那颗头是用许多层纸糊成、仔细画上五官的，"This I hung from the ceiling by a wire… I stood behind the screen and pulled a thread, to make the eyes move and the mouth open"。
   - id: oz-ch-15-s4
     text: |-
       “But how about the voice?” she inquired.
@@ -179,14 +179,14 @@ sections:
       “It came down gradually, and I was not hurt a bit. But I found myself in the midst of a strange people, who, seeing me come from the clouds, thought I was a great Wizard. Of course I let them think so, because they were afraid of me, and promised to do anything I wished them to.
     checkIn:
       id: oz-ch-15-s4-c1
-      stem: What was the Ball of Fire that the travelers had seen?
+      stem: What had Oz done for a living before he came to this country?
       options:
-        - A magic light controlled by a hidden switch
-        - A real fire spirit trapped in a glass case
-        - A burning ball of cotton hung from the ceiling
-        - A painted paper ball with a candle inside
-      correctIndex: 2
-      explanationZh: 奥兹解释说那团火球其实是一个棉花球挂在天花板上（"a ball of cotton"），浇上油后就会猛烈燃烧，看起来像火球。文中既没有魔法开关，也没有被困的火焰精灵——那只是棉花和油的把戏。
+        - He kept a shop in Omaha selling paper masks
+        - He was a soldier who guarded a city gate
+        - He worked for a great master as a tinsmith
+        - He was a ventriloquist, and then a balloonist
+      correctIndex: 3
+      explanationZh: 他说自己生在奥马哈，先跟一位名师学成口技，"After a time I tired of that, and became a balloonist"——就是马戏团开演那天升空招揽看客的人。
   - id: oz-ch-15-s5
     text: |-
       “Just to amuse myself, and keep the good people busy, I ordered them to build this City, and my Palace; and they did it all willingly and well. Then I thought, as the country was so green and beautiful, I would call it the Emerald City; and to make the name fit better I put green spectacles on all the people, so that everything they saw was green.”
@@ -202,14 +202,14 @@ sections:
       “Oh, no, my dear; I’m really a very good man, but I’m a very bad Wizard, I must admit.”
     checkIn:
       id: oz-ch-15-s5-c1
-      stem: Why did Oz make all the people in the city wear green spectacles?
+      stem: Why does everything in the city look green?
       options:
-        - To make everything they saw look green
-        - To protect their eyes from the bright sun
-        - To hide his own face from them
-        - To help them see invisible things
+        - Because everyone there wears green spectacles
+        - Because the walls are built of solid emerald
+        - Because Oz washes the streets with green dye
+        - Because the sunlight in Oz is green by nature
       correctIndex: 0
-      explanationZh: 奥兹说为了让"翡翠城"这个名字更贴切，他给所有人都戴上了绿眼镜，这样他们看到的一切都是绿色的（"when you wear green spectacles, why of course everything you see looks green to you"）。其实城市本身并不比别的城市更绿。
+      explanationZh: 他说这座城并不比别处更绿，"but when you wear green spectacles, why of course everything you see looks green to you"。为了让"翡翠城"这个名字名副其实，他给所有人都配了绿眼镜。
   - id: oz-ch-15-s6
     text: |-
       “Can’t you give me brains?” asked the Scarecrow.
@@ -247,66 +247,66 @@ sections:
       They agreed to say nothing of what they had learned, and went back to their rooms in high spirits. Even Dorothy had hope that “The Great and Terrible Humbug,” as she called him, would find a way to send her back to Kansas, and if he did she was willing to forgive him everything.
     checkIn:
       id: oz-ch-15-s6-c1
-      stem: What did Oz say was the only thing he asked of the travelers in return?
+      stem: What did Oz say true courage is?
       options:
-        - To bring him more jewels from the Witches
-        - To help him build a new throne
-        - To serve in his Palace for a year
-        - To keep his secret and tell no one he was a humbug
-      correctIndex: 3
-      explanationZh: 奥兹说他唯一的要求是他们保守秘密，不要告诉任何人他是个骗子（"You must keep my secret and tell no one I am a humbug"）。作为回报，他会在宫中款待他们，并想办法帮多萝西回堪萨斯。
+        - Never feeling afraid, however great the danger
+        - Facing danger when you are afraid of it
+        - Roaring loudly enough to frighten others first
+        - Trusting a wizard to take the fear away
+      correctIndex: 1
+      explanationZh: 他说 "There is no living thing that is not afraid when it faces danger. The True courage is in facing danger when you are afraid, and that kind of courage you have in plenty"。狮子却说，他要的是那种能让人忘掉害怕的勇气。
 quiz:
   - id: oz-ch-15-q1
-    stem: How did Dorothy destroy the Wicked Witch of the West?
+    stem: What did the Guardian of the Gates do when he heard the Witch was melted?
     options:
-      - She dropped a house on her.
-      - She set fire to her castle.
-      - She used a magic spell she learned from Glinda.
-      - She melted her with a bucket of water.
-    correctIndex: 3
-    explanationZh: 多萝西在第一章告诉守门人和奥兹，她用一桶水融化了恶女巫（"I melted her with a bucket of water"）。"被房子压死"是东方恶女巫的死法，不是西方恶女巫的，容易混淆。
+      - He refused to believe a word of it
+      - He ran to carry the news to Oz himself
+      - He bowed very low indeed before Dorothy
+      - He unlocked the gate and let them pass unseen
+    correctIndex: 2
+    explanationZh: 狮子一说是多萝西干的，他就喊了声 "Good gracious!"，"and he bowed very low indeed before her"。消息传开后，全城的人跟着他们一路送到王宫。
   - id: oz-ch-15-q2
-    stem: Why did the four travelers have to wait several days before Oz would see them?
+    stem: What did Dorothy dream on the sleepless night before the audience?
     options:
-      - Oz made no reply and did not send for them.
-      - Oz was traveling to another country.
-      - Oz was busy preparing their gifts.
-      - Oz was hiding behind a locked door.
-    correctIndex: 0
-    explanationZh: 士兵立刻把消息传给奥兹，但奥兹没有回复（"Oz made no reply"），一天又一天过去，他们等得越来越不耐烦，最后稻草人用飞猴来威胁，奥兹才同意召见。
-  - id: oz-ch-15-q3
-    stem: What four shapes had Oz taken when each traveler first met him?
-    options:
-      - A Head, a Giant, a Dragon, and a Ball of Fire
-      - A Lady, a Beast, a Ghost, and a Head
-      - A Head, a Lady, a Beast, and a Ball of Fire
-      - A Ball of Fire, a Beast, a Lady, and a Ghost
-    correctIndex: 2
-    explanationZh: 多萝西见过巨大的头，稻草人见过美丽的女士，铁皮人见过可怕的野兽，狮子见过火球（"I thought Oz was a great Head / a lovely Lady / a terrible Beast / a Ball of Fire"）。奥兹承认这些都是他用纸、衣服、兽皮和棉花做出来的把戏。
-  - id: oz-ch-15-q4
-    stem: Where was Oz originally from, and how did he arrive in the Land of Oz?
-    options:
-      - From Kansas, carried by a cyclone
-      - From Omaha, carried by a balloon that drifted far away
-      - From the North, walking across the desert
-      - From a circus in the East, riding in a wagon
-    correctIndex: 1
-    explanationZh: 奥兹说他出生在奥马哈（Omaha），后来成了气球师。有一天气球绳索缠住，他被气流带到很远的地方（"a current of air struck it and carried it many, many miles away"），降落在一片陌生的土地上。多萝西说奥马哈离堪萨斯不远，但奥兹说离这里很远。
-  - id: oz-ch-15-q5
-    stem: Why had Oz been especially afraid of the Witches?
-    options:
-      - Because they owed him money
-      - Because they knew his secret
-      - Because they wanted his Palace
-      - They could do real magic
+      - That the Wizard had refused to keep his promise
+      - That the Winged Monkeys carried her over the desert
+      - That she was walking home along the yellow brick road
+      - That she was in Kansas, and Aunt Em was glad
     correctIndex: 3
-    explanationZh: 奥兹说虽然自己毫无魔力，但女巫们确实能做到神奇的事情（"I had no magical powers at all... the Witches were really able to do wonderful things"）。东西方恶女巫之所以没杀他，只是因为误以为他比她们更强大。
-  - id: oz-ch-15-q6
-    stem: What reason did Oz give for why the Scarecrow already had brains?
+    explanationZh: 四个人一夜没睡，各自想着奥兹许下的礼物。她只睡着一回，"she dreamed she was in Kansas, where Aunt Em was telling her how glad she was to have her little girl at home again"。
+  - id: oz-ch-15-q3
+    stem: What was the terrible Beast really made of?
     options:
-      - He was made by a clever farmer who gave him brains.
-      - He already defeated the Wicked Witch.
-      - A baby has brains but doesn't know much; experience brings knowledge.
-      - The Wizard secretly put brains in him long ago.
+      - Skins sewn together, with slats inside them
+      - Many thicknesses of paper, hung up on a wire
+      - Cotton soaked in oil and then set alight
+      - A dress and a mask the little man wore
+    correctIndex: 0
+    explanationZh: 铁皮人见过的那头怪物 "was nothing but a lot of skins, sewn together, with slats to keep their sides out"。纸糊的是那颗大头，浇了油的棉球是火球，衣裙和面具则属于那位美丽夫人。
+  - id: oz-ch-15-q4
+    stem: Why did the Wizard live in such fear of the Witches?
+    options:
+      - They had guessed that he came from Omaha
+      - He had no magic, and they could do real wonders
+      - They had once burned down his first palace
+      - They knew the Golden Cap's charm and he did not
+    correctIndex: 1
+    explanationZh: 他坦白 "while I had no magical powers at all I soon found out that the Witches were really able to do wonderful things"；东西方那两个恶女巫要不是误以为他更厉害，早就把他除掉了。
+  - id: oz-ch-15-q5
+    stem: What did Oz say about the Scarecrow's need for brains?
+    options:
+      - That straw can never be made to hold brains
+      - That the Witches had taken his brains long ago
+      - That he learns daily, and experience brings knowledge
+      - That brains make most people unhappy in the end
     correctIndex: 2
-    explanationZh: 奥兹说稻草人每天都在学习，婴儿虽然有脑子但知道的也不多，只有经验才能带来知识（"Experience is the only thing that brings knowledge"）。但稻草人仍然坚持要他给脑子，奥兹只好答应第二天往他头里塞东西。
+    explanationZh: 他说 "A baby has brains, but it doesn't know much. Experience is the only thing that brings knowledge"。至于"有了它多半不快活"，那是他劝铁皮人别要心时说的话。
+  - id: oz-ch-15-q6
+    stem: What did Oz ask for in return for his help?
+    options:
+      - That they leave the Emerald City within a week
+      - That Dorothy give him back the Golden Cap
+      - That the Lion stay behind to guard the palace
+      - That they keep his secret and tell no one
+    correctIndex: 3
+    explanationZh: 他说 "There is only one thing I ask in return for my help… You must keep my secret and tell no one I am a humbug"。四个人答应下来，从此以客人的身份住在宫里。

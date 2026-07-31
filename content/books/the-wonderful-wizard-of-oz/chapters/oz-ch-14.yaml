@@ -3,7 +3,7 @@ id: oz-ch-14
 bookId: book-oz
 title: The Winged Monkeys
 titleZh: 飞猴
-summaryZh: 四位伙伴在返回翡翠城的途中迷了路，绿色的原野一望无际，连方向都辨认不清。一位老朋友的提醒帮他们摆脱了困境，而这段旅程还让他们听到了一个关于金帽的古老故事。
+summaryZh: 从西方回翡翠城，一路上既没有大道也没有小径。一连几天，四个人眼前只有望不到头的花海——他们已经说不清自己究竟在往哪儿走了。
 sections:
   - id: oz-ch-14-s1
     text: |-
@@ -28,14 +28,14 @@ sections:
       “To be sure they could,” cried the Scarecrow. “Why didn’t we think of that before?”
     checkIn:
       id: oz-ch-14-s1-c1
-      stem: Why did the travelers get lost in the great fields?
+      stem: Why did the travellers lose their way in the great fields?
       options:
-        - Because the Wicked Witch put a spell on them
-        - Because they forgot to bring a map
-        - Because the flowers blocked their view
-        - At noon the overhead sun gave no directions
+        - The Winged Monkeys had carried them the wrong way
+        - The scarlet flowers had grown too tall to see over
+        - Toto was too tired to run ahead and find the road
+        - At noon the sun stood overhead and told them nothing
       correctIndex: 3
-      explanationZh: 原文说他们本知道要朝东走，但正午太阳在头顶时，他们分不清东西方向，因此迷了路。其他选项在文中都没有提到。
+      explanationZh: 他们知道该一直向东、朝日出的方向走，"But at noon, when the sun was over their heads, they did not know which was east and which was west, and that was the reason they were lost in the great fields"。
   - id: oz-ch-14-s2
     text: |-
       Dorothy blew the little whistle she had always carried about her neck since the Queen of the Mice had given it to her. In a few minutes they heard the pattering of tiny feet, and many of the small gray mice came running up to her. Among them was the Queen herself, who asked, in her squeaky little voice:
@@ -73,14 +73,14 @@ sections:
       “We will carry you,” replied the King, and no sooner had he spoken than two of the Monkeys caught Dorothy in their arms and flew away with her. Others took the Scarecrow and the Woodman and the Lion, and one little Monkey seized Toto and flew after them, although the dog tried hard to bite him.
     checkIn:
       id: oz-ch-14-s2-c1
-      stem: Who tells Dorothy about the charm of the Golden Cap?
+      stem: Who told Dorothy that the Golden Cap carried a charm?
       options:
-        - The Scarecrow
-        - The Tin Woodman
-        - The Queen of the Mice
-        - The King of the Winged Monkeys
+        - The King of the Winged Monkeys, when he arrived
+        - The Scarecrow, who had read of it somewhere
+        - The Queen of the Mice, who noticed the Cap
+        - The Wicked Witch, before she melted away
       correctIndex: 2
-      explanationZh: 田鼠女王注意到多萝西的金帽，告诉她帽子里面写着咒语，可以召唤飞猴。猴王是在她念完咒语后才出现的。
+      explanationZh: 女王一眼看见那顶金帽，就问 "Why don't you use the charm of the Cap, and call the Winged Monkeys to you?"，还说咒语 "is written inside the Golden Cap"，随后就带着田鼠们躲开了。
   - id: oz-ch-14-s3
     text: |-
       The Scarecrow and the Tin Woodman were rather frightened at first, for they remembered how badly the Winged Monkeys had treated them before; but they saw that no harm was intended, so they rode through the air quite cheerfully, and had a fine time looking at the pretty gardens and woods far below them.
@@ -98,14 +98,14 @@ sections:
       “There lived here then, away at the North, a beautiful princess, who was also a powerful sorceress. All her magic was used to help the people, and she was never known to hurt anyone who was good. Her name was Gayelette, and she lived in a handsome palace built from great blocks of ruby. Everyone loved her, but her greatest sorrow was that she could find no one to love in return, since all the men were much too stupid and ugly to mate with one so beautiful and wise. At last, however, she found a boy who was handsome and manly and wise beyond his years. Gayelette made up her mind that when he grew to be a man she would make him her husband, so she took him to her ruby palace and used all her magic powers to make him as strong and good and lovely as any woman could wish. When he grew to manhood, Quelala, as he was called, was said to be the best and wisest man in all the land, while his manly beauty was so great that Gayelette loved him dearly, and hastened to make everything ready for the wedding.
     checkIn:
       id: oz-ch-14-s3-c1
-      stem: What was the Winged Monkeys' life like before they became slaves?
+      stem: What sort of person was Gayelette?
       options:
-        - They served the Wicked Witch and hated it
-        - They worked for Gayelette in her ruby palace
-        - They lived free and happy in the forest
-        - They guarded the Emerald City gates
-      correctIndex: 2
-      explanationZh: 猴王说他们曾经是自由的民众，住在森林里，吃坚果和水果，随心所欲，没有人是他们的主人。其他选项都与他们当时的生活无关。
+        - A princess and sorceress whose magic helped people
+        - A queen who ruled the forest where the monkeys lived
+        - A witch who kept the Golden Cap in a ruby cupboard
+        - A girl whom Quelala had rescued from the river
+      correctIndex: 0
+      explanationZh: 猴王说北方住着一位美丽的公主，也是位强大的女法师，"All her magic was used to help the people, and she was never known to hurt anyone who was good"，她的宫殿是用红宝石砌成的。
   - id: oz-ch-14-s4
     text: |-
       “My grandfather was at that time the King of the Winged Monkeys which lived in the forest near Gayelette’s palace, and the old fellow loved a joke better than a good dinner. One day, just before the wedding, my grandfather was flying out with his band when he saw Quelala walking beside the river. He was dressed in a rich costume of pink silk and purple velvet, and my grandfather thought he would see what he could do. At his word the band flew down and seized Quelala, carried him in their arms until they were over the middle of the river, and then dropped him into the water.
@@ -119,14 +119,14 @@ sections:
       “Quelala being the first owner of the Golden Cap,” replied the Monkey, “he was the first to lay his wishes upon us. As his bride could not bear the sight of us, he called us all to him in the forest after he had married her and ordered us always to keep where she could never again set eyes on a Winged Monkey, which we were glad to do, for we were all afraid of her.
     checkIn:
       id: oz-ch-14-s4-c1
-      stem: Why did Gayelette punish the Winged Monkeys?
+      stem: What did the Monkey King's grandfather do to Quelala?
       options:
-        - Because they dropped Quelala into the river and ruined his clothes.
-        - Because they stole the Golden Cap from her palace.
-        - Because they attacked her ruby palace.
-        - Because they refused to come to her wedding.
-      correctIndex: 0
-      explanationZh: 猴王的祖父在婚礼前带着猴群把 Quelala 扔进河里，弄坏了他丝绸和天鹅绒的衣服，Gayelette 因此大怒并惩罚了他们。
+        - He stole the Golden Cap from the wedding table
+        - He dropped him into the middle of the river
+        - He pulled his tail as he walked in the forest
+        - He threw nuts at him from the palace roof
+      correctIndex: 1
+      explanationZh: 那位老猴王 "loved a joke better than a good dinner"，看见 Quelala 穿着粉绸紫绒的华服在河边散步，便叫猴群把他抬到河心松了手，还喊 "Swim out, my fine fellow"。
   - id: oz-ch-14-s5
     text: |-
       “This was all we ever had to do until the Golden Cap fell into the hands of the Wicked Witch of the West, who made us enslave the Winkies, and afterward drive Oz himself out of the Land of the West. Now the Golden Cap is yours, and three times you have the right to lay your wishes upon us.”
@@ -138,57 +138,57 @@ sections:
       “Yes, and a quick way out of our troubles,” replied the Lion. “How lucky it was you brought away that wonderful Cap!”
     checkIn:
       id: oz-ch-14-s5-c1
-      stem: What did the Wicked Witch of the West use the Winged Monkeys to do?
+      stem: What did the Monkey King say now that his story was told?
       options:
-        - Build her castle
-        - Enslave the Winkie people
-        - Guard the Winkies
-        - Find the Golden Cap for her
-      correctIndex: 1
-      explanationZh: 猴王说西方恶女巫用金帽命令他们奴役温基人，之后又把奥兹本人赶出了西方之地。其他选项文中没有提到。
+        - That the Cap must go back to Quelala's heirs
+        - That they would never obey a child's command
+        - That the Witch had used up the Cap's last wish
+        - That the Cap was hers, with three wishes in it
+      correctIndex: 3
+      explanationZh: 他说金帽落到西方恶女巫手里后，她用它奴役温基人、赶走奥兹；"Now the Golden Cap is yours, and three times you have the right to lay your wishes upon us"。
 quiz:
   - id: oz-ch-14-q1
-    stem: What did Dorothy suggest calling when the travelers were lost and losing heart?
+    stem: What did Dorothy suggest when the four of them lost heart in the fields?
     options:
-      - The Winged Monkeys
-      - The Winkies
-      - The Queen of the Mice only
-      - The field mice
-    correctIndex: 3
-    explanationZh: 多萝西说也许可以叫田鼠来帮忙，因为它们可能知道去翡翠城的路。她当时还没有想到金帽和飞猴。
-  - id: oz-ch-14-q2
-    stem: How many times can the owner of the Golden Cap command the Winged Monkeys?
-    options:
-      - As many times as they want
-      - Three times
-      - Five times
-      - Only once
-    correctIndex: 1
-    explanationZh: 猴王明确说金帽的主人有权命令飞猴三次——这是 Gayelette 当年定下的条件。
-  - id: oz-ch-14-q3
-    stem: What did Quelala order the Winged Monkeys to do with his first wish?
-    options:
-      - Stay away from his bride forever
-      - Build a palace for Gayelette
-      - Carry him across the river
-      - Guard the ruby palace
-    correctIndex: 0
-    explanationZh: Quelala 的妻子不愿看到飞猴，于是他命令飞猴永远躲在她看不到的地方，飞猴们也很乐意照做。
-  - id: oz-ch-14-q4
-    stem: What did the Monkey King say was the reason the Monkeys must obey the Golden Cap?
-    options:
-      - Because they lost a war against Gayelette
-      - Because Oz commanded it
-      - Because they promised the Wicked Witch
-      - Because Gayelette spared their lives on that condition
-    correctIndex: 3
-    explanationZh: Gayelette 原本要惩罚飞猴，但猴王苦苦哀求，Quelala 也替他们说了好话，于是她放过他们，条件是飞猴永远要服从金帽主人三次命令。
-  - id: oz-ch-14-q5
-    stem: How did Dorothy feel during the flight with the Winged Monkeys?
-    options:
-      - She was scared and wanted to stop.
-      - She was angry at the Monkeys.
-      - She found the ride easy and comfortable.
-      - She was worried about Toto the whole time.
+      - Turning back to the Yellow Castle to rest
+      - Putting on the Golden Cap and wishing
+      - Calling the field mice, who might know the way
+      - Waiting where they were until the sun set
     correctIndex: 2
-    explanationZh: 文中说多萝西坐在两只最大的猴子之间，它们用手做成椅子，小心翼翼不弄疼她。旅程结束时她说 rides 很好。
+    explanationZh: 她说 "Suppose we call the field mice. They could probably tell us the way to the Emerald City"，稻草人还懊恼怎么没早想到。金帽的用处是女王后来才提醒的。
+  - id: oz-ch-14-q2
+    stem: Why did the mice hurry away before Dorothy said the charm?
+    options:
+      - They were afraid of the Wicked Witch's whistle
+      - The Monkeys think it fine fun to plague them
+      - The Golden Cap frightened the Queen herself
+      - They had to be home before the sun went down
+    correctIndex: 1
+    explanationZh: 女王说 "if you are going to call the Winged Monkeys we must run away, for they are full of mischief and think it great fun to plague us"，说完就带着一群田鼠跑得无影无踪。
+  - id: oz-ch-14-q3
+    stem: On what condition did Gayelette spare the Winged Monkeys?
+    options:
+      - That they obey the owner of the Golden Cap three times
+      - That they never fly over her ruby palace again
+      - That they carry Quelala wherever he wished to go
+      - That they give up their wings for a hundred years
+    correctIndex: 0
+    explanationZh: 她本想把他们捆住翅膀扔进河里，老猴王苦苦哀求，Quelala 也替他们说情，她才让步——条件是 "the Winged Monkeys should ever after do three times the bidding of the owner of the Golden Cap"。
+  - id: oz-ch-14-q4
+    stem: What had the Golden Cap been made for?
+    options:
+      - A crown for the King of the Winged Monkeys
+      - A prize for whoever could swim the river
+      - A gift from Oz when he came out of the clouds
+      - A wedding present for Quelala from the princess
+    correctIndex: 3
+    explanationZh: 原文说 "This Cap had been made for a wedding present to Quelala, and it is said to have cost the princess half her kingdom"。
+  - id: oz-ch-14-q5
+    stem: What did Quelala order with the first wish of the Cap?
+    options:
+      - That the Monkeys carry him back across the river
+      - That the Monkeys build a palace beside Gayelette's
+      - That the Monkeys keep out of his bride's sight
+      - That the Monkeys guard the forest from strangers
+    correctIndex: 2
+    explanationZh: 新娘一见飞猴就受不了，于是他在婚后把猴群召到林中，"ordered us always to keep where she could never again set eyes on a Winged Monkey"——猴子们求之不得，因为他们都怕她。

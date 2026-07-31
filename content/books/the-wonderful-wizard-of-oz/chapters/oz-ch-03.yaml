@@ -3,7 +3,7 @@ id: oz-ch-03
 bookId: book-oz
 title: How Dorothy Saved the Scarecrow
 titleZh: 多萝西救了稻草人
-summaryZh: 多萝西穿上银鞋，带着托托踏上黄砖路，在芒奇金富人博克家借宿。第二天，她在一块玉米地里遇见了一个会说话的稻草人，一段新的同行就此开始。
+summaryZh: 多萝西锁上门，提着篮子带托托上了路。走过一天一夜之后，她爬到路边的栅栏上歇脚，看见玉米地里立着一个稻草扎的人——那人朝她慢慢眨了一下眼睛。
 sections:
   - id: oz-ch-03-s1
     text: |-
@@ -28,14 +28,14 @@ sections:
       She closed the door, locked it, and put the key carefully in the pocket of her dress. And so, with Toto trotting along soberly behind her, she started on her journey.
     checkIn:
       id: oz-ch-03-s1-c1
-      stem: Why did Dorothy decide to wear the silver shoes for the journey?
+      stem: Why did Dorothy change into the silver shoes before setting out?
       options:
-        - The Witch of the North ordered her to wear them
-        - She wanted the Munchkins to think she was a sorceress
-        - Her own shoes were old and worn, and the silver ones could not wear out
-        - They were the only shoes that matched her dress
+        - The Witch of the North had told her to put them on
+        - She wanted the Munchkins to take her for a sorceress
+        - Her own shoes were worn, and these could not wear out
+        - They were the only pair that went with her gingham dress
       correctIndex: 2
-      explanationZh: 出发前多萝西低头发现自己的鞋又旧又破，"走远路肯定不行"。她想起桌上的银鞋："拿它们走长路正合适，因为它们不会磨坏。"一试之下正合脚，像专门为她做的一样。
+      explanationZh: 她低头看见自己的鞋又旧又破，"They surely will never do for a long journey"，这才想起桌上那双银鞋——"they could not wear out"。一试正合脚，像专门为她做的。
   - id: oz-ch-03-s2
     text: |-
       There were several roads nearby, but it did not take her long to find the one paved with yellow bricks. Within a short time she was walking briskly toward the Emerald City, her silver shoes tinkling merrily on the hard, yellow road-bed. The sun shone bright and the birds sang sweetly, and Dorothy did not feel nearly so bad as you might think a little girl would who had been suddenly whisked away from her own country and set down in the midst of a strange land.
@@ -55,14 +55,14 @@ sections:
       “Because you wear silver shoes and have killed the Wicked Witch. Besides, you have white in your frock, and only witches and sorceresses wear white.”
     checkIn:
       id: oz-ch-03-s2-c1
-      stem: Why were the people at the large house dancing and feasting?
+      stem: Why were so many Munchkins dancing on the lawn that evening?
       options:
         - They were welcoming the new Witch of the East
-        - It was the Munchkins' harvest festival
-        - They were celebrating their freedom from the Wicked Witch
-        - Boq was getting married that evening
-      correctIndex: 2
-      explanationZh: 这是当地最富有的芒奇金人博克的家，朋友们聚在一起"庆祝从恶女巫的奴役中获得自由"。他们热情地招待多萝西吃晚饭、过夜。
+        - It was the harvest festival of the eastern country
+        - The richest Munchkin was marrying that same night
+        - They were celebrating their freedom from the Witch
+      correctIndex: 3
+      explanationZh: 这是全国最富有的芒奇金人博克的家，朋友们聚过来 "celebrate their freedom from the bondage of the Wicked Witch"。他们请多萝西吃了晚饭，还留她住下。
   - id: oz-ch-03-s3
     text: |-
       “My dress is blue and white checked,” said Dorothy, smoothing out the wrinkles in it.
@@ -86,14 +86,14 @@ sections:
       Dorothy leaned her chin upon her hand and gazed thoughtfully at the Scarecrow. Its head was a small sack stuffed with straw, with eyes, nose, and mouth painted on it to represent a face. An old, pointed blue hat, that had belonged to some Munchkin, was perched on his head, and the rest of the figure was a blue suit of clothes, worn and faded, which had also been stuffed with straw. On the feet were some old boots with blue tops, such as every man wore in this country, and the figure was raised above the stalks of corn by means of the pole stuck up its back.
     checkIn:
       id: oz-ch-03-s3-c1
-      stem: Why did Boq believe Dorothy must be a friendly witch?
+      stem: What made Boq sure that Dorothy was a friendly witch?
       options:
-        - She carried a magic basket
-        - Her dress showed white, the witches' color
-        - She arrived walking on the yellow brick road
-        - Toto could understand human speech
-      correctIndex: 1
-      explanationZh: 博克说：蓝色是芒奇金人的颜色，白色是女巫的颜色。多萝西的格子裙是蓝白相间的，"所以我们知道你是一个友好的女巫"。她穿银鞋、又"杀死"了恶女巫，更让人深信不疑。
+        - The white in her dress — white is the witch colour
+        - The pink sunbonnet she had tied over her hair
+        - The basket of bread she carried under a white cloth
+        - The way Toto walked so quietly at her heels
+      correctIndex: 0
+      explanationZh: 博克说 "Blue is the color of the Munchkins, and white is the witch color. So we know you are a friendly witch"。多萝西自己心里清楚，她只是被旋风卷来的普通小姑娘。
   - id: oz-ch-03-s4
     text: |-
       While Dorothy was looking earnestly into the queer, painted face of the Scarecrow, she was surprised to see one of the eyes slowly wink at her. She thought she must have been mistaken at first, for none of the scarecrows in Kansas ever wink; but presently the figure nodded its head to her in a friendly way. Then she climbed down from the fence and walked up to it, while Toto ran around the pole and barked.
@@ -137,14 +137,14 @@ sections:
       “That is true,” said the Scarecrow. “You see,” he continued confidentially, “I don’t mind my legs and arms and body being stuffed, because I cannot get hurt. If anyone treads on my toes or sticks a pin into me, it doesn’t matter, for I can’t feel it. But I do not want people to call me a fool, and if my head stays stuffed with straw instead of with brains, as yours is, how am I ever to know anything?”
     checkIn:
       id: oz-ch-03-s4-c1
-      stem: Why did the Scarecrow want to go with Dorothy to the Emerald City?
+      stem: What did the Scarecrow say he minded about being stuffed with straw?
       options:
-        - He was tired of the cornfield and wanted adventure
-        - He wanted to thank the Great Oz for making him alive
-        - He hoped Oz would give him brains instead of straw in his head
-        - He hoped to find the farmer who made him
-      correctIndex: 2
-      explanationZh: 稻草人坦白说自己是填充稻草的，"根本没有脑子"。他问多萝西：如果跟她一起去翡翠城，奥兹会不会给他一些脑子？他最怕的是被人叫作傻瓜。
+        - That the crows had stopped being afraid of him
+        - That his head held no brains, so he knew nothing
+        - That he could not feel the sun or the rain at all
+        - That the pole in his back would never come out
+      correctIndex: 1
+      explanationZh: 他说手脚和身子填稻草无所谓，"I cannot get hurt"，扎根针也不疼；可 "I do not want people to call me a fool"——脑袋里若一直是稻草，他就什么也弄不明白。
   - id: oz-ch-03-s5
     text: |-
       “I understand how you feel,” said the little girl, who was truly sorry for him. “If you will come with me I’ll ask Oz to do all he can for you.”
@@ -164,57 +164,57 @@ sections:
       “No,” answered the Scarecrow; “it’s a lighted match.”
     checkIn:
       id: oz-ch-03-s5-c1
-      stem: What is the only thing in the world the Scarecrow is afraid of?
+      stem: What was the Scarecrow's secret fear?
       options:
-        - Toto's growling
-        - Crows and other birds
-        - The Munchkin farmer who made him
-        - A lighted match
-      correctIndex: 3
-      explanationZh: 稻草人主动帮多萝西提篮子，因为他"不会累"，也不怕托托——"他伤不了稻草"。接着他吐露了一个秘密：世界上他只怕一样东西，就是一根点燃的火柴。
+        - The farmer who had stitched him together
+        - A single lighted match, and nothing else
+        - Toto, who kept growling at his straw
+        - The crows he was set up to frighten
+      correctIndex: 1
+      explanationZh: 他先说不怕托托——"He can't hurt the straw"，也不怕累，还抢着替多萝西提篮子；接着才吐露 "There is only one thing in the world I am afraid of… it's a lighted match"。
 quiz:
   - id: oz-ch-03-q1
-    stem: How did Dorothy find the right road among the several nearby?
+    stem: How did Dorothy know which of the roads to take?
     options:
-      - Boq walked with her and pointed it out
-      - She looked for the road paved with yellow bricks
-      - Toto ran ahead and led the way
-      - The silver shoes turned her feet toward it
-    correctIndex: 1
-    explanationZh: 北方女巫说过"去翡翠城的路是用黄砖铺成的，你不会错过"。附近有好几条路，但多萝西很快找到了铺着黄砖的那一条，银鞋在坚硬的黄色路面上发出清脆的声响。
-  - id: oz-ch-03-q2
-    stem: Why did the Munchkins come out of their houses and bow low to Dorothy?
-    options:
-      - They bowed to every stranger on the road
-      - They wanted to see the silver shoes up close
-      - She had destroyed the Witch and freed them
-      - They thought she was the Witch of the North
-    correctIndex: 2
-    explanationZh: 文中写道，人们出来看她、向她深深鞠躬，"因为每个人都知道，是她消灭了恶女巫，把他们从奴役中解救出来"。
-  - id: oz-ch-03-q3
-    stem: Why was Toto such a curiosity to the Munchkin people?
-    options:
-      - Black animals were sacred in the East
-      - They thought he could do magic tricks
-      - Dogs were forbidden by the Wicked Witch
-      - They had never seen a dog before
-    correctIndex: 3
-    explanationZh: 早餐时一个芒奇金小婴儿拉托托的尾巴、朝他又笑又叫。文中解释：托托对所有人来说都是个稀罕物，"因为他们从来没有见过狗"。
-  - id: oz-ch-03-q4
-    stem: What did Boq tell Dorothy about the way to the Emerald City?
-    options:
-      - It was only two days' easy walk
-      - He drew her a map of the whole road
-      - A long journey, rough and dangerous
-      - The road ended at a great desert
-    correctIndex: 2
-    explanationZh: 博克严肃地说自己从没去过翡翠城："路很远，要走许多天。这里的乡村富饶宜人，但到达终点之前，你必须穿过艰险的地方。"这让多萝西有些担心，但她没有回头。
-  - id: oz-ch-03-q5
-    stem: Why was it easy for Dorothy to lift the Scarecrow off the pole?
-    options:
-      - Being stuffed with straw, he was very light
-      - The pole was already broken
-      - The silver shoes gave her great strength
-      - The Scarecrow climbed down by himself
+      - She looked for the one paved with yellow brick
+      - Boq walked with her as far as the crossroads
+      - The silver shoes turned her feet the right way
+      - Toto ran ahead and picked the road for her
     correctIndex: 0
-    explanationZh: 稻草人请多萝西帮他取下背后的木杆。她"伸出双臂把他从杆子上抱了下来，因为他是稻草填的，非常轻"。落地后稻草人说自己"像换了一个人"。
+    explanationZh: 北方女巫早说过 "The road to the City of Emeralds is paved with yellow brick, so you cannot miss it"。附近有好几条路，她一眼就认了出来。
+  - id: oz-ch-03-q2
+    stem: What did the houses of the Munchkins look like?
+    options:
+      - Square, with flat roofs and no windows at all
+      - Round, with a big dome for a roof, and painted blue
+      - Low huts of straw, like the Scarecrow's stuffing
+      - Tall and narrow, with pointed roofs painted white
+    correctIndex: 1
+    explanationZh: 路两旁的房子 "each was round, with a big dome for a roof. All were painted blue"——蓝色是东方这片土地上最受喜爱的颜色，连栅栏也漆成淡蓝。
+  - id: oz-ch-03-q3
+    stem: Why was Toto such a curiosity to everyone at Boq's house?
+    options:
+      - They believed a black animal brought good luck
+      - They thought he had come from the Witch of the North
+      - They had never seen a dog before in their lives
+      - They had been forbidden dogs by the Wicked Witch
+    correctIndex: 2
+    explanationZh: 早饭时一个芒奇金小娃娃扯着托托的尾巴又笑又叫。原文解释 "Toto was a fine curiosity to all the people, for they had never seen a dog before"。
+  - id: oz-ch-03-q4
+    stem: What did Boq tell Dorothy about the road ahead?
+    options:
+      - That it was two days' walk if she started early
+      - That he would draw her a map of the whole way
+      - That the road ran out at the edge of the desert
+      - That it was long, and crossed rough, dangerous places
+    correctIndex: 3
+    explanationZh: 博克自己从没去过翡翠城，只说 "it is a long way… you must pass through rough and dangerous places before you reach the end of your journey"，还劝人没事别去打扰奥兹。
+  - id: oz-ch-03-q5
+    stem: Why could Dorothy lift the Scarecrow off his pole so easily?
+    options:
+      - Because he was stuffed with straw and very light
+      - Because the pole had rotted through at the bottom
+      - Because the silver shoes gave her a witch's strength
+      - Because he pushed himself up while she pulled
+    correctIndex: 0
+    explanationZh: 他说木杆插在背上，自己下不来。多萝西伸手一抱就把他取了下来，"for, being stuffed with straw, it was quite light"。落地后他说自己 "feel like a new man"。

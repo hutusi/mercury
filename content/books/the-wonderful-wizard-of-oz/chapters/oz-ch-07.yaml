@@ -3,7 +3,7 @@ id: oz-ch-07
 bookId: book-oz
 title: The Journey to the Great Oz
 titleZh: 前往伟大的奥兹之旅
-summaryZh: 多萝西和伙伴们在森林中宿营过夜，第二天接连遇到深沟与猛兽 Kalidahs 的追击，几次都险象环生。傍晚，他们来到一条宽阔的大河边，翡翠城还在河的另一头。
+summaryZh: 附近再没有人家，一行人只好在大树底下过夜。第二天走了不到一个钟头，路当中横着一道又宽又深的大沟，沟底满是嶙峋的尖石。
 sections:
   - id: oz-ch-07-s1
     text: |-
@@ -20,14 +20,14 @@ sections:
       This was to be an eventful day for the travelers. They had hardly been walking an hour when they saw before them a great ditch that crossed the road and divided the forest as far as they could see on either side. It was a very wide ditch, and when they crept up to the edge and looked into it they could see it was also very deep, and there were many big, jagged rocks at the bottom. The sides were so steep that none of them could climb down, and for a moment it seemed that their journey must end.
     checkIn:
       id: oz-ch-07-s1-c1
-      stem: Why did the Scarecrow stay far from the fire while picking nuts?
+      stem: Why did the Scarecrow keep his distance from the campfire?
       options:
-        - He was afraid a spark would burn his straw.
-        - He did not like the smell of the fire.
-        - He wanted to watch the forest for danger.
-        - He was too heavy to sit near the fire.
-      correctIndex: 0
-      explanationZh: 原文说 Scarecrow 担心「a spark might get into his straw and burn him up」，所以故意远离火焰。选项里「不喜欢烟味」看似有理，但文中明确写的是怕被火星烧着。
+        - The smoke would have stained his blue suit
+        - He was afraid a spark would set his straw alight
+        - He wanted to listen for animals in the dark trees
+        - The heat would have dried out his painted face
+      correctIndex: 1
+      explanationZh: 他捡坚果捡得慢，反倒乐得离火远些——"he feared a spark might get into his straw and burn him up"。只有给多萝西盖干树叶时，他才走近了一点。
   - id: oz-ch-07-s2
     text: |-
       “What shall we do?” asked Dorothy despairingly.
@@ -57,14 +57,14 @@ sections:
       They found the forest very thick on this side, and it looked dark and gloomy. After the Lion had rested they started along the road of yellow brick, silently wondering, each in his own mind, if ever they would come to the end of the woods and reach the bright sunshine again. To add to their discomfort, they soon heard strange noises in the depths of the forest, and the Lion whispered to them that it was in this part of the country that the Kalidahs lived.
     checkIn:
       id: oz-ch-07-s2-c1
-      stem: Why did the Scarecrow volunteer to be the first one the Lion carried across the ditch?
+      stem: Why did the Scarecrow insist on going across the ditch first?
       options:
-        - He was the lightest one in the group.
-        - He wanted to see what was on the other side.
-        - A fall would not hurt him at all.
-        - He was the bravest member of the group.
+        - He was the lightest of them for the Lion to carry
+        - He wanted to look at the road on the other side
+        - A fall onto the rocks would not hurt him at all
+        - He was the only one who was not afraid of falling
       correctIndex: 2
-      explanationZh: Scarecrow 主动提出先过，因为「if I am on your back it will not matter so much, for the fall would not hurt me at all」——摔了也不会受伤。他并非自称勇敢，也不仅仅因为体重轻。
+      explanationZh: 他说万一狮子跳不过去，多萝西会送命，铁皮人会摔得凹凸不平，"But if I am on your back it will not matter so much, for the fall would not hurt me at all"。倒是狮子自己承认怕摔。
   - id: oz-ch-07-s3
     text: |-
       “What are the Kalidahs?” asked the girl.
@@ -94,14 +94,14 @@ sections:
       But, seeing they were bigger than the Lion, and remembering that there were two of them and only one of him, the Kalidahs again rushed forward, and the Lion crossed over the tree and turned to see what they would do next. Without stopping an instant the fierce beasts also began to cross the tree. And the Lion said to Dorothy:
     checkIn:
       id: oz-ch-07-s3-c1
-      stem: What was the Scarecrow's plan to cross the second, wider ditch?
+      stem: What are the Kalidahs, as the Lion described them?
       options:
-        - Have the Lion jump across with each person.
-        - Chop down a tall tree so it falls across the ditch.
-        - Build a raft from branches.
-        - Walk along the rocks at the bottom of the ditch.
-      correctIndex: 1
-      explanationZh: 面对更宽的沟，Scarecrow 指着旁边的大树说：如果铁皮樵夫把它砍倒，树会倒向对面，就能当桥走过去。「让狮子跳」是第一条沟的旧办法，这里已经跳不过去了。
+        - Beasts with bodies like bears and heads like tigers
+        - Giant birds that carry off travellers in their claws
+        - Grey wolves as tall as horses, hunting in great packs
+        - Snakes long enough to lie right across the road
+      correctIndex: 0
+      explanationZh: 狮子说它们是 "monstrous beasts with bodies like bears and heads like tigers"，爪子长得能把他撕成两半，所以他 "terribly afraid of the Kalidahs"。
   - id: oz-ch-07-s4
     text: |-
       “We are lost, for they will surely tear us to pieces with their sharp claws. But stand close behind me, and I will fight them as long as I am alive.”
@@ -123,57 +123,57 @@ sections:
       But it takes time to make a raft, even when one is as industrious and untiring as the Tin Woodman, and when night came the work was not done. So they found a cozy place under the trees where they slept well until the morning; and Dorothy dreamed of the Emerald City, and of the good Wizard Oz, who would soon send her back to her own home again.
     checkIn:
       id: oz-ch-07-s4-c1
-      stem: How did the travelers get rid of the two Kalidahs?
+      stem: What was the Scarecrow's idea for stopping the Kalidahs?
       options:
-        - The Lion fought and defeated them in battle
-        - The Scarecrow pushed them into the river
-        - The Woodman chopped away the tree bridge
-        - Dorothy scared them away with fire
-      correctIndex: 2
-      explanationZh: 当 Kalidahs 正走过倒下的树桥时，Scarecrow 让铁皮樵夫砍断他们这一侧的树端，树掉进深渊，两头猛兽也跟着摔碎在岩石上。狮子只是勇敢地面对它们，真正解决它们的是砍断树桥这一招。
+        - To roar back at them until they turned away
+        - To chop off the near end of the fallen tree
+        - To push the rocks down onto them from above
+        - To let the Lion fight them one at a time
+      correctIndex: 1
+      explanationZh: 两头猛兽已经踏上树桥，他喊了声 "Wait a minute!"，请铁皮人把靠自己这一侧的树端砍断——树落进深渊，两头野兽也摔碎在底下的尖石上。
 quiz:
   - id: oz-ch-07-q1
-    stem: Why did the Tin Woodman beg the Lion not to kill a deer for breakfast?
+    stem: Why did the Tin Woodman beg the Lion not to kill a deer?
     options:
-      - He thought the meat would make Dorothy sick.
-      - He would weep and his jaws would rust again.
-      - He did not want to wait for the Lion to return.
-      - He wanted to eat nuts instead of meat.
-    correctIndex: 1
-    explanationZh: 铁皮樵夫说如果狮子杀了可怜的鹿，他一定会哭，然后「my jaws would rust again」——下巴会再次生锈。他并不是在讨论食物偏好或时间问题。
+      - He was afraid the noise would bring the Kalidahs
+      - He thought the meat would make Dorothy ill
+      - He would weep for it, and weeping rusts his jaws
+      - He wanted to keep the fire for roasting nuts
+    correctIndex: 2
+    explanationZh: 他求狮子别去——"I should certainly weep if you killed a poor deer, and then my jaws would rust again"。狮子还是进林子给自己找了晚饭，只是从头到尾没说那是什么。
   - id: oz-ch-07-q2
-    stem: Who suggested that the Lion could carry everyone across the first ditch on his back, one at a time?
+    stem: What did the Lion answer when asked why he did not run before jumping?
     options:
-      - The Scarecrow
-      - Dorothy
-      - The Tin Woodman
-      - Toto
-    correctIndex: 0
-    explanationZh: 狮子说自己也许能跳过去之后，是 Scarecrow 接话说「you can carry us all over on your back, one at a time」。他在这段里展现了安排行动的本领。
+      - That his breath was too short after the long walk
+      - That this was not the way lions do such things
+      - That the edge of the ditch was too soft to run on
+      - That he had to measure the distance one more time
+    correctIndex: 1
+    explanationZh: 他蹲在沟边一动不动，答道 "Because that isn't the way we Lions do these things"，随即纵身一跃，稳稳落在对岸。
   - id: oz-ch-07-q3
-    stem: What did the Lion do when the two Kalidahs rushed toward the travelers on the tree bridge?
+    stem: What did the Lion do when the two Kalidahs first rushed at the party?
     options:
-      - He ran away immediately into the forest.
-      - He pushed the tree into the ditch himself.
-      - He turned to face them and gave a loud, terrible roar.
-      - He hid behind the Tin Woodman.
-    correctIndex: 2
-    explanationZh: 原文写狮子虽然害怕，却「turned to face the Kalidahs」并发出一声可怕的吼叫，吓得 Dorothy 尖叫、Scarecrow 后仰摔倒，猛兽也短暂停住。砍树桥是后面 Scarecrow 指挥铁皮樵夫做的，不是狮子做的。
-  - id: oz-ch-07-q4
-    stem: After escaping the Kalidahs, what did the travelers find on the other side of the broad river?
-    options:
-      - A dark and gloomy forest
-      - The Emerald City gates
-      - A deep ditch full of rocks
-      - Green meadows and orchards
+      - He hid behind the Tin Woodman's tin body
+      - He ran across the tree bridge ahead of the others
+      - He pushed the tree into the gulf with his forelegs
+      - He turned and gave so loud a roar that they stopped
     correctIndex: 3
-    explanationZh: 到了河边对面，他们看到「green meadows dotted with bright flowers」和结满美味果实的树木——一片美丽的乡野。黑暗森林是身后刚离开的地方，翡翠城还未到。
-  - id: oz-ch-07-q5
-    stem: Why could the travelers not cross the river that same day?
+    explanationZh: 他浑身发抖，还是 "turned to face the Kalidahs"，一声吼叫吓得多萝西尖叫、稻草人仰面摔倒，连猛兽也愣了一下。可它们一看他只有一个，又扑了上来。
+  - id: oz-ch-07-q4
+    stem: What did the Tin Woodman say when the Lion said his heart was still beating?
     options:
-      - The water was frozen solid.
-      - The Lion refused to swim across.
-      - Building the raft took too long and night came.
-      - There were no trees nearby to build a raft.
+      - That he wished he had a heart to beat
+      - That the Lion had behaved very bravely
+      - That his own jaws had rusted once again
+      - That they should hurry out of the forest
+    correctIndex: 0
+    explanationZh: 狮子长出一口气 "Those creatures frightened me so badly that my heart is beating yet"，铁皮人却难过地接了一句 "I wish I had a heart to beat"。
+  - id: oz-ch-07-q5
+    stem: Why did the party not cross the river that day?
+    options:
+      - The current ran too swiftly for a raft to float
+      - The Tin Woodman's axe had grown blunt at last
+      - The raft was not finished when night came on
+      - Dorothy was too tired after riding the Lion
     correctIndex: 2
-    explanationZh: 铁皮樵夫忙着砍小树造木筏，但「it takes time to make a raft」，天黑了还没完成，他们只好在树下再睡一夜。河边确实有树，也不是水冻住了。
+    explanationZh: 造木筏费工夫，"even when one is as industrious and untiring as the Tin Woodman"，天黑时还没做完，他们只好在树下再睡一夜。

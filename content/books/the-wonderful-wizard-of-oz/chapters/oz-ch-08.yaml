@@ -3,7 +3,7 @@ id: oz-ch-08
 bookId: book-oz
 title: The Deadly Poppy Field
 titleZh: 致命的罂粟花田
-summaryZh: 渡河比想象中艰难得多，一场急流让队伍差点散了伙。上岸之后，一大片鲜艳的罂粟花田挡在回到黄砖路的途中——而这片美丽的花海，远比表面上看起来危险。
+summaryZh: 木筏刚扎好，一行人就推着它下了水。可船到河心，急流把他们越冲越远，长长的撑杆再也够不着河底。
 sections:
   - id: oz-ch-08-s1
     text: |-
@@ -30,14 +30,14 @@ sections:
       Of course this was a bad thing for the Scarecrow.
     checkIn:
       id: oz-ch-08-s1-c1
-      stem: Why was the Scarecrow left clinging to a pole in the middle of the river?
+      stem: What did the Tin Woodman fear if they could not reach the bank?
       options:
-        - His pole stuck fast in the mud and the raft was swept away.
-        - The Lion pushed him off the raft by mistake.
-        - The Tin Woodman cut the raft apart to make it lighter.
-        - He jumped into the water to save Toto.
+        - They would be carried to the Wicked Witch of the West's land
+        - They would drift all the way back to the dark forest they left
+        - They would be swept over a waterfall further downstream
+        - They would lose the raft and have to swim for the shore
       correctIndex: 0
-      explanationZh: 文中说稻草人用力推杆，结果杆子“stuck fast in the mud”，木筏却被水流冲走，他就被留在了河中央。其他选项在第一节中都没有发生。
+      explanationZh: 他说 "if we cannot get to the land we shall be carried into the country of the Wicked Witch of the West, and she will enchant us and make us her slaves"。四个人随即一人一句，说出各自会因此失去什么。
   - id: oz-ch-08-s2
     text: |-
       “I am now worse off than when I first met Dorothy,” he thought. “Then, I was stuck on a pole in a cornfield, where I could make-believe scare the crows, at any rate. But surely there is no use for a Scarecrow stuck on a pole in the middle of a river. I am afraid I shall never have any brains, after all!”
@@ -65,14 +65,14 @@ sections:
       “What can we do to save him?” asked Dorothy.
     checkIn:
       id: oz-ch-08-s2-c1
-      stem: How does the Lion help get the raft to shore?
+      stem: How did the Lion get the raft out of the current?
       options:
-        - He calls a stork to carry the raft.
-        - He swims to the shore and pulls the raft by his tail.
-        - He builds a new raft from logs.
-        - He asks Dorothy to steer with her pole.
-      correctIndex: 1
-      explanationZh: 狮子说“I think I can swim to the shore and pull the raft after me, if you will only hold fast to the tip of my tail”，于是他下水拖着木筏靠岸。选项只是第二节里狮子采取的行动。
+        - He pushed it from behind with his great shoulders
+        - He called across the water for the Stork to help
+        - He swam ashore towing it by the tip of his tail
+        - He leapt from the raft to the bank with a rope
+      correctIndex: 2
+      explanationZh: 他说 "I think I can swim to the shore and pull the raft after me, if you will only hold fast to the tip of my tail"，铁皮人死死抓住尾巴，多萝西再用长杆帮着撑，木筏才靠了岸。
   - id: oz-ch-08-s3
     text: |-
       The Lion and the Woodman both shook their heads, for they did not know. So they sat down upon the bank and gazed wistfully at the Scarecrow until a Stork flew by, who, upon seeing them, stopped to rest at the water’s edge.
@@ -106,14 +106,14 @@ sections:
       “Thank you,” replied Dorothy, and then the kind Stork flew into the air and was soon out of sight.
     checkIn:
       id: oz-ch-08-s3-c1
-      stem: Why is the Stork willing to rescue the Scarecrow?
+      stem: What made the Stork agree to try to fetch the Scarecrow?
       options:
-        - The Scarecrow promises to give her food.
-        - The Stork wants to travel to the Emerald City too.
-        - The Scarecrow is stuffed with straw, so he is not heavy.
-        - Dorothy pays the Stork with a flower.
-      correctIndex: 2
-      explanationZh: 鹳鸟原本担心稻草人太重搬不动，多萝西急忙解释“he is stuffed with straw”，并不重，鹳鸟才答应试试。别的选项在本节都没有依据。
+        - She was flying that way to find food for her babies
+        - She heard he was stuffed with straw, and so was light
+        - Dorothy promised to tell the Great Oz about her
+        - She wanted to show the travellers the right road
+      correctIndex: 1
+      explanationZh: 鹳鸟原本说 "If he wasn't so big and heavy I would get him for you"，多萝西赶紧解释 "He isn't heavy a bit… for he is stuffed with straw"，她这才答应试一试。
   - id: oz-ch-08-s4
     text: |-
       They walked along listening to the singing of the brightly colored birds and looking at the lovely flowers which now became so thick that the ground was carpeted with them. There were big yellow and white and blue and purple blossoms, besides great clusters of scarlet poppies, which were so brilliant in color they almost dazzled Dorothy’s eyes.
@@ -141,14 +141,14 @@ sections:
       “Run fast,” said the Scarecrow to the Lion, “and get out of this deadly flower bed as soon as you can. We will bring the little girl with us, but if you should fall asleep you are too big to be carried.”
     checkIn:
       id: oz-ch-08-s4-c1
-      stem: Why do Dorothy, Toto, and the Lion fall asleep in the poppy field?
+      stem: Why is a great field of poppies so dangerous?
       options:
-        - They eat too much fruit from the trees.
-        - The water of the river makes them dizzy.
-        - The strong odor of many poppies puts anyone to sleep.
-        - They have walked all night without resting.
+        - Their stems are sharp enough to cut through tin
+        - Their scent draws every wild beast in the country
+        - Their smell puts a sleeper to sleep for ever
+        - Their pollen blinds anyone who breathes it in
       correctIndex: 2
-      explanationZh: 文中说当许多罂粟花在一起时，“their odor is so powerful that anyone who breathes it falls asleep”，所以多萝西、托托和狮子都撑不住。其他选项与第四节内容不符。
+      explanationZh: 原文说这种花一多，"their odor is so powerful that anyone who breathes it falls asleep, and if the sleeper is not carried away from the scent of the flowers, he sleeps on and on forever"。多萝西对此一无所知。
   - id: oz-ch-08-s5
     text: |-
       So the Lion aroused himself and bounded forward as fast as he could go. In a moment he was out of sight.
@@ -164,66 +164,66 @@ sections:
       They carried the sleeping girl to a pretty spot beside the river, far enough from the poppy field to prevent her breathing any more of the poison of the flowers, and here they laid her gently on the soft grass and waited for the fresh breeze to waken her.
     checkIn:
       id: oz-ch-08-s5-c1
-      stem: Why do the Scarecrow and the Tin Woodman leave the Lion sleeping in the poppies?
+      stem: Why did the Scarecrow and the Woodman leave the Lion where he lay?
       options:
-        - He tells them to go on without him.
-        - They think he has already found courage.
-        - The stork refuses to help him.
-        - He is too heavy for them to lift.
-      correctIndex: 3
-      explanationZh: 铁皮樵夫说“We can do nothing for him … for he is much too heavy to lift”，只好把他留下。稻草人和铁皮樵夫不是血肉之躯，所以不受花香影响，但抬不动狮子。
+        - He was far too heavy for the two of them to lift
+        - He had told them to go on and leave him behind
+        - They believed the poppies could not hurt so big a beast
+        - They meant to come back for him with the Stork
+      correctIndex: 0
+      explanationZh: 铁皮人难过地说 "We can do nothing for him; for he is much too heavy to lift"，只盼他能梦见自己终于有了勇气。两人虽不受花香所害，力气却抬不动一头狮子。
 quiz:
   - id: oz-ch-08-q1
-    stem: What were the travelers trying to reach by crossing the river?
+    stem: What did the Scarecrow think while he clung to the pole in the river?
     options:
-      - The Emerald City
-      - The Country of the Winkies
-      - Kansas
-      - The dark forest
-    correctIndex: 0
-    explanationZh: 他们一直要去的“Emerald City”就在河对岸，稻草人也说“We must certainly get to the Emerald City if we can”。 Kansas是多萝西的最终老家，不是过河的直接目标。
+      - That the Stork would surely come and fetch him
+      - That he was worse off than in the cornfield
+      - That the raft would drift back for him by evening
+      - That his straw would soon be soaked right through
+    correctIndex: 1
+    explanationZh: 他想，从前插在玉米地里至少还能 "make-believe scare the crows"，可 "there is no use for a Scarecrow stuck on a pole in the middle of a river"，还怕自己再也得不到脑子了。
   - id: oz-ch-08-q2
-    stem: Why did the Tin Woodman begin to cry after the Scarecrow was left behind, but then quickly stop?
+    stem: Why did the Tin Woodman dry his tears on Dorothy's apron?
     options:
-      - He was afraid the Wicked Witch would see his tears.
-      - He was sad there was no one to push the raft.
-      - Dorothy told him crying was useless.
-      - He remembered that tears might make him rust.
-    correctIndex: 3
-    explanationZh: 铁皮樵夫哭了起来，但“fortunately remembered that he might rust”，便赶紧用多萝西的围裙擦干眼泪。这说明他怕生锈，不是因为怕女巫。
+      - The wind on the river had blown grit into his eyes
+      - He did not want Dorothy to see that he was crying
+      - He had remembered that tears would rust him
+      - His hinges had begun to squeak as he wept
+    correctIndex: 2
+    explanationZh: 稻草人被落在河里，他难过得哭起来，"but fortunately remembered that he might rust, and so dried his tears on Dorothy's apron"。
   - id: oz-ch-08-q3
-    stem: Why could the Scarecrow and the Tin Woodman keep walking through the poppy field without falling asleep?
+    stem: What did the Scarecrow promise to do for the Stork?
     options:
-      - They held their breath the whole way.
-      - They wore cloths over their faces.
-      - They were not made of flesh.
-      - They had eaten the poppies first.
-    correctIndex: 2
-    explanationZh: 文中说“the Scarecrow and the Tin Woodman, not being made of flesh, were not troubled by the scent of the flowers”，所以他们不怕花香。憋气、蒙脸等都不是文中给出的原因。
+      - To do her a kindness if he ever got his brains
+      - To carry her babies safely out of the nest
+      - To ask Oz to give her a wish of her own
+      - To send her word when they reached the city
+    correctIndex: 0
+    explanationZh: 他说 "if I ever get any brains I shall find the Stork again and do her some kindness in return"。鹳鸟只说自己一向乐意帮人，说完就赶回巢里照看孩子了。
   - id: oz-ch-08-q4
-    stem: How did the Scarecrow and the Tin Woodman carry the sleeping Dorothy out of the poppies?
+    stem: What did the Lion say about the flowers before they reached the poppies?
     options:
-      - They put her on the raft.
-      - They made a chair with their hands and arms.
-      - They rolled her in a blanket.
-      - The Lion carried her on his back.
+      - That their scent reminded him of the forest
+      - That he had always liked flowers, frail as they are
+      - That he would rather see them than the Emerald City
+      - That flowers made him feel braver than he was
     correctIndex: 1
-    explanationZh: 稻草人说“Let us make a chair with our hands and carry her”，两人用手当座、用胳膊当扶手把睡着的多萝西抬走。狮子此时已经跑开，不能帮忙。
+    explanationZh: 他说 "I always did like flowers. They seem so helpless and frail. But there are none in the forest so bright as these"。稻草人和铁皮人则各自惦记着脑子和心。
   - id: oz-ch-08-q5
-    stem: What happened to the Lion in the poppy field?
+    stem: How did the Scarecrow and the Woodman carry Dorothy out of the poppies?
     options:
-      - He ran straight out and waited on the grass.
-      - He carried Toto to safety.
-      - He fell asleep before reaching the end of the poppies.
-      - He turned back to rescue the Scarecrow.
+      - They dragged her along on a bed of cut branches
+      - They laid her across the Lion's back before he ran
+      - They made a chair of their hands and arms
+      - They rolled her up in her own gingham apron
     correctIndex: 2
-    explanationZh: 狮子虽拼命向前跑，但“the flowers had been too strong for the huge beast”，他在离花田尽头不远的地方睡着了。他没能跑出去，也没回去救人。
+    explanationZh: 稻草人说 "Let us make a chair with our hands and carry her"，两人先把托托放在她膝上，再用手作座、胳膊作扶手，把熟睡的女孩抬了出去。
   - id: oz-ch-08-q6
-    stem: What did the Scarecrow and the Tin Woodman do with Dorothy after carrying her out of the poppy field?
+    stem: How far did the Lion get before the poppies overcame him?
     options:
-      - They put her back on the raft and sailed away.
-      - They left her beside the river where the fresh air could wake her.
-      - They hid her under the poppies to keep her safe.
-      - They carried her all the way to the Emerald City.
-    correctIndex: 1
-    explanationZh: 他们把她抬到“a pretty spot beside the river, far enough from the poppy field”，等新鲜微风把她唤醒。他们没有继续进城，也没有把她留在花田里。
+      - Only a few steps into the great flower bed
+      - As far as the pretty spot beside the river
+      - Back to the place where Dorothy had fallen
+      - Nearly to the end of the poppy field
+    correctIndex: 3
+    explanationZh: 他们沿着河湾走过去，发现他倒在离花田尽头不远处——"fallen only a short distance from the end of the poppy bed, where the sweet grass spread in beautiful green fields before them"。

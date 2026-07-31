@@ -3,7 +3,7 @@ id: oz-ch-19
 bookId: book-oz
 title: Attacked by the Fighting Trees
 titleZh: 被战斗树袭击
-summaryZh: 多萝西和伙伴们告别翡翠城，向南国进发。旅程的第一段就要穿过一片不同寻常的森林——这里的树木似乎并不欢迎过路人。而森林的尽头，另一道障碍正等着他们。
+summaryZh: 第二天一早，翡翠城的大门在他们身后关上了。南行的第一段路上，一片密林横在前面，左右都望不到边，绕不过去，只能从树底下钻进去。
 sections:
   - id: oz-ch-19-s1
     text: |-
@@ -28,14 +28,14 @@ sections:
       “Oz was not such a bad Wizard, after all,” said the Tin Woodman, as he felt his heart rattling around in his breast.
     checkIn:
       id: oz-ch-19-s1-c1
-      stem: Why did the Scarecrow say he must come back to the Emerald City?
+      stem: What was the Lion anxious to do now that he was out of the city?
       options:
-        - Because he was now their ruler
-        - Because he missed his friends there
-        - Because Oz ordered him to return
-        - Because he forgot something at the palace
-      correctIndex: 0
-      explanationZh: 守门人稻草人说 "so you must come back to us as soon as possible"，因为 "You are now our ruler"。他答应回来，但前提是先帮多萝西回家。"忘了东西"看似合理，但文中没有提到。
+        - To find a cave in the wood and sleep a week
+        - To hunt the moths and butterflies with Toto
+        - To lead the party all the way to the South
+        - To show the other beasts how brave he had grown
+      correctIndex: 3
+      explanationZh: 他一路甩着尾巴说 "City life does not agree with me at all. I have lost much flesh since I lived there, and now I am anxious for a chance to show the other beasts how courageous I have grown"。
   - id: oz-ch-19-s2
     text: |-
       “He knew how to give me brains, and very good brains, too,” said the Scarecrow.
@@ -63,14 +63,14 @@ sections:
       “I believe I will try it myself,” said the Woodman, and shouldering his axe, he marched up to the first tree that had handled the Scarecrow so roughly. When a big branch bent down to seize him the Woodman chopped at it so fiercely that he cut it in two. At once the tree began shaking all its branches as if in pain, and the Tin Woodman passed safely under it.
     checkIn:
       id: oz-ch-19-s2-c1
-      stem: What happened when the Scarecrow walked under the first big tree?
+      stem: What did the Scarecrow do after the first tree flung him back?
       options:
-        - The tree gave him fruit
-        - A branch gave him a stick
-        - Branches threw him back
-        - Nothing happened at all
-      correctIndex: 2
-      explanationZh: 稻草人刚走到树下，树枝就弯下来缠住他，把他举起来摔向同伴："raised from the ground and flung headlong among his fellow travelers"。好在他不会受伤，所以后来他主动说再试一次。
+        - He offered to try the next gap himself as well
+        - He asked the Lion to go ahead and clear the way
+        - He sat down and thought until his head bulged
+        - He told Dorothy they must go round the wood
+      correctIndex: 0
+      explanationZh: 摔一跤对他不算什么。狮子刚指出另一处空档，他就说 "Let me try it first, for it doesn't hurt me to get thrown about"——结果又被扔了回来。
   - id: oz-ch-19-s3
     text: |-
       “Come on!” he shouted to the others. “Be quick!” They all ran forward and passed under the tree without injury, except Toto, who was caught by a small branch and shaken until he howled. But the Woodman promptly chopped off the branch and set the little dog free.
@@ -84,57 +84,57 @@ sections:
       “I will make a ladder,” said the Tin Woodman, “for we certainly must climb over the wall.”
     checkIn:
       id: oz-ch-19-s3-c1
-      stem: How did the Tin Woodman free Toto from the branch?
+      stem: What did the travellers decide about the first row of trees?
       options:
-        - He pulled Toto down by hand
-        - He chopped the branch off
-        - He asked the Lion to roar
-        - He threw a rock at the tree
-      correctIndex: 1
-      explanationZh: 托托被小树枝抓住摇来摇去，铁樵夫立刻砍断树枝救了它："the Woodman promptly chopped off the branch and set the little dog free"。这也呼应了他之前砍断大树枝开路的做法。
+        - That they were older than the rest of the wood
+        - That the Wizard had planted them long ago
+        - That they only attack anyone carrying an axe
+        - That they act as policemen, keeping strangers out
+      correctIndex: 3
+      explanationZh: 里面的树一动不动，他们于是断定只有最外面一排能弯下枝条，"probably these were the policemen of the forest, and given this wonderful power in order to keep strangers out of it"。
 quiz:
   - id: oz-ch-19-q1
-    stem: Why did the Lion say city life did not agree with him?
+    stem: What did the Guardian of the Gates say to the Scarecrow at parting?
     options:
-      - He could not sleep in the city
-      - He lost too much flesh there
-      - The food was bad
-      - There were too many people
-    correctIndex: 1
-    explanationZh: 狮子说 "I have lost much flesh since I lived there"，意思是他在城里变瘦了。他还急于向其他野兽展示自己变得多勇敢，所以很高兴回到乡间。
-  - id: oz-ch-19-q2
-    stem: How did Dorothy feel about Oz after he failed to send her home?
-    options:
-      - She was very angry
-      - She wanted to go back
-      - She was afraid of him
-      - She forgave him
-    correctIndex: 3
-    explanationZh: 多萝西虽然知道 Oz 没有兑现诺言，但觉得他已尽力，于是原谅了他："he had done his best, so she forgave him"。她认为 Oz 是好人，只是不是好巫师。
-  - id: oz-ch-19-q3
-    stem: Why did the Tin Woodman say he should try the tree first?
-    options:
-      - Because he was the tallest
-      - Because he was the strongest
-      - Because he could chop the branches
-      - Because he was the group's leader
+      - That he must send word from the Land of the South
+      - That the spectacles must be returned within a month
+      - That he was their ruler and must come back soon
+      - That the road south had been closed for years
     correctIndex: 2
-    explanationZh: 稻草人已经被树枝摔回来两次，铁樵夫于是扛着斧子走上前——遇到抓人的枝条，他直接砍断它。正是靠斧头他才安全通过。
-  - id: oz-ch-19-q4
-    stem: What did the travelers think about the first row of fighting trees?
+    explanationZh: 他一边取下众人的绿眼镜，一边说 "You are now our ruler; so you must come back to us as soon as possible"。稻草人答应了，但要先送多萝西回家。
+  - id: oz-ch-19-q2
+    stem: What did the Lion say about the courage Oz had given him?
     options:
-      - They were the oldest trees in the forest
-      - They were growing special fruit
-      - They were planted by Oz
-      - They were policemen of the forest
+      - That it wore off as soon as he left the city
+      - That it tasted of the green bottle for days
+      - That he would share half of it with the Woodman
+      - That a dose of it would have made Oz brave
     correctIndex: 3
-    explanationZh: 穿过之后他们推测只有第一排树能弯下枝条，可能是森林的"警察"，用来把陌生人挡在外面："policemen of the forest… in order to keep strangers out of it"。里面的树就不再阻拦他们了。
-  - id: oz-ch-19-q5
-    stem: What did the travelers find after they came out of the far edge of the wood?
+    explanationZh: 他说 "If Oz had taken a dose of the same courage he gave me, he would have been a brave man"。稻草人也在一旁说，奥兹给的那副脑子相当好使。
+  - id: oz-ch-19-q3
+    stem: How did Dorothy feel about Oz, who had not kept his promise?
     options:
-      - A high white china wall
-      - A deep river
-      - A dark cave
-      - A wide green gate
+      - She was angry, and would not speak of him
+      - She forgave him, for he had done his best
+      - She hoped the balloon would bring him back
+      - She thought he had never meant to help her
+    correctIndex: 1
+    explanationZh: 原文说 "Oz had not kept the promise he made her, but he had done his best, so she forgave him"——正如他自己说的，他是个好人，只是个蹩脚巫师。
+  - id: oz-ch-19-q4
+    stem: How did the Tin Woodman get past the fighting tree?
+    options:
+      - He chopped the branch in two as it bent for him
+      - He crawled under the lowest branches on his side
+      - He waited until the tree had gone to sleep
+      - He let it seize him, being too heavy to lift
     correctIndex: 0
-    explanationZh: 走出森林尽头，他们眼前出现一堵高墙，"seemed to be made of white china"，光滑得像盘子表面，比他们的头还高。铁樵夫便提议造一架梯子翻过去。
+    explanationZh: 大树枝弯下来抓他，"the Woodman chopped at it so fiercely that he cut it in two"，树疼得直抖，他就从底下走了过去，还回头喊大家快跟上。
+  - id: oz-ch-19-q5
+    stem: What stood at the far edge of the wood?
+    options:
+      - A river too deep and swift to wade
+      - A cave with a light burning inside it
+      - A high wall that seemed to be white china
+      - A field of poppies stretching to the sky
+    correctIndex: 2
+    explanationZh: 出了林子，眼前是一堵比人还高的墙，"which seemed to be made of white china. It was smooth, like the surface of a dish"。铁皮人当即说要造一架梯子翻过去。

@@ -3,7 +3,7 @@ id: oz-ch-23
 bookId: book-oz
 title: Glinda The Good Witch Grants Dorothy’s Wish
 titleZh: 好女巫格林达满足多萝西的愿望
-summaryZh: 多萝西和同伴们终于见到了南方好女巫格林达。格林达不仅为每位伙伴的归宿做了安排，还揭开了一个多萝西从旅程第一天起就一直带在身上的秘密。
+summaryZh: 城堡大厅里，红宝石宝座上坐着南方的好女巫格林达，看上去又年轻又美丽。她一开口便问多萝西：孩子，我能为你做点什么？
 sections:
   - id: oz-ch-23-s1
     text: |-
@@ -34,14 +34,14 @@ sections:
       “By means of the Golden Cap I shall command the Winged Monkeys to carry you to the gates of the Emerald City,” said Glinda, “for it would be a shame to deprive the people of so wonderful a ruler.”
     checkIn:
       id: oz-ch-23-s1-c1
-      stem: What does Glinda ask Dorothy to give her in return for telling her how to get back to Kansas?
+      stem: What did the four travellers do before being shown in to Glinda?
       options:
-        - The Golden Cap
-        - The Silver Shoes
-        - Her basket
-        - Toto
-      correctIndex: 0
-      explanationZh: Glinda 说出回家办法的条件是要金帽——她还有三次差遣飞猴的机会可用。银鞋此刻还穿在多萝西脚上，不是 Glinda 索要的东西。
+        - They left the gifts from the Winkies at the gate
+        - They washed, polished and patted themselves presentable
+        - They agreed which of them should speak for the party
+        - They waited three days for Glinda to send for them
+      correctIndex: 1
+      explanationZh: 多萝西洗脸梳头，狮子抖净鬃毛里的灰，稻草人把自己拍成最好的模样，铁皮人擦亮锡皮又给关节上了油——"When they were all quite presentable they followed the soldier girl"。
   - id: oz-ch-23-s2
     text: |-
       “Am I really wonderful?” asked the Scarecrow.
@@ -73,14 +73,14 @@ sections:
       “And I should have lived a coward forever,” declared the Lion, “and no beast in all the forest would have had a good word to say to me.”
     checkIn:
       id: oz-ch-23-s2-c1
-      stem: What does Glinda plan to do with the Golden Cap after using it three times?
+      stem: What did Glinda say she would do with the Golden Cap in the end?
       options:
-        - Keep it as a treasure
-        - Give it to Dorothy again
-        - Throw it into the desert
-        - Free the Monkeys forever
+        - Keep it locked in her ruby castle for safety
+        - Send it back to the family of Quelala
+        - Hang it above her throne as an ornament
+        - Give it to the Monkey King, freeing his band
       correctIndex: 3
-      explanationZh: Glinda says she will give the cap to the King of the Monkeys, "that he and his band may thereafter be free for evermore." 她用完三次命令后就让飞猴们永远自由，而不是自己留着。
+      explanationZh: 她说三道命令用完之后，"I shall give it to the King of the Monkeys, that he and his band may thereafter be free for evermore"——飞猴从此再不必听任何人差遣。
   - id: oz-ch-23-s3
     text: |-
       “This is all true,” said Dorothy, “and I am glad I was of use to these good friends. But now that each of them has had what he most desired, and each is happy in having a kingdom to rule besides, I think I should like to go back to Kansas.”
@@ -110,66 +110,66 @@ sections:
       Dorothy stood up and found she was in her stocking-feet. For the Silver Shoes had fallen off in her flight through the air, and were lost forever in the desert.
     checkIn:
       id: oz-ch-23-s3-c1
-      stem: How does Dorothy make the Silver Shoes carry her to Kansas?
+      stem: How did Dorothy set the Silver Shoes to work?
       options:
-        - She says a magic word
-        - She puts them on and runs
-        - She asks Glinda to do it for her
-        - She knocks the heels together three times
-      correctIndex: 3
-      explanationZh: Glinda tells her to "knock the heels together three times and command the shoes to carry you wherever you wish to go." Dorothy 照做并说 "Take me home to Aunt Em!" 就瞬间飞回堪萨斯了。
+        - She wished aloud while looking at the sun
+        - She asked Glinda to say the words for her
+        - She knocked the heels together three times
+        - She walked three steps towards the north
+      correctIndex: 2
+      explanationZh: 格林达说只要 "knock the heels together three times and command the shoes to carry you wherever you wish to go"。她抱起托托，敲了三下鞋跟，喊出 "Take me home to Aunt Em!"。
 quiz:
   - id: oz-ch-23-q1
-    stem: Why does Dorothy say Aunt Em will think something dreadful has happened to her?
+    stem: Why did Dorothy worry about how long she had been away?
     options:
-      - Aunt Em will believe she is dead
-      - Because Dorothy wrote her a sad letter
-      - Because Uncle Henry told Aunt Em a lie
-      - Because the cyclone destroyed the new house
+      - Aunt Em would go into mourning, which they could not afford
+      - Uncle Henry would have to sell the farm to look for her
+      - Aunt Em would give her little bed away to a neighbour
+      - The neighbours would say she had run off on purpose
     correctIndex: 0
-    explanationZh: Dorothy 说 Aunt Em 会以为她出了事而穿上丧服（"put on mourning"），还担心叔叔庄稼不好付不起这费用。Dorothy 并没有写信，也没有谁撒谎。
+    explanationZh: 她说姑妈准会以为她出了事，"and that will make her put on mourning; and unless the crops are better this year than they were last, I am sure Uncle Henry cannot afford it"。
   - id: oz-ch-23-q2
-    stem: What problem does the Scarecrow worry about when he says he wants to return to the Emerald City?
+    stem: What did Glinda say when the Scarecrow asked if he was really wonderful?
     options:
-      - He has no brain to rule with
-      - Crossing the Hammer-Heads' hill
-      - The people there do not like him
-      - He is afraid of the Winkies
-    correctIndex: 1
-    explanationZh: 稻草人想回翡翠城当统治者，但他担心的是 "how to cross the hill of the Hammer-Heads"。他已经有脑子了，人们也喜欢他，所以他担忧的不是这些。
-  - id: oz-ch-23-q3
-    stem: Where will the Winged Monkeys carry the Tin Woodman?
-    options:
-      - To the Emerald City
-      - To the forest beyond the Hammer-Heads
-      - To Kansas
-      - To the land of the Winkies
-    correctIndex: 3
-    explanationZh: 铁皮人想去西部温基人的土地统治他们，因为 Wicked Witch 死后他们请他做王。Glinda 的第二个命令就是让飞猴送他去 the land of the Winkies。
-  - id: oz-ch-23-q4
-    stem: When Dorothy learns the Silver Shoes could have taken her home on the very first day, how do her friends react?
-    options:
-      - They are angry at her
-      - They say they wish she had left right away
-      - They offer to go with her to Kansas
-      - Then they would never have got their gifts
-    correctIndex: 3
-    explanationZh: 每个朋友都说如果她第一天就回家，自己就不会得到最渴望的东西：稻草人不会有脑子，铁皮人不会有心，狮子永远只是胆小鬼。他们并不是生气或想让她走。
-  - id: oz-ch-23-q5
-    stem: What happens to the Silver Shoes during Dorothy's flight through the air?
-    options:
-      - They fell off over the desert
-      - They turn into ruby slippers
-      - They are given to Toto
-      - They bring Glinda to Kansas too
-    correctIndex: 0
-    explanationZh: 多萝西落地后发现自己只穿着袜子（"in her stocking-feet"），因为银鞋在飞行中掉了，"were lost forever in the desert"。它们没有变色，也没给任何人。
-  - id: oz-ch-23-q6
-    stem: How many steps do the Silver Shoes take to carry Dorothy across the desert?
-    options:
-      - One
-      - Two
-      - Three
-      - Twelve
+      - That the people of the city were lucky to have him
+      - That a stuffed man could never really be wise
+      - That he was unusual, rather than wonderful
+      - That his brains were the best Oz had ever made
     correctIndex: 2
-    explanationZh: Glinda 说银鞋三步就能带你去世界上任何地方（"in three steps"），每一步一眨眼就到。多萝西敲鞋跟三下后，鞋子果然只走了三步就到了堪萨斯。
+    explanationZh: 他追问 "Am I really wonderful?"，她只答了一句 "You are unusual"——上一句她刚说过，把这样一位统治者从百姓身边夺走未免可惜。
+  - id: oz-ch-23-q3
+    stem: Where did the Tin Woodman want to go?
+    options:
+      - Back to the forest where he had once rusted
+      - Back to the Winkies, who wanted him as their ruler
+      - To the Munchkin girl he had once meant to marry
+      - To the Emerald City, to help the Scarecrow rule
+    correctIndex: 1
+    explanationZh: 他倚着斧子想了想，说温基人待他很好，"if I could get back again to the Country of the West, I should like nothing better than to rule over them forever"。
+  - id: oz-ch-23-q4
+    stem: What did Glinda say about the Woodman's brain?
+    options:
+      - That it was bigger than the Scarecrow's, though slower
+      - That a heart serves a ruler better than a brain does
+      - That the Winkies would think for him when he was king
+      - That he is brighter than the Scarecrow when well polished
+    correctIndex: 3
+    explanationZh: 她说 "Your brain may not be so large to look at as those of the Scarecrow, but you are really brighter than he is—when you are well polished"——一句拿锡皮开的玩笑。
+  - id: oz-ch-23-q5
+    stem: What did the Lion say he would do after Dorothy had gone?
+    options:
+      - Go back over the hill to the forest that made him King
+      - Stay at Glinda's castle and guard her ruby throne
+      - Follow the Woodman to the yellow country of the Winkies
+      - Look for the beasts that had run from his roar
+    correctIndex: 0
+    explanationZh: 他说锤头山那边有一片古老的大森林，林中百兽已奉他为王，"If I could only get back to this forest, I would pass my life very happily there"。
+  - id: oz-ch-23-q6
+    stem: What did the three friends say on hearing the Shoes could have taken her home at once?
+    options:
+      - That Glinda should have told her much sooner
+      - That then they would never have had their gifts
+      - That the Silver Shoes must have been enchanted
+      - That she should have asked the Witch of the North
+    correctIndex: 1
+    explanationZh: 稻草人说那样他大概一辈子插在玉米地里，铁皮人说自己会在林子里锈到世界末日，狮子说自己会永远做个胆小鬼——三个人反倒庆幸她当初不知道。

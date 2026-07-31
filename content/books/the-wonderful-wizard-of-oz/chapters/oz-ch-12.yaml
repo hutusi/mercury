@@ -3,7 +3,7 @@ id: oz-ch-12
 bookId: book-oz
 title: The Search for the Wicked Witch
 titleZh: 寻找恶女巫
-summaryZh: 多萝西和伙伴们向西行进，恶女巫早已察觉他们的到来，一波接一波的爪牙被派了出来。这是全书最凶险的一段旅程，而它的结局将出乎所有人的意料。
+summaryZh: 守门人取下他们的绿眼镜，朝太阳落下的方向指了指。走了大半天，四野既无农舍也无树影；而在那座城堡门口，恶女巫用她仅有的一只眼睛，早已望见了草地上熟睡的几个人。
 sections:
   - id: oz-ch-12-s1
     text: |-
@@ -30,14 +30,14 @@ sections:
       Now the Wicked Witch of the West had but one eye, yet that was as powerful as a telescope, and could see everywhere. So, as she sat in the door of her castle, she happened to look around and saw Dorothy lying asleep, with her friends all about her. They were a long distance off, but the Wicked Witch was angry to find them in her country; so she blew upon a silver whistle that hung around her neck.
     checkIn:
       id: oz-ch-12-s1-c1
-      stem: What does the Guardian of the Gates say will happen when the Witch knows the friends are in her country?
+      stem: What did the Guardian of the Gates say about the road to the Witch?
       options:
-        - She will run away from the West
-        - She will send them to the Emerald City
-        - She will give them a map to her castle
-        - She will find them and make them her slaves
+        - It runs west from the gate, straight to her castle
+        - Only the Winged Monkeys know where it begins
+        - It is guarded by the yellow Winkies day and night
+        - There is none, for no one ever wishes to go that way
       correctIndex: 3
-      explanationZh: 守门人说 "she will find you, and make you all her slaves"。他以为没人能打败女巫，所以认为她会让来者沦为奴隶，就像对其他人一样。
+      explanationZh: 他答 "There is no road… No one ever wishes to go that way"，还说不必去找她——"when she knows you are in the country of the Winkies she will find you"。只要一直朝日落的方向走就行。
   - id: oz-ch-12-s2
     text: |-
       At once there came running to her from all directions a pack of great wolves. They had long legs and fierce eyes and sharp teeth.
@@ -69,14 +69,14 @@ sections:
       The wild crows flew in one great flock toward Dorothy and her companions. When the little girl saw them coming she was afraid.
     checkIn:
       id: oz-ch-12-s2-c1
-      stem: Who fights the pack of wolves sent by the Witch?
+      stem: Why did the Witch tell the wolves to tear the travellers to pieces?
       options:
-        - The Scarecrow
-        - The Cowardly Lion
-        - The Tin Woodman
-        - Dorothy
+        - Because they had killed her Winkie slaves
+        - Because the wolves had gone hungry for days
+        - Because not one of them was fit to work for her
+        - Because the Great Oz had sent them against her
       correctIndex: 2
-      explanationZh: 铁皮人说 "This is my fight"，然后用他磨得很锋利的斧头砍死了四十只狼。稻草人那时和他一起守夜，但战斗是铁皮人完成的。
+      explanationZh: 狼王问她要不要把这几个收作奴隶，她答 "one is of tin, and one of straw; one is a girl and another a Lion. None of them is fit to work"。
   - id: oz-ch-12-s3
     text: |-
       But the Scarecrow said, “This is my battle, so lie down beside me and you will not be harmed.”
@@ -102,14 +102,14 @@ sections:
       The Wicked Witch was so angry when she saw her black bees in little heaps like fine coal that she stamped her foot and tore her hair and gnashed her teeth. And then she called a dozen of her slaves, who were the Winkies, and gave them sharp spears, telling them to go to the strangers and destroy them.
     checkIn:
       id: oz-ch-12-s3-c1
-      stem: How do the Scarecrow and the Tin Woodman protect Dorothy, Toto, and the Lion from the black bees?
+      stem: How were Dorothy, Toto and the Lion kept safe from the black bees?
       options:
-        - They hide everyone in a cave
-        - They hide them under straw
-        - They fight the bees with an axe
-        - They run into a river
+        - They lay flat and let the Lion's mane cover them
+        - The Woodman spread the Scarecrow's straw over them
+        - They ran to the river and stood in the water
+        - The Scarecrow waved his arms to drive the bees off
       correctIndex: 1
-      explanationZh: 稻草人让铁皮人把自己的稻草抽出来，盖在小女孩、狗和狮子身上，蜜蜂就蜇不到他们了。蜜蜂只能蜇铁皮人，结果折断了刺，全都死了。
+      explanationZh: 稻草人吩咐 "Take out my straw and scatter it over the little girl and the dog and the Lion, and the bees cannot sting them"。蜜蜂只找得到铁皮人可蜇，针全折在了锡皮上。
   - id: oz-ch-12-s4
     text: |-
       The Winkies were not a brave people, but they had to do as they were told. So they marched away until they came near to Dorothy. Then the Lion gave a great roar and sprang towards them, and the poor Winkies were so frightened that they ran back as fast as they could.
@@ -133,14 +133,14 @@ sections:
       Now the charm began to work. The sky was darkened, and a low rumbling sound was heard in the air. There was a rushing of many wings, a great chattering and laughing, and the sun came out of the dark sky to show the Wicked Witch surrounded by a crowd of monkeys, each with a pair of immense and powerful wings on his shoulders.
     checkIn:
       id: oz-ch-12-s4-c1
-      stem: Why does the Witch not want to use the Golden Cap until now?
+      stem: Why had the Witch saved the Golden Cap until now?
       options:
-        - She lost it many years ago
-        - The Winged Monkeys hate her
-        - Only one of its uses is left
-        - The cap is too heavy to wear
+        - The Cap fitted her badly and gave her headaches
+        - The Winged Monkeys had refused her twice already
+        - She had only one of its three summons left
+        - She had forgotten the words that worked the charm
       correctIndex: 2
-      explanationZh: 金帽的法力是只能召唤飞猴三次。她已经用了两次——一次奴役了温基人，一次赶走了奥兹，所以她不想轻易用最后一次。现在狼、乌鸦、蜜蜂都失败了，奴隶也被吓跑了，她别无选择。
+      explanationZh: 金帽只能召唤飞猴三次，她已经用掉两次，"Only once more could she use this Golden Cap"。直到狼、乌鸦、蜜蜂全军覆没、奴隶也被吓跑，她才肯动用最后一次。
   - id: oz-ch-12-s5
     text: |-
       One, much bigger than the others, seemed to be their leader. He flew close to the Witch and said, “You have called us for the third and last time. What do you command?”
@@ -162,14 +162,14 @@ sections:
       So, carefully and gently, they lifted Dorothy in their arms and carried her swiftly through the air until they came to the castle, where they set her down upon the front doorstep. Then the leader said to the Witch:
     checkIn:
       id: oz-ch-12-s5-c1
-      stem: Why do the Winged Monkeys not harm Dorothy?
+      stem: Why did the leader of the Winged Monkeys stop short before Dorothy?
       options:
-        - She is too small to carry
-        - She hides inside a house
-        - The Lion protects her
-        - The kiss-mark on her brow
+        - She held Toto up in front of her face
+        - The Silver Shoes flashed in the sunlight
+        - The Witch had ordered them not to touch her
+        - He saw the mark of the Good Witch's kiss
       correctIndex: 3
-      explanationZh: 飞猴首领看到多萝西额头上北方好女巫的吻痕，知道她受到善的力量保护，不敢伤害她，只能把她送到女巫的城堡门口。
+      explanationZh: 他张着长毛的手臂扑上来，一看见额头上的吻痕就停住了，说 "she is protected by the Power of Good, and that is greater than the Power of Evil"，只能把她轻轻送到城堡门口。
   - id: oz-ch-12-s6
     text: |-
       “We have obeyed you as far as we were able. The Tin Woodman and the Scarecrow are destroyed, and the Lion is tied up in your yard. The little girl we dare not harm, nor the dog she carries in her arms. Your power over our band is now ended, and you will never see us again.”
@@ -189,14 +189,14 @@ sections:
       “If I cannot harness you,” said the Witch to the Lion, speaking through the bars of the gate, “I can starve you. You shall have nothing to eat until you do as I wish.”
     checkIn:
       id: oz-ch-12-s6-c1
-      stem: What does the Witch make Dorothy do after bringing her to the castle?
+      stem: Why did the Witch decide she could still make Dorothy her slave?
       options:
-        - Harness the Lion like a horse
-        - Guard the castle gate
-        - Make silver shoes for the Witch
-        - Clean pots and sweep the floor
-      correctIndex: 3
-      explanationZh: 女巫把多萝西带到厨房，让她擦锅、扫地、添柴火。女巫不敢伤害她，因为她额头上有吻痕的保护。
+        - Because the child did not know the Shoes' power
+        - Because the Winged Monkeys had left her behind
+        - Because the girl was far too weak to run away
+        - Because the Lion was already tied up in the yard
+      correctIndex: 0
+      explanationZh: 她一看见银鞋就发起抖来，可再看看孩子的眼睛，"saw how simple the soul behind them was, and that the little girl did not know of the wonderful power the Silver Shoes gave her"，于是暗想 "I can still make her my slave"。
   - id: oz-ch-12-s7
     text: |-
       So after that she took no food to the imprisoned Lion; but every day she came to the gate at noon and asked, “Are you ready to be harnessed like a horse?”
@@ -212,14 +212,14 @@ sections:
       Now the Wicked Witch had a great longing to have for her own the Silver Shoes which the girl always wore. Her bees and her crows and her wolves were lying in heaps and drying up, and she had used up all the power of the Golden Cap; but if she could only get hold of the Silver Shoes, they would give her more power than all the other things she had lost. She watched Dorothy carefully, to see if she ever took off her shoes, thinking she might steal them. But the child was so proud of her pretty shoes that she never took them off except at night and when she took her bath. The Witch was too much afraid of the dark to dare go in Dorothy’s room at night to take the shoes, and her dread of water was greater than her fear of the dark, so she never came near when Dorothy was bathing. Indeed, the old Witch never touched water, nor ever let water touch her in any way.
     checkIn:
       id: oz-ch-12-s7-c1
-      stem: How does Dorothy keep the Lion from starving in his yard?
+      stem: How did the Lion hold out against the Witch's threat to starve him?
       options:
-        - The Witch gives him food every noon
-        - The Winkies feed him through the fence
-        - Dorothy secretly brings him food at night
-        - He finds food in the yard
-      correctIndex: 2
-      explanationZh: 女巫白天不给狮子食物，想饿得他屈服。但每天夜里多萝西趁女巫睡着，从橱柜里拿食物偷偷送给狮子吃。
+        - He caught mice that ran across the yard at night
+        - Dorothy brought him food from the cupboard each night
+        - The Winkies pushed meat through the iron fence
+        - The Witch gave in and fed him after three days
+      correctIndex: 1
+      explanationZh: 女巫每天中午来问他肯不肯套上挽具，他一概回绝——因为 "every night, while the woman was asleep, Dorothy carried him food from the cupboard"，两人还一起商量逃走的法子。
   - id: oz-ch-12-s8
     text: |-
       But the wicked creature was very cunning, and she finally thought of a trick that would give her what she wanted. She placed a bar of iron in the middle of the kitchen floor, and then by her magic arts made the iron invisible to human eyes. So that when Dorothy walked across the floor she stumbled over the bar, not being able to see it, and fell at full length. She was not much hurt, but in her fall one of the Silver Shoes came off; and before she could reach it, the Witch had snatched it away and put it on her own skinny foot.
@@ -251,66 +251,66 @@ sections:
       With these words the Witch fell down in a brown, melted, shapeless mass and began to spread over the clean boards of the kitchen floor. Seeing that she had really melted away to nothing, Dorothy drew another bucket of water and threw it over the mess. She then swept it all out the door. After picking out the silver shoe, which was all that was left of the old woman, she cleaned and dried it with a cloth, and put it on her foot again. Then, being at last free to do as she chose, she ran out to the courtyard to tell the Lion that the Wicked Witch of the West had come to an end, and that they were no longer prisoners in a strange land.
     checkIn:
       id: oz-ch-12-s8-c1
-      stem: How does the Wicked Witch finally melt away?
+      stem: How did the Witch finally get hold of one Silver Shoe?
       options:
-        - The Lion bites her leg
-        - She falls into a river
-        - A bucketful of water
-        - Toto knocks her into a pot
-      correctIndex: 2
-      explanationZh: 女巫用隐形的铁条绊倒多萝西，抢走了一只银鞋。多萝西气愤地拿起一桶水泼在女巫身上，女巫立刻开始融化，最终变成地上一摊棕色的东西。
+        - She tripped Dorothy with an iron bar made invisible
+        - She took it while Dorothy was in her bath
+        - She sent the Winkies to pull it off at night
+        - She traded a day's rest for one of the shoes
+      correctIndex: 0
+      explanationZh: 她在厨房地板中央放了一根铁条，用法术让它看不见，多萝西绊倒在地，"one of the Silver Shoes came off; and before she could reach it, the Witch had snatched it away"。她怕黑又怕水，夜里和洗澡时都不敢靠近。
 quiz:
   - id: oz-ch-12-q1
-    stem: Why does the Witch send wolves instead of making the travelers her slaves?
+    stem: What happened to Dorothy's green silk dress once they had left the city?
     options:
-      - She already has too many slaves
-      - The wolves are hungry and need food
-      - The travelers attacked her castle first
-      - She thinks none of them is fit to work
-    correctIndex: 3
-    explanationZh: 女巫对狼群首领说："one is of tin, and one of straw; one is a girl and another a Lion. None of them is fit to work"，所以她要狼把他们撕碎，而不是奴役他们。
-  - id: oz-ch-12-q2
-    stem: Why doesn't the Witch dare to strike Dorothy during her captivity?
-    options:
-      - The kiss-mark on her forehead
-      - Dorothy is too strong to beat
-      - The Witch's umbrella is broken
-      - The Winkies would stop her
-    correctIndex: 0
-    explanationZh: 女巫虽然常威胁要打多萝西，但"she did not dare to strike Dorothy, because of the mark upon her forehead"——额头上好女巫的吻痕保护着多萝西。多萝西自己并不知道这一点。
-  - id: oz-ch-12-q3
-    stem: What trick does the Witch use to get one of Dorothy's Silver Shoes?
-    options:
-      - She steals it while Dorothy is bathing
-      - An invisible iron bar to trip Dorothy
-      - She offers to trade food for the shoe
-      - She asks the Winkies to grab it
+      - It faded to the grey of the Kansas prairie
+      - It turned pure white, and Toto's ribbon with it
+      - It grew heavy with dust from the untilled ground
+      - It changed to the yellow of the Winkie country
     correctIndex: 1
-    explanationZh: 女巫在厨房地板中央放了一根铁条，用魔法让它隐形。多萝西走过时被绊倒，一只银鞋掉了，女巫立刻抢走穿在自己脚上。女巫不敢在夜里偷鞋，因为她怕黑，更怕水，不敢靠近多萝西洗澡的地方。
-  - id: oz-ch-12-q4
-    stem: What did the Witch use the Golden Cap's charm for the first two times?
+    explanationZh: 走出城门不久她就发觉，那件丝裙 "was no longer green, but pure white"，托托脖子上的绸带也一样白了。
+  - id: oz-ch-12-q2
+    stem: How did the Scarecrow deal with the flock of crows?
     options:
-      - To build her castle and find gold
-      - To fight Dorothy and to steal the Silver Shoes
-      - To make the Winkies her slaves and to drive Oz out of the West
-      - To summon wolves and to call the crows
-    correctIndex: 2
-    explanationZh: 第一次她用飞猴奴役了温基人，统治了他们的国家；第二次她用飞猴和奥兹本人作战，把他赶出了西方之地。金帽只能用三次，所以这是最后一次了。
-  - id: oz-ch-12-q5
-    stem: What do the Winged Monkeys do to the Scarecrow?
-    options:
-      - They pull out his straw and throw his clothes into a tree
-      - They drop him on sharp rocks
-      - They tie him up with rope and put him in a yard
-      - They carry him gently to the castle door
-    correctIndex: 0
-    explanationZh: 飞猴抓住了稻草人，用长手指把他衣服和头里的稻草全抽出来，然后把帽子、靴子和衣服捆成一团扔到一棵大树的树顶。对铁皮人，他们把他扔到尖石上；对狮子，他们用绳子绑住他关进院子。只有多萝西他们不敢碰。
-  - id: oz-ch-12-q6
-    stem: Why is Dorothy able to melt the Witch so easily?
-    options:
-      - She knew water would destroy the Witch
-      - She used a magic spell from the Silver Shoes
-      - The Lion told her the Witch's secret weakness
-      - In her anger over the shoe, she threw water
+      - He set fire to a bundle of straw to scare them
+      - He told everyone to lie flat until they flew past
+      - He borrowed the Woodman's axe and swung it
+      - He stood with his arms out, then wrung their necks
     correctIndex: 3
-    explanationZh: 女巫抢走了多萝西的一只银鞋，还嘲笑她，多萝西非常生气，就抓起旁边的一桶水泼了过去。她当时并不知道水会要了女巫的命——女巫问她"Didn't you know water would be the end of me?"，多萝西说"Of course not."
+    explanationZh: 他说 "This is my battle"，让大家伏地不动，自己张开双臂站着。乌鸦生来怕稻草人，只有乌鸦王敢扑上去，"the Scarecrow… caught it by the head and twisted its neck until it died"——四十只都是这个下场。
+  - id: oz-ch-12-q3
+    stem: What did the Lion do to the dozen Winkies with spears?
+    options:
+      - He gave one great roar and sprang at them
+      - He let them tie him and carried them off
+      - He hid behind the Tin Woodman until they left
+      - He begged them not to obey the Wicked Witch
+    correctIndex: 0
+    explanationZh: 温基人本来就不勇敢，狮子 "gave a great roar and sprang towards them"，他们撒腿就往回跑。回到城堡，女巫用皮带把他们狠狠抽了一顿。
+  - id: oz-ch-12-q4
+    stem: What did the Witch use her first two summons of the Winged Monkeys for?
+    options:
+      - To build her castle and to fill it with treasure
+      - To call the wolves and the crows to her whistle
+      - To enslave the Winkies and to drive out the Great Oz
+      - To steal the Silver Shoes and the Golden Cap
+    correctIndex: 2
+    explanationZh: 第一次是 "she had made the Winkies her slaves, and set herself to rule over their country"，第二次是 "she had fought against the Great Oz himself, and driven him out of the land of the West"——两次都靠飞猴。
+  - id: oz-ch-12-q5
+    stem: What did the Winged Monkeys do to the Tin Woodman?
+    options:
+      - They pulled out his straw and bundled up his clothes
+      - They dropped him from the air onto sharp rocks
+      - They wound ropes round him and carried him to the yard
+      - They set him down gently on the castle doorstep
+    correctIndex: 1
+    explanationZh: 他们把他带到一片满是尖石的地方松了手，"he lay so battered and dented that he could neither move nor groan"。抽稻草的是稻草人，被绳子捆走的是狮子。
+  - id: oz-ch-12-q6
+    stem: What did the Witch admit as she melted away?
+    options:
+      - That the Golden Cap had failed her at the last
+      - That she had always known a child would end her
+      - That she never thought a little girl could melt her
+      - That she had been afraid of Toto from the first
+    correctIndex: 2
+    explanationZh: 她说 "I have been wicked in my day, but I never thought a little girl like you would ever be able to melt me and end my wicked deeds"。多萝西泼水时，压根不知道水会要她的命。

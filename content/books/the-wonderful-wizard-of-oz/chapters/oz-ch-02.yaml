@@ -3,7 +3,7 @@ id: oz-ch-02
 bookId: book-oz
 title: The Council with the Munchkins
 titleZh: 会见芒奇金人
-summaryZh: 房子落在了一个陌生而美丽的国度，迎接多萝西的芒奇金人却把她当作救星一般敬拜。北方好女巫送了她一样特别的礼物，并指引她踏上前往翡翠城求助的旅程。
+summaryZh: 房子稳稳落在一片从未见过的美丽土地上。多萝西推开门，迎面走来四个奇怪的小个子——他们一见到她就深深鞠躬，口口声声称她为"最尊贵的女法师"。
 sections:
   - id: oz-ch-02-s1
     text: |-
@@ -18,14 +18,14 @@ sections:
       Three were men and one a woman, and all were oddly dressed. They wore round hats that rose to a small point a foot above their heads, with little bells around the brims that tinkled sweetly as they moved. The hats of the men were blue; the little woman’s hat was white, and she wore a white gown that hung in pleats from her shoulders. Over it were sprinkled little stars that glistened in the sun like diamonds. The men were dressed in blue, of the same shade as their hats, and wore well-polished boots with a deep roll of blue at the tops. The men, Dorothy thought, were about as old as Uncle Henry, for two of them had beards. But the little woman was doubtless much older. Her face was covered with wrinkles, her hair was nearly white, and she walked rather stiffly.
     checkIn:
       id: oz-ch-02-s1-c1
-      stem: How were the strange people different from the grown people Dorothy was used to?
+      stem: What did Dorothy notice about the four people coming toward her?
       options:
-        - They were much taller and thinner
-        - They were child-sized but looked old
-        - They were dressed exactly like Kansas farmers
-        - They were children about Dorothy's age
-      correctIndex: 1
-      explanationZh: 文中说这群人"不像她惯常见到的大人那么高大，但也不算很矮"，大约和多萝西一样高，可从外表看却年长许多——三个男人戴蓝色尖顶帽，老妇人戴白帽、穿缀着小星星的白袍。
+        - They were no taller than her own uncle and aunt
+        - They wore pointed shoes with bells sewn along the sides
+        - They were so small that they came only to her knee
+        - They were about her own height but looked far older
+      correctIndex: 3
+      explanationZh: 原文说他们 "seemed about as tall as Dorothy… although they were, so far as looks go, many years older"。小铃铛缝在帽檐上，不在鞋上；三个男人里有两个还留着胡子。
   - id: oz-ch-02-s2
     text: |-
       When these people drew near the house where Dorothy was standing in the doorway, they paused and whispered among themselves, as if afraid to come farther. But the little old woman walked up to Dorothy, made a low bow and said, in a sweet voice:
@@ -57,14 +57,14 @@ sections:
       “No, but I am their friend, although I live in the land of the North. When they saw the Witch of the East was dead the Munchkins sent a swift messenger to me, and I came at once. I am the Witch of the North.”
     checkIn:
       id: oz-ch-02-s2-c1
-      stem: Why did the little old woman call Dorothy a noble sorceress?
+      stem: Why did the little old woman call Dorothy a noble Sorceress?
       options:
-        - Her house had killed the Wicked Witch
-        - Dorothy had arrived flying through the sky
-        - Dorothy wore the silver shoes of a witch
-        - Dorothy could speak to her dog Toto
+        - Dorothy's house had fallen on the Witch of the East
+        - Dorothy had come down out of the sky in a storm
+        - Dorothy was wearing the silver shoes of a witch
+        - Dorothy had set the Munchkins free with a spell
       correctIndex: 0
-      explanationZh: 老妇人说："感谢你杀死了东方恶女巫，把我们的人民从奴役中解救出来。"多萝西否认杀过人，老妇人笑着回答"是你的房子干的，那也一样"，还指给她看压在房角下的两只穿银鞋的脚。
+      explanationZh: 多萝西说自己从没杀过什么，老妇人笑着答 "Your house did, anyway, and that is the same thing"，随即指给她看房角下露出的两只脚。那双银鞋这时还穿在死去的女巫脚上。
   - id: oz-ch-02-s3
     text: |-
       “Oh, gracious!” cried Dorothy. “Are you a real witch?”
@@ -96,14 +96,14 @@ sections:
       “What is it?” asked the little old woman, and looked, and began to laugh. The feet of the dead Witch had disappeared entirely, and nothing was left but the silver shoes.
     checkIn:
       id: oz-ch-02-s3-c1
-      stem: After the Witch of the East died, how many wicked witches were left in the Land of Oz?
+      stem: Which of the four witches of Oz were the good ones?
       options:
-        - Only one, the Wicked Witch of the West
-        - Two, in the East and the West
-        - None at all
-        - Four, one in each direction
-      correctIndex: 0
-      explanationZh: 北方女巫解释：奥兹国原有四个女巫，北方和南方的是好女巫，东方和西方的是恶女巫。现在东方恶女巫已死，"整个奥兹国只剩下一个恶女巫——住在西方的那个"。
+        - The two who ruled in the East and in the West
+        - The two who lived in the North and the South
+        - All four, until the Great Wizard came to Oz
+        - None of them, as Aunt Em had always said
+      correctIndex: 1
+      explanationZh: 北方女巫说奥兹国统共只有四个女巫，"those who live in the North and the South, are good witches"，东方和西方的则是恶女巫。她说这话时毫不含糊——她自己就是那两个好女巫之一。
   - id: oz-ch-02-s4
     text: |-
       “She was so old,” explained the Witch of the North, “that she dried up quickly in the sun. That is the end of her. But the silver shoes are yours, and you shall have them to wear.” She reached down and picked up the shoes, and after shaking the dust out of them handed them to Dorothy.
@@ -133,14 +133,14 @@ sections:
       “Yes,” answered the child, looking up and drying her tears.
     checkIn:
       id: oz-ch-02-s4-c1
-      stem: Why couldn't Dorothy simply travel out of Oz to reach Kansas?
+      stem: Why did the Munchkins say Dorothy could not walk home to Kansas?
       options:
-        - The Wicked Witch of the West guarded every road
-        - She had promised the Munchkins she would stay
-        - The Munchkins refused to show her the way
-        - A deadly desert no one could cross surrounds it
-      correctIndex: 3
-      explanationZh: 芒奇金人一个个摇头：东、南、西三面都是同样的大沙漠，"没有人能活着穿过去"；北方女巫也说她的家乡北方边缘同样被这片环绕奥兹国的大沙漠挡住。
+        - The Wicked Witch of the West guards every road out
+        - The Quadlings in the South would never let her pass
+        - A great desert that no one can cross surrounds Oz
+        - The Munchkins had never heard of a country called Kansas
+      correctIndex: 2
+      explanationZh: 三个人轮流摇头——东边是大沙漠，"none could live to cross it"，南边和西边同样如此；北方女巫也说自己家乡的边上就是 "the same great desert that surrounds this Land of Oz"。
   - id: oz-ch-02-s5
     text: |-
       “Then you must go to the City of Emeralds. Perhaps Oz will help you.”
@@ -170,57 +170,57 @@ sections:
       But Dorothy, knowing her to be a witch, had expected her to disappear in just that way, and was not surprised in the least.
     checkIn:
       id: oz-ch-02-s5-c1
-      stem: How did the Witch of the North protect Dorothy for the journey?
+      stem: What did the Witch of the North do to protect Dorothy on the road?
       options:
-        - Her kiss left a mark none would dare to harm
-        - She gave Dorothy a magic wand
-        - She sent the three Munchkins to walk with her
-        - She turned Toto into a guard dog
-      correctIndex: 0
-      explanationZh: 女巫说自己不能同行，"但我会给你我的吻，没有人敢伤害被北方女巫吻过的人"。她轻吻多萝西的额头，留下一个圆圆的、发亮的印记。
+        - She lent her the white cap that turns into a slate
+        - She sent the three Munchkins along as an escort
+        - She whirled three times on her left heel for luck
+        - She kissed her forehead, leaving a shining mark
+      correctIndex: 3
+      explanationZh: 她说自己不能同行，"but I will give you my kiss, and no one will dare injure a person who has been kissed by the Witch of the North"。左脚跟旋三圈是她告别时消失的方式，不是留给多萝西的护身法。
 quiz:
   - id: oz-ch-02-q1
-    stem: What happened to the body of the Wicked Witch of the East?
+    stem: What became of the Wicked Witch of the East's body?
     options:
-      - The Munchkins buried her under the house
-      - The house crushed her into dust at once
-      - She dried up, leaving only her shoes
-      - She melted away in the rain
-    correctIndex: 2
-    explanationZh: 芒奇金人惊呼时，恶女巫的双脚已完全消失。北方女巫笑着解释："她太老了，在太阳下很快就干掉了。"最后只剩下那双银鞋，女巫把鞋交给了多萝西。
-  - id: oz-ch-02-q2
-    stem: According to the Witch of the North, why does Oz still have witches and wizards?
-    options:
-      - The Great Oz protects all witches from harm
-      - Oz is uncivilized, cut off from the world
-      - Witches from other countries fled to Oz long ago
-      - The desert air keeps magic alive
+      - The Munchkins carried it away to bury it
+      - It dried up in the sun, leaving only her shoes
+      - The house crushed it to dust as it came down
+      - It melted the moment the silver shoes came off
     correctIndex: 1
-    explanationZh: 听说堪萨斯是个文明国家后，女巫说"那就说得通了"——文明国家已经没有女巫、巫师和魔法师，而奥兹国与世隔绝，从未被文明化，所以仍然有女巫和巫师。
-  - id: oz-ch-02-q3
-    stem: What appeared on the slate when the Witch balanced her cap on her nose?
+    explanationZh: 芒奇金人忽然大喊时，那双脚已经不见了。北方女巫笑着解释 "She was so old that she dried up quickly in the sun"，地上只剩下那双银鞋。
+  - id: oz-ch-02-q2
+    stem: Why, said the Witch, does Oz still have witches and wizards?
     options:
-      - A map of the road to the Emerald City
-      - The name of the Great Wizard
-      - A picture of Kansas
-      - The words "LET DOROTHY GO TO THE CITY OF EMERALDS"
-    correctIndex: 3
-    explanationZh: 女巫摘下帽子把尖顶立在鼻尖上，数了"一、二、三"，帽子立刻变成一块石板，上面用白粉笔写着大字："让多萝西去翡翠城"。
+      - The Great Oz gathered them there to serve him
+      - The desert around the country keeps magic alive
+      - Oz has never been civilized, cut off from the world
+      - Witches driven out of civilized lands fled to Oz
+    correctIndex: 2
+    explanationZh: 听说堪萨斯是个文明国家，她说 "Then that accounts for it"——文明国家里早已没有女巫和巫师，而 "the Land of Oz has never been civilized, for we are cut off from all the rest of the world"。
+  - id: oz-ch-02-q3
+    stem: What did the old woman's cap turn into when she balanced it on her nose?
+    options:
+      - A slate with white chalk marks on it
+      - A map showing the yellow brick road
+      - A silver key to the Emerald City gate
+      - A letter addressed to the Great Oz
+    correctIndex: 0
+    explanationZh: 她摘下帽子，把尖顶立在鼻尖上，数了 One, two, three，帽子立刻变成一块石板，上面用白色粉笔写着大大的一行字。
   - id: oz-ch-02-q4
     stem: What did the Munchkins know about the silver shoes?
     options:
-      - They carried some charm, but nobody knew what it was
-      - They would carry the wearer anywhere in three steps
-      - They could never be taken off
-      - They made the wearer invisible
-    correctIndex: 0
-    explanationZh: 一个芒奇金人说："东方女巫对这双银鞋非常自豪，鞋上有某种法力，但究竟是什么，我们从来不知道。"这为后文埋下了伏笔。
+      - That they had been made by the Great Wizard himself
+      - That whoever wore them could not be harmed by witches
+      - That the Witch of the East had worn them for a hundred years
+      - That some charm went with them, though nobody knew what
+    correctIndex: 3
+    explanationZh: 一个芒奇金人说 "The Witch of the East was proud of those silver shoes, and there is some charm connected with them; but what it is we never knew"。这句话为后面埋下了伏笔。
   - id: oz-ch-02-q5
-    stem: How did the Witch of the North leave at the end of the chapter?
+    stem: What did the Witch say when Dorothy asked whether Oz was a good man?
     options:
-      - She whirled around on her left heel three times and disappeared
-      - She flew away on a broomstick
-      - She walked away through the trees with the Munchkins
-      - She vanished in a puff of smoke
-    correctIndex: 0
-    explanationZh: 三个芒奇金人鞠躬后从树林间走开，而女巫朝多萝西友好地点点头，"用左脚跟旋转了三圈，随即消失了"。托托吓了一跳，大声吠叫；多萝西知道她是女巫，一点也不惊讶。
+      - That he was the kindest man in all the country
+      - That he was a good Wizard, but she had never seen him
+      - That nobody in Oz had ever dared to ask her that
+      - That he had once been a man, but was one no longer
+    correctIndex: 1
+    explanationZh: 她的回答是 "He is a good Wizard. Whether he is a man or not I cannot tell, for I have never seen him"。她只知道他住在国土正中的翡翠城，本领比所有女巫加起来还大。
