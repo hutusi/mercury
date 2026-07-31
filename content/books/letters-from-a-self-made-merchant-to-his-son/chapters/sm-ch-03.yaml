@@ -1,0 +1,167 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-03
+bookId: book-merchant-letters
+title: On Finishing at Harvard
+titleZh: 论结束哈佛学业
+summaryZh: 儿子来信提出一个关于学业的新想法，老格雷厄姆的回信没有绕弯子。信的大半讲的是大学毕业生 Jim Durham 进厂后的一连串遭遇——一个让父亲津津乐道的故事。信末他还顺带敲打了儿子的穿戴与社交习惯。
+sections:
+  - id: sm-ch-03-s1
+    text: |-
+      Dear Pierrepont: No, I can't say that I think anything of your post-graduate course idea. You're not going to be a poet or a professor, but a packer, and the place to take a post-graduate course for that calling is in the packing-house. Some men learn all they know from books; others from life; both kinds are narrow. The first are all theory; the second are all practice. It's the fellow who knows enough about practice to test his theories for blow-holes that gives the world a shove ahead, and finds a fair margin of profit in shoving it.
+
+      There's a chance for everything you have learned, from Latin to poetry, in the packing business, though we don't use much poetry here except in our street-car ads., and about the only time our products are given Latin names is when the State Board of Health condemns them. So I think you'll find it safe to go short a little on the frills of education; if you want them bad enough you'll find a way to pick them up later, after business hours.
+
+      The main thing is to get a start along right lines, and that is what I sent you to college for. I didn't expect you to carry off all the education in sight--I knew you'd leave a little for the next fellow. But I wanted you to form good mental habits, just as I want you to have clean, straight physical ones. Because I was run through a threshing machine when I was a boy, and didn't begin to get the straw out of my hair till I was past thirty, I haven't any sympathy with a lot of these old fellows who go around bragging of their ignorance and saying that boys don't need to know anything except addition and the "best policy" brand of honesty.
+
+      We started in a mighty different world, and we were all ignorant together. The Lord let us in on the ground floor, gave us corner lots, and then started in to improve the adjacent property. We didn't have to know fractions to figure out our profits. Now a merchant needs astronomy to see them, and when he locates them they are out somewhere near the fifth decimal place. There are sixteen ounces to the pound still, but two of them are wrapping paper in a good many stores. And there're just as many chances for a fellow as ever, but they're a little gun shy, and you can't catch them by any such coarse method as putting salt on their tails.
+    checkIn:
+      id: sm-ch-03-s1-c1
+      stem: What is the father's attitude toward Pierrepont's post-graduate course idea?
+      options:
+        - He fully supports it because it will help his son become a professor.
+        - He is against it and wants his son to start work in the packing business.
+        - He is willing to pay for it only if it focuses on Latin and poetry.
+        - He thinks it could be useful if his son studies it after business hours.
+      correctIndex: 1
+      explanationZh: 开头就写明 "I can't say that I think anything of your post-graduate course idea"，他要儿子做 packer，就该去 packing-house 实践，而不是继续念书。把研究生课程当成好主意或附加条件同意的选项与原文相悖。
+  - id: sm-ch-03-s2
+    text: |-
+      Thirty years ago, you could take an old muzzle-loader and knock over plenty of ducks in the city limits, and Chicago wasn't Cook County then, either. You can get them still, but you've got to go to Kankakee and take a hammerless along. And when I started in the packing business it was all straight sailing--no frills--just turning hogs into hog meat--dry salt for the niggers down South and sugar-cured for the white folks up North. Everything else was sausage, or thrown away. But when we get through with a hog nowadays, he's scattered through a hundred different cans and packages, and he's all accounted for. What we used to throw away is our profit. It takes doctors, lawyers, engineers, poets, and I don't know what, to run the business, and I reckon that improvements which call for parsons will be creeping in next. Naturally, a young man who expects to hold his own when he is thrown in with a lot of men like these must be as clean and sharp as a hound's tooth, or some other fellow's simply going to eat him up.
+
+      The first college man I ever hired was old John Durham's son, Jim. That was a good many years ago when the house was a much smaller affair. Jim's father had a lot of money till he started out to buck the universe and corner wheat. And the boy took all the fancy courses and trimmings at college. The old man was mighty proud of Jim. Wanted him to be a literary fellow. But old Durham found out what every one learns who gets his ambitions mixed up with number two red--that there's a heap of it lying around loose in the country. The bears did quick work and kept the cash wheat coming in so lively that one settling day half a dozen of us had to get under the market to keep it from going to everlasting smash.
+
+      That day made young Jim a candidate for a job. It didn't take him long to decide that the Lord would attend to keeping up the visible supply of poetry, and that he had better turn his attention to the stocks of mess pork. Next morning he was laying for me with a letter of introduction when I got to the office, and when he found that I wouldn't have a private secretary at any price, he applied for every other position on the premises right down to office boy. I told him I was sorry, but I couldn't do anything for him then; that we were letting men go, but I'd keep him in mind, and so on. The fact was that I didn't think a fellow with Jim's training would be much good, anyhow. But Jim hung on--said he'd taken a fancy to the house, and wanted to work for it. Used to call by about twice a week to find out if anything had turned up.
+    checkIn:
+      id: sm-ch-03-s2-c1
+      stem: How did Jim Durham end up needing a job?
+      options:
+        - His father lost money trying to corner the wheat market.
+        - His father died and left him with debts to pay.
+        - His father fired him from the family wheat business.
+        - His father was caught cheating the State Board of Health.
+      correctIndex: 0
+      explanationZh: 文中说 Jim 的父亲想 "buck the universe and corner wheat"，结果被空头打压，赔了大钱，Jim 才被迫找工作。选项里说父亲去世、开除儿子或欺骗卫生局，都不符合原文。
+  - id: sm-ch-03-s3
+    text: |-
+      Finally, after about a month of this, he wore me down so that I stopped him one day as he was passing me on the street. I thought I'd find out if he really was so red-hot to work as he pretended to be; besides, I felt that perhaps I hadn't treated the boy just right, as I had delivered quite a jag of that wheat to his father myself.
+
+      "Hello, Jim," I called; "do you still want that job?"
+
+      "Yes, sir," he answered, quick as lightning.
+
+      "Well, I tell you how it is, Jim," I said, looking up at him--he was one of those husky, lazy-moving six-footers--"I don't see any chance in the office, but I understand they can use another good, strong man in one of the loading gangs."
+
+      I thought that would settle Jim and let me out, for it's no joke lugging beef, or rolling barrels and tierces a hundred yards or so to the cars. But Jim came right back at me with, "Done. Who'll I report to?"
+
+      That sporty way of answering, as if he was closing a bet, made me surer than ever that he was not cut out for a butcher. But I told him, and off he started hot-foot to find the foreman. I sent word by another route to see that he got plenty to do.
+
+      I forgot all about Jim until about three months later, when his name was handed up to me for a new place and a raise in pay. It seemed that he had sort of abolished his job. After he had been rolling barrels a while, and the sport had ground down one of his shoulders a couple of inches lower than the other, he got to scheming around for a way to make the work easier, and he hit on an idea for a sort of overhead railroad system, by which the barrels could be swung out of the storerooms and run right along into the cars, and two or three men do the work of a gang. It was just as I thought. Jim was lazy, but he had put the house in the way of saving so much money that I couldn't fire him. So I raised his salary, and made him an assistant timekeeper and checker. Jim kept at this for three or four months, until his feet began to hurt him, I guess, and then he was out of a job again. It seems he had heard something of a new machine for registering the men, that did away with most of the timekeepers except the fellows who watched the machines, and he kept after the Superintendent until he got him to put them in. Of course he claimed a raise again for effecting such a saving, and we just had to allow it.
+    checkIn:
+      id: sm-ch-03-s3-c1
+      stem: How did Jim get his first raise after working on the loading gang?
+      options:
+        - He personally carried more barrels than anyone else on the gang.
+        - He convinced the foreman to give everyone a weekly bonus.
+        - He invented an overhead railroad system to move barrels more easily.
+        - He found a new machine for registering the men's working hours.
+      correctIndex: 2
+      explanationZh: Jim 扛了一阵桶之后觉得累，就琢磨出 overhead railroad system，让桶从仓库直接滑进车厢，省下大量人力，于是获得加薪。单纯比谁扛得多或给全组发奖金都不对；登记考勤的新机器是他后来当 timekeeper 之后的事。
+  - id: sm-ch-03-s4
+    text: |-
+      I was beginning to take an interest in Jim, so I brought him up into the office and set him to copying circular letters. We used to send out a raft of them to the trade. That was just before the general adoption of typewriters, when they were still in the experimental stage. But Jim hadn't been in the office plugging away at the letters for a month before he had the writer's cramp, and began nosing around again. The first thing I knew he was sicking the agents for the new typewriting machine on to me, and he kept them pounding away until they had made me give them a trial. Then it was all up with Mister Jim's job again. I raised his salary without his asking for it this time, and put him out on the road to introduce a new product that we were making--beef extract.
+
+      Jim made two trips without selling enough to keep them working overtime at the factory, and then he came into my office with a long story about how we were doing it all wrong. Said we ought to go for the consumer by advertising, and make the trade come to us, instead of chasing it up.
+
+      That was so like Jim that I just laughed at first; besides, that sort of advertising was a pretty new thing then, and I was one of the old-timers who didn't take any stock in it. But Jim just kept plugging away at me between trips, until finally I took him off the road and told him to go ahead and try it in a small way.
+
+      Jim pretty nearly scared me to death that first year. At last he had got into something that he took an interest in--spending money--and he just fairly wallowed in it. Used to lay awake nights, thinking up new ways of getting rid of the old man's profits. And he found them. Seemed as if I couldn't get away from Graham's Extract, and whenever I saw it I gagged, for I knew it was costing me money that wasn't coming back; but every time I started to draw in my horns Jim talked to me, and showed me where there was a fortune waiting for me just around the corner.
+
+      Graham's Extract started out by being something that you could make beef-tea out of--that was all. But before Jim had been fooling with it a month he had got his girl to think up a hundred different ways in which it could be used, and had advertised them all. It seemed there was nothing you could cook that didn't need a dash of it. He kept me between a chill and a sweat all the time. Sometimes, but not often, I just had to grin at his foolishness. I remember one picture he got out showing sixteen cows standing between something that looked like a letter-press, and telling how every pound or so of Graham's Extract contained the juice squeezed from a herd of steers. If an explorer started for the North Pole, Jim would send him a case of Extract, and then advertise that it was the great heat-maker for cold climates; and if some other fellow started across Africa he sent him a case, too, and advertised what a bully drink it was served up with a little ice.
+    checkIn:
+      id: sm-ch-03-s4-c1
+      stem: What does Jim do after he is taken off the road and allowed to try advertising?
+      options:
+        - He keeps costs down by limiting ads to a single newspaper.
+        - He spends heavily on advertising and finds countless new uses for the extract.
+        - He travels to the North Pole and Africa to sell the extract himself.
+        - He sells more extract than the factory can produce in a week.
+      correctIndex: 1
+      explanationZh: Jim 开始做广告后几乎"在利润里打滚"，让女友想出一百种用法，到处投放广告，花钱吓坏了老板。控制成本、亲自远赴极地非洲、卖出超产能都是干扰项，与原文相反。
+  - id: sm-ch-03-s5
+    text: |-
+      He broke out in a new place every day, and every time he broke out it cost the house money. Finally, I made up my mind to swallow the loss, and Mister Jim was just about to lose his job sure enough, when the orders for Extract began to look up, and he got a reprieve; then he began to make expenses, and he got a pardon; and finally a rush came that left him high and dry in a permanent place. Jim was all right in his way, but it was a new way, and I hadn't been broad-gauged enough to see that it was a better way.
+
+      That was where I caught the connection between a college education and business. I've always made it a rule to buy brains, and I've learned now that the better trained they are the faster they find reasons for getting their salaries raised. The fellow who hasn't had the training may be just as smart, but he's apt to paw the air when he's reaching for ideas.
+
+      I suppose you're asking why, if I'm so hot for education, I'm against this post-graduate course. But habits of thought ain't the only thing a fellow picks up at college.
+
+      I see you've been elected President of your class. I'm glad the boys aren't down on you, but while the most popular man in his class isn't always a failure in business, being as popular as that takes up a heap of time. I noticed, too, when you were home Easter, that you were running to sporty clothes and cigarettes. There's nothing criminal about either, but I don't hire sporty clerks at all, and the only part of the premises on which cigarette smoking is allowed is the fertilizer factory.
+
+      I simply mention this in passing. I have every confidence in your ultimate good sense, and I guess you'll see the point without my elaborating with a meat ax my reasons for thinking that you've had enough college for the present.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-03-s5-c1
+      stem: What final outcome does the father report for Jim and Graham's Extract?
+      options:
+        - Jim loses his job for wasting too much money
+        - Jim is transferred to the fertilizer factory
+        - Jim leaves to start his own advertising firm
+        - Orders surge and Jim wins a permanent place
+      correctIndex: 3
+      explanationZh: 先写 Jim 快被解雇时订单开始回升，reprieve → pardon → permanent place。他被调去肥料厂、离职创业或最终丢工作都不符合这段结局。
+quiz:
+  - id: sm-ch-03-q1
+    stem: What does the father believe is the main reason he sent Pierrepont to college?
+    options:
+      - To carry off every bit of education in sight.
+      - To form good mental habits along right lines.
+      - To learn enough poetry for street-car ads.
+      - To become a popular man among his classmates.
+    correctIndex: 1
+    explanationZh: 父亲说送儿子上学是 "to form good mental habits"，不是把所有学问都搬走，也不是为了写广告诗或当人气王。说要把所有知识都拿走的选项其实是父亲自嘲儿子做不到的事。
+  - id: sm-ch-03-q2
+    stem: Why did Jim Durham prefer a job in the packing house over writing poetry?
+    options:
+      - He had learned that poetry does not sell well in the North.
+      - He wanted to prove that literary fellows could lift barrels.
+      - He needed to pay back the debts from his college courses.
+      - He believed there was already plenty of poetry lying around loose.
+    correctIndex: 3
+    explanationZh: 原文写 Jim 决定 "the Lord would attend to keeping up the visible supply of poetry"，自己则转去管 mess pork，即诗已经够多了，他不必再写。欠债、证明文人也扛得动桶、北方不买诗都不是原文给出的理由。
+  - id: sm-ch-03-q3
+    stem: How does the father describe the handling of a hog in the modern packing business?
+    options:
+      - The hog is simply turned into dry salt and sugar-cured meat.
+      - The hog is scattered through a hundred different cans and packages.
+      - The hog is mostly thrown away except for the sausage parts.
+      - The hog is sent to a parson before it reaches the store.
+    correctIndex: 1
+    explanationZh: 现在一头猪被分装进上百个罐子和包裹，连过去扔掉的东西都成了利润。说仍只是干盐或糖腌、大部分被扔掉或要先给牧师处理，都属于旧时代或玩笑式误解。
+  - id: sm-ch-03-q4
+    stem: Why does Jim invent the overhead railroad system for moving barrels?
+    options:
+      - He wanted to reduce the number of workers on the loading gang.
+      - He was asked by the foreman to speed up the loading process.
+      - Rolling barrels had worn down one of his shoulders.
+      - He needed to prove himself before getting a typewriter.
+    correctIndex: 2
+    explanationZh: 文中明确说扛桶让 Jim 的一边肩膀被压低，他才"琢磨省力的办法"。为了裁员、奉工头之命提速或为换打字机铺路，都不是原文动机。
+  - id: sm-ch-03-q5
+    stem: How does Jim convince the father to adopt the new typewriting machines?
+    options:
+      - He keeps sending the machine agents to push the father until a trial is allowed.
+      - He writes a long circular letter proving that typewriters save money.
+      - He buys a typewriter with his own salary and shows the results.
+      - He threatens to quit if the office does not modernize.
+    correctIndex: 0
+    explanationZh: Jim 先让 typewriter 的代理 "pounding away"，不断向父亲推销，直到父亲同意试用。自掏腰包、写长信证明或以辞职要挟，都不是他的做法。
+  - id: sm-ch-03-q6
+    stem: What lesson does the father draw from Jim's story about education and business?
+    options:
+      - College men should always start by carrying barrels like Jim did.
+      - Untrained men are usually smarter than college-trained men.
+      - Better-trained brains find faster reasons for getting their salaries raised.
+      - Popular college students make the most profitable clerks.
+    correctIndex: 2
+    explanationZh: 父亲总结 "the better trained they are the faster they find reasons for getting their salaries raised"。说大学毕业生都该去扛桶、没受过训练的人更聪明、人气高的学生最赚钱，都与原文相反。

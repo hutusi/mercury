@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-02
+bookId: book-merchant-letters
+title: On the Expense Account
+titleZh: 论开销账单
+summaryZh: 老格雷厄姆收到儿子的大学开销账单后写信告诫他：花钱容易赚钱难。信中穿插了屠宰场老骗牛和肉铺老板比尔的轶事，提醒儿子别盲目从众。
+sections:
+  - id: sm-ch-02-s1
+    text: |-
+      Dear Pierrepont: The cashier has just handed me your expense account for the month, and it fairly makes a fellow hump-shouldered to look it over. When I told you that I wished you to get a liberal education, I didn't mean that I wanted to buy Cambridge. Of course the bills won't break me, but they will break you unless you are very, very careful.
+
+      I have noticed for the last two years that your accounts have been growing heavier every month, but I haven't seen any signs of your taking honors to justify the increased operating expenses; and that is bad business--a good deal like feeding his weight in corn to a scalawag steer that won't fat up.
+
+      I haven't said anything about this before, as I trusted a good deal to your native common-sense to keep you from making a fool of yourself in the way that some of these young fellows who haven't had to work for it do. But because I have sat tight, I don't want you to get it into your head that the old man's rich, and that he can stand it, because he won't stand it after you leave college. The sooner you adjust your spending to what your earning capacity will be, the easier they will find it to live together.
+
+      The only sure way that a man can get rich quick is to have it given to him or to inherit it. You are not going to get rich that way--at least, not until after you have proved your ability to hold a pretty important position with the firm; and, of course, there is just one place from which a man can start for that position with Graham & Co. It doesn't make any difference whether he is the son of the old man or of the cellar boss--that place is the bottom. And the bottom in the office end of this business is a seat at the mailing-desk, with eight dollars every Saturday night.
+
+      I can't hand out any ready-made success to you. It would do you no good, and it would do the house harm. There is plenty of room at the top here, but there is no elevator in the building. Starting, as you do, with a good education, you should be able to climb quicker than the fellow who hasn't got it; but there's going to be a time when you begin at the factory when you won't be able to lick stamps so fast as the other boys at the desk. Yet the man who hasn't licked stamps isn't fit to write letters. Naturally, that is the time when knowing whether the pie comes before the ice-cream, and how to run an automobile isn't going to be of any real use to you.
+    checkIn:
+      id: sm-ch-02-s1-c1
+      stem: Where does John Graham say his son must start at Graham & Co.?
+      options:
+        - In a managerial position upstairs.
+        - At the cash counter in the front.
+        - In the purchasing department.
+        - At the bottom, at the mailing-desk.
+      correctIndex: 3
+      explanationZh: 父亲明确说不管你是老板的儿子还是仓库主管的儿子，起点都一样：that place is the bottom，具体就是坐在 mailing-desk 前每周挣八美元。管理层职位和收银台都是后来的事，文中未提及。
+  - id: sm-ch-02-s2
+    text: |-
+      I simply mention these things because I am afraid your ideas as to the basis on which you are coming with the house have swelled up a little in the East. I can give you a start, but after that you will have to dynamite your way to the front by yourself. It is all with the man. If you gave some fellows a talent wrapped in a napkin to start with in business, they would swap the talent for a gold brick and lose the napkin; and there are others that you could start out with just a napkin, who would set up with it in the dry-goods business in a small way, and then coax the other fellow's talent into it.
+
+      I have pride enough to believe that you have the right sort of stuff in you, but I want to see some of it come out. You will never make a good merchant of yourself by reversing the order in which the Lord decreed that we should proceed--learning the spending before the earning end of business. Pay day is always a month off for the spend-thrift, and he is never able to realize more than sixty cents on any dollar that comes to him. But a dollar is worth one hundred and six cents to a good business man, and he never spends the dollar. It's the man who keeps saving up and expenses down that buys an interest in the concern. That is where you are going to find yourself weak if your expense accounts don't lie; and they generally don't lie in that particular way, though Baron Munchausen was the first traveling man, and my drummers' bills still show his influence.
+
+      I know that when a lot of young men get off by themselves, some of them think that recklessness with money brands them as good fellows, and that carefulness is meanness. That is the one end of a college education which is pure cussedness; and that is the one thing which makes nine business men out of ten hesitate to send their boys off to school. But on the other hand, that is the spot where a young man has the chance to show that he is not a light-weight. I know that a good many people say I am a pretty close proposition; that I make every hog which goes through my packing-house give up more lard than the Lord gave him gross weight; that I have improved on Nature to the extent of getting four hams out of an animal which began life with two; but you have lived with me long enough to know that my hand is usually in my pocket at the right time.
+    checkIn:
+      id: sm-ch-02-s2-c1
+      stem: According to Graham, what does a good businessman do with a dollar?
+      options:
+        - He never spends it but makes it worth more.
+        - He lends it to friends on payday.
+        - He hides it under the counter at night.
+        - He trades it for a talent wrapped in a napkin.
+      correctIndex: 0
+      explanationZh: 文中说 a dollar is worth one hundred and six cents to a good business man, and he never spends the dollar，好商人让钱增值而不是花掉。把一美元借给朋友或藏在柜台下都不符合原文，用美元换 napkin 包的才能则与另一比喻无关。
+  - id: sm-ch-02-s3
+    text: |-
+      Now I want to say right here that the meanest man alive is the one who is generous with money that he has not had to sweat for, and that the boy who is a good fellow at some one else's expense would not work up into first-class fertilizer. That same ambition to be known as a good fellow has crowded my office with second-rate clerks, and they always will be second-rate clerks. If you have it, hold it down until you have worked for a year. Then, if your ambition runs to hunching up all week over a desk, to earn eight dollars to blow on a few rounds of drinks for the boys on Saturday night, there is no objection to your gratifying it; for I will know that the Lord didn't intend you to be your own boss.
+
+      You know how I began--I was started off with a kick, but that proved a kick up, and in the end every one since has lifted me a little bit higher. I got two dollars a week, and slept under the counter, and you can bet I knew just how many pennies there were in each of those dollars, and how hard the floor was. That is what you have got to learn.
+
+      I remember when I was on the Lakes, our schooner was passing out through the draw at Buffalo when I saw little Bill Riggs, the butcher, standing up above me on the end of the bridge with a big roast of beef in his basket. They were a little short in the galley on that trip, so I called up to Bill and he threw the roast down to me. I asked him how much, and he yelled back, "about a dollar." That was mighty good beef, and when we struck Buffalo again on the return trip, I thought I would like a little more of it. So I went up to Bill's shop and asked him for a piece of the same. But this time he gave me a little roast, not near so big as the other, and it was pretty tough and stringy. But when I asked him how much, he answered "about a dollar." He simply didn't have any sense of values, and that's the business man's sixth sense. Bill has always been a big, healthy, hard-working man, but to-day he is very, very poor.
+    checkIn:
+      id: sm-ch-02-s3-c1
+      stem: Why did Bill Riggs charge 'about a dollar' both times he sold beef?
+      options:
+        - He gave the narrator a special discount.
+        - Beef prices happened to be stable then.
+        - He had no sense of values.
+        - He wanted to cheat the narrator on purpose.
+      correctIndex: 2
+      explanationZh: 两次都是'about a dollar'，但第一次量大质好，第二次量小质差，原因不是打折或价格稳定，而是 Bill simply didn't have any sense of values——这是商人的第六感，他缺的正是这个，所以他一辈子很穷。
+  - id: sm-ch-02-s4
+    text: |-
+      The Bills ain't all in the butcher business. I've got some of them right now in my office, but they will never climb over the railing that separates the clerks from the executives. Yet if they would put in half the time thinking for the house that they give up to hatching out reasons why they ought to be allowed to overdraw their salary accounts, I couldn't keep them out of our private offices with a pole-ax, and I wouldn't want to; for they could double their salaries and my profits in a year. But I always lay it down as a safe proposition that the fellow who has to break open the baby's bank toward the last of the week for car-fare isn't going to be any Russell Sage when it comes to trading with the old man's money. He'd punch my bank account as full of holes as a carload of wild Texans would a fool stockman that they'd got in a corner.
+
+      Now I know you'll say that I don't understand how it is; that you've got to do as the other fellows do; and that things have changed since I was a boy. There's nothing in it. Adam invented all the different ways in which a young man can make a fool of himself, and the college yell at the end of them is just a frill that doesn't change essentials. The boy who does anything just because the other fellows do it is apt to scratch a poor man's back all his life. He's the chap that's buying wheat at ninety-seven cents the day before the market breaks. They call him "the country" in the market reports, but the city's full of him. It's the fellow who has the spunk to think and act for himself, and sells short when prices hit the high C and the house is standing on its hind legs yelling for more, that sits in the directors' meetings when he gets on toward forty.
+
+      We've got an old steer out at the packing-house that stands around at the foot of the runway leading up to the killing pens, looking for all the world like one of the village fathers sitting on the cracker box before the grocery--sort of sad-eyed, dreamy old cuss--always has two or three straws from his cud sticking out of the corner of his mouth. You never saw a steer that looked as if he took less interest in things. But by and by the boys drive a bunch of steers toward him, or cows maybe, if we're canning, and then you'll see Old Abe move off up that runway, sort of beckoning the bunch after him with that wicked old stump of a tail of his, as if there was something mighty interesting to steers at the top, and something that every Texan and Colorado, raw from the prairies, ought to have a look at to put a metropolitan finish on him. Those steers just naturally follow along on up that runway and into the killing pens. But just as they get to the top, Old Abe, someways, gets lost in the crowd, and he isn't among those present when the gates are closed and the real trouble begins for his new friends.
+
+      I never saw a dozen boys together that there wasn't an Old Abe among them. If you find your crowd following him, keep away from it. There are times when it's safest to be lonesome. Use a little common-sense, caution and conscience. You can stock a store with those three commodities, when you get enough of them. But you've got to begin getting them young. They ain't catching after you toughen up a bit.
+
+      You needn't write me if you feel yourself getting them. The symptoms will show in your expense account. Good-by; life's too short to write letters and New York's calling me on the wire.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-02-s4-c1
+      stem: What happens to Old Abe the steer when the gates close at the top of the runway?
+      options:
+        - He fights the other steers for food.
+        - He disappears and is not among the steers killed.
+        - He is the first one to enter the killing pen.
+        - He leads the younger steers back down the runway.
+      correctIndex: 1
+      explanationZh: Old Abe 像德高望重的老者一样把新来的牛引上坡道，但到了顶部 he isn't among those present when the gates are closed——他总能在关键时刻溜走，留下新朋友们送死。他不是争食、先进栏或带牛回头，这些都不合文意。
+quiz:
+  - id: sm-ch-02-q1
+    stem: What does Graham say is the only sure way for a man to get rich quick?
+    options:
+      - To have money given to him or to inherit it.
+      - To save most of his weekly pay envelope.
+      - To buy wheat when the market is about to rise.
+      - To start a small dry-goods business with a napkin.
+    correctIndex: 0
+    explanationZh: 父亲说 The only sure way…to get rich quick is to have it given to him or to inherit it，但他紧接着说儿子不会走这条路，必须在公司从底层证明自己。攒工资或做小买卖是勤劳致富，不是'get rich quick'；买小麦则与后文跟风亏钱的比喻有关。
+  - id: sm-ch-02-q2
+    stem: Why does Graham compare reckless college boys to a steer fed corn that never fattens?
+    options:
+      - They raise expenses without showing results.
+      - They eat so much that they ruin their health.
+      - They refuse to leave college for real work.
+      - They gain weight faster than the other boys.
+    correctIndex: 0
+    explanationZh: 父亲说账单月月涨却看不到 honors 来证明 increased operating expenses 的合理性，like feeding his weight in corn to a scalawag steer that won't fat up——投入多产出少。比喻的重点是花销与回报不成比例，不是健康、不肯工作或体重问题。
+  - id: sm-ch-02-q3
+    stem: What does Graham mean by 'there is no elevator in the building'?
+    options:
+      - The office building has only one floor.
+      - There is no shortcut to a top position.
+      - The elevator is reserved for executives only.
+      - Employees must climb stairs to stay physically fit.
+    correctIndex: 1
+    explanationZh: plenty of room at the top here, but there is no elevator 意思是公司高层有空位，但没有捷径可乘，必须一步步爬上去。不是说楼只有一层、电梯专供高管，或要锻炼身体——这些都是字面误读。
+  - id: sm-ch-02-q4
+    stem: What did Graham learn from sleeping under the counter for two dollars a week?
+    options:
+      - How to bargain with butchers for cheap beef.
+      - How to impress the bosses and win a promotion.
+      - How hard life is and how precious each penny is.
+      - How to trade wheat at the right price each week.
+    correctIndex: 2
+    explanationZh: 父亲回忆拿两美元周薪、睡柜台下的日子，说 I knew just how many pennies… and how hard the floor was——他懂得了每一分钱的来之不易和生活的艰辛。与肉铺老板比尔、讨好上司或做小麦投机都无关。
+  - id: sm-ch-02-q5
+    stem: What advice does Graham give about the 'Old Abe' in a crowd of boys?
+    options:
+      - Follow him closely to learn the way to the top.
+      - Invite him to dinner to win his friendship.
+      - Challenge him to prove you are not a lightweight.
+      - Stay away from the crowd that follows him.
+    correctIndex: 3
+    explanationZh: Old Abe 是把同伴引向屠宰场自己却溜走的老骗牛，父亲说 I never saw a dozen boys together that there wasn't an Old Abe among them，建议 If you find your crowd following him, keep away from it。紧跟、请吃饭或挑战他都与'远离危险引路人'的寓意相反。
+  - id: sm-ch-02-q6
+    stem: How will Graham know whether his son is developing common-sense and conscience?
+    options:
+      - The son will write a long letter about them.
+      - The signs will appear in the expense account.
+      - The cashier will report them every Saturday night.
+      - The college will send a letter of recommendation.
+    correctIndex: 1
+    explanationZh: 父亲结尾说 You needn't write me… The symptoms will show in your expense account——开销账单就是品行的体检报告，不需要儿子写信汇报。收银员每周汇报或大学推荐信都不是他提到的方式。

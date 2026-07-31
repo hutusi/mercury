@@ -43,7 +43,7 @@ sections:
         - To water the trees in the forest
         - To clean the tin man's rusty joints
       correctIndex: 1
-      explanationZh: 多萝西说要找水 "to wash my face clean after the dust of the road, and to drink"，还为了让干面包不会卡在嗓子里。给铁皮人上油是后来才发生的事。
+      explanationZh: 多萝西早上想找水，是为了洗脸、和干面包一起下咽（“to wash her face and drink with her dry bread”）。这一节里她要找的只是水，油壶还派不上用场。
   - id: oz-ch-05-s2
     text: |-
       “What can I do for you?” she inquired softly, for she was moved by the sad voice in which the man spoke.

@@ -29,7 +29,7 @@ sections:
         - She would dance with him.
         - She would give him jewels.
       correctIndex: 2
-      explanationZh: 学生说“She said that she would dance with me if I brought her red roses”，所以女孩答应的是和他跳舞。送珠宝是后面 Chamberlain 的侄子做的事，与此处无关。
+      explanationZh: 学生说“She said that she would dance with me if I brought her red roses”，所以女孩答应的是和他跳舞。唱歌、结婚和珠宝都不是她的许诺。
   - id: hp-ch-02-s2
     text: |-
       “Why is he weeping?” asked a little Green Lizard, as he ran past him with his tail in the air.

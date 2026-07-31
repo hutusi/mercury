@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-09
+bookId: book-merchant-letters
+title: Roses and Groceries
+titleZh: 玫瑰与杂货
+summaryZh: 一封寄到老格雷厄姆手里的账单，牵出了儿子的一段心事。父亲借家乡花花公子 Chauncey 的故事苦口婆心地告诫他：娶错人是终身无法挽回的错误。
+sections:
+  - id: sm-ch-09-s1
+    text: |-
+      Dear Pierrepont: I knew right off that I had made a mistake when I opened the inclosed and saw that it was a bill for fifty-two dollars, "for roses sent, as per orders, to Miss Mabel Dashkam." I don't just place Miss Dashkam, but if she's the daughter of old Job Dashkam, on the open Board, I should say, on general principles, that she was a fine girl to let some other fellow marry. The last time I saw her, she inventoried about $10,000 as she stood--allowing that her diamonds would scratch glass--and that's more capital than any woman has a right to tie up on her back, I don't care how rich her father is. And Job's fortune is one of that brand which foots up to a million in the newspapers and leaves the heirs in debt to the lawyers who settle the estate.
+
+      Of course I've never had any real experience in this sparking business, except with your Ma; but I've watched from the other side of the fence while a heap of fellows were getting it, and I should say that marrying a woman like Mabel Dashkam would be the first step toward becoming a grass widower. I'll bet if you'll tell her you're making twelve a week and ain't going to get any more till you earn it, you'll find that you can't push within a mile of her even on a Soo ice-breaker. She's one of those women with a heart like a stock-ticker--it doesn't beat over anything except money.
+
+      Of course you're in no position yet to think of being engaged even, and that's why I'm a little afraid that you may be planning to get married. But a twelve-dollar clerk, who owes fifty-two dollars for roses, needs a keeper more than a wife. I want to say right here that there always comes a time to the fellow who blows fifty-two dollars at a lick on roses when he thinks how many staple groceries he could have bought with the money. After all, there's no fool like a young fool, because in the nature of things he's got a long time to live.
+
+      I suppose I'm fanning the air when I ask you to be guided by my judgment in this matter, because, while a young fellow will consult his father about buying a horse, he's cock-sure of himself when it comes to picking a wife. Marriages may be made in Heaven, but most engagements are made in the back parlor with the gas so low that a fellow doesn't really get a square look at what he's taking. While a man doesn't see much of a girl's family when he's courting, he's apt to see a good deal of it when he's housekeeping; and while he doesn't marry his wife's father, there's nothing in the marriage vow to prevent the old man from borrowing money of him, and you can bet if he's old Job Dashkam he'll do it. A man can't pick his own mother, but he can pick his son's mother, and when he chooses a father-in-law who plays the bucket shops, he needn't be surprised if his own son plays the races.
+    checkIn:
+      id: sm-ch-09-s1-c1
+      stem: What was enclosed in the letter that the father opened?
+      options:
+        - A wedding invitation from old Job Dashkam's daughter.
+        - A bill for fifty-two dollars for roses sent to Miss Mabel Dashkam.
+        - A notice that Pierrepont's wages had been raised.
+        - A letter from Mabel Dashkam accepting Pierrepont's proposal.
+      correctIndex: 1
+      explanationZh: 信封里装的是一张寄给Miss Mabel Dashkam的玫瑰花账单，金额为五十二美元。父亲一拆开就意识到事情不妙。提到加薪的通知和婚礼请柬都是干扰项，文中并未出现。
+  - id: sm-ch-09-s2
+    text: |-
+      Never marry a poor girl who's been raised like a rich one. She's simply traded the virtues of the poor for the vices of the rich without going long on their good points. To marry for money or to marry without money is a crime. There's no real objection to marrying a woman with a fortune, but there is to marrying a fortune with a woman. Money makes the mare go, and it makes her cut up, too, unless she's used to it and you drive her with a snaffle-bit.
+
+      While you are at it, there's nothing like picking out a good-looking wife, because even the handsomest woman looks homely sometimes, and so you get a little variety; but a homely one can only look worse than usual. Beauty is only skin deep, but that's deep enough to satisfy any reasonable man. (I want to say right here that to get any sense out of a proverb I usually find that I have to turn it wrong side out.) Then, too, if a fellow's bound to marry a fool, and a lot of men have to if they're going to hitch up into a well-matched team, there's nothing like picking a good-looking one.
+
+      I simply mention these things in a general way, because it seems to me, from the gait at which you're starting off, that you'll likely find yourself roped and branded any day, without quite knowing how it happened, and I want you to understand that the girl who marries you for my money is getting a package of green goods in more ways than one. I think, though, if you really understood what marrying on twelve a week meant, you would have bought a bedroom set instead of roses with that fifty-two you owe.
+
+      Speaking of marrying the old man's money by proxy naturally takes me back to my old town in Missouri and the case of Chauncey Witherspoon Hoskins. Chauncey's father was the whole village, barring the railroad station and the saloon, and, of course, Chauncey thought that he was something of a pup himself. So he was, but not just the kind that Chauncey thought he was. He stood about five foot three in his pumps, had a nice pinky complexion, pretty wavy hair, and a curly mustache. All he needed was a blue ribbon around his neck to make you call, "Here, Fido," when he came into the room.
+    checkIn:
+      id: sm-ch-09-s2-c1
+      stem: According to the father, what is the problem with a poor girl raised like a rich one?
+      options:
+        - She refuses to marry anyone who earns less than her father.
+        - She cannot cook or keep house for a husband.
+        - She trades the virtues of the poor for the vices of the rich.
+        - She always spends more money than she actually has.
+      correctIndex: 2
+      explanationZh: 父亲明确说，穷姑娘被当富家女养大，结果是"traded the virtues of the poor for the vices of the rich"——拿了富人的坏毛病，却没学他们的优点。说她花钱超过实际收入看似合理，但不是父亲这处的原话要点。
+  - id: sm-ch-09-s3
+    text: |-
+      Still I believe he must have been pretty popular with the ladies, because I can't think of him to this day without wanting to punch his head. At the church sociables he used to hop around among them, chipping and chirping like a dicky-bird picking up seed; and he was a great hand to play the piano, and sing saddish, sweetish songs to them. Always said the smooth thing and said it easy. Never had to choke and swallow to fetch it up. Never stepped through his partner's dress when he began to dance, or got flustered when he brought her refreshments and poured the coffee in her lap to cool instead of in the saucer. We boys who couldn't walk across the floor without feeling that our pants had hiked up till they showed our feet to the knees, and that we were carrying a couple of canvased hams where our hands ought to be, didn't like him; but the girls did. You can trust a woman's taste on everything except men; and it's mighty lucky that she slips up there or we'd pretty nigh all be bachelors. I might add that you can't trust a man's taste on women, either, and that's pretty lucky, too, because there are a good many old maids in the world as it is.
+
+      One time or another Chauncey lolled in the best room of every house in our town, and we used to wonder how he managed to browse up and down the streets that way without getting into the pound. I never found out till after I married your Ma, and she told me Chauncey's heart secrets. It really wasn't violating any confidence, because he'd told them to every girl in town.
+
+      Seems he used to get terribly sad as soon as he was left alone with a girl and began to hint about a tragedy in his past--something that had blighted his whole life and left him without the power to love again--and lots more slop from the same pail.
+
+      Of course, every girl in that town had known Chauncey since he wore short pants, and ought to have known that the nearest to a tragedy he had ever been was when he sat in the top gallery of a Chicago theatre and saw a lot of barnstormers play Othello. But some people, and especially very young people, don't think anything's worth believing unless it's hard to believe.
+    checkIn:
+      id: sm-ch-09-s3-c1
+      stem: What did Chauncey do when left alone with a girl?
+      options:
+        - He played sad songs on the piano for her
+        - He told her about his father's fortune back home
+        - He asked her to run away with him to Chicago
+        - He hinted at a tragedy that blighted his life
+      correctIndex: 3
+      explanationZh: Chauncey独处时会装得伤感，暗示自己过去有一段悲剧，毁了他一生去爱的能力。弹琴唱歌是他社交场合的常规表现，不是独处时的套路；问姑娘私奔则文中未提及。
+  - id: sm-ch-09-s4
+    text: |-
+      Chauncey worked along these lines until he was twenty-four, and then he made a mistake. Most of the girls that he had grown up with had married off, and while he was waiting for a new lot to come along, he began to shine up to the widow Sharpless, a powerful, well-preserved woman of forty or thereabouts, who had been born with her eye-teeth cut. He found her uncommon sympathetic. And when Chauncey finally came out of his trance he was the stepfather of the widow's four children.
+
+      She was very kind to Chauncey, and treated him like one of her own sons; but she was very, very firm. There was no gallivanting off alone, and when they went out in double harness strangers used to annoy him considerable by patting him on the head and saying to his wife: "What a bright-looking chap your son is, Mrs. Hoskins!"
+
+      She was almost seventy when Chauncey buried her a while back, and they say that he began to take notice again on the way home from the funeral. Anyway, he crowded his mourning into sixty days--and I reckon there was plenty of room in them to hold all his grief without stretching--and his courting into another sixty. And four months after date he presented his matrimonial papers for acceptance. Said he was tired of this mother-and-son foolishness, and wasn't going to leave any room for doubt this time. Didn't propose to have people sizing his wife up for one of his ancestors any more. So he married Lulu Littlebrown, who was just turned eighteen. Chauncey was over fifty then, and wizened up like a late pippin that has been out overnight in an early frost.
+
+      He took Lu to Chicago for the honeymoon, and Mose Greenebaum, who happened to be going up to town for his fall goods, got into the parlor car with them. By and by the porter came around and stopped beside Chauncey.
+
+      "Wouldn't your daughter like a pillow under her head?" says he.
+
+      Chauncey just groaned. Then--"Git; you Senegambian son of darkness!" And the porter just naturally got.
+
+      Mose had been taking it all in, and now he went back to the smoking-room and passed the word along to the drummers there. Every little while one of them would lounge up the aisle to Chauncey and ask if he couldn't lend his daughter a magazine, or give her an orange, or bring her a drink. And the language that he gave back in return for these courtesies wasn't at all fitting in a bridegroom. Then Mose had another happy thought, and dropped off at a way station and wired the clerk at the Palmer House.
+
+      When they got to the hotel the clerk was on the lookout for them, and Chauncey hadn't more than signed his name before he reached out over his diamond and said: "Ah, Mr. Hoskins; would you like to have your daughter near you?"
+
+      I simply mention Chauncey in passing as an example of the foolishness of thinking you can take any chances with a woman who has really decided that she wants to marry, or that you can average up matrimonial mistakes. And I want you to remember that marrying the wrong girl is the one mistake that you've got to live with all your life. I think, though, that if you tell Mabel what your assets are, she'll decide she won't be your particular mistake.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-09-s4-c1
+      stem: What happened after Chauncey began courting the widow Sharpless?
+      options:
+        - He became the stepfather of her four children.
+        - He inherited her fortune and moved to Chicago.
+        - He was sent away to work in a railroad station.
+        - He had to raise four children of his own.
+      correctIndex: 0
+      explanationZh: Chauncey追求寡妇Sharpless，最终"came out of his trance"时已成了她四个孩子的继父。说他继承了她的财产移居芝加哥、被送到火车站工作都与原文不符；成为他自己四个孩子的父亲则偷换了概念。
+quiz:
+  - id: sm-ch-09-q1
+    stem: Why does the father think Pierrepont should tell Mabel Dashkam how much he earns?
+    options:
+      - She would respect him for being honest about his prospects.
+      - She would offer to help him manage his small income.
+      - She would introduce him to her father for a better job.
+      - She would lose interest in him because she cares only about money.
+    correctIndex: 3
+    explanationZh: 父亲认为Mabel的心像stock-ticker（股票行情机），只对钱跳动；如果她知道Pierrepont周薪十二且不会更多，就不会靠近他。说她会尊重他诚实、帮他理财或介绍工作，都与父亲对她"只认钱"的判断相悖。
+  - id: sm-ch-09-q2
+    stem: What does the father say is the main risk of having Job Dashkam as a father-in-law?
+    options:
+      - Job is likely to borrow money from his son-in-law.
+      - Job will force Pierrepont to work in his business.
+      - Job will gamble away his own fortune and move in.
+      - Job will interfere constantly in the marriage.
+    correctIndex: 0
+    explanationZh: 父亲说虽然婚姻誓言不阻止岳父向女婿借钱，而像Job Dashkam这种人"he'll do it"一定会借。说Job会强迫女婿做生意、赌光家产搬进来或干涉婚姻，都是原文未提及的推断。
+  - id: sm-ch-09-q3
+    stem: Why does the father say it is wise to pick a good-looking wife if you must marry a fool?
+    options:
+      - Good-looking women are usually easier to get along with.
+      - Beautiful women tend to be better at managing money.
+      - Even a handsome woman looks homely sometimes, giving some variety.
+      - A good-looking fool will attract a wealthy husband later.
+    correctIndex: 2
+    explanationZh: 父亲的原意是：再漂亮的女人有时也会显得难看，好歹有点变化；而本来难看的只会更难看。说漂亮女人更好相处、更会理财或将来能吸引富丈夫，都不符合他那句戏谑逻辑。
+  - id: sm-ch-09-q4
+    stem: Why did the girls in town believe Chauncey's story about a tragedy in his past?
+    options:
+      - They knew him well and trusted his honest nature
+      - Being young, they liked whatever was hard to believe
+      - They had seen the tragedy happen when they were children
+      - He had a scar that proved the story was true
+    correctIndex: 1
+    explanationZh: 镇上的姑娘从小就认识Chauncey，本该知道他最大的"悲剧"不过是在芝加哥看了一场蹩脚的《奥赛罗》，但父亲说年轻人偏爱"hard to believe"的东西。说她们信任他诚实的天性、亲眼见过悲剧或有伤疤为证，都与原文相反。
+  - id: sm-ch-09-q5
+    stem: How did people react when Chauncey and the widow went out together?
+    options:
+      - Strangers asked if he was her younger brother.
+      - Strangers congratulated him on his fine marriage.
+      - Strangers offered them free seats at the theatre.
+      - Strangers patted him on the head and called him her son.
+    correctIndex: 3
+    explanationZh: 寡妇对Chauncey又好又严，两人出门时陌生人会拍他的头，对妻子说"What a bright-looking chap your son is"，把他当她的儿子。说别人问是不是弟弟、祝贺婚姻或送戏票，都偏离了这段令人尴尬的场景。
+  - id: sm-ch-09-q6
+    stem: What happened when the hotel clerk saw Chauncey sign in with Lulu?
+    options:
+      - The clerk offered them the honeymoon suite for free.
+      - The clerk asked for Lulu's age to verify the marriage.
+      - The clerk asked if he wanted his daughter near him.
+      - The clerk recognized him from his first honeymoon.
+    correctIndex: 2
+    explanationZh: Mose 提前发电报给 Palmer House 旅馆的前台职员打好了招呼，所以那位职员一见Chauncey签名就问要不要让"女儿"住得近些——延续了一路被叫"父亲"的笑话。说免费升级蜜月套房、查年龄或认出他，都是无中生有。

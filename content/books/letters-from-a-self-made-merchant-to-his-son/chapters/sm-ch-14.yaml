@@ -1,0 +1,202 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-14
+bookId: book-merchant-letters
+title: A Flyer in Short Ribs
+titleZh: 小试排骨期货
+summaryZh: 老格雷厄姆得知儿子在交易所做了一笔投机买卖并赚了钱，写信告诫他投机交易的危险，并讲了一段 Deacon Wiggleford 来芝加哥做客的往事。
+sections:
+  - id: sm-ch-14-s1
+    text: |-
+      Dear Pierrepont: I met young Horshey, of Horshey & Horter, the grain and provision brokers, at luncheon yesterday, and while we were talking over the light run of hogs your name came up somehow, and he congratulated me on having such a smart son. Like an old fool, I allowed that you were bright enough to come in out of the rain if somebody called you, though I ought to have known better, for it seems as if I never start in to brag about your being sound and sweet that I don't have to wind up by allowing a rebate for skippers.
+
+      Horshey was so blamed anxious to show that you were over-weight--he wants to handle some of my business on 'Change--that he managed to prove you a light-weight. Told me you had ordered him to sell a hundred thousand ribs short last week, and that he had just bought them in on a wire from you at a profit of four hundred and sixty-odd dollars. I was mighty hot, you bet, to know that you had been speculating, but I had to swallow and allow that you were a pretty sharp boy. I told Horshey to close out the account and send me a check for your profits and I would forward it, as I wanted to give you a tip on the market before you did any more trading.
+
+      I inclose the check herewith. Please indorse it over to the treasurer of The Home for Half Orphans and return at once. I will see that he gets it with your compliments.
+
+      Now, I want to give you that tip on the market. There are several reasons why it isn't safe for you to trade on 'Change just now, but the particular one is that Graham & Co. will fire you if you do. Trading on margin is a good deal like paddling around the edge of the old swimming hole--it seems safe and easy at first, but before a fellow knows it he has stepped off the edge into deep water. The wheat pit is only thirty feet across, but it reaches clear down to Hell. And trading on margin means trading on the ragged edge of nothing. When a man buys, he's buying something that the other fellow hasn't got. When a man sells, he's selling something that he hasn't got. And it's been my experience that the net profit on nothing is nit. When a speculator wins he don't stop till he loses, and when he loses he can't stop till he wins.
+    checkIn:
+      id: sm-ch-14-s1-c1
+      stem: What does the father instruct Pierrepont to do with the check for his trading profits?
+      options:
+        - He must sign it over to the Home for Half Orphans.
+        - He must deposit it in his personal bank account.
+        - He must return it to the broker Horshey.
+        - He must use it to buy more short ribs.
+      correctIndex: 0
+      explanationZh: 父亲随信附上支票，要求儿子背书转让给“The Home for Half Orphans”，也就是把这笔投机所得捐出去。把支票存入个人账户或退还经纪人都与信中明确指示相反。
+  - id: sm-ch-14-s2
+    text: |-
+      You have been in the packing business long enough now to know that it takes a bull only thirty seconds to lose his hide; and if you'll believe me when I tell you that they can skin a bear just as quick on 'Change, you won't have a Board of Trade Indian using your pelt for a rug during the long winter months.
+
+      Because you are the son of a pork packer you may think that you know a little more than the next fellow about paper pork. There's nothing in it. The poorest men on earth are the relations of millionaires. When I sell futures on 'Change, they're against hogs that are traveling into dry salt at the rate of one a second, and if the market goes up on me I've got the solid meat to deliver. But, if you lose, the only part of the hog which you can deliver is the squeal.
+
+      I wouldn't bear down so hard on this matter if money was the only thing that a fellow could lose on 'Change. But if a clerk sells pork, and the market goes down, he's mighty apt to get a lot of ideas with holes in them and bad habits as the small change of his profits. And if the market goes up, he's likely to go short his self-respect to win back his money.
+
+      Most men think that they can figure up all their assets in dollars and cents, but a merchant may owe a hundred thousand dollars and be solvent. A man's got to lose more than money to be broke. When a fellow's got a straight backbone and a clear eye his creditors don't have to lie awake nights worrying over his liabilities. You can hide your meanness from your brain and your tongue, but the eye and the backbone won't keep secrets. When the tongue lies, the eyes tell the truth.
+
+      I know you'll think that the old man is bucking and kicking up a lot of dust over a harmless little flyer. But I've kept a heap smarter boys than you out of Joliet when they found it easy to feed the Board of Trade hog out of my cash drawer, after it had sucked up their savings in a couple of laps.
+
+      You must learn not to overwork a dollar any more than you would a horse. Three per cent. is a small load for it to draw; six, a safe one; when it pulls in ten for you it's likely working out West and you've got to watch to see that it doesn't buck; when it makes twenty you own a blame good critter or a mighty foolish one, and you want to make dead sure which; but if it draws a hundred it's playing the races or something just as hard on horses and dollars, and the first thing you know you won't have even a carcass to haul to the glue factory.
+    checkIn:
+      id: sm-ch-14-s2-c1
+      stem: What is the key difference the father draws between his own futures trading and Pierrepont's?
+      options:
+        - The father trades in wheat, while Pierrepont trades in pork.
+        - The father trades through brokers, while Pierrepont trades alone.
+        - The father always makes a profit, while Pierrepont always loses.
+        - The father can deliver real hogs, while Pierrepont can only deliver the squeal.
+      correctIndex: 3
+      explanationZh: 父亲指出自己卖的是真正在加工的猪，市场不利时可以交割实物；而儿子投机的猪肉如果亏损，“the only part of the hog which you can deliver is the squeal”——手上并没有实物。两人交易品种和是否赚钱不是关键。
+  - id: sm-ch-14-s3
+    text: |-
+      I dwell a little on this matter of speculation because you've got to live next door to the Board of Trade all your life, and it's a safe thing to know something about a neighbor's dogs before you try to pat them. Sure Things, Straight Tips and Dead Cinches will come running out to meet you, wagging their tails and looking as innocent as if they hadn't just killed a lamb, but they'll bite. The only safe road to follow in speculation leads straight away from the Board of Trade on the dead run.
+
+      Speaking of sure things naturally calls to mind the case of my old friend Deacon Wiggleford, whom I used to know back in Missouri years ago. The Deacon was a powerful pious man, and he was good according to his lights, but he didn't use a very superior article of kerosene to keep them burning.
+
+      Used to take up half the time in prayer-meeting talking about how we were all weak vessels and stewards. But he was so blamed busy exhorting others to give out of the fullness with which the Lord had blessed them that he sort of forgot that the Lord had blessed him about fifty thousand dollars' worth, and put it all in mighty safe property, too, you bet.
+
+      The Deacon had a brother in Chicago whom he used to call a sore trial. Brother Bill was a broker on the Board of Trade, and, according to the Deacon, he was not only engaged in a mighty sinful occupation, but he was a mighty poor steward of his sinful gains. Smoked two-bit cigars and wore a plug hat. Drank a little and cussed a little and went to the Episcopal Church, though he had been raised a Methodist. Altogether it looked as if Bill was a pretty hard nut.
+
+      Well, one fall the Deacon decided to go to Chicago himself to buy his winter goods, and naturally he hiked out to Brother Bill's to stay, which was considerable cheaper for him than the Palmer House, though, as he told us when he got back, it made him sick to see the waste.
+
+      The Deacon had his mouth all fixed to tell Brother Bill that, in his opinion, he wasn't much better than a faro dealer, for he used to brag that he never let anything turn him from his duty, which meant his meddling in other people's business. I want to say right here that with most men duty means something unpleasant which the other fellow ought to do. As a matter of fact, a man's first duty is to mind his own business. It's been my experience that it takes about all the thought and work which one man can give to run one man right, and if a fellow's putting in five or six hours a day on his neighbor's character, he's mighty apt to scamp the building of his own.
+    checkIn:
+      id: sm-ch-14-s3-c1
+      stem: How does the father define most men's idea of 'duty'?
+      options:
+        - Something pleasant that one does for oneself.
+        - Something unpleasant that the other fellow ought to do.
+        - A task assigned by one's church pastor.
+        - A habit learned from one's parents.
+      correctIndex: 1
+      explanationZh: 父亲直言，多数人所说的“duty”其实是“something unpleasant which the other fellow ought to do”——让别人去做的不愉快的事。他紧接着强调人的首要责任是管好自己的事，与教会或父母无关。
+  - id: sm-ch-14-s4
+    text: |-
+      Well, when Brother Bill got home from business that first night, the Deacon explained that every time he lit a two-bit cigar he was depriving a Zulu of twenty-five helpful little tracts which might have made a better man of him; that fast horses were a snare and plug hats a wile of the Enemy; that the Board of Trade was the Temple of Belial and the brokers on it his sons and servants.
+
+      Brother Bill listened mighty patiently to him, and when the Deacon had pumped out all the Scripture that was in him, and was beginning to suck air, he sort of slunk into the conversation like a setter pup that's been caught with the feathers on its chops.
+
+      "Brother Zeke," says he, "I shall certainly let your words soak in. I want to be a number two red, hard, sound and clean sort of a man, and grade contract on delivery day. Perhaps, as you say, the rust has got into me and the Inspector won't pass me, and if I can see it that way I'll settle my trades and get out of the market for good."
+
+      The Deacon knew that Brother Bill had scraped together considerable property, and, as he was a bachelor, it would come to him in case the broker was removed by any sudden dispensation. What he really feared was that this money might be fooled away in high living and speculation. And so he had banged away into the middle of the flock, hoping to bring down those two birds. Now that it began to look as if he might kill off the whole bunch he started in to hedge.
+
+      "Is it safe, William?" says he.
+
+      "As Sunday-school," says Bill, "if you do a strictly brokerage business and don't speculate."
+
+      "I trust, William, that you recognize the responsibilities of your stewardship?"
+
+      Bill fetched a groan. "Zeke," says he, "you cornered me there, and I 'spose I might as well walk up to the Captain's office and settle. I hadn't bought or sold a bushel on my own account in a year till last week, when I got your letter saying that you were coming. Then I saw what looked like a safe chance to scalp the market for a couple of cents a bushel, and I bought 10,000 September, intending to turn over the profits to you as a little present, so that you could see the town and have a good time without it's costing you anything."
+    checkIn:
+      id: sm-ch-14-s4-c1
+      stem: Why did Brother Bill start trading again after a year away from the market?
+      options:
+        - He wanted to prove that speculation was sinful
+        - He needed to recover money he had lost in church
+        - He planned to give all his property to charity
+        - He meant to give the profit to the Deacon
+      correctIndex: 3
+      explanationZh: Bill 说收到 Deacon 要来芝加哥的信后，看到市场有机会，就买了一万蒲式耳九月小麦，打算把利润当礼物送给 Deacon，让他不花钱也能好好玩。这与证明投机有罪或向教会捐款无关。
+  - id: sm-ch-14-s5
+    text: |-
+      The Deacon judged from Bill's expression that he had got nipped and was going to try to unload the loss on him, so he changed his face to the one which he used when attending the funeral of any one who hadn't been a professor, and came back quick and hard:
+
+      "I'm surprised, William, that you should think I would accept money made in gambling. Let this be a lesson to you. How much did you lose?"
+
+      "That's the worst of it--I didn't lose; I made two hundred dollars," and Bill hove another sigh.
+
+      "Made two hundred dollars!" echoed the Deacon, and he changed his face again for the one which he used when he found a lead quarter in his till and couldn't remember who had passed it on him.
+
+      "Yes," Bill went on, "and I'm ashamed of it, for you've made me see things in a new light. Of course, after what you've said, I know it would be an insult to offer you the money. And I feel now that it wouldn't be right to keep it myself. I must sleep on it and try to find the straight thing to do."
+
+      I guess it really didn't interfere with Bill's sleep, but the Deacon sat up with the corpse of that two hundred dollars, you bet. In the morning at breakfast he asked Brother Bill to explain all about this speculating business, what made the market go up and down, and whether real corn or wheat or pork figured in any stage of a deal. Bill looked sort of sad and dreamy-eyed, as if his conscience hadn't digested that two hundred yet, but he was mighty obliging about explaining everything to Zeke. He had changed his face for the one which he wore when he sold an easy customer ground peas and chicory for O. G. Java, and every now and then he gulped as if he was going to start a hymn. When Bill told him how good and bad weather sent the market up and down, he nodded and said that that part of it was all right, because the weather was of the Lord.
+
+      "Not on the Board of Trade it isn't," Bill answered back; "at least, not to any marked extent; it's from the weather man or some liar in the corn belt, and, as the weather man usually guesses wrong, I reckon there isn't any special inspiration about it. The game is to guess what's going to happen, not what has happened, and by the time the real weather comes along everybody has guessed wrong and knocked the market off a cent or two."
+    checkIn:
+      id: sm-ch-14-s5-c1
+      stem: How does the Deacon react when he learns that Bill actually made two hundred dollars instead of losing?
+      options:
+        - He refuses to speak to Bill for the rest of the visit.
+        - He changes his expression and starts asking how the market works.
+        - He immediately donates the money to the poor.
+        - He insists that Bill return the money at once.
+      correctIndex: 1
+      explanationZh: Deacon 本以为 Bill 亏了钱想甩锅给他，结果 Bill 赚了两百块。Deacon 当场换了一副表情，开始追问市场涨跌的原理，想找到理由接受这笔钱。他既没有拒绝说话，也没有立刻捐出或退还。
+  - id: sm-ch-14-s6
+    text: |-
+      That made the Deacon's chin whiskers droop a little, but he began to ask questions again, and by and by he discovered that away behind--about a hundred miles behind, but that was close enough for the Deacon--a deal in futures there were real wheat and pork. Said then that he'd been misinformed and misled; that speculation was a legitimate business, involving skill and sagacity; that his last scruple was removed, and that he would accept the two hundred.
+
+      Bill brightened right up at that and thanked him for putting it so clear and removing the doubts that had been worrying him. Said that he could speculate with a clear conscience after listening to the Deacon's able exposition of the subject. Was only sorry he hadn't seen him to talk it over before breakfast, as the two hundred had been lying so heavy on his mind all night that he'd got up early and mailed a check for it to the Deacon's pastor and told him to spend it on his poor.
+
+      Zeke took the evening train home in order to pry that check out of the elder, but old Doc. Hoover was a pretty quick stepper himself and he'd blown the whole two hundred as soon as he got it, buying winter coal for poor people.
+
+      I simply mention the Deacon in passing as an example of the fact that it's easy for a man who thinks he's all right to go all wrong when he sees a couple of hundred dollars lying around loose a little to one side of the straight and narrow path; and that when he reaches down to pick up the money there's usually a string tied to it and a small boy in the bushes to give it a yank. Easy-come money never draws interest; easy-borrowed dollars pay usury.
+
+      Of course, the Board of Trade and every other commercial exchange have their legitimate uses, but all you need to know just now is that speculation by a fellow who never owns more pork at a time than he sees on his breakfast plate isn't one of them. When you become a packer you may go on 'Change as a trader; until then you can go there only as a sucker.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-14-s6-c1
+      stem: What happened to the two hundred dollars Bill earned from his trade?
+      options:
+        - Bill kept it in his bank account until the Deacon left
+        - Bill returned it to the Board of Trade as required
+        - Bill mailed it to the Deacon's pastor for the poor
+        - The Deacon gave it to Brother Bill for safekeeping
+      correctIndex: 2
+      explanationZh: Bill 一早就把两百美元支票寄给了 Deacon 的牧师 Doc. Hoover，请他用在穷人身上。牧师很快把钱全花在了买冬日煤炭上。Deacon 赶晚班车回家想把钱要回来，却为时已晚。
+quiz:
+  - id: sm-ch-14-q1
+    stem: Why did the father ask Horshey to close out Pierrepont's account and send him the profit check?
+    options:
+      - He wanted to invest the profits in the grain market himself.
+      - He planned to split the money between his sons equally.
+      - He wanted to stop his son from doing any more trading right away.
+      - He needed the money to pay Horshey's brokerage fees.
+    correctIndex: 2
+    explanationZh: 父亲让 Horshey 结清账户、把利润支票寄来，是因为他想趁机给儿子一个市场忠告，阻止他继续交易。原文写道他“I wanted to give you a tip on the market before you did any more trading”，并不是要自己投资或分钱。
+  - id: sm-ch-14-q2
+    stem: According to the father, what usually happens when a speculator wins on the Board of Trade?
+    options:
+      - He stops immediately and lives comfortably on his winnings.
+      - He keeps trading until he loses, and then he cannot stop.
+      - He shares his winnings with his friends and family.
+      - He invests everything in safe property and retires.
+    correctIndex: 1
+    explanationZh: 父亲总结投机者的心态：“When a speculator wins he don't stop till he loses, and when he loses he can't stop till he wins.” 赢了不停手，输了更停不下来，因此很难靠投机安稳度日。
+  - id: sm-ch-14-q3
+    stem: What does the father warn that a clerk can lose on the Exchange besides money?
+    options:
+      - Good habits and strong family ties.
+      - Bad habits and ideas with holes in them.
+      - Solid friendships and useful business skills.
+      - Respect from his employer and steady wages.
+    correctIndex: 1
+    explanationZh: 父亲指出投机亏损不只是钱的问题：亏损会带来“a lot of ideas with holes in them and bad habits”。也就是说，一个职员在交易所还可能沾上坏习惯和错误观念，并非失去良好习惯或友谊。
+  - id: sm-ch-14-q4
+    stem: What does the father mean by saying a dollar pulling in a hundred percent is 'playing the races or something just as hard on horses and dollars'?
+    options:
+      - It is gambling, and the dollar will likely be destroyed.
+      - It is farming, and the dollar will grow like a crop.
+      - It is investing, and the dollar will become very safe.
+      - It is saving, and the dollar will last forever.
+    correctIndex: 0
+    explanationZh: 父亲用马做比喻：能拉百分之百利润的美元就像被拿去赛马，迟早连“carcass”都不剩。他在告诫儿子超高回报意味着赌博，钱很快会打水漂，而不是安全投资或储蓄。
+  - id: sm-ch-14-q5
+    stem: How did the Deacon feel about Brother Bill's occupation before he visited Chicago?
+    options:
+      - He thought Bill was a successful and honest merchant.
+      - He wanted to learn trading skills from Bill.
+      - He believed Bill should become a grain farmer.
+      - He thought Bill was engaged in a sinful business.
+    correctIndex: 3
+    explanationZh: Deacon 在去芝加哥之前常称 Bill 是“a sore trial”，认为他在交易所的工作“a mighty sinful occupation”。他并不欣赏 Bill 的交易技巧，也没想让 Bill 当农民。
+  - id: sm-ch-14-q6
+    stem: What conclusion does the father draw from the Deacon Wiggleford story?
+    options:
+      - A man who goes to church will always handle money wisely.
+      - A man who avoids his brother will never lose any money.
+      - A man who works on the Exchange can never be trusted.
+      - A man who thinks he is righteous can still go wrong over easy money.
+    correctIndex: 3
+    explanationZh: 父亲讲 Deacon 的故事，是为了说明“it's easy for a man who thinks he's all right to go all wrong when he sees a couple of hundred dollars lying around loose”——自以为正派的人，面对轻松到手的钱也可能动摇。这与去不去教堂或是否在交易所工作无关。

@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=../../.schemas/book.schema.json
+id: book-merchant-letters
+title: Letters from a Self-Made Merchant to His Son
+titleZh: 白手起家的商人给儿子的信
+author: George Horace Lorimer
+authorZh: 乔治·霍勒斯·洛里默
+descriptionZh: 洛里默1902年的经典商业书信集：芝加哥肉业大亨约翰·格雷厄姆写给儿子皮尔庞特的20封信，从哈佛校园一路写到销售一线。老商人的信里满是辛辣的幽默和实打实的生意经，商务方向学习者的绝佳读物。
+cefrLevel: B2
+genres:
+  - business
+  - letters
+  - classic
+source: "Project Gutenberg eBook #21959 (public domain)"
+chapterFiles:
+  - sm-ch-01.yaml
+  - sm-ch-02.yaml
+  - sm-ch-03.yaml
+  - sm-ch-04.yaml
+  - sm-ch-05.yaml
+  - sm-ch-06.yaml
+  - sm-ch-07.yaml
+  - sm-ch-08.yaml
+  - sm-ch-09.yaml
+  - sm-ch-10.yaml
+  - sm-ch-11.yaml
+  - sm-ch-12.yaml
+  - sm-ch-13.yaml
+  - sm-ch-14.yaml
+  - sm-ch-15.yaml
+  - sm-ch-16.yaml
+  - sm-ch-17.yaml
+  - sm-ch-18.yaml
+  - sm-ch-19.yaml
+  - sm-ch-20.yaml

@@ -1,0 +1,225 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: oh-ch-05
+bookId: book-o-henry
+title: The Green Door
+titleZh: 绿门
+sections:
+  - id: oh-ch-05-s1
+    text: |-
+      Suppose you should be walking down Broadway after dinner, with ten minutes allotted to the consummation of your cigar while you are choosing between a diverting tragedy and something serious in the way of vaudeville. Suddenly a hand is laid upon your arm. You turn to look into the thrilling eyes of a beautiful woman, wonderful in diamonds and Russian sables. She thrusts hurriedly into your hand an extremely hot buttered roll, flashes out a tiny pair of scissors, snips off the second button of your overcoat, meaningly ejaculates the one word, “parallelogram!” and swiftly flies down a cross street, looking back fearfully over her shoulder.
+
+      That would be pure adventure. Would you accept it? Not you. You would flush with embarrassment; you would sheepishly drop the roll and continue down Broadway, fumbling feebly for the missing button. This you would do unless you are one of the blessed few in whom the pure spirit of adventure is not dead.
+
+      True adventurers have never been plentiful. They who are set down in print as such have been mostly business men with newly invented methods. They have been out after the things they wanted—golden fleeces, holy grails, lady loves, treasure, crowns and fame. The true adventurer goes forth aimless and uncalculating to meet and greet unknown fate. A fine example was the Prodigal Son—when he started back home.
+
+      Half-adventurers—brave and splendid figures—have been numerous. From the Crusades to the Palisades they have enriched the arts of history and fiction and the trade of historical fiction. But each of them had a prize to win, a goal to kick, an axe to grind, a race to run, a new thrust in tierce to deliver, a name to carve, a crow to pick—so they were not followers of true adventure.
+
+      In the big city the twin spirits Romance and Adventure are always abroad seeking worthy wooers. As we roam the streets they slyly peep at us and challenge us in twenty different guises. Without knowing why, we look up suddenly to see in a window a face that seems to belong to our gallery of intimate portraits; in a sleeping thoroughfare we hear a cry of agony and fear coming from an empty and shuttered house; instead of at our familiar curb, a cabdriver deposits us before a strange door, which one, with a smile, opens for us and bids us enter; a slip of paper, written upon, flutters down to our feet from the high lattices of Chance; we exchange glances of instantaneous hate, affection and fear with hurrying strangers in the passing crowds; a sudden douse of rain—and our umbrella may be sheltering the daughter of the Full Moon and first cousin of the Sidereal System; at every corner handkerchiefs drop, fingers beckon, eyes besiege, and the lost, the lonely, the rapturous, the mysterious, the perilous, changing clues of adventure are slipped into our fingers. But few of us are willing to hold and follow them. We are grown stiff with the ramrod of convention down our backs. We pass on; and some day we come, at the end of a very dull life, to reflect that our romance has been a pallid thing of a marriage or two, a satin rosette kept in a safe-deposit drawer, and a lifelong feud with a steam radiator.
+    checkIn:
+      id: oh-ch-05-s1-c1
+      stem: According to the opening, what marks a true adventurer?
+      options:
+        - Hunting treasure with a careful plan
+        - Setting out aimlessly to meet unknown fate
+        - Winning fame through daring deeds
+        - Fighting for a holy cause abroad
+      correctIndex: 1
+      explanationZh: 开篇说真正的冒险家“goes forth aimless and uncalculating to meet and greet unknown fate”——不带目的、不做算计。那些追逐金羊毛、圣杯、王冠与名声的人，在作者看来都算不上真正的冒险家。
+  - id: oh-ch-05-s2
+    text: |-
+      Rudolf Steiner was a true adventurer. Few were the evenings on which he did not go forth from his hall bedchamber in search of the unexpected and the egregious. The most interesting thing in life seemed to him to be what might lie just around the next corner. Sometimes his willingness to tempt fate led him into strange paths. Twice he had spent the night in a station-house; again and again he had found himself the dupe of ingenious and mercenary tricksters; his watch and money had been the price of one flattering allurement. But with undiminished ardour he picked up every glove cast before him into the merry lists of adventure.
+
+      One evening Rudolf was strolling along a crosstown street in the older central part of the city. Two streams of people filled the sidewalks—the home-hurrying, and that restless contingent that abandons home for the specious welcome of the thousand-candle-power table d’hôte.
+
+      The young adventurer was of pleasing presence, and moved serenely and watchfully. By daylight he was a salesman in a piano store. He wore his tie drawn through a topaz ring instead of fastened with a stick pin; and once he had written to the editor of a magazine that Junie’s Love Test by Miss Libbey, had been the book that had most influenced his life.
+
+      During his walk a violent chattering of teeth in a glass case on the sidewalk seemed at first to draw his attention (with a qualm), to a restaurant before which it was set; but a second glance revealed the electric letters of a dentist’s sign high above the next door. A giant negro, fantastically dressed in a red embroidered coat, yellow trousers and a military cap, discreetly distributed cards to those of the passing crowd who consented to take them.
+
+      This mode of dentistic advertising was a common sight to Rudolf. Usually he passed the dispenser of the dentist’s cards without reducing his store; but tonight the African slipped one into his hand so deftly that he retained it there smiling a little at the successful feat.
+
+      When he had travelled a few yards further he glanced at the card indifferently. Surprised, he turned it over and looked again with interest. One side of the card was blank; on the other was written in ink three words, “The Green Door.” And then Rudolf saw, three steps in front of him, a man throw down the card the negro had given him as he passed. Rudolf picked it up. It was printed with the dentist’s name and address and the usual schedule of “plate work” and “bridge work” and “crowns,” and specious promises of “painless” operations.
+    checkIn:
+      id: oh-ch-05-s2-c1
+      stem: What was written on the card slipped into Rudolf's hand?
+      options:
+        - The dentist's address
+        - Junie's Love Test
+        - Parallelogram
+        - The Green Door
+      correctIndex: 3
+      explanationZh: 卡片一面空白，另一面用墨水写着三个词——“The Green Door”。牙医的姓名地址印在别人扔掉的卡片上；“parallelogram”是开篇假想场景里的怪词，Junie's Love Test 则是鲁道夫最爱的小说。
+  - id: oh-ch-05-s3
+    text: |-
+      The adventurous piano salesman halted at the corner and considered. Then he crossed the street, walked down a block, recrossed and joined the upward current of people again. Without seeming to notice the negro as he passed the second time, he carelessly took the card that was handed him. Ten steps away he inspected it. In the same handwriting that appeared on the first card “The Green Door” was inscribed upon it. Three or four cards were tossed to the pavement by pedestrians both following and leading him. These fell blank side up. Rudolf turned them over. Every one bore the printed legend of the dental “parlours.”
+
+      Rarely did the arch sprite Adventure need to beckon twice to Rudolf Steiner, his true follower. But twice it had been done, and the quest was on.
+
+      Rudolf walked slowly back to where the giant negro stood by the case of rattling teeth. This time as he passed he received no card. In spite of his gaudy and ridiculous garb, the Ethiopian displayed a natural barbaric dignity as he stood, offering the cards suavely to some, allowing others to pass unmolested. Every half minute he chanted a harsh, unintelligible phrase akin to the jabber of car conductors and grand opera. And not only did he withhold a card this time, but it seemed to Rudolf that he received from the shining and massive black countenance a look of cold, almost contemptuous disdain.
+
+      The look stung the adventurer. He read in it a silent accusation that he had been found wanting. Whatever the mysterious written words on the cards might mean, the black had selected him twice from the throng for their recipient; and now seemed to have condemned him as deficient in the wit and spirit to engage the enigma.
+
+      Standing aside from the rush, the young man made a rapid estimate of the building in which he conceived that his adventure must lie. Five stories high it rose. A small restaurant occupied the basement.
+
+      The first floor, now closed, seemed to house millinery or furs. The second floor, by the winking electric letters, was the dentist’s. Above this a polyglot babel of signs struggled to indicate the abodes of palmists, dressmakers, musicians and doctors. Still higher up draped curtains and milk bottles white on the window sills proclaimed the regions of domesticity.
+
+      After concluding his survey Rudolf walked briskly up the high flight of stone steps into the house. Up two flights of the carpeted stairway he continued; and at its top paused. The hallway there was dimly lighted by two pale jets of gas—one far to his right, the other nearer, to his left. He looked toward the nearer light and saw, within its wan halo, a green door. For one moment he hesitated; then he seemed to see the contumelious sneer of the African juggler of cards; and then he walked straight to the green door and knocked against it.
+    checkIn:
+      id: oh-ch-05-s3-c1
+      stem: How did Rudolf get a second card from the card-giver?
+      options:
+        - He circled and passed him again
+        - He asked the man directly for one
+        - He picked one up from the pavement
+        - He paid the man a dollar for one
+      correctIndex: 0
+      explanationZh: 他在街角想了想，过街、走过一个街区、再折回人流中第二次经过发卡人，“carelessly took the card that was handed him”。地上捡来的卡片都只印着牙科广告，他也没有开口去要或花钱去买。
+  - id: oh-ch-05-s4
+    text: |-
+      Moments like those that passed before his knock was answered measure the quick breath of true adventure. What might not be behind those green panels! Gamesters at play; cunning rogues baiting their traps with subtle skill; beauty in love with courage, and thus planning to be sought by it; danger, death, love, disappointment, ridicule—any of these might respond to that temerarious rap.
+
+      A faint rustle was heard inside, and the door slowly opened. A girl not yet twenty stood there, white-faced and tottering. She loosed the knob and swayed weakly, groping with one hand. Rudolf caught her and laid her on a faded couch that stood against the wall. He closed the door and took a swift glance around the room by the light of a flickering gas jet. Neat, but extreme poverty was the story that he read.
+
+      The girl lay still, as if in a faint. Rudolf looked around the room excitedly for a barrel. People must be rolled upon a barrel who—no, no; that was for drowned persons. He began to fan her with his hat. That was successful, for he struck her nose with the brim of his derby and she opened her eyes. And then the young man saw that hers, indeed, was the one missing face from his heart’s gallery of intimate portraits. The frank, grey eyes, the little nose, turning pertly outward; the chestnut hair, curling like the tendrils of a pea vine, seemed the right end and reward of all his wonderful adventures. But the face was woefully thin and pale.
+
+      The girl looked at him calmly, and then smiled.
+
+      “Fainted, didn’t I?” she asked, weakly. “Well, who wouldn’t? You try going without anything to eat for three days and see!”
+
+      “Himmel!” exclaimed Rudolf, jumping up. “Wait till I come back.”
+
+      He dashed out the green door and down the stairs. In twenty minutes he was back again, kicking at the door with his toe for her to open it. With both arms he hugged an array of wares from the grocery and the restaurant. On the table he laid them—bread and butter, cold meats, cakes, pies, pickles, oysters, a roasted chicken, a bottle of milk and one of red-hot tea.
+
+      “This is ridiculous,” said Rudolf, blusteringly, “to go without eating. You must quit making election bets of this kind. Supper is ready.” He helped her to a chair at the table and asked: “Is there a cup for the tea?” “On the shelf by the window,” she answered. When he turned again with the cup he saw her, with eyes shining rapturously, beginning upon a huge Dill pickle that she had rooted out from the paper bags with a woman’s unerring instinct. He took it from her, laughingly, and poured the cup full of milk. “Drink that first,” he ordered, “and then you shall have some tea, and then a chicken wing. If you are very good you shall have a pickle tomorrow. And now, if you’ll allow me to be your guest we’ll have supper.”
+    checkIn:
+      id: oh-ch-05-s4-c1
+      stem: Why had the girl fainted?
+      options:
+        - The gas fumes had made her dizzy
+        - She was frightened by the knock
+        - She had eaten nothing for three days
+        - She had been ill with a fever
+      correctIndex: 2
+      explanationZh: 女孩醒来后自己说：“You try going without anything to eat for three days and see!”——三天没吃东西才晕倒。房里的煤气灯只是照明，她也并非因敲门受惊或发烧。
+  - id: oh-ch-05-s5
+    text: |-
+      He drew up the other chair. The tea brightened the girl’s eyes and brought back some of her colour. She began to eat with a sort of dainty ferocity like some starved wild animal. She seemed to regard the young man’s presence and the aid he had rendered her as a natural thing—not as though she undervalued the conventions; but as one whose great stress gave her the right to put aside the artificial for the human. But gradually, with the return of strength and comfort, came also a sense of the little conventions that belong; and she began to tell him her little story. It was one of a thousand such as the city yawns at every day—the shop girl’s story of insufficient wages, further reduced by “fines” that go to swell the store’s profits; of time lost through illness; and then of lost positions, lost hope, and—the knock of the adventurer upon the green door.
+
+      But to Rudolf the history sounded as big as the Iliad or the crisis in Junie’s Love Test.
+
+      “To think of you going through all that,” he exclaimed.
+
+      “It was something fierce,” said the girl, solemnly.
+
+      “And you have no relatives or friends in the city?”
+
+      “None whatever.”
+
+      “I am all alone in the world, too,” said Rudolf, after a pause.
+
+      “I am glad of that,” said the girl, promptly; and somehow it pleased the young man to hear that she approved of his bereft condition.
+
+      Very suddenly her eyelids dropped and she sighed deeply.
+
+      “I’m awfully sleepy,” she said, “and I feel so good.”
+
+      Then Rudolf rose and took his hat. “I’ll say good night. A long night’s sleep will be fine for you.”
+
+      He held out his hand, and she took it and said “good night.” But her eyes asked a question so eloquently, so frankly and pathetically that he answered it with words.
+
+      “Oh, I’m coming back tomorrow to see how you are getting along. You can’t get rid of me so easily.”
+
+      Then, at the door, as though the way of his coming had been so much less important than the fact that he had come, she asked: “How did you come to knock at my door?”
+
+      He looked at her for a moment, remembering the cards, and felt a sudden jealous pain. What if they had fallen into other hands as adventurous as his? Quickly he decided that she must never know the truth. He would never let her know that he was aware of the strange expedient to which she had been driven by her great distress.
+    checkIn:
+      id: oh-ch-05-s5-c1
+      stem: What had driven the shop girl into such distress?
+      options:
+        - A landlord who stole her savings
+        - Gambling debts she could not repay
+        - The loss of a family inheritance
+        - Low pay, fines, and lost work
+      correctIndex: 3
+      explanationZh: 她的经历是城市里千篇一律的故事：“insufficient wages, further reduced by ‘fines’”，又因生病误工丢了职位，最后连希望也一起丢掉。故事里没有房东、赌债或遗产这些情节。
+  - id: oh-ch-05-s6
+    text: |-
+      “One of our piano tuners lives in this house,” he said. “I knocked at your door by mistake.”
+
+      The last thing he saw in the room before the green door closed was her smile.
+
+      At the head of the stairway he paused and looked curiously about him. And then he went along the hallway to its other end; and, coming back, ascended to the floor above and continued his puzzled explorations. Every door that he found in the house was painted green.
+
+      Wondering, he descended to the sidewalk. The fantastic African was still there. Rudolf confronted him with his two cards in his hand.
+
+      “Will you tell me why you gave me these cards and what they mean?” he asked.
+
+      In a broad, good-natured grin the negro exhibited a splendid advertisement of his master’s profession.
+
+      “Dar it is, boss,” he said, pointing down the street. “But I ’spect you is a little late for de fust act.”
+
+      Looking the way he pointed Rudolf saw above the entrance to a theatre the blazing electric sign of its new play, “The Green Door.”
+
+      “I’m informed dat it’s a fust-rate show, sah,” said the negro. “De agent what represents it pussented me with a dollar, sah, to distribute a few of his cards along with de doctah’s. May I offer you one of de doctah’s cards, sah?”
+
+      At the corner of the block in which he lived Rudolf stopped for a glass of beer and a cigar. When he had come out with his lighted weed he buttoned his coat, pushed back his hat and said, stoutly, to the lamp post on the corner:
+
+      “All the same, I believe it was the hand of Fate that doped out the way for me to find her.”
+
+      Which conclusion, under the circumstances, certainly admits Rudolf Steiner to the ranks of the true followers of Romance and Adventure.
+    checkIn:
+      id: oh-ch-05-s6-c1
+      stem: What did Rudolf discover about the other doors in the house?
+      options:
+        - Every door in the house was painted green
+        - Each door was painted a different colour
+        - Only the girl's door was green
+        - Every door had a card pinned to it
+      correctIndex: 0
+      explanationZh: 他好奇地在楼里转了一圈，发现“Every door that he found in the house was painted green”——谜团反而更深了，直到他回到街上才找到答案。并非只有女孩的门是绿色。
+quiz:
+  - id: oh-ch-05-q1
+    stem: What was the real explanation of the Green Door cards?
+    options:
+      - The dentist used them to attract patients
+      - The girl wrote them to call for help
+      - A theatre agent paid to advertise a play
+      - A secret club used them to find members
+    correctIndex: 2
+    explanationZh: 街角的发卡人指着剧院门口的电光招牌——新戏就叫“The Green Door”，戏院代理人给了他一美元，请他把戏卡和牙医卡混在一起发。卡片不是求救信，也与秘密俱乐部无关。这正是欧·亨利式的谜底：冒险的入口原来是一场误会。
+  - id: oh-ch-05-q2
+    stem: What lie did Rudolf tell the girl about his knock?
+    options:
+      - He said he had knocked by mistake
+      - He was the building's new rent collector
+      - A doctor had sent him up to check on her
+      - He lived on the floor just above hers
+    correctIndex: 0
+    explanationZh: 他决定永远不让她知道卡片的事，只说“One of our piano tuners lives in this house. I knocked at your door by mistake.” 他误以为卡片是她被逼无奈发出的求助，这个善意的谎言是为了保全她的体面。
+  - id: oh-ch-05-q3
+    stem: What did Rudolf do as soon as he learned the girl was starving?
+    options:
+      - He fetched a doctor from the floor below
+      - He gave her money for a week of meals
+      - He took her down to the basement restaurant
+      - He ran out and came back with armfuls of food
+    correctIndex: 3
+    explanationZh: 他喊了一声“Himmel!”就冲下楼，二十分钟后抱着面包、冷肉、烤鸡、牛奶和热茶回来摆了满满一桌，还笑着不许她先吃腌黄瓜。他没有请医生，也没有给钱或带她下楼吃饭。
+  - id: oh-ch-05-q4
+    stem: By day, what was Rudolf Steiner's job?
+    options:
+      - A clerk in a dry-goods store
+      - A salesman in a piano store
+      - A card distributor for a dentist
+      - A ticket seller at a theatre
+    correctIndex: 1
+    explanationZh: 文中介绍“By daylight he was a salesman in a piano store”——白天他是钢琴店推销员，夜晚才出门追寻街头的冒险。发卡人和售票员都是故事里别人的角色。
+  - id: oh-ch-05-q5
+    stem: Despite the truth about the cards, what did Rudolf conclude?
+    options:
+      - That adventure always ends in disappointment
+      - That the girl had planned the whole evening
+      - That Fate had arranged the way for him to find her
+      - That he should give up his night wanderings
+    correctIndex: 2
+    explanationZh: 他在街角对着灯柱郑重宣布：“I believe it was the hand of Fate that doped out the way for me to find her.” 即使谜底只是一出新戏的广告，他仍认定这是命运的安排——这份坚持恰恰证明他是浪漫与冒险的真信徒。
+summaryZh: 真正的冒险家不为目的出发，只为迎接未知的命运——这是欧·亨利给这篇故事定下的调子。钢琴推销员鲁道夫在傍晚的人流中收到一张神秘的卡片，从这一刻起，一场典型的“欧·亨利式”冒险开始了。

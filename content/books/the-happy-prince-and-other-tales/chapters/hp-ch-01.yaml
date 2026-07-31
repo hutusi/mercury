@@ -103,7 +103,7 @@ sections:
         - A bright sapphire
         - A golden coin
       correctIndex: 1
-      explanationZh: 王子请燕子把剑柄上的大红宝石带给生病男孩的母亲。蓝宝石是他的眼睛，金箔是后文才给出的。
+      explanationZh: 王子请燕子把剑柄上的大红宝石带给生病男孩的母亲。蓝宝石是他的眼睛，金币在文中没有出现；此刻他要送出的只有那颗红宝石。
   - id: hp-ch-01-s4
     text: |-
       He passed by the cathedral tower, where the white marble angels were sculptured. He passed by the palace and heard the sound of dancing. A beautiful girl came out on the balcony with her lover. “How wonderful the stars are,” he said to her, “and how wonderful is the power of love!”
@@ -161,7 +161,7 @@ sections:
         - One of his sapphire eyes
         - A piece of his leaden heart
       correctIndex: 2
-      explanationZh: 王子说红宝石已经没有了，只剩蓝宝石眼睛，请燕子取下一颗送给年轻人。金箔是本章后文才一片片送出的。
+      explanationZh: 王子说红宝石已经没有了，只剩蓝宝石眼睛，请燕子取下一颗送给年轻人。这一次他送出的不是金箔，也不是铅心。
   - id: hp-ch-01-s6
     text: |-
       “I am come to bid you goodbye,” he cried.

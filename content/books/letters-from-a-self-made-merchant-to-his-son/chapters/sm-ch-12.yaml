@@ -1,0 +1,207 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-12
+bookId: book-merchant-letters
+title: Taking Criticism Too Meekly
+titleZh: 过于温顺地接受批评
+summaryZh: 老格雷厄姆写信告诫儿子，受了批评不要只会赌气生闷气，而要像机灵的猫一样迅速调整、东山再起。他接着讲了一位江湖郎中在小镇卖药的故事——这位 Munsterberg 医生的手段，正是他想让儿子看懂的东西。
+sections:
+  - id: sm-ch-12-s1
+    text: |-
+      Dear Pierrepont: Don't ever write me another of those sad, sweet, gentle sufferer letters. It's only natural that a colt should kick a trifle when he's first hitched up to the break wagon, and I'm always a little suspicious of a critter that stands too quiet under the whip. I know it's not meekness, but meanness, that I've got to fight, and it's hard to tell which is the worst.
+
+      The only animal which the Bible calls patient is an ass, and that's both good doctrine and good natural history. For I had to make considerable of a study of the Missouri mule when I was a boy, and I discovered that he's not really patient, but that he only pretends to be. You can cuss him out till you've nothing but holy thoughts left in you to draw on, and you can lay the rawhide on him till he's striped like a circus zebra, and if you're cautious and reserved in his company he will just look grieved and pained and resigned. But all the time that mule will be getting meaner and meaner inside, adding compound cussedness every thirty days, and practicing drop kicks in his stall after dark.
+
+      Of course, nothing in this world is wholly bad, not even a mule, for he is half horse. But my observation has taught me that the horse half of him is the front half, and that the only really safe way to drive him is hind-side first. I suppose that you could train one to travel that way, but it really doesn't seem worth while when good roadsters are so cheap.
+
+      That's the way I feel about these young fellows who lazy along trying to turn in at every gate where there seems to be a little shade, and sulking and balking whenever you say "git-ap" to them. They are the men who are always howling that Bill Smith was promoted because he had a pull, and that they are being held down because the manager is jealous of them. I've seen a good many pulls in my time, but I never saw one strong enough to lift a man any higher than he could raise himself by his boot straps, or long enough to reach through the cashier's window for more money than its owner earned.
+
+      When a fellow brags that he has a pull, he's a liar or his employer's a fool. And when a fellow whines that he's being held down, the truth is, as a general thing, that his boss can't hold him up. He just picks a nice, soft spot, stretches out flat on his back, and yells that some heartless brute has knocked him down and is sitting on his chest.
+    checkIn:
+      id: sm-ch-12-s1-c1
+      stem: What does the father say about an animal that stands too quiet under the whip?
+      options:
+        - He believes it shows true patience and discipline.
+        - He thinks it proves the animal is eager to learn.
+        - He is suspicious that it is not meekness but meanness.
+        - He assumes the animal is simply tired and bored.
+      correctIndex: 2
+      explanationZh: 父亲说“I'm always a little suspicious of a critter that stands too quiet under the whip”，并紧接着说“I know it's not meekness, but meanness, that I've got to fight”——温顺的表象下往往藏着使坏的心。说它展现真正耐心的选项与原文相反。
+  - id: sm-ch-12-s2
+    text: |-
+      A good man is as full of bounce as a cat with a small boy and a bull terrier after him. When he's thrown to the dog from the second-story window, he fixes while he's sailing through the air to land right, and when the dog jumps for the spot where he hits, he isn't there, but in the top of the tree across the street. He's a good deal like the little red-headed cuss that we saw in the football game you took me to. Every time the herd stampeded it would start in to trample and paw and gore him. One minute the whole bunch would be on top of him and the next he would be loping off down the range, spitting out hair and pieces of canvas jacket, or standing on one side as cool as a hog on ice, watching the mess unsnarl and the removal of the cripples.
+
+      I didn't understand football, but I understood that little sawed-off. He knew his business. And when a fellow knows his business, he doesn't have to explain to people that he does. It isn't what a man knows, but what he thinks he knows that he brags about. Big talk means little knowledge.
+
+      There's a vast difference between having a carload of miscellaneous facts sloshing around loose in your head and getting all mixed up in transit, and carrying the same assortment properly boxed and crated for convenient handling and immediate delivery. A ham never weighs so much as when it's half cured. When it has soaked in all the pickle that it can, it has to sweat out most of it in the smoke-house before it is any real good; and when you've soaked up all the information you can hold, you will have to forget half of it before you will be of any real use to the house. If there's anything worse than knowing too little, it's knowing too much. Education will broaden a narrow mind, but there's no known cure for a big head. The best you can hope is that it will swell up and bust; and then, of course, there's nothing left. Poverty never spoils a good man, but prosperity often does. It's easy to stand hard times, because that's the only thing you can do, but in good times the fool-killer has to do night work.
+
+      I simply mention these things in a general way. A good many of them don't apply to you, no doubt, but it won't do any harm to make sure. Most men get cross-eyed when they come to size themselves up, and see an angel instead of what they're trying to look at. There's nothing that tells the truth to a woman like a mirror, or that lies harder to a man.
+    checkIn:
+      id: sm-ch-12-s2-c1
+      stem: What does the father say happens when a fellow knows his business?
+      options:
+        - He does not have to explain to people that he does.
+        - He brags loudly about his skills to everyone.
+        - He asks others to judge his real knowledge.
+        - He hides his knowledge to avoid envy.
+      correctIndex: 0
+      explanationZh: 原文明确写道“And when a fellow knows his business, he doesn't have to explain to people that he does”，并补充“Big talk means little knowledge”。大吹大擂恰好说明懂得少。
+  - id: sm-ch-12-s3
+    text: |-
+      What I am sure of is that you have got the sulks too quick. If you knew all that you'll have to learn before you'll be a big, broad-gauged merchant, you might have something to be sulky about.
+
+      When you've posted yourself properly about the business you'll have taken a step in the right direction--you will be able to get your buyer's attention. All the other steps are those which lead you into his confidence.
+
+      Right here you will discover that you are in the fix of the young fellow who married his best girl and took her home to live with his mother. He found that the only way in which he could make one happy was by making the other mad, and that when he tried to make them both happy he only succeeded in making them both mad. Naturally, in the end, his wife divorced him and his mother disinherited him, and left her money to an orphan asylum, because, as she sensibly observed in the codicil, "orphans can not be ungrateful to their parents." But if the man had had a little tact he would have kept them in separate houses, and have let each one think that she was getting a trifle the best of it, without really giving it to either.
+
+      Tact is the knack of keeping quiet at the right time; of being so agreeable yourself that no one can be disagreeable to you; of making inferiority feel like equality. A tactful man can pull the stinger from a bee without getting stung.
+
+      Some men deal in facts, and call Bill Jones a liar. They get knocked down. Some men deal in subterfuges, and say that Bill Jones' father was a kettle-rendered liar, and that his mother's maiden name was Sapphira, and that any one who believes in the Darwinian theory should pity rather than blame their son. They get disliked. But your tactful man says that since Baron Munchausen no one has been so chuck full of bully reminiscences as Bill Jones; and when that comes back to Bill he is half tickled to death, because he doesn't know that the higher criticism has hurt the Baron's reputation. That man gets the trade.
+
+      There are two kinds of information: one to which everybody's entitled, and that is taught at school; and one which nobody ought to know except yourself, and that is what you think of Bill Jones. Of course, where you feel a man is not square you will be armed to meet him, but never on his own ground. Make him be honest with you if you can, but don't let him make you dishonest with him.
+    checkIn:
+      id: sm-ch-12-s3-c1
+      stem: How does the father define tact?
+      options:
+        - It is the talent for telling harsh truths bluntly.
+        - It is the skill of winning every argument outright.
+        - It is the habit of agreeing with everything people say.
+        - It is the knack of keeping quiet at the right time.
+      correctIndex: 3
+      explanationZh: 原文给出定义：“Tact is the knack of keeping quiet at the right time; of being so agreeable yourself that no one can be disagreeable to you.” 说它是直言不讳或逢迎附和都与文意相反。
+  - id: sm-ch-12-s4
+    text: |-
+      When you make a mistake, don't make the second one--keeping it to yourself. Own up. The time to sort out rotten eggs is at the nest. The deeper you hide them in the case the longer they stay in circulation, and the worse impression they make when they finally come to the breakfast-table. A mistake sprouts a lie when you cover it up. And one lie breeds enough distrust to choke out the prettiest crop of confidence that a fellow ever cultivated.
+
+      Of course, it's easy to have the confidence of the house, or the confidence of the buyer, but you've got to have both. The house pays you your salary, and the buyer helps you earn it. If you skin the buyer you will lose your trade; and if you play tag with the house you will lose your job. You've simply got to walk the fence straight, for if you step to either side you'll find a good deal of air under you.
+
+      Even after you are able to command the attention and the confidence of your buyers, you've got to be up and dressed all day to hold what trade is yours, and twisting and turning all night to wriggle into some of the other fellow's. When business is good, that is the time to force it, because it will come easy; and when it is bad, that is the time to force it, too, because we will need the orders.
+
+      Speaking of making trade naturally calls to my mind my old acquaintance, Herr Doctor Paracelsus Von Munsterberg, who, when I was a boy, came to our town "fresh from his healing triumphs at the Courts of Europe," as his handbills ran, "not to make money, but to confer on suffering mankind the priceless boon of health; to make the sick well, and the well better."
+
+      Munsterberg wasn't one of your common, coarse, county-fair barkers. He was a pretty high-toned article. Had nice, curly black hair and didn't spare the bear's grease. Wore a silk hat and a Prince Albert coat all the time, except when he was orating, and then he shed the coat to get freer action with his arms. And when he talked he used the whole language, you bet.
+
+      Of course, the Priceless Boon was put up in bottles, labeled Munsterberg's Miraculous Medical Discovery, and, simply to introduce it, he was willing to sell the small size at fifty cents and the large one at a dollar. In addition to being a philanthropist the Doctor was quite a hand at card tricks, played the banjo, sung coon songs and imitated a saw going through a board very creditably. All these accomplishments, and the story of how he cured the Emperor of Austria's sister with a single bottle, drew a crowd, but they didn't sell a drop of the Discovery. Nobody in town was really sick, and those who thought they were had stocked up the week before with Quackenboss' Quick Quinine Kure from a fellow that made just as liberal promises as Munsterberg and sold the large size at fifty cents, including a handsome reproduction of an old master for the parlor.
+    checkIn:
+      id: sm-ch-12-s4-c1
+      stem: What does the father say you should do when you make a mistake?
+      options:
+        - Hide it as deeply as possible in the case.
+        - Own up to it instead of keeping it to yourself.
+        - Wait to see if anyone else notices it first.
+        - Blame it on the buyer or on the house.
+      correctIndex: 1
+      explanationZh: 原文说“When you make a mistake, don't make the second one—keeping it to yourself. Own up.” 他把掩盖错误比作把烂鸡蛋藏进箱子里，越藏越臭。选择隐藏的选项正是他警告不要犯的“第二个错误”。
+  - id: sm-ch-12-s5
+    text: |-
+      Some fellows would just have cussed a little and have moved on to the next town, but Munsterberg made a beautiful speech, praising the climate, and saying that in his humble capacity he had been privileged to meet the strength and beauty of many Courts, but never had he been in any place where strength was stronger or beauty beautifuller than right here in Hoskins' Corners. He prayed with all his heart, though it was almost too much to hope, that the cholera, which was raging in Kentucky, would pass this Eden by; that the yellow fever, which was devastating Tennessee, would halt abashed before this stronghold of health, though he felt bound to add that it was a peculiarly malignant and persistent disease; that the smallpox, which was creeping southward from Canada, would smite the next town instead of ours, though he must own that it was no respecter of persons; that the diphtheria and scarlet-fever, which were sweeping over New England and crowding the graveyards, could be kept from crossing the Hudson, though they were great travelers and it was well to be prepared for the worst; that we one and all might providentially escape chills, headaches, coated tongue, pains in the back, loss of sleep and that tired feeling, but it was almost too much to ask, even of such a generous climate. In any event, he begged us to beware of worthless nostrums and base imitations. It made him sad to think that to-day we were here and that to-morrow we were running up an undertaker's bill, all for the lack of a small bottle of Medicine's greatest gift to Man.
+
+      I could see that this speech made a lot of women in the crowd powerful uneasy, and I heard the Widow Judkins say that she was afraid it was going to be "a mighty sickly winter," and she didn't know as it would do any harm to have some of that stuff in the house. But the Doctor didn't offer the Priceless Boon for sale again. He went right from his speech into an imitation of a dog, with a tin can tied to his tail, running down Main Street and crawling under Si Hooper's store at the far end of it--an imitation, he told us, to which the Sultan was powerful partial, "him being a cruel man and delighting in torturing the poor dumb beasts which the Lord has given us to love, honor and cherish."
+    checkIn:
+      id: sm-ch-12-s5-c1
+      stem: Why did Munsterberg praise the climate and list diseases threatening the town?
+      options:
+        - He was sincerely worried about a coming epidemic.
+        - He wanted to warn people against buying fake nostrums.
+        - He hoped to impress the town's leading doctors.
+        - He wanted to make the crowd uneasy enough to want his medicine.
+      correctIndex: 3
+      explanationZh: 医生的演讲让寡妇 Judkins 等“powerful uneasy”，担心冬天会多病，于是想备点药在家里。可见他的真正目的是制造恐惧来推销，并非真心担忧疫情。说他在真心防伪的选项正好与他的卖药意图相反。
+  - id: sm-ch-12-s6
+    text: |-
+      He kept this sort of thing up till he judged it was our bedtime, and then he thanked us "one and all for our kind attention," and said that as his mission in life was to amuse as well as to heal, he would stay over till the next afternoon and give a special matinée for the little ones, whom he loved for the sake of his own golden-haired Willie, back there over the Rhine.
+
+      Naturally, all the women and children turned out the next afternoon, though the men had to be at work in the fields and the stores, and the Doctor just made us roar for half an hour. Then, while he was singing an uncommon funny song, Mrs. Brown's Johnny let out a howl.
+
+      The Doctor stopped short. "Bring the poor little sufferer here, Madam, and let me see if I can soothe his agony," says he.
+
+      Mrs. Brown was a good deal embarrassed and more scared, but she pushed Johnny, yelling all the time, up to the Doctor, who began tapping him on the back and looking down his throat. Naturally, this made Johnny cry all the harder, and his mother was beginning to explain that she "reckoned she must have stepped on his sore toe," when the Doctor struck his forehead, cried "Eureka!", whipped out a bottle of the Priceless Boon, and forced a spoonful of it into Johnny's mouth. Then he gave the boy three slaps on the back and three taps on the stomach, ran one hand along his windpipe, and took a small button-hook out of his mouth with the other.
+
+      Johnny made all his previous attempts at yelling sound like an imitation when he saw this, and he broke away and ran toward home. Then the Doctor stuck one hand in over the top of his vest, waved the button-hook in the other, and cried: "Woman, your child is cured! Your button-hook is found!"
+
+      Then he went on to explain that when baby swallowed safety-pins, or pennies, or fish-bones, or button-hooks, or any little household articles, that all you had to do was to give it a spoonful of the Priceless Boon, tap it gently fore and aft, hold your hand under its mouth, and the little article would drop out like chocolate from a slot machine.
+
+      Every one was talking at once, now, and nobody had any time for Mrs. Brown, who was trying to say something. Finally she got mad and followed Johnny home. Half an hour later the Doctor drove out of the Corners, leaving his stock of the Priceless Boon distributed--for the usual consideration--among all the mothers in town.
+    checkIn:
+      id: sm-ch-12-s6-c1
+      stem: What did Munsterberg pretend to pull out of Johnny's mouth?
+      options:
+        - A silver coin from his pocket.
+        - A fish-bone from his throat.
+        - A small button-hook.
+        - A safety-pin from his stomach.
+      correctIndex: 2
+      explanationZh: 原文写道医生拿出一个小 button-hook 假装从 Johnny 嘴里取出。这出戏让母亲们相信“Priceless Boon”能让孩子吐出误吞的小物件，于是纷纷掏钱。说取出硬币、鱼刺或安全别针的选项都是他列举的其他可能误吞物，并非实际取出的道具。
+  - id: sm-ch-12-s7
+    text: |-
+      It was not until the next day that Mrs. Brown got a chance to explain that while the Boon might be all that the Doctor claimed for it, no one in her house had ever owned a button-hook, because her old man wore jack-boots and she wore congress shoes, and little Johnny wore just plain feet.
+
+      I simply mention the Doctor in passing, not as an example in morals, but in methods. Some salesmen think that selling is like eating--to satisfy an existing appetite; but a good salesman is like a good cook--he can create an appetite when the buyer isn't hungry.
+
+      I don't care how good old methods are, new ones are better, even if they're only just as good. That's not so Irish as it sounds. Doing the same thing in the same way year after year is like eating a quail a day for thirty days. Along toward the middle of the month a fellow begins to long for a broiled crow or a slice of cold dog.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-12-s7-c1
+      stem: What lesson does the father draw from Munsterberg's story?
+      options:
+        - A good salesman only sells to buyers who already feel hungry.
+        - A good salesman can create an appetite when the buyer is not hungry.
+        - A good salesman should always stick to old proven methods.
+        - A good salesman should copy what competitors are doing.
+      correctIndex: 1
+      explanationZh: 父亲总结道：“a good salesman is like a good cook—he can create an appetite when the buyer isn't hungry.” 他还强调新方法即便不比旧方法好，也至少一样好，可见他反对墨守成规。说只卖给已饿之人的选项与原意相反。
+quiz:
+  - id: sm-ch-12-q1
+    stem: Why does the father compare sullen young workers to a Missouri mule?
+    options:
+      - The mule works harder than any horse on the farm
+      - The mule is naturally patient and never complains
+      - Its patience is a mask over growing meanness
+      - The mule kicks only when the whip is too harsh
+    correctIndex: 2
+    explanationZh: 父亲观察到 Missouri mule 并非真正耐心，而是假装温顺，私下却“getting meaner and meaner inside”。他用这个比喻来形容那些表面安静、实则积攒怨气、暗中抱怨被压制的年轻人。说骡子天生耐心或干活更卖力的选项恰好是他要反驳的假象。
+  - id: sm-ch-12-q2
+    stem: What is the father's view on a man who brags that he has a pull?
+    options:
+      - He is a liar or his employer is a fool.
+      - He is sure to be promoted very soon.
+      - He probably earned his position by hard work.
+      - He is too modest about his real abilities.
+    correctIndex: 0
+    explanationZh: 原文说“When a fellow brags that he has a pull, he's a liar or his employer's a fool.” 父亲还指出真正的“pull”不可能把人举得比自己 bootstrap 更高，所以吹嘘有靠山的人多半在撒谎。说此人靠苦干挣来职位的选项与吹嘘靠山的语境矛盾。
+  - id: sm-ch-12-q3
+    stem: What does the father say is worse than knowing too little?
+    options:
+      - Knowing nothing at all about the business.
+      - Knowing too much before you are of real use.
+      - Knowing only what is taught at school.
+      - Knowing too little to please the buyer.
+    correctIndex: 1
+    explanationZh: 原文写道“If there's anything worse than knowing too little, it's knowing too much.” 他用腌火腿打比方：吸饱卤水后还得在熏房里出汗才算好用；同样，学满之后得忘掉一半才真正有用，因为满脑子松散杂乱的事实反而碍事。说一无是处或只懂课本的选项都不符合这句的关键意思。
+  - id: sm-ch-12-q4
+    stem: In the story of the man who took his wife home to live with his mother, what happened when he tried to make both happy?
+    options:
+      - His wife and mother became close friends.
+      - His mother gave all her money to his wife.
+      - His wife left him but his mother forgave him.
+      - He only succeeded in making them both mad.
+    correctIndex: 3
+    explanationZh: 原文说当他试图让两人都开心时，“he only succeeded in making them both mad”，最终妻子离婚、母亲把遗产捐给孤儿院。说婆媳成好友或母亲把钱给妻子的选项都与结局相反。
+  - id: sm-ch-12-q5
+    stem: Why could Munsterberg not sell any of his Discovery on his first evening in town?
+    options:
+      - His medicine was too expensive for the local people
+      - The crowd disliked his speech and refused to listen
+      - No one was sick, and most were already stocked up
+      - A rival doctor had already warned the town about him
+    correctIndex: 2
+    explanationZh: 原文交代“Nobody in town was really sick”，而且自以为有病的人上周已从另一个叫 Quackenboss 的小贩那里买够了药。可见没人买是因为没有现成需求，而非价格太高或听众反感。
+  - id: sm-ch-12-q6
+    stem: What does the father mean by saying a mistake sprouts a lie when you cover it up?
+    options:
+      - Every lie automatically causes a new mistake to happen.
+      - A mistake can be fixed only by telling a bigger lie.
+      - Lies are harmless as long as the mistake stays hidden.
+      - Hiding a mistake leads to lies that destroy trust.
+    correctIndex: 3
+    explanationZh: 原文说“A mistake sprouts a lie when you cover it up. And one lie breeds enough distrust to choke out the prettiest crop of confidence.” 掩盖错误会滋生谎言，一条谎言足以毁掉好不容易培养的信任。说谎言只要藏着就无害的选项与原意完全相反。

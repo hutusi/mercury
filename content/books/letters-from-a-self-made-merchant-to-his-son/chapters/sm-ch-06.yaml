@@ -1,0 +1,135 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-06
+bookId: book-merchant-letters
+title: A Mix-up in the Mails
+titleZh: 邮件出了岔子
+summaryZh: 老格雷厄姆听说儿子在办公室里闹出一场让公司破费的乌龙，写信训诫他：上班时间脑子里只能装生意。信中还讲了一个反复堕落者的故事，警告他别做那种需要别人反复拯救却不长进的人。
+sections:
+  - id: sm-ch-06-s1
+    text: |-
+      Dear Pierrepont: Perhaps it's just as well that I had to hurry last night to make my train, and so had no time to tell you some things that are laying mighty heavy on my mind this morning.
+
+      Jim Donnelly, of the Donnelly Provision Company, came into the office in the afternoon, with a fool grin on his fat face, to tell me that while he appreciated a note which he had just received in one of the firm's envelopes, beginning "Dearest," and containing an invitation to the theatre to-morrow night, it didn't seem to have any real bearing on his claim for shortage on the last carload of sweet pickled hams he had bought from us.
+
+      Of course, I sent for Milligan and went for him pretty rough for having a mailing clerk so no-account as to be writing personal letters in office hours, and such a blunderer as to mix them up with the firm's correspondence. Milligan just stood there like a dumb Irishman and let me get through and go back and cuss him out all over again, with some trimmings that I had forgotten the first time, before he told me that you were the fellow who had made the bull. Naturally, I felt pretty foolish, and, while I tried to pass it off with something about your still being green and raw, the ice was mighty thin, and you had the old man running tiddledies.
+
+      It didn't make me feel any sweeter about the matter to hear that when Milligan went for you, and asked what you supposed Donnelly would think of that sort of business, you told him to "consider the feelings of the girl who got our brutal refusal to allow a claim for a few hundredweight of hams."
+
+      I haven't any special objection to your writing to girls and telling them that they are the real sugar-cured article, for, after all, if you overdo it, it's your breach-of-promise suit, but you must write before eight or after six. I have bought the stretch between those hours. Your time is money--my money--and when you take half an hour of it for your own purposes, that is just a petty form of petty larceny.
+
+      Milligan tells me that you are quick to learn, and that you can do a powerful lot of work when you've a mind to; but he adds that it's mighty seldom your mind takes that particular turn. Your attention may be on the letters you are addressing, or you may be in a comatose condition mentally; he never quite knows until the returns come from the dead-letter office.
+    checkIn:
+      id: sm-ch-06-s1-c1
+      stem: What mistake did Pierrepont make that caused trouble for the firm?
+      options:
+        - He slipped a love letter into the firm's mail
+        - He sent a business letter to the wrong customer
+        - He lost a carload of sweet pickled hams in the mail
+        - He wrote a rude refusal to Donnelly's ham claim
+      correctIndex: 0
+      explanationZh: Donnelly收到一封公司信封里夹着的、开头写着“Dearest”的情书和看戏邀请，与火腿索赔毫无关系。Milligan查下来发现是你把私人信件和公司信件混在了一起。选项中说把商务信寄错客户、弄丢火腿、写拒绝信，都不是这节描述的差错。
+  - id: sm-ch-06-s2
+    text: |-
+      A man can't have his head pumped out like a vacuum pan, or stuffed full of odds and ends like a bologna sausage, and do his work right. It doesn't make any difference how mean and trifling the thing he's doing may seem, that's the big thing and the only thing for him just then. Business is like oil--it won't mix with anything but business.
+
+      You can resolve everything in the world, even a great fortune, into atoms. And the fundamental principles which govern the handling of postage stamps and of millions are exactly the same. They are the common law of business, and the whole practice of commerce is founded on them. They are so simple that a fool can't learn them; so hard that a lazy man won't.
+
+      Boys are constantly writing me for advice about how to succeed, and when I send them my receipt they say that I am dealing out commonplace generalities. Of course I am, but that's what the receipt calls for, and if a boy will take these commonplace generalities and knead them into his job, the mixture'll be cake.
+
+      Once a fellow's got the primary business virtues cemented into his character, he's safe to build on. But when a clerk crawls into the office in the morning like a sick setter pup, and leaps from his stool at night with the spring of a tiger, I'm a little afraid that if I sent him off to take charge of a branch house he wouldn't always be around when customers were. He's the sort of a chap who would hold back the sun an hour every morning and have it gain two every afternoon if the Lord would give him the same discretionary powers that He gave Joshua. And I have noticed that he's the fellow who invariably takes a timekeeper as an insult. He's pretty numerous in business offices; in fact, if the glance of the human eye could affect a clockface in the same way that a man's country cousins affect their city welcome, I should have to buy a new timepiece for the office every morning.
+
+      I remember when I was a boy, we used to have a pretty lively camp-meeting every summer, and Elder Hoover, who was accounted a powerful exhorter in our parts, would wrastle with the sinners and the backsliders. There was one old chap in the town--Bill Budlong--who took a heap of pride in being the simon pure cuss. Bill was always the last man to come up to the mourners' bench at the camp-meeting and the first one to backslide when it was over. Used to brag around about what a hold Satan had on him and how his sin was the original brand, direct from Adam, put up in cans to keep, and the can-opener lost. Doc Hoover would get the whole town safe in the fold and then have to hold extra meetings for a couple of days to snake in that miserable Bill; but, in the end, he always got religion and got it hard. For a month or two afterward, he'd make the chills run down the backs of us children in prayer-meeting, telling how he had probably been the triflingest and orneriest man alive before he was converted. Then, along toward hog-killing time, he'd backslide, and go around bragging that he was standing so close to the mouth of the pit that his whiskers smelt of brimstone.
+    checkIn:
+      id: sm-ch-06-s2-c1
+      stem: What does the father compare business to in order to explain why it must stay separate from personal matters?
+      options:
+        - Business is like water, because it flows around every obstacle.
+        - Business is like oil, because it won't mix with anything but business.
+        - Business is like fire, because it burns up whatever is nearby.
+        - Business is like air, because it fills every empty space.
+      correctIndex: 1
+      explanationZh: 父亲说“Business is like oil—it won't mix with anything but business”，强调做事时脑子里只能装工作、不能塞杂念。用水、火、空气打比方都不是原文的比喻。
+  - id: sm-ch-06-s3
+    text: |-
+      He kept this up for about ten years, getting vainer and vainer of his staying qualities, until one summer, when the Elder had rounded up all the likeliest sinners in the bunch, he announced that the meetings were over for that year.
+
+      You never saw a sicker-looking man than Bill when he heard that there wasn't going to be any extra session for him. He got up and said he reckoned another meeting would fetch him; that he sort of felt the clutch of old Satan loosening; but Doc Hoover was firm. Then Bill begged to have a special deacon told off to wrastle with him, but Doc wouldn't listen to that. Said he'd been wasting time enough on him for ten years to save a county, and he had just about made up his mind to let him try his luck by himself; that what he really needed more than religion was common-sense and a conviction that time in this world was too valuable to be frittered away. If he'd get that in his head he didn't think he'd be so apt to trifle with eternity; and if he didn't get it, religion wouldn't be of any special use to him.
+
+      A big merchant finds himself in Doc Hoover's fix pretty often. There are too many likely young sinners in his office to make it worth while to bother long with the Bills. Very few men are worth wasting time on beyond a certain point, and that point is soon reached with a fellow who doesn't show any signs of wanting to help. Naturally, a green man always comes to a house in a pretty subordinate position, and it isn't possible to make so much noise with a firecracker as with a cannon. But you can tell a good deal by what there is left of the boy, when you come to inventory him on the fifth of July, whether he'll be safe to trust with a cannon next year.
+
+      It isn't the little extra money that you may make for the house by learning the fundamental business virtues which counts so much as it is the effect that it has on your character and that of those about you, and especially on the judgment of the old man when he's casting around for the fellow to fill the vacancy just ahead of you. He's pretty apt to pick some one who keeps separate ledger accounts for work and for fun, who gives the house sixteen ounces to the pound, and, on general principles, to pass by the one who is late at the end where he ought to be early, and early at the end where he ought to be late.
+    checkIn:
+      id: sm-ch-06-s3-c1
+      stem: Why did Elder Hoover finally refuse to hold a special meeting for Bill Budlong?
+      options:
+        - He believed Bill had already been fully saved and needed no more help.
+        - He thought Bill was too old to change his wicked ways.
+        - He wanted Bill to pay for a private session before agreeing.
+        - He felt Bill needed common-sense and a sense that time was valuable, not more religion.
+      correctIndex: 3
+      explanationZh: Bill求Elder Hoover再开一次会来“拯救”他，但Hoover说自己在Bill身上浪费了十年，认为Bill真正需要的不是宗教，而是“common-sense and a conviction that time in this world was too valuable to be frittered away”。说他已得救、太老改不了、要收钱，都不是原文给出的理由。
+  - id: sm-ch-06-s4
+    text: |-
+      I simply mention these things in passing, but, frankly, I am afraid that you have a streak of the Bill in you; and you can't be a good clerk, let alone a partner, until you get it out. I try not to be narrow when I'm weighing up a young fellow, and to allow for soakage and leakage, and then to throw in a little for good feeling; but I don't trade with a man whom I find deliberately marking up the weights on me.
+
+      This is a fine country we're running through, but it's a pity that it doesn't raise more hogs. It seems to take a farmer a long time to learn that the best way to sell his corn is on the hoof.
+
+      Your affectionate father, JOHN GRAHAM.
+
+      P.S. I just had to allow Donnelly his claim on those hams, though I was dead sure our weights were right, and it cost the house sixty dollars. But your fool letter took all the snap out of our argument. I get hot every time I think of it.
+    checkIn:
+      id: sm-ch-06-s4-c1
+      stem: Why did the father have to allow Donnelly's claim on the hams even though he believed the firm's weights were correct?
+      options:
+        - Donnelly found real proof that the weights were short.
+        - The father wanted to keep Donnelly as a loyal customer.
+        - Pierrepont's foolish letter ruined the firm's argument.
+        - Milligan admitted that the hams were badly spoiled.
+      correctIndex: 2
+      explanationZh: 父亲在附言里说他“dead sure our weights were right”，但“your fool letter took all the snap out of our argument”——儿子的蠢信让公司在争论中没了底气，只好赔了六十美元。找证据、留客户、火腿变质都不是本节提到的原因。
+quiz:
+  - id: sm-ch-06-q1
+    stem: Why did Pierrepont tell Milligan to consider the girl's feelings?
+    options:
+      - Because she was fired by the mailing clerk that morning.
+      - Because she had been refused a promotion in the firm.
+      - Because she had lost a carload of sweet pickled hams.
+      - Because she had received the firm's brutal refusal of a ham claim.
+    correctIndex: 3
+    explanationZh: Milligan责问Pierrepont时，Pierrepont反让他“consider the feelings of the girl who got our brutal refusal to allow a claim for a few hundredweight of hams”——本该寄给Donnelly的拒绝理赔信，错寄到了那位姑娘手里。被解雇、被拒升职、弄丢火腿都不是原文内容。
+  - id: sm-ch-06-q2
+    stem: What does the father say is the real value of learning the fundamental business virtues?
+    options:
+      - It lets you earn a little extra money for the house every month.
+      - It teaches you how to handle postage stamps and millions alike.
+      - It shapes your character and the old man's judgment of you for promotion.
+      - It keeps you from needing a timekeeper to watch your hours.
+    correctIndex: 2
+    explanationZh: 父亲说学到这些基本原则的价值“isn't the little extra money”而是对品格的影响，以及对老总在挑人填补空缺时判断力的影响。赚外快、学邮票与大钱同理、免打卡都是干扰项，没点出“品格与晋升判断”这一要害。
+  - id: sm-ch-06-q3
+    stem: How long had Bill Budlong kept up his cycle of getting religion and backsliding before Elder Hoover gave up on him?
+    options:
+      - About one year.
+      - About ten years.
+      - About three years.
+      - About twenty years.
+    correctIndex: 1
+    explanationZh: 原文说“He kept this up for about ten years”，Bill在十年里反复信教又堕落，Hoover才终于不再为他开特别聚会。一年、三年、二十年都与原文不符。
+  - id: sm-ch-06-q4
+    stem: What does the father mean when he says you can tell a good deal by 'what there is left of the boy' on the fifth of July?
+    options:
+      - You can judge a young clerk's reliability by what remains after he has been tested.
+      - You can judge a boy by how much firecracker powder he has left.
+      - You can tell if a boy is brave by how he handles a cannon.
+      - You can measure a boy's honesty by checking his weights on holidays.
+    correctIndex: 0
+    explanationZh: 父亲用鞭炮比喻：绿手虽小，但七月五日你清点他“还剩什么”，就能判断来年能否把更大的“炮”交给他——也就是看一个小职员经考验后还剩多少可靠品质。说火药多少、胆量、节日查秤都歪解了比喻。
+  - id: sm-ch-06-q5
+    stem: What lesson does the father draw from Elder Hoover's story about Bill Budlong for his own business?
+    options:
+      - A merchant cannot afford to waste much time on a fellow who shows no desire to help himself.
+      - A merchant should hold extra training sessions for every weak clerk each year.
+      - A merchant should fire any clerk who has ever made a single mistake.
+      - A merchant should promote clerks who are good at organizing prayer meetings.
+    correctIndex: 0
+    explanationZh: 父亲说“A big merchant finds himself in Doc Hoover's fix pretty often”——办公室里有很多像Bill那样不长进的人，不值得在他们身上久耗；对不主动帮忙的人，“that point is soon reached”。年年补课、一错就开人、提拔会办祷告会的人，都偏离了原文的教训。
