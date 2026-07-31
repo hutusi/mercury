@@ -1,0 +1,179 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-13
+bookId: book-merchant-letters
+title: A Pat on the Back
+titleZh: 一句表扬
+summaryZh: 老格雷厄姆给儿子涨了薪水，并在信中谈起衣着仪表和识人用人的门道。他回忆了几个或令人哭笑不得、或让他破费不小的用人往事，提醒儿子：一个人地位越高，就越要在意别人眼中的自己。
+sections:
+  - id: sm-ch-13-s1
+    text: |-
+      Dear Pierrepont: That order for a carload of Spotless Snow Leaf from old Shorter is the kind of back talk I like. We can stand a little more of the same sort of sassing. I have told the cashier that you will draw thirty a week after this, and I want you to have a nice suit of clothes made and send the bill to the old man. Get something that won't keep people guessing whether you follow the horses or do buck and wing dancing for a living. Your taste in clothes seems to be lasting longer than the rest of your college education. You looked like a young widow who had raised the second crop of daisies over the deceased when you were in here last week.
+
+      Of course, clothes don't make the man, but they make all of him except his hands and face during business hours, and that's a pretty considerable area of the human animal. A dirty shirt may hide a pure heart, but it seldom covers a clean skin. If you look as if you had slept in your clothes, most men will jump to the conclusion that you have, and you will never get to know them well enough to explain that your head is so full of noble thoughts that you haven't time to bother with the dandruff on your shoulders. And if you wear blue and white striped pants and a red necktie, you will find it difficult to get close enough to a deacon to be invited to say grace at his table, even if you never play for anything except coffee or beans.
+
+      Appearances are deceitful, I know, but so long as they are, there's nothing like having them deceive for us instead of against us. I've seen a ten-cent shave and a five-cent shine get a thousand-dollar job, and a cigarette and a pint of champagne knock the bottom out of a million-dollar pork corner. Four or five years ago little Jim Jackson had the bears in the provision pit hibernating and living on their own fat till one morning, the day after he had run the price of mess pork up to twenty dollars and nailed it there, some one saw him drinking a small bottle just before he went on 'Change, and told it round among the brokers on the floor. The bears thought Jim must have had bad news, to be bracing up at that time in the morning, so they perked up and everlastingly sold the mess pork market down through the bottom of the pit to solid earth. There wasn't even a grease spot left of that corner when they got through. As it happened, Jim hadn't had any bad news; he just took the drink because he felt pretty good, and things were coming his way.
+    checkIn:
+      id: sm-ch-13-s1-c1
+      stem: What did Graham tell the cashier to do as a result of Pierrepont's Spotless Snow Leaf order?
+      options:
+        - He said Pierrepont would get a one-time bonus of thirty dollars.
+        - He said Pierrepont would manage the Spotless Snow Leaf account.
+        - He said Pierrepont would draw thirty dollars a week from then on.
+        - He said Pierrepont would be promoted to cashier.
+      correctIndex: 2
+      explanationZh: Graham写道：“I have told the cashier that you will draw thirty a week after this”，即给儿子加薪到每周30美元，而非一次性奖金。涨薪正是因为Shorter的订单让他满意。
+  - id: sm-ch-13-s2
+    text: |-
+      But it isn't enough to be all right in this world; you've got to look all right as well, because two-thirds of success is making people think you are all right. So you have to be governed by general rules, even though you may be an exception. People have seen four and four make eight, and the young man and the small bottle make a damned fool so often that they are hard to convince that the combination can work out any other way. The Lord only allows so much fun for every man that He makes. Some get it going fishing most of the time and making money the rest; some get it making money most of the time and going fishing the rest. You can take your choice, but the two lines of business don't gee. The more money, the less fish. The farther you go, the straighter you've got to walk.
+
+      I used to get a heap of solid comfort out of chewing tobacco. Picked up the habit in Missouri, and took to it like a Yankee to pie. At that time pretty much every one in those parts chewed, except the Elder and the women, and most of them snuffed. Seemed a nice, sociable habit, and I never thought anything special about it till I came North and your Ma began to tell me it was a vile relic of barbarism, meaning Missouri, I suppose. Then I confined operations to my office and took to fine cut instead of plug, as being tonier.
+
+      Well, one day, about ten years ago, when I was walking through the office, I noticed one of the boys on the mailing-desk, a mighty likely-looking youngster, sort of working his jaws as he wrote. I didn't stop to think, but somehow I was mad in a minute. Still, I didn't say a word--just stood and looked at him while he speeded up the way the boys will when they think the old man is nosing around to see whose salary he can raise next.
+
+      I stood over him for a matter of five minutes, and all the time he was pretending not to see me at all. I will say that he was a pretty game boy, for he never weakened for a second. But at last, seeing he was about to choke to death, I said, sharp and sudden--"Spit."
+
+      Well, sir, I thought it was a cloudburst. You can bet I was pretty hot, and I started in to curl up that young fellow to a crisp. But before I got out a word, something hit me all of a sudden, and I just went up to the boy and put my hand on his shoulder and said, "Let's swear off, son."
+    checkIn:
+      id: sm-ch-13-s2-c1
+      stem: What did Graham do when he saw the mailing-desk boy chewing tobacco and finally spoke to him?
+      options:
+        - He proposed that they swear off together
+        - He fired the boy on the spot for chewing at work
+        - He reported the boy to the office manager for punishment
+        - He docked the boy's pay for the rest of the week
+      correctIndex: 0
+      explanationZh: Graham起初很生气，但“something hit me”让他改变了主意，走过去搭着男孩的肩膀说“Let's swear off, son”——两人一起戒烟（嚼烟）。他并没有解雇或惩罚那个年轻人。
+  - id: sm-ch-13-s3
+    text: |-
+      Naturally, he swore off--he was so blamed scared that he would have quit breathing if I had asked him to, I reckon. And I had to take my stock of fine cut and send it to the heathen.
+
+      I simply mention this little incident in passing as an example of the fact that a man can't do what he pleases in this world, because the higher he climbs the plainer people can see him. Naturally, as the old man's son, you have a lot of fellows watching you and betting that you are no good. If you succeed they will say it was an accident; and if you fail they will say it was a cinch.
+
+      There are two unpardonable sins in this world--success and failure. Those who succeed can't forgive a fellow for being a failure, and those who fail can't forgive him for being a success. If you do succeed, though, you will be too busy to bother very much about what the failures think.
+
+      I dwell a little on this matter of appearances because so few men are really thinking animals. Where one fellow reads a stranger's character in his face, a hundred read it in his get-up. We have shown a dozen breeds of dukes and droves of college presidents and doctors of divinity through the packing-house, and the workmen never noticed them except to throw livers at them when they got in their way. But when John L. Sullivan went through the stock yards it just simply shut down the plant. The men quit the benches with a yell and lined up to cheer him. You see, John looked his job, and you didn't have to explain to the men that he was the real thing in prize-fighters. Of course, when a fellow gets to the point where he is something in particular, he doesn't have to care because he doesn't look like anything special; but while a young fellow isn't anything in particular, it is a mighty valuable asset if he looks like something special.
+
+      Just here I want to say that while it's all right for the other fellow to be influenced by appearances, it's all wrong for you to go on them. Back up good looks by good character yourself, and make sure that the other fellow does the same. A suspicious man makes trouble for himself, but a cautious one saves it. Because there ain't any rotten apples in the top layer, it ain't always safe to bet that the whole barrel is sound.
+    checkIn:
+      id: sm-ch-13-s3-c1
+      stem: What happened when John L. Sullivan went through the stock yards?
+      options:
+        - The men ignored him and kept working at their benches.
+        - The whole plant shut down because the men left their benches to cheer him.
+        - The managers threw livers at him to get him out of the way.
+        - He was given a personal tour of the packing-house by Graham.
+      correctIndex: 1
+      explanationZh: Graham说Sullivan经过stock yards时“shut down the plant”，工人们“quit the benches with a yell and lined up to cheer him”。他把Sullivan和那些公爵、校长作对比，说明Sullivan外表就完全像个真正的拳王。
+  - id: sm-ch-13-s4
+    text: |-
+      A man doesn't snap up a horse just because he looks all right. As a usual thing that only makes him wonder what really is the matter that the other fellow wants to sell. So he leads the nag out into the middle of a ten-acre lot, where the light will strike him good and strong, and examines every hair of his hide, as if he expected to find it near-seal, or some other base imitation; and he squints under each hoof for the grand hailing sign of distress; and he peeks down his throat for dark secrets. If the horse passes this degree the buyer drives him twenty or thirty miles, expecting him to turn out a roarer, or to find that he balks, or shies, or goes lame, or develops some other horse nonsense. If after all that there are no bad symptoms, he offers fifty less than the price asked, on general principles, and for fear he has missed something.
+
+      Take men and horses, by and large, and they run pretty much the same. There's nothing like trying a man in harness a while before you bind yourself to travel very far with him.
+
+      I remember giving a nice-looking, clean-shaven fellow a job on the billing-desk, just on his looks, but he turned out such a poor hand at figures that I had to fire him at the end of a week. It seemed that the morning he struck me for the place he had pawned his razor for fifteen cents in order to get a shave. Naturally, if I had known that in the first place I wouldn't have hired him as a human arithmetic.
+
+      Another time I had a collector that I set a heap of store by. Always handled himself just right when he talked to you and kept himself looking right up to the mark. His salary wasn't very big, but he had such a persuasive way that he seemed to get a dollar and a half's worth of value out of every dollar that he earned. Never crowded the fashions and never gave 'em any slack. If sashes were the thing with summer shirts, why Charlie had a sash, you bet, and when tight trousers were the nobby trick in pants, Charlie wore his double reefed. Take him fore and aft, Charlie looked all right and talked all right--always careful, always considerate, always polite.
+    checkIn:
+      id: sm-ch-13-s4-c1
+      stem: What did Graham discover about the clean-shaven man he hired for the billing-desk?
+      options:
+        - The man had a prior conviction for stealing horses
+        - The man was actually an undercover detective
+        - The man had a university degree in mathematics
+        - He had pawned his razor to pay for that shave
+      correctIndex: 3
+      explanationZh: Graham原以为这个“clean-shaven”的年轻人仪表出众，后来才发现他那天早上当掉剃须刀换来15美分只为刮个脸。如果早知此事，Graham绝不会雇他做需要算术的工作。
+  - id: sm-ch-13-s5
+    text: |-
+      One noon, after he had been with me for a year or two, I met him coming in from his route looking glum; so I handed him fifty dollars as a little sweetener. I never saw a fifty cheer a man up like that one did Charlie, and he thanked me just right--didn't stutter and didn't slop over. I earmarked Charlie for a raise and a better job right there.
+
+      Just after that I got mixed up with some work in my private office and I didn't look around again till on toward closing time. Then, right outside my door I met the office manager, and he looked mighty glum, too.
+
+      "I was just going to knock on your door," said he.
+
+      "Well?" I asked.
+
+      "Charlie Chasenberry is eight hundred dollars short in his collections."
+
+      "Um--m," I said, without blinking, but I had a gone feeling just the same.
+
+      "I had a plain-clothes man here to arrest him this evening, but he didn't come in."
+
+      "Looks as if he'd skipped, eh?" I asked.
+
+      "I'm afraid so, but I don't know how. He didn't have a dollar this morning, because he tried to overdraw his salary account and I wouldn't let him, and he didn't collect any bills to-day because he had already collected everything that was due this week and lost it bucking the tiger."
+
+      I didn't say anything, but I suspected that there was a sucker somewhere in the office. The next day I was sure of it, for I got a telegram from the always polite and thoughtful Charlie, dated at Montreal:
+
+      "Many, many thanks, dear Mr. Graham, for your timely assistance."
+
+      Careful as usual, you see, about the little things, for there were just ten words in the message. But that "Many, many thanks, dear Mr. Graham," was the closest to slopping over I had ever known him to come.
+
+      I consider the little lesson that Charlie gave me as cheap at eight hundred and fifty dollars, and I pass it along to you because it may save you a thousand or two on your experience account.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-13-s5-c1
+      stem: Why did Graham give Charlie fifty dollars at noon?
+      options:
+        - Charlie had asked for an advance on his next month's rent.
+        - Charlie had earned a bonus for collecting the week's bills early.
+        - Charlie looked glum coming in from his route and Graham wanted to cheer him up.
+        - Charlie had won a bet with the office manager.
+      correctIndex: 2
+      explanationZh: "Graham说“he had been with me for a year or two, I met him coming in from his route looking glum; so I handed him fifty dollars as a little sweetener”，即出于安慰给Charlie50美元。 "
+quiz:
+  - id: sm-ch-13-q1
+    stem: Why did the bears in the provision pit sell the mess pork market down after seeing Jim Jackson take a drink?
+    options:
+      - They heard Jim was planning to retire from trading entirely.
+      - They believed Jim was toasting a deal with a rival broker.
+      - They thought he had received bad news and was bracing himself.
+      - They thought Jim was drinking to cover up a trading error.
+    correctIndex: 2
+    explanationZh: 文中说熊方认为Jim一大早就喝酒"must have had bad news"，于是大举抛售咸猪肉期货。实际上Jim只是心情好才喝了一小瓶，并没有坏消息。
+  - id: sm-ch-13-q2
+    stem: What did Graham do with his stock of fine-cut tobacco after he and the boy swore off?
+    options:
+      - He threw it into the office fireplace.
+      - He gave it to the Elder down the street.
+      - He locked it in his desk drawer for good.
+      - He sent it to the heathen.
+    correctIndex: 3
+    explanationZh: Graham写道“I had to take my stock of fine cut and send it to the heathen”，用幽默的方式处理掉了他存的细切嚼烟，以示和那个年轻人一起戒掉这个习惯。
+  - id: sm-ch-13-q3
+    stem: Why did Graham's collector Charlie look so glum on the day he disappeared?
+    options:
+      - He had been refused a promotion he felt he deserved.
+      - He had already collected everything due that week and lost it all gambling.
+      - He had quarreled with a client who refused to pay a bill.
+      - He had been fined by the office manager for sloppy bookkeeping.
+    correctIndex: 1
+    explanationZh: 办公室经理说Charlie当天没收到任何款项，因为“he had already collected everything that was due this week and lost it bucking the tiger”——他早已把该周应收款全收来，赌输精光，所以才沮丧。
+  - id: sm-ch-13-q4
+    stem: What did Charlie's thank-you telegram from Montreal reveal to Graham?
+    options:
+      - Charlie had used the fifty dollars to repay a personal debt to a friend
+      - Charlie had invested the fifty dollars in a business venture up north
+      - Charlie had paid the fifty dollars to a lawyer to handle his case
+      - The gift financed his escape after he went short in his collections
+    correctIndex: 3
+    explanationZh: Graham在中午给了Charlie50美元，当晚Charlie就带着这50美元逃往Montreal并发电报感谢。这50美元等于帮了潜逃的忙，所以Graham把这次教训算作850美元的学费（800元亏空+50元赠款）。
+  - id: sm-ch-13-q5
+    stem: When Graham gave the fifty dollars to Charlie, what did that moment make Graham decide to do?
+    options:
+      - He planned to send Charlie to manage the Montreal office.
+      - He planned to give Charlie a raise and a better job.
+      - He planned to promote Charlie to head of billing.
+      - He planned to make Charlie a full partner in the firm.
+    correctIndex: 1
+    explanationZh: Graham说Charlie收到50美元后感谢得恰到好处——"I earmarked Charlie for a raise and a better job right there"，即决定给他加薪升职，结果当天下午就发现他亏空800美元。
+  - id: sm-ch-13-q6
+    stem: What does Graham say about the two unpardonable sins in the world?
+    options:
+      - Those who succeed can't forgive a failure, and those who fail can't forgive a success.
+      - Those who succeed can't forgive laziness, and those who fail can't forgive ambition.
+      - Those who succeed can't forgive dishonesty, and those who fail can't forgive pride.
+      - Those who succeed can't forgive impatience, and those who fail can't forgive caution.
+    correctIndex: 0
+    explanationZh: Graham说世上有两条不可饶恕的罪：“success and failure”——成功者不能原谅失败者，失败者也不能原谅成功者。但成功者通常太忙，没空在意失败者的看法。

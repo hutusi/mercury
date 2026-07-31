@@ -1,0 +1,175 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-10
+bookId: book-merchant-letters
+title: Starting Out on the Road
+titleZh: 踏上旅途
+summaryZh: 老格雷厄姆在儿子首次出差前写信叮嘱他：做推销员要少耍嘴皮子、多拿订单，别拿香肠生意开玩笑。他还用自己年轻时跑乡下的失败经历来提醒儿子——光汇报情况没用，公司要的是实打实的业绩。
+sections:
+  - id: sm-ch-10-s1
+    text: |-
+      Dear Pierrepont: When I saw you start off yesterday I was just a little uneasy; for you looked so blamed important and chesty that I am inclined to think you will tell the first customer who says he doesn't like our sausage that he knows what he can do about it. Repartee makes reading lively, but business dull. And what the house needs is more orders.
+
+      Sausage is the one subject of all others that a fellow in the packing business ought to treat solemnly. Half the people in the world take a joke seriously from the start, and the other half if you repeat it often enough. Only last week the head of our sausage department started to put out a tin-tag brand of frankfurts, but I made him take it off the market quicker than lightning, because I knew that the first fool who saw the tin-tag would ask if that was the license. And, though people would grin a little at first, they'd begin to look serious after a while; and whenever the butcher tried to sell them our brand they'd imagine they heard the bark, and ask for "that real country sausage" at twice as much a pound.
+
+      He laughs best who doesn't laugh at all when he's dealing with the public. It has been my experience that, even when a man has a sense of humor, it only really carries him to the point where he will join in a laugh at the expense of the other fellow. There's nothing in the world sicker-looking than the grin of the man who's trying to join in heartily when the laugh's on him, and to pretend that he likes it.
+
+      Speaking of sausage with a registered pedigree calls to mind a little experience that I had last year. A fellow came into the office here with a shriveled-up toy spaniel, one of those curly, hairy little fellows that a woman will kiss, and then grumble because a fellow's mustache tickles. Said he wanted to sell him. I wasn't really disposed to add a dog to my troubles, but on general principles I asked him what he wanted for the little cuss.
+
+      The fellow hawed and choked and wiped away a tear. Finally, he fetched out that he loved the dog like a son, and that it broke his heart to think of parting with him; that he wouldn't dare look Dandy in the face after he had named the price he was asking for him, and that it was the record-breaking, marked-down sacrifice sale of the year on dogs; that it wasn't really money he was after, but a good home for the little chap. Said that I had a rather pleasant face and he knew that he could trust me to treat Dandy kindly; so--as a gift--he would let me have him for five hundred.
+    checkIn:
+      id: sm-ch-10-s1-c1
+      stem: Why did the father pull the tin-tag brand of frankfurts off the market?
+      options:
+        - He discovered the frankfurts were below quality standards.
+        - He thought the packaging costs were too high to justify.
+        - He wanted to replace them with a real country sausage brand.
+        - He feared people would turn the tin-tag joke into a serious rumor.
+      correctIndex: 3
+      explanationZh: 父亲说 if you repeat it often enough，人们会把玩笑当真；tin-tag 会被联想到 license（狗牌），让顾客觉得香肠里掺了狗肉，所以赶紧下架。 distractor 提到的'质量问题'和'成本过高'都不是原因。
+  - id: sm-ch-10-s2
+    text: |-
+      "Cents?" says I.
+
+      "Dollars," says he, without blinking.
+
+      "It ought to be a mastiff at that price," says I.
+
+      "If you thought more of quality," says he, in a tone of sort of dignified reproof, "and less of quantity, your brand would enjoy a better reputation."
+
+      I was pretty hot, I can tell you, but I had laid myself open, so I just said: "The sausage business is too poor to warrant our paying any such price for light-weights. Bring around a bigger dog and then we'll talk;" but the fellow only shook his head sadly, whistled to Dandy, and walked off.
+
+      I simply mention this little incident as an example of the fact that when a man cracks a joke in the Middle Ages he's apt to affect the sausage market in the Nineteenth Century, and to lay open an honest butcher to the jeers of every dog-stealer in the street. There's such a thing as carrying a joke too far, and the fellow who keeps on pretending to believe that he's paying for pork and getting dog is pretty apt to get dog in the end.
+
+      But all that aside, I want you to get it firmly fixed in your mind right at the start that this trip is only an experiment, and that I am not at all sure you were cut out by the Lord to be a drummer. But you can figure on one thing--that you will never become the pride of the pond by starting out to cut figure eights before you are firm on your skates.
+
+      A real salesman is one-part talk and nine-parts judgment; and he uses the nine-parts of judgment to tell when to use the one-part of talk. Goods ain't sold under Marquess of Queensberry rules any more, and you'll find that knowing how many rounds the Old 'Un can last against the Boiler-Maker won't really help you to load up the junior partner with our Corn-fed brand hams.
+
+      A good many salesmen have an idea that buyers are only interested in baseball, and funny stories, and Tom Lipton, and that business is a side line with them; but as a matter of fact mighty few men work up to the position of buyer through giving up their office hours to listening to anecdotes. I never saw one that liked a drummer's jokes more than an eighth of a cent a pound on a tierce of lard. What the house really sends you out for is orders.
+    checkIn:
+      id: sm-ch-10-s2-c1
+      stem: What is the ideal ratio of talk to judgment in a real salesman, according to the father?
+      options:
+        - Nine-parts talk and one-part judgment.
+        - Equal parts talk and judgment.
+        - One-part talk and nine-parts judgment.
+        - Ten-parts talk and no judgment at all.
+      correctIndex: 2
+      explanationZh: 父亲明确说 A real salesman is one-part talk and nine-parts judgment，而且用那九分判断力来决定何时开口。 '九分说话一分判断'正相反，'各一半'也不对。
+  - id: sm-ch-10-s3
+    text: |-
+      Of course, you want to be nice and mellow with the trade, but always remember that mellowness carried too far becomes rottenness. You can buy some fellows with a cheap cigar and some with a cheap compliment, and there's no objection to giving a man what he likes, though I never knew smoking to do anything good except a ham, or flattery to help any one except to make a fool of himself.
+
+      Real buyers ain't interested in much besides your goods and your prices. Never run down your competitor's brand to them, and never let them run down yours. Don't get on your knees for business, but don't hold your nose so high in the air that an order can travel under it without your seeing it. You'll meet a good many people on the road that you won't like, but the house needs their business.
+
+      Some fellows will tell you that we play the hose on our dry salt meat before we ship it, and that it shrinks in transit like a Baxter Street Jew's all-wool suits in a rainstorm; that they wonder how we manage to pack solid gristle in two-pound cans without leaving a little meat hanging to it; and that the last car of lard was so strong that it came back of its own accord from every retailer they shipped it to. The first fellow will be lying, and the second will be exaggerating, and the third may be telling the truth. With him you must settle on the spot; but always remember that a man who's making a claim never underestimates his case, and that you can generally compromise for something less than the first figure. With the second you must sympathize, and say that the matter will be reported to headquarters and the boss of the canning-room called up on the carpet and made to promise that it will never happen again. With the first you needn't bother. There's no use feeding expensive "hen food" to an old Dominick that sucks eggs. The chances are that the car weighed out more than it was billed, and that the fellow played the hose on it himself and added a thousand pounds of cheap salt before he jobbed it out to his trade.
+
+      Where you're going to slip up at first is in knowing which is which, but if you don't learn pretty quick you'll not travel very far for the house. For your own satisfaction I will say right here that you may know you are in a fair way of becoming a good drummer by three things:
+    checkIn:
+      id: sm-ch-10-s3-c1
+      stem: How should a salesman handle a customer whose complaint about lard may actually be true?
+      options:
+        - Settle with him on the spot.
+        - Report him to headquarters for lying.
+        - Ignore him entirely and move on.
+        - Offer him a free box of cigars.
+      correctIndex: 0
+      explanationZh: 父亲把投诉者分三类：撒谎的、夸大的、可能说真话的。对说真话的人要 With him you must settle on the spot，因为提诉求的人从不会低估自己的损失，通常可以谈到比开口价更低。 '报告总部'是应对夸大者的策略，'直接忽略'是应对撒谎者的。
+  - id: sm-ch-10-s4
+    text: |-
+      First--When you send us Orders.
+
+      Second--More Orders.
+
+      Third--Big Orders.
+
+      If you do this you won't have a great deal of time to write long letters, and we won't have a great deal of time to read them, for we will be very, very busy here making and shipping the goods. We aren't specially interested in orders that the other fellow gets, or in knowing how it happened after it has happened. If you like life on the road you simply won't let it happen. So just send us your address every day and your orders. They will tell us all that we want to know about "the situation."
+
+      I was cured of sending information to the house when I was very, very young--in fact, on the first trip which I made on the road. I was traveling out of Chicago for Hammer & Hawkins, wholesale dry-goods, gents' furnishings and notions. They started me out to round up trade in the river towns down Egypt ways, near Cairo.
+
+      I hadn't more than made my first town and sized up the population before I began to feel happy, because I saw that business ought to be very good there. It appeared as if everybody in that town needed something in my line. The clerk of the hotel where I registered wore a dicky and his cuffs were tied to his neck by pieces of string run up his sleeves, and most of the merchants on Main Street were in their shirt-sleeves--at least those that had shirts were--and so far as I could judge there wasn't a whole pair of galluses among them. Some were using wire, some a little rope, and others just faith--buckled extra tight. Pride of the Prairie XXX flour sacks seemed to be the nobby thing in boys' suitings there. Take it by and large, if ever there was a town which looked as if it had a big, short line of dry-goods, gents' furnishings and notions to cover, it was that one.
+
+      But when I caught the proprietor of the general store during a lull in the demand for navy plug, he wouldn't even look at my samples, and when I began to hint that the people were pretty ornery dressers he reckoned that he "would paste me one if I warn't so young." Wanted to know what I meant by coming swelling around in song-and-dance clothes and getting funny at the expense of people who made their living honestly. Allowed that when it came to a humorous get-up my clothes were the original end-man's gag.
+    checkIn:
+      id: sm-ch-10-s4-c1
+      stem: What three things indicate that a fellow is becoming a good drummer?
+      options:
+        - Good letters, long reports, and market analysis.
+        - Orders, more orders, and big orders.
+        - Low prices, fast shipping, and big profits.
+        - New customers, old friends, and funny stories.
+      correctIndex: 1
+      explanationZh: 父亲在 First/Second/Third 三点里直接列出的就是 Orders、More Orders、Big Orders，公司要的就是订单。 '长篇报告和市场分析'恰恰是父亲不想要的东西，他后文用自己经历说明了这一点。
+  - id: sm-ch-10-s5
+    text: |-
+      I noticed on the way back to the hotel that every fellow holding up a hitching-post was laughing, and I began to look up and down the street for the joke, not understanding at first that the reason why I couldn't see it was because I was it. Right there I began to learn that, while the Prince of Wales may wear the correct thing in hats, it's safer when you're out of his sphere of influence to follow the styles that the hotel clerk sets; that the place to sell clothes is in the city, where every one seems to have plenty of them; and that the place to sell mess pork is in the country, where every one keeps hogs. That is why when a fellow comes to me for advice about moving to a new country, where there are more opportunities, I advise him--if he is built right--to go to an old city where there is more money.
+
+      I wrote in to the house pretty often on that trip, explaining how it was, going over the whole situation very carefully, and telling what our competitors were doing, wherever I could find that they were doing anything.
+
+      I gave old Hammer credit for more curiosity than he possessed, because when I reached Cairo I found a telegram from him reading: "Know what our competitors are doing: they are getting all the trade. But what are you doing?" I saw then that the time for explaining was gone and that the moment for resigning had arrived; so I just naturally sent in my resignation. That is what we will expect from you--or orders.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-10-s5-c1
+      stem: What lesson did the father learn about where to sell goods?
+      options:
+        - Sell clothes in the country and mess pork in the city.
+        - Sell everything only in big cities with money.
+        - Sell only to hotel clerks and merchants.
+        - Sell clothes in the city and mess pork in the country.
+      correctIndex: 3
+      explanationZh: 父亲说 the place to sell clothes is in the city, where every one seems to have plenty of them; and that the place to sell mess pork is in the country, where every one keeps hogs——去不缺衣服的地方卖衣服、去养猪的地方卖咸猪肉。 反过来把衣服卖到乡下正是他年轻时的失败教训。
+quiz:
+  - id: sm-ch-10-q1
+    stem: How much did the man ask for his toy spaniel Dandy?
+    options:
+      - Five hundred cents.
+      - Five dollars.
+      - Fifty dollars.
+      - Five hundred dollars.
+    correctIndex: 3
+    explanationZh: 卖狗人开头说 as a gift he would let me have him for five hundred，父亲问 Cents?，对方答 Dollars, without blinking。 distractor 的'五百美分'正是父亲希望的价格，但不是实际报价；'五十美元'也不对。
+  - id: sm-ch-10-q2
+    stem: Why did the general store proprietor refuse to look at the father's samples?
+    options:
+      - He already had too much stock in dry goods
+      - He did not trust a salesman from Chicago
+      - The father's showy clothes offended him
+      - He only bought goods from local suppliers
+    correctIndex: 2
+    explanationZh: 店主觉得父亲穿着 song-and-dance clothes 在乡下炫耀，还嘲笑当地人穿着寒酸，所以威胁要 paste me one——揍他一顿。 '存货太多'和'只买本地货'在文中都没有依据。
+  - id: sm-ch-10-q3
+    stem: What did old Hammer's telegram to the father say?
+    options:
+      - The father was promoted for his good reports
+      - Competitors were getting all the trade
+      - The competitors had dropped their prices sharply
+      - The house was shipping goods faster than ever
+    correctIndex: 1
+    explanationZh: "电报原文是：Know what our competitors are doing: they are getting all the trade. But what are you doing?——竞争者拿走了所有生意，你呢？父亲看到后立即辞职了。其他选项与电报内容无关。"
+  - id: sm-ch-10-q4
+    stem: What was the father's first job on the road, and for whom?
+    options:
+      - Selling dry-goods for Hammer & Hawkins
+      - Selling sausage for his own packing house
+      - Selling hardware for a Cairo merchant
+      - Selling flour for Pride of the Prairie
+    correctIndex: 0
+    explanationZh: 父亲回忆 I was traveling out of Chicago for Hammer & Hawkins, wholesale dry-goods, gents' furnishings and notions。此时他还没做香肠生意；Pride of the Prairie 只是他在那个镇上看到的面粉袋布料，不是他卖的产品。
+  - id: sm-ch-10-q5
+    stem: When the father joked that five hundred dollars ought to buy a mastiff, how did the dog seller respond?
+    options:
+      - He immediately dropped the price to fifty dollars
+      - He agreed to bring a bigger dog the next day
+      - He said the father valued quantity over quality
+      - He admitted the dog was overpriced and apologized
+    correctIndex: 2
+    explanationZh: 卖狗人用 dignified reproof 的语气回答：If you thought more of quality and less of quantity, your brand would enjoy a better reputation——暗示父亲不识货。他没有降价，也没有答应带大狗来。
+  - id: sm-ch-10-q6
+    stem: Why does the father advise someone to move to an old city rather than a new country?
+    options:
+      - A new country has too many competitors already.
+      - An old city has cheaper housing and food.
+      - A new country lacks any business opportunities.
+      - An old city has more money to spend.
+    correctIndex: 3
+    explanationZh: 父亲说他建议去 an old city where there is more money，因为人多的老城才有消费力。他不是说新地方没有机会，也不是说竞争太多，而是钱在老城里。

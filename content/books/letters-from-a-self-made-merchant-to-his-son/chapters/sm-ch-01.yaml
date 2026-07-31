@@ -1,0 +1,142 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-01
+bookId: book-merchant-letters
+title: Pierrepont Starts at Harvard
+titleZh: 皮埃尔庞特入读哈佛
+summaryZh: 老格雷厄姆在儿子刚入读哈佛时写去长信，叮嘱他既要拿够课堂里的学问，更要从同学身上学到做人做事的真本事。信中还穿插了老惠特克之子斯坦利的反面教材，提醒儿子知识若不能落地实用，再多也枉然。
+sections:
+  - id: sm-ch-01-s1
+    text: |-
+      Dear Pierrepont: Your Ma got back safe this morning and she wants me to be sure to tell you not to over-study, and I want to tell you to be sure not to under-study. What we're really sending you to Harvard for is to get a little of the education that's so good and plenty there. When it's passed around you don't want to be bashful, but reach right out and take a big helping every time, for I want you to get your share. You'll find that education's about the only thing lying around loose in this world, and that it's about the only thing a fellow can have as much of as he's willing to haul away. Everything else is screwed down tight and the screw-driver lost.
+
+      I didn't have your advantages when I was a boy, and you can't have mine. Some men learn the value of money by not having any and starting out to pry a few dollars loose from the odd millions that are lying around; and some learn it by having fifty thousand or so left to them and starting out to spend it as if it were fifty thousand a year. Some men learn the value of truth by having to do business with liars; and some by going to Sunday School. Some men learn the cussedness of whiskey by having a drunken father; and some by having a good mother. Some men get an education from other men and newspapers and public libraries; and some get it from professors and parchments--it doesn't make any special difference how you get a half-nelson on the right thing, just so you get it and freeze on to it. The package doesn't count after the eye's been attracted by it, and in the end it finds its way to the ash heap. It's the quality of the goods inside which tells, when they once get into the kitchen and up to the cook.
+
+      You can cure a ham in dry salt and you can cure it in sweet pickle, and when you're through you've got pretty good eating either way, provided you started in with a sound ham. If you didn't, it doesn't make any special difference how you cured it--the ham-tryer's going to strike the sour spot around the bone. And it doesn't make any difference how much sugar and fancy pickle you soak into a fellow, he's no good unless he's sound and sweet at the core.
+    checkIn:
+      id: sm-ch-01-s1-c1
+      stem: What does the father say is special about education compared to other things in the world?
+      options:
+        - It's about the only thing lying around loose in this world.
+        - It's the only thing that costs more than folks expect.
+        - It's the only thing a fellow must earn before he can keep.
+        - It's the only thing a professor can lock up tight.
+      correctIndex: 0
+      explanationZh: 父亲在信中明确说 education is "about the only thing lying around loose in this world"，只要愿意就能尽量多拿；其余东西都被"拧紧了"。说它需要先挣得才有资格拿，与原文"loose"的自由取用之意相悖。
+  - id: sm-ch-01-s2
+    text: |-
+      The first thing that any education ought to give a man is character, and the second thing is education. That is where I'm a little skittish about this college business. I'm not starting in to preach to you, because I know a young fellow with the right sort of stuff in him preaches to himself harder than any one else can, and that he's mighty often switched off the right path by having it pointed out to him in the wrong way.
+
+      I remember when I was a boy, and I wasn't a very bad boy, as boys go, old Doc Hoover got a notion in his head that I ought to join the church, and he scared me out of it for five years by asking me right out loud in Sunday School if I didn't want to be saved, and then laying for me after the service and praying with me. Of course I wanted to be saved, but I didn't want to be saved quite so publicly.
+
+      When a boy's had a good mother he's got a good conscience, and when he's got a good conscience he don't need to have right and wrong labeled for him. Now that your Ma's left and the apron strings are cut, you're naturally running up against a new sensation every minute, but if you'll simply use a little conscience as a tryer, and probe into a thing which looks sweet and sound on the skin, to see if you can't fetch up a sour smell from around the bone, you'll be all right.
+
+      I'm anxious that you should be a good scholar, but I'm more anxious that you should be a good clean man. And if you graduate with a sound conscience, I shan't care so much if there are a few holes in your Latin. There are two parts of a college education--the part that you get in the schoolroom from the professors, and the part that you get outside of it from the boys. That's the really important part. For the first can only make you a scholar, while the second can make you a man.
+
+      Education's a good deal like eating--a fellow can't always tell which particular thing did him good, but he can usually tell which one did him harm. After a square meal of roast beef and vegetables, and mince pie and watermelon, you can't say just which ingredient is going into muscle, but you don't have to be very bright to figure out which one started the demand for painkiller in your insides, or to guess, next morning, which one made you believe in a personal devil the night before. And so, while a fellow can't figure out to an ounce whether it's Latin or algebra or history or what among the solids that is building him up in this place or that, he can go right along feeding them in and betting that they're not the things that turn his tongue fuzzy. It's down among the sweets, among his amusements and recreations, that he's going to find his stomach-ache, and it's there that he wants to go slow and to pick and choose.
+    checkIn:
+      id: sm-ch-01-s2-c1
+      stem: What does the father say is the really important part of a college education?
+      options:
+        - The part that you get from the professors in class.
+        - The part that you get from reading old languages.
+        - The part that you get outside of it from the boys.
+        - The part that you get from private tutors at night.
+      correctIndex: 2
+      explanationZh: 父亲把大学教育分成两半：professors 给的只能让你成为 scholar，而 outside 从 boys 那里得到的才"can make you a man"，所以真正重要的是后者。说课堂里教授给的那部分最重要，恰好被他点明为次要。
+  - id: sm-ch-01-s3
+    text: |-
+      It's not the first half, but the second half of a college education which merchants mean when they ask if a college education pays. It's the Willie and the Bertie boys; the chocolate eclair and tutti-frutti boys; the la-de-dah and the baa-baa-billy-goat boys; the high cock-a-lo-rum and the cock-a-doodle-do boys; the Bah Jove!, hair-parted-in-the-middle, cigaroot-smoking, Champagne-Charlie, up-all-night-and-in-all-day boys that make 'em doubt the cash value of the college output, and overlook the roast-beef and blood-gravy boys, the shirt-sleeves and high-water-pants boys, who take their college education and make some fellow's business hum with it.
+
+      Does a College education pay? Does it pay to feed in pork trimmings at five cents a pound at the hopper and draw out nice, cunning, little "country" sausages at twenty cents a pound at the other end? Does it pay to take a steer that's been running loose on the range and living on cactus and petrified wood till he's just a bunch of barb-wire and sole-leather, and feed him corn till he's just a solid hunk of porterhouse steak and oleo oil?
+
+      You bet it pays. Anything that trains a boy to think and to think quick pays; anything that teaches a boy to get the answer before the other fellow gets through biting the pencil, pays.
+
+      College doesn't make fools; it develops them. It doesn't make bright men; it develops them. A fool will turn out a fool, whether he goes to college or not, though he'll probably turn out a different sort of a fool. And a good, strong boy will turn out a bright, strong man whether he's worn smooth in the grab-what-you-want-and-eat-standing-with-one-eye-skinned-for-the-dog school of the streets and stores, or polished up and slicked down in the give-your-order-to-the-waiter-and-get-a-sixteen-course-dinner school of the professors. But while the lack of a college education can't keep No. 1 down, having it boosts No. 2 up.
+
+      It's simply the difference between jump in, rough-and-tumble, kick-with-the-heels-and-butt-with-the-head nigger fighting, and this grin-and-look-pleasant, dodge-and-save-your-wind-till-you-see-a-chance-to-land-on-the-solar-plexus style of the trained athlete. Both styles win fights, but the fellow with a little science is the better man, providing he's kept his muscle hard. If he hasn't, he's in a bad way, for his fancy sparring is just going to aggravate the other fellow so that he'll eat him up.
+
+      Of course, some men are like pigs, the more you educate them, the more amusing little cusses they become, and the funnier capers they cut when they show off their tricks. Naturally, the place to send a boy of that breed is to the circus, not to college.
+    checkIn:
+      id: sm-ch-01-s3-c1
+      stem: According to the father, what does college do with fools?
+      options:
+        - It cures them of their foolishness.
+        - It develops them.
+        - It turns them into bright men.
+        - It keeps them from ever leaving home.
+      correctIndex: 1
+      explanationZh: 原文先说"College doesn't make fools; it develops them"，再以同样句式说 bright men 也是被"develops"；大学并不把傻瓜变聪明，只是让其某种傻气更突出，所以说 college 能"cure"傻瓜正好相反。
+  - id: sm-ch-01-s4
+    text: |-
+      Speaking of educated pigs, naturally calls to mind the case of old man Whitaker and his son, Stanley. I used to know the old man mighty well ten years ago. He was one of those men whom business narrows, instead of broadens. Didn't get any special fun out of his work, but kept right along at it because he didn't know anything else. Told me he'd had to root for a living all his life and that he proposed to have Stan's brought to him in a pail. Sent him to private schools and dancing schools and colleges and universities, and then shipped him to Oxford to soak in a little "atmosphere," as he put it. I never could quite lay hold of that atmosphere dodge by the tail, but so far as I could make out, the idea was that there was something in the air of the Oxford ham-house that gave a fellow an extra fancy smoke.
+
+      Well, about the time Stan was through, the undertaker called by for the old man, and when his assets were boiled down and the water drawn off, there wasn't enough left to furnish Stan with a really nourishing meal. I had a talk with Stan about what he was going to do, but some ways he didn't strike me as having the making of a good private of industry, let alone a captain, so I started in to get him a job that would suit his talents. Got him in a bank, but while he knew more about the history of banking than the president, and more about political economy than the board of directors, he couldn't learn the difference between a fiver that the Government turned out and one that was run off on a hand press in a Halsted Street basement. Got him a job on a paper, but while he knew six different languages and all the facts about the Arctic regions, and the history of dancing from the days of Old Adam down to those of Old Nick, he couldn't write up a satisfactory account of the Ice-Men's Ball. Could prove that two and two made four by trigonometry and geometry, but couldn't learn to keep books; was thick as thieves with all the high-toned poets, but couldn't write a good, snappy, merchantable street-car ad.; knew a thousand diseases that would take a man off before he could blink, but couldn't sell a thousand-dollar tontine policy; knew the lives of our Presidents as well as if he'd been raised with them, but couldn't place a set of the Library of the Fathers of the Republic, though they were offered on little easy payments that made them come as easy as borrowing them from a friend. Finally I hit on what seemed to be just the right thing. I figured out that any fellow who had such a heavy stock of information on hand, ought to be able to job it out to good advantage, and so I got him a place teaching. But it seemed that he'd learned so much about the best way of teaching boys, that he told his principal right on the jump that he was doing it all wrong, and that made him sore; and he knew so much about the dead languages, which was what he was hired to teach, that he forgot he was handling live boys, and as he couldn't tell it all to them in the regular time, he kept them after hours, and that made them sore and put Stan out of a job again. The last I heard of him he was writing articles on Why Young Men Fail, and making a success of it, because failing was the one subject on which he was practical.
+
+      I simply mention Stan in passing as an example of the fact that it isn't so much knowing a whole lot, as knowing a little and how to use it that counts.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-01-s4-c1
+      stem: What was Stanley writing articles about at the end of the story?
+      options:
+        - How to teach dead languages properly.
+        - The best way to sell insurance.
+        - The history of banking in Europe.
+        - Why young men fail.
+      correctIndex: 3
+      explanationZh: 父亲提到 Stan 最后"writing articles on Why Young Men Fail"，并且成功，因为"failing was the one subject on which he was practical"——失败正是他唯一在行的事。说他写如何教好古语言、如何卖保险、欧洲银行史，都与文中 Stan 屡屡失业后写的题目不符。
+quiz:
+  - id: sm-ch-01-q1
+    stem: Why did old Doc Hoover's approach actually scare the father away from joining the church for five years?
+    options:
+      - He made the boy feel too publicly pressured to be saved.
+      - He told the boy that joining the church cost too much money.
+      - He said the boy would have to leave home and study far away.
+      - He accused the boy of stealing from the Sunday School.
+    correctIndex: 0
+    explanationZh: 父亲回忆说，他其实愿意被拯救，但"didn't want to be saved quite so publicly"——Hoover 在主日学校当众发问并在会后守着为他祷告，反而把他吓退了。说他借口加入教会太贵、要让男孩离家远读，或诬其偷窃，都是原文没有的情节。
+  - id: sm-ch-01-q2
+    stem: In the food metaphor, where does the father say a student is most likely to find his "stomach-ache"?
+    options:
+      - Among his Latin and algebra lessons.
+      - Among his amusements and recreations.
+      - Among his roast beef and vegetables.
+      - Among his history and grammar drills.
+    correctIndex: 1
+    explanationZh: 父亲用吃饭作比喻：正餐"solids"（Latin、algebra 等）构筑身心，而"it's down among the sweets"——即 amusements and recreations——才最容易让人"stomach-ache"，所以要 pick and choose。说拉丁代数或烤牛肉蔬菜会让人胃痛，恰是他认为安全的那一类。
+  - id: sm-ch-01-q3
+    stem: What kind of college boys does the father say make employers doubt whether a college education pays?
+    options:
+      - The la-de-dah, up-all-night-and-in-all-day boys.
+      - The shirt-sleeves and high-water-pants boys.
+      - The roast-beef and blood-gravy boys.
+      - The think-quick and get-the-answer boys.
+    correctIndex: 0
+    explanationZh: 父亲列举一连串"Willie and Bertie boys"、"champagne-Charlie"、"up-all-night-and-in-all-day boys"，说正是这类花花公子让雇主怀疑大学教育的价值；而"roast-beef and blood-gravy boys"、"shirt-sleeves boys"才是让生意红火的人。把雇主怀疑的对象说成是 roast-beef 或 think-quick 一类，正好与原意相反。
+  - id: sm-ch-01-q4
+    stem: In the fighting metaphor, what happens to the trained athlete if he hasn't kept his muscle hard?
+    options:
+      - He wins the fight with a single lucky punch.
+      - He scares the other fellow into running away.
+      - His fancy sparring just aggravates the other fellow.
+      - He proves that science beats brute strength.
+    correctIndex: 2
+    explanationZh: 父亲说受过训练的拳手若"kept his muscle hard"才是更好的人；若没有，"his fancy sparring is just going to aggravate the other fellow so that he'll eat him up"——花拳绣腿只会激怒对手而被吞掉。说他一拳制胜或吓跑对手，都与原文"被吃掉"的结局矛盾。
+  - id: sm-ch-01-q5
+    stem: What does the father say old man Whitaker wanted for Stanley regarding a living?
+    options:
+      - He wanted Stan to root for a living all his life.
+      - He wanted Stan to learn a trade and work with his hands.
+      - He wanted Stan's living brought to him in a pail.
+      - He wanted Stan to start at the bottom of a packing house.
+    correctIndex: 2
+    explanationZh: 老 Whitaker说自己一辈子"had to root for a living"，所以要让人把 Stan 的生活"brought to him in a pail"——不必自己刨食，送到嘴边。说他要 Stan 也去"root for a living"或学手艺、从底层干起，都与"送上门"的本意相反。
+  - id: sm-ch-01-q6
+    stem: Why did Stanley lose his teaching job?
+    options:
+      - He could not speak any of the dead languages.
+      - He refused to learn the principal's name.
+      - He stole money from the school's library fund.
+      - He kept the boys after hours and made them sore.
+    correctIndex: 3
+    explanationZh: Stan 教死语言时，"forgot he was handling live boys"，讲不完就"kept them after hours"，学生和校长都恼火，于是丢了教职。说他不会古语言、拒记校长姓名或偷图书馆经费，都是原文未提及的情节。

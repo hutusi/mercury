@@ -1,0 +1,363 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-19
+bookId: book-merchant-letters
+title: A Girl on the Voyage Home
+titleZh: 归航途中的姑娘
+summaryZh: 老格雷厄姆在返航邮轮上结识了一位令他十分欣赏的女孩，忍不住写信追问儿子对她的心意。信中随之引出他当年代管故人之子杰克时遇到的一桩荒唐情事，借此告诫儿子在感情与婚姻上务必稳重。
+sections:
+  - id: sm-ch-19-s1
+    text: |-
+      Dear Pierrepont: Who is this Helen Heath, and what are your intentions there? She knows a heap more about you than she ought to know if they're not serious, and I know a heap less about her than I ought to know if they are. Hadn't got out of sight of land before we'd become acquainted somehow, and she's been treating me like a father clear across the Atlantic. She's a mighty pretty girl, and a mighty nice girl, and a mighty sensible girl--in fact she's so exactly the sort of girl I'd like to see you marry that I'm afraid there's nothing in it.
+
+      Of course, your salary isn't a large one yet, but you can buy a whole lot of happiness with fifty dollars a week when you have the right sort of a woman for your purchasing agent. And while I don't go much on love in a cottage, love in a flat, with fifty a week as a starter, is just about right, if the girl is just about right. If she isn't, it doesn't make any special difference how you start out, you're going to end up all wrong.
+
+      Money ought never to be the consideration in marriage, but it always ought to be a consideration. When a boy and a girl don't think enough about money before the ceremony, they're going to have to think altogether too much about it after; and when a man's doing sums at home evenings, it comes kind of awkward for him to try to hold his wife on his lap.
+
+      There's nothing in this talk that two can live cheaper than one. A good wife doubles a man's expenses and doubles his happiness, and that's a pretty good investment if a fellow's got the money to invest. I have met women who had cut their husband's expenses in half, but they needed the money because they had doubled their own. I might add, too, that I've met a good many husbands who had cut their wives' expenses in half, and they fit naturally into any discussion of our business, because they are hogs. There's a point where economy becomes a vice, and that's when a man leaves its practice to his wife.
+
+      An unmarried man is a good deal like a piece of unimproved real estate--he may be worth a whole lot of money, but he isn't of any particular use except to build on. The great trouble with a lot of these fellows is that they're "made land," and if you dig down a few feet you strike ooze and booze under the layer of dollars that their daddies dumped in on top. Of course, the only way to deal with a proposition of that sort is to drive forty-foot piles clear down to solid rock and then to lay railroad iron and cement till you've got something to build on. But a lot of women will go right ahead without any preliminaries and wonder what's the matter when the walls begin to crack and tumble about their ears.
+    checkIn:
+      id: sm-ch-19-s1-c1
+      stem: What does the father think of Helen Heath?
+      options:
+        - She is a girl who cares too much about money.
+        - She is the kind of girl he would like his son to marry.
+        - She is pretty but lacks good sense.
+        - She is too young to be seriously interested in his son.
+      correctIndex: 1
+      explanationZh: 父亲在信中直言 Helen 是 a mighty pretty girl, a mighty nice girl, a mighty sensible girl，甚至说她是“exactly the sort of girl I'd like to see you marry”。干扰项说她只看重金钱、缺乏常识或太年轻，都与原文对她的高度评价相反。
+  - id: sm-ch-19-s2
+    text: |-
+      I never come across a case of this sort without thinking of Jack Carter, whose father died about ten years ago and left Jack a million dollars, and left me as trustee of both until Jack reached his twenty-fifth birthday. I didn't relish the job particularly, because Jack was one of these charlotte-russe boys, all whipped cream and sponge cake and high-priced flavoring extracts, without any filling qualities. There wasn't any special harm in him, but there wasn't any special good, either, and I always feel that there's more hope for a fellow who's an out and out cuss than for one who's simply made up of a lot of little trifling meannesses. Jack wore mighty warm clothes and mighty hot vests, and the girls all said that he was a perfect dream, but I've never been one who could get a great deal of satisfaction out of dreams.
+
+      It's mighty seldom that I do an exhibition mile, but the winter after I inherited Jack--he was twenty-three years old then--your Ma kept after me so strong that I finally put on my fancy harness and let her trot me around to a meet at the Ralstons one evening. Of course, I was in the Percheron class, and so I just stood around with a lot of heavy old draft horses, who ought to have been resting up in their stalls, and watched the three-year-olds prance and cavort round the ring. Jack was among them, of course, dancing with the youngest Churchill girl, and holding her a little tighter, I thought, than was necessary to keep her from falling. Had both ends working at once--never missed a stitch with his heels and was turning out a steady stream of fancy work with his mouth. And all the time he was looking at that girl as intent and eager as a Scotch terrier at a rat hole.
+
+      I happened just then to be pinned into a corner with two or three women who couldn't escape--Edith Curzon, a great big brunette whom I knew Jack had been pretty soft on, and little Mabel Moore, a nice roly-poly blonde, and it didn't take me long to see that they were watching Jack with a hair-pulling itch in their finger-tips. In fact, it looked to me as if the young scamp was a good deal more popular than the facts about him, as I knew them, warranted him in being.
+    checkIn:
+      id: sm-ch-19-s2-c1
+      stem: How did Jack's father leave his money after he died?
+      options:
+        - Jack inherited the full million dollars immediately
+        - Jack's sister received all the money right away
+        - The narrator held Jack's money in trust until he was 25
+        - The money was donated to charity until Jack came of age
+      correctIndex: 2
+      explanationZh: 原文说 Jack 的父亲去世后留下百万美元，“left me as trustee of both until Jack reached his twenty-fifth birthday”，即由叙述者代管至 Jack 25 岁。干扰项中 Jack 立即全额继承、妹妹全部继承或捐给慈善，都不符合这一安排。
+  - id: sm-ch-19-s3
+    text: |-
+      I slipped out early, but next evening, when I was sitting in my little smoking-room, Jack came charging in, and, without any sparring for an opening, burst out with:
+
+      "Isn't she a stunner, Mr. Graham!"
+
+      I allowed that Miss Curzon was something on the stun.
+
+      "Miss Curzon, indeed," he sniffed. "She's well enough in a big, black way, but Miss Churchill----" and he began to paw the air for adjectives.
+
+      "But how was I to know that you meant Miss Churchill?" I answered. "It's just a fortnight now since you told me that Miss Curzon was a goddess, and that she was going to reign in your life and make it a heaven, or something of that sort. I forget just the words, but they were mighty beautiful thoughts and did you credit."
+
+      "Don't remind me of it," Jack groaned. "It makes me sick every time I think what an ass I've been."
+
+      I allowed that I felt a little nausea myself, but I told him that this time, at least, he'd shown some sense; that Miss Churchill was a mighty pretty girl and rich enough so that her liking him didn't prove anything worse against her than bad judgment; and that the thing for him to do was to quit his foolishness, propose to her, and dance the heel, toe, and a one, two, three with her for the rest of his natural days.
+
+      Jack hemmed and hawked a little over this, but finally he came out with it:
+
+      "That's the deuce of it," says he. "I'm in a beastly mess--I want to marry her--she's the only girl in the world for me--the only one I've ever really loved, and I've proposed--that is, I want to propose to her, but I'm engaged to Edith Curzon on the quiet."
+
+      "I reckon you'll marry her, then," I said; "because she strikes me as a young woman who's not going to lose a million dollars without putting a tracer after it."
+
+      "And that's not the worst of it," Jack went on.
+
+      "Not the worst of it! What do you mean! You haven't married her on the quiet, too, have you?"
+
+      "No, but there's Mabel Moore, you know."
+
+      I didn't know, but I guessed. "You haven't been such a double-barreled donkey as to give her an option on yourself, too?"
+
+      "No, no; but I've said things to her which she may have misconstrued, if she's inclined to be literal."
+    checkIn:
+      id: sm-ch-19-s3-c1
+      stem: Which girl does Jack say is the only one he has ever really loved?
+      options:
+        - Miss Curzon.
+        - Miss Moore.
+        - Miss Churchill.
+        - Miss Fairfax.
+      correctIndex: 2
+      explanationZh: Jack 在文中承认 Miss Churchill 是“the only girl in the world for me—the only one I've ever really loved”，同时又坦白已暗中等同于与 Edith Curzon 订婚，对 Mabel Moore 也说过暧昧的话。干扰项分别对应已暗定和暧昧对象，不是他声称真正爱上的那位。
+  - id: sm-ch-19-s4
+    text: |-
+      "You bet she is," I answered. "I never saw a nice, fat, blonde girl who took a million-dollar offer as a practical joke. What is it you've said to her? 'I love you, darling,' or something about as foxy and noncommittal."
+
+      "Not that--not that at all; but she may have stretched what I said to mean that."
+
+      Well, sir, I just laid into that fellow when I heard that, though I could see that he didn't think it was refined of me. He'd never made it any secret that he thought me a pretty coarse old man, and his face showed me now that I was jarring his delicate works.
+
+      "I suppose I have been indiscreet," he said, "but I must say I expected something different from you, after coming out this way and owning up. Of course, if you don't care to help me----"
+
+      I cut him short there. "I've got to help you. But I want you to tell me the truth. How have you managed to keep this Curzon girl from announcing her engagement to you?"
+
+      "Well," and there was a scared grin on Jack's face now; "I told her that you, as trustee under father's will, had certain unpleasant powers over my money--in fact, that most of it would revert to Sis if I married against your wishes, and that you disliked her, and that she must work herself into your good graces before we could think of announcing our engagement."
+
+      I saw right off that he had told Mabel Moore the same thing, and that was why those two girls had been so blamed polite to me the night before. So I rounded on him sudden.
+
+      "You're engaged to that Miss Moore, too, aren't you?"
+
+      "I'm afraid so."
+
+      "Why didn't you come out like a man and say so at first?"
+
+      "I couldn't, Mr. Graham. Someways it seemed like piling it up so, and you take such a cold-blooded, unsympathetic view of these things."
+
+      "Perhaps I do; yes, I'm afraid I do. How far are you committed to Miss Churchill?"
+
+      Jack cheered right up. "I'm all right there, at least. She hasn't answered."
+
+      "Then you've asked?"
+
+      "Why, so I have; at least she may take it for something like asking. But I don't care; I want to be committed there; I can't live without her; she's the only----"
+
+      I saw that he was beginning to foam up again, so I shut him off straight at the spigot. Told him to save it till after the ceremony. Set him down to my desk, and dictated two letters, one to Edith Curzon and the other to Mabel Moore, and made him sign and seal them, then and there. He twisted and squirmed and tried to wiggle off the hook, but I wouldn't give him any slack. Made him come right out and say that he was a yellow pup; that he had made a mistake; and that the stuff was all off, though I worded it a little different from that. Slung in some fancy words and high-toned phrases.
+    checkIn:
+      id: sm-ch-19-s4-c1
+      stem: What excuse did Jack give Miss Curzon for not announcing their engagement?
+      options:
+        - He told her his father had forbidden any marriage before age thirty
+        - He claimed marrying against the trustee's wishes would cost him the money
+        - He said the trustee required him to wait one year before any announcement
+        - He claimed his money was tied up in business investments for six months
+      correctIndex: 1
+      explanationZh: Jack 告诉 Miss Curzon，作为信托人，父亲遗嘱赋予他“certain unpleasant powers”，若违背其意愿结婚，大部分钱将“revert to Sis”。他把同样说辞也用在 Miss Moore 身上，这正是两位姑娘前一晚对叙述者格外殷勤的原因。干扰项所编造的年龄、年限和投资理由文中均无依据。
+  - id: sm-ch-19-s5
+    text: |-
+      You see, I had made up my mind that the best of a bad matter was the Churchill girl, and I didn't propose to have her commit herself, too, until I'd sort of cleared away the wreckage. Then I reckoned on copper-riveting their engagement by announcing it myself and standing over Jack with a shotgun to see that there wasn't any more nonsense. They were both so light-headed and light-waisted and light-footed that it seemed to me that they were just naturally mates.
+
+      Jack reached for those letters when they were addressed and started to put them in his pocket, but I had reached first. I reckon he'd decided that something might happen to them on their way to the post-office; but nothing did, for I called in the butler and made him go right out and mail them then and there.
+
+      I'd had the letters dated from my house, and I made Jack spend the night there. I reckoned it might be as well to keep him within reaching distance for the next day or two. He showed up at breakfast in the morning looking like a calf on the way to the killing pens, and I could see that his thoughts were mighty busy following the postman who was delivering those letters. I tried to cheer him up by reading some little odds and ends from the morning paper about other people's troubles, but they didn't seem to interest him.
+
+      "They must just about have received them," he finally groaned into his coffee cup. "Why did I send them! What will those girls think of me! They'll cut me dead--never speak to me again."
+
+      The butler came in before I could tell him that this was about what we'd calculated on their doing, and said: "Beg pardon, sir, but there's a lady asking for you at the telephone."
+
+      "A lady!" says Jack. "Tell her I'm not here." Talk to one of those girls, even from a safe distance! He guessed not. He turned as pale as a hog on ice at the thought of it.
+
+      "I'm sorry, sir," said the man, "but I've already said that you were breakfasting here. She said it was very important."
+
+      I could see that Jack's curiosity was already getting the best of his scare. After all, he threw out, feeling me, it might be best to hear what she had to say. I thought so, too, and he went to the instrument and shouted "Hello!" in what he tried to make a big, brave voice, but it wobbled a little all the same.
+    checkIn:
+      id: sm-ch-19-s5-c1
+      stem: Why does the narrator make Jack mail the letters to Miss Curzon and Miss Moore right away?
+      options:
+        - He wants the girls to receive the news before breakfast.
+        - He plans to read them aloud at the dinner table.
+        - He does not trust Jack to actually deliver them.
+        - He needs to send them for official business records.
+      correctIndex: 2
+      explanationZh: Jack 写好信后想揣进口袋，叙述者先一步抢到手，因为他料到信件“might happen to them on their way to the post-office”。于是他叫管家立刻寄出，并留 Jack 过夜。干扰项说成要让对方在早餐前收到、在餐桌上宣读或出于公务存档，都不符合他防备 Jack 暗中毁信的动机。
+  - id: sm-ch-19-s6
+    text: |-
+      I got the other end of the conversation from him when he was through.
+
+      "Hello! Is that you, Jack?" chirped the Curzon girl.
+
+      "Yes. Who is that?"
+
+      "Edith," came back. "I have your letter, but I can't make out what it's all about. Come this afternoon and tell me, for we're still good friends, aren't we, Jack?"
+
+      "Yes--certainly," stammered Jack.
+
+      "And you'll come?"
+
+      "Yes," he answered, and cut her off.
+
+      He had hardly recovered from this shock when a messenger boy came with a note, addressed in a woman's writing.
+
+      "Now for it," he said, and breaking the seal read:
+
+      "'Jack dear: Your horrid note doesn't say anything, nor explain anything. Come this afternoon and tell what it means to MABEL.'"
+
+      "Here's a go," exclaimed Jack, but he looked pleased in a sort of sneaking way. "What do you think of it, Mr. Graham?"
+
+      "I don't like it."
+
+      "Think they intend to cut up?" he asked.
+
+      "Like a sausage machine; and yet I don't see how they can stand for you after that letter."
+
+      "Well, shall I go?"
+
+      "Yes, in fact I suppose you must go; but Jack, be a man. Tell 'em plain and straight that you don't love 'em as you should to marry 'em; say you saw your old girl a few days ago and found you loved her still, or something from the same trough, and stick to it. Take what you deserve. If they hold you up to the bull-ring, the only thing you can do is to propose to take the whole bunch to Utah, and let 'em share and share alike. That'll settle it. Be firm."
+
+      "As a rock, sir."
+
+      I made Jack come downtown and lunch with me, but when I started him off, about two o'clock, he looked so like a cat padding up the back-stairs to where she knows there's a little canary meat--scared, but happy--that I said once more: "Now be firm, Jack."
+
+      "Firm's the word, sir," was the resolute answer.
+
+      "And unyielding."
+
+      "As the old guard." And Jack puffed himself out till he was as chesty as a pigeon on a barn roof, and swung off down the street looking mighty fine and manly from the rear.
+
+      I never really got the straight of it, but I pieced together these particulars later. At the corner there was a flower store. Jack stepped inside and sent a box of roses by special messenger to Miss Curzon, so there might be something to start conversation when he got there. Two blocks farther on he passed a second florist's, turned back and sent some lilies to Miss Moore, for fear she might think he'd forgotten her during the hour or more before he could work around to her house. Then he chased about and found a third florist, from whom he ordered some violets for Miss Churchill, to remind her that she had promised him the first dance at the Blairs' that night. Your Ma told me that Jack had nice instincts about these little things which women like, and always put a good deal of heavy thought into selecting his flowers for them. It's been my experience that a critter who has instincts instead of sense belongs in the bushes with the dicky-birds.
+    checkIn:
+      id: sm-ch-19-s6-c1
+      stem: What does Jack do on his way to visit the girls that afternoon?
+      options:
+        - He sends flowers only to Miss Churchill.
+        - He buys jewelry for Miss Curzon and Miss Moore.
+        - He writes a second apology letter to each girl.
+        - He sends flowers to all three girls.
+      correctIndex: 3
+      explanationZh: 尽管父亲嘱咐他要态度坚决，Jack 却在沿途花店分别给 Miss Curzon 送玫瑰、给 Miss Moore 送百合、给 Miss Churchill 送紫罗兰，三人都有份。父亲借此讽刺他有“instincts instead of sense”。干扰项只送一人、买首饰或再写道歉信都与原文不符。
+  - id: sm-ch-19-s7
+    text: |-
+      No one ever knew just what happened to Jack during the next three hours. He showed up at his club about five o'clock with a mighty conceited set to his jaw, but it dropped as if the spring had broken when he caught sight of me waiting for him in the reading-room.
+
+      "You here?" he asked as he threw himself into a chair.
+
+      "You bet," I said. "I wanted to hear how you made out. You settled the whole business, I take it?" but I knew mighty well from his looks that he hadn't settled anything.
+
+      "Not--not exactly--that is to say, entirely; but I've made a very satisfactory beginning."
+
+      "Began it all over again, I suppose."
+
+      This hit so near the truth that Jack jumped, in spite of himself, and then he burst out with a really swear. I couldn't have been more surprised if your Ma had cussed.
+
+      "Damn it, sir, I won't stand any more of your confounded meddling. Those letters were a piece of outrageous brutality. I'm breaking off with the girls, but I've gone about it in a gentler and, I hope, more dignified, way."
+
+      "Jack, I don't believe any such stuff and guff. You're tied up to them harder and tighter than ever."
+
+      I could see I'd made a bull's eye, for Jack began to bluster, but I cut him short with:
+
+      "Go to the devil your own way," and walked out of the club. I reckon that Jack felt mighty disturbed for as much as an hour, but a good dinner took the creases out of his system. He'd found that Miss Moore didn't intend to go to the Blairs', and that Miss Curzon had planned to go to a dance with her sister somewheres else, so he calculated on having a clear track for a trial spin with Miss Churchill.
+
+      I surprised your Ma a good deal that evening by allowing that I'd go to the Blairs' myself, for it looked to me as if the finals might be trotted there, and I thought I'd better be around, because, while I didn't see much chance of getting any sense into Jack's head, I felt I ought to do what I could on my friendship account with his father.
+
+      Jack was talking to Miss Churchill when I came into the room, and he was tending to business so strictly that he didn't see me bearing down on him from one side of the room, nor Edith Curzon's sister, Mrs. Dick, a mighty capable young married woman, bearing down on him from the other, nor Miss Curzon, with one of his roses in her hair, watching him from a corner. There must have been a council of war between the sisters that afternoon, and a change of their plans for the evening.
+    checkIn:
+      id: sm-ch-19-s7-c1
+      stem: Why does the narrator go to the Blairs' party that evening?
+      options:
+        - He expects the affair to come to a head there
+        - He wants to introduce Jack to a new young woman
+        - He plans to announce Jack's engagement publicly
+        - He needs to discuss business with Mr. Blair
+      correctIndex: 0
+      explanationZh: 叙述者破例出席 Blairs 家的舞会，是因为他觉得“the finals might be trotted there”，想亲自在场以防事态恶化。干扰项说成介绍新对象、公开宣布订婚或与 Blair 谈生意，文中均无依据。
+  - id: sm-ch-19-s8
+    text: |-
+      Mrs. Dick beat me stalking Jack, but I was just behind, a close second. He didn't see her until she got right up to him and rapped him on the arm with her fan.
+
+      "Dear Jack," she says, all smiles and sugar; "dear Jack, I've just heard. Edith has told me, though I'd suspected something for a long, long time, you rogue," and she fetched him another kittenish clip with the fan.
+
+      Jack looked about the way I once saw old Miss Curley, the president of the Good Templars back in our town in Missouri, look at a party when she half-swallowed a spoonful of her ice cream before she discovered that it was flavored with liquor.
+
+      But he stammered something and hurried Miss Churchill away, though not before a fellow who was going by had wrung his hand and said, "Congratulations, old chap. Just heard the news."
+
+      Jack's only idea seemed to travel, and to travel far and fast, and he dragged his partner along to the other end of the room, while I followed the band. We had almost gone the length of the course, when Jack, who had been staring ahead mighty hard, shied and balked, for there, not ten feet away, stood Miss Moore, carrying his lilies, and blushing and smiling at something young Blakely was saying to her.
+
+      I reckon Jack guessed what that something was, but just then Blakely caught sight of him and rushed up to where he was standing.
+
+      "I congratulate you, Jack," he said. "Miss Moore's a charming girl."
+
+      And now Miss Churchill slipped her hand from his arm and turned and looked at Jack. Her lips were laughing, but there was something in her eye which made Jack turn his own away.
+
+      "Oh, you lucky Jack," she laughed. "You twice lucky Jack."
+
+      Jack simply curled up: "Wretched mistake somewhere," he mumbled. "Awfully hot here--get you a glass of water," and he rushed off. He dodged around Miss Moore, and made a flank movement which got him by Miss Curzon and safely to the door. He kept on; I followed.
+
+      I had to go to New York on business next day. Jack had already gone there, bought a ticket for Europe, and was just loafing around the pier trying to hurry the steamer off. I went down to see him start, and he looked so miserable that I'd have felt sorry for him if I hadn't seen him look miserable before.
+    checkIn:
+      id: sm-ch-19-s8-c1
+      stem: Where does Jack go the day after the party?
+      options:
+        - He hides at his club for a week.
+        - He goes straight home to the country.
+        - He takes a train west to visit relatives.
+        - He buys a ticket for Europe and waits at the pier.
+      correctIndex: 3
+      explanationZh: 第二天叙述者去纽约出差时发现 Jack 已抢先到达，买了去欧洲的船票，在码头“loafing around the pier trying to hurry the steamer off”，急于逃离。干扰项的躲俱乐部一周、回乡下、西行访亲都与原文不符。
+  - id: sm-ch-19-s9
+    text: |-
+      "Is it generally known, sir, do you think?" he asked me humbly. "Can't you hush it up somehow?"
+
+      "Hush it up! You might as well say 'Shoo!' to the Limited and expect it to stop for you."
+
+      "Mr. Graham, I'm simply heartbroken over it all. I know I shall never reach Liverpool. I'll go mad on the voyage across, and throw myself overboard. I'm too delicately strung to stand a thing of this sort."
+
+      "Delicate rats! You haven't nerve enough not to stand it," I said. "Brace up and be a man, and let this be a lesson to you. Good-by."
+
+      Jack took my hand sort of mechanically and looked at me without seeing me, for his grief-dimmed eyes, in straying along the deck, had lit on that pretty little Southern baggage, Fanny Fairfax. And as I started off he was leaning over her in the same old way, looking into her brown eyes as if he saw a full-course dinner there.
+
+      "Think of your being on board!" I heard him say. "I'm the luckiest fellow alive; by Jove, I am!"
+
+      I gave Jack up, and an ex-grass widow is keeping him in order now. I don't go much on grass widows, but I give her credit for doing a pretty good job. She's got Jack so tame that he eats out of her hand, and so well trained that he don't allow strangers to pet him.
+
+      I inherited one Jack--I couldn't help that. But I don't propose to wake up and find another one in the family. So you write me what's what by return.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-19-s9-c1
+      stem: What happens to Jack at the end of the chapter?
+      options:
+        - He starts flirting with Fanny Fairfax at once
+        - He boards the ship alone and sails in peace
+        - He reconciles with Miss Churchill on the pier
+        - He asks the narrator to cancel his ticket
+      correctIndex: 0
+      explanationZh: 尽管 Jack 声称自己心碎将发疯跳海，但他的目光很快落在了 Fanny Fairfax 身上，又开始旧态复萌地殷勤搭讪，说自己是“the luckiest fellow alive”。最终一位离过婚的女人把他管住了。干扰项说独自安然登船、与 Miss Churchill 和好或要求退票，都与原文矛盾。
+quiz:
+  - id: sm-ch-19-q1
+    stem: Why does the narrator doubt that there is anything real between Pierrepont and Helen Heath?
+    options:
+      - Because she is exactly the sort of girl he would want his son to marry.
+      - Because she knows too little about Pierrepont to be serious.
+      - Because she is only interested in Pierrepont's salary.
+      - Because she treated the narrator coldly throughout the voyage.
+    correctIndex: 0
+    explanationZh: 父亲说 Helen 太优秀、太合他心意，以至于他反而不敢乐观。原文原话是“so exactly the sort of girl I'd like to see you marry that I'm afraid there's nothing in it”。干扰项说她不了解儿子、只图薪水或对父亲冷淡，都与文中她对父亲如父女般的亲近及父亲对她的高度评价相悖。
+  - id: sm-ch-19-q2
+    stem: What does the narrator compare an unmarried man to?
+    options:
+      - Unimproved real estate that still needs building on
+      - A finished house waiting for the right tenant to move in
+      - A wild horse that no one has bothered to break in
+      - A locked safe whose combination has been lost
+    correctIndex: 0
+    explanationZh: 父亲把未婚男子比作“unimproved real estate”——可能值很多钱但没什么实际用处，除非在其上建造。干扰项的成品房、野马或保险柜在原文中均未出现。
+  - id: sm-ch-19-q3
+    stem: What is the most damning moment for Jack at the Blairs' party?
+    options:
+      - Miss Churchill publicly rejects his proposal in front of everyone
+      - Miss Curzon's mother accuses Jack of lying about his money
+      - Miss Moore announces she is engaged to another man
+      - Both other girls arrive wearing his flowers
+    correctIndex: 3
+    explanationZh: 关键一击在于 Miss Curzon 头戴他的玫瑰出现，Miss Moore 拿着他的百合被人祝贺，而此时他正陪 Miss Churchill，三人同处一室令他无处可躲。干扰项说 Miss Churchill 当众拒婚、Curzon 家母亲指控或 Miss Moore 宣布与他人订婚，文中均未发生。
+  - id: sm-ch-19-q4
+    stem: Why do Miss Curzon and Miss Moore respond so gently to Jack's break-up letters?
+    options:
+      - They genuinely no longer care about Jack at all.
+      - They have already found other men to marry.
+      - They still believe Jack has a million dollars and hope to secure him.
+      - They think the letters are a joke and plan to laugh at him.
+    correctIndex: 2
+    explanationZh: 两位姑娘收到分手信后非但不恼，反而分别约他面谈，因为叙述者深知她们不会轻易放过百万美元——会“put a tracer after it”。干扰项说她们完全无所谓、已另嫁他人或当笑话看，都不符合她们紧抓不放的态度。
+  - id: sm-ch-19-q5
+    stem: Why does the narrator tell this whole story to Pierrepont at the end?
+    options:
+      - He wants Pierrepont to find Jack a new wife in Europe.
+      - He wants to make sure his own son does not turn into another Jack.
+      - He wants Pierrepont to lend Jack money to start over.
+      - He wants Pierrepont to apologize to the three girls on Jack's behalf.
+    correctIndex: 1
+    explanationZh: 父亲最后明确写道：“I inherited one Jack—I couldn't help that. But I don't propose to wake up and find another one in the family.”他讲这个故事是为了警告儿子不要重蹈 Jack 的覆辙。干扰项要儿子替 Jack 找妻、借钱或道歉，都与父亲真正关心的对象——自己儿子的品行——无关。
+  - id: sm-ch-19-q6
+    stem: What does the narrator call Jack's way of handling flowers for women?
+    options:
+      - He has good taste instead of money.
+      - He has instincts instead of sense.
+      - He has courage instead of caution.
+      - He has charm instead of intelligence.
+    correctIndex: 1
+    explanationZh: 父亲讽刺 Jack 在送花这类事上花了很多心思，但他说“a critter who has instincts instead of sense belongs in the bushes with the dicky-birds”，即有直觉却没头脑。干扰项把评价偷换成品味、勇气或魅力，都不符合原文用词与含义。

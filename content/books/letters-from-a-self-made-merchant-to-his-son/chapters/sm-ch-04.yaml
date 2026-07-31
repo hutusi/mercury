@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-04
+bookId: book-merchant-letters
+title: On the Grand Tour Idea
+titleZh: 论游历欧洲的计划
+summaryZh: 约翰·格雷厄姆回信给想花几个月游历欧洲的儿子，告诫他文化修养并非换换气候就能获得，并催促他尽快踏入职场。信中穿插了老迪克·斯托弗拖延成性的故事，以及老格雷厄姆本人在伦敦买画上当的亲身经历。
+sections:
+  - id: sm-ch-04-s1
+    text: |-
+      Dear Pierrepont: Your letter of the seventh twists around the point a good deal like a setter pup chasing his tail. But I gather from it that you want to spend a couple of months in Europe before coming on here and getting your nose in the bull-ring. Of course, you are your own boss now and you ought to be able to judge better than any one else how much time you have to waste, but it seems to me, on general principles, that a young man of twenty-two, who is physically and mentally sound, and who hasn't got a dollar and has never earned one, can't be getting on somebody's pay-roll too quick. And in this connection it is only fair to tell you that I have instructed the cashier to discontinue your allowance after July 15. That gives you two weeks for a vacation--enough to make a sick boy well, or a lazy one lazier.
+
+      I hear a good deal about men who won't take vacations, and who kill themselves by overwork, but it's usually worry or whiskey. It's not what a man does during working-hours, but after them, that breaks down his health. A fellow and his business should be bosom friends in the office and sworn enemies out of it. A clear mind is one that is swept clean of business at six o'clock every night and isn't opened up for it again until after the shutters are taken down next morning.
+
+      Some fellows leave the office at night and start out to whoop it up with the boys, and some go home to sit up with their troubles--they're both in bad company. They're the men who are always needing vacations, and never getting any good out of them. What every man does need once a year is a change of work--that is, if he has been curved up over a desk for fifty weeks and subsisting on birds and burgundy, he ought to take to fishing for a living and try bacon and eggs, with a little spring water, for dinner. But coming from Harvard to the packing-house will give you change enough this year to keep you in good trim, even if you didn't have a fortnight's leeway to run loose.
+
+      You will always find it a safe rule to take a thing just as quick as it is offered--especially a job. It is never easy to get one except when you don't want it; but when you have to get work, and go after it with a gun, you'll find it as shy as an old crow that every farmer in the county has had a shot at.
+    checkIn:
+      id: sm-ch-04-s1-c1
+      stem: What did the father instruct the cashier to do after July 15?
+      options:
+        - He should stop the son's allowance.
+        - He should double the son's allowance.
+        - He should send the son's allowance to Europe.
+        - He should pay the son a regular salary.
+      correctIndex: 0
+      explanationZh: 信中明说 "I have instructed the cashier to discontinue your allowance after July 15"，即停发津贴。加倍津贴或把津贴寄去欧洲都不是父亲的决定；至于薪水，要等儿子正式进公司上班再说。
+  - id: sm-ch-04-s2
+    text: |-
+      When I was a young fellow and out of a place, I always made it a rule to take the first job that offered, and to use it for bait. You can catch a minnow with a worm, and a bass will take your minnow. A good fat bass will tempt an otter, and then you've got something worth skinning. Of course, there's no danger of your not being able to get a job with the house--in fact, there is no real way in which you can escape getting one; but I don't like to see you shy off every time the old man gets close to you with the halter.
+
+      I want you to learn right at the outset not to play with the spoon before you take the medicine. Putting off an easy thing makes it hard, and putting off a hard one makes it impossible. Procrastination is the longest word in the language, but there's only one letter between its ends when they occupy their proper places in the alphabet.
+
+      Old Dick Stover, for whom I once clerked in Indiana, was the worst hand at procrastinating that I ever saw. Dick was a powerful hearty eater, and no one ever loved meal-time better, but he used to keep turning over in bed mornings for just another wink and staving off getting up, until finally his wife combined breakfast and dinner on him, and he only got two meals a day. He was a mighty religious man, too, but he got to putting off saying his prayers until after he was in bed, and then he would keep passing them along until his mind was clear of worldly things, and in the end he would drop off to sleep without saying them at all. What between missing the Sunday morning service and never being seen on his knees, the first thing Dick knew he was turned out of the church. He had a pretty good business when I first went with him, but he would keep putting off firing his bad clerks until they had lit out with the petty cash; and he would keep putting off raising the salaries of his good ones until his competitor had hired them away. Finally, he got so that he wouldn't discount his bills, even when he had the money; and when they came due he would give notes so as to keep from paying out his cash a little longer. Running a business on those lines is, of course, equivalent to making a will in favor of the sheriff and committing suicide so that he can inherit. The last I heard of Dick he was ninety-three years old and just about to die. That was ten years ago, and I'll bet he's living yet. I simply mention Dick in passing as an instance of how habits rule a man's life.
+    checkIn:
+      id: sm-ch-04-s2-c1
+      stem: What happened to Old Dick Stover because he kept putting off firing his bad clerks?
+      options:
+        - They sued him for back pay.
+        - They ran off with the petty cash.
+        - They formed a rival business.
+        - They reported him to the sheriff.
+      correctIndex: 1
+      explanationZh: 原文说 Dick 一直拖着不解雇坏店员，"until they had lit out with the petty cash"——卷走零钱跑掉了。起诉欠薪、另立门户、报警之类的情节在文中都没有出现。
+  - id: sm-ch-04-s3
+    text: |-
+      There is one excuse for every mistake a man can make, but only one. When a fellow makes the same mistake twice he's got to throw up both hands and own up to carelessness or cussedness. Of course, I knew that you would make a fool of yourself pretty often when I sent you to college, and I haven't been disappointed. But I expected you to narrow down the number of combinations possible by making a different sort of a fool of yourself every time. That is the important thing, unless a fellow has too lively an imagination, or has none at all. You are bound to try this European foolishness sooner or later, but if you will wait a few years, you will approach it in an entirely different spirit--and you will come back with a good deal of respect for the people who have sense enough to stay at home.
+
+      I piece out from your letter that you expect a few months on the other side will sort of put a polish on you. I don't want to seem pessimistic, but I have seen hundreds of boys graduate from college and go over with the same idea, and they didn't bring back a great deal except a few trunks of badly fitting clothes. Seeing the world is like charity--it covers a multitude of sins, and, like charity, it ought to begin at home.
+
+      Culture is not a matter of a change of climate. You'll hear more about Browning to the square foot in the Mississippi Valley than you will in England. And there's as much Art talk on the Lake front as in the Latin Quarter. It may be a little different, but it's there.
+
+      I went to Europe once myself. I was pretty raw when I left Chicago, and I was pretty sore when I got back. Coming and going I was simply sick. In London, for the first time in my life, I was taken for an easy thing. Every time I went into a store there was a bull movement. The clerks all knocked off their regular work and started in to mark up prices.
+
+      They used to tell me that they didn't have any gold-brick men over there. So they don't. They deal in pictures--old masters, they call them. I bought two--you know the ones--those hanging in the waiting-room at the stock yards; and when I got back I found out that they had been painted by a measly little fellow who went to Paris to study art, after Bill Harris had found out that he was no good as a settling clerk. I keep 'em to remind myself that there's no fool like an old American fool when he gets this picture paresis.
+    checkIn:
+      id: sm-ch-04-s3-c1
+      stem: What did the father discover about the two old-master paintings he bought in London?
+      options:
+        - They were stolen from a museum in Paris.
+        - They were copies made by a famous forger.
+        - They were painted by a failed art student.
+        - They were valuable works he sold at a profit.
+      correctIndex: 2
+      explanationZh: 父亲买回两幅所谓的"古画"，后来发现 "they had been painted by a measly little fellow who went to Paris to study art"——一个不成的艺术生画的，专门骗外地人。它们既非博物馆失窃品，也非名伪造者的仿作，更没有让他获利卖出。
+  - id: sm-ch-04-s4
+    text: |-
+      The fellow who tried to fit me out with a coat-of-arms didn't find me so easy. I picked mine when I first went into business for myself--a charging steer--and it's registered at Washington. It's my trade-mark, of course, and that's the only coat-of-arms an American merchant has any business with. It's penetrated to every quarter of the globe in the last twenty years, and every soldier in the world has carried it--in his knapsack.
+
+      I take just as much pride in it as the fellow who inherits his and can't find any place to put it, except on his carriage door and his letter-head--and it's a heap more profitable. It's got so now that every jobber in the trade knows that it stands for good quality, and that's all any Englishman's coat-of-arms can stand for. Of course, an American's can't stand for anything much--generally it's the burned-in-the-skin brand of a snob.
+
+      After the way some of the descendants of the old New York Dutchmen with the hoe and the English general storekeepers have turned out, I sometimes feel a little uneasy about what my great-grandchildren may do, but we'll just stick to the trade-mark and try to live up to it while the old man's in the saddle.
+
+      I simply mention these things in a general way. I have no fears for you after you've been at work for a few years, and have struck an average between the packing-house and Harvard; then if you want to graze over a wider range it can't hurt you. But for the present you will find yourself pretty busy trying to get into the winning class.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-04-s4-c1
+      stem: What does the father say is the only coat-of-arms an American merchant has any business with?
+      options:
+        - An old European family crest.
+        - A charging lion from a heraldry shop.
+        - A borrowed design from a British nobleman.
+        - His registered trade-mark.
+      correctIndex: 3
+      explanationZh: 父亲明确表示，美国商人唯一应有的"纹章"就是自己注册的商标 "a charging steer"，已在华盛顿登记。欧洲家族纹章、纹章店里的狮子、英国贵族的设计都不是他所认可的。
+quiz:
+  - id: sm-ch-04-q1
+    stem: Why does the father say a young man of twenty-two with no dollar and no work experience should get on someone's pay-roll quickly?
+    options:
+      - He has already wasted two months on vacation
+      - He is healthy and has never earned a dollar
+      - He owes money to his college friends
+      - He is about to lose his passport
+    correctIndex: 1
+    explanationZh: 父亲认为一个二十二岁、身心健康、身无分文且从未挣过一块钱的年轻人，理应尽快上班挣钱。欠同学钱、护照将失效等说法在信中都找不到依据；两星期的假期是父亲给他的宽限，并非"已浪费两个月"。
+  - id: sm-ch-04-q2
+    stem: According to the father, what really breaks down a man's health?
+    options:
+      - His after-hours worry or whiskey
+      - Working too many hours at the desk
+      - Eating too little during the lunch break
+      - Taking too many business trips by train
+    correctIndex: 0
+    explanationZh: 父亲说 "It's not what a man does during working-hours, but after them, that breaks down his health"，真正毁人的是下班后的行为，比如焦虑和酗酒。他明确指出外界常说"过劳致命"，其实往往是"worry or whiskey"。
+  - id: sm-ch-04-q3
+    stem: What rule did the father follow when he was young and out of a job?
+    options:
+      - Wait for the best-paying job to come along.
+      - Refuse any job that does not match his degree.
+      - Take the first job offered and use it as bait.
+      - Apply only to companies his family knew.
+    correctIndex: 2
+    explanationZh: 年轻失业时，父亲的原则是 "take the first job that offered, and use it for bait"——先接第一份工作，再用它钓更好的机会。等最高薪职位、非对口不做、只投熟人公司，都会拖延入职，跟他强调的"迅速上岗"相悖。
+  - id: sm-ch-04-q4
+    stem: What does the father say happens when a man makes the same mistake twice?
+    options:
+      - He must admit to carelessness or cussedness.
+      - He should be sent back to college.
+      - He is bound to lose his job forever.
+      - He deserves a second allowance.
+    correctIndex: 0
+    explanationZh: 父亲认为每种错误只有一个借口；若同一错误犯两次，就只好"own up to carelessness or cussedness"——承认自己粗心或固执。送回大学、永远开除、再发津贴都不是他在文中提及的后果。
+  - id: sm-ch-04-q5
+    stem: What comparison does the father make about seeing the world?
+    options:
+      - It is like fishing and requires good bait.
+      - It is like medicine and should be taken cold.
+      - It is like charity and ought to begin at home.
+      - It is like prayer and must be said at bedtime.
+    correctIndex: 2
+    explanationZh: 原文说 "Seeing the world is like charity—it covers a multitude of sins, and, like charity, it ought to begin at home"——游历世界如同慈善，应从身边做起。钓鱼需好饵、吃药要凉服、睡前祷告都是信中其他比喻，讲的是不同道理。
+  - id: sm-ch-04-q6
+    stem: How did the clerks in London stores treat the father when he arrived?
+    options:
+      - They gave him large discounts.
+      - They refused to sell him anything.
+      - They called the police on him.
+      - They raised their prices for him.
+    correctIndex: 3
+    explanationZh: 父亲在伦敦第一次被当成"易骗的肥羊"，"Every time I went into a store there was a bull movement"——店员们停下手头活，纷纷抬价宰他。打折、拒售、报警都不是文中描述的情形。

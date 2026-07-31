@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-20
+bookId: book-merchant-letters
+title: A Limited Blessing
+titleZh: 有限的福气
+summaryZh: 临近儿子的婚事，老格雷厄姆在最后一封信里就婚姻与持家给出许多实在忠告，又回忆起自己婚后在乡间小屋的一段往事——那头名叫 Toby 的猪让他学到了不少。信末，他郑重地把儿子托付给了未来的儿媳。
+sections:
+  - id: sm-ch-20-s1
+    text: |-
+      Dear Pierrepont: If that's what, it's all right. And you can't get married too quick to suit the old man. I believe in short engagements and long marriages. I don't see any sense in a fellow's sitting around on the mourner's bench with the sinners, after he's really got religion. The time to size up the other side's strength is before the engagement.
+
+      Some fellows propose to a girl before they know whether her front and her back hair match, and then holler that they're stuck when they find that she's got a cork leg and a glass eye as well. I haven't any sympathy with them. They start out on the principle that married people have only one meal a day, and that of fried oysters and tutti-frutti ice-cream after the theatre. Naturally, a girl's got her better nature and her best complexion along under those circumstances; but the really valuable thing to know is how she approaches ham and eggs at seven A.M., and whether she brings her complexion with her to the breakfast table. And these fellows make a girl believe that they're going to spend all the time between eight and eleven P.M., for the rest of their lives, holding a hundred and forty pounds, live weight, in their lap, and saying that it feels like a feather. The thing to find out is whether, when one of them gets up to holding a ten pound baby in his arms, for five minutes, he's going to carry on as if it weighed a ton.
+
+      A girl can usually catch a whisper to the effect that she's the showiest goods on the shelf, but the vital thing for a fellow to know is whether her ears are sharp enough to hear him when he shouts that she's spending too much money and that she must reduce expenses. Of course, when you're patting and petting and feeding a woman she's going to purr, but there's nothing like stirring her up a little now and then to see if she spits fire and heaves things when she's mad.
+
+      I want to say right here that there's only one thing more aggravating in this world than a woman who gets noisy when she's mad, and that's one who gets quiet. The first breaks her spell of temper with the crockery, but the second simmers along like a freight engine on the track beside your berth--keeps you scared and ready to jump for fear she's going to blow off any minute; but she never does and gets it over with--just drizzles it out.
+    checkIn:
+      id: sm-ch-20-s1-c1
+      stem: The old man says the right time to size up the other side's strength is when?
+      options:
+        - After the wedding.
+        - During the honeymoon.
+        - Before the engagement.
+        - When the first baby arrives.
+      correctIndex: 2
+      explanationZh: 文中明确写道：The time to size up the other side's strength is before the engagement。 婚前了解对方才明智；婚礼后、蜜月期间、孩子出生后都太晚了。
+  - id: sm-ch-20-s2
+    text: |-
+      You can punch your brother when he plays the martyr, but you've got to love your wife. A violent woman drives a fellow to drink, but a nagging one drives him crazy. She takes his faults and ties them to him like a tin can to a yellow dog's tail, and the harder he runs to get away from them the more he hears of them.
+
+      I simply mention these things in a general way, and in the spirit of the preacher at the funeral of the man who wasn't "a professor"--because it's customary to make a few appropriate remarks on these occasions. From what I saw of Helen Heath, I reckon she's not getting any the best of it. She's what I call a mighty eligible young woman--pretty, bright, sensible, and without any fortune to make her foolish and you a fool. In fact, you'd have to sit up nights to make yourself good enough for her, even if you brought her a million, instead of fifty a week.
+
+      I'm a great believer in women in the home, but I don't take much stock in them in the office, though I reckon I'm prejudiced and they've come to stay. I never do business with a woman that I don't think of a little incident which happened when I was first married to your Ma. We set up housekeeping in one of those cottages that you read about in the story books, but that you want to shy away from, when it's put up to you to live in one of them. There were nice climbing roses on the front porch, but no running water in the kitchen; there were a-plenty of old fashioned posies in the front yard, and a-plenty of rats in the cellar; there was half an acre of ground out back, but so little room inside that I had to sit with my feet out a window. It was just the place to go for a picnic, but it's been my experience that a fellow does most of his picnicking before he's married.
+
+      Your Ma did the cooking, and I hustled for things to cook, though I would take a shy at it myself once in a while and get up my muscle tossing flapjacks. It was pretty rough sailing, you bet, but one way and another we managed to get a good deal of satisfaction out of it, because we had made up our minds to take our fun as we went along. With most people happiness is something that is always just a day off. But I have made it a rule never to put off being happy till to-morrow. Don't accept notes for happiness, because you'll find that when they're due they're never paid, but just renewed for another thirty days.
+    checkIn:
+      id: sm-ch-20-s2-c1
+      stem: What does the old man say about happiness?
+      options:
+        - You should postpone it until tomorrow.
+        - You should take your fun as you go along.
+        - It is always just a day off.
+        - You should accept notes for it.
+      correctIndex: 1
+      explanationZh: 他强调 I have made it a rule never to put off being happy till to-morrow，要边走边享受。 推迟到明天、总差一天、接受幸福欠条正是他反对的态度。
+  - id: sm-ch-20-s3
+    text: |-
+      I was clerking in a general store at that time, but I had a little weakness for livestock, even then; and while I couldn't afford to plunge in it exactly, I managed to buy a likely little shoat that I reckoned on carrying through the Summer on credit and presenting with a bill for board in the Fall. He was just a plain pig when he came to us, and we kept him in a little sty, but we weren't long in finding out that he wasn't any ordinary root-and-grunt pig. The first I knew your Ma was calling him Toby, and had turned him loose. Answered to his name like a dog. Never saw such a sociable pig. Wanted to sit on the porch with us. Tried to come into the house evenings. Used to run down the road squealing for joy when he saw me coming home from work.
+
+      Well, it got on towards November and Toby had been making the most of his opportunities. I never saw a pig that turned corn into fat so fast, and the stouter he got the better his disposition grew. I reckon I was attached to him myself, in a sort of a sneaking way, but I was mighty fond of hog meat, too, and we needed Toby in the kitchen. So I sent around and had him butchered.
+
+      When I got home to dinner next day, I noticed that your Ma looked mighty solemn as she set the roast of pork down in front of me, but I strayed off, thinking of something else, as I carved, and my wits were off wool gathering sure enough when I said:
+
+      "Will you have a piece of Toby, my dear?"
+
+      Well sir, she just looked at me for a moment, and then she burst out crying and ran away from the table. But when I went after her and asked her what was the matter, she stopped crying and was mad in a minute all the way through. Called me a heartless, cruel cannibal. That seemed to relieve her so that she got over her mad and began to cry again. Begged me to take Toby out of pickle and to bury him in the garden. I reasoned with her, and in the end I made her see that any obsequies for Toby, with pork at eight cents a pound, would be a pretty expensive funeral for us. But first and last she had managed to take my appetite away so that I didn't want any roast pork for dinner or cold pork for supper. That night I took what was left of Toby to a store keeper at the Crossing, who I knew would be able to gaze on his hams without bursting into tears, and got a pretty fair price for him.
+    checkIn:
+      id: sm-ch-20-s3-c1
+      stem: What did the old man do with what was left of Toby?
+      options:
+        - He buried it in the garden.
+        - He fed it to the rats in the cellar.
+        - He threw it into the pickle barrel.
+        - He sold it to a store keeper at the Crossing.
+      correctIndex: 3
+      explanationZh: 夜里他把剩下的 Toby 带到路口杂货店卖掉，因为店主 would be able to gaze on his hams without bursting into tears。 埋在花园是妻子哀求却被他劝止的做法；喂老鼠、扔回腌桶文中无据。
+  - id: sm-ch-20-s4
+    text: |-
+      I simply mention Toby in passing, as an example of why I believe women weren't cut out for business--at least for the pork-packing business. I've had dealings with a good many of them, first and last, and it's been my experience that when they've got a weak case they add their sex to it and win, and that when they've got a strong case they subtract their sex from it and deal with you harder than a man. They're simply bound to win either way, and I don't like to play a game where I haven't any show. When a clerk makes a fool break, I don't want to beg his pardon for calling his attention to it, and I don't want him to blush and tremble and leak a little brine into a fancy pocket handkerchief.
+
+      A little change is a mighty soothing thing, and I like a woman's ways too much at home to care very much for them at the office. Instead of hiring women, I try to hire their husbands, and then I usually have them both working for me. There's nothing like a woman at home to spur on a man at the office.
+
+      A married man is worth more salary than a single one, because his wife makes him worth more. He's apt to go to bed a little sooner and to get up a little earlier; to go a little steadier and to work a little harder than the fellow who's got to amuse a different girl every night, and can't stay at home to do it. That's why I'm going to raise your salary to seventy-five dollars a week the day you marry Helen, and that's why I'm going to quit writing these letters--I'm simply going to turn you over to her and let her keep you in order. I bet she'll do a better job than I have.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-20-s4-c1
+      stem: Why does the old man prefer to hire the husband rather than the wife?
+      options:
+        - A wife at home spurs a man on at the office.
+        - A wife at home keeps the books for the firm.
+        - A wife at home frees up office space.
+        - A wife at home cuts the salary bill in half.
+      correctIndex: 0
+      explanationZh: 他说 There is nothing like a woman at home to spur on a man at the office，家庭中的妻子能激励丈夫更努力工作，所以已婚男人更值钱。 记账、腾办公室、砍薪金都非其理由。
+quiz:
+  - id: sm-ch-20-q1
+    stem: Why does the old man say a quiet woman is more aggravating than a noisy one?
+    options:
+      - She breaks all the crockery in the house.
+      - She never blows off and so keeps you scared.
+      - She runs away to her mother for weeks.
+      - She writes long letters of complaint.
+    correctIndex: 1
+    explanationZh: 文中把生闷气的女人比作货运机车：keeps you scared but she never does and gets it over with，你始终担心她随时爆发却等不到。 摔盘子反倒属于吵闹型女人，能较快了结。
+  - id: sm-ch-20-q2
+    stem: The old man says a violent woman drives a man to drink, but what does a nagging woman do?
+    options:
+      - A violent one makes him drink.
+      - A nagging one drives him crazy.
+      - A silent one helps him focus.
+      - A tearful one softens his heart.
+    correctIndex: 1
+    explanationZh: 他说 a violent woman drives a fellow to drink, but a nagging one drives him crazy——吵闹型逼人喝酒，唠叨型把人逼疯。 文中还把丈夫的缺点比作拴在狗尾巴上的罐子，越跑越响。
+  - id: sm-ch-20-q3
+    stem: The old man says you should stir up a woman now and then to test what?
+    options:
+      - To find out her favorite ice cream.
+      - To check whether she can cook oysters.
+      - To learn how late she sleeps in.
+      - To see if she spits fire when stirred up.
+    correctIndex: 3
+    explanationZh: 他说女人被宠时只会 purr，关键要 stir her up 看她生气时是否 spits fire and heaves things，即测试脾气的真面目。 冰激凌、煎牡蛎、睡懒觉都与测试脾气无关。
+  - id: sm-ch-20-q4
+    stem: What was the contrast the old man drew about their first cottage?
+    options:
+      - It had a big kitchen but no front porch
+      - It had running water but no cellar at all
+      - It had plenty of room inside but no yard outside
+      - Roses on the porch, no water in the kitchen
+    correctIndex: 3
+    explanationZh: 小屋 climbing roses on the front porch, but no running water in the kitchen，还配了 a-plenty of rats in the cellar——好看却不好住。 大厨房无门廊、有自来水无地窖、室内宽敞无院子都不符。
+  - id: sm-ch-20-q5
+    stem: Why does the old man say it is vital to know how a girl approaches ham and eggs at seven A.M.?
+    options:
+      - To find out if her front and back hair match.
+      - To check whether she likes tutti-frutti ice cream.
+      - To see whether she is sensible at the breakfast table.
+      - To learn how much money she earns.
+    correctIndex: 2
+    explanationZh: 他用 ham and eggs at seven A.M. 喻指日常最真实的相处；关键看她清晨素颜时是否明理。 发色是否一致、爱不爱花色冰激凌、赚多少钱，都是他讽刺或旁敲的比喻，并非要点。
+  - id: sm-ch-20-q6
+    stem: The old man says he will raise Pierrepont's salary to what amount on his wedding day?
+    options:
+      - Seventy-five dollars a week.
+      - Fifty dollars a week.
+      - One hundred dollars a week.
+      - One million dollars.
+    correctIndex: 0
+    explanationZh: 信末明确：I am going to raise your salary to seventy-five dollars a week the day you marry Helen。 婚后涨到七十五。 五十是婚前提到的数目；一百周薪文中无据；一百万是假设你带给新娘的巨款，并非周薪。

@@ -1,0 +1,154 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: sm-ch-15
+bookId: book-merchant-letters
+title: Promoted Again
+titleZh: 再次晋升
+summaryZh: 老格雷厄姆写信告诉儿子，公司决定把他从外勤调回，任命他为猪油部助理经理。除了交代新岗位的职责与薪水，父亲还借 Jack Summers 的故事和老家杂货商 Lem 的笑话，教导他如何管人、如何认清自己。
+sections:
+  - id: sm-ch-15-s1
+    text: |-
+      Dear Pierrepont: I judge from yours of the twenty-ninth that you must have the black bass in those parts pretty well terrorized. I never could quite figure it out, but there seems to be something about a fish that makes even a cold-water deacon see double. I reckon it must be that while Eve was learning the first principles of dressmaking from the snake, Adam was off bass fishing and keeping his end up by learning how to lie.
+
+      Don't overstock yourself with those four-pound fish yarns, though, because the boys have been bringing them back from their vacations till we've got enough to last us for a year of Fridays. And if you're sending them to keep in practice, you might as well quit, because we've decided to take you off the road when you come back, and make you assistant manager of the lard department. The salary will be fifty dollars a week, and the duties of the position to do your work so well that the manager can't run the department without you, and that you can run the department without the manager.
+
+      To do this you will have to know lard; to know yourself; and to know those under you. To some fellows lard is just hog fat, and not always that, if they would rather make a dollar to-day than five to-morrow. But it was a good deal more to Jack Summers, who held your new job until we had to promote him to canned goods.
+
+      Jack knew lard from the hog to the frying pan; was up on lard in history and religion; originated what he called the "Ham and" theory, proving that Moses' injunction against pork must have been dissolved by the Circuit Court, because Noah included a couple of shoats in his cargo, and called one of his sons Ham, out of gratitude, probably, after tasting a slice broiled for the first time; argued that all the great nations lived on fried food, and that America was the greatest of them all, owing to the energy-producing qualities of pie, liberally shortened with lard.
+
+      It almost broke Jack's heart when we decided to manufacture our new cottonseed oil product, Seedoiline. But on reflection he saw that it just gave him an extra hold on the heathen that he couldn't convert to lard, and he started right out for the Hebrew and vegetarian vote. Jack had enthusiasm, and enthusiasm is the best shortening for any job; it makes heavy work light.
+    checkIn:
+      id: sm-ch-15-s1-c1
+      stem: What new position is the son given when he returns from the road?
+      options:
+        - He is made assistant manager of the lard department.
+        - He is promoted to head the canned goods department.
+        - He is kept on the road as a traveling salesman.
+        - He is assigned to manage the cottonseed oil product.
+      correctIndex: 0
+      explanationZh: 信中明确写道 we've decided to take you off the road ... and make you assistant manager of the lard department，新职位是猪油部助理经理。接手罐头部门的是 Jack Summers 被晋升后的去向，不是儿子的新岗位。
+  - id: sm-ch-15-s2
+    text: |-
+      A good many young fellows envy their boss because they think he makes the rules and can do as he pleases. As a matter of fact, he's the only man in the shop who can't. He's like the fellow on the tight-rope--there's plenty of scenery under him and lots of room around him, but he's got to keep his feet on the wire all the time and travel straight ahead.
+
+      A clerk has just one boss to answer to--the manager. But the manager has just as many bosses as he has clerks under him. He can make rules, but he's the only man who can't afford to break them now and then. A fellow is a boss simply because he's a better man than those under him, and there's a heap of responsibility in being better than the next fellow.
+
+      No man can ask more than he gives. A fellow who can't take orders can't give them. If his rules are too hard for him to mind, you can bet they are too hard for the clerks who don't get half so much for minding them as he does. There's no alarm clock for the sleepy man like an early rising manager; and there's nothing breeds work in an office like a busy boss.
+
+      Of course, setting a good example is just a small part of a manager's duties. It's not enough to settle yourself firm on the box seat--you must have every man under you hitched up right and well in hand. You can't work individuals by general rules. Every man is a special case and needs a special pill.
+
+      When you fix up a snug little nest for a Plymouth Rock hen and encourage her with a nice porcelain egg, it doesn't always follow that she has reached the fricassee age because she doesn't lay right off. Sometimes she will respond to a little red pepper in her food.
+
+      I don't mean by this that you ever want to drive your men, because the lash always leaves its worst soreness under the skin. A hundred men will forgive a blow in the face where one will a blow to his self-esteem. Tell a man the truth about himself and shame the devil if you want to, but you won't shame the man you're trying to reach, because he won't believe you. But if you can start him on the road that will lead him to the truth he's mighty apt to try to reform himself before any one else finds him out.
+    checkIn:
+      id: sm-ch-15-s2-c1
+      stem: Why does the father compare a boss to a man on a tight-rope?
+      options:
+        - He can make the rules and do exactly as he pleases.
+        - He has no one to answer to but himself.
+        - He has more freedom than any clerk in the shop.
+        - He must keep his feet on the wire and travel straight ahead.
+      correctIndex: 3
+      explanationZh: 父亲说老板 like the fellow on the tight-rope，脚下有风光但必须 keep his feet on the wire all the time and travel straight ahead，意思是老板反而最不能随意行事。说他可以为所欲为恰恰是年轻职员常有的误解。
+  - id: sm-ch-15-s3
+    text: |-
+      Consider carefully before you say a hard word to a man, but never let a chance to say a good one go by. Praise judiciously bestowed is money invested.
+
+      Never learn anything about your men except from themselves. A good manager needs no detectives, and the fellow who can't read human nature can't manage it. The phonograph records of a fellow's character are lined in his face, and a man's days tell the secrets of his nights.
+
+      Be slow to hire and quick to fire. The time to discover incompatibility of temper and curl-papers is before the marriage ceremony. But when you find that you've hired the wrong man, you can't get rid of him too quick. Pay him an extra month, but don't let him stay another day. A discharged clerk in the office is like a splinter in the thumb--a centre of soreness. There are no exceptions to this rule, because there are no exceptions to human nature.
+
+      Never threaten, because a threat is a promise to pay that it isn't always convenient to meet, but if you don't make it good it hurts your credit. Save a threat till you're ready to act, and then you won't need it. In all your dealings, remember that to-day is your opportunity; to-morrow some other fellow's.
+
+      Keep close to your men. When a fellow's sitting on top of a mountain he's in a mighty dignified and exalted position, but if he's gazing at the clouds, he's missing a heap of interesting and important doings down in the valley. Never lose your dignity, of course, but tie it up in all the red tape you can find around the office, and tuck it away in the safe. It's easy for a boss to awe his clerks, but a man who is feared to his face is hated behind his back. A competent boss can move among his men without having to draw an imaginary line between them, because they will see the real one if it exists.
+
+      Besides keeping in touch with your office men, you want to feel your salesmen all the time. Send each of them a letter every day so that they won't forget that we are making goods for which we need orders; and insist on their sending you a line every day, whether they have anything to say or not. When a fellow has to write in six times a week to the house, he uses up his explanations mighty fast, and he's pretty apt to hustle for business to make his seventh letter interesting.
+    checkIn:
+      id: sm-ch-15-s3-c1
+      stem: What does the father advise about hiring and firing?
+      options:
+        - Be quick to hire and slow to fire.
+        - Be slow to hire and slow to fire.
+        - Be slow to hire and quick to fire.
+        - Be quick to hire and quick to fire.
+      correctIndex: 2
+      explanationZh: 原文直接提出 Be slow to hire and quick to fire，雇人要谨慎，发现用错人则立刻辞退，多给一个月工资也绝不让他多留一天。其余选项颠倒了原文的态度。
+  - id: sm-ch-15-s4
+    text: |-
+      Right here I want to repeat that in keeping track of others and their faults it's very, very important that you shouldn't lose sight of your own. Authority swells up some fellows so that they can't see their corns; but a wise man tries to cure his own while remembering not to tread on his neighbors'.
+
+      In this connection, the story of Lemuel Hostitter, who kept the corner grocery in my old town, naturally comes to mind. Lem was probably the meanest white man in the State of Missouri, and it wasn't any walk-over to hold the belt in those days. Most grocers were satisfied to adulterate their coffee with ground peas, but Lem was so blamed mean that he adulterated the peas first. Bought skin-bruised hams and claimed that the bruise was his private and particular brand, stamped in the skin, showing that they were a fancy article, packed expressly for his fancy family trade. Ran a soda-water fountain in the front of his store with home-made syrups that ate the lining out of the children's stomachs, and a blind tiger in the back room with moonshine whiskey that pickled their daddies' insides. Take it by and large, Lem's character smelled about as various as his store, and that wasn't perfumed with lily-of-the-valley, you bet.
+
+      One time and another most men dropped into Lem's store of an evening, because there wasn't any other place to go and swap lies about the crops and any of the neighbors who didn't happen to be there. As Lem was always around, in the end he was the only man in town whose meanness hadn't been talked over in that grocery. Naturally, he began to think that he was the only decent white man in the county. Got to shaking his head and reckoning that the town was plum rotten. Said that such goings on would make a pessimist of a goat. Wanted to know if public opinion couldn't be aroused so that decency would have a show in the village.
+
+      Most men get information when they ask for it, and in the end Lem fetched public opinion all right. One night the local chapter of the W.C.T.U. borrowed all the loose hatchets in town and made a good, clean, workmanlike job of the back part of his store, though his whiskey was so mean that even the ground couldn't soak it up. The noise brought out the men, and they sort of caught the spirit of the happy occasion. When they were through, Lem's stock and fixtures looked mighty sick, and they had Lem on a rail headed for the county line.
+
+      I don't know when I've seen a more surprised man than Lem. He couldn't cuss even. But as he never came back, to ask for any explanation, I reckon he figured it out that they wanted to get rid of him because he was too good for the town.
+
+      I simply mention Lem in passing as an example of the fact that when you're through sizing up the other fellow, it's a good thing to step back from yourself and see how you look. Then add fifty per cent. to your estimate of your neighbor for virtues that you can't see, and deduct fifty per cent. from yourself for faults that you've missed in your inventory, and you'll have a pretty accurate result.
+
+      Your affectionate father, JOHN GRAHAM.
+    checkIn:
+      id: sm-ch-15-s4-c1
+      stem: What eventually happens to Lemuel Hostitter?
+      options:
+        - The townsfolk elect him to the local chapter of the W.C.T.U.
+        - The townsfolk put him on a rail and run him out of town.
+        - The townsfolk make him the only decent man in the county.
+        - The townsfolk give him an award for his fancy family trade.
+      correctIndex: 1
+      explanationZh: 镇上妇女用斧头砸了他的店，男人们赶到后 had Lem on a rail headed for the county line，即骑杆驱逐出镇。选举他、颁奖给他都与原文完全相反。
+quiz:
+  - id: sm-ch-15-q1
+    stem: What theory did Jack Summers invent to defend the eating of pork?
+    options:
+      - He claimed Noah's cargo included shoats and that he named his son Ham out of gratitude.
+      - He proved that Moses never actually forbade the eating of pork.
+      - He argued that the Circuit Court had dissolved the snake's curse on Eve.
+      - He showed that all the great nations lived on boiled rather than fried food.
+    correctIndex: 0
+    explanationZh: Jack 提出 his Ham and 理论：Noah 在方舟上带了几头小猪，尝过烤猪排后心存感激，便给儿子取名 Ham。原文也说他据此推论 Moses 对猪肉的禁令已被 Circuit Court 解除，但他依据的是 Noah 的故事，而非直接否认 Moses 颁过禁令。
+  - id: sm-ch-15-q2
+    stem: Why was Jack Summers at first heartbroken by the new product Seedoiline?
+    options:
+      - It was a canned good that competed with the lard department.
+      - It proved that the company could no longer afford to keep Jack.
+      - It required Jack to manage the Hebrew and vegetarian vote.
+      - It was a cottonseed oil product that was not real lard.
+    correctIndex: 3
+    explanationZh: 原文说 It almost broke Jack's heart when we decided to manufacture our new cottonseed oil product, Seedoiline，因为 Jack 热爱真正的猪油，新棉籽油产品不是 lard。后来他才想到把它当作向不吃猪油的顾客推销的额外筹码。
+  - id: sm-ch-15-q3
+    stem: What does the father mean by saying every man is a special case and needs a special pill?
+    options:
+      - You should give every worker medicine before hiring him.
+      - You should discipline each worker with the same punishment.
+      - You cannot manage each worker with general rules alone.
+      - You should promote every worker who asks for special treatment.
+    correctIndex: 2
+    explanationZh: 父亲刚说完 you can't work individuals by general rules，接着用每只母鸡需要不同方式来类比 every man is a special case and needs a special pill，强调因人施管。喂药只是比喻，并非真的要给员工吃药或给每个人同样的惩罚。
+  - id: sm-ch-15-q4
+    stem: What does the father warn against doing with threats?
+    options:
+      - Do not threaten unless you are ready to act on it.
+      - Never threaten a clerk who is slower than the others.
+      - Always threaten before you fire a clerk.
+      - Always carry out every threat within the same month.
+    correctIndex: 0
+    explanationZh: 原文说 Never threaten，因为威胁是一张 promise to pay，你未必总能兑现，若不兑现则损害信用；应留到 ready to act 时再用，那时反而不需要威胁了。所以不是一律不许威胁某个慢手，也不是解雇前必先威胁。
+  - id: sm-ch-15-q5
+    stem: Why does the father suggest sending each salesman a daily letter?
+    options:
+      - So they can file a formal complaint against the manager.
+      - So they won't forget the company makes goods that need orders.
+      - So they won't have to write back to the house every day.
+      - So they will send in their expense reports on time.
+    correctIndex: 1
+    explanationZh: 原文说 Send each of them a letter every day so that they won't forget that we are making goods for which we need orders。父亲还要求他们每天回信，因为一周写六封会很快用光借口，从而更努力去找生意。让他们投诉或催交费用报告都不是原文意图。
+  - id: sm-ch-15-q6
+    stem: What lesson does the father draw from the story of Lemuel Hostitter?
+    options:
+      - When you judge others, you can assume your own character is spotless.
+      - When you judge others, step back and examine your own faults too.
+      - When you judge others, add fifty percent to your own virtues.
+      - When you judge others, deduct fifty percent from their estimate.
+    correctIndex: 1
+    explanationZh: Lem 在自家店里只听别人议论镇上的人，从不听人议论自己，便误以为自己是唯一正派的人，结果被全镇驱逐。父亲由此建议：评判别人之后要 step back from yourself and see how you look，对自己的缺点打五折、对邻居看不见的优点加五成。
