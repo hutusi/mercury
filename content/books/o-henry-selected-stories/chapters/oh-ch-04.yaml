@@ -3,7 +3,7 @@ id: oh-ch-04
 bookId: book-o-henry
 title: After Twenty Years
 titleZh: 二十年后
-summaryZh: 一个在西部发了财的男人回到纽约，赴一场二十年前与挚友定下的约会。寒夜的街头，这场重逢没有按任何人预想的方式进行。
+summaryZh: 晚上十点刚过，风里带着雨意，街上几乎没了人。巡警走到街心，看见一家熄了灯的五金店门口靠着个人，嘴里叼着一支没点着的雪茄。
 sections:
   - id: oh-ch-04-s1
     text: |-
@@ -22,14 +22,14 @@ sections:
       “Twenty years ago tonight,” said the man, “I dined here at ‘Big Joe’ Brady’s with Jimmy Wells, my best chum, and the finest chap in the world. He and I were raised here in New York, just like two brothers, together. I was eighteen and Jimmy was twenty. The next morning I was to start for the West to make my fortune. You couldn’t have dragged Jimmy out of New York; he thought it was the only place on earth. Well, we agreed that night that we would meet here again exactly twenty years from that date and time, no matter what our conditions might be or from what distance we might have to come. We figured that in twenty years each of us ought to have our destiny worked out and our fortunes made, whatever they were going to be.”
     checkIn:
       id: oh-ch-04-s1-c1
-      stem: Why is the man standing in the doorway of the hardware store?
+      stem: What did the man in the doorway tell the policeman?
       options:
-        - He is waiting for a police officer to question him about a crime.
-        - He is trying to break into the hardware store after closing time.
-        - He is sheltering from the cold wind and waiting for the rain to stop.
-        - He is keeping an appointment made twenty years ago with his best friend.
+        - That he had lost his key and was locked out for the night
+        - That he had just come from a lunch counter down the street
+        - That he was a detective set to watch the hardware store
+        - That he was keeping an appointment made twenty years ago
       correctIndex: 3
-      explanationZh: 文中男子直接告诉警察“I'm just waiting for a friend. It's an appointment made twenty years ago.”他与 Jimmy Wells 约好二十年后在此重聚。说他避雨或行窃都毫无依据；等警察来盘问更与原话相反——是他主动开口解释自己没干坏事。
+      explanationZh: 警察一走近，他就抢先开口 "It's all right, officer. I'm just waiting for a friend. It's an appointment made twenty years ago"，还讲起这里从前是 Big Joe Brady 的饭馆。
   - id: oh-ch-04-s2
     text: |-
       “It sounds pretty interesting,” said the policeman. “Rather a long time between meets, though, it seems to me. Haven’t you heard from your friend since you left?”
@@ -57,14 +57,14 @@ sections:
       About twenty minutes he waited, and then a tall man in a long overcoat, with collar turned up to his ears, hurried across from the opposite side of the street. He went directly to the waiting man.
     checkIn:
       id: oh-ch-04-s2-c1
-      stem: How long does Bob say he will wait for Jimmy before giving up?
+      stem: How long did Bob say he would wait?
       options:
-        - At least half an hour.
-        - No more than ten minutes.
-        - Exactly fifteen minutes.
-        - Until midnight at the earliest.
+        - Half an hour at least, if Jimmy were alive on earth
+        - Only until the drizzle turned into a real rain
+        - Until the policeman came back round his beat
+        - Three minutes, and then he would go to bed
       correctIndex: 0
-      explanationZh: Bob 明确说“I'll give him half an hour at least”，即至少等半小时。十分钟是他自己看表时距约定时间还剩三分钟，与等候上限无关；十五分钟和午夜都与原文不符。
+      explanationZh: 警察问他是不是过点就走，他答 "I should say not! I'll give him half an hour at least. If Jimmy is alive on earth he'll be here by that time."。
   - id: oh-ch-04-s3
     text: |-
       “Is that you, Bob?” he asked, doubtfully.
@@ -98,57 +98,57 @@ sections:
       Jimmy.
     checkIn:
       id: oh-ch-04-s3-c1
-      stem: What makes Bob realize the tall man is not Jimmy Wells?
+      stem: What told Bob that the tall man was not Jimmy Wells?
       options:
-        - The man does not recognize Bob's name when spoken.
-        - The man is wearing a police uniform in plain sight.
-        - The man's nose is shaped differently from Jimmy's.
-        - The man speaks with a heavy Chicago accent.
+        - The man could not remember Big Joe Brady's restaurant
+        - The man had not grown an inch in all those years
+        - Twenty years cannot change a Roman nose to a pug
+        - The man's overcoat collar hid his face completely
       correctIndex: 2
-      explanationZh: 在药店灯光下 Bob 看清对方长相，说道“not long enough to change a man's nose from a Roman to a pug”——Jimmy 是罗马鼻，而此人是个塌鼻梁，因此断定他不是 Jimmy。对方并未不认识 Bob，也没穿警服或带口音，这些都不是他起疑的原因。
+      explanationZh: 走到药店的电灯光下，两人同时转头一看，他猛地松开胳膊："Twenty years is a long time, but not long enough to change a man's nose from a Roman to a pug."。
 quiz:
   - id: oh-ch-04-q1
-    stem: Why did Bob and Jimmy originally agree to meet again after exactly twenty years?
+    stem: Why had the two friends fixed on twenty years?
     options:
-      - They thought twenty years would settle each man's destiny
-      - They wanted to celebrate the opening of a new restaurant together
-      - They needed to settle a debt that came due after twenty years
-      - They promised to reunite whenever one of them became wealthy
-    correctIndex: 0
-    explanationZh: Bob 说两人约定时想的是“in twenty years each of us ought to have our destiny worked out and our fortunes made”——二十年足以让各自命运落定。餐厅早已拆除，并无庆祝开业之说；债务与致富后才见面都无原文依据。
-  - id: oh-ch-04-q2
-    stem: What detail about Bob's appearance hints that he has done well financially?
-    options:
-      - He wears a brand-new overcoat with the collar turned up high.
-      - He wears a large diamond scarfpin and a diamond-set watch.
-      - He carries a gold-handled cane engraved with his initials.
-      - He flashes a roll of banknotes to reassure the policeman.
+      - Because Bob's train west would not return sooner
+      - Because by then each man's destiny should be worked out
+      - Because Big Joe Brady's lease ran exactly that long
+      - Because Jimmy would come of age in twenty years
     correctIndex: 1
-    explanationZh: 文中写 Bob 的 scarfpin 是“a large diamond, oddly set”，又掏出“a handsome watch, the lids of it set with small diamonds”，皆暗示他发了财。新大衣、金手杖和钞票卷在文中均未出现，属于编造细节。
-  - id: oh-ch-04-q3
-    stem: What does Bob say about Jimmy that suggests he would remain in New York?
+    explanationZh: 他说那晚他们约定，无论境况如何、相隔多远都要来赴约——"We figured that in twenty years each of us ought to have our destiny worked out and our fortunes made"。
+  - id: oh-ch-04-q2
+    stem: What in Bob's appearance suggested that he had done well?
     options:
-      - He calls Jimmy a risk-taker who loves to travel the world.
-      - He calls Jimmy a dreamer who never finishes what he starts.
-      - He calls Jimmy a plodder who would stay rooted in New York.
-      - He calls Jimmy a schemer who chases quick fortunes in the West.
-    correctIndex: 2
-    explanationZh: Bob 说 Jimmy 是“a kind of plodder”，还曾说“You couldn't have dragged Jimmy out of New York”——一个安于纽约、不会轻易离开的踏实人。冒险家、空想家、投机者都与 Jimmy 稳重守家的性格相反，也不合文意。
-  - id: oh-ch-04-q4
-    stem: Why does the tall man arrest Bob instead of simply chatting with him as Jimmy would?
-    options:
-      - Bob has been caught trying to break into the hardware store.
-      - Bob has insulted a police officer on duty earlier that evening.
-      - Chicago police have wired that they want Bob for a chat.
-      - Bob has failed to pay for his meal at a nearby lunch counter.
-    correctIndex: 2
-    explanationZh: 假 Jimmy 说“Chicago thinks you may have dropped over our way and wires us she wants to have a chat with you”——芝加哥警方发来通缉电报，这才是逮捕的真正原因。破门、辱警、赖账都与原文无关，文中未提任何此类行为。
-  - id: oh-ch-04-q5
-    stem: What is the content of the note that Patrolman Wells hands to Bob?
-    options:
-      - Jimmy invites Bob to meet him at a different restaurant the next evening
-      - Jimmy confesses that he has secretly been working for the Chicago police
-      - Jimmy warns Bob that Chicago detectives are already waiting inside the station
-      - Jimmy explains he was the officer and could not arrest his friend
+      - The heavy overcoat with its collar turned up high
+      - The unlighted cigar he kept turning in his mouth
+      - The little white scar close by his right eyebrow
+      - A large diamond scarfpin, and a watch set with diamonds
     correctIndex: 3
-    explanationZh: 字条署名 Patrolman Wells，说明 Jimmy 就是最初巡逻的那位警察；他认出了 Bob 却不忍亲手抓捕老友，于是另请同事代劳并留下纸条说明原委。约改日见面、自称芝加哥卧底、预告侦探在局里等候，都非信中内容，也与 Jimmy 的处境不符。
+    explanationZh: 火柴一亮，照出 "a pale, square-jawed face with keen eyes, and a little white scar near his right eyebrow. His scarfpin was a large diamond, oddly set"；后来他掏出的怀表，盖上也镶着小钻。
+  - id: oh-ch-04-q3
+    stem: How did Bob describe his old friend Jimmy?
+    options:
+      - As the sharpest wit he had ever had to compete with
+      - As a man who had always meant to follow him west
+      - As the truest, stanchest chap, though a bit of a plodder
+      - As someone who had long ago forgotten their promise
+    correctIndex: 2
+    explanationZh: 他说 "I know Jimmy will meet me here if he's alive, for he always was the truest, stanchest old chap in the world"；随后又补一句 "He was a kind of plodder, though, good fellow as he was"。
+  - id: oh-ch-04-q4
+    stem: Why was Bob arrested?
+    options:
+      - Chicago had wired that it wanted a chat with him
+      - He had been found loitering by a closed shop door
+      - He had refused to give the patrolman his real name
+      - He had broken into Big Joe Brady's old restaurant
+    correctIndex: 0
+    explanationZh: 那高个子说 "You've been under arrest for ten minutes, 'Silky' Bob. Chicago thinks you may have dropped over our way and wires us she wants to have a chat with you."。
+  - id: oh-ch-04-q5
+    stem: What did the note from Patrolman Wells say?
+    options:
+      - That he had been called away on another case
+      - That he saw Bob's face by the match, and could not do it
+      - That he would come round to the station later that night
+      - That the restaurant had been pulled down five years back
+    correctIndex: 1
+    explanationZh: 字条上写着 "When you struck the match to light your cigar I saw it was the face of the man wanted in Chicago. Somehow I couldn't do it myself, so I went around and got a plainclothes man to do the job."。

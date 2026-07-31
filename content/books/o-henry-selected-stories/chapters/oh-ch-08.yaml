@@ -3,7 +3,7 @@ id: oh-ch-08
 bookId: book-o-henry
 title: The Ransom of Red Chief
 titleZh: 红酋长的赎金
-summaryZh: 两个绑匪在阿拉巴马州的小镇绑架了富翁的独生子，打算勒索两千美元赎金。然而这桩看似十拿九稳的买卖，很快就朝着他们完全没有料到的方向发展。
+summaryZh: 比尔和叙述者在阿拉巴马手上只有六百块本钱，却还差两千才够去伊利诺伊做一笔见不得光的地皮买卖。镇上那位又体面又抠门的埃比尼泽·多塞特有个十岁的独生子，满脸雀斑，头发红得扎眼——在他们看来，这是一桩十拿九稳的生意。
 sections:
   - id: oh-ch-08-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       That boy put up a fight like a welterweight cinnamon bear; but, at last, we got him down in the bottom of the buggy and drove away. We took him up to the cave and I hitched the horse in the cedar brake. After dark I drove the buggy to the little village, three miles away, where we had hired it, and walked back to the mountain.
     checkIn:
       id: oh-ch-08-s1-c1
-      stem: Why do Bill and the narrator choose to kidnap a child in a small Southern town rather than in a city?
+      stem: Why did the pair pick a town like Summit for the job?
       options:
-        - They need exactly two thousand dollars to fund a cattle ranch in Illinois.
-        - They have already scouted several large cities and found the risk too great.
-        - They believe rural parents are more devoted and the town lacks strong law enforcement.
-        - They hope the local newspaper will spread the story and pressure the father.
-      correctIndex: 2
-      explanationZh: 原文说 "Philoprogenitiveness … is strong in semi-rural communities"，他们认为小镇父母更爱孩子、更容易出赎金；同时小镇只有巡警和懒洋洋的猎犬，不会有大搜捕。选项中关于大城市的说法和报纸施压的说法都与原文相反。
+        - The Weekly Farmers' Budget had offered a big reward
+        - Country folk dote on children and the law is thin
+        - They had relatives living just outside the town
+        - The cave on the mountain belonged to one of them
+      correctIndex: 1
+      explanationZh: 他们的盘算是 "Philoprogenitiveness, says we, is strong in semi-rural communities"，又断定 Summit 拿不出比巡警、几条懒洋洋的猎犬和一两篇报上文章更厉害的追兵。那份 Weekly Farmers' Budget 正是他们预料中的追兵之一，不是悬赏的一方。
   - id: oh-ch-08-s2
     text: |-
       Bill was pasting court-plaster over the scratches and bruises on his features. There was a fire burning behind the big rock at the entrance of the cave, and the boy was watching a pot of boiling coffee, with two buzzard tail-feathers stuck in his red hair. He points a stick at me when I come up, and says:
@@ -51,14 +51,14 @@ sections:
       Every few minutes he would remember that he was a pesky redskin, and pick up his stick rifle and tiptoe to the mouth of the cave to rubber for the scouts of the hated paleface. Now and then he would let out a war-whoop that made Old Hank the Trapper shiver. That boy had Bill terrorized from the start.
     checkIn:
       id: oh-ch-08-s2-c1
-      stem: How does the kidnapped boy react to being brought to the cave?
+      stem: How did the boy take to being carried off to the cave?
       options:
-        - He treats it all as a glorious camping adventure
-        - He cries for his parents and begs to be taken home before dark
-        - He stays completely silent and refuses to speak to either man
-        - He tries secretly to escape the cave at the first opportunity
+        - He was having the time of his life playing Indian
+        - He sat silent and would not touch his supper
+        - He begged to be taken back before it got dark
+        - He waited for a chance to slip out of the cave
       correctIndex: 0
-      explanationZh: 原文说 "that boy seemed to be having the time of his life"，他自封红酋长，把 Bill 当俘虏玩印第安游戏，把 Bill 吓得够呛。文中明确表现他在享受露营，并没有哭闹、沉默或试图逃跑。
+      explanationZh: 他头发上插着两根秃鹫尾羽守着咖啡壶，喝问 "do you dare to enter the camp of Red Chief, the terror of the plains?"。叙述者的评语是 "that boy seemed to be having the time of his life"——露营的乐趣让他忘了自己才是被绑的那个。
   - id: oh-ch-08-s3
     text: |-
       “Red Chief,” says I to the kid, “would you like to go home?”
@@ -78,14 +78,14 @@ sections:
       I got the knife away from the kid and made him lie down again. But, from that moment, Bill’s spirit was broken. He laid down on his side of the bed, but he never closed an eye again in sleep as long as that boy was with us. I dozed off for a while, but along toward sunup I remembered that Red Chief had said I was to be burned at the stake at the rising of the sun. I wasn’t nervous or afraid; but I sat up and lit my pipe and leaned against a rock.
     checkIn:
       id: oh-ch-08-s3-c1
-      stem: What does the boy do to Bill at daybreak that breaks Bill's spirit?
+      stem: What woke the narrator at daybreak with Bill screaming?
       options:
-        - He throws a large stone at Bill's head and knocks him into the campfire.
-        - He sits on Bill's chest and tries to take his scalp with a kitchen knife.
-        - He puts a hot potato down Bill's back and crushes it with his foot.
-        - He hits Bill behind the ear with a rock from a sling and knocks him out.
-      correctIndex: 1
-      explanationZh: 原文描写红酋长天刚亮就骑在 Bill 胸口，一手抓着他的头发，一手拿着切咸肉的利刀“trying to take Bill's scalp”——要给他“剥头皮”。从此 Bill 彻夜不敢再睡。这一幕里他用的是那把刀，不是石头、土豆或弹弓。
+        - He set fire to the blankets at the mouth of the cave
+        - He slipped out and hid among the cedars till noon
+        - He sat on Bill's chest and went for his scalp with a knife
+        - He emptied the coffee pot over Bill while he slept
+      correctIndex: 2
+      explanationZh: 那是女人见了鬼才发得出的尖叫。红酋长正骑在 Bill 胸口，一手揪着头发，另一手握着切咸肉的利刀，"industriously and realistically trying to take Bill's scalp"，执行的正是前一晚宣判的刑罚。从那一刻起 Bill 再没合过眼。
   - id: oh-ch-08-s4
     text: |-
       “What you getting up so soon for, Sam?” asked Bill.
@@ -109,14 +109,14 @@ sections:
       “What’s he up to now?” says Bill, anxiously. “You don’t think he’ll run away, do you, Sam?”
     checkIn:
       id: oh-ch-08-s4-c1
-      stem: When Sam climbs the mountain to scout, what does he see in Summit?
+      stem: What did Sam see from the peak when he went to reconnoitre?
       options:
-        - A large armed crowd of villagers already beating the countryside for the kidnappers.
-        - A group of bloodhounds and constables heading straight toward the mountain.
-        - A peaceful landscape with a single man ploughing, and no sign of any search party.
-        - The boy's father posting reward notices on every fence and tree in town.
-      correctIndex: 2
-      explanationZh: Sam 本以为会看到村民持草叉镰刀四处搜寻，结果只看到 "one man ploughing with a dun mule"，一片宁静。他感叹 "Heaven help the wolves!"。选项中关于武装人群、猎犬队伍和悬赏告示的场景都没有出现。
+        - Constables and bloodhounds working up the cedar brake
+        - The boy's father nailing reward notices to the fences
+        - Villagers with scythes and pitchforks beating the fields
+        - One man ploughing with a dun mule, and nothing else
+      correctIndex: 3
+      explanationZh: 他本以为会看到全村人举着镰刀草叉搜山，眼前却是 "a peaceful landscape dotted with one man ploughing with a dun mule"——溪里没人打捞，路上也没有信差。于是他自语一句 "Heaven help the wolves!" 就下山吃早饭去了。
   - id: oh-ch-08-s5
     text: |-
       “No fear of it,” says I. “He don’t seem to be much of a home body. But we’ve got to fix up some plan about the ransom. There don’t seem to be much excitement around Summit on account of his disappearance; but maybe they haven’t realized yet that he’s gone. His folks may think he’s spending the night with Aunt Jane or one of the neighbours. Anyhow, he’ll be missed today. Tonight we must get a message to his father demanding the two thousand dollars for his return.”
@@ -142,14 +142,14 @@ sections:
       I made him and Bill shake hands, and then I took Bill aside and told him I was going to Poplar Cove, a little village three miles from the cave, and find out what I could about how the kidnapping had been regarded in Summit. Also, I thought it best to send a peremptory letter to old man Dorset that day, demanding the ransom and dictating how it should be paid.
     checkIn:
       id: oh-ch-08-s5-c1
-      stem: What happens after Sam tells the boy to behave or he will be sent straight home?
+      stem: What did the boy bargain for when Sam threatened to send him home?
       options:
-        - The boy runs out of the cave and tries to hike back to town on his own.
-        - The boy apologizes and begs to stay so he can play the Black Scout with Bill.
-        - The boy sullenly refuses to speak and sits alone at the cave mouth.
-        - The boy attacks Sam with the sling and knocks him to the ground.
+        - A turn with the sling before he gave it up
+        - To stay on and play the Black Scout that day
+        - To be taken back to Summit before nightfall
+        - A promise that Bill would never box his ears
       correctIndex: 1
-      explanationZh: 原文中男孩说 "I was only funning" 并答应 "I'll behave … if you won't send me home … let me play the Black Scout today." 此前他用弹弓打 Bill 的那一幕已经过去，他并不想回家，而是在争取继续玩耍的机会。
+      explanationZh: 他被摇得 "until his freckles rattled" 才嘟囔一句 "I was only funning"，接着立刻讨价还价——"I'll behave, Snake-eye, if you won't send me home, and if you'll let me play the Black Scout today."。他要的从来不是回家。
   - id: oh-ch-08-s6
     text: |-
       “You know, Sam,” says Bill, “I’ve stood by you without batting an eye in earthquakes, fire and flood—in poker games, dynamite outrages, police raids, train robberies and cyclones. I never lost my nerve yet till we kidnapped that two-legged skyrocket of a kid. He’s got me going. You won’t leave me long with him, will you, Sam?”
@@ -193,14 +193,14 @@ sections:
       “How far is it to the stockade, kid?” he asks, in a husky manner of voice.
     checkIn:
       id: oh-ch-08-s6-c1
-      stem: In the ransom letter, why does Bill want the amount reduced to fifteen hundred dollars?
+      stem: Why did Bill want the demand cut to fifteen hundred dollars?
       options:
-        - He believes no parent would pay two thousand dollars for such a wild and violent child.
-        - He thinks the father is too poor to afford the full two thousand dollars.
-        - He wants to lower the demand so the police will lose interest in the case.
-        - He figures a smaller sum will make the boy easier to control in the cave.
+        - No one would pay two thousand for that freckled wildcat
+        - He was afraid the father would go to the detectives
+        - A smaller sum would be easier to carry out of the state
+        - He thought old Dorset could not raise two thousand
       correctIndex: 0
-      explanationZh: Bill 苦苦央求降赎金，原话是 "it ain't human for anybody to give up two thousand dollars for that forty-pound chunk of freckled wildcat"。他认为没人愿意为这个小恶魔出两千，而非担心 Dorset 贫穷、警察兴趣或控制难度。
+      explanationZh: 他含着眼泪求把两千改成一千五——"it ain't human for anybody to give up two thousand dollars for that forty-pound chunk of freckled wildcat. I'm willing to take a chance at fifteen hundred dollars. You can charge the difference up to me."。差的那五百他自己认。
   - id: oh-ch-08-s7
     text: |-
       “Ninety miles,” says the Black Scout. “And you have to hump yourself to get there on time. Whoa, now!”
@@ -224,14 +224,14 @@ sections:
       “I was rode,” says Bill, “the ninety miles to the stockade, not barring an inch. Then, when the settlers was rescued, I was given oats. Sand ain’t a palatable substitute. And then, for an hour I had to try to explain to him why there was nothin’ in holes, how a road can run both ways and what makes the grass green. I tell you, Sam, a human can only stand so much. I takes him by the neck of his clothes and drags him down the mountain. On the way he kicks my legs black-and-blue from the knees down; and I’ve got to have two or three bites on my thumb and hand cauterized.
     checkIn:
       id: oh-ch-08-s7-c1
-      stem: What does Bill reveal when he comes back to the cave without the boy?
+      stem: What did Bill confess when he wabbled back into the glade?
       options:
-        - The boy escaped on his own while Bill was asleep near the cave entrance.
-        - The boy's father came with constables and took the boy away by force.
-        - The boy wandered off into the woods and Bill could not find him again.
-        - He rode the boy on his back for a pretend ninety miles and then sent him home.
-      correctIndex: 3
-      explanationZh: Bill 说自己被骑着跑了 "ninety miles to the stockade"，后来实在受不了，抓住孩子衣领拖下山，指给他回家的路再踢了他一脚。孩子并非自己逃跑、被警察带走或走失。
+        - He had lost the boy somewhere in the cedar brake
+        - The boy had slipped away while Bill was asleep
+        - He had been ridden ninety miles and sent the boy home
+        - Constables from Summit had come and carried the boy off
+      correctIndex: 2
+      explanationZh: 他一脸解脱地说 "The boy is gone. I have sent him home. All is off."，又交代自己 "was rode the ninety miles to the stockade, not barring an inch"，事后还被喂了沙子当燕麦，最后忍无可忍抓着孩子衣领把他拖下山。
   - id: oh-ch-08-s8
     text: |-
       “But he’s gone”—continues Bill—“gone home. I showed him the road to Summit and kicked him about eight feet nearer there at one kick. I’m sorry we lose the ransom; but it was either that or Bill Driscoll to the madhouse.”
@@ -259,14 +259,14 @@ sections:
       Ebenezer Dorset.
     checkIn:
       id: oh-ch-08-s8-c1
-      stem: What is Sam's scheme for safely collecting the ransom money?
+      stem: How did Sam get the answer out of the box without being caught?
       options:
-        - He disguises himself as a farmer and picks up the money in the town market.
-        - He sends Bill to collect the money at midnight from the father's front porch.
-        - He buries a box by the roadside and waits in a ditch for the father to drop money.
-        - He hides in a tree near an open field and waits for a messenger on a bicycle.
+        - He sent a boy from Poplar Cove to fetch the note
+        - He waited in the ditch beside the wheat field fence
+        - He watched the fence-post from the road on horseback
+        - He hid up in the tree until the messenger had gone
       correctIndex: 3
-      explanationZh: Sam 的计划是爬到树里藏着——"as well hidden as a tree toad"——等送信人骑自行车来放纸条。空旷田野让巡警难以接近。他并非扮农民、让 Bill 去门口取或蹲在沟里。
+      explanationZh: 那棵树四面都是空旷麦田，巡警若在附近埋伏，老远就能看见来人，所以他反其道而行——"At half-past eight I was up in that tree as well hidden as a tree toad, waiting for the messenger to arrive."。骑车少年放下纸条走后，他又足足等了一小时才下树。
   - id: oh-ch-08-s9
     text: |-
       “Great pirates of Penzance!” says I; “of all the impudent—”
@@ -292,66 +292,66 @@ sections:
       And, as dark as it was, and as fat as Bill was, and as good a runner as I am, he was a good mile and a half out of Summit before I could catch up with him.
     checkIn:
       id: oh-ch-08-s9-c1
-      stem: What does Ebenezer Dorset's reply propose instead of paying the ransom?
+      stem: How did the two men get the boy to come along home?
       options:
-        - He agrees to pay the full fifteen hundred dollars but only in small coins.
-        - He offers to take the boy back if they pay him two hundred and fifty dollars.
-        - He demands three thousand dollars compensation before he will take the boy back.
-        - He refuses to take the boy back and tells them to keep him as long as they like.
+        - They told him the game was over and marched him down
+        - They told him of a new rifle and a bear hunt at home
+        - They carried him down the mountain tied in a blanket
+        - They promised to come back for him the following week
       correctIndex: 1
-      explanationZh: 原文中 Dorset 的信提出如果他们付两百五十美元，他就接走孩子。Bill 和 Sam 照做了。文中没有出现小硬币、三千美元的价码，Dorset 也答应接收，并非拒绝。
+      explanationZh: 哄他上路的说辞是 "his father had bought a silver-mounted rifle and a pair of moccasins for him, and we were going to hunt bears the next day"。等他发现真要被留在家里，便 "started up a howl like a calliope"，像水蛭一样死死抱住 Bill 的腿。
 quiz:
   - id: oh-ch-08-q1
-    stem: What weapon does the boy use to first injure Bill during the kidnapping itself?
+    stem: What did the boy hit Bill with during the snatch itself?
     options:
-      - He hurls a rock at Bill using a leather sling.
-      - He strikes Bill with a stick he found on the road.
-      - He throws a coconut-sized stone at Bill's head.
-      - He throws a piece of brick that hits Bill in the eye.
-    correctIndex: 3
-    explanationZh: 绑架当场，男孩用一块砖头击中 Bill 的眼睛，Bill 说 "That will cost the old man an extra five hundred dollars." 弹弓打耳后、木棍指人和椰子大的石头都是后来在山洞里发生的，不在这一段。
+      - A piece of brick that caught him in the eye
+      - A rock from a sling behind his left ear
+      - A red-hot potato dropped down his back
+      - A case-knife drawn across his scalp
+    correctIndex: 0
+    explanationZh: 他们在街上问他要不要糖果和兜风，得到的回答是 "The boy catches Bill neatly in the eye with a piece of brick."，Bill 当场加价五百。弹弓、热土豆和剥头皮都是后来在山洞里记下的账。
   - id: oh-ch-08-q2
-    stem: What nickname does the boy give Sam during their Indian game?
+    stem: What name did the boy give the narrator?
     options:
       - Old Hank, the Trapper
+      - The Black Scout
       - Snake-eye, the Spy
-      - Red Chief, terror of the plains
-      - Black Scout of the stockade
-    correctIndex: 1
-    explanationZh: 男孩给 Sam 取名 "Snake-eye, the Spy"，宣布天亮要烧他。Old Hank 是 Bill 的角色，Red Chief 是男孩自称，Black Scout 是他后来想扮演的新角色。
-  - id: oh-ch-08-q3
-    stem: After Bill boxes the boy's ears for the hot-potato incident, what does the boy say?
-    options:
-      - He apologizes and promises to behave for the rest of the day.
-      - He runs to the cave entrance and threatens to fetch his father.
-      - He warns that no one hits Red Chief without paying for it.
-      - He throws another rock and knocks Bill into the dishwater pan.
+      - Red Chief of the plains
     correctIndex: 2
-    explanationZh: 原文中男孩说 "No man ever yet struck the Red Chief but what he got paid for it." 他表达的是报复的威胁。道歉是后来对 Sam 说的；弹弓打耳后是另一次事件，不是此处回应。
+    explanationZh: 他一见面就 "immediately christened me Snake-eye, the Spy"，还宣布等勇士们从征途回来，要在日出时把他架在柱子上烤了。Old Hank the Trapper 是 Bill 领到的角色，Red Chief 是他自封的，Black Scout 是他第二天想换的新玩法。
+  - id: oh-ch-08-q3
+    stem: What did the boy say after Bill boxed his ears?
+    options:
+      - That no man ever struck Red Chief without paying for it
+      - That he would tell his father the moment he got home
+      - That he would never speak to Old Hank again
+      - That he was sorry and would leave the potatoes alone
+    correctIndex: 0
+    explanationZh: Bill 的说法是 "He put a red-hot boiled potato down my back, and then mashed it with his foot; and I boxed his ears."，孩子举着半个椰子大的石头回敬一句 "No man ever yet struck the Red Chief but what he got paid for it. You better beware!"。道歉是后来对 Snake-eye 说的。
   - id: oh-ch-08-q4
-    stem: How did the kidnappers sign their ransom letter?
+    stem: What did Bill say when he came round after the sling-stone?
     options:
-      - Red Chief and the Black Scout
-      - Two Desperate Men
-      - Bill Driscoll and Sam
-      - Snake-eye and Old Hank
-    correctIndex: 1
-    explanationZh: 勒索信的落款是“TWO DESPERATE MEN”——两个走投无路的人。这个自称与他们被一个十岁男孩折腾得狼狈不堪的处境形成绝妙反差。信上没有署真名，也没有用游戏里的诨名。
+      - Bill asked Sam to fetch a doctor from Poplar Cove
+      - Bill said he would go home and give up the scheme
+      - Bill asked Sam who his favourite Biblical character was
+      - Bill demanded that the ransom be raised to three thousand
+    correctIndex: 2
+    explanationZh: 那块鸡蛋大的石头正中他左耳后，他一头栽进洗碗水的锅里。Sam 浇了半小时凉水，他坐起来摸着耳后问 "Sam, do you know who my favourite Biblical character is?"，自答 "King Herod"——那位下令屠婴的王。
   - id: oh-ch-08-q5
-    stem: What two injuries does Bill suffer on the way down the mountain after sending the boy home?
+    stem: How was the ransom letter signed?
     options:
-      - His legs are kicked black and blue, and the boy bites his thumb and hand.
-      - He gets a black eye and a deep cut from the boy's case-knife.
-      - He receives a bruised rib and burns from the campfire.
-      - He gets a concussion from a rock and a hot potato burn on his back.
-    correctIndex: 0
-    explanationZh: Bill 说下山路途中孩子把他的腿从膝盖往下踢得青紫，还咬了他的拇指和手，需要烧灼。刀伤、烫伤、弹弓和肋骨伤都不是这一段描述的。
+      - It was signed Red Chief and the Black Scout
+      - It was signed Two Desperate Men
+      - It was signed Bill and Sam
+      - It was signed Snake-eye and Old Hank
+    correctIndex: 1
+    explanationZh: 信末的落款是 "Two Desperate Men"——两个走投无路的人。这个自称，和他们被一个十岁孩子折腾得焦头烂额的实情正好对照；信上既没有用真名，也没有用游戏里的诨号。
   - id: oh-ch-08-q6
-    stem: How long does old Dorset think he can hold the boy after taking him back?
+    stem: What did old Dorset propose in his reply?
     options:
-      - About ten minutes
-      - About half an hour
-      - About five minutes
-      - About an hour
-    correctIndex: 0
-    explanationZh: Dorset 说自己体力不如从前，但觉得能撑 "ten minutes"。Bill 说够了，十分钟他要跑过三个州到加拿大边境。半小时、五分钟和一小时都不对。
+      - That he would pay the fifteen hundred in small bills only
+      - That he would give them three days to bring the boy
+      - That he refused to have the boy back on any terms
+      - That they pay him two hundred and fifty to take the boy
+    correctIndex: 3
+    explanationZh: 老 Dorset 的回信不慌不忙——"You bring Johnny home and pay me two hundred and fifty dollars in cash, and I agree to take him off your hands."，还提醒他们最好夜里来，因为邻居都以为孩子是丢了。绑匪反倒成了掏钱的一方。

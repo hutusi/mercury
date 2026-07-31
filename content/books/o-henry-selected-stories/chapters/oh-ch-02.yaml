@@ -3,7 +3,7 @@ id: oh-ch-02
 bookId: book-o-henry
 title: The Last Leaf
 titleZh: 最后一片叶子
-summaryZh: 在格林威治村的一间小阁楼里，年轻的琼西染上肺炎，万念俱灰，把自己的性命和窗外的某样东西联系在了一起。室友苏心急如焚，楼下还住着脾气暴躁的老画家贝尔曼。一个风雨交加的夜晚过后，事情悄悄起了变化。
+summaryZh: 十一月里，一位被医生称作"肺炎"的冷面客人在村子里挨家挨户地走。他伸出冰冷的手指一碰，阁楼上的琼西就倒下了。
 sections:
   - id: oh-ch-02-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       “Paint?—bosh! Has she anything on her mind worth thinking about twice—a man, for instance?”
     checkIn:
       id: oh-ch-02-s1-c1
-      stem: Why did artists flock to Greenwich Village at the beginning of the story?
+      stem: What did the doctor say Johnsy's one chance depended on?
       options:
-        - A famous art school had just opened there
-        - The city paid artists to settle the district
-        - They wanted north light, old gables, and low rents
-        - The galleries there bought pictures at high prices
-      correctIndex: 2
-      explanationZh: 原文说艺术家们很快“prowling”到格林威治村，“hunting for north windows and eighteenth-century gables and Dutch attics and low rents”——他们要的是北向的光线、老式阁楼和低廉的房租。收账人会在街上迷路只是艺术家发现这条街“价值”的玩笑，说的并不是他们搬来的原因。
+        - On the fever breaking before the end of this week
+        - On her wanting to live — medicine could do no more
+        - On her being moved to a warmer room downstairs
+        - On finding a man she cared enough about to marry
+      correctIndex: 1
+      explanationZh: 他说她只有十分之一的机会，"And that chance is for her to want to live"；病人若一心排队等着入殓师，"makes the entire pharmacopeia look silly"。
   - id: oh-ch-02-s2
     text: |-
       “A man?” said Sue, with a jew’sharp twang in her voice. “Is a man worth—but, no, doctor; there is nothing of the kind.”
@@ -63,14 +63,14 @@ sections:
       “Leaves. On the ivy vine. When the last one falls I must go, too. I’ve known that for three days. Didn’t the doctor tell you?”
     checkIn:
       id: oh-ch-02-s2-c1
-      stem: What was Johnsy doing when Sue rushed to her bedside after hearing a low repeated sound?
+      stem: What was Johnsy counting as she looked out of the window?
       options:
-        - She was counting the carriages she imagined would be in her funeral.
-        - She was counting the minutes until the doctor returned for his visit.
-        - She was counting the drops of rain that struck the small Dutch windowpanes.
-        - She was counting the ivy leaves that remained on the vine outside.
+        - The carriages she saw in her own funeral procession
+        - The panes in the small Dutch window opposite
+        - The days the doctor had said she still had to live
+        - The leaves left on the old ivy vine outside
       correctIndex: 3
-      explanationZh: 原文明确写 Johnsy 睁大眼睛望向窗外，倒着数数——从十二数到五。她告诉 Sue 她在数常春藤上的叶子，认为最后一片落下时自己也会死去。说她在数葬礼马车是医生比喻的误读。
+      explanationZh: 她倒着数——十二、十一、十……问起来才知道数的是叶子："Leaves. On the ivy vine. When the last one falls I must go, too."。三天前还有近百片，如今只剩五片。
   - id: oh-ch-02-s3
     text: |-
       “Oh, I never heard of such nonsense,” complained Sue, with magnificent scorn. “What have old ivy leaves to do with your getting well? And you used to love that vine so, you naughty girl. Don’t be a goosey. Why, the doctor told me this morning that your chances for getting well real soon were—let’s see exactly what he said—he said the chances were ten to one! Why, that’s almost as good a chance as we have in New York when we ride on the street cars or walk past a new building. Try to take some broth now, and let Sudie go back to her drawing, so she can sell the editor man with it, and buy port wine for her sick child, and pork chops for her greedy self.”
@@ -90,14 +90,14 @@ sections:
       Old Behrman was a painter who lived on the ground floor beneath them. He was past sixty and had a Michelangelo’s Moses beard curling down from the head of a satyr along the body of an imp. Behrman was a failure in art. Forty years he had wielded the brush without getting near enough to touch the hem of his Mistress’s robe. He had been always about to paint a masterpiece, but had never yet begun it. For several years he had painted nothing except now and then a daub in the line of commerce or advertising. He earned a little by serving as a model to those young artists in the colony who could not pay the price of a professional. He drank gin to excess, and still talked of his coming masterpiece. For the rest he was a fierce little old man, who scoffed terribly at softness in anyone, and who regarded himself as especial mastiff-in-waiting to protect the two young artists in the studio above.
     checkIn:
       id: oh-ch-02-s3-c1
-      stem: What does Sue ask Johnsy to do so that she can finish her pen-and-ink drawings?
+      stem: What did Sue ask Johnsy to promise?
       options:
-        - Move to the other room so Sue can draw without being distracted.
-        - Keep her eyes closed and not look out the window until Sue has finished working.
-        - Promise to drink the broth before Sue goes back to her drawing board.
-        - Call Behrman upstairs to pose as the old hermit miner for Sue.
-      correctIndex: 1
-      explanationZh: Sue 要 Johnsy 答应闭上眼睛、别看窗外，直到她画完手头的钢笔插图——她明天必须交稿，又需要光线，不肯拉下窗帘。搬去另一个房间、先把汤喝掉或叫 Behrman 上楼当模特，都不是她此刻提出的条件。
+        - To keep her eyes shut until the drawings were done
+        - To drink the whole bowl of broth before it got dark
+        - To let the window shade stay down all day
+        - To stop talking about the Bay of Naples
+      correctIndex: 0
+      explanationZh: 她说 "will you promise me to keep your eyes closed, and not look out the window until I am done working?"——稿子明早就得交，她又需要光线，不肯把窗帘放下来。
   - id: oh-ch-02-s4
     text: |-
       Sue found Behrman smelling strongly of juniper berries in his dimly lighted den below. In one corner was a blank canvas on an easel that had been waiting there for twenty-five years to receive the first line of the masterpiece. She told him of Johnsy’s fancy, and how she feared she would, indeed, light and fragile as a leaf herself, float away when her slight hold upon the world grew weaker.
@@ -121,14 +121,14 @@ sections:
       But, lo! after the beating rain and fierce gusts of wind that had endured through the livelong night, there yet stood out against the brick wall one ivy leaf. It was the last on the vine. Still dark green near its stem, but with its serrated edges tinted with the yellow of dissolution and decay, it hung bravely from a branch some twenty feet above the ground.
     checkIn:
       id: oh-ch-02-s4-c1
-      stem: How does Behrman react when Sue tells him about Johnsy's fancy?
+      stem: How did old Behrman answer when Sue told him of Johnsy's fancy?
       options:
-        - He shouts contempt and derision at the idea of dying because leaves drop off a vine.
-        - He agrees to pose for the hermit miner but refuses to discuss Johnsy.
-        - He weeps silently and then immediately climbs out into the rainy night.
-        - He laughs and says Johnsy will recover as soon as the last leaf falls.
-      correctIndex: 0
-      explanationZh: 原文写 Behrman 眼睛发红、泪水直流，却大声嘲讽这种“因为叶子掉落就要死”的愚蠢念头。他嘴上骂个不停，最后仍跟着 Sue 上楼当模特，还隔着窗户忧心地望了那株常春藤许久。他并没有拒绝上楼，更没有赞同 Johnsy 的想法。
+        - He said he would come only if she paid him the full price first
+        - He wept, and asked to be taken up to see her at once
+        - He roared his contempt, then said he had been ready all along
+        - He said his masterpiece must be finished before he posed
+      correctIndex: 2
+      explanationZh: 他红着眼睛破口大骂这种蠢念头——"Is dere people in de world mit der foolishness to die because leafs dey drop off from a confounded vine?"——转脸又嚷 "Who said I will not bose? … For half an hour I haf peen trying to say dot I am ready to bose"。
   - id: oh-ch-02-s5
     text: |-
       “It is the last one,” said Johnsy. “I thought it would surely fall during the night. I heard the wind. It will fall today, and I shall die at the same time.”
@@ -162,48 +162,48 @@ sections:
       “I have something to tell you, white mouse,” she said. “Mr. Behrman died of pneumonia today in the hospital. He was ill only two days. The janitor found him on the morning of the first day in his room downstairs helpless with pain. His shoes and clothing were wet through and icy cold. They couldn’t imagine where he had been on such a dreadful night. And then they found a lantern, still lighted, and a ladder that had been dragged from its place, and some scattered brushes, and a palette with green and yellow colors mixed on it, and—look out the window, dear, at the last ivy leaf on the wall. Didn’t you wonder why it never fluttered or moved when the wind blew? Ah, darling, it’s Behrman’s masterpiece—he painted it there the night that the last leaf fell.”
     checkIn:
       id: oh-ch-02-s5-c1
-      stem: What does Johnsy say after seeing the last ivy leaf still clinging to the vine for a second morning?
+      stem: What did Johnsy say when the leaf was still there a second morning?
       options:
-        - She says it is a sin to want to die and asks for broth and a hand-mirror.
-        - She says the leaf will surely fall today and she will die at the same time.
-        - She says she no longer wishes to paint the Bay of Naples and wants to sleep.
-        - She says she wants to go sailing down like one of those poor tired leaves.
-      correctIndex: 0
-      explanationZh: 当 Johnsy 看到叶子第二早还在，她说自己是个坏女孩，想死是一种罪，随后要汤和一面小手镜——她重新有了求生意志。说叶子今天必落的是她前一天的执念，此刻已转变。
+        - That the wind must have died away in the night
+        - That it is a sin to want to die, and she had been bad
+        - That she would watch it until it fell, however long
+        - That someone must have tied the leaf onto the branch there
+      correctIndex: 1
+      explanationZh: 她说 "Something has made that last leaf stay there to show me how wicked I was. It is a sin to want to die"，随即要汤、要加了葡萄酒的牛奶，还要一面小镜子。
 quiz:
   - id: oh-ch-02-q1
-    stem: What reason does the doctor give for Johnsy's one-in-ten chance of recovery?
+    stem: What stood on the easel in old Behrman's room?
     options:
-      - Her blood has been thinned by too many years of California zephyrs.
-      - She has been counting the carriages in her own funeral procession.
-      - She refused to take any medicine until the fever had completely broken.
-      - She has made up her mind that she is not going to get well.
+      - A half-finished portrait of the two young artists
+      - A signboard he had been painting for a shop on Sixth Avenue
+      - The hermit-miner picture that Sue had begun for him
+      - A blank canvas, waiting twenty-five years for its first line
     correctIndex: 3
-    explanationZh: 医生说 Johnsy 只有一成把握，关键在于她自己：“She has made up her mind that she's not going to get well.” 病人若一心求死，药物的效力就要大打折扣。肺炎本身的凶险和天气都不是医生给出的那个理由。
+    explanationZh: 屋角画架上是 "a blank canvas… that had been waiting there for twenty-five years to receive the first line of the masterpiece"——四十年来他一直"就要"动笔画那幅杰作，却始终没有开头。
   - id: oh-ch-02-q2
-    stem: Why does Behrman fail to achieve his dream of painting a masterpiece?
+    stem: What did the doctor tell Sue when he came the next afternoon?
     options:
-      - He has sold his best canvases to advertisers for far less than their worth.
-      - He has been always about to paint one but has never actually begun it.
-      - He has spent forty years painting nothing but commercial daubs full-time.
-      - He has lost his eyesight and can no longer distinguish green from yellow.
-    correctIndex: 1
-    explanationZh: 原文说 Behrman 拿了四十年画笔，却始终“没碰到艺术女神的裙边”——“He had been always about to paint a masterpiece, but had never yet begun it.” 他偶尔画点商业涂鸦、靠给年轻画家当模特挣小钱，但那是零工而非全职；卖掉杰作或失明都不是文中的说法。
-  - id: oh-ch-02-q3
-    stem: What evidence leads Sue to realize that Behrman painted the last leaf on the wall?
-    options:
-      - A signed sketch of the leaf is found tucked under his pillow in the morning
-      - Behrman's fingers are stained with green and yellow paint when the janitor finds him
-      - A lantern, a ladder, and a palette with green and yellow paint
-      - A neighbor reports seeing Behrman climbing the wall with a brush in his hand
-    correctIndex: 2
-    explanationZh: Sue 告诉 Johnsy，看门人发现了还亮着的灯笼、被拖离原位的梯子、散落的画笔，以及调了绿黄两色的调色板——她反问 Johnsy 为何那片叶子在风中从不颤动或移动，由此揭示那片叶子是 Behrman 在最后一片真叶落下的暴风雨之夜画上去的杰作。说手指沾有颜料看似合理但原文未提。
-  - id: oh-ch-02-q4
-    stem: What causes Behrman to contract pneumonia?
-    options:
-      - He goes out into the freezing rain and snow to paint the leaf on the wall.
-      - He sits for hours as Sue's model in the cold and drafty downstairs room.
-      - He drinks gin to excess and collapses in the wet street on his way home.
-      - He climbs the ladder to rescue a stray cat during the fierce windstorm.
+      - That Johnsy's chances were even, and good nursing would win
+      - That Johnsy must be moved down to the hospital before nightfall
+      - That the fever had turned and she would be well by morning
+      - That there was nothing more that medicine could do for her
     correctIndex: 0
-    explanationZh: 原文写 Behrman 的鞋子和衣服湿透冰冷，无人能想象他在那样可怕的夜晚去了哪里，加上发现的灯笼、梯子和调色板，可以推断他在暴风雨之夜出去画那片叶子。他在屋里当模特不会导致衣物湿透。
+    explanationZh: 他握着苏发抖的手说 "Even chances… With good nursing you'll win"；接着才提起楼下还有一个病人——"Behrman, his name is—some kind of an artist, I believe"。
+  - id: oh-ch-02-q3
+    stem: What did the janitor find in Behrman's room that morning?
+    options:
+      - A letter addressed to the two girls upstairs
+      - The green window-shade from the studio above
+      - A lighted lantern, a moved ladder, scattered brushes
+      - The palette he had thrown out into the wet yard below
+    correctIndex: 2
+    explanationZh: 他的鞋和衣服湿透冰凉，谁也猜不出那样的夜里他去了哪儿——直到人们找到 "a lantern, still lighted, and a ladder that had been dragged from its place, and some scattered brushes, and a palette with green and yellow colors mixed on it"。
+  - id: oh-ch-02-q4
+    stem: What gave the painted leaf away in the end?
+    options:
+      - Its colour had run in the rain that beat all night
+      - It never fluttered or moved when the wind blew
+      - It hung the wrong way round upon the branch
+      - It was larger than any other leaf on the whole vine
+    correctIndex: 1
+    explanationZh: 苏说完那番话，让她再看看墙上那片叶子——"Didn't you wonder why it never fluttered or moved when the wind blew? Ah, darling, it's Behrman's masterpiece—he painted it there the night that the last leaf fell." 风吹不动，正是它的破绽。

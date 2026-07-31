@@ -3,7 +3,7 @@ id: oh-ch-03
 bookId: book-o-henry
 title: The Cop and the Anthem
 titleZh: 警察与赞美诗
-summaryZh: 冬天逼近，流浪汉索皮为自己的过冬去处定下了一个特别的计划，并接连使出各种小手段去实现它。这一晚的结局，是欧·亨利笔下最著名的讽刺之一。
+summaryZh: 一片枯叶落在索皮膝上——那是霜神递来的名片。麦迪逊广场的长椅上，他不安地挪了挪身子：冬天要到了。
 sections:
   - id: oh-ch-03-s1
     text: |-
@@ -18,14 +18,14 @@ sections:
       For years the hospitable Blackwell’s had been his winter quarters. Just as his more fortunate fellow New Yorkers had bought their tickets to Palm Beach and the Riviera each winter, so Soapy had made his humble arrangements for his annual hegira to the Island. And now the time was come. On the previous night three Sabbath newspapers, distributed beneath his coat, about his ankles and over his lap, had failed to repulse the cold as he slept on his bench near the spurting fountain in the ancient square. So the Island loomed big and timely in Soapy’s mind. He scorned the provisions made in the name of charity for the city’s dependents. In Soapy’s opinion the Law was more benign than Philanthropy. There was an endless round of institutions, municipal and eleemosynary, on which he might set out and receive lodging and food accordant with the simple life. But to one of Soapy’s proud spirit the gifts of charity are encumbered. If not in coin you must pay in humiliation of spirit for every benefit received at the hands of philanthropy. As Caesar had his Brutus, every bed of charity must have its toll of a bath, every loaf of bread its compensation of a private and personal inquisition. Wherefore it is better to be a guest of the law, which though conducted by rules, does not meddle unduly with a gentleman’s private affairs.
     checkIn:
       id: oh-ch-03-s1-c1
-      stem: Why does Soapy prefer the Island over charitable institutions for the winter?
+      stem: What were Soapy's ambitions for the winter?
       options:
-        - He finds charitable institutions overcrowded and dirty compared to the Island.
-        - He wants to avoid charity because it forces him to do hard manual labor.
-        - He believes charity humiliates the recipient while jail leaves a gentleman's dignity intact.
-        - He thinks jail food and lodging are far superior to what charity provides.
-      correctIndex: 2
-      explanationZh: 原文明确指出索皮认为慈善的馈赠让人承受精神羞辱，而法律虽依规则行事，却不过度干涉绅士的私事，因此他宁愿做法律的客人。选项中说他觉得慈善机构拥挤肮脏或劳动繁重，均属无中生有。
+        - A Mediterranean cruise, if he could manage the fare
+        - A cot in whichever charity would take him in
+        - A room over a shop, paid for out of honest work
+        - Three months of board and bed on the Island
+      correctIndex: 3
+      explanationZh: 他要的不是地中海航线，也不是维苏威湾的暖阳——"Three months on the Island was what his soul craved. Three months of assured board and bed and congenial company, safe from Boreas and bluecoats"。
   - id: oh-ch-03-s2
     text: |-
       Soapy, having decided to go to the Island, at once set about accomplishing his desire. There were many easy ways of doing this. The pleasantest was to dine luxuriously at some expensive restaurant; and then, after declaring insolvency, be handed over quietly and without uproar to a policeman. An accommodating magistrate would do the rest.
@@ -45,14 +45,14 @@ sections:
       “Don’t you figure out that I might have had something to do with it?” said Soapy, not without sarcasm, but friendly, as one greets good fortune.
     checkIn:
       id: oh-ch-03-s2-c1
-      stem: Why does Soapy fail to get arrested at the glittering café on Broadway?
+      stem: Why did Soapy never reach a table in the glittering café?
       options:
-        - The waiters made him wash dishes instead
-        - The policeman on the corner knew him
-        - The café had closed early for the winter
-        - The head waiter turned him away at the door
-      correctIndex: 3
-      explanationZh: 索皮刚踏进门，领班的目光就落在他磨破的裤子和寒酸的鞋上，“Strong and ready hands turned him about”——还没坐下就被无声地请了出去，连点烤鸭的机会都没有。他既没吃上饭，也就谈不上赖账被捕；洗盘子和警察都没有出场。
+        - The head waiter had thrown him out only the week before
+        - The head waiter's eye fell on his trousers and shoes
+        - He lost his nerve as he read the price of the wine
+        - A policeman at the door recognised him at once
+      correctIndex: 1
+      explanationZh: 桌面以上的那半个他本来不会引人怀疑，可他刚跨进门，"the head waiter's eye fell upon his frayed trousers and decadent shoes"——两只有力的手一转，把他悄没声地送回了人行道。
   - id: oh-ch-03-s3
     text: |-
       The policeman’s mind refused to accept Soapy even as a clue. Men who smash windows do not remain to parley with the law’s minions. They take to their heels. The policeman saw a man halfway down the block running to catch a car. With drawn club he joined in the pursuit. Soapy, with disgust in his heart, loafed along, twice unsuccessful.
@@ -72,14 +72,14 @@ sections:
       Soapy straightened the lady missionary’s ready-made tie, dragged his shrinking cuffs into the open, set his hat at a killing cant and sidled toward the young woman. He made eyes at her, was taken with sudden coughs and “hems,” smiled, smirked and went brazenly through the impudent and contemptible litany of the “masher.” With half an eye Soapy saw that the policeman was watching him fixedly. The young woman moved away a few steps, and again bestowed her absorbed attention upon the shaving mugs. Soapy followed, boldly stepping to her side, raised his hat and said:
     checkIn:
       id: oh-ch-03-s3-c1
-      stem: How do the waiters at the cheap restaurant respond when Soapy says he cannot pay?
+      stem: What did the two waiters do when Soapy said he had no money?
       options:
-        - They call the police immediately and have him arrested on the spot.
-        - They throw him out onto the pavement and no officer intervenes.
-        - They make him wash dishes to pay for the meal he consumed.
-        - They beat him unconscious and leave him in the back alley.
-      correctIndex: 1
-      explanationZh: 文中写两个侍者把索皮摔在人行道上，他起身拍去灰尘，附近药店前的警察只是笑了笑便走开了，逮捕成了泡影。选项中说他们报警或让他洗碗，都与原文矛盾。
+        - They pitched him onto the pavement, and no cop came
+        - They sent for the policeman standing by the drug store
+        - They set him to washing dishes until the debt was paid
+        - They let him go, on his word that he would return
+      correctIndex: 0
+      explanationZh: 他吃完牛排、烙饼、甜甜圈和派才交底，还催侍者快去叫警察；结果 "Neatly upon his left ear on the callous pavement two waiters pitched Soapy"，两个门面之外的警察只是笑了笑，走开了。
   - id: oh-ch-03-s4
     text: |-
       “Ah there, Bedelia! Don’t you want to come and play in my yard?”
@@ -109,14 +109,14 @@ sections:
       The umbrella owner slowed his steps. Soapy did likewise, with a presentiment that luck would again run against him. The policeman looked at the two curiously.
     checkIn:
       id: oh-ch-03-s4-c1
-      stem: Why does the policeman ignore Soapy's drunken racket outside the theatre?
+      stem: Why did the policeman outside the theatre let Soapy howl?
       options:
-        - He assumes Soapy is a wealthy gentleman who has had too much to drink.
-        - He assumes Soapy is a local actor rehearsing a street performance.
-        - He assumes Soapy is a Yale student celebrating a sports victory.
-        - He assumes Soapy is a mentally ill man harmless to the public.
+        - He thought the man was too drunk to be worth the trouble
+        - He had orders not to make arrests in that district at night
+        - He took him for a Yale lad celebrating a win over Hartford
+        - He was too busy helping a lady across the street to notice
       correctIndex: 2
-      explanationZh: 警察转身对市民说这是耶鲁学生庆祝比赛胜利的喧闹，奉命不予理会。选项中说他把索皮当成富绅或演员，均无原文依据。
+      explanationZh: 他把警棍一转，背过身去对旁边的市民说："'Tis one of them Yale lads celebratin' the goose egg they give to the Hartford College. Noisy; but no harm. We've instructions to lave them be." 越是想被抓，越是没人抓他。
   - id: oh-ch-03-s5
     text: |-
       “Of course,” said the umbrella man—“that is—well, you know how these mistakes occur—I—if it’s your umbrella I hope you’ll excuse me—I picked it up this morning in a restaurant—If you recognise it as yours, why—I hope you’ll—”
@@ -148,57 +148,57 @@ sections:
       “Three months on the Island,” said the Magistrate in the Police Court the next morning.
     checkIn:
       id: oh-ch-03-s5-c1
-      stem: What triggers Soapy's spiritual transformation outside the old church?
+      stem: What did the anthem bring back to Soapy?
       options:
-        - The organ music reminds him of his earlier life and inspires him to reform.
-        - The quiet street makes him realize he should return to Madison Square immediately.
-        - The cold wind finally convinces him that the Island is not worth pursuing.
-        - A passing stranger offers him a job and he resolves to accept it.
-      correctIndex: 0
-      explanationZh: 教堂传出的赞美诗让索皮想起曾经有母亲、玫瑰、抱负与朋友的岁月，他猛然惊觉自己已堕入深渊，决心重新做人。选项中说他因寒风放弃入狱，或因陌生人提供工作而改变，均与原文不符。
+        - The winters he had already spent on the Island
+        - The face of the lady missionary who gave him the tie
+        - The name of the fur importer who had once offered him work
+        - The days of mothers and roses and ambitions and friends
+      correctIndex: 3
+      explanationZh: 那支曲子他从前熟得很——"in the days when his life contained such things as mothers and roses and ambitions and friends and immaculate thoughts and collars"，一时间把他钉在了铁栅栏上。
 quiz:
   - id: oh-ch-03-q1
-    stem: What does Soapy plan to order at the luxurious café on Broadway?
+    stem: Why did Soapy scorn the city's charities?
     options:
-      - A grilled salmon steak, a bottle of Burgundy, and some Brie.
-      - A roast beef platter, a bottle of claret, and some Roquefort.
-      - A bowl of turtle soup, a bottle of champagne, and some Stilton.
-      - A roasted mallard duck, a bottle of Chablis, and some Camembert.
-    correctIndex: 3
-    explanationZh: 索皮心中盘算着烤野鸭配夏布利白葡萄酒，再来点卡门贝奶酪，觉得这顿饭足以让他心满意足地踏上前往岛上过冬的旅程。其余选项中的菜品搭配在原文中均未提及。
-  - id: oh-ch-03-q2
-    stem: What happens when Soapy tries to play the "masher" near the young woman at the shop window?
-    options:
-      - She screams for help and the nearby policeman immediately arrests him.
-      - She turns out to be willing to join him and asks him to buy her a drink.
-      - She ignores him completely and walks away without saying a word.
-      - She recognizes him as a vagrant and calls the policeman over herself.
-    correctIndex: 1
-    explanationZh: 索皮本想调戏女子以被警察逮捕，没料到对方反而热情回应，说只要他请喝一杯就愿意跟他走，害他只能甩掉她继续逃走。选项中说女子尖叫报警或不理他，均与文中她那句"Sure, Mike"的欢快回答矛盾。
-  - id: oh-ch-03-q3
-    stem: How does the umbrella owner react when Soapy refuses to return the umbrella?
-    options:
-      - He immediately calls the nearby policeman to arrest Soapy.
-      - He grabs the umbrella back forcibly and walks away in anger.
-      - He backs down and claims it was all a misunderstanding.
-      - He offers Soapy money to leave the umbrella and go peacefully.
-    correctIndex: 2
-    explanationZh: 伞的主人见索皮态度强硬，便退缩说这只是一场误会，称伞是当天早上在餐厅捡到的。选项中说他强行夺回雨伞或报警抓人，均与原文不符。
-  - id: oh-ch-03-q4
-    stem: Where is Soapy standing when the anthem from the old church moves him to reform?
-    options:
-      - Against the iron fence outside an old, quaint, gabled church.
-      - On his bench beside the spurting fountain in Madison Square.
-      - On the sidewalk in front of a brilliantly lit theatre entrance.
-      - In a street damaged by improvements on the city's east side.
+      - Every bed of charity exacts a bath, every loaf an inquisition
+      - The charities of the city had all closed down for the winter
+      - He had been turned away from every one of them already
+      - The law fed a man better than any philanthropy could
     correctIndex: 0
-    explanationZh: 索皮走到一座古老而别致的教堂前，被铁栅栏缠住脚步，紫色窗玻璃透出柔光，管风琴奏出的赞美诗让他驻足沉思。选项中说他在喷泉长椅或剧院门口，均非原文中这一转折发生的地点。
-  - id: oh-ch-03-q5
-    stem: For what reason is Soapy finally arrested outside the church?
+    explanationZh: 他说慈善的施舍要用精神上的屈辱去换——"every bed of charity must have its toll of a bath, every loaf of bread its compensation of a private and personal inquisition"；法律虽有规矩，好歹不打听绅士的私事。
+  - id: oh-ch-03-q2
+    stem: What did Soapy do at the shop window on Sixth Avenue?
     options:
-      - The officer catches him carrying a stolen umbrella he threw away.
-      - The officer regards him as a loiterer with no lawful business there.
-      - The officer overhears him shouting drunken gibberish on the street.
-      - The officer finds him breaking a church window with a cobblestone.
+      - He pressed his face to the glass until the owner came out
+      - He carried off a tray of goods in full view of the street
+      - He threw a cobblestone through it and waited, smiling
+      - He shouted to the crowd that he had broken the glass
+    correctIndex: 2
+    explanationZh: 他捡起一块铺路石砸穿玻璃，然后袖着手站着不动，冲着赶来的铜纽扣笑——可警察认定砸窗的人都会撒腿就跑，压根没把他当线索。
+  - id: oh-ch-03-q3
+    stem: What happened when Soapy played the masher to the young woman?
+    options:
+      - She screamed, and the policeman came at a run
+      - She took his arm gladly, if he would stand her a drink
+      - She walked off and complained to the officer herself
+      - She looked at him once and went on studying the window
     correctIndex: 1
-    explanationZh: 警察问他在这做什么，索皮说没做什么，警察便以游荡为由逮捕了他，次日法官判处三个月监禁。选项中说他因偷伞或醉酒喧闹被捕，这些之前的尝试均告失败，真正导致入狱的只是教堂前被认定为游荡者。
+    explanationZh: 他把领带扯正、帽子歪戴，摆足了登徒子的架势；姑娘却抓住他袖子，欢欢喜喜地说 "Sure, Mike, if you'll blow me to a pail of suds. I'd have spoke to you sooner, but the cop was watching."。
+  - id: oh-ch-03-q4
+    stem: How did the man in the cigar store answer when Soapy dared him to call a cop?
+    options:
+      - He seized the umbrella back and made off with it at once
+      - He said he would rather buy Soapy a new one
+      - He shouted for the officer standing on the corner
+      - He backed away, saying he had picked it up himself
+    correctIndex: 3
+    explanationZh: 那人支支吾吾："you know how these mistakes occur—I—if it's your umbrella I hope you'll excuse me—I picked it up this morning in a restaurant"；索皮恶狠狠地说当然是我的，他便退走了。
+  - id: oh-ch-03-q5
+    stem: What did the policeman finally arrest Soapy for?
+    options:
+      - For loitering, when he answered that he was doing nothing
+      - For the umbrella he had thrown into the excavation
+      - For the shop window that he had broken earlier that evening
+      - For disturbing the peace outside the lighted theatre
+    correctIndex: 0
+    explanationZh: 正当他下决心重新做人，一只手按上了他的胳膊。警察问 "What are you doin' here?"，他答 "Nothin'"——"Then come along"。第二天法庭上宣判的正是 "Three months on the Island"。

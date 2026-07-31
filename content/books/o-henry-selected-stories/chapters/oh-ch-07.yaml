@@ -2,8 +2,8 @@
 id: oh-ch-07
 bookId: book-o-henry
 title: A Retrieved Reformation
-titleZh: 重获新生
-summaryZh: 保险箱惯盗 Jimmy Valentine 假释出狱后重操旧业，警探 Ben Price 再度追上他的行迹。而在阿肯色小镇 Elmore，一段新生活正等着他。一年后，一桩意外把他逼到了绝境——隐藏的过去与全新的人生在一念之间激烈交锋。
+titleZh: 重新做人
+summaryZh: 州长的赦免令一早签了下来，杰米·瓦伦丁正在监狱鞋作坊里缝鞋帮；典狱长劝他别再撬保险箱、老老实实做人，他却一脸无辜地说自己这辈子从没撬过。第二天清早，他穿着州里发的硬皮鞋走进阳光，手里是一张车票和五块钱。
 sections:
   - id: oh-ch-07-s1
     text: |-
@@ -26,14 +26,14 @@ sections:
       Disregarding the song of the birds, the waving green trees, and the smell of the flowers, Jimmy headed straight for a restaurant. There he tasted the first sweet joys of liberty in the shape of a broiled chicken and a bottle of white wine—followed by a cigar a grade better than the one the warden had given him. From there he proceeded leisurely to the depot. He tossed a quarter into the hat of a blind man sitting by the door, and boarded his train. Three hours set him down in a little town near the state line. He went to the café of one Mike Dolan and shook hands with Mike, who was alone behind the bar.
     checkIn:
       id: oh-ch-07-s1-c1
-      stem: What does the warden recommend Jimmy do after his release?
+      stem: How did Jimmy's time inside compare with what he had expected?
       options:
-        - He warns Jimmy to avoid Springfield at all costs.
-        - He tells Jimmy to stop cracking safes and live straight.
-        - He suggests Jimmy contact his old friends for work.
-        - He urges Jimmy to prove his innocence to the governor.
-      correctIndex: 1
-      explanationZh: 典狱长临别时明确说 "Stop cracking safes, and live straight"，劝 Jimmy 金盆洗手、安分做人。Jimmy 对此仍坚称自己从没撬过保险箱，但这番推脱只换来典狱长的讥讽。
+        - He served the whole four years of his sentence
+        - He served three months, exactly as he expected
+        - He served ten months, far longer than he expected
+        - He served ten months and expected a year more
+      correctIndex: 2
+      explanationZh: 拿到赦免令时他 "had served nearly ten months of a four year sentence. He had expected to stay only about three months, at the longest."。原因在于外面的门路——书里说这种人进了 stir，连头发都不值得剪。
   - id: oh-ch-07-s2
     text: |-
       “Sorry we couldn’t make it sooner, Jimmy, me boy,” said Mike. “But we had that protest from Springfield to buck against, and the governor nearly balked. Feeling all right?”
@@ -55,14 +55,14 @@ sections:
       A week after the release of Valentine, 9762, there was a neat job of safe-burglary done in Richmond, Indiana, with no clue to the author. A scant eight hundred dollars was all that was secured. Two weeks after that a patented, improved, burglarproof safe in Logansport was opened like a cheese to the tune of fifteen hundred dollars, currency; securities and silver untouched. That began to interest the rogue-catchers. Then an old-fashioned bank-safe in Jefferson City became active and threw out of its crater an eruption of banknotes amounting to five thousand dollars. The losses were now high enough to bring the matter up into Ben Price’s class of work. By comparing notes, a remarkable similarity in the methods of the burglaries was noticed. Ben Price investigated the scenes of the robberies, and was heard to remark:
     checkIn:
       id: oh-ch-07-s2-c1
-      stem: What does Jimmy retrieve from the hidden panel in his room?
+      stem: What was still lying on the floor of Jimmy's old room?
       options:
-        - A pile of stolen banknotes from recent jobs
-        - A dusty suitcase of burglar's tools
-        - A set of forged identity papers and train tickets
-        - A revolver and a box of safe combinations
-      correctIndex: 1
-      explanationZh: Jimmy 拉出折叠床、滑开墙板，拖出一个布满灰尘的手提箱，里面装着"the finest set of burglar's tools in the East"——价值逾九百美元、专为盗窃职业定制的精钢工具。地板上 Ben Price 掉落的领扣则暗示此人正是当初逮捕他的名侦探。
+        - Ben Price's collar-button, torn off during the arrest
+        - The five-dollar bill the state had handed him at the gate
+        - The railroad ticket he had used to reach the state line
+        - A drill left behind in Springfield
+      correctIndex: 0
+      explanationZh: 屋里一切都和他离开时一样，地板上还留着 "Ben Price's collar-button that had been torn from that eminent detective's shirt-band when they had overpowered Jimmy to arrest him"。一颗小小的领扣，把当年逮捕他的人提前请进了故事。
   - id: oh-ch-07-s3
     text: |-
       “That’s Dandy Jim Valentine’s autograph. He’s resumed business. Look at that combination knob—jerked out as easy as pulling up a radish in wet weather. He’s got the only clamps that can do it. And look how clean those tumblers were punched out! Jimmy never has to drill but one hole. Yes, I guess I want Mr. Valentine. He’ll do his bit next time without any short-time or clemency foolishness.”
@@ -82,14 +82,14 @@ sections:
       Jimmy went to the Planters’ Hotel, registered as Ralph D. Spencer, and engaged a room. He leaned on the desk and declared his platform to the clerk. He said he had come to Elmore to look for a location to go into business. How was the shoe business, now, in the town? He had thought of the shoe business. Was there an opening?
     checkIn:
       id: oh-ch-07-s3-c1
-      stem: What changes Jimmy's life when he arrives in Elmore, Arkansas?
+      stem: How did Jimmy find out who the young lady was?
       options:
-        - He sees a young lady entering the bank and instantly falls in love.
-        - He reads about a bank offering a large reward for a new manager.
-        - He meets a former associate who convinces him to retire from crime.
-        - He discovers the town has no police force and feels safe to stay.
-      correctIndex: 0
-      explanationZh: Jimmy 在 Elmore 下车后，一名年轻女子从街对面走过、走进银行，他"looked into her eyes, forgot what he was, and became another man"。这个女孩正是银行家女儿 Annabel Adams，她的一瞥让 Jimmy 决心告别过去。
+        - He asked the hotel clerk when he registered
+        - Mr. Adams introduced her to him at the bank
+        - He fed dimes to a boy loafing on the bank steps
+        - He read her name on a card left in the doorway
+      correctIndex: 2
+      explanationZh: 他一把拉住台阶上闲着的男孩，一枚枚喂着一角硬币打听镇上的事，再用 "Isn't that young lady Polly Simpson?" 这种明知故问的法子套出答案——"She's Annabel Adams. Her pa owns this bank."。旅馆店员要到他去登记时才出场。
   - id: oh-ch-07-s4
     text: |-
       The clerk was impressed by the clothes and manner of Jimmy. He, himself, was something of a pattern of fashion to the thinly gilded youth of Elmore, but he now perceived his shortcomings. While trying to figure out Jimmy’s manner of tying his four-in-hand he cordially gave information.
@@ -121,14 +121,14 @@ sections:
       The next morning Jimmy took breakfast at the Adamses. He was going to Little Rock that day to order his wedding-suit and buy something nice for Annabel. That would be the first time he had left town since he came to Elmore. It had been more than a year now since those last professional “jobs,” and he thought he could safely venture out.
     checkIn:
       id: oh-ch-07-s4-c1
-      stem: What is Jimmy's situation at the end of a year in Elmore under the name Ralph Spencer?
+      stem: What did Jimmy ask his old friend Billy to do?
       options:
-        - He secretly plans one last heist to fund their wedding.
-        - He works as a clerk in Mr. Adams's bank and awaits a promotion.
-        - His shoe-store is flourishing, and he and Annabel are engaged.
-        - He is preparing to leave town because Ben Price has been spotted.
-      correctIndex: 2
-      explanationZh: 文中明确交代：一年后 Ralph Spencer 赢得了社区的尊重、鞋店生意兴隆，与 Annabel"were engaged to be married in two weeks"。他甚至写信给老友准备处理掉那套工具——刚获新生时，Ben Price 也已悄然追踪到 Elmore。
+        - To sell the shoe-store for him after the wedding
+        - To meet him at Sullivan's and take away the tools
+        - To send a thousand dollars to Little Rock at once
+        - To warn the old crowd that Ben Price was near
+      correctIndex: 1
+      explanationZh: 信上写着 "I want you to be at Sullivan's place, in Little Rock, next Wednesday night, at nine o'clock… I want to make you a present of my kit of tools."，还有一句 "I've quit the old business—a year ago"。他不缺钱，也没有替旧同伙报信的意思。
   - id: oh-ch-07-s5
     text: |-
       After breakfast quite a family party went downtown together—Mr. Adams, Annabel, Jimmy, and Annabel’s married sister with her two little girls, aged five and nine. They came by the hotel where Jimmy still boarded, and he ran up to his room and brought along his suitcase. Then they went on to the bank. There stood Jimmy’s horse and buggy and Dolph Gibson, who was going to drive him over to the railroad station.
@@ -148,14 +148,14 @@ sections:
       Agatha’s mother screamed again, hysterically.
     checkIn:
       id: oh-ch-07-s5-c1
-      stem: What happens to Agatha while the family inspects the new vault?
+      stem: What did Jimmy say was inside the heavy suitcase?
       options:
-        - May shuts her inside the vault and locks the bolts in play.
-        - Agatha wanders into the vault and the heavy door swings shut on its own.
-        - May accidentally pushes Agatha, and she falls against the vault handle.
-        - Agatha hides inside the vault during a game of hide-and-seek.
-      correctIndex: 0
-      explanationZh: 九岁的 May 出于玩闹，模仿父亲的样子把妹妹 Agatha 关进金库，然后"shot the bolts and turned the knob of the combination"。由于时钟未上发条、密码未设定，大人们无法从外面打开门，孩子被困在黑暗密闭的金库内。
+        - Samples he was taking to a customer in Little Rock
+        - Papers for the wedding that he had to sign in town
+        - Books he had borrowed from Mr. Adams
+        - Nickel-plated shoehorns he was going to return
+      correctIndex: 3
+      explanationZh: Annabel 掂了掂箱子说 "Feels like it was full of gold bricks"，他不动声色地接口 "Lot of nickel-plated shoehorns in there, that I'm going to return. Thought I'd save express charges by taking them up. I'm getting awfully economical."。
   - id: oh-ch-07-s6
     text: |-
       “Hush!” said Mr. Adams, raising his trembling hand. “All be quite for a moment. Agatha!” he called as loudly as he could. “Listen to me.” During the following silence they could just hear the faint sound of the child wildly shrieking in the dark vault in a panic of terror.
@@ -195,66 +195,66 @@ sections:
       And Ben Price turned and strolled down the street.
     checkIn:
       id: oh-ch-07-s6-c1
-      stem: How does Ben Price respond when Jimmy openly acknowledges him at the bank door?
+      stem: What did Jimmy ask Annabel for before he touched the vault?
       options:
-        - He arrests Jimmy on the spot and takes him toward the station.
-        - He tells Jimmy he has twenty-four hours to leave town quietly.
-        - He asks Jimmy to explain his tools before deciding what to do.
-        - He pretends not to recognize Jimmy and lets him go.
-      correctIndex: 3
-      explanationZh: Jimmy 救出孩子后主动迎上去认了 Ben Price，但 Price却说 "Don't believe I recognize you"，随后转身离去。正是 Jimmy 为救人而暴露盗窃技术——也等于亲手毁掉来之不易的新身份——这一牺牲之举打动了这位铁面侦探。
+        - The rose she was wearing on her dress
+        - Her father's keys to the outer railings
+        - Her promise that she would wait for him
+        - A minute alone with the vault door
+      correctIndex: 0
+      explanationZh: 他带着一丝古怪的笑说 "give me that rose you are wearing, will you?"，把花蕾塞进背心口袋，然后甩掉外套、卷起袖子——"With that act Ralph D. Spencer passed away and Jimmy Valentine took his place."。
 quiz:
   - id: oh-ch-07-q1
-    stem: Why did Jimmy expect to serve only about three months of his four-year sentence?
+    stem: How did Jimmy spend his first hours of freedom?
     options:
-      - He had bribed the judge to promise him a reduced sentence.
-      - He had a prior arrangement with the warden to cut his term short.
-      - He had volunteered extra prison labor in exchange for time off.
-      - He had many friends on the outside who could push for his early release.
-    correctIndex: 3
-    explanationZh: 文中说 "When a man with as many friends on the outside as Jimmy Valentine had is received in the 'stir' it is hardly worth while to cut his hair"，暗示他在外面人脉广、很快就能获释，因此他原以为最多待三个月，实际却待了近十个月。行贿法官、与典狱长有约等说法在原文中没有依据。
+      - He went straight to the depot and boarded a train
+      - He ate broiled chicken and drank a bottle of white wine
+      - He went to see the friends who had won his pardon
+      - He walked out to enjoy the birds and the flowers
+    correctIndex: 1
+    explanationZh: 他对鸟鸣、绿树和花香一概不理，径直奔向饭馆，尝到的第一份自由是 "a broiled chicken and a bottle of white wine—followed by a cigar a grade better than the one the warden had given him"。吃完才慢悠悠踱去车站。
   - id: oh-ch-07-q2
-    stem: What specific detail at the robbery scenes leads Ben Price to identify them as Jimmy Valentine's work?
+    stem: What at the robbery scenes told Ben Price whose work it was?
     options:
-      - The safes are always opened without any cash or securities taken
-      - Each scene has Jimmy's signature etched into the safe door
-      - The knob jerked out and tumblers punched with one drill hole
-      - The burglaries all take place within a single week of each other
-    correctIndex: 2
-    explanationZh: Ben Price 说 "That's Dandy Jim Valentine's autograph"，指出他的手法标志："combination knob—jerked out as easy as pulling up a radish"、"tumblers were punched out" 且 "Jimmy never has to drill but one hole"。这些技术细节让他认定 Jimmy 重操旧业。"不取走财物"的说法与原文中多次提及被盗金额不符。
-  - id: oh-ch-07-q3
-    stem: Why does Jimmy register at the Planters' Hotel under the name Ralph D. Spencer?
-    options:
-      - He needs a fake name because the hotel requires identification from strangers.
-      - He wants to establish a new identity so he can settle in Elmore and pursue Annabel.
-      - He wants to hide from Ben Price, who is already tracking him in town.
-      - He is planning a quick burglary at the bank and needs a cover story.
-    correctIndex: 1
-    explanationZh: Jimmy 遇见 Annabel 后"forgot what he was, and became another man"，于是以 Ralph D. Spencer 的名字登记入住，并对店员说想在此地找门面做鞋业生意。他化名的目的是在 Elmore 安身、正式追求 Annabel。此时 Ben Price 尚未到镇，他也没有再犯案的打算。
-  - id: oh-ch-07-q4
-    stem: Why did Jimmy write to his old friend in St. Louis?
-    options:
-      - He intended to arrange for someone to take away his burglar's tools.
-      - He planned to ask his friend to send him money for the wedding.
-      - He wanted to warn his old associates that Ben Price was after them.
-      - He meant to confess his criminal past and seek legal advice.
-    correctIndex: 0
-    explanationZh: 他写给 Billy 的信如今就在文中：“I want to make you a present of my kit of tools… I've quit the old business… I'm going to marry the finest girl on earth.”——他约 Billy 在 Little Rock 见面，是要送出那套盗窃工具、与过去彻底切割。他不需要借钱，也没有警告同伙或寻求法律帮助。
-  - id: oh-ch-07-q5
-    stem: Why does Annabel's comment that the suitcase feels like it is full of gold bricks create dramatic tension?
-    options:
-      - The suitcase is filled with stolen cash from his recent robberies.
-      - The suitcase holds wedding gifts that Jimmy has not yet shown Annabel.
-      - The suitcase is empty, and Jimmy has no convincing explanation ready.
-      - The suitcase actually contains Jimmy's burglar's tools, not shoe supplies.
+      - A signature scratched into the paint of the safe door
+      - The fact that securities and silver were left untouched
+      - The three jobs fell in one week
+      - The knob jerked out and a single hole drilled
     correctIndex: 3
-    explanationZh: Annabel 提起手提箱说 "Feels like it was full of gold bricks"，而 Jimmy 随口编了个"镀镍鞋拔"的借口。箱中装的其实是那套精钢盗窃工具——一旦打开就会暴露他的真实身份，这构成了极大的戏剧张力。箱中并非赃款、礼物，更不是空的。
-  - id: oh-ch-07-q6
-    stem: What is the significance of Jimmy asking Annabel for the rose before opening the vault?
+    explanationZh: 他一眼认出手法——"Look at that combination knob—jerked out as easy as pulling up a radish in wet weather. He's got the only clamps that can do it. And look how clean those tumblers were punched out! Jimmy never has to drill but one hole."。证券和银器没被动，那是 Logansport 一案的细节，不是他判断的依据。
+  - id: oh-ch-07-q3
+    stem: What did the hotel clerk tell Spencer about the shoe trade in Elmore?
     options:
-      - He needs the stem of the rose as a makeshift pick to manipulate the lock
-      - He is bidding farewell to the life of Ralph Spencer
-      - He plans to hand the rose to Agatha to calm her once the door is open
-      - He wants Annabel to remember him by the flower after he turns himself in
+      - That there was no exclusive shoe-store in the place
+      - That the bank would soon be looking for a new cashier
+      - That the town had two shoe-stores already
+      - That the dry-goods stores had closed down
+    correctIndex: 0
+    explanationZh: 店员被他的衣着和举止镇住了，一边琢磨他领带的打法一边热心相告——"There wasn't an exclusive shoe-store in the place. The dry-goods and general stores handled them."，并说各行生意都还过得去。这句话正是后来那家鞋店的由来。
+  - id: oh-ch-07-q4
+    stem: How did Ben Price get his look at Ralph D. Spencer?
+    options:
+      - He came by train on the morning of the wedding
+      - He watched Spencer from a drugstore over the way
+      - He put up at the Planters' Hotel under a false name
+      - He went straight to Mr. Adams with a warrant in hand
     correctIndex: 1
-    explanationZh: Jimmy 向 Annabel 要她胸前的玫瑰、塞进背心口袋，随后甩掉外套、卷起袖子——叙述者评说 "With that act Ralph D. Spencer passed away and Jimmy Valentine took his place"。玫瑰象征他作为 Ralph Spencer 的新生活，也是他与之诀别的信物。他用的不是花茎、也不是为了哄孩子，更不是准备自首，而是表示他明知救人就会暴露真实身份。
+    explanationZh: 他星期一夜里坐一辆出租轻便马车悄悄进镇，四处闲逛把想知道的都打听清楚，然后 "From the drugstore across the street from Spencer's shoe-store he got a good look at Ralph D. Spencer."，还轻声自语 "Going to marry the banker's daughter are you, Jimmy? Well, I don't know!"。
+  - id: oh-ch-07-q5
+    stem: Why could nobody in the bank open the vault door?
+    options:
+      - The dynamite that someone suggested had been used up
+      - Mr. Adams had left the only key at his house
+      - The clock was not wound and no combination was set
+      - The three bolts had jammed against one another
+    correctIndex: 2
+    explanationZh: 老银行家扑到把手上拉了几下就绝望了——"The door can't be opened. The clock hasn't been wound nor the combination set."。他还说 "There isn't a man nearer than Little Rock who can open that door."；有人喊要用炸药，但那只是慌乱中的一句话。
+  - id: oh-ch-07-q6
+    stem: What did Ben Price do at the bank door?
+    options:
+      - He arrested Jimmy the moment the child was safe
+      - He gave Jimmy a day to settle his affairs and go
+      - He asked to see the tools before he made up his mind
+      - He said he did not recognize him and walked away
+    correctIndex: 3
+    explanationZh: Jimmy 穿上外套走向门口，主动招呼 "Hello, Ben! Got around at last, have you?"，Ben Price 却答 "Guess you're mistaken, Mr. Spencer. Don't believe I recognize you. Your buggy's waiting for you, ain't it?"，随后转身沿街走开。当众亮出手艺救人，等于亲手毁掉那个新身份——正是这一下让侦探收了手。

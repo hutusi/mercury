@@ -3,7 +3,7 @@ id: oh-ch-06
 bookId: book-o-henry
 title: Mammon and the Archer
 titleZh: 财神与爱神
-summaryZh: 肥皂大亨老安东尼·罗克沃尔坚信金钱万能，儿子理查德却为一件钱似乎帮不上忙的心事发愁。父子俩谁对谁错，要等一个戏剧性的夜晚给出答案。
+summaryZh: 第五大道上那座用肥皂造出来的宅子里，老安东尼·罗克沃尔自信这世上没有钱办不成的事，还打算把房子漆成红白蓝去气一气两位邻居。可儿子理查德已经闷闷不乐两个星期了，而他闷的那件事，看上去正好是钱插不上手的。
 sections:
   - id: oh-ch-06-s1
     text: |-
@@ -30,14 +30,14 @@ sections:
       “You’re a gentleman,” said Anthony, decidedly. “I’ve heard of these young bloods spending $24 a dozen for soap, and going over the hundred mark for clothes. You’ve got as much money to waste as any of ’em, and yet you stick to what’s decent and moderate. Now I use the old Eureka—not only for sentiment, but it’s the purest soap made. Whenever you pay more than 10 cents a cake for soap you buy bad perfumes and labels. But 50 cents is doing very well for a young man in your generation, position and condition. As I said, you’re a gentleman. They say it takes three generations to make one. They’re off. Money’ll do it as slick as soap grease. It’s made you one. By hokey! it’s almost made one of me. I’m nearly as impolite and disagreeable and ill-mannered as these two old Knickerbocker gents on each side of me that can’t sleep of nights because I bought in between ’em.”
     checkIn:
       id: oh-ch-06-s1-c1
-      stem: What is Anthony Rockwall's attitude toward his aristocratic neighbour G. Van Schuylight Suffolk-Jones?
+      stem: What did Anthony conclude from Richard's answers about prices?
       options:
-        - He deeply admires the neighbour's old Knickerbocker heritage.
-        - He is cheerfully defiant about his own lack of aristocratic standing.
-        - He feels embarrassed about living in a soap palace.
-        - He plans to sell his mansion and move away.
-      correctIndex: 1
-      explanationZh: 安东尼对邻居的傲慢嗤之以鼻，称他为“stuck-up old statuette”，还扬言要把房子漆成红白蓝来刺激对方。他毫不以自己的肥皂商人身份为耻，反而以金钱带来的底气自豪地嘲笑那些看不起他的世袭贵族。
+        - That the boy was throwing his money away
+        - That three generations really are needed
+        - That money had already made him a gentleman
+        - That he should switch to the Eureka brand
+      correctIndex: 2
+      explanationZh: 理查德答肥皂六美元一打、衣服约六十美元，老安东尼当即断言 "You're a gentleman"，接着说 "They say it takes three generations to make one. They're off. Money'll do it as slick as soap grease. It's made you one."。他夸的正是儿子花钱有分寸，而不是嫌他挥霍。
   - id: oh-ch-06-s2
     text: |-
       “There are some things that money can’t accomplish,” remarked young Rockwall, rather gloomily.
@@ -69,14 +69,14 @@ sections:
       “Tut!” said the old man. “Do you mean to tell me that with all the money I’ve got you can’t get an hour or two of a girl’s time for yourself?”
     checkIn:
       id: oh-ch-06-s2-c1
-      stem: Why does Richard say he cannot simply ask Miss Lantry for a walk or a talk?
+      stem: When challenged, what did Richard name as beyond money's reach?
       options:
-        - Her social schedule is fully arranged for days in advance.
-        - He has not yet finished college and lacks a degree.
-        - Her family has forbidden him from speaking to her.
-        - He is too shy to approach her without an introduction.
-      correctIndex: 0
-      explanationZh: 理查德解释说“You don't know the social mill”，她处于社交圈的运转之中，“Every hour and minute of her time is arranged for days in advance”，因此他根本没有机会单独接近她。
+        - A cure for the liver his father had guessed at
+        - A way into the exclusive circles of society
+        - A voyage on the Rambler down to the Bahamas
+        - The steerage passage the first Astor once paid for
+      correctIndex: 1
+      explanationZh: 老安东尼要他举出一样钱买不到的东西，他答 "it won't buy one into the exclusive circles of society"。父亲立刻反问，要是第一代 Astor 当年连统舱船票都付不起，这些上流圈子今天会在哪里。肝病和游艇是父亲先猜错的方向。
   - id: oh-ch-06-s3
     text: |-
       “I’ve put it off too late. She’s going to sail for Europe at noon day after tomorrow for a two years’ stay. I’m to see her alone tomorrow evening for a few minutes. She’s at Larchmont now at her aunt’s. I can’t go there. But I’m allowed to meet her with a cab at the Grand Central Station tomorrow evening at the 8:30 train. We drive down Broadway to Wallack’s at a gallop, where her mother and a box party will be waiting for us in the lobby. Do you think she would listen to a declaration from me during that six or eight minutes under those circumstances? No. And what chance would I have in the theatre or afterward? None. No, dad, this is one tangle that your money can’t unravel. We can’t buy one minute of time with cash; if we could, rich people would live longer. There’s no hope of getting a talk with Miss Lantry before she sails.”
@@ -92,14 +92,14 @@ sections:
       At eight o’clock the next evening Aunt Ellen took a quaint old gold ring from a moth-eaten case and gave it to Richard.
     checkIn:
       id: oh-ch-06-s3-c1
-      stem: What does Aunt Ellen give Richard before he meets Miss Lantry?
+      stem: Why did Richard call the coming evening hopeless?
       options:
-        - A pocket watch that once belonged to his grandfather.
-        - A letter of introduction to Miss Lantry's aunt.
-        - A quaint old gold ring that belonged to his mother.
-        - A silk scarf she had knitted herself.
+        - Her mother had refused to let them meet at all
+        - He would be allowed only a letter, never a meeting
+        - He would have only six or eight minutes in the cab
+        - She had already sailed for Europe that same noon
       correctIndex: 2
-      explanationZh: 爱伦姑妈从旧盒子里取出一枚古旧的金戒指交给理查德，说这是他母亲给的，能带来爱情的好运，并嘱咐他当晚戴上。
+      explanationZh: 他把时间算得很死——只能在车站接到她，然后一路飞奔去 Wallack's 剧院，她母亲和一整包厢的人在门厅等着。他自己问 "Do you think she would listen to a declaration from me during that six or eight minutes under those circumstances?"，答案是 No。
   - id: oh-ch-06-s4
     text: |-
       “Wear it tonight, nephew,” she begged. “Your mother gave it to me. Good luck in love she said it brought. She asked me to give it to you when you had found the one you loved.”
@@ -129,14 +129,14 @@ sections:
       Richard stood up in the cab and looked around. He saw a congested flood of wagons, trucks, cabs, vans and street cars filling the vast space where Broadway, Sixth Avenue and Thirty-fourth Street cross one another as a twenty-six inch maiden fills her twenty-two inch girdle. And still from all the cross streets they were hurrying and rattling toward the converging point at full speed, and hurling themselves into the struggling mass, locking wheels and adding their drivers’ imprecations to the clamour. The entire traffic of Manhattan seemed to have jammed itself around them. The oldest New Yorker among the thousands of spectators that lined the sidewalks had not witnessed a street blockade of the proportions of this one.
     checkIn:
       id: oh-ch-06-s4-c1
-      stem: What happens immediately after Richard climbs back into the cab with the ring?
+      stem: What did Richard do with the ring when Aunt Ellen gave it to him?
       options:
-        - The cab horse bolts and gallops down Broadway at full speed.
-        - A policeman orders the cabman to pull over and step down.
-        - Miss Lantry suddenly asks to get out and walk instead.
-        - A crosstown car and various vehicles blockade the cab completely.
-      correctIndex: 3
-      explanationZh: 理查德找回戒指回到车内后，一辆横向电车恰好停在马车前面，接着快递马车、家具货车等纷纷堵死前后左右通路，形成了整个曼哈顿罕见的交通瘫痪。
+        - He put it in his vest pocket after trying it on
+        - He wore it on the smallest finger of his left hand
+        - He gave it back to Aunt Ellen to keep for him
+        - He left it in its moth-eaten case on the table
+      correctIndex: 0
+      explanationZh: 戒指套到小指第二个关节就卡住了，于是 "He took it off and stuffed it into his vest pocket, after the manner of man."。他既没有戴在手上，也没有还给姑妈——那枚戒指就这样松松地待在背心口袋里跟他出了门。
   - id: oh-ch-06-s5
     text: |-
       “I’m very sorry,” said Richard, as he resumed his seat, “but it looks as if we are stuck. They won’t get this jumble loosened up in an hour. It was my fault. If I hadn’t dropped the ring we—”
@@ -180,66 +180,66 @@ sections:
       “I thought the little rascal wouldn’t be on hand,” chuckled Anthony. “Goodbye, Kelly.”
     checkIn:
       id: oh-ch-06-s5-c1
-      stem: What does Aunt Ellen believe caused the street blockade that helped Richard?
+      stem: What did Aunt Ellen conclude from the night's events?
       options:
-        - A sudden mechanical failure of all the crosstown cars
-        - The dropped ring, an emblem of true love, caused it
-        - A citywide parade scheduled for that very evening
-        - Miss Lantry's mother secretly arranged the traffic jam
-      correctIndex: 1
-      explanationZh: 爱伦姑妈认为是理查德掉落戒指这一举动导致了交通堵塞，她坚信这是真爱的象征在起作用：“A little emblem of true love … was the cause of our Richard finding his happiness.” 她完全不知道堵塞是安东尼花钱安排的。
+        - That Anthony's money had bought the boy his chance
+        - That Richard should have spoken to her much earlier
+        - That the theatre party had been a mistake from the start
+        - That a little ring of true love had won the whole thing
+      correctIndex: 3
+      explanationZh: 她跑去劝哥哥别再夸口钱的力量——"A little emblem of true love—a little ring that symbolised unending and unmercenary affection—was the cause of our Richard finding his happiness."，末了还加一句 "Money is dross compared with true love"。她把整件事都记在那枚戒指账上。
 quiz:
   - id: oh-ch-06-q1
-    stem: Why does Anthony ask Richard what he pays for soap and clothes?
+    stem: What boast did Anthony make about the encyclopaedia?
     options:
-      - He wants to calculate how much allowance Richard needs each month.
-      - He is planning to raise the price of Eureka soap to match Richard's brand.
-      - He wants to judge whether Richard is a genuine gentleman despite his wealth.
-      - He thinks Richard is wasting money and needs to learn frugality.
-    correctIndex: 2
-    explanationZh: 安东尼通过询问肥皂和衣服的价格来判断理查德是否务实节俭。理查德用适中的价格，安东尼便断言“You're a gentleman”，并说金钱能像肥皂油脂一样润滑地造就绅士——关键不在血统而在态度。
-  - id: oh-ch-06-q2
-    stem: What does Richard believe about money and time when he tells his father about Miss Lantry?
-    options:
-      - Money can buy a first-class ticket to follow her ship to Europe.
-      - Money cannot buy even a single minute of time to speak with her.
-      - Money can rent a private box at the theatre for uninterrupted talk.
-      - Money can bribe her mother to extend the visit by one day.
-    correctIndex: 1
-    explanationZh: 理查德说“We can't buy one minute of time with cash; if we could, rich people would live longer”，他认为金钱无法买到与小姐独处的片刻时间。这与安东尼“金钱万能”的信念形成核心冲突。
-  - id: oh-ch-06-q3
-    stem: What news does Aunt Ellen bring Anthony at eleven o'clock that night?
-    options:
-      - Richard has lost his mother's ring for good
-      - The theatre outing was called off entirely
-      - Kelly has come to collect his payment
-      - Miss Lantry has promised to marry Richard
-    correctIndex: 3
-    explanationZh: 当晚十一点，爱伦姑妈轻敲安东尼的房门，柔声说“They're engaged, Anthony. She has promised to marry our Richard.”——兰特里小姐已答应嫁给理查德。戒指并没有丢（他一分钟内就找了回来），凯利上门结账是第二天的事。
-  - id: oh-ch-06-q4
-    stem: How long does the street blockade last before the cab can move again?
-    options:
-      - Two hours.
-      - Twenty minutes.
-      - Forty-five minutes.
-      - One hour.
+      - He had read down to Y looking for something money can't buy
+      - He had bought a new encyclopaedia for the library that week
+      - He had written to the editors to correct the entry on soap
+      - He had memorised it as a boy on the Kansas prairies
     correctIndex: 0
-    explanationZh: 爱伦姑妈报告堵塞持续了“two hours before their cab could get out of it”，而凯利后来也说“It was two hours before a snake could get below Greeley's statue”，确认了整整两小时的交通瘫痪。
-  - id: oh-ch-06-q5
-    stem: What is the real purpose of Kelly's visit to Anthony the next day?
+    explanationZh: 他说 "I've been through the encyclopaedia down to Y looking for something you can't buy with it; and I expect to have to take up the appendix next week."——查到字母 Y 都没找出一个反例。堪萨斯草原留给他的是那副能吼破天的嗓门，不是背书的本事。
+  - id: oh-ch-06-q2
+    stem: What did Anthony offer while he still thought it was Richard's liver?
     options:
-      - To deliver the engagement ring back to Anthony's mansion
-      - To collect payment for staging the blockade
-      - To report on Miss Lantry's reaction to Richard's proposal
-      - To return the three hundred dollars Anthony overpaid him
+      - A cheque large enough to buy any cure he wanted
+      - The Rambler, coaled and ready to steam to the Bahamas
+      - A whole season at the club with every expense paid
+      - A quiet fortnight at Larchmont away from the city
     correctIndex: 1
-    explanationZh: 凯利是安东尼雇来制造交通堵塞的人。他汇报各项花费——马车、卡车、车夫、警察的佣金，安东尼随即开出一张一千三百美元的支票结清账目，证明堵塞完全是金钱买来的。
-  - id: oh-ch-06-q6
-    stem: What does Anthony's final comment about a fat boy with a bow imply?
+    explanationZh: 他先猜是肝出了毛病，随口便说 "there's the Rambler down in the bay, coaled, and ready to steam down to the Bahamas in two days"，还说二十四小时内能凑出一千一百万现款。理查德只答 "Not a bad guess, dad; you haven't missed it far."。
+  - id: oh-ch-06-q3
+    stem: Why did Richard have the cabman stop at Thirty-fourth Street?
     options:
-      - He suspects a street urchin stole the ring during the blockade.
-      - He thinks Kelly forgot to hire a child actor for the scene.
-      - He jokingly wonders whether Cupid himself was involved in the love match.
-      - He is worried that a stray child was injured in the traffic jam.
+      - He said he had dropped his mother's ring in the street
+      - He wanted to buy flowers before they reached the theatre
+      - The horse had thrown a shoe and needed to be checked
+      - He had spotted the box party waiting on the sidewalk
+    correctIndex: 0
+    explanationZh: 他顶开活板叫停车，说 "I've dropped a ring"，又补一句 "It was my mother's, and I'd hate to lose it. I won't detain you a minute—I saw where it fell."。不到一分钟他就拿着戒指回来了，而正是这不到一分钟里，路口彻底堵死。
+  - id: oh-ch-06-q4
+    stem: How did Miss Lantry take it when the cab was hemmed in?
+    options:
+      - That her mother would never forgive the delay
+      - That they should get out and walk to the theatre
+      - That she would like to see the ring he had found
+      - That the cabman ought to be reported to the police
     correctIndex: 2
-    explanationZh: 安东尼最后问凯利是否在堵车现场看到“a kind of a fat boy without any clothes on shooting arrows around with a bow”——这分明是丘比特的形象。他笑着说“I thought the little rascal wouldn't be on hand”，暗示真正的爱神并没有出场，一切都是金钱在起作用。
+    explanationZh: 她的反应出人意料——"Let me see the ring. Now that it can't be helped, I don't care. I think theatres are stupid, anyway."。她既没有催他步行赶路，也没有替母亲抱怨迟到。
+  - id: oh-ch-06-q5
+    stem: In Kelly's accounting, which item cost the most?
+    options:
+      - The policemen came cheapest of all the men hired
+      - The policemen cost the most, up to fifty dollars each
+      - Kelly did the whole job for a flat five thousand dollars
+      - Kelly rehearsed the drivers for a week beforehand
+    correctIndex: 1
+    explanationZh: 凯利报账说 "The cops struck me hardest—$50 I paid two, and the rest $20 and $25."，比快递马车、出租马车的五美元和卡车、双马车的十美元贵得多。他另外自掏了三百美元，还特意强调 "never a rehearsal, either!"。
+  - id: oh-ch-06-q6
+    stem: What did Anthony's question about a fat boy with a bow mean?
+    options:
+      - That a child was hurt in the jam
+      - That Kelly should have hired a boy for the scene
+      - That a pickpocket had worked the crowd that night
+      - That Cupid had had no hand in the match at all
+    correctIndex: 3
+    explanationZh: 他在凯利要出门时补问一句，堵车现场有没有见到 "a kind of a fat boy without any clothes on shooting arrows around with a bow"——那正是丘比特的模样。凯利说没见着，他便笑道 "I thought the little rascal wouldn't be on hand."——这桩姻缘从头到尾是钱办成的。
