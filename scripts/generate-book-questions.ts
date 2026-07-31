@@ -3,7 +3,12 @@ import path from "node:path";
 import { parse, stringify } from "yaml";
 import { z } from "zod";
 import { getStructuredDraft, isAiEnabled } from "../src/lib/ai/client";
-import { BookChapterSchema, McqQuestionSchema } from "../src/content/types";
+import {
+  BookChapterSchema,
+  BookManifestSchema,
+  McqQuestionSchema,
+  type CefrLevel,
+} from "../src/content/types";
 
 /**
  * AI-assisted question drafting for book chapters (ADR 0024). For every
@@ -48,7 +53,11 @@ const DraftSchema = z.object({
   quiz: z.array(DraftQuestionSchema).min(3).max(6),
 });
 
-const SYSTEM_PROMPT = `You are a bilingual (English / Simplified Chinese) content author for Mercury, an English-learning app for Chinese learners around CEFR B1. You write retrieval-practice questions for chapters of public-domain English books.
+// The difficulty target comes from the book's manifest so a B2 novel is not
+// dumbed down to B1 questions (and vice versa).
+const systemPrompt = (
+  cefrLevel: CefrLevel,
+) => `You are a bilingual (English / Simplified Chinese) content author for Mercury, an English-learning app for Chinese learners around CEFR ${cefrLevel}. You write retrieval-practice questions for chapters of public-domain English books.
 
 Given one chapter, produce:
 1. titleZh — a natural Simplified Chinese translation of the chapter title (follow the published Chinese translation conventions for well-known books).
@@ -57,7 +66,7 @@ Given one chapter, produce:
 4. quiz — 4 to 6 end-of-chapter recall questions spanning the whole chapter (3 is acceptable for a very short chapter): plot causality (why things happened), character motivation, and memorable concrete details. Learners answer with the book closed.
 
 Rules for every question:
-- stem, the correct answer, and all three distractors in English at or below B1 difficulty; distractors plausible and mutually exclusive with the correct answer.
+- stem, the correct answer, and all three distractors in English at or below ${cefrLevel} difficulty; distractors plausible and mutually exclusive with the correct answer.
 - Option order is assigned by tooling, never by you: give the correct answer in \`correct\` and the three wrong answers in \`distractors\`.
 - explanationZh in Simplified Chinese: teach rather than assert — point to what happens in the text (short English quotes are welcome) and briefly dismiss the most tempting distractor BY ITS CONTENT. Never refer to options by letter or position (no 选项A/选项1/option B) — positions are not known when you write.
 - Never ask about wording trivia, chapter numbers, or anything outside this chapter.`;
@@ -139,9 +148,9 @@ async function draftChapter(
   const chapter = SkeletonSchema.parse(parse(fs.readFileSync(file, "utf8")));
   if (chapter.quiz.length > 0 && !force) return "skipped";
 
-  const manifest = parse(
-    fs.readFileSync(path.join(BOOKS_DIR, slug, "book.yaml"), "utf8"),
-  ) as Record<string, string>;
+  const manifest = BookManifestSchema.pick({ title: true, author: true, cefrLevel: true }).parse(
+    parse(fs.readFileSync(path.join(BOOKS_DIR, slug, "book.yaml"), "utf8")),
+  );
 
   const sectionsXml = chapter.sections
     .map((section) => `<section id="${section.id}">\n${section.text}\n</section>`)
@@ -155,7 +164,7 @@ ${sectionsXml}
 Draft the check-ins and end-of-chapter quiz for this chapter.`;
 
   const draft = await getStructuredDraft({
-    system: SYSTEM_PROMPT,
+    system: systemPrompt(manifest.cefrLevel),
     userContent,
     schema: DraftSchema,
   });
