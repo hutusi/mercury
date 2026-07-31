@@ -288,6 +288,15 @@ const zh = {
     nextChapter: "下一章",
     author: "作者",
     level: "难度",
+    recommendedStart: "推荐起点",
+    bandLabels: {
+      A1: "起步读物",
+      A2: "基础读物",
+      B1: "入门读物",
+      B2: "进阶读物",
+      C1: "高阶读物",
+      C2: "原著无碍",
+    },
   },
   listening: {
     subtitle: "对话与独白精听训练",
@@ -741,6 +750,15 @@ const en: Dictionary = {
     nextChapter: "Next chapter",
     author: "Author",
     level: "Level",
+    recommendedStart: "Recommended start",
+    bandLabels: {
+      A1: "First steps",
+      A2: "Building basics",
+      B1: "First full books",
+      B2: "Stepping up",
+      C1: "Advanced reading",
+      C2: "Reading without limits",
+    },
   },
   listening: {
     subtitle: "Conversations and talks, trained carefully",
