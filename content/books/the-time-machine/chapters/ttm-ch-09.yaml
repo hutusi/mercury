@@ -1,0 +1,142 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: ttm-ch-09
+bookId: book-time-machine
+title: Chapter 9
+titleZh: 第九章
+summaryZh: 时间旅行者带着薇娜离开绿瓷宫，试图在天黑前穿过森林返回白狮身人面像。然而夜幕降临，莫洛克人从黑暗中步步逼近，一场混乱的黑夜恶战就此展开——这一晚，他将付出此行最沉重的代价。
+sections:
+  - id: ttm-ch-09-s1
+    text: |-
+      “We emerged from the palace while the sun was still in part above the horizon. I was determined to reach the White Sphinx early the next morning, and ere the dusk I purposed pushing through the woods that had stopped me on the previous journey. My plan was to go as far as possible that night, and then, building a fire, to sleep in the protection of its glare. Accordingly, as we went along I gathered any sticks or dried grass I saw, and presently had my arms full of such litter. Thus loaded, our progress was slower than I had anticipated, and besides Weena was tired. And I began to suffer from sleepiness too; so that it was full night before we reached the wood. Upon the shrubby hill of its edge Weena would have stopped, fearing the darkness before us; but a singular sense of impending calamity, that should indeed have served me as a warning, drove me onward. I had been without sleep for a night and two days, and I was feverish and irritable. I felt sleep coming upon me, and the Morlocks with it.
+
+      “While we hesitated, among the black bushes behind us, and dim against their blackness, I saw three crouching figures. There was scrub and long grass all about us, and I did not feel safe from their insidious approach. The forest, I calculated, was rather less than a mile across. If we could get through it to the bare hillside, there, as it seemed to me, was an altogether safer resting-place; I thought that with my matches and my camphor I could contrive to keep my path illuminated through the woods. Yet it was evident that if I was to flourish matches with my hands I should have to abandon my firewood; so, rather reluctantly, I put it down. And then it came into my head that I would amaze our friends behind by lighting it. I was to discover the atrocious folly of this proceeding, but it came to my mind as an ingenious move for covering our retreat.
+
+      “I don’t know if you have ever thought what a rare thing flame must be in the absence of man and in a temperate climate. The sun’s heat is rarely strong enough to burn, even when it is focused by dewdrops, as is sometimes the case in more tropical districts. Lightning may blast and blacken, but it rarely gives rise to widespread fire. Decaying vegetation may occasionally smoulder with the heat of its fermentation, but this rarely results in flame. In this decadence, too, the art of fire-making had been forgotten on the earth. The red tongues that went licking up my heap of wood were an altogether new and strange thing to Weena.
+    checkIn:
+      id: ttm-ch-09-s1-c1
+      stem: Why did the Time Traveller drop his firewood before entering the wood?
+      options:
+        - He needed his hands free to use matches and camphor.
+        - He wanted to move faster because Weena was tired.
+        - He used the wood to block the Morlocks behind them.
+        - He decided the wood was too damp to burn well.
+      correctIndex: 0
+      explanationZh: 他意识到要照亮道路就必须腾出双手使用火柴和樟脑，因此只能放下柴火。他随后点燃柴堆以掩护撤退，说明柴火并非为了阻挡莫洛克人，也不是因为潮湿才丢掉。
+  - id: ttm-ch-09-s2
+    text: |-
+      “She wanted to run to it and play with it. I believe she would have cast herself into it had I not restrained her. But I caught her up, and in spite of her struggles, plunged boldly before me into the wood. For a little way the glare of my fire lit the path. Looking back presently, I could see, through the crowded stems, that from my heap of sticks the blaze had spread to some bushes adjacent, and a curved line of fire was creeping up the grass of the hill. I laughed at that, and turned again to the dark trees before me. It was very black, and Weena clung to me convulsively, but there was still, as my eyes grew accustomed to the darkness, sufficient light for me to avoid the stems. Overhead it was simply black, except where a gap of remote blue sky shone down upon us here and there. I struck none of my matches because I had no hand free. Upon my left arm I carried my little one, in my right hand I had my iron bar.
+
+      “For some way I heard nothing but the crackling twigs under my feet, the faint rustle of the breeze above, and my own breathing and the throb of the blood-vessels in my ears. Then I seemed to know of a pattering about me. I pushed on grimly. The pattering grew more distinct, and then I caught the same queer sound and voices I had heard in the Under-world. There were evidently several of the Morlocks, and they were closing in upon me. Indeed, in another minute I felt a tug at my coat, then something at my arm. And Weena shivered violently, and became quite still.
+
+      “It was time for a match. But to get one I must put her down. I did so, and, as I fumbled with my pocket, a struggle began in the darkness about my knees, perfectly silent on her part and with the same peculiar cooing sounds from the Morlocks. Soft little hands, too, were creeping over my coat and back, touching even my neck. Then the match scratched and fizzed. I held it flaring, and saw the white backs of the Morlocks in flight amid the trees. I hastily took a lump of camphor from my pocket, and prepared to light it as soon as the match should wane. Then I looked at Weena. She was lying clutching my feet and quite motionless, with her face to the ground. With a sudden fright I stooped to her. She seemed scarcely to breathe. I lit the block of camphor and flung it to the ground, and as it split and flared up and drove back the Morlocks and the shadows, I knelt down and lifted her. The wood behind seemed full of the stir and murmur of a great company!
+    checkIn:
+      id: ttm-ch-09-s2-c1
+      stem: What happens when the Time Traveller strikes a match in the darkness?
+      options:
+        - Weena wakes up and runs into the fire.
+        - The Morlocks flee and he sees their white backs.
+        - The Morlocks grab Weena and drag her away.
+        - The fire he left behind suddenly reaches them.
+      correctIndex: 1
+      explanationZh: 划亮火柴后，他看到莫洛克人白色的背在林中逃窜。薇娜此前已经倒地不动，并非被当场拖走；远处的火此时尚未蔓延过来。
+  - id: ttm-ch-09-s3
+    text: |-
+      “She seemed to have fainted. I put her carefully upon my shoulder and rose to push on, and then there came a horrible realization. In manoeuvring with my matches and Weena, I had turned myself about several times, and now I had not the faintest idea in what direction lay my path. For all I knew, I might be facing back towards the Palace of Green Porcelain. I found myself in a cold sweat. I had to think rapidly what to do. I determined to build a fire and encamp where we were. I put Weena, still motionless, down upon a turfy bole, and very hastily, as my first lump of camphor waned, I began collecting sticks and leaves. Here and there out of the darkness round me the Morlocks’ eyes shone like carbuncles.
+
+      “The camphor flickered and went out. I lit a match, and as I did so, two white forms that had been approaching Weena dashed hastily away. One was so blinded by the light that he came straight for me, and I felt his bones grind under the blow of my fist. He gave a whoop of dismay, staggered a little way, and fell down. I lit another piece of camphor, and went on gathering my bonfire. Presently I noticed how dry was some of the foliage above me, for since my arrival on the Time Machine, a matter of a week, no rain had fallen. So, instead of casting about among the trees for fallen twigs, I began leaping up and dragging down branches. Very soon I had a choking smoky fire of green wood and dry sticks, and could economize my camphor. Then I turned to where Weena lay beside my iron mace. I tried what I could to revive her, but she lay like one dead. I could not even satisfy myself whether or not she breathed.
+
+      “Now, the smoke of the fire beat over towards me, and it must have made me heavy of a sudden. Moreover, the vapour of camphor was in the air. My fire would not need replenishing for an hour or so. I felt very weary after my exertion, and sat down. The wood, too, was full of a slumbrous murmur that I did not understand. I seemed just to nod and open my eyes. But all was dark, and the Morlocks had their hands upon me. Flinging off their clinging fingers I hastily felt in my pocket for the matchbox, and—it had gone! Then they gripped and closed with me again. In a moment I knew what had happened. I had slept, and my fire had gone out, and the bitterness of death came over my soul. The forest seemed full of the smell of burning wood. I was caught by the neck, by the hair, by the arms, and pulled down. It was indescribably horrible in the darkness to feel all these soft creatures heaped upon me. I felt as if I was in a monstrous spider’s web. I was overpowered, and went down. I felt little teeth nipping at my neck. I rolled over, and as I did so my hand came against my iron lever. It gave me strength. I struggled up, shaking the human rats from me, and, holding the bar short, I thrust where I judged their faces might be. I could feel the succulent giving of flesh and bone under my blows, and for a moment I was free.
+    checkIn:
+      id: ttm-ch-09-s3-c1
+      stem: What does the Time Traveller realize after putting Weena down to build a fire?
+      options:
+        - He has left his iron bar behind at the Palace.
+        - His matches have fallen out of his pocket.
+        - Weena has regained consciousness and fled.
+        - He has lost his sense of direction in the dark.
+      correctIndex: 3
+      explanationZh: 他在黑暗中反复转身操作火柴和照顾薇娜，结果完全弄不清方向，甚至可能正朝着绿瓷宫走。火柴盒丢失和薇娜失踪是后来才发生的事。
+  - id: ttm-ch-09-s4
+    text: |-
+      “The strange exultation that so often seems to accompany hard fighting came upon me. I knew that both I and Weena were lost, but I determined to make the Morlocks pay for their meat. I stood with my back to a tree, swinging the iron bar before me. The whole wood was full of the stir and cries of them. A minute passed. Their voices seemed to rise to a higher pitch of excitement, and their movements grew faster. Yet none came within reach. I stood glaring at the blackness. Then suddenly came hope. What if the Morlocks were afraid? And close on the heels of that came a strange thing. The darkness seemed to grow luminous. Very dimly I began to see the Morlocks about me—three battered at my feet—and then I recognized, with incredulous surprise, that the others were running, in an incessant stream, as it seemed, from behind me, and away through the wood in front. And their backs seemed no longer white, but reddish. As I stood agape, I saw a little red spark go drifting across a gap of starlight between the branches, and vanish. And at that I understood the smell of burning wood, the slumbrous murmur that was growing now into a gusty roar, the red glow, and the Morlocks’ flight.
+
+      “Stepping out from behind my tree and looking back, I saw, through the black pillars of the nearer trees, the flames of the burning forest. It was my first fire coming after me. With that I looked for Weena, but she was gone. The hissing and crackling behind me, the explosive thud as each fresh tree burst into flame, left little time for reflection. My iron bar still gripped, I followed in the Morlocks’ path. It was a close race. Once the flames crept forward so swiftly on my right as I ran that I was outflanked and had to strike off to the left. But at last I emerged upon a small open space, and as I did so, a Morlock came blundering towards me, and past me, and went on straight into the fire!
+
+      “And now I was to see the most weird and horrible thing, I think, of all that I beheld in that future age. This whole space was as bright as day with the reflection of the fire. In the centre was a hillock or tumulus, surmounted by a scorched hawthorn. Beyond this was another arm of the burning forest, with yellow tongues already writhing from it, completely encircling the space with a fence of fire. Upon the hillside were some thirty or forty Morlocks, dazzled by the light and heat, and blundering hither and thither against each other in their bewilderment. At first I did not realize their blindness, and struck furiously at them with my bar, in a frenzy of fear, as they approached me, killing one and crippling several more. But when I had watched the gestures of one of them groping under the hawthorn against the red sky, and heard their moans, I was assured of their absolute helplessness and misery in the glare, and I struck no more of them.
+    checkIn:
+      id: ttm-ch-09-s4-c1
+      stem: What causes the Morlocks to flee in a stream through the wood?
+      options:
+        - They are chasing Weena deeper into the forest.
+        - They see his iron bar and run in terror.
+        - The forest fire is approaching behind the Traveller.
+        - The camphor he threw has poisoned the air.
+      correctIndex: 2
+      explanationZh: 他闻到烧木头的气味，又看到红色的火光，回头看才发现自己之前点燃的大火正追过来，莫洛克人因此纷纷逃命。他们并非因为害怕铁棍或樟脑而逃。
+  - id: ttm-ch-09-s5
+    text: |-
+      “Yet every now and then one would come straight towards me, setting loose a quivering horror that made me quick to elude him. At one time the flames died down somewhat, and I feared the foul creatures would presently be able to see me. I was thinking of beginning the fight by killing some of them before this should happen; but the fire burst out again brightly, and I stayed my hand. I walked about the hill among them and avoided them, looking for some trace of Weena. But Weena was gone.
+
+      “At last I sat down on the summit of the hillock, and watched this strange incredible company of blind things groping to and fro, and making uncanny noises to each other, as the glare of the fire beat on them. The coiling uprush of smoke streamed across the sky, and through the rare tatters of that red canopy, remote as though they belonged to another universe, shone the little stars. Two or three Morlocks came blundering into me, and I drove them off with blows of my fists, trembling as I did so.
+
+      “For the most part of that night I was persuaded it was a nightmare. I bit myself and screamed in a passionate desire to awake. I beat the ground with my hands, and got up and sat down again, and wandered here and there, and again sat down. Then I would fall to rubbing my eyes and calling upon God to let me awake. Thrice I saw Morlocks put their heads down in a kind of agony and rush into the flames. But, at last, above the subsiding red of the fire, above the streaming masses of black smoke and the whitening and blackening tree stumps, and the diminishing numbers of these dim creatures, came the white light of the day.
+
+      “I searched again for traces of Weena, but there were none. It was plain that they had left her poor little body in the forest. I cannot describe how it relieved me to think that it had escaped the awful fate to which it seemed destined. As I thought of that, I was almost moved to begin a massacre of the helpless abominations about me, but I contained myself. The hillock, as I have said, was a kind of island in the forest. From its summit I could now make out through a haze of smoke the Palace of Green Porcelain, and from that I could get my bearings for the White Sphinx. And so, leaving the remnant of these damned souls still going hither and thither and moaning, as the day grew clearer, I tied some grass about my feet and limped on across smoking ashes and among black stems, that still pulsated internally with fire, towards the hiding-place of the Time Machine. I walked slowly, for I was almost exhausted, as well as lame, and I felt the intensest wretchedness for the horrible death of little Weena. It seemed an overwhelming calamity. Now, in this old familiar room, it is more like the sorrow of a dream than an actual loss. But that morning it left me absolutely lonely again—terribly alone. I began to think of this house of mine, of this fireside, of some of you, and with such thoughts came a longing that was pain.
+
+      “But as I walked over the smoking ashes under the bright morning sky, I made a discovery. In my trouser pocket were still some loose matches. The box must have leaked before it was lost.
+    checkIn:
+      id: ttm-ch-09-s5-c1
+      stem: What does the Time Traveller discover in his trouser pocket as he walks away?
+      options:
+        - A piece of camphor he thought he had lost.
+        - Weena's small bracelet she had given him.
+        - A spare iron lever he had forgotten about.
+        - Some loose matches that leaked from the box.
+      correctIndex: 3
+      explanationZh: 他翻裤袋时发现还有几根散落的火柴——火柴盒之前漏了。他以为火柴盒整个丢了，但散落的火柴还在。樟脑、铁棍和薇娜的遗物都与此无关。
+quiz:
+  - id: ttm-ch-09-q1
+    stem: Why did the Time Traveller set fire to his heap of sticks before entering the wood?
+    options:
+      - He needed light to find the path through the trees.
+      - He wanted to cover their retreat and amaze the Morlocks.
+      - He wanted to warm Weena because she was shivering.
+      - He hoped to burn down the whole forest quickly.
+    correctIndex: 1
+    explanationZh: 他觉得点燃柴堆是一个巧妙的撤退掩护，能震慑身后的莫洛克人。然而他后来承认这是极其愚蠢的行为，因为正是这把火最终引发了整片森林大火。他并没有预料到这一后果。
+  - id: ttm-ch-09-q2
+    stem: Why was the Time Traveller unable to resist the Morlocks' attack in the forest?
+    options:
+      - He lost his iron bar in the darkness of the wood.
+      - The Morlocks blinded him with a bright light.
+      - He fell asleep because of the smoke and camphor vapour.
+      - Weena struggled and knocked him to the ground.
+    correctIndex: 2
+    explanationZh: 火堆的烟和樟脑的气味让他突然困倦不堪，他不自觉地打起瞌睡，火灭了之后莫洛克人就扑上来。铁棍一直在他身边，后来正是靠它挣脱的；薇娜当时已昏迷，并非她导致他倒下。
+  - id: ttm-ch-09-q3
+    stem: What made the Morlocks helpless in the clearing surrounded by fire?
+    options:
+      - They were suffocating from the thick smoke around them.
+      - They were dazzled and blinded by the bright firelight.
+      - They had been blinded by the Time Traveller's matches.
+      - They were freezing in the cold night air near the fire.
+    correctIndex: 1
+    explanationZh: 莫洛克人常年生活在地下黑暗中，火光使他们目眩并完全失明，只能跌跌撞撞地乱走。时间旅行者观察到他们摸索的样子和哀嚎后才确信他们无助，并非因烟雾或火柴致盲。
+  - id: ttm-ch-09-q4
+    stem: What happened to Weena by the end of the forest fire?
+    options:
+      - She was found alive on the summit of the hillock.
+      - She was rescued by the Morlocks from the fire.
+      - She ran back to the Palace of Green Porcelain.
+      - She was gone and the Traveller found no trace of her.
+    correctIndex: 3
+    explanationZh: 大火过后他在开阔地和高丘上反复寻找薇娜的踪迹，却什么也没找到。他判断莫洛克人把她的身体留在了森林里，但他感到庆幸的是她至少没有像他担心的那样遭受可怕的命运。
+  - id: ttm-ch-09-q5
+    stem: Where does the Time Traveller decide to go after the fire dies down?
+    options:
+      - He heads towards the White Sphinx to find the Time Machine.
+      - He returns to the Palace of Green Porcelain for shelter.
+      - He follows the fleeing Morlocks into their underground shaft.
+      - He builds a new campfire on the hillock to rest.
+    correctIndex: 0
+    explanationZh: 他从高丘上透过烟雾辨认出绿瓷宫的方向，由此确定方位，进而找到通往白斯芬克斯像的路——时间机器就藏在那里。他并不打算回绿瓷宫，也没有追入地下或继续停留。

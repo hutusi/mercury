@@ -61,7 +61,11 @@ export const allExams = [
 // manifest's chapterFiles position, and this list's position becomes the
 // book's ladder sortOrder at seed time (easiest first — the /books library
 // renders in this order, grouped by CEFR band).
-const BOOK_DIRS = ["the-wonderful-wizard-of-oz", "the-happy-prince-and-other-tales"] as const;
+const BOOK_DIRS = [
+  "the-wonderful-wizard-of-oz",
+  "the-happy-prince-and-other-tales",
+  "the-time-machine",
+] as const;
 
 export const allBooks: Book[] = BOOK_DIRS.map((dir) => {
   const { chapterFiles, ...manifest } = loadFile(`books/${dir}/book.yaml`, BookManifestSchema);
