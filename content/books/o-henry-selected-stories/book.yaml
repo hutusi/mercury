@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=../../.schemas/book.schema.json
+id: book-o-henry
+title: "O. Henry: Selected Stories"
+titleZh: 欧·亨利短篇小说选
+author: O. Henry
+authorZh: 欧·亨利
+descriptionZh: 短篇小说大师欧·亨利的八篇代表作：麦琪的礼物、最后一片叶子、警察与赞美诗、二十年后、绿门、财神与爱神、重新做人、红酋长的赎金。市井小人物的悲欢与著名的"欧·亨利式结尾"，一篇一章，适合高阶读者精读。
+cefrLevel: C1
+genres:
+  - short-stories
+  - classic
+  - humor
+source: "Standard Ebooks: Short Fiction by O. Henry — eight selected stories (public domain)"
+chapterFiles:
+  - oh-ch-01.yaml
+  - oh-ch-02.yaml
+  - oh-ch-03.yaml
+  - oh-ch-04.yaml
+  - oh-ch-05.yaml
+  - oh-ch-06.yaml
+  - oh-ch-07.yaml
+  - oh-ch-08.yaml

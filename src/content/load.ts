@@ -65,6 +65,8 @@ const BOOK_DIRS = [
   "the-wonderful-wizard-of-oz",
   "the-happy-prince-and-other-tales",
   "the-time-machine",
+  "letters-from-a-self-made-merchant-to-his-son",
+  "o-henry-selected-stories",
 ] as const;
 
 export const allBooks: Book[] = BOOK_DIRS.map((dir) => {

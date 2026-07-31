@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: oh-ch-04
+bookId: book-o-henry
+title: After Twenty Years
+titleZh: 二十年后
+summaryZh: 一个在西部发了财的男人回到纽约赴二十年前与挚友定下的约会。寒夜街头，老友如约而至，但重逢之夜却因一纸短信而迎来意想不到的转折。
+sections:
+  - id: oh-ch-04-s1
+    text: |-
+      The policeman on the beat moved up the avenue impressively. The impressiveness was habitual and not for show, for spectators were few. The time was barely 10 o’clock at night, but chilly gusts of wind with a taste of rain in them had well nigh de-peopled the streets.
+
+      Trying doors as he went, twirling his club with many intricate and artful movements, turning now and then to cast his watchful eye adown the pacific thoroughfare, the officer, with his stalwart form and slight swagger, made a fine picture of a guardian of the peace. The vicinity was one that kept early hours. Now and then you might see the lights of a cigar store or of an all-night lunch counter; but the majority of the doors belonged to business places that had long since been closed.
+
+      When about midway of a certain block the policeman suddenly slowed his walk. In the doorway of a darkened hardware store a man leaned, with an unlighted cigar in his mouth. As the policeman walked up to him the man spoke up quickly.
+
+      “It’s all right, officer,” he said, reassuringly. “I’m just waiting for a friend. It’s an appointment made twenty years ago. Sounds a little funny to you, doesn’t it? Well, I’ll explain if you’d like to make certain it’s all straight. About that long ago there used to be a restaurant where this store stands—‘Big Joe’ Brady’s restaurant.”
+
+      “Until five years ago,” said the policeman. “It was torn down then.”
+
+      The man in the doorway struck a match and lit his cigar. The light showed a pale, square-jawed face with keen eyes, and a little white scar near his right eyebrow. His scarfpin was a large diamond, oddly set.
+
+      “Twenty years ago tonight,” said the man, “I dined here at ‘Big Joe’ Brady’s with Jimmy Wells, my best chum, and the finest chap in the world. He and I were raised here in New York, just like two brothers, together. I was eighteen and Jimmy was twenty. The next morning I was to start for the West to make my fortune. You couldn’t have dragged Jimmy out of New York; he thought it was the only place on earth. Well, we agreed that night that we would meet here again exactly twenty years from that date and time, no matter what our conditions might be or from what distance we might have to come. We figured that in twenty years each of us ought to have our destiny worked out and our fortunes made, whatever they were going to be.”
+    checkIn:
+      id: oh-ch-04-s1-c1
+      stem: Why is the man standing in the doorway of the hardware store?
+      options:
+        - He is waiting for a police officer to question him about a crime.
+        - He is trying to break into the hardware store after closing time.
+        - He is sheltering from the cold wind and waiting for the rain to stop.
+        - He is keeping an appointment made twenty years ago with his best friend.
+      correctIndex: 3
+      explanationZh: 文中男子直接告诉警察“I'm just waiting for a friend. It's an appointment made twenty years ago.”他与 Jimmy Wells 约好二十年后在此重聚。说他避雨或行窃都毫无依据；等警察来盘问更与原话相反——是他主动开口解释自己没干坏事。
+  - id: oh-ch-04-s2
+    text: |-
+      “It sounds pretty interesting,” said the policeman. “Rather a long time between meets, though, it seems to me. Haven’t you heard from your friend since you left?”
+
+      “Well, yes, for a time we corresponded,” said the other. “But after a year or two we lost track of each other. You see, the West is a pretty big proposition, and I kept hustling around over it pretty lively. But I know Jimmy will meet me here if he’s alive, for he always was the truest, stanchest old chap in the world. He’ll never forget. I came a thousand miles to stand in this door tonight, and it’s worth it if my old partner turns up.”
+
+      The waiting man pulled out a handsome watch, the lids of it set with small diamonds.
+
+      “Three minutes to ten,” he announced. “It was exactly ten o’clock when we parted here at the restaurant door.”
+
+      “Did pretty well out West, didn’t you?” asked the policeman.
+
+      “You bet! I hope Jimmy has done half as well. He was a kind of plodder, though, good fellow as he was. I’ve had to compete with some of the sharpest wits going to get my pile. A man gets in a groove in New York. It takes the West to put a razor-edge on him.”
+
+      The policeman twirled his club and took a step or two.
+
+      “I’ll be on my way. Hope your friend comes around all right. Going to call time on him sharp?”
+
+      “I should say not!” said the other. “I’ll give him half an hour at least. If Jimmy is alive on earth he’ll be here by that time. So long, officer.”
+
+      “Good night, sir,” said the policeman, passing on along his beat, trying doors as he went.
+
+      There was now a fine, cold drizzle falling, and the wind had risen from its uncertain puffs into a steady blow. The few foot passengers astir in that quarter hurried dismally and silently along with coat collars turned high and pocketed hands. And in the door of the hardware store the man who had come a thousand miles to fill an appointment, uncertain almost to absurdity, with the friend of his youth, smoked his cigar and waited.
+
+      About twenty minutes he waited, and then a tall man in a long overcoat, with collar turned up to his ears, hurried across from the opposite side of the street. He went directly to the waiting man.
+    checkIn:
+      id: oh-ch-04-s2-c1
+      stem: How long does Bob say he will wait for Jimmy before giving up?
+      options:
+        - At least half an hour.
+        - No more than ten minutes.
+        - Exactly fifteen minutes.
+        - Until midnight at the earliest.
+      correctIndex: 0
+      explanationZh: Bob 明确说“I'll give him half an hour at least”，即至少等半小时。十分钟是他自己看表时距约定时间还剩三分钟，与等候上限无关；十五分钟和午夜都与原文不符。
+  - id: oh-ch-04-s3
+    text: |-
+      “Is that you, Bob?” he asked, doubtfully.
+
+      “Is that you, Jimmy Wells?” cried the man in the door.
+
+      “Bless my heart!” exclaimed the new arrival, grasping both the other’s hands with his own. “It’s Bob, sure as fate. I was certain I’d find you here if you were still in existence. Well, well, well!—twenty years is a long time. The old restaurant’s gone, Bob; I wish it had lasted, so we could have had another dinner there. How has the West treated you, old man?”
+
+      “Bully; it has given me everything I asked it for. You’ve changed lots, Jimmy. I never thought you were so tall by two or three inches.”
+
+      “Oh, I grew a bit after I was twenty.”
+
+      “Doing well in New York, Jimmy?”
+
+      “Moderately. I have a position in one of the city departments. Come on, Bob; we’ll go around to a place I know of, and have a good long talk about old times.”
+
+      The two men started up the street, arm in arm. The man from the West, his egotism enlarged by success, was beginning to outline the history of his career. The other, submerged in his overcoat, listened with interest.
+
+      At the corner stood a drug store, brilliant with electric lights. When they came into this glare each of them turned simultaneously to gaze upon the other’s face.
+
+      The man from the West stopped suddenly and released his arm.
+
+      “You’re not Jimmy Wells,” he snapped. “Twenty years is a long time, but not long enough to change a man’s nose from a Roman to a pug.”
+
+      “It sometimes changes a good man into a bad one,” said the tall man. “You’ve been under arrest for ten minutes, ‘Silky’ Bob. Chicago thinks you may have dropped over our way and wires us she wants to have a chat with you. Going quietly, are you? That’s sensible. Now, before we go on to the station here’s a note I was asked to hand you. You may read it here at the window. It’s from Patrolman Wells.”
+
+      The man from the West unfolded the little piece of paper handed him. His hand was steady when he began to read, but it trembled a little by the time he had finished. The note was rather short.
+    checkIn:
+      id: oh-ch-04-s3-c1
+      stem: What makes Bob realize the tall man is not Jimmy Wells?
+      options:
+        - The man does not recognize Bob's name when spoken.
+        - The man is wearing a police uniform in plain sight.
+        - The man's nose is shaped differently from Jimmy's.
+        - The man speaks with a heavy Chicago accent.
+      correctIndex: 2
+      explanationZh: 在药店灯光下 Bob 看清对方长相，说道“not long enough to change a man's nose from a Roman to a pug”——Jimmy 是罗马鼻，而此人是个塌鼻梁，因此断定他不是 Jimmy。对方并未不认识 Bob，也没穿警服或带口音，这些都不是他起疑的原因。
+quiz:
+  - id: oh-ch-04-q1
+    stem: Why did Bob and Jimmy originally agree to meet again after exactly twenty years?
+    options:
+      - Twenty years was enough to settle each man's destiny
+      - They wanted to celebrate the opening of a new restaurant together
+      - They needed to settle a debt that came due after twenty years
+      - They promised to reunite whenever one of them became wealthy
+    correctIndex: 0
+    explanationZh: Bob 说两人约定时想的是“in twenty years each of us ought to have our destiny worked out and our fortunes made”——二十年足以让各自命运落定。餐厅早已拆除，并无庆祝开业之说；债务与致富后才见面都无原文依据。
+  - id: oh-ch-04-q2
+    stem: What detail about Bob's appearance hints that he has done well financially?
+    options:
+      - He wears a brand-new overcoat with the collar turned up high.
+      - He wears a large diamond scarfpin and a diamond-set watch.
+      - He carries a gold-handled cane engraved with his initials.
+      - He flashes a roll of banknotes to reassure the policeman.
+    correctIndex: 1
+    explanationZh: 文中写 Bob 的 scarfpin 是“a large diamond, oddly set”，又掏出“a handsome watch, the lids of it set with small diamonds”，皆暗示他发了财。新大衣、金手杖和钞票卷在文中均未出现，属于编造细节。
+  - id: oh-ch-04-q3
+    stem: What does Bob say about Jimmy's personality that foreshadows Jimmy becoming a policeman?
+    options:
+      - He calls Jimmy a risk-taker who loves to travel the world.
+      - He calls Jimmy a dreamer who never finishes what he starts.
+      - He calls Jimmy a plodder who would stay rooted in New York.
+      - He calls Jimmy a schemer who chases quick fortunes in the West.
+    correctIndex: 2
+    explanationZh: Bob 说 Jimmy 是“a kind of plodder”，还曾说“You couldn't have dragged Jimmy out of New York”——一个踏实守城的人，正好与后来当巡警的 Jimmy 吻合。冒险家、空想家、投机者都与 Jimmy 稳重守家的性格相反，也不合文意。
+  - id: oh-ch-04-q4
+    stem: Why does the tall man arrest Bob instead of simply chatting with him as Jimmy would?
+    options:
+      - Bob has been caught trying to break into the hardware store.
+      - Bob has insulted a police officer on duty earlier that evening.
+      - Chicago police have wired that they want Bob for a chat.
+      - Bob has failed to pay for his meal at a nearby lunch counter.
+    correctIndex: 2
+    explanationZh: 假 Jimmy 说“Chicago thinks you may have dropped over our way and wires us she wants to have a chat with you”——芝加哥警方发来通缉电报，这才是逮捕的真正原因。破门、辱警、赖账都与原文无关，文中未提任何此类行为。
+  - id: oh-ch-04-q5
+    stem: What is the content of the note that Patrolman Wells hands to Bob?
+    options:
+      - Jimmy invites Bob to meet him at a different restaurant the next evening
+      - Jimmy confesses that he has secretly been working for the Chicago police
+      - Jimmy warns Bob that Chicago detectives are already waiting inside the station
+      - Jimmy was the first officer, and could not arrest his friend himself
+    correctIndex: 3
+    explanationZh: 字条署名 Patrolman Wells，说明 Jimmy 就是最初巡逻的那位警察；他认出了 Bob 却不忍亲手抓捕老友，于是另请同事代劳并留下纸条说明原委。约改日见面、自称芝加哥卧底、预告侦探在局里等候，都非信中内容，也与 Jimmy 的处境不符。

@@ -1,0 +1,204 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: oh-ch-03
+bookId: book-o-henry
+title: The Cop and the Anthem
+titleZh: 警察与赞美诗
+summaryZh: 冬天逼近，流浪汉索皮一心想被关进岛上监狱过冬，为此他接连尝试了多种小手段，却始终未能如愿。就在他心灰意冷、偶然驻足聆听教堂赞美诗之际，命运却给了他一个意想不到的转折。
+sections:
+  - id: oh-ch-03-s1
+    text: |-
+      On his bench in Madison Square Soapy moved uneasily. When wild geese honk high of nights, and when women without sealskin coats grow kind to their husbands, and when Soapy moves uneasily on his bench in the park, you may know that winter is near at hand.
+
+      A dead leaf fell in Soapy’s lap. That was Jack Frost’s card. Jack is kind to the regular denizens of Madison Square, and gives fair warning of his annual call. At the corners of four streets he hands his pasteboard to the North Wind, footman of the mansion of All Outdoors, so that the inhabitants thereof may make ready.
+
+      Soapy’s mind became cognisant of the fact that the time had come for him to resolve himself into a singular Committee of Ways and Means to provide against the coming rigour. And therefore he moved uneasily on his bench.
+
+      The hibernatorial ambitions of Soapy were not of the highest. In them there were no considerations of Mediterranean cruises, of soporific Southern skies drifting in the Vesuvian Bay. Three months on the Island was what his soul craved. Three months of assured board and bed and congenial company, safe from Boreas and bluecoats, seemed to Soapy the essence of things desirable.
+
+      For years the hospitable Blackwell’s had been his winter quarters. Just as his more fortunate fellow New Yorkers had bought their tickets to Palm Beach and the Riviera each winter, so Soapy had made his humble arrangements for his annual hegira to the Island. And now the time was come. On the previous night three Sabbath newspapers, distributed beneath his coat, about his ankles and over his lap, had failed to repulse the cold as he slept on his bench near the spurting fountain in the ancient square. So the Island loomed big and timely in Soapy’s mind. He scorned the provisions made in the name of charity for the city’s dependents. In Soapy’s opinion the Law was more benign than Philanthropy. There was an endless round of institutions, municipal and eleemosynary, on which he might set out and receive lodging and food accordant with the simple life. But to one of Soapy’s proud spirit the gifts of charity are encumbered. If not in coin you must pay in humiliation of spirit for every benefit received at the hands of philanthropy. As Caesar had his Brutus, every bed of charity must have its toll of a bath, every loaf of bread its compensation of a private and personal inquisition. Wherefore it is better to be a guest of the law, which though conducted by rules, does not meddle unduly with a gentleman’s private affairs.
+    checkIn:
+      id: oh-ch-03-s1-c1
+      stem: Why does Soapy prefer the Island over charitable institutions for the winter?
+      options:
+        - He finds charitable institutions overcrowded and dirty compared to the Island.
+        - He wants to avoid charity because it forces him to do hard manual labor.
+        - He believes charity humiliates the recipient while jail leaves a gentleman's dignity intact.
+        - He thinks jail food and lodging are far superior to what charity provides.
+      correctIndex: 2
+      explanationZh: 原文明确指出索皮认为慈善的馈赠让人承受精神羞辱，而法律虽依规则行事，却不过度干涉绅士的私事，因此他宁愿做法律的客人。选项中说他觉得慈善机构拥挤肮脏或劳动繁重，均属无中生有。
+  - id: oh-ch-03-s2
+    text: |-
+      Soapy, having decided to go to the Island, at once set about accomplishing his desire. There were many easy ways of doing this. The pleasantest was to dine luxuriously at some expensive restaurant; and then, after declaring insolvency, be handed over quietly and without uproar to a policeman. An accommodating magistrate would do the rest.
+
+      Soapy left his bench and strolled out of the square and across the level sea of asphalt, where Broadway and Fifth Avenue flow together. Up Broadway he turned, and halted at a glittering café, where are gathered together nightly the choicest products of the grape, the silkworm and the protoplasm.
+
+      Soapy had confidence in himself from the lowest button of his vest upward. He was shaven, and his coat was decent and his neat black, ready-tied four-in-hand had been presented to him by a lady missionary on Thanksgiving Day. If he could reach a table in the restaurant unsuspected success would be his. The portion of him that would show above the table would raise no doubt in the waiter’s mind. A roasted mallard duck, thought Soapy, would be about the thing—with a bottle of Chablis, and then Camembert, a demitasse and a cigar. One dollar for the cigar would be enough. The total would not be so high as to call forth any supreme manifestation of revenge from the café management; and yet the meat would leave him filled and happy for the journey to his winter refuge.
+
+      But as Soapy set foot inside the restaurant door the head waiter’s eye fell upon his frayed trousers and decadent shoes. Strong and ready hands turned him about and conveyed him in silence and haste to the sidewalk and averted the ignoble fate of the menaced mallard.
+
+      Soapy turned off Broadway. It seemed that his route to the coveted island was not to be an epicurean one. Some other way of entering limbo must be thought of.
+
+      At a corner of Sixth Avenue electric lights and cunningly displayed wares behind plate-glass made a shop window conspicuous. Soapy took a cobblestone and dashed it through the glass. People came running around the corner, a policeman in the lead. Soapy stood still, with his hands in his pockets, and smiled at the sight of brass buttons.
+
+      “Where’s the man that done that?” inquired the officer excitedly.
+
+      “Don’t you figure out that I might have had something to do with it?” said Soapy, not without sarcasm, but friendly, as one greets good fortune.
+    checkIn:
+      id: oh-ch-03-s2-c1
+      stem: What reason does the policeman give for not arresting Soapy after the window-smashing?
+      options:
+        - He does not believe Soapy can afford to repair the broken window.
+        - He thinks Soapy is mentally ill and cannot be held responsible for it.
+        - He recognizes Soapy as a regular vagrant and decides to let him go.
+        - He assumes the real culprit fled and instead chases a random man running nearby.
+      correctIndex: 3
+      explanationZh: 警察心中认定砸窗户的人不会留在原地与法律纠缠，而是拔腿就跑，恰好看到半个街区外有人奔跑去赶车，便提着警棍追了上去。选项中说他因索皮精神失常或认出他是常客而放人，均与原文不符。
+  - id: oh-ch-03-s3
+    text: |-
+      The policeman’s mind refused to accept Soapy even as a clue. Men who smash windows do not remain to parley with the law’s minions. They take to their heels. The policeman saw a man halfway down the block running to catch a car. With drawn club he joined in the pursuit. Soapy, with disgust in his heart, loafed along, twice unsuccessful.
+
+      On the opposite side of the street was a restaurant of no great pretensions. It catered to large appetites and modest purses. Its crockery and atmosphere were thick; its soup and napery thin. Into this place Soapy took his accusive shoes and telltale trousers without challenge. At a table he sat and consumed beefsteak, flapjacks, doughnuts and pie. And then to the waiter be betrayed the fact that the minutest coin and himself were strangers.
+
+      “Now, get busy and call a cop,” said Soapy. “And don’t keep a gentleman waiting.”
+
+      “No cop for youse,” said the waiter, with a voice like butter cakes and an eye like the cherry in a Manhattan cocktail. “Hey, Con!”
+
+      Neatly upon his left ear on the callous pavement two waiters pitched Soapy. He arose, joint by joint, as a carpenter’s rule opens, and beat the dust from his clothes. Arrest seemed but a rosy dream. The Island seemed very far away. A policeman who stood before a drug store two doors away laughed and walked down the street.
+
+      Five blocks Soapy travelled before his courage permitted him to woo capture again. This time the opportunity presented what he fatuously termed to himself a “cinch.” A young woman of a modest and pleasing guise was standing before a show window gazing with sprightly interest at its display of shaving mugs and inkstands, and two yards from the window a large policeman of severe demeanour leaned against a water plug.
+
+      It was Soapy’s design to assume the role of the despicable and execrated “masher.” The refined and elegant appearance of his victim and the contiguity of the conscientious cop encouraged him to believe that he would soon feel the pleasant official clutch upon his arm that would insure his winter quarters on the right little, tight little isle.
+
+      Soapy straightened the lady missionary’s ready-made tie, dragged his shrinking cuffs into the open, set his hat at a killing cant and sidled toward the young woman. He made eyes at her, was taken with sudden coughs and “hems,” smiled, smirked and went brazenly through the impudent and contemptible litany of the “masher.” With half an eye Soapy saw that the policeman was watching him fixedly. The young woman moved away a few steps, and again bestowed her absorbed attention upon the shaving mugs. Soapy followed, boldly stepping to her side, raised his hat and said:
+    checkIn:
+      id: oh-ch-03-s3-c1
+      stem: How do the waiters at the cheap restaurant respond when Soapy says he cannot pay?
+      options:
+        - They call the police immediately and have him arrested on the spot.
+        - They throw him out onto the pavement and no officer intervenes.
+        - They make him wash dishes to pay for the meal he consumed.
+        - They beat him unconscious and leave him in the back alley.
+      correctIndex: 1
+      explanationZh: 文中写两个侍者把索皮摔在人行道上，他起身拍去灰尘，附近药店前的警察只是笑了笑便走开了，逮捕成了泡影。选项中说他们报警或让他洗碗，都与原文矛盾。
+  - id: oh-ch-03-s4
+    text: |-
+      “Ah there, Bedelia! Don’t you want to come and play in my yard?”
+
+      The policeman was still looking. The persecuted young woman had but to beckon a finger and Soapy would be practically en route for his insular haven. Already he imagined he could feel the cozy warmth of the station-house. The young woman faced him and, stretching out a hand, caught Soapy’s coat sleeve.
+
+      “Sure, Mike,” she said joyfully, “if you’ll blow me to a pail of suds. I’d have spoke to you sooner, but the cop was watching.”
+
+      With the young woman playing the clinging ivy to his oak Soapy walked past the policeman overcome with gloom. He seemed doomed to liberty.
+
+      At the next corner he shook off his companion and ran. He halted in the district where by night are found the lightest streets, hearts, vows and librettos. Women in furs and men in greatcoats moved gaily in the wintry air. A sudden fear seized Soapy that some dreadful enchantment had rendered him immune to arrest. The thought brought a little of panic upon it, and when he came upon another policeman lounging grandly in front of a transplendent theatre he caught at the immediate straw of “disorderly conduct.”
+
+      On the sidewalk Soapy began to yell drunken gibberish at the top of his harsh voice. He danced, howled, raved and otherwise disturbed the welkin.
+
+      The policeman twirled his club, turned his back to Soapy and remarked to a citizen.
+
+      “ ’Tis one of them Yale lads celebratin’ the goose egg they give to the Hartford College. Noisy; but no harm. We’ve instructions to lave them be.”
+
+      Disconsolate, Soapy ceased his unavailing racket. Would never a policeman lay hands on him? In his fancy the Island seemed an unattainable Arcadia. He buttoned his thin coat against the chilling wind.
+
+      In a cigar store he saw a well-dressed man lighting a cigar at a swinging light. His silk umbrella he had set by the door on entering. Soapy stepped inside, secured the umbrella and sauntered off with it slowly. The man at the cigar light followed hastily.
+
+      “My umbrella,” he said, sternly.
+
+      “Oh, is it?” sneered Soapy, adding insult to petit larceny. “Well, why don’t you call a policeman? I took it. Your umbrella! Why don’t you call a cop? There stands one on the corner.”
+
+      The umbrella owner slowed his steps. Soapy did likewise, with a presentiment that luck would again run against him. The policeman looked at the two curiously.
+    checkIn:
+      id: oh-ch-03-s4-c1
+      stem: Why does the policeman ignore Soapy's drunken racket outside the theatre?
+      options:
+        - He assumes Soapy is a wealthy gentleman who has had too much to drink.
+        - He assumes Soapy is a local actor rehearsing a street performance.
+        - He assumes Soapy is a Yale student celebrating a sports victory.
+        - He assumes Soapy is a mentally ill man harmless to the public.
+      correctIndex: 2
+      explanationZh: 警察转身对市民说这是耶鲁学生庆祝比赛胜利的喧闹，奉命不予理会。选项中说他把索皮当成富绅或演员，均无原文依据。
+  - id: oh-ch-03-s5
+    text: |-
+      “Of course,” said the umbrella man—“that is—well, you know how these mistakes occur—I—if it’s your umbrella I hope you’ll excuse me—I picked it up this morning in a restaurant—If you recognise it as yours, why—I hope you’ll—”
+
+      “Of course it’s mine,” said Soapy, viciously.
+
+      The ex-umbrella man retreated. The policeman hurried to assist a tall blonde in an opera cloak across the street in front of a street car that was approaching two blocks away.
+
+      Soapy walked eastward through a street damaged by improvements. He hurled the umbrella wrathfully into an excavation. He muttered against the men who wear helmets and carry clubs. Because he wanted to fall into their clutches, they seemed to regard him as a king who could do no wrong.
+
+      At length Soapy reached one of the avenues to the east where the glitter and turmoil was but faint. He set his face down this toward Madison Square, for the homing instinct survives even when the home is a park bench.
+
+      But on an unusually quiet corner Soapy came to a standstill. Here was an old church, quaint and rambling and gabled. Through one violet-stained window a soft light glowed, where, no doubt, the organist loitered over the keys, making sure of his mastery of the coming Sabbath anthem. For there drifted out to Soapy’s ears sweet music that caught and held him transfixed against the convolutions of the iron fence.
+
+      The moon was above, lustrous and serene; vehicles and pedestrians were few; sparrows twittered sleepily in the eaves—for a little while the scene might have been a country churchyard. And the anthem that the organist played cemented Soapy to the iron fence, for he had known it well in the days when his life contained such things as mothers and roses and ambitions and friends and immaculate thoughts and collars.
+
+      The conjunction of Soapy’s receptive state of mind and the influences about the old church wrought a sudden and wonderful change in his soul. He viewed with swift horror the pit into which he had tumbled, the degraded days, unworthy desires, dead hopes, wrecked faculties and base motives that made up his existence.
+
+      And also in a moment his heart responded thrillingly to this novel mood. An instantaneous and strong impulse moved him to battle with his desperate fate. He would pull himself out of the mire; he would make a man of himself again; he would conquer the evil that had taken possession of him. There was time; he was comparatively young yet; he would resurrect his old eager ambitions and pursue them without faltering. Those solemn but sweet organ notes had set up a revolution in him. Tomorrow he would go into the roaring downtown district and find work. A fur importer had once offered him a place as driver. He would find him tomorrow and ask for the position. He would be somebody in the world. He would—
+
+      Soapy felt a hand laid on his arm. He looked quickly around into the broad face of a policeman.
+
+      “What are you doin’ here?” asked the officer.
+
+      “Nothin’,” said Soapy.
+
+      “Then come along,” said the policeman.
+
+      “Three months on the Island,” said the Magistrate in the Police Court the next morning.
+    checkIn:
+      id: oh-ch-03-s5-c1
+      stem: What triggers Soapy's spiritual transformation outside the old church?
+      options:
+        - The organ music reminds him of his earlier life and inspires him to reform.
+        - The quiet street makes him realize he should return to Madison Square immediately.
+        - The cold wind finally convinces him that the Island is not worth pursuing.
+        - A passing stranger offers him a job and he resolves to accept it.
+      correctIndex: 0
+      explanationZh: 教堂传出的赞美诗让索皮想起曾经有母亲、玫瑰、抱负与朋友的岁月，他猛然惊觉自己已堕入深渊，决心重新做人。选项中说他因寒风放弃入狱，或因陌生人提供工作而改变，均与原文不符。
+quiz:
+  - id: oh-ch-03-q1
+    stem: What does Soapy plan to order at the luxurious café on Broadway?
+    options:
+      - A grilled salmon steak, a bottle of Burgundy, and some Brie.
+      - A roast beef platter, a bottle of claret, and some Roquefort.
+      - A bowl of turtle soup, a bottle of champagne, and some Stilton.
+      - A roasted mallard duck, a bottle of Chablis, and some Camembert.
+    correctIndex: 3
+    explanationZh: 索皮心中盘算着烤野鸭配夏布利白葡萄酒，再来点卡门贝奶酪，觉得这顿饭足以让他心满意足地踏上前往岛上过冬的旅程。其余选项中的菜品搭配在原文中均未提及。
+  - id: oh-ch-03-q2
+    stem: What happens when Soapy tries to play the "masher" near the young woman at the shop window?
+    options:
+      - She screams for help and the nearby policeman immediately arrests him.
+      - She turns out to be willing to join him and asks him to buy her a drink.
+      - She ignores him completely and walks away without saying a word.
+      - She recognizes him as a vagrant and calls the policeman over herself.
+    correctIndex: 1
+    explanationZh: 索皮本想调戏女子以被警察逮捕，没料到对方反而热情回应，说只要他请喝一杯就愿意跟他走，害他只能甩掉她继续逃走。选项中说女子尖叫报警或不理他，均与文中她那句"Sure, Mike"的欢快回答矛盾。
+  - id: oh-ch-03-q3
+    stem: How does the umbrella owner react when Soapy refuses to return the umbrella?
+    options:
+      - He immediately calls the nearby policeman to arrest Soapy.
+      - He grabs the umbrella back forcibly and walks away in anger.
+      - He backs down and claims it was all a misunderstanding.
+      - He offers Soapy money to leave the umbrella and go peacefully.
+    correctIndex: 2
+    explanationZh: 伞的主人见索皮态度强硬，便退缩说这只是一场误会，称伞是当天早上在餐厅捡到的。选项中说他强行夺回雨伞或报警抓人，均与原文不符。
+  - id: oh-ch-03-q4
+    stem: Where is Soapy standing when the anthem from the old church moves him to reform?
+    options:
+      - Against the iron fence outside an old, quaint, gabled church.
+      - On his bench beside the spurting fountain in Madison Square.
+      - On the sidewalk in front of a brilliantly lit theatre entrance.
+      - In a street damaged by improvements on the city's east side.
+    correctIndex: 0
+    explanationZh: 索皮走到一座古老而别致的教堂前，被铁栅栏缠住脚步，紫色窗玻璃透出柔光，管风琴奏出的赞美诗让他驻足沉思。选项中说他在喷泉长椅或剧院门口，均非原文中这一转折发生的地点。
+  - id: oh-ch-03-q5
+    stem: For what reason is Soapy finally arrested outside the church?
+    options:
+      - The officer catches him carrying a stolen umbrella he threw away.
+      - The officer regards him as a loiterer with no lawful business there.
+      - The officer overhears him shouting drunken gibberish on the street.
+      - The officer finds him breaking a church window with a cobblestone.
+    correctIndex: 1
+    explanationZh: 警察问他在这做什么，索皮说没做什么，警察便以游荡为由逮捕了他，次日法官判处三个月监禁。选项中说他因偷伞或醉酒喧闹被捕，这些之前的尝试均告失败，真正导致入狱的只是教堂前被认定为游荡者。
