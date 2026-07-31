@@ -192,7 +192,11 @@ function cleanText(text: string): string {
  * title; prose is direct-child <p> of the section/article container. Endnote
  * reference markers (a[epub:type~=noteref]) are print apparatus, not prose.
  */
-function extractSeChapter(xhtml: string): { title: string; ordinal: string; paragraphs: string[] } {
+export function extractSeChapter(xhtml: string): {
+  title: string;
+  ordinal: string;
+  paragraphs: string[];
+} {
   const paragraphs: string[] = [];
   let current: string[] | null = null;
   const heading = { ordinal: [] as string[], title: [] as string[] };
@@ -220,7 +224,10 @@ function extractSeChapter(xhtml: string): { title: string; ordinal: string; para
         headingSink?.push(t.text);
       },
     })
-    .on("section > p, article > p", {
+    // Descendant `p` inside blockquote also reaches footer > p signatures;
+    // dropping blockquotes once cost After Twenty Years its entire twist
+    // note (letters, signs, and telegrams live in them).
+    .on("section > p, article > p, section > blockquote p, article > blockquote p", {
       element(el) {
         flush();
         current = [];
@@ -230,7 +237,7 @@ function extractSeChapter(xhtml: string): { title: string; ordinal: string; para
         if (suppress === 0) current?.push(t.text);
       },
     })
-    .on("section > p a, article > p a", {
+    .on("section > p a, article > p a, section > blockquote p a, article > blockquote p a", {
       element(el) {
         if ((el.getAttribute("epub:type") ?? "").includes("noteref")) {
           suppress += 1;
@@ -287,7 +294,7 @@ const wordCount = (text: string) => text.split(/\s+/).filter(Boolean).length;
  * section at 400 words, never exceed 800 unless a single paragraph does. A
  * runt final section (<150 words) merges into its predecessor.
  */
-function splitSections(paragraphs: string[]): string[][] {
+export function splitSections(paragraphs: string[]): string[][] {
   const sections: string[][] = [];
   let acc: string[] = [];
   let accWords = 0;
@@ -309,56 +316,59 @@ function splitSections(paragraphs: string[]): string[][] {
   return sections;
 }
 
-const args = parseArgs(process.argv.slice(2));
-const chapters = args.seDir
-  ? parseSeChapters(args.seDir, args.files)
-  : parseChapters(fs.readFileSync(args.file!, "utf8"), args.headingRegex);
-if (chapters.length === 0) {
-  console.error(
-    "No chapters found — is this a Gutenberg text with 'Chapter N' headings? (--heading-regex overrides)",
-  );
-  process.exit(1);
-}
-
-const outDir = path.join(process.cwd(), "content", "books", args.slug, "chapters");
-fs.mkdirSync(outDir, { recursive: true });
-
-const written: string[] = [];
-for (const chapter of chapters) {
-  const sections = splitSections(chapter.paragraphs);
-  const total = wordCount(chapter.paragraphs.join(" "));
-  const id = `${args.prefix}-ch-${String(chapter.number).padStart(2, "0")}`;
-  console.log(
-    `${id}  ${chapter.title.padEnd(40)} ${String(total).padStart(5)}w  ${sections.length} sections`,
-  );
-  if (chapter.number < args.from || chapter.number > args.to) continue;
-
-  const file = path.join(outDir, `${id}.yaml`);
-  if (fs.existsSync(file) && !args.force) {
-    console.log(`  → exists, skipped (--force to overwrite)`);
-    continue;
+// CLI entry — guarded so tests can import the parsers without running it.
+if (import.meta.main) {
+  const args = parseArgs(process.argv.slice(2));
+  const chapters = args.seDir
+    ? parseSeChapters(args.seDir, args.files)
+    : parseChapters(fs.readFileSync(args.file!, "utf8"), args.headingRegex);
+  if (chapters.length === 0) {
+    console.error(
+      "No chapters found — is this a Gutenberg text with 'Chapter N' headings? (--heading-regex overrides)",
+    );
+    process.exit(1);
   }
-  const doc = {
-    id,
-    bookId: args.bookId,
-    title: chapter.title,
-    titleZh: "TODO",
-    sections: sections.map((paragraphs, i) => ({
-      id: `${id}-s${i + 1}`,
-      text: paragraphs.join("\n\n"),
-    })),
-    quiz: [],
-  };
-  fs.writeFileSync(
-    file,
-    "# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json\n" +
-      stringify(doc, { lineWidth: 0 }),
-  );
-  written.push(`${id}.yaml`);
-}
 
-console.log(`\nWrote ${written.length} skeleton(s) to ${outDir}`);
-if (written.length) {
-  console.log("Add them to book.yaml chapterFiles (order is load-bearing):");
-  for (const file of written) console.log(`  - ${file}`);
+  const outDir = path.join(process.cwd(), "content", "books", args.slug, "chapters");
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const written: string[] = [];
+  for (const chapter of chapters) {
+    const sections = splitSections(chapter.paragraphs);
+    const total = wordCount(chapter.paragraphs.join(" "));
+    const id = `${args.prefix}-ch-${String(chapter.number).padStart(2, "0")}`;
+    console.log(
+      `${id}  ${chapter.title.padEnd(40)} ${String(total).padStart(5)}w  ${sections.length} sections`,
+    );
+    if (chapter.number < args.from || chapter.number > args.to) continue;
+
+    const file = path.join(outDir, `${id}.yaml`);
+    if (fs.existsSync(file) && !args.force) {
+      console.log(`  → exists, skipped (--force to overwrite)`);
+      continue;
+    }
+    const doc = {
+      id,
+      bookId: args.bookId,
+      title: chapter.title,
+      titleZh: "TODO",
+      sections: sections.map((paragraphs, i) => ({
+        id: `${id}-s${i + 1}`,
+        text: paragraphs.join("\n\n"),
+      })),
+      quiz: [],
+    };
+    fs.writeFileSync(
+      file,
+      "# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json\n" +
+        stringify(doc, { lineWidth: 0 }),
+    );
+    written.push(`${id}.yaml`);
+  }
+
+  console.log(`\nWrote ${written.length} skeleton(s) to ${outDir}`);
+  if (written.length) {
+    console.log("Add them to book.yaml chapterFiles (order is load-bearing):");
+    for (const file of written) console.log(`  - ${file}`);
+  }
 }
