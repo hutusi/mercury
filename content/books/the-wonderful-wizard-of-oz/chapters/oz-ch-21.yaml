@@ -30,10 +30,10 @@ sections:
       id: oz-ch-21-s1-c1
       stem: How does the Lion feel about the big, old forest?
       options:
-        - He finds it gloomy and scary.
+        - He finds it gloomy and scary
         - He finds it delightful and homelike
-        - He wants to leave as soon as possible.
-        - He thinks the trees are too small.
+        - He wants to leave as soon as possible
+        - He thinks the trees are too small
       correctIndex: 1
       explanationZh: 狮子说 "This forest is perfectly delightful"，还说愿意一辈子住在这里。稻草人觉得阴暗（gloomy），但狮子完全不同意。
   - id: oz-ch-21-s2
@@ -81,10 +81,10 @@ quiz:
   - id: oz-ch-21-q1
     stem: Why did the animals of the forest gather together?
     options:
-      - To welcome Dorothy and her friends.
+      - To welcome Dorothy and her friends
       - To plan against a spider monster
-      - To choose a new king of the forest.
-      - To find food for the winter.
+      - To choose a new king of the forest
+      - To find food for the winter
     correctIndex: 1
     explanationZh: 老虎说他们正受到怪物的威胁，于是召集会议商量如何保护自己（"we had called a meeting to decide how to take care of ourselves"）。百兽聚集不是为了迎接多萝西，而是因为危险。
   - id: oz-ch-21-q2

@@ -36,10 +36,10 @@ sections:
       id: oz-ch-22-s1-c1
       stem: Why could the Scarecrow and Lion not climb the hill?
       options:
-        - The rocks were too slippery.
+        - The rocks were too slippery
         - The Hammer-Heads knocked them down
-        - A strong wind pushed them back.
-        - The hill was too steep for their legs.
+        - A strong wind pushed them back
+        - The hill was too steep for their legs
       correctIndex: 1
       explanationZh: 锤头怪虽然没有手臂，但他们的脖子能像闪电一样把头弹射出去，把稻草人撞得滚下山。狮子冲上去时也被「shot swiftly out」的头击退。石头滑或坡太陡只是干扰项。
   - id: oz-ch-22-s2

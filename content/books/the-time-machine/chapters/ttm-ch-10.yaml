@@ -68,10 +68,10 @@ quiz:
   - id: ttm-ch-10-q2
     stem: Why does the Time Traveller think the Morlocks retained more initiative than the Eloi?
     options:
-      - They were naturally more intelligent from birth.
+      - They were naturally more intelligent from birth
       - Machine work still required a little thought
-      - They had learned to read the books of the past.
-      - They were taught by the Eloi to operate machines.
+      - They had learned to read the books of the past
+      - They were taught by the Eloi to operate machines
     correctIndex: 1
     explanationZh: 他的推理是：地下人接触机械，而机械再完美也"needs some little thought outside habit"，所以他们"retained perforce rather more initiative"。这并非天生聪明或被教育的结果，而是环境所迫。
   - id: ttm-ch-10-q3
@@ -95,9 +95,9 @@ quiz:
   - id: ttm-ch-10-q5
     stem: How did the Time Traveller recover the lever that almost slipped from his hand?
     options:
-      - He struck the Morlock with his iron crowbar.
-      - He lit a match and blinded the Morlocks temporarily.
-      - He kicked the Morlock away with his foot.
+      - He struck the Morlock with his iron crowbar
+      - He lit a match and blinded the Morlocks temporarily
+      - He kicked the Morlock away with his foot
       - He butted the Morlock with his head in the dark
     correctIndex: 3
     explanationZh: 原文写 "I had to butt in the dark with my head—I could hear the Morlock's skull ring—to recover it"，是用头撞。铁棒早已扔掉，火柴又划不着，所以他只能徒手搏斗。

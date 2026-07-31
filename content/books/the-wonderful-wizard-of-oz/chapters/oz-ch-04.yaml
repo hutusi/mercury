@@ -30,10 +30,10 @@ sections:
       id: oz-ch-04-s1-c1
       stem: Why did the Scarecrow refuse to eat bread?
       options:
-        - He had already eaten a big meal.
+        - He had already eaten a big meal
         - His mouth was only painted on
-        - He did not like the taste of bread.
-        - He was saving the bread for Toto.
+        - He did not like the taste of bread
+        - He was saving the bread for Toto
       correctIndex: 1
       explanationZh: 稻草人说 "I am never hungry"，并解释如果挖洞吃东西，塞在头里的稻草会掉出来，毁了他的头形。选项 He was saving the bread for Toto 听起来合理，但原文没提到这一点。
   - id: oz-ch-04-s2

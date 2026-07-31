@@ -90,10 +90,10 @@ sections:
       id: ttm-ch-01-s3-c1
       stem: When the Medical Man says people cannot move in Time, what does the Time Traveller answer?
       options:
-        - People can already fly freely in all directions of Space.
-        - Time has no connection to Space at all.
+        - People can already fly freely in all directions of Space
+        - Time has no connection to Space at all
         - Our consciousness is already travelling along Time
-        - Gravitation prevents all vertical movement.
+        - Gravitation prevents all vertical movement
       correctIndex: 2
       explanationZh: 他回答：我们“are always getting away from the present moment”，意识正以均匀速度沿时间维度从出生滑向死亡。他只是承认引力限制上下移动，并非说人类可自由飞行。
   - id: ttm-ch-01-s4
@@ -149,10 +149,10 @@ sections:
       id: ttm-ch-01-s4-c1
       stem: What does the Time Traveller bring back from his laboratory after the guests ask to see the experiment?
       options:
-        - A full-sized time machine made of nickel.
-        - A conjuring trick from Burslem.
+        - A full-sized time machine made of nickel
+        - A conjuring trick from Burslem
         - A glittering model no bigger than a clock
-        - A weather diagram on paper.
+        - A weather diagram on paper
       correctIndex: 2
       explanationZh: 文中说他拿着“a glittering metallic framework, scarcely larger than a small clock”，比小钟还小，显然是模型。与后文实验室里的大机器并非同一件。
   - id: ttm-ch-01-s5
@@ -251,10 +251,10 @@ quiz:
   - id: ttm-ch-01-q2
     stem: What comparison does the Time Traveller use to show that limited freedom of movement does not prove a dimension is impassable?
     options:
-      - A flat-surface figure cannot represent a three-dimensional solid.
-      - A bullet flying through the air cannot be seen by the eye.
+      - A flat-surface figure cannot represent a three-dimensional solid
+      - A bullet flying through the air cannot be seen by the eye
       - A savage cannot stay off the ground, but a balloonist can
-      - A portrait at eight years old differs from one at twenty-three.
+      - A portrait at eight years old differs from one at twenty-three
     correctIndex: 2
     explanationZh: 他用气球类比：原始人不能悬空六尺，文明人却可借气球克服引力上升；同理，人虽不能久留于过去，却不意味着将来无法在时间中主动移动。轮辐与子弹的比喻出现在别处，用来解释看不见高速时间旅行。
   - id: ttm-ch-01-q3
@@ -279,9 +279,9 @@ quiz:
     stem: What happens to the model after the lever is pressed?
     options:
       - It grows indistinct and vanishes from the table
-      - It falls through the table and lands on the floor.
-      - It bursts into flames and burns to ash.
-      - It changes into a small clock and stops ticking.
+      - It falls through the table and lands on the floor
+      - It bursts into flames and burns to ash
+      - It changes into a small clock and stops ticking
     correctIndex: 0
     explanationZh: 原文描写：一阵风、烛火跳动，机器“swung round, became indistinct…as a ghost for a second…vanished”。桌上除灯外空无一物。不是掉落或燃烧。
   - id: ttm-ch-01-q6

@@ -20,9 +20,9 @@ sections:
       id: ttm-ch-02-s1-c1
       stem: Why did the guests find it hard to believe the Time Traveller?
       options:
-        - He had no model to show his friends at the dinner.
-        - He refused to explain how the machine worked.
-        - His friends had never seen him build anything before.
+        - He had no model to show his friends at the dinner
+        - He refused to explain how the machine worked
+        - His friends had never seen him build anything before
         - He seemed too clever to be believed
       correctIndex: 3
       explanationZh: 原文说他是 "too clever to be believed"，人们总觉得他坦率的外表下藏有机关。而提到模型的人是 Filby，并非时间旅行者没有模型可展示，排除该项即可。
@@ -100,9 +100,9 @@ sections:
       stem: What happened as the Time Traveller told his story in the smoking-room?
       options:
         - They stopped glancing about and watched only his face
-        - The listeners kept whispering questions to each other.
-        - The listeners fell asleep because they were bored.
-        - The listeners laughed at his ridiculous story.
+        - The listeners kept whispering questions to each other
+        - The listeners fell asleep because they were bored
+        - The listeners laughed at his ridiculous story
       correctIndex: 0
       explanationZh: 文中说起初大家偶尔对视，但后来 "we ceased to do that, and looked only at the Time Traveller's face"。这说明大家被他的讲述吸引了，而非互相低语或发笑。
 quiz:

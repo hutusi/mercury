@@ -21,9 +21,9 @@ sections:
       stem: What did the Time Traveller notice when he passed through the moment of Mrs. Watchett's crossing during his return?
       options:
         - Her every motion seemed exactly reversed
-        - She was frozen completely still for that instant.
-        - She had changed into different clothing entirely.
-        - She walked much faster than he remembered.
+        - She was frozen completely still for that instant
+        - She had changed into different clothing entirely
+        - She walked much faster than he remembered
       correctIndex: 0
       explanationZh: 回程时他再次经过那一瞬间，但一切都是颠倒的：她倒着退出门外，“the exact inversion of her previous ones”。她既没有静止不动，也没有换衣服或走得更快。
   - id: ttm-ch-12-s2
@@ -109,10 +109,10 @@ sections:
       id: ttm-ch-12-s4-c1
       stem: What does the narrator glimpse for an instant when he opens the laboratory door?
       options:
-        - The Traveller unconscious on the floor with broken tools.
-        - An intruder in a dark coat leaving by the skylight.
+        - The Traveller unconscious on the floor with broken tools
+        - An intruder in a dark coat leaving by the skylight
         - A ghostly figure in a whirling mass of black and brass
-        - A cloud of smoke from a small fire on the bench.
+        - A cloud of smoke from a small fire on the bench
       correctIndex: 2
       explanationZh: 叙述者开门时听到一声被截断的惊呼，随后看到“a ghostly, indistinct figure sitting in a whirling mass of black and brass”——旋即消失，机器也不见了。说他看到旅行者昏倒在地、陌生黑衣人离开、或烟雾起火，都与原文不符。
 quiz:
@@ -129,9 +129,9 @@ quiz:
     stem: Why does the Medical Man ask to keep the withered white flowers?
     options:
       - He cannot identify the flowers' natural order
-      - He wants to sell them to a collector of rare plants.
-      - He recognizes them as common daisies from the garden.
-      - He thinks they are poisoned and needs to test them.
+      - He wants to sell them to a collector of rare plants
+      - He recognizes them as common daisies from the garden
+      - He thinks they are poisoned and needs to test them
     correctIndex: 0
     explanationZh: 医生检查后说 “I certainly don't know the natural order of these flowers”，因此想留下来研究。他想卖给收藏家、认出是普通雏菊、怀疑有毒，都没有原文依据。
   - id: ttm-ch-12-q3
@@ -146,19 +146,19 @@ quiz:
   - id: ttm-ch-12-q4
     stem: When the narrator returns the next day and touches the machine's lever, what happens?
     options:
-      - The lever snaps off and clatters to the floor.
-      - The machine gives off a bright flash of light.
+      - The lever snaps off and clatters to the floor
+      - The machine gives off a bright flash of light
       - The machine sways like a wind-shaken branch
-      - Nothing happens because the machine is locked.
+      - Nothing happens because the machine is locked
     correctIndex: 2
     explanationZh: 他只是轻轻触碰操控杆，这台看起来结实的机器就 “swayed like a bough shaken by the wind”，这种不稳定让他很吃惊。说杠杆折断、闪光、因锁死毫无反应，都与原文描写不符。
   - id: ttm-ch-12-q5
     stem: What is the Traveller carrying when he meets the narrator in the smoking-room before his final departure?
     options:
-      - A bundle of Weena's flowers and a medical kit.
+      - A bundle of Weena's flowers and a medical kit
       - A small camera and a knapsack
-      - A rifle and a box of matches.
-      - A rolled-up map and a brass compass.
+      - A rifle and a box of matches
+      - A rolled-up map and a brass compass
     correctIndex: 1
     explanationZh: 原文明确写他“had a small camera under one arm and a knapsack under the other”，并笑着说正忙着。携带花朵和药箱、步枪与火柴、地图与罗盘，都不属于此处描写。
   - id: ttm-ch-12-q6

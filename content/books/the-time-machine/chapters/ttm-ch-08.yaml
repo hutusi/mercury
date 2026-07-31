@@ -34,9 +34,9 @@ sections:
       stem: Why does the Time Traveller linger among the old machines?
       options:
         - Their secrets might yield powers against the Morlocks
-        - He wants to repair one so he can travel back home.
-        - He is trying to find a hidden door to the Morlocks' tunnels.
-        - He believes the machines contain explosives.
+        - He wants to repair one so he can travel back home
+        - He is trying to find a hidden door to the Morlocks' tunnels
+        - He believes the machines contain explosives
       correctIndex: 0
       explanationZh: 文中提到他对机械有偏好，随后说“I fancied that if I could solve their puzzles I should find myself in possession of powers that might be of use against the Morlocks”。他并不是想修理机器回家，而是希望借此对抗莫洛克人。
   - id: ttm-ch-08-s3
@@ -128,9 +128,9 @@ quiz:
   - id: ttm-ch-08-q5
     stem: What does the Time Traveller do with the camphor, and why?
     options:
-      - He throws it away because it has gone bad.
-      - He eats a small piece to refresh himself.
-      - He uses it to patch a leak in the roof.
+      - He throws it away because it has gone bad
+      - He eats a small piece to refresh himself
+      - He uses it to patch a leak in the roof
       - He keeps it to burn like a bright candle
     correctIndex: 3
     explanationZh: 文中说他起初想丢掉，但记起它“inflammable and burned with a good bright flame”，于是放进口袋当蜡烛用。他并非丢弃或食用。
@@ -142,4 +142,4 @@ quiz:
       - Huge fossil skeletons such as the Brontosaurus
       - Shelves of ancient farming tools
     correctIndex: 2
-    explanationZh: 绿瓷宫其实是一座古老的博物馆，古生物展厅里立着巨大的化石骨架，包括雷龙（Brontosaurus）的巨大骨桶，只是不可避免的腐朽正在侵蚀它们。馆里没有关活物的笼子，也没有蜡像和农具架。
+    explanationZh: 绿瓷宫其实是一座古老的博物馆，古生物展厅里立着巨大的化石骨架，包括一具雷龙（Brontosaurus），只是不可避免的腐朽正在侵蚀它们。馆里没有关活物的笼子，也没有蜡像和农具架。

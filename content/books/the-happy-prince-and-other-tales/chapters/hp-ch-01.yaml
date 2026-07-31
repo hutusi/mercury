@@ -3,7 +3,7 @@ id: hp-ch-01
 bookId: book-happy-prince
 title: The Happy Prince
 titleZh: 快乐王子
-summaryZh: 高耸在城市上空的快乐王子雕像，目睹了人间的苦难后流下眼泪。他请求一只延误南飞的燕子留下来做他的信使，去帮助城中的穷苦人。冬天一天天临近，这对朋友的故事也走向一个出人意料的结尾。
+summaryZh: 高耸在城市上空的快乐王子雕像受尽全城赞美，却在一个夜晚让前来投宿的小燕子大吃一惊。他请求燕子留下来做他的信使，去帮助城中的穷苦人。冬天一天天临近，这对朋友的故事也走向一个出人意料的结尾。
 sections:
   - id: hp-ch-01-s1
     text: |-
@@ -219,9 +219,9 @@ sections:
       stem: What does the Prince ask the Swallow to do with the fine gold on his body?
       options:
         - Give it leaf by leaf to the poor
-        - Polish it to make it shine again.
-        - Cover the Swallow to keep him warm.
-        - Sell it to the jeweller for food.
+        - Polish it to make it shine again
+        - Cover the Swallow to keep him warm
+        - Sell it to the jeweller for food
       correctIndex: 0
       explanationZh: 王子让燕子把金箔一片一片取下来送给穷人。他相信活着的人总以为金子能让他们快乐。
   - id: hp-ch-01-s8
@@ -267,9 +267,9 @@ quiz:
   - id: hp-ch-01-q1
     stem: Why did the Swallow decide to leave the Reed?
     options:
-      - She asked him to go to Egypt alone.
-      - She was always flirting with other birds.
-      - She told him she did not love him.
+      - She asked him to go to Egypt alone
+      - She was always flirting with other birds
+      - She told him she did not love him
       - She refused to leave home and travel
     correctIndex: 3
     explanationZh: 燕子邀请芦苇和他一起走，但芦苇摇头，因为她离不开家。他还觉得她不会聊天，总是跟风调情。
@@ -295,18 +295,18 @@ quiz:
     stem: Why did the young writer think the sapphire was from a great admirer?
     options:
       - He felt appreciated, and never saw the Swallow
-      - The Swallow spoke to him and told him so.
-      - A letter came with the jewel explaining everything.
-      - The Director of the Theatre sent it as payment.
+      - The Swallow spoke to him and told him so
+      - A letter came with the jewel explaining everything
+      - The Director of the Theatre sent it as payment
     correctIndex: 0
     explanationZh: 年轻人把头埋在手里，没听到鸟翅膀的声音，抬头看见蓝宝石躺在枯萎的紫罗兰上，就以为有欣赏者送来了礼物。
   - id: hp-ch-01-q5
     stem: Why did the Mayor and Town Councillors pull down the statue?
     options:
-      - It was blocking the view of the cathedral.
+      - It was blocking the view of the cathedral
       - No longer beautiful, it seemed no longer useful
-      - The leaden heart was too heavy for the column.
-      - They wanted to build a statue of a bird instead.
+      - The leaden heart was too heavy for the column
+      - They wanted to build a statue of a bird instead
     correctIndex: 1
     explanationZh: 市长和议员们看到雕像红宝石掉了、眼睛没了、金箔也没了，觉得它不再美丽。大学教授说既然不再美，也就不再有用了。
   - id: hp-ch-01-q6

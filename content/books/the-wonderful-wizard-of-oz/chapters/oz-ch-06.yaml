@@ -71,9 +71,9 @@ sections:
       id: oz-ch-06-s2-c1
       stem: How does the Lion react when Dorothy calls him a coward?
       options:
-        - He gets angry and roars at her.
-        - He denies it and walks away.
-        - He laughs and thinks it is a joke.
+        - He gets angry and roars at her
+        - He denies it and walks away
+        - He laughs and thinks it is a joke
         - He hangs his head and admits it
       correctIndex: 3
       explanationZh: 狮子低头承认 "I know it … I've always known it"，说明他并不否认。发怒吼叫或当成玩笑都不符合他的羞愧态度，而"矢口否认走开"更是与原文完全相反。
@@ -163,10 +163,10 @@ quiz:
   - id: oz-ch-06-q4
     stem: What does the Tin Woodman say proves that the Lion has a heart?
     options:
-      - The Lion can roar very loudly.
+      - The Lion can roar very loudly
       - His heart beats fast in danger
-      - The Lion cares about other animals.
-      - The Lion wants to go to Oz.
+      - The Lion cares about other animals
+      - The Lion wants to go to Oz
     correctIndex: 1
     explanationZh: 铁皮人听说狮子遇险心跳加快，便认为这也许是心脏病，而这也说明他有心。"关心其他动物"看似有理，但原文的逻辑是心跳快等于有心。
   - id: oz-ch-06-q5

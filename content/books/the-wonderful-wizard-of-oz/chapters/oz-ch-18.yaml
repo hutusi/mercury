@@ -126,10 +126,10 @@ sections:
       id: oz-ch-18-s3-c1
       stem: What danger did the soldier warn Dorothy about on the road to the South?
       options:
-        - Only wild beasts in the woods.
+        - Only wild beasts in the woods
         - Wild beasts and queer, rude men
-        - A wide river that no one can cross.
-        - A dark forest full of magic spells.
+        - A wide river that no one can cross
+        - A dark forest full of magic spells
       correctIndex: 1
       explanationZh: 士兵说路上有 "wild beasts in the woods, and a race of queer men who do not like strangers to cross their country"，即野兽和不喜欢陌生人的怪人。"只有野兽"漏掉了怪人这一威胁，因此不完整。
 quiz:

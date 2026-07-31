@@ -251,6 +251,19 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
       `  ! correct option far longer than every distractor: ${lengthTells.join(", ")} — shorten before committing`,
     );
   }
+  // Mixed terminal punctuation is the same tell in another guise (a
+  // rewording pass once left only the correct option period-free).
+  const punctuationTells = allQuestions
+    .filter((q) => {
+      const punctuated = q.options.filter((o) => /[.!?…。]$/.test(o.trim())).length;
+      return punctuated > 0 && punctuated < q.options.length;
+    })
+    .map((q) => q.id);
+  if (punctuationTells.length) {
+    console.warn(
+      `  ! options mix terminal punctuation: ${punctuationTells.join(", ")} — make them uniform before committing`,
+    );
+  }
   // The quiz must not repeat a check-in's fact (its answer was already
   // revealed mid-read). Cheap token-overlap heuristic; review confirms.
   const tokens = (s: string) =>

@@ -125,10 +125,10 @@ sections:
       id: oz-ch-07-s4-c1
       stem: How did the travelers get rid of the two Kalidahs?
       options:
-        - The Lion fought and defeated them in battle.
-        - The Scarecrow pushed them into the river.
+        - The Lion fought and defeated them in battle
+        - The Scarecrow pushed them into the river
         - The Woodman chopped away the tree bridge
-        - Dorothy scared them away with fire.
+        - Dorothy scared them away with fire
       correctIndex: 2
       explanationZh: 当 Kalidahs 正走过倒下的树桥时，Scarecrow 让铁皮樵夫砍断他们这一侧的树端，树掉进深渊，两头猛兽也跟着摔碎在岩石上。狮子只是勇敢地面对它们，真正解决它们的是砍断树桥这一招。
 quiz:

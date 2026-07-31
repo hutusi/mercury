@@ -14,10 +14,10 @@ sections:
       id: ttm-ch-11-s1-c1
       stem: When the Time Traveller checks the dials, what does he discover about his direction of travel?
       options:
-        - He has returned to his own time by mistake.
+        - He has returned to his own time by mistake
         - He has accidentally flown into the far future
-        - He is travelling backward into the deep past.
-        - He has stopped in the age of the Eloi.
+        - He is travelling backward into the deep past
+        - He has stopped in the age of the Eloi
       correctIndex: 1
       explanationZh: 文中说“instead of reversing the levers, I had pulled them over so as to go forward”，他发现自己意外地向前飞入了遥远的未来。提到“returned to his own time”是反向操作的结果，与他实际做的相反。
   - id: ttm-ch-11-s2
@@ -95,18 +95,18 @@ quiz:
   - id: ttm-ch-11-q3
     stem: What effect does the thin air have on the Time Traveller when he stops in the far future?
     options:
-      - He feels energetic and unusually strong.
+      - He feels energetic and unusually strong
       - He feels oppressed and breathes fast
-      - He falls asleep for a long time.
-      - He loses his eyesight for a while.
+      - He falls asleep for a long time
+      - He loses his eyesight for a while
     correctIndex: 1
     explanationZh: 他说头部有压迫感，呼吸急促，并“reminded me of my only experience of mountaineering”，由此判断空气比现在稀薄。空气稀薄不会让人精力充沛或沉睡。
   - id: ttm-ch-11-q4
     stem: What does the Time Traveller see on the shallow sandbank after the eclipse ends?
     options:
-      - A white bird with broken wings trying to fly.
-      - A small boat drifting toward the shore.
-      - A human figure waving at him.
+      - A white bird with broken wings trying to fly
+      - A small boat drifting toward the shore
+      - A human figure waving at him
       - A hopping black thing with trailing tentacles
     correctIndex: 3
     explanationZh: 日食结束后他再次看到浅滩上的移动物体：“a round thing, the size of a football perhaps... and tentacles trailed down from it... it was hopping fitfully about”。那不是鸟或船，而是一个带触手的黑色球状生物。
@@ -122,9 +122,9 @@ quiz:
   - id: ttm-ch-11-q6
     stem: What signs tell the Time Traveller that almost all life on Earth has ended?
     options:
-      - The entire ocean has frozen solid into ice.
-      - All the green plants have turned to red dust.
+      - The entire ocean has frozen solid into ice
+      - All the green plants have turned to red dust
       - Nothing moved; only green slime remained
-      - The beach is crowded with tiny white insects.
+      - The beach is crowded with tiny white insects
     correctIndex: 2
     explanationZh: 他环顾四周，在天空、大地和海洋中都没有看到任何移动的东西，“The green slime on the rocks alone testified that life was not extinct”。岩上的绿色黏液是生命仅存的痕迹，海洋并未完全冻结。

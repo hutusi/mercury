@@ -50,10 +50,10 @@ sections:
       id: ttm-ch-07-s3-c1
       stem: Why did the Time Traveller hesitate before entering the thick wood at night?
       options:
-        - He heard Morlocks calling inside it.
+        - He heard Morlocks calling inside it
         - He could see no end to it either way
-        - He had already reached the palace.
-        - Weena refused to walk any further.
+        - He had already reached the palace
+        - Weena refused to walk any further
       correctIndex: 1
       explanationZh: 他在山坡上停下，因为前方“a thick wood spreading wide and black”，左右都看不到尽头；他又累又脚痛，对林中可能隐藏的危险心生顾虑。此时他尚未听到莫洛克人的声音，也没到达绿瓷宫。
   - id: ttm-ch-07-s4
@@ -121,14 +121,14 @@ quiz:
     correctIndex: 0
     explanationZh: 他曾在一个潮湿的下午远望绿瓷宫，潮湿空气会使距离“deceptively diminished”，所以他估算七八英里，实际将近十八英里。鞋底松动和脚痛也拖慢了速度，但距离估算错误才是主因。
   - id: ttm-ch-07-q4
-    stem: Why did the Time Traveller decide to sleep on the open hill instead of entering the wood?
+    stem: What had the Time Traveller resolved to do about Weena?
     options:
-      - He wanted to watch the Morlocks from above.
-      - He was very tired and could see no end to the wood.
-      - Weena begged him not to enter the wood.
-      - He had already reached the Palace.
+      - Leave her with her people at the great hall
+      - Bring her back with him to his own time
+      - Hide her inside the Palace of Green Porcelain
+      - Ask her to guard the Time Machine at night
     correctIndex: 1
-    explanationZh: 他脚痛且疲惫，面对看不到尽头的密林犹豫不决，决定不进去而是在露天山坡过夜。他确实担心林中隐藏的危险，但直接原因是疲惫和对林地范围的疑虑，而非被薇娜请求或已到达目的地。
+    explanationZh: 他明确说“Weena I had resolved to bring with me to our own time”——他已决定带薇娜回到自己的时代。把她留下、藏进绿瓷宫或让她守机器，都不是他的打算。
   - id: ttm-ch-07-q5
     stem: What did the Time Traveller notice about the stars in the future night sky?
     options:

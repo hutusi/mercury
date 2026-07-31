@@ -54,10 +54,10 @@ sections:
       id: ttm-ch-05-s3-c1
       stem: What evidence leads the Time Traveller to conclude that the Time Machine is inside the bronze pedestal of the Sphinx?
       options:
-        - The little people tell him where to find it.
-        - He sees a light shining from inside the pedestal.
+        - The little people tell him where to find it
+        - He sees a light shining from inside the pedestal
         - A groove and narrow footprints leading toward it
-        - He finds the missing levers near the pedestal.
+        - He finds the missing levers near the pedestal
       correctIndex: 2
       explanationZh: 他在草地上发现了一道被拖拽出的沟痕和类似树懒的窄小脚印，都指向铜座。他敲了敲铜座发现它是空心的，由此推断机器被藏在里面。
   - id: ttm-ch-05-s4
@@ -71,10 +71,10 @@ sections:
       id: ttm-ch-05-s4-c1
       stem: How do the little people respond when the Time Traveller points at the bronze pedestal and tries to open it?
       options:
-        - They offer to help him open it together.
-        - They show him a hidden key to the panels.
+        - They offer to help him open it together
+        - They show him a hidden key to the panels
         - They act deeply insulted and walk away
-        - They run away screaming in terror.
+        - They run away screaming in terror
       correctIndex: 2
       explanationZh: 当他指向铜座示意想打开时，小人族的反应就像受到了极大侮辱一样走开了。文中用了一个比喻，说就像对一个体面的人做了粗俗的手势，他们显得既厌恶又难堪。
   - id: ttm-ch-05-s5
@@ -86,10 +86,10 @@ sections:
       id: ttm-ch-05-s5-c1
       stem: What strange feature does the Time Traveller notice about the circular wells on the hillsides?
       options:
-        - They are filled with glowing blue water.
+        - They are filled with glowing blue water
         - No visible water, and air rushing steadily down
-        - They are used to store food for the little people.
-        - They emit a bright light from deep below.
+        - They are used to store food for the little people
+        - They emit a bright light from deep below
       correctIndex: 1
       explanationZh: 他在井边探望，看不到水面也照不出反光，却听到砰砰声并把纸片扔进去后被迅速吸入。这说明井里有一股向下的气流，而不是水。
   - id: ttm-ch-05-s6
@@ -137,9 +137,9 @@ sections:
       id: ttm-ch-05-s8-c1
       stem: What does the Time Traveller learn from Weena about the little people's relationship with darkness?
       options:
-        - They prefer to sleep outdoors under the stars.
-        - They become aggressive and violent at night.
-        - They can see perfectly well in complete darkness.
+        - They prefer to sleep outdoors under the stars
+        - They become aggressive and violent at night
+        - They can see perfectly well in complete darkness
         - They dread the dark and never go out after sunset
       correctIndex: 3
       explanationZh: 薇娜在白天不怕任何事，但极度害怕黑暗、阴影和黑色的东西。他发现天黑后小人族全部聚在大屋里睡觉，从不在室外或独自过夜，说明黑暗是他们唯一恐惧的东西。

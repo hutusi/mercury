@@ -153,14 +153,18 @@ describe("books", () => {
       }
     });
 
-    test(`${book.id}: correct options are not a length tell`, () => {
-      // A verbose correct answer is as gameable as a position bias: before
-      // remediation the correct option was uniquely longest in 66-79% of
-      // questions per book (baseline 25%). Cap the flagrant per-question
-      // ratio everywhere and the pooled share once a book is big enough.
+    test(`${book.id}: option shape never gives the answer away`, () => {
+      // Answer-shape tells are as gameable as position bias, and both
+      // directions have actually shipped here: the correct option was
+      // uniquely longest in 66-79% of questions per book (baseline 25%),
+      // and a later rewording pass left the correct option as the only one
+      // without a trailing period in 55 questions. Cap the flagrant length
+      // ratio per question, cap BOTH pooled extremes once a book is big
+      // enough, and require punctuation-uniform options in every question.
       // Mirrored in scripts/generate-book-questions.ts (draft-time warning).
       const violations: string[] = [];
       let uniquelyLongest = 0;
+      let uniquelyShortest = 0;
       let total = 0;
       for (const chapter of book.chapters) {
         const questions = [
@@ -171,20 +175,28 @@ describe("books", () => {
           total += 1;
           const lengths = q.options.map((o) => o.length);
           const correct = lengths[q.correctIndex];
-          const longestDistractor = Math.max(...lengths.filter((_, i) => i !== q.correctIndex));
-          if (correct > longestDistractor) uniquelyLongest += 1;
-          if (correct > longestDistractor * 1.6) {
+          const distractors = lengths.filter((_, i) => i !== q.correctIndex);
+          if (correct > Math.max(...distractors)) uniquelyLongest += 1;
+          if (correct < Math.min(...distractors)) uniquelyShortest += 1;
+          if (correct > Math.max(...distractors) * 1.6) {
             violations.push(
-              `${q.id}: correct option is ${correct} chars vs longest distractor ${longestDistractor}`,
+              `${q.id}: correct option is ${correct} chars vs longest distractor ${Math.max(...distractors)}`,
+            );
+          }
+          const punctuated = q.options.filter((o) => /[.!?…。]$/.test(o.trim())).length;
+          if (punctuated > 0 && punctuated < q.options.length) {
+            violations.push(
+              `${q.id}: options mix terminal punctuation (${punctuated}/4 end with it)`,
             );
           }
         }
       }
       expect(violations).toEqual([]);
       if (total >= 40) {
-        const share = uniquelyLongest / total;
-        const label = `${uniquelyLongest}/${total} correct options are uniquely longest`;
-        expect(share, label).toBeLessThanOrEqual(0.45);
+        const longestLabel = `${uniquelyLongest}/${total} correct options are uniquely longest`;
+        expect(uniquelyLongest / total, longestLabel).toBeLessThanOrEqual(0.45);
+        const shortestLabel = `${uniquelyShortest}/${total} correct options are uniquely shortest`;
+        expect(uniquelyShortest / total, shortestLabel).toBeLessThanOrEqual(0.35);
       }
     });
 

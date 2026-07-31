@@ -27,9 +27,9 @@ sections:
       stem: Why did the King give orders to double the young Page's salary?
       options:
         - The Page compared the Princess to a rose
-        - The Page played the flute beautifully at the Ball.
-        - The Page found the Princess's lost silver cap.
-        - The Page served the crystal cup at the banquet.
+        - The Page played the flute beautifully at the Ball
+        - The Page found the Princess's lost silver cap
+        - The Page served the crystal cup at the banquet
       correctIndex: 0
       explanationZh: 文本说小侍从说公主之前像白玫瑰，脸红后像红玫瑰，国王听了很高兴，下令给他加倍薪水。虽然他根本没有薪水可加倍，但被视为莫大荣誉。
   - id: hp-ch-05-s2
@@ -272,10 +272,10 @@ sections:
       id: hp-ch-05-s9-c1
       stem: How does the Rocket explain the usefulness of his position?
       options:
-        - He can plough the fields like an ox if needed.
-        - He can draw a cart like a horse.
+        - He can plough the fields like an ox if needed
+        - He can draw a cart like a horse
         - A person of his position is never useful
-        - He can look after sheep like a collie-dog.
+        - He can look after sheep like a collie-dog
       correctIndex: 2
       explanationZh: 鸭子夸牛能耕田、马能拉车、牧羊犬能看羊，火箭骄傲地说自己那样的人从不做有用的事，有才艺就够了。
   - id: hp-ch-05-s10
@@ -338,18 +338,18 @@ quiz:
   - id: hp-ch-05-q2
     stem: What did the Rocket's mother do that made her famous?
     options:
-      - She flew higher than any rocket before.
-      - She danced with the King at a ball.
-      - She fell into a ditch and met a frog.
+      - She flew higher than any rocket before
+      - She danced with the King at a ball
+      - She fell into a ditch and met a frog
       - She spun nineteen times, throwing stars
     correctIndex: 3
     explanationZh: 火箭说他的母亲是最出名的轮转烟花，公开亮相时旋转十九圈，每圈抛出七颗粉色星星。飞得很高的是他父亲。
   - id: hp-ch-05-q3
     stem: How did the Roman Candle define a sensitive person?
     options:
-      - Someone who weeps when others are happy.
-      - Someone who always keeps dry at night.
-      - Someone who never argues with a frog.
+      - Someone who weeps when others are happy
+      - Someone who always keeps dry at night
+      - Someone who never argues with a frog
       - Someone with corns who treads on toes
     correctIndex: 3
     explanationZh: 罗马烛小声说敏感的人就是自己长了鸡眼却总踩别人脚趾（has corns himself, always treads on other people's toes），暗讽火箭自以为是。

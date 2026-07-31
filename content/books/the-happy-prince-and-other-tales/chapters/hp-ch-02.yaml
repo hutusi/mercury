@@ -217,10 +217,10 @@ quiz:
   - id: hp-ch-02-q3
     stem: How does the Nightingale make the rose turn red?
     options:
-      - She waters the tree with river water all night.
-      - She flies to the Sun and brings back its fire.
+      - She waters the tree with river water all night
+      - She flies to the Sun and brings back its fire
       - Her heart's blood flows in as she sings on a thorn
-      - She asks the Moon to color the rose with her light.
+      - She asks the Moon to color the rose with her light
     correctIndex: 2
     explanationZh: 玫瑰树说“stain it with your own heart's-blood”，夜莺胸口抵着刺整夜歌唱，心血流入树枝，玫瑰才从白色变深红。浇水、借日光、借月光都未在文中出现。
   - id: hp-ch-02-q4
@@ -235,18 +235,18 @@ quiz:
   - id: hp-ch-02-q5
     stem: Why does the Professor's daughter reject the red rose?
     options:
-      - She is already engaged to the Student.
-      - She only likes white roses, not red ones.
+      - She is already engaged to the Student
+      - She only likes white roses, not red ones
       - She has been sent real jewels instead
-      - She is allergic to flowers.
+      - She is allergic to flowers
     correctIndex: 2
     explanationZh: 女孩说“the Chamberlain's nephew has sent me some real jewels, and everybody knows that jewels cost far more than flowers”，还嫌玫瑰和裙子不配。她并未与学生订婚，也没说只喜欢白花或对花过敏。
   - id: hp-ch-02-q6
     stem: What does the Student do with the rose after the girl rejects it?
     options:
-      - He plants it in his garden.
-      - He gives it to the Nightingale.
-      - He puts it in a vase in his room.
+      - He plants it in his garden
+      - He gives it to the Nightingale
+      - He puts it in a vase in his room
       - He throws it into the street
     correctIndex: 3
     explanationZh: 学生生气地把玫瑰扔到街上，“it fell into the gutter, and a cartwheel went over it”。他并没有种花、给夜莺或插在花瓶里。

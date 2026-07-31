@@ -146,7 +146,7 @@ sections:
       “ ‘It is not a very big plank,’ said the Miller, looking at it, ‘and I am afraid that after I have mended my barn roof there won’t be any left for you to mend the wheelbarrow with; but, of course, that is not my fault. And now, as I have given you my wheelbarrow, I am sure you would like to give me some flowers in return. Here is the basket, and mind you fill it quite full.’
     checkIn:
       id: hp-ch-04-s5-c1
-      stem: What does the Miller ask for in return for giving Hans the wheelbarrow?
+      stem: What does the Miller first ask for in return for giving Hans the wheelbarrow?
       options:
         - A sack of flour
         - A plank of wood

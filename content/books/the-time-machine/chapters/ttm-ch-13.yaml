@@ -40,17 +40,17 @@ quiz:
     stem: What does the narrator mean by describing the future as "black and blank"?
     options:
       - He feels vast ignorance, lit only by memories of the story
-      - He believes the future will be dark because the sun will die.
-      - He thinks the future is completely empty of all life.
-      - He is certain the future holds nothing but war and discord.
+      - He believes the future will be dark because the sun will die
+      - He thinks the future is completely empty of all life
+      - He is certain the future holds nothing but war and discord
     correctIndex: 0
     explanationZh: 原文说"the future is still black and blank—is a vast ignorance, lit at a few casual places by the memory of his story"，强调的是无知与不确定，只靠旅行者的故事点亮零星片段。太阳熄灭、毫无生命、或只有战争纷争，都不是这里的含义。
   - id: ttm-ch-13-q4
     stem: What do the two strange white flowers symbolize for the narrator?
     options:
-      - That nature will always survive human civilization.
-      - That the Time Traveller will certainly return one day.
-      - That the Eloi were superior to the Morlocks.
+      - That nature will always survive human civilization
+      - That the Time Traveller will certainly return one day
+      - That the Eloi were superior to the Morlocks
       - That gratitude and tenderness survived in man's heart
     correctIndex: 3
     explanationZh: 原文说两朵白花"witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man"。它们见证的是人性中的感恩与温情。自然永恒、必定归来、或埃洛伊优于莫洛克，都不是花所象征的。
