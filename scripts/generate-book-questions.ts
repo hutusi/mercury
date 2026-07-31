@@ -61,9 +61,9 @@ const systemPrompt = (
 
 Given one chapter, produce:
 1. titleZh — a natural Simplified Chinese translation of the chapter title (follow the published Chinese translation conventions for well-known books).
-2. summaryZh — a one-to-two sentence 中文章节导读 that sets up the chapter without answering any of your questions.
+2. summaryZh — a one-to-two sentence 中文章节导读 that sets up the chapter WITHOUT answering any of your questions: it must never state a fact that a check-in or quiz question asks for (readers see it before the prose).
 3. checkIns — EXACTLY one per <section>, keyed by that section's id, asking about something clearly stated in THAT section (never a later one). Low stakes: a reader who just read the section should get it right.
-4. quiz — 4 to 6 end-of-chapter recall questions spanning the whole chapter (3 is acceptable for a very short chapter): plot causality (why things happened), character motivation, and memorable concrete details. Learners answer with the book closed.
+4. quiz — 4 to 6 end-of-chapter recall questions spanning the whole chapter (3 is acceptable for a very short chapter): plot causality (why things happened), character motivation, and memorable concrete details. Learners answer with the book closed. Never re-ask a fact a check-in already covered — its answer was revealed mid-read, so the quiz must test NEW ground.
 
 Rules for every question:
 - stem, the correct answer, and all three distractors in English at or below ${cefrLevel} difficulty; distractors plausible and mutually exclusive with the correct answer.
@@ -234,6 +234,49 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
     .map((q) => q.id);
   if (gutted.length) {
     console.warn(`  ! empty/truncated explanationZh: ${gutted.join(", ")} — redraft with --force`);
+  }
+  // A conspicuously long correct option is a review tell the content test
+  // caps at 1.6x the longest distractor — flag it at draft time so the
+  // reviewer shortens it before the test fails. Keep in sync with
+  // src/content/content.test.ts.
+  const lengthTells = allQuestions
+    .filter((q) => {
+      const lengths = q.options.map((o) => o.length);
+      const longestDistractor = Math.max(...lengths.filter((_, i) => i !== q.correctIndex));
+      return lengths[q.correctIndex] > longestDistractor * 1.6;
+    })
+    .map((q) => q.id);
+  if (lengthTells.length) {
+    console.warn(
+      `  ! correct option far longer than every distractor: ${lengthTells.join(", ")} — shorten before committing`,
+    );
+  }
+  // The quiz must not repeat a check-in's fact (its answer was already
+  // revealed mid-read). Cheap token-overlap heuristic; review confirms.
+  const tokens = (s: string) =>
+    new Set(
+      s
+        .toLowerCase()
+        .replace(/[^a-z0-9一-鿿 ]/g, " ")
+        .split(/\s+/)
+        .filter((w) => w.length > 3),
+    );
+  const checkInTokens = assembled.sections
+    .flatMap((s) => (s.checkIn ? [s.checkIn] : []))
+    .map((c) => ({ id: c.id, set: tokens(`${c.stem} ${c.options[c.correctIndex]}`) }));
+  const overlapping = assembled.quiz
+    .filter((q) => {
+      const set = tokens(`${q.stem} ${q.options[q.correctIndex]}`);
+      return checkInTokens.some(({ set: other }) => {
+        const shared = [...set].filter((t) => other.has(t)).length;
+        return shared / Math.min(set.size, other.size || 1) >= 0.5;
+      });
+    })
+    .map((q) => q.id);
+  if (overlapping.length) {
+    console.warn(
+      `  ! quiz may repeat a check-in's fact: ${overlapping.join(", ")} — replace with new ground if confirmed`,
+    );
   }
   // Positional references break whenever tooling (re)assigns placement —
   // the content test rejects them, so flag drafts early. The letter branch

@@ -153,6 +153,41 @@ describe("books", () => {
       }
     });
 
+    test(`${book.id}: correct options are not a length tell`, () => {
+      // A verbose correct answer is as gameable as a position bias: before
+      // remediation the correct option was uniquely longest in 66-79% of
+      // questions per book (baseline 25%). Cap the flagrant per-question
+      // ratio everywhere and the pooled share once a book is big enough.
+      // Mirrored in scripts/generate-book-questions.ts (draft-time warning).
+      const violations: string[] = [];
+      let uniquelyLongest = 0;
+      let total = 0;
+      for (const chapter of book.chapters) {
+        const questions = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
+          ...chapter.quiz,
+        ];
+        for (const q of questions) {
+          total += 1;
+          const lengths = q.options.map((o) => o.length);
+          const correct = lengths[q.correctIndex];
+          const longestDistractor = Math.max(...lengths.filter((_, i) => i !== q.correctIndex));
+          if (correct > longestDistractor) uniquelyLongest += 1;
+          if (correct > longestDistractor * 1.6) {
+            violations.push(
+              `${q.id}: correct option is ${correct} chars vs longest distractor ${longestDistractor}`,
+            );
+          }
+        }
+      }
+      expect(violations).toEqual([]);
+      if (total >= 40) {
+        const share = uniquelyLongest / total;
+        const label = `${uniquelyLongest}/${total} correct options are uniquely longest`;
+        expect(share, label).toBeLessThanOrEqual(0.45);
+      }
+    });
+
     test(`${book.id}: explanations never reference options by position`, () => {
       // Option order is tooling-assigned and may be reassigned; an
       // explanation saying 选项A/第一个选项/答案为 B breaks silently on any
