@@ -22,6 +22,7 @@
     "content:audio:prune": "bun scripts/generate-audio.ts --prune && prettier --write content/audio-manifest.json",
     "content:book-ingest": "bun scripts/ingest-book.ts",
     "content:book-questions": "bun scripts/generate-book-questions.ts && prettier --write content/books",
+    "content:book-audit": "bun scripts/audit-book-scaffolding.ts",
     "test": "bun test src",
     "test:e2e": "playwright test"
   },
