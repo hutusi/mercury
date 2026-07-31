@@ -25,6 +25,28 @@ const FIXTURE = `<?xml version="1.0" encoding="utf-8"?>
 Will Be<br/>
 Prosecuted</p>
 </blockquote>
+<table>
+<tbody>
+<tr><td>Rise from bed</td><td>6:00</td><td>a.m.</td></tr>
+<tr><td>Study electricity<a href="endnotes.xhtml#note-3" id="noteref-3" epub:type="noteref">3</a></td><td>7:15</td><td>a.m.</td></tr>
+</tbody>
+</table>
+<blockquote>
+<table>
+<tbody>
+<tr><td><p>Practise elocution</p></td><td><p>5:00</p></td></tr>
+</tbody>
+</table>
+</blockquote>
+<ol>
+<li>
+<p>Temperance.</p>
+<p>Eat not to dullness; drink not to elevation.<a href="endnotes.xhtml#note-2" id="noteref-2" epub:type="noteref">2</a></p>
+</li>
+<li>
+<p>Silence.</p>
+</li>
+</ol>
 <p>He was a very selfish giant.</p>
 </article>
 </body>
@@ -45,6 +67,32 @@ describe("extractSeChapter", () => {
 
   test("collapses <br/>-separated sign lines into one paragraph", () => {
     expect(paragraphs).toContain("Trespassers Will Be Prosecuted");
+  });
+
+  test("captures table rows as paragraphs with space-joined cells", () => {
+    expect(paragraphs).toContain("Rise from bed 6:00 a.m.");
+    expect(paragraphs).toContain("Study electricity 7:15 a.m.");
+  });
+
+  // A noteref inside a cell once leaked its marker into the row ("…electricity3"),
+  // and a blockquote-wrapped table double-captured <p>-wrapped cell text (each
+  // chunk pushed once by the blockquote-p handler and once by the cell handler).
+  test("suppresses noterefs in table cells", () => {
+    expect(paragraphs.some((p) => p.includes("electricity3"))).toBe(false);
+  });
+
+  test("captures blockquote-nested table rows exactly once", () => {
+    expect(paragraphs).toContain("Practise elocution 5:00");
+    expect(paragraphs.some((p) => p.includes("elocutionPractise"))).toBe(false);
+    expect(paragraphs.some((p) => p.includes("Practise elocution Practise"))).toBe(false);
+  });
+
+  // Bare <ol>/<ul> under the chapter container once vanished entirely —
+  // Franklin's thirteen virtues with their precepts were silently dropped.
+  test("captures bare ordered-list prose, suppressing noterefs inside items", () => {
+    expect(paragraphs).toContain("Temperance.");
+    expect(paragraphs).toContain("Eat not to dullness; drink not to elevation.");
+    expect(paragraphs).toContain("Silence.");
   });
 
   test("keeps document order across plain and blockquote paragraphs", () => {

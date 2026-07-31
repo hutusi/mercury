@@ -1,0 +1,242 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: bf-ch-19
+bookId: book-franklin
+title: Agent of Pennsylvania in London
+titleZh: 作为宾夕法尼亚驻伦敦代理人
+summaryZh: 本章从费城的僵局写到伦敦的谈判桌：富兰克林亲历了 Loudoun 将军的拖延与低效，抵达英国后又与政界高层和业主几番周旋，见识了殖民地与英国权力结构之间的核心冲突。
+sections:
+  - id: bf-ch-19-s1
+    text: |-
+      Our new governor, Captain Denny, brought over for me the before mentioned medal from the Royal Society, which he presented to me at an entertainment given him by the city. He accompanied it with very polite expressions of his esteem for me, having, as he said, been long acquainted with my character. After dinner, when the company, as was customary at that time, were engaged in drinking, he took me aside into another room, and acquainted me that he had been advised by his friends in England to cultivate a friendship with me, as one who was capable of giving him the best advice, and of contributing most effectually to the making his administration easy; that he therefore desired of all things to have a good understanding with me, and he begged me to be assured of his readiness on all occasions to render me every service that might be in his power. He said much to me, also, of the proprietor’s good disposition towards the province, and of the advantage it might be to us all, and to me in particular, if the opposition that had been so long continued to his measures was dropped, and harmony restored between him and the people; in effecting which, it was thought no one could be more serviceable than myself; and I might depend on adequate acknowledgments and recompenses, etc., etc. The drinkers, finding we did not return immediately to the table, sent us a decanter of Madeira, which the governor made liberal use of, and in proportion became more profuse of his solicitations and promises.
+
+      My answers were to this purpose: that my circumstances, thanks to God, were such as to make proprietary favours unnecessary to me; and that, being a member of the Assembly, I could not possibly accept of any; that, however, I had no personal enmity to the proprietary, and that, whenever the public measures he proposed should appear to be for the good of the people, no one should espouse and forward them more zealously than myself; my past opposition having been founded on this, that the measures which had been urged were evidently intended to serve the proprietary interest, with great prejudice to that of the people; that I was much obliged to him (the governor) for his professions of regard to me, and that he might rely on everything in my power to make his administration as easy as possible, hoping at the same time that he had not brought with him the same unfortunate instruction his predecessor had been hampered with.
+    checkIn:
+      id: bf-ch-19-s1-c1
+      stem: What did Governor Denny hint Franklin might receive if he dropped his opposition to the proprietary?
+      options:
+        - A medal from the Royal Society.
+        - Adequate acknowledgments and recompenses.
+        - A seat in the Pennsylvania Assembly.
+        - A pension of three hundred a year.
+      correctIndex: 1
+      explanationZh: Denny 在宴后私下对富兰克林说，若能促成业主与民众之间的和解，他可指望 "adequate acknowledgments and recompenses"，即适当酬劳。皇家学会的奖章是 Denny 在宴席上公开转交的，并非私下许诺的回报。
+  - id: bf-ch-19-s2
+    text: |-
+      On this he did not then explain himself; but when he afterwards came to do business with the Assembly, they appeared again, the disputes were renewed, and I was as active as ever in the opposition, being the penman, first, of the request to have a communication of the instructions, and then of the remarks upon them, which may be found in the votes of the time, and in the Historical Review I afterward published. But between us personally no enmity arose; we were often together; he was a man of letters, had seen much of the world, and was very entertaining and pleasing in conversation. He gave me the first information that my old friend Jas. Ralph was still alive; that he was esteemed one of the best political writers in England; had been employed in the dispute between Prince Frederic and the king, and had obtained a pension of three hundred a year; that his reputation was indeed small as a poet, Pope having damned his poetry in the Dunciad, but his prose was thought as good as any man’s.
+
+      The Assembly finally finding the proprietary obstinately persisted in manacling their deputies with instructions inconsistent not only with the privileges of the people, but with the service of the crown, resolved to petition the king against them, and appointed me their agent to go over to England, to present and support the petition. The House had sent up a bill to the governor, granting a sum of sixty thousand pounds for the king’s use (ten thousand pounds of which was subjected to the orders of the then general, Lord Loudoun), which the governor absolutely refused to pass, in compliance with his instructions.
+
+      I had agreed with Captain Morris, of the packet at New York, for my passage, and my stores were put on board, when Lord Loudoun arrived at Philadelphia, expressly, as he told me, to endeavour an accommodation between the governor and Assembly, that his majesty’s service might not be obstructed by their dissensions. Accordingly, he desired the governor and myself to meet him, that he might hear what was to be said on both sides. We met and discussed the business. In behalf of the Assembly, I urged all the various arguments that may be found in the public papers of that time, which were of my writing, and are printed with the minutes of the Assembly; and the governor pleaded his instructions, the bond he had given to observe them, and his ruin if he disobeyed, yet seemed not unwilling to hazard himself if Lord Loudoun would advise it. This his lordship did not choose to do, though I once thought I had nearly prevailed with him to do it; but finally he rather chose to urge the compliance of the Assembly; and he entreated me to use my endeavours with them for that purpose, declaring that he would spare none of the king’s troops for the defense of our frontiers, and that, if we did not continue to provide for that defense ourselves, they must remain exposed to the enemy.
+    checkIn:
+      id: bf-ch-19-s2-c1
+      stem: What did the Assembly appoint Franklin to do after the proprietary persisted in restricting the governor?
+      options:
+        - Go to England and present their petition to the king.
+        - Negotiate directly with Lord Loudoun in New York.
+        - Draft a new bill acceptable to the proprietary.
+        - Take a seat on the governor's council.
+      correctIndex: 0
+      explanationZh: 议会发现业主顽固地用指令束缚总督代表，便决议向英王请愿，并任命富兰克林为代理人赴英呈递和支持该请愿。与 Loudoun 的会面是后来在纽约滞留时的事，不是议会的任命内容。
+  - id: bf-ch-19-s3
+    text: |-
+      I acquainted the House with what had passed, and, presenting them with a set of resolutions I had drawn up, declaring our rights, and that we did not relinquish our claim to those rights, but only suspended the exercise of them on this occasion through force, against which we protested, they at length agreed to drop that bill, and frame another conformable to the proprietary instructions. This of course the governor passed, and I was then at liberty to proceed on my voyage. But, in the meantime, the packet had sailed with my sea-stores, which was some loss to me, and my only recompense was his lordship’s thanks for my service, all the credit of obtaining the accommodation falling to his share.
+
+      He set out for New York before me; and, as the time for dispatching the packet-boats was at his disposition, and there were two then remaining there, one of which, he said, was to sail very soon, I requested to know the precise time, that I might not miss her by any delay of mine. His answer was, “I have given out that she is to sail on Saturday next; but I may let you know, entre nous, that if you are there by Monday morning, you will be in time, but do not delay longer.” By some accidental hindrance at a ferry, it was Monday noon before I arrived, and I was much afraid she might have sailed, as the wind was fair; but I was soon made easy by the information that she was still in the harbor, and would not move till the next day. One would imagine that I was now on the very point of departing for Europe. I thought so; but I was not then so well acquainted with his lordship’s character, of which indecision was one of the strongest features. I shall give some instances. It was about the beginning of April that I came to New York, and I think it was near the end of June before we sailed. There were then two of the packet-boats, which had been long in port, but were detained for the general’s letters, which were always to be ready tomorrow. Another packet arrived; she too was detained; and, before we sailed, a fourth was expected. Ours was the first to be dispatched, as having been there longest. Passengers were engaged in all, and some extremely impatient to be gone, and the merchants uneasy about their letters, and the orders they had given for insurance (it being war time) for fall goods; but their anxiety availed nothing; his lordship’s letters were not ready; and yet whoever waited on him found him always at his desk, pen in hand, and concluded he must needs write abundantly.
+    checkIn:
+      id: bf-ch-19-s3-c1
+      stem: What was the result of Lord Loudoun's mediation between the governor and the Assembly?
+      options:
+        - The governor resigned rather than obey his instructions.
+        - The Assembly immediately petitioned the king.
+        - Lord Loudoun sent troops to defend the frontier.
+        - The Assembly framed a new bill conformable to the instructions.
+      correctIndex: 3
+      explanationZh: Loudoun 最终迫使议会让步，议会被迫放弃原法案，改立一项符合业主指令的法案，总督随即通过。Loudoun 明确说不会调派国王军队防守边境，以此威胁议会配合。
+  - id: bf-ch-19-s4
+    text: |-
+      Going myself one morning to pay my respects, I found in his antechamber one Innis, a messenger of Philadelphia, who had come from thence express with a packet from Governor Denny for the general. He delivered to me some letters from my friends there, which occasioned my inquiring when he was to return, and where he lodged, that I might send some letters by him. He told me he was ordered to call tomorrow at nine for the general’s answer to the governor, and should set off immediately. I put my letters into his hands the same day. A fortnight after I met him again in the same place. “So, you are soon returned, Innis?” “Returned! no, I am not gone yet.” “How so?” “I have called here by order every morning these two weeks past for his lordship’s letter, and it is not yet ready.” “Is it possible, when he is so great a writer? for I see him constantly at his escritoire.” “Yes,” says Innis, “but he is like St. George on the signs, always on horseback, and never rides on.” This observation of the messenger was, it seems, well founded; for, when in England, I understood that Mr. Pitt gave it as one reason for removing this general, and sending Generals Amherst and Wolfe, that the minister never heard from him, and could not know what he was doing.
+
+      This daily expectation of sailing, and all the three packets going down to Sandy Hook, to join the fleet there, the passengers thought it best to be on board, lest by a sudden order the ships should sail, and they be left behind. There, if I remember right, we were about six weeks, consuming our sea-stores, and obliged to procure more. At length the fleet sailed, the general and all his army on board, bound to Louisburg, with the intent to besiege and take that fortress; all the packet-boats in company ordered to attend the general’s ship, ready to receive his dispatches when they should be ready. We were out five days before we got a letter with leave to part, and then our ship quitted the fleet and steered for England. The other two packets he still detained, carried them with him to Halifax, where he stayed some time to exercise the men in sham attacks upon sham forts, then altered his mind as to besieging Louisburg, and returned to New York, with all his troops, together with the two packets above mentioned, and all their passengers! During his absence the French and savages had taken Fort George, on the frontier of that province, and the savages had massacred many of the garrison after capitulation.
+    checkIn:
+      id: bf-ch-19-s4-c1
+      stem: Why did Innis the messenger joke that Lord Loudoun was "like St. George on the signs"?
+      options:
+        - He rode everywhere instead of walking.
+        - He dressed in military uniform at all times.
+        - He seemed always busy yet never got anything done.
+        - He posted St. George's image on his office door.
+      correctIndex: 2
+      explanationZh: Innis 每天早上去取信，连续两周都未拿到，于是他打趣说 Loudoun 像招牌上的圣乔治——"always on horseback, and never rides on"，即看似随时要出发却永远不动。这正讽刺其拖延。
+  - id: bf-ch-19-s5
+    text: |-
+      I saw afterwards in London Captain Bonnell, who commanded one of those packets. He told me that, when he had been detained a month, he acquainted his lordship that his ship was grown foul, to a degree that must necessarily hinder her fast sailing, a point of consequence for a packet-boat, and requested an allowance of time to heave her down and clean her bottom. He was asked how long time that would require. He answered, three days. The general replied, “If you can do it in one day, I give leave; otherwise not; for you must certainly sail the day after tomorrow.” So he never obtained leave, though detained afterwards from day to day during full three months.
+
+      I saw also in London one of Bonnell’s passengers, who was so enraged against his lordship for deceiving and detaining him so long at New York, and then carrying him to Halifax and back again, that he swore he would sue him for damages. Whether he did or not, I never heard; but, as he represented the injury to his affairs, it was very considerable.
+
+      On the whole, I wondered much how such a man came to be entrusted with so important a business as the conduct of a great army; but, having since seen more of the great world, and the means of obtaining, and motives for giving places, my wonder is diminished. General Shirley, on whom the command of the army devolved upon the death of Braddock, would, in my opinion, if continued in place, have made a much better campaign than that of Loudoun in 1757, which was frivolous, expensive, and disgraceful to our nation beyond conception; for, though Shirley was not a bred soldier, he was sensible and sagacious in himself, and attentive to good advice from others, capable of forming judicious plans, and quick and active in carrying them into execution. Loudoun, instead of defending the colonies with his great army, left them totally exposed while he paraded idly at Halifax, by which means Fort George was lost, besides, he deranged all our mercantile operations, and distressed our trade, by a long embargo on the exportation of provisions, on pretence of keeping supplies from being obtained by the enemy, but in reality for beating down their price in favour of the contractors, in whose profits, it was said, perhaps from suspicion only, he had a share. And, when at length the embargo was taken off, by neglecting to send notice of it to Charlestown, the Carolina fleet was detained near three months longer, whereby their bottoms were so much damaged by the worm that a great part of them foundered in their passage home.
+    checkIn:
+      id: bf-ch-19-s5-c1
+      stem: How did Lord Loudoun answer Captain Bonnell's request for time to clean his ship's foul bottom?
+      options:
+        - He granted a full week once the general's letters were ready.
+        - He allowed one day only, yet detained the ship three months more.
+        - He ordered the ship sold and its crew reassigned at once.
+        - He told Bonnell to careen the ship at Halifax instead.
+      correctIndex: 1
+      explanationZh: Bonnell 报告船底污损已影响航速，请求三天时间清理。Loudoun 答道："If you can do it in one day, I give leave; otherwise not"，理由是后天必须启航——结果船却又被日复一日扣了整整三个月。这是其优柔寡断误事的又一例证。
+  - id: bf-ch-19-s6
+    text: |-
+      Shirley was, I believe, sincerely glad of being relieved from so burdensome a charge as the conduct of an army must be to a man unacquainted with military business. I was at the entertainment given by the city of New York to Lord Loudoun, on his taking upon him the command. Shirley, though thereby superseded, was present also. There was a great company of officers, citizens, and strangers, and, some chairs having been borrowed in the neighborhood, there was one among them very low, which fell to the lot of Mr. Shirley. Perceiving it as I sat by him, I said, “They have given you, sir, too low a seat.” “No matter,” says he, “Mr. Franklin, I find a low seat the easiest.”
+
+      While I was, as afore mentioned, detained at New York, I received all the accounts of the provisions, etc., that I had furnished to Braddock, some of which accounts could not sooner be obtained from the different persons I had employed to assist in the business. I presented them to Lord Loudoun, desiring to be paid the balance. He caused them to be regularly examined by the proper officer, who, after comparing every article with its voucher, certified them to be right; and the balance due for which his lordship promised to give me an order on the paymaster. This was, however, put off from time to time; and though I called often for it by appointment, I did not get it. At length, just before my departure, he told me he had, on better consideration, concluded not to mix his accounts with those of his predecessors. “And you,” says he, “when in England, have only to exhibit your accounts at the treasury, and you will be paid immediately.”
+
+      I mentioned, but without effect, the great and unexpected expense I had been put to by being detained so long at New York, as a reason for my desiring to be presently paid; and on my observing that it was not right I should be put to any further trouble or delay in obtaining the money I had advanced, as I charged no commission for my service, “O, Sir,” says he, “you must not think of persuading us that you are no gainer; we understand better those affairs, and know that everyone concerned in supplying the army finds means, in the doing it, to fill his own pockets.” I assured him that was not my case, and that I had not pocketed a farthing; but he appeared clearly not to believe me; and, indeed, I have since learned that immense fortunes are often made in such employments. As to my balance, I am not paid it to this day, of which more hereafter.
+    checkIn:
+      id: bf-ch-19-s6-c1
+      stem: Why did Lord Loudoun refuse to pay Franklin the balance owed for Braddock's supplies?
+      options:
+        - He said he would not mix his accounts with those of his predecessors.
+        - He said the vouchers had been lost in transit.
+        - He said Franklin had already been paid in full.
+        - He said the provincial Assembly must first approve any such large payment.
+      correctIndex: 0
+      explanationZh: Loudoun 让官员核查了账目，确认无误，却最终说他不愿把账目与前任的混在一起，让富兰克林去英国财政部领取。他还暗示富兰克林肯定从中中饱私囊，对此富兰克林予以否认。
+  - id: bf-ch-19-s7
+    text: |-
+      Our captain of the packet had boasted much, before we sailed, of the swiftness of his ship; unfortunately, when we came to sea, she proved the dullest of ninety-six sail, to his no small mortification. After many conjectures respecting the cause, when we were near another ship almost as dull as ours, which, however, gained upon us, the captain ordered all hands to come aft, and stand as near the ensign staff as possible. We were, passengers included, about forty persons. While we stood there, the ship mended her pace, and soon left her neighbour far behind, which proved clearly what our captain suspected, that she was loaded too much by the head. The casks of water, it seems, had been all placed forward; these he therefore ordered to be moved further aft, on which the ship recovered her character, and proved the best sailer in the fleet.
+
+      The captain said she had once gone at the rate of thirteen knots, which is accounted thirteen miles per hour. We had on board, as a passenger, Captain Kennedy, of the Navy, who contended that it was impossible, and that no ship ever sailed so fast, and that there must have been some error in the division of the log-line, or some mistake in heaving the log. A wager ensued between the two captains, to be decided when there should be sufficient wind. Kennedy thereupon examined rigorously the log-line, and, being satisfied with that, he determined to throw the log himself. Accordingly some days after, when the wind blew very fair and fresh, and the captain of the packet, Lutwidge, said he believed she then went at the rate of thirteen knots, Kennedy made the experiment, and owned his wager lost.
+
+      The above fact I give for the sake of the following observation. It has been remarked, as an imperfection in the art of shipbuilding, that it can never be known, till she is tried, whether a new ship will or will not be a good sailer; for that the model of a good-sailing ship has been exactly followed in a new one, which has proved, on the contrary, remarkably dull. I apprehend that this may partly be occasioned by the different opinions of seamen respecting the modes of lading, rigging, and sailing of a ship; each has his system; and the same vessel, laden by the judgment and orders of one captain, shall sail better or worse than when by the orders of another. Besides, it scarce ever happens that a ship is formed, fitted for the sea, and sailed by the same person. One man builds the hull, another rigs her, a third lades and sails her. No one of these has the advantage of knowing all the ideas and experience of the others, and, therefore, cannot draw just conclusions from a combination of the whole.
+    checkIn:
+      id: bf-ch-19-s7-c1
+      stem: What was the cause of the packet-ship sailing poorly until the crew moved the water casks aft?
+      options:
+        - Her hull had been damaged by worms.
+        - Her masts were placed too far aft.
+        - She was loaded too much by the head.
+        - Her sails were cut too flat for the wind.
+      correctIndex: 2
+      explanationZh: 当所有人和乘客站到船尾时船速加快，证实船长怀疑——船头载重过大。水桶全放在船头，移到后面后船便恢复了速度。船底受损是后来在查尔斯顿船队才出现的问题。
+  - id: bf-ch-19-s8
+    text: |-
+      Even in the simple operation of sailing when at sea, I have often observed different judgments in the officers who commanded the successive watches, the wind being the same. One would have the sails trimmed sharper or flatter than another, so that they seemed to have no certain rule to govern by. Yet I think a set of experiments might be instituted; first, to determine the most proper form of the hull for swift sailing; next, the best dimensions and properest place for the masts; then the form and quantity of sails, and their position, as the wind may be; and, lastly, the disposition of the lading. This is an age of experiments, and I think a set accurately made and combined would be of great use. I am persuaded, therefore, that ere long some ingenious philosopher will undertake it, to whom I wish success.
+
+      We were several times chased in our passage, but outsailed everything, and in thirty days had soundings. We had a good observation, and the captain judged himself so near our port, Falmouth, that, if we made a good run in the night, we might be off the mouth of that harbor in the morning, and by running in the night might escape the notice of the enemy’s privateers, who often cruised near the entrance of the channel. Accordingly, all the sail was set that we could possibly make, and the wind being very fresh and fair, we went right before it, and made great way. The captain, after his observation, shaped his course, as he thought, so as to pass wide of the Scilly Isles; but it seems there is sometimes a strong indraught setting up St. George’s Channel, which deceives seamen and caused the loss of Sir Cloudesley Shovel’s squadron. This indraught was probably the cause of what happened to us.
+
+      We had a watchman placed in the bow, to whom they often called, “Look well out before there,” and he as often answered, “Ay, ay”; but perhaps had his eyes shut, and was half asleep at the time, they sometimes answering, as is said, mechanically; for he did not see a light just before us, which had been hid by the studding-sails from the man at the helm, and from the rest of the watch, but by an accidental yaw of the ship was discovered, and occasioned a great alarm, we being very near it, the light appearing to me as big as a cartwheel. It was midnight, and our captain fast asleep; but Captain Kennedy, jumping upon deck, and seeing the danger, ordered the ship to wear round, all sails standing; an operation dangerous to the masts, but it carried us clear, and we escaped shipwreck, for we were running right upon the rocks on which the lighthouse was erected. This deliverance impressed me strongly with the utility of lighthouses, and made me resolve to encourage the building more of them in America if I should live to return there.
+    checkIn:
+      id: bf-ch-19-s8-c1
+      stem: What did Franklin resolve to do after the near-shipwreck off the lighthouse rocks?
+      options:
+        - Institute a set of sailing experiments himself.
+        - Petition the king for better naval chartmakers.
+        - Write a treatise on the causes of shipwrecks.
+        - Encourage the building of more lighthouses in America.
+      correctIndex: 3
+      explanationZh: 险些撞上灯塔所在礁石后，富兰克林深刻认识到灯塔的价值，决心日后若能回到美洲就推动修建更多灯塔。航海实验的想法是此前在船上提出的，与这次脱险无关。
+  - id: bf-ch-19-s9
+    text: |-
+      In the morning it was found by the soundings, etc., that we were near our port, but a thick fog hid the land from our sight. About nine o’clock the fog began to rise, and seemed to be lifted up from the water like the curtain at a playhouse, discovering underneath, the town of Falmouth, the vessels in its harbor, and the fields that surrounded it. This was a most pleasing spectacle to those who had been so long without any other prospects than the uniform view of a vacant ocean, and it gave us the more pleasure as we were now free from the anxieties which the state of war occasioned.
+
+      I set out immediately, with my son, for London, and we only stopped a little by the way to view Stonehenge on Salisbury Plain, and Lord Pembroke’s house and gardens, with his very curious antiquities at Wilton. We arrived in London the 27th of July, 1757.
+
+      As soon as I was settled in a lodging Mr. Charles had provided for me, I went to visit Dr. Fothergill, to whom I was strongly recommended, and whose counsel respecting my proceedings I was advised to obtain. He was against an immediate complaint to government, and thought the proprietaries should first be personally applied to, who might possibly be induced by the interposition and persuasion of some private friends, to accommodate matters amicably. I then waited on my old friend and correspondent, Mr. Peter Collinson, who told me that John Hanbury, the great Virginia merchant, had requested to be informed when I should arrive, that he might carry me to Lord Granville’s, who was then President of the Council and wished to see me as soon as possible. I agreed to go with him the next morning. Accordingly Mr. Hanbury called for me and took me in his carriage to that nobleman’s, who received me with great civility; and after some questions respecting the present state of affairs in America and discourse thereupon, he said to me: “You Americans have wrong ideas of the nature of your constitution; you contend that the king’s instructions to his governors are not laws, and think yourselves at liberty to regard or disregard them at your own discretion. But those instructions are not like the pocket instructions given to a minister going abroad, for regulating his conduct in some trifling point of ceremony. They are first drawn up by judges learned in the laws; they are then considered, debated, and perhaps amended in Council, after which they are signed by the king. They are then, so far as they relate to you, the law of the land, for the king is the Legislator of the Colonies.” I told his lordship this was new doctrine to me. I had always understood from our charters that our laws were to be made by our Assemblies, to be presented indeed to the king for his royal assent, but that being once given the king could not repeal or alter them. And as the Assemblies could not make permanent laws without his assent, so neither could he make a law for them without theirs. He assured me I was totally mistaken. I did not think so, however, and his lordship’s conversation having a little alarmed me as to what might be the sentiments of the court concerning us, I wrote it down as soon as I returned to my lodgings. I recollected that about twenty years before, a clause in a bill brought into Parliament by the ministry had proposed to make the king’s instructions laws in the colonies, but the clause was thrown out by the Commons, for which we adored them as our friends and friends of liberty, till by their conduct towards us in 1765 it seemed that they had refused that point of sovereignty to the king only that they might reserve it for themselves.
+    checkIn:
+      id: bf-ch-19-s9-c1
+      stem: What doctrine did Lord Granville tell Franklin about the king's instructions to colonial governors?
+      options:
+        - They are mere pocket instructions for trivial ceremony.
+        - They must be ratified by the colonial assemblies.
+        - They are the law of the land for the colonies.
+        - They can be disregarded at the colonists' discretion.
+      correctIndex: 2
+      explanationZh: Granville 对富兰克林说，国王给总督的指令由法官起草、枢密院审议、国王签署，对殖民地而言即是法律。富兰克林此前一直认为殖民地的法律应由议会制定，因此称此为新学说。
+  - id: bf-ch-19-s10
+    text: After some days, Dr. Fothergill having spoken to the proprietaries, they agreed to a meeting with me at Mr. T. Penn’s house in Spring Garden. The conversation at first consisted of mutual declarations of disposition to reasonable accommodations, but I suppose each party had its own ideas of what should be meant by “reasonable.” We then went into consideration of our several points of complaint, which I enumerated. The proprietaries justified their conduct as well as they could, and I the Assembly’s. We now appeared very wide, and so far from each other in our opinions as to discourage all hope of agreement. However, it was concluded that I should give them the heads of our complaints in writing, and they promised then to consider them. I did so soon after, but they put the paper into the hands of their solicitor, Ferdinand John Paris, who managed for them all their law business in their great suit with the neighbouring proprietary of Maryland, Lord Baltimore, which had subsisted seventy years, and wrote for them all their papers and messages in their dispute with the Assembly. He was a proud, angry man, and as I had occasionally in the answers of the Assembly treated his papers with some severity, they being really weak in point of argument and haughty in expression, he had conceived a mortal enmity to me, which discovering itself whenever we met, I declined the proprietary’s proposal that he and I should discuss the heads of complaint between our two selves, and refused treating with anyone but them. They then by his advice put the paper into the hands of the Attorney and Solicitor-General for their opinion and counsel upon it, where it lay unanswered a year wanting eight days, during which time I made frequent demands of an answer from the proprietaries, but without obtaining any other than that they had not yet received the opinion of the Attorney and Solicitor-General. What it was when they did receive it I never learned, for they did not communicate it to me, but sent a long message to the Assembly drawn and signed by Paris, reciting my paper, complaining of its want of formality, as a rudeness on my part, and giving a flimsy justification of their conduct, adding that they should be willing to accommodate matters if the Assembly would send out some person of candour to treat with them for that purpose, intimating thereby that I was not such.
+    checkIn:
+      id: bf-ch-19-s10-c1
+      stem: Why did Franklin decline the proposal that he and the solicitor Paris discuss the complaints between themselves?
+      options:
+        - Because Paris insisted on using the full proprietary titles.
+        - Because Paris demanded the meeting be held in court.
+        - Because Paris refused to put anything in writing.
+        - Because Paris harbored a mortal enmity toward him.
+      correctIndex: 3
+      explanationZh: Paris 为人骄傲易怒，因富兰克林曾在议会答复中严厉批评他的文书而对他怀恨在心，每次见面都流露敌意，因此富兰克林拒绝与之单独谈判，只愿直接与业主交涉。
+  - id: bf-ch-19-s11
+    text: |-
+      The want of formality or rudeness was, probably, my not having addressed the paper to them with their assumed titles of True and Absolute Proprietaries of the Province of Pennsylvania, which I omitted as not thinking it necessary in a paper, the intention of which was only to reduce to a certainty by writing, what in conversation I had delivered viva voce.
+
+      But during this delay, the Assembly having prevailed with Governor Denny to pass an act taxing the proprietary estate in common with the estates of the people, which was the grand point in dispute, they omitted answering the message.
+
+      When this act however came over, the proprietaries, counselled by Paris, determined to oppose its receiving the royal assent. Accordingly they petitioned the king in Council, and a hearing was appointed in which two lawyers were employed by them against the act, and two by me in support of it. They alleged that the act was intended to load the proprietary estate in order to spare those of the people, and that if it were suffered to continue in force, and the proprietaries, who were in odium with the people, left to their mercy in proportioning the taxes, they would inevitably be ruined. We replied that the act had no such intention, and would have no such effect. That the assessors were honest and discreet men under an oath to assess fairly and equitably, and that any advantage each of them might expect in lessening his own tax by augmenting that of the proprietaries was too trifling to induce them to perjure themselves. This is the purport of what I remember as urged by both sides, except that we insisted strongly on the mischievous consequences that must attend a repeal, for that the money, £100,000, being printed and given to the king’s use, expended in his service, and now spread among the people, the repeal would strike it dead in their hands to the ruin of many, and the total discouragement of future grants, and the selfishness of the proprietors in soliciting such a general catastrophe, merely from a groundless fear of their estate being taxed too highly, was insisted on in the strongest terms. On this, Lord Mansfield, one of the counsel, rose, and beckoning me took me into the clerk’s chamber, while the lawyers were pleading, and asked me if I was really of opinion that no injury would be done the proprietary estate in the execution of the act. I said certainly. “Then,” says he, “you can have little objection to enter into an engagement to assure that point.” I answered, “None at all.” He then called in Paris, and after some discourse, his lordship’s proposition was accepted on both sides; a paper to the purpose was drawn up by the Clerk of the Council, which I signed with Mr. Charles, who was also an Agent of the Province for their ordinary affairs, when Lord Mansfield returned to the Council Chamber, where finally the law was allowed to pass. Some changes were however recommended and we also engaged they should be made by a subsequent law, but the Assembly did not think them necessary; for one year’s tax having been levied by the act before the order of Council arrived, they appointed a committee to examine the proceedings of the assessors, and on this committee they put several particular friends of the proprietaries. After a full enquiry, they unanimously signed a report that they found the tax had been assessed with perfect equity.
+
+      The Assembly looked into my entering into the first part of the engagement, as an essential service to the Province, since it secured the credit of the paper money then spread over all the country. They gave me their thanks in form when I returned. But the proprietaries were enraged at Governor Denny for having passed the act, and turned him out with threats of suing him for breach of instructions which he had given bond to observe. He, however, having done it at the instance of the General, and for His Majesty’s service, and having some powerful interest at court, despised the threats and they were never put in execution. …
+
+      [Unfinished]
+    checkIn:
+      id: bf-ch-19-s11-c1
+      stem: What did Lord Mansfield propose that Franklin agree to in order to assure the proprietaries' estate would not be injured?
+      options:
+        - A full repeal of the taxing act.
+        - An engagement to assure that point.
+        - A personal bond for the tax revenue.
+        - A second law imposing new taxes.
+      correctIndex: 1
+      explanationZh: Mansfield 在律师们辩论时把富兰克林叫到书记室，问他是否确信执行该法案不会损害业主产业，富兰克林说当然，Mansfield 便建议他签一份保证书。双方接受后，法律获准通过。
+quiz:
+  - id: bf-ch-19-q1
+    stem: Why did Franklin tell Governor Denny he could not accept any proprietary favours?
+    options:
+      - He distrusted the proprietary's sincerity and preferred to stay neutral.
+      - He had already accepted a pension from the Royal Society.
+      - His circumstances made favours unnecessary, and he sat in the Assembly.
+      - He planned to sail to England and did not want conflicts of interest.
+    correctIndex: 2
+    explanationZh: 富兰克林明确说感谢上帝，他的经济状况使业主恩惠对他不必要，而且作为议会议员他不可能接受。他并非不信任业主的诚意，而是身份所限不能接受。
+  - id: bf-ch-19-q2
+    stem: What was Franklin's reason for his past opposition to the proprietary's measures?
+    options:
+      - The measures served proprietary interest at the people's cost.
+      - The proprietary had personally insulted him in public.
+      - The proprietary refused to pay his military supply accounts.
+      - The proprietary had blocked his appointment as colonial agent.
+    correctIndex: 0
+    explanationZh: 富兰克林说他过去的反对基于一个事实：那些被推动的措施明显意在服务业主利益而损害人民利益。这是原则问题而非个人恩怨。
+  - id: bf-ch-19-q3
+    stem: What news did Governor Denny give Franklin about his old friend James Ralph?
+    options:
+      - Ralph was esteemed one of England's best political writers.
+      - Ralph had died in poverty shortly before Denny's arrival.
+      - Ralph had been appointed governor of a small Caribbean island.
+      - Ralph had become a successful poet admired by Pope.
+    correctIndex: 0
+    explanationZh: Denny 告诉富兰克林，Ralph 仍活着，被认为是英国最好的政论作家之一，在腓特烈王子与国王的争端中被雇佣并获每年三百镑年金。作为诗人他声誉不高，Pope 在《愚人志》中贬低过他的诗，但他的散文被认为极佳。
+  - id: bf-ch-19-q4
+    stem: What reason did Franklin later understand Mr. Pitt gave for replacing Lord Loudoun with Generals Amherst and Wolfe?
+    options:
+      - Loudoun had lost a major battle at Louisburg and retreated.
+      - Pitt never heard from him and could not know his doings.
+      - Loudoun had been accused of embezzling army supplies.
+      - Loudoun had disobeyed direct orders from the king.
+    correctIndex: 1
+    explanationZh: 富兰克林到英国后听说 Pitt 撤换 Loudoun 的理由之一是这位大臣从未收到过他的来信，无法了解他在做什么。这正与 Innis 的观察吻合——Loudoun 总在写字却从不出成果。
+  - id: bf-ch-19-q5
+    stem: During the hearing before the Council, what did Franklin argue would happen if the taxing act were repealed?
+    options:
+      - The proprietaries would gain control of the colony's tax collection.
+      - The Assembly would refuse to make any future grants to the king.
+      - The assessors would be forced to perjure themselves en masse.
+      - The paper money in circulation would be struck dead, ruining many.
+    correctIndex: 3
+    explanationZh: 富兰克林强调十万镑纸币已经印发、用于国王服务并散布于民间，撤销该法会使这些钱在人们手中变成废纸，导致许多人破产并彻底打击未来的拨款意愿。他以此强调业主的自私。
+  - id: bf-ch-19-q6
+    stem: What happened to Governor Denny after he passed the act taxing the proprietary estate?
+    options:
+      - He was promoted to a higher office in the colonial administration.
+      - He was imprisoned for disobeying a direct order from the king.
+      - He was publicly commended by the Assembly and given a medal.
+      - The proprietaries turned him out and threatened to sue him.
+    correctIndex: 3
+    explanationZh: 业主因 Denny 通过该税法而大怒，将他免职并威胁以违令为由起诉他。但 Denny 是应将军之请为国王服务而为之，在朝廷有些势力，故未理会威胁，威胁也未执行。

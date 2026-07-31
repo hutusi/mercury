@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=../../.schemas/book.schema.json
+id: book-franklin
+title: The Autobiography of Benjamin Franklin
+titleZh: 富兰克林自传
+author: Benjamin Franklin
+authorZh: 本杰明·富兰克林
+descriptionZh: 从波士顿的印刷学徒到美国的开国元勋——富兰克林晚年亲笔回顾自己的前半生：办报、经商、发明、组织市政、创立"十三美德"自我修炼法。朴素而机智的十八世纪英文，历久弥新的自我管理智慧，高阶读者的经典选择。
+cefrLevel: C1
+genres:
+  - autobiography
+  - classic
+source: "Standard Ebooks: The Autobiography of Benjamin Franklin (public domain)"
+chapterFiles:
+  - bf-ch-01.yaml
+  - bf-ch-02.yaml
+  - bf-ch-03.yaml
+  - bf-ch-04.yaml
+  - bf-ch-05.yaml
+  - bf-ch-06.yaml
+  - bf-ch-07.yaml
+  - bf-ch-08.yaml
+  - bf-ch-09.yaml
+  - bf-ch-10.yaml
+  - bf-ch-11.yaml
+  - bf-ch-12.yaml
+  - bf-ch-13.yaml
+  - bf-ch-14.yaml
+  - bf-ch-15.yaml
+  - bf-ch-16.yaml
+  - bf-ch-17.yaml
+  - bf-ch-18.yaml
+  - bf-ch-19.yaml
