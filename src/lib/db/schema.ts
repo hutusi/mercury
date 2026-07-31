@@ -276,11 +276,19 @@ export const books = pgTable(
     /** Computed at seed time from the loaded chapters. */
     chapterCount: integer("chapter_count").notNull(),
     wordCount: integer("word_count").notNull(),
+    /**
+     * 1-based ladder position, derived at seed time from BOOK_DIRS order in
+     * src/content/load.ts. Deliberately NOT unique (unlike book_chapters):
+     * future origin 'user' rows all sit at the default and must not collide —
+     * listing determinism comes from the (sortOrder, id) query tiebreak.
+     */
+    sortOrder: integer("sort_order").notNull().default(1),
     origin: text("origin").$type<"seeded" | "user">().notNull().default("seeded"),
     ownerUserId: text("owner_user_id").references(() => user.id, { onDelete: "cascade" }),
   },
   (t) => [
     check("books_cefr_check", sql`${t.cefrLevel} in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')`),
+    check("books_sort_order_check", sql`${t.sortOrder} >= 1`),
     check("books_origin_check", sql`${t.origin} in ('seeded', 'user')`),
     check(
       "books_owner_check",
