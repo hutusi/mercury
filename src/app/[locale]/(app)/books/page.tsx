@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import type { CefrLevel } from "@/content/types";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
@@ -25,6 +26,15 @@ export default async function BooksPage() {
   // hint from the learner's self-rating — every book stays clickable.
   const groups = groupBooksByBand(books);
   const recommended = new Set(recommendedBands(profile?.selfRatedLevel ?? null));
+  // The dictionary is deliberately flat (two levels), so assemble the map here.
+  const bandLabels: Record<CefrLevel, string> = {
+    A1: t.books.bandA1,
+    A2: t.books.bandA2,
+    B1: t.books.bandB1,
+    B2: t.books.bandB2,
+    C1: t.books.bandC1,
+    C2: t.books.bandC2,
+  };
 
   return (
     <div className="space-y-8">
@@ -39,7 +49,7 @@ export default async function BooksPage() {
         <section key={band} className="space-y-2">
           <div className="flex items-center gap-2">
             <SectionLabel as="h2">
-              {band} · {t.books.bandLabels[band]}
+              {band} · {bandLabels[band]}
             </SectionLabel>
             {recommended.has(band) && <Badge variant="outline">{t.books.recommendedStart}</Badge>}
           </div>
