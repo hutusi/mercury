@@ -2,8 +2,8 @@
 id: bf-ch-09
 bookId: book-franklin
 title: Plan for Attaining Moral Perfection
-titleZh: 道德圆满之计划
-summaryZh: 富兰克林在这一章中详细记录了他年轻时追求道德圆满的雄心勃勃的计划。他列出了十三项美德，设计了一本每日自省的小册子，循序渐进地修炼。他还讲述了自己在执行过程中遇到的最大困难、第十三项美德的由来，以及一个更为宏大的、始终未能实现的社团构想。
+titleZh: 达到道德完善的计划
+summaryZh: 他给自己出了个大题目——一辈子不犯一次错。可他很快发现，明白什么对什么错远远不够：防住这一样，另一样就趁着走神冒出来；习惯占了疏忽的便宜，性子有时又压过道理。于是他动手做了一本小册子。
 sections:
   - id: bf-ch-09-s1
     text: |-
@@ -42,14 +42,14 @@ sections:
       My intention being to acquire the habitude of all these virtues, I judged it would be well not to distract my attention by attempting the whole at once, but to fix it on one of them at a time; and, when I should be master of that, then to proceed to another, and so on, till I should have gone through the thirteen; and, as the previous acquisition of some might facilitate the acquisition of certain others, I arranged them with that view, as they stand above. Temperance first, as it tends to procure that coolness and clearness of head, which is so necessary where constant vigilance was to be kept up, and guard maintained against the unremitting attraction of ancient habits, and the force of perpetual temptations. This being acquired and established, Silence would be more easy; and my desire being to gain knowledge at the same time that I improved in virtue, and considering that in conversation it was obtained rather by the use of the ears than of the tongue, and therefore wishing to break a habit I was getting into of prattling, punning, and joking, which only made me acceptable to trifling company, I gave Silence the second place. This and the next, Order, I expected would allow me more time for attending to my project and my studies. Resolution, once become habitual, would keep me firm in my endeavours to obtain all the subsequent virtues; Frugality and Industry freeing me from my remaining debt, and producing affluence and independence, would make more easy the practice of Sincerity and Justice, etc., etc. Conceiving then, that, agreeably to the advice of Pythagoras in his Golden Verses, daily examination would be necessary, I contrived the following method for conducting that examination.
     checkIn:
       id: bf-ch-09-s1-c1
-      stem: Why did Franklin place Temperance first in his sequence of thirteen virtues?
+      stem: Why did Temperance stand first in the order of the thirteen?
       options:
-        - It secures the coolness and clearness of head vigilance demands.
-        - It frees him from debt and produces affluence and independence.
-        - It keeps him firm in his endeavours to obtain all subsequent virtues.
-        - It allows him more time for attending to his project and his studies.
-      correctIndex: 0
-      explanationZh: 富兰克林将节制放在首位，是因为它“tends to procure that coolness and clearness of head, which is so necessary where constant vigilance was to be kept up”。节俭与勤奋解决债务，果断维持后续努力，而沉默与条理提供时间，这些都不是首位的原因。
+        - Because it frees a man from debt and brings independence
+        - Because it keeps him firm in all his later endeavours
+        - Because it procures the coolness of head vigilance needs
+        - Because it leaves him more time for his studies
+      correctIndex: 2
+      explanationZh: 他把节制排在最前，因为它 "tends to procure that coolness and clearness of head, which is so necessary where constant vigilance was to be kept up"。还清债务靠的是节俭与勤勉，撑住后续努力靠果断，腾出时间靠沉默与条理——各有各的位置。
   - id: bf-ch-09-s2
     text: |-
       I made a little book, in which I allotted a page for each of the virtues. I ruled each page with red ink, so as to have seven columns, one for each day of the week, marking each column with a letter for the day. I crossed these columns with thirteen red lines, marking the beginning of each line with the first letter of one of the virtues, on which line, and in its proper column, I might mark, by a little black spot, every fault I found upon examination to have been committed respecting that virtue upon that day.
@@ -67,14 +67,14 @@ sections:
       “Here will I hold. If there’s a power above us (And that there is, all nature cries aloud Thro’ all her works), He must delight in virtue; And that which he delights in must be happy.”
     checkIn:
       id: bf-ch-09-s2-c1
-      stem: How long did Franklin estimate one complete course through all thirteen virtues would take?
+      stem: How long did one complete course through the thirteen take?
       options:
-        - Seven weeks, allowing seven courses in a year.
-        - Thirteen weeks, allowing four courses in a year.
-        - Twenty-six weeks, allowing two courses in a year.
-        - Fifty-two weeks, allowing one course in a year.
+        - Seven weeks, so seven courses could be run in a year
+        - Thirteen weeks, so four courses could be run in a year
+        - Twenty-six weeks, so two courses could be run in a year
+        - Fifty-two weeks, so one course could be run in a year
       correctIndex: 1
-      explanationZh: 他每周严格专注一项美德，因此走完全部十三项需要十三周，一年可完成四个疗程。七周对应不了十三项美德，二十六周和五十二周也不是他设定的节奏。
+      explanationZh: 他每周只死守一项，其余听其自然，只在每晚记下当天的过失；这样 "I could go through a course complete in thirteen weeks, and four courses in a year"。他把这比作除草——不指望一次拔光，先收拾一畦，再收拾第二畦。
   - id: bf-ch-09-s3
     text: |-
       Another from Cicero,
@@ -110,26 +110,26 @@ sections:
       I entered upon the execution of this plan for self-examination, and continued it with occasional intermissions for some time. I was surprised to find myself so much fuller of faults than I had imagined; but I had the satisfaction of seeing them diminish. To avoid the trouble of renewing now and then my little book, which, by scraping out the marks on the paper of old faults to make room for new ones in a new course, became full of holes, I transferred my tables and precepts to the ivory leaves of a memorandum book, on which the lines were drawn with red ink, that made a durable stain, and on those lines I marked my faults with a black-lead pencil, which marks I could easily wipe out with a wet sponge. After a while I went through one course only in a year, and afterward only one in several years, till at length I omitted them entirely, being employed in voyages and business abroad, with a multiplicity of affairs that interfered; but I always carried my little book with me.
     checkIn:
       id: bf-ch-09-s3-c1
-      stem: What daily schedule question did Franklin set for both morning and evening?
+      stem: What two questions stood at the head of his daily scheme?
       options:
-        - What good shall I do this day, and what good have I done today?
-        - What faults shall I avoid this day, and what faults have I marked today?
-        - What debts shall I pay this day, and what wealth have I gained today?
-        - What studies shall I pursue this day, and what studies have I finished today?
+        - What good shall I do this day, and what good have I done
+        - What faults must I guard, and what faults did I mark
+        - What debts must I pay, and what money have I taken in
+        - What shall I study today, and what have I finished today
       correctIndex: 0
-      explanationZh: 他在小册子的日程表中，早晨问“What good shall I do this day?”，晚间问“What good have I done today?”。这与记账、学习或记账瑕疵无关，是他日常自省的核心提问。
+      explanationZh: 日程表上，早晨那一栏的问题是 "What good shall I do this day?"，傍晚那一栏是 "What good have I done today?"。中间排着五点起身、八点上工、十二点看账吃饭、两点再上工、六点归置东西并自省，十点睡觉。
   - id: bf-ch-09-s4
     text: My scheme of Order gave me the most trouble; and I found that, though it might be practicable where a man’s business was such as to leave him the disposition of his time, that of a journeyman printer, for instance, it was not possible to be exactly observed by a master, who must mix with the world, and often receive people of business at their own hours. Order, too, with regard to places for things, papers, etc., I found extremely difficult to acquire. I had not been early accustomed to it, and, having an exceeding good memory, I was not so sensible of the inconvenience attending want of method. This article, therefore, cost me so much painful attention, and my faults in it vexed me so much, and I made so little progress in amendment, and had such frequent relapses, that I was almost ready to give up the attempt, and content myself with a faulty character in that respect, like the man who, in buying an ax of a smith, my neighbour, desired to have the whole of its surface as bright as the edge. The smith consented to grind it bright for him if he would turn the wheel; he turned, while the smith pressed the broad face of the ax hard and heavily on the stone, which made the turning of it very fatiguing. The man came every now and then from the wheel to see how the work went on, and at length would take his ax as it was, without farther grinding. “No,” said the smith, “turn on, turn on; we shall have it bright by-and-by; as yet, it is only speckled.” “Yes,” says the man, “but I think I like a speckled ax best.” And I believe this may have been the case with many, who, having, for want of some such means as I employed, found the difficulty of obtaining good and breaking bad habits in other points of vice and virtue, have given up the struggle, and concluded that “a speckled ax was best”; for something, that pretended to be reason, was every now and then suggesting to me that such extreme nicety as I exacted of myself might be a kind of foppery in morals, which, if it were known, would make me ridiculous; that a perfect character might be attended with the inconvenience of being envied and hated; and that a benevolent man should allow a few faults in himself, to keep his friends in countenance.
     checkIn:
       id: bf-ch-09-s4-c1
-      stem: Why does Franklin tell the anecdote about the man buying an ax from a smith?
+      stem: What does the story of the man and the ax stand for?
       options:
-        - It shows that grinding an ax bright requires far more physical strength than expected.
-        - It proves that a smith should always set the price before beginning any work.
-        - It warns that neighbors should never lend tools to one another under any circumstances.
-        - It illustrates giving up on perfecting a difficult virtue and settling for a flawed character.
+        - That a smith should name his price before he starts
+        - That grinding takes far more strength than one expects
+        - That neighbours should never lend each other tools
+        - That men give up and settle for a speckled character
       correctIndex: 3
-      explanationZh: 富兰克林讲买斧人的故事，是为了比喻自己在“条理”一项上几乎放弃，甘于“a speckled ax best”——即接受有缺陷的品格。这与体力、定价或邻里借物无关，是关于放弃道德修炼的隐喻。
+      explanationZh: 那人转不动磨轮，最后说 "but I think I like a speckled ax best"。富兰克林拿这话比自己在条理一项上的败退，也比许多半途而废的人——总有个装作理性的声音在耳边说，对自己苛求到这个地步，说不定只是道德上的一种做作。
   - id: bf-ch-09-s5
     text: |-
       In truth, I found myself incorrigible with respect to Order; and now I am grown old, and my memory bad, I feel very sensibly the want of it. But, on the whole, though I never arrived at the perfection I had been so ambitious of obtaining, but fell far short of it, yet I was, by the endeavour, a better and a happier man than I otherwise should have been if I had not attempted it; as those who aim at perfect writing by imitating the engraved copies, though they never reach the wished-for excellence of those copies, their hand is mended by the endeavour, and is tolerable while it continues fair and legible.
@@ -139,14 +139,14 @@ sections:
       It will be remarked that, though my scheme was not wholly without religion, there was in it no mark of any of the distinguishing tenets of any particular sect. I had purposely avoided them; for, being fully persuaded of the utility and excellency of my method, and that it might be serviceable to people in all religions, and intending some time or other to publish it, I would not have anything in it that should prejudice anyone, of any sect, against it. I purposed writing a little comment on each virtue, in which I would have shown the advantages of possessing it, and the mischiefs attending its opposite vice; and I should have called my book “The Art of Virtue,” because it would have shown the means and manner of obtaining virtue, which would have distinguished it from the mere exhortation to be good, that does not instruct and indicate the means, but is like the apostle’s man of verbal charity, who only without showing to the naked and hungry how or where they might get clothes or victuals, exhorted them to be fed and clothed.—James 2:15, 16.
     checkIn:
       id: bf-ch-09-s5-c1
-      stem: What did Franklin deliberately avoid including in his self-examination scheme?
+      stem: What did Franklin purposely keep out of the whole scheme?
       options:
-        - The distinguishing tenets of any particular religious sect.
-        - The daily schedule for every part of his business and study.
-        - The short precepts annexed to each of the thirteen virtues.
-        - The mottoes taken from Addison, Cicero, and Solomon.
-      correctIndex: 0
-      explanationZh: 他明确写道，方案中“no mark of any of the distinguishing tenets of any particular sect”，目的是让所有宗教的人都能使用。日程表、格言和箴言他都包含了，只是刻意排除了教派特征。
+        - The mottoes he took from Addison, Cicero, and Solomon
+        - The short precept annexed to each of the thirteen names
+        - Any mark of the distinguishing tenets of a particular sect
+        - The scheme of employment for the hours of the day
+      correctIndex: 2
+      explanationZh: 他写得很清楚——方案里 "there was in it no mark of any of the distinguishing tenets of any particular sect. I had purposely avoided them"，因为他打算日后出版，不愿任何教派的人一看就先有成见。格言、箴言、日程和逐条戒律，倒都留在书里。
   - id: bf-ch-09-s6
     text: |-
       But it so happened that my intention of writing and publishing this comment was never fulfilled. I did, indeed, from time to time, put down short hints of the sentiments, reasonings, etc., to be made use of in it, some of which I have still by me; but the necessary close attention to private business in the earlier part of my life, and public business since, have occasioned my postponing it; for, it being connected in my mind with a great and extensive project, that required the whole man to execute, and which an unforeseen succession of employs prevented my attending to, it has hitherto remained unfinished.
@@ -158,14 +158,14 @@ sections:
       I cannot boast of much success in acquiring the reality of this virtue, but I had a good deal with regard to the appearance of it. I made it a rule to forbear all direct contradiction to the sentiments of others, and all positive assertion of my own. I even forbid myself, agreeably to the old laws of our Junto, the use of every word or expression in the language that imported a fixed opinion, such as “certainly,” “undoubtedly,” etc., and I adopted, instead of them, “I conceive,” “I apprehend,” or “I imagine” a thing to be so or so; or it “so appears to me at present.” When another asserted something that I thought an error, I denied myself the pleasure of contradicting him abruptly, and of showing immediately some absurdity in his proposition; and in answering I began by observing that in certain cases or circumstances his opinion would be right, but in the present case there appeared or seemed to me some difference, etc. I soon found the advantage of this change in my manner; the conversations I engaged in went on more pleasantly. The modest way in which I proposed my opinions procured them a readier reception and less contradiction; I had less mortification when I was found to be in the wrong, and I more easily prevailed with others to give up their mistakes and join with me when I happened to be in the right.
     checkIn:
       id: bf-ch-09-s6-c1
-      stem: What caused Franklin to add Humility as the thirteenth virtue to his original list of twelve?
+      stem: What made Franklin add a thirteenth name to his list of twelve?
       options:
-        - He read in Cicero that pride was the root of all human vice.
-        - A Quaker friend told him he was generally thought proud and overbearing.
-        - He found that his daily examination pages were too few for a full year.
-        - He realized during a voyage that he had been too frugal with his acquaintances.
+        - He read in Cicero that pride is the root of every vice
+        - A Quaker friend told him he was generally thought proud
+        - He found his book had one page more than he had virtues
+        - He decided on a voyage that he had been too close with money
       correctIndex: 1
-      explanationZh: 一位贵格会朋友善意提醒他，人们普遍认为他骄傲、在辩论中“overbearing, and rather insolent”，于是他决定加上谦卑。西塞罗的著作、小册子的页数和航海经历都与第十三项美德的由来无关。
+      explanationZh: 起初只有十二项。一位贵格会朋友好意提醒他，人家普遍觉得他骄傲，"that I was not content with being in the right when discussing any point, but was overbearing, and rather insolent"，还举了好几件事为证。他因此把 Humility 添了进去，并把这个词的意思放得很宽。
   - id: bf-ch-09-s7
     text: |-
       And this mode, which I at first put on with some violence to natural inclination, became at length so easy, and so habitual to me, that perhaps for these fifty years past no one has ever heard a dogmatical expression escape me. And to this habit (after my character of integrity) I think it principally owing that I had early so much weight with my fellow-citizens when I proposed new institutions, or alterations in the old, and so much influence in public councils when I became a member; for I was but a bad speaker, never eloquent, subject to much hesitation in my choice of words, hardly correct in language, and yet I generally carried my points.
@@ -193,14 +193,14 @@ sections:
       “That few in public affairs act from a mere view of the good of their country, whatever they may pretend; and, though their actings bring real good to their country, yet men primarily considered that their own and their country’s interest was united, and did not act from a principle of benevolence.
     checkIn:
       id: bf-ch-09-s7-c1
-      stem: What does Franklin identify as the main reason he carried so much weight in public councils despite being a poor speaker?
+      stem: To what did Franklin chiefly credit his weight in public councils?
       options:
-        - His early reputation for eloquence and elegant choice of words.
-        - His willingness to contradict others abruptly when he detected an error.
-        - His habit of modestly proposing opinions without dogmatical assertion.
-        - His strict observance of the virtue of Order in all public affairs.
+        - His reputation as an eloquent and elegant speaker
+        - His readiness to point out an error the moment he saw it
+        - His habit of proposing opinions without dogmatic assertion
+        - His strict keeping of Order in every piece of public business
       correctIndex: 2
-      explanationZh: 他说五十年来无人听他说过武断的话，正是这种谦逊的表达方式，使他的意见更容易被接受，即使他不善言辞也能“generally carried my points”。这与口才、直接反驳或条理无关。
+      explanationZh: 他自认是个 "bad speaker, never eloquent, subject to much hesitation in my choice of words"，可五十年来没人听他吐过一句武断的话。他说，除了正直的名声之外，主要就靠这个习惯，议事时才能 "generally carried my points"。
   - id: bf-ch-09-s8
     text: |-
       “That fewer still, in public affairs, act with a view to the good of mankind.
@@ -228,78 +228,78 @@ sections:
       My ideas at that time were, that the sect should be begun and spread at first among young and single men only; that each person to be initiated should not only declare his assent to such creed, but should have exercised himself with the thirteen weeks’ examination and practice of the virtues, as in the beforementioned model; that the existence of such a society should be kept a secret, till it was become considerable, to prevent solicitations for the admission of improper persons, but that the members should each of them search among his acquaintance for ingenuous, well-disposed youths, to whom, with prudent caution, the scheme should be gradually communicated; that the members should engage to afford their advice, assistance, and support to each other in promoting one another’s interests, business, and advancement in life; that, for distinction, we should be called “The Society of the Free and Easy”: free, as being, by the general practice and habit of the virtues, free from the dominion of vice; and particularly by the practice of industry and frugality, free from debt, which exposes a man to confinement, and a species of slavery to his creditors.
     checkIn:
       id: bf-ch-09-s8-c1
-      stem: What name did Franklin propose for the secret society he hoped to found?
+      stem: What was the society in his paper to be called?
       options:
-        - The United Party for Virtue and Wisdom.
-        - The Brotherhood of the Thirteen Virtues.
-        - The Society of the Free and Easy.
-        - The Order of the Spotless Page.
-      correctIndex: 2
-      explanationZh: 他设想将美德之人联合起来，称作“The Society of the Free and Easy”——free 指因修炼美德而摆脱恶习、因勤勉节俭而免于债务。其他选项都不是他取的名字。
+        - The Society of the Free and Easy
+        - The United Party for Virtue and Wisdom
+        - The Brotherhood of the Thirteen Virtues
+        - The Order of the Spotless Page
+      correctIndex: 0
+      explanationZh: 他给这个设想中的团体取名 "The Society of the Free and Easy"——free 有两层意思：因养成美德的习惯而不受恶习支配，又因勤勉节俭而免于负债，不至于沦为债主手里的囚徒。
   - id: bf-ch-09-s9
     text: This is as much as I can now recollect of the project, except that I communicated it in part to two young men, who adopted it with some enthusiasm; but my then narrow circumstances, and the necessity I was under of sticking close to my business, occasioned my postponing the further prosecution of it at that time; and my multifarious occupations, public and private, induced me to continue postponing, so that it has been omitted till I have no longer strength or activity left sufficient for such an enterprise; though I am still of opinion that it was a practicable scheme, and might have been very useful, by forming a great number of good citizens; and I was not discouraged by the seeming magnitude of the undertaking, as I have always thought that one man of tolerable abilities may work great changes, and accomplish great affairs among mankind, if he first forms a good plan, and, cutting off all amusements or other employments that would divert his attention, makes the execution of that same plan his sole study and business.
     checkIn:
       id: bf-ch-09-s9-c1
-      stem: What ultimately prevented Franklin from carrying out his grand society project?
+      stem: What kept the great project from ever being carried out?
       options:
-        - His loss of faith in the practicality of the scheme itself.
-        - His inability to find any young men willing to adopt the plan.
-        - His discovery that the creed offended professors of various religions.
-        - His narrow circumstances and multifarious public and private occupations.
+        - He came to think the whole scheme impracticable
+        - No young man could be found to take it up with him
+        - The creed offended professors of several religions
+        - Narrow circumstances first, then a press of public business
       correctIndex: 3
-      explanationZh: 他说“my then narrow circumstances”和后来的“multifarious occupations”使他一再推迟，直到不再有精力。他始终认为计划可行，有年轻人热情采纳，信条也刻意避免了冒犯任何宗教，因此这几项都不是原因。
+      explanationZh: 他说 "my then narrow circumstances, and the necessity I was under of sticking close to my business, occasioned my postponing the further prosecution of it at that time"，此后公私事务纷至沓来，一推再推，直到再没有精力。他始终认为这计划可行——当年已有两个年轻人满怀热情地接受了它。
 quiz:
   - id: bf-ch-09-q1
-    stem: What is the central doctrine Franklin wished to explain and enforce in his never-finished book on virtue?
+    stem: What doctrine was the unwritten Art of Virtue to have pressed?
     options:
-      - Virtue is impossible without divine grace and should not be attempted alone.
-      - Temperance must be mastered before any other virtue can even be defined.
-      - Moral perfection requires isolating oneself from all worldly company.
-      - Vicious actions are forbidden because they are hurtful in themselves.
+      - That virtue is out of reach without divine grace to help
+      - That temperance must be mastered before the rest are defined
+      - That moral perfection asks a man to withdraw from company
+      - That vicious actions are forbidden because they are hurtful
     correctIndex: 3
-    explanationZh: 他在文中明确写道，想阐明的教义是“vicious actions are not hurtful because they are forbidden, but forbidden because they are hurtful”，即恶行因其本身有害才被禁止。其他选项都与这一因果论述无关。
+    explanationZh: 他要讲的道理是 "vicious actions are not hurtful because they are forbidden, but forbidden because they are hurtful, the nature of man alone considered"，由此推出：凡想在这世上过得快活的人，本身就该做个有德之人。他还打算劝年轻人，穷人发家最靠得住的本钱是 probity 和 integrity。
   - id: bf-ch-09-q2
-    stem: How did Franklin physically mark faults in his little book of examination?
+    stem: How was a fault entered in the little book?
     options:
-      - With a red checkmark next to the virtue he had successfully practiced.
-      - With a pencil note describing the circumstances of each offense.
-      - With a little black spot on the corresponding virtue's line and day's column.
-      - With a small circle drawn through the letter of the offending virtue.
-    correctIndex: 2
-    explanationZh: 他在红线交叉的表格上，用“a little black spot”标记当天在某项美德上的过失。红色只用于画线格，铅笔后来用于象牙页，红勾、铅笔描述和圆圈都不是他的方法。
+      - A red check beside each virtue he had kept that day
+      - A little black spot on the virtue's line, in that day's column
+      - A pencilled note giving the circumstances of the offence
+      - A small circle drawn through the letter of the virtue
+    correctIndex: 1
+    explanationZh: 每页用红墨水划出七栏（一天一栏）和十三条横线（一项美德一条），"I might mark, by a little black spot, every fault I found upon examination to have been committed respecting that virtue upon that day"。
   - id: bf-ch-09-q3
-    stem: Why did Franklin eventually transfer his tables and precepts to ivory leaves of a memorandum book?
+    stem: Why did Franklin move his tables onto ivory leaves?
     options:
-      - The original paper was accidentally left aboard a ship during a long voyage.
-      - The original paper became full of holes from scraping out old marks for new courses.
-      - The original paper was ruined when red ink spilled across all the pages.
-      - The original paper was borrowed by a friend who never returned it.
-    correctIndex: 1
-    explanationZh: 原先在小册子上刮去旧标记以供新一轮使用，导致纸张“became full of holes”，所以他改用象牙页，用红笔画线、黑铅笔记痕，再用湿海绵擦除。航海遗失、墨水泼洒或被借走都不是他给出的原因。
-  - id: bf-ch-09-q4
-    stem: Which virtue did Franklin single out as giving him the most trouble, nearly causing him to abandon the attempt?
-    options:
-      - Order.
-      - Silence.
-      - Frugality.
-      - Sincerity.
+      - The paper had gone full of holes from scraping out old marks
+      - The red ink had spilled and ruined every page in the book
+      - He left the paper book behind on a voyage and never got it back
+      - A friend borrowed the book and never brought it back to him
     correctIndex: 0
-    explanationZh: 他说“My scheme of Order gave me the most trouble”，并讲述了买斧人的故事，说明自己在条理上几乎放弃。沉默、节俭和诚恳都不是让他最头疼的。
-  - id: bf-ch-09-q5
-    stem: To which virtues does Franklin attribute the confidence of his country and the honorable employment it conferred?
+    explanationZh: 每开一轮新课都要把旧痕刮掉腾地方，纸 "became full of holes"。于是他把表格和戒律搬到备忘录的象牙页上——红线用能留下印痕的墨水画，过失用黑铅笔点，湿海绵一抹就干净。
+  - id: bf-ch-09-q4
+    stem: Which virtue gave Franklin the most trouble of all?
     options:
-      - Temperance and Industry.
-      - Frugality and Resolution.
-      - Sincerity and Justice.
-      - Order and Humility.
+      - Silence, which he found spoiled his conversation
+      - Frugality, which his business made hard
+      - Order, in his time and in his papers alike
+      - Sincerity, which cost him several friendships
     correctIndex: 2
-    explanationZh: 他在总结中写道：“to Sincerity and Justice, the confidence of his country, and the honorable employs it conferred upon him.”。节制对应健康，勤勉与节俭对应财富，条理与谦卑不是他归因于公众信任的来源。
-  - id: bf-ch-09-q6
-    stem: What rule did Franklin adopt to cure himself of pride after his Quaker friend's criticism?
+    explanationZh: 他说 "My scheme of Order gave me the most trouble"。排定时间这一层，对一个必须应酬来客的老板本就难办；给东西和纸张定位置更让他吃力，因为从小没养成这习惯，记性又太好，感觉不到没条理的麻烦。
+  - id: bf-ch-09-q5
+    stem: To which pair does Franklin credit his country's confidence in him?
     options:
-      - He resolved to speak only when directly questioned by a superior.
-      - He forbore all direct contradiction and positive assertion of his own opinions.
-      - He vowed to donate a fixed portion of his income to the poor each week.
-      - He agreed to perform a daily act of public service without expectation of reward.
+      - Temperance and Industry
+      - Frugality and Resolution
+      - Order and Humility
+      - Sincerity and Justice
+    correctIndex: 3
+    explanationZh: 他把功劳一项项分开算——"to Temperance he ascribes his long-continued health"；勤勉与节俭带来早年的宽裕和后来的家业；"to Sincerity and Justice, the confidence of his country, and the honorable employs it conferred upon him"；至于那份平和的脾气和谈吐间的愉快，则归给全部美德合在一起的作用。
+  - id: bf-ch-09-q6
+    stem: What rule did Franklin set himself against pride?
+    options:
+      - To speak only when a person of rank put a question to him
+      - To forbear all flat contradiction and all positive assertion
+      - To set aside a fixed part of his income for the poor every week
+      - To do one act of public service every day without reward
     correctIndex: 1
-    explanationZh: 他为治骄傲而定下规矩：“to forbear all direct contradiction to the sentiments of others, and all positive assertion of my own”，并用“I conceive”“I apprehend”等软语替代“certainly”“undoubtedly”。只在被上级提问时发言、定期捐款和每日公仆行为都不是他的做法。
+    explanationZh: 规矩是 "to forbear all direct contradiction to the sentiments of others, and all positive assertion of my own"。他连 certainly、undoubtedly 这类词都禁了，一律换成 I conceive、I apprehend 或 it so appears to me at present；别人讲错了，他也先说在某些情形下这话是对的，再说眼下似乎稍有出入。

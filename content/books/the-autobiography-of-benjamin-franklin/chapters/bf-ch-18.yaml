@@ -3,7 +3,7 @@ id: bf-ch-18
 bookId: book-franklin
 title: Scientific Experiments
 titleZh: 科学实验
-summaryZh: 富兰克林回顾了自己与电学实验结缘的经过：在费城精进技艺、撰写论文，进而引来欧洲学术界的瞩目，也招来一位法国名家的公开挑战。
+summaryZh: 在接着写新总督任内的公事之前，他先回头交代一件事——自己那点哲学上的名声是怎么来的。1746 年他在波士顿遇上一位刚从苏格兰来的斯彭斯医生，看了几个做得并不算高明的电学实验。
 sections:
   - id: bf-ch-18-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       Obliged as we were to Mr. Collinson for his present of the tube, etc., I thought it right he should be informed of our success in using it, and wrote him several letters containing accounts of our experiments. He got them read in the Royal Society, where they were not at first thought worth so much notice as to be printed in their Transactions. One paper, which I wrote for Mr. Kinnersley, on the sameness of lightning with electricity, I sent to Dr. Mitchel, an acquaintance of mine, and one of the members also of that society, who wrote me word that it had been read, but was laughed at by the connoisseurs. The papers, however, being shown to Dr. Fothergill, he thought them of too much value to be stifled, and advised the printing of them. Mr. Collinson then gave them to Cave for publication in his Gentleman’s Magazine; but he chose to print them separately in a pamphlet, and Dr. Fothergill wrote the preface. Cave, it seems, judged rightly for his profit, for by the additions that arrived afterward, they swelled to a quarto volume, which has had five editions, and cost him nothing for copy-money.
     checkIn:
       id: bf-ch-18-s1-c1
-      stem: What did Franklin do to share the burden when visitors kept filling his house to see the electric experiments?
+      stem: How did Franklin spread the crowd that filled his house?
       options:
-        - He had similar tubes blown for friends to perform with.
-        - He charged admission fees to limit the number of visitors.
-        - He moved the demonstrations to the public library hall.
-        - He asked Mr. Collinson to send additional tubes from London.
+        - He had more tubes blown so friends could show them too
+        - He began to charge a shilling at the door to thin the crowd
+        - He moved the showings into the library company's hall
+        - He wrote to Collinson for a fresh supply out of London
       correctIndex: 0
-      explanationZh: 文中说“To divide a little this incumbrance among my friends, I caused a number of similar tubes to be blown at our glasshouse”，富兰克林让人吹制了相同的玻璃管分给朋友们。收取门票是Kinnersley后来巡回演讲时做的事，不是富兰克林用来分流家中访客的方法。
+      explanationZh: 他的原话是 "To divide a little this incumbrance among my friends, I caused a number of similar tubes to be blown at our glasshouse, with which they furnished themselves, so that we had at length several performers."。收门票是后来 Kinnersley 巡回演讲时的事。
   - id: bf-ch-18-s2
     text: |-
       It was, however, some time before those papers were much taken notice of in England. A copy of them happening to fall into the hands of the Count de Buffon, a philosopher deservedly of great reputation in France, and, indeed, all over Europe, he prevailed with M. Dalibard to translate them into French, and they were printed at Paris. The publication offended the Abbé Nollet, preceptor in Natural Philosophy to the royal family, and an able experimenter, who had formed and published a theory of electricity, which then had the general vogue. He could not at first believe that such a work came from America, and said it must have been fabricated by his enemies at Paris, to decry his system. Afterwards, having been assured that there really existed such a person as Franklin at Philadelphia, which he had doubted, he wrote and published a volume of Letters, chiefly addressed to me, defending his theory, and denying the verity of my experiments, and of the positions deduced from them.
@@ -33,78 +33,78 @@ sections:
       What gave my book the more sudden and general celebrity, was the success of one of its proposed experiments, made by Messrs. Dalibard and De Lor at Marly, for drawing lightning from the clouds. This engaged the public attention everywhere. M. de Lor, who had an apparatus for experimental philosophy, and lectured in that branch of science, undertook to repeat what he called the “Philadelphia Experiments”; and, after they were performed before the king and court, all the curious of Paris flocked to see them. I will not swell this narrative with an account of that capital experiment, nor of the infinite pleasure I received in the success of a similar one I made soon after with a kite at Philadelphia, as both are to be found in the histories of electricity.
     checkIn:
       id: bf-ch-18-s2-c1
-      stem: Why did Franklin decide not to answer the Abbé Nollet's published letters attacking his work?
+      stem: Why did Franklin let the Abbé Nollet's letters go unanswered?
       options:
-        - He knew the Royal Society would formally respond on his behalf without being asked.
-        - He thought verifiable experiments needed no defense and preferred making new ones.
-        - He worried that his French was too limited to compose a proper reply.
-        - He admitted that Nollet's theory better explained the new phenomena.
-      correctIndex: 1
-      explanationZh: 富兰克林认为他的论文描述的是“experiments which anyone might repeat and verify”，无须争辩；而且跨语言争论容易因误译而延长，所以他宁可把时间花在做新实验上。皇家学会出面为他辩护是后来的事，并非他当初决定沉默的原因。
+        - He was told the Royal Society would answer for him
+        - He owned that Nollet's theory fitted the facts better
+        - His French was not equal to composing a proper reply
+        - Experiments that anyone can repeat need no defending
+      correctIndex: 3
+      explanationZh: 他动过笔，也确实开了个头，随即想明白：文章里写的是 "experiments which anyone might repeat and verify"，验得出便无须辩，验不出也辩不了；何况两人各写一种语言，误译一层套一层，争起来没完——Nollet 有一整封信就是建在译错的字上的。于是他决定把时间花在做新实验上。
   - id: bf-ch-18-s3
     text: Dr. Wright, an English physician, when at Paris, wrote to a friend, who was of the Royal Society, an account of the high esteem my experiments were in among the learned abroad, and of their wonder that my writings had been so little noticed in England. The society, on this, resumed the consideration of the letters that had been read to them; and the celebrated Dr. Watson drew up a summary account of them, and of all I had afterwards sent to England on the subject, which he accompanied with some praise of the writer. This summary was then printed in their Transactions; and some members of the society in London, particularly the very ingenious Mr. Canton, having verified the experiment of procuring lightning from the clouds by a pointed rod, and acquainting them with the success, they soon made me more than amends for the slight with which they had before treated me. Without my having made any application for that honour, they chose me a member, and voted that I should be excused the customary payments, which would have amounted to twenty-five guineas; and ever since have given me their Transactions gratis. They also presented me with the gold medal of Sir Godfrey Copley for the year 1753, the delivery of which was accompanied by a very handsome speech of the president, Lord Macclesfield, wherein I was highly honoured.
     checkIn:
       id: bf-ch-18-s3-c1
-      stem: What honour did the Royal Society bestow on Franklin after verifying his lightning experiment?
+      stem: What did the Royal Society do once the rod experiment was verified?
       options:
-        - They appointed him to lead their new electricity committee in London.
-        - They purchased the rights to publish his collected letters abroad.
-        - They funded a permanent lightning-rod installation on St. Paul's Cathedral.
-        - They elected him a member, waived his fees, and gave him the Copley gold medal.
-      correctIndex: 3
-      explanationZh: 原文明确写道学会选他为会员、免去二十五几尼的会费、此后免费赠送 Transactions，并授予1753年度的Sir Godfrey Copley金质奖章。其余选项在文中均无依据。
+        - They put him at the head of a new committee on electricity
+        - They bought the right to print his letters on the continent
+        - They elected him, waived the fees, and gave him the Copley medal
+        - They paid for a lightning rod to be set on St. Paul's
+      correctIndex: 2
+      explanationZh: 他一句话没求过，学会 "chose me a member, and voted that I should be excused the customary payments, which would have amounted to twenty-five guineas"，此后 Transactions 一直免费寄给他，还把 1753 年度的 Copley 金质奖章授予了他，会长 Macclesfield 勋爵为此说了一番极体面的话。
 quiz:
   - id: bf-ch-18-q1
-    stem: What first introduced Franklin to electric experiments?
+    stem: What first turned Franklin toward electricity?
     options:
-      - Dr. Spence showed him some electrical experiments at Boston.
-      - Mr. Collinson sent him a glass tube from the Royal Society.
-      - Mr. Kinnersley invited him to attend a paid lecture series.
-      - Dr. Fothergill shared a pamphlet he had received from Paris.
-    correctIndex: 0
-    explanationZh: 文中说在波士顿“I met there with a Dr. Spence, who…showed me some electric experiments”，这是富兰克林初次接触电学实验。Collinson寄来玻璃管是他从波士顿回到费城之后的事。
+      - Collinson's present of a glass tube to the library company
+      - Dr. Spence's electric experiments, seen at Boston in 1746
+      - A paid lecture course got up by Mr. Kinnersley
+      - A pamphlet out of Paris passed on by Dr. Fothergill
+    correctIndex: 1
+    explanationZh: 原文是 "In 1746, being at Boston, I met there with a Dr. Spence, who was lately arrived from Scotland, and showed me some electric experiments." 那些实验做得并不利落，可题目对他全然新鲜，看得他又惊又喜。Collinson 送来玻璃管，是他回费城以后的事。
   - id: bf-ch-18-q2
-    stem: How did Franklin help Mr. Kinnersley earn money from the electric experiments?
+    stem: How did Franklin set Kinnersley up to make money by the experiments?
     options:
-      - He lent him a ready-made apparatus purchased from London instrument-makers.
-      - He secured him a permanent appointment at the Philadelphia library.
-      - He paid him a salary to maintain Franklin's own growing collection of tubes.
-      - He drew up two lectures arranging the experiments with explanations.
+      - He lent him an apparatus bought from London makers
+      - He got him a standing place at the library company
+      - He paid him wages to keep the tubes in order
+      - He drew up two lectures, the experiments set in order
     correctIndex: 3
-    explanationZh: 富兰克林“drew up for him two lectures”，把实验按顺序排列并配以讲解，使Kinnersley可以收费演讲。精美的仪器是Kinnersley自己购置的，并非富兰克林借给他。
+    explanationZh: 他替这位失业的邻居 "drew up for him two lectures, in which the experiments were ranged in such order, and accompanied with such explanations in such method, as that the foregoing should assist in comprehending the following"。那套讲究的仪器是 Kinnersley 自己置办的——把富兰克林随手做的粗东西请匠人重做了一遍。
   - id: bf-ch-18-q3
-    stem: How were Franklin's experiment letters first received by the Royal Society?
+    stem: How were the letters taken when first read at the Royal Society?
     options:
-      - They were immediately translated and published in French.
-      - They were read but at first not thought worth printing there.
-      - They were rejected outright and returned to Mr. Collinson.
-      - They were printed at once with a preface by Lord Macclesfield.
+      - They were sent straight back to Mr. Collinson unread
+      - They were read, but not thought worth printing there
+      - They were turned into French and printed within a month
+      - They came out at once with a preface by Lord Macclesfield
     correctIndex: 1
-    explanationZh: 原文说信件在皇家学会被宣读后，“were not at first thought worth so much notice as to be printed in their Transactions”。是Dr. Fothergill认为它们有价值，才促成后来以小册子形式出版。
+    explanationZh: 它们 "were not at first thought worth so much notice as to be printed in their Transactions"；关于闪电与电同一性的那一篇，据说还被行家们笑过。是 Dr. Fothergill 觉得可惜，力主付印，最后由 Cave 印成小册子，Fothergill 写的序。
   - id: bf-ch-18-q4
-    stem: What was the Abbé Nollet's initial reaction to the French translation of Franklin's papers?
+    stem: How did the Abbé Nollet first take the French translation?
     options:
-      - He immediately replicated the experiments and confirmed the results.
-      - He suspected it was fabricated by his enemies to decry his system.
-      - He travelled to Philadelphia to challenge Franklin in person.
-      - He persuaded the king to ban the pamphlet from France.
-    correctIndex: 1
-    explanationZh: Nollet先是不信此书出自美洲，认为“it must have been fabricated by his enemies at Paris, to decry his system”。后来确认富兰克林确有其人，才写信辩护并否认实验的真实性。
+      - He took it for a forgery got up by his enemies at Paris
+      - He repeated the experiments at once and owned them true
+      - He crossed to Philadelphia to face Franklin himself
+      - He got the king to keep the pamphlet out of France
+    correctIndex: 0
+    explanationZh: 他起先不信这样一部东西会出自美洲，"said it must have been fabricated by his enemies at Paris, to decry his system"。等人家告诉他费城真有富兰克林这么个人，他才写了一整卷信来为自己的学说辩护，并否认那些实验属实。
   - id: bf-ch-18-q5
-    stem: What event gave Franklin's book its sudden and general celebrity across Europe?
+    stem: What gave the book its sudden celebrity in Europe?
     options:
-      - The Abbé Nollet publicly renounced his own electrical theory.
-      - The Royal Society awarded Franklin the Copley gold medal.
-      - Kinnersley demonstrated the experiments before the French court.
-      - Dalibard and De Lor drew lightning from the clouds at Marly.
+      - Nollet gave up his own theory of electricity in public
+      - The Royal Society's award of the Copley gold medal
+      - Kinnersley showed the experiments before the French court
+      - Dalibard and De Lor drew lightning from the clouds at Marly
     correctIndex: 3
-    explanationZh: 文中说“What gave my book the more sudden and general celebrity, was the success of one of its proposed experiments, made by Messrs. Dalibard and De Lor at Marly, for drawing lightning from the clouds”。这是让公众目光聚焦的关键事件。
+    explanationZh: 原文是 "What gave my book the more sudden and general celebrity, was the success of one of its proposed experiments, made by Messrs. Dalibard and De Lor at Marly, for drawing lightning from the clouds."。De Lor 把这套 Philadelphia Experiments 在国王和宫廷面前演过一回之后，巴黎的好奇人便都涌去看了。
   - id: bf-ch-18-q6
-    stem: Why did the Royal Society in London finally reconsider Franklin's letters?
+    stem: What made the Royal Society take up the letters again?
     options:
-      - Franklin travelled to London to present his findings in person.
-      - Mr. Collinson threatened to withdraw his fellowship over the neglect.
-      - Dr. Wright reported from Paris how highly the learned abroad esteemed his work.
-      - The king of France personally wrote to the society on Franklin's behalf.
+      - Franklin sailed to London and laid the case before them
+      - Collinson threatened to give up his fellowship over it
+      - Dr. Wright wrote from Paris of the esteem abroad
+      - The French king wrote on his behalf
     correctIndex: 2
-    explanationZh: Dr. Wright在巴黎写信给皇家学会的一位朋友，说明富兰克林的实验在国外如何受推崇、英国人竟如此忽视，“The society, on this, resumed the consideration of the letters”。富兰克林本人并未赴伦敦申请。
+    explanationZh: 原文是 "Dr. Wright, an English physician, when at Paris, wrote to a friend, who was of the Royal Society, an account of the high esteem my experiments were in among the learned abroad, and of their wonder that my writings had been so little noticed in England."。学会由此重新审视，Watson 博士做了摘要，登进了 Transactions。

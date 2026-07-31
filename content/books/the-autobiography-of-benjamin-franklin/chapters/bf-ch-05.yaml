@@ -3,7 +3,7 @@ id: bf-ch-05
 bookId: book-franklin
 title: Early Friends in Philadelphia
 titleZh: 在费城的早年友人
-summaryZh: 富兰克林与印刷所老板基默同吃素食、争论教义，又与三位热爱阅读的年轻友人常在林间散步、吟诗论文。一场精心安排的诗作交换，悄悄改变了其中一人的志向。
+summaryZh: 基默蓄着满脸胡子，守第七日安息，还一本正经地提议两人合伙立一个新教派。而在城外舒尔基尔河边的林子里，四个爱读书的年轻人每逢礼拜天都要聚一次，把自己写的东西读给彼此听。
 sections:
   - id: bf-ch-05-s1
     text: |-
@@ -12,14 +12,14 @@ sections:
       Keimer wore his beard at full length, because somewhere in the Mosaic law it is said, “Thou shalt not mar the corners of thy beard.” He likewise kept the Seventh day, Sabbath; and these two points were essentials with him. I disliked both; but agreed to admit them upon condition of his adopting the doctrine of using no animal food. “I doubt,” said he, “my constitution will not bear that.” I assured him it would, and that he would be the better for it. He was usually a great glutton, and I promised myself some diversion in half starving him. He agreed to try the practice, if I would keep him company. I did so, and we held it for three months. We had our victuals dressed, and brought to us regularly by a woman in the neighborhood, who had from me a list of forty dishes, to be prepared for us at different times, in all which there was neither fish, flesh, nor fowl, and the whim suited me the better at this time from the cheapness of it, not costing us above eighteenpence sterling each per week. I have since kept several Lents most strictly, leaving the common diet for that, and that for the common, abruptly, without the least inconvenience, so that I think there is little in the advice of making those changes by easy gradations. I went on pleasantly, but poor Keimer suffered grievously, tired of the project, longed for the flesh-pots of Egypt, and ordered a roast pig. He invited me and two women friends to dine with him; but, it being brought too soon upon table, he could not resist the temptation, and ate the whole before we came.
     checkIn:
       id: bf-ch-05-s1-c1
-      stem: Why did Keimer finally agree to give up animal food?
+      stem: What finally brought Keimer to give up animal food?
       options:
-        - Keimer wanted to follow the Mosaic law more strictly than before.
-        - Franklin said he would join the diet only if Keimer did too.
-        - Keimer's doctor warned him that meat was harming his health.
-        - Franklin threatened to leave the printing shop otherwise.
+        - Keimer's doctor had warned him off flesh meat
+        - Franklin agreed to keep him company in the diet
+        - Franklin threatened to leave the shop otherwise
+        - The Mosaic law required it of the new sect
       correctIndex: 1
-      explanationZh: 文本说“I agreed to admit them upon condition of his adopting the doctrine of using no animal food”，而基默答应尝试的前提是“if I would keep him company”。因此关键不是健康或律法本身，而是富兰克林以共同进餐作为条件。
+      explanationZh: 谈教义时富兰克林开了条件——留须和守第七日他都可以认，但要 "upon condition of his adopting the doctrine of using no animal food"。基默怕身子吃不消，最后松口的原话是 "He agreed to try the practice, if I would keep him company."。富兰克林私下还盘算着，把这个饕餮饿上一饿多少有点看头。
   - id: bf-ch-05-s2
     text: |-
       I had made some courtship during this time to Miss Read. I had a great respect and affection for her, and had some reason to believe she had the same for me; but, as I was about to take a long voyage, and we were both very young, only a little above eighteen, it was thought most prudent by her mother to prevent our going too far at present, as a marriage, if it was to take place, would be more convenient after my return, when I should be, as I expected, set up in my business. Perhaps, too, she thought my expectations not so well founded as I imagined them to be.
@@ -31,14 +31,14 @@ sections:
       On this it was proposed that we should each of us, at our next meeting, produce a piece of our own composing, in order to improve by our mutual observations, criticisms, and corrections. As language and expression were what we had in view, we excluded all considerations of invention by agreeing that the task should be a version of the eighteenth Psalm, which describes the descent of a Deity. When the time of our meeting drew nigh, Ralph called on me first, and let me know his piece was ready. I told him I had been busy, and, having little inclination, had done nothing. He then showed me his piece for my opinion, and I much approved it, as it appeared to me to have great merit. “Now,” says he, “Osborne never will allow the least merit in anything of mine, but makes a thousand criticisms out of mere envy. He is not so jealous of you; I wish, therefore, you would take this piece, and produce it as yours; I will pretend not to have had time, and so produce nothing. We shall then see what he will say to it.” It was agreed, and I immediately transcribed it, that it might appear in my own hand.
     checkIn:
       id: bf-ch-05-s2-c1
-      stem: Why did Ralph ask Franklin to present Ralph's poem as Franklin's own?
+      stem: Why did Ralph want his piece produced under Franklin's name?
       options:
-        - He hoped Franklin's handwriting would impress Watson.
-        - He wanted Franklin to rewrite the poem in better style.
-        - He planned to deny later that he had written anything at all.
-        - He wanted to see whether Osborne would judge it fairly.
+        - He wanted Franklin to put the piece into better verse
+        - He hoped a fair copy in another hand would please Watson
+        - He meant to claim the piece back once it had been praised
+        - He wanted to see what Osborne would say if it were not his
       correctIndex: 3
-      explanationZh: Ralph说“Osborne never will allow the least merit in anything of mine, but makes a thousand criticisms out of mere envy. He is not so jealous of you”，可见他想借富兰克林之名测试Osborne的评价是否公允，而非请人改写或炫耀书法。
+      explanationZh: 他的原话是 "Osborne never will allow the least merit in anything of mine, but makes a thousand criticisms out of mere envy. He is not so jealous of you; I wish, therefore, you would take this piece, and produce it as yours."。富兰克林当场誊了一遍，好让笔迹看着像是自己的。
   - id: bf-ch-05-s3
     text: |-
       We met; Watson’s performance was read; there were some beauties in it, but many defects. Osborne’s was read; it was much better; Ralph did it justice; remarked some faults, but applauded the beauties. He himself had nothing to produce. I was backward; seemed desirous of being excused; had not had sufficient time to correct, etc.; but no excuse could be admitted; produce I must. It was read and repeated; Watson and Osborne gave up the contest, and joined in applauding it. Ralph only made some criticisms, and proposed some amendments; but I defended my text. Osborne was against Ralph, and told him he was no better a critic than poet, so he dropped the argument. As they two went home together, Osborne expressed himself still more strongly in favor of what he thought my production; having restrained himself before, as he said, lest I should think it flattery. “But who would have imagined,” said he, “that Franklin had been capable of such a performance; such painting, such force, such fire! He has even improved the original. In his common conversation he seems to have no choice of words; he hesitates and blunders; and yet, good God! how he writes!” When we next met, Ralph discovered the trick we had played him, and Osborne was a little laughed at.
@@ -46,57 +46,57 @@ sections:
       This transaction fixed Ralph in his resolution of becoming a poet. I did all I could to dissuade him from it, but he continued scribbling verses till Pope cured him. He became, however, a pretty good prose writer. More of him hereafter. But, as I may not have occasion again to mention the other two, I shall just remark here, that Watson died in my arms a few years after, much lamented, being the best of our set. Osborne went to the West Indies, where he became an eminent lawyer and made money, but died young. He and I had made a serious agreement, that the one who happened first to die should, if possible, make a friendly visit to the other, and acquaint him how he found things in that separate state. But he never fulfilled his promise.
     checkIn:
       id: bf-ch-05-s3-c1
-      stem: What effect did the poetry trick have on Ralph?
+      stem: What did the trick do to Ralph in the end?
       options:
-        - It made him more determined than ever to become a poet.
-        - It pushed him to abandon poetry and study law instead.
-        - It made him stop writing for several years out of shame.
-        - It convinced him to leave Franklin's circle of friends.
+        - It fixed him in his resolve to become a poet
+        - It shamed him into giving up verse for years
+        - It sent him to the law, as Osborne had urged
+        - It broke up the Sunday walks by the Schuylkill
       correctIndex: 0
-      explanationZh: 原文说“This transaction fixed Ralph in his resolution of becoming a poet”，即这次换诗事件反而坚定了他的志向；后来他才被Pope治好写诗的念头，转而成为不错的散文作家。
+      explanationZh: 结果和劝阻的本意正好相反——"This transaction fixed Ralph in his resolution of becoming a poet."。富兰克林怎么劝都没用，他一直写下去，直到蒲柏治好了他这个毛病；散文倒是写得不坏。
 quiz:
   - id: bf-ch-05-q1
-    stem: Why did Keimer end up eating an entire roast pig by himself?
+    stem: Why did Keimer send for a roast pig?
     options:
-      - He wanted to celebrate finishing a long printing job.
-      - He was testing a new recipe he had received from a neighbor.
-      - He believed the Mosaic law now required him to eat meat.
-      - He grew desperately tired of the three-month vegetarian diet.
-    correctIndex: 3
-    explanationZh: 文本说“poor Keimer suffered grievously, tired of the project, longed for the flesh-pots of Egypt, and ordered a roast pig”，即他在三个月素食后实在受不了了；烧烤上桌太早，他没忍住就一个人吃光了。
+      - He wanted to mark the end of a long printing job
+      - He had decided the Mosaic law now required flesh
+      - He was worn out with the diet and could not wait
+      - He was trying a recipe a neighbour had sent him
+    correctIndex: 2
+    explanationZh: 三个月下来 "poor Keimer suffered grievously, tired of the project, longed for the flesh-pots of Egypt, and ordered a roast pig"。他还请了富兰克林和两位女客同吃，可猪上桌太早——客人没到，他一个人先吃了个精光。
   - id: bf-ch-05-q2
-    stem: What did Keimer seriously propose that Franklin should do in his new sect?
+    stem: What part was Franklin to take in Keimer's new sect?
     options:
-      - Preach the sermons while Keimer printed them.
-      - Confound all opponents in doctrinal disputes.
-      - Translate the Mosaic law into plain English.
-      - Manage the sect's finances and printing press.
-    correctIndex: 1
-    explanationZh: 富兰克林用苏格拉底式提问把Keimer逼得处处小心，令Keimer对他“confuting way”的能力极为赏识，于是提出新教派计划：“He was to preach the doctrines, and I was to confound all opponents。”
-  - id: bf-ch-05-q3
-    stem: Why did Mrs. Read think it prudent to discourage Franklin and her daughter from marrying immediately?
-    options:
-      - She disliked Franklin's habit of arguing with clergymen.
-      - She had already promised Miss Read to another suitor.
-      - Franklin faced a long voyage and both were very young.
-      - She wanted Franklin to convert to her faith first.
-    correctIndex: 2
-    explanationZh: 文本说“as I was about to take a long voyage, and we were both very young, only a little above eighteen”，母亲认为等他远航归来、事业安定后再办婚事更妥当，甚至可能怀疑他对前景的设想并不牢靠。
-  - id: bf-ch-05-q4
-    stem: What task did the four friends agree on for their next meeting?
-    options:
-      - Each would write a version of the eighteenth Psalm.
-      - Each would compose an original love elegy.
-      - Each would translate a chapter from Mosaic law.
-      - Each would write a satirical essay about religion.
+      - To confound all opponents while Keimer preached
+      - To preach the sermons while Keimer printed them
+      - To put the Mosaic law into plain English for it
+      - To keep the accounts and run the press for it
     correctIndex: 0
-    explanationZh: 为专注于语言与表达本身，他们排除了题材创造，约定“the task should be a version of the eighteenth Psalm, which describes the descent of a Deity”。
-  - id: bf-ch-05-q5
-    stem: What became of Osborne after he moved to the West Indies?
+    explanationZh: 苏格拉底式的盘问把基默逼得连最平常的问题都要先反问一句 "What do you intend to infer from that?"，却也让他对富兰克林的驳斥功夫佩服得很，于是认真提议合伙立个新教派——"He was to preach the doctrines, and I was to confound all opponents."。
+  - id: bf-ch-05-q3
+    stem: Why did Mrs. Read hold the courtship back?
     options:
-      - He became a wealthy merchant and then a poet.
-      - He became a judge and lived to old age.
-      - He became an eminent lawyer but died young.
-      - He became a clergyman and gave up law.
+      - She had already promised her daughter to another man
+      - She disliked his way of arguing with the clergy in town
+      - A long voyage lay ahead, and both were barely eighteen
+      - She wanted him to come over to her own religion first
     correctIndex: 2
-    explanationZh: 文末交代：Watson几年后在富兰克林怀中去世；Osborne“went to the West Indies, where he became an eminent lawyer and made money, but died young”，并且从未兑现死后探望老友的约定。
+    explanationZh: 她觉得 "as I was about to take a long voyage, and we were both very young, only a little above eighteen"，最好等他回来、生意立住了再办婚事。富兰克林还揣测，她大概也不像他自己那样看好那份前程。
+  - id: bf-ch-05-q4
+    stem: What did the four friends set themselves for the next meeting?
+    options:
+      - An original elegy on a friend lately dead
+      - A version of the eighteenth Psalm
+      - A chapter out of the Mosaic law
+      - A satire on the preachers of the town
+    correctIndex: 1
+    explanationZh: 他们要练的是文字功夫，索性把构思这一环排除掉，约定 "the task should be a version of the eighteenth Psalm, which describes the descent of a Deity"，四人各写一篇，下次见面互相批评修改。
+  - id: bf-ch-05-q5
+    stem: What became of Osborne after he went to the West Indies?
+    options:
+      - He turned merchant in the islands and grew rich
+      - He took orders and gave up the law altogether
+      - He sat as a judge and lived to a great age
+      - He became an eminent lawyer, but died young
+    correctIndex: 3
+    explanationZh: 富兰克林顺笔交代了另外两位——Watson 几年后死在他怀里，是这一伙人里最好的一个；Osborne "went to the West Indies, where he became an eminent lawyer and made money, but died young"。两人曾郑重约过，先走的一个要回来看看另一个、说说那边的光景；这个约，Osborne 始终没有践。

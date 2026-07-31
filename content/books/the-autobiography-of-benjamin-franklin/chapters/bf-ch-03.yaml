@@ -3,7 +3,7 @@ id: bf-ch-03
 bookId: book-franklin
 title: Arrival in Philadelphia
 titleZh: 抵达费城
-summaryZh: 富兰克林从纽约出发前往费城寻找印刷工作，途中遭遇暴风雨、发烧和步行长途跋涉等种种磨难。他几乎身无分文、衣衫褴褛地初到费城，凭借勤勉与节俭逐渐站稳脚跟，却因一封信件而面临是否返回波士顿的抉择。
+summaryZh: 他把箱子和那身好衣裳交给海路捎带，自己搭小船从纽约南下——费城还在一百英里外。多年以后他特意把这段路写得很细，好让儿子拿这个寒酸的开头，去比一比他后来在那座城里的模样。
 sections:
   - id: bf-ch-03-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       When we drew near the island, we found it was at a place where there could be no landing, there being a great surf on the stony beach. So we dropped anchor, and swung round towards the shore. Some people came down to the water edge and halloed to us, as we did to them; but the wind was so high, and the surf so loud, that we could not hear so as to understand each other. There were canoes on the shore, and we made signs, and halloed that they should fetch us; but they either did not understand us, or thought it impracticable, so they went away, and night coming on, we had no remedy but to wait till the wind should abate; and, in the meantime, the boatman and I concluded to sleep, if we could; and so crowded into the scuttle, with the Dutchman, who was still wet, and the spray beating over the head of our boat, leaked through to us, so that we were soon almost as wet as he. In this manner we lay all night, with very little rest; but, the wind abating the next day, we made a shift to reach Amboy before night, having been thirty hours on the water, without victuals, or any drink but a bottle of filthy rum, and the water we sailed on being salt.
     checkIn:
       id: bf-ch-03-s1-c1
-      stem: Where did old Mr. William Bradford in New York send Franklin to seek employment?
+      stem: What befell the boat on the way to Amboy?
       options:
-        - To his son Andrew Bradford's printing shop in Philadelphia.
-        - To a newspaper office operated by Keimer in New York.
-        - To a bookshop owned by Aquilla Rose in Burlington.
-        - To a publishing house managed by his brother in Boston.
-      correctIndex: 0
-      explanationZh: 老Bradford说费城的儿子刚失去了主要助手Aquilla Rose，建议富兰克林去那里："My son at Philadelphia has lately lost his principal hand…if you go thither, I believe he may employ you." Aquilla Rose是去世的助手而非书商，其余去处也均非他的建议。
+        - The boat lost its mast and had to be towed in
+        - A passenger stole Franklin's chest and went ashore
+        - A squall tore the sails and drove them onto Long Island
+        - They reached Amboy in a single afternoon's easy sail
+      correctIndex: 2
+      explanationZh: 横渡海湾时 "we met with a squall that tore our rotten sails to pieces, prevented our getting into the Kill, and drove us upon Long Island"。他们在乱石滩外抛锚熬了一夜，第二天风小了才勉强赶到 Amboy——整整三十个钟头没吃没喝，只有一瓶脏朗姆酒。
   - id: bf-ch-03-s2
     text: |-
       In the evening I found myself very feverish, and went in to bed; but, having read somewhere that cold water drank plentifully was good for a fever, I followed the prescription, sweat plentifully most of the night, my fever left me, and in the morning, crossing the ferry, I proceeded on my journey on foot, having fifty miles to Burlington, where I was told I should find boats that would carry me the rest of the way to Philadelphia.
@@ -31,14 +31,14 @@ sections:
       At his house I lay that night, and the next morning reached Burlington, but had the mortification to find that the regular boats were gone a little before my coming, and no other expected to go before Tuesday, this being Saturday; wherefore I returned to an old woman in the town, of whom I had bought gingerbread to eat on the water, and asked her advice. She invited me to lodge at her house till a passage by water should offer; and being tired with my foot traveling, I accepted the invitation. She understanding I was a printer, would have had me stay at that town and follow my business, being ignorant of the stock necessary to begin with. She was very hospitable, gave me a dinner of ox-cheek with great good will, accepting only of a pot of ale in return; and I thought myself fixed till Tuesday should come. However, walking in the evening by the side of the river, a boat came by, which I found was going towards Philadelphia, with several people in her. They took me in, and, as there was no wind, we rowed all the way; and about midnight, not having yet seen the city, some of the company were confident we must have passed it, and would row no farther; the others knew not where we were; so we put toward the shore, got into a creek, landed near an old fence, with the rails of which we made a fire, the night being cold, in October, and there we remained till daylight. Then one of the company knew the place to be Cooper’s Creek, a little above Philadelphia, which we saw as soon as we got out of the creek, and arrived there about eight or nine o’clock on the Sunday morning, and landed at the Market-street wharf.
     checkIn:
       id: bf-ch-03-s2-c1
-      stem: What happened after Franklin drank plenty of cold water for his fever?
+      stem: What did the old woman at Burlington do for Franklin?
       options:
-        - He became delirious and had to call for a doctor.
-        - He felt much worse and decided to return home.
-        - He slept peacefully without any change in his condition.
-        - He sweated most of the night and the fever left him.
-      correctIndex: 3
-      explanationZh: 富兰克林读到冷水可治发烧，便照做，结果"sweat plentifully most of the night, my fever left me"。第二天他继续渡河步行，并没有变严重或请医生。
+        - She took him in and gave him a dinner of ox-cheek
+        - She sold him a passage on the Tuesday boat
+        - She sent him on to Dr. Brown's inn for the night
+        - She refused to lodge a stranger she took for a runaway
+      correctIndex: 0
+      explanationZh: 他向那位卖姜饼给他的老太太讨主意，"She invited me to lodge at her house till a passage by water should offer"，还热情地做了一顿牛颊肉，只肯收他一壶麦酒作回报。她甚至劝他干脆留在城里开印刷所——她并不知道开这一行要多少本钱。
   - id: bf-ch-03-s3
     text: |-
       I have been the more particular in this description of my journey, and shall be so of my first entry into that city, that you may in your mind compare such unlikely beginnings with the figure I have since made there. I was in my working dress, my best clothes being to come round by sea. I was dirty from my journey; my pockets were stuffed out with shirts and stockings, and I knew no soul nor where to look for lodging. I was fatigued with traveling, rowing, and want of rest, I was very hungry; and my whole stock of cash consisted of a Dutch dollar, and about a shilling in copper. The latter I gave the people of the boat for my passage, who at first refused it, on account of my rowing; but I insisted on their taking it. A man being sometimes more generous when he has but a little money than when he has plenty, perhaps through fear of being thought to have but little.
@@ -46,14 +46,14 @@ sections:
       Then I walked up the street, gazing about till near the market-house I met a boy with bread. I had made many a meal on bread, and, inquiring where he got it, I went immediately to the baker’s he directed me to, in Second-street, and asked for biscuit, intending such as we had in Boston; but they, it seems, were not made in Philadelphia. Then I asked for a threepenny loaf, and was told they had none such. So not considering or knowing the difference of money, and the greater cheapness nor the names of his bread, I bade him give me threepenny worth of any sort. He gave me, accordingly, three great puffy rolls. I was surprised at the quantity, but took it, and, having no room in my pockets, walked off with a roll under each arm, and eating the other. Thus I went up Market-street as far as Fourth-street, passing by the door of Mr. Read, my future wife’s father; when she, standing at the door, saw me, and thought I made, as I certainly did, a most awkward, ridiculous appearance. Then I turned and went down Chestnut-street and part of Walnut-street, eating my roll all the way, and, coming round, found myself again at Market-street wharf, near the boat I came in, to which I went for a draught of the river water; and, being filled with one of my rolls, gave the other two to a woman and her child that came down the river in the boat with us, and were waiting to go farther.
     checkIn:
       id: bf-ch-03-s3-c1
-      stem: What did Franklin do with the two extra rolls after eating his fill of the third one?
+      stem: Who saw Franklin walking up Market-street with his rolls?
       options:
-        - He saved them for breakfast at the Crooked Billet.
-        - He handed them to a beggar near the Quaker meetinghouse.
-        - He gave them to a woman and her child from the boat.
-        - He sold them to a boy at the Market-street wharf.
-      correctIndex: 2
-      explanationZh: 富兰克林吃了一个面包后便饱了，"gave the other two to a woman and her child that came down the river in the boat with us"。其余选项都是编造的细节。
+        - The baker's boy who had directed him to the shop
+        - Miss Read, standing in her father's doorway
+        - The young Quaker who later found him a lodging
+        - Andrew Bradford, down at the wharf
+      correctIndex: 1
+      explanationZh: 他一手夹一个面包、啃着第三个走过 Market-street，"passing by the door of Mr. Read, my future wife's father; when she, standing at the door, saw me, and thought I made, as I certainly did, a most awkward, ridiculous appearance"。
   - id: bf-ch-03-s4
     text: |-
       Thus refreshed, I walked again up the street, which by this time had many clean-dressed people in it, who were all walking the same way. I joined them, and thereby was led into the great meetinghouse of the Quakers near the market. I sat down among them, and, after looking round awhile and hearing nothing said, being very drowsy through labour and want of rest the preceding night, I fell fast asleep, and continued so till the meeting broke up, when one was kind enough to rouse me. This was, therefore, the first house I was in, or slept in, in Philadelphia.
@@ -65,14 +65,14 @@ sections:
       The old gentleman said he would go with me to the new printer; and when we found him, “Neighbour,” says Bradford, “I have brought to see you a young man of your business; perhaps you may want such a one.” He asked me a few questions, put a composing stick in my hand to see how I worked, and then said he would employ me soon, though he had just then nothing for me to do; and, taking old Bradford, whom he had never seen before, to be one of the town’s people that had a good will for him, entered into a conversation on his present undertaking and prospects; while Bradford, not discovering that he was the other printer’s father, on Keimer’s saying he expected soon to get the greatest part of the business into his own hands, drew him on by artful questions, and starting little doubts, to explain all his views, what interest he relied on, and in what manner he intended to proceed. I, who stood by and heard all, saw immediately that one of them was a crafty old sophister, and the other a mere novice. Bradford left me with Keimer, who was greatly surprised when I told him who the old man was.
     checkIn:
       id: bf-ch-03-s4-c1
-      stem: Why was old Bradford able to trick Keimer into revealing all his business plans?
+      stem: How did old Bradford draw Keimer's whole plan out of him?
       options:
-        - Because Keimer was too drunk to recognize his rival.
-        - Because Bradford pretended to be a wealthy merchant from Boston.
-        - Because Keimer did not know the old man was the other printer's father.
-        - Because Keimer had already decided to leave the printing trade.
+        - He offered to buy a half share in the new printing-house
+        - He said he had a job of printing to put in his way
+        - Keimer took him for a well-wisher among the townspeople
+        - He threatened to set his son up against him otherwise
       correctIndex: 2
-      explanationZh: Keimer从未见过老Bradford，以为他只是个好心市民，便毫无防备地畅谈计划；而实际上老Bradford是对手Andrew Bradford的父亲。富兰克林在旁看穿了一切："one of them was a crafty old sophister, and the other a mere novice."
+      explanationZh: Keimer 从没见过这位老人，"taking old Bradford, whom he had never seen before, to be one of the town's people that had a good will for him"，于是把打算、靠山和步骤和盘托出。富兰克林站在旁边听得分明——"one of them was a crafty old sophister, and the other a mere novice"。
   - id: bf-ch-03-s5
     text: |-
       Keimer’s printing-house, I found, consisted of an old shattered press, and one small, worn-out font of English, which he was then using himself, composing an Elegy on Aquilla Rose, before mentioned, an ingenious young man, of excellent character, much respected in the town, clerk of the Assembly, and a pretty poet. Keimer made verses too, but very indifferently. He could not be said to write them, for his manner was to compose them in the types directly out of his head. So there being no copy, but one pair of cases, and the Elegy likely to require all the letter, no one could help him. I endeavoured to put his press (which he had not yet used, and of which he understood nothing) into order fit to be worked with; and, promising to come and print off his Elegy as soon as he should have got it ready, I returned to Bradford’s, who gave me a little job to do for the present, and there I lodged and dieted. A few days after, Keimer sent for me to print off the Elegy. And now he had got another pair of cases, and a pamphlet to reprint, on which he set me to work.
@@ -82,66 +82,66 @@ sections:
       I began now to have some acquaintance among the young people of the town, that were lovers of reading, with whom I spent my evenings very pleasantly; and gaining money by my industry and frugality, I lived very agreeably, forgetting Boston as much as I could, and not desiring that any there should know where I resided, except my friend Collins, who was in my secret, and kept it when I wrote to him. At length, an incident happened that sent me back again much sooner than I had intended. I had a brother-in-law, Robert Holmes, master of a sloop that traded between Boston and Delaware. He being at Newcastle, forty miles below Philadelphia, heard there of me, and wrote me a letter mentioning the concern of my friends in Boston at my abrupt departure, assuring me of their good will to me, and that everything would be accommodated to my mind if I would return, to which he exhorted me very earnestly. I wrote an answer to his letter, thanked him for his advice, but stated my reasons for quitting Boston fully and in such a light as to convince him I was not so wrong as he had apprehended.
     checkIn:
       id: bf-ch-03-s5-c1
-      stem: Why did Keimer get Franklin lodgings at Mr. Read's house?
+      stem: What ended Franklin's quiet spell in Philadelphia sooner than he meant?
       options:
-        - Because Mr. Read had offered Keimer a partnership in printing.
-        - Because Keimer's own house had no furniture to lodge anyone.
-        - Because Franklin had specifically requested to live near the market.
-        - Because Bradford refused to let Franklin stay at his house any longer.
-      correctIndex: 1
-      explanationZh: Keimer不喜欢富兰克林住在Bradford那里，但自己"had a house, indeed, but without furniture, so he could not lodge me"，于是把他安排在房东Mr. Read家。富兰克林的行李此时也到了，让Miss Read对他改观。
+        - Keimer dismissed him when the Elegy was printed
+        - Bradford would no longer give him work or a bed
+        - Collins came down from Boston and gave away his hiding place
+        - A letter from his brother-in-law urging him to return
+      correctIndex: 3
+      explanationZh: 他本来过得很自在，"forgetting Boston as much as I could"，直到姐夫 Robert Holmes 在纽卡斯尔听说了他的下落，写信来说波士顿的亲友都很挂念，只要他肯回去，一切都好商量。他回了一封信，把出走的理由摆得明明白白。
 quiz:
   - id: bf-ch-03-q1
-    stem: Why did Franklin originally set out from New York for Philadelphia instead of going to sea?
+    stem: Why did Franklin offer himself to a printer in New York rather than go to sea?
     options:
-      - His father had ordered him to seek work in Philadelphia.
-      - A wealthy merchant had promised him a printing partnership.
-      - He was fleeing arrest and needed to leave New York quickly.
-      - His desire for the sea had faded and he had a trade to offer.
-    correctIndex: 3
-    explanationZh: 富兰克林说"my inclinations for the sea were by this time worn out"，加上自己有一门手艺，便去找老Bradford谋职。他并非受父亲派遣、没有商人许诺合作，也不是在纽约面临逮捕才走的。
-  - id: bf-ch-03-q2
-    stem: What book did the drunken Dutchman ask Franklin to dry after being pulled from the water?
-    options:
-      - Bunyan's Pilgrim's Progress, in Dutch.
-      - De Foe's Robinson Crusoe, in French.
-      - Cotton's travesty of Virgil, in English.
-      - Richardson's Pamela, in German.
+      - His taste for the sea was gone, and he had a trade to offer
+      - His father had ordered him to try his luck in Pennsylvania
+      - A merchant had promised him a share in a printing-house
+      - He was flying from a warrant sworn out against him in New York
     correctIndex: 0
-    explanationZh: 荷兰人落水被救起后，从口袋掏出一本书请富兰克林弄干，"It proved to be my old favorite author, Bunyan's Pilgrim's Progress, in Dutch"。富兰克林还由此感慨此书在欧洲被广泛译介。
-  - id: bf-ch-03-q3
-    stem: What did Dr. Brown attempt some years after Franklin lodged at his inn?
+    explanationZh: 他写道 "My inclinations for the sea were by this time worn out, or I might now have gratified them. But, having a trade, and supposing myself a pretty good workman, I offered my service to the printer in the place"。老 Bradford 手上活少、人手也够，才指点他再往南走一百英里。
+  - id: bf-ch-03-q2
+    stem: What book did the rescued Dutchman ask Franklin to dry for him?
     options:
-      - He published a scathing attack on the Quakers.
-      - He travestied the Bible in doggerel verse.
-      - He wrote a treatise defending the French prophets.
-      - He translated Pilgrim's Progress into English doggerel.
+      - Defoe's Robinson Crusoe, in French
+      - Bunyan's Pilgrim's Progress, in Dutch
+      - Cotton's travesty of Virgil, in English
+      - Richardson's Pamela, in German
     correctIndex: 1
-    explanationZh: Dr. Brown是个有才华但不信教的人，后来"wickedly undertook…to travesty the Bible in doggrel verse"，把圣经故事写得滑稽可笑。幸好此作从未出版，未造成大的危害。
+    explanationZh: 落水的荷兰人被拉上来后从口袋掏出一本书请他弄干，"It proved to be my old favorite author, Bunyan's Pilgrim's Progress, in Dutch, finely printed on good paper, with copper cuts"。富兰克林借这一段夸班扬是他所知第一个把叙述和对白揉在一处的人，笛福和理查逊都学了这一手。
+  - id: bf-ch-03-q3
+    stem: What did Dr. Brown undertake some years after Franklin lodged with him?
+    options:
+      - He travestied the Bible in doggerel verse, but never printed it
+      - He published a sharp attack on the Quakers of Burlington
+      - He wrote a defence of the French prophets and their fits
+      - He set up a rival press in Burlington against Franklin's advice
+    correctIndex: 0
+    explanationZh: 布朗大夫见多识广，英格兰哪个镇子、欧洲哪个地方他都说得出来历，却是个不信教的人。几年后他 "wickedly undertook…to travesty the Bible in doggrel verse, as Cotton had done Virgil"，把不少经文写得滑稽可笑。所幸这部东西始终没有出版。
   - id: bf-ch-03-q4
-    stem: What was Franklin's entire stock of cash when he first landed at the Market-street wharf?
+    stem: What money did Franklin have when he landed at the Market-street wharf?
     options:
-      - A single gold guinea and a handful of copper coins.
-      - Three Dutch dollars and a few pennies.
-      - One English pound and a Dutch dollar.
-      - A Dutch dollar and about a shilling in copper.
-    correctIndex: 3
-    explanationZh: 富兰克林到费城时"my whole stock of cash consisted of a Dutch dollar, and about a shilling in copper"。他把铜板给了船夫当船费，自己坚持要付。
+      - A single gold guinea and a handful of coppers
+      - Three Dutch dollars and a few English pennies
+      - A Dutch dollar and about a shilling in copper
+      - One English pound and one Dutch dollar
+    correctIndex: 2
+    explanationZh: 他登岸时 "my whole stock of cash consisted of a Dutch dollar, and about a shilling in copper"。那点铜板他全给了船家当船钱——船家因为他一路划桨本不肯收，他偏要给。他自嘲说，人钱少的时候反倒更大方，大约是怕被人看出他钱少。
   - id: bf-ch-03-q5
-    stem: Which building does Franklin call the first house he was in, or slept in, in Philadelphia?
+    stem: Which does Franklin call the first house he was in, or slept in, in Philadelphia?
     options:
-      - At the Crooked Billet inn on Water-street, near the wharf.
-      - At Andrew Bradford's printing shop.
-      - Inside the great Quaker meetinghouse near the market.
-      - At Mr. Read's house on Market-street.
-    correctIndex: 2
-    explanationZh: 富兰克林跟着衣着整洁的人群走进贵格会礼拜堂，因极度困倦而"fell fast asleep, and continued so till the meeting broke up"。他说"This was, therefore, the first house I was in, or slept in, in Philadelphia." 在Crooked Billet过夜是当天傍晚之后的事。
+      - The Crooked Billet inn, down in Water-street
+      - Andrew Bradford's printing shop by the market
+      - Mr. Read's house, where Keimer put him up
+      - The great Quaker meetinghouse near the market
+    correctIndex: 3
+    explanationZh: 他跟着满街衣着整洁的人走进贵格会礼拜堂，坐下听了半天没人说话，困得 "fell fast asleep, and continued so till the meeting broke up"，还是旁人好心把他叫醒。他自己写道 "This was, therefore, the first house I was in, or slept in, in Philadelphia."。Crooked Billet 是当天晚些时候才去的。
   - id: bf-ch-03-q6
-    stem: What did Keimer's printing-house consist of when Franklin first saw it?
+    stem: What did Keimer's printing-house amount to when Franklin first saw it?
     options:
-      - Two new presses and a complete set of French type.
-      - A broken press and no type cases at all.
-      - An old shattered press and one small worn-out font of type.
-      - One working press and two fonts of English type.
-    correctIndex: 2
-    explanationZh: 富兰克林看到Keimer的印刷所只有"an old shattered press, and one small, worn-out font of English"。Keimer当时正用这套铅字直接在字盘上排一首悼念Aquilla Rose的挽歌。
+      - Two new presses and a full font of French type
+      - An old shattered press and one worn-out font
+      - One good press and two fonts of English type
+      - A press in pieces and no cases of type at all
+    correctIndex: 1
+    explanationZh: 那家印刷所只有 "an old shattered press, and one small, worn-out font of English"。Keimer 正用这副铅字排一首悼念 Aquilla Rose 的挽歌——他写诗从不打草稿，想好就直接往字盘上拼，所以既没有底稿，也没人帮得上忙。那台印机他自己一窍不通，还是富兰克林替他收拾好的。

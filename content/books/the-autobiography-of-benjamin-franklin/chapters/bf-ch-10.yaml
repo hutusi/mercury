@@ -3,7 +3,7 @@ id: bf-ch-10
 bookId: book-franklin
 title: Poor Richard’s Almanac and Other Activities
 titleZh: 穷理查年鉴及其他活动
-summaryZh: 本章记述《穷理查年鉴》的诞生与走红、报纸经营的原则，以及富兰克林学习外语、化解政敌、出任邮政要职的种种经历。
+summaryZh: 1732 年，一本署名理查德·桑德斯的年鉴在费城问世，此后由他一手编了约二十五年。它一年卖掉近一万本，省里几乎没有哪个街区没有它——而这一点，正合他的心意。
 sections:
   - id: bf-ch-10-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       I considered my newspaper, also, as another means of communicating instruction, and in that view frequently reprinted in it extracts from the Spectator, and other moral writers; and sometimes published little pieces of my own, which had been first composed for reading in our Junto. Of these are a Socratic dialogue, tending to prove that, whatever might be his parts and abilities, a vicious man could not properly be called a man of sense; and a discourse on self-denial, showing that virtue was not secure till its practice became a habitude, and was free from the opposition of contrary inclinations. These may be found in the papers about the beginning of 1735.
     checkIn:
       id: bf-ch-10-s1-c1
-      stem: Why did Franklin fill the calendar's blank spaces with proverbs?
+      stem: Why did Franklin pack the calendar's gaps with proverbs?
       options:
-        - To make each monthly page look more visually balanced.
-        - To help readers memorize the dates of remarkable events.
-        - To make the almanac a vehicle of popular instruction.
-        - To justify raising the annual price of the almanac.
-      correctIndex: 2
-      explanationZh: 富兰克林看到几乎每个社区都在读这本年鉴，便把它当作向不买其他书的普通百姓传授道理的媒介。原文说 "I considered it as a proper vehicle for conveying instruction"。以美化版面或帮助记日期为目的的选项都偏离了原文的意图。
+        - To carry instruction to people who bought no other books
+        - To keep the calendar pages from looking bare
+        - To help readers fix the remarkable days in memory
+        - To give a reason for raising the yearly price
+      correctIndex: 0
+      explanationZh: 年鉴一年卖近一万本，几乎家家都读，他便 "considered it as a proper vehicle for conveying instruction among the common people, who bought scarcely any other books"，于是把日历里的空当全填上劝人勤俭的谚语——比如那句 it is hard for an empty sack to stand upright。
   - id: bf-ch-10-s2
     text: |-
       In the conduct of my newspaper, I carefully excluded all libeling and personal abuse, which is of late years become so disgraceful to our country. Whenever I was solicited to insert anything of that kind, and the writers pleaded, as they generally did, the liberty of the press, and that a newspaper was like a stagecoach, in which anyone who would pay had a right to a place, my answer was, that I would print the piece separately if desired, and the author might have as many copies as he pleased to distribute himself, but that I would not take upon me to spread his detraction; and that, having contracted with my subscribers to furnish them with what might be either useful or entertaining, I could not fill their papers with private altercation, in which they had no concern, without doing them manifest injustice. Now, many of our printers make no scruple of gratifying the malice of individuals by false accusations of the fairest characters among ourselves, augmenting animosity even to the producing of duels; and are, moreover, so indiscreet as to print scurrilous reflections on the government of neighboring states, and even on the conduct of our best national allies, which may be attended with the most pernicious consequences. These things I mention as a caution to young printers, and that they may be encouraged not to pollute their presses and disgrace their profession by such infamous practices, but refuse steadily, as they may see by my example that such a course of conduct will not, on the whole, be injurious to their interests.
@@ -29,14 +29,14 @@ sections:
       In 1733 I sent one of my journeymen to Charleston, South Carolina, where a printer was wanting. I furnished him with a press and letters, on an agreement of partnership, by which I was to receive one-third of the profits of the business, paying one-third of the expense. He was a man of learning, and honest but ignorant in matters of account; and, though he sometimes made me remittances, I could get no account from him, nor any satisfactory state of our partnership while he lived. On his decease, the business was continued by his widow, who, being born and bred in Holland, where, as I have been informed, the knowledge of accounts makes a part of female education, she not only sent me as clear a state as she could find of the transactions past, but continued to account with the greatest regularity and exactness every quarter afterwards, and managed the business with such success, that she not only brought up reputably a family of children, but, at the expiration of the term, was able to purchase of me the printing-house, and establish her son in it.
     checkIn:
       id: bf-ch-10-s2-c1
-      stem: How did the journeyman's widow manage the Charleston printing business after his death?
+      stem: How did the widow carry on the Charleston printing-house?
       options:
-        - She kept exact accounts and carried the business on well.
-        - She sold the press immediately and returned to Holland.
-        - She hired a new journeyman to handle all the bookkeeping.
-        - She ran the business but never sent Franklin any payments.
-      correctIndex: 0
-      explanationZh: 文中说她因在荷兰受过记账教育，每季度都准确地报账，不仅独自把生意经营好、养大了孩子，到期还能买下印刷所。说她不付款或卖掉印刷所都与原文矛盾。
+        - She sold the press at once and went home to Holland
+        - She hired a bookkeeper and left the printing to him
+        - She kept the business but sent neither accounts nor money at all
+        - She accounted exactly each quarter and bought the house out
+      correctIndex: 3
+      explanationZh: 她生在荷兰长在荷兰，那里记账本是女子教育的一部分。丈夫过世后她 "not only sent me as clear a state as she could find of the transactions past, but continued to account with the greatest regularity and exactness every quarter afterwards"，把生意做得很好，养大了一家孩子，期满时还买下那间印刷所给儿子立业。
   - id: bf-ch-10-s3
     text: |-
       I mention this affair chiefly for the sake of recommending that branch of education for our young females, as likely to be of more use to them and their children, in case of widowhood, than either music or dancing, by preserving them from losses by imposition of crafty men, and enabling them to continue, perhaps, a profitable mercantile house, with established correspondence, till a son is grown up fit to undertake and go on with it, to the lasting advantage and enriching of the family.
@@ -46,14 +46,14 @@ sections:
       During the contest an unlucky occurrence hurt his cause exceedingly. One of our adversaries having heard him preach a sermon that was much admired, thought he had somewhere read the sermon before, or at least a part of it. On search, he found that part quoted at length, in one of the British Reviews, from a discourse of Dr. Foster’s. This detection gave many of our party disgust, who accordingly abandoned his cause, and occasioned our more speedy discomfiture in the synod. I stuck by him, however, as I rather approved his giving us good sermons composed by others, than bad ones of his own manufacture, though the latter was the practice of our common teachers. He afterward acknowledged to me that none of those he preached were his own; adding, that his memory was such as enabled him to retain and repeat any sermon after one reading only. On our defeat, he left us in search elsewhere of better fortune, and I quitted the congregation, never joining it after, though I continued many years my subscription for the support of its ministers.
     checkIn:
       id: bf-ch-10-s3-c1
-      stem: Why did many of Hemphill's supporters abandon his cause?
+      stem: What drove many of Hemphill's party to drop his cause?
       options:
-        - He openly declared that he rejected all organized religion.
-        - He was caught stealing money collected for the poor.
-        - He delivered a sermon that insulted the orthodox clergy.
-        - A rival traced one of his admired sermons to a printed discourse.
-      correctIndex: 3
-      explanationZh: 一位反对者查出他受人称赞的布道其实出自某篇英国评论中引用的 Foster 博士讲道，这一抄袭被发现后令许多支持者失望离去。与拒绝宗教或偷钱无关。
+        - He said openly that he had no use for any church
+        - A rival traced an admired sermon to a printed discourse
+        - He was found taking money gathered for the poor
+        - He preached a sermon that insulted the older clergy
+      correctIndex: 1
+      explanationZh: 一位对手听那篇广受称赞的讲道时觉得似曾相识，一查果然——"he found that part quoted at length, in one of the British Reviews, from a discourse of Dr. Foster's"。不少人因此撒手。富兰克林倒留了下来，说他宁可听别人写的好讲道，也不要本人做的坏讲道。
   - id: bf-ch-10-s4
     text: |-
       I had begun in 1733 to study languages; I soon made myself so much a master of the French as to be able to read the books with ease. I then undertook the Italian. An acquaintance, who was also learning it, used often to tempt me to play chess with him. Finding this took up too much of the time I had to spare for study, I at length refused to play any more, unless on this condition, that the victor in every game should have a right to impose a task, either in parts of the grammar to be got by heart, or in translations, etc., which tasks the vanquished was to perform upon honour, before our next meeting. As we played pretty equally, we thus beat one another into that language. I afterwards with a little painstaking, acquired as much of the Spanish as to read their books also.
@@ -63,14 +63,14 @@ sections:
       From these circumstances, I have thought that there is some inconsistency in our common mode of teaching languages. We are told that it is proper to begin first with the Latin, and, having acquired that, it will be more easy to attain those modern languages which are derived from it; and yet we do not begin with the Greek, in order more easily to acquire the Latin. It is true that, if you can clamber and get to the top of a staircase without using the steps, you will more easily gain them in descending; but certainly, if you begin with the lowest you will with more ease ascend to the top; and I would therefore offer it to the consideration of those who superintend the education of our youth, whether, since many of those who begin with the Latin quit the same after spending some years without having made any great proficiency, and what they have learned becomes almost useless, so that their time has been lost, it would not have been better to have begun with the French, proceeding to the Italian, etc.; for, though, after spending the same time, they should quit the study of languages and never arrive at the Latin, they would, however, have acquired another tongue or two, that, being in modern use, might be serviceable to them in common life.
     checkIn:
       id: bf-ch-10-s4-c1
-      stem: Why did Franklin refuse to continue playing chess with his Italian-study companion unless a new rule was added?
+      stem: On what condition would Franklin go on playing chess?
       options:
-        - He disliked his companion's habit of arguing over every move.
-        - He wanted his companion to pay him for each lesson in Italian.
-        - He felt the games took up too much of his study time.
-        - He believed chess distracted him from writing a new almanac.
-      correctIndex: 2
-      explanationZh: 原文说 "Finding this took up too much of the time I had to spare for study"，于是他设定了输者须完成语法或翻译任务的条件。并非因为争执或要收钱，也与写年鉴无关。
+        - The loser was to do a set task in grammar or translation
+        - The loser was to pay for the next evening's candles
+        - The winner was to choose which language they read next
+        - They were to play in Italian and speak no English at all
+      correctIndex: 0
+      explanationZh: 棋局太占读书的工夫，他索性提条件——"the victor in every game should have a right to impose a task, either in parts of the grammar to be got by heart, or in translations, etc., which tasks the vanquished was to perform upon honour, before our next meeting"。两人棋力相当，就这样互相把对方打进了意大利语。
   - id: bf-ch-10-s5
     text: |-
       After ten years’ absence from Boston, and having become easy in my circumstances, I made a journey thither to visit my relations, which I could not sooner well afford. In returning, I called at Newport to see my brother, then settled there with his printing-house. Our former differences were forgotten, and our meeting was very cordial and affectionate. He was fast declining in his health, and requested of me that, in case of his death, which he apprehended not far distant, I would take home his son, then but ten years of age, and bring him up to the printing business. This I accordingly performed, sending him a few years to school before I took him into the office. His mother carried on the business till he was grown up, when I assisted him with an assortment of new types, those of his father being in a manner worn out. Thus it was that I made my brother ample amends for the service I had deprived him of by leaving him so early.
@@ -80,14 +80,14 @@ sections:
       Our club, the Junto, was found so useful, and afforded such satisfaction to the members, that several were desirous of introducing their friends, which could not well be done without exceeding what we had settled as a convenient number, viz., twelve. We had from the beginning made it a rule to keep our institution a secret, which was pretty well observed; the intention was to avoid applications of improper persons for admittance, some of whom, perhaps, we might find it difficult to refuse. I was one of those who were against any addition to our number, but, instead of it, made in writing a proposal, that every member separately should endeavour to form a subordinate club, with the same rules respecting queries, etc., and without informing them of the connection with the Junto. The advantages proposed were, the improvement of so many more young citizens by the use of our institutions; our better acquaintance with the general sentiments of the inhabitants on any occasion, as the Junto member might propose what queries we should desire, and was to report to the Junto what passed in his separate club; the promotion of our particular interests in business by more extensive recommendation, and the increase of our influence in public affairs, and our power of doing good by spreading through the several clubs the sentiments of the Junto.
     checkIn:
       id: bf-ch-10-s5-c1
-      stem: What proposal did Franklin make when Junto members wanted to admit their friends?
+      stem: What did Franklin propose when members wanted to bring in friends?
       options:
-        - The club should double its membership limit from twelve to twenty-four.
-        - New members should pay a higher subscription fee than the founders.
-        - Friends should be admitted only after a public debating trial.
-        - Each member should form a separate subordinate club with the same rules.
+        - That the club raise its number from twelve to twenty-four
+        - That new men pay a heavier subscription than the founders
+        - That a candidate first be tried in a public debate
+        - That each member form a separate club on the same rules
       correctIndex: 3
-      explanationZh: 富兰克林反对直接扩员，转而提议每位成员各自秘密地组建一个遵循相同规则的下属俱乐部，这样既能培训更多年轻人，又能扩大影响力。把人数翻倍或收费等都不是他的方案。
+      explanationZh: 他反对直接扩员，另写了一份提议——"that every member separately should endeavour to form a subordinate club, with the same rules respecting queries, etc., and without informing them of the connection with the Junto"。这样既能多训练一批年轻市民，也能摸清民情、扩大影响。
   - id: bf-ch-10-s6
     text: |-
       The project was approved, and every member undertook to form his club, but they did not all succeed. Five or six only were completed, which were called by different names, as the “Vine,” the “Union,” the “Band,” etc. They were useful to themselves, and afforded us a good deal of amusement, information, and instruction, besides answering, in some considerable degree, our views of influencing the public opinion on particular occasions, of which I shall give some instances in course of time as they happened.
@@ -97,78 +97,78 @@ sections:
       I therefore did not like the opposition of this new member, who was a gentleman of fortune and education, with talents that were likely to give him, in time, great influence in the House, which, indeed, afterwards happened. I did not, however, aim at gaining his favour by paying any servile respect to him, but, after some time, took this other method. Having heard that he had in his library a certain very scarce and curious book, I wrote a note to him, expressing my desire of perusing that book, and requesting he would do me the favour of lending it to me for a few days. He sent it immediately, and I returned it in about a week with another note, expressing strongly my sense of the favour. When we next met in the House, he spoke to me (which he had never done before), and with great civility; and he ever after manifested a readiness to serve me on all occasions, so that we became great friends, and our friendship continued to his death. This is another instance of the truth of an old maxim I had learned, which says, “He that has once done you a kindness will be more ready to do you another, than he whom you yourself have obliged.” And it shows how much more profitable it is prudently to remove, than to resent, return, and continue inimical proceedings.
     checkIn:
       id: bf-ch-10-s6-c1
-      stem: What happened after Franklin borrowed and returned the new Assembly member's scarce book?
+      stem: What followed after the scarce book went back with a thank-you note?
       options:
-        - The member refused to speak to him for the rest of the session.
-        - The member became friendly and was ever after ready to serve him.
-        - The member accused him of trying to curry favour before a vote.
-        - The member lent him more books but remained politically hostile.
+        - The member would not speak to him for the whole session
+        - The member spoke civilly and was ever ready to serve him
+        - The member charged him with currying favour before a vote
+        - The member lent more books but stayed hostile in the House
       correctIndex: 1
-      explanationZh: 还书后，那位议员主动和他说话，此后一直乐意帮忙，两人成为终生好友。富兰克林借此印证了一句格言：帮你做过一件善事的人更愿意再帮你。
+      explanationZh: 他没有去讨好这位有钱有学问的对手，只写条子借了那本稀见的书，一周后连同一封诚恳的谢帖还回去。下次在议会碰面，从没跟他讲过话的对方主动招呼，此后一直乐意帮忙，两人成了终生的朋友。他由此印证那句老话——"He that has once done you a kindness will be more ready to do you another, than he whom you yourself have obliged."。
   - id: bf-ch-10-s7
     text: In 1737, Colonel Spotswood, late governor of Virginia, and then postmaster-general, being dissatisfied with the conduct of his deputy at Philadelphia, respecting some negligence in rendering, and inexactitude of his accounts, took from him the commission and offered it to me. I accepted it readily, and found it of great advantage; for, though the salary was small, it facilitated the correspondence that improved my newspaper, increased the number demanded, as well as the advertisements to be inserted, so that it came to afford me a considerable income. My old competitor’s newspaper declined proportionately, and I was satisfied without retaliating his refusal, while postmaster, to permit my papers being carried by the riders. Thus he suffered greatly from his neglect in due accounting; and I mention it as a lesson to those young men who may be employed in managing affairs for others, that they should always render accounts, and make remittances, with great clearness and punctuality. The character of observing such a conduct is the most powerful of all recommendations to new employments and increase of business.
     checkIn:
       id: bf-ch-10-s7-c1
-      stem: Why was the Philadelphia postmaster deputy's commission taken from him?
+      stem: Why was the Philadelphia deputy's postal commission taken away?
       options:
-        - He was negligent and inaccurate in rendering his accounts.
-        - He was caught opening private letters belonging to colonists.
-        - He refused to deliver newspapers printed by competitors.
-        - He charged illegal surcharges on letters sent to Virginia.
-      correctIndex: 0
-      explanationZh: 原文说 Colonel Spotswood 因该副手在报账上的疏忽和不准确而撤销其职务，并把职位给了富兰克林。与私拆信件、拒送报纸或乱收费无关。
+        - He had been caught opening the colonists' private letters
+        - He had refused to carry rival printers' newspapers
+        - He was negligent and inexact in rendering his accounts
+        - He had charged illegal surcharges on Virginia letters
+      correctIndex: 2
+      explanationZh: 当时的邮政总长 Spotswood 上校 "being dissatisfied with the conduct of his deputy at Philadelphia, respecting some negligence in rendering, and inexactitude of his accounts, took from him the commission and offered it to me"。富兰克林借这件事提醒替人办事的年轻人：账目要清楚，汇款要准时。
 quiz:
   - id: bf-ch-10-q1
-    stem: What did Franklin do with the proverbs from Poor Richard's Almanac in the 1757 edition?
+    stem: What did Franklin do with the proverbs for the Almanac of 1757?
     options:
-      - He wove them into one connected discourse by a wise old man.
-      - He translated them into French and sold them to the clergy.
-      - He removed them entirely and replaced them with moral essays.
-      - He published them as a separate weekly column in his newspaper.
-    correctIndex: 0
-    explanationZh: 富兰克林把这些散落的谚语整合成一篇连贯的文章，以一位智者在拍卖会上向众人训话的形式放在1757年年鉴前面。译成法语的是别人，不是他本人；完全删除或改成专栏都与原文不符。
+      - He had them turned into French and sold to the clergy
+      - He struck them out and put moral essays in their place instead
+      - He worked them into one speech by an old man at an auction
+      - He ran them as a weekly column in his own newspaper
+    correctIndex: 2
+    explanationZh: 他把这些散落各处的谚语 "assembled and formed into a connected discourse prefixed to the Almanac of 1757, as the harangue of a wise old man to the people attending an auction"。这篇文章传遍全大陆，在英国印成单张贴在墙上，还出了两种法文译本，教士和乡绅大量买去分送穷人和佃户。
   - id: bf-ch-10-q2
-    stem: How did Franklin respond to writers who demanded he publish their libelous pieces?
+    stem: How did Franklin answer those who pressed him to print abuse?
     options:
-      - He published the piece immediately and charged the author double.
-      - He would print it separately but not spread it in his paper.
-      - He forwarded the piece to a rival printer without telling the author.
-      - He asked the author to submit it to the Assembly for prior approval.
-    correctIndex: 1
-    explanationZh: 富兰克林的回答是：可以替作者单独印制任意份数让他自行散发，但不愿把诽谤内容放进报纸发给订户，因为他与订户的约定是提供有用或有趣的内容。说他照登加倍收费或转交对手都不符合原文。
-  - id: bf-ch-10-q3
-    stem: What did Franklin chiefly want to recommend by recounting the Charleston widow's story?
-    options:
-      - That widows should always sell their late husbands' businesses.
-      - That young journeymen should be trained in basic bookkeeping.
-      - That bookkeeping should be part of female education.
-      - That printers should only hire widows as business partners.
-    correctIndex: 2
-    explanationZh: 他明确说讲这件事主要是为了推荐把记账纳入女子教育，认为这在丧夫时比音乐或舞蹈更有用。说寡妇应卖掉生意或只雇寡妇为合伙人等，都不是他强调的观点。
-  - id: bf-ch-10-q4
-    stem: What argument did Franklin make about the traditional order of language learning?
-    options:
-      - Latin should be studied only after mastering classical Greek.
-      - All modern languages should be learned before studying English.
-      - Students should skip French entirely and start with Spanish.
-      - It is better to begin with French and Italian before attempting Latin.
+      - He printed it at once and charged the author double rates
+      - He passed the piece quietly to a rival printer in town
+      - He required the author to get the Assembly's approval for it first
+      - He would print it separately, but not send it to subscribers
     correctIndex: 3
-    explanationZh: 富兰克林认为先学法语、意大利语等现代语言，再学拉丁语会更容易，就像从楼梯最低处往上走更轻松。他说先学希腊语来帮助拉丁语也不合理。只学西班牙语或跳过法语都不是他的主张。
-  - id: bf-ch-10-q5
-    stem: What does Franklin say about losing his four-year-old son to smallpox?
+    explanationZh: 有人搬出新闻自由，说报纸像一辆公共马车，谁付钱谁就有座。他的答复是可以替对方单印，"and the author might have as many copies as he pleased to distribute himself, but that I would not take upon me to spread his detraction"——他跟订户的约定是给他们有用或有趣的东西，不是别人的私怨。
+  - id: bf-ch-10-q3
+    stem: What did Franklin chiefly want the widow's story to recommend?
     options:
-      - He believed inoculation was dangerous and chose the natural way instead.
-      - He bitterly regretted not having given the boy the smallpox by inoculation.
-      - He could not find a doctor willing to perform the inoculation in time.
-      - His son was too young for inoculation and caught the disease anyway.
+      - That bookkeeping belongs in the education of girls
+      - That widows do best to sell a late husband's business
+      - That journeymen should be schooled in accounts
+      - That printers ought to take widows as their partners
+    correctIndex: 0
+    explanationZh: 他说讲这件事 "chiefly for the sake of recommending that branch of education for our young females, as likely to be of more use to them and their children, in case of widowhood, than either music or dancing"——懂账目才不至于被奸猾的人蒙骗，还能把一份有往来的生意撑到儿子长大接手。
+  - id: bf-ch-10-q4
+    stem: What did Franklin argue about the usual order of learning languages?
+    options:
+      - That Latin should wait until Greek has been mastered
+      - That it is better to begin with French, then Italian
+      - That English should come after all the modern tongues
+      - That French may be skipped and Spanish begun at once
     correctIndex: 1
-    explanationZh: 原文说他当时没有给孩子接种，孩子以普通方式感染天花去世，他为此终生痛悔，并以此提醒犹豫的父母选择更安全的方式。并非认为接种危险或找不到医生，而是没及时接种。
-  - id: bf-ch-10-q6
-    stem: Why did Franklin consider his clerkship of the General Assembly profitable beyond its modest salary?
+    explanationZh: 他反问：既然说先学拉丁、再学由它派生的现代语会更容易，那为什么不先学希腊语来帮拉丁语？他的比方是楼梯——不踩台阶爬到顶，下来时固然轻松，可从最低一级起步才更省力。所以他主张不妨 "have begun with the French, proceeding to the Italian"；就算半途而废，手里也多了一两门眼下用得着的语言。
+  - id: bf-ch-10-q5
+    stem: What does Franklin say about the son he lost to smallpox in 1736?
     options:
-      - It allowed him to collect fees from every member of the Assembly.
-      - It entitled him to a share of the colony's postal revenues.
-      - It helped him win the printing of the Assembly's votes and laws.
-      - It gave him authority to approve all new printing licenses.
+      - He thought inoculation too dangerous and chose the common way
+      - No doctor in the town would undertake the operation in time
+      - The boy was too young for the operation and caught it anyway
+      - He bitterly regretted not giving it him by inoculation
+    correctIndex: 3
+    explanationZh: 那个四岁的孩子是以普通方式染上天花去世的，"I long regretted bitterly, and still regret that I had not given it to him by inoculation"。他特意写出来给那些怕孩子死在手术里、因而不敢接种的父母看——两条路都可能后悔，那就该选更安全的一条。
+  - id: bf-ch-10-q6
+    stem: Why was the Assembly clerkship worth more than its small salary?
+    options:
+      - It let him take a fee from every member of the House
+      - It gave him a share of the colony's postal revenue
+      - It kept him in with the members, and won the public printing
+      - It put the licensing of every new printing press in his hands
     correctIndex: 2
-    explanationZh: 富兰克林说这个职位让他与议员们保持关系，从而拿到了印制选票、法律、纸币等公共业务的合同，总体上非常有利可图。与收取议员费用、分享邮政收入或发放印刷许可都无关。
+    explanationZh: 除了当差的那点薪水，这个位子 "gave me a better opportunity of keeping up an interest among the members, which secured to me the business of printing the votes, laws, paper money, and other occasional jobs for the public, that, on the whole, were very profitable"。

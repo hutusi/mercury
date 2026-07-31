@@ -3,7 +3,7 @@ id: bf-ch-07
 bookId: book-franklin
 title: Beginning Business in Philadelphia
 titleZh: 在费城创业
-summaryZh: 富兰克林从伦敦返回费城后，先后为Denham和Keimer工作，经历了事业的起伏与人事的纷争。他与Meredith合伙开办印刷所，凭借勤奋和才智逐渐站稳脚跟，最终独自掌管生意，开启了属于自己的事业版图。
+summaryZh: 1726 年 10 月 11 日他在费城上岸，城里已换了模样——基思不再是总督，他在街上遇见这位从前的恩主，对方红着脸走了过去。这一回他带回来的不是许诺，而是一份在海上写下、要管住自己后半生的计划。
 sections:
   - id: bf-ch-07-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       Mr. Denham took a store in Water-street, where we opened our goods; I attended the business diligently, studied accounts, and grew, in a little time, expert at selling. We lodged and boarded together; he counselled me as a father, having a sincere regard for me. I respected and loved him, and we might have gone on together very happy; but, in the beginning of February, 1726/7, when I had just passed my twenty-first year, we both were taken ill. My distemper was a pleurisy, which very nearly carried me off. I suffered a good deal, gave up the point in my own mind, and was rather disappointed when I found myself recovering, regretting, in some degree, that I must now, some time or other, have all that disagreeable work to do over again. I forget what his distemper was; it held him a long time, and at length carried him off. He left me a small legacy in a nuncupative will, as a token of his kindness for me, and he left me once more to the wide world; for the store was taken into the care of his executors, and my employment under him ended.
     checkIn:
       id: bf-ch-07-s1-c1
-      stem: What had happened to Miss Read while Franklin was away in London?
+      stem: What had become of Miss Read while Franklin was in London?
       options:
-        - Her friends had persuaded her to marry Rogers, a potter.
-        - She had moved to Boston to keep her mother's shop.
-        - She had married Governor Keith's private secretary.
-        - She was still waiting for Franklin, refusing all suitors.
+        - Her friends had married her to one Rogers, a potter
+        - She had gone to Boston to keep her mother's shop
+        - She had married the late governor's private secretary
+        - She had held out against every suitor, waiting for him
       correctIndex: 0
-      explanationZh: 富兰克林那封信让亲友对他的归期不再抱希望，于是劝Miss Read嫁给了陶工Rogers。此人手艺出色但人品低劣，传说另有妻室，她很快便与之分居，拒绝再用他的姓。守候不嫁与迁居波士顿都与原文相反。
+      explanationZh: 那封信到了以后，亲友们 "despairing with reason of my return after the receipt of my letter, persuaded her to marry another, one Rogers, a potter"。这人手艺出众，人却不成器，据说还另有妻室；她很快与他分居，连姓也不肯用。
   - id: bf-ch-07-s2
     text: |-
       My brother-in-law, Holmes, being now at Philadelphia, advised my return to my business; and Keimer tempted me, with an offer of large wages by the year, to come and take the management of his printing-house, that he might better attend his stationer’s shop. I had heard a bad character of him in London from his wife and her friends, and was not fond of having any more to do with him. I tried for farther employment as a merchant’s clerk; but, not readily meeting with any, I closed again with Keimer. I found in his house these hands: Hugh Meredith, a Welsh Pennsylvanian, thirty years of age, bred to country work; honest, sensible, had a great deal of solid observation, was something of a reader, but given to drink. Stephen Potts, a young countryman of full age, bred to the same, of uncommon natural parts, and great wit and humor, but a little idle. These he had agreed with at extreme low wages per week to be raised a shilling every three months, as they would deserve by improving in their business; and the expectation of these high wages, to come on hereafter, was what he had drawn them in with. Meredith was to work at press, Potts at bookbinding, which he, by agreement, was to teach them, though he knew neither one nor t’other. John ⸻, a wild Irishman, brought up to no business, whose service, for four years, Keimer had purchased from the captain of a ship; he, too, was to be made a pressman. George Webb, an Oxford scholar, whose time for four years he had likewise bought, intending him for a compositor, of whom more presently; and David Harry, a country boy, whom he had taken apprentice.
@@ -31,14 +31,14 @@ sections:
       It was an odd thing to find an Oxford scholar in the situation of a bought servant. He was not more than eighteen years of age, and gave me this account of himself; that he was born in Gloucester, educated at a grammar-school there, had been distinguished among the scholars for some apparent superiority in performing his part, when they exhibited plays; belonged to the Witty Club there, and had written some pieces in prose and verse, which were printed in the Gloucester newspapers; thence he was sent to Oxford; where he continued about a year, but not well satisfied, wishing of all things to see London, and become a player. At length, receiving his quarterly allowance of fifteen guineas, instead of discharging his debts he walked out of town, hid his gown in a furze bush, and footed it to London, where, having no friend to advise him, he fell into bad company, soon spent his guineas, found no means of being introduced among the players, grew necessitous, pawned his clothes, and wanted bread. Walking the street very hungry, and not knowing what to do with himself, a crimp’s bill was put into his hand, offering immediate entertainment and encouragement to such as would bind themselves to serve in America. He went directly, signed the indentures, was put into the ship, and came over, never writing a line to acquaint his friends what was become of him. He was lively, witty, good-natured, and a pleasant companion, but idle, thoughtless, and imprudent to the last degree.
     checkIn:
       id: bf-ch-07-s2-c1
-      stem: Why did Keimer offer Franklin wages much higher than he usually paid?
+      stem: Why did Keimer offer wages far above what he was used to giving?
       options:
-        - He wanted Franklin to train his cheap, unskilled workers.
-        - He needed Franklin to manage his stationer's shop full-time.
-        - He hoped to impress the new governor with a famous printer.
-        - He planned to send Franklin to London to buy new types.
-      correctIndex: 0
-      explanationZh: 富兰克林很快察觉，Keimer 给他开高薪的意图是让这些生手通过他来培训，一旦学徒期满，Keimer 就能甩开他。让他管理文具店或去伦敦买铅字都是原文未提及的干扰。
+        - He wanted a name to show off to the new governor
+        - He wanted his cheap raw hands trained up through Franklin
+        - He needed someone to mind the stationer's shop for him
+        - He meant to send Franklin to London for new types
+      correctIndex: 1
+      explanationZh: 他很快就看明白了——"the intention of engaging me at wages so much higher than he had been used to give, was, to have these raw, cheap hands formed through me; and, as soon as I had instructed them, then they being all articled to him, he should be able to do without me"。饶是如此，他还是高高兴兴地把那间乱糟糟的印刷所收拾了起来。
   - id: bf-ch-07-s3
     text: |-
       John, the Irishman, soon ran away; with the rest I began to live very agreeably, for they all respected me the more, as they found Keimer incapable of instructing them, and that from me they learned something daily. We never worked on Saturday, that being Keimer’s Sabbath, so I had two days for reading. My acquaintance with ingenious people in the town increased. Keimer himself treated me with great civility and apparent regard, and nothing now made me uneasy but my debt to Vernon, which I was yet unable to pay, being hitherto but a poor economist. He, however, kindly made no demand of it.
@@ -48,14 +48,14 @@ sections:
       But, however serviceable I might be, I found that my services became every day of less importance, as the other hands improved in the business; and, when Keimer paid my second quarter’s wages, he let me know that he felt them too heavy, and thought I should make an abatement. He grew by degrees less civil, put on more of the master, frequently found fault, was captious, and seemed ready for an outbreaking. I went on, nevertheless, with a good deal of patience, thinking that his encumbered circumstances were partly the cause. At length a trifle snapped our connections; for, a great noise happening near the courthouse, I put my head out of the window to see what was the matter. Keimer, being in the street, looked up and saw me, called out to me in a loud voice and angry tone to mind my business, adding some reproachful words, that nettled me the more for their publicity, all the neighbours who were looking out on the same occasion being witnesses how I was treated. He came up immediately into the printing-house, continued the quarrel, high words passed on both sides, he gave me the quarter’s warning we had stipulated, expressing a wish that he had not been obliged to so long a warning. I told him his wish was unnecessary, for I would leave him that instant; and so, taking my hat, walked out of doors, desiring Meredith, whom I saw below, to take care of some things I left, and bring them to my lodgings.
     checkIn:
       id: bf-ch-07-s3-c1
-      stem: What incident finally caused Franklin to quit Keimer's printing-house?
+      stem: What trifle finally snapped the connection with Keimer?
       options:
-        - Keimer refused to pay his second quarter's wages entirely.
-        - Keimer publicly scolded him for looking out a window at a noise.
-        - Keimer accused him of stealing types from the press.
-        - Keimer ordered him to work on his Sabbath, Saturday.
-      correctIndex: 1
-      explanationZh: 富兰克林探出头看法院附近的喧闹，Keimer 在街上大声斥责他多管闲事，这种公开的羞辱成了压垮关系的最后一根稻草。克扣工资虽是前兆，但文中明言引发决裂的是这件小事。
+        - Keimer had docked his second quarter's wages outright
+        - Keimer accused him of carrying off types from the press
+        - Keimer bawled at him in the street for putting his head out
+        - Keimer ordered him to work through the Saturday Sabbath
+      correctIndex: 2
+      explanationZh: 法院附近一阵喧闹，他探出窗子去看，"Keimer, being in the street, looked up and saw me, called out to me in a loud voice and angry tone to mind my business, adding some reproachful words, that nettled me the more for their publicity"。两人当场吵起来，Keimer 按约给了一季度的辞退通知，他拿起帽子就走出了门。
   - id: bf-ch-07-s4
     text: |-
       Meredith came accordingly in the evening, when we talked my affair over. He had conceived a great regard for me, and was very unwilling that I should leave the house while he remained in it. He dissuaded me from returning to my native country, which I began to think of; he reminded me that Keimer was in debt for all he possessed; that his creditors began to be uneasy; that he kept his shop miserably, sold often without profit for ready money, and often trusted without keeping accounts; that he must therefore fail, which would make a vacancy I might profit of. I objected my want of money. He then let me know that his father had a high opinion of me, and, from some discourse that had passed between them, he was sure would advance money to set us up, if I would enter into partnership with him. “My time,” says he, “will be out with Keimer in the spring; by that time we may have our press and types in from London. I am sensible I am no workman; if you like it, your skill in the business shall be set against the stock I furnish, and we will share the profits equally.”
@@ -63,14 +63,14 @@ sections:
       The proposal was agreeable, and I consented; his father was in town and approved of it; the more as he saw I had great influence with his son, had prevailed on him to abstain long from dram-drinking, and he hoped might break him of that wretched habit entirely, when we came to be so closely connected. I gave an inventory to the father, who carried it to a merchant; the things were sent for, the secret was to be kept till they should arrive, and in the meantime I was to get work, if I could, at the other printing-house. But I found no vacancy there, and so remained idle a few days, when Keimer, on a prospect of being employed to print some paper money in New Jersey, which would require cuts and various types that I only could supply, and apprehending Bradford might engage me and get the job from him, sent me a very civil message, that old friends should not part for a few words, the effect of sudden passion, and wishing me to return. Meredith persuaded me to comply, as it would give more opportunity for his improvement under my daily instructions; so I returned, and we went on more smoothly than for some time before. The New Jersey job was obtained, I contrived a copperplate press for it, the first that had been seen in the country; I cut several ornaments and checks for the bills. We went together to Burlington, where I executed the whole to satisfaction; and he received so large a sum for the work as to be enabled thereby to keep his head much longer above water.
     checkIn:
       id: bf-ch-07-s4-c1
-      stem: Why did Keimer send a polite message asking Franklin to return after their quarrel?
+      stem: Why did Keimer send a civil message asking Franklin back?
       options:
-        - He wanted Franklin to train his newly hired Irish pressman.
-        - He learned Franklin was about to start his own newspaper.
-        - He wished to apologize publicly for his sudden outburst.
-        - He needed Franklin's skills for a New Jersey paper money job.
+        - He wanted Franklin to break in a new Irish pressman
+        - He had heard Franklin was about to start a newspaper of his own
+        - He meant to apologise in front of the neighbours
+        - He needed the cuts and types only Franklin could supply
       correctIndex: 3
-      explanationZh: Keimer 面临新泽西纸币印刷任务，需要富兰克林才能提供所需的铜版和各种铅字，且担心 Bradford 抢走这单生意，这才低头请他回来。道歉或训练新人均非原文给出的原因。
+      explanationZh: 新泽西那笔印纸币的活儿要用铜版和各种铅字，"which I only could supply"，他又怕 Bradford 抢先把人请去，于是捎来一句很客气的话——老朋友不该为一时的气话散伙。富兰克林后来还为这活儿做了本地第一台铜版印刷机。
   - id: bf-ch-07-s5
     text: |-
       At Burlington I made an acquaintance with many principal people of the province. Several of them had been appointed by the Assembly a committee to attend the press, and take care that no more bills were printed than the law directed. They were therefore, by turns, constantly with us, and generally he who attended, brought with him a friend or two for company. My mind having been much more improved by reading than Keimer’s, I suppose it was for that reason my conversation seemed to be more valued. They had me to their houses, introduced me to their friends, and showed me much civility; while he, though the master, was a little neglected. In truth, he was an odd fish; ignorant of common life, fond of rudely opposing received opinions, slovenly to extreme dirtiness, enthusiastic in some points of religion, and a little knavish withal.
@@ -80,14 +80,14 @@ sections:
       Before I enter upon my public appearance in business, it may be well to let you know the then state of my mind with regard to my principles and morals, that you may see how far those influenced the future events of my life. My parents had early given me religious impressions, and brought me through my childhood piously in the Dissenting way. But I was scarce fifteen, when, after doubting by turns of several points, as I found them disputed in the different books I read, I began to doubt of Revelation itself. Some books against Deism fell into my hands; they were said to be the substance of sermons preached at Boyle’s Lectures. It happened that they wrought an effect on me quite contrary to what was intended by them; for the arguments of the Deists, which were quoted to be refuted, appeared to me much stronger than the refutations; in short, I soon became a thorough Deist. My arguments perverted some others, particularly Collins and Ralph; but, each of them having afterwards wronged me greatly without the least compunction, and recollecting Keith’s conduct towards me (who was another freethinker), and my own towards Vernon and Miss Read, which at times gave me great trouble, I began to suspect that this doctrine, though it might be true, was not very useful. My London pamphlet, which had for its motto these lines of Dryden:
     checkIn:
       id: bf-ch-07-s5-c1
-      stem: What did Isaac Decow, the surveyor-general, foresee for Franklin?
+      stem: What did Isaac Decow foretell for Franklin?
       options:
-        - That Franklin would be made printer to the Assembly within a year.
-        - That Franklin would give up printing and take up surveying.
-        - That Franklin would return to London to open a print-house.
-        - That Franklin would work Keimer out of his business and prosper.
-      correctIndex: 3
-      explanationZh: 这位靠自学起家的老测量总长对富兰克林说：“I foresee that you will soon work this man out of his business, and make a fortune in it at Philadelphia.” 当时他并不知道富兰克林有自立门户的打算。议会印务、改行测量、回伦敦开业均非他的预言。
+        - That he would soon work Keimer out and make a fortune
+        - That he would be made printer to the Assembly that year
+        - That he would give up printing and take to surveying
+        - That he would go back to London and open a house there
+      correctIndex: 0
+      explanationZh: 这位从推黏土做砖起家、成年后才学写字的老测量总长对他说 "I foresee that you will soon work this man out of his business, and make a fortune in it at Philadelphia."。而当时富兰克林还没露过半点自立门户的口风。
   - id: bf-ch-07-s6
     text: |-
       “Whatever is, is right. Though purblind man Sees but a part o’ the chain, the nearest link: His eyes not carrying to the equal beam, That poises all above;”
@@ -99,14 +99,14 @@ sections:
       We had not been long returned to Philadelphia before the new types arrived from London. We settled with Keimer, and left him by his consent before he heard of it. We found a house to hire near the market, and took it. To lessen the rent, which was then but twenty-four pounds a year, though I have since known it to let for seventy, we took in Thomas Godfrey, a glazier, and his family, who were to pay a considerable part of it to us, and we to board with them. We had scarce opened our letters and put our press in order, before George House, an acquaintance of mine, brought a countryman to us, whom he had met in the street inquiring for a printer. All our cash was now expended in the variety of particulars we had been obliged to procure, and this countryman’s five shillings, being our firstfruits, and coming so seasonably, gave me more pleasure than any crown I have since earned; and the gratitude I felt toward House has made me often more ready than perhaps I should otherwise have been to assist young beginners.
     checkIn:
       id: bf-ch-07-s6-c1
-      stem: What brought Franklin and Meredith their first cash earnings in the new printing-house?
+      stem: Where did the new printing-house's first cash come from?
       options:
-        - The Quakers paid them to print forty sheets of their history.
-        - The Assembly voted them the contract for public printing.
-        - They sold stationery to merchants at the Every-night club.
-        - A countryman brought by George House paid five shillings for a job.
-      correctIndex: 3
-      explanationZh: George House 带来一个在街上找印刷匠的乡下人，这人付的五先令成了他们开业后的第一笔收入，让富兰克林倍感喜悦，也让他此后格外乐于扶持初创的年轻人。其余选项都不是这笔“firstfruits”的来源。
+        - The Assembly voted them the public printing that year
+        - A countryman brought in by George House paid five shillings
+        - The Quakers gave them forty sheets of their history to print
+        - A merchant offered to stock their shop with stationery
+      correctIndex: 1
+      explanationZh: 铺子刚开张，现钱全花在置办上，"George House, an acquaintance of mine, brought a countryman to us, whom he had met in the street inquiring for a printer"。这五先令 "being our firstfruits, and coming so seasonably, gave me more pleasure than any crown I have since earned"——他因此一辈子乐于扶一把刚起步的人。
   - id: bf-ch-07-s7
     text: |-
       There are croakers in every country, always boding its ruin. Such a one then lived in Philadelphia; a person of note, an elderly man, with a wise look and a very grave manner of speaking; his name was Samuel Mickle. This gentleman, a stranger to me, stopped one day at my door, and asked me if I was the young man who had lately opened a new printing-house. Being answered in the affirmative, he said he was sorry for me, because it was an expensive undertaking, and the expense would be lost; for Philadelphia was a sinking place, the people already half-bankrupts, or near being so; all appearances to the contrary, such as new buildings and the rise of rents, being to his certain knowledge fallacious; for they were, in fact, among the things that would soon ruin us. And he gave me such a detail of misfortunes now existing, or that were soon to exist, that he left me half melancholy. Had I known him before I engaged in this business, probably I never should have done it. This man continued to live in this decaying place, and to declaim in the same strain, refusing for many years to buy a house there, because all was going to destruction; and at last I had the pleasure of seeing him give five times as much for one as he might have bought it for when he first began his croaking.
@@ -116,14 +116,14 @@ sections:
       The first members were Joseph Breintnal, a copyer of deeds for the scriveners, a good-natured, friendly middle-aged man, a great lover of poetry, reading all he could meet with, and writing some that was tolerable; very ingenious in many little knickknackeries, and of sensible conversation.
     checkIn:
       id: bf-ch-07-s7-c1
-      stem: Under the Junto's rules, what was each member required to do once every three months?
+      stem: What did the Junto's rules require of each member once a quarter?
       options:
-        - Defend a fixed opinion of his own against all challengers.
-        - Pay a small subscription toward the club's book fund.
-        - Produce and read an essay of his own writing on any subject.
-        - Propose a new candidate for admission to the club.
+        - Pay a small sum every quarter toward the club's books
+        - Bring a new candidate before the club for admission
+        - Produce and read an essay of his own on any subject
+        - Defend one fixed opinion against all the other members
       correctIndex: 2
-      explanationZh: Junto 规章要求成员轮流就道德、政治或自然哲学提出问题供讨论，并且每三个月“produce and read an essay of his own writing, on any subject he pleased”。固执己见的表达反而会被小额罚款禁止；缴书费和荐人都不是每季度的义务。
+      explanationZh: 规章要求各人轮流就道德、政治或自然哲学出题供大家讨论，并且每三个月 "produce and read an essay of his own writing, on any subject he pleased"。为免争得面红耳赤，一切表示笃定的措辞和当面反驳后来都列为违禁，还要罚点小钱。
   - id: bf-ch-07-s8
     text: |-
       Thomas Godfrey, a self-taught mathematician, great in his way, and afterward inventor of what is now called Hadley’s Quadrant. But he knew little out of his way, and was not a pleasing companion; as, like most great mathematicians I have met with, he expected universal precision in everything said, or was forever denying or distinguishing upon trifles, to the disturbance of all conversation. He soon left us.
@@ -143,14 +143,14 @@ sections:
       But my giving this account of it here is to show something of the interest I had, every one of these exerting themselves in recommending business to us. Breintnal particularly procured us from the Quakers the printing forty sheets of their history, the rest being to be done by Keimer; and upon this we worked exceedingly hard, for the price was low. It was a folio, pro patria size, in pica, with long primer notes. I composed of it a sheet a day, and Meredith worked it off at press; it was often eleven at night, and sometimes later, before I had finished my distribution for the next day’s work, for the little jobs sent in by our other friends now and then put us back. But so determined I was to continue doing a sheet a day of the folio, that one night, when, having imposed my forms, I thought my day’s work over, one of them by accident was broken, and two pages reduced to pi, I immediately distributed and composed it over again before I went to bed; and this industry, visible to our neighbors, began to give us character and credit; particularly, I was told, that mention being made of the new printing-office at the merchants’ Every-night club, the general opinion was that it must fail, there being already two printers in the place, Keimer and Bradford; but Dr. Baird (whom you and I saw many years after at his native place, St. Andrew’s in Scotland) gave a contrary opinion: “For the industry of that Franklin,” says he, “is superior to anything I ever saw of the kind; I see him still at work when I go home from club, and he is at work again before his neighbors are out of bed.” This struck the rest, and we soon after had offers from one of them to supply us with stationery; but as yet we did not choose to engage in shop business.
     checkIn:
       id: bf-ch-07-s8-c1
-      stem: What was Franklin's primary purpose in describing the Junto club members in detail?
+      stem: What did Dr. Baird say of the new office at the merchants' club?
       options:
-        - To prove that self-taught men make the best inventors.
-        - To boast about his wide network of scientific connections.
-        - To show how each member exerted themselves to recommend business.
-        - To explain why most members eventually became surveyors.
-      correctIndex: 2
-      explanationZh: 富兰克林在此逐一介绍社员，主要是为了展示他的人脉优势：每个人都尽力为他的印刷所招揽生意，Breintnal 就为他们争取到了贵格会历史书的印刷。
+        - That two printers were already enough for the place
+        - That the new office would fail before the year was out
+        - That Bradford's paper would soon be beaten out of trade
+        - That Franklin's industry beat anything he had ever seen
+      correctIndex: 3
+      explanationZh: 满座都断定这家新铺子撑不住——城里已经有 Keimer 和 Bradford 两家。只有 Dr. Baird 反着说 "For the industry of that Franklin is superior to anything I ever saw of the kind; I see him still at work when I go home from club, and he is at work again before his neighbors are out of bed."。这话镇住了旁人，不久便有人主动提出供他们文具。
   - id: bf-ch-07-s9
     text: |-
       I mention this industry the more particularly and the more freely, though it seems to be talking in my own praise, that those of my posterity, who shall read it, may know the use of that virtue, when they see its effects in my favour throughout this relation.
@@ -162,14 +162,14 @@ sections:
       Our first papers made a quite different appearance from any before in the province; a better type, and better printed; but some spirited remarks of my writing, on the dispute then going on between Governor Burnet and the Massachusetts Assembly, struck the principal people, occasioned the paper and the manager of it to be much talked of, and in a few weeks brought them all to be our subscribers.
     checkIn:
       id: bf-ch-07-s9-c1
-      stem: How did Franklin counteract Keimer's rival newspaper proposals?
+      stem: How did Franklin answer Keimer's rival newspaper proposals?
       options:
-        - He wrote entertaining Busy Body pieces for Bradford's paper.
-        - He cut his own paper's subscription price in half.
-        - He persuaded Webb to abandon Keimer's project.
-        - He petitioned the Assembly to deny Keimer a license.
+        - He wrote Busy Body pieces for Bradford's paper instead
+        - He halved the subscription price of his own paper
+        - He talked Webb out of working for Keimer at all
+        - He asked the Assembly to refuse Keimer a licence
       correctIndex: 0
-      explanationZh: 富兰克林尚不能立即办报，便以“Busy Body”为名为Bradford的报纸写了多篇趣文，Breintnal又续写数月，把公众注意力吸引到那份报纸上，Keimer的办报计划受到冷落。降价、劝退Webb、请愿议会均非文中做法。
+      explanationZh: 自己的报还开不起来，他便化名 Busy Body 给 Bradford 的报纸写了几篇趣文，Breintnal 又接着写了几个月，"By this means the attention of the public was fixed on that paper, and Keimer's proposals, which we burlesqued and ridiculed, were disregarded."。
   - id: bf-ch-07-s10
     text: |-
       Their example was followed by many, and our number went on growing continually. This was one of the first good effects of my having learned a little to scribble; another was, that the leading men, seeing a newspaper now in the hands of one who could also handle a pen, thought it convenient to oblige and encourage me. Bradford still printed the votes, and laws, and other public business. He had printed an address of the House to the governor, in a coarse, blundering manner; we reprinted it elegantly and correctly, and sent one to every member. They were sensible of the difference: it strengthened the hands of our friends in the House, and they voted us their printers for the year ensuing.
@@ -183,14 +183,14 @@ sections:
       In this distress two true friends, whose kindness I have never forgotten, nor ever shall forget while I can remember anything, came to me separately, unknown to each other, and, without any application from me, offering each of them to advance me all the money that should be necessary to enable me to take the whole business upon myself, if that should be practicable; but they did not like my continuing the partnership with Meredith, who, as they said, was often seen drunk in the streets, and playing at low games in alehouses, much to our discredit. These two friends were William Coleman and Robert Grace. I told them I could not propose a separation while any prospect remained of the Meredith’s fulfilling their part of our agreement, because I thought myself under great obligations to them for what they had done, and would do if they could; but, if they finally failed in their performance, and our partnership must be dissolved, I should then think myself at liberty to accept the assistance of my friends.
     checkIn:
       id: bf-ch-07-s10-c1
-      stem: Why did William Coleman and Robert Grace offer to lend Franklin money?
+      stem: On what condition did Coleman and Grace offer their money?
       options:
-        - They demanded he immediately repay Vernon's outstanding debt.
-        - They wished to buy out Bradford and merge his shop with theirs.
-        - They wanted him to take over the business without the drunk Meredith.
-        - They expected him to share the profits with the Assembly members.
-      correctIndex: 2
-      explanationZh: Coleman 和 Grace 各自找到富兰克林，愿意垫付资金让他独立经营，因为他们不愿看到 Franklin 继续与常被人看见在街头喝醉、在酒馆赌小钱的 Meredith 合伙，认为这有损商誉。逼还 Vernon 的钱与买下 Bradford 的店都不是他们的动机。
+        - They wanted Bradford's shop bought out and joined to his own
+        - They would not see him go on in partnership with Meredith
+        - They pressed him to settle the Vernon debt at once
+        - They expected a share of the Assembly's printing money
+      correctIndex: 1
+      explanationZh: 两人先后单独找上门，谁也不知道对方也来过，都情愿垫钱让他独力经营——条件是别再跟 Meredith 合伙，因为那人 "was often seen drunk in the streets, and playing at low games in alehouses, much to our discredit"。富兰克林答说，只要梅家还有履约的指望，他就不便先提散伙。
   - id: bf-ch-07-s11
     text: |-
       Thus the matter rested for some time, when I said to my partner, “Perhaps your father is dissatisfied at the part you have undertaken in this affair of ours, and is unwilling to advance for you and me what he would for you alone. If that is the case, tell me, and I will resign the whole to you, and go about my business.” “No,” said he, “my father has really been disappointed, and is really unable; and I am unwilling to distress him farther. I see this is a business I am not fit for. I was bred a farmer, and it was a folly in me to come to town, and put myself, at thirty years of age, an apprentice to learn a new trade. Many of our Welsh people are going to settle in North Carolina, where land is cheap. I am inclined to go with them, and follow my old employment. You may find friends to assist you. If you will take the debts of the company upon you; return to my father the hundred pounds he has advanced; pay my little personal debts, and give me thirty pounds and a new saddle, I will relinquish the partnership, and leave the whole in your hands.” I agreed to this proposal: it was drawn up in writing, signed, and sealed immediately. I gave him what he demanded, and he went soon after to Carolina, from whence he sent me next year two long letters, containing the best account that had been given of that country, the climate, the soil, husbandry, etc., for in those matters he was very judicious. I printed them in the papers, and they gave great satisfaction to the public.
@@ -198,57 +198,57 @@ sections:
       As soon as he was gone, I recurred to my two friends; and because I would not give an unkind preference to either, I took half of what each had offered and I wanted of one, and half of the other; paid off the company’s debts, and went on with the business in my own name, advertising that the partnership was dissolved. I think this was in or about the year 1729.
     checkIn:
       id: bf-ch-07-s11-c1
-      stem: What did Meredith ask for in exchange for relinquishing the partnership?
+      stem: What did Meredith ask for in giving up the partnership?
       options:
-        - He demanded half of all future profits for the next ten years.
-        - He asked to have the debts paid, plus thirty pounds and a new saddle.
-        - He asked for the new printing press and all the London types.
-        - He requested a letter of recommendation to the governor.
-      correctIndex: 1
-      explanationZh: Meredith 要求富兰克林承担公司债务、退还其父的一百镑、清偿他的私人债务，并给他三十镑和一个新马鞍，以此让出整个合伙生意。文中明确列出了这些具体条件。
+        - Half the profits of the house for the next ten years
+        - The new press and every font that came from London
+        - The debts paid, plus thirty pounds and a new saddle
+        - A letter recommending him to the governor of Carolina
+      correctIndex: 2
+      explanationZh: 他自认不是这块料——三十岁才进城学一门新手艺本就是件傻事——于是开出条件："If you will take the debts of the company upon you; return to my father the hundred pounds he has advanced; pay my little personal debts, and give me thirty pounds and a new saddle, I will relinquish the partnership, and leave the whole in your hands."。
 quiz:
   - id: bf-ch-07-q1
-    stem: What circumstance first led Franklin to suspect that Keimer's financial situation was failing?
+    stem: What did Meredith tell Franklin about the state of Keimer's affairs?
     options:
-      - Meredith observed that Keimer sold without profit and kept no accounts.
-      - Keimer demanded that Franklin accept a large reduction in his yearly wages.
-      - Keimer was sued by a London merchant for unpaid types.
-      - Keimer's wife left him because of his mounting debts.
-    correctIndex: 0
-    explanationZh: Meredith 告诉富兰克林，Keimer 经常无利可卖换现金，赊账不记账，由此判断他必将倒闭。虽然 Keimer 后来嫌工资太高，但最初让他起疑的是 Meredith 对店铺经营不善的观察。
-  - id: bf-ch-07-q2
-    stem: Why did George Webb end up as a bought servant in America?
-    options:
-      - Penniless in London after leaving Oxford, he signed indentures.
-      - He was kidnapped by a crimp near the London playhouses.
-      - He sold his time to Keimer to pay for his grammar-school debts.
-      - He lost a wager at the Witty Club and had to serve four years.
-    correctIndex: 0
-    explanationZh: Webb 在牛津拿到十五几尼后，把钱藏起来，步行去伦敦，钱花光后走投无路，看到招募去美洲服役的广告就签了契约。文中清楚说明是他在伦敦穷困潦倒时自愿签的，而非被绑架或赌博输掉。
-  - id: bf-ch-07-q3
-    stem: What enabled Franklin to supply the printing-house with types when there was no letter-founder in America?
-    options:
-      - He imported secret punch-cutter tools from his brother James in London.
-      - He melted down old Keimer type and recast it with better alloys.
-      - He contrived a mould and struck matrices in lead using existing letters.
-      - He paid an Oxford scholar to engrave new puncheons from wood.
-    correctIndex: 2
-    explanationZh: 富兰克林曾见过铸字过程，他利用现有的字母作为字冲，在铅上打出字模，自制模具填补了铅字短缺。他并没有从伦敦进口工具或让 Webb 雕刻木质字冲。
-  - id: bf-ch-07-q4
-    stem: What ultimately happened to Keimer's newspaper after he launched it to beat Franklin?
-    options:
-      - It became the most profitable paper in the province within a year.
-      - He merged it with Bradford's paper to drive Franklin out of business.
-      - It was shut down by the Assembly for publishing radical remarks.
-      - He gave it up after nine months, selling it to Franklin for a trifle.
+      - That Keimer had been sued by a London merchant for types
+      - That Keimer's wife had left him over his mounting debts
+      - That Keimer meant to cut his wages a second time
+      - That Keimer sold without profit and kept no accounts
     correctIndex: 3
-    explanationZh: Keimer 抢先办报，但办了三个季度只有不到九十个订户，最终以极低价格卖给了富兰克林。富兰克林接手后几年内让它变得极为盈利，但 Keimer 自己经营时是失败的。
-  - id: bf-ch-07-q5
-    stem: How did Franklin first secure the Assembly's public printing business away from Bradford?
+    explanationZh: 梅瑞狄斯替他把账算了一遍：Keimer 名下的东西全是赊来的，债主已经不安，"he kept his shop miserably, sold often without profit for ready money, and often trusted without keeping accounts; that he must therefore fail, which would make a vacancy I might profit of"。
+  - id: bf-ch-07-q2
+    stem: How did the Oxford scholar George Webb come to be a bought servant?
     options:
-      - He offered to print the votes and laws free of charge for a year.
-      - He reprinted an address elegantly and sent a copy to every member.
-      - He published a scathing editorial exposing Bradford's blunders.
-      - He convinced Mr. Hamilton to introduce a bill in his favor.
+      - Penniless in London after Oxford, he signed indentures
+      - A crimp seized him outside one of the London playhouses
+      - He sold his own time to Keimer to clear a school debt
+      - He lost a wager at the Witty Club and served four years
+    correctIndex: 0
+    explanationZh: 领到十五几尼的季度津贴后他没有还债，"walked out of town, hid his gown in a furze bush, and footed it to London"。钱花光、衣服当掉、饿着肚子在街上晃时，有人塞给他一张招募去美洲服役的传单——"He went directly, signed the indentures, was put into the ship, and came over"，一封信也没给家里写。
+  - id: bf-ch-07-q3
+    stem: How did Franklin make up the shortage of type in the shop?
+    options:
+      - He had punch-cutting tools sent over by his brother James
+      - He contrived a mould and struck matrices in lead
+      - He melted down Keimer's old type and recast it stronger
+      - He paid Webb to cut new puncheons out of boxwood
     correctIndex: 1
-    explanationZh: Bradford 印刷的议会致总督致辞粗劣，富兰克林等人精美地重印并寄给每位议员，议员们感受到了差异，于是把下一年的印刷业务交给了他。他并非免费印刷或通过曝光对手来抢生意。
+    explanationZh: 美洲当时没有铸字作坊，铅字常缺。他在伦敦 James 家见过铸字，虽没细看，如今 "I now contrived a mould, made use of the letters we had as puncheons, struck the matrices in lead, and thus supplied in a pretty tolerable way all deficiencies"。他还刻版、调墨、看仓库，一人身兼数职。
+  - id: bf-ch-07-q4
+    stem: What became of the newspaper Keimer rushed out ahead of Franklin?
+    options:
+      - It grew into the most profitable paper in the province
+      - It was stopped by the Assembly for its bold remarks
+      - He joined it to Bradford's paper to squeeze Franklin out
+      - He gave it up after three quarters and sold it for a trifle
+    correctIndex: 3
+    explanationZh: 他抢先办了起来，"after carrying it on three quarters of a year, with at most only ninety subscribers, he offered it to me for a trifle"。富兰克林早已准备停当，接过手就办；那份报后来变得极为赚钱，可那是易主以后的事了。
+  - id: bf-ch-07-q5
+    stem: How did the Assembly's printing come over to Franklin from Bradford?
+    options:
+      - He offered to print the votes and laws for nothing for a year
+      - He got Mr. Hamilton to move a bill in his favour
+      - He reprinted an address neatly and sent it to every member
+      - He printed a piece exposing Bradford's blundering work
+    correctIndex: 2
+    explanationZh: Bradford 把议会给总督的致辞印得又粗又错，"we reprinted it elegantly and correctly, and sent one to every member"。议员们看得出差别，这也让他在议会里的朋友更好说话——"they voted us their printers for the year ensuing"。

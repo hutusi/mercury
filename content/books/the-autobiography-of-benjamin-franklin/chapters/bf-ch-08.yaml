@@ -3,7 +3,7 @@ id: bf-ch-08
 bookId: book-franklin
 title: Business Success and First Public Service
 titleZh: 商业成功与最初的公共服务
-summaryZh: 富兰克林的印刷事业蒸蒸日上，他就纸币问题撰写的小册子也引起了不小的反响。与此同时，他迎娶了德博拉·里德，还亲手创办了北美第一所订阅图书馆，并对宗教信仰形成了自己的独立见解。
+summaryZh: 省里的纸币只剩一万五千镑，还快要收回，平民喊着要多印，有钱人一概反对。这场争论先在 Junto 里过了一遍，接着变成一本没有署名的小册子——而写字这件事，正开始给这位年轻印刷匠带来意想不到的好处。
 sections:
   - id: bf-ch-08-s1
     text: |-
@@ -16,14 +16,14 @@ sections:
       I soon after obtained, through my friend Hamilton, the printing of the Newcastle paper money, another profitable job as I then thought it; small things appearing great to those in small circumstances; and these, to me, were really great advantages, as they were great encouragements. He procured for me, also, the printing of the laws and votes of that government, which continued in my hands as long as I followed the business.
     checkIn:
       id: bf-ch-08-s1-c1
-      stem: What reward did Franklin receive after his pamphlet supporting paper currency helped sway the House?
+      stem: How did his friends in the House reward the pamphlet?
       options:
-        - He was granted a permanent seat in the House.
-        - He was employed to print the new paper money.
-        - He was appointed postmaster of Philadelphia.
-        - He was given a loan to expand his stationer's shop.
+        - A seat in the House for the following session
+        - The printing of the province's new paper money
+        - The post-office of Philadelphia, taken from Bradford
+        - A loan out of the office to enlarge his shop
       correctIndex: 1
-      explanationZh: 富兰克林写道，朋友们认为他出了力，便“thought fit to reward me by employing me in printing the money”，这单生意利润丰厚，正是“being able to write”带来的又一好处。获选为邮政局长是后文布拉德福的职务，并非此时的奖赏。
+      explanationZh: 议会里的朋友觉得他出了力，"thought fit to reward me by employing me in printing the money; a very profitable job and a great help to me"。他自己在后面加了一句：这是会写字带来的又一桩好处。
   - id: bf-ch-08-s2
     text: |-
       I now opened a little stationer’s shop. I had in it blanks of all sorts, the correctest that ever appeared among us, being assisted in that by my friend Breintnal. I had also paper, parchment, chapmen’s books, etc. One Whitemash, a compositor I had known in London, an excellent workman, now came to me, and worked with me constantly and diligently; and I took an apprentice, the son of Aquilla Rose.
@@ -33,14 +33,14 @@ sections:
       His apprentice, David Harry, whom I had instructed while I worked with him, set up in his place at Philadelphia, having bought his materials. I was at first apprehensive of a powerful rival in Harry, as his friends were very able, and had a good deal of interest. I therefore proposed a partnership to him, which he, fortunately for me, rejected with scorn. He was very proud, dressed like a gentleman, lived expensively, took much diversion and pleasure abroad, ran in debt, and neglected his business; upon which, all business left him; and, finding nothing to do, he followed Keimer to Barbados, taking the printing-house with him. There this apprentice employed his former master as a journeyman; they quarrelled often; Harry went continually behindhand, and at length was forced to sell his types and return to his country work in Pennsylvania. The person that bought them employed Keimer to use them, but in a few years he died.
     checkIn:
       id: bf-ch-08-s2-c1
-      stem: How did Franklin deliberately cultivate his reputation as a tradesman?
+      stem: How did Franklin build his character as a tradesman?
       options:
-        - He hosted lavish supper parties for local merchants.
-        - He dressed plainly and hauled his paper home on a wheelbarrow.
-        - He advertised his business in a rival newspaper.
-        - He joined an exclusive social club for wealthy citizens.
-      correctIndex: 1
-      explanationZh: 富兰克林刻意“avoid all appearances to the contrary”——穿着朴素、不涉游乐、还推着独轮车把纸运回家，以此树立勤勉节俭的信誉。大办晚宴或加入富人俱乐部恰恰是他回避的形象。
+        - He dressed plainly and wheeled his own paper home
+        - He gave suppers for the merchants who supplied him
+        - He advertised heavily in Bradford's newspaper
+        - He joined the clubs the richer citizens frequented
+      correctIndex: 0
+      explanationZh: 他不只是真勤俭，还要 "avoid all appearances to the contrary"——衣着朴素，不进任何闲散场所，不钓鱼也不打猎，还特意推着独轮车把买来的纸从街上运回家。于是进口文具的商人反过来主动上门招揽他的生意。
   - id: bf-ch-08-s3
     text: |-
       There remained now no competitor with me at Philadelphia but the old one, Bradford; who was rich and easy, did a little printing now and then by straggling hands, but was not very anxious about the business. However, as he kept the post-office, it was imagined he had better opportunities of obtaining news; his paper was thought a better distributer of advertisements than mine, and therefore had many more, which was a profitable thing to him, and a disadvantage to me; for, though I did indeed receive and send papers by the post, yet the public opinion was otherwise, for what I did send was by bribing the riders, who took them privately, Bradford being unkind enough to forbid it, which occasioned some resentment on my part; and I thought so meanly of him for it, that, when I afterward came into his situation, I took care never to imitate it.
@@ -50,14 +50,14 @@ sections:
       Whether this was a real change of sentiment or only artifice, on a supposition of our being too far engaged in affection to retract, and therefore that we should steal a marriage, which would leave them at liberty to give or withhold what they pleased, I know not; but I suspected the latter, resented it, and went no more. Mrs. Godfrey brought me afterward some more favorable accounts of their disposition, and would have drawn me on again; but I declared absolutely my resolution to have nothing more to do with that family. This was resented by the Godfreys; we differed, and they removed, leaving me the whole house, and I resolved to take no more inmates.
     checkIn:
       id: bf-ch-08-s3-c1
-      stem: Why did the young woman's family break off Franklin's courtship?
+      stem: Why did the family break off the match Mrs. Godfrey had projected?
       options:
-        - They heard from Bradford that printing was unprofitable.
-        - They discovered Franklin was already secretly married.
-        - They learned Franklin planned to move back to Boston.
-        - They disapproved of Franklin's involvement in politics.
-      correctIndex: 0
-      explanationZh: 文中明确指出，对方在向布拉德福打听后得知印刷业不赚钱、铅字很快要更换，加上之前有人接连倒闭，于是禁止他再上门。并非因为富兰克林已婚或打算离开费城。
+        - They found he was already engaged to another woman
+        - They heard he meant to carry their daughter to Boston
+        - Bradford had told them the printing trade did not pay
+        - They objected to his part in the paper-money quarrel
+      correctIndex: 2
+      explanationZh: 他提出陪嫁要够抵掉印刷所剩下的债，对方说拿不出，他便建议抵押房子。几天后的回话是不同意这门亲事——"on inquiry of Bradford, they had been informed the printing business was not a profitable one; the types would soon be worn out"，何况 Keimer 和 Harry 先后垮了。于是他被禁止上门，姑娘也被关了起来。
   - id: bf-ch-08-s4
     text: |-
       But this affair having turned my thoughts to marriage, I looked round me and made overtures of acquaintance in other places; but soon found that, the business of a printer being generally thought a poor one, I was not to expect money with a wife, unless with such a one as I should not otherwise think agreeable. A friendly correspondence as neighbours and old acquaintances had continued between me and Mrs. Read’s family, who all had a regard for me from the time of my first lodging in their house. I was often invited there and consulted in their affairs, wherein I sometimes was of service. I pitied poor Miss Read’s unfortunate situation, who was generally dejected, seldom cheerful, and avoided company. I considered my giddiness and inconstancy when in London as in a great degree the cause of her unhappiness, though the mother was good enough to think the fault more her own than mine, as she had prevented our marrying before I went thither, and persuaded the other match in my absence. Our mutual affection was revived, but there were now great objections to our union. The match was indeed looked upon as invalid, a preceding wife being said to be living in England; but this could not easily be proved, because of the distance; and, though there was a report of his death, it was not certain. Then, though it should be true, he had left many debts, which his successor might be called upon to pay. We ventured, however, over all these difficulties, and I took her to wife, September 1st, 1730. None of the inconveniences happened that we had apprehended; she proved a good and faithful helpmate, assisted me much by attending the shop; we throve together, and have ever mutually endeavored to make each other happy. Thus I corrected that great erratum as well as I could.
@@ -65,14 +65,14 @@ sections:
       About this time, our club meeting, not at a tavern, but in a little room of Mr. Grace’s, set apart for that purpose, a proposition was made by me, that, since our books were often referred to in our disquisitions upon the queries, it might be convenient to us to have them altogether where we met, that upon occasion they might be consulted; and by thus clubbing our books to a common library, we should, while we liked to keep them together, have each of us the advantage of using the books of all the other members, which would be nearly as beneficial as if each owned the whole. It was liked and agreed to, and we filled one end of the room with such books as we could best spare. The number was not so great as we expected; and though they had been of great use, yet some inconveniences occurring for want of due care of them, the collection, after about a year, was separated, and each took his books home again.
     checkIn:
       id: bf-ch-08-s4-c1
-      stem: What was the main obstacle to Franklin's marriage to Miss Read?
+      stem: What stood in the way of his marrying Miss Read?
       options:
-        - Her previous husband was rumored to be still alive in England.
-        - Her mother refused to give consent under any circumstances.
-        - Franklin could not afford the marriage license.
-        - She had taken religious vows and would not leave the convent.
-      correctIndex: 0
-      explanationZh: 里德小姐此前已有婚约，传闻前夫仍住在英格兰，难以证明其已死，而且他若真死还留下债务。但两人决定冒这些风险成婚，“None of the inconveniences happened”。母亲不同意只是表象，真正障碍是这桩婚姻的法律效力。
+        - Her mother would not give her consent on any terms
+        - He could not pay the fees for a marriage licence
+        - The Godfreys threatened to sue him for breach of promise
+        - A former husband might still be living, and had left debts
+      correctIndex: 3
+      explanationZh: 那桩婚事被认为无效，因为据说前妻还在英格兰；可隔着大洋难以取证，就算传闻中他确已身故，"he had left many debts, which his successor might be called upon to pay"。两人还是冒了这些险，1730 年 9 月 1 日成婚——他说这样总算把那桩大 erratum 补救了几分。
   - id: bf-ch-08-s5
     text: |-
       And now I set on foot my first project of a public nature, that for a subscription library. I drew up the proposals, got them put into form by our great scrivener, Brockden, and, by the help of my friends in the Junto, procured fifty subscribers of forty shillings each to begin with, and ten shillings a year for fifty years, the term our company was to continue. We afterwards obtained a charter, the company being increased to one hundred: this was the mother of all the North American subscription libraries, now so numerous. It is become a great thing itself, and continually increasing. These libraries have improved the general conversation of the Americans, made the common tradesmen and farmers as intelligent as most gentlemen from other countries, and perhaps have contributed in some degree to the stand so generally made throughout the colonies in defense of their privileges.
@@ -88,14 +88,14 @@ sections:
       At the time I established myself in Pennsylvania, there was not a good bookseller’s shop in any of the colonies to the southward of Boston. In New York and Philadelphia the printers were indeed stationers; they sold only paper, etc., almanacs, ballads, and a few common schoolbooks. Those who loved reading were obliged to send for their books from England; the members of the Junto had each a few. We had left the alehouse, where we first met, and hired a room to hold our club in. I proposed that we should all of us bring our books to that room, where they would not only be ready to consult in our conferences, but become a common benefit, each of us being at liberty to borrow such as he wished to read at home. This was accordingly done, and for some time contented us.
     checkIn:
       id: bf-ch-08-s5-c1
-      stem: What did Franklin propose to his Junto club members regarding their books?
+      stem: What did Franklin propose to the Junto about their books?
       options:
-        - They should sell their books and split the profits among themselves.
-        - They should donate their books to the city for public auction.
-        - They should each buy the same set of books from England.
-        - They should pool their books in the club room for common use.
-      correctIndex: 3
-      explanationZh: 富兰克林建议把各人的书集中到聚会室共用，这样每人都能使用他人的藏书，“nearly as beneficial as if each owned the whole”。因管理不善，约一年后分散取回，但这是共享图书馆的雏形。
+        - That each should buy the same books out of England
+        - That they bring their books to the club room for common use
+        - That they sell their books and share what they fetched
+        - That the books be given to the town for a public sale
+      correctIndex: 1
+      explanationZh: 他的提议是把各人的书都搬到聚会那间屋里，"where they would not only be ready to consult in our conferences, but become a common benefit, each of us being at liberty to borrow such as he wished to read at home"。书的数量不如预想，一年后又因无人照管各自搬了回去。
   - id: bf-ch-08-s6
     text: |-
       Finding the advantage of this little collection, I proposed to render the benefit from books more common, by commencing a public subscription library. I drew a sketch of the plan and rules that would be necessary, and got a skilful conveyancer, Mr. Charles Brockden, to put the whole in form of articles of agreement to be subscribed, by which each subscriber engaged to pay a certain sum down for the first purchase of books, and an annual contribution for increasing them. So few were the readers at that time in Philadelphia, and the majority of us so poor, that I was not able, with great industry, to find more than fifty persons, mostly young tradesmen, willing to pay down for this purpose forty shillings each, and ten shillings per annum. On this little fund we began. The books were imported; the library was opened one day in the week for lending to the subscribers, on their promissory notes to pay double the value if not duly returned. The institution soon manifested its utility, was imitated by other towns, and in other provinces. The libraries were augmented by donations; reading became fashionable; and our people, having no public amusements to divert their attention from study, became better acquainted with books, and in a few years were observed by strangers to be better instructed and more intelligent than people of the same rank generally are in other countries.
@@ -105,14 +105,14 @@ sections:
       The objections and reluctances I met with in soliciting the subscriptions, made me soon feel the impropriety of presenting one’s self as the proposer of any useful project, that might be supposed to raise one’s reputation in the smallest degree above that of one’s neighbours, when one has need of their assistance to accomplish that project. I therefore put myself as much as I could out of sight, and stated it as a scheme of a number of friends, who had requested me to go about and propose it to such as they thought lovers of reading. In this way my affair went on more smoothly, and I ever after practised it on such occasions; and, from my frequent successes, can heartily recommend it. The present little sacrifice of your vanity will afterwards be amply repaid. If it remains a while uncertain to whom the merit belongs, someone more vain than yourself will be encouraged to claim it, and then even envy will be disposed to do you justice by plucking those assumed feathers, and restoring them to their right owner.
     checkIn:
       id: bf-ch-08-s6-c1
-      stem: Why did Franklin present his subscription library plan as if it were a scheme of his friends?
+      stem: Why did Franklin put the library forward as his friends' scheme?
       options:
-        - He hoped to conceal the fact that he could not read well.
-        - He wanted to test whether his friends truly supported reading.
-        - He needed to hide his identity because he owed money.
-        - He saw that claiming credit would stir envy and resistance.
-      correctIndex: 3
-      explanationZh: 富兰克林发现以提议者自居会让人嫉妒，于是把自己藏在幕后，说这是朋友们委托他去办的，事情反而顺利得多。他此后常用此法，并推荐“present little sacrifice of your vanity”。并非因为他不会读书或欠债。
+        - Because claiming the credit stirred envy and resistance
+        - Because he owed money and dared not use his name
+        - Because he wanted to test who really loved reading
+        - Because he could not afford to subscribe himself
+      correctIndex: 0
+      explanationZh: 募捐时碰的钉子让他明白，把自己摆成提议人、显得比邻人高出一头，反倒坏事。"I therefore put myself as much as I could out of sight, and stated it as a scheme of a number of friends, who had requested me to go about and propose it"。他说这点虚荣上的小牺牲，日后会加倍还回来。
   - id: bf-ch-08-s7
     text: |-
       This library afforded me the means of improvement by constant study, for which I set apart an hour or two each day, and thus repaired in some degree the loss of the learned education my father once intended for me. Reading was the only amusement I allowed myself. I spent no time in taverns, games, or frolicks of any kind; and my industry in my business continued as indefatigable as it was necessary. I was indebted for my printing-house; I had a young family coming on to be educated, and I had to contend with for business two printers, who were established in the place before me. My circumstances, however, grew daily easier. My original habits of frugality continuing, and my father having, among his instructions to me when a boy, frequently repeated a proverb of Solomon, “Seest thou a man diligent in his calling, he shall stand before kings, he shall not stand before mean men,” I from thence considered industry as a means of obtaining wealth and distinction, which encouraged me, though I did not think that I should ever literally stand before kings, which, however, has since happened; for I have stood before five, and even had the honor of sitting down with one, the King of Denmark, to dinner.
@@ -120,14 +120,14 @@ sections:
       We have an English proverb that says, “He that would thrive, must ask his wife.” It was lucky for me that I had one as much disposed to industry and frugality as myself. She assisted me cheerfully in my business, folding and stitching pamphlets, tending shop, purchasing old linen rags for the paper-makers, etc., etc. We kept no idle servants, our table was plain and simple, our furniture of the cheapest. For instance, my breakfast was a long time bread and milk (no tea), and I ate it out of a twopenny earthen porringer, with a pewter spoon. But mark how luxury will enter families, and make a progress, in spite of principle: being called one morning to breakfast, I found it in a China bowl, with a spoon of silver! They had been bought for me without my knowledge by my wife, and had cost her the enormous sum of three-and-twenty shillings, for which she had no other excuse or apology to make, but that she thought her husband deserved a silver spoon and China bowl as well as any of his neighbors. This was the first appearance of plate and China in our house, which afterward, in a course of years, as our wealth increased, augmented gradually to several hundred pounds in value.
     checkIn:
       id: bf-ch-08-s7-c1
-      stem: What did Franklin's father's proverb about diligence lead him to believe?
+      stem: What did his father's proverb from Solomon teach him to think?
       options:
-        - That hard work alone would guarantee political office.
-        - That diligence would bring him true religious salvation.
-        - That industry was a means of obtaining wealth and distinction.
-        - That only manual labor deserved any real respect.
+        - That hard work by itself would carry him into office
+        - That diligence was the surest road to salvation
+        - That industry was a means to wealth and distinction
+        - That only work done with the hands deserved respect
       correctIndex: 2
-      explanationZh: 父亲引用所罗门箴言——“Seest thou a man diligent in his calling, he shall stand before kings”——使富兰克林将勤奋视为获取财富与声名的手段，并最终真的“stood before five”国王。他未指望这会带来政治职位或宗教救赎。
+      explanationZh: 父亲从小反复念的是 "Seest thou a man diligent in his calling, he shall stand before kings, he shall not stand before mean men"，他因此 "considered industry as a means of obtaining wealth and distinction"。当时他并不真指望站到国王面前，后来却站过五位国王面前，还同丹麦国王一道吃过饭。
   - id: bf-ch-08-s8
     text: |-
       I had been religiously educated as a Presbyterian; and though some of the dogmas of that persuasion, such as the eternal decrees of God, election, reprobation, etc., appeared to me unintelligible, others doubtful, and I early absented myself from the public assemblies of the sect, Sunday being my studying day, I never was without some religious principles. I never doubted, for instance, the existence of the Deity; that he made the world, and governed it by his Providence; that the most acceptable service of God was the doing good to man; that our souls are immortal; and that all crime will be punished, and virtue rewarded, either here or hereafter. These I esteemed the essentials of every religion; and, being to be found in all the religions we had in our country, I respected them all, though with different degrees of respect, as I found them more or less mixed with other articles, which, without any tendency to inspire, promote, or confirm morality, served principally to divide us, and make us unfriendly to one another. This respect to all, with an opinion that the worst had some good effects, induced me to avoid all discourse that might tend to lessen the good opinion another might have of his own religion; and as our province increased in people, and new places of worship were continually wanted, and generally erected by voluntary contribution, my mite for such purpose, whatever might be the sect, was never refused.
@@ -137,66 +137,66 @@ sections:
       At length he took for his text that verse of the fourth chapter of Philippians, “Finally, brethren, whatsoever things are true, honest, just, pure, lovely, or of good report, if there be any virtue, or any praise, think on these things.” And I imagined, in a sermon on such a text, we could not miss of having some morality. But he confined himself to five points only, as meant by the apostle, viz.: 1. Keeping holy the Sabbath day. 2. Being diligent in reading the holy Scriptures. 3. Attending duly the public worship. 4. Partaking of the Sacrament. 5. Paying a due respect to God’s ministers. These might be all good things; but, as they were not the kind of good things that I expected from that text, I despaired of ever meeting with them from any other, was disgusted, and attended his preaching no more. I had some years before composed a little Liturgy, or form of prayer, for my own private use (viz., in 1728), entitled, Articles of Belief and Acts of Religion. I returned to the use of this, and went no more to the public assemblies. My conduct might be blameable, but I leave it, without attempting further to excuse it; my present purpose being to relate facts, and not to make apologies for them.
     checkIn:
       id: bf-ch-08-s8-c1
-      stem: Why did Franklin stop attending the Presbyterian minister's sermons?
+      stem: Why did Franklin give up going to hear the Presbyterian minister?
       options:
-        - The minister openly insulted Franklin's printing business.
-        - The minister demanded a large increase in Franklin's subscription.
-        - The sermons were dry and taught no moral principle.
-        - The meetings were moved too far from Franklin's house.
-      correctIndex: 2
-      explanationZh: 布道多是教派论辩，枯燥无味。最后他选了一段本该讲道德的经文，却只讲守安息日、领圣餐等五点，于是富兰克林“despaired”而不再去，转用自己早年写祈祷文。不是因为路远或被辱骂。
+        - The minister had spoken slightingly of his trade
+        - The subscription he was asked for kept going up
+        - The meeting had been moved too far from his house
+        - The sermons taught no morality, only the sect's points
+      correctIndex: 3
+      explanationZh: 那些讲道 "were all to me very dry, uninteresting, and unedifying, since not a single moral principle was inculcated or enforced, their aim seeming to be rather to make us Presbyterians than good citizens"。最后一回他挑了腓立比书里那段本该讲道德的经文，讲出来却只有守安息、读经、赴会、领圣餐、敬牧师五条，他就此绝望，再不去了。
 quiz:
   - id: bf-ch-08-q1
-    stem: Why did Franklin write his anonymous pamphlet on paper currency?
+    stem: How did the wealthy inhabitants meet the pamphlet?
     options:
-      - He wanted to win a literary prize offered by the colonial assembly.
-      - He wanted to support the popular demand by showing its necessity.
-      - He wanted to attract the attention of a wealthy sponsor for his shop.
-      - He wanted to attack the wealthy inhabitants and expose their greed.
+      - They answered it in print and carried the House with them
+      - No writer among them could answer it, and they gave way
+      - They bought up every copy before it could be read
+      - They petitioned the governor to suppress the pamphlet
     correctIndex: 1
-    explanationZh: 富兰克林在 Junto 讨论中已站在增发纸币一边，坚信它能促进贸易与就业，于是写下并印行“The Nature and Necessity of a Paper Currency”以声援民众呼声。这不是为赢奖或攀附赞助人。
+    explanationZh: 小册子在平头百姓中很受欢迎，有钱人却不喜欢——它把要钱的呼声推得更高，"and they happening to have no writers among them that were able to answer it, their opposition slackened, and the point was carried by a majority in the House"。
   - id: bf-ch-08-q2
-    stem: What happened to Keimer's and David Harry's printing businesses in Philadelphia?
+    stem: What became of Keimer's and David Harry's businesses?
     options:
-      - Both merged with Franklin's shop to form a large partnership.
-      - Both relocated to New York and became thriving printers there.
-      - Both were bought out by Bradford and absorbed into the post office.
-      - Both eventually failed, and they both departed for Barbados.
-    correctIndex: 3
-    explanationZh: 凯默被迫卖掉印刷所还债后去了巴巴多斯，戴维·哈里步他后尘，生意衰败后带着设备也去了巴巴多斯。两人最终都没能在费城立足。他们并没有与富兰克林合并或迁往纽约。
+      - Both were bought out by Bradford and put under the post office
+      - Both moved up to New York and prospered as printers there
+      - Both failed, and both ended by going out to Barbados
+      - Both came into Franklin's house as journeymen
+    correctIndex: 2
+    explanationZh: Keimer 的信用和生意一天天塌下去，最后只得卖掉印刷所抵债，去了巴巴多斯，穷困地过了几年。他的学徒 David Harry 买下家什在费城顶了他的位子，却讲排场、欠债、丢下生意，末了也带着整间印刷所追去巴巴多斯——在那里，这位学徒雇了从前的师傅做帮工。
   - id: bf-ch-08-q3
-    stem: What did Franklin do when he later held the post-office position that Bradford had denied him?
+    stem: What did Franklin do when he later held Bradford's post-office place?
     options:
-      - He made sure never to forbid riders from carrying other printers' papers.
-      - He raised the postal rates for all rival printers in the colony.
-      - He refused to deliver any newspapers unless they were his own.
-      - He secretly sold the office to Keimer for a quick profit.
+      - He never forbade the riders to carry a rival's papers
+      - He raised the postage on every other printer in the province
+      - He refused to carry any newspaper but his own
+      - He sold the office on quietly for what he could get
     correctIndex: 0
-    explanationZh: 富兰克林记恨布拉德福禁止邮差替他送报，等自己“came into his situation”后，反而特意“never to imitate it”。他并没有提高邮费或卖掉职务。
+    explanationZh: Bradford 掌着邮局，不许邮差替他捎报，他只好偷偷贿赂骑手，为此一直记着这笔账——"I thought so meanly of him for it, that, when I afterward came into his situation, I took care never to imitate it."。
   - id: bf-ch-08-q4
-    stem: On what terms could subscribers borrow books from the new library?
+    stem: On what terms did the new library lend to its subscribers?
     options:
-      - They paid a small fee in cash for each book they borrowed.
-      - They could take out only one book in each season.
-      - They signed a note to pay double the book's value if not returned.
-      - They left another book of equal value behind as a pledge.
-    correctIndex: 2
-    explanationZh: 图书馆每周开放一天供订户借书，借书时须立下字据，承诺若不按期归还便赔偿双倍书价——“on their promissory notes to pay double the value if not duly returned”。按册收费、限借一册、以书作押均非文中的规定。
+      - A small sum in cash was paid down for every volume taken out
+      - Only one book might be taken out in a season
+      - Another book of like value had to be left as a pledge
+      - A note was signed to pay double the value if not returned
+    correctIndex: 3
+    explanationZh: 图书馆每周开放一天供订户借阅，"on their promissory notes to pay double the value if not duly returned"。头一批只凑到五十人，多半是年轻手艺人，各交四十先令入股，此后每年再交十先令。
   - id: bf-ch-08-q5
-    stem: What does Franklin say about his wife's purchase of a silver spoon and China bowl?
+    stem: What did the silver spoon and China bowl mean in Franklin's house?
     options:
-      - It caused a serious quarrel that nearly ended their marriage.
-      - It was a gift from a wealthy neighbor who admired Franklin's work.
-      - It marked the first appearance of plate and China in their house.
-      - It was immediately sold to pay off the remaining debt on the printing house.
-    correctIndex: 2
-    explanationZh: 妻子花二十三先令偷偷买了银勺和瓷碗，富兰克林虽惊讶，但这也标志着家中“plate and China”的开端。随着年岁渐富，这类器物后来增值到数百英镑。它没有引发婚姻危机，也非邻居所赠。
+      - It set off a quarrel that nearly broke the marriage
+      - It was the first plate and China ever in their house
+      - A rich neighbour had sent it as a compliment to his work
+      - It was sold again at once to pay down the printing debt
+    correctIndex: 1
+    explanationZh: 他早饭一向是面包泡牛奶，用二便士的陶碗和白镴匙子；某天端上来的却是瓷碗银匙。妻子瞒着他买的，花了二十三先令，理由是自家丈夫也配用。"This was the first appearance of plate and China in our house"——往后家境渐好，这类器物涨到了几百镑。
   - id: bf-ch-08-q6
-    stem: Which of the following did Franklin consider an essential of every religion?
+    stem: Which did Franklin count among the essentials of every religion?
     options:
-      - That the most acceptable service of God is doing good to man.
-      - That the eternal decrees of God must be accepted without question.
-      - That public worship on the Sabbath is required for salvation.
-      - That paying due respect to God's ministers is the highest virtue.
-    correctIndex: 0
-    explanationZh: 富兰克林列举了信仰核心：上帝存在与眷顾、灵魂不朽、善恶各有报应，以及“the most acceptable service of God was the doing good to man”。永恒预定论对他而言不可理解，守安息日和尊敬牧师只是长老会教义的五点，非他所认为的要旨。
+      - That God's eternal decrees must be taken without any question
+      - That keeping the Sabbath holy is required for salvation
+      - That the service of God most acceptable is doing good to man
+      - That due respect to God's ministers is the highest virtue
+    correctIndex: 2
+    explanationZh: 他列出自己认定的信仰要旨——上帝存在、造世并以天意治理，"that the most acceptable service of God was the doing good to man"，灵魂不朽，善恶终有报。永恒预定、拣选与弃绝在他看来不可解；守安息日、敬牧师之类，则是那位牧师从经文里讲出来的五条。

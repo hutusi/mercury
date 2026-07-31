@@ -2,8 +2,8 @@
 id: bf-ch-12
 bookId: book-franklin
 title: Defense of the Province
-titleZh: 省防务
-summaryZh: 富兰克林回顾了他推动民兵自卫、创建民团与修建炮台的经历，并讲述了教友派因反战原则在公共事务中陷入的种种尴尬。他还提到了自己发明富兰克林炉并拒绝申请专利的往事。
+titleZh: 保卫本省
+summaryZh: 在宾夕法尼亚安顿下来之后，有两件事一直让他不安——这个省既没有民兵，也没有一所学院。西班牙和英国已经打了几年，法国随后加进来，危险一天天逼近，而议会里占多数的教友派始终不肯通过民兵法。
 sections:
   - id: bf-ch-12-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       When the company separated, and the papers were collected, we found above twelve hundred hands; and, other copies being dispersed in the country, the subscribers amounted at length to upward of ten thousand. These all furnished themselves as soon as they could with arms, formed themselves into companies and regiments, chose their own officers, and met every week to be instructed in the manual exercise, and other parts of military discipline. The women, by subscriptions among themselves, provided silk colours, which they presented to the companies, painted with different devices and mottos, which I supplied.
     checkIn:
       id: bf-ch-12-s1-c1
-      stem: What did Franklin do to promote a voluntary defense association?
+      stem: What did Franklin do once the militia law had failed?
       options:
-        - He petitioned the Quaker Assembly to pass a militia law.
-        - He asked the Reverend Mr. Peters to superintend a new academy.
-        - He established a Philosophical Society for public debate.
-        - He wrote and published the “Plain Truth” pamphlet.
-      correctIndex: 3
-      explanationZh: 富兰克林认为议会无法通过民兵法，于是亲自撰写并出版了名为“Plain Truth”的小册子，陈述无防备的危险并号召联合自卫。请求议会通过民兵法是总督托马斯长期未能成功之事，与富兰克林的做法不同。
+        - He wrote and published a pamphlet entitled Plain Truth
+        - He petitioned the Assembly a second time for a militia law
+        - He set up a Philosophical Society to debate it
+        - He asked the Reverend Mr. Peters to head the association
+      correctIndex: 0
+      explanationZh: 总督托马斯几番催促教友派议会立法都没有结果，他便另找路子——"I first wrote and published a pamphlet, entitled 'Plain Truth,' in which I stated our defenceless situation in strong lights, with the necessity of union and discipline for our defense"。册子一出，反响之快出乎他意料，签名的最后超过一万人。
   - id: bf-ch-12-s2
     text: |-
       The officers of the companies composing the Philadelphia regiment, being met, chose me for their colonel; but, conceiving myself unfit, I declined that station, and recommended Mr. Lawrence, a fine person, and man of influence, who was accordingly appointed. I then proposed a lottery to defray the expense of building a battery below the town, and furnishing it with cannon. It filled expeditiously, and the battery was soon erected, the merlons being framed of logs and filled with earth. We bought some old cannon from Boston, but, these not being sufficient, we wrote to England for more, soliciting, at the same time, our proprietaries for some assistance, though without much expectation of obtaining it.
@@ -31,14 +31,14 @@ sections:
       My activity in these operations was agreeable to the governor and council; they took me into confidence, and I was consulted by them in every measure wherein their concurrence was thought useful to the association. Calling in the aid of religion, I proposed to them the proclaiming a fast, to promote reformation, and implore the blessing of Heaven on our undertaking. They embraced the motion; but, as it was the first fast ever thought of in the province, the secretary had no precedent from which to draw the proclamation. My education in New England, where a fast is proclaimed every year, was here of some advantage: I drew it in the accustomed style, it was translated into German, printed in both languages, and divulged through the province. This gave the clergy of the different sects an opportunity of influencing their congregations to join in the association, and it would probably have been general among all but Quakers if the peace had not soon intervened.
     checkIn:
       id: bf-ch-12-s2-c1
-      stem: How did Governor Clinton eventually come to lend eighteen cannon to the delegation?
+      stem: How did Governor Clinton come round to lending eighteen cannon?
       options:
-        - He was gradually softened by heavy drinking at dinner.
-        - He was persuaded by the proprietaries' written request.
-        - He was impressed by the delegation's military discipline.
-        - He wanted to form a defensive alliance with Pennsylvania.
-      correctIndex: 0
-      explanationZh: 克林顿总督起初断然拒绝，但在晚宴上随着大量马德拉酒的劝饮，他逐渐让步，从六门加到十门，最终慷慨答应借出十八门炮。这一细节出自原文“great drinking of Madeira wine”及其后的“a few more bumpers”。
+        - The proprietaries wrote to press him on their behalf
+        - The Madeira went round, and he rose from six to eighteen
+        - He was won over by the associators' drill and discipline
+        - He hoped for a defensive league with Pennsylvania
+      correctIndex: 1
+      explanationZh: 他起初一口回绝，可 "at dinner with his council, where there was great drinking of Madeira wine, as the custom of that place then was, he softened by degrees, and said he would lend us six. After a few more bumpers he advanced to ten; and at length he very good-naturedly conceded eighteen."。
   - id: bf-ch-12-s3
     text: |-
       It was thought by some of my friends that, by my activity in these affairs, I should offend that sect, and thereby lose my interest in the Assembly of the province, where they formed a great majority. A young gentleman who had likewise some friends in the House, and wished to succeed me as their clerk, acquainted me that it was decided to displace me at the next election; and he, therefore, in good will, advised me to resign, as more consistent with my honour than being turned out. My answer to him was, that I had read or heard of some public man who made it a rule never to ask for an office, and never to refuse one when offered to him. “I approve,” says I, “of his rule, and will practice it with a small addition; I shall never ask, never refuse, nor ever resign an office. If they will have my office of clerk to dispose of to another, they shall take it from me. I will not, by giving it up, lose my right of some time or other making reprisals on my adversaries.” I heard, however, no more of this; I was chosen again unanimously as usual at the next election. Possibly, as they disliked my late intimacy with the members of council, who had joined the governors in all the disputes about military preparations, with which the House had long been harassed, they might have been pleased if I would voluntarily have left them; but they did not care to displace me on account merely of my zeal for the association, and they could not well give another reason.
@@ -48,14 +48,14 @@ sections:
       A transaction in our fire company gave me some insight into their prevailing sentiments. It had been proposed that we should encourage the scheme for building a battery by laying out the present stock, then about sixty pounds, in tickets of the lottery. By our rules, no money could be disposed of till the next meeting after the proposal. The company consisted of thirty members, of which twenty-two were Quakers, and eight only of other persuasions. We eight punctually attended the meeting; but, though we thought that some of the Quakers would join us, we were by no means sure of a majority. Only one Quaker, Mr. James Morris, appeared to oppose the measure. He expressed much sorrow that it had ever been proposed, as he said Friends were all against it, and it would create such discord as might break up the company. We told him that we saw no reason for that; we were the minority, and if Friends were against the measure, and outvoted us, we must and should, agreeably to the usage of all societies, submit. When the hour for business arrived it was moved to put the vote; he allowed we might then do it by the rules, but, as he could assure us that a number of members intended to be present for the purpose of opposing it, it would be but candid to allow a little time for their appearing.
     checkIn:
       id: bf-ch-12-s3-c1
-      stem: What did Franklin tell the young gentleman who advised him to resign the clerkship?
+      stem: What did Franklin answer the man who advised him to resign?
       options:
-        - He would resign immediately to preserve his honour.
-        - He would challenge his adversaries in a public debate.
-        - He would never ask for, refuse, or resign an office.
-        - He would seek the support of the council members first.
+        - That he would give it up at once to keep his honour
+        - That he would take the question to a public debate
+        - That he would never ask, never refuse, and never resign
+        - That he would first go to the council for their backing
       correctIndex: 2
-      explanationZh: 富兰克林回复说，他赞同那位公共人物的准则——既不主动求官，也不拒绝任命，并加了一条：绝不主动辞职；若对方想要他的职位，就必须自己来夺走。这体现了他不愿以退让来放弃反击权利的态度。
+      explanationZh: 他说自己赞成某位公职人物的规矩，还要再添一条——"I shall never ask, never refuse, nor ever resign an office. If they will have my office of clerk to dispose of to another, they shall take it from me."。不肯自己让出来，是为了不放弃日后回敬对手的余地。
   - id: bf-ch-12-s4
     text: |-
       While we were disputing this, a waiter came to tell me two gentlemen below desired to speak with me. I went down, and found they were two of our Quaker members. They told me there were eight of them assembled at a tavern just by; that they were determined to come and vote with us if there should be occasion, which they hoped would not be the case, and desired we would not call for their assistance if we could do without it, as their voting for such a measure might embroil them with their elders and friends. Being thus secure of a majority, I went up, and after a little seeming hesitation, agreed to a delay of another hour. This Mr. Morris allowed to be extremely fair. Not one of his opposing friends appeared, at which he expressed great surprise; and, at the expiration of the hour, we carried the resolution eight to one; and as, of the twenty-two Quakers, eight were ready to vote with us, and thirteen, by their absence, manifested that they were not inclined to oppose the measure, I afterward estimated the proportion of Quakers sincerely against defense as one to twenty-one only; for these were all regular members of that society, and in good reputation among them, and had due notice of what was proposed at that meeting.
@@ -63,14 +63,14 @@ sections:
       The honorable and learned Mr. Logan, who had always been of that sect, was one who wrote an address to them, declaring his approbation of defensive war, and supporting his opinion by many strong arguments. He put into my hands sixty pounds to be laid out in lottery tickets for the battery, with directions to apply what prizes might be drawn wholly to that service. He told me the following anecdote of his old master, William Penn, respecting defense. He came over from England, when a young man, with that proprietary, and as his secretary. It was wartime, and their ship was chased by an armed vessel, supposed to be an enemy. Their captain prepared for defense; but told William Penn, and his company of Quakers, that he did not expect their assistance, and they might retire into the cabin, which they did, except James Logan, who chose to stay upon deck, and was quartered to a gun. The supposed enemy proved a friend, so there was no fighting; but when the secretary went down to communicate the intelligence, William Penn rebuked him severely for staying upon deck, and undertaking to assist in defending the vessel, contrary to the principles of Friends, especially as it had not been required by the captain. This reproof, being before all the company, piqued the secretary, who answered, “I being thy servant, why did thee not order me to come down? But thee was willing enough that I should stay and help to fight the ship when thee thought there was danger.”
     checkIn:
       id: bf-ch-12-s4-c1
-      stem: What did the eight Quaker members at the tavern ask of Franklin?
+      stem: What did the eight Quakers at the tavern ask of Franklin?
       options:
-        - They asked him to delay the vote until the next morning.
-        - They asked him not to call them in unless votes were needed.
-        - They asked him to present the lottery proposal to the elders.
-        - They asked him to guarantee their names would remain public.
-      correctIndex: 1
-      explanationZh: 八位教友派成员在附近酒馆集合，表示如有必要会来投赞成票，但恳请富兰克林在不需要他们时别叫他们，因为公开支持此类措施会让他们与长老及朋友产生矛盾。
+        - Not to call them in unless their votes were really wanted
+        - To put the vote off until the next morning's meeting
+        - To lay the lottery proposal before the elders first
+        - To keep their names on the record so all could see
+      correctIndex: 0
+      explanationZh: 楼下来的两位说，另有八人聚在近旁的酒馆，必要时会来投赞成票，但 "desired we would not call for their assistance if we could do without it, as their voting for such a measure might embroil them with their elders and friends"。心里有了底，富兰克林才装作犹豫，又宽限了一个钟头。
   - id: bf-ch-12-s5
     text: |-
       My being many years in the Assembly, the majority of which were constantly Quakers, gave me frequent opportunities of seeing the embarrassment given them by their principle against war, whenever application was made to them, by order of the crown, to grant aids for military purposes. They were unwilling to offend government, on the one hand, by a direct refusal; and their friends, the body of the Quakers, on the other, by compliance contrary to their principles; hence a variety of evasions to avoid complying, and modes of disguising the compliance when it became unavoidable. The common mode at last was, to grant money under the phrase of its being “for the king’s use,” and never to inquire how it was applied.
@@ -80,14 +80,14 @@ sections:
       It was in allusion to this fact that, when in our fire company we feared the success of our proposal in favour of the lottery, and I had said to my friend Mr. Syng, one of our members, “If we fail, let us move the purchase of a fire-engine with the money; the Quakers can have no objection to that; and then, if you nominate me and I you as a committee for that purpose, we will buy a great gun, which is certainly a fire-engine.” “I see,” says he, “you have improved by being so long in the Assembly; your equivocal project would be just a match for their wheat or other grain.”
     checkIn:
       id: bf-ch-12-s5-c1
-      stem: What appropriation did the Quaker Assembly make when New England requested powder?
+      stem: What did the Assembly vote when New England asked for powder?
       options:
-        - They voted three thousand pounds “for the king's use” without conditions.
-        - They granted three thousand pounds explicitly for buying gunpowder.
-        - They refused to grant any money and redirected it to fire engines.
-        - They voted three thousand pounds for bread, flour, or other grain.
-      correctIndex: 3
-      explanationZh: 议会不能直接拨款买火药，因为那是战争物资，于是投票拨款三千镑交由总督用于购买面包、面粉、小麦或其他谷物。总督心领神会，说“other grain is gunpowder”，便用这笔钱买了火药。
+        - Three thousand pounds voted for the king's use, with no questions
+        - Three thousand pounds for bread, flour, wheat, or other grain
+        - Three thousand pounds named outright for buying gunpowder
+        - Nothing at all, the money going to fire-engines instead
+      correctIndex: 1
+      explanationZh: 火药算战争物资，他们不能直接拨钱去买，于是 "they voted an aid to New England of three thousand pounds, to be put into the hands of the governor, and appropriated it for the purchasing of bread, flour, wheat, or other grain"。总督心领神会，只说了一句 "other grain is gunpowder"，照买不误，议会也没吭声。
   - id: bf-ch-12-s6
     text: |-
       These embarrassments that the Quakers suffered from having established and published it as one of their principles that no kind of war was lawful, and which, being once published, they could not afterwards, however they might change their minds, easily get rid of, reminds me of what I think a more prudent conduct in another sect among us, that of the Dunkers. I was acquainted with one of its founders, Michael Welfare, soon after it appeared. He complained to me that they were grievously calumniated by the zealots of other persuasions, and charged with abominable principles and practices to which they were utter strangers. I told him this had always been the case with new sects, and that, to put a stop to such abuse, I imagined it might be well to publish the articles of their belief, and the rules of their discipline. He said that it had been proposed among them, but not agreed to, for this reason: “When we were first drawn together as a society,” says he, “it had pleased God to enlighten our minds so far as to see that some doctrines, which we once esteemed truths, were errors; and that others, which we had esteemed errors, were real truths. From time to time He has been pleased to afford us farther light, and our principles have been improving, and our errors diminishing. Now we are not sure that we are arrived at the end of this progression, and at the perfection of spiritual or theological knowledge; and we fear that, if we should once print our confession of faith, we should feel ourselves as if bound and confined by it, and perhaps be unwilling to receive further improvement, and our successors still more so, as conceiving what we their elders and founders had done, to be something sacred, never to be departed from.”
@@ -95,14 +95,14 @@ sections:
       This modesty in a sect is perhaps a singular instance in the history of mankind, every other sect supposing itself in possession of all truth, and that those who differ are so far in the wrong; like a man traveling in foggy weather, those at some distance before him on the road he sees wrapped up in the fog, as well as those behind him, and also the people in the fields on each side, but near him all appears clear, though in truth he is as much in the fog as any of them. To avoid this kind of embarrassment, the Quakers have of late years been gradually declining the public service in the Assembly and in the magistracy, choosing rather to quit their power than their principle.
     checkIn:
       id: bf-ch-12-s6-c1
-      stem: Why did the Dunkers decide not to publish their confession of faith?
+      stem: Why would the Dunkers not print their confession of faith?
       options:
-        - They were afraid it would be copied by other sects for profit.
-        - They believed the government would soon outlaw their doctrines.
-        - They feared it would bind them and hinder further improvement.
-        - They had already published their rules in a separate pamphlet.
+        - They feared other sects would copy it and profit by it
+        - They expected the government to outlaw their doctrines soon
+        - They feared a printed creed would bind them against new light
+        - They had already put their rules out in a separate pamphlet
       correctIndex: 2
-      explanationZh: 迈克尔·韦尔法尔解释说，他们的教义仍在不断改进、错误仍在减少，他们担心一旦印行信条便会被束缚住，不愿再接受新的启示，后继者更会把先辈的做法视为神圣不可更改之物。
+      explanationZh: Michael Welfare 说他们的见解还在往前走，错处还在减少，"we are not sure that we are arrived at the end of this progression"；一旦印出来，"we should feel ourselves as if bound and confined by it"，后人更会把先辈定下的东西当成不可更改的圣物。富兰克林说，这份谦逊在教派史上大概是独一份。
   - id: bf-ch-12-s7
     text: |-
       In order of time, I should have mentioned before, that having, in 1742, invented an open stove for the better warming of rooms, and at the same time saving fuel, as the fresh air admitted was warmed in entering, I made a present of the model to Mr. Robert Grace, one of my early friends, who, having an iron-furnace, found the casting of the plates for these stoves a profitable thing, as they were growing in demand. To promote that demand, I wrote and published a pamphlet, entitled “An Account of the new-invented Pennsylvania Fireplaces; wherein their Construction and Manner of Operation is particularly explained; their Advantages above every other Method of warming Rooms demonstrated; and all Objections that have been raised against the Use of them answered and obviated,” etc. This pamphlet had a good effect. Governor Thomas was so pleased with the construction of this stove, as described in it, that he offered to give me a patent for the sole vending of them for a term of years; but I declined it from a principle which has ever weighed with me on such occasions, viz., That, as we enjoy great advantages from the inventions of others, we should be glad of an opportunity to serve others by any invention of ours; and this we should do freely and generously.
@@ -110,66 +110,66 @@ sections:
       An ironmonger in London however, assuming a good deal of my pamphlet, and working it up into his own, and making some small changes in the machine, which rather hurt its operation, got a patent for it there, and made, as I was told, a little fortune by it. And this is not the only instance of patents taken out for my inventions by others, though not always with the same success, which I never contested, as having no desire of profiting by patents myself, and hating disputes. The use of these fireplaces in very many houses, both of this and the neighbouring colonies, has been, and is, a great saving of wood to the inhabitants.
     checkIn:
       id: bf-ch-12-s7-c1
-      stem: Why did Franklin decline Governor Thomas's offer of a patent for the stove?
+      stem: Why did Franklin turn down the patent Governor Thomas offered?
       options:
-        - He believed inventors should serve others freely and generously.
-        - He had already sold the design to an ironmonger in London.
-        - He thought the stove's design was too flawed to patent.
-        - He wanted the proprietaries to hold the patent instead.
-      correctIndex: 0
-      explanationZh: 富兰克林拒绝专利，因为他一贯认为：既然我们享受了他人发明带来的便利，就应当乐于用自己的发明无偿服务他人，而且是慷慨无偿地去做。出售设计、设计有缺陷、让领主持有专利均非他给出的理由。
+        - He had already sold the design on to a London ironmonger
+        - He judged the stove still too faulty to be worth a patent
+        - He wished the proprietaries to hold the patent in his place
+        - He held that our own inventions should serve others freely
+      correctIndex: 3
+      explanationZh: 他拒绝的理由一以贯之——"That, as we enjoy great advantages from the inventions of others, we should be glad of an opportunity to serve others by any invention of ours; and this we should do freely and generously."。炉子的模型他早已送给了老朋友 Robert Grace。
 quiz:
   - id: bf-ch-12-q1
-    stem: What reason did the Reverend Mr. Peters give for declining to superintend Franklin's proposed academy?
+    stem: Why did the Reverend Mr. Peters decline the academy?
     options:
-      - He believed the academy should be located in another colony.
-      - He lacked the qualifications to manage such an institution.
-      - He was already committed to running a Philosophical Society.
-      - He had more profitable views in the service of the proprietaries.
+      - He held the academy should stand in another colony
+      - He said he had no gift for managing such a place
+      - He was already bound to the new Philosophical Society here
+      - He had more profitable views in the proprietaries' service
     correctIndex: 3
-    explanationZh: 彼特斯牧师拒绝是因为他在领主事务中有更丰厚的利益前景，而且后来确实如愿以偿。富兰克林当时找不到其他合适人选，计划便搁置了。哲学学会是次年在另一个项目中才建立的。
+    explanationZh: 1743 年他起草了办学的方案，本想请正闲着的 Peters 牧师主持，可对方 "having more profitable views in the service of the proprietaries, which succeeded, declined the undertaking"。一时找不出别的合适人选，这件事就先搁下了。
   - id: bf-ch-12-q2
-    stem: Who was chosen as colonel of the Philadelphia regiment after Franklin declined the position?
+    stem: Who was made colonel of the Philadelphia regiment?
     options:
-      - William Allen, a wealthy merchant and council member.
-      - Abram Taylor, an experienced military officer from Boston.
-      - Mr. Lawrence, a fine person and man of influence.
-      - Governor Clinton, who had recently lent cannon to the associators.
+      - William Allen, a rich merchant sitting on the council
+      - Abram Taylor, an old officer out of Boston
+      - Mr. Lawrence, a fine person and man of influence
+      - Governor Clinton, who had lent them the cannon
     correctIndex: 2
-    explanationZh: 富兰克林认为自己不适合担任上校，便推荐了劳伦斯先生，后者仪表堂堂且有影响力，于是被任命。威廉·艾伦和亚伯拉罕·泰勒后来一起去纽约借炮，但没有担任上校。
+    explanationZh: 各连的军官推举富兰克林当上校，他 "conceiving myself unfit, I declined that station, and recommended Mr. Lawrence, a fine person, and man of influence, who was accordingly appointed"。艾伦和泰勒是后来同他一起去纽约借炮的人。
   - id: bf-ch-12-q3
-    stem: How did Franklin justify proposing a fast to the governor and council?
+    stem: On what ground did Franklin propose a public fast?
     options:
-      - He wanted to give the clergy a chance to oppose the association.
-      - He wanted to promote reformation and implore Heaven's blessing.
-      - He wanted to test whether the Quakers would defy the proclamation.
-      - He wanted to discourage the German settlers from joining the militia.
+      - To give the clergy an opening to speak against it
+      - To promote reformation and implore Heaven's blessing
+      - To see whether the Quakers would defy a proclamation
+      - To keep the German settlers out of the militia companies
     correctIndex: 1
-    explanationZh: 富兰克林提出守斋是为了借宗教之力促进悔改并祈求上苍保佑他们的事业。由于本省从未有过此类先例，秘书不知如何起草文告，富兰克林凭新英格兰的经验亲自撰写。
+    explanationZh: 他 "proposed to them the proclaiming a fast, to promote reformation, and implore the blessing of Heaven on our undertaking"。省里从没办过斋戒，秘书无例可循；他靠在新英格兰长大的经验照旧式写成，译作德文，两种文字印发全省——各教派的牧师因此有了劝信众加入自卫联合的由头。
   - id: bf-ch-12-q4
-    stem: What anecdote did James Logan recount about William Penn and an armed vessel?
+    stem: What did James Logan tell of William Penn and the armed vessel?
     options:
-      - Penn rebuked Logan for staying on deck to help defend the ship.
-      - Penn ordered Logan to take command of a gun during the attack.
-      - Penn praised Logan for his bravery when the enemy approached.
-      - Penn refused to let the captain prepare the ship for defense.
+      - Penn rebuked Logan for staying on deck to help fight
+      - Penn ordered Logan to take charge of one of the guns
+      - Penn praised Logan's courage when the sail was sighted
+      - Penn would not let the captain clear the ship for action
     correctIndex: 0
-    explanationZh: 罗根讲述道，当疑似敌船追赶时，船长准备防御并让教友派人士退入船舱。罗根留在甲板上并被分配到一门炮。敌船最终证实为友船，但事后威廉·潘当众严厉斥责他违反教友派原则、擅自参与防御。
+    explanationZh: 船被一艘武装船追上，船长备战，请教友派的客人退进舱去，只有 Logan 留在甲板并被派到一门炮旁。虚惊一场之后，"William Penn rebuked him severely for staying upon deck"。Logan 当众回了一句——既是仆人，你为何不叫我下去？看着有险的时候，你倒乐意我留下来帮着打。
   - id: bf-ch-12-q5
-    stem: What was Franklin's fallback plan if the lottery proposal failed in the fire company?
+    stem: What was Franklin's fallback if the lottery motion failed?
     options:
-      - To move the purchase of a fire-engine and then buy a great gun.
-      - To redirect the funds to the king's use and let the governor decide.
-      - To donate the money to the Quaker elders for distribution.
-      - To buy wheat and other grain for the garrison at Louisburg.
-    correctIndex: 0
-    explanationZh: 富兰克林对辛格先生说，若彩票提案通不过，就提议用这笔钱买一台“灭火机”，再由两人组成委员会去买一门大炮——大炮当然也是一种“灭火机”。辛格笑称这正是教友派“小麦或其他谷物”那套 equivocal project 的翻版。
-  - id: bf-ch-12-q6
-    stem: What happened to Franklin's stove design after he declined the patent?
-    options:
-      - The design was never used outside of Pennsylvania.
-      - Governor Thomas patented it and donated the profits to Franklin.
-      - A London ironmonger copied it and made a small fortune.
-      - Robert Grace sold the design to a competitor in Boston.
+      - To send the money to the king's use and let the governor lay it out
+      - To hand the stock over to the Quaker elders to dispose of
+      - To move for a fire-engine, and then buy a great gun with it
+      - To buy wheat and other grain for the garrison at Louisburg
     correctIndex: 2
-    explanationZh: 一位伦敦铁商借用富兰克林小册子中的内容，略作改动并取得专利，虽改动反而影响了效果，却据说赚了一笔小财。富兰克林对此并未提出异议，因为他本人不愿靠专利牟利，也讨厌争讼。
+    explanationZh: 他对 Syng 说，万一提案通不过，就改提用这笔钱买一台 fire-engine——教友派总不好反对；然后两人互相提名组成采办委员会，"we will buy a great gun, which is certainly a fire-engine"。Syng 笑他在议会待久了，这套含糊其辞的本事，正配得上那句小麦或其他谷物。
+  - id: bf-ch-12-q6
+    stem: What became of the stove design after Franklin refused the patent?
+    options:
+      - Governor Thomas patented it and gave Franklin the profits
+      - Robert Grace sold the design on to a rival house in Boston
+      - The stove never came into use outside of Pennsylvania
+      - A London ironmonger patented it there and made a fortune
+    correctIndex: 3
+    explanationZh: 那人 "assuming a good deal of my pamphlet, and working it up into his own, and making some small changes in the machine, which rather hurt its operation, got a patent for it there, and made, as I was told, a little fortune by it"。富兰克林没去争——他既不想靠专利赚钱，也讨厌打官司。

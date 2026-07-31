@@ -3,7 +3,7 @@ id: bf-ch-15
 bookId: book-franklin
 title: Quarrels with the Proprietary Governors
 titleZh: 与业主总督的争执
-summaryZh: 本章讲述富兰克林与总督Morris之间因议会争端而起的冲突，以及他在防务拨款陷入僵局时想出的变通之法。
+summaryZh: 那一年去波士顿的路上，他在纽约碰见了刚从英格兰到任的新总督莫里斯——两人本是旧识。前任汉密尔顿被业主的训令折腾得辞了职，莫里斯便问他：自己这一任是不是也得这么难过。
 sections:
   - id: bf-ch-15-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       One afternoon, in the height of this public quarrel, we met in the street. “Franklin,” says he, “you must go home with me and spend the evening; I am to have some company that you will like;” and, taking me by the arm, he led me to his house. In gay conversation over our wine, after supper, he told us, jokingly, that he much admired the idea of Sancho Panza, who, when it was proposed to give him a government, requested it might be a government of blacks, as then, if he could not agree with his people, he might sell them. One of his friends, who sat next to me, says, “Franklin, why do you continue to side with these damned Quakers? Had not you better sell them? The proprietor would give you a good price.” “The governor,” says I, “has not yet blacked them enough.” He, indeed, had laboured hard to blacken the Assembly in all his messages, but they wiped off his colouring as fast as he laid it on, and placed it, in return, thick upon his own face; so that, finding he was likely to be negrofied himself, he, as well as Mr. Hamilton, grew tired of the contest, and quitted the government.
     checkIn:
       id: bf-ch-15-s1-c1
-      stem: What did Governor Morris admit was one of his greatest pleasures?
+      stem: What did Franklin advise the new governor at New York?
       options:
-        - He loved hosting large dinner parties.
-        - He loved a good dispute above all things.
-        - He loved hunting on his country estate.
-        - He loved attending plays at the theatre.
-      correctIndex: 1
-      explanationZh: Morris亲口对富兰克林说"you know I love disputing; it is one of my greatest pleasures"。他从小被父亲训练在餐桌旁与兄弟辩论，因此养成争辩的嗜好。其余选项都与原文无关。
+        - To take care never to fall into a dispute with the Assembly
+        - To keep his proprietary instructions to himself for a while
+        - To hand the government straight back to Mr. Hamilton
+        - To settle in Philadelphia before meeting the House
+      correctIndex: 0
+      explanationZh: 他的答话是 "No; you may, on the contrary, have a very comfortable one, if you will only take care not to enter into any dispute with the Assembly."。莫里斯笑说自己最爱的正是争辩，不过看在这份劝告的面子上，答应尽量避着点。
   - id: bf-ch-15-s2
     text: |-
       These public quarrels were all at bottom owing to the proprietaries, our hereditary governors, who, when any expense was to be incurred for the defense of their province, with incredible meanness instructed their deputies to pass no act for levying the necessary taxes, unless their vast estates were in the same act expressly excused; and they had even taken bonds of these deputies to observe such instructions. The Assemblies for three years held out against this injustice, though constrained to bend at last. At length Captain Denny, who was Governor Morris’s successor, ventured to disobey those instructions; how that was brought about I shall show hereafter.
@@ -33,66 +33,66 @@ sections:
       I then suggested a method of doing the business without the governor, by orders on the trustees of the Loan office, which, by law, the Assembly had the right of drawing. There was, indeed, little or no money at that time in the office, and therefore I proposed that the orders should be payable in a year, and to bear an interest of five percent. With these orders I supposed the provisions might easily be purchased. The Assembly, with very little hesitation, adopted the proposal. The orders were immediately printed, and I was one of the committee directed to sign and dispose of them. The fund for paying them was the interest of all the paper currency then extant in the province upon loan, together with the revenue arising from the excise, which being known to be more than sufficient, they obtained instant credit, and were not only received in payment for the provisions, but many monied people, who had cash lying by them, vested it in those orders, which they found advantageous, as they bore interest while upon hand, and might on any occasion be used as money; so that they were eagerly all bought up, and in a few weeks none of them were to be seen. Thus this important affair was by my means completed. Mr. Quincy returned thanks to the Assembly in a handsome memorial, went home highly pleased with this success of his embassy, and ever after bore for me the most cordial and affectionate friendship.
     checkIn:
       id: bf-ch-15-s2-c1
-      stem: Why did the governor refuse to assent to the Assembly's bill that included aid for New England?
+      stem: Why would the governor not sign the bill carrying aid to New England?
       options:
-        - The bill proposed giving too much money to New York.
-        - The bill lacked the king's formal approval.
-        - The bill did not exempt the proprietary estate from taxation.
-        - The bill tried to impose new trade duties.
-      correctIndex: 2
-      explanationZh: 议会通过的拨款法案本可援助新英格兰，但总督依据proprietaries的指示，坚持必须加入豁免其地产纳税的条款才肯签署。文中说"unless a clause were inserted exempting the proprietary estate"，所以问题不在金额或国王批准，而在豁免条款。
+        - The grant to New York was thought far too large
+        - The bill had never had the king's formal approval
+        - It laid new duties on trade the proprietaries objected to
+        - It did not exempt the proprietary estate from the tax
+      correctIndex: 3
+      explanationZh: 议会已投票拨一万镑买粮相助，可总督不肯点头，"unless a clause were inserted exempting the proprietary estate from bearing any part of the tax that would be necessary"。Quincy 苦劝了半天，他咬定不放。
 quiz:
   - id: bf-ch-15-q1
-    stem: Why did Governor Morris's love of disputing prove to be a disadvantage in his administration?
+    stem: What did Franklin think the disputing habit cost a man?
     options:
-      - It made him unpopular with the king's ministers in England.
-      - It caused his own family to turn against him.
-      - It forced him to resign from the governorship immediately.
-      - It kept him from gaining goodwill, which mattered more.
-    correctIndex: 3
-    explanationZh: 富兰克林认为争辩者即使获胜也"never get good will, which would be of more use to them"。Morris与议会持续冲突，最终像前任Hamilton一样厌倦离职。文中并没提到国王大臣或家庭失和是直接原因。
+      - It turned the king's ministers in England against him
+      - Victory came now and then, but never any good will
+      - It made his own family take sides against him
+      - It forced him out of the government within the year
+    correctIndex: 1
+    explanationZh: 他的评语是，这类好辩、好驳、好折服人的人 "are generally unfortunate in their affairs. They get victory sometimes, but they never get good will, which would be of more use to them."。莫里斯这套本事，是他父亲当年在饭桌上让几个孩子对辩着玩练出来的。
   - id: bf-ch-15-q2
-    stem: What did Franklin observe when he returned to his seat in the Assembly after meeting Morris?
+    stem: What did the Assembly's votes show Franklin on his way back?
     options:
-      - Morris had already prepared to dissolve the Assembly.
-      - Morris had already secured a new charter from England.
-      - Morris and the House were already in high contention.
-      - Morris had already signed the tax bill into law.
+      - Morris had got a new charter out of England
+      - Morris had already signed the tax bill into law
+      - Morris and the House were already hard at it
+      - Morris was preparing to dissolve the Assembly
     correctIndex: 2
-    explanationZh: 富兰克林在纽约遇到Morris时，Morris承诺会尽量避免争执。但富兰克林回程看到议会投票记录，发现"he and the House were already in high contention"。签署税法、获得新特许状都与原文不符。
+    explanationZh: 尽管有过那句承诺，他在回程路上看到表决记录，"it appeared that, notwithstanding his promise to me, he and the House were already in high contention"。此后只要莫里斯当政，两边就没停过。
   - id: bf-ch-15-q3
-    stem: How did the personal relationship between Franklin and Morris survive their public quarrel?
+    stem: How did the two men's private friendship come through the quarrel?
     options:
-      - They agreed never to discuss politics in person.
-      - No personal difference arose, thanks to Morris's good nature.
-      - They resolved their differences through written letters.
-      - They reconciled only after Morris left office.
+      - They agreed to keep politics out of their talk
+      - Morris's good nature kept it from turning personal
+      - They patched it up by letter after the worst of it
+      - They only made peace once Morris had left office
     correctIndex: 1
-    explanationZh: 虽然两人公开立场对立、文书中时有侮辱性言辞，但富兰克林说"he was so good-natured a man that no personal difference between him and me was occasioned by the contest"，他们还常一起吃饭。回避政治、写信和解、离职后才和好都与原文不符。
+    explanationZh: 富兰克林替议会起草答复，措辞时而尖刻、时而近乎难听，莫里斯也知道出自谁手；可 "he was so good-natured a man that no personal difference between him and me was occasioned by the contest, and we often dined together"。
   - id: bf-ch-15-q4
-    stem: What witty comparison did Morris make at supper about governing difficult people?
+    stem: What joke did Morris make at supper about governing?
     options:
-      - He compared the Assembly to a crew of mutinous sailors.
-      - He compared the Quakers to a flock of stubborn geese.
-      - He compared the proprietaries to greedy landlords.
-      - He admired Sancho Panza's wish for a government he could sell.
-    correctIndex: 3
-    explanationZh: Morris在晚宴上开玩笑说他欣赏Sancho Panza的主意：如果管不好百姓，至少可以把他们卖掉（"he might sell them"）。由此引出邻座调侃富兰克林为何不把Quakers卖给业主。其余选项的比喻在原文中并不存在。
+      - He likened the Assembly to a crew of mutinous sailors
+      - He likened the proprietaries to a pack of greedy landlords
+      - He admired Sancho Panza's wish for subjects he could sell
+      - He likened the Quakers to a flock of very stubborn geese
+    correctIndex: 2
+    explanationZh: 他打趣说自己很欣赏桑丘·潘沙的主意——要当总督就当一处能把百姓卖掉的地方的总督，万一合不来还有条退路。邻座顺势逗富兰克林，问他何不也把那帮教友派卖给业主。富兰克林答了一句 "The governor has not yet blacked them enough."。
   - id: bf-ch-15-q5
-    stem: How did Franklin circumvent the governor's refusal to sign the funding bill?
+    stem: How did Franklin get round the governor's refusal?
     options:
-      - He proposed interest-bearing orders drawn on the Loan office trustees.
-      - He proposed borrowing money directly from the proprietaries at no interest.
-      - He proposed collecting a special voluntary contribution from Quakers.
-      - He proposed issuing new paper currency backed by land.
+      - Interest-bearing orders drawn on the Loan office trustees
+      - A loan from the proprietaries themselves, free of interest
+      - A voluntary collection raised among the Quaker families
+      - A fresh issue of paper currency secured upon land
     correctIndex: 0
-    explanationZh: 既然总督不肯签署，富兰克林建议议会利用法律已有的权力，向Loan office受托人开出一年期、年息百分之五的票据来采购物资，成功筹款。向业主借款、Quaker自愿捐款、发行土地货币都不是原文所说的方案。
+    explanationZh: 他提议绕开总督，动用议会依法本就有的权力，向 Loan office 的受托人开票据。账上几乎没钱，所以票据定为一年后兑付、年息五厘。有全省流通纸币的利息和消费税作底，信用立刻就有了——不但买到了粮食，手里有闲钱的人还抢着买，几周之内一张也见不着。
   - id: bf-ch-15-q6
-    stem: What was the root cause of the continual quarrels between the governors and the Assembly?
+    stem: What lay at the bottom of all these quarrels?
     options:
-      - The proprietaries insisted that all taxes be collected in gold and silver only.
-      - The proprietaries barred their deputies from taxing the proprietary estates.
-      - The proprietaries demanded that the Assembly surrender its power to coin money.
-      - The proprietaries refused to allow any military action without the king's consent.
-    correctIndex: 1
-    explanationZh: 富兰克林明确指出"These public quarrels were all at bottom owing to the proprietaries"：每当需要为省防开支征税，业主便指示总督不得通过任何未明文豁免其地产的税收法案，甚至要求总督出具守约保证金。货币金属、铸币权或国王军事同意均非原文所述的根因。
+      - They wanted every tax collected in gold and silver only
+      - They demanded the Assembly give up the right to coin money
+      - They would allow no military action without the king's leave
+      - They forbade their deputies to tax the proprietary estates
+    correctIndex: 3
+    explanationZh: 他把根子挑得很明白——"These public quarrels were all at bottom owing to the proprietaries"：每逢要为省防花钱，他们就 "instructed their deputies to pass no act for levying the necessary taxes, unless their vast estates were in the same act expressly excused"，还要总督出具保证金。议会顶了三年，最后还是不得不弯腰。

@@ -3,7 +3,7 @@ id: bf-ch-14
 bookId: book-franklin
 title: Albany Plan of Union
 titleZh: 阿尔巴尼联盟计划
-summaryZh: 英法战争阴云再起，富兰克林赴阿尔巴尼参加会议，与各殖民地代表商讨防务，并趁机提出了一份殖民地联合方案。方案虽在大会上获得一致通过，却在大西洋两岸遭遇了意想不到的命运。
+summaryZh: 1754 年，法国那边的战云又起，各殖民地的专员奉命到阿尔巴尼去与六族的酋长议事。而在赴会的路上，富兰克林已经把一份要把所有殖民地联到一起的方案画了出来。
 sections:
   - id: bf-ch-14-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       By this plan the general government was to be administered by a president-general, appointed and supported by the crown, and a grand council was to be chosen by the representatives of the people of the several colonies, met in their respective assemblies. The debates upon it in Congress went on daily, hand in hand with the Indian business. Many objections and difficulties were started, but at length they were all overcome, and the plan was unanimously agreed to, and copies ordered to be transmitted to the Board of Trade and to the assemblies of the several provinces. Its fate was singular; the assemblies did not adopt it, as they all thought there was too much prerogative in it, and in England it was judged to have too much of the democratic. The Board of Trade therefore did not approve of it, nor recommend it for the approbation of his majesty; but another scheme was formed, supposed to answer the same purpose better, whereby the governors of the provinces, with some members of their respective councils, were to meet and order the raising of troops, building of forts, etc., and to draw on the treasury of Great Britain for the expense, which was afterwards to be refunded by an act of Parliament laying a tax on America. My plan, with my reasons in support of it, is to be found among my political papers that are printed.
     checkIn:
       id: bf-ch-14-s1-c1
-      stem: Why did Franklin's plan fail to gain final approval?
+      stem: Why did the plan come to nothing in the end?
       options:
-        - The assemblies found too much prerogative in it, and England too much democracy.
-        - The Board of Trade rejected it because it allocated no role to Parliament in taxing America.
-        - The colonial assemblies refused it because it excluded their own elected representatives.
-        - The crown rejected it because it allowed the colonies to appoint their own president-general.
+        - The assemblies thought it too royal, and England too popular
+        - The Board of Trade wanted Parliament to hold the taxing power
+        - The assemblies were left no elected representatives under it
+        - The crown would not let the colonies name their own president
       correctIndex: 0
-      explanationZh: 原文明确说各殖民地议会认为方案中 "too much prerogative"（王室特权太多），而英国方面则认为 "too much of the democratic"（民主成分太多），因此双方都不满意。说议会没有税收角色的选项与原文相反——后来替代方案才是不经殖民地同意直接由议会征税。
+      explanationZh: 这份方案的下场很特别——"the assemblies did not adopt it, as they all thought there was too much prerogative in it, and in England it was judged to have too much of the democratic"。两头都不满意，贸易委员会因此没有上呈国王，另拟了一套由总督们出面征兵筑堡、事后再由议会立法向美洲征税补账的办法。
   - id: bf-ch-14-s2
     text: |-
       Being the winter following in Boston, I had much conversation with Governor Shirley upon both the plans. Part of what passed between us on the occasion may also be seen among those papers. The different and contrary reasons of dislike to my plan makes me suspect that it was really the true medium; and I am still of opinion it would have been happy for both sides the water if it had been adopted. The colonies, so united, would have been sufficiently strong to have defended themselves; there would then have been no need of troops from England; of course, the subsequent pretence for taxing America, and the bloody contest it occasioned, would have been avoided. But such mistakes are not new; history is full of the errors of states and princes.
@@ -33,57 +33,57 @@ sections:
       The Governor of Pennsylvania, in sending it down to the Assembly, expressed his approbation of the plan, “as appearing to him to be drawn up with great clearness and strength of judgment, and therefore recommended it as well worthy of their closest and most serious attention.” The House, however, by the management of a certain member, took it up when I happened to be absent, which I thought not very fair, and reprobated it without paying any attention to it at all, to my no small mortification.
     checkIn:
       id: bf-ch-14-s2-c1
-      stem: What does Franklin conclude is the usual reason the best public measures get adopted?
+      stem: How does Franklin say the best public measures usually come to be adopted?
       options:
-        - They are carefully considered and carried out by those in power.
-        - They are recommended by governors before the assemblies vote.
-        - They are debated daily until objections are overcome.
-        - They are forced by the occasion rather than chosen from foresight.
+        - They are thought out and carried through by those in power
+        - They are recommended by governors before the assemblies vote
+        - They are hammered out in daily debate until nothing is left
+        - They are forced by the occasion, not chosen out of foresight
       correctIndex: 3
-      explanationZh: 原文写道 "The best public measures are therefore seldom adopted from previous wisdom, but forced by the occasion"，即最好的政策很少源于事先的明智，而是被形势所迫。说掌权者会仔细考虑并执行新计划的选项，恰恰与富兰克林 "do not generally like to take the trouble" 的判断相反。
+      explanationZh: 他说当政的人手上事情多，一般不愿再费力气去琢磨和推行新东西，所以 "The best public measures are therefore seldom adopted from previous wisdom, but forced by the occasion."。
 quiz:
   - id: bf-ch-14-q1
-    stem: What occasion brought colonial commissioners together at Albany in 1754?
+    stem: What brought the commissioners together at Albany in 1754?
     options:
-      - A feared renewal of war with France and a conference with the Six Nations.
-      - A dispute between Pennsylvania and New York over western trade routes.
-      - A request from the Board of Trade to draft a new tax on the colonies.
-      - An invitation from Governor Shirley to discuss uniting the militias.
-    correctIndex: 0
-    explanationZh: 原文开头说 "war with France being again apprehended"，专员们受命到 Albany 与 Six Nations 的酋长们商议防御。说宾夕法尼亚与纽约贸易争端的选项在本章并未提及。
-  - id: bf-ch-14-q2
-    stem: What happened to Franklin's plan after it was unanimously agreed to by the Congress?
-    options:
-      - It was approved by the king and put into effect the following winter.
-      - Copies went to the Board of Trade and the assemblies, but neither adopted it.
-      - It was revised to give governors more power and then accepted by every assembly.
-      - It was replaced immediately by a plan that Franklin himself had drafted in Boston.
+      - A quarrel between Pennsylvania and New York over the fur trade
+      - A feared new war with France, and a conference with the Six Nations
+      - An order from the Board of Trade to frame a tax on the colonies
+      - An invitation from Governor Shirley to join up the militias
     correctIndex: 1
-    explanationZh: 大会通过后，副本被送往 Board of Trade 和各殖民地议会，但两边都不满意：议会嫌王室特权太多，英国嫌民主太多。说国王批准实施的选项与原文 "did not approve of it, nor recommend it for the approbation of his majesty" 矛盾。
+    explanationZh: 那一年 "war with France being again apprehended"，贸易委员会下令各殖民地派专员到 Albany，"there to confer with the chiefs of the Six Nations concerning the means of defending both their country and ours"。宾州这边是议长 Norris、富兰克林，外加 Thomas Penn 和秘书 Peters。
+  - id: bf-ch-14-q2
+    stem: What became of the plan after the Congress agreed to it?
+    options:
+      - The king approved it and it took effect that same winter
+      - Copies went to both sides, and neither would have it
+      - It was revised to give the governors more power and passed
+      - It gave way at once to a plan Franklin drew up in Boston
+    correctIndex: 1
+    explanationZh: 大会一致通过之后，"copies ordered to be transmitted to the Board of Trade and to the assemblies of the several provinces"，可两边都摇头。贸易委员会既不批准，也没有向国王推荐。
   - id: bf-ch-14-q3
-    stem: Under Franklin's plan, how were the president-general and the grand council respectively to be chosen?
+    stem: Under the plan, who was to name the president-general and the grand council?
     options:
-      - The colonial assemblies appointed both the president-general and the grand council.
-      - The crown appointed both the president-general and the grand council.
-      - The crown named the president-general; the assemblies chose the grand council.
-      - The grand council was appointed by the crown, and the president-general was elected by the people.
+      - The assemblies were to name both officer and council
+      - The crown was to name both officer and council alike
+      - The crown named the president; the assemblies chose the council
+      - The crown named the council, and the people elected the president
     correctIndex: 2
-    explanationZh: 原文说 "president-general, appointed and supported by the crown"，而 "grand council was to be chosen by the representatives of the people"，即一个由国王任命、一个由殖民地代表选出。说两者都由王室或都由议会任命的选项都混淆了两者的来源。
+    explanationZh: 按这份方案，总统由王室任命并供养——"a president-general, appointed and supported by the crown"——大议会则 "to be chosen by the representatives of the people of the several colonies, met in their respective assemblies"。
   - id: bf-ch-14-q4
-    stem: What did Franklin believe would have been avoided had his union plan been adopted?
+    stem: What did Franklin think union would have spared both sides?
     options:
-      - A costly war between Pennsylvania and the neighboring colonies over western lands.
-      - A constitutional crisis over the appointment of the speaker of the Assembly.
-      - The redistribution of presents intended for the Six Nations among rival factions.
-      - The need for British troops in America and the subsequent pretext for taxing the colonies.
-    correctIndex: 3
-    explanationZh: 富兰克林认为殖民地联合后足以自卫，"there would then have been no need of troops from England"，也就不会有后来的征税借口及由此引发的 "bloody contest"。说殖民地之间因西部土地开战的选项在本章中并无依据。
-  - id: bf-ch-14-q5
-    stem: How did the Pennsylvania House respond when the governor sent Franklin's plan down for consideration?
-    options:
-      - It condemned the plan without discussion while Franklin was away.
-      - It praised the plan's clear reasoning but postponed a final vote indefinitely.
-      - It referred the plan to a special committee that never reported back.
-      - It approved the plan with minor amendments and forwarded it to the Board of Trade.
+      - The need for British troops, and the pretext for taxing America
+      - A war between Pennsylvania and its neighbours over western land
+      - A crisis over who should be speaker of the Assembly
+      - A quarrel over how the Indians' presents were shared out
     correctIndex: 0
-    explanationZh: 原文说一位议员在富兰克林不在时推动众议院讨论，结果众议院 "reprobated it without paying any attention to it at all"，令富兰克林十分难堪。说众议院称赞方案但推迟表决的选项，把总督的评语与议会的实际行为混为一谈了。
+    explanationZh: 他说这样联合起来的殖民地 "would have been sufficiently strong to have defended themselves; there would then have been no need of troops from England; of course, the subsequent pretence for taxing America, and the bloody contest it occasioned, would have been avoided"。
+  - id: bf-ch-14-q5
+    stem: How did the Pennsylvania House deal with the plan?
+    options:
+      - It praised the reasoning but put off the vote for good
+      - It sent the plan to a committee that never reported back
+      - It passed the plan with small changes and sent it on
+      - It threw the plan out unread while Franklin was away
+    correctIndex: 3
+    explanationZh: 总督送下去时是称赞过的，说它 "drawn up with great clearness and strength of judgment"；可众议院 "by the management of a certain member, took it up when I happened to be absent"，连看都没细看就否掉了——富兰克林说这让他很难堪。

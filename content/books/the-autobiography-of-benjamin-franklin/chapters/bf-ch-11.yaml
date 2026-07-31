@@ -3,7 +3,7 @@ id: bf-ch-11
 bookId: book-franklin
 title: Interest in Public Affairs
 titleZh: 对公共事务的兴趣
-summaryZh: 富兰克林开始关注城市治安与消防等公共事务，并参与推动相关制度改革。本章还记述了他与巡回布道士怀特菲尔德的交往、对其演说才能的观察，以及他在印刷生意上不断扩展合伙事业的过程。
+summaryZh: 他开始把心思往公共事务上挪，起手却挑了件小事——夜里巡街的更夫。当时由各区治安官轮值，会叫上一批住户跟着走夜路；不愿去的，一年交六先令了事。
 sections:
   - id: bf-ch-11-s1
     text: |-
@@ -14,14 +14,14 @@ sections:
       About this time I wrote a paper (first to be read in Junto, but it was afterward published) on the different accidents and carelessnesses by which houses were set on fire, with cautions against them, and means proposed of avoiding them. This was much spoken of as a useful piece, and gave rise to a project, which soon followed it, of forming a company for the more ready extinguishing of fires, and mutual assistance in removing and securing of goods when in danger. Associates in this scheme were presently found, amounting to thirty. Our articles of agreement obliged every member to keep always in good order, and fit for use, a certain number of leather buckets, with strong bags and baskets (for packing and transporting of goods), which were to be brought to every fire; and we agreed to meet once a month and spend a social evening together, in discoursing and communicating such ideas as occurred to us upon the subjects of fires, as might be useful in our conduct on such occasions.
     checkIn:
       id: bf-ch-11-s1-c1
-      stem: What did Franklin propose as a more equitable way to fund the city watch?
+      stem: How did Franklin propose the watch be paid for?
       options:
-        - Levying a tax proportioned to each person's property.
-        - Charging a flat six-shilling fee to all housekeepers.
-        - Hiring substitutes from among the ragamuffins.
-        - Asking the wealthiest merchants to pay all costs.
-      correctIndex: 0
-      explanationZh: 富兰克林在 Junto 宣读的论文中指出，原有的六先令人头税对穷寡妇和富商一视同仁，极为不公；他建议改为按财产比例征税（"levying a tax that should be proportioned to the property"）。"flat six-shilling fee" 正是他要废除的旧制，其余两项均非他提出的方案。
+        - A flat six-shilling fee charged to every housekeeper
+        - A tax proportioned to the property each man had to guard
+        - Letting the constables keep hiring their own substitutes
+        - Making the richest merchants bear the whole charge
+      correctIndex: 1
+      explanationZh: 他在 Junto 宣读的那篇文章里算过一笔账：一个家产不过五十镑的穷寡妇，和货栈里堆着几千镑货的富商，交的是同样的六先令。因此他主张雇专人常守，费用则靠 "levying a tax that should be proportioned to the property"。
   - id: bf-ch-11-s2
     text: |-
       The utility of this institution soon appeared, and many more desiring to be admitted than we thought convenient for one company, they were advised to form another, which was accordingly done; and this went on, one new company being formed after another, till they became so numerous as to include most of the inhabitants who were men of property; and now, at the time of my writing this, though upward of fifty years since its establishment, that which I first formed, called the Union Fire Company, still subsists and flourishes, though the first members are all deceased but myself and one, who is older by a year than I am. The small fines that have been paid by members for absence at the monthly meetings have been applied to the purchase of fire-engines, ladders, fire-hooks, and other useful implements for each company, so that I question whether there is a city in the world better provided with the means of putting a stop to beginning conflagrations; and, in fact, since these institutions, the city has never lost by fire more than one or two houses at a time, and the flames have often been extinguished before the house in which they began has been half consumed.
@@ -31,14 +31,14 @@ sections:
       And it being found inconvenient to assemble in the open air, subject to its inclemencies, the building of a house to meet in was no sooner proposed, and persons appointed to receive contributions, but sufficient sums were soon received to procure the ground and erect the building, which was one hundred feet long and seventy broad, about the size of Westminster Hall; and the work was carried on with such spirit as to be finished in a much shorter time than could have been expected. Both house and ground were vested in trustees, expressly for the use of any preacher of any religious persuasion who might desire to say something to the people at Philadelphia; the design in building not being to accommodate any particular sect, but the inhabitants in general; so that even if the Mufti of Constantinople were to send a missionary to preach Mohammedanism to us, he would find a pulpit at his service.
     checkIn:
       id: bf-ch-11-s2-c1
-      stem: What did the fire company use the small fines for absent members to purchase?
+      stem: What went the small fines for missing the monthly meetings?
       options:
-        - New leather buckets and strong carrying bags for every single member.
-        - Fire-engines, ladders, fire-hooks, and other useful implements.
-        - Additional land for building a new meeting house.
-        - Compensation for families who lost homes to fire.
-      correctIndex: 1
-      explanationZh: 文中明确说缺席罚款被用来购置消防设备（"fire-engines, ladders, fire-hooks, and other useful implements"）。皮桶和麻袋是入会时每人自备的器具，不是用罚款购买的；土地与补偿款在本节均未提及。
+        - Fire-engines, ladders, fire-hooks, and other implements
+        - Leather buckets and strong bags for each new member
+        - More ground for putting up a larger meeting house
+        - Relief for the families whose houses had been burnt
+      correctIndex: 0
+      explanationZh: 月会缺席要罚一点小钱，这些钱 "have been applied to the purchase of fire-engines, ladders, fire-hooks, and other useful implements for each company"。皮桶、结实的麻袋和篮子，则是入会时各人自备、随时要能上手的家什。
   - id: bf-ch-11-s3
     text: |-
       Mr. Whitefield, in leaving us, went preaching all the way through the colonies to Georgia. The settlement of that province had lately been begun, but, instead of being made with hardy, industrious husbandmen, accustomed to labour, the only people fit for such an enterprise, it was with families of broken shopkeepers and other insolvent debtors, many of indolent and idle habits, taken out of the jails, who, being set down in the woods, unqualified for clearing land, and unable to endure the hardships of a new settlement, perished in numbers, leaving many helpless children unprovided for. The sight of their miserable situation inspired the benevolent heart of Mr. Whitefield with the idea of building an Orphan House there, in which they might be supported and educated. Returning northward, he preached up this charity, and made large collections, for his eloquence had a wonderful power over the hearts and purses of his hearers, of which I myself was an instance.
@@ -46,14 +46,14 @@ sections:
       I did not disapprove of the design, but, as Georgia was then destitute of materials and workmen, and it was proposed to send them from Philadelphia at a great expense, I thought it would have been better to have built the house here, and brought the children to it. This I advised; but he was resolute in his first project, rejected my counsel, and I therefore refused to contribute. I happened soon after to attend one of his sermons, in the course of which I perceived he intended to finish with a collection, and I silently resolved he should get nothing from me. I had in my pocket a handful of copper money, three or four silver dollars, and five pistoles in gold. As he proceeded I began to soften, and concluded to give the coppers. Another stroke of his oratory made me ashamed of that, and determined me to give the silver; and he finished so admirably, that I emptied my pocket wholly into the collector’s dish, gold and all. At this sermon there was also one of our club, who, being of my sentiments respecting the building in Georgia, and suspecting a collection might be intended, had, by precaution, emptied his pockets before he came from home. Towards the conclusion of the discourse, however, he felt a strong desire to give, and applied to a neighbour who stood near him, to borrow some money for the purpose. The application was unfortunately [made] to perhaps the only man in the company who had the firmness not to be affected by the preacher. His answer was, “At any other time, Friend Hopkinson, I would lend to thee freely; but not now, for thee seems to be out of thy right senses.”
     checkIn:
       id: bf-ch-11-s3-c1
-      stem: What happened when Franklin attended one of Whitefield's sermons intending not to donate?
+      stem: How did Franklin's resolve hold up at the collection?
       options:
-        - He kept his money but persuaded a friend to donate instead.
-        - He gave only the copper coins and kept the gold.
-        - He left early to avoid the collection entirely.
-        - He was so moved that he emptied his pocket of all his money.
+        - He gave the coppers and kept the silver and the gold
+        - He slipped out before the collection came round to him
+        - He lent money to a neighbour who wanted to give
+        - He emptied his whole pocket into the dish, gold and all
       correctIndex: 3
-      explanationZh: 富兰克林原计划一文不给，但怀特菲尔德的布道层层推进，让他从只想给铜板，到给银币，最终把口袋里的金币也全倒进了募捐盘（"emptied my pocket wholly into the collector's dish, gold and all"）。他并未只给铜板，也未曾提前离场；向邻居借钱的是另一位朋友 Hopkinson。
+      explanationZh: 他本已打定主意一文不给，可 "As he proceeded I began to soften, and concluded to give the coppers. Another stroke of his oratory made me ashamed of that, and determined me to give the silver; and he finished so admirably, that I emptied my pocket wholly into the collector's dish, gold and all."。向邻座借钱的是同一个俱乐部的 Hopkinson——他出门前特意把口袋掏空了。
   - id: bf-ch-11-s4
     text: |-
       Some of Mr. Whitefield’s enemies affected to suppose that he would apply these collections to his own private emolument; but I, who was intimately acquainted with him (being employed in printing his sermons and journals, etc.), never had the least suspicion of his integrity, but am to this day decidedly of opinion that he was in all his conduct a perfectly honest man; and methinks my testimony in his favour ought to have the more weight, as we had no religious connection. He used, indeed, sometimes to pray for my conversion, but never had the satisfaction of believing that his prayers were heard. Ours was a mere civil friendship, sincere on both sides, and lasted to his death.
@@ -65,14 +65,14 @@ sections:
       He had a loud and clear voice, and articulated his words and sentences so perfectly, that he might be heard and understood at a great distance, especially as his auditories, however numerous, observed the most exact silence. He preached one evening from the top of the Courthouse steps, which are in the middle of Market-street, and on the west side of Second-street, which crosses it at right angles. Both streets were filled with his hearers to a considerable distance. Being among the hindmost in Market-street, I had the curiosity to learn how far he could be heard, by retiring backwards down the street towards the river; and I found his voice distinct till I came near Front-street, when some noise in that street obscured it. Imagining then a semicircle, of which my distance should be the radius, and that it were filled with auditors, to each of whom I allowed two square feet, I computed that he might well be heard by more than thirty thousand. This reconciled me to the newspaper accounts of his having preached to twenty-five thousand people in the fields, and to the ancient histories of generals haranguing whole armies, of which I had sometimes doubted.
     checkIn:
       id: bf-ch-11-s4-c1
-      stem: How did Franklin estimate the number of people who could hear Whitefield preach from the Courthouse steps?
+      stem: How did Franklin work out how many could hear Whitefield?
       options:
-        - He counted the crowd in Market Street by walking through it.
-        - He compared the audience size to the population of Boston.
-        - He measured how far the voice carried and computed a semicircle.
-        - He relied on newspaper reports of field sermons.
-      correctIndex: 2
-      explanationZh: 富兰克林从人群后方朝河边退去，测出声音清晰可闻的最远距离到 Front Street 附近，再以该距离为半径想象一个半圆形听众区，按每人两平方英尺估算出逾三万人。他并非逐个数人，也未照搬报纸数字，更没有拿波士顿人口做类比。
+        - He walked through Market-street counting heads as he went
+        - He measured how far the voice carried and reckoned a semicircle
+        - He took the figure straight from the newspaper accounts
+        - He set it against what he knew of the population of Boston
+      correctIndex: 1
+      explanationZh: 他站在人群最后，一路往河边退，直到 Front-street 附近才被别的声响盖过；随后 "Imagining then a semicircle, of which my distance should be the radius, and that it were filled with auditors, to each of whom I allowed two square feet, I computed that he might well be heard by more than thirty thousand"。这个数字让他不再疑心报上说的两万五千人，也不再疑心古书里将军对全军训话的记载。
   - id: bf-ch-11-s5
     text: |-
       By hearing him often, I came to distinguish easily between sermons newly composed, and those which he had often preached in the course of his travels. His delivery of the latter was so improved by frequent repetitions that every accent, every emphasis, every modulation of voice, was so perfectly well turned and well placed, that, without being interested in the subject, one could not help being pleased with the discourse; a pleasure of much the same kind with that received from an excellent piece of music. This is an advantage itinerant preachers have over those who are stationary, as the latter cannot well improve their delivery of a sermon by so many rehearsals.
@@ -84,66 +84,66 @@ sections:
       The partnership at Carolina having succeeded, I was encouraged to engage in others, and to promote several of my workmen, who had behaved well, by establishing them with printing-houses in different colonies, on the same terms with that in Carolina. Most of them did well, being enabled at the end of our term, six years, to purchase the types of me and go on working for themselves, by which means several families were raised. Partnerships often finish in quarrels; but I was happy in this, that mine were all carried on and ended amicably, owing, I think, a good deal to the precaution of having very explicitly settled, in our articles, everything to be done by or expected from each partner, so that there was nothing to dispute, which precaution I would therefore recommend to all who enter into partnerships; for, whatever esteem partners may have for, and confidence in each other at the time of the contract, little jealousies and disgusts may arise, with ideas of inequality in the care and burden of the business, etc., which are attended often with breach of friendship and of the connection, perhaps with lawsuits and other disagreeable consequences.
     checkIn:
       id: bf-ch-11-s5-c1
-      stem: Why did Franklin believe Whitefield's writings ultimately harmed his reputation?
+      stem: Why did Franklin think Whitefield's writing cost him in the end?
       options:
-        - His journals revealed that he spent donations on himself.
-        - His sermons in print were too long to attract new followers.
-        - Critics could attack his fixed words and diminish his following.
-        - His published opinions contradicted those of his mentors.
+        - His journals showed he had spent the collections on himself alone
+        - His printed sermons ran too long for anyone to read through
+        - Critics could fasten on fixed words and thin out his following
+        - His published views ran against those of his own teachers
       correctIndex: 2
-      explanationZh: 富兰克林指出口头讲道若有不当尚可解释或否认，但白纸黑字无法收回（"litera scripta manet"），评论家们借此大加攻击，削弱了信众数量。富兰克林明确表示从不怀疑怀特菲尔德的诚实，贪占捐款、文章冗长、与导师意见相左均无文本依据。
+      explanationZh: 讲道里失口的话事后还能解释、还能否认，可 litera scripta manet——白纸黑字留在那里。"Critics attacked his writings violently, and with so much appearance of reason as to diminish the number of his votaries and prevent their increase"。富兰克林说，他若一个字都不写，身后留下的教派恐怕更大；至于人品，富兰克林一辈子没疑过他。
 quiz:
   - id: bf-ch-11-q1
-    stem: What was the main problem Franklin identified with the way the city watch was managed?
+    stem: What was wrong with the way the city watch was run?
     options:
-      - The constables profited from the tax and hired unsuitable watchmen.
-      - The watchmen were paid too little to stay sober on duty.
-      - The city had far too few constables to patrol all the wards.
-      - The wealthiest merchants refused to pay the six-shilling fee.
+      - The constables profited by the tax and hired ragamuffins
+      - There were far too few constables to go round all the wards
+      - The watchmen's pay was too small to keep them off the drink
+      - The richest merchants would not pay the six shillings at all
     correctIndex: 0
-    explanationZh: 富兰克林写道，六先令免役税远超雇人所需，成了治安官的牟利手段（"made the constableship a place of profit"），他们常以一点酒钱招来不三不四的人充当巡守。他并未说巡守因工资太低而酗酒，也未指责治安官人数不足或富商拒缴。
+    explanationZh: 那六先令远超雇一个替工所需，"made the constableship a place of profit"；治安官为了一点酒钱，常招来一伙 "such ragamuffins about him as a watch, that respectable housekeepers did not choose to mix with"，巡夜也常常荒废，整晚耗在喝酒上。
   - id: bf-ch-11-q2
-    stem: Why was the meeting house built for Whitefield's congregation open to any preacher?
+    stem: Why was the new meeting house open to any preacher at all?
     options:
-      - The trustees could not agree on which sect should control the building.
-      - Whitefield insisted that only itinerant preachers could use the pulpit.
-      - The colonial government required all religious buildings to be open.
-      - The trustees intended it for the general public, not any particular sect.
+      - The trustees could not settle which sect was to hold it
+      - Whitefield asked that only itinerant preachers use it
+      - The province required every place of worship to be open
+      - It was meant for the inhabitants at large, not one sect
     correctIndex: 3
-    explanationZh: 富兰克林说建堂初衷不是服务某个教派，而是全体居民（"not to accommodate any particular sect, but the inhabitants in general"），甚至穆夫提派来的传教士也可登坛。并非因意见不一或政府强制，怀特菲尔德也未限定只供巡回布道者使用。
+    explanationZh: 房子和地都交给受托人，"expressly for the use of any preacher of any religious persuasion who might desire to say something to the people at Philadelphia; the design in building not being to accommodate any particular sect, but the inhabitants in general"。文中甚至说，就算君士坦丁堡的大穆夫提派人来讲伊斯兰教，也有一座讲坛候着他。
   - id: bf-ch-11-q3
-    stem: Why did Franklin initially refuse to contribute to the Orphan House in Georgia?
+    stem: Why did Franklin at first refuse to give to the Orphan House?
     options:
-      - He believed Whitefield would misuse the funds for personal gain.
-      - He thought the orphans should be sent to existing charities in Ireland.
-      - He thought it better to build in Philadelphia and bring the children there.
-      - He disapproved of educating children in a religious institution.
-    correctIndex: 2
-    explanationZh: 富兰克林说因佐治亚缺乏材料和工人，要从费城运去费用巨大，他建议就在费城建院再把孩子接来；怀特菲尔德不听，他才拒捐。富兰克林始终信任怀特菲尔德的诚信，从未指责其挪用善款；爱尔兰与宗教教育均无关此议。
-  - id: bf-ch-11-q4
-    stem: How did Whitefield respond when Franklin offered him lodging for Christ's sake?
-    options:
-      - He declined to stay because the accommodations were too scanty.
-      - He accepted but insisted on paying rent for the room.
-      - He asked Franklin to find him a room in Germantown instead.
-      - He said Franklin would not miss of a reward for such an offer.
-    correctIndex: 3
-    explanationZh: 怀特菲尔德回信说若富兰克林是"for Christ's sake"而款待，则必得天赏；富兰克林随即打趣说这是为了"for your sake"。怀特菲尔德并未因房间简陋而拒绝，也未要求付房租或改去日耳曼镇。
-  - id: bf-ch-11-q5
-    stem: What advantage did Franklin attribute to itinerant preachers over stationary ones?
-    options:
-      - Frequent repetitions of a sermon improved their delivery markedly.
-      - They could reach far larger audiences by traveling between colonies.
-      - They were free to write and publish their own sermons more easily.
-      - They received more donations by preaching in multiple locations.
+      - He wanted it built at Philadelphia and the children brought over
+      - He suspected the money would go into Whitefield's own pocket
+      - He thought the orphans should go to the charities back in Ireland
+      - He objected to children being schooled by any religious body
     correctIndex: 0
-    explanationZh: 富兰克林说巡回布道者反复宣讲同一篇道，"every accent, every emphasis"都被打磨得恰到好处，如同好音乐般令人愉悦，这是固定牧师难以做到的。听众多寡、出版便利、捐款丰厚均非他在此处所谈之优势。
-  - id: bf-ch-11-q6
-    stem: What precaution did Franklin recommend to prevent partnership quarrels?
+    explanationZh: 佐治亚当时既没材料也没工匠，什么都要从费城运去，花费惊人；他因此劝对方 "it would have been better to have built the house here, and brought the children to it"。怀特菲尔德不肯改主意，他才决定不捐。至于善款的去向，富兰克林始终认定他是 "a perfectly honest man"。
+  - id: bf-ch-11-q4
+    stem: How did Whitefield answer the offer of a bed at Franklin's house?
     options:
-      - Limit each partnership to a strict term of six years or fewer.
-      - Settle every duty and expectation explicitly in the articles beforehand.
-      - Hire only workmen who have already behaved well for many years.
-      - Appoint a neutral third party to mediate any future disputes.
+      - He said the accommodations were too scanty for him
+      - He accepted, but insisted on paying rent for the room he had
+      - He asked to be found a room out at Germantown instead
+      - He said that for Christ's sake Franklin would have a reward
+    correctIndex: 3
+    explanationZh: 富兰克林写的是 "You know my house; if you can make shift with its scanty accommodations, you will be most heartily welcome."；对方回说，若这番好意是 for Christ's sake，那必不会落空。富兰克林随即更正——"Don't let me be mistaken; it was not for Christ's sake, but for your sake."。
+  - id: bf-ch-11-q5
+    stem: What advantage did Franklin allow the itinerant preacher?
+    options:
+      - They could reach far more people by moving between colonies
+      - Repeating a sermon often polished every accent and emphasis
+      - They found it easier to get their own sermons into print
+      - They took in larger collections by preaching in many places
     correctIndex: 1
-    explanationZh: 富兰克林说他的合伙之所以善始善终，很大程度上归功于在合同中把各自职责和期望一一写明（"very explicitly settled... everything"），从而无可争辩。六年是卡罗来纳合伙的具体期限，并非他给出的通用建议；良好品行和中立调解人也不是他此处推荐的做法。
+    explanationZh: 听得多了，他一耳就能分出哪些是新写的、哪些是路上讲过许多遍的。后者 "was so improved by frequent repetitions that every accent, every emphasis, every modulation of voice, was so perfectly well turned and well placed"，即便不关心内容也听着舒服，像听一支好曲子——这是坐堂的牧师练不出来的。
+  - id: bf-ch-11-q6
+    stem: What precaution did Franklin recommend to anyone entering a partnership?
+    options:
+      - Keep every partnership to a term of six years or under
+      - Take in only workmen who have behaved well for years
+      - Settle in the articles exactly what each partner is to do
+      - Name a neutral third man to judge any dispute that arises
+    correctIndex: 2
+    explanationZh: 他那几桩合伙都好聚好散，功劳大半在于 "having very explicitly settled, in our articles, everything to be done by or expected from each partner, so that there was nothing to dispute"。签约时再要好的两个人，日后也难免为谁出力多、谁担子重生出芥蒂。

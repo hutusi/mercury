@@ -3,7 +3,7 @@ id: bf-ch-04
 bookId: book-franklin
 title: First Visit to Boston
 titleZh: 初次波士顿之行
-summaryZh: 富兰克林回忆他受宾州总督基思爵士的赏识与鼓励，携信返回波士顿向父亲求助的经过。返乡期间他与兄长的关系依旧紧张，而同行返程的好友柯林斯更是麻烦缠身，带来一连串风波。基思爵士随即提出了一个更加雄心勃勃的新计划。
+summaryZh: 那封信送到纽卡斯尔时，省长基思爵士正和霍姆斯船长在一处。他读完信，听说写信人的年纪，露出一脸意外——从这一刻起，一位省长开始留意费城某家印刷所里的排字工。
 sections:
   - id: bf-ch-04-s1
     text: |-
@@ -12,14 +12,14 @@ sections:
       Keimer ran down immediately, thinking it a visit to him; but the governor inquired for me, came up, and with a condescension and politeness I had been quite unused to, made me many compliments, desired to be acquainted with me, blamed me kindly for not having made myself known to him when I first came to the place, and would have me away with him to the tavern, where he was going with Colonel French to taste, as he said, some excellent Madeira. I was not a little surprised, and Keimer stared like a pig poisoned. I went, however, with the governor and Colonel French to a tavern, at the corner of Third-street, and over the Madeira he proposed my setting up my business, laid before me the probabilities of success, and both he and Colonel French assured me I should have their interest and influence in procuring the public business of both governments. On my doubting whether my father would assist me in it, Sir William said he would give me a letter to him, in which he would state the advantages, and he did not doubt of prevailing with him. So it was concluded I should return to Boston in the first vessel, with the governor’s letter recommending me to my father. In the meantime the intention was to be kept a secret, and I went on working with Keimer as usual, the governor sending for me now and then to dine with him, a very great honour I thought it, and conversing with me in the most affable, familiar, and friendly manner imaginable.
     checkIn:
       id: bf-ch-04-s1-c1
-      stem: What did Governor Keith offer Franklin during their tavern meeting?
+      stem: What did Keith lay before Franklin over the Madeira?
       options:
-        - He offered Franklin a position in his own colonial administration.
-        - He proposed sending Franklin to London for formal schooling.
-        - He offered to buy out Keimer's printing house on Franklin's behalf.
-        - He promised to help him set up in business and get public work.
-      correctIndex: 3
-      explanationZh: 基思总督在酒馆里向富兰克林提议他在费城开设印刷所，并承诺利用自己的影响力为他争取政府公文业务。文中明确提到 "he proposed my setting up my business"，而关于行政职位、送伦敦求学或收购基默店铺的内容并未出现。
+        - To set him up in business and get him the public work
+        - A clerkship in the governor's own office at Newcastle
+        - To buy Keimer's shop and hand it over to Franklin
+        - A passage to London for a proper printer's training
+      correctIndex: 0
+      explanationZh: 在第三街拐角那家酒馆里，就着马德拉酒，"he proposed my setting up my business, laid before me the probabilities of success"，他和 French 上校都担保会替他弄到两省的公文生意。至于父亲肯不肯出钱，总督说他愿意亲自写信去说。
   - id: bf-ch-04-s2
     text: |-
       About the end of April, 1724, a little vessel offered for Boston. I took leave of Keimer as going to see my friends. The governor gave me an ample letter, saying many flattering things of me to my father, and strongly recommending the project of my setting up at Philadelphia as a thing that must make my fortune. We struck on a shoal in going down the bay, and sprung a leak; we had a blustering time at sea, and were obliged to pump almost continually, at which I took my turn. We arrived safe, however, at Boston in about a fortnight. I had been absent seven months, and my friends had heard nothing of me; for my brother Holmes was not yet returned, and had not written about me. My unexpected appearance surprised the family; all were, however, very glad to see me, and made me welcome, except my brother. I went to see him at his printing-house. I was better dressed than ever while in his service, having a genteel new suit from head to foot, a watch, and my pockets lined with near five pounds sterling in silver. He received me not very frankly, looked me all over, and turned to his work again.
@@ -29,14 +29,14 @@ sections:
       My father received the governor’s letter with some apparent surprise, but said little of it to me for some days, when Capt. Holmes returning he showed it to him, asked him if he knew Keith, and what kind of man he was; adding his opinion that he must be of small discretion to think of setting a boy up in business who wanted yet three years of being at man’s estate. Holmes said what he could in favour of the project, but my father was clear in the impropriety of it, and at last, gave a flat denial to it. Then he wrote a civil letter to Sir William, thanking him for the patronage he had so kindly offered me, but declining to assist me as yet in setting up, I being, in his opinion, too young to be trusted with the management of a business so important, and for which the preparation must be so expensive.
     checkIn:
       id: bf-ch-04-s2-c1
-      stem: How did Franklin's father respond to Governor Keith's letter?
+      stem: How did Josiah Franklin answer the governor's letter?
       options:
-        - He agreed to provide half the sum immediately and the rest later.
-        - He wrote back asking Keith to personally train Franklin for a year.
-        - He declined to assist, judging Franklin too young for such a business.
-        - He referred the decision to Captain Holmes for a final ruling.
+        - He agreed to advance half the money at once
+        - He asked Keith to take the boy under his own roof
+        - He gave a flat denial, thinking the boy too young
+        - He left the whole decision to Captain Holmes
       correctIndex: 2
-      explanationZh: 父亲读信后认为富兰克林距成年还差三年，太年轻而不能承担如此重要的业务，因此写信婉拒基思总督的资助提议。文中提到 "gave a flat denial to it"，说明是明确拒绝而非同意、拖延或转交他人裁决。
+      explanationZh: 他先问过 Holmes，再断定基思 "must be of small discretion to think of setting a boy up in business who wanted yet three years of being at man's estate"，最后 "gave a flat denial to it"，另写了一封客气的信谢过总督的抬举。
   - id: bf-ch-04-s3
     text: |-
       My friend and companion Collins, who was a clerk in the post-office, pleased with the account I gave him of my new country, determined to go thither also; and, while I waited for my father’s determination, he set out before me by land to Rhode Island, leaving his books, which were a pretty collection of mathematics and natural philosophy, to come with mine and me to New York, where he proposed to wait for me.
@@ -48,14 +48,14 @@ sections:
       At Newport we took in a number of passengers for New York, among which were two young women, companions, and a grave, sensible, matronlike Quaker woman, with her attendants. I had shown an obliging readiness to do her some little services, which impressed her I suppose with a degree of good will toward me; therefore, when she saw a daily growing familiarity between me and the two young women, which they appeared to encourage, she took me aside, and said, “Young man, I am concerned for thee, as thou hast no friend with thee, and seems not to know much of the world, or of the snares youth is exposed to; depend upon it, those are very bad women; I can see it in all their actions; and if thee art not upon thy guard, they will draw thee into some danger; they are strangers to thee, and I advise thee, in a friendly concern for thy welfare, to have no acquaintance with them.” As I seemed at first not to think so ill of them as she did, she mentioned some things she had observed and heard that had escaped my notice, but now convinced me she was right. I thanked her for her kind advice, and promised to follow it. When we arrived at New York, they told me where they lived, and invited me to come and see them; but I avoided it, and it was well I did; for the next day the captain missed a silver spoon and some other things, that had been taken out of his cabin, and, knowing that these were a couple of strumpets, he got a warrant to search their lodgings, found the stolen goods, and had the thieves punished. So, though we had escaped a sunken rock, which we scraped upon in the passage, I thought this escape of rather more importance to me.
     checkIn:
       id: bf-ch-04-s3-c1
-      stem: Why did the Quaker woman warn Franklin about the two young female passengers?
+      stem: What did the Quaker woman tell Franklin about the two young women?
       options:
-        - She suspected they were plotting to steal the captain's silver.
-        - She saw they were bad women who might draw him into danger.
-        - She thought they were spies sent by a rival printer.
-        - She believed they were trying to convert him to Quakerism.
+        - That the captain suspected them of theft already
+        - That they were bad women who would draw him into danger
+        - That they had been sent aboard to watch a rival printer
+        - That they meant to bring him over to the Quaker meeting
       correctIndex: 1
-      explanationZh: 那位贵格会妇人观察后认为这两名年轻女子品行不端，可能会让富兰克林陷入危险。事后船长丢失银匙、搜查她们住所证实了这一判断。窃取银匙是船长的发现而非她事前的猜测，后两项纯属无中生有。
+      explanationZh: 她把他叫到一边，说 "those are very bad women; I can see it in all their actions; and if thee art not upon thy guard, they will draw thee into some danger"，还举出几件他没留意的事。船长丢银匙、搜出赃物，是到纽约以后的事，正好印证了她的眼力。
   - id: bf-ch-04-s4
     text: |-
       At New York I found my friend Collins, who had arrived there some time before me. We had been intimate from children, and had read the same books together; but he had the advantage of more time for reading and studying, and a wonderful genius for mathematical learning, in which he far outstript me. While I lived in Boston, most of my hours of leisure for conversation were spent with him, and he continued a sober as well as an industrious lad; was much respected for his learning by several of the clergy and other gentlemen, and seemed to promise making a good figure in life. But, during my absence, he had acquired a habit of sotting with brandy; and I found by his own account, and what I heard from others, that he had been drunk every day since his arrival at New York, and behaved very oddly. He had gamed, too, and lost his money, so that I was obliged to discharge his lodgings, and defray his expenses to and at Philadelphia, which proved extremely inconvenient to me.
@@ -65,14 +65,14 @@ sections:
       We proceeded to Philadelphia. I received on the way Vernon’s money, without which we could hardly have finished our journey. Collins wished to be employed in some countinghouse; but, whether they discovered his dramming by his breath, or by his behaviour, though he had some recommendations, he met with no success in any application, and continued lodging and boarding at the same house with me, and at my expense. Knowing I had that money of Vernon’s, he was continually borrowing of me, still promising repayment as soon as he should be in business. At length he had got so much of it that I was distressed to think what I should do in case of being called on to remit it.
     checkIn:
       id: bf-ch-04-s4-c1
-      stem: What change had Collins undergone during Franklin's absence?
+      stem: What had become of Collins while Franklin was away?
       options:
-        - He had become a strict vegetarian and given up all luxuries.
-        - He had joined the clergy and lost interest in mathematics.
-        - He had become a heavy drinker and lost his money through gambling.
-        - He had become a successful merchant and grown wealthy.
+        - He had turned merchant and grown rich in New York
+        - He had taken orders and given up his mathematics
+        - He had taken to brandy and gamed his money away
+        - He had married and settled down at Rhode Island
       correctIndex: 2
-      explanationZh: 富兰克林发现好友柯林斯在波士顿期间染上了酗酒的习惯，还因赌博输光了钱，以至于富兰克林不得不替他支付食宿费用。文中写道 "he had acquired a habit of sotting with brandy" 且 "He had gamed, too, and lost his money"。
+      explanationZh: 从柯林斯本人和旁人口中他都听到同一件事：这位老友 "had acquired a habit of sotting with brandy"，到纽约后天天喝醉，行事古怪，"He had gamed, too, and lost his money"，房钱和一路开销都得富兰克林垫上。
   - id: bf-ch-04-s5
     text: |-
       His drinking continued, about which we sometimes quarreled; for, when a little intoxicated, he was very fractious. Once, in a boat on the Delaware with some other young men, he refused to row in his turn. “I will be rowed home,” says he. “We will not row you,” says I. “You must, or stay all night on the water,” says he, “just as you please.” The others said, “Let us row; what signifies it?” But, my mind being soured with his other conduct, I continued to refuse. So he swore he would make me row, or throw me overboard; and coming along, stepping on the thwarts, toward me, when he came up and struck at me, I clapped my hand under his crutch, and, rising, pitched him head-foremost into the river. I knew he was a good swimmer, and so was under little concern about him; but before he could get round to lay hold of the boat, we had with a few strokes pulled her out of his reach; and ever when he drew near the boat, we asked if he would row, striking a few strokes to slide her away from him. He was ready to die with vexation, and obstinately would not promise to row. However, seeing him at last beginning to tire, we lifted him in and brought him home dripping wet in the evening. We hardly exchanged a civil word afterwards, and a West India captain, who had a commission to procure a tutor for the sons of a gentleman at Barbados, happening to meet with him, agreed to carry him thither. He left me then, promising to remit me the first money he should receive in order to discharge the debt; but I never heard of him after.
@@ -80,14 +80,14 @@ sections:
       The breaking into this money of Vernon’s was one of the first great errata of my life; and this affair showed that my father was not much out in his judgment when he supposed me too young to manage business of importance. But Sir William, on reading his letter, said he was too prudent. There was great difference in persons; and discretion did not always accompany years, nor was youth always without it. “And since he will not set you up,” says he, “I will do it myself. Give me an inventory of the things necessary to be had from England, and I will send for them. You shall repay me when you are able; I am resolved to have a good printer here, and I am sure you must succeed.” This was spoken with such an appearance of cordiality, that I had not the least doubt of his meaning what he said. I had hitherto kept the proposition of my setting up, a secret in Philadelphia, and I still kept it. Had it been known that I depended on the governor, probably some friend, that knew him better, would have advised me not to rely on him, as I afterwards heard it as his known character to be liberal of promises which he never meant to keep. Yet, unsolicited as he was by me, how could I think his generous offers insincere? I believed him one of the best men in the world.
     checkIn:
       id: bf-ch-04-s5-c1
-      stem: How did the boat incident on the Delaware conclude for Collins?
+      stem: What did Keith say once he had read the refusal?
       options:
-        - He was pulled from the river dripping wet, and soon left for Barbados.
-        - He was arrested for assault and imprisoned in Philadelphia.
-        - He fell overboard, nearly drowned, and never sailed again.
-        - He was left on the riverbank overnight and walked home alone.
-      correctIndex: 0
-      explanationZh: 柯林斯拒绝轮流划船，动手打人后被富兰克林掀翻入水。众人反复拉开船让他够不着，直到他筋疲力尽才被拉上来，浑身湿透地回了家。此后一位西印度群岛船长正好要为巴巴多斯一位绅士的儿子聘请家庭教师，便带他去了那里。
+        - He advised Franklin to wait until he was twenty-one
+        - He offered to lend the money at six per cent interest
+        - He agreed with the father and dropped the whole scheme
+        - He said he would set Franklin up himself, to be repaid later
+      correctIndex: 3
+      explanationZh: 他只说这位父亲太过谨慎，接着道 "And since he will not set you up, I will do it myself. Give me an inventory of the things necessary to be had from England, and I will send for them. You shall repay me when you are able."。这番话说得极诚恳，富兰克林当时半点没起疑。
   - id: bf-ch-04-s6
     text: |-
       I presented him an inventory of a little print-house, amounting by my computation to about one hundred pounds sterling. He liked it, but asked me if my being on the spot in England to choose the types, and see that everything was good of the kind, might not be of some advantage. “Then,” says he, “when there, you may make acquaintances, and establish correspondences in the bookselling and stationery way.” I agreed that this might be advantageous. “Then,” says he, “get yourself ready to go with Annis;” which was the annual ship, and the only one at that time usually passing between London and Philadelphia. But it would be some months before Annis sailed, so I continued working with Keimer, fretting about the money Collins had got from me, and in daily apprehensions of being called upon by Vernon, which, however, did not happen for some years after.
@@ -95,66 +95,66 @@ sections:
       I believe I have omitted mentioning that, in my first voyage from Boston, being becalmed off Block Island, our people set about catching cod, and hauled up a great many. Hitherto I had stuck to my resolution of not eating animal food, and on this occasion I considered, with my master Tryon, the taking every fish as a kind of unprovoked murder, since none of them had, or ever could do us any injury that might justify the slaughter. All this seemed very reasonable. But I had formerly been a great lover of fish, and, when this came hot out of the frying-pan, it smelt admirably well. I balanced some time between principle and inclination, till I recollected that, when the fish were opened, I saw smaller fish taken out of their stomachs; then thought I, “If you eat one another, I don’t see why we mayn’t eat you.” So I dined upon cod very heartily, and continued to eat with other people, returning only now and then occasionally to a vegetable diet. So convenient a thing is it to be a reasonable creature, since it enables one to find or make a reason for everything one has a mind to do.
     checkIn:
       id: bf-ch-04-s6-c1
-      stem: What reasoning did Franklin give for resuming the eating of fish?
+      stem: What settled Franklin's mind in favour of eating the cod?
       options:
-        - He reasoned that since fish eat other fish, humans may eat them too.
-        - He argued that fish lack the capacity to feel pain.
-        - He believed the Bible explicitly permits eating all fish.
-        - He claimed that cod was essential for curing his illness at sea.
+        - He saw smaller fish inside their stomachs when opened
+        - He decided that Tryon's rule applied only on land
+        - He judged the voyage too long to keep to a diet
+        - He was told the ship carried no other food at all
       correctIndex: 0
-      explanationZh: 富兰克林原本遵循素食原则，认为捕鱼是无端的杀戮；但煎鱼的香味令他动摇，直到他想起鱼腹中有小鱼，便自辩 "If you eat one another, I don't see why we mayn't eat you"，于是欣然吃起鳕鱼，并反思理性动物多么善于为自己想做的事找理由。
+      explanationZh: 刚出锅的煎鱼香得厉害，原则和胃口僵持了一阵，最后是这个念头解了围——鱼肚子里剖出了小鱼，于是他想，If you eat one another, I don't see why we mayn't eat you。末了他自嘲道，做个讲道理的动物真方便，想干什么总找得出理由。
 quiz:
   - id: bf-ch-04-q1
-    stem: Why was Keimer so astonished when Governor Keith came looking for Franklin?
+    stem: What did Keimer do when the governor came to the printing-house?
     options:
-      - Keith arrived in a carriage that Keimer had never seen before.
-      - Keith's visit was aimed at Franklin rather than at Keimer.
-      - Keith demanded that Keimer release Franklin from his contract.
-      - Keith brought soldiers who threatened to arrest Keimer.
+      - He ran up and demanded to be introduced to the governor
+      - He ran down at once, thinking the visit was for him
+      - He hid in the back room until the gentlemen had gone
+      - He sent Franklin down to the door to turn them away
     correctIndex: 1
-    explanationZh: 基默以为总督是来找自己的，冲下楼后却发现总督打问的是富兰克林，并以极为谦和的态度邀他一同去酒馆。文中用 "Keimer stared like a pig poisoned" 描写他的惊愕，因为这与他预期的完全不同。
+    explanationZh: 总督和 French 上校衣着讲究，径直穿过街走来，"Keimer ran down immediately, thinking it a visit to him"，谁知客人问的是富兰克林。总督还怪他初到费城时没来通名，随即拉他上酒馆去——"Keimer stared like a pig poisoned"。
   - id: bf-ch-04-q2
-    stem: Why did Governor Burnet of New York ask to meet Franklin?
+    stem: Why did Governor Burnet of New York send for Franklin?
     options:
-      - The ship's captain told him a young passenger had a great many books.
-      - Colonel French had recommended Franklin as a promising printer.
-      - He wished to hire a tutor for a gentleman's sons at Barbados.
-      - Collins had shown him some of Franklin's mathematical papers.
-    correctIndex: 0
-    explanationZh: 纽约总督伯内特听船长说船上有位年轻乘客带了很多书，便请船长带富兰克林来见，向他展示了自己庞大的藏书，两人畅谈书籍与作者。弗伦奇上校的推荐、聘请巴巴多斯家庭教师、柯林斯代为引荐均与此事无关。
+      - Colonel French had written to recommend him as a printer
+      - He was looking for a tutor for a gentleman's sons abroad
+      - Collins had shown him some of Franklin's mathematical work
+      - The captain told him one passenger had a great many books
+    correctIndex: 3
+    explanationZh: 伯内特 "hearing from the captain that a young man, one of his passengers, had a great many books, desired he would bring me to see him"。他领富兰克林看了自己那间很大的藏书室，聊了半天书和作者。富兰克林说这是第二位肯留意他的总督，对一个穷小子来说很受用。
   - id: bf-ch-04-q3
-    stem: What was the broader consequence of Franklin's display of wealth at his brother's printing-house?
+    stem: What came of Franklin showing his silver and watch at his brother's shop?
     options:
-      - His brother immediately offered him a partnership in the business.
-      - His brother filed a formal complaint with the town magistrate.
-      - His brother felt publicly insulted and refused any future reconciliation.
-      - His brother demanded repayment of all wages he had ever paid.
-    correctIndex: 2
-    explanationZh: 富兰克林在工人面前展示银币和新表，给了哥哥一枚银币喝酒后便离去。母亲后来提起和解时，哥哥声称这种侮辱永远无法忘却或原谅。文中写道 "I had insulted him in such a manner before his people"，说明他觉得颜面尽失，并非主动合作或诉诸法律。
+      - James said the insult before his men could never be forgiven
+      - James offered him a partnership on the spot
+      - James complained of him to the town magistrate
+      - James asked for the wages he had paid him back
+    correctIndex: 0
+    explanationZh: 他在工人面前摊开一把银币、亮出怀表，临走还给了他们一枚八字银元去喝酒。母亲后来提起和解，哥哥的话是 "I had insulted him in such a manner before his people that he could never forget or forgive it"。富兰克林在后面补了一句：这一点哥哥想错了。
   - id: bf-ch-04-q4
-    stem: What did Franklin's father advise him to avoid when returning to Philadelphia?
+    stem: What did his father warn him against on the way back to Philadelphia?
     options:
-      - Spending money on fashionable clothing and accessories.
-      - Drinking and gambling with unreliable companions.
-      - Associating with strangers on ships during voyages.
-      - Lampooning and libeling, his besetting inclination.
-    correctIndex: 3
-    explanationZh: 父亲临行前嘱咐他要尊重当地人、争取普遍敬重，并特别叮嘱他 "avoid lampooning and libeling, to which he thought I had too much inclination"。关于衣着、酗赌或船上的陌生人，父亲在此次忠告中并未提及。
-  - id: bf-ch-04-q5
-    stem: What did Franklin later learn about Governor Keith's character that he had not known at the time?
-    options:
-      - Keith was secretly planning to leave the colony within a year.
-      - Keith had a long-standing feud with Colonel French.
-      - Keith was known for making generous promises he never intended to keep.
-      - Keith had been convicted of embezzling public funds.
+      - To keep clear of drinking and gambling companions abroad
+      - To spend nothing on fashionable clothes or a watch
+      - To avoid lampooning and libeling, his besetting fault
+      - To make no acquaintance with strangers aboard ship
     correctIndex: 2
-    explanationZh: 富兰克林后来得知基思总督的 "known character to be liberal of promises which he never meant to keep"，即以慷慨承诺而不兑现闻名。这让他在回顾时意识到自己当时太轻信了。关于基思打算离开殖民地、与弗伦奇上校不和或因挪用公款被定罪，文中均无依据。
-  - id: bf-ch-04-q6
-    stem: What did Franklin reflect was demonstrated by his having spent Vernon's money?
+    explanationZh: 父亲要他 "behave respectfully to the people there, endeavour to obtain the general esteem, and avoid lampooning and libeling, to which he thought I had too much inclination"，又说若到二十一岁能靠勤俭攒下大半，余下的由他来补。
+  - id: bf-ch-04-q5
+    stem: What did Franklin learn about Keith only afterwards?
     options:
-      - Governor Keith was right that Franklin needed to go to London immediately.
-      - He needed to sever all ties with Collins as quickly as possible.
-      - He should have followed his vegetarian principles more strictly.
-      - His father was not wrong in judging him too young to manage important business.
+      - He had long been at odds with Colonel French
+      - He was liberal of promises he never meant to keep
+      - He had been found out embezzling the public money
+      - He meant to quit the colony within the year
+    correctIndex: 1
+    explanationZh: 他后来才听说这位总督的 "known character to be liberal of promises which he never meant to keep"。当时他把这桩计划瞒得死紧；若早些声张，认得基思的朋友大概会劝他别指望。可总督并没有求他什么，这份慷慨他实在疑心不起来。
+  - id: bf-ch-04-q6
+    stem: What did the affair of Vernon's money prove, by Franklin's own reckoning?
+    options:
+      - That he should have kept to Tryon's vegetable diet
+      - That he ought to have cut with Collins much sooner
+      - That Keith was right to hurry him off to London
+      - That his father was not far wrong about his youth
     correctIndex: 3
-    explanationZh: 富兰克林承认动用弗农的钱是人生中 "first great errata" 之一，并反思此事说明父亲判断他太年轻不能管理重要事务并不太离谱。文中写道 "this affair showed that my father was not much out in his judgment"，与前往伦敦、断绝友谊或素食无关。
+    explanationZh: 他把动用弗农那笔钱称作 "one of the first great errata of my life"，紧接着一句是 "this affair showed that my father was not much out in his judgment when he supposed me too young to manage business of importance"。
