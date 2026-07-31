@@ -25,6 +25,12 @@ const FIXTURE = `<?xml version="1.0" encoding="utf-8"?>
 Will Be<br/>
 Prosecuted</p>
 </blockquote>
+<table>
+<tbody>
+<tr><td>Rise from bed</td><td>6:00</td><td>a.m.</td></tr>
+<tr><td>Study electricity</td><td>7:15</td><td>a.m.</td></tr>
+</tbody>
+</table>
 <p>He was a very selfish giant.</p>
 </article>
 </body>
@@ -45,6 +51,11 @@ describe("extractSeChapter", () => {
 
   test("collapses <br/>-separated sign lines into one paragraph", () => {
     expect(paragraphs).toContain("Trespassers Will Be Prosecuted");
+  });
+
+  test("captures table rows as paragraphs with space-joined cells", () => {
+    expect(paragraphs).toContain("Rise from bed 6:00 a.m.");
+    expect(paragraphs).toContain("Study electricity 7:15 a.m.");
   });
 
   test("keeps document order across plain and blockquote paragraphs", () => {

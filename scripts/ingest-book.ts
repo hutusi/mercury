@@ -247,6 +247,25 @@ export function extractSeChapter(xhtml: string): {
         }
       },
     })
+    // Tables carry prose too (Gatsby's Hopalong Cassidy schedule, Franklin's
+    // daily plan): one row = one paragraph, cells separated by spaces. Pure
+    // symbol grids (Franklin's virtue-examination dots) come out as noise and
+    // are hand-cleaned during skeleton review.
+    .on("section table tr, article table tr", {
+      element(el) {
+        flush();
+        current = [];
+        el.onEndTag(flush);
+      },
+    })
+    .on("section table td, article table td, section table th, article table th", {
+      element() {
+        current?.push(" ");
+      },
+      text(t) {
+        if (suppress === 0) current?.push(t.text);
+      },
+    })
     .transform(xhtml);
   flush();
   return {
