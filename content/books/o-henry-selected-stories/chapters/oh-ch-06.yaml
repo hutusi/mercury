@@ -208,14 +208,14 @@ quiz:
     correctIndex: 1
     explanationZh: 理查德说“We can't buy one minute of time with cash; if we could, rich people would live longer”，他认为金钱无法买到与小姐独处的片刻时间。这与安东尼“金钱万能”的信念形成核心冲突。
   - id: oh-ch-06-q3
-    stem: Why does Richard drop the ring on the way to the theatre?
+    stem: What news does Aunt Ellen bring Anthony at eleven o'clock that night?
     options:
-      - The cab hits a pothole and the ring flies out of the window.
-      - He genuinely loses it while adjusting his gloves in the cab.
-      - Miss Lantry accidentally knocks it out of his hand.
-      - He fakes dropping it to create a private moment with Miss Lantry.
+      - Richard has lost his mother's ring for good
+      - The theatre outing was called off entirely
+      - Kelly has come to collect his payment
+      - Miss Lantry has promised to marry Richard
     correctIndex: 3
-    explanationZh: 理查德“dropped a ring”是他故意制造的借口，目的是让马车停下来，争取与小姐独处的时间。他事先把戒指塞进马甲口袋，上车后便以掉戒指为由钻出车厢，回来后堵车恰好发生。
+    explanationZh: 当晚十一点，爱伦姑妈轻敲安东尼的房门，柔声说“They're engaged, Anthony. She has promised to marry our Richard.”——兰特里小姐已答应嫁给理查德。戒指并没有丢（他一分钟内就找了回来），凯利上门结账是第二天的事。
   - id: oh-ch-06-q4
     stem: How long does the street blockade last before the cab can move again?
     options:

@@ -154,7 +154,7 @@ sections:
         - A glittering model no bigger than a clock
         - A weather diagram on paper
       correctIndex: 2
-      explanationZh: 文中说他拿着“a glittering metallic framework, scarcely larger than a small clock”，比小钟还小，显然是模型。与后文实验室里的大机器并非同一件。
+      explanationZh: 文中说他拿着“a glittering metallic framework, scarcely larger than a small clock”，比小钟还小，显然是一台模型，而不是能载人的机器。
   - id: ttm-ch-01-s5
     text: |-
       The Time Traveller looked at us, and then at the mechanism. “Well?” said the Psychologist.

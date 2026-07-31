@@ -153,7 +153,7 @@ sections:
         - Help with the sheep
         - A silver chain
       correctIndex: 1
-      explanationZh: 磨坊主先看中了汉斯的一块木板去修谷仓屋顶，接着又让汉斯把篮子装满花。面粉和赶羊是后来磨坊主的要求，银链子与此无关。
+      explanationZh: 磨坊主先看中了汉斯的一块木板去修谷仓屋顶，接着又让汉斯把篮子装满花。这一次他开口要的既不是面粉，也不是银链子。
   - id: hp-ch-04-s6
     text: |-
       “ ‘Quite full?’ said little Hans, rather sorrowfully, for it was really a very big basket, and he knew that if he filled it he would have no flowers left for the market and he was very anxious to get his silver buttons back.
@@ -215,7 +215,7 @@ sections:
         - Drive sheep to the mountain
         - Fetch the Doctor
       correctIndex: 0
-      explanationZh: 磨坊主来拿卖面粉的钱，见汉斯还在睡，便教训他懒惰，然后要他去修谷仓屋顶。扛面粉是前一天的事，赶羊是后一天的事，请医生是后来的事。
+      explanationZh: 磨坊主来拿卖面粉的钱，见汉斯还在睡，便教训他懒惰，然后要他去修谷仓屋顶。这一天他吩咐的只有屋顶的活儿；扛面粉是前一天刚做完的事。
   - id: hp-ch-04-s8
     text: |-
       “ ‘Oh! on no account,’ cried little Hans and he jumped out of bed, and dressed himself, and went up to the barn.

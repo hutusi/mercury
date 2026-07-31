@@ -85,7 +85,7 @@ sections:
         - He puts a hot potato down Bill's back and crushes it with his foot.
         - He hits Bill behind the ear with a rock from a sling and knocks him out.
       correctIndex: 1
-      explanationZh: 原文描写红酋长骑在 Bill 胸口，一手抓头发，一手拿切咸肉的利刀 "trying to take Bill's scalp"。从此 Bill 彻夜不敢再睡。其余三项分别是用石头砸头、烫土豆和弹弓打耳后，发生在后面不同段落。
+      explanationZh: 原文描写红酋长天刚亮就骑在 Bill 胸口，一手抓着他的头发，一手拿着切咸肉的利刀“trying to take Bill's scalp”——要给他“剥头皮”。从此 Bill 彻夜不敢再睡。这一幕里他用的是那把刀，不是石头、土豆或弹弓。
   - id: oh-ch-08-s4
     text: |-
       “What you getting up so soon for, Sam?” asked Bill.
@@ -159,6 +159,22 @@ sections:
       Bill and I got paper and pencil and worked on the letter while Red Chief, with a blanket wrapped around him, strutted up and down, guarding the mouth of the cave. Bill begged me tearfully to make the ransom fifteen hundred dollars instead of two thousand. “I ain’t attempting,” says he, “to decry the celebrated moral aspect of parental affection, but we’re dealing with humans, and it ain’t human for anybody to give up two thousand dollars for that forty-pound chunk of freckled wildcat. I’m willing to take a chance at fifteen hundred dollars. You can charge the difference up to me.”
 
       So, to relieve Bill, I acceded, and we collaborated a letter that ran this way:
+
+      Ebenezer Dorset, Esq.:
+
+      We have your boy concealed in a place far from Summit. It is useless for you or the most skilful detectives to attempt to find him. Absolutely, the only terms on which you can have him restored to you are these: We demand fifteen hundred dollars in large bills for his return; the money to be left at midnight tonight at the same spot and in the same box as your reply—as hereinafter described. If you agree to these terms, send your answer in writing by a solitary messenger tonight at half-past eight o’clock. After crossing Owl Creek, on the road to Poplar Cove, there are three large trees about a hundred yards apart, close to the fence of the wheat field on the right-hand side. At the bottom of the fence-post, opposite the third tree, will be found a small pasteboard box.
+
+      The messenger will place the answer in this box and return immediately to Summit.
+
+      If you attempt any treachery or fail to comply with our demand as stated, you will never see your boy again.
+
+      If you pay the money as demanded, he will be returned to you safe and well within three hours. These terms are final, and if you do not accede to them no further communication will be attempted.
+
+      Two Desperate Men.
+
+      Gentlemen: I received your letter today by post, in regard to the ransom you ask for the return of my son. I think you are a little high in your demands, and I hereby make you a counter-proposition, which I am inclined to believe you will accept. You bring Johnny home and pay me two hundred and fifty dollars in cash, and I agree to take him off your hands. You had better come at night, for the neighbours believe he is lost, and I couldn’t be responsible for what they would do to anybody they saw bringing him back. Very respectfully,
+
+      Ebenezer Dorset.
 
       I addressed this letter to Dorset, and put it in my pocket. As I was about to start, the kid comes up to me and says:
 
@@ -311,14 +327,14 @@ quiz:
     correctIndex: 2
     explanationZh: 原文中男孩说 "No man ever yet struck the Red Chief but what he got paid for it." 他表达的是报复的威胁。道歉是后来对 Sam 说的；弹弓打耳后是另一次事件，不是此处回应。
   - id: oh-ch-08-q4
-    stem: How long does Bill pretend to be a horse for the Black Scout game?
+    stem: How did the kidnappers sign their ransom letter?
     options:
-      - He crawls for a short distance and then sends the boy into the woods.
-      - He carries the boy for a pretend ninety-mile ride to the stockade.
-      - He carries the boy around the cave for about an hour before collapsing.
-      - He gives the boy a ride to Poplar Cove and back in the dark.
+      - Red Chief and the Black Scout
+      - Two Desperate Men
+      - Bill Driscoll and Sam
+      - Snake-eye and Old Hank
     correctIndex: 1
-    explanationZh: Bill 说自己被骑着跑了 "ninety miles to the stockade"，到了之后被喂沙子当燕麦，又被逼着解释空洞、路为什么两头通等。不是短距离、一小时或去 Poplar Cove。
+    explanationZh: 勒索信的落款是“TWO DESPERATE MEN”——两个走投无路的人。这个自称与他们被一个十岁男孩折腾得狼狈不堪的处境形成绝妙反差。信上没有署真名，也没有用游戏里的诨名。
   - id: oh-ch-08-q5
     stem: What two injuries does Bill suffer on the way down the mountain after sending the boy home?
     options:

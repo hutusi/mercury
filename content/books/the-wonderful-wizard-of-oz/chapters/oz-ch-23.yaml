@@ -41,7 +41,7 @@ sections:
         - Her basket
         - Toto
       correctIndex: 0
-      explanationZh: Glinda says, "if I do, you must give me the Golden Cap." Dorothy gladly hands it over because it lets the owner command the Winged Monkeys three times. 银鞋是后来送多萝西回家的工具，Glinda 不会要它。
+      explanationZh: Glinda 说出回家办法的条件是要金帽——她还有三次差遣飞猴的机会可用。银鞋此刻还穿在多萝西脚上，不是 Glinda 索要的东西。
   - id: oz-ch-23-s2
     text: |-
       “Am I really wonderful?” asked the Scarecrow.

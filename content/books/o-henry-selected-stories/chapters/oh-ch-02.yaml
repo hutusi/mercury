@@ -28,12 +28,12 @@ sections:
       id: oh-ch-02-s1-c1
       stem: Why did artists flock to Greenwich Village at the beginning of the story?
       options:
-        - The rents were high but the north-facing windows were ideal for studios.
-        - The Delmonico's on Eighth Street offered free meals to struggling painters.
-        - The streets were so confusing that a bill collector might get lost trying to find them.
-        - The brick houses had Dutch attics tall enough to hold large canvases.
+        - A famous art school had just opened there
+        - The city paid artists to settle the district
+        - They wanted north light, old gables, and low rents
+        - The galleries there bought pictures at high prices
       correctIndex: 2
-      explanationZh: 原文说一位画家发现这条街有一个妙处：收账的人穿行其中会走回原点，结果一分钱也没收到。于是艺术家们纷纷来到格林威治村寻找低租金和适宜作画的阁楼。说租金高与原文的 low rents 相悖。
+      explanationZh: 原文说艺术家们很快“prowling”到格林威治村，“hunting for north windows and eighteenth-century gables and Dutch attics and low rents”——他们要的是北向的光线、老式阁楼和低廉的房租。收账人会在街上迷路只是艺术家发现这条街“价值”的玩笑，说的并不是他们搬来的原因。
   - id: oh-ch-02-s2
     text: |-
       “A man?” said Sue, with a jew’sharp twang in her voice. “Is a man worth—but, no, doctor; there is nothing of the kind.”

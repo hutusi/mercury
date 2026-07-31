@@ -106,6 +106,14 @@ sections:
 
       One day Jimmy sat down in his room and wrote this letter, which he mailed to the safe address of one of his old friends in St. Louis:
 
+      Dear Old Pal:
+
+      I want you to be at Sullivan’s place, in Little Rock, next Wednesday night, at nine o’clock. I want you to wind up some little matters for me. And, also, I want to make you a present of my kit of tools. I know you’ll be glad to get them—you couldn’t duplicate the lot for a thousand dollars. Say, Billy, I’ve quit the old business—a year ago. I’ve got a nice store. I’m making an honest living, and I’m going to marry the finest girl on earth two weeks from now. It’s the only life, Billy—the straight one. I wouldn’t touch a dollar of another man’s money now for a million. After I get married I’m going to sell out and go West, where there won’t be so much danger of having old scores brought up against me. I tell you, Billy, she’s an angel. She believes in me; and I wouldn’t do another crooked thing for the whole world. Be sure to be at Sully’s, for I must see you. I’ll bring along the tools with me.
+
+      Your old friend,
+
+      Jimmy.
+
       On the Monday night after Jimmy wrote this letter, Ben Price jogged unobtrusively into Elmore in a livery buggy. He lounged about town in his quiet way until he found out what he wanted to know. From the drugstore across the street from Spencer’s shoe-store he got a good look at Ralph D. Spencer.
 
       “Going to marry the banker’s daughter are you, Jimmy?” said Ben to himself, softly. “Well, I don’t know!”
@@ -224,14 +232,14 @@ quiz:
     correctIndex: 1
     explanationZh: Jimmy 遇见 Annabel 后"forgot what he was, and became another man"，于是以 Ralph D. Spencer 的名字登记入住，并对店员说想在此地找门面做鞋业生意。他化名的目的是在 Elmore 安身、正式追求 Annabel。此时 Ben Price 尚未到镇，他也没有再犯案的打算。
   - id: oh-ch-07-q4
-    stem: What was the apparent purpose of the letter Jimmy wrote and mailed to a friend in St. Louis?
+    stem: Why did Jimmy write to his old friend in St. Louis?
     options:
       - He intended to arrange for someone to take away his burglar's tools.
       - He planned to ask his friend to send him money for the wedding.
       - He wanted to warn his old associates that Ben Price was after them.
       - He meant to confess his criminal past and seek legal advice.
     correctIndex: 0
-    explanationZh: 信的原文虽未引出，但紧接着叙述者说 Ben Price 在"the Monday night after Jimmy wrote this letter"到镇——而此前 Jimmy 已决定金盆洗手、即将结婚。综合上下文，他写信给旧友是为了处理那套盗窃工具，与过去彻底切割。他并不需要借钱、也没有警告同伙或寻求法律帮助。
+    explanationZh: 他写给 Billy 的信如今就在文中：“I want to make you a present of my kit of tools… I've quit the old business… I'm going to marry the finest girl on earth.”——他约 Billy 在 Little Rock 见面，是要送出那套盗窃工具、与过去彻底切割。他不需要借钱，也没有警告同伙或寻求法律帮助。
   - id: oh-ch-07-q5
     stem: Why does Annabel's comment that the suitcase feels like it is full of gold bricks create dramatic tension?
     options:
