@@ -3,7 +3,7 @@ id: oz-ch-12
 bookId: book-oz
 title: The Search for the Wicked Witch
 titleZh: 寻找恶女巫
-summaryZh: 多萝西和伙伴们向西行进，进入恶女巫的领地。女巫先后派出狼群、乌鸦、蜜蜂和飞猴来对付他们，最终抓住了多萝西和狮子。然而，一桶意外泼出的水让女巫彻底融化，多萝西终于重获自由。
+summaryZh: 多萝西和伙伴们向西行进，恶女巫早已察觉他们的到来，一波接一波的爪牙被派了出来。这是全书最凶险的一段旅程，而它的结局将出乎所有人的意料。
 sections:
   - id: oz-ch-12-s1
     text: |-
@@ -105,7 +105,7 @@ sections:
       stem: How do the Scarecrow and the Tin Woodman protect Dorothy, Toto, and the Lion from the black bees?
       options:
         - They hide everyone in a cave
-        - They cover them with straw from the Scarecrow
+        - They hide them under straw
         - They fight the bees with an axe
         - They run into a river
       correctIndex: 1
@@ -137,7 +137,7 @@ sections:
       options:
         - She lost it many years ago
         - The Winged Monkeys hate her
-        - She can only use it three times, and only once is left
+        - Only one of its uses is left
         - The cap is too heavy to wear
       correctIndex: 2
       explanationZh: 金帽的法力是只能召唤飞猴三次。她已经用了两次——一次奴役了温基人，一次赶走了奥兹，所以她不想轻易用最后一次。现在狼、乌鸦、蜜蜂都失败了，奴隶也被吓跑了，她别无选择。
@@ -167,7 +167,7 @@ sections:
         - She is too small to carry
         - She hides inside a house
         - The Lion protects her
-        - They see the mark of the Good Witch's kiss on her forehead
+        - The kiss-mark on her brow
       correctIndex: 3
       explanationZh: 飞猴首领看到多萝西额头上北方好女巫的吻痕，知道她受到善的力量保护，不敢伤害她，只能把她送到女巫的城堡门口。
   - id: oz-ch-12-s6
@@ -194,7 +194,7 @@ sections:
         - Harness the Lion like a horse
         - Guard the castle gate
         - Make silver shoes for the Witch
-        - Work in the kitchen cleaning pots and sweeping the floor
+        - Clean pots and sweep the floor
       correctIndex: 3
       explanationZh: 女巫把多萝西带到厨房，让她擦锅、扫地、添柴火。女巫不敢伤害她，因为她额头上有吻痕的保护。
   - id: oz-ch-12-s7
@@ -255,7 +255,7 @@ sections:
       options:
         - The Lion bites her leg
         - She falls into a river
-        - Dorothy pours a bucket of water over her
+        - A bucketful of water
         - Toto knocks her into a pot
       correctIndex: 2
       explanationZh: 女巫用隐形的铁条绊倒多萝西，抢走了一只银鞋。多萝西气愤地拿起一桶水泼在女巫身上，女巫立刻开始融化，最终变成地上一摊棕色的东西。
@@ -272,7 +272,7 @@ quiz:
   - id: oz-ch-12-q2
     stem: Why doesn't the Witch dare to strike Dorothy during her captivity?
     options:
-      - The mark of the Good Witch's kiss protects Dorothy
+      - The kiss-mark on her forehead
       - Dorothy is too strong to beat
       - The Witch's umbrella is broken
       - The Winkies would stop her
@@ -282,7 +282,7 @@ quiz:
     stem: What trick does the Witch use to get one of Dorothy's Silver Shoes?
     options:
       - She steals it while Dorothy is bathing
-      - She puts an invisible iron bar on the floor to make Dorothy trip
+      - An invisible iron bar to trip Dorothy
       - She offers to trade food for the shoe
       - She asks the Winkies to grab it
     correctIndex: 1
@@ -311,6 +311,6 @@ quiz:
       - She knew water would destroy the Witch
       - She used a magic spell from the Silver Shoes
       - The Lion told her the Witch's secret weakness
-      - She was angry about losing her shoe and threw water on the Witch
+      - In her anger over the shoe, she threw water
     correctIndex: 3
     explanationZh: 女巫抢走了多萝西的一只银鞋，还嘲笑她，多萝西非常生气，就抓起旁边的一桶水泼了过去。她当时并不知道水会要了女巫的命——女巫问她"Didn't you know water would be the end of me?"，多萝西说"Of course not."

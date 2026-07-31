@@ -3,7 +3,7 @@ id: oz-ch-22
 bookId: book-oz
 title: The Country of the Quadlings
 titleZh: 夸德林人的国度
-summaryZh: 多萝西一行离开森林后遇到一座陡峭的山坡，山上的“锤头人”用能弹射的脑袋拦住了去路。无奈之下多萝西最后一次召唤飞猴，带他们越过山丘，来到富庶的夸德林人国度，前往好女巫格林达的城堡。
+summaryZh: 离开森林后，一座陡峭的山挡住了去路，山上的居民古怪而不客气，说什么也不让他们通过。想越过这道障碍，多萝西不得不做出一个不小的取舍。好在翻过山后，富庶友好的夸德林人国度终于近在眼前。
 sections:
   - id: oz-ch-22-s1
     text: |-
@@ -36,10 +36,10 @@ sections:
       id: oz-ch-22-s1-c1
       stem: Why could the Scarecrow and Lion not climb the hill?
       options:
-        - The rocks were too slippery.
-        - The Hammer-Heads shot their heads out and knocked them down.
-        - A strong wind pushed them back.
-        - The hill was too steep for their legs.
+        - The rocks were too slippery
+        - The Hammer-Heads knocked them down
+        - A strong wind pushed them back
+        - The hill was too steep for their legs
       correctIndex: 1
       explanationZh: 锤头怪虽然没有手臂，但他们的脖子能像闪电一样把头弹射出去，把稻草人撞得滚下山。狮子冲上去时也被「shot swiftly out」的头击退。石头滑或坡太陡只是干扰项。
   - id: oz-ch-22-s2

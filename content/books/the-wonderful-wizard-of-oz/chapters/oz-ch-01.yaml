@@ -84,7 +84,7 @@ quiz:
     options:
       - Storing vegetables and milk in hot weather
       - Keeping Toto safe while the family worked
-      - Sheltering the family from whirlwinds strong enough to crush buildings
+      - Sheltering the family from whirlwinds
       - Collecting rainwater under the house
     correctIndex: 2
     explanationZh: 开篇写道：地板正中有一扇活板门，下面的小地洞叫 cyclone cellar（旋风地窖），是在"威力大到足以压垮沿途任何建筑"的大旋风袭来时全家避难的地方。
@@ -121,6 +121,6 @@ quiz:
       - He landed safely in the cyclone cellar below
       - Dorothy jumped down after him
       - He was lost in the storm until the house landed
-      - The strong air pressure held him up, and Dorothy pulled him back by the ear
+      - Air pressure held him up for Dorothy to catch
     correctIndex: 3
     explanationZh: 托托掉进敞开的活板门时，强大的气压把他托住，一只耳朵还露在洞口。多萝西爬过去抓住他的耳朵把他拖了回来，然后关上活板门，防止再出意外。

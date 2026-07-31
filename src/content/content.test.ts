@@ -153,6 +153,53 @@ describe("books", () => {
       }
     });
 
+    test(`${book.id}: option shape never gives the answer away`, () => {
+      // Answer-shape tells are as gameable as position bias, and both
+      // directions have actually shipped here: the correct option was
+      // uniquely longest in 66-79% of questions per book (baseline 25%),
+      // and a later rewording pass left the correct option as the only one
+      // without a trailing period in 55 questions. Cap the flagrant length
+      // ratio per question, cap BOTH pooled extremes once a book is big
+      // enough, and require punctuation-uniform options in every question.
+      // Mirrored in scripts/generate-book-questions.ts (draft-time warning).
+      const violations: string[] = [];
+      let uniquelyLongest = 0;
+      let uniquelyShortest = 0;
+      let total = 0;
+      for (const chapter of book.chapters) {
+        const questions = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
+          ...chapter.quiz,
+        ];
+        for (const q of questions) {
+          total += 1;
+          const lengths = q.options.map((o) => o.length);
+          const correct = lengths[q.correctIndex];
+          const distractors = lengths.filter((_, i) => i !== q.correctIndex);
+          if (correct > Math.max(...distractors)) uniquelyLongest += 1;
+          if (correct < Math.min(...distractors)) uniquelyShortest += 1;
+          if (correct > Math.max(...distractors) * 1.6) {
+            violations.push(
+              `${q.id}: correct option is ${correct} chars vs longest distractor ${Math.max(...distractors)}`,
+            );
+          }
+          const punctuated = q.options.filter((o) => /[.!?…。]$/.test(o.trim())).length;
+          if (punctuated > 0 && punctuated < q.options.length) {
+            violations.push(
+              `${q.id}: options mix terminal punctuation (${punctuated}/4 end with it)`,
+            );
+          }
+        }
+      }
+      expect(violations).toEqual([]);
+      if (total >= 40) {
+        const longestLabel = `${uniquelyLongest}/${total} correct options are uniquely longest`;
+        expect(uniquelyLongest / total, longestLabel).toBeLessThanOrEqual(0.45);
+        const shortestLabel = `${uniquelyShortest}/${total} correct options are uniquely shortest`;
+        expect(uniquelyShortest / total, shortestLabel).toBeLessThanOrEqual(0.35);
+      }
+    });
+
     test(`${book.id}: explanations never reference options by position`, () => {
       // Option order is tooling-assigned and may be reassigned; an
       // explanation saying 选项A/第一个选项/答案为 B breaks silently on any

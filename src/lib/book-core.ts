@@ -1,4 +1,5 @@
-import type { BookSection, McqQuestion, SanitizedQuestion } from "../content/types";
+import type { BookSection, CefrLevel, McqQuestion, SanitizedQuestion } from "../content/types";
+import type { SelfRatedLevel } from "./learner-model-core";
 
 /**
  * Pure logic for book reading (ADR 0024): sanitization, check-in lookup,
@@ -118,4 +119,49 @@ export function currentChapterId(states: ChapterState[]): string | null {
 export function estimateChapterMinutes(wordCount: number, quizCount: number): number {
   const minutes = Math.ceil(wordCount / 180) + Math.ceil(quizCount * 0.5);
   return Math.min(30, Math.max(5, minutes));
+}
+
+/**
+ * Ladder guidance, never gates: the CEFR band(s) where a learner should
+ * start reading, from their onboarding self-rating. Unrated learners get no
+ * recommendation rather than a guess. A recommended band with no books in
+ * the library simply renders no hint (advanced → C1 stays empty until a C1
+ * title ships).
+ */
+export function recommendedBands(level: SelfRatedLevel | null): CefrLevel[] {
+  switch (level) {
+    case "novice":
+    case "elementary":
+      return ["B1"];
+    case "intermediate":
+      return ["B1", "B2"];
+    case "upper":
+      return ["B2"];
+    case "advanced":
+      return ["C1"];
+    default:
+      return [];
+  }
+}
+
+/**
+ * Group a ladder-ordered book list by CEFR band, preserving input order —
+ * first occurrence of a band opens its group, so the caller's ordering
+ * (books.sortOrder) stays authoritative.
+ */
+export function groupBooksByBand<T extends { cefrLevel: CefrLevel }>(
+  list: T[],
+): { band: CefrLevel; books: T[] }[] {
+  const groups: { band: CefrLevel; books: T[] }[] = [];
+  const byBand = new Map<CefrLevel, T[]>();
+  for (const book of list) {
+    let group = byBand.get(book.cefrLevel);
+    if (!group) {
+      group = [];
+      byBand.set(book.cefrLevel, group);
+      groups.push({ band: book.cefrLevel, books: group });
+    }
+    group.push(book);
+  }
+  return groups;
 }

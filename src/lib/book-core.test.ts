@@ -6,6 +6,8 @@ import {
   estimateChapterMinutes,
   findCheckIn,
   gradeBookQuiz,
+  groupBooksByBand,
+  recommendedBands,
   sanitizeChapter,
 } from "./book-core";
 
@@ -108,5 +110,45 @@ describe("estimateChapterMinutes", () => {
     expect(estimateChapterMinutes(1100, 5)).toBe(10);
     expect(estimateChapterMinutes(74, 3)).toBe(5);
     expect(estimateChapterMinutes(10000, 10)).toBe(30);
+  });
+});
+
+describe("recommendedBands", () => {
+  test("maps every self-rated level to its starting band(s)", () => {
+    expect(recommendedBands("novice")).toEqual(["B1"]);
+    expect(recommendedBands("elementary")).toEqual(["B1"]);
+    expect(recommendedBands("intermediate")).toEqual(["B1", "B2"]);
+    expect(recommendedBands("upper")).toEqual(["B2"]);
+    expect(recommendedBands("advanced")).toEqual(["C1"]);
+  });
+
+  test("unrated learners get no recommendation", () => {
+    expect(recommendedBands(null)).toEqual([]);
+  });
+});
+
+describe("groupBooksByBand", () => {
+  test("groups by band in first-occurrence (ladder) order", () => {
+    const groups = groupBooksByBand([
+      { id: "b1", cefrLevel: "B1" as const },
+      { id: "b2", cefrLevel: "B2" as const },
+      { id: "b3", cefrLevel: "C1" as const },
+    ]);
+    expect(groups.map((g) => g.band)).toEqual(["B1", "B2", "C1"]);
+    expect(groups[0].books.map((b) => b.id)).toEqual(["b1"]);
+  });
+
+  test("folds non-adjacent same-band books into the first occurrence", () => {
+    const groups = groupBooksByBand([
+      { id: "b1", cefrLevel: "B1" as const },
+      { id: "b2", cefrLevel: "B2" as const },
+      { id: "b3", cefrLevel: "B1" as const },
+    ]);
+    expect(groups.map((g) => g.band)).toEqual(["B1", "B2"]);
+    expect(groups[0].books.map((b) => b.id)).toEqual(["b1", "b3"]);
+  });
+
+  test("empty library yields no groups", () => {
+    expect(groupBooksByBand([])).toEqual([]);
   });
 });

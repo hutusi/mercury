@@ -48,20 +48,31 @@ Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001`
 
 **Mock exams** — `sections[]` (each `listening` or `reading`, with `durationSeconds`) → `groups[]` (a group carries a `script` for listening or a `passage` for reading) → 4-option `questions[]`. **Question ids must be unique across the whole exam** — they key the flat answer map on the attempt row. Every exam needs at least one listening and one reading section (the TOEIC estimator sums per kind). Distribute `correctIndex` across positions; clustering on one letter is a tell.
 
-**Books** ([ADR 0024](adr/0024-book-reading-pregenerated-recall.md)) — track-agnostic extensive reading: a `book.yaml` manifest (bilingual titles, author, `descriptionZh`, CEFR level, genres, provenance in `source`, and the **ordered** `chapterFiles` list — array position is reading order, like vocab sort order) plus one YAML per chapter. A chapter is `sections[]` of prose (400–800 words each, `|-` block scalars, blank lines between paragraphs), each optionally carrying one `checkIn` MCQ anchored at its break, and a `quiz` of ≥3 end-of-chapter recall MCQs. Question ids must be unique across a chapter's check-ins **and** quiz combined (they share the attempt answer map and `mistake_states`). Register new book directories in `BOOK_DIRS` in `src/content/load.ts`.
+**Books** ([ADR 0024](adr/0024-book-reading-pregenerated-recall.md)) — track-agnostic extensive reading: a `book.yaml` manifest (bilingual titles, author, `descriptionZh`, CEFR level, genres, provenance in `source`, and the **ordered** `chapterFiles` list — array position is reading order, like vocab sort order) plus one YAML per chapter. A chapter is `sections[]` of prose (400–800 words each, `|-` block scalars, blank lines between paragraphs), each optionally carrying one `checkIn` MCQ anchored at its break, and a `quiz` of ≥3 end-of-chapter recall MCQs. Question ids must be unique across a chapter's check-ins **and** quiz combined (they share the attempt answer map and `mistake_states`). Register new book directories in `BOOK_DIRS` in `src/content/load.ts` — **array position is the library's difficulty ladder** (easiest first): the seed derives `books.sort_order` from it, and `/books` renders in that order grouped by CEFR band. The ladder is guidance, never a gate — there is no cross-book lock.
 
 The authoring workflow is script-assisted, human-reviewed:
 
 ```bash
-# 1. Skeletons: strip Gutenberg boilerplate, split chapters, pack sections
+# 1. Skeletons. Preferred source: a cloned Standard Ebooks repo (proofed XHTML, one
+#    file per chapter). --files is ordered — it doubles as story selection for
+#    collected volumes and as reading order (fs order lies: chapter-10 < chapter-2).
+bun run content:book-ingest -- --se-dir /tmp/h-g-wells_the-time-machine \
+  --files chapter-1.xhtml,chapter-2.xhtml,epilogue.xhtml --slug the-time-machine --prefix ttm --book-id book-time-machine
+#    Gutenberg plain-text fallback; --heading-regex overrides the "Chapter N" matcher
+#    (capture group 1 = chapter number, optional group 2 = same-line title).
 bun run content:book-ingest -- --file pg55.txt --slug the-wonderful-wizard-of-oz --prefix oz --book-id book-oz
-# 2. Hand-adjust awkward section breaks; write book.yaml; register in load.ts
-# 3. Draft questions via the configured AI provider (rewrites the YAML)
-bun run content:book-questions -- --book the-wonderful-wizard-of-oz
-# 4. REVIEW EVERY QUESTION before committing (checklist below), then seed
+# 2. Hand-adjust awkward section breaks; write book.yaml (its cefrLevel sets the
+#    question-drafting difficulty).
+# 3. Draft questions via the configured AI provider (rewrites the YAML). Invoke the
+#    script directly when passing flags — `bun run content:book-questions -- --book …`
+#    appends them to the trailing prettier step instead.
+bun scripts/generate-book-questions.ts --book the-time-machine && bunx prettier --write content/books
+# 4. REVIEW EVERY QUESTION before committing (checklist below). Only then register
+#    the directory in BOOK_DIRS (skeletons fail the quiz ≥3 floor at load) — its
+#    position is the ladder — and seed.
 ```
 
-Review checklist for generated questions: the answer is truly stated in the text (re-read the section); exactly one option is defensible; `explanationZh` teaches (points at the text, dismisses the tempting distractor **by content, never by letter/position** — option order is script-assigned, and a content test enforces the position spread) rather than asserts; check-ins only reference their own section; `titleZh` follows the book's published translation conventions. Runtime never calls AI for books — what you commit is what learners get, so the review **is** the quality bar. Never regenerate a shipped chapter: its question ids key learner answer maps and mistakes.
+Review checklist for generated questions: the answer is truly stated in the text (re-read the section); exactly one option is defensible; `explanationZh` teaches (points at the text, dismisses the tempting distractor **by content, never by letter/position** — option order is script-assigned, and a content test enforces the position spread) rather than asserts; check-ins only reference their own section; `titleZh` follows the book's published translation conventions. Three answer tells surfaced in review, so check for them explicitly (the drafter warns on all three, and a content test caps the length skew): `summaryZh` must **not state any fact a question asks for** (readers see it first); quiz questions must **not repeat a check-in's fact** (its answer was revealed mid-read); the four options must be **similar in length and identically punctuated** — a uniquely long correct answer is gameable (test caps: ≤1.6× the longest distractor per question, ≤45% uniquely-longest pooled per book). Runtime never calls AI for books — what you commit is what learners get, so the review **is** the quality bar. Never regenerate a shipped chapter: its question ids key learner answer maps and mistakes. Wording-only edits to shipped questions and summaries are safe (ids and `correctIndex` untouched); never replace a shipped question with a different fact — recorded mistakes would silently point at a different question.
 
 ## Validation
 

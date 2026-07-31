@@ -18,7 +18,12 @@ import { bookChapters, bookQuizAttempts, books } from "../db/schema";
 
 export async function listBooksForUser(userId: string) {
   const [rows, progress] = await Promise.all([
-    db.query.books.findMany({ where: eq(books.origin, "seeded"), orderBy: books.id }),
+    db.query.books.findMany({
+      where: eq(books.origin, "seeded"),
+      // Ladder order (seeded from BOOK_DIRS position); id breaks ties so the
+      // listing stays deterministic if sortOrder ever collides.
+      orderBy: [books.sortOrder, books.id],
+    }),
     db
       .select({
         bookId: bookQuizAttempts.bookId,

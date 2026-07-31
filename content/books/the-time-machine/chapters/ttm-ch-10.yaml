@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=../../../.schemas/book-chapter.schema.json
+id: ttm-ch-10
+bookId: book-time-machine
+title: Chapter 10
+titleZh: 第十章
+summaryZh: 时间旅行者回到最初抵达时坐过的山坡，静静整理自己对这个世界的全部推想。想通了前因后果之后，他起身走向白色斯芬克斯像——在那里，一个意想不到的局面正等着他。
+sections:
+  - id: ttm-ch-10-s1
+    text: |-
+      “About eight or nine in the morning I came to the same seat of yellow metal from which I had viewed the world upon the evening of my arrival. I thought of my hasty conclusions upon that evening and could not refrain from laughing bitterly at my confidence. Here was the same beautiful scene, the same abundant foliage, the same splendid palaces and magnificent ruins, the same silver river running between its fertile banks. The gay robes of the beautiful people moved hither and thither among the trees. Some were bathing in exactly the place where I had saved Weena, and that suddenly gave me a keen stab of pain. And like blots upon the landscape rose the cupolas above the ways to the Under-world. I understood now what all the beauty of the Over-world people covered. Very pleasant was their day, as pleasant as the day of the cattle in the field. Like the cattle, they knew of no enemies and provided against no needs. And their end was the same.
+
+      “I grieved to think how brief the dream of the human intellect had been. It had committed suicide. It had set itself steadfastly towards comfort and ease, a balanced society with security and permanency as its watchword, it had attained its hopes—to come to this at last. Once, life and property must have reached almost absolute safety. The rich had been assured of his wealth and comfort, the toiler assured of his life and work. No doubt in that perfect world there had been no unemployed problem, no social question left unsolved. And a great quiet had followed.
+
+      “It is a law of nature we overlook, that intellectual versatility is the compensation for change, danger, and trouble. An animal perfectly in harmony with its environment is a perfect mechanism. Nature never appeals to intelligence until habit and instinct are useless. There is no intelligence where there is no change and no need of change. Only those animals partake of intelligence that have to meet a huge variety of needs and dangers.
+
+      “So, as I see it, the Upper-world man had drifted towards his feeble prettiness, and the Under-world to mere mechanical industry. But that perfect state had lacked one thing even for mechanical perfection—absolute permanency. Apparently as time went on, the feeding of the Under-world, however it was effected, had become disjointed. Mother Necessity, who had been staved off for a few thousand years, came back again, and she began below. The Under-world being in contact with machinery, which, however perfect, still needs some little thought outside habit, had probably retained perforce rather more initiative, if less of every other human character, than the Upper. And when other meat failed them, they turned to what old habit had hitherto forbidden. So I say I saw it in my last view of the world of Eight Hundred and Two Thousand Seven Hundred and One. It may be as wrong an explanation as mortal wit could invent. It is how the thing shaped itself to me, and as that I give it to you.
+    checkIn:
+      id: ttm-ch-10-s1-c1
+      stem: What did the Time Traveller realize about the beautiful people of the Over-world?
+      options:
+        - They lived like cattle, with no enemies and no needs to prepare for.
+        - They secretly controlled the Morlocks from above the ground.
+        - They had built the palaces to defend themselves against danger.
+        - They were planning to take back the Under-world by force.
+      correctIndex: 0
+      explanationZh: 原文说 "Like the cattle, they knew of no enemies and provided against no needs"，说明地上人像牲畜一样无忧无虑、毫无防备。说他们秘密控制或计划进攻地下人的选项都没有文本依据。
+  - id: ttm-ch-10-s2
+    text: |-
+      “After the fatigues, excitements, and terrors of the past days, and in spite of my grief, this seat and the tranquil view and the warm sunlight were very pleasant. I was very tired and sleepy, and soon my theorizing passed into dozing. Catching myself at that, I took my own hint, and spreading myself out upon the turf I had a long and refreshing sleep.
+
+      “I awoke a little before sunsetting. I now felt safe against being caught napping by the Morlocks, and, stretching myself, I came on down the hill towards the White Sphinx. I had my crowbar in one hand, and the other hand played with the matches in my pocket.
+
+      “And now came a most unexpected thing. As I approached the pedestal of the sphinx I found the bronze valves were open. They had slid down into grooves.
+
+      “At that I stopped short before them, hesitating to enter.
+
+      “Within was a small apartment, and on a raised place in the corner of this was the Time Machine. I had the small levers in my pocket. So here, after all my elaborate preparations for the siege of the White Sphinx, was a meek surrender. I threw my iron bar away, almost sorry not to use it.
+
+      “A sudden thought came into my head as I stooped towards the portal. For once, at least, I grasped the mental operations of the Morlocks. Suppressing a strong inclination to laugh, I stepped through the bronze frame and up to the Time Machine. I was surprised to find it had been carefully oiled and cleaned. I have suspected since that the Morlocks had even partially taken it to pieces while trying in their dim way to grasp its purpose.
+
+      “Now as I stood and examined it, finding a pleasure in the mere touch of the contrivance, the thing I had expected happened. The bronze panels suddenly slid up and struck the frame with a clang. I was in the dark—trapped. So the Morlocks thought. At that I chuckled gleefully.
+
+      “I could already hear their murmuring laughter as they came towards me. Very calmly I tried to strike the match. I had only to fix on the levers and depart then like a ghost. But I had overlooked one little thing. The matches were of that abominable kind that light only on the box.
+
+      “You may imagine how all my calm vanished. The little brutes were close upon me. One touched me. I made a sweeping blow in the dark at them with the levers, and began to scramble into the saddle of the machine. Then came one hand upon me and then another. Then I had simply to fight against their persistent fingers for my levers, and at the same time feel for the studs over which these fitted. One, indeed, they almost got away from me. As it slipped from my hand, I had to butt in the dark with my head—I could hear the Morlock’s skull ring—to recover it. It was a nearer thing than the fight in the forest, I think, this last scramble.
+
+      “But at last the lever was fitted and pulled over. The clinging hands slipped from me. The darkness presently fell from my eyes. I found myself in the same grey light and tumult I have already described.
+    checkIn:
+      id: ttm-ch-10-s2-c1
+      stem: Why did the Time Traveller throw away his iron crowbar?
+      options:
+        - He used it to break the bronze panels of the Sphinx.
+        - He gave it to a Morlock as a sign of peace.
+        - The bronze valves of the Sphinx were already open, so he no longer needed it.
+        - It was too heavy to carry any further.
+      correctIndex: 2
+      explanationZh: 他原本准备"围攻"白色斯芬克斯，但发现铜门已经滑开、时间机就在里面，所以他"threw my iron bar away, almost sorry not to use it"。说用来砸门或送给地下人的选项都与原文矛盾。
+quiz:
+  - id: ttm-ch-10-q1
+    stem: According to the Time Traveller, what causes intellectual versatility to develop?
+    options:
+      - Change, danger, and trouble.
+      - Absolute safety and permanent comfort.
+      - A balanced society with no social problems.
+      - Living in perfect harmony with the environment.
+    correctIndex: 0
+    explanationZh: 原文明确说 "intellectual versatility is the compensation for change, danger, and trouble"，而 "Nature never appeals to intelligence until habit and instinct are useless"。安全和安逸恰恰会消磨智力，因此那两个看似合理的干扰项正好是反面。
+  - id: ttm-ch-10-q2
+    stem: Why does the Time Traveller think the Morlocks retained more initiative than the Eloi?
+    options:
+      - They were naturally more intelligent from birth
+      - Machine work still required a little thought
+      - They had learned to read the books of the past
+      - They were taught by the Eloi to operate machines
+    correctIndex: 1
+    explanationZh: 他的推理是：地下人接触机械，而机械再完美也"needs some little thought outside habit"，所以他们"retained perforce rather more initiative"。这并非天生聪明或被教育的结果，而是环境所迫。
+  - id: ttm-ch-10-q3
+    stem: What did the Time Traveller discover when he examined the Time Machine inside the Sphinx?
+    options:
+      - It had been completely destroyed by the Morlocks.
+      - It had been taken apart and scattered across the room.
+      - It had been carefully oiled and cleaned.
+      - It had been replaced by a Morlock-built copy.
+    correctIndex: 2
+    explanationZh: 他看到机器后"surprised to find it had been carefully oiled and cleaned"，还猜测地下人曾试图拆开它以理解其用途。说被毁或被复制都不符合原文。
+  - id: ttm-ch-10-q4
+    stem: What went wrong when the Time Traveller tried to light a match in the dark?
+    options:
+      - The matches were the kind that only light on the box, which he did not have.
+      - The matches were all wet from the river.
+      - The Morlocks had stolen his matches while he slept.
+      - The matches were too old and damp to strike.
+    correctIndex: 0
+    explanationZh: 原文写 "The matches were of that abominable kind that light only on the box"，他手边没有火柴盒，所以划不着。并非受潮或被偷，而是火柴本身的设计问题。
+  - id: ttm-ch-10-q5
+    stem: How did the Time Traveller recover the lever that almost slipped from his hand?
+    options:
+      - He struck the Morlock with his iron crowbar
+      - He lit a match and blinded the Morlocks temporarily
+      - He kicked the Morlock away with his foot
+      - He butted the Morlock with his head in the dark
+    correctIndex: 3
+    explanationZh: 原文写 "I had to butt in the dark with my head—I could hear the Morlock's skull ring—to recover it"，是用头撞。铁棒早已扔掉，火柴又划不着，所以他只能徒手搏斗。

@@ -3,7 +3,7 @@ id: oz-ch-13
 bookId: book-oz
 title: The Rescue
 titleZh: 拯救同伴
-summaryZh: 得知邪恶女巫被水融化后，多萝西释放了被困的胆小狮，并召集温基人重获自由。他们随即出发寻找被损坏的铁皮人和稻草人，将他们修好。团圆后，伙伴们启程返回翡翠城，准备向奥兹兑现承诺。
+summaryZh: 恶女巫死后，多萝西一行的当务之急是找回失散的两位伙伴。在热心的温基人帮助下，团圆的队伍重新启程返回翡翠城，准备向奥兹兑现承诺。
 sections:
   - id: oz-ch-13-s1
     text: |-
@@ -110,7 +110,7 @@ quiz:
     stem: What did Dorothy have to do when the Tin Woodman wept tears of joy?
     options:
       - Give him a new axe
-      - Wipe each tear carefully from his face
+      - Wipe away each tear
       - Oil his joints immediately
       - Tell him to stop crying
     correctIndex: 1

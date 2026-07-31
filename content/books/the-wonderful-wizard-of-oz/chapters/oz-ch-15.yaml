@@ -3,7 +3,7 @@ id: oz-ch-15
 bookId: book-oz
 title: The Discovery of Oz, the Terrible
 titleZh: 奥兹的真相大白
-summaryZh: 四位旅人带着消灭西方恶女巫的消息回到翡翠城，却发现奥兹大巫师迟迟不肯召见他们。当他们终于走进觐见室，一个意外让奥兹的真实面目暴露无遗——他并非什么大法师，只是一个普通人。
+summaryZh: 四位旅人带着好消息回到翡翠城，大巫师却迟迟不肯召见。当他们终于走进觐见室，等待他们的不是奖赏，而是全书最大的一个意外。
 sections:
   - id: oz-ch-15-s1
     text: |-
@@ -298,7 +298,7 @@ quiz:
       - Because they owed him money
       - Because they knew his secret
       - Because they wanted his Palace
-      - Because they could do real magic and he had none
+      - They could do real magic
     correctIndex: 3
     explanationZh: 奥兹说虽然自己毫无魔力，但女巫们确实能做到神奇的事情（"I had no magical powers at all... the Witches were really able to do wonderful things"）。东西方恶女巫之所以没杀他，只是因为误以为他比她们更强大。
   - id: oz-ch-15-q6

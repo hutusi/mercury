@@ -57,9 +57,15 @@ export const allExams = [
   "exams/ielts-standard-2.yaml",
 ].map((file) => loadFile(file, MockExamSchema));
 
-// Chapter order derives from the manifest's chapterFiles array position, so
-// each book directory owns its own ordering; only the directory list is here.
-const BOOK_DIRS = ["the-wonderful-wizard-of-oz"] as const;
+// Array order is load-bearing twice over: chapter order derives from each
+// manifest's chapterFiles position, and this list's position becomes the
+// book's ladder sortOrder at seed time (easiest first — the /books library
+// renders in this order, grouped by CEFR band).
+const BOOK_DIRS = [
+  "the-wonderful-wizard-of-oz",
+  "the-happy-prince-and-other-tales",
+  "the-time-machine",
+] as const;
 
 export const allBooks: Book[] = BOOK_DIRS.map((dir) => {
   const { chapterFiles, ...manifest } = loadFile(`books/${dir}/book.yaml`, BookManifestSchema);

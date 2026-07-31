@@ -3,7 +3,7 @@ id: oz-ch-19
 bookId: book-oz
 title: Attacked by the Fighting Trees
 titleZh: 被战斗树袭击
-summaryZh: 多萝西和伙伴们离开翡翠城，向南国进发。途中一片森林的树木居然伸出树枝抓人、挡住去路，铁樵夫用斧头开路才得以通过。穿过森林后，他们又遇到一堵高高的白瓷墙，新的挑战随之而来。
+summaryZh: 多萝西和伙伴们告别翡翠城，向南国进发。旅程的第一段就要穿过一片不同寻常的森林——这里的树木似乎并不欢迎过路人。而森林的尽头，另一道障碍正等着他们。
 sections:
   - id: oz-ch-19-s1
     text: |-
@@ -67,7 +67,7 @@ sections:
       options:
         - The tree gave him fruit
         - A branch gave him a stick
-        - The branches bent down and threw him back
+        - Branches threw him back
         - Nothing happened at all
       correctIndex: 2
       explanationZh: 稻草人刚走到树下，树枝就弯下来缠住他，把他举起来摔向同伴："raised from the ground and flung headlong among his fellow travelers"。好在他不会受伤，所以后来他主动说再试一次。
@@ -87,7 +87,7 @@ sections:
       stem: How did the Tin Woodman free Toto from the branch?
       options:
         - He pulled Toto down by hand
-        - He chopped off the branch with his axe
+        - He chopped the branch off
         - He asked the Lion to roar
         - He threw a rock at the tree
       correctIndex: 1

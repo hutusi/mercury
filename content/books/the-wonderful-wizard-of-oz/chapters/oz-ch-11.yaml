@@ -3,7 +3,7 @@ id: oz-ch-11
 bookId: book-oz
 title: The Wonderful City of Oz
 titleZh: 奥兹的奇妙魔法城
-summaryZh: 多萝西和伙伴们终于进入绿宝石城，在宫殿里住下。大巫师奥兹逐日单独召见他们，每次都换一种不同的形象，却给出同一个条件：必须杀死西方恶女巫，他才肯满足各自的愿望。
+summaryZh: 多萝西和伙伴们终于住进了翡翠城的宫殿。大巫师奥兹逐日单独召见他们，每个人见到的奥兹都截然不同——而他开出的条件，让所有人都倒吸一口凉气。
 sections:
   - id: oz-ch-11-s1
     text: |-
@@ -241,7 +241,7 @@ sections:
         - A lovely Lady
         - A great Head
         - A Ball of Fire
-        - A most terrible Beast
+        - A great Beast
       correctIndex: 3
       explanationZh: 铁皮人看到奥兹变成了“a most terrible Beast”，像犀牛，有五只眼睛、五条长臂和五条长腿。Lady 是稻草人见到的，Ball of Fire 是狮子见到的。
   - id: oz-ch-11-s8
@@ -302,7 +302,7 @@ quiz:
       - Because her friends begged him
       - Because she brought him a gift
       - Because she promised to serve him
-      - Because she had silver shoes and a mark on her forehead
+      - Her silver shoes and her mark
     correctIndex: 3
     explanationZh: 士兵告诉多萝西，奥兹听说她的银鞋后很感兴趣，得知她额头上的印记后“decided he would admit you to his presence”。礼物和朋友的请求都不是原因。
   - id: oz-ch-11-q2

@@ -3,7 +3,7 @@ id: oz-ch-06
 bookId: book-oz
 title: The Cowardly Lion
 titleZh: 胆小的狮子
-summaryZh: 多萝西一行人在密林中遇到了一头猛狮，它一掌拍飞了稻草人，却对铁皮人无计可施。出人意料的是，这头狮子其实生性胆怯，于是它也加入了前往奥兹国的队伍。
+summaryZh: 密林深处突然跳出一头猛狮，向队伍发起攻击。一场交锋过后，这头狮子却让所有人大吃一惊，队伍里又添了一位意想不到的成员。
 sections:
   - id: oz-ch-06-s1
     text: |-
@@ -71,10 +71,10 @@ sections:
       id: oz-ch-06-s2-c1
       stem: How does the Lion react when Dorothy calls him a coward?
       options:
-        - He gets angry and roars at her.
-        - He denies it and walks away.
-        - He laughs and thinks it is a joke.
-        - He hangs his head in shame and says he has always known it.
+        - He gets angry and roars at her
+        - He denies it and walks away
+        - He laughs and thinks it is a joke
+        - He hangs his head and admits it
       correctIndex: 3
       explanationZh: 狮子低头承认 "I know it … I've always known it"，说明他并不否认。发怒吼叫或当成玩笑都不符合他的羞愧态度，而"矢口否认走开"更是与原文完全相反。
   - id: oz-ch-06-s3
@@ -163,10 +163,10 @@ quiz:
   - id: oz-ch-06-q4
     stem: What does the Tin Woodman say proves that the Lion has a heart?
     options:
-      - The Lion can roar very loudly.
-      - The Lion's heart beats fast when there is danger.
-      - The Lion cares about other animals.
-      - The Lion wants to go to Oz.
+      - The Lion can roar very loudly
+      - His heart beats fast in danger
+      - The Lion cares about other animals
+      - The Lion wants to go to Oz
     correctIndex: 1
     explanationZh: 铁皮人听说狮子遇险心跳加快，便认为这也许是心脏病，而这也说明他有心。"关心其他动物"看似有理，但原文的逻辑是心跳快等于有心。
   - id: oz-ch-06-q5

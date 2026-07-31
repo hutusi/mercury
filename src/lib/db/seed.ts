@@ -141,12 +141,15 @@ async function seed() {
         .onConflictDoUpdate({ target: speakingPrompts.id, set: prompt });
     }
 
-    for (const book of seededBooks) {
+    for (const [bookIndex, book] of seededBooks.entries()) {
       const { chapters, ...manifest } = book;
       const row = {
         ...manifest,
         chapterCount: chapters.length,
         wordCount: chapters.reduce((n, c) => n + chapterWordCount(c), 0),
+        // Ladder position mirrors the chapters-from-chapterFiles pattern:
+        // BOOK_DIRS array order in src/content/load.ts is load-bearing.
+        sortOrder: bookIndex + 1,
       };
       await tx.insert(books).values(row).onConflictDoUpdate({ target: books.id, set: row });
 

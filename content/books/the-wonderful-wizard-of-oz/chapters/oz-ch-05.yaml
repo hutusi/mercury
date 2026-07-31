@@ -3,7 +3,7 @@ id: oz-ch-05
 bookId: book-oz
 title: The Rescue of the Tin Woodman
 titleZh: 拯救铁皮樵夫
-summaryZh: 多萝西和稻草人在林中发现一个锈住的铁皮人，给他上了油后，他讲述了自己被东方恶女巫诅咒的悲惨身世。他决定加入他们前往翡翠城，请求奥兹给他一颗心。
+summaryZh: 多萝西和稻草人在林中听到一声呻吟，发现了一个一动不动的铁皮人。听完他离奇的身世后，队伍里又多了一位同伴——他也有一个想向奥兹许下的愿望。
 sections:
   - id: oz-ch-05-s1
     text: |-
@@ -171,7 +171,7 @@ quiz:
       - She put a curse on his house
       - She sent a rainstorm to rust his joints
       - She turned him into tin directly
-      - She enchanted his axe so it slipped and cut off his body parts
+      - She made his axe slip and cut him
     correctIndex: 3
     explanationZh: 东方恶女巫 "enchanted my axe"，让斧子一次次滑落，砍掉他的腿、手臂、甚至头和身体。生锈是后来他自己忘记上油才发生的。
   - id: oz-ch-05-q2
@@ -179,7 +179,7 @@ quiz:
     options:
       - The beautiful Munchkin girl herself
       - The tinsmith who made the tin body
-      - An old woman who was too lazy to do her own work
+      - A lazy old woman
       - The Tin Woodman's mother
     correctIndex: 2
     explanationZh: 那个和女孩住在一起的老妇人太懒了，不想让女孩嫁人离开她，所以去找东方恶女巫帮忙阻止这门婚事。
@@ -187,7 +187,7 @@ quiz:
     stem: What happened the last time the Wicked Witch used the enchanted axe?
     options:
       - It cut off his head
-      - It cut right through his body, splitting him in two
+      - It split his body in two
       - It cut off both legs at once
       - It cut off his hands
     correctIndex: 1
@@ -195,7 +195,7 @@ quiz:
   - id: oz-ch-05-q4
     stem: Why was the Tin Woodman stuck in the forest for over a year?
     options:
-      - He was caught in a rainstorm and forgot to oil himself, so his joints rusted
+      - Rain rusted his joints before he could oil them
       - A tree fell on him and he could not move
       - The Wicked Witch trapped him there on purpose
       - He lost his axe and could not find his way home

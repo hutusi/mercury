@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=../../.schemas/book.schema.json
+id: book-time-machine
+title: The Time Machine
+titleZh: 时间机器
+author: H. G. Wells
+authorZh: 赫伯特·乔治·威尔斯
+descriptionZh: 科幻小说的开山之作（1895）：时间旅行者乘自制机器抵达公元802701年，发现人类分化为地上的埃洛伊人与地下的莫洛克人。第一人称讲述、悬念层层推进，词汇比入门读物更进一步，适合准备迈向中高级的读者。
+cefrLevel: B2
+genres:
+  - science-fiction
+  - classic
+source: "Standard Ebooks: The Time Machine by H. G. Wells (public domain)"
+chapterFiles:
+  - ttm-ch-01.yaml
+  - ttm-ch-02.yaml
+  - ttm-ch-03.yaml
+  - ttm-ch-04.yaml
+  - ttm-ch-05.yaml
+  - ttm-ch-06.yaml
+  - ttm-ch-07.yaml
+  - ttm-ch-08.yaml
+  - ttm-ch-09.yaml
+  - ttm-ch-10.yaml
+  - ttm-ch-11.yaml
+  - ttm-ch-12.yaml
+  - ttm-ch-13.yaml

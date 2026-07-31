@@ -3,7 +3,7 @@ id: oz-ch-07
 bookId: book-oz
 title: The Journey to the Great Oz
 titleZh: 前往伟大的奥兹之旅
-summaryZh: 多萝西和伙伴们在森林中宿营过夜，第二天接连遇到深沟和猛兽Kalidahs的威胁。他们靠狮子的跳跃和铁皮樵夫的砍树本领一次次脱险，最终来到一条宽阔的河边，准备造木筏渡河前往翡翠城。
+summaryZh: 多萝西和伙伴们在森林中宿营过夜，第二天接连遇到深沟与猛兽 Kalidahs 的追击，几次都险象环生。傍晚，他们来到一条宽阔的大河边，翡翠城还在河的另一头。
 sections:
   - id: oz-ch-07-s1
     text: |-
@@ -125,10 +125,10 @@ sections:
       id: oz-ch-07-s4-c1
       stem: How did the travelers get rid of the two Kalidahs?
       options:
-        - The Lion fought and defeated them in battle.
-        - The Scarecrow pushed them into the river.
-        - The Tin Woodman chopped away the tree bridge so they fell into the ditch.
-        - Dorothy scared them away with fire.
+        - The Lion fought and defeated them in battle
+        - The Scarecrow pushed them into the river
+        - The Woodman chopped away the tree bridge
+        - Dorothy scared them away with fire
       correctIndex: 2
       explanationZh: 当 Kalidahs 正走过倒下的树桥时，Scarecrow 让铁皮樵夫砍断他们这一侧的树端，树掉进深渊，两头猛兽也跟着摔碎在岩石上。狮子只是勇敢地面对它们，真正解决它们的是砍断树桥这一招。
 quiz:
@@ -165,7 +165,7 @@ quiz:
       - A dark and gloomy forest
       - The Emerald City gates
       - A deep ditch full of rocks
-      - A beautiful country with green meadows and fruit trees
+      - Green meadows and orchards
     correctIndex: 3
     explanationZh: 到了河边对面，他们看到「green meadows dotted with bright flowers」和结满美味果实的树木——一片美丽的乡野。黑暗森林是身后刚离开的地方，翡翠城还未到。
   - id: oz-ch-07-q5

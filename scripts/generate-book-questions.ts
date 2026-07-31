@@ -3,7 +3,12 @@ import path from "node:path";
 import { parse, stringify } from "yaml";
 import { z } from "zod";
 import { getStructuredDraft, isAiEnabled } from "../src/lib/ai/client";
-import { BookChapterSchema, McqQuestionSchema } from "../src/content/types";
+import {
+  BookChapterSchema,
+  BookManifestSchema,
+  McqQuestionSchema,
+  type CefrLevel,
+} from "../src/content/types";
 
 /**
  * AI-assisted question drafting for book chapters (ADR 0024). For every
@@ -48,16 +53,21 @@ const DraftSchema = z.object({
   quiz: z.array(DraftQuestionSchema).min(3).max(6),
 });
 
-const SYSTEM_PROMPT = `You are a bilingual (English / Simplified Chinese) content author for Mercury, an English-learning app for Chinese learners around CEFR B1. You write retrieval-practice questions for chapters of public-domain English books.
+// The difficulty target comes from the book's manifest so a B2 novel is not
+// dumbed down to B1 questions (and vice versa).
+const systemPrompt = (
+  cefrLevel: CefrLevel,
+) => `You are a bilingual (English / Simplified Chinese) content author for Mercury, an English-learning app for Chinese learners around CEFR ${cefrLevel}. You write retrieval-practice questions for chapters of public-domain English books.
 
 Given one chapter, produce:
 1. titleZh — a natural Simplified Chinese translation of the chapter title (follow the published Chinese translation conventions for well-known books).
-2. summaryZh — a one-to-two sentence 中文章节导读 that sets up the chapter without answering any of your questions.
+2. summaryZh — a one-to-two sentence 中文章节导读 that sets up the chapter WITHOUT answering any of your questions: it must never state a fact that a check-in or quiz question asks for (readers see it before the prose).
 3. checkIns — EXACTLY one per <section>, keyed by that section's id, asking about something clearly stated in THAT section (never a later one). Low stakes: a reader who just read the section should get it right.
-4. quiz — 4 to 6 end-of-chapter recall questions spanning the whole chapter (3 is acceptable for a very short chapter): plot causality (why things happened), character motivation, and memorable concrete details. Learners answer with the book closed.
+4. quiz — 4 to 6 end-of-chapter recall questions spanning the whole chapter (3 is acceptable for a very short chapter): plot causality (why things happened), character motivation, and memorable concrete details. Learners answer with the book closed. Never re-ask a fact a check-in already covered — its answer was revealed mid-read, so the quiz must test NEW ground.
 
 Rules for every question:
-- stem, the correct answer, and all three distractors in English at or below B1 difficulty; distractors plausible and mutually exclusive with the correct answer.
+- stem, the correct answer, and all three distractors in English at or below ${cefrLevel} difficulty; distractors plausible and mutually exclusive with the correct answer.
+- Keep all four options similar in length and punctuate them identically (all full sentences or all fragments) — a conspicuously long or differently punctuated correct answer gives itself away.
 - Option order is assigned by tooling, never by you: give the correct answer in \`correct\` and the three wrong answers in \`distractors\`.
 - explanationZh in Simplified Chinese: teach rather than assert — point to what happens in the text (short English quotes are welcome) and briefly dismiss the most tempting distractor BY ITS CONTENT. Never refer to options by letter or position (no 选项A/选项1/option B) — positions are not known when you write.
 - Never ask about wording trivia, chapter numbers, or anything outside this chapter.`;
@@ -139,9 +149,9 @@ async function draftChapter(
   const chapter = SkeletonSchema.parse(parse(fs.readFileSync(file, "utf8")));
   if (chapter.quiz.length > 0 && !force) return "skipped";
 
-  const manifest = parse(
-    fs.readFileSync(path.join(BOOKS_DIR, slug, "book.yaml"), "utf8"),
-  ) as Record<string, string>;
+  const manifest = BookManifestSchema.pick({ title: true, author: true, cefrLevel: true }).parse(
+    parse(fs.readFileSync(path.join(BOOKS_DIR, slug, "book.yaml"), "utf8")),
+  );
 
   const sectionsXml = chapter.sections
     .map((section) => `<section id="${section.id}">\n${section.text}\n</section>`)
@@ -155,7 +165,7 @@ ${sectionsXml}
 Draft the check-ins and end-of-chapter quiz for this chapter.`;
 
   const draft = await getStructuredDraft({
-    system: SYSTEM_PROMPT,
+    system: systemPrompt(manifest.cefrLevel),
     userContent,
     schema: DraftSchema,
   });
@@ -215,9 +225,71 @@ Draft the check-ins and end-of-chapter quiz for this chapter.`;
     ...assembled.quiz,
   ];
   // The JSON-repair path can silently truncate strings; catch gutted output.
-  const gutted = allQuestions.filter((q) => q.explanationZh.trim().length < 10).map((q) => q.id);
+  // Length alone misses mid-sentence cuts, so also require terminal
+  // punctuation — a Chinese explanation never ends on a bare clause.
+  const gutted = allQuestions
+    .filter(
+      (q) => q.explanationZh.trim().length < 10 || !/[。！？”）)]$/.test(q.explanationZh.trim()),
+    )
+    .map((q) => q.id);
   if (gutted.length) {
     console.warn(`  ! empty/truncated explanationZh: ${gutted.join(", ")} — redraft with --force`);
+  }
+  // A conspicuously long correct option is a review tell the content test
+  // caps at 1.6x the longest distractor — flag it at draft time so the
+  // reviewer shortens it before the test fails. Keep in sync with
+  // src/content/content.test.ts.
+  const lengthTells = allQuestions
+    .filter((q) => {
+      const lengths = q.options.map((o) => o.length);
+      const longestDistractor = Math.max(...lengths.filter((_, i) => i !== q.correctIndex));
+      return lengths[q.correctIndex] > longestDistractor * 1.6;
+    })
+    .map((q) => q.id);
+  if (lengthTells.length) {
+    console.warn(
+      `  ! correct option far longer than every distractor: ${lengthTells.join(", ")} — shorten before committing`,
+    );
+  }
+  // Mixed terminal punctuation is the same tell in another guise (a
+  // rewording pass once left only the correct option period-free).
+  const punctuationTells = allQuestions
+    .filter((q) => {
+      const punctuated = q.options.filter((o) => /[.!?…。]$/.test(o.trim())).length;
+      return punctuated > 0 && punctuated < q.options.length;
+    })
+    .map((q) => q.id);
+  if (punctuationTells.length) {
+    console.warn(
+      `  ! options mix terminal punctuation: ${punctuationTells.join(", ")} — make them uniform before committing`,
+    );
+  }
+  // The quiz must not repeat a check-in's fact (its answer was already
+  // revealed mid-read). Cheap token-overlap heuristic; review confirms.
+  const tokens = (s: string) =>
+    new Set(
+      s
+        .toLowerCase()
+        .replace(/[^a-z0-9一-鿿 ]/g, " ")
+        .split(/\s+/)
+        .filter((w) => w.length > 3),
+    );
+  const checkInTokens = assembled.sections
+    .flatMap((s) => (s.checkIn ? [s.checkIn] : []))
+    .map((c) => ({ id: c.id, set: tokens(`${c.stem} ${c.options[c.correctIndex]}`) }));
+  const overlapping = assembled.quiz
+    .filter((q) => {
+      const set = tokens(`${q.stem} ${q.options[q.correctIndex]}`);
+      return checkInTokens.some(({ set: other }) => {
+        const shared = [...set].filter((t) => other.has(t)).length;
+        return shared / Math.min(set.size, other.size || 1) >= 0.5;
+      });
+    })
+    .map((q) => q.id);
+  if (overlapping.length) {
+    console.warn(
+      `  ! quiz may repeat a check-in's fact: ${overlapping.join(", ")} — replace with new ground if confirmed`,
+    );
   }
   // Positional references break whenever tooling (re)assigns placement —
   // the content test rejects them, so flag drafts early. The letter branch
