@@ -126,14 +126,14 @@ quiz:
     correctIndex: 1
     explanationZh: 文中写 Bob 的 scarfpin 是“a large diamond, oddly set”，又掏出“a handsome watch, the lids of it set with small diamonds”，皆暗示他发了财。新大衣、金手杖和钞票卷在文中均未出现，属于编造细节。
   - id: oh-ch-04-q3
-    stem: What does Bob say about Jimmy's personality that foreshadows Jimmy becoming a policeman?
+    stem: What does Bob say about Jimmy that suggests he would remain in New York?
     options:
       - He calls Jimmy a risk-taker who loves to travel the world.
       - He calls Jimmy a dreamer who never finishes what he starts.
       - He calls Jimmy a plodder who would stay rooted in New York.
       - He calls Jimmy a schemer who chases quick fortunes in the West.
     correctIndex: 2
-    explanationZh: Bob 说 Jimmy 是“a kind of plodder”，还曾说“You couldn't have dragged Jimmy out of New York”——一个踏实守城的人，正好与后来当巡警的 Jimmy 吻合。冒险家、空想家、投机者都与 Jimmy 稳重守家的性格相反，也不合文意。
+    explanationZh: Bob 说 Jimmy 是“a kind of plodder”，还曾说“You couldn't have dragged Jimmy out of New York”——一个安于纽约、不会轻易离开的踏实人。冒险家、空想家、投机者都与 Jimmy 稳重守家的性格相反，也不合文意。
   - id: oh-ch-04-q4
     stem: Why does the tall man arrest Bob instead of simply chatting with him as Jimmy would?
     options:
