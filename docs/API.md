@@ -134,8 +134,9 @@ quiz_session_expired`.
   ([ADR 0013](adr/0013-tutor-chat-single-thread-non-streaming.md)); the user message and reply
   persist atomically, so a failed call stores nothing and consumes no quota. One call may be in
   flight per user (`409 chat_in_progress`); the learner-local cap is exact under concurrency (`429
-chat_limit_reached`, `MERCURY_CHAT_DAILY_LIMIT`, default 30). `503 ai_unavailable` when no
-  provider is configured — check `enabled` from GET before showing a
+chat_limit_reached`). The cap is membership-tier-dependent ([ADR 0025](adr/0025-membership-roles-and-tiers.md)):
+  `MERCURY_CHAT_DAILY_LIMIT` (default 30) for free, `MERCURY_CHAT_DAILY_LIMIT_PREMIUM` (default 100) for premium — always read `dailyLimit`/`remainingToday` from GET, never assume a constant.
+  `503 ai_unavailable` when no provider is configured — check `enabled` from GET before showing a
   composer.
 
 ## Exam timing model
@@ -168,9 +169,11 @@ persists with `status: "self_assessed"` and `feedback: null`, and the submission
 ai_unavailable` when grading is still impossible. Every submit and retry body requires a UUID
 `requestId`: replaying the same request/input returns its original result; reusing it for different
 input returns `409 grading_request_conflict`, and a live duplicate returns `409
-grading_in_progress`. Writing and speaking share 10 paid provider calls per learner-local day
-(`MERCURY_AI_GRADING_DAILY_LIMIT`; `429 ai_grading_limit_reached`). Keyless self-assessment does
-not consume that budget. Speaking clients run speech-to-text **on-device** (SFSpeechRecognizer /
+grading_in_progress`. Writing and speaking share one pool of paid provider calls per learner-local
+day (`429 ai_grading_limit_reached`); the pool is membership-tier-dependent
+([ADR 0025](adr/0025-membership-roles-and-tiers.md)): `MERCURY_AI_GRADING_DAILY_LIMIT` (default 10)
+for free, `MERCURY_AI_GRADING_DAILY_LIMIT_PREMIUM` (default 30) for premium. Keyless
+self-assessment does not consume that budget. Speaking clients run speech-to-text **on-device** (SFSpeechRecognizer /
 AVSpeechSynthesizer for TTS) and POST the transcript — the server never accepts uploaded audio.
 
 Listening audio follows the same degradation shape
