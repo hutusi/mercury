@@ -11,7 +11,7 @@ bun run lint / lint:fix    # ESLint flat config (Next 16 has no `next lint`)
 bun run format[:check]     # Prettier + Tailwind class sorting
 bun run typecheck          # tsc --noEmit (after a build — needs the generated .next/types)
 bun run test               # bun unit tests — scoped to src/, DB-free
-bun run test:e2e           # Playwright (port 3100, scratch DB in .e2e/)
+bun run test:e2e           # Playwright (keyless server on 3100 + email-enabled twin on 3101; scratch DBs mercury_e2e / mercury_e2e_email, auto-created)
 bun run db:migrate / db:generate / db:seed / db:studio
 bun run db:push            # local schema prototyping only — never CI/CD/Neon
 bun run content:schemas    # regenerate content/.schemas/ after editing src/content/types.ts
