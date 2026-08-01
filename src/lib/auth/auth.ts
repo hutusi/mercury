@@ -1,6 +1,5 @@
 import { after } from "next/server";
 import { betterAuth } from "better-auth";
-import { APIError, createAuthMiddleware, getSessionFromCtx } from "better-auth/api";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { admin, bearer } from "better-auth/plugins";
@@ -32,6 +31,15 @@ const socialProviderIds = enabledSocialProviders(process.env);
 // same-email linking works once the user verifies and stays blocked
 // (`account_not_linked`) before that — the anti-takeover property we want.
 const emailEnabled = isEmailEnabled(process.env);
+
+// Soft verification (ADR 0028): unverified users hold sessions, so the one
+// enforcement point left is explicit social linking — better-auth's
+// /link-social endpoint checks NOTHING about the local user's emailVerified
+// (only the implicit OAuth-sign-in linking path does). That gate lives in the
+// auth route handler (src/app/api/auth/[...all]/route.ts), NOT in a
+// hooks.before here: before-hooks receive the original request context, so
+// the bearer() plugin's Authorization→cookie conversion is invisible to them
+// and bearer clients would bypass an in-config gate (verified empirically).
 
 export const auth = betterAuth({
   baseURL,
@@ -80,28 +88,6 @@ export const auth = betterAuth({
           }) => {
             after(() => sendEmail({ to: user.email, ...verificationEmail({ url }) }));
           },
-        },
-        // Soft verification (ADR 0028): unverified users hold sessions, so the
-        // one enforcement point left is explicit social linking. better-auth's
-        // /link-social endpoint checks NOTHING about the local user's
-        // emailVerified (only the implicit OAuth-sign-in linking path does),
-        // so without this gate an unverified squatter on someone else's email
-        // could attach their own IdP login to it. better-auth accepts a single
-        // global before-hook that runs on EVERY endpoint (including server-side
-        // auth.api.* calls) — the path guard must stay the first statement, and
-        // any future global gate composes inside this middleware.
-        hooks: {
-          before: createAuthMiddleware(async (ctx) => {
-            if (ctx.path !== "/link-social") return;
-            // A session-less request falls through to the endpoint's own 401.
-            const session = await getSessionFromCtx(ctx);
-            if (session && !session.user.emailVerified) {
-              throw new APIError("FORBIDDEN", {
-                message: "Email not verified",
-                code: "EMAIL_NOT_VERIFIED",
-              });
-            }
-          }),
         },
       }
     : {}),
