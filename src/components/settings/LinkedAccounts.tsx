@@ -15,9 +15,14 @@ const PROVIDER_NAMES: Record<SocialProviderId, string> = { google: "Google", git
 export function LinkedAccounts({
   accounts,
   providers,
+  emailVerified,
 }: {
   accounts: { providerId: string; accountId: string }[];
   providers: SocialProviderId[];
+  // Soft verification (ADR 0028): linking is the one verification-gated
+  // operation; the server enforces via a /link-social before-hook, this
+  // disabled state just explains it.
+  emailVerified: boolean;
 }) {
   const t = useT();
   const locale = useLocale();
@@ -106,7 +111,7 @@ export function LinkedAccounts({
               <Button
                 variant="outline"
                 size="sm"
-                disabled={pending !== null}
+                disabled={pending !== null || !emailVerified}
                 onClick={() => handleLink(provider)}
               >
                 {pending === provider ? t.auth.redirecting : t.settings.linkAction}
@@ -115,6 +120,9 @@ export function LinkedAccounts({
           </div>
         );
       })}
+      {!emailVerified && (
+        <p className="text-sm text-muted-foreground">{t.settings.verifyToLinkHint}</p>
+      )}
       {error && (
         <p role="alert" className="text-sm text-destructive">
           {error}

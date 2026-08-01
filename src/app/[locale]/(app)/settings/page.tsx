@@ -106,6 +106,8 @@ export default async function SettingsPage() {
                   accountId: a.accountId,
                 }))}
                 providers={providers}
+                // Keyless: no send path and no server hook — don't gate.
+                emailVerified={!emailEnabled || user.emailVerified}
               />
             )}
           </div>
