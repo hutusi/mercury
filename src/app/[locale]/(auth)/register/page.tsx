@@ -29,27 +29,32 @@ export default function RegisterPage() {
     e.preventDefault();
     setError(null);
     setPending(true);
-    const { data, error } = await authClient.signUp.email({
-      name,
-      email,
-      password,
-      callbackURL: localePath(locale, "/verify-email"),
-    });
-    if (error) {
-      setError(error.message ?? t.auth.genericError);
+    try {
+      const { data, error } = await authClient.signUp.email({
+        name,
+        email,
+        password,
+        callbackURL: localePath(locale, "/verify-email"),
+      });
+      if (error) {
+        setError(error.message ?? t.auth.genericError);
+        return;
+      }
+      // token === null means verification is enforced: no session yet, the
+      // user must click the emailed link. (Duplicate emails get the same
+      // synthetic token-null response, which keeps enumeration protection
+      // intact.)
+      if (data?.token === null) {
+        setAwaitingVerify(true);
+        return;
+      }
+      router.push(localePath(locale, "/dashboard"));
+      router.refresh();
+    } catch {
+      setError(t.auth.genericError);
+    } finally {
       setPending(false);
-      return;
     }
-    // token === null means verification is enforced: no session yet, the user
-    // must click the emailed link. (Duplicate emails get the same synthetic
-    // token-null response, which keeps enumeration protection intact.)
-    if (data?.token === null) {
-      setAwaitingVerify(true);
-      setPending(false);
-      return;
-    }
-    router.push(localePath(locale, "/dashboard"));
-    router.refresh();
   }
 
   async function handleResend() {
@@ -110,6 +115,9 @@ export default function RegisterPage() {
             type="button"
             variant="outline"
             className="w-full"
+            // Locked while a resend is in flight: the stale response would
+            // otherwise stamp resent/error state onto the reset form.
+            disabled={resending}
             onClick={() => {
               setAwaitingVerify(false);
               setResent(false);

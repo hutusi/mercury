@@ -39,31 +39,40 @@ export default function LoginPage() {
     setError(null);
     setNotVerified(false);
     setPending(true);
-    const { error } = await authClient.signIn.email({ email, password });
-    if (error) {
-      if (error.code === "EMAIL_NOT_VERIFIED") {
-        // Re-send with the /verify-email landing ourselves — server-side
-        // sendOnSignIn is deliberately off (see src/lib/auth/auth.ts). Safe:
-        // this 403 only fires after the password checked out.
-        try {
-          await authClient.sendVerificationEmail({
-            email,
-            callbackURL: localePath(locale, "/verify-email"),
-          });
-        } catch {
-          // The manual resend button below remains as the fallback.
+    try {
+      const { error } = await authClient.signIn.email({ email, password });
+      if (error) {
+        if (error.code === "EMAIL_NOT_VERIFIED") {
+          // Re-send with the /verify-email landing ourselves — server-side
+          // sendOnSignIn is deliberately off (see src/lib/auth/auth.ts). Safe:
+          // this 403 only fires after the password checked out.
+          let sent = false;
+          try {
+            const { error: sendError } = await authClient.sendVerificationEmail({
+              email,
+              callbackURL: localePath(locale, "/verify-email"),
+            });
+            sent = !sendError;
+          } catch {
+            // Transport failure — fall through to the resend prompt below.
+          }
+          setNotVerified(true);
+          setResent(false);
+          // Only claim delivery when the send succeeded — a 429 from the
+          // 3/60s rate limit resolves as {error}, it does not throw.
+          setError(sent ? t.auth.emailNotVerified : t.auth.emailNotVerifiedResend);
+        } else {
+          setError(error.message ?? t.auth.genericError);
         }
-        setNotVerified(true);
-        setResent(false);
-        setError(t.auth.emailNotVerified);
-      } else {
-        setError(error.message ?? t.auth.genericError);
+        return;
       }
+      router.push(localePath(locale, "/dashboard"));
+      router.refresh();
+    } catch {
+      setError(t.auth.genericError);
+    } finally {
       setPending(false);
-      return;
     }
-    router.push(localePath(locale, "/dashboard"));
-    router.refresh();
   }
 
   async function handleResend() {
