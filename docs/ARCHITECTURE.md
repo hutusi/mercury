@@ -84,6 +84,8 @@ Read models aggregate in Postgres rather than loading unbounded history into the
 
 Plugin order matters: `bearer()` comes before `nextCookies()`, and `nextCookies()` must stay **last** so server actions can set cookies.
 
+Roles come from the better-auth `admin()` plugin ([ADR 0025](adr/0025-membership-roles-and-tiers.md)): `session.user.role` is `"admin"` or null/`"user"` (null means the plugin's `defaultRole`; never assume non-null). The admin-only surface is guarded by `requireAdmin()` (`src/lib/auth/session.ts`) in every admin page and server action — signed-out users get the login redirect, signed-in non-admins a 404 so the surface isn't advertised. Admins are minted with `bun run admin:grant <email>`, never through the UI.
+
 ## HTTP API (v1)
 
 `/api/v1/*` route handlers exist for native clients and are deliberately thin: `apiHandler()` (error envelope + Zod/domain-error mapping) around `requireUserApi()`/`requireOnboardedApi()` around the same `src/lib/services/` and `src/lib/queries/` functions the web uses — one implementation, two transports. Integrity-sensitive serialization lives in pure mappers under `src/lib/api/resources/` (e.g. an in-progress exam attempt can only serialize sanitized sections). The contract is [docs/api/openapi.yaml](api/openapi.yaml), kept executable by `src/lib/api/openapi-coverage.test.ts`: it checks bidirectional operation coverage, local references, auth/error/success metadata, required path parameters, and JSON-body schemas. The client guide is [docs/API.md](API.md).

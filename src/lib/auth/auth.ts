@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { bearer } from "better-auth/plugins";
+import { admin, bearer } from "better-auth/plugins";
 import { db } from "../db";
 import { siteBaseUrl } from "../site-url";
 
@@ -34,6 +34,8 @@ export const auth = betterAuth({
   },
   // bearer(): native clients send the session token (from the `set-auth-token`
   // response header) as `Authorization: Bearer` instead of a cookie.
+  // admin(): puts `role` on session.user; a null role means defaultRole, so
+  // existing rows need no backfill. Admins are minted via `bun run admin:grant`.
   // nextCookies() must stay the last plugin: lets server actions set auth cookies.
-  plugins: [bearer(), nextCookies()],
+  plugins: [bearer(), admin({ defaultRole: "user", adminRoles: ["admin"] }), nextCookies()],
 });
