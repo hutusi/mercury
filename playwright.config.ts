@@ -1,20 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
+import { e2eDatabaseUrl } from "./e2e/db-url";
 
 const PORT = 3100;
 const BASE_URL = `http://localhost:${PORT}`;
-
-// The E2E server resets its database on every boot (drops the `public` schema),
-// so it must target a dedicated `mercury_e2e` database and never the dev one.
-// Inherit host + credentials from DATABASE_URL when present (Docker/CI), so only
-// the database name is forced; fall back to a local trust-auth Postgres.
-function e2eDatabaseUrl(): string {
-  if (process.env.E2E_DATABASE_URL) return process.env.E2E_DATABASE_URL;
-  const base = process.env.DATABASE_URL;
-  if (!base) return "postgresql://localhost:5432/mercury_e2e";
-  const url = new URL(base);
-  url.pathname = "/mercury_e2e";
-  return url.toString();
-}
 
 export default defineConfig({
   testDir: "./e2e",
