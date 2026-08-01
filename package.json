@@ -17,6 +17,7 @@
     "db:migrate": "bunx tsx src/lib/db/migrate.ts",
     "db:seed": "bunx tsx src/lib/db/seed.ts",
     "db:studio": "drizzle-kit studio",
+    "admin:grant": "bunx tsx scripts/grant-admin.ts",
     "content:schemas": "bun scripts/generate-content-schemas.ts && prettier --write content/.schemas",
     "content:audio": "bun scripts/generate-audio.ts && prettier --write content/audio-manifest.json",
     "content:audio:prune": "bun scripts/generate-audio.ts --prune && prettier --write content/audio-manifest.json",
