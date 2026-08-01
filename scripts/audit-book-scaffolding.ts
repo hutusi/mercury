@@ -40,17 +40,31 @@ function loadChapters(slug: string): BookChapter[] {
   // Read in manifest order when there is one — reading order is load-bearing
   // and a fs listing lies (chapter-10 sorts before chapter-2).
   const manifestPath = path.join(BOOKS_DIR, slug, "book.yaml");
-  const files = fs.existsSync(manifestPath)
-    ? BookManifestSchema.parse(parse(fs.readFileSync(manifestPath, "utf8"))).chapterFiles
-    : fs
-        .readdirSync(dir)
-        .filter((f) => f.endsWith(".yaml"))
-        .sort();
+  const manifest = fs.existsSync(manifestPath)
+    ? BookManifestSchema.parse(parse(fs.readFileSync(manifestPath, "utf8")))
+    : undefined;
+  const files =
+    manifest?.chapterFiles ??
+    fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith(".yaml"))
+      .sort();
   return files.map((file) => {
     const raw: unknown = parse(fs.readFileSync(path.join(dir, file), "utf8"));
     const result = BookChapterSchema.safeParse(raw);
     if (!result.success) {
-      throw new Error(`${slug}/chapters/${file}: ${result.error.issues[0]?.message ?? "invalid"}`);
+      // Keep the field path: "invalid" alone leaves you hunting for which
+      // question in a 200-line chapter has the bad correctIndex.
+      const issue = result.error.issues[0];
+      const at = issue?.path.length ? ` at ${issue.path.join(".")}` : "";
+      throw new Error(`${slug}/chapters/${file}${at}: ${issue?.message ?? "invalid"}`);
+    }
+    // Mirrors src/content/load.ts. Books outside BOOK_DIRS never reach that
+    // loader or content.test.ts, so for them this is the only place a chapter
+    // filed under the wrong book gets caught — and they are this script's
+    // stated audience.
+    if (manifest && result.data.bookId !== manifest.id) {
+      throw new Error(`${slug}/chapters/${file}: bookId ${result.data.bookId} != ${manifest.id}`);
     }
     return result.data;
   });
@@ -153,10 +167,9 @@ function auditBook(slug: string): boolean {
   const positions = [0, 0, 0, 0];
   let uniquelyLongest = 0;
   let uniquelyShortest = 0;
-  // Terminal punctuation drifts book-wide: the per-question check above only
-  // asks that the four options in one question agree with each other, so a pass
-  // that strips every period stays green while every option turns into a
-  // fragment. Compare each question against the book's own prevailing style.
+  // Counted book-wide because the per-question check above only asks that the
+  // four options in one question agree with each other; see where this figure
+  // is printed for what it can and cannot tell you.
   const optionsTotal = questions.reduce((n, q) => n + q.options.length, 0);
   let optionsPunctuated = 0;
   for (const q of questions) {
