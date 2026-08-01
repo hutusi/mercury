@@ -8,11 +8,9 @@ const HISTORY_LIMIT = 50;
 
 /** Recent thread (chronological) plus today's remaining message quota. */
 export async function getChatPageData(userId: string) {
-  const [today, entitlements] = await Promise.all([
+  const [today, entitlements, rows, state] = await Promise.all([
     getCalendarDayForUser(userId),
     getEntitlementsForUser(userId),
-  ]);
-  const [rows, state] = await Promise.all([
     db.query.chatMessages.findMany({
       where: eq(chatMessages.userId, userId),
       orderBy: desc(chatMessages.sequence),

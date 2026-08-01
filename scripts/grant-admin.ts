@@ -52,8 +52,9 @@ async function main() {
       console.error(`No user found with email ${email}`);
       process.exit(1);
     }
-    const { id, name } = result.rows[0] as { id: string; name: string };
-    console.log(`${revoke ? "Revoked admin from" : "Granted admin to"} ${name} (${id}).`);
+    // Echo only the operator-supplied email (already in argv/shell history);
+    // don't add DB-sourced identifiers to terminal/CI logs.
+    console.log(`${revoke ? "Revoked admin from" : "Granted admin to"} ${email}.`);
   } finally {
     await pool.end();
   }

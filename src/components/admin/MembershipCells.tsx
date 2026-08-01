@@ -33,22 +33,22 @@ export function MembershipCells({
   });
   const [expiry, setExpiry] = useState("");
   const [pending, setPending] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [error, setError] = useState<"not_found" | "invalid_input" | "unknown" | null>(null);
   const [, startTransition] = useTransition();
 
   async function run(action: () => Promise<AdminMembershipResult>) {
     setPending(true);
-    setFailed(false);
+    setError(null);
     try {
       const result = await action();
       if (result.ok) {
         setMembership({ tier: result.tier, expiresAt: result.expiresAt });
         startTransition(() => router.refresh());
       } else {
-        setFailed(true);
+        setError(result.error);
       }
     } catch {
-      setFailed(true);
+      setError("unknown");
     } finally {
       setPending(false);
     }
@@ -95,7 +95,13 @@ export function MembershipCells({
               {pending ? t.admin.working : t.admin.revoke}
             </Button>
           )}
-          {failed ? <span className="text-xs text-cinnabar">{t.admin.actionFailed}</span> : null}
+          {error ? (
+            // role="alert": the failure lands after an async action with no
+            // focus move, so screen readers need the live region to hear it.
+            <span role="alert" className="text-xs text-cinnabar">
+              {error === "invalid_input" ? t.admin.invalidExpiry : t.admin.actionFailed}
+            </span>
+          ) : null}
         </div>
       </td>
     </>

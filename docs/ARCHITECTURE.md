@@ -58,7 +58,7 @@ src/
     └── speech.ts         # Web Speech helpers (client-only)
 ```
 
-Pure logic (`srs`, `scoring`, `exam-utils`, `book-core`, `streak-core`, `learner-model-core`, `plan-core`, `ai-grading-core`, `chat-core`) is deliberately separated from DB access so it can be unit-tested under Bun.
+Pure logic (`srs`, `scoring`, `exam-utils`, `book-core`, `streak-core`, `learner-model-core`, `plan-core`, `ai-grading-core`, `chat-core`, `membership-core`) is deliberately separated from DB access so it can be unit-tested under Bun.
 
 ## Data model
 

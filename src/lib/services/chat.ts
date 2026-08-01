@@ -53,7 +53,7 @@ export async function claimChatTurnForUser(
   now = new Date(),
 ): Promise<ChatTurnClaim> {
   // Tier-dependent (ADR 0025); read before the transaction, never under the lock.
-  const limit = (await getEntitlementsForUser(userId)).chatDailyLimit;
+  const limit = (await getEntitlementsForUser(userId, now)).chatDailyLimit;
   return db.transaction(async (tx) => {
     await tx
       .insert(chatStates)

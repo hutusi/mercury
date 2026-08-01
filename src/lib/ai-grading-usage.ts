@@ -39,7 +39,7 @@ export async function claimGradingRequest(input: ClaimInput): Promise<GradingCla
   const now = input.now ?? new Date();
   const day = await getCalendarDayForUser(input.userId, now);
   // Tier-dependent (ADR 0025); read before the transaction, never under the lock.
-  const limit = (await getEntitlementsForUser(input.userId)).aiGradingDailyLimit;
+  const limit = (await getEntitlementsForUser(input.userId, now)).aiGradingDailyLimit;
 
   return db.transaction(async (tx) => {
     await tx

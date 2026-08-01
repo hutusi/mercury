@@ -21,7 +21,14 @@ export async function getTierForUser(userId: string, now = new Date()): Promise<
   return resolveTier((await getMembershipForUser(userId)) ?? null, now);
 }
 
-/** One extra indexed read per gated mutation — call before claim transactions, never inside. */
-export async function getEntitlementsForUser(userId: string): Promise<Entitlements> {
-  return entitlementsForTier(await getTierForUser(userId));
+/**
+ * One extra indexed read per gated mutation — call before claim transactions,
+ * never inside. Callers with their own clock pass it so membership expiry is
+ * evaluated at the same instant as the quota day and claim checks.
+ */
+export async function getEntitlementsForUser(
+  userId: string,
+  now = new Date(),
+): Promise<Entitlements> {
+  return entitlementsForTier(await getTierForUser(userId, now));
 }

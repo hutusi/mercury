@@ -484,6 +484,7 @@ const zh = {
     revoke: "取消会员",
     working: "处理中…",
     actionFailed: "操作失败，请重试",
+    invalidExpiry: "到期日无效，请重新选择",
   },
   errors: {
     boundaryTitle: "出错了",
@@ -980,6 +981,7 @@ const en: Dictionary = {
     revoke: "Revoke",
     working: "Working…",
     actionFailed: "Action failed — try again",
+    invalidExpiry: "Invalid expiry date — pick another",
   },
   errors: {
     boundaryTitle: "Something went wrong",

@@ -27,14 +27,15 @@ test("admin promotion, premium grant, and revoke thread end-to-end", async ({ pa
 
   // A mistyped flag must fail loudly, not fall through to the grant path.
   expect(() =>
-    execSync(`bunx tsx scripts/grant-admin.ts ${admin.email} --revkoe`, {
+    execSync(`bun run admin:grant ${admin.email} --revkoe`, {
       env: { ...process.env, DATABASE_URL: e2eDatabaseUrl() },
       stdio: "pipe",
     }),
   ).toThrow();
 
-  // Promote via the real CLI — exercises scripts/grant-admin.ts, not raw SQL.
-  execSync(`bunx tsx scripts/grant-admin.ts ${admin.email}`, {
+  // Promote via the declared entry point — the same command operators run —
+  // so the spec and package.json can't drift apart.
+  execSync(`bun run admin:grant ${admin.email}`, {
     env: { ...process.env, DATABASE_URL: e2eDatabaseUrl() },
     stdio: "pipe",
   });
