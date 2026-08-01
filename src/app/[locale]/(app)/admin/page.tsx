@@ -47,6 +47,7 @@ export default async function AdminPage() {
                     : null,
                   now,
                 );
+                const expiresAt = row.membershipExpiresAt?.toISOString().slice(0, 10) ?? null;
                 return (
                   <tr key={row.id} className="border-b border-border last:border-b-0">
                     <td className="max-w-40 truncate px-3 py-2">{row.name}</td>
@@ -58,10 +59,14 @@ export default async function AdminPage() {
                         {row.role === "admin" ? t.admin.roleAdmin : t.admin.roleUser}
                       </Badge>
                     </td>
+                    {/* Keyed by the server snapshot: refreshed data that differs
+                        (another admin's edit, an elapsed expiry) remounts the
+                        cells and displaces their local state. */}
                     <MembershipCells
+                      key={`${tier}:${expiresAt ?? ""}`}
                       userId={row.id}
                       tier={tier}
-                      expiresAt={row.membershipExpiresAt?.toISOString().slice(0, 10) ?? null}
+                      expiresAt={expiresAt}
                     />
                   </tr>
                 );

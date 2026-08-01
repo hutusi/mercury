@@ -27,6 +27,10 @@ export function MembershipCells({
 }) {
   const t = useT();
   const router = useRouter();
+  // Seeded once per mount by design: the parent keys this component by the
+  // server snapshot, so refreshed data that differs remounts it. Local state
+  // only has to outrun the refresh for this admin's own mutations — it never
+  // needs to reconcile foreign changes.
   const [membership, setMembership] = useState({
     tier: initialTier,
     expiresAt: initialExpiresAt,
