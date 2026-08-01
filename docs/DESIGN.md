@@ -61,7 +61,7 @@ Compose these before writing inline Tailwind. Signature pieces live in `src/comp
 
 ## Motion
 
-`transition-colors` only. The sole animations are the exam timer's sub-minute pulse and the recording dot, both paired with `motion-reduce:animate-none`. No entrance animations, hover lifts, or shadows-on-hover — over-animation is noise. The design guard also rejects `transition-all`, smooth-scroll (`behavior: "smooth"`), and emoji glyphs — icons are always lucide components, so they carry a role and inherit ink.
+`transition-colors` only. The sole animations are the exam timer's sub-minute pulse and the recording dot, both paired with `motion-reduce:animate-none`. No entrance animations, hover lifts, or shadows-on-hover — over-animation is noise. The design guard also rejects `transition-all`, smooth-scroll (`behavior: "smooth"`), and emoji glyphs — icons are always lucide components, so they carry a role and inherit ink. One exception: third-party brand marks (the Google/GitHub sign-in buttons) don't exist in lucide, so they're monochrome inline SVGs on `currentColor` with `aria-hidden` — the ink rule still applies, never the brand's colors.
 
 ## Accessibility floor
 

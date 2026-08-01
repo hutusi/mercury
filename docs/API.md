@@ -26,6 +26,11 @@ a session cookie on sign-in; a client that replays it _without_ an `Origin` head
 check (`MISSING_OR_NULL_ORIGIN`) on later auth POSTs. Pure-bearer clients skip that code path
 entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-free.
 
+**Social sign-in is web-only** ([ADR 0026](adr/0026-social-signin-google-github.md)): the
+Google/GitHub buttons use the browser redirect flow, which has no bearer story. The native path —
+`POST /api/auth/sign-in/social` with a provider-issued `idToken` returning `set-auth-token` — is
+future work and intentionally not in the OpenAPI contract yet.
+
 ## Conventions
 
 - **Errors** are always `{"error": {"code", "message", "details?"}}`. `code` is the contract;
