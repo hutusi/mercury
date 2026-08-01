@@ -30,7 +30,9 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
 
 - **Errors** are always `{"error": {"code", "message", "details?"}}`. `code` is the contract;
   `message` is English debug text (clients own user-facing copy). Codes: `unauthorized` (401),
-  `onboarding_required` / `integrity` (403), `not_found` (404), conflicts such as
+  `onboarding_required` / `integrity` / `premium_required` (403 — the latter reserved for future
+  premium-gated features, [ADR 0025](adr/0025-membership-roles-and-tiers.md)), `not_found` (404),
+  conflicts such as
   `quiz_answer_conflict` / `grading_in_progress` / `chat_in_progress` (409), expiry such as
   `quiz_session_expired` / `mistake_session_stale` (410),
   `validation_failed` (422, zod issues in `details`), `invalid_json` (400),
@@ -58,6 +60,10 @@ entirely — the e2e helper (`e2e/api-helpers.ts`) proves the flow works cookie-
   `dailyGoal`, `remindersEnabled`, `onboardedAt` — the former `activeTrack` field is gone;
   read `goalTrack` from `GET /me/profile`, and `GET /dashboard` returns `goalTrack` instead
   of `track`).
+- **Role and membership**: `GET /api/v1/me` also returns `user.role` (`user`/`admin`) and
+  `membership: {tier, expiresAt}` (`free`/`premium`; `expiresAt` non-null only for premium with
+  an expiry). Premium raises the tutor-chat and AI-grading daily limits — clients should read
+  the effective numbers from the endpoints that report them, never hardcode tier quotas.
 - No pagination — list sizes mirror the web's fixed limits (history 20, recents 5,
   past submissions 10, chat thread 50).
 

@@ -97,6 +97,21 @@ paths:
                       id: { type: string }
                       name: { type: string }
                       email: { type: string }
+                      role:
+                        type: string
+                        enum: [user, admin]
+                        description: Authorization role; a null DB role serializes as user.
+                  membership:
+                    type: object
+                    description: Membership tier (ADR 0025). Free is the default; premium is admin-granted.
+                    properties:
+                      tier:
+                        type: string
+                        enum: [free, premium]
+                      expiresAt:
+                        type: [string, "null"]
+                        format: date-time
+                        description: Only non-null for premium with an expiry.
                   settings:
                     oneOf: [{ $ref: "#/components/schemas/Settings" }, { type: "null" }]
                   aiEnabled: { type: boolean }
@@ -1206,6 +1221,13 @@ components:
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+    PremiumRequired:
+      description: >-
+        The feature needs a premium membership (code premium_required). Reserved: no
+        v1 operation returns it yet; future premium-gated endpoints will reference it.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
     NotFound:
       description: Resource missing or not visible to this user (code not_found).
       content:
@@ -1247,7 +1269,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, quiz_answer_conflict, attempt_not_abandonable, exercise_request_conflict, grading_request_conflict, grading_in_progress, grading_claim_superseded, chat_in_progress, chat_claim_superseded, expired, quiz_session_expired, mistake_session_stale, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, quiz_answer_conflict, attempt_not_abandonable, exercise_request_conflict, grading_request_conflict, grading_in_progress, grading_claim_superseded, chat_in_progress, chat_claim_superseded, expired, quiz_session_expired, mistake_session_stale, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, premium_required, internal).
             message:
               type: string
               description: English debug text — not for end users.
