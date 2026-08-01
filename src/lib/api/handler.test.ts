@@ -1,7 +1,13 @@
 import { describe, expect, test } from "bun:test";
 import { z } from "zod";
 import { AiUnavailableError } from "../ai/client";
-import { ConflictError, ExpiredError, IntegrityError, NotFoundError } from "../services/errors";
+import {
+  ConflictError,
+  ExpiredError,
+  IntegrityError,
+  NotFoundError,
+  PremiumRequiredError,
+} from "../services/errors";
 import { ApiError } from "./errors";
 import { apiHandler, readJson } from "./handler";
 
@@ -53,6 +59,12 @@ describe("apiHandler", () => {
     const { status, body } = await runWithError(new IntegrityError("Not an active mistake"));
     expect(status).toBe(403);
     expect(body.error).toEqual({ code: "integrity", message: "Not an active mistake" });
+  });
+
+  test("PremiumRequiredError maps to 403 premium_required", async () => {
+    const { status, body } = await runWithError(new PremiumRequiredError("Premium only"));
+    expect(status).toBe(403);
+    expect(body.error).toEqual({ code: "premium_required", message: "Premium only" });
   });
 
   test("ConflictError preserves its machine code on 409", async () => {

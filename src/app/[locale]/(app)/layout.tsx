@@ -10,5 +10,12 @@ export default async function AppLayout({ children }: Readonly<{ children: React
   // Same onboarding predicate as requireOnboarded/-Api — one invariant everywhere.
   if (!(await getOnboardedState(session.user.id))) return localeRedirect("/onboarding");
 
-  return <AppShell userName={session.user.name || session.user.email}>{children}</AppShell>;
+  return (
+    <AppShell
+      userName={session.user.name || session.user.email}
+      isAdmin={session.user.role === "admin"}
+    >
+      {children}
+    </AppShell>
+  );
 }

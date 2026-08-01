@@ -1,4 +1,5 @@
 import { headers } from "next/headers";
+import { notFound } from "next/navigation";
 import { cache } from "react";
 import { localeRedirect } from "../i18n";
 import { auth } from "./auth";
@@ -16,5 +17,19 @@ export const getSession = cache(async () => {
 export async function requireUser() {
   const session = await getSession();
   if (!session) return localeRedirect("/login");
+  return session.user;
+}
+
+/**
+ * Guard for the admin surface (pages AND server actions — same rule as
+ * requireUser). Signed-out users get the usual login redirect; signed-in
+ * non-admins get a 404 so the admin surface is never advertised. `role` is
+ * nullable (null means the plugin's defaultRole "user"), so compare, never
+ * assume non-null.
+ */
+export async function requireAdmin() {
+  const session = await getSession();
+  if (!session) return localeRedirect("/login");
+  if (session.user.role !== "admin") notFound();
   return session.user;
 }

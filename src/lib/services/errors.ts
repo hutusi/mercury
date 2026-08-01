@@ -31,6 +31,18 @@ export class LimitExceededError extends Error {
   }
 }
 
+/**
+ * The feature needs a premium membership (ADR 0025). → 403 `premium_required`.
+ * No launch feature throws it yet — the contract ships ahead of the first
+ * hard gate so future gating needs no API/client changes.
+ */
+export class PremiumRequiredError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "PremiumRequiredError";
+  }
+}
+
 /** A request conflicts with already-persisted state. → 409 */
 export class ConflictError extends Error {
   readonly code: string;

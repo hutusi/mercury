@@ -153,6 +153,40 @@ export const learnerProfiles = pgTable(
 );
 
 // ---------------------------------------------------------------------------
+// Memberships (ADR 0025)
+// ---------------------------------------------------------------------------
+
+/** Stored tiers. Free is the absence of a row, so it is never stored. */
+export type MembershipTier = "premium";
+
+/**
+ * One row per premium user; no row = free, so there is no backfill and revoke
+ * is a DELETE. Server-owned: written only by admin actions (and billing
+ * providers later, via new `source` values), never by the member.
+ */
+export const memberships = pgTable(
+  "memberships",
+  {
+    userId: text("user_id")
+      .primaryKey()
+      .references(() => user.id, { onDelete: "cascade" }),
+    tier: text("tier").$type<MembershipTier>().notNull(),
+    /** Null = no expiry. An expired row resolves to free; re-grants upsert over it. */
+    expiresAt: ts("expires_at"),
+    // set null, not cascade: deleting an admin account must not delete the
+    // memberships that admin granted.
+    grantedBy: text("granted_by").references(() => user.id, { onDelete: "set null" }),
+    source: text("source").notNull().default("manual"),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
+    updatedAt: ts("updated_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    check("memberships_tier_check", sql`${t.tier} in ('premium')`),
+    check("memberships_source_check", sql`${t.source} in ('manual')`),
+  ],
+);
+
+// ---------------------------------------------------------------------------
 // Content tables (seeded from src/content, ids are stable slugs)
 // ---------------------------------------------------------------------------
 

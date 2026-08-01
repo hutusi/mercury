@@ -6,6 +6,7 @@ import {
   IntegrityError,
   LimitExceededError,
   NotFoundError,
+  PremiumRequiredError,
 } from "../services/errors";
 import { ApiError } from "./errors";
 
@@ -48,6 +49,9 @@ export function apiHandler<Ctx>(
       }
       if (error instanceof IntegrityError) {
         return errorResponse(403, "integrity", error.message);
+      }
+      if (error instanceof PremiumRequiredError) {
+        return errorResponse(403, "premium_required", error.message);
       }
       if (error instanceof ConflictError) {
         return errorResponse(409, error.code, error.message);

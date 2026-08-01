@@ -1,10 +1,11 @@
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { activeAiModel, AiUnavailableError, getTutorReply, isAiEnabled } from "../ai/client";
-import { buildChatWindow, chatClaimIsFresh, chatDailyLimit } from "../chat-core";
+import { buildChatWindow, chatClaimIsFresh } from "../chat-core";
 import { db } from "../db";
 import { chatMessages, chatStates } from "../db/schema";
 import { formatLearnerContext } from "../learner-model-core";
+import { getEntitlementsForUser } from "../queries/membership";
 import { getLearnerProfile } from "../queries/profile";
 import { getCalendarDayForUser, recordActivityWith } from "../streak";
 import { ConflictError, LimitExceededError } from "./errors";
@@ -51,7 +52,8 @@ export async function claimChatTurnForUser(
   day: string,
   now = new Date(),
 ): Promise<ChatTurnClaim> {
-  const limit = chatDailyLimit();
+  // Tier-dependent (ADR 0025); read before the transaction, never under the lock.
+  const limit = (await getEntitlementsForUser(userId, now)).chatDailyLimit;
   return db.transaction(async (tx) => {
     await tx
       .insert(chatStates)

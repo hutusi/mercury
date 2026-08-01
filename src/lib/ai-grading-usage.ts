@@ -1,7 +1,8 @@
 import { and, eq } from "drizzle-orm";
-import { aiGradingDailyLimit, GRADING_CLAIM_STALE_MS } from "./ai-grading-core";
+import { GRADING_CLAIM_STALE_MS } from "./ai-grading-core";
 import { db, type DbExecutor } from "./db";
 import { aiGradingRequests, aiUsageDays, type AiGradingKind } from "./db/schema";
+import { getEntitlementsForUser } from "./queries/membership";
 import { getCalendarDayForUser } from "./streak";
 import { ConflictError, LimitExceededError } from "./services/errors";
 
@@ -37,7 +38,8 @@ function isActiveScopeConflict(error: unknown): boolean {
 export async function claimGradingRequest(input: ClaimInput): Promise<GradingClaim> {
   const now = input.now ?? new Date();
   const day = await getCalendarDayForUser(input.userId, now);
-  const limit = aiGradingDailyLimit();
+  // Tier-dependent (ADR 0025); read before the transaction, never under the lock.
+  const limit = (await getEntitlementsForUser(input.userId, now)).aiGradingDailyLimit;
 
   return db.transaction(async (tx) => {
     await tx
