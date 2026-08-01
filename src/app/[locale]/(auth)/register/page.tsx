@@ -80,7 +80,11 @@ export default function RegisterPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <p className="text-sm text-destructive">{error}</p>}
+        {error && (
+          <p role="alert" className="text-sm text-destructive">
+            {error}
+          </p>
+        )}
         <Button type="submit" disabled={pending} className="w-full">
           {pending ? t.auth.signingUp : t.auth.signUp}
         </Button>

@@ -21,6 +21,15 @@ describe("enabledSocialProviders", () => {
     );
   });
 
+  test("whitespace-only values count as unset", () => {
+    expect(
+      enabledSocialProviders({ GOOGLE_CLIENT_ID: " ", GOOGLE_CLIENT_SECRET: "secret" }),
+    ).toEqual([]);
+    expect(enabledSocialProviders({ GOOGLE_CLIENT_ID: "id", GOOGLE_CLIENT_SECRET: "\n" })).toEqual(
+      [],
+    );
+  });
+
   test("providers are independent and ordered stably", () => {
     expect(
       enabledSocialProviders({ GITHUB_CLIENT_ID: "id", GITHUB_CLIENT_SECRET: "secret" }),
