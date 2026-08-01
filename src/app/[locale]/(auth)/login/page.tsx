@@ -3,6 +3,7 @@
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { SocialButtons } from "@/components/auth/SocialButtons";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -70,6 +71,7 @@ export default function LoginPage() {
           {pending ? t.auth.signingIn : t.auth.signIn}
         </Button>
       </form>
+      <SocialButtons />
       <p className="text-center text-sm text-muted-foreground">
         {t.auth.noAccount}{" "}
         <Link
