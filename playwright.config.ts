@@ -39,6 +39,12 @@ export default defineConfig({
       // live provider (Claude or Bailian).
       ANTHROPIC_API_KEY: "",
       DASHSCOPE_API_KEY: "",
+      // Same trick for OAuth: keyless e2e must hide the social sign-in buttons
+      // even when the developer's .env carries real credentials.
+      GOOGLE_CLIENT_ID: "",
+      GOOGLE_CLIENT_SECRET: "",
+      GITHUB_CLIENT_ID: "",
+      GITHUB_CLIENT_SECRET: "",
       // Tests register users rapid-fire; disable better-auth's rate limiter.
       MERCURY_DISABLE_RATE_LIMIT: "1",
     },

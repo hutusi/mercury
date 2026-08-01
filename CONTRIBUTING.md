@@ -16,6 +16,9 @@ cp .env.example .env
 # set BETTER_AUTH_SECRET, e.g.:  openssl rand -base64 32
 # optional: ANTHROPIC_API_KEY (Claude) or DASHSCOPE_API_KEY (Bailian GLM) enables AI grading
 #           (the app degrades gracefully without either)
+# optional: GOOGLE_CLIENT_ID/SECRET + GITHUB_CLIENT_ID/SECRET enable social sign-in buttons
+#           (register the redirect URI http://localhost:3000/api/auth/callback/<provider>;
+#            without the vars the buttons simply don't render — ADR 0026)
 
 bun run db:migrate   # apply committed migrations to Postgres
 bun run db:seed      # load seed content (idempotent)
@@ -100,6 +103,13 @@ bun run build && bun run typecheck && bun run test:e2e
      listening exercise silently degrades to browser TTS. (`BLOB_READ_WRITE_TOKEN` is
      auto-provisioned by connecting the store and is used by `content:audio` tooling only —
      the deployed app never reads it.)
+   - Optionally `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET` and `GITHUB_CLIENT_ID`/`GITHUB_CLIENT_SECRET`
+     for social sign-in ([ADR 0026](docs/adr/0026-social-signin-google-github.md)) — **Production
+     scope only**: preview deploys have per-deploy URLs that can't be registered as OAuth redirect
+     URIs, so previews intentionally run keyless (no buttons). Register
+     `https://<prod-domain>/api/auth/callback/google` on the Google OAuth client (one client can
+     also hold the localhost URI) and `https://<prod-domain>/api/auth/callback/github` on a GitHub
+     OAuth App (GitHub allows a single callback URL per app — use a second app for local dev).
 
    Env var changes only take effect on a new deployment — redeploy after adding/changing any of
    these (`vercel redeploy <url> --target production` or the dashboard's Redeploy button).

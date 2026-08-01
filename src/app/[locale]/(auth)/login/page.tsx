@@ -3,6 +3,7 @@
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { SocialButtons } from "@/components/auth/SocialButtons";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -65,11 +66,16 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <p className="text-sm text-destructive">{error}</p>}
+        {error && (
+          <p role="alert" className="text-sm text-destructive">
+            {error}
+          </p>
+        )}
         <Button type="submit" disabled={pending} className="w-full">
           {pending ? t.auth.signingIn : t.auth.signIn}
         </Button>
       </form>
+      <SocialButtons />
       <p className="text-center text-sm text-muted-foreground">
         {t.auth.noAccount}{" "}
         <Link

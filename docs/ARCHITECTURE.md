@@ -12,7 +12,7 @@ Everything is bilingual by design: learning material is English, scaffolding (tr
 | Language  | TypeScript 6, zod 4 for runtime validation                                                                                                                                             |
 | Styling   | Tailwind CSS 4 (`@theme` tokens in `src/app/globals.css`, no config file); the Lexicon design system — see [docs/DESIGN.md](DESIGN.md)                                                 |
 | Database  | Postgres (Neon in prod) via node-postgres + Drizzle ORM — see [ADR 0007](adr/0007-postgres-neon-for-serverless.md)                                                                     |
-| Auth      | better-auth (email/password)                                                                                                                                                           |
+| Auth      | better-auth (email/password + optional Google/GitHub OAuth, [ADR 0026](adr/0026-social-signin-google-github.md))                                                                       |
 | AI        | Claude (`@anthropic-ai/sdk`) or Bailian GLM (`openai` SDK, OpenAI-compatible endpoint), server-side only — see [ADR 0011](adr/0011-multi-provider-ai.md)                               |
 | Speech    | Pre-generated DashScope audio on Vercel Blob ([ADR 0021](adr/0021-pregenerated-listening-audio.md), [0022](adr/0022-listening-audio-on-vercel-blob.md)); Web Speech API fallback + STT |
 
@@ -85,6 +85,8 @@ Read models aggregate in Postgres rather than loading unbounded history into the
 4. **`requireUserApi()`/`requireOnboardedApi()` in every `/api/v1` route** (`src/lib/api/auth.ts`) — same authoritative lookup, but returning 401/403 JSON envelopes instead of redirecting. Native clients authenticate with `Authorization: Bearer` via the better-auth `bearer` plugin (see [docs/API.md](API.md) and [ADR 0010](adr/0010-http-api-v1-bearer-auth.md)).
 
 Plugin order matters: `bearer()` comes before `nextCookies()`, and `nextCookies()` must stay **last** so server actions can set cookies.
+
+Social sign-in ([ADR 0026](adr/0026-social-signin-google-github.md)): Google/GitHub OAuth registers only when a provider's `*_CLIENT_ID`/`*_CLIENT_SECRET` env vars are both set (`src/lib/auth/social-providers.ts` feeds both the server config and the login/register buttons — keyless environments show no trace of the feature). Account linking runs on better-auth's defaults: password users are never `emailVerified` (no verification flow), so OAuth sign-in with a password account's email fails with `account_not_linked` rather than linking; OAuth↔OAuth same-email linking works because OAuth-created users are verified.
 
 Roles come from the better-auth `admin()` plugin ([ADR 0025](adr/0025-membership-roles-and-tiers.md)): `session.user.role` is `"admin"` or null/`"user"` (null means the plugin's `defaultRole`; never assume non-null). The admin-only surface is guarded by `requireAdmin()` (`src/lib/auth/session.ts`) in every admin page and server action — signed-out users get the login redirect, signed-in non-admins a 404 so the surface isn't advertised. Admins are minted with `bun run admin:grant <email>`, never through the UI, and the plugin's own HTTP endpoints (`/api/auth/admin/*` — set-role, impersonation, bans, user deletion) are blocked with a 404 at the auth route handler: the plugin exists only for the `role` column and typed session.
 

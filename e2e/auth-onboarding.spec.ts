@@ -72,3 +72,19 @@ test("unauthenticated /dashboard redirects to /login", async ({ page }) => {
   await page.waitForURL("**/login");
   await expect(page.getByRole("heading", { name: t.auth.loginTitle })).toBeVisible();
 });
+
+test("keyless server hides social sign-in buttons", async ({ page }) => {
+  // playwright.config.ts blanks the OAuth vars, so the buttons (and their
+  // divider) must be absent while the email form keeps working — the same
+  // degradation contract as the AI features.
+  await page.goto("/login");
+  await expect(page.getByRole("heading", { name: t.auth.loginTitle })).toBeVisible();
+  await expect(page.locator("#email")).toBeVisible();
+  await expect(page.getByRole("button", { name: t.auth.continueWithGoogle })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: t.auth.continueWithGitHub })).toHaveCount(0);
+
+  await page.goto("/register");
+  await expect(page.getByRole("heading", { name: t.auth.registerTitle })).toBeVisible();
+  await expect(page.getByRole("button", { name: t.auth.continueWithGoogle })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: t.auth.continueWithGitHub })).toHaveCount(0);
+});
