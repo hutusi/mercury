@@ -5,14 +5,37 @@
 // run it against prod only deliberately.
 import { Pool } from "pg";
 
-async function main() {
-  const args = process.argv.slice(2);
-  const revoke = args.includes("--revoke");
-  const email = args.find((a) => !a.startsWith("--"));
+const USAGE = "Usage: bun run admin:grant <email> [--revoke]";
+
+/**
+ * Strict by design: a mistyped flag (e.g. --revkoe) must fail loudly, not
+ * silently fall through to the grant path.
+ */
+function parseArgs(argv: string[]): { email: string; revoke: boolean } {
+  let email: string | null = null;
+  let revoke = false;
+  for (const arg of argv) {
+    if (arg === "--revoke") {
+      revoke = true;
+    } else if (arg.startsWith("-")) {
+      console.error(`Unknown flag: ${arg}\n${USAGE}`);
+      process.exit(1);
+    } else if (email === null) {
+      email = arg;
+    } else {
+      console.error(`Unexpected argument: ${arg}\n${USAGE}`);
+      process.exit(1);
+    }
+  }
   if (!email) {
-    console.error("Usage: bun run admin:grant <email> [--revoke]");
+    console.error(USAGE);
     process.exit(1);
   }
+  return { email, revoke };
+}
+
+async function main() {
+  const { email, revoke } = parseArgs(process.argv.slice(2));
 
   const connectionString = process.env.DATABASE_URL;
   if (!connectionString) throw new Error("DATABASE_URL must be set");

@@ -1,5 +1,10 @@
 import { describe, expect, test } from "bun:test";
-import { entitlementsForTier, resolveTier, type MembershipLike } from "./membership-core";
+import {
+  entitlementsForTier,
+  isValidCalendarDate,
+  resolveTier,
+  type MembershipLike,
+} from "./membership-core";
 
 const now = new Date("2026-08-01T10:00:00Z");
 const premium = (expiresAt: Date | null): MembershipLike => ({ tier: "premium", expiresAt });
@@ -18,6 +23,25 @@ describe("resolveTier", () => {
     expect(resolveTier(premium(new Date("2026-09-01T00:00:00Z")), now)).toBe("premium");
     expect(resolveTier(premium(new Date("2026-07-01T00:00:00Z")), now)).toBe("free");
     expect(resolveTier(premium(now), now)).toBe("free");
+  });
+});
+
+describe("isValidCalendarDate", () => {
+  test("accepts real calendar dates", () => {
+    expect(isValidCalendarDate("2026-09-30")).toBe(true);
+    expect(isValidCalendarDate("2028-02-29")).toBe(true); // leap year
+  });
+
+  test("rejects impossible dates instead of letting Date roll them over", () => {
+    expect(isValidCalendarDate("2026-02-31")).toBe(false); // would become March 3
+    expect(isValidCalendarDate("2026-02-29")).toBe(false); // 2026 is not a leap year
+    expect(isValidCalendarDate("9999-99-99")).toBe(false); // Invalid Date
+  });
+
+  test("rejects malformed shapes", () => {
+    expect(isValidCalendarDate("2026-9-30")).toBe(false);
+    expect(isValidCalendarDate("not-a-date")).toBe(false);
+    expect(isValidCalendarDate("")).toBe(false);
   });
 });
 

@@ -20,6 +20,19 @@ test("admin promotion, premium grant, and revoke thread end-to-end", async ({ pa
   await page.goto("/zh/admin");
   await expect(page.getByText(t.errors.notFoundTitle)).toBeVisible();
 
+  // The admin plugin's HTTP surface is blocked outright (ADR 0025): the
+  // endpoints must 404 for everyone, before better-auth ever sees the request.
+  const blocked = await request.post("/api/auth/admin/list-users", { data: {} });
+  expect(blocked.status()).toBe(404);
+
+  // A mistyped flag must fail loudly, not fall through to the grant path.
+  expect(() =>
+    execSync(`bunx tsx scripts/grant-admin.ts ${admin.email} --revkoe`, {
+      env: { ...process.env, DATABASE_URL: e2eDatabaseUrl() },
+      stdio: "pipe",
+    }),
+  ).toThrow();
+
   // Promote via the real CLI — exercises scripts/grant-admin.ts, not raw SQL.
   execSync(`bunx tsx scripts/grant-admin.ts ${admin.email}`, {
     env: { ...process.env, DATABASE_URL: e2eDatabaseUrl() },

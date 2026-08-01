@@ -86,7 +86,7 @@ Read models aggregate in Postgres rather than loading unbounded history into the
 
 Plugin order matters: `bearer()` comes before `nextCookies()`, and `nextCookies()` must stay **last** so server actions can set cookies.
 
-Roles come from the better-auth `admin()` plugin ([ADR 0025](adr/0025-membership-roles-and-tiers.md)): `session.user.role` is `"admin"` or null/`"user"` (null means the plugin's `defaultRole`; never assume non-null). The admin-only surface is guarded by `requireAdmin()` (`src/lib/auth/session.ts`) in every admin page and server action — signed-out users get the login redirect, signed-in non-admins a 404 so the surface isn't advertised. Admins are minted with `bun run admin:grant <email>`, never through the UI.
+Roles come from the better-auth `admin()` plugin ([ADR 0025](adr/0025-membership-roles-and-tiers.md)): `session.user.role` is `"admin"` or null/`"user"` (null means the plugin's `defaultRole`; never assume non-null). The admin-only surface is guarded by `requireAdmin()` (`src/lib/auth/session.ts`) in every admin page and server action — signed-out users get the login redirect, signed-in non-admins a 404 so the surface isn't advertised. Admins are minted with `bun run admin:grant <email>`, never through the UI, and the plugin's own HTTP endpoints (`/api/auth/admin/*` — set-role, impersonation, bans, user deletion) are blocked with a 404 at the auth route handler: the plugin exists only for the `role` column and typed session.
 
 ## HTTP API (v1)
 

@@ -1,4 +1,4 @@
-import { MembershipControls } from "@/components/admin/MembershipControls";
+import { MembershipCells } from "@/components/admin/MembershipCells";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Badge } from "@/components/ui/badge";
@@ -58,19 +58,11 @@ export default async function AdminPage() {
                         {row.role === "admin" ? t.admin.roleAdmin : t.admin.roleUser}
                       </Badge>
                     </td>
-                    <td className="px-3 py-2">
-                      <Badge variant={tier === "premium" ? "accent" : "outline"}>
-                        {tier === "premium" ? t.admin.tierPremium : t.admin.tierFree}
-                      </Badge>
-                    </td>
-                    <td className="px-3 py-2 text-muted-foreground">
-                      {tier === "premium"
-                        ? (row.membershipExpiresAt?.toISOString().slice(0, 10) ?? t.admin.noExpiry)
-                        : "—"}
-                    </td>
-                    <td className="px-3 py-2">
-                      <MembershipControls userId={row.id} tier={tier} />
-                    </td>
+                    <MembershipCells
+                      userId={row.id}
+                      tier={tier}
+                      expiresAt={row.membershipExpiresAt?.toISOString().slice(0, 10) ?? null}
+                    />
                   </tr>
                 );
               })}

@@ -8,16 +8,23 @@ import { grantPremiumForUser, revokePremiumForUser } from "../services/membershi
 /**
  * Discriminated unions, not throws: production Next masks server-action error
  * messages, so the client couldn't tell "user gone" from "bad input" otherwise
- * (same convention as sendTutorMessage).
+ * (same convention as sendTutorMessage). Success returns the canonical
+ * persisted state so the row can render truth immediately instead of waiting
+ * on a router.refresh() round-trip.
  */
 export type AdminMembershipResult =
-  { ok: true } | { ok: false; error: "not_found" | "invalid_input" };
+  | { ok: true; tier: "free" | "premium"; expiresAt: string | null }
+  | { ok: false; error: "not_found" | "invalid_input" };
 
 export async function grantPremium(input: unknown): Promise<AdminMembershipResult> {
   const actor = await requireAdmin();
   try {
-    await grantPremiumForUser(actor.id, input);
-    return { ok: true };
+    const { expiresAt } = await grantPremiumForUser(actor.id, input);
+    return {
+      ok: true,
+      tier: "premium",
+      expiresAt: expiresAt ? expiresAt.toISOString().slice(0, 10) : null,
+    };
   } catch (error) {
     if (error instanceof NotFoundError) return { ok: false, error: "not_found" };
     if (error instanceof ZodError) return { ok: false, error: "invalid_input" };
@@ -29,7 +36,7 @@ export async function revokePremium(input: unknown): Promise<AdminMembershipResu
   await requireAdmin();
   try {
     await revokePremiumForUser(input);
-    return { ok: true };
+    return { ok: true, tier: "free", expiresAt: null };
   } catch (error) {
     if (error instanceof ZodError) return { ok: false, error: "invalid_input" };
     throw error;

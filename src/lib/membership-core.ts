@@ -9,6 +9,19 @@ import { chatDailyLimit } from "./chat-core";
 
 export type ResolvedTier = "free" | "premium";
 
+const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * True only for real calendar dates. JS Date silently rolls 2026-02-31 into
+ * March and parses 9999-99-99 as Invalid Date, so shape-checking alone is not
+ * enough — require the parse to round-trip to the supplied string.
+ */
+export function isValidCalendarDate(day: string): boolean {
+  if (!DATE_ONLY.test(day)) return false;
+  const parsed = new Date(`${day}T00:00:00Z`);
+  return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === day;
+}
+
 /** The membership row fields tier resolution needs (queries pass the row). */
 export interface MembershipLike {
   tier: "premium";

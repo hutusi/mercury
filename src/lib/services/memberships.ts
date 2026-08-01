@@ -2,6 +2,7 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "../db";
 import { memberships, user } from "../db/schema";
+import { isValidCalendarDate } from "../membership-core";
 import { NotFoundError } from "./errors";
 
 /**
@@ -11,12 +12,10 @@ import { NotFoundError } from "./errors";
  * "layouts don't protect actions" rule.
  */
 
-const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
-
 export const GrantPremiumSchema = z.object({
   userId: z.string().min(1),
-  /** Date-only string from the admin form; null = no expiry. */
-  expiresAt: z.union([z.string().regex(DATE_ONLY), z.null()]),
+  /** Date-only string from the admin form; null = no expiry. Must be a real calendar date. */
+  expiresAt: z.union([z.string().refine(isValidCalendarDate, "not a calendar date"), z.null()]),
 });
 
 export const RevokePremiumSchema = z.object({
@@ -28,7 +27,11 @@ function endOfDateUtc(day: string): Date {
   return new Date(`${day}T23:59:59.999Z`);
 }
 
-export async function grantPremiumForUser(actorId: string, input: unknown): Promise<void> {
+/** Returns the persisted expiry so callers can surface canonical state, not echoed input. */
+export async function grantPremiumForUser(
+  actorId: string,
+  input: unknown,
+): Promise<{ expiresAt: Date | null }> {
   const { userId, expiresAt } = GrantPremiumSchema.parse(input);
   const expiry = expiresAt === null ? null : endOfDateUtc(expiresAt);
 
@@ -49,6 +52,7 @@ export async function grantPremiumForUser(actorId: string, input: unknown): Prom
         updatedAt: new Date(),
       },
     });
+  return { expiresAt: expiry };
 }
 
 /** Idempotent: revoking an already-free user is a no-op (no row = free). */
