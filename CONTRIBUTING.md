@@ -19,10 +19,12 @@ cp .env.example .env
 # optional: GOOGLE_CLIENT_ID/SECRET + GITHUB_CLIENT_ID/SECRET enable social sign-in buttons
 #           (register the redirect URI http://localhost:3000/api/auth/callback/<provider>;
 #            without the vars the buttons simply don't render — ADR 0026)
-# optional: RESEND_API_KEY turns ON required email verification + password reset (ADR 0027).
+# optional: RESEND_API_KEY enables verification emails + password reset (ADR 0027/0028).
+#           Verification is soft — sign-up always issues a session; unverified users see an
+#           in-app banner, and only social-account linking requires a verified email.
 #           For local smoke tests set MERCURY_EMAIL_FROM=onboarding@resend.dev (Resend's
 #           sandbox sender — delivers only to your own Resend account email, so sign up
-#           with that address). Leave unset for normal dev: sign-up works instantly.
+#           with that address).
 
 bun run db:migrate   # apply committed migrations to Postgres
 bun run db:seed      # load seed content (idempotent)
@@ -68,7 +70,7 @@ bun run build && bun run typecheck && bun run test:e2e
 ## Testing guide
 
 - **Unit tests** (`bun test src`) run under Bun and stay **DB-free** by convention — keep pure logic in its own module (see `src/lib/streak-core.ts`) and test that, so tests need no database. (The `node-postgres` driver is Bun-loadable, so importing `src/lib/db` no longer crashes; the convention is about hermeticity, not a hard limit.)
-- **E2E tests** (`e2e/*.spec.ts`) run against a production build on port 3100 with a **dedicated `mercury_e2e` database** (derived from `DATABASE_URL`, or set `E2E_DATABASE_URL` to override), reset to a pristine schema each run by `scripts/e2e-server.sh` — so the dev database is never touched. `docker compose up` creates `mercury_e2e` automatically; if you bring your own Postgres, create it once (`createdb mercury_e2e`). No Claude key is used — tests exercise the AI-degradation path.
+- **E2E tests** (`e2e/*.spec.ts`) run against production builds on **two servers**: a keyless one on port 3100 (scratch DB `mercury_e2e`) and an email-enabled twin on port 3101 (scratch DB `mercury_e2e_email`, fake Resend key pointed at a dead local port — fully hermetic) that covers the verification surfaces ([ADR 0028](docs/adr/0028-soft-email-verification.md)). Both databases derive host + credentials from `DATABASE_URL` (or `E2E_DATABASE_URL` to override — the database _names_ are always forced so the boot-time reset can't aim anywhere unexpected), are auto-created by `scripts/db-reset.ts` if missing, and reset to a pristine schema each run — the dev database is never touched. No Claude key is used — tests exercise the AI-degradation path.
 
 ## Commit conventions
 
@@ -116,14 +118,15 @@ bun run build && bun run typecheck && bun run test:e2e
      OAuth App (GitHub allows a single callback URL per app — use a second app for local dev).
    - Optionally `RESEND_API_KEY` for transactional email
      ([ADR 0027](docs/adr/0027-transactional-email-resend.md)) — **Production scope only**.
-     Setting it makes email verification REQUIRED for password sign-up and enables password
-     reset, which in turn unlocks automatic password↔OAuth account linking. Setup: create a
+     Setting it enables verification emails and password reset, which in turn unlocks
+     automatic password↔OAuth account linking once users verify (verification is soft —
+     [ADR 0028](docs/adr/0028-soft-email-verification.md)). Setup: create a
      Resend account → Domains → add the site's apex or `mercury.ainaive.com` → publish the
      DKIM/SPF/Return-Path DNS records it shows → wait for "Verified" → create an API key
      (sending access only). `MERCURY_EMAIL_FROM` is optional (default
-     `Mercury <noreply@mercury.ainaive.com>`; it must be on the verified domain). Note the
-     migration effect: existing password users who never verified get a 403 + a fresh
-     verification email on their next sign-in.
+     `Mercury <noreply@mercury.ainaive.com>`; it must be on the verified domain). Existing
+     unverified password users sign in normally and see the in-app verify banner until they
+     click their link.
 
    Env var changes only take effect on a new deployment — redeploy after adding/changing any of
    these (`vercel redeploy <url> --target production` or the dashboard's Redeploy button).

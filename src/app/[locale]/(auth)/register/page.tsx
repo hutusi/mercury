@@ -21,9 +21,6 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
-  const [awaitingVerify, setAwaitingVerify] = useState(false);
-  const [resending, setResending] = useState(false);
-  const [resent, setResent] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -31,22 +28,21 @@ export default function RegisterPage() {
     setPending(true);
     let navigated = false;
     try {
-      const { data, error } = await authClient.signUp.email({
+      const { error } = await authClient.signUp.email({
         name,
         email,
         password,
+        // Landing page for the sendOnSignUp verification link (ADR 0028) —
+        // verification is soft, so sign-up issues a session immediately and
+        // the user heads straight to onboarding with the in-app banner.
         callbackURL: localePath(locale, "/verify-email"),
       });
       if (error) {
-        setError(error.message ?? t.auth.genericError);
-        return;
-      }
-      // token === null means verification is enforced: no session yet, the
-      // user must click the emailed link. (Duplicate emails get the same
-      // synthetic token-null response, which keeps enumeration protection
-      // intact.)
-      if (data?.token === null) {
-        setAwaitingVerify(true);
+        setError(
+          error.code === "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL"
+            ? t.auth.emailTaken
+            : (error.message ?? t.auth.genericError),
+        );
         return;
       }
       navigated = true;
@@ -56,93 +52,9 @@ export default function RegisterPage() {
       setError(t.auth.genericError);
     } finally {
       // Keep the button disabled while the App Router transition runs — a
-      // re-enabled form on slow navigation invites duplicate submits. The
-      // token-null exit above must still clear pending: it doesn't navigate,
-      // and the form can come back via 返回修改邮箱.
+      // re-enabled form on slow navigation invites duplicate submits.
       if (!navigated) setPending(false);
     }
-  }
-
-  async function handleResend() {
-    setError(null);
-    setResending(true);
-    try {
-      const { error } = await authClient.sendVerificationEmail({
-        email,
-        callbackURL: localePath(locale, "/verify-email"),
-      });
-      if (error) {
-        setError(error.message ?? t.auth.genericError);
-        return;
-      }
-      setResent(true);
-    } catch {
-      setError(t.auth.genericError);
-    } finally {
-      setResending(false);
-    }
-  }
-
-  if (awaitingVerify) {
-    return (
-      <div className="space-y-6">
-        <EntryHeader
-          size="md"
-          title={t.auth.verifyTitle}
-          ipa={t.entry.verifyIpa}
-          pos={t.entry.verifyPos}
-          gloss={t.auth.verifySpamHint}
-          className="pb-5"
-        />
-        <p className="text-sm">
-          {t.auth.verifySentTo} <span className="font-medium">{email}</span>
-        </p>
-        {error && (
-          <p role="alert" className="text-sm text-destructive">
-            {error}
-          </p>
-        )}
-        {resent && (
-          <p role="status" className="text-sm text-muted-foreground">
-            {t.auth.emailResent}
-          </p>
-        )}
-        <div className="space-y-2">
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full"
-            onClick={handleResend}
-            disabled={resending || resent}
-          >
-            {t.auth.resendEmail}
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full"
-            // Locked while a resend is in flight: the stale response would
-            // otherwise stamp resent/error state onto the reset form.
-            disabled={resending}
-            onClick={() => {
-              setAwaitingVerify(false);
-              setResent(false);
-              setError(null);
-            }}
-          >
-            {t.auth.changeEmail}
-          </Button>
-        </div>
-        <p className="text-center text-sm text-muted-foreground">
-          <Link
-            href="/login"
-            className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
-          >
-            {t.auth.verifiedGoLogin}
-          </Link>
-        </p>
-      </div>
-    );
   }
 
   return (

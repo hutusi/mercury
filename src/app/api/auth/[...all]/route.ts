@@ -1,5 +1,6 @@
 import { toNextJsHandler } from "better-auth/next-js";
 import { auth } from "@/lib/auth/auth";
+import { isEmailEnabled } from "@/lib/email/enabled";
 
 const handlers = toNextJsHandler(auth.handler);
 
@@ -19,5 +20,33 @@ function withoutAdminApi(handler: (req: Request) => Promise<Response>) {
   };
 }
 
+/**
+ * Soft verification (ADR 0028): explicit social linking is the one
+ * verification-gated operation, and better-auth cannot enforce it — its
+ * /link-social endpoint never checks the local user's emailVerified, and a
+ * before-hook cannot either: hooks receive the ORIGINAL request context, so
+ * the bearer() plugin's Authorization→cookie conversion is invisible to them
+ * and bearer clients would sail past the gate (verified empirically). Gating
+ * here instead uses auth.api.getSession, which runs the full dispatch
+ * (bearer conversion included) — the same mechanism /api/v1 bearer auth rides.
+ * Server-side auth.api.linkSocial calls would bypass this wrapper; we never
+ * make any.
+ */
+function withVerifiedEmailForLink(handler: (req: Request) => Promise<Response>) {
+  return async (req: Request): Promise<Response> => {
+    if (isEmailEnabled(process.env) && new URL(req.url).pathname === "/api/auth/link-social") {
+      const session = await auth.api.getSession({ headers: req.headers });
+      // Session-less requests fall through to the endpoint's own 401.
+      if (session && !session.user.emailVerified) {
+        return Response.json(
+          { code: "EMAIL_NOT_VERIFIED", message: "Email not verified" },
+          { status: 403 },
+        );
+      }
+    }
+    return handler(req);
+  };
+}
+
 export const GET = withoutAdminApi(handlers.GET);
-export const POST = withoutAdminApi(handlers.POST);
+export const POST = withoutAdminApi(withVerifiedEmailForLink(handlers.POST));

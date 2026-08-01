@@ -16,6 +16,10 @@ test("register → forced onboarding → dashboard", async ({ page }) => {
   await expect(page.getByText(t.dashboard.quickStart)).toBeVisible();
   await expect(page.getByRole("heading", { name: t.plan.title })).toBeVisible();
   await expect(page.getByText(t.plan.itemVocabNew)).toBeVisible();
+
+  // Keyless regression: every e2e user is unverified — the verify banner must
+  // be gated on email being enabled or it would leak onto every app page.
+  await expect(page.getByText(t.auth.verifyBannerTitle)).toHaveCount(0);
 });
 
 test("onboarding goal step: fill target + self-rating, then submit", async ({ page }) => {

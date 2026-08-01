@@ -21,15 +21,15 @@ Sessions are better-auth DB sessions exposed as bearer tokens via the `bearer` p
 Sessions live 30 days, sliding daily on use (`session.expiresIn` / `updateAge` in
 `src/lib/auth/auth.ts`). Tokens are opaque and revocable — no JWT key management.
 
-**Email verification changes the sign-up handshake in production**
-([ADR 0027](adr/0027-transactional-email-resend.md)): when `RESEND_API_KEY` is configured,
-`POST /api/auth/sign-up/email` returns `token: null` with **no** `set-auth-token` header — the
-user must click the emailed verification link (a web page) before a session exists, so clients
-should show a check-your-inbox state and then call `/api/auth/sign-in/email`. Signing in before
-verifying returns 403 with better-auth code `EMAIL_NOT_VERIFIED`; the server does **not**
-auto-send on sign-in — clients should then call `POST /api/auth/send-verification-email`
-(`{email, callbackURL}`) to re-send the link, as the web login page does.
-Keyless environments (dev/CI) keep the immediate-session behavior documented above.
+**Email verification is soft** ([ADR 0028](adr/0028-soft-email-verification.md)): sign-up
+always returns a token + `set-auth-token` in every environment. When `RESEND_API_KEY` is
+configured a verification email is also sent, and unverified users should see a persistent
+verify nudge (the web app renders a banner). Native clients re-send via
+`POST /api/auth/send-verification-email` (`{email, callbackURL}`) with the session's own email —
+a mismatched email is 400 `EMAIL_MISMATCH`, an already-verified account is 400
+`EMAIL_ALREADY_VERIFIED` (treat as success), and the endpoint is rate-limited 3/60s. The only
+verification-gated operation is `POST /api/auth/link-social`, which returns 403
+`EMAIL_NOT_VERIFIED` for unverified sessions.
 
 **Clients must not store cookies** (`httpShouldSetCookies = false` on iOS). better-auth also sets
 a session cookie on sign-in; a client that replays it _without_ an `Origin` header trips the CSRF

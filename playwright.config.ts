@@ -4,9 +4,33 @@ import { e2eDatabaseUrl } from "./e2e/db-url";
 const PORT = 3100;
 const BASE_URL = `http://localhost:${PORT}`;
 
+// Email-enabled twin server (ADR 0028): same app, but with a fake Resend key
+// so the verification surfaces the keyless server can never execute — the
+// /link-social gate and the unverified banner — run under CI. The run is
+// hermetic: RESEND_BASE_URL aims the SDK at a dead local port, so send
+// attempts are refused instantly without touching the real Resend API, and
+// sendEmail's catch degradation (the designed outage path) absorbs them —
+// connection-error lines in the server log are expected. The fake Google
+// creds only exist so a *permitted* link-social can prove itself with a
+// locally generated authorize URL; no OAuth callback ever runs.
+const EMAIL_PORT = 3101;
+const EMAIL_BASE_URL = `http://localhost:${EMAIL_PORT}`;
+
+// Empty strings beat any real keys in .env (Next never overrides pre-set
+// env), forcing the degradation paths so tests never call a live provider.
+const sharedServerEnv = {
+  BETTER_AUTH_SECRET: "mercury-e2e-secret-not-for-production",
+  ANTHROPIC_API_KEY: "",
+  DASHSCOPE_API_KEY: "",
+  GITHUB_CLIENT_ID: "",
+  GITHUB_CLIENT_SECRET: "",
+  // Tests register users rapid-fire; disable better-auth's rate limiter.
+  MERCURY_DISABLE_RATE_LIMIT: "1",
+};
+
 export default defineConfig({
   testDir: "./e2e",
-  // Serial keeps the shared scratch database deterministic; the suite is small.
+  // Serial keeps the shared scratch databases deterministic; the suite is small.
   workers: 1,
   retries: process.env.CI ? 2 : 0,
   // Prod server + Postgres + browser share one machine: a single server
@@ -19,37 +43,54 @@ export default defineConfig({
     baseURL: BASE_URL,
     trace: "on-first-retry",
   },
-  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
-  webServer: {
-    // Fresh scratch DB + push + seed + `next start`. Requires a prior `bun run build`.
-    command: "bash scripts/e2e-server.sh",
-    url: BASE_URL,
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-    env: {
-      PORT: String(PORT),
-      // A scratch Postgres, reset to a pristine schema on each boot (see
-      // scripts/e2e-server.sh and e2eDatabaseUrl above).
-      DATABASE_URL: e2eDatabaseUrl(),
-      BETTER_AUTH_SECRET: "mercury-e2e-secret-not-for-production",
-      // Must match the port or better-auth rejects the request origin.
-      BETTER_AUTH_URL: BASE_URL,
-      // Empty strings beat any real keys in .env (Next never overrides
-      // pre-set env), forcing the AI-degradation path so tests never call a
-      // live provider (Claude or Bailian).
-      ANTHROPIC_API_KEY: "",
-      DASHSCOPE_API_KEY: "",
-      // Same trick for OAuth: keyless e2e must hide the social sign-in buttons
-      // even when the developer's .env carries real credentials.
-      GOOGLE_CLIENT_ID: "",
-      GOOGLE_CLIENT_SECRET: "",
-      GITHUB_CLIENT_ID: "",
-      GITHUB_CLIENT_SECRET: "",
-      // And for email: keyless e2e must keep sign-up issuing sessions
-      // immediately (no verification) and hide the reset/verify surfaces.
-      RESEND_API_KEY: "",
-      // Tests register users rapid-fire; disable better-auth's rate limiter.
-      MERCURY_DISABLE_RATE_LIMIT: "1",
+  projects: [
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+      testIgnore: /email-auth\.spec\.ts/,
     },
-  },
+    {
+      name: "chromium-email",
+      use: { ...devices["Desktop Chrome"], baseURL: EMAIL_BASE_URL },
+      testMatch: /email-auth\.spec\.ts/,
+    },
+  ],
+  webServer: [
+    {
+      // Fresh scratch DB + push + seed + `next start`. Requires a prior `bun run build`.
+      command: "bash scripts/e2e-server.sh",
+      url: BASE_URL,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+      env: {
+        ...sharedServerEnv,
+        PORT: String(PORT),
+        // A scratch Postgres, reset to a pristine schema on each boot (see
+        // scripts/e2e-server.sh and e2eDatabaseUrl above).
+        DATABASE_URL: e2eDatabaseUrl(),
+        // Must match the port or better-auth rejects the request origin.
+        BETTER_AUTH_URL: BASE_URL,
+        // Keyless: social buttons and every email-auth surface stay absent.
+        GOOGLE_CLIENT_ID: "",
+        GOOGLE_CLIENT_SECRET: "",
+        RESEND_API_KEY: "",
+      },
+    },
+    {
+      command: "bash scripts/e2e-server.sh",
+      url: EMAIL_BASE_URL,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+      env: {
+        ...sharedServerEnv,
+        PORT: String(EMAIL_PORT),
+        DATABASE_URL: e2eDatabaseUrl("mercury_e2e_email"),
+        BETTER_AUTH_URL: EMAIL_BASE_URL,
+        RESEND_API_KEY: "re-e2e-fake-never-sends",
+        RESEND_BASE_URL: "http://127.0.0.1:1",
+        GOOGLE_CLIENT_ID: "e2e-fake-google-id",
+        GOOGLE_CLIENT_SECRET: "e2e-fake-google-secret",
+      },
+    },
+  ],
 });

@@ -9,11 +9,14 @@
  * (Docker/CI), so only the database name is forced; fall back to a local
  * trust-auth Postgres.
  */
-export function e2eDatabaseUrl(): string {
-  if (process.env.E2E_DATABASE_URL) return process.env.E2E_DATABASE_URL;
-  const base = process.env.DATABASE_URL;
-  if (!base) return "postgresql://localhost:5432/mercury_e2e";
+export function e2eDatabaseUrl(dbName = "mercury_e2e"): string {
+  // E2E_DATABASE_URL (like DATABASE_URL) supplies host + credentials only —
+  // the database name is ALWAYS forced per server, so the boot-time
+  // destructive reset can never aim at an unexpected database, and the two
+  // e2e servers can never collide on one scratch DB.
+  const base = process.env.E2E_DATABASE_URL ?? process.env.DATABASE_URL;
+  if (!base) return `postgresql://localhost:5432/${dbName}`;
   const url = new URL(base);
-  url.pathname = "/mercury_e2e";
+  url.pathname = `/${dbName}`;
   return url.toString();
 }

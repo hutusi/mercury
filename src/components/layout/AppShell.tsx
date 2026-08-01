@@ -27,10 +27,13 @@ export function Wordmark({ compact = false }: { compact?: boolean }) {
 export async function AppShell({
   userName,
   isAdmin = false,
+  banner,
   children,
 }: {
   userName: string;
   isAdmin?: boolean;
+  /** Persistent notice under the header (e.g. the unverified-email nudge). */
+  banner?: React.ReactNode;
   children: React.ReactNode;
 }) {
   const t = await getDict();
@@ -76,6 +79,8 @@ export async function AppShell({
             <NavLinks orientation="horizontal" isAdmin={isAdmin} />
           </nav>
         </header>
+
+        {banner && <div className="mx-auto max-w-5xl px-4 pt-6 sm:px-6">{banner}</div>}
 
         <main id="main-content" className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
           {children}

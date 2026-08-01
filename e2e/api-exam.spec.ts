@@ -1,17 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { Pool } from "pg";
 import { apiSignUpAndOnboard, type ApiUser } from "./api-helpers";
+import { e2eDatabaseUrl } from "./db-url";
 import type { APIRequestContext } from "@playwright/test";
 import type { ExamSection } from "../src/content/types";
-
-function e2eDatabaseUrl(): string {
-  if (process.env.E2E_DATABASE_URL) return process.env.E2E_DATABASE_URL;
-  const base = process.env.DATABASE_URL;
-  if (!base) return "postgresql://localhost:5432/mercury_e2e";
-  const url = new URL(base);
-  url.pathname = "/mercury_e2e";
-  return url.toString();
-}
 
 async function getAttempt(request: APIRequestContext, user: ApiUser, attemptId: string) {
   const res = await request.get(`/api/v1/exams/attempts/${attemptId}`, {
