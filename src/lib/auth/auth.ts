@@ -1,3 +1,4 @@
+import { after } from "next/server";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
@@ -45,8 +46,12 @@ export const auth = betterAuth({
           revokeSessionsOnPasswordReset: true,
           // Param types are explicit: contextual typing does not flow into
           // conditional spreads, so the callbacks would otherwise be implicit any.
+          // Emails are dispatched via after(), post-response: awaiting the
+          // provider round-trip would make registered-email requests measurably
+          // slower than unknown-email ones (a timing oracle on the
+          // enumeration-safe endpoints) and adds provider latency to sign-up.
           sendResetPassword: async ({ user, url }: { user: { email: string }; url: string }) => {
-            await sendEmail({ to: user.email, ...resetPasswordEmail({ url }) });
+            after(() => sendEmail({ to: user.email, ...resetPasswordEmail({ url }) }));
           },
         }
       : {}),
@@ -66,7 +71,7 @@ export const auth = betterAuth({
             user: { email: string };
             url: string;
           }) => {
-            await sendEmail({ to: user.email, ...verificationEmail({ url }) });
+            after(() => sendEmail({ to: user.email, ...verificationEmail({ url }) }));
           },
         },
       }

@@ -37,32 +37,42 @@ export function LinkedAccounts({
   async function handleLink(provider: SocialProviderId) {
     setError(null);
     setPending(provider);
-    const { error } = await authClient.linkSocial({
-      provider,
-      callbackURL: localePath(locale, "/settings"),
-      errorCallbackURL: localePath(locale, "/settings"),
-    });
-    // On success the browser navigates to the provider — pending stays set.
-    if (error) {
+    try {
+      const { error } = await authClient.linkSocial({
+        provider,
+        callbackURL: localePath(locale, "/settings"),
+        errorCallbackURL: localePath(locale, "/settings"),
+      });
+      // On success the browser navigates to the provider — pending stays set.
+      if (error) {
+        setPending(null);
+        setError(error.message ?? t.settings.linkError);
+      }
+    } catch {
       setPending(null);
-      setError(error.message ?? t.settings.linkError);
+      setError(t.settings.linkError);
     }
   }
 
   async function handleUnlink(providerId: string, accountId: string) {
     setError(null);
     setPending(providerId);
-    const { error } = await authClient.unlinkAccount({ providerId, accountId });
-    setPending(null);
-    if (error) {
-      setError(
-        error.code === "SESSION_NOT_FRESH"
-          ? t.settings.sessionNotFresh
-          : (error.message ?? t.settings.linkError),
-      );
-      return;
+    try {
+      const { error } = await authClient.unlinkAccount({ providerId, accountId });
+      if (error) {
+        setError(
+          error.code === "SESSION_NOT_FRESH"
+            ? t.settings.sessionNotFresh
+            : (error.message ?? t.settings.linkError),
+        );
+        return;
+      }
+      startTransition(() => router.refresh());
+    } catch {
+      setError(t.settings.linkError);
+    } finally {
+      setPending(null);
     }
-    startTransition(() => router.refresh());
   }
 
   return (

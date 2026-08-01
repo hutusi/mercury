@@ -24,6 +24,7 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const [notVerified, setNotVerified] = useState(false);
+  const [resending, setResending] = useState(false);
   const [resent, setResent] = useState(false);
 
   // Success notices from the verify-email landing and the reset flow.
@@ -57,15 +58,22 @@ export default function LoginPage() {
 
   async function handleResend() {
     setError(null);
-    const { error } = await authClient.sendVerificationEmail({
-      email,
-      callbackURL: localePath(locale, "/verify-email"),
-    });
-    if (error) {
-      setError(error.message ?? t.auth.genericError);
-      return;
+    setResending(true);
+    try {
+      const { error } = await authClient.sendVerificationEmail({
+        email,
+        callbackURL: localePath(locale, "/verify-email"),
+      });
+      if (error) {
+        setError(error.message ?? t.auth.genericError);
+        return;
+      }
+      setResent(true);
+    } catch {
+      setError(t.auth.genericError);
+    } finally {
+      setResending(false);
     }
-    setResent(true);
   }
 
   return (
@@ -125,7 +133,13 @@ export default function LoginPage() {
               {t.auth.emailResent}
             </p>
           ) : (
-            <Button type="button" variant="outline" className="w-full" onClick={handleResend}>
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full"
+              onClick={handleResend}
+              disabled={resending}
+            >
               {t.auth.resendEmail}
             </Button>
           ))}

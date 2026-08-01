@@ -26,23 +26,28 @@ export function ChangePasswordForm() {
     setError(null);
     setSaved(false);
     setPending(true);
-    const { error } = await authClient.changePassword({
-      currentPassword,
-      newPassword,
-      revokeOtherSessions: revoke,
-    });
-    setPending(false);
-    if (error) {
-      if (error.code === "INVALID_PASSWORD") setError(t.settings.wrongPassword);
-      else if (error.code === "SESSION_NOT_FRESH") setError(t.settings.sessionNotFresh);
-      else if (error.code === "PASSWORD_TOO_SHORT") setError(t.auth.passwordHint);
-      else setError(error.message ?? t.auth.genericError);
-      return;
+    try {
+      const { error } = await authClient.changePassword({
+        currentPassword,
+        newPassword,
+        revokeOtherSessions: revoke,
+      });
+      if (error) {
+        if (error.code === "INVALID_PASSWORD") setError(t.settings.wrongPassword);
+        else if (error.code === "SESSION_NOT_FRESH") setError(t.settings.sessionNotFresh);
+        else if (error.code === "PASSWORD_TOO_SHORT") setError(t.auth.passwordHint);
+        else setError(error.message ?? t.auth.genericError);
+        return;
+      }
+      setCurrentPassword("");
+      setNewPassword("");
+      setSaved(true);
+      startTransition(() => router.refresh());
+    } catch {
+      setError(t.auth.genericError);
+    } finally {
+      setPending(false);
     }
-    setCurrentPassword("");
-    setNewPassword("");
-    setSaved(true);
-    startTransition(() => router.refresh());
   }
 
   return (
