@@ -200,6 +200,26 @@ describe("books", () => {
       }
     });
 
+    test(`${book.id}: no question repeats an option`, () => {
+      // A repeated option silently shrinks a 4-way question to 3 (or makes two
+      // answers defensible when the duplicate is the correct one), and the zod
+      // schema only counts to four. scripts/audit-book-scaffolding.ts reports
+      // this as a hard violation, so it has to be one here too or that script's
+      // "the content tests will fail on these" is a lie.
+      const offenders: string[] = [];
+      for (const chapter of book.chapters) {
+        const questions = [
+          ...chapter.sections.flatMap((s) => (s.checkIn ? [s.checkIn] : [])),
+          ...chapter.quiz,
+        ];
+        for (const q of questions) {
+          const distinct = new Set(q.options.map((o) => o.trim().toLowerCase()));
+          if (distinct.size !== q.options.length) offenders.push(q.id);
+        }
+      }
+      expect(offenders).toEqual([]);
+    });
+
     test(`${book.id}: explanations never reference options by position`, () => {
       // Option order is tooling-assigned and may be reassigned; an
       // explanation saying 选项A/第一个选项/答案为 B breaks silently on any

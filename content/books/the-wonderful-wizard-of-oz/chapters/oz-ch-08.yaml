@@ -210,14 +210,14 @@ quiz:
     correctIndex: 1
     explanationZh: 稻草人说“Let us make a chair with our hands and carry her”，两人用手当座、用胳膊当扶手把睡着的多萝西抬走。狮子此时已经跑开，不能帮忙。
   - id: oz-ch-08-q5
-    stem: What happened to the Lion in the poppy field?
+    stem: What did the Scarecrow promise to do for the Stork?
     options:
-      - He ran straight out and waited on the grass.
-      - He carried Toto to safety.
-      - He fell asleep before reaching the end of the poppies.
-      - He turned back to rescue the Scarecrow.
-    correctIndex: 2
-    explanationZh: 狮子虽拼命向前跑，但“the flowers had been too strong for the huge beast”，他在离花田尽头不远的地方睡着了。他没能跑出去，也没回去救人。
+      - Find her again and do her a kindness.
+      - Carry her across the poppy field.
+      - Ask the Wizard for a nest in the Emerald City.
+      - Give her the Tin Woodman's oil-can.
+    correctIndex: 0
+    explanationZh: 稻草人被送回岸上后说「the Stork saved me, and if I ever get any brains I shall find the Stork again and do her some kindness in return」。他许下的是日后报恩，并没有当场拿出什么东西给她。
   - id: oz-ch-08-q6
     stem: What did the Scarecrow and the Tin Woodman do with Dorothy after carrying her out of the poppy field?
     options:

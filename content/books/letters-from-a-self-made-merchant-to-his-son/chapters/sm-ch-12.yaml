@@ -197,11 +197,11 @@ quiz:
     correctIndex: 2
     explanationZh: 原文交代“Nobody in town was really sick”，而且自以为有病的人上周已从另一个叫 Quackenboss 的小贩那里买够了药。可见没人买是因为没有现成需求，而非价格太高或听众反感。
   - id: sm-ch-12-q6
-    stem: What does the father mean by saying a mistake sprouts a lie when you cover it up?
+    stem: What does the father say a mirror does?
     options:
-      - Every lie automatically causes a new mistake to happen.
-      - A mistake can be fixed only by telling a bigger lie.
-      - Lies are harmless as long as the mistake stays hidden.
-      - Hiding a mistake leads to lies that destroy trust.
-    correctIndex: 3
-    explanationZh: 原文说“A mistake sprouts a lie when you cover it up. And one lie breeds enough distrust to choke out the prettiest crop of confidence.” 掩盖错误会滋生谎言，一条谎言足以毁掉好不容易培养的信任。说谎言只要藏着就无害的选项与原意完全相反。
+      - It tells a woman the truth and lies hard to a man.
+      - It flatters a woman and tells a man the plain truth.
+      - It shows a man the same face it shows a woman.
+      - It is the one thing no honest man should own.
+    correctIndex: 0
+    explanationZh: 父亲说人给自己估价时多半会“cross-eyed”，看见的是天使而不是本人；紧接着补了一句“There's nothing that tells the truth to a woman like a mirror, or that lies harder to a man.” 镜子对女人诚实，对男人最会撒谎——正好与把两者说反的选项相对。

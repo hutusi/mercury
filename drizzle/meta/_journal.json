@@ -162,6 +162,13 @@
       "when": 1785477649644,
       "tag": "0022_freezing_bill_hollister",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1785477649645,
+      "tag": "0023_lucky_thunderbolt_ross",
+      "breakpoints": true
     }
   ]
 }
