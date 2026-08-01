@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { SocialProvidersProvider } from "@/components/auth/SocialProvidersContext";
+import { AuthFeaturesProvider } from "@/components/auth/AuthFeaturesContext";
 import { Wordmark } from "@/components/layout/AppShell";
 import { enabledSocialProviders } from "@/lib/auth/social-providers";
+import { isEmailEnabled } from "@/lib/email/enabled";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 
 // Login/registration carry no unique content worth indexing and are publicly
@@ -10,10 +11,10 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 // can still surface as a bare result.
 export const metadata: Metadata = { robots: { index: false } };
 
-// Social buttons must reflect the *runtime* env — the keyless e2e server blanks
-// the OAuth vars while `next build` ran with the developer's .env — so these
-// pages must never be statically baked. Forced dynamic rendering also keeps
-// useSearchParams (in SocialButtons) Suspense-free.
+// Auth-feature UI (social buttons, forgot-password link) must reflect the
+// *runtime* env — the keyless e2e server blanks the keys while `next build`
+// ran with the developer's .env — so these pages must never be statically
+// baked. Forced dynamic rendering also keeps useSearchParams Suspense-free.
 export const dynamic = "force-dynamic";
 
 export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -23,9 +24,14 @@ export default function AuthLayout({ children }: Readonly<{ children: React.Reac
         <Wordmark />
       </Link>
       <div className="w-full max-w-md border border-border p-8">
-        <SocialProvidersProvider providers={enabledSocialProviders(process.env)}>
+        <AuthFeaturesProvider
+          features={{
+            providers: enabledSocialProviders(process.env),
+            emailEnabled: isEmailEnabled(process.env),
+          }}
+        >
           {children}
-        </SocialProvidersProvider>
+        </AuthFeaturesProvider>
       </div>
     </main>
   );

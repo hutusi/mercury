@@ -45,6 +45,9 @@ export default defineConfig({
       GOOGLE_CLIENT_SECRET: "",
       GITHUB_CLIENT_ID: "",
       GITHUB_CLIENT_SECRET: "",
+      // And for email: keyless e2e must keep sign-up issuing sessions
+      // immediately (no verification) and hide the reset/verify surfaces.
+      RESEND_API_KEY: "",
       // Tests register users rapid-fire; disable better-auth's rate limiter.
       MERCURY_DISABLE_RATE_LIMIT: "1",
     },
