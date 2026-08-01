@@ -10,6 +10,7 @@ import {
   Mic,
   NotebookPen,
   PenLine,
+  ShieldCheck,
   Timer,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -29,7 +30,13 @@ const NAV_ITEMS = [
   { key: "mistakes", href: "/mistakes", icon: NotebookPen },
 ] as const;
 
-export function NavLinks({ orientation }: { orientation: "vertical" | "horizontal" }) {
+export function NavLinks({
+  orientation,
+  isAdmin = false,
+}: {
+  orientation: "vertical" | "horizontal";
+  isAdmin?: boolean;
+}) {
   const t = useT();
   // usePathname() includes the locale segment; compare against the app path.
   const { rest: pathname } = splitLocalePath(usePathname());
@@ -67,6 +74,13 @@ export function NavLinks({ orientation }: { orientation: "vertical" | "horizonta
         <Timer className="size-4" aria-hidden />
         {t.nav.exams}
       </Link>
+      {/* Server-decided (session role); the real gate is requireAdmin on the page. */}
+      {isAdmin ? (
+        <Link href="/admin" className={linkClass("/admin")}>
+          <ShieldCheck className="size-4" aria-hidden />
+          {t.nav.admin}
+        </Link>
+      ) : null}
     </>
   );
 }

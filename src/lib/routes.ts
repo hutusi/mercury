@@ -18,4 +18,5 @@ export const PROTECTED_PATHS = [
   "/mistakes",
   "/tutor",
   "/settings",
+  "/admin",
 ] as const;

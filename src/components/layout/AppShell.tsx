@@ -26,9 +26,11 @@ export function Wordmark({ compact = false }: { compact?: boolean }) {
 
 export async function AppShell({
   userName,
+  isAdmin = false,
   children,
 }: {
   userName: string;
+  isAdmin?: boolean;
   children: React.ReactNode;
 }) {
   const t = await getDict();
@@ -42,7 +44,7 @@ export async function AppShell({
           <Wordmark />
         </Link>
         <nav className="mt-8 flex flex-col gap-1">
-          <NavLinks orientation="vertical" />
+          <NavLinks orientation="vertical" isAdmin={isAdmin} />
         </nav>
       </aside>
 
@@ -71,7 +73,7 @@ export async function AppShell({
           </div>
           {/* Mobile nav strip */}
           <nav className="flex gap-1 overflow-x-auto px-4 pb-2 md:hidden">
-            <NavLinks orientation="horizontal" />
+            <NavLinks orientation="horizontal" isAdmin={isAdmin} />
           </nav>
         </header>
 
