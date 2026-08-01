@@ -20,8 +20,8 @@ export function LinkedAccounts({
   accounts: { providerId: string; accountId: string }[];
   providers: SocialProviderId[];
   // Soft verification (ADR 0028): linking is the one verification-gated
-  // operation; the server enforces via a /link-social before-hook, this
-  // disabled state just explains it.
+  // operation; the auth route handler 403s POST /api/auth/link-social for
+  // unverified sessions, this disabled state just explains it.
   emailVerified: boolean;
 }) {
   const t = useT();

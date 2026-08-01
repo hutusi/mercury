@@ -80,7 +80,7 @@ Read models aggregate in Postgres rather than loading unbounded history into the
 ## Auth: four layers
 
 1. **`src/proxy.ts`** — optimistic `getSessionCookie()` check with a redirect to `/login`. Fast, no DB read; UX only, not security. Its matcher excludes `/api`.
-2. **`src/app/(app)/layout.tsx`** — authoritative `auth.api.getSession()` against Postgres; also redirects to `/onboarding` until the learner profile has a `goalTrack` (the onboarding invariant — [ADR 0020](adr/0020-track-as-goal-and-content-filter.md)), and renders the unverified-email banner when email is enabled ([ADR 0028](adr/0028-soft-email-verification.md)).
+2. **`src/app/[locale]/(app)/layout.tsx`** — authoritative `auth.api.getSession()` against Postgres; also redirects to `/onboarding` until the learner profile has a `goalTrack` (the onboarding invariant — [ADR 0020](adr/0020-track-as-goal-and-content-filter.md)), and renders the unverified-email banner when email is enabled ([ADR 0028](adr/0028-soft-email-verification.md)).
 3. **`requireUser()` in every server action** (`src/lib/auth/session.ts`) — layouts do not protect server actions, so each action re-verifies the session and takes the user id from it, never from client input.
 4. **`requireUserApi()`/`requireOnboardedApi()` in every `/api/v1` route** (`src/lib/api/auth.ts`) — same authoritative lookup, but returning 401/403 JSON envelopes instead of redirecting. Native clients authenticate with `Authorization: Bearer` via the better-auth `bearer` plugin (see [docs/API.md](API.md) and [ADR 0010](adr/0010-http-api-v1-bearer-auth.md)).
 

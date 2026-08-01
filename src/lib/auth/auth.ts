@@ -24,8 +24,9 @@ const socialProviderIds = enabledSocialProviders(process.env);
 // password-reset flow, but verification never blocks sign-in/sign-up — every
 // environment issues a session immediately (e2e and the native API contract
 // depend on it). Unverified users are nagged by the in-app banner instead,
-// and the ONE verification-gated operation is explicit social linking (see
-// the hooks block below).
+// and the ONE verification-gated operation is explicit social linking — that
+// gate lives in src/app/api/auth/[...all]/route.ts (see the comment there for
+// why a hooks.before gate cannot work).
 // Implicit account linking stays on better-auth's defaults: it requires an
 // IdP-verified email AND an emailVerified local user, so password↔OAuth
 // same-email linking works once the user verifies and stays blocked
