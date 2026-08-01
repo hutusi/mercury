@@ -6,12 +6,13 @@ const BASE_URL = `http://localhost:${PORT}`;
 
 // Email-enabled twin server (ADR 0028): same app, but with a fake Resend key
 // so the verification surfaces the keyless server can never execute — the
-// /link-social gate and the unverified banner — run under CI. The fake key is
-// delivery-free: Resend rejects it instantly and sendEmail degrades silently
-// (the designed outage path — "API key is invalid" in server logs is
-// expected). The fake Google creds only exist so a *permitted* link-social
-// can prove itself with a locally generated authorize URL; no OAuth callback
-// ever runs.
+// /link-social gate and the unverified banner — run under CI. The run is
+// hermetic: RESEND_BASE_URL aims the SDK at a dead local port, so send
+// attempts are refused instantly without touching the real Resend API, and
+// sendEmail's catch degradation (the designed outage path) absorbs them —
+// connection-error lines in the server log are expected. The fake Google
+// creds only exist so a *permitted* link-social can prove itself with a
+// locally generated authorize URL; no OAuth callback ever runs.
 const EMAIL_PORT = 3101;
 const EMAIL_BASE_URL = `http://localhost:${EMAIL_PORT}`;
 
@@ -86,6 +87,7 @@ export default defineConfig({
         DATABASE_URL: e2eDatabaseUrl("mercury_e2e_email"),
         BETTER_AUTH_URL: EMAIL_BASE_URL,
         RESEND_API_KEY: "re-e2e-fake-never-sends",
+        RESEND_BASE_URL: "http://127.0.0.1:1",
         GOOGLE_CLIENT_ID: "e2e-fake-google-id",
         GOOGLE_CLIENT_SECRET: "e2e-fake-google-secret",
       },

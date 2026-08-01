@@ -70,7 +70,7 @@ bun run build && bun run typecheck && bun run test:e2e
 ## Testing guide
 
 - **Unit tests** (`bun test src`) run under Bun and stay **DB-free** by convention — keep pure logic in its own module (see `src/lib/streak-core.ts`) and test that, so tests need no database. (The `node-postgres` driver is Bun-loadable, so importing `src/lib/db` no longer crashes; the convention is about hermeticity, not a hard limit.)
-- **E2E tests** (`e2e/*.spec.ts`) run against a production build on port 3100 with a **dedicated `mercury_e2e` database** (derived from `DATABASE_URL`, or set `E2E_DATABASE_URL` to override), reset to a pristine schema each run by `scripts/e2e-server.sh` — so the dev database is never touched. `docker compose up` creates `mercury_e2e` automatically; if you bring your own Postgres, create it once (`createdb mercury_e2e`). No Claude key is used — tests exercise the AI-degradation path.
+- **E2E tests** (`e2e/*.spec.ts`) run against production builds on **two servers**: a keyless one on port 3100 (scratch DB `mercury_e2e`) and an email-enabled twin on port 3101 (scratch DB `mercury_e2e_email`, fake Resend key pointed at a dead local port — fully hermetic) that covers the verification surfaces ([ADR 0028](docs/adr/0028-soft-email-verification.md)). Both databases derive host + credentials from `DATABASE_URL` (or `E2E_DATABASE_URL` to override — the database _names_ are always forced so the boot-time reset can't aim anywhere unexpected), are auto-created by `scripts/db-reset.ts` if missing, and reset to a pristine schema each run — the dev database is never touched. No Claude key is used — tests exercise the AI-degradation path.
 
 ## Commit conventions
 

@@ -10,12 +10,11 @@
  * trust-auth Postgres.
  */
 export function e2eDatabaseUrl(dbName = "mercury_e2e"): string {
-  // The explicit override only applies to the default scratch DB — the
-  // email-enabled server always derives its own name so the two can't collide.
-  if (dbName === "mercury_e2e" && process.env.E2E_DATABASE_URL) {
-    return process.env.E2E_DATABASE_URL;
-  }
-  const base = process.env.DATABASE_URL;
+  // E2E_DATABASE_URL (like DATABASE_URL) supplies host + credentials only —
+  // the database name is ALWAYS forced per server, so the boot-time
+  // destructive reset can never aim at an unexpected database, and the two
+  // e2e servers can never collide on one scratch DB.
+  const base = process.env.E2E_DATABASE_URL ?? process.env.DATABASE_URL;
   if (!base) return `postgresql://localhost:5432/${dbName}`;
   const url = new URL(base);
   url.pathname = `/${dbName}`;

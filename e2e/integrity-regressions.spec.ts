@@ -14,15 +14,7 @@ import {
 } from "../src/lib/db/schema";
 import { recordMistakeOutcomes } from "../src/lib/services/mistake-state";
 import { apiSignUpAndOnboard } from "./api-helpers";
-
-function e2eDatabaseUrl(): string {
-  if (process.env.E2E_DATABASE_URL) return process.env.E2E_DATABASE_URL;
-  const base = process.env.DATABASE_URL;
-  if (!base) return "postgresql://localhost:5432/mercury_e2e";
-  const url = new URL(base);
-  url.pathname = "/mercury_e2e";
-  return url.toString();
-}
+import { e2eDatabaseUrl } from "./db-url";
 
 const pool = new Pool({ connectionString: e2eDatabaseUrl(), max: 2 });
 const testDb = drizzle(pool, { schema: dbSchema });
