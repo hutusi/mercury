@@ -1,9 +1,16 @@
+import { headers } from "next/headers";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { GoalEditor } from "@/components/settings/GoalEditor";
+import { ChangePasswordForm } from "@/components/settings/ChangePasswordForm";
+import { LinkedAccounts } from "@/components/settings/LinkedAccounts";
 import { ReminderToggle } from "@/components/dashboard/ReminderToggle";
 import { Badge } from "@/components/ui/badge";
+import { auth } from "@/lib/auth/auth";
+import { enabledSocialProviders } from "@/lib/auth/social-providers";
+import { isEmailEnabled } from "@/lib/email/enabled";
 import { getDict } from "@/lib/i18n";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { resolveTier } from "@/lib/membership-core";
 import { getMembershipForUser } from "@/lib/queries/membership";
 import { getLearnerProfile } from "@/lib/queries/profile";
@@ -13,11 +20,15 @@ export default async function SettingsPage() {
   const { user, goalTrack, remindersEnabled } = await requireOnboarded();
   const t = await getDict();
   // Cached — the guard already fetched this row in the same render.
-  const [profile, membership] = await Promise.all([
+  const [profile, membership, accounts] = await Promise.all([
     getLearnerProfile(user.id),
     getMembershipForUser(user.id),
+    auth.api.listUserAccounts({ headers: await headers() }),
   ]);
   const tier = resolveTier(membership ?? null);
+  const hasCredential = accounts.some((a) => a.providerId === "credential");
+  const providers = enabledSocialProviders(process.env);
+  const emailEnabled = isEmailEnabled(process.env);
 
   return (
     <div className="max-w-2xl space-y-10">
@@ -66,6 +77,40 @@ export default async function SettingsPage() {
           </span>
         </div>
       </section>
+
+      {(hasCredential || emailEnabled || providers.length > 0) && (
+        <section>
+          <SectionLabel as="h2" className="mb-4">
+            {t.settings.securitySection}
+          </SectionLabel>
+          <div className="space-y-6">
+            {hasCredential ? (
+              <ChangePasswordForm />
+            ) : emailEnabled ? (
+              // OAuth-only account: the password-reset flow doubles as
+              // "set a password" (resetPassword creates the credential row).
+              <p className="text-sm text-muted-foreground">
+                {t.settings.oauthOnlyHint}{" "}
+                <Link
+                  href="/forgot-password"
+                  className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+                >
+                  {t.settings.setPassword}
+                </Link>
+              </p>
+            ) : null}
+            {providers.length > 0 && (
+              <LinkedAccounts
+                accounts={accounts.map((a) => ({
+                  providerId: a.providerId,
+                  accountId: a.accountId,
+                }))}
+                providers={providers}
+              />
+            )}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
