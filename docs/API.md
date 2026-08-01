@@ -21,6 +21,14 @@ Sessions are better-auth DB sessions exposed as bearer tokens via the `bearer` p
 Sessions live 30 days, sliding daily on use (`session.expiresIn` / `updateAge` in
 `src/lib/auth/auth.ts`). Tokens are opaque and revocable — no JWT key management.
 
+**Email verification changes the sign-up handshake in production**
+([ADR 0027](adr/0027-transactional-email-resend.md)): when `RESEND_API_KEY` is configured,
+`POST /api/auth/sign-up/email` returns `token: null` with **no** `set-auth-token` header — the
+user must click the emailed verification link (a web page) before a session exists, so clients
+should show a check-your-inbox state and then call `/api/auth/sign-in/email`. Signing in before
+verifying returns 403 with better-auth code `EMAIL_NOT_VERIFIED` (and re-sends the link).
+Keyless environments (dev/CI) keep the immediate-session behavior documented above.
+
 **Clients must not store cookies** (`httpShouldSetCookies = false` on iOS). better-auth also sets
 a session cookie on sign-in; a client that replays it _without_ an `Origin` header trips the CSRF
 check (`MISSING_OR_NULL_ORIGIN`) on later auth POSTs. Pure-bearer clients skip that code path

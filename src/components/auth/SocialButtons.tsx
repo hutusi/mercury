@@ -7,7 +7,7 @@ import { authClient } from "@/lib/auth/client";
 import type { SocialProviderId } from "@/lib/auth/social-providers";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
-import { useSocialProviders } from "./SocialProvidersContext";
+import { useSocialProviders } from "./AuthFeaturesContext";
 
 // Brand marks are monochrome inline SVGs on currentColor: lucide carries no
 // brand icons, and icons stay ink per the design system (docs/DESIGN.md).

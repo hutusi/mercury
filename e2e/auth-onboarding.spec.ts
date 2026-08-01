@@ -73,6 +73,20 @@ test("unauthenticated /dashboard redirects to /login", async ({ page }) => {
   await expect(page.getByRole("heading", { name: t.auth.loginTitle })).toBeVisible();
 });
 
+test("keyless server hides email-verification surfaces", async ({ page }) => {
+  // playwright.config.ts blanks RESEND_API_KEY: verification is not enforced
+  // (the register test above still lands straight on onboarding), the login
+  // page shows no forgot-password link, and the email-auth pages are absent.
+  await page.goto("/login");
+  await expect(page.getByRole("heading", { name: t.auth.loginTitle })).toBeVisible();
+  await expect(page.getByRole("link", { name: t.auth.forgotPassword })).toHaveCount(0);
+
+  for (const path of ["/forgot-password", "/reset-password", "/verify-email"]) {
+    const response = await page.goto(path);
+    expect(response?.status()).toBe(404);
+  }
+});
+
 test("keyless server hides social sign-in buttons", async ({ page }) => {
   // playwright.config.ts blanks the OAuth vars, so the buttons (and their
   // divider) must be absent while the email form keeps working — the same

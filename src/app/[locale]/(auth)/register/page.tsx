@@ -21,19 +21,106 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  const [awaitingVerify, setAwaitingVerify] = useState(false);
+  const [resent, setResent] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     setPending(true);
-    const { error } = await authClient.signUp.email({ name, email, password });
+    const { data, error } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      callbackURL: localePath(locale, "/verify-email"),
+    });
     if (error) {
       setError(error.message ?? t.auth.genericError);
       setPending(false);
       return;
     }
+    // token === null means verification is enforced: no session yet, the user
+    // must click the emailed link. (Duplicate emails get the same synthetic
+    // token-null response, which keeps enumeration protection intact.)
+    if (data?.token === null) {
+      setAwaitingVerify(true);
+      setPending(false);
+      return;
+    }
     router.push(localePath(locale, "/dashboard"));
     router.refresh();
+  }
+
+  async function handleResend() {
+    setError(null);
+    const { error } = await authClient.sendVerificationEmail({
+      email,
+      callbackURL: localePath(locale, "/verify-email"),
+    });
+    if (error) {
+      setError(error.message ?? t.auth.genericError);
+      return;
+    }
+    setResent(true);
+  }
+
+  if (awaitingVerify) {
+    return (
+      <div className="space-y-6">
+        <EntryHeader
+          size="md"
+          title={t.auth.verifyTitle}
+          ipa={t.entry.verifyIpa}
+          pos={t.entry.verifyPos}
+          gloss={t.auth.verifySpamHint}
+          className="pb-5"
+        />
+        <p className="text-sm">
+          {t.auth.verifySentTo} <span className="font-medium">{email}</span>
+        </p>
+        {error && (
+          <p role="alert" className="text-sm text-destructive">
+            {error}
+          </p>
+        )}
+        {resent && (
+          <p role="status" className="text-sm text-muted-foreground">
+            {t.auth.emailResent}
+          </p>
+        )}
+        <div className="space-y-2">
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={handleResend}
+            disabled={resent}
+          >
+            {t.auth.resendEmail}
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={() => {
+              setAwaitingVerify(false);
+              setResent(false);
+              setError(null);
+            }}
+          >
+            {t.auth.changeEmail}
+          </Button>
+        </div>
+        <p className="text-center text-sm text-muted-foreground">
+          <Link
+            href="/login"
+            className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+          >
+            {t.auth.verifiedGoLogin}
+          </Link>
+        </p>
+      </div>
+    );
   }
 
   return (
