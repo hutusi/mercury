@@ -61,11 +61,11 @@ sections:
       stem: How does Nick describe the contrast between West Egg and East Egg?
       options:
         - West Egg is the less fashionable of the two.
-        - West Egg is the more fashionable of the two.
-        - West Egg is the more rural of the two.
-        - West Egg is the more crowded of the two.
+        - East Egg is the newer of the two, and the louder.
+        - The two differ only in the bay between them.
+        - West Egg is the older and quieter of the two.
       correctIndex: 0
-      explanationZh: 尼克住在西蛋，他说西蛋是「the less fashionable of the two」，并与东蛋之间形成了一种既诡异又略带不祥的对比。
+      explanationZh: 尼克住在西蛋，他说西蛋是「the less fashionable of the two」，但紧接着又说这个标签「most superficial」——两地之间是一种既诡异又略带不祥的对比，并不只是隔着一湾水。
   - id: gg-ch-01-s4
     text: |-
       Across the courtesy bay the white palaces of fashionable East Egg glittered along the water, and the history of the summer really begins on the evening I drove over there to have dinner with the Tom Buchanans. Daisy was my second cousin once removed, and I’d known Tom in college. And just after the war I spent two days with them in Chicago.

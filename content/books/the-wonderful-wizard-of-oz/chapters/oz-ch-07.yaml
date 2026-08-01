@@ -142,14 +142,14 @@ quiz:
     correctIndex: 1
     explanationZh: 铁皮樵夫说如果狮子杀了可怜的鹿，他一定会哭，然后「my jaws would rust again」——下巴会再次生锈。他并不是在讨论食物偏好或时间问题。
   - id: oz-ch-07-q2
-    stem: Who suggested that the Lion could carry everyone across the first ditch on his back, one at a time?
+    stem: What did the Lion say a Kalidah was?
     options:
-      - The Scarecrow
-      - Dorothy
-      - The Tin Woodman
-      - Toto
+      - Beasts with bodies like bears and heads like tigers.
+      - Birds with iron beaks that hunted in the treetops.
+      - Wolves that ran in packs of forty through the forest.
+      - Winged monkeys that carried travelers off to the witch.
     correctIndex: 0
-    explanationZh: 狮子说自己也许能跳过去之后，是 Scarecrow 接话说「you can carry us all over on your back, one at a time」。他在这段里展现了安排行动的本领。
+    explanationZh: 多萝西问起 Kalidah 是什么，狮子答「monstrous beasts with bodies like bears and heads like tigers」，还说它们的爪子长而锋利，能把自己撕成两半。飞猴和成群的狼是后面章节才出现的东西，这一段里狮子说的是熊身虎头。
   - id: oz-ch-07-q3
     stem: What did the Lion do when the two Kalidahs rushed toward the travelers on the tree bridge?
     options:
