@@ -74,6 +74,9 @@ export function MembershipCells({
                 onChange={(e) => setExpiry(e.target.value)}
                 aria-label={t.admin.expiryLabel}
                 disabled={pending}
+                // UX guard only (client-local today); the server rejects
+                // non-future expiries regardless.
+                min={new Date().toISOString().slice(0, 10)}
                 className="h-8 w-36 text-xs"
               />
               <Button

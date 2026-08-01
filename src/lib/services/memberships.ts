@@ -2,7 +2,12 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "../db";
 import { memberships, user } from "../db/schema";
-import { isValidCalendarDate } from "../membership-core";
+import {
+  endOfDateUtc,
+  isGrantableExpiryDate,
+  resolveTier,
+  type ResolvedTier,
+} from "../membership-core";
 import { NotFoundError } from "./errors";
 
 /**
@@ -14,24 +19,26 @@ import { NotFoundError } from "./errors";
 
 export const GrantPremiumSchema = z.object({
   userId: z.string().min(1),
-  /** Date-only string from the admin form; null = no expiry. Must be a real calendar date. */
-  expiresAt: z.union([z.string().refine(isValidCalendarDate, "not a calendar date"), z.null()]),
+  /** Date-only string from the admin form; null = no expiry. Must be a real FUTURE calendar date. */
+  expiresAt: z.union([
+    // Closure, not a reference: `now` must be evaluated per parse.
+    z.string().refine((day) => isGrantableExpiryDate(day), "expiry must be a future calendar date"),
+    z.null(),
+  ]),
 });
 
 export const RevokePremiumSchema = z.object({
   userId: z.string().min(1),
 });
 
-/** Premium runs through the end of the chosen date (UTC) — a grant "until 9/30" includes 9/30. */
-function endOfDateUtc(day: string): Date {
-  return new Date(`${day}T23:59:59.999Z`);
-}
-
-/** Returns the persisted expiry so callers can surface canonical state, not echoed input. */
+/**
+ * Returns the persisted state so callers surface canonical values, not echoed
+ * input — the tier is re-derived from the stored row rather than assumed.
+ */
 export async function grantPremiumForUser(
   actorId: string,
   input: unknown,
-): Promise<{ expiresAt: Date | null }> {
+): Promise<{ tier: ResolvedTier; expiresAt: Date | null }> {
   const { userId, expiresAt } = GrantPremiumSchema.parse(input);
   const expiry = expiresAt === null ? null : endOfDateUtc(expiresAt);
 
@@ -52,7 +59,7 @@ export async function grantPremiumForUser(
         updatedAt: new Date(),
       },
     });
-  return { expiresAt: expiry };
+  return { tier: resolveTier({ tier: "premium", expiresAt: expiry }), expiresAt: expiry };
 }
 
 /** Idempotent: revoking an already-free user is a no-op (no row = free). */

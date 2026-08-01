@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import {
   entitlementsForTier,
+  isGrantableExpiryDate,
   isValidCalendarDate,
   resolveTier,
   type MembershipLike,
@@ -42,6 +43,23 @@ describe("isValidCalendarDate", () => {
     expect(isValidCalendarDate("2026-9-30")).toBe(false);
     expect(isValidCalendarDate("not-a-date")).toBe(false);
     expect(isValidCalendarDate("")).toBe(false);
+  });
+
+  test("rejects year zero — valid in ISO/JS, but Postgres has no year 0", () => {
+    expect(isValidCalendarDate("0000-01-01")).toBe(false);
+  });
+});
+
+describe("isGrantableExpiryDate", () => {
+  test("today and future dates are grantable, past dates are not", () => {
+    expect(isGrantableExpiryDate("2026-07-31", now)).toBe(false); // yesterday
+    expect(isGrantableExpiryDate("2026-08-01", now)).toBe(true); // today: expires tonight UTC
+    expect(isGrantableExpiryDate("2026-09-30", now)).toBe(true);
+  });
+
+  test("invalid dates are never grantable", () => {
+    expect(isGrantableExpiryDate("2026-02-31", now)).toBe(false);
+    expect(isGrantableExpiryDate("0000-01-01", now)).toBe(false);
   });
 });
 

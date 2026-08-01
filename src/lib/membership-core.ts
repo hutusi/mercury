@@ -14,12 +14,27 @@ const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
 /**
  * True only for real calendar dates. JS Date silently rolls 2026-02-31 into
  * March and parses 9999-99-99 as Invalid Date, so shape-checking alone is not
- * enough — require the parse to round-trip to the supplied string.
+ * enough — require the parse to round-trip to the supplied string. Year 0000
+ * is rejected too: valid in ISO/JS, but Postgres has no year zero.
  */
 export function isValidCalendarDate(day: string): boolean {
-  if (!DATE_ONLY.test(day)) return false;
+  if (!DATE_ONLY.test(day) || day.startsWith("0000")) return false;
   const parsed = new Date(`${day}T00:00:00Z`);
   return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === day;
+}
+
+/** Premium runs through the end of the chosen date (UTC) — a grant "until 9/30" includes 9/30. */
+export function endOfDateUtc(day: string): Date {
+  return new Date(`${day}T23:59:59.999Z`);
+}
+
+/**
+ * A grantable expiry must still be premium the moment it is granted — today is
+ * fine (expires tonight UTC), yesterday is not. A past expiry would make
+ * "grant succeeded" and "user is premium" contradict each other.
+ */
+export function isGrantableExpiryDate(day: string, now: Date = new Date()): boolean {
+  return isValidCalendarDate(day) && endOfDateUtc(day).getTime() > now.getTime();
 }
 
 /** The membership row fields tier resolution needs (queries pass the row). */

@@ -19,10 +19,10 @@ export type AdminMembershipResult =
 export async function grantPremium(input: unknown): Promise<AdminMembershipResult> {
   const actor = await requireAdmin();
   try {
-    const { expiresAt } = await grantPremiumForUser(actor.id, input);
+    const { tier, expiresAt } = await grantPremiumForUser(actor.id, input);
     return {
       ok: true,
-      tier: "premium",
+      tier,
       expiresAt: expiresAt ? expiresAt.toISOString().slice(0, 10) : null,
     };
   } catch (error) {
