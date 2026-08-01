@@ -26,16 +26,21 @@ export function VerifyEmailError({ code }: { code: string }) {
     e.preventDefault();
     setError(null);
     setPending(true);
-    const { error } = await authClient.sendVerificationEmail({
-      email,
-      callbackURL: localePath(locale, "/verify-email"),
-    });
-    setPending(false);
-    if (error) {
-      setError(error.message ?? t.auth.genericError);
-      return;
+    try {
+      const { error } = await authClient.sendVerificationEmail({
+        email,
+        callbackURL: localePath(locale, "/verify-email"),
+      });
+      if (error) {
+        setError(error.message ?? t.auth.genericError);
+        return;
+      }
+      setSent(true);
+    } catch {
+      setError(t.auth.genericError);
+    } finally {
+      setPending(false);
     }
-    setSent(true);
   }
 
   return (

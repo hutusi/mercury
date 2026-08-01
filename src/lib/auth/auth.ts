@@ -60,9 +60,13 @@ export const auth = betterAuth({
     ? {
         emailVerification: {
           sendOnSignUp: true,
-          // An unverified sign-in attempt re-sends the link before the 403 —
-          // the login page's "we just sent a fresh link" copy depends on it.
-          sendOnSignIn: true,
+          // Deliberately NO sendOnSignIn: its email would carry the sign-in
+          // body's callbackURL (default "/"), so error states like expired
+          // tokens would land on the homepage and be swallowed — and passing
+          // a callbackURL to signIn.email is not an option because the client
+          // redirect plugin then hard-navigates successful logins too. The
+          // login page re-sends explicitly with the /verify-email callback
+          // when it sees EMAIL_NOT_VERIFIED.
           autoSignInAfterVerification: true,
           sendVerificationEmail: async ({
             user,

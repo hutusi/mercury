@@ -22,18 +22,23 @@ export function ForgotPasswordForm() {
     e.preventDefault();
     setError(null);
     setPending(true);
-    const { error } = await authClient.requestPasswordReset({
-      email,
-      redirectTo: localePath(locale, "/reset-password"),
-    });
-    setPending(false);
-    if (error) {
-      // Only transport-level failures land here — the endpoint itself never
-      // reveals whether the email exists.
-      setError(error.message ?? t.auth.genericError);
-      return;
+    try {
+      const { error } = await authClient.requestPasswordReset({
+        email,
+        redirectTo: localePath(locale, "/reset-password"),
+      });
+      if (error) {
+        // Only transport-level failures land here — the endpoint itself never
+        // reveals whether the email exists.
+        setError(error.message ?? t.auth.genericError);
+        return;
+      }
+      setSent(true);
+    } catch {
+      setError(t.auth.genericError);
+    } finally {
+      setPending(false);
     }
-    setSent(true);
   }
 
   return (

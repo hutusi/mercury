@@ -41,8 +41,18 @@ export default function LoginPage() {
     setPending(true);
     const { error } = await authClient.signIn.email({ email, password });
     if (error) {
-      // sendOnSignIn already re-sent the verification link before this 403.
       if (error.code === "EMAIL_NOT_VERIFIED") {
+        // Re-send with the /verify-email landing ourselves — server-side
+        // sendOnSignIn is deliberately off (see src/lib/auth/auth.ts). Safe:
+        // this 403 only fires after the password checked out.
+        try {
+          await authClient.sendVerificationEmail({
+            email,
+            callbackURL: localePath(locale, "/verify-email"),
+          });
+        } catch {
+          // The manual resend button below remains as the fallback.
+        }
         setNotVerified(true);
         setResent(false);
         setError(t.auth.emailNotVerified);

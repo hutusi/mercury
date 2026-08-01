@@ -29,19 +29,24 @@ export function ResetPasswordForm() {
     if (!token) return;
     setError(null);
     setPending(true);
-    const { error } = await authClient.resetPassword({ newPassword: password, token });
-    if (error) {
-      if (error.code === "INVALID_TOKEN") {
-        setInvalid(true);
-      } else if (error.code === "PASSWORD_TOO_SHORT") {
-        setError(t.auth.passwordHint);
-      } else {
-        setError(error.message ?? t.auth.genericError);
+    try {
+      const { error } = await authClient.resetPassword({ newPassword: password, token });
+      if (error) {
+        if (error.code === "INVALID_TOKEN") {
+          setInvalid(true);
+        } else if (error.code === "PASSWORD_TOO_SHORT") {
+          setError(t.auth.passwordHint);
+        } else {
+          setError(error.message ?? t.auth.genericError);
+        }
+        return;
       }
+      router.push(localePath(locale, "/login?reset=1"));
+    } catch {
+      setError(t.auth.genericError);
+    } finally {
       setPending(false);
-      return;
     }
-    router.push(localePath(locale, "/login?reset=1"));
   }
 
   return (
