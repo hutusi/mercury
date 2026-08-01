@@ -1,5 +1,6 @@
 import { after } from "next/server";
 import { betterAuth } from "better-auth";
+import { APIError, createAuthMiddleware, getSessionFromCtx } from "better-auth/api";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { admin, bearer } from "better-auth/plugins";
@@ -19,16 +20,17 @@ const baseURL = siteBaseUrl();
 // are set — keyless dev/CI/e2e/preview run without social login entirely.
 const socialProviderIds = enabledSocialProviders(process.env);
 
-// Transactional email (ADR 0027): a single RESEND_API_KEY switches on required
-// email verification for password sign-up plus the password-reset flow.
-// Keyless environments keep the old behavior — sign-up issues a session
-// immediately, which e2e and the native API contract depend on.
-// Account linking stays on better-auth's defaults: implicit linking requires
-// an IdP-verified email AND an emailVerified local user. With verification
-// enforced, password users become verifiable, so password↔OAuth same-email
-// linking works once the user verifies — and stays blocked
-// (`account_not_linked`) for unverified accounts, which is the anti-takeover
-// property we want.
+// Transactional email (ADR 0027) + soft verification (ADR 0028): a single
+// RESEND_API_KEY enables the verification email on sign-up and the
+// password-reset flow, but verification never blocks sign-in/sign-up — every
+// environment issues a session immediately (e2e and the native API contract
+// depend on it). Unverified users are nagged by the in-app banner instead,
+// and the ONE verification-gated operation is explicit social linking (see
+// the hooks block below).
+// Implicit account linking stays on better-auth's defaults: it requires an
+// IdP-verified email AND an emailVerified local user, so password↔OAuth
+// same-email linking works once the user verifies and stays blocked
+// (`account_not_linked`) before that — the anti-takeover property we want.
 const emailEnabled = isEmailEnabled(process.env);
 
 export const auth = betterAuth({
@@ -41,7 +43,6 @@ export const auth = betterAuth({
     enabled: true,
     ...(emailEnabled
       ? {
-          requireEmailVerification: true,
           // A stolen session must not survive a password reset.
           revokeSessionsOnPasswordReset: true,
           // Param types are explicit: contextual typing does not flow into
@@ -59,14 +60,16 @@ export const auth = betterAuth({
   ...(emailEnabled
     ? {
         emailVerification: {
+          // Explicit true is load-bearing: better-auth falls back to
+          // requireEmailVerification (now absent) for this default.
           sendOnSignUp: true,
           // Deliberately NO sendOnSignIn: its email would carry the sign-in
           // body's callbackURL (default "/"), so error states like expired
           // tokens would land on the homepage and be swallowed — and passing
           // a callbackURL to signIn.email is not an option because the client
-          // redirect plugin then hard-navigates successful logins too. The
-          // login page re-sends explicitly with the /verify-email callback
-          // when it sees EMAIL_NOT_VERIFIED.
+          // redirect plugin then hard-navigates successful logins too.
+          // Re-sends happen from the in-app VerifyEmailBanner, which supplies
+          // the /verify-email callback.
           autoSignInAfterVerification: true,
           sendVerificationEmail: async ({
             user,
@@ -77,6 +80,28 @@ export const auth = betterAuth({
           }) => {
             after(() => sendEmail({ to: user.email, ...verificationEmail({ url }) }));
           },
+        },
+        // Soft verification (ADR 0028): unverified users hold sessions, so the
+        // one enforcement point left is explicit social linking. better-auth's
+        // /link-social endpoint checks NOTHING about the local user's
+        // emailVerified (only the implicit OAuth-sign-in linking path does),
+        // so without this gate an unverified squatter on someone else's email
+        // could attach their own IdP login to it. better-auth accepts a single
+        // global before-hook that runs on EVERY endpoint (including server-side
+        // auth.api.* calls) — the path guard must stay the first statement, and
+        // any future global gate composes inside this middleware.
+        hooks: {
+          before: createAuthMiddleware(async (ctx) => {
+            if (ctx.path !== "/link-social") return;
+            // A session-less request falls through to the endpoint's own 401.
+            const session = await getSessionFromCtx(ctx);
+            if (session && !session.user.emailVerified) {
+              throw new APIError("FORBIDDEN", {
+                message: "Email not verified",
+                code: "EMAIL_NOT_VERIFIED",
+              });
+            }
+          }),
         },
       }
     : {}),

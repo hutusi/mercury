@@ -1,6 +1,6 @@
 # ADR 0027: Transactional email via Resend; verification unlocks account linking
 
-**Status:** Accepted (2026-08)
+**Status:** Accepted (2026-08) — amended by [ADR 0028](0028-soft-email-verification.md): verification no longer blocks sign-in; the enforcement described below moved to a banner + a `/link-social` gate.
 
 ## Context
 

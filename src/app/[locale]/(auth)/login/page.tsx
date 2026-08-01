@@ -23,9 +23,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
-  const [notVerified, setNotVerified] = useState(false);
-  const [resending, setResending] = useState(false);
-  const [resent, setResent] = useState(false);
 
   // Success notices from the verify-email landing and the reset flow.
   const notice = searchParams.get("verified")
@@ -37,34 +34,12 @@ export default function LoginPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
-    setNotVerified(false);
     setPending(true);
     let navigated = false;
     try {
       const { error } = await authClient.signIn.email({ email, password });
       if (error) {
-        if (error.code === "EMAIL_NOT_VERIFIED") {
-          // Re-send with the /verify-email landing ourselves — server-side
-          // sendOnSignIn is deliberately off (see src/lib/auth/auth.ts). Safe:
-          // this 403 only fires after the password checked out.
-          let sent = false;
-          try {
-            const { error: sendError } = await authClient.sendVerificationEmail({
-              email,
-              callbackURL: localePath(locale, "/verify-email"),
-            });
-            sent = !sendError;
-          } catch {
-            // Transport failure — fall through to the resend prompt below.
-          }
-          setNotVerified(true);
-          setResent(false);
-          // Only claim delivery when the send succeeded — a 429 from the
-          // 3/60s rate limit resolves as {error}, it does not throw.
-          setError(sent ? t.auth.emailNotVerified : t.auth.emailNotVerifiedResend);
-        } else {
-          setError(error.message ?? t.auth.genericError);
-        }
+        setError(error.message ?? t.auth.genericError);
         return;
       }
       navigated = true;
@@ -76,26 +51,6 @@ export default function LoginPage() {
       // Keep the button disabled while the App Router transition runs — a
       // re-enabled form on slow navigation invites duplicate submits.
       if (!navigated) setPending(false);
-    }
-  }
-
-  async function handleResend() {
-    setError(null);
-    setResending(true);
-    try {
-      const { error } = await authClient.sendVerificationEmail({
-        email,
-        callbackURL: localePath(locale, "/verify-email"),
-      });
-      if (error) {
-        setError(error.message ?? t.auth.genericError);
-        return;
-      }
-      setResent(true);
-    } catch {
-      setError(t.auth.genericError);
-    } finally {
-      setResending(false);
     }
   }
 
@@ -150,22 +105,6 @@ export default function LoginPage() {
             {error}
           </p>
         )}
-        {notVerified &&
-          (resent ? (
-            <p role="status" className="text-sm text-muted-foreground">
-              {t.auth.emailResent}
-            </p>
-          ) : (
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full"
-              onClick={handleResend}
-              disabled={resending}
-            >
-              {t.auth.resendEmail}
-            </Button>
-          ))}
         <Button type="submit" disabled={pending} className="w-full">
           {pending ? t.auth.signingIn : t.auth.signIn}
         </Button>

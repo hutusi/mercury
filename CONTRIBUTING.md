@@ -19,10 +19,12 @@ cp .env.example .env
 # optional: GOOGLE_CLIENT_ID/SECRET + GITHUB_CLIENT_ID/SECRET enable social sign-in buttons
 #           (register the redirect URI http://localhost:3000/api/auth/callback/<provider>;
 #            without the vars the buttons simply don't render — ADR 0026)
-# optional: RESEND_API_KEY turns ON required email verification + password reset (ADR 0027).
+# optional: RESEND_API_KEY enables verification emails + password reset (ADR 0027/0028).
+#           Verification is soft — sign-up always issues a session; unverified users see an
+#           in-app banner, and only social-account linking requires a verified email.
 #           For local smoke tests set MERCURY_EMAIL_FROM=onboarding@resend.dev (Resend's
 #           sandbox sender — delivers only to your own Resend account email, so sign up
-#           with that address). Leave unset for normal dev: sign-up works instantly.
+#           with that address).
 
 bun run db:migrate   # apply committed migrations to Postgres
 bun run db:seed      # load seed content (idempotent)
@@ -116,14 +118,15 @@ bun run build && bun run typecheck && bun run test:e2e
      OAuth App (GitHub allows a single callback URL per app — use a second app for local dev).
    - Optionally `RESEND_API_KEY` for transactional email
      ([ADR 0027](docs/adr/0027-transactional-email-resend.md)) — **Production scope only**.
-     Setting it makes email verification REQUIRED for password sign-up and enables password
-     reset, which in turn unlocks automatic password↔OAuth account linking. Setup: create a
+     Setting it enables verification emails and password reset, which in turn unlocks
+     automatic password↔OAuth account linking once users verify (verification is soft —
+     [ADR 0028](docs/adr/0028-soft-email-verification.md)). Setup: create a
      Resend account → Domains → add the site's apex or `mercury.ainaive.com` → publish the
      DKIM/SPF/Return-Path DNS records it shows → wait for "Verified" → create an API key
      (sending access only). `MERCURY_EMAIL_FROM` is optional (default
-     `Mercury <noreply@mercury.ainaive.com>`; it must be on the verified domain). Note the
-     migration effect: existing password users who never verified get a 403 + a fresh
-     verification email on their next sign-in.
+     `Mercury <noreply@mercury.ainaive.com>`; it must be on the verified domain). Existing
+     unverified password users sign in normally and see the in-app verify banner until they
+     click their link.
 
    Env var changes only take effect on a new deployment — redeploy after adding/changing any of
    these (`vercel redeploy <url> --target production` or the dashboard's Redeploy button).
