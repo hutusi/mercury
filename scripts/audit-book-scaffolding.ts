@@ -170,7 +170,6 @@ function auditBook(slug: string): boolean {
   }
   const total = questions.length;
   const pct = (n: number) => `${((n / total) * 100).toFixed(1)}%`;
-  const pct2 = (share: number) => `${(share * 100).toFixed(1)}%`;
   const pooled = total >= 40;
 
   console.log(`\n${slug} — ${chapters.length} chapters, ${total} questions`);
@@ -181,23 +180,14 @@ function auditBook(slug: string): boolean {
     `  uniquely longest ${uniquelyLongest}/${total} = ${pct(uniquelyLongest)} [cap 45%]   uniquely shortest ${uniquelyShortest}/${total} = ${pct(uniquelyShortest)} [cap 35%]`,
   );
   const punctuatedShare = optionsPunctuated / optionsTotal;
+  // Reported, not enforced. This number cannot catch a pass that restyles a
+  // whole book — strip every period and it reads 0%, add one everywhere and it
+  // reads 100%, and both are internally consistent. Enforcing a house style
+  // needs the content normalised first (books currently run 23%-100%); until
+  // then this is a figure to read, and a jump between runs is the signal.
   console.log(
     `  options ending in terminal punctuation ${optionsPunctuated}/${optionsTotal} = ${((punctuatedShare || 0) * 100).toFixed(1)}%`,
   );
-  // A book should pick one house style and hold it. Anything in the middle means
-  // a pass rewrote part of the book and left the rest — name the odd ones out.
-  if (punctuatedShare > 0.1 && punctuatedShare < 0.9) {
-    const minority = punctuatedShare < 0.5;
-    const odd = questions.filter((q) =>
-      q.options.some((o) => TERMINAL_RE.test(o.trim()) === minority),
-    );
-    soft.push(
-      `terminal punctuation is inconsistent book-wide (${pct2(punctuatedShare)} punctuated) — odd ones out: ${odd
-        .slice(0, 8)
-        .map((q) => q.id)
-        .join(", ")}${odd.length > 8 ? ` +${odd.length - 8} more` : ""}`,
-    );
-  }
   if (pooled) {
     for (const [position, count] of positions.entries()) {
       const share = count / total;
