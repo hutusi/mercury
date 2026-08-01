@@ -29,6 +29,7 @@ export default function RegisterPage() {
     e.preventDefault();
     setError(null);
     setPending(true);
+    let navigated = false;
     try {
       const { data, error } = await authClient.signUp.email({
         name,
@@ -48,12 +49,17 @@ export default function RegisterPage() {
         setAwaitingVerify(true);
         return;
       }
+      navigated = true;
       router.push(localePath(locale, "/dashboard"));
       router.refresh();
     } catch {
       setError(t.auth.genericError);
     } finally {
-      setPending(false);
+      // Keep the button disabled while the App Router transition runs — a
+      // re-enabled form on slow navigation invites duplicate submits. The
+      // token-null exit above must still clear pending: it doesn't navigate,
+      // and the form can come back via 返回修改邮箱.
+      if (!navigated) setPending(false);
     }
   }
 

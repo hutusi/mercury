@@ -39,6 +39,7 @@ export default function LoginPage() {
     setError(null);
     setNotVerified(false);
     setPending(true);
+    let navigated = false;
     try {
       const { error } = await authClient.signIn.email({ email, password });
       if (error) {
@@ -66,12 +67,15 @@ export default function LoginPage() {
         }
         return;
       }
+      navigated = true;
       router.push(localePath(locale, "/dashboard"));
       router.refresh();
     } catch {
       setError(t.auth.genericError);
     } finally {
-      setPending(false);
+      // Keep the button disabled while the App Router transition runs — a
+      // re-enabled form on slow navigation invites duplicate submits.
+      if (!navigated) setPending(false);
     }
   }
 

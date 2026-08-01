@@ -29,6 +29,7 @@ export function ResetPasswordForm() {
     if (!token) return;
     setError(null);
     setPending(true);
+    let navigated = false;
     try {
       const { error } = await authClient.resetPassword({ newPassword: password, token });
       if (error) {
@@ -41,11 +42,14 @@ export function ResetPasswordForm() {
         }
         return;
       }
+      navigated = true;
       router.push(localePath(locale, "/login?reset=1"));
     } catch {
       setError(t.auth.genericError);
     } finally {
-      setPending(false);
+      // Keep the button disabled while the App Router transition runs — a
+      // re-submit here would hit an already-consumed token.
+      if (!navigated) setPending(false);
     }
   }
 
