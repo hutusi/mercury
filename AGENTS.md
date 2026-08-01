@@ -19,6 +19,7 @@ bun run content:audio      # re-render audio (listening/exam scripts + vocab hea
 bun run content:audio:prune # sweep unreferenced blobs — ONLY after the change deployed and prod was reseeded (old hashes serve prod until then)
 bun run content:book-ingest    # Gutenberg .txt → chapter YAML skeletons (see docs/CONTENT.md)
 bun run content:book-questions # AI-draft book check-ins/quizzes → REVIEW before committing (needs an AI key)
+bun run content:book-audit     # advisory book-scaffolding stats: answer-position spread, length skew, punctuation drift
 ```
 
 ## Workflow

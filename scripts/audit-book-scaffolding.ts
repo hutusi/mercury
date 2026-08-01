@@ -61,6 +61,8 @@ function loadChapters(slug: string): BookChapter[] {
 const POSITIONAL_RE =
   /(?:选项|答案)\s*(?:是|为)?\s*[0-9０-９①-⑩]|(?:选项|答案)\s*(?:是|为)?\s*[A-D](?![A-Za-z])|第\s*(?:[0-9０-９]+|[一二三四五六七八九十])\s*(?:个)?\s*(?:选项|答案)|option\s*[0-9]|option\s+[a-d](?![a-z])|(?:first|second|third|fourth)\s+option/i;
 
+const TERMINAL_RE = /[.!?…。]$/;
+
 function tokens(s: string): Set<string> {
   return new Set(
     s
@@ -84,7 +86,7 @@ function auditChapter(chapter: BookChapter): { hard: string[]; soft: string[] } 
         `${q.id}: correct option ${lengths[q.correctIndex]} chars vs longest distractor ${longestDistractor} (cap 1.6x)`,
       );
     }
-    const punctuated = q.options.filter((o) => /[.!?…。]$/.test(o.trim())).length;
+    const punctuated = q.options.filter((o) => TERMINAL_RE.test(o.trim())).length;
     if (punctuated > 0 && punctuated < q.options.length) {
       hard.push(`${q.id}: options mix terminal punctuation (${punctuated}/${q.options.length})`);
     }
@@ -151,6 +153,12 @@ function auditBook(slug: string): boolean {
   const positions = [0, 0, 0, 0];
   let uniquelyLongest = 0;
   let uniquelyShortest = 0;
+  // Terminal punctuation drifts book-wide: the per-question check above only
+  // asks that the four options in one question agree with each other, so a pass
+  // that strips every period stays green while every option turns into a
+  // fragment. Compare each question against the book's own prevailing style.
+  const optionsTotal = questions.reduce((n, q) => n + q.options.length, 0);
+  let optionsPunctuated = 0;
   for (const q of questions) {
     positions[q.correctIndex] += 1;
     const lengths = q.options.map((o) => o.length);
@@ -158,9 +166,11 @@ function auditBook(slug: string): boolean {
     const distractors = lengths.filter((_, i) => i !== q.correctIndex);
     if (correct > Math.max(...distractors)) uniquelyLongest += 1;
     if (correct < Math.min(...distractors)) uniquelyShortest += 1;
+    optionsPunctuated += q.options.filter((o) => TERMINAL_RE.test(o.trim())).length;
   }
   const total = questions.length;
   const pct = (n: number) => `${((n / total) * 100).toFixed(1)}%`;
+  const pct2 = (share: number) => `${(share * 100).toFixed(1)}%`;
   const pooled = total >= 40;
 
   console.log(`\n${slug} — ${chapters.length} chapters, ${total} questions`);
@@ -170,6 +180,24 @@ function auditBook(slug: string): boolean {
   console.log(
     `  uniquely longest ${uniquelyLongest}/${total} = ${pct(uniquelyLongest)} [cap 45%]   uniquely shortest ${uniquelyShortest}/${total} = ${pct(uniquelyShortest)} [cap 35%]`,
   );
+  const punctuatedShare = optionsPunctuated / optionsTotal;
+  console.log(
+    `  options ending in terminal punctuation ${optionsPunctuated}/${optionsTotal} = ${((punctuatedShare || 0) * 100).toFixed(1)}%`,
+  );
+  // A book should pick one house style and hold it. Anything in the middle means
+  // a pass rewrote part of the book and left the rest — name the odd ones out.
+  if (punctuatedShare > 0.1 && punctuatedShare < 0.9) {
+    const minority = punctuatedShare < 0.5;
+    const odd = questions.filter((q) =>
+      q.options.some((o) => TERMINAL_RE.test(o.trim()) === minority),
+    );
+    soft.push(
+      `terminal punctuation is inconsistent book-wide (${pct2(punctuatedShare)} punctuated) — odd ones out: ${odd
+        .slice(0, 8)
+        .map((q) => q.id)
+        .join(", ")}${odd.length > 8 ? ` +${odd.length - 8} more` : ""}`,
+    );
+  }
   if (pooled) {
     for (const [position, count] of positions.entries()) {
       const share = count / total;
