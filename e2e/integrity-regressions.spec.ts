@@ -6,6 +6,7 @@ import * as dbSchema from "../src/lib/db/schema";
 import {
   aiGradingRequests,
   exerciseAttempts,
+  mistakeClears,
   mistakeStates,
   speakingSubmissions,
   vocabQuizSessions,
@@ -286,5 +287,155 @@ test.describe("persisted integrity regressions", () => {
     });
     expect(conflict.status()).toBe(409);
     expect((await conflict.json()).error.code).toBe("exercise_request_conflict");
+  });
+
+  test("quiz completion never records mistakes for deleted words", async ({ request }) => {
+    // Quiz sessions snapshot words in jsonb with no FK, so a session can
+    // outlive its words (the content-dedup migration races exactly this way).
+    // Completion must drop outcomes for words that no longer exist — a
+    // mistake row for one would inflate the dashboard badge forever while
+    // /mistakes silently hides it.
+    const user = await apiSignUpAndOnboard(request, "ielts");
+    const userId = await userIdFor(request, user.authHeaders);
+
+    const quiz = await (
+      await request.post("/api/v1/vocab/quiz", { headers: user.authHeaders })
+    ).json();
+    const answerUrl = `/api/v1/vocab/quiz/${quiz.sessionId}/answers`;
+
+    // The stored session maps opaque question ids to word ids, and each
+    // option carries its source wordId — the correct option is the one
+    // matching the question's word, so wrong answers are deterministic.
+    const [session] = await testDb
+      .select({ questions: vocabQuizSessions.questions })
+      .from(vocabQuizSessions)
+      .where(eq(vocabQuizSessions.id, quiz.sessionId));
+    const storedByQuestion = new Map(session.questions.map((q) => [q.id, q]));
+    const wrongOptionFor = (questionId: string) => {
+      const stored = storedByQuestion.get(questionId)!;
+      return stored.options.find((o) => o.wordId !== stored.wordId)!.id;
+    };
+    const correctOptionFor = (questionId: string) => {
+      const stored = storedByQuestion.get(questionId)!;
+      return stored.options.find((o) => o.wordId === stored.wordId)!.id;
+    };
+
+    // Answer all but the last question wrong, on purpose.
+    const wrongWordIds: string[] = [];
+    for (const q of quiz.questions.slice(0, -1)) {
+      const response = await request.post(answerUrl, {
+        headers: user.authHeaders,
+        data: { questionId: q.id, optionId: wrongOptionFor(q.id) },
+      });
+      expect(response.status()).toBe(200);
+      wrongWordIds.push(storedByQuestion.get(q.id)!.wordId);
+    }
+
+    // Delete one wrong-answered word mid-session, sparing the pack's first
+    // word (the vocabulary spillover spec asserts on it). Keep its row so it
+    // can be restored — this DB is shared with the rest of the suite. The
+    // ielts pack is load-bearing here: the delete cascades srs_cards AND
+    // (via the vocab_words_mistake_sweep trigger) any user's ielts quiz
+    // mistakes, which cannot be restored — so this must stay the only spec
+    // that creates ielts vocab-quiz mistakes or cards (toeic belongs to the
+    // mistakes/api-vocab specs, business to the emulated-FK test below).
+    const [firstIeltsWord] = await testDb
+      .select({ id: vocabWords.id })
+      .from(vocabWords)
+      .where(eq(vocabWords.track, "ielts"))
+      .orderBy(vocabWords.sortOrder)
+      .limit(1);
+    const doomed = wrongWordIds.find((id) => id !== firstIeltsWord.id)!;
+    const surviving = wrongWordIds.filter((id) => id !== doomed);
+    expect(surviving.length).toBeGreaterThan(0);
+    const [doomedRow] = await testDb.select().from(vocabWords).where(eq(vocabWords.id, doomed));
+    await testDb.delete(vocabWords).where(eq(vocabWords.id, doomed));
+
+    try {
+      // Completing the quiz records mistakes only for words that still exist.
+      const last = quiz.questions[quiz.questions.length - 1];
+      const final = await (
+        await request.post(answerUrl, {
+          headers: user.authHeaders,
+          data: { questionId: last.id, optionId: correctOptionFor(last.id) },
+        })
+      ).json();
+      expect(final.completed).toBe(true);
+
+      const states = await testDb
+        .select({ questionId: mistakeStates.questionId })
+        .from(mistakeStates)
+        .where(and(eq(mistakeStates.userId, userId), eq(mistakeStates.kind, "vocab_quiz")));
+      const recorded = new Set(states.map((s) => s.questionId));
+      expect(recorded.has(doomed)).toBe(false);
+      for (const id of surviving) expect(recorded.has(id)).toBe(true);
+    } finally {
+      await testDb.insert(vocabWords).values(doomedRow).onConflictDoNothing();
+    }
+  });
+
+  test("the emulated vocab-word FK guards inserts and cascades deletes", async ({ request }) => {
+    // The service-level guard filters before writing, so exercise the
+    // migration-created triggers directly: they are the fence against the OLD
+    // deployment (which grades without the guard while a deploy's migration
+    // has already deleted words) and against future deletions that would
+    // otherwise need a hand-written mistake sweep (see drizzle/0026).
+    // Business pack: no other spec creates business quiz mistakes, so the
+    // temporary word deletion below cannot sweep a parallel test's rows.
+    const user = await apiSignUpAndOnboard(request, "business");
+    const userId = await userIdFor(request, user.authHeaders);
+    // Skip past the pack's first words — other specs assert on those.
+    const [realWord] = await testDb
+      .select()
+      .from(vocabWords)
+      .where(eq(vocabWords.track, "business"))
+      .orderBy(vocabWords.sortOrder)
+      .offset(5)
+      .limit(1);
+
+    // Insert side: outcomes for nonexistent words are dropped, live ones land.
+    await recordMistakeOutcomes(testDb, {
+      userId,
+      track: "business",
+      kind: "vocab_quiz",
+      refId: "quiz-business",
+      occurredAt: new Date("2026-07-13T10:00:00.000Z"),
+      outcomes: [
+        { questionId: "no-such-word", correct: false },
+        { questionId: realWord.id, correct: false },
+      ],
+    });
+
+    const recordedIds = async (): Promise<Set<string>> => {
+      const states = await testDb
+        .select({ questionId: mistakeStates.questionId })
+        .from(mistakeStates)
+        .where(and(eq(mistakeStates.userId, userId), eq(mistakeStates.kind, "vocab_quiz")));
+      return new Set(states.map((s) => s.questionId));
+    };
+    const afterInsert = await recordedIds();
+    expect(afterInsert.has("no-such-word")).toBe(false);
+    expect(afterInsert.has(realWord.id)).toBe(true);
+
+    // Delete side: removing the word cascades its mistake and clear rows —
+    // no phantom badge survives a word deletion, migration sweep or not.
+    await testDb.insert(mistakeClears).values({
+      userId,
+      kind: "vocab_quiz",
+      refId: "quiz-business",
+      questionId: realWord.id,
+      clearedAt: new Date("2026-07-13T11:00:00.000Z"),
+    });
+    await testDb.delete(vocabWords).where(eq(vocabWords.id, realWord.id));
+    try {
+      expect((await recordedIds()).has(realWord.id)).toBe(false);
+      const clears = await testDb
+        .select({ questionId: mistakeClears.questionId })
+        .from(mistakeClears)
+        .where(and(eq(mistakeClears.userId, userId), eq(mistakeClears.kind, "vocab_quiz")));
+      expect(clears.map((c) => c.questionId)).not.toContain(realWord.id);
+    } finally {
+      await testDb.insert(vocabWords).values(realWord).onConflictDoNothing();
+    }
   });
 });

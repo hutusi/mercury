@@ -34,7 +34,7 @@ Ids are stable slugs: `toeic-w-001` (word), `ielts-r-002` (reading), `biz-l-001`
 
 ## Authoring rules per kind
 
-**Vocabulary** — headword, IPA in slashes, part-of-speech abbreviation (`n.`, `v.`, `phr.`), a learner-dictionary English definition (≤15 words), a concise Chinese translation, and an example sentence in a business/exam context with a natural Chinese rendering.
+**Vocabulary** — headword, IPA in slashes, part-of-speech abbreviation (`n.`, `v.`, `phr.`), a learner-dictionary English definition (≤15 words), a concise Chinese translation, and an example sentence in a business/exam context with a natural Chinese rendering. **Headwords are unique across all packs**, not just within one ([ADR 0029](adr/0029-personal-collections-are-unfiltered.md) — vocabulary is scenario-first; the same sense must exist exactly once): a guard test enforces it, with an explicit polysemy allowlist (`backlog`, `check-in`, `launch`) for headwords whose entries carry genuinely different senses.
 
 **Reading** — a passage (~180–350 words depending on track) plus 4-option MCQs. Explanations (`explanationZh`) are teaching content: quote the passage and say why distractors are wrong.
 

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TtsPlayer } from "@/components/listening/TtsPlayer";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
+import { PassageText } from "@/components/typography/PassageText";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { saveExamProgress, submitExamSection } from "@/lib/actions/exams";
@@ -221,9 +222,7 @@ export function ExamRunner({
           )}
           {group.passage && (
             <article className="border-y border-border py-6">
-              <div className="font-serif leading-relaxed whitespace-pre-line text-foreground/90">
-                {group.passage}
-              </div>
+              <PassageText>{group.passage}</PassageText>
             </article>
           )}
           <ol className="space-y-4">

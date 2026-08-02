@@ -1,22 +1,23 @@
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { StudySession, type StudyCardData } from "@/components/vocab/StudySession";
-import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { getDict } from "@/lib/i18n";
 import { getStudyQueue } from "@/lib/queries/vocab";
 import { requireOnboarded } from "@/lib/settings";
-import { parseTrackFilter, TRACK_FILTER_OPTIONS } from "@/lib/track-filter";
 
-export default async function StudyPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ track?: string }>;
-}) {
+export default async function StudyPage() {
   const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
 
-  const { filter, track } = parseTrackFilter((await searchParams).track, goalTrack);
-  const cards: StudyCardData[] = await getStudyQueue(user.id, track);
+  // Personal collection — due reviews always cover every track (ADR 0029):
+  // a goal-track default would silently hide reviews the learner owes. New
+  // words come goal-pack-first, spilling over to the other packs once the
+  // goal pack is exhausted — vocabulary isn't owned by tracks.
+  const cards: StudyCardData[] = await getStudyQueue(user.id, {
+    dueTrack: null,
+    newTrack: null,
+    newPriorityTrack: goalTrack,
+  });
 
   return (
     <div className="space-y-6">
@@ -30,11 +31,6 @@ export default async function StudyPage({
         </Link>
         <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{t.vocab.study}</h1>
       </div>
-      <TrackFilterChips
-        basePath="/vocabulary/study"
-        current={filter}
-        options={TRACK_FILTER_OPTIONS}
-      />
       {cards.length === 0 ? (
         <div className="mx-auto max-w-md border border-border p-10 text-center">
           <p className="flex justify-center" aria-hidden>

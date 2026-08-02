@@ -43,6 +43,8 @@ Three Latin faces, bundled under `src/app/fonts/` and loaded in `src/app/[locale
 
 Chinese loads **no webfont** (megabytes per weight for no visual win): zh display falls through to the platform serif ("Songti SC" / "Noto Serif SC" / "SimSun") and zh body to PingFang/YaHei via the `--font-sans` stack. `--font-heading` points at the serif, so `CardTitle` is serif for free.
 
+Long-form learner prose — reading passages, book chapters, exam passages — is always `PassageText` (serif at `text-lg`/18px, `leading-relaxed`): Newsreader's small x-height reads below its nominal size, and extended reading wants the larger measure. UI chrome and support text (listening transcripts, prompts, options) stay at the default 16px/14px.
+
 ## Layout
 
 Editorial: hairline dividers (`border-y` / `divide-y divide-border`) instead of boxed cards; generous whitespace; asymmetry where it helps (dashboard main column + 16rem marginalia rail). Chrome is solid paper — no `backdrop-blur`, no gradients, no shadows anywhere.
@@ -53,6 +55,7 @@ Compose these before writing inline Tailwind. Signature pieces live in `src/comp
 
 - **`EntryHeader`** — the signature: a page title set as a dictionary entry (serif headword, italic IPA, cinnabar POS tag, gloss, hairline rule). IPA/POS strings come from the `entry.*` dictionary keys and render `aria-hidden`, so the accessible heading name is exactly the dictionary string the e2e suite asserts.
 - **`SectionLabel`** — mono 11px uppercase tracked label for section headings, table heads, stat captions.
+- **`PassageText`** — the long-form prose body (18px serif, relaxed leading, `whitespace-pre-line`); every reading/book/exam passage renders through it.
 - **`Stat`** — mono tabular figure with optional unit/label; a `size` (`sm`–`xl`) and `align` (`start`/`center`) scale for hero figures vs the marginalia rail; `accent` for cinnabar.
 - **`EntryList` / `EntryRow`** — hairline-divided rows replacing card grids on list pages.
 - **`EmptyState`** — centered hairline empty block.

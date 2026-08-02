@@ -626,16 +626,6 @@
   translationZh: （城市）无序扩张
   exampleEn: Urban sprawl has swallowed farmland on the city's outskirts.
   exampleZh: 城市无序扩张吞噬了市郊的农田。
-- id: ielts-w-063
-  track: ielts
-  topic: urbanization
-  headword: amenity
-  ipa: /əˈmenəti/
-  pos: n.
-  definitionEn: A facility that makes life pleasant or convenient.
-  translationZh: 便利设施
-  exampleEn: The district lacks basic amenities such as parks and libraries.
-  exampleZh: 该区缺乏公园、图书馆等基本设施。
 - id: ielts-w-064
   track: ielts
   topic: urbanization
@@ -727,16 +717,6 @@
   translationZh: 审美的；美学的
   exampleEn: The bridge was praised for both its engineering and aesthetic value.
   exampleZh: 这座桥的工程价值和美学价值都广受赞誉。
-- id: ielts-w-073
-  track: ielts
-  topic: culture
-  headword: exhibition
-  ipa: /ˌeksɪˈbɪʃn/
-  pos: n.
-  definitionEn: A public display of art or other interesting objects.
-  translationZh: 展览
-  exampleEn: The museum's new exhibition traces the history of printing.
-  exampleZh: 博物馆的新展览追溯了印刷术的历史。
 - id: ielts-w-074
   track: ielts
   topic: culture
@@ -939,16 +919,6 @@
   translationZh: 小报
   exampleEn: The actor sued the tabloid over a fabricated story.
   exampleZh: 这位演员就一则捏造的报道起诉了该小报。
-- id: ielts-w-094
-  track: ielts
-  topic: media
-  headword: broadcast
-  ipa: /ˈbrɔːdkæst/
-  pos: v.
-  definitionEn: To send out programmes on television or radio.
-  translationZh: 播出；广播
-  exampleEn: The interview was broadcast live to a national audience.
-  exampleZh: 这次采访面向全国观众现场直播。
 - id: ielts-w-095
   track: ielts
   topic: media
@@ -1212,16 +1182,6 @@
   exampleEn: Millions of families still depend on subsistence farming for their daily meals.
   exampleZh: 数百万家庭仍靠自给农业维持日常饮食。
 # transport (交通运输)
-- id: ielts-w-121
-  track: ielts
-  topic: transport
-  headword: freight
-  ipa: /freɪt/
-  pos: n.
-  definitionEn: Goods transported by ship, train, truck, or aircraft.
-  translationZh: 货运；货物
-  exampleEn: Moving freight by rail produces far less pollution than road transport.
-  exampleZh: 铁路货运产生的污染远少于公路运输。
 - id: ielts-w-122
   track: ielts
   topic: transport
@@ -1232,16 +1192,6 @@
   translationZh: 公共交通；运输
   exampleEn: Investment in public transit reduces both traffic jams and air pollution.
   exampleZh: 对公共交通的投资能同时缓解交通堵塞和空气污染。
-- id: ielts-w-123
-  track: ielts
-  topic: transport
-  headword: logistics
-  ipa: /ləˈdʒɪstɪks/
-  pos: n.
-  definitionEn: The detailed organization of moving goods or people.
-  translationZh: 物流
-  exampleEn: Advanced logistics allow retailers to deliver online orders within hours.
-  exampleZh: 先进的物流使零售商能在数小时内送达网上订单。
 - id: ielts-w-124
   track: ielts
   topic: transport
@@ -1313,16 +1263,6 @@
   exampleEn: Aviation accounts for a growing share of global carbon emissions.
   exampleZh: 航空业在全球碳排放中所占比重日益上升。
 # tourism (旅游)
-- id: ielts-w-131
-  track: ielts
-  topic: tourism
-  headword: itinerary
-  ipa: /aɪˈtɪnəreri/
-  pos: n.
-  definitionEn: A plan of the places visited on a journey.
-  translationZh: 行程（表）
-  exampleEn: The guided tour follows a fixed itinerary covering five historic cities.
-  exampleZh: 这条跟团路线按固定行程游览五座历史名城。
 - id: ielts-w-132
   track: ielts
   topic: tourism
@@ -1343,16 +1283,6 @@
   translationZh: 热情好客；酒店服务业
   exampleEn: The hospitality industry employs one in ten workers in the region.
   exampleZh: 酒店服务业雇用了该地区十分之一的劳动者。
-- id: ielts-w-134
-  track: ielts
-  topic: tourism
-  headword: excursion
-  ipa: /ɪkˈskɜːrʒn/
-  pos: n.
-  definitionEn: A short trip made for pleasure.
-  translationZh: 短途旅行；远足
-  exampleEn: The cruise offers optional excursions to nearby fishing villages.
-  exampleZh: 这条邮轮航线提供前往附近渔村的自选短途游。
 - id: ielts-w-135
   track: ielts
   topic: tourism
@@ -1777,16 +1707,6 @@
   translationZh: 同化；融入
   exampleEn: Second-generation immigrants often assimilate more quickly than their parents.
   exampleZh: 第二代移民往往比父母更快融入当地社会。
-- id: ielts-w-177
-  track: ielts
-  topic: globalization
-  headword: supply chain
-  ipa: /səˈplaɪ tʃeɪn/
-  pos: n.
-  definitionEn: The series of steps that move a product from producer to buyer.
-  translationZh: 供应链
-  exampleEn: A single factory closure can disrupt the entire global supply chain.
-  exampleZh: 一家工厂停工就可能扰乱整个全球供应链。
 - id: ielts-w-178
   track: ielts
   topic: globalization
@@ -1878,26 +1798,6 @@
   translationZh: 人员流动率；营业额
   exampleEn: High staff turnover forces companies to spend heavily on training.
   exampleZh: 高人员流动率迫使企业在培训上投入大量资金。
-- id: ielts-w-187
-  track: ielts
-  topic: employment
-  headword: work-life balance
-  ipa: /ˌwɜːrk laɪf ˈbæləns/
-  pos: n.
-  definitionEn: Dividing time sensibly between one's job and personal life.
-  translationZh: 工作与生活的平衡
-  exampleEn: Remote working has improved work-life balance for many office employees.
-  exampleZh: 远程办公改善了许多职员的工作与生活平衡。
-- id: ielts-w-188
-  track: ielts
-  topic: employment
-  headword: morale
-  ipa: /məˈræl/
-  pos: n.
-  definitionEn: The level of confidence and enthusiasm in a group.
-  translationZh: 士气
-  exampleEn: Repeated pay cuts have damaged morale throughout the department.
-  exampleZh: 接连降薪挫伤了整个部门的士气。
 - id: ielts-w-189
   track: ielts
   topic: employment

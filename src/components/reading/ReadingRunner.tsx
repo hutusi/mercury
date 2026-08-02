@@ -4,6 +4,7 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
+import { PassageText } from "@/components/typography/PassageText";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
@@ -89,9 +90,7 @@ export function ReadingRunner({
         <SectionLabel as="h2" className="mb-3">
           {t.reading.passage}
         </SectionLabel>
-        <div className="space-y-4 font-serif leading-relaxed whitespace-pre-line text-foreground/90">
-          {passage}
-        </div>
+        <PassageText className="space-y-4">{passage}</PassageText>
       </article>
 
       <div className="space-y-6">

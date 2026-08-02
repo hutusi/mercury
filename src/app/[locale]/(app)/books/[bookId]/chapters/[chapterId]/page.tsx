@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { BookReaderRunner } from "@/components/books/BookReaderRunner";
 import { CheckInCard } from "@/components/books/CheckInCard";
+import { PassageText } from "@/components/typography/PassageText";
 import { estimateChapterMinutes } from "@/lib/book-core";
 import { getDict, localeRedirect } from "@/lib/i18n";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
@@ -60,9 +61,7 @@ export default async function BookChapterPage({
       >
         {chapter.sections.map((section) => (
           <section key={section.id} className="space-y-6">
-            <div className="space-y-4 font-serif leading-relaxed whitespace-pre-line text-foreground/90">
-              {section.text}
-            </div>
+            <PassageText className="space-y-4">{section.text}</PassageText>
             {section.checkIn && (
               <CheckInCard bookId={book.id} chapterId={chapter.id} question={section.checkIn} />
             )}
