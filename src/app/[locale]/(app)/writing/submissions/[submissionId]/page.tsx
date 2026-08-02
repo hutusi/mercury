@@ -50,13 +50,17 @@ export default async function WritingSubmissionPage({
       {submission.status === "ai_scored" && submission.feedback ? (
         <AiFeedbackPanel feedback={submission.feedback} />
       ) : submission.degradeReason === "quota" ? (
-        // The daily grading quota forced self-assessment — retrying today
-        // would just 429, so the notice says "tomorrow".
+        // The daily grading quota forced self-assessment. The reason is
+        // historical — the quota resets each learner-local day — so the retry
+        // control stays available: too early yields the typed quota message,
+        // and a successful retry clears degrade_reason.
         <SelfAssessPanel
           modelAnswer={prompt.modelAnswer}
           checklist={prompt.checklist}
           title={t.writing.aiQuotaTitle}
           hint={t.writing.aiQuotaHint}
+          canRetry={isAiEnabled()}
+          retry={isAiEnabled() ? <RetryWritingFeedback submissionId={submission.id} /> : undefined}
         />
       ) : (
         <SelfAssessPanel
