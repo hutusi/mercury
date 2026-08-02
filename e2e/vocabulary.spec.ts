@@ -42,14 +42,11 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   const goodButton = page.getByRole("button", { name: t.vocab.good, exact: true });
   await expect(goodButton).toBeHidden();
 
-  // Flip card 1: grading appears with truthful SM-2 interval hints for a new
-  // card, plus the example-sentence speaker.
+  // Flip card 1: grading appears, plus the example-sentence speaker.
   await page.getByText(t.vocab.flipHint).click();
   await expect(goodButton).toBeVisible();
   await expect(page.getByRole("button", { name: t.vocab.speakExample })).toBeVisible();
   const againButton = page.getByRole("button", { name: t.vocab.again, exact: true });
-  await expect(againButton).toContainText(`10 ${t.vocab.intervalMinutesUnit}`);
-  await expect(goodButton).toContainText(`1 ${t.vocab.intervalDaysUnit}`);
 
   // Grade "Good": advances, reviewed counter increments.
   await goodButton.click();

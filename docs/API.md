@@ -123,11 +123,11 @@ Extensive reading — curated public-domain books with pre-generated recall ques
 ## Vocabulary SRS
 
 - `GET /api/v1/vocab/study-queue` cards include `srs` (`easeFactor`, `intervalDays`,
-  `repetitions`, `lapses`) so clients can preview what each grade would schedule with the
-  same deterministic SM-2 rules (the web uses `previewInterval` for the hints under the
-  grade buttons; new cards carry the fresh-card state).
+  `repetitions`, `lapses`) so clients that want to surface scheduler state can do so with
+  the same deterministic SM-2 rules (new cards carry the fresh-card state). The web UI
+  deliberately shows no interval previews — grade labels only.
 - `POST /api/v1/vocab/grade` returns `{intervalDays, srs}` — the post-review state, so a
-  lapsed ("Forgot") card re-shown in the same session previews truthful intervals without
+  lapsed ("Forgot") card re-shown in the same session has accurate state without
   refetching the queue.
 
 ## Vocabulary quiz integrity

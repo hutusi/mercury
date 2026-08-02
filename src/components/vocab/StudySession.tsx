@@ -9,7 +9,7 @@ import { Callout } from "@/components/ui/callout";
 import { gradeCard } from "@/lib/actions/vocab";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createWordSpeaker, ttsSupported, type WordSpeaker } from "@/lib/speech";
-import { previewInterval, type ReviewGrade, type SrsState } from "@/lib/srs";
+import { type ReviewGrade } from "@/lib/srs";
 
 export interface StudyCardData {
   wordId: string;
@@ -23,7 +23,6 @@ export interface StudyCardData {
   /** Pre-generated headword pronunciation (ADR 0023); null → browser TTS. */
   audioUrl: string | null;
   isNew: boolean;
-  srs: SrsState;
 }
 
 const QUIET_GRADE_CLS = "border border-border bg-background text-foreground hover:bg-muted";
@@ -82,11 +81,10 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
       stopAudio();
       startTransition(async () => {
         try {
-          const result = await gradeCard({ wordId: card.wordId, grade: g });
+          await gradeCard({ wordId: card.wordId, grade: g });
           setReviewed((n) => n + 1);
-          // "Forgot" re-queues the card with its post-lapse scheduler state so
-          // the interval hints stay truthful on the second pass.
-          setQueue((q) => (g === 1 ? [...q, { ...card, isNew: false, srs: result.srs }] : q));
+          // "Forgot" re-queues the card for a second pass in this session.
+          setQueue((q) => (g === 1 ? [...q, { ...card, isNew: false }] : q));
           setFlipped(false);
           setIndex((i) => i + 1);
         } catch {
@@ -139,7 +137,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   }
 
   // The teacher's-pen scale: "forgot" is the one red mark; the pass grades are
-  // identical quiet ink — the interval hint under each label says what it does.
+  // identical quiet ink.
   const gradeButtons: { grade: ReviewGrade; shortcut: string; label: string; cls: string }[] = [
     {
       grade: 1,
@@ -151,11 +149,6 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
     { grade: 4, shortcut: "3", label: t.vocab.good, cls: QUIET_GRADE_CLS },
     { grade: 5, shortcut: "4", label: t.vocab.easy, cls: QUIET_GRADE_CLS },
   ];
-
-  function hintLabel(g: ReviewGrade): string {
-    const p = previewInterval(card.srs, g);
-    return `${p.value} ${p.unit === "minutes" ? t.vocab.intervalMinutesUnit : t.vocab.intervalDaysUnit}`;
-  }
 
   return (
     <div className="mx-auto max-w-xl space-y-4">
@@ -257,22 +250,9 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
               onClick={() => grade(b.grade)}
               disabled={pending}
               aria-keyshortcuts={b.shortcut}
-              aria-describedby={`grade-${b.grade}-interval`}
               className={`px-3 py-3 text-sm font-medium outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 ${b.cls}`}
             >
               {b.label}
-              {/* aria-hidden keeps each button's accessible name exactly its label;
-                  the aria-describedby reference still surfaces the hint as the
-                  button's description (directly referenced hidden nodes count). */}
-              <span
-                aria-hidden
-                id={`grade-${b.grade}-interval`}
-                className={`mt-1 block font-mono text-xs tabular-nums ${
-                  b.grade === 1 ? "text-cinnabar-foreground/80" : "text-muted-foreground"
-                }`}
-              >
-                {hintLabel(b.grade)}
-              </span>
             </button>
           ))}
         </div>
