@@ -68,18 +68,25 @@ export function TtsPlayer({
   }
 
   function degradeToTts() {
-    // Fall through to the browser voice for the rest of the session. Refund
-    // the play budget only when the failed element barely played — an error
-    // near the end of the clip already delivered the listen, and a blanket
-    // refund would let exam takers replay single-play audio by forcing a
-    // media error at 99%.
-    const barelyPlayed = (audioRef.current?.currentTime ?? 0) < 5;
-    audioRef.current?.pause();
+    // Fall through to the browser voice for the rest of the session. The
+    // play counts as consumed only when most of the clip was actually heard:
+    // a blanket refund would let exam takers replay single-play audio by
+    // forcing a media error at 99%, while a fixed-seconds cutoff would eat
+    // the only play when a minutes-long clip genuinely fails early. Unknown
+    // duration refunds — a real early failure can predate metadata, and the
+    // replay cheat needs the end of the clip, where duration is known.
+    const el = audioRef.current;
+    const consumed =
+      !!el &&
+      Number.isFinite(el.duration) &&
+      el.duration > 0 &&
+      el.currentTime / el.duration >= 0.8;
+    el?.pause();
     setAudioFailed(true);
     setPlaying(false);
     setResumable(false);
     setAudioProgress(0);
-    if (barelyPlayed) setPlayCount(0);
+    if (!consumed) setPlayCount(0);
   }
 
   function playAudio() {
