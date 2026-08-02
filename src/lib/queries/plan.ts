@@ -50,8 +50,14 @@ export async function getDailyPlan(
     lastExam,
   ] = await Promise.all([
     getLearnerProfile(userId),
-    getVocabOverview(userId, track),
-    countActiveMistakes(userId, track),
+    // Personal collections are unfiltered (ADR 0029): the plan's review and
+    // mistake items must count what the study queue and notebook actually
+    // serve — a goal-track count would say "learn new words" while due
+    // cross-pack reviews sit hidden. Content suggestions below stay
+    // goal-filtered; null also matches the dashboard's calls, so the
+    // cache() dedupe on countActiveMistakes actually hits.
+    getVocabOverview(userId, null),
+    countActiveMistakes(userId, null),
     getContinueReading(userId),
     listReadingExercises(userId, track),
     listListeningExercises(userId, track),

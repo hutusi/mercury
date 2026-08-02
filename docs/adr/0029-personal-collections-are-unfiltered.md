@@ -64,7 +64,9 @@ prioritization signal.
 ## Consequences
 
 - Dashboard due-words/mistakes counts match the lists by construction; the
-  `?track=all` deep links are gone.
+  `?track=all` deep links are gone. The daily plan's review/mistake items
+  count unfiltered too — its content suggestions stay goal-directed, but
+  what you owe is what you owe.
 - A learner cannot narrow the notebook or study queue to one track on the
   web. Accepted: the collections are small and the filter's cost (hidden
   reviews) outweighed narrowing.
