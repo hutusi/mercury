@@ -58,10 +58,10 @@ export function ExamRunner({
   // absolute server epoch-ms: without this correction a slow client clock
   // shows time remaining while the server already rejects answers, and a
   // fast one steals exam time. Set in an effect — computing it during render
-  // would diverge between the server pass and hydration. The mount estimate
-  // over-counts by the transfer + hydration latency (seconds at worst, well
-  // inside the server's 30s grace); section submits re-anchor with a
-  // measured round trip, which is tighter.
+  // would diverge between the server pass and hydration. Both anchors may
+  // only ever err toward showing MORE time (here by the transfer + hydration
+  // latency; on submits by the response transit), which the server's 30s
+  // grace absorbs — never toward stealing it.
   const clockSkewMs = useRef(0);
   useEffect(() => {
     clockSkewMs.current = serverNow - Date.now();
@@ -117,15 +117,18 @@ export function ExamRunner({
       setConfirming(false);
       setSubmitError(null);
       try {
-        const requestStart = Date.now();
         const result = await submitExamSection({
           attemptId,
           sectionId,
           answers: answersRef.current,
         });
-        // serverTime is stamped near the response, so the request midpoint
-        // strips most of the round-trip latency from the skew estimate.
-        clockSkewMs.current = result.serverTime - (requestStart + Date.now()) / 2;
+        // serverTime is stamped at the END of server work (after auth + the
+        // submit transaction), so anchor against the response receipt: only
+        // the response transit goes unaccounted, and it errs toward showing
+        // MORE time — never less. A request midpoint would masquerade server
+        // processing time (which can be seconds under lock contention) as
+        // skew and shorten the next section's timer.
+        clockSkewMs.current = result.serverTime - Date.now();
         if (result.done) {
           try {
             localStorage.removeItem(storageKey);
