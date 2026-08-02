@@ -6,6 +6,7 @@ import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { retestMistake, type RetestResult } from "@/lib/actions/mistakes";
+import { formatLearnerDate } from "@/lib/format-date";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import type { McqMistakeVM } from "@/lib/mistakes";
 
@@ -19,9 +20,11 @@ const LETTERS = ["A", "B", "C", "D"];
  */
 export function MistakeItem({
   mistake,
+  timeZone,
   onCleared,
 }: {
   mistake: McqMistakeVM;
+  timeZone: string;
   onCleared?: () => void;
 }) {
   const t = useT();
@@ -37,10 +40,12 @@ export function MistakeItem({
   const [pending, startTransition] = useTransition();
 
   const cleared = mistake.cleared || clearedNow;
-  const date = new Date(mistake.lastWrongAt).toLocaleDateString(
-    locale === "zh" ? "zh-CN" : "en-US",
-    { month: "short", day: "numeric" },
-  );
+  // Learner timezone, explicitly — SSR (UTC in prod) and the browser must
+  // agree on the day or React reports a hydration mismatch every evening.
+  const date = formatLearnerDate(new Date(mistake.lastWrongAt), locale, timeZone, {
+    month: "short",
+    day: "numeric",
+  });
 
   function submit() {
     if (chosen === undefined || pending) return;

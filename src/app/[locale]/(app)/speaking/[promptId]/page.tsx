@@ -5,6 +5,8 @@ import { SectionLabel } from "@/components/typography/SectionLabel";
 import { SpeakingRunner } from "@/components/speaking/SpeakingRunner";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
+import { formatLearnerDate } from "@/lib/format-date";
+import { getSettings } from "@/lib/settings";
 import { getDict, getLocale } from "@/lib/i18n";
 import { getSpeakingPromptWithHistory } from "@/lib/queries/speaking";
 
@@ -14,6 +16,7 @@ export default async function SpeakingPromptPage({
   params: Promise<{ promptId: string }>;
 }) {
   const user = await requireUser();
+  const timeZone = (await getSettings(user.id))?.timeZone ?? "Asia/Shanghai";
   const { promptId } = await params;
   const [t, locale] = await Promise.all([getDict(), getLocale()]);
 
@@ -66,8 +69,14 @@ export default async function SpeakingPromptPage({
                   className="flex items-center justify-between gap-4 py-3 text-sm transition-colors hover:bg-muted/50"
                 >
                   <span className="font-mono text-xs text-muted-foreground">
-                    {s.createdAt.toLocaleString(locale === "zh" ? "zh-CN" : "en-US")} ·{" "}
-                    {s.durationSeconds}
+                    {formatLearnerDate(s.createdAt, locale, timeZone, {
+                      year: "numeric",
+                      month: "numeric",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "2-digit",
+                    })}{" "}
+                    · {s.durationSeconds}
                     {t.common.seconds}
                   </span>
                   <span

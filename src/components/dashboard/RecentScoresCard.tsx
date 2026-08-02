@@ -1,4 +1,5 @@
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { formatLearnerDate } from "@/lib/format-date";
 import { getDict, getLocale } from "@/lib/i18n";
 
 export interface RecentScore {
@@ -7,7 +8,13 @@ export interface RecentScore {
   detail: string;
 }
 
-export async function RecentScoresCard({ scores }: { scores: RecentScore[] }) {
+export async function RecentScoresCard({
+  scores,
+  timeZone,
+}: {
+  scores: RecentScore[];
+  timeZone: string;
+}) {
   const t = await getDict();
   const locale = await getLocale();
 
@@ -25,7 +32,7 @@ export async function RecentScoresCard({ scores }: { scores: RecentScore[] }) {
               <div>
                 <p className="font-medium">{s.label}</p>
                 <p className="mt-0.5 font-mono text-2xs text-muted-foreground">
-                  {s.date.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")}
+                  {formatLearnerDate(s.date, locale, timeZone)}
                 </p>
               </div>
               <span className="font-mono font-semibold tabular-nums">{s.detail}</span>

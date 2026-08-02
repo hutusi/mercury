@@ -6,6 +6,7 @@ import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
 import { type ExamEstimate } from "@/lib/db/schema";
+import { formatLearnerDate } from "@/lib/format-date";
 import { getDict, getLocale } from "@/lib/i18n";
 import { listExamsWithAttempts } from "@/lib/queries/exams";
 import { requireOnboarded } from "@/lib/settings";
@@ -22,7 +23,7 @@ export default async function ExamsPage({
 }: {
   searchParams: Promise<{ track?: string }>;
 }) {
-  const { user, goalTrack } = await requireOnboarded();
+  const { user, goalTrack, timeZone } = await requireOnboarded();
   const t = await getDict();
   const locale = await getLocale();
 
@@ -103,7 +104,7 @@ export default async function ExamsPage({
               {attempts.map((a) => (
                 <tr key={a.id}>
                   <td className="py-3 pr-4 font-mono text-xs text-muted-foreground">
-                    {a.startedAt.toLocaleDateString(locale === "zh" ? "zh-CN" : "en-US")}
+                    {formatLearnerDate(a.startedAt, locale, timeZone)}
                   </td>
                   <td className="hidden px-4 py-3 text-muted-foreground sm:table-cell">
                     {examTitleById.get(a.examId) ?? a.examId}

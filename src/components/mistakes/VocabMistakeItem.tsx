@@ -5,6 +5,7 @@ import { useState, useTransition } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { answerVocabMistakeRetest, createVocabMistakeRetest } from "@/lib/actions/mistakes";
+import { formatLearnerDate } from "@/lib/format-date";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import type { VocabMistakeVM } from "@/lib/mistakes";
 import type { QuizQuestion } from "@/lib/vocab-quiz-core";
@@ -15,9 +16,11 @@ import type { QuizQuestion } from "@/lib/vocab-quiz-core";
  */
 export function VocabMistakeItem({
   mistake,
+  timeZone,
   onCleared,
 }: {
   mistake: VocabMistakeVM;
+  timeZone: string;
   onCleared?: () => void;
 }) {
   const t = useT();
@@ -33,10 +36,12 @@ export function VocabMistakeItem({
 
   const cleared = mistake.cleared || clearedNow;
   const quiz = session?.question ?? null;
-  const date = new Date(mistake.lastWrongAt).toLocaleDateString(
-    locale === "zh" ? "zh-CN" : "en-US",
-    { month: "short", day: "numeric" },
-  );
+  // Learner timezone, explicitly — SSR (UTC in prod) and the browser must
+  // agree on the day or React reports a hydration mismatch every evening.
+  const date = formatLearnerDate(new Date(mistake.lastWrongAt), locale, timeZone, {
+    month: "short",
+    day: "numeric",
+  });
 
   function loadQuiz() {
     if (pending || cleared) return;

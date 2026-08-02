@@ -122,7 +122,7 @@ export default async function DashboardPage() {
             lastEstimate={lastExam?.estimate ?? null}
             resumeExamId={inProgressExam?.examId ?? null}
           />
-          {!isNewUser && <RecentScoresCard scores={recentScores} />}
+          {!isNewUser && <RecentScoresCard scores={recentScores} timeZone={timeZone} />}
         </div>
 
         <aside className="space-y-8">
