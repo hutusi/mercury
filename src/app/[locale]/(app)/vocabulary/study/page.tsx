@@ -11,10 +11,12 @@ export default async function StudyPage() {
 
   // Personal collection — due reviews always cover every track (ADR 0029):
   // a goal-track default would silently hide reviews the learner owes. New
-  // words still start on the goal track, like the daily plan.
+  // words come goal-pack-first, spilling over to the other packs once the
+  // goal pack is exhausted — vocabulary isn't owned by tracks.
   const cards: StudyCardData[] = await getStudyQueue(user.id, {
     dueTrack: null,
-    newTrack: goalTrack,
+    newTrack: null,
+    newPriorityTrack: goalTrack,
   });
 
   return (

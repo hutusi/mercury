@@ -14,8 +14,9 @@ export async function DueWordsCard({ dueCount }: { dueCount: number }) {
         unit={t.dashboard.dueWordsUnit}
         accent={dueCount > 0}
       />
-      {/* The study queue is always all-tracks for due cards and goal-track
-          for new words (ADR 0029), so one link serves both states. */}
+      {/* The study queue reviews due cards across all tracks and serves new
+          words goal-pack-first with spillover (ADR 0029), so one link
+          serves both states. */}
       <Button asChild variant={dueCount > 0 ? "default" : "outline"} className="mt-3 w-full">
         <Link href="/vocabulary/study">
           {dueCount > 0 ? t.dashboard.reviewNow : t.dashboard.learnNew}

@@ -1,4 +1,4 @@
-# 0029. Personal collections are unfiltered; the track filter is a catalog concept
+# 0029. Personal collections are unfiltered; vocabulary is scenario-first
 
 Date: 2026-08-02
 
@@ -23,16 +23,34 @@ deep-linking `?track=all` so its all-tracks counts matched the lists behind
 them. A filter on one's own review debt has no product value — you owe what
 you owe.
 
+Vocabulary goes one step further: **words are not owned by tracks**. A word
+like "broadcast" is an English word that happens to ship in the TOEIC pack;
+ADR 0020 already argued the tutor models one learner whose ability is shared
+across contexts. The `topic` field on every word is a scenario (meetings,
+media, travel…) — a track-free organizing principle that was already in the
+content. The track remains as pack provenance, useful only as an invisible
+prioritization signal.
+
 ## Decision
 
 - **Vocabulary (overview + study) and mistakes render no track filter.** The
   overview counts and word list, the due-card queue, and the notebook always
   cover every track. The web pages ignore `?track=`.
-- **New words still start on the goal track.** `getStudyQueue` filters its
-  two halves independently: due cards unfiltered, the new-word top-up
-  goal-track only — an unfiltered top-up would follow raw seed order across
-  tracks, and starting new material is goal-directed (same rule as the daily
-  plan and the quiz).
+- **The word list is scenario-first.** Words group by `topic` across packs
+  with no track labels anywhere; topics containing goal-pack words sort
+  first, alphabetical within each tier.
+- **New words are goal-first with spillover.** `getStudyQueue` filters its
+  two halves independently: due cards unfiltered, and the new-word top-up
+  unfiltered but ordered goal pack first (`newPriorityTrack`), spilling over
+  to the other packs once the goal pack is exhausted. The goal steers what
+  you learn next; it never walls off the rest. This also keeps the
+  all-tracks fresh stat truthful — Study can eventually serve every fresh
+  word.
+- **Headwords are unique across packs.** Same-sense duplicates were
+  deduplicated in content (with the mandatory data migration —
+  `drizzle/0023` pattern); a content test enforces cross-track uniqueness
+  with an explicit allowlist for genuine polysemy (`check-in`, `launch`,
+  `backlog`), whose distinct senses live in different scenarios anyway.
 - **Quiz entry defaults to the goal.** The overview's quiz link carries no
   track; the single-track quiz (ADR 0020) resolves it to the goal. Deep links
   with `?track=` still work.
@@ -50,7 +68,11 @@ you owe.
 - A learner cannot narrow the notebook or study queue to one track on the
   web. Accepted: the collections are small and the filter's cost (hidden
   reviews) outweighed narrowing.
-- The web can no longer start new vocab words on a non-goal track (studying
-  a non-goal deck previously required the chips). Accepted for now — change
-  the goal on /settings to shift decks; revisit if cross-track vocab study
-  turns out to be a real workflow.
+- Deduplication deletes learner progress on the removed twin (`srs_cards`
+  FK-cascade → `review_logs`) and its quiz-mistake rows (explicit deletes —
+  they reference word ids as plain text and would otherwise inflate the
+  dashboard badge while `/mistakes` silently drops them). Accepted
+  pre-launch; the surviving twin keeps its own card.
+- Web and API study-queue semantics diverge: the API's `?track=` contract
+  (filter both halves, goal default) is unchanged and has no spillover
+  parameter until a native client needs one.

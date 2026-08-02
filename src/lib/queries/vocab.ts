@@ -1,12 +1,12 @@
-import { and, asc, eq, lte, notExists } from "drizzle-orm";
+import { and, asc, eq, lte, notExists, sql } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { composeAudioUrl } from "../audio-url";
 import { db } from "../db";
 import { srsCards, vocabWords } from "../db/schema";
 import { NEW_CARD_STATE } from "../srs";
 
-const MAX_DUE_PER_SESSION = 30;
-const MAX_NEW_PER_SESSION = 10;
+export const MAX_DUE_PER_SESSION = 30;
+export const MAX_NEW_PER_SESSION = 10;
 
 /** Word list (one track, or all when null) plus per-user SRS aggregates for the overview. */
 export async function getVocabOverview(userId: string, track: Track | null) {
@@ -40,13 +40,19 @@ export async function getVocabOverview(userId: string, track: Track | null) {
  * Due cards (oldest first) topped up with unseen words, for a study session.
  *
  * The two halves filter independently: the web (ADR 0029) reviews due cards
- * across every track but starts new words only on the goal track — an
- * unfiltered new-word top-up would follow raw seed order across tracks.
- * Passing one track for both preserves the v1 `?track=` contract.
+ * across every track, and its unfiltered new-word top-up serves the goal
+ * pack first via `newPriorityTrack`, spilling over to the other packs only
+ * once the goal pack is exhausted — without the priority, the top-up would
+ * follow raw seed order across tracks. Passing one track for both halves
+ * preserves the v1 `?track=` contract (priority is moot when filtered).
  */
 export async function getStudyQueue(
   userId: string,
-  { dueTrack, newTrack }: { dueTrack: Track | null; newTrack: Track | null },
+  {
+    dueTrack,
+    newTrack,
+    newPriorityTrack,
+  }: { dueTrack: Track | null; newTrack: Track | null; newPriorityTrack?: Track },
 ) {
   const [dueRows, newRows] = await Promise.all([
     db
@@ -82,13 +88,18 @@ export async function getStudyQueue(
           ),
         ),
       )
-      .orderBy(asc(vocabWords.sortOrder))
+      .orderBy(
+        ...(newPriorityTrack
+          ? [sql`case when ${vocabWords.track} = ${newPriorityTrack} then 0 else 1 end`]
+          : []),
+        asc(vocabWords.sortOrder),
+      )
       .limit(MAX_NEW_PER_SESSION),
   ]);
 
-  // Each card carries its scheduler state so clients can preview what every
-  // grade would do (interval hints) with the same pure SM-2 rules. audioUrl
-  // (headword pronunciation, ADR 0023) is composed against the Blob origin.
+  // Each card carries its scheduler state — pinned in the v1 contract for
+  // clients that want to surface it (the web UI deliberately doesn't).
+  // audioUrl (headword pronunciation, ADR 0023) composes the Blob origin.
   return [
     ...dueRows.map(({ word, easeFactor, intervalDays, repetitions, lapses }) => ({
       ...word,

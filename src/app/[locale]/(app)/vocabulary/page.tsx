@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
 import { getDict } from "@/lib/i18n";
-import { getVocabOverview } from "@/lib/queries/vocab";
+import { getVocabOverview, MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION } from "@/lib/queries/vocab";
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function VocabularyPage() {
@@ -19,20 +19,30 @@ export default async function VocabularyPage() {
     null,
   );
 
-  // The study queue starts new words on the goal track only, so the session
-  // size on the Study button counts goal-track fresh words, not all of them.
-  const goalFreshCount = words.filter((w) => w.track === goalTrack && !startedIds.has(w.id)).length;
+  // The Study badge predicts the session size, so it caps at what one
+  // session actually loads (due cards spill into the next session).
+  const sessionSize =
+    Math.min(dueCount, MAX_DUE_PER_SESSION) + Math.min(freshCount, MAX_NEW_PER_SESSION);
 
   // The quiz is single-track by design and resolves to the goal track.
   const studyHref = "/vocabulary/study";
   const quizHref = "/vocabulary/quiz";
 
+  // Scenario-first: words group by topic across packs — vocabulary isn't
+  // owned by tracks. Topics touching the goal pack sort first (the same
+  // invisible prioritization the study queue's new-word spillover uses),
+  // alphabetical within each tier.
   const topics = new Map<string, typeof words>();
   for (const w of words) {
     const list = topics.get(w.topic) ?? [];
     list.push(w);
     topics.set(w.topic, list);
   }
+  const sortedTopics = [...topics.entries()].sort((a, b) => {
+    const aGoal = a[1].some((w) => w.track === goalTrack) ? 0 : 1;
+    const bGoal = b[1].some((w) => w.track === goalTrack) ? 0 : 1;
+    return aGoal - bGoal || a[0].localeCompare(b[0]);
+  });
 
   const stats = [
     { label: t.vocab.due, value: dueCount, accent: dueCount > 0 },
@@ -52,9 +62,9 @@ export default async function VocabularyPage() {
             <Button asChild>
               <Link href={studyHref}>
                 {t.vocab.study}
-                {dueCount + Math.min(goalFreshCount, 10) > 0 && (
+                {sessionSize > 0 && (
                   <span className="ml-1.5 font-mono text-xs tabular-nums opacity-70">
-                    {dueCount + Math.min(goalFreshCount, 10)}
+                    {sessionSize}
                   </span>
                 )}
               </Link>
@@ -74,7 +84,7 @@ export default async function VocabularyPage() {
         ))}
       </div>
 
-      {[...topics.entries()].map(([topic, topicWords]) => (
+      {sortedTopics.map(([topic, topicWords]) => (
         <section key={topic}>
           <SectionLabel as="h2" className="mb-3">
             {topic} · {topicWords.length}
