@@ -64,10 +64,10 @@ export default async function SettingsPage() {
         <SectionLabel as="h2" className="mb-4">
           {t.settings.membershipSection}
         </SectionLabel>
+        {/* Only premium wears a badge — a "free" label would frame the base
+            experience as lesser; free users just see what premium adds. */}
         <div className="flex items-center gap-3">
-          <Badge variant={tier === "premium" ? "accent" : "outline"}>
-            {tier === "premium" ? t.settings.membershipPremium : t.settings.membershipFree}
-          </Badge>
+          {tier === "premium" && <Badge variant="accent">{t.settings.membershipPremium}</Badge>}
           <span className="text-sm text-muted-foreground">
             {tier === "premium"
               ? membership?.expiresAt

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth/client";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -55,9 +55,8 @@ export function ChangePasswordForm() {
       <p className="text-sm font-medium">{t.settings.changePasswordLabel}</p>
       <div className="space-y-1.5">
         <Label htmlFor="current-password">{t.settings.currentPassword}</Label>
-        <Input
+        <PasswordInput
           id="current-password"
-          type="password"
           required
           value={currentPassword}
           onChange={(e) => setCurrentPassword(e.target.value)}
@@ -67,9 +66,8 @@ export function ChangePasswordForm() {
         <Label htmlFor="new-password">
           {t.auth.newPassword} · {t.auth.passwordHint}
         </Label>
-        <Input
+        <PasswordInput
           id="new-password"
-          type="password"
           required
           minLength={8}
           value={newPassword}
