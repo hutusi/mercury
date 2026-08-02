@@ -565,6 +565,10 @@ export const writingSubmissions = pgTable(
     ),
     check("writing_submissions_word_count_check", sql`${t.wordCount} >= 0`),
     check(
+      "writing_submissions_degrade_reason_check",
+      sql`${t.degradeReason} is null or ${t.degradeReason} in ('quota')`,
+    ),
+    check(
       "writing_submissions_feedback_check",
       sql`${t.status} <> 'ai_scored' or (${t.feedback} is not null and ${t.model} is not null)`,
     ),
@@ -598,6 +602,10 @@ export const speakingSubmissions = pgTable(
       sql`${t.status} in ('ai_scored', 'self_assessed', 'failed')`,
     ),
     check("speaking_submissions_duration_check", sql`${t.durationSeconds} between 0 and 600`),
+    check(
+      "speaking_submissions_degrade_reason_check",
+      sql`${t.degradeReason} is null or ${t.degradeReason} in ('quota')`,
+    ),
     check(
       "speaking_submissions_feedback_check",
       sql`${t.status} <> 'ai_scored' or (${t.feedback} is not null and ${t.model} is not null)`,

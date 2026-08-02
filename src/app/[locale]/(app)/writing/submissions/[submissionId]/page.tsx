@@ -49,23 +49,16 @@ export default async function WritingSubmissionPage({
 
       {submission.status === "ai_scored" && submission.feedback ? (
         <AiFeedbackPanel feedback={submission.feedback} />
-      ) : submission.degradeReason === "quota" ? (
-        // The daily grading quota forced self-assessment. The reason is
-        // historical — the quota resets each learner-local day — so the retry
-        // control stays available: too early yields the typed quota message,
-        // and a successful retry clears degrade_reason.
-        <SelfAssessPanel
-          modelAnswer={prompt.modelAnswer}
-          checklist={prompt.checklist}
-          title={t.writing.aiQuotaTitle}
-          hint={t.writing.aiQuotaHint}
-          canRetry={isAiEnabled()}
-          retry={isAiEnabled() ? <RetryWritingFeedback submissionId={submission.id} /> : undefined}
-        />
       ) : (
+        // A quota degrade keeps its explanatory notice, but the reason is
+        // historical (the quota resets each learner-local day), so the retry
+        // control is always available: too early yields the typed quota
+        // message, and a successful retry clears degrade_reason.
         <SelfAssessPanel
           modelAnswer={prompt.modelAnswer}
           checklist={prompt.checklist}
+          title={submission.degradeReason === "quota" ? t.writing.aiQuotaTitle : undefined}
+          hint={submission.degradeReason === "quota" ? t.writing.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
           retry={isAiEnabled() ? <RetryWritingFeedback submissionId={submission.id} /> : undefined}
         />
