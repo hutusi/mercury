@@ -90,7 +90,8 @@ export interface WritingResult {
   status: "ai_scored" | "self_assessed";
   feedback: WritingFeedback | null;
   /** Set when self_assessed was forced by the daily grading quota, so the UI
-   * can say "limit reached" instead of "AI unavailable". Absent on replays. */
+   * can say "limit reached" instead of "AI unavailable". Persisted on the
+   * submission row, so idempotent replays reproduce it. */
   degradeReason?: "quota";
 }
 
@@ -108,6 +109,8 @@ async function getPersistedWritingResult(
     submissionId: submission.id,
     status: submission.status,
     feedback: submission.feedback,
+    // Replays must reproduce the original result — including why it degraded.
+    ...(submission.degradeReason ? { degradeReason: submission.degradeReason } : {}),
   };
 }
 
@@ -177,6 +180,7 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
         wordCount,
         status,
         feedback,
+        degradeReason: quotaExhausted ? "quota" : null,
         model: status === "ai_scored" ? activeAiModel() : null,
       })
       .returning({ id: writingSubmissions.id });
@@ -266,7 +270,7 @@ export async function retryWritingFeedbackForUser(
   const updated = await db.transaction(async (tx) => {
     const [row] = await tx
       .update(writingSubmissions)
-      .set({ status: "ai_scored", feedback, model: activeAiModel() })
+      .set({ status: "ai_scored", feedback, degradeReason: null, model: activeAiModel() })
       .where(
         and(
           eq(writingSubmissions.id, submission.id),

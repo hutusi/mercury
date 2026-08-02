@@ -22,6 +22,7 @@ export const GET = apiHandler(async (req, ctx: { params: Promise<{ submissionId:
     wordCount: submission.wordCount,
     status: submission.status,
     feedback: submission.feedback,
+    degradeReason: submission.degradeReason,
     // The degradation contract: self-assessment material only when not AI-scored.
     selfAssess: aiScored ? null : { modelAnswer: prompt.modelAnswer, checklist: prompt.checklist },
     canRetryAi: !aiScored && isAiEnabled(),

@@ -26,16 +26,15 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
       try {
         const request = requestIdForInput(submissionRequestRef.current, text);
         submissionRequestRef.current = request;
-        const { submissionId, degradeReason } = await submitWriting({
+        const { submissionId } = await submitWriting({
           requestId: request.requestId,
           promptId,
           text,
         });
         submissionRequestRef.current = null;
-        // The quota reason travels as a query param — the submission page is
-        // server-rendered and the row itself doesn't store why it degraded.
-        const suffix = degradeReason === "quota" ? "?degraded=quota" : "";
-        router.push(localePath(locale, `/writing/submissions/${submissionId}${suffix}`));
+        // The submission row stores its degrade reason — the page renders the
+        // quota notice from the row, no query-param relay needed.
+        router.push(localePath(locale, `/writing/submissions/${submissionId}`));
       } catch {
         setError(t.auth.genericError);
       }

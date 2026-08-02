@@ -549,6 +549,10 @@ export const writingSubmissions = pgTable(
     wordCount: integer("word_count").notNull(),
     status: text("status").$type<SubmissionStatus>().notNull(),
     feedback: jsonb("feedback").$type<WritingFeedback | null>(),
+    // Why self_assessed was forced (null = AI failure/keyless). Persisted so
+    // idempotent replays and later page visits reproduce the quota notice;
+    // cleared when a retry lands ai_scored.
+    degradeReason: text("degrade_reason").$type<"quota">(),
     model: text("model"),
     createdAt: ts("created_at").notNull().$defaultFn(now),
   },
@@ -581,6 +585,8 @@ export const speakingSubmissions = pgTable(
     durationSeconds: integer("duration_seconds").notNull(),
     status: text("status").$type<SubmissionStatus>().notNull(),
     feedback: jsonb("feedback").$type<SpeakingFeedback | null>(),
+    // See writing_submissions.degrade_reason.
+    degradeReason: text("degrade_reason").$type<"quota">(),
     model: text("model"),
     createdAt: ts("created_at").notNull().$defaultFn(now),
   },

@@ -96,7 +96,8 @@ export interface SpeakingResult {
   status: "ai_scored" | "self_assessed";
   feedback: SpeakingFeedback | null;
   /** Set when self_assessed was forced by the daily grading quota, so the UI
-   * can say "limit reached" instead of "AI unavailable". Absent on replays. */
+   * can say "limit reached" instead of "AI unavailable". Persisted on the
+   * submission row, so idempotent replays reproduce it. */
   degradeReason?: "quota";
 }
 
@@ -114,6 +115,8 @@ async function getPersistedSpeakingResult(
     submissionId: submission.id,
     status: submission.status,
     feedback: submission.feedback,
+    // Replays must reproduce the original result — including why it degraded.
+    ...(submission.degradeReason ? { degradeReason: submission.degradeReason } : {}),
   };
 }
 
@@ -183,6 +186,7 @@ export async function submitSpeakingForUser(
         durationSeconds,
         status,
         feedback,
+        degradeReason: quotaExhausted ? "quota" : null,
         model: status === "ai_scored" ? activeAiModel() : null,
       })
       .returning({ id: speakingSubmissions.id });
@@ -268,7 +272,7 @@ export async function retrySpeakingFeedbackForUser(
   const updated = await db.transaction(async (tx) => {
     const [row] = await tx
       .update(speakingSubmissions)
-      .set({ status: "ai_scored", feedback, model: activeAiModel() })
+      .set({ status: "ai_scored", feedback, degradeReason: null, model: activeAiModel() })
       .where(
         and(
           eq(speakingSubmissions.id, submission.id),

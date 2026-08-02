@@ -1014,7 +1014,7 @@ paths:
       parameters: [{ $ref: "#/components/parameters/submissionId" }]
       responses:
         "200":
-          description: Detail with feedback or selfAssess payload.
+          description: Detail with feedback or selfAssess payload (degradeReason quota when the cap forced self_assessed).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
   /api/v1/writing/submissions/{submissionId}/retry-feedback:
@@ -1112,7 +1112,7 @@ paths:
       parameters: [{ $ref: "#/components/parameters/submissionId" }]
       responses:
         "200":
-          description: Detail with feedback or selfAssess payload.
+          description: Detail with feedback or selfAssess payload (degradeReason quota when the cap forced self_assessed).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
   /api/v1/speaking/submissions/{submissionId}/retry-feedback:

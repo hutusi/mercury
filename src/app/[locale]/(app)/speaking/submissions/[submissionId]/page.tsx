@@ -48,6 +48,15 @@ export default async function SpeakingSubmissionPage({
 
       {submission.status === "ai_scored" && submission.feedback ? (
         <SpeakingFeedbackPanel feedback={submission.feedback} />
+      ) : submission.degradeReason === "quota" ? (
+        // The daily grading quota forced self-assessment — retrying today
+        // would just be refused, so the notice says "tomorrow".
+        <SelfAssessPanel
+          modelAnswer={prompt.modelAnswer}
+          checklist={prompt.checklist}
+          title={t.speaking.aiQuotaTitle}
+          hint={t.speaking.aiQuotaHint}
+        />
       ) : (
         <SelfAssessPanel
           modelAnswer={prompt.modelAnswer}
