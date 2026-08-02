@@ -2,6 +2,7 @@
 
 import { Check, Dumbbell, ThumbsUp, Trophy, X } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
@@ -15,12 +16,21 @@ export type { QuizQuestion } from "@/lib/vocab-quiz-core";
 export function QuizRunner({
   sessionId,
   questions,
+  initialAnsweredIds = [],
 }: {
   sessionId: string;
   questions: QuizQuestion[];
+  /** Already-answered question ids from a resumed session (page reload). */
+  initialAnsweredIds?: string[];
 }) {
   const t = useT();
-  const [index, setIndex] = useState(0);
+  const router = useRouter();
+  // Resume at the first unanswered question — the session survives reloads.
+  const [index, setIndex] = useState(() => {
+    const answered = new Set(initialAnsweredIds);
+    const first = questions.findIndex((q) => !answered.has(q.id));
+    return first === -1 ? Math.max(questions.length - 1, 0) : first;
+  });
   const [picked, setPicked] = useState<string | null>(null);
   const [correctOptionId, setCorrectOptionId] = useState<string | null>(null);
   const [completedResult, setCompletedResult] = useState<{ score: number; total: number } | null>(
@@ -28,13 +38,18 @@ export function QuizRunner({
   );
   const [result, setResult] = useState<{ score: number; total: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  // Conflict recovery: the question already holds a different answer
+  // server-side (a lost response, retried with another option). The reveal
+  // is unavailable, but the learner must be able to move on.
+  const [conflicted, setConflicted] = useState(false);
+  const [expired, setExpired] = useState(false);
   const [pending, startTransition] = useTransition();
 
   const question = questions[index];
   const isLast = index === questions.length - 1;
 
   function pick(optionId: string) {
-    if (picked || pending) return;
+    if (picked || conflicted || pending) return;
     setError(null);
     startTransition(async () => {
       try {
@@ -43,6 +58,15 @@ export function QuizRunner({
           questionId: question.id,
           optionId,
         });
+        if (!graded.ok) {
+          if (graded.reason === "expired") {
+            setExpired(true);
+            return;
+          }
+          setConflicted(true);
+          setError(t.vocab.answerConflict);
+          return;
+        }
         setPicked(optionId);
         setCorrectOptionId(graded.correctOptionId);
         if (graded.completed && graded.score !== undefined && graded.total !== undefined) {
@@ -55,14 +79,32 @@ export function QuizRunner({
   }
 
   function next() {
-    if (!picked) return;
+    if (!picked && !conflicted) return;
     if (isLast) {
+      // No local score means the session completed on a lost response —
+      // refresh to a fresh quiz rather than leaving a dead Finish button.
       if (completedResult) setResult(completedResult);
+      else router.refresh();
     } else {
       setPicked(null);
       setCorrectOptionId(null);
+      setConflicted(false);
+      setError(null);
       setIndex((i) => i + 1);
     }
+  }
+
+  if (expired) {
+    return (
+      <div className="mx-auto max-w-md space-y-4 text-center">
+        <Callout variant="error" className="p-4 text-sm">
+          {t.vocab.quizExpired}
+        </Callout>
+        <Button onClick={() => router.refresh()} size="lg">
+          {t.vocab.quizRestart}
+        </Button>
+      </div>
+    );
   }
 
   if (result) {
@@ -123,7 +165,7 @@ export function QuizRunner({
               key={option.id}
               type="button"
               onClick={() => pick(option.id)}
-              disabled={!!picked || pending}
+              disabled={!!picked || conflicted || pending}
               aria-pressed={isPicked}
               className={`flex w-full items-center gap-2 border px-4 py-3 text-left outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${cls}`}
             >
@@ -141,7 +183,7 @@ export function QuizRunner({
         </Callout>
       )}
 
-      {picked && (
+      {(picked || conflicted) && (
         <Button onClick={next} disabled={pending} size="lg" className="h-11 w-full">
           {pending ? t.common.loading : isLast ? t.common.finish : t.common.next}
         </Button>

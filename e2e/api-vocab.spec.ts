@@ -111,4 +111,33 @@ test.describe("API vocab/SRS", () => {
     const body = await res.json();
     expect(body.error.code).toBe("not_found");
   });
+
+  test("starting a quiz again resumes the in-flight session with its answers", async ({
+    request,
+  }) => {
+    // The web quiz page creates the session on GET, so a reload must not
+    // discard the learner's answers or mint a fresh row.
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const first = await (
+      await request.post("/api/v1/vocab/quiz", { headers: user.authHeaders })
+    ).json();
+    expect(first.answeredIds).toEqual([]);
+
+    const answerUrl = `/api/v1/vocab/quiz/${first.sessionId}/answers`;
+    const answeredQuestionIds: string[] = [];
+    for (const q of first.questions.slice(0, 2)) {
+      const res = await request.post(answerUrl, {
+        headers: user.authHeaders,
+        data: { questionId: q.id, optionId: q.options[0].id },
+      });
+      expect(res.status()).toBe(200);
+      answeredQuestionIds.push(q.id);
+    }
+
+    const resumed = await (
+      await request.post("/api/v1/vocab/quiz", { headers: user.authHeaders })
+    ).json();
+    expect(resumed.sessionId).toBe(first.sessionId);
+    expect([...resumed.answeredIds].sort()).toEqual([...answeredQuestionIds].sort());
+  });
 });

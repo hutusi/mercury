@@ -454,7 +454,9 @@ paths:
       tags: [vocab]
       responses:
         "201":
-          description: Created; questions contain opaque ids and no answer-key signal.
+          description: Created — or the user's in-flight session resumed (answeredIds
+            non-empty), so a repeated start never discards answers. Questions
+            contain opaque ids and no answer-key signal.
           content:
             application/json:
               schema:
@@ -468,6 +470,10 @@ paths:
                   questions:
                     type: array
                     items: { $ref: "#/components/schemas/QuizQuestion" }
+                  answeredIds:
+                    type: array
+                    items: { type: string }
+                    description: Question ids already answered in the resumed session.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/vocab/quiz/{sessionId}/answers:
