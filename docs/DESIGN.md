@@ -60,7 +60,7 @@ Compose these before writing inline Tailwind. Signature pieces live in `src/comp
 - **`EntryList` / `EntryRow`** — hairline-divided rows replacing card grids on list pages.
 - **`EmptyState`** — centered hairline empty block.
 - `src/components/layout/`: `SkipLink` (targets `#main-content`), the seal `Wordmark` (square cinnabar tile — the brand's only filled-red surface), `PageSkeleton` (route-transition placeholder), `ErrorState` (shared error-boundary body).
-- `src/components/ui/`: flattened shadcn primitives; `Button` and `Badge` have an `accent` (cinnabar) variant for funnel CTAs. **`Callout`** is the one bordered-notice box — `accent` (cinnabar funnel/self-assess), `error` (destructive; defaults to `role="alert"` so async failures are announced), and `muted` — replacing the box that was hand-rolled across features.
+- `src/components/ui/`: flattened shadcn primitives; `Button` and `Badge` have an `accent` (cinnabar) variant for funnel CTAs. **`PasswordInput`** wraps `Input` with the eye reveal toggle — every password field uses it (no confirm-password twins by design). **`Callout`** is the one bordered-notice box — `accent` (cinnabar funnel/self-assess), `error` (destructive; defaults to `role="alert"` so async failures are announced), and `muted` — replacing the box that was hand-rolled across features.
 
 ## Motion
 

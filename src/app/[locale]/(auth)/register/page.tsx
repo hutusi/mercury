@@ -7,6 +7,7 @@ import { SocialButtons } from "@/components/auth/SocialButtons";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth/client";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
@@ -92,9 +93,8 @@ export default function RegisterPage() {
           <Label htmlFor="password">
             {t.auth.password} · {t.auth.passwordHint}
           </Label>
-          <Input
+          <PasswordInput
             id="password"
-            type="password"
             required
             minLength={8}
             value={password}
