@@ -1,4 +1,4 @@
-import { and, eq, gt, isNull, or, sql } from "drizzle-orm";
+import { and, eq, gt, inArray, isNull, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import { TrackSchema, type Track } from "../../content/types";
 import { db } from "../db";
@@ -227,17 +227,36 @@ export async function answerQuizSessionForUser(
         durationSeconds: 0,
         completedAt,
       });
-      await recordMistakeOutcomes(tx, {
-        userId,
-        track: session.track,
-        kind: "vocab_quiz",
-        refId: `quiz-${session.track}`,
-        occurredAt: completedAt,
-        outcomes: session.questions.map((item) => ({
+      // Sessions snapshot words in jsonb with no FK, so a session can outlive
+      // its words (content dedup, future deletions). Never write a mistake
+      // row for a word that no longer exists — it would be invisible on
+      // /mistakes yet still counted by the dashboard badge.
+      const liveWords = await tx
+        .select({ id: vocabWords.id })
+        .from(vocabWords)
+        .where(
+          inArray(
+            vocabWords.id,
+            session.questions.map((item) => item.wordId),
+          ),
+        );
+      const liveIds = new Set(liveWords.map((w) => w.id));
+      const outcomes = session.questions
+        .filter((item) => liveIds.has(item.wordId))
+        .map((item) => ({
           questionId: item.wordId,
           correct: answerMap[item.wordId] === 1,
-        })),
-      });
+        }));
+      if (outcomes.length) {
+        await recordMistakeOutcomes(tx, {
+          userId,
+          track: session.track,
+          kind: "vocab_quiz",
+          refId: `quiz-${session.track}`,
+          occurredAt: completedAt,
+          outcomes,
+        });
+      }
       signal = session.questions.length
         ? ((result.score ?? 0) / session.questions.length) * 100
         : 0;

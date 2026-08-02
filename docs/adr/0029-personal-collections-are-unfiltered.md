@@ -74,8 +74,20 @@ prioritization signal.
   dashboard badge while `/mistakes` silently drops them). The migration also
   clears all quiz sessions: practice sessions carry no word FK, and one
   completed after the migration would re-record mistakes for deleted ids
-  (they are 30-minute ephemera; mid-quiz learners restart). Accepted
-  pre-launch; the surviving twin keeps its own card.
+  (they are 30-minute ephemera; mid-quiz learners restart). Quiz completion
+  additionally drops outcomes for words that no longer exist, and migration
+  0026 installs the schema's first triggers (`drizzle-kit generate` neither
+  models nor drops them): an **emulated FK** for the polymorphic
+  `question_id`, both directions with FK-grade locking. `BEFORE INSERT` on
+  `mistake_states` takes `FOR KEY SHARE` on the word row (serializing
+  against concurrent deletes, as a real FK check would) and drops
+  `vocab_quiz` rows whose word is gone; `AFTER DELETE` on `vocab_words`
+  cascades the word's `mistake_states`/`mistake_clears` rows. The database
+  itself enforces the invariant — necessary because a deploy's migration
+  runs minutes before the guarded runtime is promoted, so the old, guardless
+  code grades in that window — and **future word deletions need no explicit
+  mistake cleanup**. Accepted pre-launch; the surviving twin keeps its own
+  card.
 - Web and API study-queue semantics diverge: the API's `?track=` contract
   (filter both halves, goal default) is unchanged and has no spillover
   parameter until a native client needs one.
