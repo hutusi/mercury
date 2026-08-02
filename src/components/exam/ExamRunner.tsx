@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { saveExamProgress, submitExamSection } from "@/lib/actions/exams";
 import type { AnswerMap, SectionDeadline } from "@/lib/db/schema";
-import type { SanitizedExamSection } from "@/lib/exam-utils";
+import { examRemainingMs, type SanitizedExamSection } from "@/lib/exam-utils";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
 
@@ -29,12 +29,15 @@ export function ExamRunner({
   initialSectionIndex,
   initialDeadlines,
   initialAnswers,
+  serverNow,
 }: {
   attemptId: string;
   sections: SanitizedExamSection[];
   initialSectionIndex: number;
   initialDeadlines: SectionDeadline[];
   initialAnswers: AnswerMap;
+  /** Server clock at render time — anchors the client's skew correction. */
+  serverNow: number;
 }) {
   const t = useT();
   const locale = useLocale();
@@ -51,6 +54,15 @@ export function ExamRunner({
 
   const submittedSections = useRef(new Set<string>());
   const autosaveChain = useRef(Promise.resolve());
+  // serverNow - clientNow, re-anchored on every section submit. Deadlines are
+  // absolute server epoch-ms: without this correction a slow client clock
+  // shows time remaining while the server already rejects answers, and a
+  // fast one steals exam time. Set in an effect — computing it during render
+  // would diverge between the server pass and hydration.
+  const clockSkewMs = useRef(0);
+  useEffect(() => {
+    clockSkewMs.current = serverNow - Date.now();
+  }, [serverNow]);
   // Latest-ref pattern: interval callbacks and submit read the current
   // answers without retriggering their effects.
   const answersRef = useRef(answers);
@@ -107,6 +119,7 @@ export function ExamRunner({
           sectionId,
           answers: answersRef.current,
         });
+        clockSkewMs.current = result.serverTime - Date.now();
         if (result.done) {
           try {
             localStorage.removeItem(storageKey);
@@ -131,12 +144,13 @@ export function ExamRunner({
     [attemptId, locale, router, storageKey, t],
   );
 
-  // The clock: remaining time derives from the server-issued deadline, never
-  // a local decrementing counter, so tab throttling and refreshes can't help.
+  // The clock: remaining time derives from the server-issued deadline
+  // (skew-corrected), never a local decrementing counter, so tab throttling
+  // and refreshes can't help.
   useEffect(() => {
     if (!deadline) return;
     const tick = setInterval(() => {
-      const remaining = deadline.expiresAt - Date.now();
+      const remaining = examRemainingMs(deadline.expiresAt, clockSkewMs.current, Date.now());
       setRemainingMs(remaining);
       if (remaining <= 0) {
         clearInterval(tick);
@@ -157,6 +171,21 @@ export function ExamRunner({
         .then(() => saveExamProgress({ attemptId, answers: snapshot }));
     }, AUTOSAVE_MS);
     return () => clearInterval(timer);
+  }, [attemptId]);
+
+  // Backgrounded tabs throttle intervals to ~1/min, so up to a minute of
+  // clicks could sit past the last autosave when the deadline lapses —
+  // flush once more the moment the tab hides.
+  useEffect(() => {
+    function onVisibilityChange() {
+      if (document.visibilityState !== "hidden") return;
+      const snapshot = { ...answersRef.current };
+      autosaveChain.current = autosaveChain.current
+        .catch(() => undefined)
+        .then(() => saveExamProgress({ attemptId, answers: snapshot }));
+    }
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", onVisibilityChange);
   }, [attemptId]);
 
   if (!section || !deadline) return null;

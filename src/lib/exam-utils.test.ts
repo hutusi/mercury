@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { allExams } from "../content/load";
-import { acceptSectionAnswers, gradeExam, sanitizeSections } from "./exam-utils";
+import { acceptSectionAnswers, examRemainingMs, gradeExam, sanitizeSections } from "./exam-utils";
 
 const toeicMiniExam = allExams.find((e) => e.id === "exam-toeic-mini")!;
 const ieltsMiniExam = allExams.find((e) => e.id === "exam-ielts-mini")!;
@@ -127,5 +127,22 @@ describe("acceptSectionAnswers", () => {
       GRACE_MS,
     );
     expect(merged).toEqual({ [qid]: 1 });
+  });
+});
+
+describe("examRemainingMs", () => {
+  const expiresAt = 1_000_000;
+
+  test("no skew: plain difference to the deadline", () => {
+    expect(examRemainingMs(expiresAt, 0, 940_000)).toBe(60_000);
+  });
+
+  test("slow client clock (server ahead): positive skew shrinks the display", () => {
+    // Client thinks it's 4 minutes earlier than the server.
+    expect(examRemainingMs(expiresAt, 240_000, 940_000)).toBe(-180_000);
+  });
+
+  test("fast client clock (server behind): negative skew restores stolen time", () => {
+    expect(examRemainingMs(expiresAt, -240_000, 990_000)).toBe(250_000);
   });
 });

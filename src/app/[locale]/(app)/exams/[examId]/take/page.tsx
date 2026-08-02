@@ -20,6 +20,8 @@ export default async function TakeExamPage({ params }: { params: Promise<{ examI
       initialSectionIndex={attempt.currentSectionIndex}
       initialDeadlines={attempt.sectionDeadlines}
       initialAnswers={attempt.answers}
+      // eslint-disable-next-line react-hooks/purity -- the request-time server clock is the point: it anchors the runner's skew correction
+      serverNow={Date.now()}
     />
   );
 }
