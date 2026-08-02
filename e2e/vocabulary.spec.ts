@@ -1,9 +1,22 @@
 import fs from "node:fs";
 import path from "node:path";
 import { expect, test } from "@playwright/test";
+import { eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
 import { resolveVocabAudioUrl } from "../src/content/audio-hash";
 import { allVocab, audioManifest } from "../src/content/load";
+import * as dbSchema from "../src/lib/db/schema";
+import { srsCards, user } from "../src/lib/db/schema";
+import { e2eDatabaseUrl } from "./db-url";
 import { registerAndOnboard, t } from "./helpers";
+
+const pool = new Pool({ connectionString: e2eDatabaseUrl(), max: 2 });
+const testDb = drizzle(pool, { schema: dbSchema });
+
+test.afterAll(async () => {
+  await pool.end();
+});
 
 // The first study card for a fresh toeic user is the lowest-sortOrder unseen
 // word; its pre-generated headword audio exists only when the manifest hash
@@ -48,6 +61,13 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   await expect(page.getByRole("button", { name: t.vocab.speakExample })).toBeVisible();
   const againButton = page.getByRole("button", { name: t.vocab.again, exact: true });
 
+  // Interval previews are deliberately gone (scheduler internals stay
+  // hidden): the buttons carry exactly their labels — a regressed hint span
+  // or its aria-describedby wiring fails these.
+  await expect(goodButton).toHaveText(t.vocab.good);
+  await expect(againButton).toHaveText(t.vocab.again);
+  await expect(goodButton).not.toHaveAttribute("aria-describedby");
+
   // Grade "Good": advances, reviewed counter increments.
   await goodButton.click();
   await expect(page.getByText(/^2 \/ \d+$/)).toBeVisible();
@@ -67,4 +87,47 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   await page.keyboard.press("3");
   await expect(page.getByText(new RegExp(`^4 / ${total + 1}$`))).toBeVisible();
   await expect(page.getByText(`${t.vocab.reviewedCount}: 3`)).toBeVisible();
+});
+
+// The two ADR 0029 study-queue behaviors the UI can't reach without existing
+// scheduler state, seeded directly into the scratch DB (the
+// integrity-regressions pattern): due reviews cross packs, and the new-word
+// top-up spills past an exhausted goal pack.
+test("ADR 0029: due reviews cross packs; new words spill over past the goal pack", async ({
+  page,
+}) => {
+  const { email } = await registerAndOnboard(page, "toeic");
+  const [account] = await testDb.select({ id: user.id }).from(user).where(eq(user.email, email));
+
+  // A past-due card on a business-pack word: due cards lead the queue, so a
+  // toeic-goal learner must still see it first — the round-1 chips would
+  // have hidden it behind the goal-track default.
+  const bizWord = allVocab.find((w) => w.track === "business")!;
+  await testDb.insert(srsCards).values({
+    userId: account.id,
+    wordId: bizWord.id,
+    intervalDays: 1,
+    repetitions: 1,
+    dueAt: new Date(Date.now() - 60_000),
+  });
+  await page.goto("/vocabulary/study");
+  await expect(page.getByText(bizWord.headword, { exact: true })).toBeVisible();
+
+  // Exhaust the goal pack (cards for every toeic word, none due) and push
+  // the business card out of due range: the queue is new-words-only and must
+  // spill over to the first ielts-pack word instead of stopping at the goal.
+  const future = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  await testDb
+    .insert(srsCards)
+    .values(
+      allVocab
+        .filter((w) => w.track === "toeic")
+        .map((w) => ({ userId: account.id, wordId: w.id, dueAt: future })),
+    );
+  await testDb.update(srsCards).set({ dueAt: future }).where(eq(srsCards.userId, account.id));
+
+  const spillWord = allVocab.find((w) => w.track === "ielts")!;
+  await page.goto("/vocabulary/study");
+  await expect(page.getByText(spillWord.headword, { exact: true })).toBeVisible();
+  await expect(page.getByText(t.vocab.fresh, { exact: true })).toBeVisible();
 });
