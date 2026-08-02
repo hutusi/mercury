@@ -1686,16 +1686,6 @@
   translationZh: 承保
   exampleEn: The insurer declined to underwrite the aging cargo ship.
   exampleZh: 保险公司拒绝为这艘老旧货船承保。
-- id: toeic-w-168
-  track: toeic
-  topic: insurance
-  headword: renewal
-  ipa: /rɪˈnuːəl/
-  pos: n.
-  definitionEn: The act of continuing an agreement for a further period.
-  translationZh: 续保；续期
-  exampleEn: You will receive a renewal notice one month before the policy expires.
-  exampleZh: 保单到期前一个月您会收到续保通知。
 - id: toeic-w-169
   track: toeic
   topic: insurance

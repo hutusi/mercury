@@ -71,7 +71,10 @@ prioritization signal.
 - Deduplication deletes learner progress on the removed twin (`srs_cards`
   FK-cascade → `review_logs`) and its quiz-mistake rows (explicit deletes —
   they reference word ids as plain text and would otherwise inflate the
-  dashboard badge while `/mistakes` silently drops them). Accepted
+  dashboard badge while `/mistakes` silently drops them). The migration also
+  clears all quiz sessions: practice sessions carry no word FK, and one
+  completed after the migration would re-record mistakes for deleted ids
+  (they are 30-minute ephemera; mid-quiz learners restart). Accepted
   pre-launch; the surviving twin keeps its own card.
 - Web and API study-queue semantics diverge: the API's `?track=` contract
   (filter both halves, goal default) is unchanged and has no spillover

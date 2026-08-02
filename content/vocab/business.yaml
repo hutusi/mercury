@@ -686,16 +686,6 @@
   translationZh: 销售指标
   exampleEn: She hit her quarterly quota two weeks early.
   exampleZh: 她提前两周完成了季度销售指标。
-- id: biz-w-069
-  track: business
-  topic: sales
-  headword: retention
-  ipa: /rɪˈtenʃn/
-  pos: n.
-  definitionEn: Keeping existing customers over time.
-  translationZh: 客户留存
-  exampleEn: Loyalty rewards are central to our retention strategy.
-  exampleZh: 会员奖励是我们客户留存策略的核心。
 - id: biz-w-070
   track: business
   topic: sales
@@ -1020,16 +1010,6 @@
   translationZh: 入职培训；新人融入
   exampleEn: A structured onboarding program helps new hires become productive within a month.
   exampleZh: 系统的入职培训能帮助新员工在一个月内进入状态。
-- id: biz-w-102
-  track: business
-  topic: hiring
-  headword: candidate
-  ipa: /ˈkændɪdət/
-  pos: n.
-  definitionEn: A person being considered for a job or position.
-  translationZh: 候选人；应聘者
-  exampleEn: We interviewed six candidates before making an offer to the strongest one.
-  exampleZh: 我们面试了六位候选人，最后向最出色的一位发出了录用通知。
 - id: biz-w-103
   track: business
   topic: hiring
@@ -1060,26 +1040,6 @@
   translationZh: 职位描述
   exampleEn: Update the job description before posting the opening on hiring platforms.
   exampleZh: 在招聘平台发布职位之前，先更新职位描述。
-- id: biz-w-106
-  track: business
-  topic: hiring
-  headword: compensation
-  ipa: /ˌkɑːmpenˈseɪʃn/
-  pos: n.
-  definitionEn: The pay and benefits an employee receives for work.
-  translationZh: 薪酬；报酬
-  exampleEn: The compensation package includes base salary, bonuses, and stock options.
-  exampleZh: 薪酬方案包括基本工资、奖金和股票期权。
-- id: biz-w-107
-  track: business
-  topic: hiring
-  headword: probation
-  ipa: /proʊˈbeɪʃn/
-  pos: n.
-  definitionEn: A trial period at the start of a new job.
-  translationZh: 试用期
-  exampleEn: New employees receive a formal review at the end of their three-month probation.
-  exampleZh: 新员工在三个月试用期结束时会接受正式考核。
 - id: biz-w-108
   track: business
   topic: hiring
@@ -1141,16 +1101,6 @@
   translationZh: 分配；拨给
   exampleEn: The board allocated two million dollars to the digital marketing budget.
   exampleZh: 董事会为数字营销预算拨款两百万美元。
-- id: biz-w-114
-  track: business
-  topic: budgeting
-  headword: expenditure
-  ipa: /ɪkˈspendɪtʃər/
-  pos: n.
-  definitionEn: The amount of money an organization spends.
-  translationZh: 支出；开支
-  exampleEn: Finance flagged the rise in travel expenditure during the quarterly review.
-  exampleZh: 财务部在季度审核中指出差旅支出有所上升。
 - id: biz-w-115
   track: business
   topic: budgeting
@@ -1242,16 +1192,6 @@
   translationZh: 使差异化；区分
   exampleEn: Excellent after-sales service differentiates us from cheaper rivals.
   exampleZh: 出色的售后服务使我们有别于价格更低的竞争对手。
-- id: biz-w-124
-  track: business
-  topic: branding
-  headword: target audience
-  ipa: /ˌtɑːrɡɪt ˈɔːdiəns/
-  pos: n.
-  definitionEn: The specific group of people a product or message is aimed at.
-  translationZh: 目标受众
-  exampleEn: The ad performs well because it speaks directly to our target audience.
-  exampleZh: 这则广告效果很好，因为它直接打动了我们的目标受众。
 - id: biz-w-125
   track: business
   topic: branding
@@ -1272,16 +1212,6 @@
   translationZh: 品牌资产
   exampleEn: Decades of consistent quality built enormous brand equity for the label.
   exampleZh: 数十年如一日的品质为该品牌积累了巨大的品牌资产。
-- id: biz-w-127
-  track: business
-  topic: branding
-  headword: endorsement
-  ipa: /ɪnˈdɔːrsmənt/
-  pos: n.
-  definitionEn: Public support for a product from a well-known person.
-  translationZh: 代言；背书
-  exampleEn: The athlete's endorsement doubled sales of the running shoes.
-  exampleZh: 这位运动员的代言让跑鞋销量翻番。
 - id: biz-w-128
   track: business
   topic: branding
@@ -1292,16 +1222,6 @@
   translationZh: 曝光度；关注度
   exampleEn: Sponsoring the tech summit gave the startup valuable visibility.
   exampleZh: 赞助这场科技峰会为这家初创公司带来了宝贵的曝光度。
-- id: biz-w-129
-  track: business
-  topic: branding
-  headword: perception
-  ipa: /pərˈsepʃn/
-  pos: n.
-  definitionEn: The way something is understood or seen by people.
-  translationZh: 认知；印象
-  exampleEn: One viral complaint can damage public perception of a brand overnight.
-  exampleZh: 一条疯传的投诉可能一夜之间损害品牌的公众形象。
 - id: biz-w-130
   track: business
   topic: branding
@@ -1343,16 +1263,6 @@
   translationZh: 物流
   exampleEn: We partnered with a logistics provider to speed up overseas delivery.
   exampleZh: 我们与一家物流公司合作，加快海外配送。
-- id: biz-w-134
-  track: business
-  topic: operations
-  headword: inventory
-  ipa: /ˈɪnvəntɔːri/
-  pos: n.
-  definitionEn: The goods a business keeps in stock.
-  translationZh: 库存
-  exampleEn: The warehouse counts inventory at the end of every month.
-  exampleZh: 仓库每月月底盘点库存。
 - id: biz-w-135
   track: business
   topic: operations
@@ -1383,16 +1293,6 @@
   translationZh: 产能；容量
   exampleEn: The factory is running at full capacity through the holiday season.
   exampleZh: 整个假日季工厂都在满负荷运转。
-- id: biz-w-138
-  track: business
-  topic: operations
-  headword: lead time
-  ipa: /ˈliːd taɪm/
-  pos: n.
-  definitionEn: The time between placing an order and receiving it.
-  translationZh: 交货周期
-  exampleEn: Choosing a local supplier cut the lead time from weeks to days.
-  exampleZh: 改用本地供应商后，交货周期从数周缩短到几天。
 - id: biz-w-139
   track: business
   topic: operations
@@ -1434,16 +1334,6 @@
   translationZh: 待办清单；积压任务
   exampleEn: The team reviews the backlog every Monday to plan the sprint.
   exampleZh: 团队每周一梳理待办清单来规划冲刺。
-- id: biz-w-143
-  track: business
-  topic: product
-  headword: prototype
-  ipa: /ˈproʊtətaɪp/
-  pos: n.
-  definitionEn: An early model built to test an idea or design.
-  translationZh: 原型
-  exampleEn: We showed users a clickable prototype before writing any code.
-  exampleZh: 在写任何代码之前，我们先给用户看了可点击的原型。
 - id: biz-w-144
   track: business
   topic: product
@@ -1555,16 +1445,6 @@
   translationZh: 数据驱动的
   exampleEn: We moved to data-driven pricing instead of copying competitors.
   exampleZh: 我们改用数据驱动的定价，而不是照搬竞争对手。
-- id: biz-w-155
-  track: business
-  topic: analytics
-  headword: correlation
-  ipa: /ˌkɔːrəˈleɪʃn/
-  pos: n.
-  definitionEn: A relationship in which two things change together.
-  translationZh: 相关性
-  exampleEn: There is a strong correlation between response speed and customer ratings.
-  exampleZh: 响应速度与客户评分之间存在很强的相关性。
 - id: biz-w-156
   track: business
   topic: analytics
@@ -1656,26 +1536,6 @@
   translationZh: 拥护者；推荐者
   exampleEn: Turning happy users into advocates is cheaper than paid advertising.
   exampleZh: 把满意用户变成品牌拥护者比投放广告更省钱。
-- id: biz-w-165
-  track: business
-  topic: customer-success
-  headword: satisfaction
-  ipa: /ˌsætɪsˈfækʃn/
-  pos: n.
-  definitionEn: The feeling of being pleased with a product or service.
-  translationZh: 满意度
-  exampleEn: Customer satisfaction scores rose after we shortened wait times.
-  exampleZh: 缩短等待时间后，客户满意度评分上升了。
-- id: biz-w-166
-  track: business
-  topic: customer-success
-  headword: testimonial
-  ipa: /ˌtestɪˈmoʊniəl/
-  pos: n.
-  definitionEn: A customer's written or spoken recommendation of a product.
-  translationZh: 用户推荐语；好评
-  exampleEn: We added three client testimonials to the landing page.
-  exampleZh: 我们在落地页上加了三条客户好评。
 - id: biz-w-167
   track: business
   topic: customer-success

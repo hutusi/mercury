@@ -57,6 +57,22 @@ describe("seed content", () => {
     }
   });
 
+  test("vocab: headwords are unique across tracks (polysemy allowlisted)", () => {
+    // Vocabulary is scenario-first and not owned by tracks (ADR 0029): the
+    // same sense must exist exactly once. A cross-pack duplicate needs either
+    // deletion (plus a data migration — see drizzle/0026) or, if it is a
+    // genuinely different sense, an entry in this allowlist.
+    const POLYSEMY = new Set(["backlog", "check-in", "launch"]);
+    const seen = new Map<string, string>();
+    for (const w of allVocab) {
+      const headword = w.headword.toLowerCase();
+      if (POLYSEMY.has(headword)) continue;
+      const existing = seen.get(headword);
+      expect(existing ? `${headword}: ${existing} duplicates ${w.id}` : null).toBeNull();
+      seen.set(headword, w.id);
+    }
+  });
+
   test("every track has content in all five practice areas", () => {
     for (const track of TRACKS) {
       expect(allVocab.some((w) => w.track === track)).toBe(true);
