@@ -40,7 +40,7 @@ export default async function WritingSubmissionPage({
 
       <section className="border-y border-border py-6">
         <SectionLabel as="h2" className="mb-3">
-          {t.writing.yourText} · {submission.wordCount} words
+          {t.writing.yourText} · {submission.wordCount} {t.common.words}
         </SectionLabel>
         <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/90">
           {submission.text}

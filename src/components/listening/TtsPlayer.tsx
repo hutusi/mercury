@@ -33,6 +33,10 @@ export function TtsPlayer({
   const [audioFailed, setAudioFailed] = useState(false);
   const speakerRef = useRef<ScriptSpeaker | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  // degradeToTts can be reached twice for one failure (the rejected play()
+  // promise AND the element's onError) — a ref, not state, so the second
+  // entry bails even before the re-render lands.
+  const degradedRef = useRef(false);
 
   const audioMode = Boolean(audioUrl) && !audioFailed;
 
@@ -75,6 +79,8 @@ export function TtsPlayer({
     // the only play when a minutes-long clip genuinely fails early. Unknown
     // duration refunds — a real early failure can predate metadata, and the
     // replay cheat needs the end of the clip, where duration is known.
+    if (degradedRef.current) return;
+    degradedRef.current = true;
     const el = audioRef.current;
     const consumed =
       !!el &&
@@ -86,7 +92,10 @@ export function TtsPlayer({
     setPlaying(false);
     setResumable(false);
     setAudioProgress(0);
-    if (!consumed) setPlayCount(0);
+    // Refund only the failed attempt — playCount is cumulative across audio
+    // and TTS plays, so zeroing it would hand back earlier consumed plays
+    // whenever maxPlays > 1.
+    if (!consumed) setPlayCount((n) => Math.max(0, n - 1));
   }
 
   function playAudio() {

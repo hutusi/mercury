@@ -71,7 +71,7 @@ export default async function WritingPromptPage({
                       hour: "numeric",
                       minute: "2-digit",
                     })}{" "}
-                    · {s.wordCount} words
+                    · {s.wordCount} {t.common.words}
                   </span>
                   <span
                     className={`font-medium ${

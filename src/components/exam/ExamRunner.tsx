@@ -58,7 +58,10 @@ export function ExamRunner({
   // absolute server epoch-ms: without this correction a slow client clock
   // shows time remaining while the server already rejects answers, and a
   // fast one steals exam time. Set in an effect — computing it during render
-  // would diverge between the server pass and hydration.
+  // would diverge between the server pass and hydration. The mount estimate
+  // over-counts by the transfer + hydration latency (seconds at worst, well
+  // inside the server's 30s grace); section submits re-anchor with a
+  // measured round trip, which is tighter.
   const clockSkewMs = useRef(0);
   useEffect(() => {
     clockSkewMs.current = serverNow - Date.now();
@@ -114,12 +117,15 @@ export function ExamRunner({
       setConfirming(false);
       setSubmitError(null);
       try {
+        const requestStart = Date.now();
         const result = await submitExamSection({
           attemptId,
           sectionId,
           answers: answersRef.current,
         });
-        clockSkewMs.current = result.serverTime - Date.now();
+        // serverTime is stamped near the response, so the request midpoint
+        // strips most of the round-trip latency from the skew estimate.
+        clockSkewMs.current = result.serverTime - (requestStart + Date.now()) / 2;
         if (result.done) {
           try {
             localStorage.removeItem(storageKey);

@@ -473,7 +473,7 @@ paths:
                   answeredIds:
                     type: array
                     items: { type: string }
-                    description: Question ids already answered in the resumed session.
+                    description: Question ids answered so far (empty for a fresh session).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/vocab/quiz/{sessionId}/answers:
