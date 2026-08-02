@@ -172,7 +172,7 @@ export function MistakeItem({
                 })}
               </div>
               <div className="bg-muted p-3 text-sm text-foreground/80">
-                <span className="font-semibold text-foreground">{t.reading.explanation}：</span>
+                <span className="font-semibold text-foreground">{t.reading.explanationLabel}</span>
                 {graded.explanationZh}
               </div>
               {graded.correct ? (

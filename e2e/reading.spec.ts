@@ -24,7 +24,7 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
 
   // Result: score header + per-question explanations now revealed.
   await expect(page.getByText(t.common.accuracy, { exact: false })).toBeVisible();
-  await expect(page.getByText(`${t.reading.explanation}：`).first()).toBeVisible();
+  await expect(page.getByText(t.reading.explanationLabel).first()).toBeVisible();
 
   // Back on the list, the best score shows up. Assert the back-link's target
   // but navigate with goto: clicking right after the server action races the

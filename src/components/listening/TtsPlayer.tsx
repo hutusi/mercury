@@ -68,14 +68,18 @@ export function TtsPlayer({
   }
 
   function degradeToTts() {
-    // The neural audio never delivered a full listen — hand the play budget
-    // back and fall through to the browser voice for the rest of the session.
+    // Fall through to the browser voice for the rest of the session. Refund
+    // the play budget only when the failed element barely played — an error
+    // near the end of the clip already delivered the listen, and a blanket
+    // refund would let exam takers replay single-play audio by forcing a
+    // media error at 99%.
+    const barelyPlayed = (audioRef.current?.currentTime ?? 0) < 5;
     audioRef.current?.pause();
     setAudioFailed(true);
     setPlaying(false);
     setResumable(false);
     setAudioProgress(0);
-    setPlayCount(0);
+    if (barelyPlayed) setPlayCount(0);
   }
 
   function playAudio() {

@@ -4,10 +4,11 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth/client";
-import { useLocale } from "@/lib/i18n/LocaleProvider";
+import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
 
-export function SignOutButton({ label = "退出登录" }: { label?: string }) {
+export function SignOutButton({ label }: { label?: string }) {
+  const t = useT();
   const router = useRouter();
   const locale = useLocale();
   const [failed, setFailed] = useState(false);
@@ -32,10 +33,10 @@ export function SignOutButton({ label = "退出登录" }: { label?: string }) {
       size="sm"
       onClick={handleSignOut}
       disabled={pending}
-      title={failed ? "Sign-out failed — try again" : undefined}
+      title={failed ? t.common.signOutFailed : undefined}
       className={failed ? "border-destructive/40 text-destructive" : undefined}
     >
-      {label}
+      {label ?? t.common.signOut}
     </Button>
   );
 }

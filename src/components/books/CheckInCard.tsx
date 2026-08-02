@@ -102,7 +102,7 @@ export function CheckInCard({
       </div>
       {result && (
         <div className="mt-3 bg-muted p-3 text-sm text-foreground/80">
-          <span className="font-semibold text-foreground">{t.reading.explanation}：</span>
+          <span className="font-semibold text-foreground">{t.reading.explanationLabel}</span>
           {result.explanationZh}
         </div>
       )}

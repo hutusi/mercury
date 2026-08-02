@@ -32,7 +32,7 @@ test("book reading: library → detail, chapter lock, check-in reveal", async ({
   // asserted — answer positions are tooling-assigned and may be reassigned.
   const checkIn = page.getByRole("complementary", { name: t.books.checkInLabel }).first();
   await checkIn.getByRole("button").first().click();
-  await expect(checkIn.getByText(`${t.reading.explanation}：`)).toBeVisible();
+  await expect(checkIn.getByText(t.reading.explanationLabel)).toBeVisible();
   await expect(
     checkIn.getByText(new RegExp(`${t.books.checkInCorrect}|${t.books.checkInIncorrect}`)),
   ).toBeVisible();
@@ -51,7 +51,7 @@ test("book reading: library → detail, chapter lock, check-in reveal", async ({
   // Graded result with explanations; first-option answers miss some
   // questions on purpose so the mistakes notebook has something to show.
   await expect(page.getByText(t.common.accuracy, { exact: false })).toBeVisible();
-  await expect(page.getByText(`${t.reading.explanation}：`).first()).toBeVisible();
+  await expect(page.getByText(t.reading.explanationLabel).first()).toBeVisible();
 
   // Submission completed the chapter: chapter 2 unlocked, best score shown.
   await expect(page.getByRole("link", { name: new RegExp(t.books.nextChapter) })).toHaveAttribute(
