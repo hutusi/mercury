@@ -983,7 +983,8 @@ paths:
                 text: { type: string, minLength: 20, maxLength: 30000 }
       responses:
         "200":
-          description: Result (feedback null when degraded).
+          description: Result (feedback null when degraded). Quota exhaustion never fails
+            a submit — it degrades to self_assessed with degradeReason quota.
           content:
             application/json:
               schema:
@@ -992,15 +993,14 @@ paths:
                   submissionId: { type: string }
                   status: { $ref: "#/components/schemas/SubmissionStatus" }
                   feedback: {}
+                  degradeReason:
+                    type: string
+                    enum: [quota]
+                    description: Present when the daily grading cap forced self_assessed.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
         "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
-        "429":
-          description: Shared daily writing/speaking provider-call cap reached (code ai_grading_limit_reached).
-          content:
-            application/json:
-              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
   /api/v1/writing/submissions/{submissionId}:
     get:
       summary: Submission detail; selfAssess material only when not AI-scored
@@ -1081,7 +1081,8 @@ paths:
                 durationSeconds: { type: integer, minimum: 0, maximum: 600 }
       responses:
         "200":
-          description: Result (feedback null when degraded).
+          description: Result (feedback null when degraded). Quota exhaustion never fails
+            a submit — it degrades to self_assessed with degradeReason quota.
           content:
             application/json:
               schema:
@@ -1090,15 +1091,14 @@ paths:
                   submissionId: { type: string }
                   status: { $ref: "#/components/schemas/SubmissionStatus" }
                   feedback: {}
+                  degradeReason:
+                    type: string
+                    enum: [quota]
+                    description: Present when the daily grading cap forced self_assessed.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
         "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
-        "429":
-          description: Shared daily writing/speaking provider-call cap reached (code ai_grading_limit_reached).
-          content:
-            application/json:
-              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
   /api/v1/speaking/submissions/{submissionId}:
     get:
       summary: Submission detail; selfAssess material only when not AI-scored

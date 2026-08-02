@@ -1,6 +1,7 @@
 "use server";
 
 import { requireUser } from "../auth/session";
+import { LimitExceededError } from "../services/errors";
 import {
   retrySpeakingFeedbackForUser,
   submitSpeakingForUser,
@@ -22,7 +23,13 @@ export async function submitSpeaking(input: {
 export async function retrySpeakingFeedback(
   submissionId: string,
   requestId: string,
-): Promise<SpeakingResult> {
+): Promise<SpeakingResult | { limited: true }> {
   const user = await requireUser();
-  return retrySpeakingFeedbackForUser(user.id, submissionId, { requestId });
+  // Typed return instead of a throw: server-action errors are masked in prod.
+  try {
+    return await retrySpeakingFeedbackForUser(user.id, submissionId, { requestId });
+  } catch (err) {
+    if (err instanceof LimitExceededError) return { limited: true };
+    throw err;
+  }
 }

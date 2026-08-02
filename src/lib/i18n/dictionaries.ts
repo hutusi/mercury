@@ -395,6 +395,9 @@ const zh = {
     aiFailed: "AI 批改暂不可用，已保存为自评模式",
     aiUnavailableTitle: "AI 批改暂时不可用",
     aiUnavailableHint: "这次批改没能完成，可以重试；也可以先对照下方范文与清单自评。",
+    aiQuotaTitle: "今日 AI 批改额度已用完",
+    aiQuotaHint: "你的作文已保存为自评模式，明天可重新获取 AI 批改。",
+    aiQuotaRetry: "今日 AI 批改额度已用完，明天再试。",
     retryFeedback: "重试 AI 批改",
   },
   speaking: {
@@ -426,6 +429,9 @@ const zh = {
     aiFailed: "AI 点评暂不可用，已保存为自评模式",
     aiUnavailableTitle: "AI 点评暂时不可用",
     aiUnavailableHint: "这次点评没能完成，可以重试；也可以先对照下方参考回答与清单自评。",
+    aiQuotaTitle: "今日 AI 点评额度已用完",
+    aiQuotaHint: "你的回答已保存为自评模式，明天可重新获取 AI 点评。",
+    aiQuotaRetry: "今日 AI 点评额度已用完，明天再试。",
     retryFeedback: "重试 AI 点评",
   },
   exams: {
@@ -936,6 +942,9 @@ const en: Dictionary = {
     aiUnavailableTitle: "AI feedback unavailable",
     aiUnavailableHint:
       "Grading didn't complete this time. Retry it, or self-assess against the model answer and checklist below.",
+    aiQuotaTitle: "Today's AI grading limit is used up",
+    aiQuotaHint: "Your essay is saved in self-assessment mode — retry AI grading tomorrow.",
+    aiQuotaRetry: "Today's AI grading limit is used up — try again tomorrow.",
     retryFeedback: "Retry AI feedback",
   },
   speaking: {
@@ -969,6 +978,9 @@ const en: Dictionary = {
     aiUnavailableTitle: "AI feedback unavailable",
     aiUnavailableHint:
       "Grading didn't complete this time. Retry it, or self-assess against the model answer and checklist below.",
+    aiQuotaTitle: "Today's AI feedback limit is used up",
+    aiQuotaHint: "Your response is saved in self-assessment mode — retry AI feedback tomorrow.",
+    aiQuotaRetry: "Today's AI feedback limit is used up — try again tomorrow.",
     retryFeedback: "Retry AI feedback",
   },
   exams: {

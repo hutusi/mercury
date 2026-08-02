@@ -11,7 +11,7 @@ import { useT } from "@/lib/i18n/LocaleProvider";
 export function RetryWritingFeedback({ submissionId }: { submissionId: string }) {
   const t = useT();
   const router = useRouter();
-  const [failed, setFailed] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   return (
@@ -21,13 +21,17 @@ export function RetryWritingFeedback({ submissionId }: { submissionId: string })
         size="sm"
         disabled={pending}
         onClick={() => {
-          setFailed(false);
+          setError(null);
           startTransition(async () => {
             try {
-              await retryWritingFeedback(submissionId, crypto.randomUUID());
+              const result = await retryWritingFeedback(submissionId, crypto.randomUUID());
+              if (result.limited) {
+                setError(t.writing.aiQuotaRetry);
+                return;
+              }
               router.refresh();
             } catch {
-              setFailed(true);
+              setError(t.writing.aiFailed);
             }
           });
         }}
@@ -35,7 +39,7 @@ export function RetryWritingFeedback({ submissionId }: { submissionId: string })
         <RotateCcw className="size-4" aria-hidden />
         {pending ? t.writing.submitting : t.writing.retryFeedback}
       </Button>
-      {failed && <p className="mt-2 text-destructive">{t.writing.aiFailed}</p>}
+      {error && <p className="mt-2 text-destructive">{error}</p>}
     </div>
   );
 }

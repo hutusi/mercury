@@ -14,7 +14,7 @@ import { speakingPrompts, speakingSubmissions } from "../db/schema";
 import { formatLearnerContext, normalizeAiScore } from "../learner-model-core";
 import { getLearnerProfile } from "../queries/profile";
 import { recordActivityWith } from "../streak";
-import { NotFoundError } from "./errors";
+import { LimitExceededError, NotFoundError } from "./errors";
 import { recordLearnerOutcomeSafely } from "./profile";
 
 /**
@@ -95,6 +95,9 @@ export interface SpeakingResult {
   submissionId: string;
   status: "ai_scored" | "self_assessed";
   feedback: SpeakingFeedback | null;
+  /** Set when self_assessed was forced by the daily grading quota, so the UI
+   * can say "limit reached" instead of "AI unavailable". Absent on replays. */
+  degradeReason?: "quota";
 }
 
 async function getPersistedSpeakingResult(
@@ -128,14 +131,25 @@ export async function submitSpeakingForUser(
 
   const inputHash = gradingInputHash({ promptId, transcript, durationSeconds });
   const aiEnabled = isAiEnabled();
-  const claim = await claimGradingRequest({
+  // Same quota courtesy as writing: exhausting the daily grading budget must
+  // never destroy the learner's transcript — degrade to self-assessment via
+  // an uncharged claim; only the retry endpoint keeps rejecting with 429.
+  const claimInput = {
     userId,
     requestId,
-    kind: "speaking",
+    kind: "speaking" as const,
     scope: `speaking:submit:${inputHash}`,
     inputHash,
-    charge: aiEnabled,
-  });
+  };
+  let quotaExhausted = false;
+  let claim;
+  try {
+    claim = await claimGradingRequest({ ...claimInput, charge: aiEnabled });
+  } catch (err) {
+    if (!(err instanceof LimitExceededError)) throw err;
+    quotaExhausted = true;
+    claim = await claimGradingRequest({ ...claimInput, charge: false });
+  }
   if (claim.disposition === "completed") {
     return getPersistedSpeakingResult(userId, claim.submissionId);
   }
@@ -143,7 +157,7 @@ export async function submitSpeakingForUser(
 
   let feedback: SpeakingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
-  if (aiEnabled) {
+  if (aiEnabled && !quotaExhausted) {
     try {
       feedback = await getSpeakingFeedback({
         partType: prompt.partType,
@@ -185,7 +199,12 @@ export async function submitSpeakingForUser(
   if (status === "ai_scored" && feedback) {
     await recordSpeakingOutcome(userId, prompt.partType, feedback);
   }
-  return { submissionId: submission.id, status, feedback };
+  return {
+    submissionId: submission.id,
+    status,
+    feedback,
+    ...(quotaExhausted ? { degradeReason: "quota" as const } : {}),
+  };
 }
 
 /**

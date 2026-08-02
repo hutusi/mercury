@@ -12,11 +12,14 @@ import { getWritingSubmissionDetail } from "@/lib/queries/writing";
 
 export default async function WritingSubmissionPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ submissionId: string }>;
+  searchParams: Promise<{ degraded?: string }>;
 }) {
   const user = await requireUser();
   const { submissionId } = await params;
+  const quotaDegraded = (await searchParams).degraded === "quota";
   const t = await getDict();
 
   const data = await getWritingSubmissionDetail(user.id, submissionId);
@@ -49,6 +52,15 @@ export default async function WritingSubmissionPage({
 
       {submission.status === "ai_scored" && submission.feedback ? (
         <AiFeedbackPanel feedback={submission.feedback} />
+      ) : quotaDegraded ? (
+        // Landed here because the daily grading quota forced self-assessment —
+        // retrying today would just 429, so the notice says "tomorrow".
+        <SelfAssessPanel
+          modelAnswer={prompt.modelAnswer}
+          checklist={prompt.checklist}
+          title={t.writing.aiQuotaTitle}
+          hint={t.writing.aiQuotaHint}
+        />
       ) : (
         <SelfAssessPanel
           modelAnswer={prompt.modelAnswer}
