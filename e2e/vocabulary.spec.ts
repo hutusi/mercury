@@ -67,6 +67,7 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   await expect(goodButton).toHaveText(t.vocab.good);
   await expect(againButton).toHaveText(t.vocab.again);
   await expect(goodButton).not.toHaveAttribute("aria-describedby");
+  await expect(againButton).not.toHaveAttribute("aria-describedby");
 
   // Grade "Good": advances, reviewed counter increments.
   await goodButton.click();

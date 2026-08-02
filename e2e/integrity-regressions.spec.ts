@@ -333,7 +333,12 @@ test.describe("persisted integrity regressions", () => {
 
     // Delete one wrong-answered word mid-session, sparing the pack's first
     // word (the vocabulary spillover spec asserts on it). Keep its row so it
-    // can be restored — this DB is shared with the rest of the suite.
+    // can be restored — this DB is shared with the rest of the suite. The
+    // ielts pack is load-bearing here: the delete cascades srs_cards AND
+    // (via the vocab_words_mistake_sweep trigger) any user's ielts quiz
+    // mistakes, which cannot be restored — so this must stay the only spec
+    // that creates ielts vocab-quiz mistakes or cards (toeic belongs to the
+    // mistakes/api-vocab specs, business to the emulated-FK test below).
     const [firstIeltsWord] = await testDb
       .select({ id: vocabWords.id })
       .from(vocabWords)

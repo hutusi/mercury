@@ -55,7 +55,7 @@ BEGIN
     END IF;
   END IF;
   RETURN NEW;
-END $$ LANGUAGE plpgsql;--> statement-breakpoint
+END $$ LANGUAGE plpgsql SET search_path = pg_catalog, public;--> statement-breakpoint
 
 DROP TRIGGER IF EXISTS mistake_states_vocab_word_guard ON "mistake_states";--> statement-breakpoint
 
@@ -68,7 +68,7 @@ BEGIN
   DELETE FROM mistake_states WHERE kind = 'vocab_quiz' AND question_id = OLD.id;
   DELETE FROM mistake_clears WHERE kind = 'vocab_quiz' AND question_id = OLD.id;
   RETURN OLD;
-END $$ LANGUAGE plpgsql;--> statement-breakpoint
+END $$ LANGUAGE plpgsql SET search_path = pg_catalog, public;--> statement-breakpoint
 
 DROP TRIGGER IF EXISTS vocab_words_mistake_sweep ON "vocab_words";--> statement-breakpoint
 
