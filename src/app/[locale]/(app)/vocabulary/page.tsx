@@ -3,31 +3,29 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
-import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
 import { Button } from "@/components/ui/button";
 import { getDict } from "@/lib/i18n";
 import { getVocabOverview } from "@/lib/queries/vocab";
 import { requireOnboarded } from "@/lib/settings";
-import { parseTrackFilter, TRACK_FILTER_OPTIONS } from "@/lib/track-filter";
 
-export default async function VocabularyPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ track?: string }>;
-}) {
+export default async function VocabularyPage() {
   const { user, goalTrack } = await requireOnboarded();
   const t = await getDict();
 
-  const { filter, track } = parseTrackFilter((await searchParams).track, goalTrack);
+  // Personal collection — never track-filtered (ADR 0029): the overview counts
+  // and word list cover everything the learner has touched, on every track.
   const { words, startedIds, dueCount, freshCount, learnedCount } = await getVocabOverview(
     user.id,
-    track,
+    null,
   );
 
-  // Study follows the current filter; the quiz is single-track by design, so
-  // "all" falls back to the goal default (no param).
-  const studyHref = `/vocabulary/study?track=${filter}`;
-  const quizHref = filter === "all" ? "/vocabulary/quiz" : `/vocabulary/quiz?track=${filter}`;
+  // The study queue starts new words on the goal track only, so the session
+  // size on the Study button counts goal-track fresh words, not all of them.
+  const goalFreshCount = words.filter((w) => w.track === goalTrack && !startedIds.has(w.id)).length;
+
+  // The quiz is single-track by design and resolves to the goal track.
+  const studyHref = "/vocabulary/study";
+  const quizHref = "/vocabulary/quiz";
 
   const topics = new Map<string, typeof words>();
   for (const w of words) {
@@ -54,9 +52,9 @@ export default async function VocabularyPage({
             <Button asChild>
               <Link href={studyHref}>
                 {t.vocab.study}
-                {dueCount + Math.min(freshCount, 10) > 0 && (
+                {dueCount + Math.min(goalFreshCount, 10) > 0 && (
                   <span className="ml-1.5 font-mono text-xs tabular-nums opacity-70">
-                    {dueCount + Math.min(freshCount, 10)}
+                    {dueCount + Math.min(goalFreshCount, 10)}
                   </span>
                 )}
               </Link>
@@ -67,8 +65,6 @@ export default async function VocabularyPage({
           </>
         }
       />
-
-      <TrackFilterChips basePath="/vocabulary" current={filter} options={TRACK_FILTER_OPTIONS} />
 
       <div className="grid grid-cols-3 divide-x divide-border border-y border-border">
         {stats.map((s) => (

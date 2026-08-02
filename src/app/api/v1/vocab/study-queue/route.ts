@@ -6,6 +6,6 @@ import { getStudyQueue } from "@/lib/queries/vocab";
 export const GET = apiHandler(async (req) => {
   const { user, goalTrack } = await requireOnboardedApi(req);
   const track = apiTrackFilter(req, goalTrack);
-  const cards = await getStudyQueue(user.id, track);
+  const cards = await getStudyQueue(user.id, { dueTrack: track, newTrack: track });
   return Response.json({ cards });
 });

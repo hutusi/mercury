@@ -36,8 +36,18 @@ export async function getVocabOverview(userId: string, track: Track | null) {
   };
 }
 
-/** Due cards (oldest first) topped up with unseen words, for a study session. */
-export async function getStudyQueue(userId: string, track: Track | null) {
+/**
+ * Due cards (oldest first) topped up with unseen words, for a study session.
+ *
+ * The two halves filter independently: the web (ADR 0029) reviews due cards
+ * across every track but starts new words only on the goal track — an
+ * unfiltered new-word top-up would follow raw seed order across tracks.
+ * Passing one track for both preserves the v1 `?track=` contract.
+ */
+export async function getStudyQueue(
+  userId: string,
+  { dueTrack, newTrack }: { dueTrack: Track | null; newTrack: Track | null },
+) {
   const [dueRows, newRows] = await Promise.all([
     db
       .select({
@@ -52,7 +62,7 @@ export async function getStudyQueue(userId: string, track: Track | null) {
       .where(
         and(
           eq(srsCards.userId, userId),
-          track ? eq(vocabWords.track, track) : undefined,
+          dueTrack ? eq(vocabWords.track, dueTrack) : undefined,
           lte(srsCards.dueAt, new Date()),
         ),
       )
@@ -63,7 +73,7 @@ export async function getStudyQueue(userId: string, track: Track | null) {
       .from(vocabWords)
       .where(
         and(
-          track ? eq(vocabWords.track, track) : undefined,
+          newTrack ? eq(vocabWords.track, newTrack) : undefined,
           notExists(
             db
               .select({ wordId: srsCards.wordId })

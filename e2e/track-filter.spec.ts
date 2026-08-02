@@ -1,9 +1,11 @@
 import { expect, test } from "@playwright/test";
-import { registerAndOnboard, t } from "./helpers";
+import { answerAllQuestions, registerAndOnboard, t } from "./helpers";
 
 /**
  * The track is a per-feature content filter, not an app mode: lists default
  * to the goal track, "all" lifts the filter, and the header has no switcher.
+ * Personal collections (vocabulary, mistakes) carry no filter at all
+ * (ADR 0029) — they always show everything the learner owns.
  */
 
 test("reading list defaults to the goal track; 全部 reveals other tracks", async ({ page }) => {
@@ -57,4 +59,34 @@ test("an invalid ?track= degrades to the goal default", async ({ page }) => {
   await page.goto("/reading?track=gre");
   await expect(page.locator('a[href="/zh/reading/ielts-r-001"]')).toBeVisible();
   await expect(page.locator('a[href="/zh/reading/toeic-r-001"]')).toHaveCount(0);
+});
+
+test("personal collections are unfiltered: cross-track mistakes surface, no chips", async ({
+  page,
+}) => {
+  await registerAndOnboard(page, "toeic");
+
+  // Seed business-track mistakes: biz-r-001's q2–q4 answers are not the
+  // first option, so first-option answering is deterministically wrong.
+  await page.goto("/reading/biz-r-001");
+  const submit = page.getByRole("button", { name: new RegExp(t.reading.submitAnswers) });
+  await expect(submit).toBeVisible();
+  await answerAllQuestions(page);
+  await submit.click();
+  await expect(page.getByText(t.common.accuracy, { exact: false })).toBeVisible();
+
+  // The notebook shows the business mistakes to this toeic-goal user — a
+  // goal-track default would have hidden them — and renders no filter nav.
+  await page.goto("/mistakes");
+  await expect(page.getByRole("heading", { name: t.nav.mistakes })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: t.filters.byTrack })).toHaveCount(0);
+  await expect(page.getByText(t.mistakes.lastWrong).first()).toBeVisible();
+
+  // Vocabulary overview and study session carry no filter nav either.
+  await page.goto("/vocabulary");
+  await expect(page.getByRole("heading", { name: t.nav.vocabulary })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: t.filters.byTrack })).toHaveCount(0);
+  await page.goto("/vocabulary/study");
+  await expect(page.getByRole("heading", { name: t.vocab.study })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: t.filters.byTrack })).toHaveCount(0);
 });
