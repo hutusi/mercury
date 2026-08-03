@@ -6,10 +6,20 @@ import { speakingPrompts, speakingSubmissions } from "../db/schema";
 /** Speaking prompts (one track, or all when null) plus the user's submission count per prompt. */
 export async function listSpeakingPrompts(userId: string, track: Track | null) {
   const [prompts, submissions] = await Promise.all([
-    db.query.speakingPrompts.findMany({
-      where: track ? eq(speakingPrompts.track, track) : undefined,
-      orderBy: speakingPrompts.id,
-    }),
+    // Metadata only — promptEn/Zh, modelAnswer, and checklist stay in the DB.
+    db
+      .select({
+        id: speakingPrompts.id,
+        track: speakingPrompts.track,
+        title: speakingPrompts.title,
+        titleZh: speakingPrompts.titleZh,
+        partType: speakingPrompts.partType,
+        prepSeconds: speakingPrompts.prepSeconds,
+        speakSeconds: speakingPrompts.speakSeconds,
+      })
+      .from(speakingPrompts)
+      .where(track ? eq(speakingPrompts.track, track) : undefined)
+      .orderBy(speakingPrompts.id),
     db
       .select({ promptId: speakingSubmissions.promptId, count: count() })
       .from(speakingSubmissions)

@@ -10,7 +10,7 @@ import { getLearnerProfile } from "./profile";
 import { listListeningExercises } from "./listening";
 import { listReadingExercises } from "./reading";
 import { listSpeakingPrompts } from "./speaking";
-import { getVocabOverview } from "./vocab";
+import { getVocabCounts } from "./vocab";
 import { listWritingPrompts } from "./writing";
 
 export interface DailyPlan {
@@ -56,7 +56,7 @@ export async function getDailyPlan(
     // cross-pack reviews sit hidden. Content suggestions below stay
     // goal-filtered; null also matches the dashboard's calls, so the
     // cache() dedupe on countActiveMistakes actually hits.
-    getVocabOverview(userId, null),
+    getVocabCounts(userId),
     countActiveMistakes(userId, null),
     getContinueReading(userId),
     listReadingExercises(userId, track),

@@ -50,7 +50,7 @@ export default async function ListeningListPage({
               right={
                 <div className="text-right">
                   <p className="font-mono text-2xs text-muted-foreground">
-                    {ex.questions.length} {t.common.questions}
+                    {ex.questionCount} {t.common.questions}
                   </p>
                   {best ? (
                     <p className="mt-1 flex items-center justify-end gap-1 font-mono text-xs font-medium text-foreground tabular-nums">

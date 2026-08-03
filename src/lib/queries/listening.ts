@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { composeAudioUrl } from "../audio-url";
 import { db } from "../db";
@@ -7,10 +7,19 @@ import { exerciseAttempts, listeningExercises } from "../db/schema";
 /** Listening exercises (one track, or all when null) plus the user's best score per exercise. */
 export async function listListeningExercises(userId: string, track: Track | null) {
   const [exercises, attempts] = await Promise.all([
-    db.query.listeningExercises.findMany({
-      where: track ? eq(listeningExercises.track, track) : undefined,
-      orderBy: listeningExercises.id,
-    }),
+    // Metadata only — scripts and answer-bearing questions stay in the DB.
+    db
+      .select({
+        id: listeningExercises.id,
+        track: listeningExercises.track,
+        title: listeningExercises.title,
+        titleZh: listeningExercises.titleZh,
+        style: listeningExercises.style,
+        questionCount: sql<number>`jsonb_array_length(${listeningExercises.questions})`,
+      })
+      .from(listeningExercises)
+      .where(track ? eq(listeningExercises.track, track) : undefined)
+      .orderBy(listeningExercises.id),
     // The single best attempt per exercise, returning that row's own score AND
     // total together. Aggregating them independently could pair a high score
     // with a higher total from a later, longer version of the same exercise.
