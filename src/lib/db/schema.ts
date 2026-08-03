@@ -348,6 +348,9 @@ export const bookChapters = pgTable(
     sections: jsonb("sections").$type<BookSection[]>().notNull(),
     /** End-of-chapter quiz including answers — never sent raw to the client. */
     quiz: jsonb("quiz").$type<McqQuestion[]>().notNull(),
+    /** Denormalized quiz.length, seed-written: list reads and the dashboard's
+     * continue-reading lookup need the count without detoasting the jsonb. */
+    quizCount: integer("quiz_count").notNull().default(0),
     wordCount: integer("word_count").notNull(),
   },
   (t) => [
