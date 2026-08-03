@@ -1,0 +1,2 @@
+ALTER TABLE "book_chapters" ALTER COLUMN "quiz_count" DROP DEFAULT;--> statement-breakpoint
+ALTER TABLE "book_chapters" ADD CONSTRAINT "book_chapters_quiz_count_check" CHECK ("book_chapters"."quiz_count" = jsonb_array_length("book_chapters"."quiz"));

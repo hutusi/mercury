@@ -348,9 +348,11 @@ export const bookChapters = pgTable(
     sections: jsonb("sections").$type<BookSection[]>().notNull(),
     /** End-of-chapter quiz including answers — never sent raw to the client. */
     quiz: jsonb("quiz").$type<McqQuestion[]>().notNull(),
-    /** Denormalized quiz.length, seed-written: list reads and the dashboard's
-     * continue-reading lookup need the count without detoasting the jsonb. */
-    quizCount: integer("quiz_count").notNull().default(0),
+    /** Denormalized quiz.length: list reads and the dashboard's
+     * continue-reading lookup need the count without detoasting the jsonb.
+     * Every writer must set it — no default, and the check below makes the
+     * database reject drift outright. */
+    quizCount: integer("quiz_count").notNull(),
     wordCount: integer("word_count").notNull(),
   },
   (t) => [
@@ -360,6 +362,7 @@ export const bookChapters = pgTable(
     uniqueIndex("book_chapters_book_id_id_idx").on(t.bookId, t.id),
     check("book_chapters_order_check", sql`${t.sortOrder} >= 1`),
     check("book_chapters_word_count_check", sql`${t.wordCount} > 0`),
+    check("book_chapters_quiz_count_check", sql`${t.quizCount} = jsonb_array_length(${t.quiz})`),
   ],
 );
 

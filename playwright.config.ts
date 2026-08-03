@@ -32,8 +32,8 @@ export default defineConfig({
   testDir: "./e2e",
   // Serial keeps the shared scratch databases deterministic; the suite is small.
   workers: 1,
-  // Deliberately no local retries: the known books library→detail flake
-  // (dev machines only, suspected pool contention — see the audit ledger)
+  // Deliberately no local retries: the known load-flake (navigations
+  // stalling under full-suite load, dev machines only — see issue #42)
   // must stay visible, not exit green.
   retries: process.env.CI ? 2 : 0,
   // Prod server + Postgres + browser share one machine: a single server
