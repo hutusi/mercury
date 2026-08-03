@@ -7,7 +7,7 @@ import { Pool } from "pg";
 import { resolveVocabAudioUrl } from "../src/content/audio-hash";
 import { allVocab, audioManifest } from "../src/content/load";
 import * as dbSchema from "../src/lib/db/schema";
-import { srsCards, user } from "../src/lib/db/schema";
+import { srsCards, user, vocabQuizSessions } from "../src/lib/db/schema";
 import { e2eDatabaseUrl } from "./db-url";
 import { registerAndOnboard, t } from "./helpers";
 
@@ -131,4 +131,32 @@ test("ADR 0029: due reviews cross packs; new words spill over past the goal pack
   await page.goto("/vocabulary/study");
   await expect(page.getByText(spillWord.headword, { exact: true })).toBeVisible();
   await expect(page.getByText(t.vocab.fresh, { exact: true })).toBeVisible();
+});
+
+test("quiz recovery: an expired session offers restart and the fresh quiz is usable", async ({
+  page,
+}) => {
+  // Regression for the QuizRunner remount: router.refresh() resolves a NEW
+  // session, and without key={sessionId} the runner's stale `expired` state
+  // kept the restart screen frozen forever.
+  const { email } = await registerAndOnboard(page, "toeic");
+  await page.goto("/vocabulary/quiz");
+  await expect(page.locator("#main-content").getByText("1 / 10")).toBeVisible();
+
+  // Expire the session behind the page's back, then answer — the typed
+  // expiry lands and the restart screen replaces the quiz.
+  const [account] = await testDb.select({ id: user.id }).from(user).where(eq(user.email, email));
+  // Backdate createdAt too — the expiry check constraint requires
+  // expires_at > created_at.
+  await testDb
+    .update(vocabQuizSessions)
+    .set({ createdAt: new Date(Date.now() - 60_000), expiresAt: new Date(Date.now() - 1000) })
+    .where(eq(vocabQuizSessions.userId, account.id));
+  await page.locator("#main-content button").first().click();
+  await expect(page.getByText(t.vocab.quizExpired)).toBeVisible();
+
+  // Restart mints a fresh session and a fully usable quiz.
+  await page.getByRole("button", { name: t.vocab.quizRestart }).click();
+  await expect(page.locator("#main-content").getByText("1 / 10")).toBeVisible();
+  await expect(page.locator("#main-content button").first()).toBeEnabled();
 });

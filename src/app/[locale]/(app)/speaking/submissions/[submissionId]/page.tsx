@@ -49,9 +49,15 @@ export default async function SpeakingSubmissionPage({
       {submission.status === "ai_scored" && submission.feedback ? (
         <SpeakingFeedbackPanel feedback={submission.feedback} />
       ) : (
+        // A quota degrade keeps its explanatory notice, but the reason is
+        // historical (the quota resets each learner-local day), so the retry
+        // control is always available: too early yields the typed quota
+        // message, and a successful retry clears degrade_reason.
         <SelfAssessPanel
           modelAnswer={prompt.modelAnswer}
           checklist={prompt.checklist}
+          title={submission.degradeReason === "quota" ? t.speaking.aiQuotaTitle : undefined}
+          hint={submission.degradeReason === "quota" ? t.speaking.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
           retry={isAiEnabled() ? <RetrySpeakingFeedback submissionId={submission.id} /> : undefined}
         />

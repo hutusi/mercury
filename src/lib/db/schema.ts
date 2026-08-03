@@ -549,6 +549,10 @@ export const writingSubmissions = pgTable(
     wordCount: integer("word_count").notNull(),
     status: text("status").$type<SubmissionStatus>().notNull(),
     feedback: jsonb("feedback").$type<WritingFeedback | null>(),
+    // Why self_assessed was forced (null = AI failure/keyless). Persisted so
+    // idempotent replays and later page visits reproduce the quota notice;
+    // cleared when a retry lands ai_scored.
+    degradeReason: text("degrade_reason").$type<"quota">(),
     model: text("model"),
     createdAt: ts("created_at").notNull().$defaultFn(now),
   },
@@ -560,6 +564,10 @@ export const writingSubmissions = pgTable(
       sql`${t.status} in ('ai_scored', 'self_assessed', 'failed')`,
     ),
     check("writing_submissions_word_count_check", sql`${t.wordCount} >= 0`),
+    check(
+      "writing_submissions_degrade_reason_check",
+      sql`${t.degradeReason} is null or ${t.degradeReason} in ('quota')`,
+    ),
     check(
       "writing_submissions_feedback_check",
       sql`${t.status} <> 'ai_scored' or (${t.feedback} is not null and ${t.model} is not null)`,
@@ -581,6 +589,8 @@ export const speakingSubmissions = pgTable(
     durationSeconds: integer("duration_seconds").notNull(),
     status: text("status").$type<SubmissionStatus>().notNull(),
     feedback: jsonb("feedback").$type<SpeakingFeedback | null>(),
+    // See writing_submissions.degrade_reason.
+    degradeReason: text("degrade_reason").$type<"quota">(),
     model: text("model"),
     createdAt: ts("created_at").notNull().$defaultFn(now),
   },
@@ -592,6 +602,10 @@ export const speakingSubmissions = pgTable(
       sql`${t.status} in ('ai_scored', 'self_assessed', 'failed')`,
     ),
     check("speaking_submissions_duration_check", sql`${t.durationSeconds} between 0 and 600`),
+    check(
+      "speaking_submissions_degrade_reason_check",
+      sql`${t.degradeReason} is null or ${t.degradeReason} in ('quota')`,
+    ),
     check(
       "speaking_submissions_feedback_check",
       sql`${t.status} <> 'ai_scored' or (${t.feedback} is not null and ${t.model} is not null)`,

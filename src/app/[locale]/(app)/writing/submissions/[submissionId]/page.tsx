@@ -40,7 +40,7 @@ export default async function WritingSubmissionPage({
 
       <section className="border-y border-border py-6">
         <SectionLabel as="h2" className="mb-3">
-          {t.writing.yourText} · {submission.wordCount} words
+          {t.writing.yourText} · {submission.wordCount} {t.common.words}
         </SectionLabel>
         <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/90">
           {submission.text}
@@ -50,9 +50,15 @@ export default async function WritingSubmissionPage({
       {submission.status === "ai_scored" && submission.feedback ? (
         <AiFeedbackPanel feedback={submission.feedback} />
       ) : (
+        // A quota degrade keeps its explanatory notice, but the reason is
+        // historical (the quota resets each learner-local day), so the retry
+        // control is always available: too early yields the typed quota
+        // message, and a successful retry clears degrade_reason.
         <SelfAssessPanel
           modelAnswer={prompt.modelAnswer}
           checklist={prompt.checklist}
+          title={submission.degradeReason === "quota" ? t.writing.aiQuotaTitle : undefined}
+          hint={submission.degradeReason === "quota" ? t.writing.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
           retry={isAiEnabled() ? <RetryWritingFeedback submissionId={submission.id} /> : undefined}
         />

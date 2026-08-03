@@ -454,7 +454,9 @@ paths:
       tags: [vocab]
       responses:
         "201":
-          description: Created; questions contain opaque ids and no answer-key signal.
+          description: Created — or the user's in-flight session resumed (answeredIds
+            non-empty), so a repeated start never discards answers. Questions
+            contain opaque ids and no answer-key signal.
           content:
             application/json:
               schema:
@@ -468,6 +470,10 @@ paths:
                   questions:
                     type: array
                     items: { $ref: "#/components/schemas/QuizQuestion" }
+                  answeredIds:
+                    type: array
+                    items: { type: string }
+                    description: Question ids answered so far (empty for a fresh session).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/vocab/quiz/{sessionId}/answers:
@@ -983,7 +989,8 @@ paths:
                 text: { type: string, minLength: 20, maxLength: 30000 }
       responses:
         "200":
-          description: Result (feedback null when degraded).
+          description: Result (feedback null when degraded). Quota exhaustion never fails
+            a submit — it degrades to self_assessed with degradeReason quota.
           content:
             application/json:
               schema:
@@ -992,15 +999,14 @@ paths:
                   submissionId: { type: string }
                   status: { $ref: "#/components/schemas/SubmissionStatus" }
                   feedback: {}
+                  degradeReason:
+                    type: string
+                    enum: [quota]
+                    description: Present when the daily grading cap forced self_assessed.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
         "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
-        "429":
-          description: Shared daily writing/speaking provider-call cap reached (code ai_grading_limit_reached).
-          content:
-            application/json:
-              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
   /api/v1/writing/submissions/{submissionId}:
     get:
       summary: Submission detail; selfAssess material only when not AI-scored
@@ -1008,7 +1014,7 @@ paths:
       parameters: [{ $ref: "#/components/parameters/submissionId" }]
       responses:
         "200":
-          description: Detail with feedback or selfAssess payload.
+          description: Detail with feedback or selfAssess payload (degradeReason quota when the cap forced self_assessed).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
   /api/v1/writing/submissions/{submissionId}/retry-feedback:
@@ -1081,7 +1087,8 @@ paths:
                 durationSeconds: { type: integer, minimum: 0, maximum: 600 }
       responses:
         "200":
-          description: Result (feedback null when degraded).
+          description: Result (feedback null when degraded). Quota exhaustion never fails
+            a submit — it degrades to self_assessed with degradeReason quota.
           content:
             application/json:
               schema:
@@ -1090,15 +1097,14 @@ paths:
                   submissionId: { type: string }
                   status: { $ref: "#/components/schemas/SubmissionStatus" }
                   feedback: {}
+                  degradeReason:
+                    type: string
+                    enum: [quota]
+                    description: Present when the daily grading cap forced self_assessed.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
         "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
-        "429":
-          description: Shared daily writing/speaking provider-call cap reached (code ai_grading_limit_reached).
-          content:
-            application/json:
-              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
   /api/v1/speaking/submissions/{submissionId}:
     get:
       summary: Submission detail; selfAssess material only when not AI-scored
@@ -1106,7 +1112,7 @@ paths:
       parameters: [{ $ref: "#/components/parameters/submissionId" }]
       responses:
         "200":
-          description: Detail with feedback or selfAssess payload.
+          description: Detail with feedback or selfAssess payload (degradeReason quota when the cap forced self_assessed).
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
   /api/v1/speaking/submissions/{submissionId}/retry-feedback:

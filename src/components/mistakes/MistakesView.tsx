@@ -20,10 +20,12 @@ export function MistakesView({
   active,
   cleared,
   counts,
+  timeZone,
 }: {
   active: MistakeVM[];
   cleared: MistakeVM[];
   counts: { active: number; cleared: number };
+  timeZone: string;
 }) {
   const t = useT();
   const [showCleared, setShowCleared] = useState(false);
@@ -81,10 +83,16 @@ export function MistakesView({
                   <VocabMistakeItem
                     key={vmKey(m)}
                     mistake={m}
+                    timeZone={timeZone}
                     onCleared={() => markCleared(vmKey(m))}
                   />
                 ) : (
-                  <MistakeItem key={vmKey(m)} mistake={m} onCleared={() => markCleared(vmKey(m))} />
+                  <MistakeItem
+                    key={vmKey(m)}
+                    mistake={m}
+                    timeZone={timeZone}
+                    onCleared={() => markCleared(vmKey(m))}
+                  />
                 ),
               )}
             </ul>

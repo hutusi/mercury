@@ -191,7 +191,9 @@ ai_unavailable` when grading is still impossible. Every submit and retry body re
 `requestId`: replaying the same request/input returns its original result; reusing it for different
 input returns `409 grading_request_conflict`, and a live duplicate returns `409
 grading_in_progress`. Writing and speaking share one pool of paid provider calls per learner-local
-day (`429 ai_grading_limit_reached`); the pool is membership-tier-dependent
+day; **exhausting it never fails a submit** — the submission degrades to `self_assessed` with
+`degradeReason: "quota"` (the learner's work is always persisted), and only `…/retry-feedback`
+rejects with `429 ai_grading_limit_reached`. The pool is membership-tier-dependent
 ([ADR 0025](adr/0025-membership-roles-and-tiers.md)): `MERCURY_AI_GRADING_DAILY_LIMIT` (default 10)
 for free, `MERCURY_AI_GRADING_DAILY_LIMIT_PREMIUM` (default 30) for premium. Keyless
 self-assessment does not consume that budget. Speaking clients run speech-to-text **on-device** (SFSpeechRecognizer /

@@ -22,6 +22,7 @@ export const GET = apiHandler(async (req, ctx: { params: Promise<{ submissionId:
     durationSeconds: submission.durationSeconds,
     status: submission.status,
     feedback: submission.feedback,
+    degradeReason: submission.degradeReason,
     selfAssess: aiScored ? null : { modelAnswer: prompt.modelAnswer, checklist: prompt.checklist },
     canRetryAi: !aiScored && isAiEnabled(),
   });

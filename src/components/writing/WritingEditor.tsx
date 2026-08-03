@@ -32,6 +32,8 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
           text,
         });
         submissionRequestRef.current = null;
+        // The submission row stores its degrade reason — the page renders the
+        // quota notice from the row, no query-param relay needed.
         router.push(localePath(locale, `/writing/submissions/${submissionId}`));
       } catch {
         setError(t.auth.genericError);

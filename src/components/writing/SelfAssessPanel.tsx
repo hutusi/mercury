@@ -8,12 +8,17 @@ export async function SelfAssessPanel({
   checklist,
   canRetry = false,
   retry,
+  title,
+  hint,
 }: {
   modelAnswer: string;
   checklist: Bilingual[];
   /** True when a key is configured, so the earlier failure was transient. */
   canRetry?: boolean;
   retry?: React.ReactNode;
+  /** Override the notice (e.g. quota exhaustion instead of AI failure). */
+  title?: string;
+  hint?: string;
 }) {
   const t = await getDict();
 
@@ -21,10 +26,10 @@ export async function SelfAssessPanel({
     <div className="space-y-6">
       <Callout variant="accent" className="p-4 text-sm">
         <p className="font-medium">
-          {canRetry ? t.writing.aiUnavailableTitle : t.writing.selfAssessTitle}
+          {title ?? (canRetry ? t.writing.aiUnavailableTitle : t.writing.selfAssessTitle)}
         </p>
         <p className="mt-1 text-muted-foreground">
-          {canRetry ? t.writing.aiUnavailableHint : t.writing.selfAssessHint}
+          {hint ?? (canRetry ? t.writing.aiUnavailableHint : t.writing.selfAssessHint)}
         </p>
         {retry ? <div className="mt-3">{retry}</div> : null}
       </Callout>

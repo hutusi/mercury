@@ -1,0 +1,2 @@
+ALTER TABLE "speaking_submissions" ADD CONSTRAINT "speaking_submissions_degrade_reason_check" CHECK ("speaking_submissions"."degrade_reason" is null or "speaking_submissions"."degrade_reason" in ('quota'));--> statement-breakpoint
+ALTER TABLE "writing_submissions" ADD CONSTRAINT "writing_submissions_degrade_reason_check" CHECK ("writing_submissions"."degrade_reason" is null or "writing_submissions"."degrade_reason" in ('quota'));

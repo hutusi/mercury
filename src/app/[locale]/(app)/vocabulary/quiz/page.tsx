@@ -39,7 +39,15 @@ export default async function QuizPage({
         </Link>
         <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
       </div>
-      <QuizRunner sessionId={session.sessionId} questions={session.questions} />
+      {/* Keyed by session: router.refresh() resolves a NEW session, and
+          without a remount the runner's client state (expired, picked) would
+          survive and keep the old screen frozen. */}
+      <QuizRunner
+        key={session.sessionId}
+        sessionId={session.sessionId}
+        questions={session.questions}
+        initialAnsweredIds={session.answeredIds}
+      />
     </div>
   );
 }

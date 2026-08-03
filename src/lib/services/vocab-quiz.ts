@@ -1,4 +1,4 @@
-import { and, eq, gt, inArray, isNull, or, sql } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, isNull, lte, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import { TrackSchema, type Track } from "../../content/types";
 import { db } from "../db";
@@ -30,6 +30,8 @@ export interface QuizSessionResource {
   track: Track;
   expiresAt: Date | null;
   questions: QuizQuestion[];
+  /** Question ids already answered — lets a reloaded page resume mid-quiz. */
+  answeredIds: string[];
 }
 
 export interface QuizAnswerResult {
@@ -46,18 +48,24 @@ function resource(session: typeof vocabQuizSessions.$inferSelect): QuizSessionRe
     track: session.track,
     expiresAt: session.expiresAt,
     questions: session.questions.map(sanitizeQuizQuestion),
+    answeredIds: Object.keys(session.answers),
   };
 }
 
-async function insertSession(input: {
-  userId: string;
-  track: Track;
-  purpose: "practice" | "mistake_retest";
-  sourceWordId?: string;
-  sourceMistakeAt?: Date;
-  questions: StoredQuizQuestion[];
-}): Promise<QuizSessionResource> {
-  const [session] = await db
+type DbOrTx = typeof db | Parameters<Parameters<typeof db.transaction>[0]>[0];
+
+async function insertSession(
+  dbOrTx: DbOrTx,
+  input: {
+    userId: string;
+    track: Track;
+    purpose: "practice" | "mistake_retest";
+    sourceWordId?: string;
+    sourceMistakeAt?: Date;
+    questions: StoredQuizQuestion[];
+  },
+): Promise<QuizSessionResource> {
+  const [session] = await dbOrTx
     .insert(vocabQuizSessions)
     .values({
       ...input,
@@ -69,25 +77,63 @@ async function insertSession(input: {
   return resource(session);
 }
 
-/** Create a random practice quiz whose answer key remains server-owned. */
+/**
+ * Create a random practice quiz whose answer key remains server-owned — or
+ * resume the user's in-flight one. The quiz page calls this on GET, so a
+ * reload must return the same session instead of silently discarding the
+ * learner's answers and leaking a row per visit. The whole resume-or-create
+ * runs under a per-(user, track) advisory lock: concurrent starts would
+ * otherwise both miss the resume check and both insert, and duplicate active
+ * sessions make reload-resume nondeterministic. The lock releases at commit.
+ */
 export async function createQuizSessionForUser(
   userId: string,
   trackInput: unknown,
 ): Promise<QuizSessionResource> {
   const track = TrackSchema.parse(trackInput);
-  const words = await db.query.vocabWords.findMany({
-    where: eq(vocabWords.track, track),
-    orderBy: sql`random()`,
-    limit: QUIZ_SIZE + 15,
-  });
-  if (words.length < 2) return { sessionId: null, track, expiresAt: null, questions: [] };
 
-  const questions = words
-    .slice(0, QUIZ_SIZE)
-    .map((word, index) => buildQuizQuestion(word, words, index % 2 === 0 ? "en2zh" : "zh2en"))
-    .filter((question) => question.options.length >= 2);
-  if (!questions.length) return { sessionId: null, track, expiresAt: null, questions: [] };
-  return insertSession({ userId, track, purpose: "practice", questions });
+  return db.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${`quiz:${userId}:${track}`}))`);
+
+    const [existing] = await tx
+      .select()
+      .from(vocabQuizSessions)
+      .where(
+        and(
+          eq(vocabQuizSessions.userId, userId),
+          eq(vocabQuizSessions.track, track),
+          eq(vocabQuizSessions.purpose, "practice"),
+          isNull(vocabQuizSessions.consumedAt),
+          gt(vocabQuizSessions.expiresAt, new Date()),
+        ),
+      )
+      .orderBy(desc(vocabQuizSessions.createdAt))
+      .limit(1);
+    if (existing) return resource(existing);
+
+    // Opportunistic hygiene: nothing sweeps expired sessions otherwise.
+    await tx
+      .delete(vocabQuizSessions)
+      .where(
+        and(eq(vocabQuizSessions.userId, userId), lte(vocabQuizSessions.expiresAt, new Date())),
+      );
+
+    const words = await tx.query.vocabWords.findMany({
+      where: eq(vocabWords.track, track),
+      orderBy: sql`random()`,
+      limit: QUIZ_SIZE + 15,
+    });
+    if (words.length < 2)
+      return { sessionId: null, track, expiresAt: null, questions: [], answeredIds: [] };
+
+    const questions = words
+      .slice(0, QUIZ_SIZE)
+      .map((word, index) => buildQuizQuestion(word, words, index % 2 === 0 ? "en2zh" : "zh2en"))
+      .filter((question) => question.options.length >= 2);
+    if (!questions.length)
+      return { sessionId: null, track, expiresAt: null, questions: [], answeredIds: [] };
+    return insertSession(tx, { userId, track, purpose: "practice", questions });
+  });
 }
 
 async function activeVocabMistakeGeneration(userId: string, track: Track, wordId: string) {
@@ -125,13 +171,13 @@ export async function createVocabMistakeSessionForUser(
     limit: 40,
   });
   if (pool.length < 2) {
-    return { sessionId: null, track: word.track, expiresAt: null, questions: [] };
+    return { sessionId: null, track: word.track, expiresAt: null, questions: [], answeredIds: [] };
   }
   const question = buildQuizQuestion(word, pool, "en2zh");
   if (question.options.length < 2) {
-    return { sessionId: null, track: word.track, expiresAt: null, questions: [] };
+    return { sessionId: null, track: word.track, expiresAt: null, questions: [], answeredIds: [] };
   }
-  return insertSession({
+  return insertSession(db, {
     userId,
     track: word.track,
     purpose: "mistake_retest",

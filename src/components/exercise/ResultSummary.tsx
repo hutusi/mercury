@@ -98,7 +98,7 @@ export function ResultSummary({
                 <p className="mt-2 text-xs font-medium text-cinnabar">{t.exams.notAnswered}</p>
               )}
               <div className="mt-3 bg-muted p-3 text-sm text-foreground/80">
-                <span className="font-semibold text-foreground">{t.reading.explanation}：</span>
+                <span className="font-semibold text-foreground">{t.reading.explanationLabel}</span>
                 {result.explanationZh}
               </div>
             </li>

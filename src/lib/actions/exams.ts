@@ -35,7 +35,10 @@ export async function submitExamSection(input: {
   attemptId: string;
   sectionId: string;
   answers: AnswerMap;
-}): Promise<SubmitSectionResult> {
+}): Promise<SubmitSectionResult & { serverTime: number }> {
   const user = await requireUser();
-  return submitExamSectionForUser(user.id, input);
+  const result = await submitExamSectionForUser(user.id, input);
+  // Lets the runner re-anchor its clock-skew estimate on every section hop
+  // (mirrors serverTime on the v1 exam routes).
+  return { ...result, serverTime: Date.now() };
 }

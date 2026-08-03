@@ -14,7 +14,7 @@ import { writingPrompts, writingSubmissions } from "../db/schema";
 import { formatLearnerContext, normalizeAiScore } from "../learner-model-core";
 import { getLearnerProfile } from "../queries/profile";
 import { recordActivityWith } from "../streak";
-import { NotFoundError } from "./errors";
+import { LimitExceededError, NotFoundError } from "./errors";
 import { recordLearnerOutcomeSafely } from "./profile";
 
 /**
@@ -89,6 +89,10 @@ export interface WritingResult {
   submissionId: string;
   status: "ai_scored" | "self_assessed";
   feedback: WritingFeedback | null;
+  /** Set when self_assessed was forced by the daily grading quota, so the UI
+   * can say "limit reached" instead of "AI unavailable". Persisted on the
+   * submission row, so idempotent replays reproduce it. */
+  degradeReason?: "quota";
 }
 
 async function getPersistedWritingResult(
@@ -105,6 +109,8 @@ async function getPersistedWritingResult(
     submissionId: submission.id,
     status: submission.status,
     feedback: submission.feedback,
+    // Replays must reproduce the original result — including why it degraded.
+    ...(submission.degradeReason ? { degradeReason: submission.degradeReason } : {}),
   };
 }
 
@@ -120,14 +126,26 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
   const wordCount = countWords(text);
   const inputHash = gradingInputHash({ promptId, text });
   const aiEnabled = isAiEnabled();
-  const claim = await claimGradingRequest({
+  // Quota exhaustion must never destroy the learner's work: fall back to an
+  // uncharged claim (the keyless path) and degrade to self-assessment, the
+  // same courtesy the AI-failure path gets. Only the retry endpoint keeps
+  // rejecting with 429 — nothing is lost there.
+  const claimInput = {
     userId,
     requestId,
-    kind: "writing",
+    kind: "writing" as const,
     scope: `writing:submit:${inputHash}`,
     inputHash,
-    charge: aiEnabled,
-  });
+  };
+  let quotaExhausted = false;
+  let claim;
+  try {
+    claim = await claimGradingRequest({ ...claimInput, charge: aiEnabled });
+  } catch (err) {
+    if (!(err instanceof LimitExceededError)) throw err;
+    quotaExhausted = true;
+    claim = await claimGradingRequest({ ...claimInput, charge: false });
+  }
   if (claim.disposition === "completed") {
     return getPersistedWritingResult(userId, claim.submissionId);
   }
@@ -135,7 +153,7 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
 
   let feedback: WritingFeedback | null = null;
   let status: "ai_scored" | "self_assessed" = "self_assessed";
-  if (aiEnabled) {
+  if (aiEnabled && !quotaExhausted) {
     try {
       feedback = await getWritingFeedback({
         taskType: prompt.taskType,
@@ -162,6 +180,7 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
         wordCount,
         status,
         feedback,
+        degradeReason: quotaExhausted ? "quota" : null,
         model: status === "ai_scored" ? activeAiModel() : null,
       })
       .returning({ id: writingSubmissions.id });
@@ -178,7 +197,12 @@ export async function submitWritingForUser(userId: string, input: unknown): Prom
   if (status === "ai_scored" && feedback) {
     await recordWritingOutcome(userId, prompt.taskType, feedback);
   }
-  return { submissionId: submission.id, status, feedback };
+  return {
+    submissionId: submission.id,
+    status,
+    feedback,
+    ...(quotaExhausted ? { degradeReason: "quota" as const } : {}),
+  };
 }
 
 /**
@@ -246,7 +270,7 @@ export async function retryWritingFeedbackForUser(
   const updated = await db.transaction(async (tx) => {
     const [row] = await tx
       .update(writingSubmissions)
-      .set({ status: "ai_scored", feedback, model: activeAiModel() })
+      .set({ status: "ai_scored", feedback, degradeReason: null, model: activeAiModel() })
       .where(
         and(
           eq(writingSubmissions.id, submission.id),

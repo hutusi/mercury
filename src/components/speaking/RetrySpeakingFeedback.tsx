@@ -11,7 +11,7 @@ import { useT } from "@/lib/i18n/LocaleProvider";
 export function RetrySpeakingFeedback({ submissionId }: { submissionId: string }) {
   const t = useT();
   const router = useRouter();
-  const [failed, setFailed] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   return (
@@ -21,13 +21,17 @@ export function RetrySpeakingFeedback({ submissionId }: { submissionId: string }
         size="sm"
         disabled={pending}
         onClick={() => {
-          setFailed(false);
+          setError(null);
           startTransition(async () => {
             try {
-              await retrySpeakingFeedback(submissionId, crypto.randomUUID());
+              const result = await retrySpeakingFeedback(submissionId, crypto.randomUUID());
+              if ("limited" in result) {
+                setError(t.speaking.aiQuotaRetry);
+                return;
+              }
               router.refresh();
             } catch {
-              setFailed(true);
+              setError(t.speaking.aiFailed);
             }
           });
         }}
@@ -35,7 +39,7 @@ export function RetrySpeakingFeedback({ submissionId }: { submissionId: string }
         <RotateCcw className="size-4" aria-hidden />
         {pending ? t.speaking.submitting : t.speaking.retryFeedback}
       </Button>
-      {failed && <p className="mt-2 text-destructive">{t.speaking.aiFailed}</p>}
+      {error && <p className="mt-2 text-destructive">{error}</p>}
     </div>
   );
 }

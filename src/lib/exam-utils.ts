@@ -130,3 +130,14 @@ export function sanitizeSections(sections: SeededExamSection[]): SanitizedExamSe
     })),
   }));
 }
+
+/**
+ * Remaining section time against a server-issued deadline, corrected for
+ * client clock skew. `skewMs` is `serverNow - clientNow` captured when a
+ * server timestamp last crossed the wire — without it, a slow client clock
+ * shows time remaining while the server is already rejecting answers, and a
+ * fast one steals exam time.
+ */
+export function examRemainingMs(expiresAt: number, skewMs: number, clientNow: number): number {
+  return expiresAt - (clientNow + skewMs);
+}

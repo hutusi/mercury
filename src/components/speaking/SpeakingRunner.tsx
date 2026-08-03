@@ -41,7 +41,7 @@ export function SpeakingRunner({
   const [result, setResult] = useState<SpeakingResult | null>(null);
   const [spokenSeconds, setSpokenSeconds] = useState(0);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [retryFailed, setRetryFailed] = useState(false);
+  const [retryError, setRetryError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const [retrying, startRetry] = useTransition();
 
@@ -151,12 +151,17 @@ export function SpeakingRunner({
 
   function retryFeedback() {
     if (!result) return;
-    setRetryFailed(false);
+    setRetryError(null);
     startRetry(async () => {
       try {
-        setResult(await retrySpeakingFeedback(result.submissionId, crypto.randomUUID()));
+        const r = await retrySpeakingFeedback(result.submissionId, crypto.randomUUID());
+        if ("limited" in r) {
+          setRetryError(t.speaking.aiQuotaRetry);
+          return;
+        }
+        setResult(r);
       } catch {
-        setRetryFailed(true);
+        setRetryError(t.speaking.aiFailed);
       }
     });
   }
@@ -188,6 +193,16 @@ export function SpeakingRunner({
         </section>
         {result.status === "ai_scored" && result.feedback ? (
           <SpeakingFeedbackPanel feedback={result.feedback} />
+        ) : result.degradeReason === "quota" ? (
+          // The daily grading quota forced self-assessment — retrying today
+          // would just be refused, so the notice says "tomorrow".
+          <SelfAssessBlock
+            modelAnswer={modelAnswer}
+            checklist={checklist}
+            showHint
+            title={t.speaking.aiQuotaTitle}
+            hint={t.speaking.aiQuotaHint}
+          />
         ) : (
           <SelfAssessBlock
             modelAnswer={modelAnswer}
@@ -201,9 +216,7 @@ export function SpeakingRunner({
                     <RotateCcw className="size-4" aria-hidden />
                     {retrying ? t.speaking.submitting : t.speaking.retryFeedback}
                   </Button>
-                  {retryFailed && (
-                    <p className="mt-2 text-sm text-destructive">{t.speaking.aiFailed}</p>
-                  )}
+                  {retryError && <p className="mt-2 text-sm text-destructive">{retryError}</p>}
                 </div>
               ) : undefined
             }
@@ -324,12 +337,17 @@ function SelfAssessBlock({
   showHint,
   canRetry = false,
   retry,
+  title,
+  hint,
 }: {
   modelAnswer: string;
   checklist: Bilingual[];
   showHint?: boolean;
   canRetry?: boolean;
   retry?: React.ReactNode;
+  /** Override the notice (e.g. quota exhaustion instead of AI failure). */
+  title?: string;
+  hint?: string;
 }) {
   const t = useT();
   return (
@@ -337,10 +355,10 @@ function SelfAssessBlock({
       {showHint && (
         <Callout variant="accent" className="p-4 text-sm">
           <p className="font-medium">
-            {canRetry ? t.speaking.aiUnavailableTitle : t.speaking.selfAssessTitle}
+            {title ?? (canRetry ? t.speaking.aiUnavailableTitle : t.speaking.selfAssessTitle)}
           </p>
           <p className="mt-1 text-muted-foreground">
-            {canRetry ? t.speaking.aiUnavailableHint : t.speaking.selfAssessHint}
+            {hint ?? (canRetry ? t.speaking.aiUnavailableHint : t.speaking.selfAssessHint)}
           </p>
           {retry ? <div className="mt-3">{retry}</div> : null}
         </Callout>
