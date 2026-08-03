@@ -16,14 +16,27 @@ export async function listExamsWithAttempts(userId: string, track: ExamTrack | n
       // id slugs happen to sort mini before standard within a track.
       orderBy: asc(mockExams.id),
     }),
-    db.query.mockExamAttempts.findMany({
-      where: and(
-        eq(mockExamAttempts.userId, userId),
-        track ? eq(mockExamAttempts.track, track) : undefined,
-      ),
-      orderBy: desc(mockExamAttempts.startedAt),
-      limit: 20,
-    }),
+    // History metadata only. Each attempt row drags an immutable
+    // sectionsSnapshot (~40 KB for a standard exam) — 20 of them made this
+    // the heaviest read in the app for a table that shows five fields.
+    db
+      .select({
+        id: mockExamAttempts.id,
+        examId: mockExamAttempts.examId,
+        status: mockExamAttempts.status,
+        startedAt: mockExamAttempts.startedAt,
+        completedAt: mockExamAttempts.completedAt,
+        estimate: mockExamAttempts.estimate,
+      })
+      .from(mockExamAttempts)
+      .where(
+        and(
+          eq(mockExamAttempts.userId, userId),
+          track ? eq(mockExamAttempts.track, track) : undefined,
+        ),
+      )
+      .orderBy(desc(mockExamAttempts.startedAt))
+      .limit(20),
   ]);
 
   return { exams, attempts };
