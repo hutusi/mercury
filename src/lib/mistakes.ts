@@ -113,7 +113,11 @@ export async function getMistakesPageData(
 
   const [words, reading, listening, exams, chapters] = await Promise.all([
     wordIds.length
-      ? db.query.vocabWords.findMany({ where: inArray(vocabWords.id, wordIds) })
+      ? db.query.vocabWords.findMany({
+          // The VM shows only these two fields — skip definitions/examples.
+          columns: { id: true, headword: true, translationZh: true },
+          where: inArray(vocabWords.id, wordIds),
+        })
       : Promise.resolve([]),
     readingIds.length
       ? db.query.readingExercises.findMany({ where: inArray(readingExercises.id, readingIds) })

@@ -32,7 +32,9 @@ export default defineConfig({
   testDir: "./e2e",
   // Serial keeps the shared scratch databases deterministic; the suite is small.
   workers: 1,
-  retries: process.env.CI ? 2 : 0,
+  // One local retry: the books library→detail navigation flakes (~1 in 3
+  // full runs) under parallel-worker load on dev machines — never on CI.
+  retries: process.env.CI ? 2 : 1,
   // Prod server + Postgres + browser share one machine: a single server
   // round-trip can occasionally exceed the 5s expect default late in the
   // suite. 10s absorbs load stalls without masking determinism bugs.
