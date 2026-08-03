@@ -348,6 +348,11 @@ export const bookChapters = pgTable(
     sections: jsonb("sections").$type<BookSection[]>().notNull(),
     /** End-of-chapter quiz including answers — never sent raw to the client. */
     quiz: jsonb("quiz").$type<McqQuestion[]>().notNull(),
+    /** Denormalized quiz.length: list reads and the dashboard's
+     * continue-reading lookup need the count without detoasting the jsonb.
+     * Every writer must set it — no default, and the check below makes the
+     * database reject drift outright. */
+    quizCount: integer("quiz_count").notNull(),
     wordCount: integer("word_count").notNull(),
   },
   (t) => [
@@ -357,6 +362,7 @@ export const bookChapters = pgTable(
     uniqueIndex("book_chapters_book_id_id_idx").on(t.bookId, t.id),
     check("book_chapters_order_check", sql`${t.sortOrder} >= 1`),
     check("book_chapters_word_count_check", sql`${t.wordCount} > 0`),
+    check("book_chapters_quiz_count_check", sql`${t.quizCount} = jsonb_array_length(${t.quiz})`),
   ],
 );
 
@@ -385,6 +391,9 @@ export const srsCards = pgTable(
   (t) => [
     uniqueIndex("srs_cards_user_word_idx").on(t.userId, t.wordId),
     index("srs_cards_user_due_idx").on(t.userId, t.dueAt),
+    // vocab_words onDelete cascade path — without it every word deletion
+    // seq-scans this table (user_word_idx leads with user_id).
+    index("srs_cards_word_idx").on(t.wordId),
     check("srs_cards_ease_check", sql`${t.easeFactor} >= 1.3`),
     check("srs_cards_interval_check", sql`${t.intervalDays} >= 0`),
     check("srs_cards_counts_check", sql`${t.repetitions} >= 0 and ${t.lapses} >= 0`),
@@ -408,6 +417,8 @@ export const reviewLogs = pgTable(
   },
   (t) => [
     index("review_logs_user_idx").on(t.userId, t.reviewedAt),
+    // srs_cards onDelete cascade path (chains off vocab_words deletions).
+    index("review_logs_card_idx").on(t.cardId),
     check("review_logs_grade_check", sql`${t.grade} between 0 and 5`),
     check(
       "review_logs_intervals_check",
@@ -488,6 +499,8 @@ export const bookQuizAttempts = pgTable(
       foreignColumns: [bookChapters.bookId, bookChapters.id],
     }).onDelete("cascade"),
     index("book_quiz_attempts_user_book_idx").on(t.userId, t.bookId, t.chapterId),
+    // book_chapters composite-FK cascade path (chapter deletes/reseeds).
+    index("book_quiz_attempts_chapter_idx").on(t.bookId, t.chapterId),
     index("book_quiz_attempts_user_idx").on(t.userId, t.completedAt),
     uniqueIndex("book_quiz_attempts_request_idx")
       .on(t.userId, t.requestId)
@@ -525,6 +538,8 @@ export const vocabQuizSessions = pgTable(
   (t) => [
     index("vocab_quiz_sessions_user_created_idx").on(t.userId, t.createdAt),
     index("vocab_quiz_sessions_expires_idx").on(t.expiresAt),
+    // vocab_words onDelete cascade path for retest sessions.
+    index("vocab_quiz_sessions_source_word_idx").on(t.sourceWordId),
     check("vocab_quiz_sessions_track_check", sql`${t.track} in ('toeic', 'ielts', 'business')`),
     check("vocab_quiz_sessions_purpose_check", sql`${t.purpose} in ('practice', 'mistake_retest')`),
     check(
@@ -741,6 +756,11 @@ export const mistakeClears = pgTable(
   },
   (t) => [
     uniqueIndex("mistake_clears_user_question_idx").on(t.userId, t.kind, t.refId, t.questionId),
+    // The vocab_word_sweep_mistakes trigger deletes by (kind, question_id);
+    // without this partial index each word deletion seq-scans the table.
+    index("mistake_clears_vocab_word_idx")
+      .on(t.questionId)
+      .where(sql`${t.kind} = 'vocab_quiz'`),
     check(
       "mistake_clears_kind_check",
       sql`${t.kind} in ('reading', 'listening', 'vocab_quiz', 'exam', 'book_quiz')`,
@@ -773,6 +793,10 @@ export const mistakeStates = pgTable(
   (t) => [
     primaryKey({ columns: [t.userId, t.kind, t.refId, t.questionId] }),
     index("mistake_states_user_track_idx").on(t.userId, t.track, t.lastWrongAt),
+    // See mistake_clears_vocab_word_idx — same sweep path.
+    index("mistake_states_vocab_word_idx")
+      .on(t.questionId)
+      .where(sql`${t.kind} = 'vocab_quiz'`),
     check(
       "mistake_states_track_check",
       sql`${t.track} is null or ${t.track} in ('toeic', 'ielts', 'business')`,

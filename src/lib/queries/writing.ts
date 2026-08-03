@@ -6,10 +6,20 @@ import { writingPrompts, writingSubmissions } from "../db/schema";
 /** Writing prompts (one track, or all when null) plus the user's submission count per prompt. */
 export async function listWritingPrompts(userId: string, track: Track | null) {
   const [prompts, submissions] = await Promise.all([
-    db.query.writingPrompts.findMany({
-      where: track ? eq(writingPrompts.track, track) : undefined,
-      orderBy: writingPrompts.id,
-    }),
+    // Metadata only — promptEn/Zh, modelAnswer, and checklist stay in the DB.
+    db
+      .select({
+        id: writingPrompts.id,
+        track: writingPrompts.track,
+        title: writingPrompts.title,
+        titleZh: writingPrompts.titleZh,
+        taskType: writingPrompts.taskType,
+        minWords: writingPrompts.minWords,
+        suggestedMinutes: writingPrompts.suggestedMinutes,
+      })
+      .from(writingPrompts)
+      .where(track ? eq(writingPrompts.track, track) : undefined)
+      .orderBy(writingPrompts.id),
     db
       .select({ promptId: writingSubmissions.promptId, count: count() })
       .from(writingSubmissions)

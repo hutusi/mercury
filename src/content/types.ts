@@ -6,13 +6,12 @@ import { z } from "zod";
  * is English, scaffolding (translations, explanations) is Simplified Chinese.
  */
 
-export const TRACKS = ["toeic", "ielts", "business"] as const;
-export const TrackSchema = z.enum(TRACKS);
-export type Track = z.infer<typeof TrackSchema>;
+export { TRACKS, EXAM_TRACKS } from "./tracks";
+export type { Track, ExamTrack } from "./tracks";
+import { TRACKS, EXAM_TRACKS } from "./tracks";
 
-export const EXAM_TRACKS = ["toeic", "ielts"] as const;
+export const TrackSchema = z.enum(TRACKS);
 export const ExamTrackSchema = z.enum(EXAM_TRACKS);
-export type ExamTrack = z.infer<typeof ExamTrackSchema>;
 
 export const BilingualSchema = z.object({ en: z.string(), zh: z.string() });
 export type Bilingual = z.infer<typeof BilingualSchema>;

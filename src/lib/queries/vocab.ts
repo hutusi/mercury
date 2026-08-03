@@ -1,4 +1,4 @@
-import { and, asc, eq, lte, notExists, sql } from "drizzle-orm";
+import { and, asc, count, eq, lte, notExists, sql } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { composeAudioUrl } from "../audio-url";
 import { db } from "../db";
@@ -7,6 +7,25 @@ import { NEW_CARD_STATE } from "../srs";
 
 export const MAX_DUE_PER_SESSION = 30;
 export const MAX_NEW_PER_SESSION = 10;
+
+/**
+ * Due/fresh counts only — the daily plan needs two integers, not 575
+ * detoasted content rows (the overview query below stays full-row for the
+ * pinned v1 contract).
+ */
+export async function getVocabCounts(userId: string) {
+  const [[words], [cards]] = await Promise.all([
+    db.select({ total: count() }).from(vocabWords),
+    db
+      .select({
+        started: count(),
+        due: count(sql`case when ${srsCards.dueAt} <= now() then 1 end`),
+      })
+      .from(srsCards)
+      .where(eq(srsCards.userId, userId)),
+  ]);
+  return { dueCount: cards.due, freshCount: words.total - cards.started };
+}
 
 /** Word list (one track, or all when null) plus per-user SRS aggregates for the overview. */
 export async function getVocabOverview(userId: string, track: Track | null) {

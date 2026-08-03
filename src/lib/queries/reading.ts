@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import type { Track } from "../../content/types";
 import { db } from "../db";
 import { exerciseAttempts, readingExercises } from "../db/schema";
@@ -6,10 +6,22 @@ import { exerciseAttempts, readingExercises } from "../db/schema";
 /** Reading exercises (one track, or all when null) plus the user's best score per exercise. */
 export async function listReadingExercises(userId: string, track: Track | null) {
   const [exercises, attempts] = await Promise.all([
-    db.query.readingExercises.findMany({
-      where: track ? eq(readingExercises.track, track) : undefined,
-      orderBy: readingExercises.id,
-    }),
+    // Metadata only — the passage and answer-bearing questions jsonb stay in
+    // the database (the dashboard plan and the list page read a handful of
+    // fields from every row).
+    db
+      .select({
+        id: readingExercises.id,
+        track: readingExercises.track,
+        title: readingExercises.title,
+        titleZh: readingExercises.titleZh,
+        genre: readingExercises.genre,
+        suggestedMinutes: readingExercises.suggestedMinutes,
+        questionCount: sql<number>`jsonb_array_length(${readingExercises.questions})`,
+      })
+      .from(readingExercises)
+      .where(track ? eq(readingExercises.track, track) : undefined)
+      .orderBy(readingExercises.id),
     // The single best attempt per exercise, returning that row's own score AND
     // total together. Aggregating them independently could pair a high score
     // with a higher total from a later, longer version of the same exercise.

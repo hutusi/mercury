@@ -49,7 +49,7 @@ export default async function ReadingListPage({
               right={
                 <div className="text-right">
                   <p className="font-mono text-2xs text-muted-foreground">
-                    {ex.questions.length} {t.common.questions} · {ex.suggestedMinutes}{" "}
+                    {ex.questionCount} {t.common.questions} · {ex.suggestedMinutes}{" "}
                     {t.common.minutes}
                   </p>
                   {best ? (

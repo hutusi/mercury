@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { Input } from "@/components/ui/input";
-import { TRACKS, type Track } from "@/content/types";
+import { TRACKS, type Track } from "@/content/tracks";
 import { updateLearnerProfile } from "@/lib/actions/profile";
 import { MINUTE_OPTIONS, TARGET_OPTIONS } from "@/lib/goal-options";
 import { useT } from "@/lib/i18n/LocaleProvider";

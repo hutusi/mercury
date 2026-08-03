@@ -158,6 +158,7 @@ async function seed() {
           ...chapter,
           sortOrder: i + 1,
           wordCount: chapterWordCount(chapter),
+          quizCount: chapter.quiz.length,
         };
         await tx
           .insert(bookChapters)

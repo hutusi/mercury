@@ -16,7 +16,7 @@ export const GET = apiHandler(async (req) => {
       title: ex.title,
       titleZh: ex.titleZh,
       genre: ex.genre,
-      questionCount: ex.questions.length,
+      questionCount: ex.questionCount,
       suggestedMinutes: ex.suggestedMinutes,
       best: bestByExercise.get(ex.id) ?? null,
     })),

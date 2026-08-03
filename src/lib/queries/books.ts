@@ -1,5 +1,4 @@
-import { and, countDistinct, desc, eq, max, sql } from "drizzle-orm";
-import type { AnyPgColumn } from "drizzle-orm/pg-core";
+import { and, countDistinct, desc, eq, max } from "drizzle-orm";
 import {
   currentChapterId,
   deriveChapterStates,
@@ -74,13 +73,13 @@ async function bestAttemptsByChapter(userId: string, bookId: string) {
 }
 
 export async function getBookForUser(userId: string, bookId: string) {
-  const book = await db.query.books.findFirst({
-    where: and(eq(books.id, bookId), eq(books.origin, "seeded")),
-  });
-  if (!book) return null;
-
+  // One round-trip wave — the book lookup doesn't gate the other two, and
+  // this page sits on the hottest e2e-observed navigation.
   // Chapter list columns only — the sections/quiz jsonb never rides list reads.
-  const [chapters, bestByChapter] = await Promise.all([
+  const [book, chapters, bestByChapter] = await Promise.all([
+    db.query.books.findFirst({
+      where: and(eq(books.id, bookId), eq(books.origin, "seeded")),
+    }),
     db
       .select({
         id: bookChapters.id,
@@ -89,13 +88,14 @@ export async function getBookForUser(userId: string, bookId: string) {
         titleZh: bookChapters.titleZh,
         summaryZh: bookChapters.summaryZh,
         wordCount: bookChapters.wordCount,
-        quizCount: countJsonbArray(bookChapters.quiz),
+        quizCount: bookChapters.quizCount,
       })
       .from(bookChapters)
       .where(eq(bookChapters.bookId, bookId))
       .orderBy(bookChapters.sortOrder),
     bestAttemptsByChapter(userId, bookId),
   ]);
+  if (!book) return null;
 
   const states = deriveChapterStates(chapters, new Set(bestByChapter.keys()));
   const stateByChapter = new Map(states.map((s) => [s.chapterId, s]));
@@ -161,24 +161,39 @@ export async function getBookChapterForReader(
   bookId: string,
   chapterId: string,
 ): Promise<BookChapterForReader | null> {
-  const chapter = await db.query.bookChapters.findFirst({
-    where: and(eq(bookChapters.id, chapterId), eq(bookChapters.bookId, bookId)),
-  });
-  if (!chapter) return null;
+  // Two round-trip waves instead of five: chapter, book, and the neighbor
+  // list are independent, and the lock check's previous-chapter lookup comes
+  // free from the neighbors.
+  const [chapter, book, neighbors] = await Promise.all([
+    db.query.bookChapters.findFirst({
+      where: and(eq(bookChapters.id, chapterId), eq(bookChapters.bookId, bookId)),
+    }),
+    db.query.books.findFirst({
+      columns: { id: true, title: true, titleZh: true, chapterCount: true },
+      where: and(eq(books.id, bookId), eq(books.origin, "seeded")),
+    }),
+    db
+      .select({ id: bookChapters.id, sortOrder: bookChapters.sortOrder })
+      .from(bookChapters)
+      .where(eq(bookChapters.bookId, bookId))
+      .orderBy(bookChapters.sortOrder),
+  ]);
+  if (!chapter || !book) return null;
 
-  const book = await db.query.books.findFirst({
-    columns: { id: true, title: true, titleZh: true, chapterCount: true },
-    where: and(eq(books.id, bookId), eq(books.origin, "seeded")),
-  });
-  if (!book) return null;
+  if (chapter.sortOrder > 1) {
+    const previous = neighbors.find((n) => n.sortOrder === chapter.sortOrder - 1);
+    if (previous) {
+      const attempt = await db.query.bookQuizAttempts.findFirst({
+        columns: { id: true },
+        where: and(
+          eq(bookQuizAttempts.userId, userId),
+          eq(bookQuizAttempts.chapterId, previous.id),
+        ),
+      });
+      if (!attempt) return { status: "locked" };
+    }
+  }
 
-  if (!(await isChapterUnlockedForUser(userId, chapter))) return { status: "locked" };
-
-  const neighbors = await db
-    .select({ id: bookChapters.id, sortOrder: bookChapters.sortOrder })
-    .from(bookChapters)
-    .where(eq(bookChapters.bookId, bookId))
-    .orderBy(bookChapters.sortOrder);
   const index = neighbors.findIndex((n) => n.id === chapter.id);
 
   return {
@@ -198,10 +213,6 @@ export async function getBookChapterForReader(
     prevChapterId: index > 0 ? neighbors[index - 1].id : null,
     nextChapterId: index < neighbors.length - 1 ? neighbors[index + 1].id : null,
   };
-}
-
-function countJsonbArray(column: AnyPgColumn) {
-  return sql<number>`jsonb_array_length(${column})`.mapWith(Number);
 }
 
 /**
@@ -229,7 +240,7 @@ export async function getContinueReading(
           id: bookChapters.id,
           sortOrder: bookChapters.sortOrder,
           wordCount: bookChapters.wordCount,
-          quizCount: countJsonbArray(bookChapters.quiz),
+          quizCount: bookChapters.quizCount,
         })
         .from(bookChapters)
         .where(eq(bookChapters.bookId, bookId))
