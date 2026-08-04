@@ -3,7 +3,7 @@
 import { Check, Dumbbell, ThumbsUp, Trophy, X } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
@@ -44,6 +44,7 @@ export function QuizRunner({
   const [conflicted, setConflicted] = useState(false);
   const [expired, setExpired] = useState(false);
   const [pending, startTransition] = useTransition();
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const question = questions[index];
   const isLast = index === questions.length - 1;
@@ -83,8 +84,10 @@ export function QuizRunner({
     if (isLast) {
       // No local score means the session completed on a lost response —
       // refresh to a fresh quiz rather than leaving a dead Finish button.
-      if (completedResult) setResult(completedResult);
-      else router.refresh();
+      if (completedResult) {
+        setResult(completedResult);
+        requestAnimationFrame(() => resultRef.current?.focus());
+      } else router.refresh();
     } else {
       setPicked(null);
       setCorrectOptionId(null);
@@ -111,7 +114,11 @@ export function QuizRunner({
     const pct = Math.round((result.score / result.total) * 100);
     const TierIcon = pct >= 80 ? Trophy : pct >= 60 ? ThumbsUp : Dumbbell;
     return (
-      <div className="mx-auto max-w-md border border-border p-10 text-center">
+      <div
+        ref={resultRef}
+        tabIndex={-1}
+        className="mx-auto max-w-md border border-border p-10 text-center outline-hidden"
+      >
         <p className="flex justify-center" aria-hidden>
           <TierIcon className="size-6" />
         </p>

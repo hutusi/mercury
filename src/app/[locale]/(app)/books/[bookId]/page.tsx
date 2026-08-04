@@ -82,12 +82,12 @@ export default async function BookPage({ params }: { params: Promise<{ bookId: s
             subtitle={chapter.titleZh}
             right={
               chapter.locked ? (
-                <span
-                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground/70"
-                  title={t.books.lockedNote}
-                >
+                <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground/70">
                   <Lock className="size-3.5" aria-hidden />
                   {t.books.locked}
+                  {/* The unlock rule was a hover-only title attribute —
+                      unreachable by keyboard and untouchable on mobile. */}
+                  <span className="sr-only">{t.books.lockedNote}</span>
                 </span>
               ) : (
                 <div className="text-right">

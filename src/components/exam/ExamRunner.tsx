@@ -48,11 +48,18 @@ export function ExamRunner({
   const [deadlines, setDeadlines] = useState(initialDeadlines);
   const [answers, setAnswers] = useState<AnswerMap>(initialAnswers);
   const [remainingMs, setRemainingMs] = useState<number | null>(null);
+  // Screen-reader time warnings: the visual clock is aria-labelled but never
+  // announced; announce once at 5:00 and once at 1:00 per section.
+  const [timeAnnouncement, setTimeAnnouncement] = useState<string | null>(null);
+  const announcedRef = useRef<{ five: boolean; one: boolean }>({ five: false, one: false });
   const [confirming, setConfirming] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const submittedSections = useRef(new Set<string>());
+  // Focus target after a section advance — without it, focus dies on the
+  // removed submit button and screen readers get no signal the view changed.
+  const sectionHeadingRef = useRef<HTMLParagraphElement>(null);
   const autosaveChain = useRef(Promise.resolve());
   // serverNow - clientNow, re-anchored on every section submit. Deadlines are
   // absolute server epoch-ms: without this correction a slow client clock
@@ -138,9 +145,12 @@ export function ExamRunner({
           router.push(localePath(locale, `/exams/attempts/${attemptId}`));
           return;
         }
+        announcedRef.current = { five: false, one: false };
+        setTimeAnnouncement(null);
         setSectionIndex(result.nextSectionIndex);
         setDeadlines(result.deadlines);
         window.scrollTo({ top: 0 });
+        sectionHeadingRef.current?.focus();
       } catch {
         // Un-mark so the user can retry — the server clamps late answers,
         // so retrying after expiry is safe and still completes the attempt.
@@ -161,13 +171,21 @@ export function ExamRunner({
     const tick = setInterval(() => {
       const remaining = examRemainingMs(deadline.expiresAt, clockSkewMs.current, Date.now());
       setRemainingMs(remaining);
+      if (remaining <= 300_000 && !announcedRef.current.five) {
+        announcedRef.current.five = true;
+        setTimeAnnouncement(t.exams.fiveMinutesLeft);
+      }
+      if (remaining <= 60_000 && !announcedRef.current.one) {
+        announcedRef.current.one = true;
+        setTimeAnnouncement(t.exams.oneMinuteLeft);
+      }
       if (remaining <= 0) {
         clearInterval(tick);
         void doSubmitSection(deadline.sectionId);
       }
     }, 500);
     return () => clearInterval(tick);
-  }, [deadline, doSubmitSection]);
+  }, [deadline, doSubmitSection, t]);
 
   // Periodic server autosave of the current section's answers.
   useEffect(() => {
@@ -209,7 +227,11 @@ export function ExamRunner({
       <div className="sticky top-14 z-10 -mx-4 border-b border-border bg-background px-4 py-3 sm:-mx-6 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-semibold">
+            <p
+              ref={sectionHeadingRef}
+              tabIndex={-1}
+              className="text-sm font-semibold outline-hidden"
+            >
               {sectionIndex + 1}/{sections.length} ·{" "}
               {section.kind === "listening" ? t.exams.listeningSection : t.exams.readingSection}
             </p>
@@ -221,27 +243,35 @@ export function ExamRunner({
                 ? "animate-pulse bg-cinnabar/10 text-cinnabar motion-reduce:animate-none"
                 : "bg-muted text-foreground/80"
             }`}
+            role="timer"
             aria-label={t.exams.timeLeft}
           >
             <Timer className="size-4" aria-hidden />
             {remainingMs === null ? "--:--" : formatClock(remainingMs)}
           </div>
+          <p aria-live="polite" role="status" className="sr-only">
+            {timeAnnouncement}
+          </p>
         </div>
-        <div className="mt-2 flex flex-wrap gap-1.5">
-          {sectionQuestions.map((q, i) => (
-            <a
-              key={q.id}
-              href={`#q-${q.id}`}
-              className={`flex h-7 w-7 items-center justify-center rounded-sm font-mono text-xs font-medium transition-colors ${
-                sectionAnswers[q.id] !== undefined
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-muted/70"
-              }`}
-            >
-              {i + 1}
-            </a>
-          ))}
-        </div>
+        <nav aria-label={t.exams.palette} className="mt-2 flex flex-wrap gap-1.5">
+          {sectionQuestions.map((q, i) => {
+            const answered = sectionAnswers[q.id] !== undefined;
+            return (
+              <a
+                key={q.id}
+                href={`#q-${q.id}`}
+                aria-label={`${i + 1}${answered ? "" : ` · ${t.exams.unanswered}`}`}
+                className={`flex h-7 w-7 items-center justify-center rounded-sm font-mono text-xs font-medium transition-colors ${
+                  answered
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-muted/70"
+                }`}
+              >
+                <span aria-hidden>{i + 1}</span>
+              </a>
+            );
+          })}
+        </nav>
       </div>
 
       {section.kind === "listening" && (

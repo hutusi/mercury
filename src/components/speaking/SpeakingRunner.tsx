@@ -48,6 +48,7 @@ export function SpeakingRunner({
   const recognizerRef = useRef<Recognizer | null>(null);
   const deadlineRef = useRef(0);
   const recordStartRef = useRef(0);
+  const doneRef = useRef<HTMLDivElement>(null);
   const submissionRequestRef = useRef<LogicalRequestId | null>(null);
   // Latest-ref pattern: recognition callbacks read the current phase.
   const phaseRef = useRef<Phase>("idle");
@@ -142,6 +143,8 @@ export function SpeakingRunner({
         setResult(r);
         setPhase("done");
         window.scrollTo({ top: 0 });
+        // Focus follows the view swap (see ResultSummary).
+        requestAnimationFrame(() => doneRef.current?.focus());
       } catch {
         // Stay in review so the recording can be resubmitted.
         setSubmitError(t.exams.submitFailed);
@@ -184,7 +187,7 @@ export function SpeakingRunner({
 
   if (phase === "done" && result) {
     return (
-      <div className="space-y-6">
+      <div ref={doneRef} tabIndex={-1} className="space-y-6 outline-hidden">
         <section className="border-y border-border py-5">
           <SectionLabel as="h2" className="mb-2">
             {t.speaking.transcript}
