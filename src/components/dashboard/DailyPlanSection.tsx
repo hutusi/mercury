@@ -1,5 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import type { DailyPlan } from "@/lib/queries/plan";
+import { hasActivityToday } from "@/lib/streak";
 import { TodayPlanCard } from "./TodayPlanCard";
 
 /**
@@ -9,9 +10,21 @@ import { TodayPlanCard } from "./TodayPlanCard";
  * awaiting the summary and passes the in-flight promise here, so the two
  * batches run concurrently (total ≈ max(summary, plan), not summary + plan).
  */
-export async function DailyPlanSection({ plan }: { plan: Promise<DailyPlan> }) {
+export async function DailyPlanSection({
+  plan,
+  userId,
+  timeZone,
+}: {
+  plan: Promise<DailyPlan>;
+  userId: string;
+  timeZone: string;
+}) {
   const resolved = await plan;
-  return <TodayPlanCard items={resolved.items} />;
+  // An empty plan only proves eligibility is exhausted — whether it reads as
+  // "completed today" or "nothing scheduled" depends on today's activity.
+  // Checked only in the rare empty case.
+  const activeToday = resolved.items.length === 0 && (await hasActivityToday(userId, timeZone));
+  return <TodayPlanCard items={resolved.items} activeToday={activeToday} />;
 }
 
 /** Suspense fallback shaped like the plan card so the layout doesn't jump. */

@@ -3,6 +3,7 @@
 import { Ban, Mic, RotateCcw, Square } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
+import { PremiumCta } from "@/components/premium/PremiumCta";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ export function SpeakingRunner({
   modelAnswer,
   checklist,
   aiEnabled,
+  showPremiumCta = false,
 }: {
   promptId: string;
   prepSeconds: number;
@@ -30,6 +32,8 @@ export function SpeakingRunner({
   modelAnswer: string;
   checklist: Bilingual[];
   aiEnabled: boolean;
+  /** Quota walls upsell only non-premium learners. */
+  showPremiumCta?: boolean;
 }) {
   const t = useT();
   const [mounted, setMounted] = useState(false);
@@ -48,6 +52,7 @@ export function SpeakingRunner({
   const recognizerRef = useRef<Recognizer | null>(null);
   const deadlineRef = useRef(0);
   const recordStartRef = useRef(0);
+  const doneRef = useRef<HTMLDivElement>(null);
   const submissionRequestRef = useRef<LogicalRequestId | null>(null);
   // Latest-ref pattern: recognition callbacks read the current phase.
   const phaseRef = useRef<Phase>("idle");
@@ -142,9 +147,11 @@ export function SpeakingRunner({
         setResult(r);
         setPhase("done");
         window.scrollTo({ top: 0 });
+        // Focus follows the view swap (see ResultSummary).
+        requestAnimationFrame(() => doneRef.current?.focus());
       } catch {
         // Stay in review so the recording can be resubmitted.
-        setSubmitError(t.exams.submitFailed);
+        setSubmitError(t.common.submitRetry);
       }
     });
   }
@@ -184,7 +191,7 @@ export function SpeakingRunner({
 
   if (phase === "done" && result) {
     return (
-      <div className="space-y-6">
+      <div ref={doneRef} tabIndex={-1} className="space-y-6 outline-hidden">
         <section className="border-y border-border py-5">
           <SectionLabel as="h2" className="mb-2">
             {t.speaking.transcript}
@@ -195,13 +202,15 @@ export function SpeakingRunner({
           <SpeakingFeedbackPanel feedback={result.feedback} />
         ) : result.degradeReason === "quota" ? (
           // The daily grading quota forced self-assessment — retrying today
-          // would just be refused, so the notice says "tomorrow".
+          // would just be refused, so the notice says "tomorrow" and the only
+          // door to more capacity is premium.
           <SelfAssessBlock
             modelAnswer={modelAnswer}
             checklist={checklist}
             showHint
             title={t.speaking.aiQuotaTitle}
             hint={t.speaking.aiQuotaHint}
+            retry={showPremiumCta ? <PremiumCta /> : undefined}
           />
         ) : (
           <SelfAssessBlock

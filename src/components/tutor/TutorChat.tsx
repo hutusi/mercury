@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { Textarea } from "@/components/ui/textarea";
 import { sendTutorMessage } from "@/lib/actions/chat";
+import { PremiumCta } from "@/components/premium/PremiumCta";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
 export interface ChatMessageVM {
@@ -24,17 +25,24 @@ export function TutorChat({
   enabled,
   initialMessages,
   remainingToday,
+  dailyLimit,
+  showPremiumCta = false,
 }: {
   enabled: boolean;
   initialMessages: ChatMessageVM[];
   remainingToday: number;
+  dailyLimit: number;
+  /** Quota walls upsell only non-premium learners. */
+  showPremiumCta?: boolean;
 }) {
   const t = useT();
   const [messages, setMessages] = useState<ChatMessageVM[]>(initialMessages);
   const [input, setInput] = useState("");
   const [remaining, setRemaining] = useState(remainingToday);
+  // Quota exhaustion must be legible on page load, not only after a failed
+  // send — a returning learner used to see just a disabled textarea.
   const [error, setError] = useState<"unavailable" | "limit" | "in_progress" | "failed" | null>(
-    enabled ? null : "unavailable",
+    !enabled ? "unavailable" : remainingToday <= 0 ? "limit" : null,
   );
   const [pending, startTransition] = useTransition();
   const endRef = useRef<HTMLDivElement>(null);
@@ -60,6 +68,9 @@ export function TutorChat({
           { id: result.message.id, role: "assistant", content: result.message.content },
         ]);
         setRemaining(result.remainingToday);
+        // Spending the last message must raise the wall immediately — not
+        // silently disable the textarea until a reload.
+        if (result.remainingToday <= 0) setError("limit");
       } else {
         setMessages((m) => m.slice(0, -1));
         setInput(content);
@@ -101,13 +112,14 @@ export function TutorChat({
       </div>
 
       {error === "unavailable" && (
-        <Callout variant="accent" className="p-4 text-sm">
+        <Callout variant="accent" role="alert" className="p-4 text-sm">
           {t.tutor.unavailable}
         </Callout>
       )}
       {error === "limit" && (
-        <Callout variant="accent" className="p-4 text-sm">
-          {t.tutor.limitReached}
+        <Callout variant="accent" role="alert" className="space-y-2 p-4 text-sm">
+          <p>{t.tutor.limitReached}</p>
+          {showPremiumCta && <PremiumCta />}
         </Callout>
       )}
       {error === "in_progress" && (
@@ -143,7 +155,7 @@ export function TutorChat({
         />
         <div className="flex items-center justify-between gap-3">
           <p id="tutor-message-meta" className="font-mono text-xs text-muted-foreground">
-            {t.tutor.remainingLabel}: {remaining}
+            {t.tutor.remainingLabel}: {remaining} / {dailyLimit}
           </p>
           <Button onClick={send} disabled={!canSend}>
             <Send className="size-4" aria-hidden />

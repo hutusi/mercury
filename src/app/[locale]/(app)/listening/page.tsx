@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
@@ -68,7 +69,22 @@ export default async function ListeningListPage({
           );
         })}
       </EntryList>
-      {exercises.length === 0 && <EmptyState>{t.common.empty}</EmptyState>}
+      {exercises.length === 0 && (
+        <EmptyState
+          action={
+            filter !== "all" && (
+              <Link
+                href="/listening?track=all"
+                className="text-sm font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+              >
+                {t.filters.viewAll}
+              </Link>
+            )
+          }
+        >
+          {t.common.empty}
+        </EmptyState>
+      )}
     </div>
   );
 }

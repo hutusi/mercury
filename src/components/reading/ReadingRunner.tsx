@@ -1,7 +1,7 @@
 "use client";
 
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
+import { NextStepFooter } from "@/components/exercise/NextStepFooter";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { PassageText } from "@/components/typography/PassageText";
@@ -18,15 +18,19 @@ export function ReadingRunner({
   passage,
   questions,
   crossPromo,
+  nextHref,
 }: {
   exerciseId: string;
   passage: string;
   questions: SanitizedQuestion[];
   crossPromo?: React.ReactNode;
+  /** First unattempted sibling exercise, resolved server-side. */
+  nextHref?: string | null;
 }) {
   const t = useT();
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [result, setResult] = useState<GradedExercise | null>(null);
+  const [usedSeconds, setUsedSeconds] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(0);
@@ -38,6 +42,7 @@ export function ReadingRunner({
 
   function submit() {
     setError(null);
+    const duration = Math.round((Date.now() - startedAt.current) / 1000);
     startTransition(async () => {
       try {
         // A retry after a lost response reuses the same id (answers unchanged),
@@ -49,13 +54,14 @@ export function ReadingRunner({
           kind: "reading",
           refId: exerciseId,
           answers,
-          durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
+          durationSeconds: duration,
         });
         requestRef.current = null;
+        setUsedSeconds(duration);
         setResult(graded);
         window.scrollTo({ top: 0 });
       } catch {
-        setError(t.exams.submitFailed);
+        setError(t.common.submitRetry);
       }
     });
   }
@@ -70,16 +76,15 @@ export function ReadingRunner({
         graded={result.perQuestion}
         score={result.score}
         total={result.total}
+        durationSeconds={usedSeconds ?? undefined}
       >
-        <div className="flex items-center justify-between">
-          <Link
-            href="/reading"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ← {t.reading.backToList}
-          </Link>
-        </div>
         {crossPromo}
+        <NextStepFooter
+          nextHref={nextHref}
+          wrongCount={result.perQuestion.filter((q) => !q.correct).length}
+          backHref="/reading"
+          backLabel={t.reading.backToList}
+        />
       </ResultSummary>
     );
   }

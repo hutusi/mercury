@@ -89,7 +89,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
           setIndex((i) => i + 1);
         } catch {
           // Keep the card in place so the grade can be retried.
-          setError(t.exams.submitFailed);
+          setError(t.common.submitRetry);
         }
       });
     },

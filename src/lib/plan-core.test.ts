@@ -57,6 +57,23 @@ describe("buildDailyPlan", () => {
     expect(items.some((i) => i.kind === "reading" || i.kind === "listening")).toBe(true);
   });
 
+  test("everything done: the plan is genuinely empty — the completion contract", () => {
+    // No due vocab, no fresh words, no mistakes, all exercises attempted,
+    // cadences satisfied today, no book in progress → the dashboard renders
+    // its completion card off items.length === 0.
+    const input = baseInput({
+      dueCount: 0,
+      freshCount: 0,
+      activeMistakes: 0,
+    });
+    input.available.reading = input.available.reading.map((e) => ({ ...e, attempted: true }));
+    input.available.listening = input.available.listening.map((e) => ({ ...e, attempted: true }));
+    input.recent.lastWritingAt = input.today;
+    input.recent.lastSpeakingAt = input.today;
+    input.recent.lastExamAt = input.today;
+    expect(buildDailyPlan(input)).toEqual([]);
+  });
+
   test("due vocab always leads and unattempted exercises are preferred", () => {
     const items = buildDailyPlan(baseInput({ dueCount: 12 }));
     expect(items[0]).toMatchObject({ kind: "vocab_review", reasonKey: "dueVocab", estMinutes: 6 });

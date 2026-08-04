@@ -2,6 +2,7 @@
 
 import { Check, X } from "lucide-react";
 import type { SanitizedQuestion } from "@/content/types";
+import { useEffect, useRef } from "react";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
 export interface GradedQuestion {
@@ -20,6 +21,7 @@ export function ResultSummary({
   score,
   total,
   children,
+  durationSeconds,
 }: {
   questions: SanitizedQuestion[];
   answers: Record<string, number>;
@@ -28,13 +30,21 @@ export function ResultSummary({
   total: number;
   /** Extra content below the review, e.g. cross-promo or retry buttons. */
   children?: React.ReactNode;
+  /** Wall-clock seconds the attempt took; shown when the runner tracked it. */
+  durationSeconds?: number;
 }) {
   const t = useT();
   const gradedById = new Map(graded.map((g) => [g.questionId, g]));
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+  // The results replace the whole answering view — move focus with them, or
+  // keyboard/SR users are left on a button that no longer exists.
+  const rootRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    rootRef.current?.focus();
+  }, []);
 
   return (
-    <div className="space-y-8">
+    <div ref={rootRef} tabIndex={-1} className="space-y-8 outline-hidden">
       <div className="border-y border-border py-6 text-center">
         <p className="font-mono text-2xs font-medium tracking-label text-muted-foreground uppercase">
           {t.common.score}
@@ -51,6 +61,12 @@ export function ResultSummary({
         >
           {t.common.accuracy} {pct}%
         </p>
+        {durationSeconds !== undefined && (
+          <p className="mt-1 font-mono text-xs text-muted-foreground tabular-nums">
+            {t.common.timeUsed}{" "}
+            {`${String(Math.floor(durationSeconds / 60)).padStart(2, "0")}:${String(durationSeconds % 60).padStart(2, "0")}`}
+          </p>
+        )}
       </div>
 
       <ol className="space-y-6">

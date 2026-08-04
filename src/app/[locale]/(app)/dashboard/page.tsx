@@ -116,7 +116,7 @@ export default async function DashboardPage() {
           {isNewUser && <WelcomeCard />}
           {remindersEnabled && <ReminderNudge reminder={reminder} />}
           <Suspense fallback={<DailyPlanSkeleton />}>
-            <DailyPlanSection plan={planPromise} />
+            <DailyPlanSection plan={planPromise} userId={user.id} timeZone={timeZone} />
           </Suspense>
           <ExamBanner
             lastEstimate={lastExam?.estimate ?? null}

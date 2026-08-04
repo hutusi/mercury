@@ -5,6 +5,7 @@ import { GoalEditor } from "@/components/settings/GoalEditor";
 import { ChangePasswordForm } from "@/components/settings/ChangePasswordForm";
 import { LinkedAccounts } from "@/components/settings/LinkedAccounts";
 import { ReminderToggle } from "@/components/dashboard/ReminderToggle";
+import { PremiumCta } from "@/components/premium/PremiumCta";
 import { Badge } from "@/components/ui/badge";
 import { auth } from "@/lib/auth/auth";
 import { enabledSocialProviders } from "@/lib/auth/social-providers";
@@ -72,9 +73,10 @@ export default async function SettingsPage() {
             {tier === "premium"
               ? membership?.expiresAt
                 ? `${t.settings.membershipExpires} ${membership.expiresAt.toISOString().slice(0, 10)}`
-                : t.settings.membershipNoExpiry
+                : t.common.noExpiry
               : t.settings.membershipFreeHint}
           </span>
+          <PremiumCta />
         </div>
       </section>
 

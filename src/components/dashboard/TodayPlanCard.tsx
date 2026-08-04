@@ -10,6 +10,7 @@ import {
   Timer,
   type LucideIcon,
 } from "lucide-react";
+import { EmptyState } from "@/components/typography/EmptyState";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { getDict } from "@/lib/i18n";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
@@ -32,9 +33,46 @@ const KIND_ICONS: Record<PlanItemKind, LucideIcon> = {
  * the plan engine (src/lib/plan-core.ts) picks the shortest path for today
  * and each row deep-links straight into the work.
  */
-export async function TodayPlanCard({ items }: { items: PlanItem[] }) {
+export async function TodayPlanCard({
+  items,
+  activeToday = false,
+}: {
+  items: PlanItem[];
+  /** Whether any learning action landed today — picks the empty-state copy. */
+  activeToday?: boolean;
+}) {
   const t = await getDict();
-  if (items.length === 0) return null;
+
+  // An empty plan means everything the engine would suggest is done — the
+  // headline card must close the loop, not silently vanish. Quiet ink: the
+  // red pen marks what's wrong, never what's finished.
+  if (items.length === 0) {
+    return (
+      <section>
+        <SectionLabel as="h2" className="mb-3">
+          {t.plan.title}
+        </SectionLabel>
+        <EmptyState
+          action={
+            <Link
+              href="/vocabulary/study"
+              className="text-sm font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+            >
+              {t.plan.doneExtraCta}
+            </Link>
+          }
+        >
+          <span className="flex justify-center" aria-hidden>
+            <Sparkles className="size-6" />
+          </span>
+          <span className="mt-3 block font-serif text-xl font-medium text-foreground">
+            {activeToday ? t.plan.doneTitle : t.plan.emptyTitle}
+          </span>
+          <span className="mt-1 block">{t.plan.doneHint}</span>
+        </EmptyState>
+      </section>
+    );
+  }
 
   const itemLabels: Record<PlanItemKind, string> = {
     vocab_review: t.plan.itemVocabReview,

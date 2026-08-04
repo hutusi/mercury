@@ -3,10 +3,12 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { AiFeedbackPanel } from "@/components/writing/AiFeedbackPanel";
+import { PremiumCta } from "@/components/premium/PremiumCta";
 import { RetryWritingFeedback } from "@/components/writing/RetryWritingFeedback";
 import { SelfAssessPanel } from "@/components/writing/SelfAssessPanel";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
+import { getTierForUser } from "@/lib/queries/membership";
 import { getDict } from "@/lib/i18n";
 import { getWritingSubmissionDetail } from "@/lib/queries/writing";
 
@@ -16,6 +18,7 @@ export default async function WritingSubmissionPage({
   params: Promise<{ submissionId: string }>;
 }) {
   const user = await requireUser();
+  const tier = await getTierForUser(user.id);
   const { submissionId } = await params;
   const t = await getDict();
 
@@ -60,7 +63,16 @@ export default async function WritingSubmissionPage({
           title={submission.degradeReason === "quota" ? t.writing.aiQuotaTitle : undefined}
           hint={submission.degradeReason === "quota" ? t.writing.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
-          retry={isAiEnabled() ? <RetryWritingFeedback submissionId={submission.id} /> : undefined}
+          retry={
+            // Content-aware: a premium user's quota degrade with AI disabled
+            // would otherwise render an empty wrapper (phantom spacing).
+            isAiEnabled() || (submission.degradeReason === "quota" && tier !== "premium") ? (
+              <div className="space-y-3">
+                {isAiEnabled() && <RetryWritingFeedback submissionId={submission.id} />}
+                {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}
+              </div>
+            ) : undefined
+          }
         />
       )}
     </div>

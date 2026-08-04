@@ -3,9 +3,12 @@ import { cn } from "@/lib/utils";
 export function EmptyState({
   className,
   children,
+  action,
 }: {
   className?: string;
   children: React.ReactNode;
+  /** Escape hatch — an empty state must never dead-end (e.g. lift a filter). */
+  action?: React.ReactNode;
 }) {
   return (
     <div
@@ -15,6 +18,7 @@ export function EmptyState({
       )}
     >
       {children}
+      {action && <div className="mt-4">{action}</div>}
     </div>
   );
 }

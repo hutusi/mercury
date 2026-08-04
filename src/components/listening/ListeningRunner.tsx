@@ -1,9 +1,9 @@
 "use client";
 
 import { Lock } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
+import { NextStepFooter } from "@/components/exercise/NextStepFooter";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Button } from "@/components/ui/button";
@@ -20,16 +20,20 @@ export function ListeningRunner({
   audioUrl,
   questions,
   crossPromo,
+  nextHref,
 }: {
   exerciseId: string;
   script: ScriptLine[];
   audioUrl?: string | null;
   questions: SanitizedQuestion[];
   crossPromo?: React.ReactNode;
+  /** First unattempted sibling exercise, resolved server-side. */
+  nextHref?: string | null;
 }) {
   const t = useT();
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [result, setResult] = useState<GradedExercise | null>(null);
+  const [usedSeconds, setUsedSeconds] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(0);
@@ -41,6 +45,7 @@ export function ListeningRunner({
 
   function submit() {
     setError(null);
+    const duration = Math.round((Date.now() - startedAt.current) / 1000);
     startTransition(async () => {
       try {
         // A retry after a lost response reuses the same id (answers unchanged),
@@ -52,13 +57,14 @@ export function ListeningRunner({
           kind: "listening",
           refId: exerciseId,
           answers,
-          durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
+          durationSeconds: duration,
         });
         requestRef.current = null;
+        setUsedSeconds(duration);
         setResult(graded);
         window.scrollTo({ top: 0 });
       } catch {
-        setError(t.exams.submitFailed);
+        setError(t.common.submitRetry);
       }
     });
   }
@@ -74,6 +80,7 @@ export function ListeningRunner({
           graded={result.perQuestion}
           score={result.score}
           total={result.total}
+          durationSeconds={usedSeconds ?? undefined}
         />
         {/* Transcript unlocks only after submission */}
         <div className="border-y border-border py-6">
@@ -99,13 +106,13 @@ export function ListeningRunner({
             ))}
           </div>
         </div>
-        <Link
-          href="/listening"
-          className="inline-block text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          ← {t.reading.backToList}
-        </Link>
         {crossPromo}
+        <NextStepFooter
+          nextHref={nextHref}
+          wrongCount={result.perQuestion.filter((q) => !q.correct).length}
+          backHref="/listening"
+          backLabel={t.reading.backToList}
+        />
       </div>
     );
   }

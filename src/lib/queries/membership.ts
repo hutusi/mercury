@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { cache } from "react";
 import { db } from "../db";
-import { memberships } from "../db/schema";
+import { memberships, premiumInterest } from "../db/schema";
 import {
   entitlementsForTier,
   resolveTier,
@@ -31,4 +31,13 @@ export async function getEntitlementsForUser(
   now = new Date(),
 ): Promise<Entitlements> {
   return entitlementsForTier(await getTierForUser(userId, now));
+}
+
+/** Has this user clicked 预约开通 on /premium? Drives the button's state. */
+export async function hasPremiumInterest(userId: string): Promise<boolean> {
+  const row = await db.query.premiumInterest.findFirst({
+    columns: { userId: true },
+    where: eq(premiumInterest.userId, userId),
+  });
+  return row !== undefined;
 }

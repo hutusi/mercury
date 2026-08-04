@@ -5,6 +5,7 @@ import { SectionLabel } from "@/components/typography/SectionLabel";
 import { SpeakingRunner } from "@/components/speaking/SpeakingRunner";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
+import { getTierForUser } from "@/lib/queries/membership";
 import { formatLearnerDate } from "@/lib/format-date";
 import { getSettings } from "@/lib/settings";
 import { getDict, getLocale } from "@/lib/i18n";
@@ -17,6 +18,7 @@ export default async function SpeakingPromptPage({
 }) {
   const user = await requireUser();
   const timeZone = (await getSettings(user.id))?.timeZone ?? "Asia/Shanghai";
+  const tier = await getTierForUser(user.id);
   const { promptId } = await params;
   const [t, locale] = await Promise.all([getDict(), getLocale()]);
 
@@ -54,6 +56,7 @@ export default async function SpeakingPromptPage({
         modelAnswer={prompt.modelAnswer}
         checklist={prompt.checklist}
         aiEnabled={isAiEnabled()}
+        showPremiumCta={tier !== "premium"}
       />
 
       {past.length > 0 && (

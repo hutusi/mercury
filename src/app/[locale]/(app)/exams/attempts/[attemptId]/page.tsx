@@ -3,6 +3,7 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { AnswerReview } from "@/components/exam/AnswerReview";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
+import { NextStepFooter } from "@/components/exercise/NextStepFooter";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
 import { requireUser } from "@/lib/auth/session";
@@ -108,6 +109,11 @@ export default async function ExamReportPage({
       <CrossPromoCard track={attempt.track} />
 
       <AnswerReview sections={exam.sections} answers={attempt.answers} />
+
+      {/* The attempt just wrote its wrong answers into the notebook — surface
+          the review loop where the reading ends. The page header already
+          carries the back link. */}
+      <NextStepFooter wrongCount={sectionScores.reduce((n, s) => n + (s.max - s.raw), 0)} />
     </div>
   );
 }

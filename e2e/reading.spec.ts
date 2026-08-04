@@ -24,6 +24,18 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
 
   // Result: score header + per-question explanations now revealed.
   await expect(page.getByText(t.common.accuracy, { exact: false })).toBeVisible();
+
+  // The result screen routes forward: a next unattempted exercise (not this
+  // one) and the review link for the mistakes this attempt just wrote
+  // (first-option answers guarantee at least one wrong).
+  const currentPath = new URL(page.url()).pathname;
+  const nextLink = page.getByRole("link", { name: t.common.nextExercise });
+  await expect(nextLink).toBeVisible();
+  const nextHref = await nextLink.getAttribute("href");
+  expect(nextHref).not.toBe(currentPath);
+  // Not just "somewhere else" — it must be a sibling reading exercise.
+  expect(nextHref).toMatch(/\/reading\/[\w-]+$/);
+  await expect(page.getByText(t.common.reviewWrongCta, { exact: false })).toBeVisible();
   await expect(page.getByText(t.reading.explanationLabel).first()).toBeVisible();
 
   // Back on the list, the best score shows up. Assert the back-link's target

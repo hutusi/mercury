@@ -1,4 +1,4 @@
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { db, type DbExecutor } from "./db";
 import { activityDays, userSettings } from "./db/schema";
 import { calendarDay, computeStreak, DEFAULT_TIME_ZONE } from "./streak-core";
@@ -38,6 +38,20 @@ export async function recordActivityWith(
 ): Promise<void> {
   const day = await getCalendarDayForUser(userId, date, executor);
   await executor.insert(activityDays).values({ userId, day }).onConflictDoNothing();
+}
+
+/**
+ * Did any learning action land today (learner-local)? Distinguishes "plan
+ * complete" (worked today) from "nothing scheduled" (exhausted earlier) on
+ * the dashboard — an empty plan alone can't tell the two apart.
+ */
+export async function hasActivityToday(userId: string, timeZone: string): Promise<boolean> {
+  const today = calendarDay(new Date(), timeZone);
+  const row = await db.query.activityDays.findFirst({
+    columns: { day: true },
+    where: and(eq(activityDays.userId, userId), eq(activityDays.day, today)),
+  });
+  return row !== undefined;
 }
 
 export async function getStreak(userId: string, knownTimeZone?: string): Promise<number> {

@@ -2,11 +2,13 @@ import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { PremiumCta } from "@/components/premium/PremiumCta";
 import { RetrySpeakingFeedback } from "@/components/speaking/RetrySpeakingFeedback";
 import { SelfAssessPanel } from "@/components/speaking/SelfAssessPanel";
 import { SpeakingFeedbackPanel } from "@/components/speaking/SpeakingFeedbackPanel";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
+import { getTierForUser } from "@/lib/queries/membership";
 import { getDict } from "@/lib/i18n";
 import { getSpeakingSubmissionDetail } from "@/lib/queries/speaking";
 
@@ -16,6 +18,7 @@ export default async function SpeakingSubmissionPage({
   params: Promise<{ submissionId: string }>;
 }) {
   const user = await requireUser();
+  const tier = await getTierForUser(user.id);
   const { submissionId } = await params;
   const t = await getDict();
 
@@ -59,7 +62,16 @@ export default async function SpeakingSubmissionPage({
           title={submission.degradeReason === "quota" ? t.speaking.aiQuotaTitle : undefined}
           hint={submission.degradeReason === "quota" ? t.speaking.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
-          retry={isAiEnabled() ? <RetrySpeakingFeedback submissionId={submission.id} /> : undefined}
+          retry={
+            // Content-aware: a premium user's quota degrade with AI disabled
+            // would otherwise render an empty wrapper (phantom spacing).
+            isAiEnabled() || (submission.degradeReason === "quota" && tier !== "premium") ? (
+              <div className="space-y-3">
+                {isAiEnabled() && <RetrySpeakingFeedback submissionId={submission.id} />}
+                {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}
+              </div>
+            ) : undefined
+          }
         />
       )}
     </div>
