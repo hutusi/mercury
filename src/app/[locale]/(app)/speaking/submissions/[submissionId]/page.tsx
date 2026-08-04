@@ -63,7 +63,9 @@ export default async function SpeakingSubmissionPage({
           hint={submission.degradeReason === "quota" ? t.speaking.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
           retry={
-            isAiEnabled() || submission.degradeReason === "quota" ? (
+            // Content-aware: a premium user's quota degrade with AI disabled
+            // would otherwise render an empty wrapper (phantom spacing).
+            isAiEnabled() || (submission.degradeReason === "quota" && tier !== "premium") ? (
               <div className="space-y-3">
                 {isAiEnabled() && <RetrySpeakingFeedback submissionId={submission.id} />}
                 {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}

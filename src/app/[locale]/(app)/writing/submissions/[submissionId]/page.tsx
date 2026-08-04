@@ -64,7 +64,9 @@ export default async function WritingSubmissionPage({
           hint={submission.degradeReason === "quota" ? t.writing.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
           retry={
-            isAiEnabled() || submission.degradeReason === "quota" ? (
+            // Content-aware: a premium user's quota degrade with AI disabled
+            // would otherwise render an empty wrapper (phantom spacing).
+            isAiEnabled() || (submission.degradeReason === "quota" && tier !== "premium") ? (
               <div className="space-y-3">
                 {isAiEnabled() && <RetryWritingFeedback submissionId={submission.id} />}
                 {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}

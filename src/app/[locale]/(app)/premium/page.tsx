@@ -58,11 +58,17 @@ export default async function PremiumPage() {
         <table className="w-full border-y border-border text-sm">
           <thead>
             <tr className="border-b border-border text-left">
-              <th className="py-2.5 pr-4 font-mono text-2xs font-medium tracking-label text-muted-foreground uppercase" />
-              <th className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-muted-foreground uppercase">
+              <td className="py-2.5 pr-4" />
+              <th
+                scope="col"
+                className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-muted-foreground uppercase"
+              >
                 {t.premium.currentLabel}
               </th>
-              <th className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-foreground uppercase">
+              <th
+                scope="col"
+                className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-foreground uppercase"
+              >
                 {t.settings.membershipPremium}
               </th>
             </tr>
@@ -70,7 +76,9 @@ export default async function PremiumPage() {
           <tbody className="divide-y divide-border">
             {rows.map((row) => (
               <tr key={row.label}>
-                <td className="py-3 pr-4">{row.label}</td>
+                <th scope="row" className="py-3 pr-4 text-left font-normal">
+                  {row.label}
+                </th>
                 <td className="px-4 py-3 font-mono text-muted-foreground tabular-nums">
                   {row.current}
                 </td>

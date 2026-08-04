@@ -14,8 +14,10 @@ export function InterestButton({ initialInterested }: { initialInterested: boole
   const [pending, startTransition] = useTransition();
 
   if (interested) {
+    // The confirmation replaces the button that held focus, so announce it —
+    // focus lands on the body and silent success otherwise reads as a dead click.
     return (
-      <p className="flex items-center gap-2 text-sm font-medium text-foreground/80">
+      <p role="status" className="flex items-center gap-2 text-sm font-medium text-foreground/80">
         <Check className="size-4" aria-hidden />
         {t.premium.interested}
       </p>
@@ -34,7 +36,7 @@ export function InterestButton({ initialInterested }: { initialInterested: boole
               await registerPremiumInterest();
               setInterested(true);
             } catch {
-              setError(t.auth.genericError);
+              setError(t.premium.interestError);
             }
           });
         }}

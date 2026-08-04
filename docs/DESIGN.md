@@ -71,7 +71,7 @@ Compose these before writing inline Tailwind. Signature pieces live in `src/comp
 
 - WCAG AA contrast in both themes; `muted-foreground` stays at L ≤ 0.5 (light) / ≥ 0.71 (dark); dark `cinnabar-foreground` is page-toned because white on bright cinnabar is ~2.9:1.
 - Focus is a 2px cinnabar ring with offset on buttons/links, borderless ring on fields.
-- **Focus follows async view swaps**: when a submit replaces the view (exercise results, quiz done, exam section advance), the new container takes focus (`tabIndex={-1}` + rAF-deferred `.focus()`) so keyboard and screen-reader users aren't stranded on a control that no longer exists.
+- **Focus follows async view swaps**: when a submit replaces the view (exercise results, quiz done, exam section advance), the new container takes focus (`tabIndex={-1}` + `.focus()` from a mount effect, or rAF-deferred when the call site is imperative and the node doesn't exist yet) so keyboard and screen-reader users aren't stranded on a control that no longer exists.
 - Skip link as the shell's first element; `<main id="main-content">`.
 - Correct/wrong state always carries an icon or shape in addition to color.
 - Textareas have persistent programmatic labels; placeholders are hints, never labels.

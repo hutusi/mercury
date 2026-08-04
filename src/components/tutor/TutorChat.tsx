@@ -112,12 +112,12 @@ export function TutorChat({
       </div>
 
       {error === "unavailable" && (
-        <Callout variant="accent" className="p-4 text-sm">
+        <Callout variant="accent" role="alert" className="p-4 text-sm">
           {t.tutor.unavailable}
         </Callout>
       )}
       {error === "limit" && (
-        <Callout variant="accent" className="space-y-2 p-4 text-sm">
+        <Callout variant="accent" role="alert" className="space-y-2 p-4 text-sm">
           <p>{t.tutor.limitReached}</p>
           {showPremiumCta && <PremiumCta />}
         </Callout>
