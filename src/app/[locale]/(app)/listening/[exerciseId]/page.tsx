@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { ListeningRunner } from "@/components/listening/ListeningRunner";
 import { getDict } from "@/lib/i18n";
-import { getListeningExerciseSanitized } from "@/lib/queries/listening";
+import { getListeningExerciseSanitized, listListeningExercises } from "@/lib/queries/listening";
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function ListeningExercisePage({
@@ -12,13 +12,16 @@ export default async function ListeningExercisePage({
 }: {
   params: Promise<{ exerciseId: string }>;
 }) {
-  const { goalTrack } = await requireOnboarded();
+  const { user, goalTrack } = await requireOnboarded();
   const { exerciseId } = await params;
   const t = await getDict();
 
   // The query strips answers — the script stays for client-side TTS.
   const exercise = await getListeningExerciseSanitized(exerciseId);
   if (!exercise) notFound();
+
+  const { exercises, bestByExercise } = await listListeningExercises(user.id, exercise.track);
+  const next = exercises.find((e) => e.id !== exercise.id && !bestByExercise.has(e.id));
 
   return (
     <div className="space-y-6">
@@ -41,6 +44,7 @@ export default async function ListeningExercisePage({
         audioUrl={exercise.audioUrl}
         questions={exercise.questions}
         crossPromo={<CrossPromoCard track={goalTrack} />}
+        nextHref={next ? `/listening/${next.id}` : null}
       />
     </div>
   );

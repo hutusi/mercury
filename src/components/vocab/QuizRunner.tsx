@@ -125,6 +125,16 @@ export function QuizRunner({
             <Link href="/vocabulary/study">{t.vocab.startStudy}</Link>
           </Button>
         </div>
+        {result.score < result.total && (
+          <p className="mt-4">
+            <Link
+              href="/mistakes"
+              className="text-sm font-medium text-cinnabar underline underline-offset-4 transition-colors hover:text-cinnabar/80"
+            >
+              {t.common.reviewWrongCta} · {result.total - result.score}
+            </Link>
+          </p>
+        )}
       </div>
     );
   }

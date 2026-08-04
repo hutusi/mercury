@@ -1,7 +1,7 @@
 "use client";
 
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
+import { NextStepFooter } from "@/components/exercise/NextStepFooter";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { PassageText } from "@/components/typography/PassageText";
@@ -18,11 +18,14 @@ export function ReadingRunner({
   passage,
   questions,
   crossPromo,
+  nextHref,
 }: {
   exerciseId: string;
   passage: string;
   questions: SanitizedQuestion[];
   crossPromo?: React.ReactNode;
+  /** First unattempted sibling exercise, resolved server-side. */
+  nextHref?: string | null;
 }) {
   const t = useT();
   const [answers, setAnswers] = useState<Record<string, number>>({});
@@ -71,14 +74,12 @@ export function ReadingRunner({
         score={result.score}
         total={result.total}
       >
-        <div className="flex items-center justify-between">
-          <Link
-            href="/reading"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ← {t.reading.backToList}
-          </Link>
-        </div>
+        <NextStepFooter
+          nextHref={nextHref}
+          wrongCount={result.perQuestion.filter((q) => !q.correct).length}
+          backHref="/reading"
+          backLabel={t.reading.backToList}
+        />
         {crossPromo}
       </ResultSummary>
     );

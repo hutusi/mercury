@@ -1,9 +1,9 @@
 "use client";
 
 import { Lock } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
+import { NextStepFooter } from "@/components/exercise/NextStepFooter";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Button } from "@/components/ui/button";
@@ -20,12 +20,15 @@ export function ListeningRunner({
   audioUrl,
   questions,
   crossPromo,
+  nextHref,
 }: {
   exerciseId: string;
   script: ScriptLine[];
   audioUrl?: string | null;
   questions: SanitizedQuestion[];
   crossPromo?: React.ReactNode;
+  /** First unattempted sibling exercise, resolved server-side. */
+  nextHref?: string | null;
 }) {
   const t = useT();
   const [answers, setAnswers] = useState<Record<string, number>>({});
@@ -99,12 +102,12 @@ export function ListeningRunner({
             ))}
           </div>
         </div>
-        <Link
-          href="/listening"
-          className="inline-block text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          ← {t.reading.backToList}
-        </Link>
+        <NextStepFooter
+          nextHref={nextHref}
+          wrongCount={result.perQuestion.filter((q) => !q.correct).length}
+          backHref="/listening"
+          backLabel={t.reading.backToList}
+        />
         {crossPromo}
       </div>
     );

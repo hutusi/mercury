@@ -3,6 +3,7 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { AnswerReview } from "@/components/exam/AnswerReview";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
+import { NextStepFooter } from "@/components/exercise/NextStepFooter";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
 import { requireUser } from "@/lib/auth/session";
@@ -103,6 +104,14 @@ export default async function ExamReportPage({
           })}
         </div>
       </section>
+
+      {/* The attempt just wrote its wrong answers into the notebook — surface
+          the review loop at the moment it matters. */}
+      <NextStepFooter
+        wrongCount={sectionScores.reduce((n, s) => n + (s.max - s.raw), 0)}
+        backHref="/exams"
+        backLabel={t.nav.exams}
+      />
 
       {/* Highest-intent moment for the funnel: exam finished → business content */}
       <CrossPromoCard track={attempt.track} />
