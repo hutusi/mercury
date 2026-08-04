@@ -66,7 +66,7 @@ export function MembershipCells({
         </Badge>
       </td>
       <td className="px-3 py-2 text-muted-foreground">
-        {membership.tier === "premium" ? (membership.expiresAt ?? t.admin.noExpiry) : "—"}
+        {membership.tier === "premium" ? (membership.expiresAt ?? t.common.noExpiry) : "—"}
       </td>
       <td className="px-3 py-2">
         <div className="flex items-center gap-2">

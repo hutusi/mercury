@@ -66,7 +66,7 @@ test("admin promotion, premium grant, and revoke thread end-to-end", async ({ pa
   const memberRow = page.locator("tr", { hasText: member.email });
   await memberRow.getByRole("button", { name: t.admin.grant }).click();
   await expect(memberRow.getByText(t.admin.tierPremium)).toBeVisible();
-  await expect(memberRow.getByText(t.admin.noExpiry)).toBeVisible();
+  await expect(memberRow.getByText(t.common.noExpiry)).toBeVisible();
 
   // The grant threads through to the API surfaces: tier and a higher limit.
   const meAfter = await request.get("/api/v1/me", { headers: member.authHeaders });

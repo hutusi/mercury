@@ -147,7 +147,7 @@ export function SpeakingRunner({
         requestAnimationFrame(() => doneRef.current?.focus());
       } catch {
         // Stay in review so the recording can be resubmitted.
-        setSubmitError(t.exams.submitFailed);
+        setSubmitError(t.common.submitRetry);
       }
     });
   }

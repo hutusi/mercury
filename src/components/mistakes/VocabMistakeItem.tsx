@@ -54,7 +54,7 @@ export function VocabMistakeItem({
         setPicked(null);
         setCorrectOptionId(null);
       } catch {
-        setError(t.exams.submitFailed);
+        setError(t.common.submitRetry);
       }
     });
   }
@@ -85,7 +85,7 @@ export function VocabMistakeItem({
           onCleared?.();
         }
       } catch {
-        setError(t.exams.submitFailed);
+        setError(t.common.submitRetry);
       }
     });
   }

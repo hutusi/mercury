@@ -30,6 +30,7 @@ export function ReadingRunner({
   const t = useT();
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [result, setResult] = useState<GradedExercise | null>(null);
+  const [usedSeconds, setUsedSeconds] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(0);
@@ -41,6 +42,7 @@ export function ReadingRunner({
 
   function submit() {
     setError(null);
+    const duration = Math.round((Date.now() - startedAt.current) / 1000);
     startTransition(async () => {
       try {
         // A retry after a lost response reuses the same id (answers unchanged),
@@ -52,13 +54,14 @@ export function ReadingRunner({
           kind: "reading",
           refId: exerciseId,
           answers,
-          durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
+          durationSeconds: duration,
         });
         requestRef.current = null;
+        setUsedSeconds(duration);
         setResult(graded);
         window.scrollTo({ top: 0 });
       } catch {
-        setError(t.exams.submitFailed);
+        setError(t.common.submitRetry);
       }
     });
   }

@@ -121,7 +121,7 @@ export function BookReaderRunner({
         />
         {error && (
           <Callout variant="error" className="p-3 text-center text-sm">
-            {t.exams.submitFailed}
+            {t.common.submitRetry}
           </Callout>
         )}
         <Button

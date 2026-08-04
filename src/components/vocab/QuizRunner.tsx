@@ -74,7 +74,7 @@ export function QuizRunner({
           setCompletedResult({ score: graded.score, total: graded.total });
         }
       } catch {
-        setError(t.exams.submitFailed);
+        setError(t.common.submitRetry);
       }
     });
   }

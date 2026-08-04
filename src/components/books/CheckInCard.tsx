@@ -106,7 +106,7 @@ export function CheckInCard({
           {result.explanationZh}
         </div>
       )}
-      {error && <p className="mt-3 text-xs font-medium text-cinnabar">{t.exams.submitFailed}</p>}
+      {error && <p className="mt-3 text-xs font-medium text-cinnabar">{t.common.submitRetry}</p>}
     </aside>
   );
 }

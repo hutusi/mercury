@@ -73,7 +73,7 @@ export default async function SettingsPage() {
             {tier === "premium"
               ? membership?.expiresAt
                 ? `${t.settings.membershipExpires} ${membership.expiresAt.toISOString().slice(0, 10)}`
-                : t.settings.membershipNoExpiry
+                : t.common.noExpiry
               : t.settings.membershipFreeHint}
           </span>
           {tier !== "premium" && <PremiumCta />}

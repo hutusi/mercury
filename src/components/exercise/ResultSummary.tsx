@@ -21,6 +21,7 @@ export function ResultSummary({
   score,
   total,
   children,
+  durationSeconds,
 }: {
   questions: SanitizedQuestion[];
   answers: Record<string, number>;
@@ -29,6 +30,8 @@ export function ResultSummary({
   total: number;
   /** Extra content below the review, e.g. cross-promo or retry buttons. */
   children?: React.ReactNode;
+  /** Wall-clock seconds the attempt took; shown when the runner tracked it. */
+  durationSeconds?: number;
 }) {
   const t = useT();
   const gradedById = new Map(graded.map((g) => [g.questionId, g]));
@@ -58,6 +61,12 @@ export function ResultSummary({
         >
           {t.common.accuracy} {pct}%
         </p>
+        {durationSeconds !== undefined && (
+          <p className="mt-1 font-mono text-xs text-muted-foreground tabular-nums">
+            {t.reading.timeUsed}{" "}
+            {`${String(Math.floor(durationSeconds / 60)).padStart(2, "0")}:${String(durationSeconds % 60).padStart(2, "0")}`}
+          </p>
+        )}
       </div>
 
       <ol className="space-y-6">

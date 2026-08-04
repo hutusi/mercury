@@ -64,7 +64,7 @@ export function MistakeItem({
           onCleared?.();
         }
       } catch {
-        setError(t.exams.submitFailed);
+        setError(t.common.submitRetry);
       }
     });
   }
