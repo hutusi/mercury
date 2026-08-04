@@ -5,6 +5,7 @@ import { Briefcase, Check, GraduationCap, Target, type LucideIcon } from "lucide
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import { Chip } from "@/components/ui/chip";
 import { Input } from "@/components/ui/input";
 import type { Track } from "@/content/types";
@@ -26,6 +27,7 @@ export function OnboardingFlow() {
   const [dailyMinutes, setDailyMinutes] = useState(20);
   const [level, setLevel] = useState<SelfRatedLevel | null>(null);
   const [pending, startTransition] = useTransition();
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const trackOptions: {
     track: Track;
@@ -73,20 +75,28 @@ export function OnboardingFlow() {
 
   function submit(withGoal: boolean) {
     if (!selected) return;
+    setSubmitError(null);
     startTransition(async () => {
       const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || undefined;
-      await completeOnboarding({
-        track: selected,
-        timeZone,
-        goal: withGoal
-          ? {
-              targetScore,
-              examDate: examDate || null,
-              dailyMinutes,
-              selfRatedLevel: level,
-            }
-          : undefined,
-      });
+      try {
+        await completeOnboarding({
+          track: selected,
+          timeZone,
+          goal: withGoal
+            ? {
+                targetScore,
+                examDate: examDate || null,
+                dailyMinutes,
+                selfRatedLevel: level,
+              }
+            : undefined,
+        });
+      } catch {
+        // Every user must pass this screen — its failure mode cannot be an
+        // unresponsive button (success never reaches here: the action
+        // redirects). Same pattern as GoalEditor.
+        setSubmitError(t.auth.genericError);
+      }
     });
   }
 
@@ -232,6 +242,11 @@ export function OnboardingFlow() {
           {t.onboarding.skipGoal}
         </button>
       </div>
+      {submitError && (
+        <Callout variant="error" className="p-3 text-sm">
+          {submitError}
+        </Callout>
+      )}
     </div>
   );
 }
