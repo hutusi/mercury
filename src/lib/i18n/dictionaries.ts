@@ -262,6 +262,9 @@ const zh = {
     reasonWritingCadence: "保持写作手感",
     reasonSpeakingCadence: "保持口语手感",
     reasonExamCheckpoint: "检验备考进度",
+    doneTitle: "今日计划已完成",
+    doneHint: "想再练一点？",
+    doneExtraCta: "自由复习词汇",
   },
   dashboard: {
     greeting: "你好",
@@ -825,6 +828,9 @@ const en: Dictionary = {
     reasonWritingCadence: "Keep your writing sharp",
     reasonSpeakingCadence: "Keep your speaking sharp",
     reasonExamCheckpoint: "Check exam readiness",
+    doneTitle: "Today's plan is complete",
+    doneHint: "Want a little more?",
+    doneExtraCta: "Free-review vocabulary",
   },
   dashboard: {
     greeting: "Hello",

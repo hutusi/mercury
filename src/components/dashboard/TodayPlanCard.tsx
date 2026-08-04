@@ -34,7 +34,33 @@ const KIND_ICONS: Record<PlanItemKind, LucideIcon> = {
  */
 export async function TodayPlanCard({ items }: { items: PlanItem[] }) {
   const t = await getDict();
-  if (items.length === 0) return null;
+
+  // An empty plan means everything the engine would suggest is done — the
+  // headline card must close the loop, not silently vanish.
+  if (items.length === 0) {
+    return (
+      <section>
+        <SectionLabel as="h2" className="mb-3">
+          {t.plan.title}
+        </SectionLabel>
+        <div className="border-y border-border py-8 text-center">
+          <p className="flex justify-center text-cinnabar" aria-hidden>
+            <Sparkles className="size-6" />
+          </p>
+          <p className="mt-3 font-serif text-xl font-medium">{t.plan.doneTitle}</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {t.plan.doneHint}{" "}
+            <Link
+              href="/vocabulary/study"
+              className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+            >
+              {t.plan.doneExtraCta}
+            </Link>
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   const itemLabels: Record<PlanItemKind, string> = {
     vocab_review: t.plan.itemVocabReview,
