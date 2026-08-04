@@ -146,7 +146,9 @@ export function buildDailyPlan(input: PlanInput): PlanItem[] {
 
   for (const skill of order) {
     if (skill === "reading") {
-      const pick = input.available.reading.find((e) => !e.attempted) ?? input.available.reading[0];
+      // Unattempted only — re-suggesting finished content forever meant the
+      // plan could never complete; an exhausted slot is simply skipped.
+      const pick = input.available.reading.find((e) => !e.attempted);
       if (pick) {
         candidates.push({
           kind: "reading",
@@ -157,8 +159,7 @@ export function buildDailyPlan(input: PlanInput): PlanItem[] {
         });
       }
     } else if (skill === "listening") {
-      const pick =
-        input.available.listening.find((e) => !e.attempted) ?? input.available.listening[0];
+      const pick = input.available.listening.find((e) => !e.attempted);
       if (pick) {
         candidates.push({
           kind: "listening",

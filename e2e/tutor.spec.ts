@@ -16,6 +16,10 @@ test.describe("AI tutor chat", () => {
     await expect(page.getByText(t.tutor.unavailable)).toBeVisible();
     await expect(page.getByPlaceholder(t.tutor.placeholder)).toBeDisabled();
     await expect(page.getByRole("button", { name: t.tutor.send })).toBeDisabled();
+    // The quota counter shows remaining against the limit, not a bare number.
+    await expect(
+      page.getByText(new RegExp(`${t.tutor.remainingLabel}: \\d+ / \\d+`)),
+    ).toBeVisible();
   });
 
   test("API: GET reports enabled=false, POST degrades with 503 envelope", async ({ request }) => {

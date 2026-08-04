@@ -62,10 +62,12 @@ export default async function WritingSubmissionPage({
           hint={submission.degradeReason === "quota" ? t.writing.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
           retry={
-            <div className="space-y-3">
-              {isAiEnabled() && <RetryWritingFeedback submissionId={submission.id} />}
-              {submission.degradeReason === "quota" && <PremiumCta />}
-            </div>
+            isAiEnabled() || submission.degradeReason === "quota" ? (
+              <div className="space-y-3">
+                {isAiEnabled() && <RetryWritingFeedback submissionId={submission.id} />}
+                {submission.degradeReason === "quota" && <PremiumCta />}
+              </div>
+            ) : undefined
           }
         />
       )}

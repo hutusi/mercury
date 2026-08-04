@@ -76,7 +76,7 @@ export default async function SettingsPage() {
                 : t.common.noExpiry
               : t.settings.membershipFreeHint}
           </span>
-          {tier !== "premium" && <PremiumCta />}
+          <PremiumCta />
         </div>
       </section>
 

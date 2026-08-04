@@ -65,6 +65,9 @@ export function TutorChat({
           { id: result.message.id, role: "assistant", content: result.message.content },
         ]);
         setRemaining(result.remainingToday);
+        // Spending the last message must raise the wall immediately — not
+        // silently disable the textarea until a reload.
+        if (result.remainingToday <= 0) setError("limit");
       } else {
         setMessages((m) => m.slice(0, -1));
         setInput(content);

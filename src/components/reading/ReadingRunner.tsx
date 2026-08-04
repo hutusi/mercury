@@ -77,13 +77,13 @@ export function ReadingRunner({
         score={result.score}
         total={result.total}
       >
+        {crossPromo}
         <NextStepFooter
           nextHref={nextHref}
           wrongCount={result.perQuestion.filter((q) => !q.correct).length}
           backHref="/reading"
           backLabel={t.reading.backToList}
         />
-        {crossPromo}
       </ResultSummary>
     );
   }

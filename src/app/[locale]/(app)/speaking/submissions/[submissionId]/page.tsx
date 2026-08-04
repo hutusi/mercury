@@ -61,10 +61,12 @@ export default async function SpeakingSubmissionPage({
           hint={submission.degradeReason === "quota" ? t.speaking.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
           retry={
-            <div className="space-y-3">
-              {isAiEnabled() && <RetrySpeakingFeedback submissionId={submission.id} />}
-              {submission.degradeReason === "quota" && <PremiumCta />}
-            </div>
+            isAiEnabled() || submission.degradeReason === "quota" ? (
+              <div className="space-y-3">
+                {isAiEnabled() && <RetrySpeakingFeedback submissionId={submission.id} />}
+                {submission.degradeReason === "quota" && <PremiumCta />}
+              </div>
+            ) : undefined
           }
         />
       )}

@@ -58,7 +58,8 @@ Compose these before writing inline Tailwind. Signature pieces live in `src/comp
 - **`PassageText`** — the long-form prose body (18px serif, relaxed leading, `whitespace-pre-line`); every reading/book/exam passage renders through it.
 - **`Stat`** — mono tabular figure with optional unit/label; a `size` (`sm`–`xl`) and `align` (`start`/`center`) scale for hero figures vs the marginalia rail; `accent` for cinnabar.
 - **`EntryList` / `EntryRow`** — hairline-divided rows replacing card grids on list pages.
-- **`EmptyState`** — centered hairline empty block.
+- **`EmptyState`** — centered hairline empty block, with an optional `action` slot: an empty state must never dead-end (lift the filter, route to content).
+- **`NextStepFooter`** (`src/components/exercise/`) — the post-score router used by reading, listening, the vocab quiz, and the exam report: next unattempted item, review-this-attempt's-mistakes, back link.
 - `src/components/layout/`: `SkipLink` (targets `#main-content`), the seal `Wordmark` (square cinnabar tile — the brand's only filled-red surface), `PageSkeleton` (route-transition placeholder), `ErrorState` (shared error-boundary body).
 - `src/components/ui/`: flattened shadcn primitives; `Button` and `Badge` have an `accent` (cinnabar) variant for funnel CTAs. **`PasswordInput`** wraps `Input` with the eye reveal toggle — every password field uses it (no confirm-password twins by design). **`Callout`** is the one bordered-notice box — `accent` (cinnabar funnel/self-assess), `error` (destructive; defaults to `role="alert"` so async failures are announced), and `muted` — replacing the box that was hand-rolled across features.
 
@@ -70,6 +71,7 @@ Compose these before writing inline Tailwind. Signature pieces live in `src/comp
 
 - WCAG AA contrast in both themes; `muted-foreground` stays at L ≤ 0.5 (light) / ≥ 0.71 (dark); dark `cinnabar-foreground` is page-toned because white on bright cinnabar is ~2.9:1.
 - Focus is a 2px cinnabar ring with offset on buttons/links, borderless ring on fields.
+- **Focus follows async view swaps**: when a submit replaces the view (exercise results, quiz done, exam section advance), the new container takes focus (`tabIndex={-1}` + rAF-deferred `.focus()`) so keyboard and screen-reader users aren't stranded on a control that no longer exists.
 - Skip link as the shell's first element; `<main id="main-content">`.
 - Correct/wrong state always carries an icon or shape in addition to color.
 - Textareas have persistent programmatic labels; placeholders are hints, never labels.

@@ -105,18 +105,15 @@ export default async function ExamReportPage({
         </div>
       </section>
 
-      {/* The attempt just wrote its wrong answers into the notebook — surface
-          the review loop at the moment it matters. */}
-      <NextStepFooter
-        wrongCount={sectionScores.reduce((n, s) => n + (s.max - s.raw), 0)}
-        backHref="/exams"
-        backLabel={t.nav.exams}
-      />
-
       {/* Highest-intent moment for the funnel: exam finished → business content */}
       <CrossPromoCard track={attempt.track} />
 
       <AnswerReview sections={exam.sections} answers={attempt.answers} />
+
+      {/* The attempt just wrote its wrong answers into the notebook — surface
+          the review loop where the reading ends. The page header already
+          carries the back link. */}
+      <NextStepFooter wrongCount={sectionScores.reduce((n, s) => n + (s.max - s.raw), 0)} />
     </div>
   );
 }

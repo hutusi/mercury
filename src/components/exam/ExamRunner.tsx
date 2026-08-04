@@ -51,7 +51,9 @@ export function ExamRunner({
   // Screen-reader time warnings: the visual clock is aria-labelled but never
   // announced; announce once at 5:00 and once at 1:00 per section.
   const [timeAnnouncement, setTimeAnnouncement] = useState<string | null>(null);
-  const announcedRef = useRef<{ five: boolean; one: boolean }>({ five: false, one: false });
+  // null until the first tick seeds it from the observed remaining, so a
+  // reload mid-window doesn't false-announce a threshold already crossed.
+  const announcedRef = useRef<{ five: boolean; one: boolean } | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -145,12 +147,14 @@ export function ExamRunner({
           router.push(localePath(locale, `/exams/attempts/${attemptId}`));
           return;
         }
-        announcedRef.current = { five: false, one: false };
+        announcedRef.current = null;
         setTimeAnnouncement(null);
         setSectionIndex(result.nextSectionIndex);
         setDeadlines(result.deadlines);
         window.scrollTo({ top: 0 });
-        sectionHeadingRef.current?.focus();
+        // After React commits the new section — a synchronous focus would
+        // have the screen reader announce the section just left.
+        requestAnimationFrame(() => sectionHeadingRef.current?.focus());
       } catch {
         // Un-mark so the user can retry — the server clamps late answers,
         // so retrying after expiry is safe and still completes the attempt.
@@ -171,13 +175,17 @@ export function ExamRunner({
     const tick = setInterval(() => {
       const remaining = examRemainingMs(deadline.expiresAt, clockSkewMs.current, Date.now());
       setRemainingMs(remaining);
-      if (remaining <= 300_000 && !announcedRef.current.five) {
-        announcedRef.current.five = true;
-        setTimeAnnouncement(t.exams.fiveMinutesLeft);
-      }
-      if (remaining <= 60_000 && !announcedRef.current.one) {
-        announcedRef.current.one = true;
-        setTimeAnnouncement(t.exams.oneMinuteLeft);
+      if (announcedRef.current === null) {
+        announcedRef.current = { five: remaining <= 300_000, one: remaining <= 60_000 };
+      } else {
+        if (remaining <= 300_000 && !announcedRef.current.five) {
+          announcedRef.current.five = true;
+          setTimeAnnouncement(t.exams.fiveMinutesLeft);
+        }
+        if (remaining <= 60_000 && !announcedRef.current.one) {
+          announcedRef.current.one = true;
+          setTimeAnnouncement(t.exams.oneMinuteLeft);
+        }
       }
       if (remaining <= 0) {
         clearInterval(tick);

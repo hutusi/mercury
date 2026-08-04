@@ -63,7 +63,7 @@ export function ResultSummary({
         </p>
         {durationSeconds !== undefined && (
           <p className="mt-1 font-mono text-xs text-muted-foreground tabular-nums">
-            {t.reading.timeUsed}{" "}
+            {t.common.timeUsed}{" "}
             {`${String(Math.floor(durationSeconds / 60)).padStart(2, "0")}:${String(durationSeconds % 60).padStart(2, "0")}`}
           </p>
         )}

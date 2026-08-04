@@ -106,13 +106,13 @@ export function ListeningRunner({
             ))}
           </div>
         </div>
+        {crossPromo}
         <NextStepFooter
           nextHref={nextHref}
           wrongCount={result.perQuestion.filter((q) => !q.correct).length}
           backHref="/listening"
           backLabel={t.reading.backToList}
         />
-        {crossPromo}
       </div>
     );
   }

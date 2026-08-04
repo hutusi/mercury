@@ -19,8 +19,9 @@ export function NextStepFooter({
 }: {
   nextHref?: string | null;
   wrongCount?: number;
-  backHref: string;
-  backLabel: string;
+  /** Omit when the page already carries its own back affordance. */
+  backHref?: string;
+  backLabel?: string;
 }) {
   const t = useT();
   return (
@@ -41,12 +42,14 @@ export function NextStepFooter({
           {t.common.reviewWrongCta} · {wrongCount}
         </Link>
       )}
-      <Link
-        href={backHref}
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-      >
-        ← {backLabel}
-      </Link>
+      {backHref && (
+        <Link
+          href={backHref}
+          className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+        >
+          ← {backLabel}
+        </Link>
+      )}
     </div>
   );
 }

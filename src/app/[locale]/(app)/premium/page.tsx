@@ -1,4 +1,6 @@
+import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { InterestButton } from "@/components/premium/InterestButton";
@@ -33,7 +35,14 @@ export default async function PremiumPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-2xl space-y-8">
+    <div className="max-w-2xl space-y-8">
+      <Link
+        href="/settings"
+        className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft className="size-4" aria-hidden />
+        {t.nav.settings}
+      </Link>
       <EntryHeader
         title={t.settings.membershipPremium}
         ipa={t.entry.premiumIpa}
@@ -50,9 +59,9 @@ export default async function PremiumPage() {
             <tr className="border-b border-border text-left">
               <th className="py-2.5 pr-4 font-mono text-2xs font-medium tracking-label text-muted-foreground uppercase" />
               <th className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-muted-foreground uppercase">
-                {t.admin.tierFree}
+                {t.premium.currentLabel}
               </th>
-              <th className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-cinnabar uppercase">
+              <th className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-foreground uppercase">
                 {t.settings.membershipPremium}
               </th>
             </tr>
@@ -62,11 +71,9 @@ export default async function PremiumPage() {
               <tr key={row.label}>
                 <td className="py-3 pr-4">{row.label}</td>
                 <td className="px-4 py-3 font-mono text-muted-foreground tabular-nums">
-                  {row.free} / {t.premium.perDay}
+                  {row.free}
                 </td>
-                <td className="px-4 py-3 font-mono font-medium tabular-nums">
-                  {row.premium} / {t.premium.perDay}
-                </td>
+                <td className="px-4 py-3 font-mono font-medium tabular-nums">{row.premium}</td>
               </tr>
             ))}
           </tbody>

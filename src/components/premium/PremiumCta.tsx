@@ -13,7 +13,7 @@ export function PremiumCta() {
   return (
     <Link
       href="/premium"
-      className="inline-block text-sm font-medium text-cinnabar underline underline-offset-4 transition-colors hover:text-cinnabar/80"
+      className="inline-block text-sm font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
     >
       {t.premium.learnMore} →
     </Link>
