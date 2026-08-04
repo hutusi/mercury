@@ -173,6 +173,7 @@ const zh = {
   filters: {
     all: "全部",
     byTrack: "按方向筛选",
+    viewAll: "查看全部方向",
   },
   settings: {
     subtitle: "学习目标与偏好",
@@ -741,6 +742,7 @@ const en: Dictionary = {
   filters: {
     all: "All",
     byTrack: "Filter by track",
+    viewAll: "View all tracks",
   },
   settings: {
     subtitle: "Your goal and preferences",
