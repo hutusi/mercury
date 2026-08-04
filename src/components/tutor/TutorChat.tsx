@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { Textarea } from "@/components/ui/textarea";
 import { sendTutorMessage } from "@/lib/actions/chat";
+import { PremiumCta } from "@/components/premium/PremiumCta";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
 export interface ChatMessageVM {
@@ -24,17 +25,21 @@ export function TutorChat({
   enabled,
   initialMessages,
   remainingToday,
+  dailyLimit,
 }: {
   enabled: boolean;
   initialMessages: ChatMessageVM[];
   remainingToday: number;
+  dailyLimit: number;
 }) {
   const t = useT();
   const [messages, setMessages] = useState<ChatMessageVM[]>(initialMessages);
   const [input, setInput] = useState("");
   const [remaining, setRemaining] = useState(remainingToday);
+  // Quota exhaustion must be legible on page load, not only after a failed
+  // send — a returning learner used to see just a disabled textarea.
   const [error, setError] = useState<"unavailable" | "limit" | "in_progress" | "failed" | null>(
-    enabled ? null : "unavailable",
+    !enabled ? "unavailable" : remainingToday <= 0 ? "limit" : null,
   );
   const [pending, startTransition] = useTransition();
   const endRef = useRef<HTMLDivElement>(null);
@@ -106,8 +111,9 @@ export function TutorChat({
         </Callout>
       )}
       {error === "limit" && (
-        <Callout variant="accent" className="p-4 text-sm">
-          {t.tutor.limitReached}
+        <Callout variant="accent" className="space-y-2 p-4 text-sm">
+          <p>{t.tutor.limitReached}</p>
+          <PremiumCta />
         </Callout>
       )}
       {error === "in_progress" && (
@@ -143,7 +149,7 @@ export function TutorChat({
         />
         <div className="flex items-center justify-between gap-3">
           <p id="tutor-message-meta" className="font-mono text-xs text-muted-foreground">
-            {t.tutor.remainingLabel}: {remaining}
+            {t.tutor.remainingLabel}: {remaining} / {dailyLimit}
           </p>
           <Button onClick={send} disabled={!canSend}>
             <Send className="size-4" aria-hidden />

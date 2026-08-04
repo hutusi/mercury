@@ -8,7 +8,7 @@ import { requireOnboarded } from "@/lib/settings";
 export default async function TutorPage() {
   const { user } = await requireOnboarded();
   const t = await getDict();
-  const { messages, remainingToday } = await getChatPageData(user.id);
+  const { messages, remainingToday, dailyLimit } = await getChatPageData(user.id);
 
   return (
     <div className="space-y-8">
@@ -21,6 +21,7 @@ export default async function TutorPage() {
       <TutorChat
         enabled={isAiEnabled()}
         remainingToday={remainingToday}
+        dailyLimit={dailyLimit}
         initialMessages={messages.map((m) => ({ id: m.id, role: m.role, content: m.content }))}
       />
     </div>
