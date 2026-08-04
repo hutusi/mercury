@@ -33,7 +33,14 @@ const KIND_ICONS: Record<PlanItemKind, LucideIcon> = {
  * the plan engine (src/lib/plan-core.ts) picks the shortest path for today
  * and each row deep-links straight into the work.
  */
-export async function TodayPlanCard({ items }: { items: PlanItem[] }) {
+export async function TodayPlanCard({
+  items,
+  activeToday = false,
+}: {
+  items: PlanItem[];
+  /** Whether any learning action landed today — picks the empty-state copy. */
+  activeToday?: boolean;
+}) {
   const t = await getDict();
 
   // An empty plan means everything the engine would suggest is done — the
@@ -59,7 +66,7 @@ export async function TodayPlanCard({ items }: { items: PlanItem[] }) {
             <Sparkles className="size-6" />
           </span>
           <span className="mt-3 block font-serif text-xl font-medium text-foreground">
-            {t.plan.doneTitle}
+            {activeToday ? t.plan.doneTitle : t.plan.emptyTitle}
           </span>
           <span className="mt-1 block">{t.plan.doneHint}</span>
         </EmptyState>

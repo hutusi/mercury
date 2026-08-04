@@ -76,6 +76,7 @@ export function ReadingRunner({
         graded={result.perQuestion}
         score={result.score}
         total={result.total}
+        durationSeconds={usedSeconds ?? undefined}
       >
         {crossPromo}
         <NextStepFooter

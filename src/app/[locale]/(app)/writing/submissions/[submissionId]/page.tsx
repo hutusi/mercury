@@ -8,6 +8,7 @@ import { RetryWritingFeedback } from "@/components/writing/RetryWritingFeedback"
 import { SelfAssessPanel } from "@/components/writing/SelfAssessPanel";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
+import { getTierForUser } from "@/lib/queries/membership";
 import { getDict } from "@/lib/i18n";
 import { getWritingSubmissionDetail } from "@/lib/queries/writing";
 
@@ -17,6 +18,7 @@ export default async function WritingSubmissionPage({
   params: Promise<{ submissionId: string }>;
 }) {
   const user = await requireUser();
+  const tier = await getTierForUser(user.id);
   const { submissionId } = await params;
   const t = await getDict();
 
@@ -65,7 +67,7 @@ export default async function WritingSubmissionPage({
             isAiEnabled() || submission.degradeReason === "quota" ? (
               <div className="space-y-3">
                 {isAiEnabled() && <RetryWritingFeedback submissionId={submission.id} />}
-                {submission.degradeReason === "quota" && <PremiumCta />}
+                {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}
               </div>
             ) : undefined
           }

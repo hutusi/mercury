@@ -26,11 +26,14 @@ export function TutorChat({
   initialMessages,
   remainingToday,
   dailyLimit,
+  showPremiumCta = false,
 }: {
   enabled: boolean;
   initialMessages: ChatMessageVM[];
   remainingToday: number;
   dailyLimit: number;
+  /** Quota walls upsell only non-premium learners. */
+  showPremiumCta?: boolean;
 }) {
   const t = useT();
   const [messages, setMessages] = useState<ChatMessageVM[]>(initialMessages);
@@ -116,7 +119,7 @@ export function TutorChat({
       {error === "limit" && (
         <Callout variant="accent" className="space-y-2 p-4 text-sm">
           <p>{t.tutor.limitReached}</p>
-          <PremiumCta />
+          {showPremiumCta && <PremiumCta />}
         </Callout>
       )}
       {error === "in_progress" && (

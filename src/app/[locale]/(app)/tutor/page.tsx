@@ -3,12 +3,16 @@ import { EntryHeader } from "@/components/typography/EntryHeader";
 import { isAiEnabled } from "@/lib/ai/client";
 import { getDict } from "@/lib/i18n";
 import { getChatPageData } from "@/lib/queries/chat";
+import { getTierForUser } from "@/lib/queries/membership";
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function TutorPage() {
   const { user } = await requireOnboarded();
   const t = await getDict();
-  const { messages, remainingToday, dailyLimit } = await getChatPageData(user.id);
+  const [{ messages, remainingToday, dailyLimit }, tier] = await Promise.all([
+    getChatPageData(user.id),
+    getTierForUser(user.id),
+  ]);
 
   return (
     <div className="space-y-8">
@@ -22,6 +26,7 @@ export default async function TutorPage() {
         enabled={isAiEnabled()}
         remainingToday={remainingToday}
         dailyLimit={dailyLimit}
+        showPremiumCta={tier !== "premium"}
         initialMessages={messages.map((m) => ({ id: m.id, role: m.role, content: m.content }))}
       />
     </div>

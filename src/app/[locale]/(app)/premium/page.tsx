@@ -5,9 +5,8 @@ import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { InterestButton } from "@/components/premium/InterestButton";
 import { getDict } from "@/lib/i18n";
-import { entitlementsForTier } from "@/lib/membership-core";
+import { entitlementsForTier, resolveTier } from "@/lib/membership-core";
 import { getMembershipForUser, hasPremiumInterest } from "@/lib/queries/membership";
-import { resolveTier } from "@/lib/membership-core";
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function PremiumPage() {
@@ -19,17 +18,19 @@ export default async function PremiumPage() {
   ]);
   const tier = resolveTier(membership ?? null);
 
-  const free = entitlementsForTier("free");
+  // 当前 must reflect the resolved tier — a premium member's current limits
+  // ARE the premium ones.
+  const current = entitlementsForTier(tier);
   const premium = entitlementsForTier("premium");
   const rows = [
     {
       label: t.premium.chatLimitLabel,
-      free: free.chatDailyLimit,
+      current: current.chatDailyLimit,
       premium: premium.chatDailyLimit,
     },
     {
       label: t.premium.gradingLimitLabel,
-      free: free.aiGradingDailyLimit,
+      current: current.aiGradingDailyLimit,
       premium: premium.aiGradingDailyLimit,
     },
   ];
@@ -71,7 +72,7 @@ export default async function PremiumPage() {
               <tr key={row.label}>
                 <td className="py-3 pr-4">{row.label}</td>
                 <td className="px-4 py-3 font-mono text-muted-foreground tabular-nums">
-                  {row.free}
+                  {row.current}
                 </td>
                 <td className="px-4 py-3 font-mono font-medium tabular-nums">{row.premium}</td>
               </tr>

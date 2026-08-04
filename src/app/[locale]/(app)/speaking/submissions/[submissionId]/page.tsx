@@ -8,6 +8,7 @@ import { SelfAssessPanel } from "@/components/speaking/SelfAssessPanel";
 import { SpeakingFeedbackPanel } from "@/components/speaking/SpeakingFeedbackPanel";
 import { isAiEnabled } from "@/lib/ai/client";
 import { requireUser } from "@/lib/auth/session";
+import { getTierForUser } from "@/lib/queries/membership";
 import { getDict } from "@/lib/i18n";
 import { getSpeakingSubmissionDetail } from "@/lib/queries/speaking";
 
@@ -17,6 +18,7 @@ export default async function SpeakingSubmissionPage({
   params: Promise<{ submissionId: string }>;
 }) {
   const user = await requireUser();
+  const tier = await getTierForUser(user.id);
   const { submissionId } = await params;
   const t = await getDict();
 
@@ -64,7 +66,7 @@ export default async function SpeakingSubmissionPage({
             isAiEnabled() || submission.degradeReason === "quota" ? (
               <div className="space-y-3">
                 {isAiEnabled() && <RetrySpeakingFeedback submissionId={submission.id} />}
-                {submission.degradeReason === "quota" && <PremiumCta />}
+                {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}
               </div>
             ) : undefined
           }
