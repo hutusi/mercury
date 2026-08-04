@@ -3,6 +3,7 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { AiFeedbackPanel } from "@/components/writing/AiFeedbackPanel";
+import { PremiumCta } from "@/components/premium/PremiumCta";
 import { RetryWritingFeedback } from "@/components/writing/RetryWritingFeedback";
 import { SelfAssessPanel } from "@/components/writing/SelfAssessPanel";
 import { isAiEnabled } from "@/lib/ai/client";
@@ -60,7 +61,12 @@ export default async function WritingSubmissionPage({
           title={submission.degradeReason === "quota" ? t.writing.aiQuotaTitle : undefined}
           hint={submission.degradeReason === "quota" ? t.writing.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
-          retry={isAiEnabled() ? <RetryWritingFeedback submissionId={submission.id} /> : undefined}
+          retry={
+            <div className="space-y-3">
+              {isAiEnabled() && <RetryWritingFeedback submissionId={submission.id} />}
+              {submission.degradeReason === "quota" && <PremiumCta />}
+            </div>
+          }
         />
       )}
     </div>

@@ -186,6 +186,18 @@ export const memberships = pgTable(
   ],
 );
 
+/**
+ * Demand signal for the not-yet-purchasable premium tier: one row per user
+ * who clicked 预约开通 on /premium. Read by ops (SQL) until billing exists;
+ * idempotent by PK.
+ */
+export const premiumInterest = pgTable("premium_interest", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => user.id, { onDelete: "cascade" }),
+  createdAt: ts("created_at").notNull().$defaultFn(now),
+});
+
 // ---------------------------------------------------------------------------
 // Content tables (seeded from src/content, ids are stable slugs)
 // ---------------------------------------------------------------------------

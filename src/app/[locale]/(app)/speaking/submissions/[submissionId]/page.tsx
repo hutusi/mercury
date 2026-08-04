@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { PremiumCta } from "@/components/premium/PremiumCta";
 import { RetrySpeakingFeedback } from "@/components/speaking/RetrySpeakingFeedback";
 import { SelfAssessPanel } from "@/components/speaking/SelfAssessPanel";
 import { SpeakingFeedbackPanel } from "@/components/speaking/SpeakingFeedbackPanel";
@@ -59,7 +60,12 @@ export default async function SpeakingSubmissionPage({
           title={submission.degradeReason === "quota" ? t.speaking.aiQuotaTitle : undefined}
           hint={submission.degradeReason === "quota" ? t.speaking.aiQuotaHint : undefined}
           canRetry={isAiEnabled()}
-          retry={isAiEnabled() ? <RetrySpeakingFeedback submissionId={submission.id} /> : undefined}
+          retry={
+            <div className="space-y-3">
+              {isAiEnabled() && <RetrySpeakingFeedback submissionId={submission.id} />}
+              {submission.degradeReason === "quota" && <PremiumCta />}
+            </div>
+          }
         />
       )}
     </div>
