@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles, Volume2 } from "lucide-react";
+import { Sparkles, Volume2, VolumeX } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +27,9 @@ export interface StudyCardData {
 
 const QUIET_GRADE_CLS = "border border-border bg-background text-foreground hover:bg-muted";
 
+/** Device-level preference: auto-pronounce the headword when a card is flipped. */
+const AUTO_SPEAK_KEY = "mercury.vocab.autoSpeak";
+
 export function StudySession({ cards }: { cards: StudyCardData[] }) {
   const t = useT();
   const [queue, setQueue] = useState(cards);
@@ -36,12 +39,14 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const [mounted, setMounted] = useState(false);
+  const [autoSpeak, setAutoSpeak] = useState(true);
   const speakerRef = useRef<WordSpeaker | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side
     setMounted(true);
+    setAutoSpeak(localStorage.getItem(AUTO_SPEAK_KEY) !== "off");
     speakerRef.current = createWordSpeaker();
     audioRef.current = new Audio();
     return () => {
@@ -72,6 +77,23 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
     if (el.src !== resolved) el.src = resolved;
     el.currentTime = 0;
     void el.play().catch(() => speakerRef.current?.speak(c.headword));
+  }
+
+  // Auto-pronounce rides the flip click so play() stays inside a user gesture
+  // (autoplay policy never blocks it). Card-advance after grading would run
+  // past an await, outside the activation window — that's why the reveal, not
+  // the next card, is the trigger.
+  function flipCard(c: StudyCardData) {
+    const next = !flipped;
+    setFlipped(next);
+    if (next && autoSpeak) speakHeadword(c);
+  }
+
+  function toggleAutoSpeak() {
+    const next = !autoSpeak;
+    setAutoSpeak(next);
+    localStorage.setItem(AUTO_SPEAK_KEY, next ? "on" : "off");
+    if (!next) stopAudio();
   }
 
   const grade = useCallback(
@@ -156,8 +178,22 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
         <span>
           {index + 1} / {queue.length}
         </span>
-        <span>
+        <span className="flex items-center gap-3">
           {t.vocab.reviewedCount}: {reviewed}
+          {(canSpeak || (mounted && card.audioUrl)) && (
+            <button
+              type="button"
+              onClick={toggleAutoSpeak}
+              aria-pressed={autoSpeak}
+              aria-label={t.vocab.autoSpeak}
+              title={t.vocab.autoSpeak}
+              className="flex size-9 items-center justify-center outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <span aria-hidden>
+                {autoSpeak ? <Volume2 className="size-4" /> : <VolumeX className="size-4" />}
+              </span>
+            </button>
+          )}
         </span>
       </div>
 
@@ -177,7 +213,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
       <div className="relative border border-border bg-background transition-colors hover:border-input">
         <button
           type="button"
-          onClick={() => setFlipped((f) => !f)}
+          onClick={() => flipCard(card)}
           aria-expanded={flipped}
           aria-controls="study-card-answer"
           className={`block w-full cursor-pointer p-8 text-center outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${flipped ? "" : "min-h-72"}`}

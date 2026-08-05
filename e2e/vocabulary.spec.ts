@@ -42,23 +42,25 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   await expect(page.getByText(t.vocab.flipHint)).toBeVisible();
   await expect(page.getByRole("progressbar", { name: t.vocab.sessionProgress })).toBeVisible();
 
-  // Word pronunciation is offered before the flip. With generated headword
-  // audio the button must fetch the MP3 (fulfilled hermetically above);
-  // without it, presence only — browser TTS is never triggered in e2e.
+  // Word pronunciation is offered before the flip (manual replay button).
+  // The fetch assertion rides the flip below — clicking here first would
+  // warm the audio element and mask the auto-play request.
   await expect(page.getByRole("button", { name: t.vocab.speakWord })).toBeVisible();
-  if (expectedWordAudio) {
-    await page.getByRole("button", { name: t.vocab.speakWord }).click();
-    await expect.poll(() => audioRequested).toBe(true);
-  }
 
   // Grade buttons hidden until the card is flipped.
   const goodButton = page.getByRole("button", { name: t.vocab.good, exact: true });
   await expect(goodButton).toBeHidden();
 
-  // Flip card 1: grading appears, plus the example-sentence speaker.
+  // Flip card 1: grading appears, plus the example-sentence speaker. The
+  // reveal also auto-pronounces the headword (default on), so with generated
+  // audio the flip itself must fetch the MP3 (fulfilled hermetically above);
+  // without it, browser TTS is never triggered in e2e.
   await page.getByText(t.vocab.flipHint).click();
   await expect(goodButton).toBeVisible();
   await expect(page.getByRole("button", { name: t.vocab.speakExample })).toBeVisible();
+  if (expectedWordAudio) {
+    await expect.poll(() => audioRequested).toBe(true);
+  }
   const againButton = page.getByRole("button", { name: t.vocab.again, exact: true });
 
   // Interval previews are deliberately gone (scheduler internals stay
@@ -74,11 +76,21 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   await expect(page.getByText(/^2 \/ \d+$/)).toBeVisible();
   await expect(page.getByText(`${t.vocab.reviewedCount}: 1`)).toBeVisible();
 
+  // Mute the auto-pronounce toggle: flipping card 2 must stay silent.
+  const autoSpeakToggle = page.getByRole("button", { name: t.vocab.autoSpeak });
+  await expect(autoSpeakToggle).toHaveAttribute("aria-pressed", "true");
+  await autoSpeakToggle.click();
+  await expect(autoSpeakToggle).toHaveAttribute("aria-pressed", "false");
+  audioRequested = false;
+
   // Flip card 2 and grade "Forgot": the card re-queues, so the total grows.
   const counter = await page.getByText(/^2 \/ \d+$/).textContent();
   const total = Number(counter!.split("/")[1].trim());
   await page.getByText(t.vocab.flipHint).click();
   await expect(againButton).toBeVisible();
+  // The flip fires any audio fetch synchronously, so once the answer is
+  // visible an untouched flag proves the mute held.
+  expect(audioRequested).toBe(false);
   await againButton.click();
   await expect(page.getByText(new RegExp(`^3 / ${total + 1}$`))).toBeVisible();
 
