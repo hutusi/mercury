@@ -16,7 +16,8 @@ export type SendBookChatMessageResult =
   | ({ ok: true } & BookChatReply)
   | {
       ok: false;
-      error: "ai_unavailable" | "premium_required" | "limit_reached" | "in_progress" | "invalid_input";
+      error:
+        "ai_unavailable" | "premium_required" | "limit_reached" | "in_progress" | "invalid_input";
     };
 
 /**

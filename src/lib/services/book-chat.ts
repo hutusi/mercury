@@ -127,7 +127,12 @@ export async function sendBookChatMessageForUser(
   }
 
   const day = await getCalendarDayForUser(userId);
-  const claim = await claimBookChatTurnForUser(userId, bookId, day, entitlements.bookChatDailyLimit);
+  const claim = await claimBookChatTurnForUser(
+    userId,
+    bookId,
+    day,
+    entitlements.bookChatDailyLimit,
+  );
   try {
     // Recent turns, chronological (query newest-first, then reverse).
     const recent = await db.query.bookChatMessages.findMany({
@@ -164,7 +169,10 @@ export async function sendBookChatMessageForUser(
         .for("update")
         .limit(1);
       if (!state || state.claimId !== claim.claimId) {
-        throw new ConflictError("The book tutor request was superseded", "book_chat_claim_superseded");
+        throw new ConflictError(
+          "The book tutor request was superseded",
+          "book_chat_claim_superseded",
+        );
       }
 
       await tx.insert(bookChatMessages).values({

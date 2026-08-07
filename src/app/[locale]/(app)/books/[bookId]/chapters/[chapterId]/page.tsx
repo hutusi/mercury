@@ -1,12 +1,15 @@
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
-import { BookReaderRunner } from "@/components/books/BookReaderRunner";
+import { isAiEnabled } from "@/lib/ai/client";
+import { BookReaderRunner, type BookTutorProps } from "@/components/books/BookReaderRunner";
 import { CheckInCard } from "@/components/books/CheckInCard";
 import { PassageText } from "@/components/typography/PassageText";
 import { estimateChapterMinutes } from "@/lib/book-core";
 import { getDict, localeRedirect } from "@/lib/i18n";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { getBookChatPageData } from "@/lib/queries/book-chat";
 import { getBookChapterForReader } from "@/lib/queries/books";
+import { getTierForUser } from "@/lib/queries/membership";
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function BookChapterPage({
@@ -19,12 +22,33 @@ export default async function BookChapterPage({
   const t = await getDict();
 
   // The query sanitizes both question groups — no answers can reach the DOM.
-  const data = await getBookChapterForReader(user.id, bookId, chapterId);
+  const [data, tier] = await Promise.all([
+    getBookChapterForReader(user.id, bookId, chapterId),
+    getTierForUser(user.id),
+  ]);
   if (!data) notFound();
   // Locked chapters are server-enforced; deep links bounce to the book page.
   if (data.status === "locked") return localeRedirect(`/books/${bookId}`);
 
   const { book, chapter, nextChapterId } = data;
+
+  // The book tutor is a premium hard gate (ADR 0030), absent keyless — free
+  // and keyless readers get an unchanged page and no extra queries.
+  let tutor: BookTutorProps | undefined;
+  if (tier === "premium" && isAiEnabled()) {
+    const chat = await getBookChatPageData(user.id, book.id);
+    if (chat?.entitled) {
+      tutor = {
+        initialMessages: chat.messages.map((m) => ({
+          id: m.id,
+          role: m.role,
+          content: m.content,
+        })),
+        remainingToday: chat.remainingToday,
+        dailyLimit: chat.dailyLimit,
+      };
+    }
+  }
 
   return (
     <div className="mx-auto max-w-prose space-y-8">
@@ -58,9 +82,10 @@ export default async function BookChapterPage({
         chapterId={chapter.id}
         quiz={chapter.quiz}
         nextChapterId={nextChapterId}
+        tutor={tutor}
       >
         {chapter.sections.map((section) => (
-          <section key={section.id} className="space-y-6">
+          <section key={section.id} data-section-id={section.id} className="space-y-6">
             <PassageText className="space-y-4">{section.text}</PassageText>
             {section.checkIn && (
               <CheckInCard bookId={book.id} chapterId={chapter.id} question={section.checkIn} />

@@ -375,6 +375,16 @@ const zh = {
     bandC1: "高阶读物",
     bandC2: "原著无碍",
   },
+  bookChat: {
+    openLabel: "问私教",
+    title: "书中问私教",
+    askSelection: "问私教",
+    quoteLabel: "引用原文",
+    removeQuote: "移除引用",
+    placeholder: "就本章内容提问，或选中原文引用提问",
+    emptyHint: "选中书中的句子提问，或直接输入你的问题。私教只聊你读到的地方，不剧透。",
+    close: "关闭",
+  },
   listening: {
     subtitle: "对话与独白精听训练",
     play: "播放",
@@ -939,6 +949,17 @@ const en: Dictionary = {
     bandB2: "Stepping up",
     bandC1: "Advanced reading",
     bandC2: "Reading without limits",
+  },
+  bookChat: {
+    openLabel: "Ask the tutor",
+    title: "Ask about this book",
+    askSelection: "Ask the tutor",
+    quoteLabel: "Quote",
+    removeQuote: "Remove quote",
+    placeholder: "Ask about this chapter, or quote a passage",
+    emptyHint:
+      "Select a sentence to ask about it, or just type a question. The tutor only discusses what you've read — no spoilers.",
+    close: "Close",
   },
   listening: {
     subtitle: "Conversations and talks, trained carefully",

@@ -101,10 +101,12 @@ describe("entitlementsForTier", () => {
       chatDailyLimit: 200,
       aiGradingDailyLimit: 30,
     });
-    expect(entitlementsForTier("premium", { MERCURY_CHAT_DAILY_LIMIT_PREMIUM: "0" })).toMatchObject({
-      chatDailyLimit: 100,
-      aiGradingDailyLimit: 30,
-    });
+    expect(entitlementsForTier("premium", { MERCURY_CHAT_DAILY_LIMIT_PREMIUM: "0" })).toMatchObject(
+      {
+        chatDailyLimit: 100,
+        aiGradingDailyLimit: 30,
+      },
+    );
   });
 
   test("premium is clamped to never sit below free", () => {

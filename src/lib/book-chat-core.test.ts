@@ -97,7 +97,11 @@ describe("buildBookChatContext", () => {
     // sectionTexts — which the service builds from section.text alone.
     const raw = {
       sections: [
-        { id: "s1", text: "Plain prose only.", checkIn: { correctIndex: 2, explanationZh: "答案解析" } },
+        {
+          id: "s1",
+          text: "Plain prose only.",
+          checkIn: { correctIndex: 2, explanationZh: "答案解析" },
+        },
       ],
       quiz: [{ correctIndex: 1, explanationZh: "测验解析" }],
     };

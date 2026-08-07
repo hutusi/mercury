@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
+import { BookTutorDock, type BookChatMessageVM } from "@/components/books/BookTutorDock";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { SectionLabel } from "@/components/typography/SectionLabel";
@@ -13,6 +14,14 @@ import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-i
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 
+/** Present only for entitled (premium) users with AI enabled — the server
+ * page gates the prop, the runner just mounts the dock in reading mode. */
+export interface BookTutorProps {
+  initialMessages: BookChatMessageVM[];
+  remainingToday: number;
+  dailyLimit: number;
+}
+
 /**
  * Owns the reading → quiz → result flow. The prose (with its inline
  * check-in islands) is server-rendered and passed as children so entering
@@ -20,18 +29,24 @@ import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
  * book closed. Submitting completes the chapter (any score) and unlocks the
  * next; the refresh runs in its own non-gating transition so the book page
  * and plan pick the completion up (never revalidatePath in actions).
+ *
+ * The tutor dock rides the reading branch only: the quiz and result
+ * branches return early, so entering the quiz unmounts the chat too — the
+ * tutor cannot be consulted mid-quiz (ADR 0030).
  */
 export function BookReaderRunner({
   bookId,
   chapterId,
   quiz,
   nextChapterId,
+  tutor,
   children,
 }: {
   bookId: string;
   chapterId: string;
   quiz: SanitizedQuestion[];
   nextChapterId: string | null;
+  tutor?: BookTutorProps;
   children: React.ReactNode;
 }) {
   const t = useT();
@@ -44,6 +59,7 @@ export function BookReaderRunner({
   const [, startRefresh] = useTransition();
   const startedAt = useRef(0);
   const requestRef = useRef<LogicalRequestId | null>(null);
+  const proseRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -138,7 +154,9 @@ export function BookReaderRunner({
 
   return (
     <div className="space-y-10">
-      {children}
+      <div ref={proseRef} className="space-y-10">
+        {children}
+      </div>
       <section className="border-y border-border py-6 text-center">
         <SectionLabel as="h2">{t.books.chapterQuiz}</SectionLabel>
         <p className="mt-3 text-sm text-muted-foreground">{t.books.quizIntro}</p>
@@ -146,6 +164,9 @@ export function BookReaderRunner({
           {t.books.startQuiz}
         </Button>
       </section>
+      {tutor && (
+        <BookTutorDock bookId={bookId} chapterId={chapterId} proseRef={proseRef} {...tutor} />
+      )}
     </div>
   );
 }
