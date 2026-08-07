@@ -93,8 +93,14 @@ export function BookTutorDock({
     if (!canSend) return;
     const question = input.trim();
     const quoted = quote;
-    // One string end to end; the server caps content at 4000.
-    const content = (quoted ? `「${quoted}」\n${question}` : question).slice(0, 4000);
+    // One string end to end; the server caps content at 4000 UTF-16 units.
+    // The quote yields first so the user's own words are never dropped — only
+    // reachable when astral characters make the quote's UTF-16 length exceed
+    // its code-point budget (the trailing replace drops a split surrogate).
+    const room = 4000 - question.length - 3; // 「」 + newline
+    const clippedQuote =
+      quoted && room > 0 ? quoted.slice(0, room).replace(/[\uD800-\uDBFF]$/, "") : null;
+    const content = clippedQuote ? `「${clippedQuote}」\n${question}` : question;
     setInput("");
     setQuote(null);
     setError(null);

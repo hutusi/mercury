@@ -125,25 +125,36 @@ Evaluate the learner's spoken answer (transcribed above) and produce the structu
 }
 
 /**
- * One tutor-chat reply (plain text, both providers). User turns are untrusted
- * and sanitized here; the system prompt carries the learner profile.
+ * Shared plain-text chat dispatch: provider selection and user-turn
+ * sanitization live here so both tutor surfaces cannot drift apart.
  */
-export async function getTutorReply(req: {
-  learnerContext: string | null;
-  messages: { role: "user" | "assistant"; content: string }[];
-}): Promise<string> {
+async function plainTextChat(
+  system: string,
+  messages: { role: "user" | "assistant"; content: string }[],
+): Promise<string> {
   const provider = resolveAiProvider();
   if (!provider) {
     throw new AiUnavailableError("No AI provider is configured");
   }
   const chatReq = {
     model: modelForProvider(provider),
-    system: tutorSystemPrompt(req.learnerContext),
-    messages: req.messages.map((m) =>
+    system,
+    messages: messages.map((m) =>
       m.role === "user" ? { ...m, content: sanitizeUntrusted(m.content) } : m,
     ),
   };
   return provider === "anthropic" ? anthropicPlainText(chatReq) : bailianPlainText(chatReq);
+}
+
+/**
+ * One tutor-chat reply (plain text, both providers). User turns are untrusted
+ * and sanitized at dispatch; the system prompt carries the learner profile.
+ */
+export async function getTutorReply(req: {
+  learnerContext: string | null;
+  messages: { role: "user" | "assistant"; content: string }[];
+}): Promise<string> {
+  return plainTextChat(tutorSystemPrompt(req.learnerContext), req.messages);
 }
 
 /**
@@ -157,16 +168,5 @@ export async function getBookTutorReply(req: {
   learnerContext: string | null;
   messages: { role: "user" | "assistant"; content: string }[];
 }): Promise<string> {
-  const provider = resolveAiProvider();
-  if (!provider) {
-    throw new AiUnavailableError("No AI provider is configured");
-  }
-  const chatReq = {
-    model: modelForProvider(provider),
-    system: bookTutorSystemPrompt(req.bookContext, req.learnerContext),
-    messages: req.messages.map((m) =>
-      m.role === "user" ? { ...m, content: sanitizeUntrusted(m.content) } : m,
-    ),
-  };
-  return provider === "anthropic" ? anthropicPlainText(chatReq) : bailianPlainText(chatReq);
+  return plainTextChat(bookTutorSystemPrompt(req.bookContext, req.learnerContext), req.messages);
 }

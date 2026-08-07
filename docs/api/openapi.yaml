@@ -1320,6 +1320,9 @@ components:
       description: >-
         The feature needs a premium membership (code premium_required). First
         used by the book tutor chat (POST /api/v1/books/{bookId}/chat/messages).
+        Premium-gated operations describe their 403 inline (the status is
+        shared with onboarding_required, so this response is never referenced
+        alone); this component records the shared contract.
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
