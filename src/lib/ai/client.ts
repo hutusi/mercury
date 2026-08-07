@@ -4,7 +4,12 @@ import { anthropicPlainText, anthropicStructuredFeedback } from "./anthropic";
 import { bailianPlainText, bailianStructuredFeedback } from "./bailian";
 import { AiUnavailableError } from "./errors";
 import { modelForProvider, resolveAiProvider } from "./provider";
-import { speakingSystemPrompt, tutorSystemPrompt, writingSystemPrompt } from "./prompts";
+import {
+  bookTutorSystemPrompt,
+  speakingSystemPrompt,
+  tutorSystemPrompt,
+  writingSystemPrompt,
+} from "./prompts";
 import { sanitizeUntrusted } from "./sanitize";
 import {
   SpeakingFeedbackSchema,
@@ -134,6 +139,31 @@ export async function getTutorReply(req: {
   const chatReq = {
     model: modelForProvider(provider),
     system: tutorSystemPrompt(req.learnerContext),
+    messages: req.messages.map((m) =>
+      m.role === "user" ? { ...m, content: sanitizeUntrusted(m.content) } : m,
+    ),
+  };
+  return provider === "anthropic" ? anthropicPlainText(chatReq) : bailianPlainText(chatReq);
+}
+
+/**
+ * One book-tutor-chat reply (ADR 0030; plain text, both providers).
+ * bookContext is the buildBookChatContext block — assembled server-side from
+ * whitelisted chapter data, so quiz answers are structurally absent from the
+ * prompt, and it rides the system prompt for provider prompt caching.
+ */
+export async function getBookTutorReply(req: {
+  bookContext: string;
+  learnerContext: string | null;
+  messages: { role: "user" | "assistant"; content: string }[];
+}): Promise<string> {
+  const provider = resolveAiProvider();
+  if (!provider) {
+    throw new AiUnavailableError("No AI provider is configured");
+  }
+  const chatReq = {
+    model: modelForProvider(provider),
+    system: bookTutorSystemPrompt(req.bookContext, req.learnerContext),
     messages: req.messages.map((m) =>
       m.role === "user" ? { ...m, content: sanitizeUntrusted(m.content) } : m,
     ),
