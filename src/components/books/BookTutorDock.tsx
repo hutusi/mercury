@@ -87,7 +87,9 @@ export function BookTutorDock({
     toggleRef.current?.focus();
   }
 
-  const canSend = remaining > 0 && !pending && input.trim().length > 0;
+  // "unavailable" disables the composer, so Send must go dark with it — a
+  // restored draft would otherwise allow resubmitting into a dead provider.
+  const canSend = remaining > 0 && !pending && error !== "unavailable" && input.trim().length > 0;
 
   function send() {
     if (!canSend) return;
@@ -237,14 +239,15 @@ export function BookTutorDock({
               <div className="flex items-start gap-2 border border-border bg-muted px-2.5 py-1.5 text-xs text-muted-foreground">
                 <Quote className="mt-0.5 size-3.5 shrink-0" aria-hidden />
                 <span className="line-clamp-2 min-w-0 flex-1">{quote}</span>
-                <button
-                  type="button"
-                  className="shrink-0 transition-colors hover:text-foreground"
+                <Button
+                  variant="ghost"
+                  size="icon-xs"
+                  className="shrink-0"
                   aria-label={t.bookChat.removeQuote}
                   onClick={() => setQuote(null)}
                 >
-                  <X className="size-3.5" aria-hidden />
-                </button>
+                  <X aria-hidden />
+                </Button>
               </div>
             )}
             <label htmlFor="book-tutor-message" className="sr-only">
