@@ -51,10 +51,12 @@ export function SelectionQuoteButton({
         const quote = clampQuote(selection.toString());
         if (!quote) return setState(null);
         const rect = selection.getRangeAt(0).getBoundingClientRect();
-        // Below the selection (the iOS native callout sits above it), center
-        // clamped to the viewport.
+        // Below the selection (the iOS native callout sits above it), flipping
+        // above when the bottom edge would land off-screen; center clamped to
+        // the viewport.
+        const below = rect.bottom + 8;
         setState({
-          top: rect.bottom + 8,
+          top: below + 40 > window.innerHeight ? Math.max(rect.top - 44, 8) : below,
           left: Math.min(Math.max(rect.left + rect.width / 2, 72), window.innerWidth - 72),
           quote,
         });

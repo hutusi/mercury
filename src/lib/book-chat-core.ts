@@ -63,15 +63,26 @@ export interface BookChatContextInput {
 
 export const MAX_SUMMARY_CHARS = 400;
 export const MAX_PRIOR_BLOCK_CHARS = 6_000;
-/** Safety valve only — the largest seeded chapter is ≈33k chars of prose. */
-export const MAX_CHAPTER_CHARS = 40_000;
+/**
+ * Safety valve only — the largest seeded chapter (gg-ch-07) is ≈49k chars of
+ * prose, and a content guard test asserts every chapter fits, so this never
+ * truncates shipped content.
+ */
+export const MAX_CHAPTER_CHARS = 60_000;
+
+/** Keeps any single prior-chapter line far below MAX_PRIOR_BLOCK_CHARS. */
+const MAX_TITLE_CHARS = 120;
 
 const PRIOR_ELISION_MARKER = "（更早章节梗概略）";
 const CHAPTER_TRUNCATION_MARKER = "……（本章后续内容因长度截断）";
 
 function truncateChars(text: string, max: number, marker: string): string {
-  if (text.length <= max) return text;
-  return `${[...text].slice(0, max).join("").trimEnd()}${marker}`;
+  // Length and slice must use the same unit (code points): astral characters
+  // are 2 UTF-16 units, and mixing the two returns untruncated text with a
+  // marker falsely appended.
+  const codePoints = [...text];
+  if (codePoints.length <= max) return text;
+  return `${codePoints.slice(0, max).join("").trimEnd()}${marker}`;
 }
 
 /**
@@ -92,7 +103,7 @@ export function buildBookChatContext(input: BookChatContextInput): string {
     const summary = chapter.summaryZh
       ? truncateChars(sanitizeUntrusted(chapter.summaryZh), MAX_SUMMARY_CHARS, "……")
       : "";
-    const title = sanitizeUntrusted(chapter.title);
+    const title = truncateChars(sanitizeUntrusted(chapter.title), MAX_TITLE_CHARS, "…");
     return summary
       ? `Chapter ${chapter.sortOrder} — ${title}: ${summary}`
       : `Chapter ${chapter.sortOrder} — ${title}`;
@@ -100,6 +111,8 @@ export function buildBookChatContext(input: BookChatContextInput): string {
 
   // Keep the most recent chapters (closest to the reader's position), drop the
   // oldest first when over budget, and say so instead of silently omitting.
+  // Title + summary caps bound every line well under the block budget, so the
+  // break below can never fire on the first (most recent) line.
   const kept: string[] = [];
   let used = 0;
   for (const line of [...priorLines].reverse()) {

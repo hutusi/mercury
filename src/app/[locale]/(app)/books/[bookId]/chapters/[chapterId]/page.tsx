@@ -21,10 +21,13 @@ export default async function BookChapterPage({
   const { bookId, chapterId } = await params;
   const t = await getDict();
 
+  // The book tutor is a premium hard gate (ADR 0030), absent keyless — on a
+  // keyless server not even the tier read runs on this hottest of pages.
+  const aiEnabled = isAiEnabled();
   // The query sanitizes both question groups — no answers can reach the DOM.
   const [data, tier] = await Promise.all([
     getBookChapterForReader(user.id, bookId, chapterId),
-    getTierForUser(user.id),
+    aiEnabled ? getTierForUser(user.id) : null,
   ]);
   if (!data) notFound();
   // Locked chapters are server-enforced; deep links bounce to the book page.
@@ -32,10 +35,8 @@ export default async function BookChapterPage({
 
   const { book, chapter, nextChapterId } = data;
 
-  // The book tutor is a premium hard gate (ADR 0030), absent keyless — free
-  // and keyless readers get an unchanged page and no extra queries.
   let tutor: BookTutorProps | undefined;
-  if (tier === "premium" && isAiEnabled()) {
+  if (aiEnabled && tier === "premium") {
     const chat = await getBookChatPageData(user.id, book.id);
     if (chat?.entitled) {
       tutor = {
@@ -85,7 +86,7 @@ export default async function BookChapterPage({
         tutor={tutor}
       >
         {chapter.sections.map((section) => (
-          <section key={section.id} data-section-id={section.id} className="space-y-6">
+          <section key={section.id} className="space-y-6">
             <PassageText className="space-y-4">{section.text}</PassageText>
             {section.checkIn && (
               <CheckInCard bookId={book.id} chapterId={chapter.id} question={section.checkIn} />

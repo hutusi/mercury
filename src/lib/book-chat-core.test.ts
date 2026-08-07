@@ -149,6 +149,29 @@ describe("buildBookChatContext", () => {
     expect(out).toContain("Chapter 30 — C30"); // most recent always survives
   });
 
+  test("truncates by code points — astral characters cannot dodge the cap", () => {
+    const emoji = "🚀".repeat(MAX_SUMMARY_CHARS + 50); // 2 UTF-16 units per code point
+    const out = buildBookChatContext(
+      contextInput({ priorChapters: [{ sortOrder: 1, title: "E", summaryZh: emoji }] }),
+    );
+    expect(out).toContain(`${"🚀".repeat(MAX_SUMMARY_CHARS)}……`);
+    expect(out).not.toContain("🚀".repeat(MAX_SUMMARY_CHARS + 1));
+  });
+
+  test("an oversized prior title is capped, so one line can never eat the block budget", () => {
+    const out = buildBookChatContext(
+      contextInput({
+        priorChapters: [
+          { sortOrder: 1, title: "T".repeat(10_000), summaryZh: "早期章节。" },
+          { sortOrder: 2, title: "Recent", summaryZh: "最近章节。" },
+        ],
+      }),
+    );
+    expect(out).toContain(`Chapter 1 — ${"T".repeat(120)}…`);
+    expect(out).not.toContain("T".repeat(121));
+    expect(out).toContain("Chapter 2 — Recent");
+  });
+
   test("prior chapters without a summary keep their title line", () => {
     const out = buildBookChatContext(
       contextInput({ priorChapters: [{ sortOrder: 1, title: "Silent", summaryZh: null }] }),

@@ -1364,7 +1364,7 @@ components:
           properties:
             code:
               type: string
-              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, quiz_answer_conflict, attempt_not_abandonable, exercise_request_conflict, grading_request_conflict, grading_in_progress, grading_claim_superseded, chat_in_progress, chat_claim_superseded, expired, quiz_session_expired, mistake_session_stale, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, premium_required, internal).
+              description: Machine-readable contract (unauthorized, onboarding_required, integrity, not_found, conflict, quiz_answer_conflict, attempt_not_abandonable, exercise_request_conflict, grading_request_conflict, grading_in_progress, grading_claim_superseded, chat_in_progress, chat_claim_superseded, chapter_locked, book_quiz_request_conflict, book_chat_in_progress, book_chat_claim_superseded, expired, quiz_session_expired, mistake_session_stale, validation_failed, invalid_json, ai_unavailable, ai_grading_limit_reached, chat_limit_reached, book_chat_limit_reached, premium_required, internal).
             message:
               type: string
               description: English debug text — not for end users.

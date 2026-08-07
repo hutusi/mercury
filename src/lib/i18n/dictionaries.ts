@@ -379,7 +379,6 @@ const zh = {
     openLabel: "问私教",
     title: "书中问私教",
     askSelection: "问私教",
-    quoteLabel: "引用原文",
     removeQuote: "移除引用",
     placeholder: "就本章内容提问，或选中原文引用提问",
     emptyHint: "选中书中的句子提问，或直接输入你的问题。私教只聊你读到的地方，不剧透。",
@@ -954,7 +953,6 @@ const en: Dictionary = {
     openLabel: "Ask the tutor",
     title: "Ask about this book",
     askSelection: "Ask the tutor",
-    quoteLabel: "Quote",
     removeQuote: "Remove quote",
     placeholder: "Ask about this chapter, or quote a passage",
     emptyHint:

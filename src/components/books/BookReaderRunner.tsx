@@ -1,8 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
-import { BookTutorDock, type BookChatMessageVM } from "@/components/books/BookTutorDock";
+import type { BookChatMessageVM } from "@/components/books/BookTutorDock";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
 import { SectionLabel } from "@/components/typography/SectionLabel";
@@ -13,6 +14,13 @@ import { submitBookQuiz, type GradedBookQuiz } from "@/lib/actions/books";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+
+// Loaded on demand: the tutor prop exists only for premium users with AI
+// enabled, so free/keyless readers never download the dock chunk.
+const BookTutorDock = dynamic(
+  () => import("@/components/books/BookTutorDock").then((m) => m.BookTutorDock),
+  { ssr: false },
+);
 
 /** Present only for entitled (premium) users with AI enabled — the server
  * page gates the prop, the runner just mounts the dock in reading mode. */

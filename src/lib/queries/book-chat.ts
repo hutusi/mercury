@@ -50,6 +50,9 @@ export async function getBookChatPageData(userId: string, bookId: string) {
  */
 export async function getBookAndPriorChapters(bookId: string, beforeSortOrder: number) {
   const [book, priorChapters] = await Promise.all([
+    // No origin filter: existence was already proven by findChapterInBook,
+    // same as the quiz mutations — filtering here would turn a future
+    // user-owned book into a post-claim 404.
     db.query.books.findFirst({
       columns: {
         id: true,
@@ -59,7 +62,7 @@ export async function getBookAndPriorChapters(bookId: string, beforeSortOrder: n
         cefrLevel: true,
         chapterCount: true,
       },
-      where: and(eq(books.id, bookId), eq(books.origin, "seeded")),
+      where: eq(books.id, bookId),
     }),
     db
       .select({

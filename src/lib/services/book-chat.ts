@@ -1,7 +1,7 @@
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { activeAiModel, AiUnavailableError, getBookTutorReply, isAiEnabled } from "../ai/client";
-import { buildBookChatContext } from "../book-chat-core";
+import { bookChatGate, buildBookChatContext } from "../book-chat-core";
 import { buildChatWindow, chatClaimIsFresh } from "../chat-core";
 import { db } from "../db";
 import { bookChatMessages, bookChatStates } from "../db/schema";
@@ -109,16 +109,21 @@ export async function sendBookChatMessageForUser(
   userId: string,
   input: unknown,
 ): Promise<BookChatReply> {
-  if (!isAiEnabled()) {
+  const requestedAt = new Date();
+  // Entitlements resolve before any quota transaction (ADR 0025), at the same
+  // instant the claim will evaluate freshness. bookChatGate owns the
+  // load-bearing enabled-before-entitled ordering — using it here keeps the
+  // tested function and the running gate the same code.
+  const entitlements = await getEntitlementsForUser(userId, requestedAt);
+  const gate = bookChatGate({ enabled: isAiEnabled(), entitled: entitlements.bookChatEnabled });
+  if (gate === "ai_unavailable") {
     throw new AiUnavailableError("No AI provider is configured");
   }
-  const { bookId, chapterId, content } = SendBookChatMessageSchema.parse(input);
-
-  // The first hard premium gate (ADR 0025's reserved recipe).
-  const entitlements = await getEntitlementsForUser(userId);
-  if (!entitlements.bookChatEnabled) {
+  if (gate === "premium_required") {
+    // The first hard premium gate (ADR 0025's reserved recipe).
     throw new PremiumRequiredError("The book tutor chat requires a premium membership");
   }
+  const { bookId, chapterId, content } = SendBookChatMessageSchema.parse(input);
 
   const chapter = await findChapterInBook(bookId, chapterId);
   // A locked chapter's content is never readable, so it is not chattable either.
@@ -132,6 +137,7 @@ export async function sendBookChatMessageForUser(
     bookId,
     day,
     entitlements.bookChatDailyLimit,
+    requestedAt,
   );
   try {
     // Recent turns, chronological (query newest-first, then reverse).

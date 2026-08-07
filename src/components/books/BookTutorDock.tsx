@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useTransition } from "react";
 import { MessageCircleQuestion, Quote, Send, X } from "lucide-react";
 import { SelectionQuoteButton } from "@/components/books/SelectionQuoteButton";
 import { SectionLabel } from "@/components/typography/SectionLabel";
@@ -61,8 +61,23 @@ export function BookTutorDock({
     if (open) textareaRef.current?.focus();
   }, [open]);
 
+  // Escape must work wherever focus sits — a disabled Send button moves focus
+  // to <body>, which a container onKeyDown would never see.
   useEffect(() => {
-    // Scroll the panel's own list, never the page (scrollIntoView could).
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  // Scroll the panel's own list, never the page (scrollIntoView could);
+  // layout-effect so opening paints already scrolled to the newest turn.
+  useLayoutEffect(() => {
     const list = listRef.current;
     if (list) list.scrollTop = list.scrollHeight;
   }, [messages.length, pending, open]);
@@ -84,22 +99,37 @@ export function BookTutorDock({
     setQuote(null);
     setError(null);
     setMessages((m) => [...m, { id: `local-${m.length}`, role: "user", content }]);
+    // Functional restores: never clobber text or a quote the user produced
+    // while the reply was in flight (the composer stays enabled).
+    const rollback = (error: string) => {
+      setMessages((m) => m.slice(0, -1));
+      setInput((current) => current || question);
+      setQuote((current) => current ?? quoted);
+      setError(mapSendErrorToPanelState(error));
+      if (error === "limit_reached") setRemaining(0);
+    };
     startTransition(async () => {
-      const result = await sendBookChatMessage({ bookId, chapterId, content });
-      if (result.ok) {
-        setMessages((m) => [
-          ...m,
-          { id: result.message.id, role: "assistant", content: result.message.content },
-        ]);
-        setRemaining(result.remainingToday);
-        if (result.remainingToday <= 0) setError("limit");
-      } else {
-        setMessages((m) => m.slice(0, -1));
-        setInput(question);
-        setQuote(quoted);
-        setError(mapSendErrorToPanelState(result.error));
-        if (result.error === "limit_reached") setRemaining(0);
+      try {
+        const result = await sendBookChatMessage({ bookId, chapterId, content });
+        if (result.ok) {
+          setMessages((m) => [
+            ...m,
+            { id: result.message.id, role: "assistant", content: result.message.content },
+          ]);
+          setRemaining(result.remainingToday);
+          if (result.remainingToday <= 0) setError("limit");
+        } else {
+          rollback(result.error);
+        }
+      } catch {
+        // Throws outside the union (network failure, or server errors the
+        // action deliberately rethrows) degrade to the failed state instead
+        // of stranding the optimistic bubble.
+        rollback("unexpected");
       }
+      // Sending disables the Send button, which strands focus on <body> —
+      // return it to the composer either way.
+      textareaRef.current?.focus();
     });
   }
 
@@ -121,7 +151,7 @@ export function BookTutorDock({
         className="fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6"
         aria-label={t.bookChat.openLabel}
         aria-expanded={open}
-        aria-controls="book-tutor-panel"
+        aria-controls={open ? "book-tutor-panel" : undefined}
         onClick={() => (open ? close() : setOpen(true))}
       >
         <MessageCircleQuestion aria-hidden />
@@ -132,17 +162,17 @@ export function BookTutorDock({
           id="book-tutor-panel"
           role="dialog"
           aria-labelledby="book-tutor-title"
-          className="fixed inset-x-0 bottom-0 z-40 flex max-h-[70vh] flex-col border border-border bg-background sm:inset-x-auto sm:right-6 sm:bottom-20 sm:h-[520px] sm:max-h-[calc(100dvh-7rem)] sm:w-[380px]"
-          onKeyDown={(e) => {
-            if (e.key === "Escape") close();
-          }}
+          className="fixed inset-x-0 bottom-0 z-40 flex max-h-[70dvh] flex-col border border-border bg-background sm:inset-x-auto sm:right-6 sm:bottom-20 sm:h-[520px] sm:max-h-[calc(100dvh-7rem)] sm:w-[380px]"
         >
           <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-2.5">
             <SectionLabel as="h2" id="book-tutor-title">
               {t.bookChat.title}
             </SectionLabel>
             <div className="flex items-center gap-2">
-              <p className="font-mono text-xs text-muted-foreground tabular-nums">
+              <p
+                id="book-tutor-message-meta"
+                className="font-mono text-xs text-muted-foreground tabular-nums"
+              >
                 {t.tutor.remainingLabel}: {remaining} / {dailyLimit}
               </p>
               <Button variant="ghost" size="icon-sm" aria-label={t.bookChat.close} onClick={close}>
@@ -229,6 +259,7 @@ export function BookTutorDock({
               rows={2}
               maxLength={3600}
               disabled={remaining <= 0 || error === "unavailable"}
+              aria-describedby="book-tutor-message-meta"
             />
             <div className="flex justify-end">
               <Button size="sm" onClick={send} disabled={!canSend}>
