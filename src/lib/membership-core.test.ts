@@ -68,6 +68,8 @@ describe("entitlementsForTier", () => {
     expect(entitlementsForTier("free", {})).toEqual({
       chatDailyLimit: 30,
       aiGradingDailyLimit: 10,
+      bookChatEnabled: false,
+      bookChatDailyLimit: 50,
     });
   });
 
@@ -76,6 +78,8 @@ describe("entitlementsForTier", () => {
     expect(entitlementsForTier("free", env)).toEqual({
       chatDailyLimit: 5,
       aiGradingDailyLimit: 3,
+      bookChatEnabled: false,
+      bookChatDailyLimit: 50,
     });
   });
 
@@ -83,6 +87,8 @@ describe("entitlementsForTier", () => {
     expect(entitlementsForTier("premium", {})).toEqual({
       chatDailyLimit: 100,
       aiGradingDailyLimit: 30,
+      bookChatEnabled: true,
+      bookChatDailyLimit: 50,
     });
   });
 
@@ -91,11 +97,11 @@ describe("entitlementsForTier", () => {
       MERCURY_CHAT_DAILY_LIMIT_PREMIUM: "200",
       MERCURY_AI_GRADING_DAILY_LIMIT_PREMIUM: "abc",
     };
-    expect(entitlementsForTier("premium", env)).toEqual({
+    expect(entitlementsForTier("premium", env)).toMatchObject({
       chatDailyLimit: 200,
       aiGradingDailyLimit: 30,
     });
-    expect(entitlementsForTier("premium", { MERCURY_CHAT_DAILY_LIMIT_PREMIUM: "0" })).toEqual({
+    expect(entitlementsForTier("premium", { MERCURY_CHAT_DAILY_LIMIT_PREMIUM: "0" })).toMatchObject({
       chatDailyLimit: 100,
       aiGradingDailyLimit: 30,
     });
@@ -103,9 +109,30 @@ describe("entitlementsForTier", () => {
 
   test("premium is clamped to never sit below free", () => {
     const env = { MERCURY_CHAT_DAILY_LIMIT: "500", MERCURY_AI_GRADING_DAILY_LIMIT: "40" };
-    expect(entitlementsForTier("premium", env)).toEqual({
+    expect(entitlementsForTier("premium", env)).toMatchObject({
       chatDailyLimit: 500,
       aiGradingDailyLimit: 40,
+    });
+  });
+
+  test("book chat is gated by tier, not by limit — the boolean flips, the cap is shared", () => {
+    const env = { MERCURY_BOOK_CHAT_DAILY_LIMIT: "20" };
+    expect(entitlementsForTier("free", env)).toMatchObject({
+      bookChatEnabled: false,
+      bookChatDailyLimit: 20,
+    });
+    expect(entitlementsForTier("premium", env)).toMatchObject({
+      bookChatEnabled: true,
+      bookChatDailyLimit: 20,
+    });
+  });
+
+  test("book chat limit rejects invalid values back to the default", () => {
+    expect(entitlementsForTier("premium", { MERCURY_BOOK_CHAT_DAILY_LIMIT: "0" })).toMatchObject({
+      bookChatDailyLimit: 50,
+    });
+    expect(entitlementsForTier("premium", { MERCURY_BOOK_CHAT_DAILY_LIMIT: "abc" })).toMatchObject({
+      bookChatDailyLimit: 50,
     });
   });
 });

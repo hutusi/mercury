@@ -22,7 +22,7 @@ export default async function PremiumPage() {
   // ARE the premium ones.
   const current = entitlementsForTier(tier);
   const premium = entitlementsForTier("premium");
-  const rows = [
+  const rows: { label: string; current: string | number; premium: string | number }[] = [
     {
       label: t.premium.chatLimitLabel,
       current: current.chatDailyLimit,
@@ -32,6 +32,13 @@ export default async function PremiumPage() {
       label: t.premium.gradingLimitLabel,
       current: current.aiGradingDailyLimit,
       premium: premium.aiGradingDailyLimit,
+    },
+    // The first hard gate (ADR 0030): free shows "—", not a number — the tier
+    // is the entitlement, the cap only bounds premium usage.
+    {
+      label: t.premium.bookChatLabel,
+      current: current.bookChatEnabled ? current.bookChatDailyLimit : t.premium.notIncluded,
+      premium: premium.bookChatDailyLimit,
     },
   ];
 
