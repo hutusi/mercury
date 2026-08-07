@@ -32,8 +32,9 @@ export const SubmitBookQuizSchema = z.object({
 });
 
 /** Chapter ids are global PKs, but the URL/action contract names the pair —
- * a mismatched bookId must 404 exactly like the reader GET does. */
-async function findChapterInBook(bookId: string, chapterId: string) {
+ * a mismatched bookId must 404 exactly like the reader GET does. Shared with
+ * the book tutor chat (ADR 0030), which addresses chapters the same way. */
+export async function findChapterInBook(bookId: string, chapterId: string) {
   const chapter = await db.query.bookChapters.findFirst({
     where: eq(bookChapters.id, chapterId),
   });

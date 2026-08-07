@@ -5,6 +5,7 @@
  */
 
 import { aiGradingDailyLimit } from "./ai-grading-core";
+import { bookChatDailyLimit } from "./book-chat-core";
 import { chatDailyLimit } from "./chat-core";
 
 export type ResolvedTier = "free" | "premium";
@@ -56,12 +57,17 @@ export function resolveTier(
 }
 
 /**
- * What a tier is entitled to. Quotas only for now; future premium features
- * (BYOB upload, …) land here as booleans so gating stays one lookup.
+ * What a tier is entitled to. Quotas plus hard gates as booleans (ADR 0025's
+ * recipe) so gating stays one lookup. `bookChatEnabled` is the first hard
+ * gate: the book tutor chat (ADR 0030) is premium-only, and its daily cap is
+ * a single env value — the boolean is the gate, so there is no free/premium
+ * limit pair to clamp.
  */
 export interface Entitlements {
   chatDailyLimit: number;
   aiGradingDailyLimit: number;
+  bookChatEnabled: boolean;
+  bookChatDailyLimit: number;
 }
 
 const DEFAULT_PREMIUM_CHAT_DAILY_LIMIT = 100;
@@ -82,6 +88,8 @@ export function entitlementsForTier(
   const free: Entitlements = {
     chatDailyLimit: chatDailyLimit(env),
     aiGradingDailyLimit: aiGradingDailyLimit(env),
+    bookChatEnabled: false,
+    bookChatDailyLimit: bookChatDailyLimit(env),
   };
   if (tier === "free") return free;
   return {
@@ -95,5 +103,7 @@ export function entitlementsForTier(
       DEFAULT_PREMIUM_AI_GRADING_DAILY_LIMIT,
       free.aiGradingDailyLimit,
     ),
+    bookChatEnabled: true,
+    bookChatDailyLimit: free.bookChatDailyLimit,
   };
 }

@@ -33,8 +33,8 @@ export class LimitExceededError extends Error {
 
 /**
  * The feature needs a premium membership (ADR 0025). → 403 `premium_required`.
- * No launch feature throws it yet — the contract ships ahead of the first
- * hard gate so future gating needs no API/client changes.
+ * First thrown by the book tutor chat (ADR 0030); the contract shipped ahead
+ * of it so the gate needed no API/client changes.
  */
 export class PremiumRequiredError extends Error {
   constructor(message: string) {
