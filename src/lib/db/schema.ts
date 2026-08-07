@@ -887,6 +887,85 @@ export const chatStates = pgTable(
   ],
 );
 
+/**
+ * Book tutor chat: one rolling thread per (user, book) — the premium reading
+ * coach on the reader page (ADR 0030). Mirrors chat_messages (ADR 0013);
+ * `chapterId` stamps where the reader was when the turn happened.
+ */
+export const bookChatMessages = pgTable(
+  "book_chat_messages",
+  {
+    id: text("id").primaryKey().$defaultFn(uuid),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    bookId: text("book_id").notNull(),
+    chapterId: text("chapter_id").notNull(),
+    role: text("role").$type<"user" | "assistant">().notNull(),
+    content: text("content").notNull(),
+    /** AI model for assistant rows; null on user rows. */
+    model: text("model"),
+    /** Local date string YYYY-MM-DD, same convention as activity_days.day. */
+    day: text("day").notNull(),
+    /** Per-(user, book) monotonic order; timestamps are display metadata only. */
+    sequence: integer("sequence").notNull(),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    // Composite FK: same rationale as book_quiz_attempts — the pair must
+    // reference the SAME chapter row; a chapter reseed/delete cascades the
+    // messages stamped to it (accepted, ADR 0030).
+    foreignKey({
+      name: "book_chat_messages_book_chapter_fk",
+      columns: [t.bookId, t.chapterId],
+      foreignColumns: [bookChapters.bookId, bookChapters.id],
+    }).onDelete("cascade"),
+    uniqueIndex("book_chat_messages_user_book_sequence_idx").on(t.userId, t.bookId, t.sequence),
+    // book_chapters composite-FK cascade path (chapter deletes/reseeds).
+    index("book_chat_messages_chapter_idx").on(t.bookId, t.chapterId),
+    check("book_chat_messages_role_check", sql`${t.role} in ('user', 'assistant')`),
+    check("book_chat_messages_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+    check("book_chat_messages_sequence_check", sql`${t.sequence} >= 1`),
+    check(
+      "book_chat_messages_model_check",
+      sql`(${t.role} = 'user' and ${t.model} is null) or ${t.role} = 'assistant'`,
+    ),
+  ],
+);
+
+/** Exact quota and single-flight state for one (user, book) chat thread. */
+export const bookChatStates = pgTable(
+  "book_chat_states",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    bookId: text("book_id")
+      .notNull()
+      .references(() => books.id, { onDelete: "cascade" }),
+    /** Learner-local day represented by usedCount. */
+    day: text("day").notNull(),
+    usedCount: integer("used_count").notNull().default(0),
+    /** Next message sequence; advances by two after a completed turn. */
+    nextSequence: integer("next_sequence").notNull().default(1),
+    /** Renewable single-flight lease; null when no provider call is running. */
+    claimId: text("claim_id"),
+    claimStartedAt: ts("claim_started_at"),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.bookId] }),
+    // books FK cascade path — the PK leads with user_id, so book deletion
+    // needs its own index.
+    index("book_chat_states_book_idx").on(t.bookId),
+    check("book_chat_states_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+    check("book_chat_states_counts_check", sql`${t.usedCount} >= 0 and ${t.nextSequence} >= 1`),
+    check(
+      "book_chat_states_claim_check",
+      sql`(${t.claimId} is null and ${t.claimStartedAt} is null) or (${t.claimId} is not null and ${t.claimStartedAt} is not null)`,
+    ),
+  ],
+);
+
 /** One row per user per local day with any learning activity; drives streaks. */
 export const activityDays = pgTable(
   "activity_days",
