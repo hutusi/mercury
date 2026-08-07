@@ -19,8 +19,9 @@ export interface ChatReply {
   remainingToday: number;
 }
 
-/** Guarded: profile context enriches the tutor but must never block a chat. */
-async function tutorLearnerContext(userId: string): Promise<string | null> {
+/** Guarded: profile context enriches the tutor but must never block a chat.
+ * Shared with the book tutor chat (ADR 0030), which layers book context on top. */
+export async function tutorLearnerContext(userId: string): Promise<string | null> {
   try {
     const profile = await getLearnerProfile(userId);
     if (!profile) return null;

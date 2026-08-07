@@ -748,6 +748,95 @@ paths:
         "404": { $ref: "#/components/responses/NotFound" }
         "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
+  /api/v1/books/{bookId}/chat/messages:
+    get:
+      summary: Book tutor thread (one per user per book) and today's quota
+      description: >
+        Never premium-gated — `entitled` carries the gate as data, so a
+        downgraded user keeps read access to their own thread. `enabled` is
+        false when no AI provider is configured (POST would 503).
+      tags: [books]
+      parameters:
+        - { $ref: "#/components/parameters/bookId" }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: False when no AI provider is configured (POST would 503).
+                  entitled:
+                    type: boolean
+                    description: False on the free tier — sending would 403 premium_required.
+                  dailyLimit: { type: integer }
+                  remainingToday: { type: integer }
+                  messages:
+                    type: array
+                    description: Chronological tail of this book's thread (up to 50).
+                    items: { $ref: "#/components/schemas/BookChatMessage" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    post:
+      summary: Send a message to the book tutor and get the reply
+      description: >
+        The premium book tutor chat (ADR 0030) — the first premium-gated
+        operation (403 premium_required on the free tier). Non-streaming like
+        the main tutor (ADR 0013): the user message and reply persist
+        atomically, and a failed AI call stores nothing and consumes no
+        quota. The chapter must be unlocked (409 chapter_locked otherwise);
+        the tutor's context never includes chapters beyond it, nor any quiz
+        answer keys.
+      tags: [books]
+      parameters:
+        - { $ref: "#/components/parameters/bookId" }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [chapterId, content]
+              properties:
+                chapterId: { type: string }
+                content: { type: string, minLength: 1, maxLength: 4000 }
+      responses:
+        "200":
+          description: The assistant reply.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: { $ref: "#/components/schemas/BookChatMessage" }
+                  remainingToday: { type: integer }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403":
+          description: Onboarding incomplete (code onboarding_required) or free tier (code premium_required).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409":
+          description: The chapter is not yet unlocked (chapter_locked), another book-tutor call is in flight (book_chat_in_progress), or this turn's claim was superseded by a stale-takeover retry (book_chat_claim_superseded).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+        "429":
+          description: Daily cap for this book reached (code book_chat_limit_reached).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+        "503":
+          description: No AI provider configured (code ai_unavailable).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
 
   # ── mistakes notebook ─────────────────────────────────────────────────────
   /api/v1/mistakes:
@@ -1229,8 +1318,8 @@ components:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
     PremiumRequired:
       description: >-
-        The feature needs a premium membership (code premium_required). Reserved: no
-        v1 operation returns it yet; future premium-gated endpoints will reference it.
+        The feature needs a premium membership (code premium_required). First
+        used by the book tutor chat (POST /api/v1/books/{bookId}/chat/messages).
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
@@ -1306,6 +1395,16 @@ components:
         id: { type: string }
         role: { type: string, enum: [user, assistant] }
         content: { type: string }
+        createdAt: { type: string, format: date-time }
+    BookChatMessage:
+      type: object
+      properties:
+        id: { type: string }
+        role: { type: string, enum: [user, assistant] }
+        content: { type: string }
+        chapterId:
+          type: string
+          description: The chapter the reader was on when this turn happened.
         createdAt: { type: string, format: date-time }
     PlanItem:
       type: object

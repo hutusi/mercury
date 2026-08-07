@@ -49,14 +49,16 @@ future work and intentionally not in the OpenAPI contract yet.
 
 - **Errors** are always `{"error": {"code", "message", "details?"}}`. `code` is the contract;
   `message` is English debug text (clients own user-facing copy). Codes: `unauthorized` (401),
-  `onboarding_required` / `integrity` / `premium_required` (403 — the latter reserved for future
-  premium-gated features, [ADR 0025](adr/0025-membership-roles-and-tiers.md)), `not_found` (404),
+  `onboarding_required` / `integrity` / `premium_required` (403 — the latter live since the book
+  tutor chat, [ADR 0025](adr/0025-membership-roles-and-tiers.md) /
+  [ADR 0030](adr/0030-book-tutor-chat-premium-gated.md)), `not_found` (404),
   conflicts such as
-  `quiz_answer_conflict` / `grading_in_progress` / `chat_in_progress` (409), expiry such as
+  `quiz_answer_conflict` / `grading_in_progress` / `chat_in_progress` /
+  `book_chat_in_progress` / `book_chat_claim_superseded` (409), expiry such as
   `quiz_session_expired` / `mistake_session_stale` (410),
   `validation_failed` (422, zod issues in `details`), `invalid_json` (400),
-  `chat_limit_reached` / `ai_grading_limit_reached` (429), `ai_unavailable` (503), `internal`
-  (500).
+  `chat_limit_reached` / `ai_grading_limit_reached` / `book_chat_limit_reached` (429),
+  `ai_unavailable` (503), `internal` (500).
 - **Locale**: responses are bilingual _data_ (`title` + `titleZh`, explanations in zh) — there is
   no `Accept-Language` handling; the client owns its UI strings.
 - **Dates** are ISO 8601 strings; **exam deadlines** are epoch-ms (see below).
@@ -123,6 +125,23 @@ Extensive reading — curated public-domain books with pre-generated recall ques
 - **Contract additions clients must tolerate**: `PlanItem.kind` gains `book_chapter` (reason
   `continueBook`); the mistakes list and `POST /api/v1/mistakes/retest` gain kind `book_quiz`,
   whose `refId` is a **chapter id** and whose source has no track.
+
+### Book tutor chat (premium)
+
+One rolling thread per (user, book) — the premium in-reader coach
+([ADR 0030](adr/0030-book-tutor-chat-premium-gated.md)); the first premium-gated operation.
+
+- `GET /api/v1/books/{bookId}/chat/messages` — the thread tail (up to 50, each message stamped
+  with its `chapterId`) plus `enabled` (AI configured?), `entitled` (premium?), `dailyLimit`,
+  and `remainingToday`. Never premium-gated: `entitled: false` is data, and a downgraded user
+  keeps read access to their own history. Render no composer unless `enabled && entitled`.
+- `POST /api/v1/books/{bookId}/chat/messages` `{chapterId, content}` — one non-streaming
+  round-trip like the main tutor. Free tier gets `403 premium_required`; a locked chapter gets
+  `409 chapter_locked`; single-flight per (user, book) (`409 book_chat_in_progress`); the cap is
+  per user **per book** per learner-local day (`429 book_chat_limit_reached`,
+  `MERCURY_BOOK_CHAT_DAILY_LIMIT`, default 50 — read `dailyLimit`/`remainingToday` from GET).
+  `503 ai_unavailable` keyless. The tutor's context is spoiler-safe server-side: prior chapters
+  as summaries, the current chapter's prose, never later chapters or any answer keys.
 
 ## Vocabulary SRS
 
