@@ -10,9 +10,12 @@ describe("bookTutorSystemPrompt", () => {
 
   test("carries the behavioral guards", () => {
     const prompt = bookTutorSystemPrompt(bookContext, null);
-    // Spoiler guard: knowledge bounded to the context block, deflect forward references.
+    // Spoiler guard: knowledge bounded to the context block, boundary at the
+    // furthest-read chapter (revisits keep completed chapters discussable).
     expect(prompt).toContain("ONLY the <book_context> block");
-    expect(prompt).toContain("beyond the reader's current chapter");
+    expect(prompt).toContain("beyond the reader's furthest-read chapter");
+    // Quote-only sends are explain-this-passage requests.
+    expect(prompt).toContain("only a quoted passage");
     // Quiz guard: never resolve MCQ-shaped questions.
     expect(prompt).toContain("never state or imply which option is correct");
     // Retention mandate.

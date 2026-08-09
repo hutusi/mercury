@@ -89,7 +89,13 @@ export function BookTutorDock({
 
   // "unavailable" disables the composer, so Send must go dark with it — a
   // restored draft would otherwise allow resubmitting into a dead provider.
-  const canSend = remaining > 0 && !pending && error !== "unavailable" && input.trim().length > 0;
+  // A quote alone is sendable: 「…」 by itself asks the tutor to explain the
+  // passage (the system prompt defines that reading).
+  const canSend =
+    remaining > 0 &&
+    !pending &&
+    error !== "unavailable" &&
+    (input.trim().length > 0 || quote !== null);
 
   function send() {
     if (!canSend) return;
@@ -102,7 +108,11 @@ export function BookTutorDock({
     const room = 4000 - question.length - 3; // 「」 + newline
     const clippedQuote =
       quoted && room > 0 ? quoted.slice(0, room).replace(/[\uD800-\uDBFF]$/, "") : null;
-    const content = clippedQuote ? `「${clippedQuote}」\n${question}` : question;
+    const content = clippedQuote
+      ? question
+        ? `「${clippedQuote}」\n${question}`
+        : `「${clippedQuote}」`
+      : question;
     setInput("");
     setQuote(null);
     setError(null);

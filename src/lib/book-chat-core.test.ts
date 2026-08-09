@@ -57,6 +57,7 @@ function contextInput(overrides: Partial<BookChatContextInput> = {}): BookChatCo
       titleZh: "绿瓷宫",
       sectionTexts: ["The Time Traveller pressed on.", "Weena followed close behind."],
     },
+    completedThroughSortOrder: 0,
     priorChapters: [
       { sortOrder: 1, title: "The Inventor", summaryZh: "旅行者向朋友们展示时间机器。" },
       { sortOrder: 2, title: "In the Future", summaryZh: "他抵达八十万年后的世界。" },
@@ -147,6 +148,36 @@ describe("buildBookChatContext", () => {
     expect(out).toContain("（更早章节梗概略）");
     expect(out).not.toContain("Chapter 1 — C1");
     expect(out).toContain("Chapter 30 — C30"); // most recent always survives
+  });
+
+  test("a revisit keeps the boundary at the completed frontier, not the visited chapter", () => {
+    const out = buildBookChatContext(
+      contextInput({
+        completedThroughSortOrder: 7,
+        priorChapters: [
+          { sortOrder: 4, title: "Later-Read", summaryZh: "已读后续章节梗概。" },
+          { sortOrder: 7, title: "Frontier", summaryZh: "最远已读章节。" },
+          { sortOrder: 8, title: "UNREAD-SPOILER", summaryZh: "未读章节不应出现" },
+        ],
+      }),
+    );
+    // Chapters 4 and 7 are completed — the thread's history may reference
+    // them, so their summaries stay; chapter 8 has never been read.
+    expect(out).toContain("Later-Read");
+    expect(out).toContain("Frontier");
+    expect(out).not.toContain("UNREAD-SPOILER");
+    expect(out).toContain("completed chapters 1-7");
+    expect(out).toContain("revisiting chapter 3");
+  });
+
+  test("the visited chapter's own summary is dropped — its full prose is already present", () => {
+    const out = buildBookChatContext(
+      contextInput({
+        completedThroughSortOrder: 5,
+        priorChapters: [{ sortOrder: 3, title: "Self", summaryZh: "SELF-SUMMARY-MARKER" }],
+      }),
+    );
+    expect(out).not.toContain("SELF-SUMMARY-MARKER");
   });
 
   test("truncates by code points — astral characters cannot dodge the cap", () => {
