@@ -126,17 +126,19 @@ export async function sendBookChatMessageForUser(
   const { bookId, chapterId, content } = SendBookChatMessageSchema.parse(input);
 
   const chapter = await findChapterInBook(bookId, chapterId);
+
+  // Authorization and context in one read, BEFORE the lock check and any
+  // quota state: the chattable-set rule (seeded ∪ owned) lives in the query,
+  // so a foreign user-owned book 404s here — opaquely (a 409 chapter_locked
+  // first would confirm a private book exists), and never reaching the claim
+  // or the provider.
+  const context = await getBookAndPriorChapters(userId, bookId, chapter.sortOrder);
+  if (!context) throw new NotFoundError(`Unknown book: ${bookId}`);
+
   // A locked chapter's content is never readable, so it is not chattable either.
   if (!(await isChapterUnlockedForUser(userId, chapter))) {
     throw new ConflictError("Previous chapter quiz not submitted", "chapter_locked");
   }
-
-  // Authorization and context in one read, BEFORE any quota state is
-  // touched: the chattable-set rule (seeded ∪ owned) lives in the query, so
-  // a foreign user-owned book 404s here — never reaching the claim or the
-  // provider.
-  const context = await getBookAndPriorChapters(userId, bookId, chapter.sortOrder);
-  if (!context) throw new NotFoundError(`Unknown book: ${bookId}`);
 
   const day = await getCalendarDayForUser(userId);
   const claim = await claimBookChatTurnForUser(
@@ -166,7 +168,7 @@ export async function sendBookChatMessageForUser(
         titleZh: chapter.titleZh,
         sectionTexts: chapter.sections.map((section) => section.text),
       },
-      completedThroughSortOrder: context.completedThrough,
+      readThroughSortOrder: context.readThrough,
       priorChapters: context.priorChapters,
     });
     const learnerContext = await tutorLearnerContext(userId);

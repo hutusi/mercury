@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, lt, max, or } from "drizzle-orm";
+import { and, asc, desc, eq, lte, max, or } from "drizzle-orm";
 import { db } from "../db";
 import {
   bookChatMessages,
@@ -61,18 +61,20 @@ export async function getBookChatPageData(userId: string, bookId: string) {
 /**
  * The spoiler-safe context rows, gated by the chattable-set rule (null =
  * not chattable for this user → 404). The summary boundary is the reader's
- * COMPLETED FRONTIER, not the visited chapter: revisiting an earlier chapter
- * keeps every completed chapter's summary in context, so the per-book
- * thread's history stays coherent. Prose beyond the visited chapter is never
- * fetched here — summaries only (buildBookChatContext re-filters as defense
- * in depth).
+ * EXPOSURE frontier — the furthest chapter the server can prove they have
+ * seen: completed quizzes, chapters they chatted from (chatting requires
+ * being on that chapter's page), and the visited chapter itself. Revisiting
+ * an earlier chapter therefore keeps every already-seen chapter's summary in
+ * context, so the per-book thread's history stays coherent. Prose beyond the
+ * visited chapter is never fetched here — summaries only
+ * (buildBookChatContext re-filters as defense in depth).
  */
 export async function getBookAndPriorChapters(
   userId: string,
   bookId: string,
   visitedSortOrder: number,
 ) {
-  const [book, completedRows] = await Promise.all([
+  const [book, completedRows, chattedRows] = await Promise.all([
     db.query.books.findFirst({
       columns: {
         id: true,
@@ -85,7 +87,7 @@ export async function getBookAndPriorChapters(
       where: chattableBook(userId, bookId),
     }),
     db
-      .select({ completedThrough: max(bookChapters.sortOrder) })
+      .select({ through: max(bookChapters.sortOrder) })
       .from(bookQuizAttempts)
       .innerJoin(
         bookChapters,
@@ -95,11 +97,25 @@ export async function getBookAndPriorChapters(
         ),
       )
       .where(and(eq(bookQuizAttempts.userId, userId), eq(bookQuizAttempts.bookId, bookId))),
+    db
+      .select({ through: max(bookChapters.sortOrder) })
+      .from(bookChatMessages)
+      .innerJoin(
+        bookChapters,
+        and(
+          eq(bookChatMessages.bookId, bookChapters.bookId),
+          eq(bookChatMessages.chapterId, bookChapters.id),
+        ),
+      )
+      .where(and(eq(bookChatMessages.userId, userId), eq(bookChatMessages.bookId, bookId))),
   ]);
   if (!book) return null;
 
-  const completedThrough = completedRows[0]?.completedThrough ?? 0;
-  const boundary = Math.max(visitedSortOrder, completedThrough + 1);
+  const readThrough = Math.max(
+    completedRows[0]?.through ?? 0,
+    chattedRows[0]?.through ?? 0,
+    visitedSortOrder,
+  );
   const priorChapters = await db
     .select({
       sortOrder: bookChapters.sortOrder,
@@ -107,7 +123,7 @@ export async function getBookAndPriorChapters(
       summaryZh: bookChapters.summaryZh,
     })
     .from(bookChapters)
-    .where(and(eq(bookChapters.bookId, bookId), lt(bookChapters.sortOrder, boundary)))
+    .where(and(eq(bookChapters.bookId, bookId), lte(bookChapters.sortOrder, readThrough)))
     .orderBy(asc(bookChapters.sortOrder));
-  return { book, priorChapters, completedThrough };
+  return { book, priorChapters, readThrough };
 }

@@ -57,7 +57,7 @@ function contextInput(overrides: Partial<BookChatContextInput> = {}): BookChatCo
       titleZh: "绿瓷宫",
       sectionTexts: ["The Time Traveller pressed on.", "Weena followed close behind."],
     },
-    completedThroughSortOrder: 0,
+    readThroughSortOrder: 0,
     priorChapters: [
       { sortOrder: 1, title: "The Inventor", summaryZh: "旅行者向朋友们展示时间机器。" },
       { sortOrder: 2, title: "In the Future", summaryZh: "他抵达八十万年后的世界。" },
@@ -150,10 +150,10 @@ describe("buildBookChatContext", () => {
     expect(out).toContain("Chapter 30 — C30"); // most recent always survives
   });
 
-  test("a revisit keeps the boundary at the completed frontier, not the visited chapter", () => {
+  test("a revisit keeps the boundary at the exposure frontier, not the visited chapter", () => {
     const out = buildBookChatContext(
       contextInput({
-        completedThroughSortOrder: 7,
+        readThroughSortOrder: 7,
         priorChapters: [
           { sortOrder: 4, title: "Later-Read", summaryZh: "已读后续章节梗概。" },
           { sortOrder: 7, title: "Frontier", summaryZh: "最远已读章节。" },
@@ -161,19 +161,34 @@ describe("buildBookChatContext", () => {
         ],
       }),
     );
-    // Chapters 4 and 7 are completed — the thread's history may reference
+    // Chapters 4 and 7 have been seen — the thread's history may reference
     // them, so their summaries stay; chapter 8 has never been read.
     expect(out).toContain("Later-Read");
     expect(out).toContain("Frontier");
     expect(out).not.toContain("UNREAD-SPOILER");
-    expect(out).toContain("completed chapters 1-7");
+    expect(out).toContain("read up to chapter 7");
+    expect(out).toContain("revisiting chapter 3");
+  });
+
+  test("a chapter the reader chatted from counts as read before its quiz is done", () => {
+    // Completed ch2 quiz? No — but they chatted from ch4 (only possible from
+    // its page), so the frontier is 4 and its summary stays in context while
+    // they revisit ch3.
+    const out = buildBookChatContext(
+      contextInput({
+        readThroughSortOrder: 4,
+        priorChapters: [{ sortOrder: 4, title: "InProgress", summaryZh: "进行中章节梗概。" }],
+      }),
+    );
+    expect(out).toContain("InProgress");
+    expect(out).toContain("read up to chapter 4");
     expect(out).toContain("revisiting chapter 3");
   });
 
   test("the visited chapter's own summary is dropped — its full prose is already present", () => {
     const out = buildBookChatContext(
       contextInput({
-        completedThroughSortOrder: 5,
+        readThroughSortOrder: 5,
         priorChapters: [{ sortOrder: 3, title: "Self", summaryZh: "SELF-SUMMARY-MARKER" }],
       }),
     );

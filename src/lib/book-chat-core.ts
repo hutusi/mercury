@@ -55,12 +55,13 @@ export interface BookChatContextInput {
     sectionTexts: string[];
   };
   /**
-   * Highest chapter sortOrder the reader has completed (0 = none). The
-   * spoiler boundary is the completed frontier, not the visited chapter —
-   * revisiting an earlier chapter must not pretend completed chapters are
-   * unread, or the thread's own history turns incoherent.
+   * Highest chapter sortOrder the reader has provably seen (completed its
+   * quiz, chatted from it, or is visiting it; 0 = none). The spoiler
+   * boundary is this exposure frontier, not the visited chapter — revisiting
+   * an earlier chapter must not pretend already-seen chapters are unread, or
+   * the thread's own history turns incoherent.
    */
-  completedThroughSortOrder: number;
+  readThroughSortOrder: number;
   priorChapters: {
     sortOrder: number;
     title: string;
@@ -100,14 +101,15 @@ function truncateChars(text: string, max: number, marker: string): string {
  * chapters are never part of the input shape to begin with.
  */
 export function buildBookChatContext(input: BookChatContextInput): string {
-  const { book, currentChapter, completedThroughSortOrder } = input;
+  const { book, currentChapter } = input;
 
-  // Everything strictly before the boundary is read; the visited chapter's
+  // Everything up to the exposure frontier is read; the visited chapter's
   // own summary is dropped — its full prose is already below.
-  const boundary = Math.max(currentChapter.sortOrder, completedThroughSortOrder + 1);
+  const readThrough = Math.max(currentChapter.sortOrder, input.readThroughSortOrder);
   const priors = input.priorChapters
     .filter(
-      (chapter) => chapter.sortOrder < boundary && chapter.sortOrder !== currentChapter.sortOrder,
+      (chapter) =>
+        chapter.sortOrder <= readThrough && chapter.sortOrder !== currentChapter.sortOrder,
     )
     .sort((a, b) => a.sortOrder - b.sortOrder);
 
@@ -142,8 +144,8 @@ export function buildBookChatContext(input: BookChatContextInput): string {
 
   const chapterName = `"${sanitizeUntrusted(currentChapter.title)}"（${sanitizeUntrusted(currentChapter.titleZh)}）`;
   const position =
-    completedThroughSortOrder >= currentChapter.sortOrder
-      ? `The reader has completed chapters 1-${completedThroughSortOrder} of ${book.chapterCount} and is revisiting chapter ${currentChapter.sortOrder}: ${chapterName}.`
+    readThrough > currentChapter.sortOrder
+      ? `The reader has read up to chapter ${readThrough} of ${book.chapterCount} and is currently revisiting chapter ${currentChapter.sortOrder}: ${chapterName}.`
       : `The reader is on chapter ${currentChapter.sortOrder} of ${book.chapterCount}: ${chapterName}.`;
   const header =
     `"${sanitizeUntrusted(book.title)}"（${sanitizeUntrusted(book.titleZh)}）` +
