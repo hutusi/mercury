@@ -11,10 +11,14 @@ test("premium: settings CTA reaches the page; interest persists across reload", 
   await page.getByRole("link", { name: new RegExp(t.premium.learnMore) }).click();
   await page.waitForURL("**/premium");
 
-  // The limits table compares current vs premium with real numbers.
+  // The limits table compares current vs premium with real numbers, plus the
+  // book-chat hard gate row (free shows the not-included dash, ADR 0030).
   await expect(page.getByRole("heading", { name: t.settings.membershipPremium })).toBeVisible();
   await expect(page.getByText(t.premium.chatLimitLabel)).toBeVisible();
   await expect(page.getByText(t.premium.gradingLimitLabel)).toBeVisible();
+  await expect(page.getByRole("row", { name: new RegExp(t.premium.bookChatLabel) })).toContainText(
+    t.premium.notIncluded,
+  );
 
   // 预约开通 writes the demand row — the reload proves persistence, not just
   // the button's local state.

@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import { buildContentSchemas } from "../../scripts/generate-content-schemas";
+import { MAX_CHAPTER_CHARS } from "../lib/book-chat-core";
 import {
   allBooks,
   allExams,
@@ -125,6 +126,16 @@ describe("books", () => {
     test(`${book.id}: every chapter has prose`, () => {
       for (const chapter of book.chapters) {
         expect(chapterWordCount(chapter)).toBeGreaterThan(0);
+      }
+    });
+
+    test(`${book.id}: every chapter fits the book-chat context cap`, () => {
+      // The book tutor's system prompt carries the full current chapter
+      // (ADR 0030); MAX_CHAPTER_CHARS is a safety valve that must never fire
+      // on shipped content, or the tutor goes blind to on-screen prose.
+      for (const chapter of book.chapters) {
+        const joined = chapter.sections.map((s) => s.text).join("\n\n");
+        expect(joined.length).toBeLessThanOrEqual(MAX_CHAPTER_CHARS);
       }
     });
 

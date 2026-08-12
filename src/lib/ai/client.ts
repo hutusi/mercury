@@ -4,7 +4,12 @@ import { anthropicPlainText, anthropicStructuredFeedback } from "./anthropic";
 import { bailianPlainText, bailianStructuredFeedback } from "./bailian";
 import { AiUnavailableError } from "./errors";
 import { modelForProvider, resolveAiProvider } from "./provider";
-import { speakingSystemPrompt, tutorSystemPrompt, writingSystemPrompt } from "./prompts";
+import {
+  bookTutorSystemPrompt,
+  speakingSystemPrompt,
+  tutorSystemPrompt,
+  writingSystemPrompt,
+} from "./prompts";
 import { sanitizeUntrusted } from "./sanitize";
 import {
   SpeakingFeedbackSchema,
@@ -120,23 +125,48 @@ Evaluate the learner's spoken answer (transcribed above) and produce the structu
 }
 
 /**
- * One tutor-chat reply (plain text, both providers). User turns are untrusted
- * and sanitized here; the system prompt carries the learner profile.
+ * Shared plain-text chat dispatch: provider selection and user-turn
+ * sanitization live here so both tutor surfaces cannot drift apart.
  */
-export async function getTutorReply(req: {
-  learnerContext: string | null;
-  messages: { role: "user" | "assistant"; content: string }[];
-}): Promise<string> {
+async function plainTextChat(
+  system: string,
+  messages: { role: "user" | "assistant"; content: string }[],
+): Promise<string> {
   const provider = resolveAiProvider();
   if (!provider) {
     throw new AiUnavailableError("No AI provider is configured");
   }
   const chatReq = {
     model: modelForProvider(provider),
-    system: tutorSystemPrompt(req.learnerContext),
-    messages: req.messages.map((m) =>
+    system,
+    messages: messages.map((m) =>
       m.role === "user" ? { ...m, content: sanitizeUntrusted(m.content) } : m,
     ),
   };
   return provider === "anthropic" ? anthropicPlainText(chatReq) : bailianPlainText(chatReq);
+}
+
+/**
+ * One tutor-chat reply (plain text, both providers). User turns are untrusted
+ * and sanitized at dispatch; the system prompt carries the learner profile.
+ */
+export async function getTutorReply(req: {
+  learnerContext: string | null;
+  messages: { role: "user" | "assistant"; content: string }[];
+}): Promise<string> {
+  return plainTextChat(tutorSystemPrompt(req.learnerContext), req.messages);
+}
+
+/**
+ * One book-tutor-chat reply (ADR 0030; plain text, both providers).
+ * bookContext is the buildBookChatContext block — assembled server-side from
+ * whitelisted chapter data, so quiz answers are structurally absent from the
+ * prompt, and it rides the system prompt for provider prompt caching.
+ */
+export async function getBookTutorReply(req: {
+  bookContext: string;
+  learnerContext: string | null;
+  messages: { role: "user" | "assistant"; content: string }[];
+}): Promise<string> {
+  return plainTextChat(bookTutorSystemPrompt(req.bookContext, req.learnerContext), req.messages);
 }
