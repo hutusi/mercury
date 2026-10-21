@@ -27,8 +27,15 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL(`${prefixed}${search}`, request.url));
   }
 
-  if (isProtected(rest) && !getSessionCookie(request)) {
+  const hasSessionCookie = Boolean(getSessionCookie(request));
+  if (isProtected(rest) && !hasSessionCookie) {
     return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
+  }
+  // The landing page is static, so the signed-in hop to the dashboard is
+  // decided here. Optimistic like the gate above: a stale cookie lands on
+  // /dashboard, whose layout (the real session check) sends it to /login.
+  if (rest === "/" && hasSessionCookie) {
+    return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url));
   }
 
   if (request.cookies.get(LOCALE_COOKIE)?.value !== locale) {

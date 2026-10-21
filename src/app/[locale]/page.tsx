@@ -5,8 +5,7 @@ import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { Wordmark } from "@/components/layout/AppShell";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { Button } from "@/components/ui/button";
-import { getSession } from "@/lib/auth/session";
-import { getDict, localeRedirect } from "@/lib/i18n";
+import { dictionaries } from "@/lib/i18n/dictionaries";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { DEFAULT_LOCALE, htmlLang, isLocale, LOCALES } from "@/lib/i18n/routing";
 import { openGraphFor } from "@/lib/seo";
@@ -29,10 +28,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function LandingPage() {
-  const session = await getSession();
-  if (session) return localeRedirect("/dashboard");
-  const t = await getDict();
+/**
+ * Static: rendered once per locale at build time and served from the edge.
+ * Nothing here may read cookies or headers — the dictionary comes from the
+ * route param, and the signed-in → /dashboard hop lives in src/proxy.ts.
+ */
+export default async function LandingPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = dictionaries[isLocale(locale) ? locale : DEFAULT_LOCALE];
 
   const features = [
     { title: t.landing.featureAiTitle, desc: t.landing.featureAiDesc },
