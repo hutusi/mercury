@@ -8,6 +8,7 @@ import { Callout } from "@/components/ui/callout";
 import { Textarea } from "@/components/ui/textarea";
 import { sendTutorMessage } from "@/lib/actions/chat";
 import { PremiumCta } from "@/components/premium/PremiumCta";
+import { restoreUnsent } from "@/lib/drafts";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
 export interface ChatMessageVM {
@@ -70,7 +71,7 @@ export function TutorChat({
         // boundary and blanked the page with the typed message gone; instead
         // roll back the optimistic turn and give the text back.
         setMessages((m) => m.slice(0, -1));
-        setInput((current) => current || content);
+        setInput((current) => restoreUnsent(current, content));
         setError("failed");
         return;
       }
@@ -85,9 +86,9 @@ export function TutorChat({
         if (result.remainingToday <= 0) setError("limit");
       } else {
         setMessages((m) => m.slice(0, -1));
-        // Functional restore: never clobber text typed while the reply was
-        // in flight (the composer stays enabled).
-        setInput((current) => current || content);
+        // Functional restore: keep both the failed message and any text typed
+        // while the reply was in flight (the composer stays enabled).
+        setInput((current) => restoreUnsent(current, content));
         setError(
           result.error === "limit_reached"
             ? "limit"

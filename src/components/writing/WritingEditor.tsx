@@ -35,7 +35,10 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
     validate: isText,
     isEmpty: isBlank,
     onRestore: (saved) => {
-      setText((current) => (current ? current : saved));
+      // Text typed before the restore ran wins — and then nothing was
+      // restored, so don't say so.
+      if (text) return;
+      setText(saved);
       setRestored(true);
     },
   });

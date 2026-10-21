@@ -9,6 +9,7 @@ import { Callout } from "@/components/ui/callout";
 import { Textarea } from "@/components/ui/textarea";
 import { sendBookChatMessage } from "@/lib/actions/book-chat";
 import { mapSendErrorToPanelState } from "@/lib/book-chat-core";
+import { restoreUnsent } from "@/lib/drafts";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
 export interface BookChatMessageVM {
@@ -118,10 +119,11 @@ export function BookTutorDock({
     setError(null);
     setMessages((m) => [...m, { id: `local-${m.length}`, role: "user", content }]);
     // Functional restores: never clobber text or a quote the user produced
-    // while the reply was in flight (the composer stays enabled).
+    // while the reply was in flight (the composer stays enabled), and never
+    // drop the failed question in its favour.
     const rollback = (error: string) => {
       setMessages((m) => m.slice(0, -1));
-      setInput((current) => current || question);
+      setInput((current) => restoreUnsent(current, question));
       setQuote((current) => current ?? quoted);
       setError(mapSendErrorToPanelState(error));
       if (error === "limit_reached") setRemaining(0);

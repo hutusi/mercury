@@ -1,6 +1,7 @@
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "../db";
+import { isUniqueViolation } from "../db/pg-errors";
 import { reviewLogs, srsCards, vocabWords } from "../db/schema";
 import { scheduleReview, type ReviewGrade, type SrsState } from "../srs";
 import { recordActivityWith } from "../streak";
@@ -28,16 +29,6 @@ export interface GradeCardResult {
 }
 
 type ReviewLogRow = typeof reviewLogs.$inferSelect;
-
-/** A unique violation on the (user, request_id) idempotency index. */
-function isRequestIdConflict(error: unknown): boolean {
-  return (
-    typeof error === "object" &&
-    error !== null &&
-    (error as { code?: unknown }).code === "23505" &&
-    (error as { constraint?: unknown }).constraint === "review_logs_request_idx"
-  );
-}
 
 /**
  * Recompute the result a logged review originally returned. scheduleReview
@@ -107,7 +98,7 @@ export async function gradeCardForUser(userId: string, input: unknown): Promise<
     // Last barrier: the card lock already serializes same-word retries, so a
     // duplicate key here means a concurrent twin committed first. Resolve it
     // exactly like the in-transaction replay check would have.
-    if (!requestId || !isRequestIdConflict(err)) throw err;
+    if (!requestId || !isUniqueViolation(err, "review_logs_request_idx")) throw err;
     const prior = await findPriorReview(db, userId, requestId);
     if (!prior) throw err;
     return replayFor(prior, userId, wordId);

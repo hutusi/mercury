@@ -75,6 +75,13 @@ export function SpeakingRunner({
   const submissionRequestRef = useRef<LogicalRequestId | null>(null);
   const retryRequestRef = useRef<LogicalRequestId | null>(null);
 
+  // Latest-ref pattern: recognition callbacks and the draft restore read the
+  // current phase.
+  const phaseRef = useRef<Phase>("idle");
+  useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
+
   // An unsubmitted transcript survives a reload (the recording itself can't):
   // the learner lands back on the review step with their answer intact.
   const draftValue = useMemo(
@@ -97,11 +104,6 @@ export function SpeakingRunner({
   });
   // Leaving mid-recording loses the take; ask first.
   useBeforeUnloadGuard(phase === "recording" || phase === "prep" || pending);
-  // Latest-ref pattern: recognition callbacks read the current phase.
-  const phaseRef = useRef<Phase>("idle");
-  useEffect(() => {
-    phaseRef.current = phase;
-  }, [phase]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side

@@ -1,5 +1,13 @@
 import { describe, expect, it } from "bun:test";
-import { DAY_MS, decodeDraft, draftKey, draftKeysIn, encodeDraft, isAnswerMap } from "./drafts";
+import {
+  DAY_MS,
+  decodeDraft,
+  draftKey,
+  draftKeysIn,
+  encodeDraft,
+  isAnswerMap,
+  restoreUnsent,
+} from "./drafts";
 
 const isString = (v: unknown): v is string => typeof v === "string";
 
@@ -42,5 +50,14 @@ describe("drafts", () => {
     expect(isAnswerMap({ q1: "0" })).toBe(false);
     expect(isAnswerMap([0])).toBe(false);
     expect(isAnswerMap(null)).toBe(false);
+  });
+
+  it("restores a failed send without dropping text typed in the meantime", () => {
+    expect(restoreUnsent("", "first question")).toBe("first question");
+    expect(restoreUnsent("  ", "first question")).toBe("first question");
+    expect(restoreUnsent("follow-up", "first question")).toBe("first question\n\nfollow-up");
+    // A retyped copy of the same message isn't doubled.
+    expect(restoreUnsent("first question ", "first question")).toBe("first question ");
+    expect(restoreUnsent("follow-up", "")).toBe("follow-up");
   });
 });

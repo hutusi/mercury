@@ -66,6 +66,20 @@ export function clearAllDrafts(): void {
   }
 }
 
+/**
+ * The composer text after a failed send. The composer stays editable while a
+ * reply is in flight, so the learner may already have typed the next message:
+ * keep both, the failed one first (it was written first), rather than
+ * dropping either. Not clipped to the composer limit — trimming is the
+ * learner's call, and the server rejects an over-long send without loss.
+ */
+export function restoreUnsent(current: string, unsent: string): string {
+  if (!unsent) return current;
+  if (!current.trim()) return unsent;
+  if (current.trim() === unsent.trim()) return current;
+  return `${unsent}\n\n${current}`;
+}
+
 /** A Record<string, number> of question id → chosen option index. */
 export function isAnswerMap(value: unknown): value is Record<string, number> {
   return (

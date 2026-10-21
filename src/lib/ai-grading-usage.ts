@@ -1,6 +1,7 @@
 import { and, eq } from "drizzle-orm";
 import { GRADING_CLAIM_STALE_MS } from "./ai-grading-core";
 import { db, type DbExecutor } from "./db";
+import { isUniqueViolation } from "./db/pg-errors";
 import { aiGradingRequests, aiUsageDays, type AiGradingKind } from "./db/schema";
 import { getEntitlementsForUser } from "./queries/membership";
 import { getCalendarDayForUser } from "./streak";
@@ -19,16 +20,6 @@ interface ClaimInput {
 
 export type GradingClaim =
   { disposition: "claimed"; claimId: string } | { disposition: "completed"; submissionId: string };
-
-/** A unique violation on the partial active-scope index (Postgres 23505). */
-function isActiveScopeConflict(error: unknown): boolean {
-  return (
-    typeof error === "object" &&
-    error !== null &&
-    (error as { code?: unknown }).code === "23505" &&
-    (error as { constraint?: unknown }).constraint === "ai_grading_requests_active_scope_idx"
-  );
-}
 
 /**
  * Claim one provider call under the per-user/day row lock. The request id is
@@ -162,7 +153,7 @@ export async function claimGradingRequest(input: ClaimInput): Promise<GradingCla
       // same usage-day row; two concurrent same-scope claims straddling the
       // learner's local midnight lock different rows, so the partial unique
       // index is the real arbiter. Surface its loser as a clean 409, not a 500.
-      if (isActiveScopeConflict(error)) {
+      if (isUniqueViolation(error, "ai_grading_requests_active_scope_idx")) {
         throw new ConflictError("Grading is already in progress", "grading_in_progress");
       }
       throw error;

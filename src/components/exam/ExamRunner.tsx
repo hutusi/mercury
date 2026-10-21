@@ -65,6 +65,7 @@ export function ExamRunner({
   const saveRetryTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const saveFailures = useRef(0);
   const autoSubmitRetries = useRef(0);
+  const autoSubmitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Retry timers must call the latest callbacks, not the ones they closed over.
   const doSubmitSectionRef = useRef<
     (sectionId: string, options?: { auto?: boolean }) => Promise<void>
@@ -178,7 +179,10 @@ export function ExamRunner({
           const delay = examRetryDelayMs(autoSubmitRetries.current);
           autoSubmitRetries.current += 1;
           setSubmitError(t.exams.autoSubmitRetrying);
-          setTimeout(() => void doSubmitSectionRef.current(sectionId, { auto: true }), delay);
+          autoSubmitTimer.current = setTimeout(
+            () => void doSubmitSectionRef.current(sectionId, { auto: true }),
+            delay,
+          );
         } else {
           setSubmitError(t.exams.submitFailed);
         }
@@ -191,6 +195,14 @@ export function ExamRunner({
   useEffect(() => {
     doSubmitSectionRef.current = doSubmitSection;
   }, [doSubmitSection]);
+  // A pending auto-submit retry must not fire (and navigate) after the learner
+  // has left the runner.
+  useEffect(
+    () => () => {
+      if (autoSubmitTimer.current) clearTimeout(autoSubmitTimer.current);
+    },
+    [],
+  );
 
   // The clock: remaining time derives from the server-issued deadline
   // (skew-corrected), never a local decrementing counter, so tab throttling
@@ -233,8 +245,11 @@ export function ExamRunner({
     if (json === lastSavedJson.current) return;
     if (saveRetryTimer.current) clearTimeout(saveRetryTimer.current);
     setSaveState("saving");
-    autosaveChain.current = autosaveChain.current.then(() =>
-      saveExamProgress({ attemptId, answers: snapshot }).then(
+    autosaveChain.current = autosaveChain.current.then(() => {
+      // A save queued ahead of this one (a tick racing the retry or a tab
+      // hide) may already have landed this exact snapshot.
+      if (json === lastSavedJson.current) return;
+      return saveExamProgress({ attemptId, answers: snapshot }).then(
         () => {
           lastSavedJson.current = json;
           saveFailures.current = 0;
@@ -246,8 +261,8 @@ export function ExamRunner({
           saveFailures.current += 1;
           saveRetryTimer.current = setTimeout(() => flushAutosaveRef.current(), delay);
         },
-      ),
-    );
+      );
+    });
   }, [attemptId]);
   useEffect(() => {
     flushAutosaveRef.current = flushAutosave;
