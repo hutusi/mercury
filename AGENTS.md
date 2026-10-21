@@ -46,6 +46,7 @@ UI follows the Daybreak design system (docs/DESIGN.md, ADR 0032), enforced by `s
 
 - Compose `src/components/typography/*` and `ui/*` primitives; feature components live under `src/components/<feature>/`. Hub pages live in the `(shell)` route group (sidebar / bottom tabs), learning sessions in `(flow)` (nav-free frame).
 - Colour only via semantic tokens, light and dark: **dusk blue (`brand`) marks progress and selection only; coral marks mistakes and the streak only**; shadcn's `--accent` stays a neutral hover tint. Elevation only through the `shadow-raised|pop|float|tab|lift` tokens; no gradients, raw palette classes, or arbitrary colours; motion is short feedback, gated by `motion-reduce`.
+- Sticky/fixed elements offset by the chrome variables, never hard-coded heights: `top-(--chrome-top)` clears the phone top bar or the flow bar, `bottom-(--bottom-nav-h)` clears the phone tabs. Session pages render `FlowHeader` and pass a server-rendered `NextStopButton` to their result **only in plan mode** (an element is truthy even when it renders nothing). Shared exercise pieces: `exercise/ExerciseParts` (split layout, result panel), `exercise/AnswerOption` (instant-grade options), `feedback/FeedbackParts` (writing/speaking feedback).
 
 ## Gotchas
 
