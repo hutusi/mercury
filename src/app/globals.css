@@ -227,6 +227,13 @@
   ::selection {
     background: var(--selection);
   }
+  /* The phone tab bar marks itself with data-bottom-nav; fixed overlays
+     (toasts, the book tutor dock) lift above it by this much. */
+  @media (width < 48rem) {
+    body:has([data-bottom-nav]) {
+      --bottom-nav-h: 4.5rem;
+    }
+  }
   /* Thin, paper-toned scrollbars wherever an inner region scrolls. */
   * {
     scrollbar-width: thin;

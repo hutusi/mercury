@@ -2,8 +2,8 @@ import { cn } from "@/lib/utils";
 
 /**
  * Long-form learner-facing prose — reading passages, book chapters, exam
- * passages. Serif at 18px: the default 16px Newsreader reads smaller than its
- * nominal size, and extended reading wants the larger measure.
+ * passages. Newsreader at ~19px with relaxed leading: its small x-height
+ * reads below its nominal size, and extended reading wants the larger measure.
  */
 export function PassageText({
   children,
@@ -15,7 +15,7 @@ export function PassageText({
   return (
     <div
       className={cn(
-        "font-serif text-lg leading-relaxed whitespace-pre-line text-foreground/90",
+        "font-serif text-[1.1875rem] leading-[1.72] text-pretty whitespace-pre-line text-foreground",
         className,
       )}
     >

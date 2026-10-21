@@ -1,19 +1,18 @@
 import { cn } from "@/lib/utils";
 
 /**
- * The signature Lexicon element: a page title set as a dictionary entry —
- * serif headword, italic IPA, part-of-speech tag in cinnabar, and a gloss
- * line, closed by a hairline rule.
- *
- * On pages whose heading text is asserted by e2e tests, `title` must be the
- * exact dictionary string; IPA/POS render as separate decorative nodes so the
- * accessible name never changes.
+ * Page header: a serif title, an optional muted gloss underneath, and an
+ * actions slot that wraps below on narrow screens. `ipa`/`pos` keep the
+ * dictionary-entry nod (the landing page's /ˈmɜːkjəri/ n.) as decorative
+ * nodes, so the heading's accessible name is always exactly `title` — the
+ * dictionary string the e2e suite asserts.
  */
 export function EntryHeader({
   title,
   ipa,
   pos,
   gloss,
+  eyebrow,
   actions,
   headingLevel = "h1",
   size = "lg",
@@ -23,6 +22,8 @@ export function EntryHeader({
   ipa?: string;
   pos?: string;
   gloss?: React.ReactNode;
+  /** A small muted line above the title (e.g. today's date). */
+  eyebrow?: React.ReactNode;
   actions?: React.ReactNode;
   /** "p" for decorative entries that must not enter the heading outline. */
   headingLevel?: "h1" | "h2" | "p";
@@ -31,43 +32,38 @@ export function EntryHeader({
 }) {
   const Heading = headingLevel;
   const headingSize =
-    size === "xl" ? "text-6xl sm:text-7xl" : size === "md" ? "text-3xl" : "text-4xl sm:text-5xl";
+    size === "xl"
+      ? "text-[2.5rem] leading-[1.12] sm:text-6xl"
+      : size === "md"
+        ? "text-[1.75rem] leading-tight sm:text-[2.125rem]"
+        : "text-3xl leading-tight sm:text-[2.625rem]";
 
   return (
-    <header className={cn("border-b border-border pb-6", className)}>
-      <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+    <header className={className}>
+      <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
         <div className="min-w-0">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <Heading
-              className={cn("font-serif font-medium tracking-tight text-balance", headingSize)}
+          {eyebrow ? <div className="mb-1.5 text-sm text-muted-foreground">{eyebrow}</div> : null}
+          {ipa || pos ? (
+            <div
+              aria-hidden
+              className="mb-3 flex flex-wrap items-baseline gap-x-2.5 text-muted-foreground"
             >
-              {title}
-            </Heading>
-            {ipa ? (
-              <span
-                aria-hidden
-                className={cn(
-                  "font-serif text-muted-foreground italic",
-                  size === "xl" ? "text-2xl" : size === "md" ? "text-base" : "text-lg",
-                )}
-              >
-                {ipa}
-              </span>
-            ) : null}
-            {pos ? (
-              <span
-                aria-hidden
-                className="font-mono text-2xs font-medium tracking-label text-cinnabar uppercase"
-              >
-                {pos}
-              </span>
-            ) : null}
-          </div>
+              {ipa ? <span className="font-serif text-lg italic">{ipa}</span> : null}
+              {pos ? (
+                <span className="font-serif text-sm font-semibold text-brand-ink italic">
+                  {pos}
+                </span>
+              ) : null}
+            </div>
+          ) : null}
+          <Heading className={cn("font-serif font-medium text-balance", headingSize)}>
+            {title}
+          </Heading>
           {gloss ? (
-            <p className="mt-3 max-w-2xl text-pretty text-muted-foreground">{gloss}</p>
+            <p className="mt-2 max-w-2xl text-pretty text-muted-foreground">{gloss}</p>
           ) : null}
         </div>
-        {actions ? <div className="flex shrink-0 items-center gap-2">{actions}</div> : null}
+        {actions ? <div className="flex flex-wrap items-center gap-2">{actions}</div> : null}
       </div>
     </header>
   );

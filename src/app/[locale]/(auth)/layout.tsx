@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { AuthFeaturesProvider } from "@/components/auth/AuthFeaturesContext";
-import { Wordmark } from "@/components/layout/AppShell";
+import { Wordmark } from "@/components/layout/Wordmark";
 import { enabledSocialProviders } from "@/lib/auth/social-providers";
 import { isEmailEnabled } from "@/lib/email/enabled";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";

@@ -46,6 +46,15 @@ const RAW_PALETTE =
 // Elevation is a closed set of tokens (globals.css: shadow-raised, -pop,
 // -float, -tab, -lift); the stock scale and arbitrary shadows are banned.
 const SHADOW = /\bshadow-(?:2xs|xs|sm|md|lg|xl|2xl|inner)\b|\bshadow-\[|\bdrop-shadow\b/;
+// Arbitrary colour values in classes (bg-[#…], text-[oklch(…)], color-mix)
+// and colour literals in inline styles bypass the light/dark token sets.
+const ARBITRARY_COLOR = /-\[(?:#|rgb|hsl|oklch|oklab|color-mix|var\(--(?!radix))/;
+const INLINE_COLOR =
+  /\b(?:color|background|backgroundColor|borderColor|fill|stroke)\s*:\s*["'`](?:#|rgb|hsl|oklch)/;
+// Radii come from the scale (sm…2xl, full); no one-off radii.
+const ARBITRARY_RADIUS = /\brounded(?:-[trbl]{1,2}|-[se]{1,2})?-\[/;
+// Motion is short feedback: nothing slower than 450ms.
+const LONG_DURATION = /\bduration-(?:500|700|1000)\b|\bduration-\[/;
 const GRADIENT = /\bbg-(?:gradient|linear|radial|conic)\b/;
 const BACKDROP = /\bbackdrop-blur\b/;
 const TRANSITION_ALL = /\btransition-all\b/;
@@ -90,6 +99,33 @@ describe("Daybreak design guard", () => {
 
   it("keeps the global stylesheet off Google Fonts", () => {
     expect(GLOBALS_CSS).not.toMatch(/fonts\.googleapis/);
+  });
+
+  it("uses colour tokens, never arbitrary or inline colour values", () => {
+    expect(offenders(ARBITRARY_COLOR)).toEqual([]);
+    expect(offenders(INLINE_COLOR)).toEqual([]);
+  });
+
+  it("uses the radius scale, never one-off radii", () => {
+    expect(offenders(ARBITRARY_RADIUS)).toEqual([]);
+  });
+
+  it("keeps motion short", () => {
+    expect(offenders(LONG_DURATION)).toEqual([]);
+  });
+
+  it("gates transform and opacity transitions behind motion-reduce", () => {
+    const bad = FILES.filter((f) => {
+      const classAttrs = f.text.match(/className=(?:"[^"]*"|\{[^}]*\})/g) ?? [];
+      const strings = f.text.match(/"[^"\n]*transition-\[[^"\n]*"/g) ?? [];
+      return [...classAttrs, ...strings].some(
+        (attr) =>
+          /\btransition-(?:\[[^\]]*(?:opacity|transform|translate|scale)[^\]]*\]|transform|opacity)\b/.test(
+            attr,
+          ) && !attr.includes("motion-reduce:transition-none"),
+      );
+    }).map((f) => f.file);
+    expect(bad).toEqual([]);
   });
 
   it("has no gradients", () => {

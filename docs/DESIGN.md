@@ -52,7 +52,18 @@ Long-form learner prose — reading passages, book chapters, exam passages — i
 
 ## Components
 
-Compose these before writing inline Tailwind (`src/components/ui/` and `src/components/typography/`); feature components live under `src/components/<feature>/`.
+Compose these before writing inline Tailwind; feature components live under `src/components/<feature>/`.
+
+- `ui/button` — pill buttons: `default` (ink, the one primary action per surface), `outline`, `secondary`, `ghost`, `inverse` (on the dark feature surface), `destructive`, `link`; sizes keep targets ≥ 44px (`sm`/`xs` only inside dense rows).
+- `ui/badge` — sentence-case pills: `accent` (dusk blue: "new", progress), `coral` (mistakes, weakest skill), neutral `default`/`secondary`/`outline`.
+- `ui/callout` — the one notice box: `accent` (info tint), `coral`, `error` (`role="alert"` by default), `muted`.
+- `ui/chip` — pill toggle (`aria-pressed`); selection is dusk blue.
+- `ui/segmented-control` — radiogroup on a recessed track (theme, minutes, tabs); arrow keys move the selection.
+- `ui/segmented-progress` — the route bar: one segment per stop, weighted by minutes, coloured by status.
+- `ui/toast` — `useToast().show(title, detail?)`, `flashToast()` across hard navigations; one at a time, bottom-centre above the phone tabs, `role="status"`.
+- `ui/kbd`, `ui/avatar`, `ui/input`, `ui/textarea`, `ui/password-input` (reveal toggle, no confirm twin), `ui/dropdown-menu`.
+- `layout/Wordmark` — the station node (a ring and dot in dusk blue, the same shape as every stop) beside the serif name.
+- `typography/EntryHeader` (page title + gloss + actions; optional IPA/POS as decorative nodes so the accessible name stays the dictionary string), `SectionLabel` (15px semibold, optional trailing note), `Stat` (serif figure), `EntryList`/`EntryRow` (content rows on one card), `EmptyState` (dashed, always with a way forward), `PassageText` (long-form prose).
 
 ## Motion
 

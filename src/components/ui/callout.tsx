@@ -3,17 +3,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 /**
- * The Lexicon's one bordered-notice primitive, replacing the callout box that
- * was hand-rolled across the app. `accent` is the cinnabar funnel/self-assess
- * tint, `error` the destructive tint, `muted` a quiet paper fill. Padding and
- * text size stay with the caller (via className) so each site keeps its rhythm.
+ * The one notice primitive. `accent` is the dusk-blue info tint (coach notes,
+ * legends, "new"), `coral` the mistakes/streak tint, `error` the destructive
+ * tint for failures, `muted` a quiet sunken fill. Padding and text size stay
+ * with the caller (via className) so each site keeps its rhythm.
  */
-const calloutVariants = cva("border", {
+const calloutVariants = cva("rounded-xl", {
   variants: {
     variant: {
-      accent: "border-cinnabar/30 bg-cinnabar/5",
-      error: "border-destructive/20 bg-destructive/10 text-destructive",
-      muted: "border-border bg-muted",
+      accent: "bg-brand-soft text-brand-ink-2",
+      coral: "bg-coral-soft text-coral-ink-2",
+      error: "bg-destructive/10 text-destructive",
+      muted: "bg-muted text-soft-3",
     },
   },
   defaultVariants: { variant: "muted" },

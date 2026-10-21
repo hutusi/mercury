@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { LanguageToggle } from "@/components/layout/LanguageToggle";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
-import { Wordmark } from "@/components/layout/AppShell";
+import { Wordmark } from "@/components/layout/Wordmark";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { Button } from "@/components/ui/button";
 import { dictionaries } from "@/lib/i18n/dictionaries";

@@ -6,23 +6,7 @@ import { NavLinks } from "./NavLinks";
 import { SignOutButton } from "./SignOutButton";
 import { SkipLink } from "./SkipLink";
 import { ThemeToggle } from "./ThemeToggle";
-
-export function Wordmark({ compact = false }: { compact?: boolean }) {
-  return (
-    <span className="flex items-center gap-2.5">
-      {/* Square cinnabar seal (印章) — deliberately the only filled-red surface. */}
-      <span
-        className={`flex items-center justify-center bg-cinnabar font-serif font-semibold text-cinnabar-foreground ${
-          compact ? "size-7 text-sm" : "size-8"
-        }`}
-        aria-hidden
-      >
-        M
-      </span>
-      <span className="font-serif text-lg font-semibold tracking-tight">Mercury</span>
-    </span>
-  );
-}
+import { Wordmark } from "./Wordmark";
 
 export async function AppShell({
   userName,
