@@ -24,67 +24,82 @@ export interface RecordMistakeOutcomesInput {
  * outcomes increment history and may revive a row; correct-only outcomes
  * persist hidden tombstones. Timestamp comparison plus conflict upserts make
  * concurrent commits order-independent.
+ *
+ * Two multi-row statements regardless of question count: an exam submit
+ * grades ~50 questions while holding the attempt row lock, and one upsert per
+ * question made that 50 serial round-trips. Postgres rejects affecting the
+ * same row twice in one statement, so outcomes are folded per question first:
+ * any correct outcome lands in the clear statement, wrong outcomes add up.
+ * Applying clears before wrongs reproduces the per-outcome loop's final state
+ * for every ordering (both stamp the same occurredAt).
  */
 export async function recordMistakeOutcomes(
   executor: DbExecutor,
   input: RecordMistakeOutcomesInput,
 ): Promise<void> {
   const occurredAt = input.occurredAt ?? new Date();
+  const updatedAt = new Date();
+  const correctIds = new Set<string>();
+  const wrongCounts = new Map<string, number>();
   for (const outcome of input.outcomes) {
-    if (outcome.correct) {
-      await executor
-        .insert(mistakeStates)
-        .values({
+    if (outcome.correct) correctIds.add(outcome.questionId);
+    else wrongCounts.set(outcome.questionId, (wrongCounts.get(outcome.questionId) ?? 0) + 1);
+  }
+  const target = [
+    mistakeStates.userId,
+    mistakeStates.kind,
+    mistakeStates.refId,
+    mistakeStates.questionId,
+  ];
+
+  if (correctIds.size > 0) {
+    await executor
+      .insert(mistakeStates)
+      .values(
+        [...correctIds].map((questionId) => ({
           userId: input.userId,
           track: input.track,
           kind: input.kind,
           refId: input.refId,
-          questionId: outcome.questionId,
+          questionId,
           wrongCount: 0,
           lastWrongAt: null,
           clearedAt: occurredAt,
-          updatedAt: new Date(),
-        })
-        .onConflictDoUpdate({
-          target: [
-            mistakeStates.userId,
-            mistakeStates.kind,
-            mistakeStates.refId,
-            mistakeStates.questionId,
-          ],
-          set: {
-            track: input.track,
-            clearedAt: sql`greatest(coalesce(${mistakeStates.clearedAt}, '-infinity'::timestamptz), ${occurredAt})`,
-            updatedAt: new Date(),
-          },
-        });
-      continue;
-    }
-
-    await executor
-      .insert(mistakeStates)
-      .values({
-        userId: input.userId,
-        track: input.track,
-        kind: input.kind,
-        refId: input.refId,
-        questionId: outcome.questionId,
-        wrongCount: 1,
-        lastWrongAt: occurredAt,
-        updatedAt: new Date(),
-      })
+          updatedAt,
+        })),
+      )
       .onConflictDoUpdate({
-        target: [
-          mistakeStates.userId,
-          mistakeStates.kind,
-          mistakeStates.refId,
-          mistakeStates.questionId,
-        ],
+        target,
         set: {
           track: input.track,
-          wrongCount: sql`${mistakeStates.wrongCount} + 1`,
-          lastWrongAt: sql`greatest(coalesce(${mistakeStates.lastWrongAt}, '-infinity'::timestamptz), ${occurredAt})`,
-          updatedAt: new Date(),
+          clearedAt: sql`greatest(coalesce(${mistakeStates.clearedAt}, '-infinity'::timestamptz), excluded.cleared_at)`,
+          updatedAt,
+        },
+      });
+  }
+
+  if (wrongCounts.size > 0) {
+    await executor
+      .insert(mistakeStates)
+      .values(
+        [...wrongCounts].map(([questionId, wrongCount]) => ({
+          userId: input.userId,
+          track: input.track,
+          kind: input.kind,
+          refId: input.refId,
+          questionId,
+          wrongCount,
+          lastWrongAt: occurredAt,
+          updatedAt,
+        })),
+      )
+      .onConflictDoUpdate({
+        target,
+        set: {
+          track: input.track,
+          wrongCount: sql`${mistakeStates.wrongCount} + excluded.wrong_count`,
+          lastWrongAt: sql`greatest(coalesce(${mistakeStates.lastWrongAt}, '-infinity'::timestamptz), excluded.last_wrong_at)`,
+          updatedAt,
         },
       });
   }
