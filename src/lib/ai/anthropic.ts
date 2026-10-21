@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import type { z } from "zod";
+import { AI_ATTEMPT_TIMEOUT_MS, AI_MAX_RETRIES } from "./budget";
 import { AiUnavailableError } from "./errors";
 
 /**
@@ -11,8 +12,9 @@ import { AiUnavailableError } from "./errors";
 
 let client: Anthropic | null = null;
 function getClient(): Anthropic {
-  // TS SDK timeout is in milliseconds.
-  return (client ??= new Anthropic({ timeout: 60_000, maxRetries: 2 }));
+  // TS SDK timeout is in milliseconds; the caller's deadline signal bounds
+  // the whole retry chain (budget.ts).
+  return (client ??= new Anthropic({ timeout: AI_ATTEMPT_TIMEOUT_MS, maxRetries: AI_MAX_RETRIES }));
 }
 
 export async function anthropicStructuredFeedback<Schema extends z.ZodType>(req: {
@@ -20,17 +22,22 @@ export async function anthropicStructuredFeedback<Schema extends z.ZodType>(req:
   system: string;
   userContent: string;
   schema: Schema;
+  /** Overall deadline for the call, retries included. */
+  signal: AbortSignal;
 }): Promise<z.infer<Schema>> {
   let response;
   try {
     // Sonnet 5: no temperature/top_p/top_k; adaptive thinking is the default.
-    response = await getClient().messages.parse({
-      model: req.model,
-      max_tokens: 16000,
-      system: req.system,
-      messages: [{ role: "user", content: req.userContent }],
-      output_config: { format: zodOutputFormat(req.schema) },
-    });
+    response = await getClient().messages.parse(
+      {
+        model: req.model,
+        max_tokens: 16000,
+        system: req.system,
+        messages: [{ role: "user", content: req.userContent }],
+        output_config: { format: zodOutputFormat(req.schema) },
+      },
+      { signal: req.signal },
+    );
   } catch (error) {
     throw new AiUnavailableError("Claude API request failed", { cause: error });
   }
@@ -52,16 +59,21 @@ export async function anthropicPlainText(req: {
   model: string;
   system: string;
   messages: { role: "user" | "assistant"; content: string }[];
+  /** Overall deadline for the call, retries included. */
+  signal: AbortSignal;
 }): Promise<string> {
   let response;
   try {
     // Sonnet 5: no temperature/top_p/top_k; adaptive thinking is the default.
-    response = await getClient().messages.create({
-      model: req.model,
-      max_tokens: 1024,
-      system: req.system,
-      messages: req.messages,
-    });
+    response = await getClient().messages.create(
+      {
+        model: req.model,
+        max_tokens: 1024,
+        system: req.system,
+        messages: req.messages,
+      },
+      { signal: req.signal },
+    );
   } catch (error) {
     throw new AiUnavailableError("Claude API request failed", { cause: error });
   }

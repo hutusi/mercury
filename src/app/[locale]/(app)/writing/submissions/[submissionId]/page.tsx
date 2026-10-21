@@ -12,6 +12,11 @@ import { getTierForUser } from "@/lib/queries/membership";
 import { getDict } from "@/lib/i18n";
 import { getWritingSubmissionDetail } from "@/lib/queries/writing";
 
+// Makes a runtime AI call (directly or via server actions): the provider
+// budget plus claim/publish headroom, inside the lease stale window
+// (src/lib/ai/budget.ts).
+export const maxDuration = 115;
+
 export default async function WritingSubmissionPage({
   params,
 }: {

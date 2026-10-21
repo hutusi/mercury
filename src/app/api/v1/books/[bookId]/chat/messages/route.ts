@@ -5,6 +5,11 @@ import { getBookChatPageData } from "@/lib/queries/book-chat";
 import { NotFoundError } from "@/lib/services/errors";
 import { sendBookChatMessageForUser } from "@/lib/services/book-chat";
 
+// Makes a runtime AI call (directly or via server actions): the provider
+// budget plus claim/publish headroom, inside the lease stale window
+// (src/lib/ai/budget.ts).
+export const maxDuration = 115;
+
 // GET is never premium-gated: the shape carries the gate (`entitled`) so a
 // downgraded user keeps read access to their own thread. 404 unknown book.
 export const GET = apiHandler(async (req, ctx: { params: Promise<{ bookId: string }> }) => {

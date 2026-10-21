@@ -2,6 +2,7 @@ import type { z } from "zod";
 import type { SpeakingPartType, WritingTaskType } from "../../content/types";
 import { anthropicPlainText, anthropicStructuredFeedback } from "./anthropic";
 import { bailianPlainText, bailianStructuredFeedback } from "./bailian";
+import { AI_AUTHORING_BUDGET_MS, AI_CALL_BUDGET_MS } from "./budget";
 import { AiUnavailableError } from "./errors";
 import { modelForProvider, resolveAiProvider } from "./provider";
 import {
@@ -43,12 +44,19 @@ async function requestStructuredFeedback<Schema extends z.ZodType>(
   system: string,
   userContent: string,
   schema: Schema,
+  budgetMs: number = AI_CALL_BUDGET_MS,
 ): Promise<z.infer<Schema>> {
   const provider = resolveAiProvider();
   if (!provider) {
     throw new AiUnavailableError("No AI provider is configured");
   }
-  const req = { model: modelForProvider(provider), system, userContent, schema };
+  const req = {
+    model: modelForProvider(provider),
+    system,
+    userContent,
+    schema,
+    signal: AbortSignal.timeout(budgetMs),
+  };
   return provider === "anthropic"
     ? anthropicStructuredFeedback(req)
     : bailianStructuredFeedback(req);
@@ -67,7 +75,7 @@ export async function getStructuredDraft<Schema extends z.ZodType>(req: {
   userContent: string;
   schema: Schema;
 }): Promise<z.infer<Schema>> {
-  return requestStructuredFeedback(req.system, req.userContent, req.schema);
+  return requestStructuredFeedback(req.system, req.userContent, req.schema, AI_AUTHORING_BUDGET_MS);
 }
 
 /**
@@ -138,6 +146,7 @@ async function plainTextChat(
   }
   const chatReq = {
     model: modelForProvider(provider),
+    signal: AbortSignal.timeout(AI_CALL_BUDGET_MS),
     system,
     messages: messages.map((m) =>
       m.role === "user" ? { ...m, content: sanitizeUntrusted(m.content) } : m,

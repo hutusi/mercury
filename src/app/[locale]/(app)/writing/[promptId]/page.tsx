@@ -9,6 +9,11 @@ import { getSettings } from "@/lib/settings";
 import { getDict, getLocale } from "@/lib/i18n";
 import { getWritingPromptWithHistory } from "@/lib/queries/writing";
 
+// Makes a runtime AI call (directly or via server actions): the provider
+// budget plus claim/publish headroom, inside the lease stale window
+// (src/lib/ai/budget.ts).
+export const maxDuration = 115;
+
 export default async function WritingPromptPage({
   params,
 }: {

@@ -2,6 +2,11 @@ import { requireUserApi } from "@/lib/api/auth";
 import { apiHandler, readJson } from "@/lib/api/handler";
 import { submitSpeakingForUser } from "@/lib/services/speaking";
 
+// Makes a runtime AI call (directly or via server actions): the provider
+// budget plus claim/publish headroom, inside the lease stale window
+// (src/lib/ai/budget.ts).
+export const maxDuration = 115;
+
 /**
  * The client does speech-to-text on-device (SFSpeechRecognizer on iOS, Web
  * Speech in the browser) and POSTs the transcript; any AI-grading failure
