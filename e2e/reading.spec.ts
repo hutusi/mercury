@@ -44,7 +44,9 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
     page.getByRole("link", { name: new RegExp(t.reading.backToList) }).first(),
   ).toHaveAttribute("href", "/zh/reading");
   await page.goto("/reading");
-  await expect(page.getByText(new RegExp(`${t.reading.bestScore}:`)).first()).toBeVisible();
+  await expect(
+    page.getByText(new RegExp(`${t.reading.bestScore} \\d+/\\d+`)).first(),
+  ).toBeVisible();
 });
 
 test("off-plan reading result offers the next unattempted exercise", async ({ page }) => {

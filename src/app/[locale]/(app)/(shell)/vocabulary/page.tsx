@@ -9,8 +9,7 @@ import { getVocabOverview, MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION } from "@/li
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function VocabularyPage() {
-  const { user, goalTrack } = await requireOnboarded();
-  const t = await getDict();
+  const [{ user, goalTrack }, t] = await Promise.all([requireOnboarded(), getDict()]);
 
   // Personal collection — never track-filtered (ADR 0029): the overview counts
   // and word list cover everything the learner has touched, on every track.
@@ -45,13 +44,13 @@ export default async function VocabularyPage() {
   });
 
   const stats = [
-    { label: t.vocab.due, value: dueCount, accent: dueCount > 0 },
-    { label: t.vocab.fresh, value: freshCount, accent: false },
-    { label: t.vocab.learned, value: learnedCount, accent: false },
+    { label: t.vocab.due, value: dueCount },
+    { label: t.vocab.fresh, value: freshCount },
+    { label: t.vocab.learned, value: learnedCount },
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="flex flex-col gap-8">
       <EntryHeader
         title={t.nav.vocabulary}
         ipa={t.entry.vocabularyIpa}
@@ -62,11 +61,11 @@ export default async function VocabularyPage() {
             <Button asChild>
               <Link href={studyHref}>
                 {t.vocab.study}
-                {sessionSize > 0 && (
-                  <span className="ml-1.5 font-mono text-xs tabular-nums opacity-70">
+                {sessionSize > 0 ? (
+                  <span className="rounded-full bg-primary-foreground/15 px-2 text-xs tabular-nums">
                     {sessionSize}
                   </span>
-                )}
+                ) : null}
               </Link>
             </Button>
             <Button asChild variant="outline">
@@ -76,46 +75,51 @@ export default async function VocabularyPage() {
         }
       />
 
-      <div className="grid grid-cols-3 divide-x divide-border border-y border-border">
+      <div className="grid grid-cols-3 divide-x divide-border rounded-xl border border-border bg-card">
         {stats.map((s) => (
-          <div key={s.label} className="px-4 py-4 first:pl-0">
-            <Stat label={s.label} value={s.value} accent={s.accent} />
+          <div key={s.label} className="px-4 py-4 sm:px-6">
+            <Stat label={s.label} value={s.value} />
           </div>
         ))}
       </div>
 
       {sortedTopics.map(([topic, topicWords]) => (
-        <section key={topic}>
-          <SectionLabel as="h2" className="mb-3">
-            {topic} · {topicWords.length}
+        <section key={topic} className="flex flex-col gap-3">
+          <SectionLabel as="h2" note={topicWords.length}>
+            {topic}
           </SectionLabel>
-          <table className="w-full border-y border-border text-sm">
-            <tbody className="divide-y divide-border">
-              {topicWords.map((w) => (
-                <tr key={w.id}>
-                  <td className="py-2.5 pr-4 font-serif text-base font-medium">{w.headword}</td>
-                  <td className="hidden px-4 py-2.5 font-serif text-muted-foreground italic sm:table-cell">
+          <ul className="divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
+            {topicWords.map((w) => {
+              const learned = startedIds.has(w.id);
+              return (
+                <li key={w.id} className="flex items-baseline gap-3 px-5 py-3 text-sm">
+                  <span className="min-w-0 shrink-0 font-serif text-[1.0625rem] font-medium">
+                    {w.headword}
+                  </span>
+                  <span className="hidden font-serif text-muted-foreground italic sm:inline">
                     {w.ipa}
-                  </td>
-                  <td className="px-4 py-2.5 font-mono text-2xs text-muted-foreground uppercase">
+                  </span>
+                  <span className="font-serif text-xs font-semibold text-brand-ink italic">
                     {w.pos}
-                  </td>
-                  <td className="px-4 py-2.5 text-foreground/80">{w.translationZh}</td>
-                  <td className="py-2.5 pl-4 text-right">
-                    {startedIds.has(w.id) ? (
-                      <span aria-label={t.vocab.learned}>
-                        <Check className="ml-auto size-4" aria-hidden />
-                      </span>
-                    ) : (
-                      <span className="text-muted-foreground/40" aria-label={t.vocab.notLearned}>
-                        ○
-                      </span>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                  </span>
+                  <span className="min-w-0 flex-1 truncate text-soft-3">{w.translationZh}</span>
+                  {learned ? (
+                    <Check
+                      className="size-4 shrink-0 self-center text-brand"
+                      role="img"
+                      aria-label={t.vocab.learned}
+                    />
+                  ) : (
+                    <span
+                      className="size-3.5 shrink-0 self-center rounded-full border-[1.5px] border-input"
+                      role="img"
+                      aria-label={t.vocab.notLearned}
+                    />
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </section>
       ))}
     </div>

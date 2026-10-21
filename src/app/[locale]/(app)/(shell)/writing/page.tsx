@@ -1,11 +1,11 @@
-import { Check } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { EntryList, EntryRow } from "@/components/typography/EntryList";
 import { TrackFilterChips } from "@/components/layout/TrackFilterChips";
+import { RowStatus, ViewAllLink } from "@/components/practice/HubParts";
 import { Badge } from "@/components/ui/badge";
 import { getDict } from "@/lib/i18n";
+import { fill } from "@/lib/i18n/fill";
 import { listWritingPrompts } from "@/lib/queries/writing";
 import { requireOnboarded } from "@/lib/settings";
 import { parseTrackFilter, TRACK_FILTER_OPTIONS } from "@/lib/track-filter";
@@ -15,10 +15,12 @@ export default async function WritingListPage({
 }: {
   searchParams: Promise<{ track?: string }>;
 }) {
-  const { user, goalTrack } = await requireOnboarded();
-  const t = await getDict();
-
-  const { filter, track } = parseTrackFilter((await searchParams).track, goalTrack);
+  const [{ user, goalTrack }, t, { track: trackParam }] = await Promise.all([
+    requireOnboarded(),
+    getDict(),
+    searchParams,
+  ]);
+  const { filter, track } = parseTrackFilter(trackParam, goalTrack);
 
   const { prompts, submissionCountByPrompt: submissionsByPrompt } = await listWritingPrompts(
     user.id,
@@ -26,7 +28,7 @@ export default async function WritingListPage({
   );
 
   return (
-    <div className="space-y-8">
+    <div className="flex flex-col gap-8">
       <EntryHeader
         title={t.nav.writing}
         ipa={t.entry.writingIpa}
@@ -45,45 +47,34 @@ export default async function WritingListPage({
               href={`/writing/${p.id}`}
               meta={
                 <>
-                  {filter === "all" && <Badge variant="outline">{t.tracks[p.track]}</Badge>}
-                  <Badge variant="outline">{p.taskType.replace(/_/g, " ")}</Badge>
+                  {filter === "all" ? <Badge variant="accent">{t.tracks[p.track]}</Badge> : null}
+                  <Badge>{t.writingTasks[p.taskType]}</Badge>
                 </>
               }
               title={p.title}
-              subtitle={p.titleZh}
+              subtitle={`${p.titleZh} · ${fill(t.writing.meta, { n: p.minWords, m: p.suggestedMinutes })}`}
               right={
-                <div className="text-right">
-                  <p className="font-mono text-2xs text-muted-foreground">
-                    {t.writing.minWords} {p.minWords} · {p.suggestedMinutes} {t.common.minutes}
-                  </p>
-                  {count > 0 && (
-                    <p className="mt-1 flex items-center justify-end gap-1 font-mono text-xs font-medium text-foreground tabular-nums">
-                      <Check className="size-3.5" aria-hidden />
-                      {t.writing.pastSubmissions}: {count}
-                    </p>
-                  )}
-                </div>
+                <RowStatus done={count > 0}>
+                  {count > 0
+                    ? fill(t.writing.submittedCount, { n: count })
+                    : t.reading.notAttempted}
+                </RowStatus>
               }
             />
           );
         })}
       </EntryList>
-      {prompts.length === 0 && (
+      {prompts.length === 0 ? (
         <EmptyState
           action={
-            filter !== "all" && (
-              <Link
-                href="/writing?track=all"
-                className="text-sm font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
-              >
-                {t.filters.viewAll}
-              </Link>
-            )
+            filter !== "all" ? (
+              <ViewAllLink href="/writing?track=all">{t.filters.viewAll}</ViewAllLink>
+            ) : undefined
           }
         >
           {t.common.empty}
         </EmptyState>
-      )}
+      ) : null}
     </div>
   );
 }

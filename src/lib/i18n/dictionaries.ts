@@ -562,6 +562,7 @@ const zh = {
     words: "{c} / {n} 词",
     needMore: "还差 {n} 词",
     rewrite: "再写一次",
+    submittedCount: "已提交 {n} 次",
     toPrompt: "查看题目",
     yourScore: "AI 评分",
   },
@@ -611,6 +612,7 @@ const zh = {
     readyHint: "点击开始后先有准备时间，随后自动开始录音",
     secondsUnit: "秒",
     again: "再录一次",
+    submittedCount: "已练 {n} 次",
     yourScore: "AI 评分",
   },
   speakingParts: {
@@ -1311,6 +1313,7 @@ const en: Dictionary = {
     words: "{c} / {n} words",
     needMore: "{n} more to go",
     rewrite: "Write it again",
+    submittedCount: "Submitted {n}×",
     toPrompt: "View the task",
     yourScore: "AI score",
   },
@@ -1363,6 +1366,7 @@ const en: Dictionary = {
     readyHint: "You get preparation time first; recording then starts on its own",
     secondsUnit: "s",
     again: "Record again",
+    submittedCount: "Practised {n}×",
     yourScore: "AI score",
   },
   speakingParts: {
