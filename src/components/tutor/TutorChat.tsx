@@ -61,7 +61,19 @@ export function TutorChat({
     // Optimistic user turn; replaced by nothing on failure (input restored).
     setMessages((m) => [...m, { id: `local-${m.length}`, role: "user", content }]);
     startTransition(async () => {
-      const result = await sendTutorMessage({ content });
+      let result: Awaited<ReturnType<typeof sendTutorMessage>>;
+      try {
+        result = await sendTutorMessage({ content });
+      } catch {
+        // A network drop, an expired session, or any unexpected server
+        // error rejects here. Uncaught, it escalated to the route error
+        // boundary and blanked the page with the typed message gone; instead
+        // roll back the optimistic turn and give the text back.
+        setMessages((m) => m.slice(0, -1));
+        setInput((current) => current || content);
+        setError("failed");
+        return;
+      }
       if (result.ok) {
         setMessages((m) => [
           ...m,
@@ -73,7 +85,9 @@ export function TutorChat({
         if (result.remainingToday <= 0) setError("limit");
       } else {
         setMessages((m) => m.slice(0, -1));
-        setInput(content);
+        // Functional restore: never clobber text typed while the reply was
+        // in flight (the composer stays enabled).
+        setInput((current) => current || content);
         setError(
           result.error === "limit_reached"
             ? "limit"
