@@ -863,7 +863,10 @@ paths:
       tags: [mistakes]
       responses:
         "200":
-          description: Active/cleared view models; questions carry no keys.
+          description: >-
+            Active/cleared view models; questions carry no keys. Every active
+            mistake is listed; `cleared` holds only the 100 most recently
+            wrong-then-cleared items, while `counts.cleared` is the full total.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/mistakes/retest:

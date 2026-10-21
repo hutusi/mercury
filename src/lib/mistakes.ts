@@ -96,11 +96,24 @@ export const countActiveMistakes = cache(
   },
 );
 
+/**
+ * Cleared items are history, not work: the notebook shows the most recent
+ * ones only, so a long-time learner's page payload stops growing with every
+ * item they ever cleared. The count still reports the full total.
+ */
+export const CLEARED_MISTAKES_SHOWN = 100;
+
 export async function getMistakesPageData(
   userId: string,
   track: Track | null,
 ): Promise<MistakesPageData> {
-  const statuses = await listStatuses(userId, track);
+  const allStatuses = await listStatuses(userId, track);
+  // Sorted newest-first by listStatuses, so the slice keeps the latest clears.
+  const clearedStatuses = allStatuses.filter((s) => s.cleared);
+  const statuses = [
+    ...allStatuses.filter((s) => !s.cleared),
+    ...clearedStatuses.slice(0, CLEARED_MISTAKES_SHOWN),
+  ];
 
   const wordIds = statuses.filter((s) => s.kind === "vocab_quiz").map((s) => s.questionId);
   const mcqRefIds = (kind: "reading" | "listening" | "exam" | "book_quiz") => [
@@ -153,6 +166,16 @@ export async function getMistakesPageData(
   const examById = new Map(exams.map((e) => [e.id, e]));
   const chapterById = new Map(chapters.map((c) => [c.id, c]));
 
+  // One context object per passage/script, shared by every question that
+  // cites it: React's RSC serializer emits a repeated object instance once
+  // and references it after, so ten wrong answers on one passage no longer
+  // ship the passage ten times.
+  const contexts = new Map<string, McqMistakeVM["context"]>();
+  const sharedContext = (key: string, build: () => McqMistakeVM["context"]) => {
+    if (!contexts.has(key)) contexts.set(key, build());
+    return contexts.get(key) ?? null;
+  };
+
   const vms: MistakeVM[] = [];
   for (const status of statuses) {
     const base = {
@@ -189,10 +212,11 @@ export async function getMistakesPageData(
             sourceTitle: exam.title,
             sourceTitleZh: exam.titleZh,
             question: { id: q.id, stem: q.stem, options: q.options },
-            context:
+            context: sharedContext(`exam:${exam.id}:${group.id}`, () =>
               group.passage || group.script
                 ? { passage: group.passage, script: group.script }
                 : null,
+            ),
           });
         }
       }
@@ -231,11 +255,24 @@ export async function getMistakesPageData(
       sourceTitle: exercise.title,
       sourceTitleZh: exercise.titleZh,
       question: { id: q.id, stem: q.stem, options: q.options },
-      context: "passage" in exercise ? { passage: exercise.passage } : { script: exercise.script },
+      context: sharedContext(`${status.kind}:${exercise.id}`, () =>
+        "passage" in exercise ? { passage: exercise.passage } : { script: exercise.script },
+      ),
     });
   }
 
   const active = vms.filter((vm) => !vm.cleared);
   const cleared = vms.filter((vm) => vm.cleared);
-  return { active, cleared, counts: { active: active.length, cleared: cleared.length } };
+  return {
+    active,
+    cleared,
+    counts: {
+      active: active.length,
+      // Beyond the shown window the total comes from the statuses (a cleared
+      // item whose content was since removed can't be decorated, but it was
+      // still cleared).
+      cleared:
+        clearedStatuses.length > CLEARED_MISTAKES_SHOWN ? clearedStatuses.length : cleared.length,
+    },
+  };
 }
