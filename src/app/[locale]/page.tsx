@@ -28,6 +28,11 @@ export async function generateMetadata({
   };
 }
 
+// A build-time guard, not a mode switch: any cookies()/headers() read that
+// creeps into this tree (or into the root not-found boundary every route
+// includes) fails the build instead of silently making the page dynamic.
+export const dynamic = "error";
+
 /**
  * Static: rendered once per locale at build time and served from the edge.
  * Nothing here may read cookies or headers — the dictionary comes from the
