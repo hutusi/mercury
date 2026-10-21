@@ -149,9 +149,13 @@ One rolling thread per (user, book) — the premium in-reader coach
   `repetitions`, `lapses`) so clients that want to surface scheduler state can do so with
   the same deterministic SM-2 rules (new cards carry the fresh-card state). The web UI
   deliberately shows no interval previews — grade labels only.
-- `POST /api/v1/vocab/grade` returns `{intervalDays, srs}` — the post-review state, so a
-  lapsed ("Forgot") card re-shown in the same session has accurate state without
-  refetching the queue.
+- `POST /api/v1/vocab/grade` returns `{reviewId, grade, replayed, intervalDays, srs}` — the
+  post-review state, so a lapsed ("Forgot") card re-shown in the same session has accurate
+  state without refetching the queue. Send an optional `requestId` (UUID) per card
+  presentation ([ADR 0031](adr/0031-idempotent-flashcard-grades.md)): a retry after a lost
+  response replays the stored review (`replayed: true`, `grade` = the original grade, which
+  is the one to act on) instead of advancing the card twice; reusing an id for another word
+  is `409 grade_request_conflict`.
 
 ## Vocabulary quiz integrity
 

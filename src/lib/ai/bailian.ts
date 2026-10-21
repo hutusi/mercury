@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { z } from "zod";
+import { AI_ATTEMPT_TIMEOUT_MS, AI_MAX_RETRIES } from "./budget";
 import { AiUnavailableError } from "./errors";
 
 /**
@@ -21,24 +22,34 @@ function getClient(): OpenAI {
   return (client ??= new OpenAI({
     apiKey: process.env.DASHSCOPE_API_KEY,
     baseURL: process.env.DASHSCOPE_BASE_URL || DEFAULT_BASE_URL,
-    timeout: 60_000,
-    maxRetries: 2,
+    // Per attempt; the caller's deadline signal bounds the whole call,
+    // repair round-trip included (budget.ts).
+    timeout: AI_ATTEMPT_TIMEOUT_MS,
+    maxRetries: AI_MAX_RETRIES,
   }));
 }
 
 type ChatMessage = OpenAI.Chat.Completions.ChatCompletionMessageParam;
 
-async function requestOnce(api: OpenAI, model: string, messages: ChatMessage[]): Promise<string> {
+async function requestOnce(
+  api: OpenAI,
+  model: string,
+  messages: ChatMessage[],
+  signal: AbortSignal | undefined,
+): Promise<string> {
   let response: OpenAI.Chat.Completions.ChatCompletion;
   try {
-    response = await api.chat.completions.create({
-      model,
-      messages,
-      max_tokens: 8000,
-      response_format: { type: "json_object" },
-      // DashScope passthrough flag; see module comment.
-      enable_thinking: false,
-    } as OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming);
+    response = await api.chat.completions.create(
+      {
+        model,
+        messages,
+        max_tokens: 8000,
+        response_format: { type: "json_object" },
+        // DashScope passthrough flag; see module comment.
+        enable_thinking: false,
+      } as OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming,
+      { signal },
+    );
   } catch (error) {
     throw new AiUnavailableError("Bailian API request failed", { cause: error });
   }
@@ -78,7 +89,14 @@ function tryParse<Schema extends z.ZodType>(
 }
 
 export async function bailianStructuredFeedback<Schema extends z.ZodType>(
-  req: { model: string; system: string; userContent: string; schema: Schema },
+  req: {
+    model: string;
+    system: string;
+    userContent: string;
+    schema: Schema;
+    /** Overall deadline — one signal spans the first request AND the repair. */
+    signal?: AbortSignal;
+  },
   clientOverride?: OpenAI,
 ): Promise<z.infer<Schema>> {
   const api = clientOverride ?? getClient();
@@ -93,23 +111,28 @@ ${JSON.stringify(z.toJSONSchema(req.schema))}`;
     { role: "user", content: req.userContent },
   ];
 
-  const first = await requestOnce(api, req.model, messages);
+  const first = await requestOnce(api, req.model, messages, req.signal);
   const parsed = tryParse(first, req.schema);
   if (parsed.success) return parsed.data;
 
   // One repair round-trip: show the model its own reply and the validation
   // problems, then re-validate. A second failure degrades.
-  const repaired = await requestOnce(api, req.model, [
-    ...messages,
-    { role: "assistant", content: first },
-    {
-      role: "user",
-      content: `Your previous reply did not conform to the required JSON Schema. Problems:
+  const repaired = await requestOnce(
+    api,
+    req.model,
+    [
+      ...messages,
+      { role: "assistant", content: first },
+      {
+        role: "user",
+        content: `Your previous reply did not conform to the required JSON Schema. Problems:
 ${parsed.problem}
 
 Reply again with ONLY the corrected JSON object.`,
-    },
-  ]);
+      },
+    ],
+    req.signal,
+  );
   const reparsed = tryParse(repaired, req.schema);
   if (reparsed.success) return reparsed.data;
   // Keep the zod diagnostics in the (log-only) message — the API handler
@@ -129,18 +152,23 @@ export async function bailianPlainText(
     model: string;
     system: string;
     messages: { role: "user" | "assistant"; content: string }[];
+    /** Overall deadline for the call, retries included. */
+    signal?: AbortSignal;
   },
   clientOverride?: OpenAI,
 ): Promise<string> {
   const api = clientOverride ?? getClient();
   let response: OpenAI.Chat.Completions.ChatCompletion;
   try {
-    response = await api.chat.completions.create({
-      model: req.model,
-      messages: [{ role: "system", content: req.system }, ...req.messages],
-      max_tokens: 1024,
-      enable_thinking: false,
-    } as OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming);
+    response = await api.chat.completions.create(
+      {
+        model: req.model,
+        messages: [{ role: "system", content: req.system }, ...req.messages],
+        max_tokens: 1024,
+        enable_thinking: false,
+      } as OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming,
+      { signal: req.signal },
+    );
   } catch (error) {
     throw new AiUnavailableError("Bailian API request failed", { cause: error });
   }

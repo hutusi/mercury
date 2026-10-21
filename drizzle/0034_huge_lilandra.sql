@@ -1,0 +1,1 @@
+CREATE INDEX "mistake_states_user_wrong_idx" ON "mistake_states" USING btree ("user_id","last_wrong_at" DESC NULLS LAST) WHERE "mistake_states"."wrong_count" > 0;

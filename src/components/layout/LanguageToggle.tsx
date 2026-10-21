@@ -4,7 +4,7 @@ import { Languages } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { Button } from "@/components/ui/button";
-import { LOCALE_COOKIE } from "@/lib/i18n/dictionaries";
+import { LOCALE_COOKIE } from "@/lib/i18n/locale";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { swapLocalePath } from "@/lib/i18n/routing";
 

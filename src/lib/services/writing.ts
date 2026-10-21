@@ -24,13 +24,18 @@ import { recordLearnerOutcomeSafely } from "./profile";
  */
 async function writingLearnerContext(userId: string): Promise<string | undefined> {
   try {
-    const profile = await getLearnerProfile(userId);
+    const [profile, recent] = await Promise.all([
+      getLearnerProfile(userId),
+      db.query.writingSubmissions.findMany({
+        where: and(
+          eq(writingSubmissions.userId, userId),
+          eq(writingSubmissions.status, "ai_scored"),
+        ),
+        orderBy: [desc(writingSubmissions.createdAt)],
+        limit: 3,
+      }),
+    ]);
     if (!profile) return undefined;
-    const recent = await db.query.writingSubmissions.findMany({
-      where: and(eq(writingSubmissions.userId, userId), eq(writingSubmissions.status, "ai_scored")),
-      orderBy: [desc(writingSubmissions.createdAt)],
-      limit: 3,
-    });
     const recentCriteria = recent.flatMap(
       (s) => s.feedback?.criteria.map((c) => ({ name: c.name, score: c.score })) ?? [],
     );

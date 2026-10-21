@@ -9,17 +9,25 @@ import { getSettings } from "@/lib/settings";
 import { getDict, getLocale } from "@/lib/i18n";
 import { getWritingPromptWithHistory } from "@/lib/queries/writing";
 
+// Makes a runtime AI call (directly or via server actions): the provider
+// budget plus claim/publish headroom, inside the lease stale window
+// (src/lib/ai/budget.ts).
+export const maxDuration = 115;
+
 export default async function WritingPromptPage({
   params,
 }: {
   params: Promise<{ promptId: string }>;
 }) {
-  const user = await requireUser();
-  const timeZone = (await getSettings(user.id))?.timeZone ?? "Asia/Shanghai";
-  const { promptId } = await params;
-  const [t, locale] = await Promise.all([getDict(), getLocale()]);
-
-  const data = await getWritingPromptWithHistory(user.id, promptId);
+  const [user, { promptId }] = await Promise.all([requireUser(), params]);
+  // One wave: none of these depend on each other once the user is known.
+  const [settings, t, locale, data] = await Promise.all([
+    getSettings(user.id),
+    getDict(),
+    getLocale(),
+    getWritingPromptWithHistory(user.id, promptId),
+  ]);
+  const timeZone = settings?.timeZone ?? "Asia/Shanghai";
   if (!data) notFound();
   const { prompt, past } = data;
 

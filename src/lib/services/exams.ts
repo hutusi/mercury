@@ -16,16 +16,19 @@ export async function startExamAttemptForUser(
   userId: string,
   examId: string,
 ): Promise<{ attemptId: string }> {
-  const exam = await db.query.mockExams.findFirst({ where: eq(mockExams.id, examId) });
+  // Independent reads: resuming (the common repeat case) needs no exam row.
+  const [exam, existing] = await Promise.all([
+    db.query.mockExams.findFirst({ where: eq(mockExams.id, examId) }),
+    db.query.mockExamAttempts.findFirst({
+      columns: { id: true },
+      where: and(
+        eq(mockExamAttempts.userId, userId),
+        eq(mockExamAttempts.examId, examId),
+        eq(mockExamAttempts.status, "in_progress"),
+      ),
+    }),
+  ]);
   if (!exam) throw new NotFoundError(`Unknown exam: ${examId}`);
-
-  const existing = await db.query.mockExamAttempts.findFirst({
-    where: and(
-      eq(mockExamAttempts.userId, userId),
-      eq(mockExamAttempts.examId, examId),
-      eq(mockExamAttempts.status, "in_progress"),
-    ),
-  });
   if (existing) return { attemptId: existing.id };
 
   const firstSection = exam.sections[0];

@@ -101,6 +101,76 @@ test.describe("API vocab/SRS", () => {
     expect(dash.recentScores.some((s: { kind: string }) => s.kind === "vocab_quiz")).toBe(true);
   });
 
+  test("a retried grade with the same requestId replays instead of re-advancing", async ({
+    request,
+  }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const { cards } = await (
+      await request.get("/api/v1/vocab/study-queue", { headers: user.authHeaders })
+    ).json();
+    const [first, second] = cards;
+    const requestId = crypto.randomUUID();
+
+    const original = await request.post("/api/v1/vocab/grade", {
+      headers: user.authHeaders,
+      data: { wordId: first.wordId, grade: 5, requestId },
+    });
+    expect(original.status()).toBe(200);
+    const originalBody = await original.json();
+    expect(originalBody.replayed).toBe(false);
+    expect(originalBody.grade).toBe(5);
+
+    // The lost-response retry — even with a different button — replays the
+    // stored review: same review, original grade, no second advancement.
+    const replay = await request.post("/api/v1/vocab/grade", {
+      headers: user.authHeaders,
+      data: { wordId: first.wordId, grade: 1, requestId },
+    });
+    expect(replay.status()).toBe(200);
+    const replayBody = await replay.json();
+    expect(replayBody).toEqual({ ...originalBody, replayed: true });
+
+    // Reusing the key for another word is a conflict, not a silent replay.
+    const conflict = await request.post("/api/v1/vocab/grade", {
+      headers: user.authHeaders,
+      data: { wordId: second.wordId, grade: 4, requestId },
+    });
+    expect(conflict.status()).toBe(409);
+    expect((await conflict.json()).error.code).toBe("grade_request_conflict");
+
+    // Still exactly one started card (the conflict rolled its lazy create back).
+    const overview = await (
+      await request.get("/api/v1/vocab/overview", { headers: user.authHeaders })
+    ).json();
+    expect(overview.learnedCount).toBe(1);
+  });
+
+  test("a requestId raced across two words resolves to one grade and one 409", async ({
+    request,
+  }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const { cards } = await (
+      await request.get("/api/v1/vocab/study-queue", { headers: user.authHeaders })
+    ).json();
+    const requestId = crypto.randomUUID();
+
+    // Different words lock different cards, so neither transaction sees the
+    // other's uncommitted log: the loser trips the (user, request_id) unique
+    // index. That last barrier must answer like the in-transaction check —
+    // a typed 409 — not leak the driver error as a 500.
+    const responses = await Promise.all(
+      [cards[0], cards[1]].map((card: { wordId: string }) =>
+        request.post("/api/v1/vocab/grade", {
+          headers: user.authHeaders,
+          data: { wordId: card.wordId, grade: 4, requestId },
+        }),
+      ),
+    );
+    expect(responses.map((r) => r.status()).sort()).toEqual([200, 409]);
+    const loser = responses.find((r) => r.status() === 409)!;
+    expect((await loser.json()).error.code).toBe("grade_request_conflict");
+  });
+
   test("grading an unknown word gets a 404 envelope", async ({ request }) => {
     const user = await apiSignUpAndOnboard(request, "toeic");
     const res = await request.post("/api/v1/vocab/grade", {

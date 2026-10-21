@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { gradeCard } from "@/lib/actions/vocab";
+import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createWordSpeaker, ttsSupported, type WordSpeaker } from "@/lib/speech";
 import { type ReviewGrade } from "@/lib/srs";
@@ -42,6 +43,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   const [autoSpeak, setAutoSpeak] = useState(true);
   const speakerRef = useRef<WordSpeaker | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const requestRef = useRef<LogicalRequestId | null>(null);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side
@@ -101,12 +103,29 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
       if (!card || pending) return;
       setError(null);
       stopAudio();
+      // One idempotency key per queue position (ADR 0031): a retry after a
+      // lost response replays the stored grade instead of advancing the card
+      // twice — even if the learner picks a different button on the retry.
+      const request = requestIdForInput(requestRef.current, `${index}:${card.wordId}`);
+      requestRef.current = request;
       startTransition(async () => {
         try {
-          await gradeCard({ wordId: card.wordId, grade: g });
+          const result = await gradeCard({
+            wordId: card.wordId,
+            grade: g,
+            requestId: request.requestId,
+          });
+          if (!result.ok) {
+            // The key collided with another word's grade: start a fresh one.
+            requestRef.current = null;
+            setError(t.common.submitRetry);
+            return;
+          }
+          requestRef.current = null;
           setReviewed((n) => n + 1);
-          // "Forgot" re-queues the card for a second pass in this session.
-          setQueue((q) => (g === 1 ? [...q, { ...card, isNew: false }] : q));
+          // "Forgot" re-queues the card for a second pass in this session. A
+          // replay reports the ORIGINAL grade, which is the one that counts.
+          setQueue((q) => (result.grade === 1 ? [...q, { ...card, isNew: false }] : q));
           setFlipped(false);
           setIndex((i) => i + 1);
         } catch {
@@ -115,7 +134,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
         }
       });
     },
-    [card, pending, t],
+    [card, index, pending, t],
   );
 
   useEffect(() => {

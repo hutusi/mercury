@@ -24,16 +24,18 @@ import { recordLearnerOutcomeSafely } from "./profile";
  */
 async function speakingLearnerContext(userId: string): Promise<string | undefined> {
   try {
-    const profile = await getLearnerProfile(userId);
+    const [profile, recent] = await Promise.all([
+      getLearnerProfile(userId),
+      db.query.speakingSubmissions.findMany({
+        where: and(
+          eq(speakingSubmissions.userId, userId),
+          eq(speakingSubmissions.status, "ai_scored"),
+        ),
+        orderBy: [desc(speakingSubmissions.createdAt)],
+        limit: 3,
+      }),
+    ]);
     if (!profile) return undefined;
-    const recent = await db.query.speakingSubmissions.findMany({
-      where: and(
-        eq(speakingSubmissions.userId, userId),
-        eq(speakingSubmissions.status, "ai_scored"),
-      ),
-      orderBy: [desc(speakingSubmissions.createdAt)],
-      limit: 3,
-    });
     const recentCriteria = recent.flatMap((s) =>
       s.feedback
         ? [

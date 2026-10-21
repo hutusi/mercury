@@ -2,6 +2,11 @@ import { requireUserApi } from "@/lib/api/auth";
 import { apiHandler, readJson } from "@/lib/api/handler";
 import { submitWritingForUser } from "@/lib/services/writing";
 
+// Makes a runtime AI call (directly or via server actions): the provider
+// budget plus claim/publish headroom, inside the lease stale window
+// (src/lib/ai/budget.ts).
+export const maxDuration = 115;
+
 /** AI-grades the essay; any AI failure degrades to status "self_assessed". */
 export const POST = apiHandler(async (req, ctx: { params: Promise<{ promptId: string }> }) => {
   const user = await requireUserApi(req);

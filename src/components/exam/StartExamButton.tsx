@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { abandonExamAttempt, startExamAttempt } from "@/lib/actions/exams";
+import { clearExamMirror } from "@/lib/exam-mirror";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
 
@@ -20,6 +21,7 @@ export function StartExamButton({
   const [error, setError] = useState<string | null>(null);
   const [confirmingAbandon, setConfirmingAbandon] = useState(false);
   const [pending, startTransition] = useTransition();
+  const [, startRefresh] = useTransition();
 
   function start() {
     setError(null);
@@ -39,8 +41,11 @@ export function StartExamButton({
     startTransition(async () => {
       try {
         await abandonExamAttempt(inProgressAttemptId);
+        // The abandoned attempt's answer mirror must not linger on the device.
+        clearExamMirror(inProgressAttemptId);
         setConfirmingAbandon(false);
-        router.refresh();
+        // Outside the button's transition (AGENTS.md router.refresh gotcha).
+        startRefresh(() => router.refresh());
       } catch {
         setError(t.exams.submitFailed);
       }

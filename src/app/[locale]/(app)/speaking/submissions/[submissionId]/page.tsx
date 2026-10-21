@@ -12,17 +12,22 @@ import { getTierForUser } from "@/lib/queries/membership";
 import { getDict } from "@/lib/i18n";
 import { getSpeakingSubmissionDetail } from "@/lib/queries/speaking";
 
+// Makes a runtime AI call (directly or via server actions): the provider
+// budget plus claim/publish headroom, inside the lease stale window
+// (src/lib/ai/budget.ts).
+export const maxDuration = 115;
+
 export default async function SpeakingSubmissionPage({
   params,
 }: {
   params: Promise<{ submissionId: string }>;
 }) {
-  const user = await requireUser();
-  const tier = await getTierForUser(user.id);
-  const { submissionId } = await params;
-  const t = await getDict();
-
-  const data = await getSpeakingSubmissionDetail(user.id, submissionId);
+  const [user, { submissionId }] = await Promise.all([requireUser(), params]);
+  const [tier, t, data] = await Promise.all([
+    getTierForUser(user.id),
+    getDict(),
+    getSpeakingSubmissionDetail(user.id, submissionId),
+  ]);
   if (!data) notFound();
   const { submission, prompt } = data;
 

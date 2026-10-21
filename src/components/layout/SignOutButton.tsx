@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth/client";
+import { clearAllDrafts } from "@/lib/drafts";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
 
@@ -22,6 +23,8 @@ export function SignOutButton({ label }: { label?: string }) {
         setFailed(true);
         return;
       }
+      // Shared devices: the next learner must not inherit unsent work.
+      clearAllDrafts();
       router.push(localePath(locale, "/"));
       router.refresh();
     });

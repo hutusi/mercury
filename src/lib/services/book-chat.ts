@@ -110,11 +110,28 @@ export async function sendBookChatMessageForUser(
   input: unknown,
 ): Promise<BookChatReply> {
   const requestedAt = new Date();
+  // The pre-claim reads are independent, so they run as one wave — but the
+  // ERROR PRECEDENCE stays exactly sequential: gate (503/403) before input
+  // validation (422) before not-found (404) before chapter_locked (409).
+  // Lookups that need parsed input start only when it parses; their
+  // failures are held (settled) until the gate has had its say.
+  const parsed = SendBookChatMessageSchema.safeParse(input);
+  const settle = <T>(p: Promise<T>) =>
+    p.then(
+      (value) => ({ ok: true as const, value }),
+      (error: unknown) => ({ ok: false as const, error }),
+    );
+  const chapterLookup = parsed.success
+    ? settle(findChapterInBook(parsed.data.bookId, parsed.data.chapterId))
+    : null;
   // Entitlements resolve before any quota transaction (ADR 0025), at the same
   // instant the claim will evaluate freshness. bookChatGate owns the
   // load-bearing enabled-before-entitled ordering — using it here keeps the
   // tested function and the running gate the same code.
-  const entitlements = await getEntitlementsForUser(userId, requestedAt);
+  const [entitlements, day] = await Promise.all([
+    getEntitlementsForUser(userId, requestedAt),
+    getCalendarDayForUser(userId),
+  ]);
   const gate = bookChatGate({ enabled: isAiEnabled(), entitled: entitlements.bookChatEnabled });
   if (gate === "ai_unavailable") {
     throw new AiUnavailableError("No AI provider is configured");
@@ -123,24 +140,30 @@ export async function sendBookChatMessageForUser(
     // The first hard premium gate (ADR 0025's reserved recipe).
     throw new PremiumRequiredError("The book tutor chat requires a premium membership");
   }
-  const { bookId, chapterId, content } = SendBookChatMessageSchema.parse(input);
+  if (!parsed.success || !chapterLookup) throw parsed.error;
+  const { bookId, chapterId, content } = parsed.data;
 
-  const chapter = await findChapterInBook(bookId, chapterId);
+  const chapterResult = await chapterLookup;
+  if (!chapterResult.ok) throw chapterResult.error;
+  const chapter = chapterResult.value;
 
   // Authorization and context in one read, BEFORE the lock check and any
   // quota state: the chattable-set rule (seeded ∪ owned) lives in the query,
   // so a foreign user-owned book 404s here — opaquely (a 409 chapter_locked
   // first would confirm a private book exists), and never reaching the claim
-  // or the provider.
-  const context = await getBookAndPriorChapters(userId, bookId, chapter.sortOrder);
+  // or the provider. The unlock probe runs alongside it, but its verdict is
+  // only consulted after the 404 check.
+  const [context, unlocked] = await Promise.all([
+    getBookAndPriorChapters(userId, bookId, chapter.sortOrder),
+    isChapterUnlockedForUser(userId, chapter),
+  ]);
   if (!context) throw new NotFoundError(`Unknown book: ${bookId}`);
 
   // A locked chapter's content is never readable, so it is not chattable either.
-  if (!(await isChapterUnlockedForUser(userId, chapter))) {
+  if (!unlocked) {
     throw new ConflictError("Previous chapter quiz not submitted", "chapter_locked");
   }
 
-  const day = await getCalendarDayForUser(userId);
   const claim = await claimBookChatTurnForUser(
     userId,
     bookId,
@@ -149,13 +172,17 @@ export async function sendBookChatMessageForUser(
     requestedAt,
   );
   try {
-    // Recent turns, chronological (query newest-first, then reverse).
-    const recent = await db.query.bookChatMessages.findMany({
-      where: and(eq(bookChatMessages.userId, userId), eq(bookChatMessages.bookId, bookId)),
-      orderBy: desc(bookChatMessages.sequence),
-      limit: 20,
-      columns: { role: true, content: true },
-    });
+    // Recent turns (newest-first, reversed to chronological) and the guarded
+    // learner context are independent: one wave before the provider call.
+    const [recent, learnerContext] = await Promise.all([
+      db.query.bookChatMessages.findMany({
+        where: and(eq(bookChatMessages.userId, userId), eq(bookChatMessages.bookId, bookId)),
+        orderBy: desc(bookChatMessages.sequence),
+        limit: 20,
+        columns: { role: true, content: true },
+      }),
+      tutorLearnerContext(userId),
+    ]);
     const window = buildChatWindow(recent.reverse(), content);
 
     // The whitelist boundary: sections enter as bare text; check-ins, quiz
@@ -171,7 +198,6 @@ export async function sendBookChatMessageForUser(
       readThroughSortOrder: context.readThrough,
       priorChapters: context.priorChapters,
     });
-    const learnerContext = await tutorLearnerContext(userId);
     const reply = await getBookTutorReply({ bookContext, learnerContext, messages: window });
 
     const now = new Date();

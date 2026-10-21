@@ -1,4 +1,4 @@
-import type { Locale } from "./dictionaries";
+import type { Locale } from "./locale";
 
 /**
  * URL-locale helpers. Every page lives under /zh or /en; these functions are

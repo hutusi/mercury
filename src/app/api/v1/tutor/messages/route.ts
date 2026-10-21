@@ -4,6 +4,11 @@ import { apiHandler, readJson } from "@/lib/api/handler";
 import { getChatPageData } from "@/lib/queries/chat";
 import { sendChatMessageForUser } from "@/lib/services/chat";
 
+// Makes a runtime AI call (directly or via server actions): the provider
+// budget plus claim/publish headroom, inside the lease stale window
+// (src/lib/ai/budget.ts).
+export const maxDuration = 115;
+
 export const GET = apiHandler(async (req) => {
   const { user } = await requireOnboardedApi(req);
   const { messages, dailyLimit, remainingToday } = await getChatPageData(user.id);

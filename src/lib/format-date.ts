@@ -1,4 +1,4 @@
-import type { Locale } from "./i18n/dictionaries";
+import type { Locale } from "./i18n/locale";
 
 /**
  * Format an instant in the learner's timezone (`user_settings.time_zone`).

@@ -12,15 +12,24 @@ export default async function ListeningExercisePage({
 }: {
   params: Promise<{ exerciseId: string }>;
 }) {
-  const { user, goalTrack } = await requireOnboarded();
-  const { exerciseId } = await params;
-  const t = await getDict();
+  const [{ user, goalTrack }, { exerciseId }, t] = await Promise.all([
+    requireOnboarded(),
+    params,
+    getDict(),
+  ]);
 
-  // The query strips answers — the script stays for client-side TTS.
-  const exercise = await getListeningExerciseSanitized(exerciseId);
+  // The query strips answers — the script stays for client-side TTS. The
+  // sibling list is fetched speculatively for the goal track in the same
+  // wave (see the reading page).
+  const [exercise, goalSiblings] = await Promise.all([
+    getListeningExerciseSanitized(exerciseId),
+    listListeningExercises(user.id, goalTrack),
+  ]);
   if (!exercise) notFound();
-
-  const { exercises, bestByExercise } = await listListeningExercises(user.id, exercise.track);
+  const { exercises, bestByExercise } =
+    exercise.track === goalTrack
+      ? goalSiblings
+      : await listListeningExercises(user.id, exercise.track);
   const next = exercises.find((e) => e.id !== exercise.id && !bestByExercise.has(e.id));
 
   return (

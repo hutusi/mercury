@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import type { SanitizedQuestion } from "@/content/types";
 import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attempts";
+import { useAnswerDraft } from "@/components/exercise/useAnswerDraft";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
@@ -35,6 +36,14 @@ export function ReadingRunner({
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(0);
   const requestRef = useRef<LogicalRequestId | null>(null);
+  const draft = useAnswerDraft({
+    kind: "reading",
+    id: exerciseId,
+    questions,
+    answers,
+    enabled: !result && !pending,
+    onRestore: setAnswers,
+  });
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -57,6 +66,7 @@ export function ReadingRunner({
           durationSeconds: duration,
         });
         requestRef.current = null;
+        draft.clear();
         setUsedSeconds(duration);
         setResult(graded);
         window.scrollTo({ top: 0 });
@@ -103,6 +113,9 @@ export function ReadingRunner({
           questions={questions}
           answers={answers}
           onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
+          // Locked while the submit is in flight: a changed pick mid-request
+          // would mint a new idempotency key and could record a second attempt.
+          disabled={pending}
         />
         {error && (
           <Callout variant="error" className="p-3 text-center text-sm">

@@ -1,6 +1,7 @@
-export type Locale = "zh" | "en";
+import type { Locale } from "./locale";
 
-export const LOCALE_COOKIE = "mercury_locale";
+export { LOCALE_COOKIE } from "./locale";
+export type { Locale } from "./locale";
 
 /**
  * UI chrome strings only. Learning content is inherently bilingual inside
@@ -33,6 +34,8 @@ const zh = {
     nextExercise: "下一篇练习",
     reviewWrongCta: "复习本次错题",
     submitRetry: "提交失败，请重试",
+    stillGrading: "上一次提交仍在批改中，正在等待结果…",
+    draftRestored: "已恢复你上次未提交的内容",
     noExpiry: "长期有效",
     timeUsed: "用时",
     theme: "主题",
@@ -485,6 +488,10 @@ const zh = {
     submitSection: "提交本部分",
     confirmSubmitSection: "确认提交本部分？提交后不可返回修改",
     submitFailed: "提交失败，请检查网络后重试",
+    autoSubmitRetrying: "时间到，正在提交本部分…网络不稳定，自动重试中",
+    autosaveSaved: "已自动保存",
+    autosaveSaving: "保存中…",
+    autosaveFailed: "自动保存失败，正在重试（答案已保存在本机）",
     nextSection: "进入下一部分",
     listeningSection: "听力部分",
     readingSection: "阅读部分",
@@ -572,6 +579,7 @@ const zh = {
   errors: {
     boundaryTitle: "出错了",
     boundaryBody: "页面加载时出现问题。可以重试，或返回首页。",
+    sectionFailed: "这部分内容没能加载出来。",
     notFoundTitle: "页面未找到",
     notFoundBody: "你访问的页面不存在或已被移动。",
     goHome: "返回首页",
@@ -607,6 +615,8 @@ const en: Dictionary = {
     nextExercise: "Next exercise",
     reviewWrongCta: "Review this attempt's mistakes",
     submitRetry: "Submission failed — try again",
+    stillGrading: "Your earlier submission is still being graded — waiting for the result…",
+    draftRestored: "Restored your unsent work from last time",
     noExpiry: "No expiry",
     timeUsed: "Time used",
     theme: "Theme",
@@ -1066,6 +1076,10 @@ const en: Dictionary = {
     submitSection: "Submit section",
     confirmSubmitSection: "Submit this section? You cannot go back afterwards.",
     submitFailed: "Submission failed — check your connection and try again",
+    autoSubmitRetrying: "Time's up — submitting this section… retrying on a shaky connection",
+    autosaveSaved: "Saved",
+    autosaveSaving: "Saving…",
+    autosaveFailed: "Autosave failed — retrying (your answers are kept on this device)",
     nextSection: "Next section",
     listeningSection: "Listening",
     readingSection: "Reading",
@@ -1155,6 +1169,7 @@ const en: Dictionary = {
   errors: {
     boundaryTitle: "Something went wrong",
     boundaryBody: "This page ran into a problem. You can retry, or head back home.",
+    sectionFailed: "This section didn't load.",
     notFoundTitle: "Page not found",
     notFoundBody: "The page you're looking for doesn't exist or has moved.",
     goHome: "Back home",

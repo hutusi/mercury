@@ -433,6 +433,16 @@ paths:
               properties:
                 wordId: { type: string }
                 grade: { type: integer, enum: [1, 3, 4, 5] }
+                requestId:
+                  type: string
+                  format: uuid
+                  description: >-
+                    Optional client idempotency key (ADR 0031). Replaying the
+                    same id returns the original review (replayed: true, with
+                    the ORIGINAL grade) instead of advancing the card again;
+                    reusing it for a different word is a conflict
+                    (grade_request_conflict). Key it per card presentation, not
+                    per grade, so a retry with a different button still replays.
       responses:
         "200":
           description: New interval and post-review scheduler state.
@@ -440,12 +450,19 @@ paths:
             application/json:
               schema:
                 type: object
-                required: [intervalDays, srs]
+                required: [reviewId, grade, replayed, intervalDays, srs]
                 properties:
+                  reviewId: { type: string }
+                  grade:
+                    type: integer
+                    enum: [1, 3, 4, 5]
+                    description: The recorded grade — on a replay, the original one.
+                  replayed: { type: boolean }
                   intervalDays: { type: integer }
                   srs: { $ref: "#/components/schemas/SrsState" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
   /api/v1/vocab/quiz:
     post:
@@ -846,7 +863,10 @@ paths:
       tags: [mistakes]
       responses:
         "200":
-          description: Active/cleared view models; questions carry no keys.
+          description: >-
+            Active/cleared view models; questions carry no keys. Every active
+            mistake is listed; `cleared` holds only the 100 most recently
+            wrong-then-cleared items, while `counts.cleared` is the full total.
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
   /api/v1/mistakes/retest:
@@ -1335,8 +1355,9 @@ components:
       description: >-
         Request conflicts with persisted state — the specific code is in the
         envelope (quiz_answer_conflict, attempt_not_abandonable,
-        exercise_request_conflict, grading_request_conflict, grading_in_progress,
-        or grading_claim_superseded).
+        exercise_request_conflict, grade_request_conflict,
+        grading_request_conflict, grading_in_progress, or
+        grading_claim_superseded).
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }

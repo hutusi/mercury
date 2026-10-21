@@ -1,6 +1,6 @@
 import { getSessionCookie } from "better-auth/cookies";
 import { NextResponse, type NextRequest } from "next/server";
-import { LOCALE_COOKIE } from "@/lib/i18n/dictionaries";
+import { LOCALE_COOKIE } from "@/lib/i18n/locale";
 import { DEFAULT_LOCALE, isLocale, splitLocalePath } from "@/lib/i18n/routing";
 import { PROTECTED_PATHS } from "@/lib/routes";
 
@@ -27,8 +27,15 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL(`${prefixed}${search}`, request.url));
   }
 
-  if (isProtected(rest) && !getSessionCookie(request)) {
+  const hasSessionCookie = Boolean(getSessionCookie(request));
+  if (isProtected(rest) && !hasSessionCookie) {
     return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
+  }
+  // The landing page is static, so the signed-in hop to the dashboard is
+  // decided here. Optimistic like the gate above: a stale cookie lands on
+  // /dashboard, whose layout (the real session check) sends it to /login.
+  if (rest === "/" && hasSessionCookie) {
+    return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url));
   }
 
   if (request.cookies.get(LOCALE_COOKIE)?.value !== locale) {

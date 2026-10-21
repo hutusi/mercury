@@ -426,15 +426,39 @@ export const reviewLogs = pgTable(
     previousIntervalDays: doublePrecision("previous_interval_days").notNull(),
     newIntervalDays: doublePrecision("new_interval_days").notNull(),
     reviewedAt: ts("reviewed_at").notNull().$defaultFn(now),
+    /** Client idempotency key (ADR 0031): a retried grade replays this row. */
+    requestId: text("request_id"),
+    /**
+     * The card's scheduler state before this review (null on legacy rows).
+     * Lets a replay recompute the original result deterministically, and an
+     * undo restore the card exactly. previousIntervalDays above is the
+     * interval half of the same snapshot.
+     */
+    prevEaseFactor: doublePrecision("prev_ease_factor"),
+    prevRepetitions: integer("prev_repetitions"),
+    prevLapses: integer("prev_lapses"),
+    prevDueAt: ts("prev_due_at"),
+    prevLastReviewedAt: ts("prev_last_reviewed_at"),
+    /** This review lazily created the card (an undo deletes it again). */
+    createdCard: boolean("created_card").notNull().default(false),
   },
   (t) => [
     index("review_logs_user_idx").on(t.userId, t.reviewedAt),
     // srs_cards onDelete cascade path (chains off vocab_words deletions).
     index("review_logs_card_idx").on(t.cardId),
+    uniqueIndex("review_logs_request_idx")
+      .on(t.userId, t.requestId)
+      .where(sql`${t.requestId} is not null`),
     check("review_logs_grade_check", sql`${t.grade} between 0 and 5`),
     check(
       "review_logs_intervals_check",
       sql`${t.previousIntervalDays} >= 0 and ${t.newIntervalDays} >= 0`,
+    ),
+    // The snapshot is all-or-nothing (prev_last_reviewed_at is legitimately
+    // null for a card's first review).
+    check(
+      "review_logs_prev_state_check",
+      sql`(${t.prevEaseFactor} is null and ${t.prevRepetitions} is null and ${t.prevLapses} is null and ${t.prevDueAt} is null and ${t.prevLastReviewedAt} is null) or (${t.prevEaseFactor} is not null and ${t.prevRepetitions} is not null and ${t.prevLapses} is not null and ${t.prevDueAt} is not null)`,
     ),
   ],
 );
@@ -805,6 +829,13 @@ export const mistakeStates = pgTable(
   (t) => [
     primaryKey({ columns: [t.userId, t.kind, t.refId, t.questionId] }),
     index("mistake_states_user_track_idx").on(t.userId, t.track, t.lastWrongAt),
+    // Every correct answer leaves a wrong_count = 0 tombstone, so the hot
+    // notebook reads (active count on every dashboard/plan, the notebook
+    // list) would otherwise scan a learner's lifetime of answers. Partial on
+    // wrong rows only: cost tracks mistakes, not history; ordered for the list.
+    index("mistake_states_user_wrong_idx")
+      .on(t.userId, t.lastWrongAt.desc())
+      .where(sql`${t.wrongCount} > 0`),
     // See mistake_clears_vocab_word_idx — same sweep path.
     index("mistake_states_vocab_word_idx")
       .on(t.questionId)

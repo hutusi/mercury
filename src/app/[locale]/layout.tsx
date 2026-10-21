@@ -113,7 +113,9 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LocaleProvider locale={locale}>{children}</LocaleProvider>
+          <LocaleProvider locale={locale} dict={dictionaries[locale]}>
+            {children}
+          </LocaleProvider>
         </ThemeProvider>
       </body>
     </html>
