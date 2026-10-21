@@ -38,8 +38,8 @@ function offenders(re: RegExp): string[] {
 }
 
 // Tailwind's raw palette scales (bg-amber-50, text-green-600, …). Semantic
-// tokens (bg-cinnabar, text-muted-foreground) and the type scale (text-2xs)
-// are unaffected — they never carry a numeric palette step.
+// tokens (bg-brand, text-muted-foreground) are unaffected — they never carry
+// a numeric palette step.
 const RAW_PALETTE =
   /\b(?:bg|text|border|ring|from|via|to|fill|stroke|outline|decoration|divide|caret|accent|placeholder|ring-offset)-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d{2,3}\b/;
 
@@ -59,6 +59,11 @@ const GRADIENT = /\bbg-(?:gradient|linear|radial|conic)\b/;
 const BACKDROP = /\bbackdrop-blur\b/;
 const TRANSITION_ALL = /\btransition-all\b/;
 const SMOOTH_SCROLL = /behavior:\s*["']smooth["']/;
+// Lexicon is retired (ADR 0032): its cinnabar red, the sidebar tokens, the
+// mono micro-label scale. Coral is the only warm accent, and only for
+// mistakes and the streak.
+const RETIRED_TOKENS =
+  /-cinnabar\b|\bsidebar-(?:border|foreground|accent|primary|ring)?\b|\btext-2xs\b|\btracking-label\b|\bfont-mono\b/;
 
 // Pictographs and media-control glyphs. Icons must be lucide components so they
 // carry an accessible role and inherit ink. CJK text and arrows (←, →) are
@@ -95,6 +100,11 @@ describe("Daybreak design guard", () => {
     expect(light.size).toBeGreaterThan(30);
     expect([...light].filter((v) => !dark.has(v))).toEqual([]);
     expect([...dark].filter((v) => !light.has(v))).toEqual([]);
+  });
+
+  it("uses no retired Lexicon tokens", () => {
+    expect(offenders(RETIRED_TOKENS)).toEqual([]);
+    expect(GLOBALS_CSS).not.toMatch(/--color-cinnabar|--color-sidebar|--text-2xs|--tracking-label/);
   });
 
   it("keeps the global stylesheet off Google Fonts", () => {

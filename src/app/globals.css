@@ -24,12 +24,6 @@
   --radius-lg: 1rem;
   --radius-xl: 1.25rem;
   --radius-2xl: 1.5rem;
-
-  /* Lexicon compatibility (micro-label scale) — removed once every screen is
-     migrated; Daybreak sets no uppercase tracked labels. */
-  --text-2xs: 0.6875rem;
-  --text-2xs--line-height: 1rem;
-  --tracking-label: 0.14em;
 }
 
 @theme inline {
@@ -85,12 +79,6 @@
   --color-kbd: var(--kbd);
   --color-kbd-foreground: var(--kbd-foreground);
   --color-toast-dot: var(--toast-dot);
-
-  /* Lexicon compatibility aliases — removed once every screen is migrated. */
-  --color-cinnabar: var(--coral);
-  --color-cinnabar-foreground: var(--coral-foreground);
-  --color-sidebar: var(--background);
-  --color-sidebar-border: var(--border);
 
   /* Elevation: only raised cards (the current stop, flashcard, landing preview),
      menus/popovers, and toasts lift off the paper. */

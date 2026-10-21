@@ -1,14 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- The Mercury seal: the cinnabar Wordmark from AppShell, reused as the
-       favicon. Fill colors are the sRGB form of the cinnabar design tokens. -->
-  <rect width="32" height="32" fill="#b6341f" />
-  <text
-    x="16"
-    y="23.2"
-    text-anchor="middle"
-    font-family="Georgia, 'Times New Roman', 'Songti SC', serif"
-    font-weight="600"
-    font-size="22"
-    fill="#fbfaf7"
-  >M</text>
+  <!-- The Mercury station node — the Wordmark's ring and dot, the shape of
+       every stop on the daily route — on full-bleed dusk blue, so it doubles
+       as the maskable icon (the mark sits well inside the safe zone). Colours
+       are BRAND_COLORS.brand and .surface (src/lib/brand-colors.ts). -->
+  <rect width="32" height="32" fill="#2863ab" />
+  <circle cx="16" cy="16" r="8.25" fill="none" stroke="#fcfbf8" stroke-width="2.5" />
+  <circle cx="16" cy="16" r="3.5" fill="#fcfbf8" />
 </svg>
