@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { ErrorState } from "@/components/layout/ErrorState";
 
 /**
- * Error boundary for the authenticated app. Renders inside the AppShell, so
- * the sidebar and nav survive a page-level throw instead of the whole app
- * collapsing to Next's default error screen.
+ * Last-resort boundary for the authenticated area: catches errors thrown by
+ * the (shell)/(flow) group layouts themselves, so it renders without chrome.
+ * Page-level errors are caught by each group's own error.tsx first.
  */
 export default function AppError({
   error,
@@ -16,9 +16,12 @@ export default function AppError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Surface to the console/monitoring; `digest` ties this to the server log.
     console.error(error);
   }, [error]);
 
-  return <ErrorState reset={reset} />;
+  return (
+    <main id="main-content" className="mx-auto max-w-xl px-4 py-16">
+      <ErrorState reset={reset} />
+    </main>
+  );
 }

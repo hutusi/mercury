@@ -1,11 +1,14 @@
-import { VerifyEmailBanner } from "@/components/auth/VerifyEmailBanner";
-import { AppShell } from "@/components/layout/AppShell";
 import { getSession } from "@/lib/auth/session";
-import { isEmailEnabled } from "@/lib/email/enabled";
 import { DraftOwnerProvider } from "@/lib/draft-owner";
 import { localeRedirect } from "@/lib/i18n";
 import { getOnboardedState } from "@/lib/settings";
 
+/**
+ * The authoritative gate for every authenticated route (auth layer 2):
+ * session, then onboarding. Deliberately chrome-free — the (shell) group
+ * renders the navigation shell, the (flow) group the nav-free session frame,
+ * so a learning session can drop all navigation without a second gate.
+ */
 export default async function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const session = await getSession();
   if (!session) return localeRedirect("/login");
@@ -13,20 +16,7 @@ export default async function AppLayout({ children }: Readonly<{ children: React
   // Same onboarding predicate as requireOnboarded/-Api — one invariant everywhere.
   if (!(await getOnboardedState(session.user.id))) return localeRedirect("/onboarding");
 
-  // Soft verification (ADR 0028): the env gate is mandatory — keyless
-  // environments can't send the email, and every keyless e2e user is
-  // unverified, so an ungated banner would leak onto every page.
-  const showVerifyBanner = isEmailEnabled(process.env) && !session.user.emailVerified;
-
-  return (
-    <DraftOwnerProvider owner={session.user.id}>
-      <AppShell
-        userName={session.user.name || session.user.email}
-        isAdmin={session.user.role === "admin"}
-        banner={showVerifyBanner ? <VerifyEmailBanner email={session.user.email} /> : undefined}
-      >
-        {children}
-      </AppShell>
-    </DraftOwnerProvider>
-  );
+  // Drafts are keyed to this account (see drafts.ts): set once here, above
+  // both groups, so every runner scopes its local copy without a user id prop.
+  return <DraftOwnerProvider owner={session.user.id}>{children}</DraftOwnerProvider>;
 }

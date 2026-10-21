@@ -11,22 +11,33 @@ import { PROTECTED_PATHS } from "./routes";
  * adding an (app) segment without updating the list fails here.
  */
 
-// Route segments live directly under the (app) group. Skip private folders (_)
-// and nested route groups (()).
+// URL segments of the authenticated area. Route groups (`(shell)`, `(flow)`)
+// don't add a URL segment, so recurse through them and collect the first real
+// segment below; private folders (_) are skipped. The same URL segment can
+// live in both groups (/reading hub in shell, /reading/[id] in flow).
 const APP_GROUP = path.join(process.cwd(), "src/app/[locale]/(app)");
 
-function appRouteSegments(): string[] {
-  return fs
-    .readdirSync(APP_GROUP, { withFileTypes: true })
-    .filter((d) => d.isDirectory() && !d.name.startsWith("_") && !d.name.startsWith("("))
-    .map((d) => `/${d.name}`);
+function appRouteSegments(dir: string = APP_GROUP): string[] {
+  const segments = new Set<string>();
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || entry.name.startsWith("_")) continue;
+    if (entry.name.startsWith("(")) {
+      for (const seg of appRouteSegments(path.join(dir, entry.name))) segments.add(seg);
+    } else {
+      segments.add(`/${entry.name}`);
+    }
+  }
+  return [...segments];
 }
 
 const registered = PROTECTED_PATHS as readonly string[];
 
 describe("protected routes", () => {
   it("covers every authenticated (app) route segment", () => {
-    const missing = appRouteSegments().filter((seg) => !registered.includes(seg));
+    const segments = appRouteSegments();
+    // Guards the walk itself: a broken recursion must not pass vacuously.
+    expect(segments.length).toBeGreaterThanOrEqual(13);
+    const missing = segments.filter((seg) => !registered.includes(seg));
     expect(missing).toEqual([]);
   });
 
