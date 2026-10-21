@@ -1,4 +1,4 @@
-import { and, eq, gt, isNull, or } from "drizzle-orm";
+import { and, eq, gt, isNull, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import type { McqQuestion, Track } from "@/content/types";
 import { db, type DbExecutor } from "../db";
@@ -11,9 +11,9 @@ import {
   readingExercises,
 } from "../db/schema";
 import type { MistakeKind } from "../mistakes-core";
-import { recordActivity, recordActivityWith } from "../streak";
+import { recordActivityWith } from "../streak";
 import { IntegrityError, NotFoundError } from "./errors";
-import { clearMistakeState } from "./mistake-state";
+import { clearMistakeGeneration } from "./mistake-state";
 
 export const RetestSchema = z.object({
   kind: z.enum(["reading", "listening", "exam", "book_quiz"]),
@@ -29,17 +29,19 @@ export interface RetestResult {
 }
 
 /** Records "answered correctly on the mistakes page"; upsert refreshes clearedAt
- *  so re-clearing a revived mistake outweighs the newer wrong answer. */
+ *  so re-clearing a revived mistake outweighs the newer wrong answer — never
+ *  moving it backwards if instance clocks disagree. */
 async function upsertClear(
   executor: DbExecutor,
   userId: string,
   kind: MistakeKind,
   refId: string,
   questionId: string,
+  clearedAt: Date,
 ) {
   await executor
     .insert(mistakeClears)
-    .values({ userId, kind, refId, questionId })
+    .values({ userId, kind, refId, questionId, clearedAt })
     .onConflictDoUpdate({
       target: [
         mistakeClears.userId,
@@ -47,33 +49,43 @@ async function upsertClear(
         mistakeClears.refId,
         mistakeClears.questionId,
       ],
-      set: { clearedAt: new Date() },
+      set: { clearedAt: sql`greatest(${mistakeClears.clearedAt}, ${clearedAt})` },
     });
 }
 
 /**
- * The question must be one of the caller's ACTIVE mistakes: without this
- * check, a user mid-exam could call the mutation directly and extract the
- * answer key for questions they've never answered.
+ * Lock the caller's ACTIVE mistake row and return its generation (its
+ * lastWrongAt), or null. The question must be an active mistake: without
+ * this check, a user mid-exam could call the mutation directly and extract
+ * the answer key for questions they've never answered. The row lock makes a
+ * concurrent attempt on the same question wait, so the check and the clear
+ * see one state.
  */
-async function isActiveMistake(
+async function lockActiveMistake(
+  executor: DbExecutor,
   userId: string,
   kind: "reading" | "listening" | "exam" | "book_quiz",
   refId: string,
   questionId: string,
-): Promise<boolean> {
-  const row = await db.query.mistakeStates.findFirst({
-    where: and(
-      eq(mistakeStates.userId, userId),
-      eq(mistakeStates.kind, kind),
-      eq(mistakeStates.refId, refId),
-      eq(mistakeStates.questionId, questionId),
-      gt(mistakeStates.wrongCount, 0),
-      or(isNull(mistakeStates.clearedAt), gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt)),
-    ),
-    columns: { questionId: true },
-  });
-  return Boolean(row);
+): Promise<Date | null> {
+  const [row] = await executor
+    .select({ lastWrongAt: mistakeStates.lastWrongAt })
+    .from(mistakeStates)
+    .where(
+      and(
+        eq(mistakeStates.userId, userId),
+        eq(mistakeStates.kind, kind),
+        eq(mistakeStates.refId, refId),
+        eq(mistakeStates.questionId, questionId),
+        gt(mistakeStates.wrongCount, 0),
+        or(
+          isNull(mistakeStates.clearedAt),
+          gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt),
+        ),
+      ),
+    )
+    .for("update");
+  return row?.lastWrongAt ?? null;
 }
 
 /** Re-test a reading/listening/exam/book mistake; a correct answer clears it. */
@@ -106,22 +118,34 @@ export async function retestMistakeForUser(userId: string, input: unknown): Prom
   }
   const question = questions?.find((q) => q.id === questionId);
   if (!question) throw new NotFoundError(`Unknown ${kind} question: ${refId}/${questionId}`);
-
-  if (!(await isActiveMistake(userId, kind, refId, questionId))) {
-    throw new IntegrityError(`Not an active mistake: ${kind}/${refId}/${questionId}`);
-  }
+  if (track === undefined) throw new NotFoundError(`Unknown ${kind} source: ${refId}`);
+  const sourceTrack = track;
 
   const correct = chosenIndex === question.correctIndex;
-  if (correct) {
-    await db.transaction(async (tx) => {
-      await upsertClear(tx, userId, kind, refId, questionId);
-      if (track === undefined) throw new NotFoundError(`Unknown ${kind} source: ${refId}`);
-      await clearMistakeState(tx, { userId, track, kind, refId, questionId });
-      await recordActivityWith(tx, userId);
-    });
-  } else {
-    await recordActivity(userId);
-  }
+  // Check and clear in one transaction under the row lock. Clearing by
+  // generation (compare-and-set on lastWrongAt) means a wrong answer that
+  // commits between the learner opening the item and answering is never
+  // silently cleared by this retest.
+  await db.transaction(async (tx) => {
+    const generation = await lockActiveMistake(tx, userId, kind, refId, questionId);
+    if (!generation) {
+      throw new IntegrityError(`Not an active mistake: ${kind}/${refId}/${questionId}`);
+    }
+    if (correct) {
+      const clearedAt = new Date();
+      const cleared = await clearMistakeGeneration(tx, {
+        userId,
+        track: sourceTrack,
+        kind,
+        refId,
+        questionId,
+        expectedLastWrongAt: generation,
+        clearedAt,
+      });
+      if (cleared) await upsertClear(tx, userId, kind, refId, questionId, clearedAt);
+    }
+    await recordActivityWith(tx, userId);
+  });
 
   // The answer key ships only after an answer, mirroring submitExerciseAttempt.
   return { correct, correctIndex: question.correctIndex, explanationZh: question.explanationZh };

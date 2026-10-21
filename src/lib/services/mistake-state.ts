@@ -119,14 +119,3 @@ export async function clearMistakeGeneration(
     .returning({ questionId: mistakeStates.questionId });
   return Boolean(cleared);
 }
-
-/** Resolve one active notebook item without incrementing attempt history. */
-export async function clearMistakeState(
-  executor: DbExecutor,
-  input: Omit<RecordMistakeOutcomesInput, "outcomes"> & { questionId: string },
-): Promise<void> {
-  await recordMistakeOutcomes(executor, {
-    ...input,
-    outcomes: [{ questionId: input.questionId, correct: true }],
-  });
-}
