@@ -78,10 +78,7 @@ async function lockActiveMistake(
         eq(mistakeStates.refId, refId),
         eq(mistakeStates.questionId, questionId),
         gt(mistakeStates.wrongCount, 0),
-        or(
-          isNull(mistakeStates.clearedAt),
-          gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt),
-        ),
+        or(isNull(mistakeStates.clearedAt), gt(mistakeStates.lastWrongAt, mistakeStates.clearedAt)),
       ),
     )
     .for("update");

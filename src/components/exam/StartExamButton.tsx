@@ -20,6 +20,7 @@ export function StartExamButton({
   const [error, setError] = useState<string | null>(null);
   const [confirmingAbandon, setConfirmingAbandon] = useState(false);
   const [pending, startTransition] = useTransition();
+  const [, startRefresh] = useTransition();
 
   function start() {
     setError(null);
@@ -40,7 +41,8 @@ export function StartExamButton({
       try {
         await abandonExamAttempt(inProgressAttemptId);
         setConfirmingAbandon(false);
-        router.refresh();
+        // Outside the button's transition (AGENTS.md router.refresh gotcha).
+        startRefresh(() => router.refresh());
       } catch {
         setError(t.exams.submitFailed);
       }

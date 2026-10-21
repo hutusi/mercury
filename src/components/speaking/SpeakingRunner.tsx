@@ -11,6 +11,7 @@ import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
 import { retrySpeakingFeedback, submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
+import { retryWhileInProgress } from "@/lib/in-progress-retry";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createRecognizer, sttSupported, type Recognizer } from "@/lib/speech";
 import { SpeakingFeedbackPanel } from "./SpeakingFeedbackPanel";
@@ -54,6 +55,7 @@ export function SpeakingRunner({
   const recordStartRef = useRef(0);
   const doneRef = useRef<HTMLDivElement>(null);
   const submissionRequestRef = useRef<LogicalRequestId | null>(null);
+  const retryRequestRef = useRef<LogicalRequestId | null>(null);
   // Latest-ref pattern: recognition callbacks read the current phase.
   const phaseRef = useRef<Phase>("idle");
   useEffect(() => {
@@ -137,12 +139,22 @@ export function SpeakingRunner({
         const fingerprint = JSON.stringify({ promptId, transcript: finalText, durationSeconds });
         const request = requestIdForInput(submissionRequestRef.current, fingerprint);
         submissionRequestRef.current = request;
-        const r = await submitSpeaking({
-          requestId: request.requestId,
-          promptId,
-          transcript: finalText,
-          durationSeconds,
-        });
+        // A resubmit while the first call is still grading waits for that
+        // result instead of failing (same request id).
+        const r = await retryWhileInProgress(
+          () =>
+            submitSpeaking({
+              requestId: request.requestId,
+              promptId,
+              transcript: finalText,
+              durationSeconds,
+            }),
+          (x) => !x.ok,
+        );
+        if (!r.ok) {
+          setSubmitError(t.common.stillGrading);
+          return;
+        }
         submissionRequestRef.current = null;
         setResult(r);
         setPhase("done");
@@ -161,9 +173,18 @@ export function SpeakingRunner({
     setRetryError(null);
     startRetry(async () => {
       try {
-        const r = await retrySpeakingFeedback(result.submissionId, crypto.randomUUID());
+        const request = requestIdForInput(retryRequestRef.current, result.submissionId);
+        retryRequestRef.current = request;
+        const r = await retryWhileInProgress(
+          () => retrySpeakingFeedback(result.submissionId, request.requestId),
+          (x) => "inProgress" in x,
+        );
         if ("limited" in r) {
           setRetryError(t.speaking.aiQuotaRetry);
+          return;
+        }
+        if ("inProgress" in r) {
+          setRetryError(t.common.stillGrading);
           return;
         }
         setResult(r);

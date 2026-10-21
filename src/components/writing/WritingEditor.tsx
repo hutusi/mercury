@@ -5,6 +5,7 @@ import { useMemo, useRef, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { submitWriting } from "@/lib/actions/writing";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
+import { retryWhileInProgress } from "@/lib/in-progress-retry";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
 
@@ -14,6 +15,7 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
   const router = useRouter();
   const [text, setText] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [waiting, setWaiting] = useState(false);
   const [pending, startTransition] = useTransition();
   const submissionRequestRef = useRef<LogicalRequestId | null>(null);
 
@@ -22,21 +24,30 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
 
   function submit() {
     setError(null);
+    setWaiting(false);
     startTransition(async () => {
       try {
         const request = requestIdForInput(submissionRequestRef.current, text);
         submissionRequestRef.current = request;
-        const { submissionId } = await submitWriting({
-          requestId: request.requestId,
-          promptId,
-          text,
-        });
+        // A resubmit of the same essay while the first call is still grading
+        // waits for that result instead of failing (same request id).
+        const result = await retryWhileInProgress(
+          () => submitWriting({ requestId: request.requestId, promptId, text }),
+          (r) => !r.ok,
+          { onWait: () => setWaiting(true) },
+        );
+        setWaiting(false);
+        if (!result.ok) {
+          setError(t.common.stillGrading);
+          return;
+        }
         submissionRequestRef.current = null;
         // The submission row stores its degrade reason — the page renders the
         // quota notice from the row, no query-param relay needed.
-        router.push(localePath(locale, `/writing/submissions/${submissionId}`));
+        router.push(localePath(locale, `/writing/submissions/${result.submissionId}`));
       } catch {
-        setError(t.auth.genericError);
+        setWaiting(false);
+        setError(t.common.submitRetry);
       }
     });
   }
@@ -87,7 +98,7 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
           role="status"
           className="border border-border bg-muted p-3 text-center text-sm text-muted-foreground"
         >
-          {t.writing.submitting}
+          {waiting ? t.common.stillGrading : t.writing.submitting}
         </div>
       )}
     </div>
