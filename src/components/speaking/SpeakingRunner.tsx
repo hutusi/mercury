@@ -17,6 +17,7 @@ import { useBeforeUnloadGuard, useDraft } from "@/lib/use-draft";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createRecognizer, sttSupported, type Recognizer } from "@/lib/speech";
 import { SpeakingFeedbackPanel } from "./SpeakingFeedbackPanel";
+import { useFlowExit } from "@/lib/flow-store";
 
 type Phase = "idle" | "prep" | "recording" | "review" | "done";
 
@@ -103,8 +104,10 @@ export function SpeakingRunner({
       setPhase("review");
     },
   });
-  // Leaving mid-recording loses the take; ask first.
+  // Leaving mid-recording loses the take; ask first. A finished take's
+  // transcript is a draft, so leaving the review step is safe.
   useBeforeUnloadGuard(phase === "recording" || phase === "prep" || pending);
+  useFlowExit(phase === "recording" || phase === "prep" ? "confirm" : "saved", phase === "review");
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side

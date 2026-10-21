@@ -1,4 +1,5 @@
-import { ArrowLeft } from "lucide-react";
+import { FlowBody } from "@/components/flow/FlowBody";
+import { FlowHeader } from "@/components/flow/FlowHeader";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { EmptyState } from "@/components/typography/EmptyState";
 import { QuizRunner } from "@/components/vocab/QuizRunner";
@@ -24,54 +25,50 @@ export default async function QuizPage({
     // Same shell as the populated page — the empty state keeps the header,
     // the way back, and a route to content (study feeds the quiz pool).
     return (
-      <div className="space-y-6">
-        <div>
-          <Link
-            href="/vocabulary"
-            className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="size-4" aria-hidden />
-            {t.nav.vocabulary}
-          </Link>
-          <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
-        </div>
-        <EmptyState
-          action={
-            <Link
-              href="/vocabulary/study"
-              className="text-sm font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+      <>
+        <FlowHeader context={{ mode: "free" }} hubHref="/vocabulary" />
+        <FlowBody>
+          <div className="space-y-6">
+            <div>
+              <h1 className="font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
+            </div>
+            <EmptyState
+              action={
+                <Link
+                  href="/vocabulary/study"
+                  className="text-sm font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+                >
+                  {t.vocab.startStudy}
+                </Link>
+              }
             >
-              {t.vocab.startStudy}
-            </Link>
-          }
-        >
-          {t.vocab.noWords}
-        </EmptyState>
-      </div>
+              {t.vocab.noWords}
+            </EmptyState>
+          </div>
+        </FlowBody>
+      </>
     );
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <Link
-          href="/vocabulary"
-          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="size-4" aria-hidden />
-          {t.nav.vocabulary}
-        </Link>
-        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
-      </div>
-      {/* Keyed by session: router.refresh() resolves a NEW session, and
+    <>
+      <FlowHeader context={{ mode: "free" }} hubHref="/vocabulary" />
+      <FlowBody>
+        <div className="space-y-6">
+          <div>
+            <h1 className="font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
+          </div>
+          {/* Keyed by session: router.refresh() resolves a NEW session, and
           without a remount the runner's client state (expired, picked) would
           survive and keep the old screen frozen. */}
-      <QuizRunner
-        key={session.sessionId}
-        sessionId={session.sessionId}
-        questions={session.questions}
-        initialAnsweredIds={session.answeredIds}
-      />
-    </div>
+          <QuizRunner
+            key={session.sessionId}
+            sessionId={session.sessionId}
+            questions={session.questions}
+            initialAnsweredIds={session.answeredIds}
+          />
+        </div>
+      </FlowBody>
+    </>
   );
 }

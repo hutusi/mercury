@@ -1,9 +1,13 @@
 import { VerifyEmailBanner } from "@/components/auth/VerifyEmailBanner";
 import { AppShell } from "@/components/layout/AppShell";
+import { PlanCard, PlanCardSkeleton } from "@/components/plan/PlanCard";
+import { SectionErrorBoundary } from "@/components/layout/SectionErrorBoundary";
+import { Suspense } from "react";
 import { getSession } from "@/lib/auth/session";
 import { isEmailEnabled } from "@/lib/email/enabled";
 import { localeRedirect } from "@/lib/i18n";
 import { getShellMetas } from "@/lib/queries/shell";
+import { getOnboardedState } from "@/lib/settings";
 
 /** Hub pages: the navigation shell around the page. */
 export default async function ShellLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -18,12 +22,27 @@ export default async function ShellLayout({ children }: Readonly<{ children: Rea
 
   // Started, not awaited: the nav's badges stream in under Suspense.
   const metas = getShellMetas(session.user.id);
+  // Cached by the (app) gate — no extra query.
+  const onboarded = await getOnboardedState(session.user.id);
 
   return (
     <AppShell
       userName={session.user.name || session.user.email}
       isAdmin={session.user.role === "admin"}
       metas={metas}
+      planCard={
+        onboarded ? (
+          <SectionErrorBoundary quiet>
+            <Suspense fallback={<PlanCardSkeleton />}>
+              <PlanCard
+                userId={session.user.id}
+                track={onboarded.goalTrack}
+                timeZone={onboarded.settings.timeZone}
+              />
+            </Suspense>
+          </SectionErrorBoundary>
+        ) : null
+      }
       banner={showVerifyBanner ? <VerifyEmailBanner email={session.user.email} /> : undefined}
     >
       {children}

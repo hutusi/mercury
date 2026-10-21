@@ -15,6 +15,7 @@ import { useAnswerDraft } from "@/components/exercise/useAnswerDraft";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { useFlowExit } from "@/lib/flow-store";
 
 // Loaded on demand: the tutor prop exists only for premium users with AI
 // enabled, so free/keyless readers never download the dock chunk.
@@ -74,6 +75,7 @@ export function BookReaderRunner({
     setAnswers(saved);
     setMode("quiz");
   }, []);
+  useFlowExit("saved", mode === "quiz" && !result && Object.keys(answers).length > 0);
   const draft = useAnswerDraft({
     kind: "book_quiz",
     id: chapterId,

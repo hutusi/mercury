@@ -11,6 +11,7 @@ import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-i
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createWordSpeaker, ttsSupported, type WordSpeaker } from "@/lib/speech";
 import { type ReviewGrade } from "@/lib/srs";
+import { useFlowExit } from "@/lib/flow-store";
 
 export interface StudyCardData {
   wordId: string;
@@ -58,6 +59,8 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   }, []);
 
   const card = queue[index];
+  // Every grade is saved as it lands; mid-session exits say so.
+  useFlowExit("saved", reviewed > 0 && Boolean(card));
 
   function stopAudio() {
     audioRef.current?.pause();

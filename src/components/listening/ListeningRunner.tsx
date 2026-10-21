@@ -14,6 +14,7 @@ import { useAnswerDraft } from "@/components/exercise/useAnswerDraft";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { TtsPlayer } from "./TtsPlayer";
+import { useFlowExit } from "@/lib/flow-store";
 
 export function ListeningRunner({
   exerciseId,
@@ -39,6 +40,9 @@ export function ListeningRunner({
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(0);
   const requestRef = useRef<LogicalRequestId | null>(null);
+  // Picked answers persist (session draft), so leaving mid-way is safe and
+  // the exit says so.
+  useFlowExit("saved", !result && Object.keys(answers).length > 0);
   const draft = useAnswerDraft({
     kind: "listening",
     id: exerciseId,

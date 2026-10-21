@@ -10,6 +10,7 @@ import { retryWhileInProgress } from "@/lib/in-progress-retry";
 import { useDraft } from "@/lib/use-draft";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
+import { useFlowExit } from "@/lib/flow-store";
 
 const isText = (value: unknown): value is string => typeof value === "string";
 const isBlank = (value: string) => value.trim().length === 0;
@@ -43,6 +44,8 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
       setRestored(true);
     },
   });
+
+  useFlowExit("saved", text.trim().length > 0);
 
   const wordCount = useMemo(() => text.trim().split(/\s+/).filter(Boolean).length, [text]);
   const enough = wordCount >= minWords;

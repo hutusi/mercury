@@ -14,6 +14,7 @@ import { clearExamMirror, examMirrorKey, examRetryDelayMs } from "@/lib/exam-mir
 import { examRemainingMs, type SanitizedExamSection } from "@/lib/exam-utils";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
+import { useFlowExit } from "@/lib/flow-store";
 
 const AUTOSAVE_MS = 30_000;
 
@@ -71,6 +72,9 @@ export function ExamRunner({
     (sectionId: string, options?: { auto?: boolean }) => Promise<void>
   >(async () => {});
   const flushAutosaveRef = useRef<() => void>(() => {});
+
+  // The clock keeps running and answers autosave: leaving asks first.
+  useFlowExit("confirm", true);
 
   const submittedSections = useRef(new Set<string>());
   // Focus target after a section advance — without it, focus dies on the
@@ -297,7 +301,7 @@ export function ExamRunner({
   return (
     <div className="space-y-6">
       {/* Sticky header: section info + timer + palette */}
-      <div className="sticky top-14 z-10 -mx-4 border-b border-border bg-background px-4 py-3 sm:-mx-6 sm:px-6">
+      <div className="sticky top-(--chrome-top) z-10 -mx-4 border-b border-border bg-background px-4 py-3 sm:-mx-6 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p

@@ -51,6 +51,7 @@ UI follows the Daybreak design system (docs/DESIGN.md, ADR 0032), enforced by `s
 
 - **Keep unit tests DB-free (convention).** The DB driver is now `node-postgres` (Bun-loadable), so importing `src/lib/db` no longer crashes under Bun — but unit tests still must not reach it, to stay hermetic and DB-independent (put pure logic in separate modules like `src/lib/streak-core.ts`). Local dev/CI/e2e need a running Postgres (see `docker-compose.yml`); the seed still runs under Node via `bunx tsx`.
 - `"use server"` files may export **async functions only** — a sync export breaks the build.
+- Sticky elements must offset by `top-(--chrome-top)` (set by the shell/flow layouts: 58px phone top bar, 0 desktop shell, 62px session bar), never a hard-coded `top-14`. Session (flow) runners report their counter and exit policy via `src/lib/flow-store.ts`, not props through the page.
 - `bun test` must stay scoped to `src` (`bun test src`): Bun's runner also matches `e2e/*.spec.ts` and crashes on Playwright imports.
 - `DATABASE_URL` selects the Postgres database — Neon's pooled string in prod, a local/containerized Postgres in dev/CI/e2e. The `pg.Pool` connects lazily, so `next build` and unit-test collection don't require it.
 - Schema changes ship as versioned migrations (`bun run db:generate`, committed under `drizzle/`), applied automatically by `bun run db:migrate` — CI, e2e, and the Vercel `vercel-build` step all run it. `db:push` is for local prototyping only; never point it at a shared database (see [ADR 0008](docs/adr/0008-versioned-migrations-on-deploy.md)).

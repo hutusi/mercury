@@ -1,5 +1,6 @@
-import { ArrowLeft } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { FlowBody } from "@/components/flow/FlowBody";
+import { FlowHeader } from "@/components/flow/FlowHeader";
+import { getFlowContext } from "@/lib/queries/plan";
 import { notFound } from "next/navigation";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
 import { ReadingRunner } from "@/components/reading/ReadingRunner";
@@ -12,7 +13,7 @@ export default async function ReadingExercisePage({
 }: {
   params: Promise<{ exerciseId: string }>;
 }) {
-  const [{ user, goalTrack }, { exerciseId }, t] = await Promise.all([
+  const [{ user, goalTrack, timeZone }, { exerciseId }, t] = await Promise.all([
     requireOnboarded(),
     params,
     getDict(),
@@ -22,9 +23,10 @@ export default async function ReadingExercisePage({
   // The sibling list (it drives the result screen's "next exercise") is
   // fetched speculatively for the goal track in the same wave; only an
   // off-goal exercise pays a second round-trip.
-  const [exercise, goalSiblings] = await Promise.all([
+  const [exercise, goalSiblings, flow] = await Promise.all([
     getReadingExerciseSanitized(exerciseId),
     listReadingExercises(user.id, goalTrack),
+    getFlowContext(user.id, timeZone, "reading", exerciseId),
   ]);
   if (!exercise) notFound();
   const { exercises, bestByExercise } =
@@ -34,28 +36,26 @@ export default async function ReadingExercisePage({
   const next = exercises.find((e) => e.id !== exercise.id && !bestByExercise.has(e.id));
 
   return (
-    <div className="space-y-6">
-      <div>
-        <Link
-          href="/reading"
-          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="size-4" aria-hidden />
-          {t.reading.backToList}
-        </Link>
-        <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight">{exercise.title}</h1>
-        <p className="text-muted-foreground">
-          {exercise.titleZh} · {exercise.genre} · {t.reading.suggestedTime}{" "}
-          {exercise.suggestedMinutes} {t.common.minutes}
-        </p>
-      </div>
-      <ReadingRunner
-        exerciseId={exercise.id}
-        passage={exercise.passage}
-        questions={exercise.questions}
-        crossPromo={<CrossPromoCard track={goalTrack} />}
-        nextHref={next ? `/reading/${next.id}` : null}
-      />
-    </div>
+    <>
+      <FlowHeader context={flow} hubHref="/reading" />
+      <FlowBody>
+        <div className="space-y-6">
+          <div>
+            <h1 className="font-serif text-3xl font-medium tracking-tight">{exercise.title}</h1>
+            <p className="text-muted-foreground">
+              {exercise.titleZh} · {exercise.genre} · {t.reading.suggestedTime}{" "}
+              {exercise.suggestedMinutes} {t.common.minutes}
+            </p>
+          </div>
+          <ReadingRunner
+            exerciseId={exercise.id}
+            passage={exercise.passage}
+            questions={exercise.questions}
+            crossPromo={<CrossPromoCard track={goalTrack} />}
+            nextHref={next ? `/reading/${next.id}` : null}
+          />
+        </div>
+      </FlowBody>
+    </>
   );
 }

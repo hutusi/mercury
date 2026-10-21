@@ -13,6 +13,7 @@ import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attemp
 import { useAnswerDraft } from "@/components/exercise/useAnswerDraft";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
+import { useFlowExit } from "@/lib/flow-store";
 
 export function ReadingRunner({
   exerciseId,
@@ -36,6 +37,9 @@ export function ReadingRunner({
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(0);
   const requestRef = useRef<LogicalRequestId | null>(null);
+  // Picked answers persist (session draft), so leaving mid-way is safe and
+  // the exit says so.
+  useFlowExit("saved", !result && Object.keys(answers).length > 0);
   const draft = useAnswerDraft({
     kind: "reading",
     id: exerciseId,
@@ -101,7 +105,7 @@ export function ReadingRunner({
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
-      <article className="border-y border-border py-6 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:self-start lg:overflow-y-auto">
+      <article className="border-y border-border py-6 lg:sticky lg:top-[calc(var(--chrome-top)+1.5rem)] lg:max-h-[calc(100dvh-var(--chrome-top)-3rem)] lg:self-start lg:overflow-y-auto">
         <SectionLabel as="h2" className="mb-3">
           {t.reading.passage}
         </SectionLabel>
