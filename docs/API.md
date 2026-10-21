@@ -156,8 +156,8 @@ One rolling thread per (user, book) — the premium in-reader coach
 
 - `GET /api/v1/vocab/study-queue` cards include `srs` (`easeFactor`, `intervalDays`,
   `repetitions`, `lapses`) so clients that want to surface scheduler state can do so with
-  the same deterministic SM-2 rules (new cards carry the fresh-card state). The web UI
-  deliberately shows no interval previews — grade labels only.
+  the same deterministic SM-2 rules (new cards carry the fresh-card state) — the web UI
+  previews each grade's next interval this way.
 - `POST /api/v1/vocab/grade` returns `{reviewId, grade, replayed, intervalDays, srs}` — the
   post-review state, so a lapsed ("Forgot") card re-shown in the same session has accurate
   state without refetching the queue. Send an optional `requestId` (UUID) per card

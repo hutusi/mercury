@@ -1,17 +1,24 @@
 "use client";
 
-import { Sparkles, Volume2, VolumeX } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { Check, Flame, Undo2, Volume2, VolumeX } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
-import { gradeCard } from "@/lib/actions/vocab";
+import { Kbd } from "@/components/ui/kbd";
+import { useToast } from "@/components/ui/toast";
+import { gradeCard, undoGrade } from "@/lib/actions/vocab";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
-import { useT } from "@/lib/i18n/LocaleProvider";
+import { useFlowCounter, useFlowExit } from "@/lib/flow-store";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { fill } from "@/lib/i18n/fill";
+import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { localePath } from "@/lib/i18n/routing";
 import { createWordSpeaker, ttsSupported, type WordSpeaker } from "@/lib/speech";
-import { type ReviewGrade } from "@/lib/srs";
-import { useFlowExit } from "@/lib/flow-store";
+import { previewNextReview, type NextReview, type ReviewGrade, type SrsState } from "@/lib/srs";
+import { cn } from "@/lib/utils";
 
 export interface StudyCardData {
   wordId: string;
@@ -25,19 +32,83 @@ export interface StudyCardData {
   /** Pre-generated headword pronunciation (ADR 0023); null → browser TTS. */
   audioUrl: string | null;
   isNew: boolean;
+  /** Scheduler state, for the interval each grade would give. */
+  srs: SrsState;
 }
-
-const QUIET_GRADE_CLS = "border border-border bg-background text-foreground hover:bg-muted";
 
 /** Device-level preference: auto-pronounce the headword when a card is flipped. */
 const AUTO_SPEAK_KEY = "mercury.vocab.autoSpeak";
 
-export function StudySession({ cards }: { cards: StudyCardData[] }) {
+const GRADES: { grade: ReviewGrade; key: string }[] = [
+  { grade: 1, key: "1" },
+  { grade: 3, key: "2" },
+  { grade: 4, key: "3" },
+  { grade: 5, key: "4" },
+];
+
+/** One step back in the session: enough to undo a grade exactly. */
+interface HistoryEntry {
+  reviewId: string;
+  index: number;
+  queueLength: number;
+  card: StudyCardData;
+  grade: ReviewGrade;
+}
+
+function gradeLabel(t: Dictionary, grade: ReviewGrade) {
+  return grade === 1
+    ? t.vocab.again
+    : grade === 3
+      ? t.vocab.hard
+      : grade === 4
+        ? t.vocab.good
+        : t.vocab.easy;
+}
+
+function nextReviewText(t: Dictionary, next: NextReview) {
+  switch (next.unit) {
+    case "minutes":
+      return fill(t.vocab.inMinutes, { n: next.n });
+    case "tomorrow":
+      return t.vocab.tomorrow;
+    case "days":
+      return fill(t.vocab.inDays, { n: next.n });
+    case "months":
+      return fill(t.vocab.inMonths, { n: next.n });
+  }
+}
+
+/**
+ * The flashcard session. Every grade is saved as it lands (idempotently, ADR
+ * 0031), so leaving is always safe. Each grade button shows when the card
+ * returns; a mis-tap can be undone (button or U) within the session; the
+ * session ends on the streak and the next stop.
+ */
+export function StudySession({
+  cards,
+  streak,
+  checkedInToday,
+  nextStop,
+  inPlan,
+}: {
+  cards: StudyCardData[];
+  /** Streak at page load. */
+  streak: number;
+  /** Whether today was already checked in at page load. */
+  checkedInToday: boolean;
+  /** The "下一站" CTA (server-rendered), shown on the done screen in plan mode. */
+  nextStop?: React.ReactNode;
+  /** Part of today's route (exit returns to Today) or free practice. */
+  inPlan: boolean;
+}) {
   const t = useT();
+  const locale = useLocale();
+  const router = useRouter();
+  const toast = useToast();
   const [queue, setQueue] = useState(cards);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
-  const [reviewed, setReviewed] = useState(0);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const [mounted, setMounted] = useState(false);
@@ -45,11 +116,17 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   const speakerRef = useRef<WordSpeaker | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const requestRef = useRef<LogicalRequestId | null>(null);
+  const cardRef = useRef<HTMLButtonElement>(null);
+  const doneRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side
     setMounted(true);
-    setAutoSpeak(localStorage.getItem(AUTO_SPEAK_KEY) !== "off");
+    try {
+      setAutoSpeak(localStorage.getItem(AUTO_SPEAK_KEY) !== "off");
+    } catch {
+      // Storage unavailable: keep the default.
+    }
     speakerRef.current = createWordSpeaker();
     audioRef.current = new Audio();
     return () => {
@@ -59,8 +136,15 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   }, []);
 
   const card = queue[index];
+  const reviewed = history.length;
+  const done = !card && reviewed > 0;
+  useFlowCounter(card ? `${index + 1} / ${queue.length}` : null);
   // Every grade is saved as it lands; mid-session exits say so.
   useFlowExit("saved", reviewed > 0 && Boolean(card));
+
+  useEffect(() => {
+    if (done) requestAnimationFrame(() => doneRef.current?.focus());
+  }, [done]);
 
   function stopAudio() {
     audioRef.current?.pause();
@@ -68,9 +152,7 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
   }
 
   // Headword pronunciation prefers the pre-generated render (ADR 0023) and
-  // falls back to browser TTS when there is none or it fails to play. URLs
-  // are hash-immutable with year-long cache headers, so repeat plays are
-  // served from the browser cache.
+  // falls back to browser TTS when there is none or it fails to play.
   function speakHeadword(c: StudyCardData) {
     stopAudio();
     const el = audioRef.current;
@@ -84,26 +166,28 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
     void el.play().catch(() => speakerRef.current?.speak(c.headword));
   }
 
-  // Auto-pronounce rides the flip click so play() stays inside a user gesture
-  // (autoplay policy never blocks it). Card-advance after grading would run
-  // past an await, outside the activation window — that's why the reveal, not
-  // the next card, is the trigger.
-  function flipCard(c: StudyCardData) {
-    const next = !flipped;
-    setFlipped(next);
-    if (next && autoSpeak) speakHeadword(c);
-  }
+  // Auto-pronounce rides the flip so play() stays inside a user gesture.
+  const flip = useCallback(() => {
+    if (!card || flipped) return;
+    setFlipped(true);
+    if (autoSpeak) speakHeadword(card);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- speakHeadword reads refs only
+  }, [card, flipped, autoSpeak]);
 
   function toggleAutoSpeak() {
     const next = !autoSpeak;
     setAutoSpeak(next);
-    localStorage.setItem(AUTO_SPEAK_KEY, next ? "on" : "off");
+    try {
+      localStorage.setItem(AUTO_SPEAK_KEY, next ? "on" : "off");
+    } catch {
+      // Not persisted; the session still honours it.
+    }
     if (!next) stopAudio();
   }
 
   const grade = useCallback(
     (g: ReviewGrade) => {
-      if (!card || pending) return;
+      if (!card || pending || !flipped) return;
       setError(null);
       stopAudio();
       // One idempotency key per queue position (ADR 0031): a retry after a
@@ -119,104 +203,199 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
             requestId: request.requestId,
           });
           if (!result.ok) {
-            // The key collided with another word's grade: start a fresh one.
             requestRef.current = null;
             setError(t.common.submitRetry);
             return;
           }
           requestRef.current = null;
-          setReviewed((n) => n + 1);
-          // "Forgot" re-queues the card for a second pass in this session. A
-          // replay reports the ORIGINAL grade, which is the one that counts.
-          setQueue((q) => (result.grade === 1 ? [...q, { ...card, isNew: false }] : q));
+          setHistory((h) => [
+            ...h,
+            {
+              reviewId: result.reviewId,
+              index,
+              queueLength: queue.length,
+              card,
+              grade: result.grade,
+            },
+          ]);
+          // "Forgot" re-queues the card for a second pass. A replay reports
+          // the ORIGINAL grade, which is the one that counts.
+          setQueue((q) =>
+            result.grade === 1 ? [...q, { ...card, isNew: false, srs: result.srs }] : q,
+          );
           setFlipped(false);
           setIndex((i) => i + 1);
+          requestAnimationFrame(() => cardRef.current?.focus({ preventScroll: true }));
         } catch {
           // Keep the card in place so the grade can be retried.
           setError(t.common.submitRetry);
         }
       });
     },
-    [card, index, pending, t],
+
+    [card, flipped, index, pending, queue.length, t],
   );
+
+  const undo = useCallback(() => {
+    const last = history.at(-1);
+    if (!last || pending) return;
+    setError(null);
+    startTransition(async () => {
+      const result = await undoGrade({ reviewId: last.reviewId }).catch(() => null);
+      if (!result) {
+        setError(t.common.submitRetry);
+        return;
+      }
+      if (!result.ok && result.reason === "stale") {
+        toast.show(t.vocab.undoGone);
+        return;
+      }
+      // "gone" means an earlier attempt already undid it: restore locally too.
+      setHistory((h) => h.slice(0, -1));
+      // Grading never moves cards, and "again" only appends one: trimming to
+      // the pre-grade length restores the queue exactly.
+      setQueue((q) => q.slice(0, last.queueLength));
+      setIndex(last.index);
+      setFlipped(true);
+      toast.show(t.vocab.undone);
+    });
+  }, [history, pending, t, toast]);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
-      if (!flipped || pending || e.repeat) return;
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.repeat || e.metaKey || e.ctrlKey || e.altKey) return;
       const el = e.target instanceof HTMLElement ? e.target : null;
       if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;
-      const map: Record<string, ReviewGrade> = { "1": 1, "2": 3, "3": 4, "4": 5 };
-      const g = map[e.key];
-      if (g === undefined) return;
+      if (e.key === "Escape") {
+        router.push(localePath(locale, inPlan ? "/dashboard" : "/vocabulary"));
+        if (reviewed > 0 && card) toast.show(t.flow.saved);
+        return;
+      }
+      if (e.key === "u" || e.key === "U") {
+        if (!flipped || done) undo();
+        return;
+      }
+      if (!card || pending) return;
+      if (e.key === " " && !flipped) {
+        // Space on a focused button already clicks it.
+        if (el?.tagName === "BUTTON") return;
+        e.preventDefault();
+        flip();
+        return;
+      }
+      if (!flipped) return;
+      const match = GRADES.find((g) => g.key === e.key);
+      if (!match) return;
       e.preventDefault();
-      grade(g);
+      grade(match.grade);
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [flipped, pending, grade]);
+  }, [card, done, flip, flipped, grade, inPlan, locale, pending, reviewed, router, t, toast, undo]);
 
-  const canSpeak = mounted && ttsSupported();
+  const canSpeak = mounted && (ttsSupported() || Boolean(card?.audioUrl));
+  const canUndo = history.length > 0 && !flipped;
 
   if (!card) {
+    const again = history.filter((h) => h.grade === 1).length;
+    const reviewedWords = new Set(history.map((h) => h.card.wordId)).size;
+    const streakNow = checkedInToday || reviewed === 0 ? streak : streak + 1;
     return (
-      <div className="mx-auto max-w-md border border-border p-10 text-center">
-        <p className="flex justify-center" aria-hidden>
-          <Sparkles className="size-6" />
-        </p>
-        <h2 className="mt-4 font-serif text-2xl font-medium">{t.vocab.sessionDone}</h2>
-        <p className="mt-2 text-muted-foreground">
-          {t.vocab.reviewedCount}: {reviewed}
-        </p>
-        <div className="mt-6 flex justify-center gap-3">
-          <Button asChild variant="outline">
-            <Link href="/vocabulary">{t.common.back}</Link>
+      <div className="mx-auto flex max-w-[35rem] flex-col items-center text-center">
+        <span className="flex size-[4.5rem] items-center justify-center rounded-full bg-brand-soft text-brand">
+          <Check className="size-8" aria-hidden />
+        </span>
+        <h1
+          ref={doneRef}
+          tabIndex={-1}
+          className="mt-6 font-serif text-[1.75rem] leading-tight font-medium outline-hidden sm:text-4xl"
+        >
+          {t.vocab.sessionDone}
+        </h1>
+        <p className="mt-2.5 text-pretty text-muted-foreground">{t.vocab.doneSub}</p>
+        <dl className="mt-7 grid w-full grid-cols-3 rounded-xl border border-border bg-card">
+          {[
+            { label: t.vocab.statReviewed, value: reviewedWords },
+            {
+              label: t.vocab.statKept,
+              value:
+                reviewedWords -
+                new Set(history.filter((h) => h.grade === 1).map((h) => h.card.wordId)).size,
+            },
+            { label: t.vocab.statAgain, value: again },
+          ].map((stat, i) => (
+            <div
+              key={stat.label}
+              className={cn("px-2 py-[1.125rem]", i > 0 && "border-l border-border")}
+            >
+              <dd className="font-serif text-[2.125rem] leading-none font-medium tabular-nums">
+                {stat.value}
+              </dd>
+              <dt className="mt-2 text-[0.8125rem] text-muted-foreground">{stat.label}</dt>
+            </div>
+          ))}
+        </dl>
+        {reviewed > 0 ? (
+          <p className="mt-3.5 flex w-full items-center justify-center gap-2.5 rounded-lg bg-coral-soft px-4 py-3.5 text-[0.9375rem] font-medium text-coral-ink-2">
+            <Flame className="size-[1.125rem] text-coral" aria-hidden />
+            {fill(t.vocab.streakUp, { n: streakNow })}
+          </p>
+        ) : null}
+        <div className="mt-7 flex w-full flex-col gap-2.5">
+          {nextStop}
+          {canUndo ? (
+            <Button variant="ghost" onClick={undo} disabled={pending} className="self-center">
+              <Undo2 aria-hidden />
+              {t.vocab.undo}
+            </Button>
+          ) : null}
+          <Button asChild variant="outline" size="lg">
+            <Link href={inPlan ? "/dashboard" : "/vocabulary"}>
+              {inPlan ? t.flow.backToday : t.vocab.backToVocab}
+            </Link>
           </Button>
-          <Button asChild>
-            <Link href="/vocabulary/quiz">{t.vocab.startQuiz}</Link>
-          </Button>
+          {!inPlan ? (
+            <Button asChild variant="ghost">
+              <Link href="/vocabulary/quiz">{t.vocab.startQuiz}</Link>
+            </Button>
+          ) : null}
         </div>
       </div>
     );
   }
 
-  // The teacher's-pen scale: "forgot" is the one red mark; the pass grades are
-  // identical quiet ink.
-  const gradeButtons: { grade: ReviewGrade; shortcut: string; label: string; cls: string }[] = [
-    {
-      grade: 1,
-      shortcut: "1",
-      label: t.vocab.again,
-      cls: "bg-cinnabar text-cinnabar-foreground hover:bg-cinnabar/90",
-    },
-    { grade: 3, shortcut: "2", label: t.vocab.hard, cls: QUIET_GRADE_CLS },
-    { grade: 4, shortcut: "3", label: t.vocab.good, cls: QUIET_GRADE_CLS },
-    { grade: 5, shortcut: "4", label: t.vocab.easy, cls: QUIET_GRADE_CLS },
-  ];
-
   return (
-    <div className="mx-auto max-w-xl space-y-4">
-      <div className="flex items-center justify-between font-mono text-sm text-muted-foreground tabular-nums">
-        <span>
-          {index + 1} / {queue.length}
+    <div className="mx-auto flex max-w-[37.5rem] flex-col gap-4">
+      <div className="flex items-center gap-3">
+        <span className="text-sm font-semibold">{t.vocab.cardsLabel}</span>
+        <span className="flex-1" />
+        {canUndo ? (
+          <Button
+            variant="outline"
+            size="xs"
+            onClick={undo}
+            disabled={pending}
+            aria-keyshortcuts="u"
+          >
+            <Undo2 aria-hidden />
+            {t.vocab.undo}
+          </Button>
+        ) : null}
+        <span className="text-[0.8125rem] text-muted-foreground tabular-nums">
+          {fill(t.vocab.reviewedLabel, { n: reviewed })}
         </span>
-        <span className="flex items-center gap-3">
-          {t.vocab.reviewedCount}: {reviewed}
-          {(canSpeak || (mounted && card.audioUrl)) && (
-            <button
-              type="button"
-              onClick={toggleAutoSpeak}
-              aria-pressed={autoSpeak}
-              aria-label={t.vocab.autoSpeak}
-              title={t.vocab.autoSpeak}
-              className="flex size-9 items-center justify-center outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              <span aria-hidden>
-                {autoSpeak ? <Volume2 className="size-4" /> : <VolumeX className="size-4" />}
-              </span>
-            </button>
-          )}
-        </span>
+        {canSpeak ? (
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            onClick={toggleAutoSpeak}
+            aria-pressed={autoSpeak}
+            aria-label={t.vocab.autoSpeak}
+            title={t.vocab.autoSpeak}
+          >
+            {autoSpeak ? <Volume2 aria-hidden /> : <VolumeX aria-hidden />}
+          </Button>
+        ) : null}
       </div>
 
       <div
@@ -225,59 +404,75 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
         aria-valuemin={0}
         aria-valuemax={queue.length}
         aria-valuenow={index}
-        className="h-1 overflow-hidden bg-muted"
+        className="h-1 overflow-hidden rounded-full bg-border"
       >
-        <div className="h-full bg-primary" style={{ width: `${(index / queue.length) * 100}%` }} />
+        <div
+          className="h-full rounded-full bg-brand transition-[width] duration-450 ease-out motion-reduce:transition-none"
+          style={{ width: `${(index / queue.length) * 100}%` }}
+        />
       </div>
 
-      {/* The flashcard is a full dictionary entry. The frame stays non-interactive
-          so the speaker buttons can be siblings of the flip button, never nested. */}
-      <div className="relative border border-border bg-background transition-colors hover:border-input">
+      {/* The frame stays non-interactive so the speaker can be a sibling of
+          the flip button, never nested inside it. */}
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-raised">
         <button
+          ref={cardRef}
           type="button"
-          onClick={() => flipCard(card)}
+          onClick={flip}
           aria-expanded={flipped}
           aria-controls="study-card-answer"
-          className={`block w-full cursor-pointer p-8 text-center outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${flipped ? "" : "min-h-72"}`}
+          className={cn(
+            "block w-full px-6 pt-10 pb-8 text-center outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset sm:pt-14 sm:pb-10",
+            !flipped && "min-h-[18.75rem]",
+          )}
         >
-          {card.isNew && (
-            <Badge variant="accent" className="mb-3">
+          {card.isNew ? (
+            <Badge variant="accent" className="mb-3.5">
               {t.vocab.fresh}
             </Badge>
-          )}
-          <p className="font-serif text-5xl font-medium tracking-tight">{card.headword}</p>
-          <p className="mt-3 font-serif text-muted-foreground italic">
+          ) : null}
+          <p className="font-serif text-[2.5rem] leading-[1.1] font-medium tracking-[-0.01em] break-words sm:text-[3.625rem]">
+            {card.headword}
+          </p>
+          <p className="mt-3 font-serif text-lg text-muted-foreground italic">
             {card.ipa} · {card.pos}
           </p>
-          {!flipped && <p className="mt-8 text-sm text-muted-foreground/70">{t.vocab.flipHint}</p>}
+          {!flipped ? (
+            <p className="mt-10 text-sm text-muted-foreground">{t.vocab.flipHint}</p>
+          ) : null}
         </button>
 
-        {(canSpeak || (mounted && card.audioUrl)) && (
-          <button
-            type="button"
+        {canSpeak ? (
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => speakHeadword(card)}
             aria-label={t.vocab.speakWord}
-            className="absolute top-3 right-3 flex size-9 items-center justify-center text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="absolute top-3.5 right-3.5"
           >
-            <span aria-hidden>
-              <Volume2 className="size-5" />
-            </span>
-          </button>
-        )}
+            <Volume2 className="size-5" aria-hidden />
+          </Button>
+        ) : null}
 
-        {flipped && (
+        {flipped ? (
           <div
             id="study-card-answer"
-            className="space-y-4 border-t border-border px-8 pt-6 pb-8 text-left"
+            className="flex flex-col gap-3.5 border-t border-border px-5 pt-6 pb-7 sm:px-8"
           >
-            <p className="text-center font-serif text-2xl font-medium">{card.translationZh}</p>
-            <p className="text-center text-sm text-muted-foreground">{card.definitionEn}</p>
-            <div className="bg-muted p-4 text-sm">
+            <p className="text-center font-serif text-[1.625rem] leading-snug font-semibold">
+              {card.translationZh}
+            </p>
+            <p className="text-center text-[0.9375rem] text-pretty text-muted-foreground">
+              {card.definitionEn}
+            </p>
+            <div className="mt-1 rounded-lg bg-muted px-[1.125rem] py-4">
               <div className="flex items-start justify-between gap-3">
-                <p className="font-serif font-medium text-foreground/90">{card.exampleEn}</p>
-                {canSpeak && (
-                  <button
-                    type="button"
+                <p className="font-serif text-lg leading-[1.55]">{card.exampleEn}</p>
+                {mounted && ttsSupported() ? (
+                  <Button
+                    variant="ghost"
+                    size="icon-xs"
+                    className="-mt-1 -mr-1"
                     onClick={() => {
                       // Example sentences deliberately stay on browser TTS
                       // (ADR 0023); just don't talk over the headword MP3.
@@ -285,42 +480,69 @@ export function StudySession({ cards }: { cards: StudyCardData[] }) {
                       speakerRef.current?.speak(card.exampleEn);
                     }}
                     aria-label={t.vocab.speakExample}
-                    className="shrink-0 text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
-                    <span aria-hidden>
-                      <Volume2 className="size-4" />
-                    </span>
-                  </button>
-                )}
+                    <Volume2 aria-hidden />
+                  </Button>
+                ) : null}
               </div>
-              <p className="mt-1 text-muted-foreground">{card.exampleZh}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                {card.exampleZh}
+              </p>
             </div>
           </div>
-        )}
+        ) : null}
       </div>
 
-      {flipped && (
-        <div className="grid grid-cols-4 gap-2">
-          {gradeButtons.map((b) => (
-            <button
-              key={b.grade}
-              type="button"
-              onClick={() => grade(b.grade)}
-              disabled={pending}
-              aria-keyshortcuts={b.shortcut}
-              className={`px-3 py-3 text-sm font-medium outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 ${b.cls}`}
-            >
-              {b.label}
-            </button>
-          ))}
-        </div>
+      {!flipped ? (
+        <Button size="lg" onClick={flip} className="self-center">
+          {t.vocab.reveal}
+          <Kbd className="hidden md:inline-flex">Space</Kbd>
+        </Button>
+      ) : (
+        <>
+          <div className="grid grid-cols-4 gap-2">
+            {GRADES.map(({ grade: g, key }) => {
+              const next = nextReviewText(t, previewNextReview(card.srs, g));
+              const hintId = `grade-hint-${g}`;
+              return (
+                <button
+                  key={g}
+                  type="button"
+                  onClick={() => grade(g)}
+                  disabled={pending}
+                  aria-keyshortcuts={key}
+                  aria-describedby={hintId}
+                  className={cn(
+                    "flex min-h-16 flex-col items-center justify-center gap-0.5 rounded-lg border-[1.5px] bg-card px-1 py-2 outline-hidden transition-colors duration-150 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60",
+                    g === 1 ? "border-coral text-coral-ink" : "border-input text-foreground",
+                  )}
+                >
+                  <span className="text-[0.9375rem] leading-snug font-semibold">
+                    {gradeLabel(t, g)}
+                  </span>
+                  <span
+                    id={hintId}
+                    aria-hidden
+                    className="text-xs leading-snug text-muted-foreground tabular-nums"
+                  >
+                    <span className="hidden md:inline">{key} · </span>
+                    {next}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <p className="hidden text-center text-[0.8125rem] text-muted-foreground md:block">
+            {t.vocab.keysHint}
+          </p>
+        </>
       )}
 
-      {error && (
+      {error ? (
         <Callout variant="error" className="p-3 text-center text-sm">
           {error}
         </Callout>
-      )}
+      ) : null}
     </div>
   );
 }

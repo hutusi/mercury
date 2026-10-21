@@ -27,10 +27,10 @@ export default async function QuizPage({
     return (
       <>
         <FlowHeader context={{ mode: "free" }} hubHref="/vocabulary" />
-        <FlowBody>
+        <FlowBody width="narrow">
           <div className="space-y-6">
             <div>
-              <h1 className="font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
+              <h1 className="sr-only">{t.vocab.quiz}</h1>
             </div>
             <EmptyState
               action={
@@ -53,10 +53,10 @@ export default async function QuizPage({
   return (
     <>
       <FlowHeader context={{ mode: "free" }} hubHref="/vocabulary" />
-      <FlowBody>
+      <FlowBody width="narrow">
         <div className="space-y-6">
           <div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight">{t.vocab.quiz}</h1>
+            <h1 className="sr-only">{t.vocab.quiz}</h1>
           </div>
           {/* Keyed by session: router.refresh() resolves a NEW session, and
           without a remount the runner's client state (expired, picked) would

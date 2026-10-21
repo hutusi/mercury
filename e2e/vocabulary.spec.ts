@@ -9,6 +9,7 @@ import { allVocab, audioManifest } from "../src/content/load";
 import * as dbSchema from "../src/lib/db/schema";
 import { srsCards, user, vocabQuizSessions } from "../src/lib/db/schema";
 import { e2eDatabaseUrl } from "./db-url";
+import { fill } from "../src/lib/i18n/fill";
 import { registerAndOnboard, t } from "./helpers";
 
 const pool = new Pool({ connectionString: e2eDatabaseUrl(), max: 2 });
@@ -63,18 +64,24 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   }
   const againButton = page.getByRole("button", { name: t.vocab.again, exact: true });
 
-  // Interval previews are deliberately gone (scheduler internals stay
-  // hidden): the buttons carry exactly their labels — a regressed hint span
-  // or its aria-describedby wiring fails these.
-  await expect(goodButton).toHaveText(t.vocab.good);
-  await expect(againButton).toHaveText(t.vocab.again);
-  await expect(goodButton).not.toHaveAttribute("aria-describedby");
-  await expect(againButton).not.toHaveAttribute("aria-describedby");
+  // Each grade shows when the card would come back; the interval is the
+  // button's description, so its accessible name stays the bare label.
+  await expect(goodButton).toContainText(t.vocab.tomorrow);
+  await expect(againButton).toContainText(fill(t.vocab.inMinutes, { n: 10 }));
+  await expect(goodButton).toHaveAccessibleDescription(new RegExp(t.vocab.tomorrow));
 
   // Grade "Good": advances, reviewed counter increments.
   await goodButton.click();
   await expect(page.getByText(/^2 \/ \d+$/)).toBeVisible();
-  await expect(page.getByText(`${t.vocab.reviewedCount}: 1`)).toBeVisible();
+  await expect(page.getByText(fill(t.vocab.reviewedLabel, { n: 1 }))).toBeVisible();
+
+  // A mis-tap undoes with U: back to card 1, already flipped, count restored.
+  await page.keyboard.press("u");
+  await expect(page.getByText(/^1 \/ \d+$/)).toBeVisible();
+  await expect(goodButton).toBeVisible();
+  await expect(page.getByText(fill(t.vocab.reviewedLabel, { n: 0 }))).toBeVisible();
+  await goodButton.click();
+  await expect(page.getByText(fill(t.vocab.reviewedLabel, { n: 1 }))).toBeVisible();
 
   // Mute the auto-pronounce toggle: flipping card 2 must stay silent.
   const autoSpeakToggle = page.getByRole("button", { name: t.vocab.autoSpeak });
@@ -99,7 +106,7 @@ test("flashcard study: flip reveals grading, Good advances, Again re-queues", as
   await expect(goodButton).toBeVisible();
   await page.keyboard.press("3");
   await expect(page.getByText(new RegExp(`^4 / ${total + 1}$`))).toBeVisible();
-  await expect(page.getByText(`${t.vocab.reviewedCount}: 3`)).toBeVisible();
+  await expect(page.getByText(fill(t.vocab.reviewedLabel, { n: 3 }))).toBeVisible();
 });
 
 // The two ADR 0029 study-queue behaviors the UI can't reach without existing
@@ -164,11 +171,11 @@ test("quiz recovery: an expired session offers restart and the fresh quiz is usa
     .update(vocabQuizSessions)
     .set({ createdAt: new Date(Date.now() - 60_000), expiresAt: new Date(Date.now() - 1000) })
     .where(eq(vocabQuizSessions.userId, account.id));
-  await page.locator("#main-content button").first().click();
+  await page.locator("[data-quiz-option]").first().click();
   await expect(page.getByText(t.vocab.quizExpired)).toBeVisible();
 
   // Restart mints a fresh session and a fully usable quiz.
   await page.getByRole("button", { name: t.vocab.quizRestart }).click();
   await expect(page.locator("#main-content").getByText("1 / 10")).toBeVisible();
-  await expect(page.locator("#main-content button").first()).toBeEnabled();
+  await expect(page.locator("[data-quiz-option]").first()).toBeEnabled();
 });

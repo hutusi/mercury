@@ -12,14 +12,18 @@ test.describe("study reminders", () => {
     // The toggle lives in Settings.
     await page.goto("/settings");
     // Default is on; turning it off survives a reload (persisted setting).
-    await page.getByRole("button", { name: t.dashboard.reminderToggleOn }).click();
-    const offButton = page.getByRole("button", { name: t.dashboard.reminderToggleOff });
+    // The reminder toggle comes first on the page (the security section
+    // below reuses the same on/off labels for its own toggle).
+    await page.getByRole("button", { name: t.dashboard.reminderToggleOn }).first().click();
+    const offButton = page.getByRole("button", { name: t.dashboard.reminderToggleOff }).first();
     // The label flips optimistically and the button stays disabled until the
     // server action commits — wait for enabled, or the reload races the write.
     await expect(offButton).toBeVisible();
     await expect(offButton).toBeEnabled();
     await page.reload();
-    await expect(page.getByRole("button", { name: t.dashboard.reminderToggleOff })).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: t.dashboard.reminderToggleOff }).first(),
+    ).toBeVisible();
   });
 
   test("PATCH /api/v1/me/settings flips remindersEnabled", async ({ request }) => {

@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { fill } from "../src/lib/i18n/fill";
 import { pickTrack, registerAndOnboard, registerUser, t } from "./helpers";
 
 test("register → forced onboarding → dashboard", async ({ page }) => {
@@ -13,7 +14,7 @@ test("register → forced onboarding → dashboard", async ({ page }) => {
   // the raised current card (the plan engine's fresh-account fallback
   // guarantees at least one item), with the streak in the margin.
   await expect(page.getByRole("heading", { name: t.plan.title })).toBeVisible();
-  await expect(page.getByText(t.today.upNext)).toBeVisible();
+  await expect(page.getByText(t.today.upNext, { exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: t.plan.itemVocabNew })).toBeVisible();
   await expect(page.getByText(t.dashboard.streak)).toBeVisible();
 
@@ -65,7 +66,7 @@ test("new account sees first-run guidance until it completes an activity", async
   // after the server action resolves) before navigating, so the activity write
   // has landed — the async Postgres write, unlike the old synchronous SQLite
   // one, isn't guaranteed to finish before an immediate page.goto.
-  await expect(page.getByText(`${t.vocab.reviewedCount}: 1`)).toBeVisible();
+  await expect(page.getByText(fill(t.vocab.reviewedLabel, { n: 1 }))).toBeVisible();
 
   await page.goto("/dashboard");
   await expect(page.getByRole("heading", { name: t.dashboard.welcomeTitle })).toBeHidden();

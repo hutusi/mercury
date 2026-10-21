@@ -32,7 +32,7 @@ test("mistakes notebook: seed wrong answers, retest until cleared", async ({ pag
   await page.goto("/vocabulary/quiz");
   for (let i = 0; i < 10; i++) {
     await expect(page.locator("#main-content").getByText(`${i + 1} / 10`)).toBeVisible();
-    await page.locator("#main-content button").first().click();
+    await page.locator("[data-quiz-option]").first().click();
     await page.getByRole("button", { name: i === 9 ? t.common.finish : t.common.next }).click();
   }
   await expect(page.getByRole("heading", { name: t.vocab.quizDone })).toBeVisible();

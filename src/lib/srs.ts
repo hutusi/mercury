@@ -98,3 +98,22 @@ export function undoDecision(
   if (now.getTime() - log.reviewedAt.getTime() > UNDO_WINDOW_MS) return "expired";
   return "ok";
 }
+
+export type NextReview =
+  | { unit: "minutes"; n: number }
+  | { unit: "tomorrow" }
+  | { unit: "days"; n: number }
+  | { unit: "months"; n: number };
+
+/**
+ * When a card would come back after this grade — shown on each grade button
+ * ("10 分钟后", "明天", "6 天后") so the choice has visible consequences.
+ * Pure: the same scheduleReview the server applies.
+ */
+export function previewNextReview(state: SrsState, grade: ReviewGrade): NextReview {
+  if (grade < 3) return { unit: "minutes", n: AGAIN_DELAY_MS / 60_000 };
+  const { intervalDays } = scheduleReview(state, grade);
+  if (intervalDays <= 1) return { unit: "tomorrow" };
+  if (intervalDays < 45) return { unit: "days", n: intervalDays };
+  return { unit: "months", n: Math.round(intervalDays / 30) };
+}

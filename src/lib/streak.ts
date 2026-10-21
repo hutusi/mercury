@@ -52,3 +52,19 @@ export async function getStreak(userId: string, knownTimeZone?: string): Promise
   ]);
   return computeStreak(new Set(rows.map((r) => r.day)), new Date(), timeZone);
 }
+
+/** The streak and whether today is already checked in, in one read. */
+export async function getStreakSummary(
+  userId: string,
+  timeZone: string,
+): Promise<{ streak: number; checkedInToday: boolean }> {
+  const rows = await db
+    .select({ day: activityDays.day })
+    .from(activityDays)
+    .where(eq(activityDays.userId, userId))
+    .orderBy(desc(activityDays.day))
+    .limit(366);
+  const days = new Set(rows.map((r) => r.day));
+  const today = calendarDay(new Date(), timeZone);
+  return { streak: computeStreak(days, today), checkedInToday: days.has(today) };
+}

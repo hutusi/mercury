@@ -1,54 +1,60 @@
+import { Sparkles } from "lucide-react";
 import { FlowBody } from "@/components/flow/FlowBody";
 import { FlowHeader } from "@/components/flow/FlowHeader";
-import { getFlowContext } from "@/lib/queries/plan";
-import { Sparkles } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { NextStopButton } from "@/components/flow/NextStopButton";
+import { EmptyState } from "@/components/typography/EmptyState";
+import { Button } from "@/components/ui/button";
 import { StudySession, type StudyCardData } from "@/components/vocab/StudySession";
 import { getDict } from "@/lib/i18n";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { getFlowContext } from "@/lib/queries/plan";
 import { getStudyQueue } from "@/lib/queries/vocab";
 import { requireOnboarded } from "@/lib/settings";
+import { getStreakSummary } from "@/lib/streak";
 
 export default async function StudyPage() {
   const { user, goalTrack, timeZone } = await requireOnboarded();
-  const t = await getDict();
-  const flowPromise = getFlowContext(user.id, timeZone, "vocab");
-
   // Personal collection — due reviews always cover every track (ADR 0029):
   // a goal-track default would silently hide reviews the learner owes. New
   // words come goal-pack-first, spilling over to the other packs once the
   // goal pack is exhausted — vocabulary isn't owned by tracks.
-  const cards: StudyCardData[] = await getStudyQueue(user.id, {
-    dueTrack: null,
-    newTrack: null,
-    newPriorityTrack: goalTrack,
-  });
-  const flow = await flowPromise;
+  const [t, cards, flow, streak] = await Promise.all([
+    getDict(),
+    getStudyQueue(user.id, { dueTrack: null, newTrack: null, newPriorityTrack: goalTrack }),
+    getFlowContext(user.id, timeZone, "vocab"),
+    getStreakSummary(user.id, timeZone),
+  ]);
 
   return (
     <>
       <FlowHeader context={flow} hubHref="/vocabulary" />
-      <FlowBody>
-        <div className="space-y-6">
-          <div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight">{t.vocab.study}</h1>
-          </div>
-          {cards.length === 0 ? (
-            <div className="mx-auto max-w-md border border-border p-10 text-center">
-              <p className="flex justify-center" aria-hidden>
-                <Sparkles className="size-6" />
-              </p>
-              <p className="mt-4 font-medium text-foreground/80">{t.vocab.allClear}</p>
-              <Link
-                href="/vocabulary/quiz"
-                className="mt-6 inline-block bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
-              >
-                {t.vocab.startQuiz}
-              </Link>
-            </div>
-          ) : (
-            <StudySession cards={cards} />
-          )}
-        </div>
+      <FlowBody width="narrow">
+        <h1 className="sr-only">{t.vocab.study}</h1>
+        {cards.length === 0 ? (
+          <EmptyState
+            action={
+              <Button asChild>
+                <Link href="/vocabulary/quiz">{t.vocab.startQuiz}</Link>
+              </Button>
+            }
+          >
+            <span className="flex justify-center text-brand" aria-hidden>
+              <Sparkles className="size-6" />
+            </span>
+            <span className="mt-3 block font-serif text-xl text-foreground">
+              {t.vocab.emptyTitle}
+            </span>
+            <span className="mt-1 block">{t.vocab.allClear}</span>
+          </EmptyState>
+        ) : (
+          <StudySession
+            cards={cards as StudyCardData[]}
+            streak={streak.streak}
+            checkedInToday={streak.checkedInToday}
+            inPlan={flow.mode === "plan"}
+            nextStop={<NextStopButton context={flow} className="w-full" />}
+          />
+        )}
       </FlowBody>
     </>
   );

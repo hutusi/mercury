@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { NEW_CARD_STATE, scheduleReview, undoDecision } from "./srs";
+import { NEW_CARD_STATE, previewNextReview, scheduleReview, undoDecision } from "./srs";
 
 const NOW = new Date("2026-01-01T08:00:00Z");
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -79,5 +79,19 @@ describe("undoDecision", () => {
 
   test("refuses legacy rows without a snapshot", () => {
     expect(undoDecision({ ...log, hasSnapshot: false }, "r1", now)).toBe("unavailable");
+  });
+});
+
+describe("previewNextReview", () => {
+  test("a new card: again in minutes, good tomorrow", () => {
+    expect(previewNextReview(NEW_CARD_STATE, 1)).toEqual({ unit: "minutes", n: 10 });
+    expect(previewNextReview(NEW_CARD_STATE, 4)).toEqual({ unit: "tomorrow" });
+  });
+
+  test("a mature card shows days, then months", () => {
+    const second = { easeFactor: 2.5, intervalDays: 1, repetitions: 1, lapses: 0 };
+    expect(previewNextReview(second, 4)).toEqual({ unit: "days", n: 6 });
+    const mature = { easeFactor: 2.6, intervalDays: 40, repetitions: 5, lapses: 0 };
+    expect(previewNextReview(mature, 5)).toMatchObject({ unit: "months" });
   });
 });
