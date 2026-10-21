@@ -140,6 +140,9 @@ export function ListeningRunner({
         questions={questions}
         answers={answers}
         onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
+        // Locked while the submit is in flight: a changed pick mid-request
+        // would mint a new idempotency key and could record a second attempt.
+        disabled={pending}
       />
       {error && (
         <Callout variant="error" className="p-3 text-center text-sm">
