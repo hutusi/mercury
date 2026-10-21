@@ -1,4 +1,4 @@
-import { and, countDistinct, desc, eq, max } from "drizzle-orm";
+import { and, countDistinct, desc, eq, inArray, max } from "drizzle-orm";
 import {
   currentChapterId,
   deriveChapterStates,
@@ -122,25 +122,30 @@ export async function isChapterUnlockedForUser(
   chapter: { bookId: string; sortOrder: number },
 ): Promise<boolean> {
   if (chapter.sortOrder <= 1) return true;
-  const previous = await db.query.bookChapters.findFirst({
-    columns: { id: true },
-    where: and(
-      eq(bookChapters.bookId, chapter.bookId),
-      eq(bookChapters.sortOrder, chapter.sortOrder - 1),
-    ),
-  });
-  if (!previous) return true;
-  const attempt = await db.query.bookQuizAttempts.findFirst({
-    columns: { id: true },
-    // bookId is known — filtering on it lets the full (user, book, chapter)
-    // index answer the lookup instead of only its user prefix.
-    where: and(
-      eq(bookQuizAttempts.userId, userId),
-      eq(bookQuizAttempts.bookId, chapter.bookId),
-      eq(bookQuizAttempts.chapterId, previous.id),
-    ),
-  });
-  return attempt !== undefined;
+  // One round-trip: the previous chapter, left-joined to any attempt of it.
+  // No row = no previous chapter (unlocked); a row with no attempt = locked.
+  // The join carries the known bookId so the full (user, book, chapter)
+  // index answers the probe. Called on every check-in, quiz submit, and
+  // book-chat send.
+  const [previous] = await db
+    .select({ attemptId: bookQuizAttempts.id })
+    .from(bookChapters)
+    .leftJoin(
+      bookQuizAttempts,
+      and(
+        eq(bookQuizAttempts.userId, userId),
+        eq(bookQuizAttempts.bookId, bookChapters.bookId),
+        eq(bookQuizAttempts.chapterId, bookChapters.id),
+      ),
+    )
+    .where(
+      and(
+        eq(bookChapters.bookId, chapter.bookId),
+        eq(bookChapters.sortOrder, chapter.sortOrder - 1),
+      ),
+    )
+    .limit(1);
+  return previous === undefined || previous.attemptId !== null;
 }
 
 export type BookChapterForReader =
@@ -232,30 +237,49 @@ export async function getBookChapterForReader(
 export async function getContinueReading(
   userId: string,
 ): Promise<{ bookId: string; chapterId: string; estMinutes: number } | null> {
-  // Bounded by the library size — a learner can only have started seeded books.
-  const started = await db
-    .select({ bookId: bookQuizAttempts.bookId, lastAt: max(bookQuizAttempts.completedAt) })
+  // Two round-trips total, however many books are started (this used to
+  // issue two queries per started book until it found an unfinished one):
+  // the learner's attempted (book, chapter) pairs with recency, then every
+  // chapter of those books. Bounded by the library size — a learner can
+  // only have started seeded books.
+  const attempted = await db
+    .select({
+      bookId: bookQuizAttempts.bookId,
+      chapterId: bookQuizAttempts.chapterId,
+      lastAt: max(bookQuizAttempts.completedAt),
+    })
     .from(bookQuizAttempts)
     .where(eq(bookQuizAttempts.userId, userId))
-    .groupBy(bookQuizAttempts.bookId)
-    .orderBy(desc(max(bookQuizAttempts.completedAt)));
+    .groupBy(bookQuizAttempts.bookId, bookQuizAttempts.chapterId);
+  if (attempted.length === 0) return null;
 
-  for (const { bookId } of started) {
-    const [chapters, bestByChapter] = await Promise.all([
-      db
-        .select({
-          id: bookChapters.id,
-          sortOrder: bookChapters.sortOrder,
-          wordCount: bookChapters.wordCount,
-          quizCount: bookChapters.quizCount,
-        })
-        .from(bookChapters)
-        .where(eq(bookChapters.bookId, bookId))
-        .orderBy(bookChapters.sortOrder),
-      bestAttemptsByChapter(userId, bookId),
-    ]);
+  const completedByBook = new Map<string, Set<string>>();
+  const lastAtByBook = new Map<string, number>();
+  for (const row of attempted) {
+    const set = completedByBook.get(row.bookId) ?? new Set<string>();
+    set.add(row.chapterId);
+    completedByBook.set(row.bookId, set);
+    const at = row.lastAt?.getTime() ?? 0;
+    lastAtByBook.set(row.bookId, Math.max(lastAtByBook.get(row.bookId) ?? 0, at));
+  }
+  const started = [...lastAtByBook.keys()].sort(
+    (a, b) => (lastAtByBook.get(b) ?? 0) - (lastAtByBook.get(a) ?? 0),
+  );
 
-    const states = deriveChapterStates(chapters, new Set(bestByChapter.keys()));
+  const allChapters = await db
+    .select({
+      bookId: bookChapters.bookId,
+      id: bookChapters.id,
+      sortOrder: bookChapters.sortOrder,
+      wordCount: bookChapters.wordCount,
+      quizCount: bookChapters.quizCount,
+    })
+    .from(bookChapters)
+    .where(inArray(bookChapters.bookId, started));
+
+  for (const bookId of started) {
+    const chapters = allChapters.filter((c) => c.bookId === bookId);
+    const states = deriveChapterStates(chapters, completedByBook.get(bookId) ?? new Set());
     const chapterId = currentChapterId(states);
     if (!chapterId) continue; // this book is finished — try the next one
     const current = chapters.find((c) => c.id === chapterId);
