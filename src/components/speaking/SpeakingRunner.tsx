@@ -2,7 +2,7 @@
 
 import { Ban, Mic, RotateCcw, Square } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { PremiumCta } from "@/components/premium/PremiumCta";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Stat } from "@/components/typography/Stat";
@@ -11,12 +11,30 @@ import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
 import { retrySpeakingFeedback, submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
+import { DAY_MS, draftKey } from "@/lib/drafts";
 import { retryWhileInProgress } from "@/lib/in-progress-retry";
+import { useBeforeUnloadGuard, useDraft } from "@/lib/use-draft";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createRecognizer, sttSupported, type Recognizer } from "@/lib/speech";
 import { SpeakingFeedbackPanel } from "./SpeakingFeedbackPanel";
 
 type Phase = "idle" | "prep" | "recording" | "review" | "done";
+
+interface SpeakingDraft {
+  transcript: string;
+  spokenSeconds: number;
+}
+
+function isSpeakingDraft(value: unknown): value is SpeakingDraft {
+  const v = value as SpeakingDraft | null;
+  return (
+    typeof v === "object" &&
+    v !== null &&
+    typeof v.transcript === "string" &&
+    Number.isFinite(v.spokenSeconds)
+  );
+}
+const isEmptyDraft = (d: SpeakingDraft) => d.transcript.trim().length === 0;
 
 export function SpeakingRunner({
   promptId,
@@ -56,6 +74,29 @@ export function SpeakingRunner({
   const doneRef = useRef<HTMLDivElement>(null);
   const submissionRequestRef = useRef<LogicalRequestId | null>(null);
   const retryRequestRef = useRef<LogicalRequestId | null>(null);
+
+  // An unsubmitted transcript survives a reload (the recording itself can't):
+  // the learner lands back on the review step with their answer intact.
+  const draftValue = useMemo(
+    () => ({ transcript: phase === "review" ? finalText : "", spokenSeconds }),
+    [phase, finalText, spokenSeconds],
+  );
+  const draft = useDraft({
+    key: draftKey("speaking", promptId),
+    value: draftValue,
+    enabled: phase === "review" && !pending,
+    maxAgeMs: 2 * DAY_MS,
+    validate: isSpeakingDraft,
+    isEmpty: isEmptyDraft,
+    onRestore: (saved) => {
+      if (isEmptyDraft(saved) || phaseRef.current !== "idle") return;
+      setFinalText(saved.transcript);
+      setSpokenSeconds(saved.spokenSeconds);
+      setPhase("review");
+    },
+  });
+  // Leaving mid-recording loses the take; ask first.
+  useBeforeUnloadGuard(phase === "recording" || phase === "prep" || pending);
   // Latest-ref pattern: recognition callbacks read the current phase.
   const phaseRef = useRef<Phase>("idle");
   useEffect(() => {
@@ -96,6 +137,7 @@ export function SpeakingRunner({
 
   function beginRecording() {
     submissionRequestRef.current = null;
+    draft.clear();
     setMicError(null);
     setFinalText("");
     setInterimText("");
@@ -156,6 +198,7 @@ export function SpeakingRunner({
           return;
         }
         submissionRequestRef.current = null;
+        draft.clear();
         setResult(r);
         setPhase("done");
         window.scrollTo({ top: 0 });

@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import type { BookChatMessageVM } from "@/components/books/BookTutorDock";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
 import { ResultSummary } from "@/components/exercise/ResultSummary";
@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import type { SanitizedQuestion } from "@/content/types";
 import { submitBookQuiz, type GradedBookQuiz } from "@/lib/actions/books";
+import { useAnswerDraft } from "@/components/exercise/useAnswerDraft";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
@@ -68,6 +69,19 @@ export function BookReaderRunner({
   const startedAt = useRef(0);
   const requestRef = useRef<LogicalRequestId | null>(null);
   const proseRef = useRef<HTMLDivElement>(null);
+  const restoreQuiz = useCallback((saved: Record<string, number>) => {
+    // Answers only exist mid-quiz, so a restored set reopens the quiz itself.
+    setAnswers(saved);
+    setMode("quiz");
+  }, []);
+  const draft = useAnswerDraft({
+    kind: "book_quiz",
+    id: chapterId,
+    questions: quiz,
+    answers,
+    enabled: mode === "quiz" && !result && !pending,
+    onRestore: restoreQuiz,
+  });
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -94,6 +108,7 @@ export function BookReaderRunner({
           durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
         });
         requestRef.current = null;
+        draft.clear();
         setResult(graded);
         startRefresh(() => router.refresh());
         window.scrollTo({ top: 0 });

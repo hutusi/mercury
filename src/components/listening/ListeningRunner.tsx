@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import type { SanitizedQuestion, ScriptLine } from "@/content/types";
 import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attempts";
+import { useAnswerDraft } from "@/components/exercise/useAnswerDraft";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { TtsPlayer } from "./TtsPlayer";
@@ -38,6 +39,14 @@ export function ListeningRunner({
   const [pending, startTransition] = useTransition();
   const startedAt = useRef(0);
   const requestRef = useRef<LogicalRequestId | null>(null);
+  const draft = useAnswerDraft({
+    kind: "listening",
+    id: exerciseId,
+    questions,
+    answers,
+    enabled: !result && !pending,
+    onRestore: setAnswers,
+  });
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -60,6 +69,7 @@ export function ListeningRunner({
           durationSeconds: duration,
         });
         requestRef.current = null;
+        draft.clear();
         setUsedSeconds(duration);
         setResult(graded);
         window.scrollTo({ top: 0 });
