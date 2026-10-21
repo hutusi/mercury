@@ -1,18 +1,17 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Briefcase, Check, GraduationCap, Target, type LucideIcon } from "lucide-react";
-import { SectionLabel } from "@/components/typography/SectionLabel";
+import { ArrowRight, Briefcase, GraduationCap, Target, type LucideIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
-import { Chip } from "@/components/ui/chip";
-import { Input } from "@/components/ui/input";
 import type { Track } from "@/content/types";
 import { completeOnboarding } from "@/lib/actions/settings";
-import { MINUTE_OPTIONS, TARGET_OPTIONS } from "@/lib/goal-options";
+import { fill } from "@/lib/i18n/fill";
 import { useT } from "@/lib/i18n/LocaleProvider";
-import { SELF_RATED_LEVELS, type SelfRatedLevel } from "@/lib/learner-model-core";
+import type { SelfRatedLevel } from "@/lib/learner-model-core";
+import { cn } from "@/lib/utils";
+import { GoalFields } from "./GoalFields";
 
 /**
  * Two local steps (track → goal + self-rating), one server action at the end
@@ -63,16 +62,6 @@ export function OnboardingFlow() {
     },
   ];
 
-  const levelLabels: Record<SelfRatedLevel, string> = {
-    novice: t.onboarding.levelNovice,
-    elementary: t.onboarding.levelElementary,
-    intermediate: t.onboarding.levelIntermediate,
-    upper: t.onboarding.levelUpper,
-    advanced: t.onboarding.levelAdvanced,
-  };
-
-  const isExamTrack = selected === "toeic" || selected === "ielts";
-
   function submit(withGoal: boolean) {
     if (!selected) return;
     setSubmitError(null);
@@ -100,153 +89,115 @@ export function OnboardingFlow() {
     });
   }
 
-  if (step === "track") {
-    return (
-      <div className="space-y-8">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {trackOptions.map((o) => {
-            const active = selected === o.track;
-            return (
-              <button
-                key={o.track}
-                onClick={() => {
-                  setSelected(o.track);
-                  setTargetScore(null);
-                  setExamDate("");
-                }}
-                aria-pressed={active}
-                className={`border p-6 text-left outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-                  active ? "border-foreground" : "border-border hover:border-input"
-                }`}
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <o.icon className="size-5" aria-hidden />
-                  <span className="flex items-center gap-2">
-                    {active && <Check className="size-4 text-cinnabar" aria-hidden />}
-                    <Badge variant={o.accent ? "accent" : "outline"}>{o.badge}</Badge>
-                  </span>
-                </div>
-                <h2 className="mt-4 font-serif text-lg font-medium">{o.label}</h2>
-                <p className="mt-1 text-sm text-muted-foreground">{o.desc}</p>
-              </button>
-            );
-          })}
-        </div>
-        <div>
-          <Button
-            onClick={() => setStep("goal")}
-            disabled={!selected}
-            size="lg"
-            className="h-11 px-8 text-base"
-          >
-            {t.onboarding.next}
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="font-serif text-lg font-medium">{t.onboarding.goalTitle}</h2>
-        <p className="mt-1 text-sm text-muted-foreground">{t.onboarding.goalSubtitle}</p>
-      </div>
-
-      {isExamTrack && selected !== null && (
-        <div>
-          <SectionLabel as="h3" className="mb-3">
-            {t.onboarding.targetScoreLabel}
-          </SectionLabel>
-          <div className="flex flex-wrap gap-2">
-            <Chip active={targetScore === null} onClick={() => setTargetScore(null)}>
-              {t.onboarding.noTarget}
-            </Chip>
-            {TARGET_OPTIONS[selected as "toeic" | "ielts"].map((o) => (
-              <Chip
-                key={o.value}
-                active={targetScore === o.value}
-                onClick={() => setTargetScore(o.value)}
-              >
-                {o.label}
-              </Chip>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {isExamTrack && (
-        <div>
-          <SectionLabel as="h3" className="mb-3">
-            {t.onboarding.examDateLabel}
-          </SectionLabel>
-          <Input
-            type="date"
-            aria-label={t.onboarding.examDateLabel}
-            value={examDate}
-            onChange={(e) => setExamDate(e.target.value)}
-            className="max-w-48"
+    <div>
+      <div className="flex items-center gap-3.5">
+        <div aria-hidden className="flex h-[0.3125rem] flex-1 gap-1.5">
+          <span className="flex-1 rounded-full bg-brand" />
+          <span
+            className={cn(
+              "flex-1 rounded-full transition-colors duration-300",
+              step === "goal" ? "bg-brand" : "bg-track",
+            )}
           />
         </div>
-      )}
-
-      <div>
-        <SectionLabel as="h3" className="mb-3">
-          {t.onboarding.dailyMinutesLabel}
-        </SectionLabel>
-        <div className="flex flex-wrap gap-2">
-          {MINUTE_OPTIONS.map((m) => (
-            <Chip key={m} active={dailyMinutes === m} onClick={() => setDailyMinutes(m)}>
-              {m} {t.onboarding.minutesUnit}
-            </Chip>
-          ))}
-        </div>
+        <span className="text-[0.8125rem] whitespace-nowrap text-muted-foreground tabular-nums">
+          {fill(t.onboarding.step, { i: step === "track" ? 1 : 2 })}
+        </span>
       </div>
 
-      <div>
-        <SectionLabel as="h3" className="mb-3">
-          {t.onboarding.levelLabel}
-        </SectionLabel>
-        <div className="flex max-w-md flex-col gap-2">
-          {SELF_RATED_LEVELS.map((l) => (
-            <Chip
-              key={l}
-              active={level === l}
-              onClick={() => setLevel(level === l ? null : l)}
-              className="text-left"
-            >
-              {levelLabels[l]}
-            </Chip>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex flex-wrap items-center gap-4">
-        <Button variant="outline" onClick={() => setStep("track")} disabled={pending}>
-          {t.onboarding.back}
-        </Button>
-        <Button
-          onClick={() => submit(true)}
-          disabled={pending}
-          size="lg"
-          className="h-11 px-8 text-base"
-        >
-          {pending ? t.common.loading : t.onboarding.confirm}
-        </Button>
-        <button
-          type="button"
-          onClick={() => submit(false)}
-          disabled={pending}
-          className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-        >
-          {t.onboarding.skipGoal}
-        </button>
-      </div>
-      {submitError && (
-        <Callout variant="error" className="p-3 text-sm">
-          {submitError}
-        </Callout>
-      )}
+      {step === "track" ? (
+        <>
+          <h1 className="mt-8 font-serif text-[1.75rem] leading-tight font-medium sm:text-[2.375rem]">
+            {t.onboarding.title}
+          </h1>
+          <p className="mt-2 text-[0.9375rem] text-muted-foreground">{t.onboarding.subtitle}</p>
+          <div className="mt-7 flex flex-col gap-3">
+            {trackOptions.map((o) => {
+              const active = selected === o.track;
+              return (
+                <button
+                  key={o.track}
+                  type="button"
+                  onClick={() => {
+                    setSelected(o.track);
+                    setTargetScore(null);
+                    setExamDate("");
+                  }}
+                  aria-pressed={active}
+                  className={cn(
+                    "flex items-start gap-4 rounded-xl border-[1.5px] p-5 text-left outline-hidden transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                    active
+                      ? "border-brand bg-brand-soft"
+                      : "border-border bg-card hover:border-input",
+                  )}
+                >
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border-[1.5px]",
+                      active ? "border-brand" : "border-input",
+                    )}
+                  >
+                    {active ? <span className="size-2.5 rounded-full bg-brand" /> : null}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="flex flex-wrap items-center gap-2">
+                      <o.icon className="size-[1.125rem] text-soft-2" aria-hidden />
+                      <span className="font-serif text-xl font-medium">{o.label}</span>
+                      <Badge variant={o.accent ? "default" : "accent"}>{o.badge}</Badge>
+                    </span>
+                    <span className="mt-1 block text-sm text-soft-3">{o.desc}</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="mt-8 flex justify-end">
+            <Button onClick={() => setStep("goal")} disabled={!selected} size="lg" className="px-8">
+              {t.onboarding.next}
+              <ArrowRight aria-hidden />
+            </Button>
+          </div>
+        </>
+      ) : selected ? (
+        <>
+          <h1 className="mt-8 font-serif text-[1.75rem] leading-tight font-medium sm:text-[2.375rem]">
+            {t.onboarding.goalTitle}
+          </h1>
+          <p className="mt-2 text-[0.9375rem] text-muted-foreground">{t.onboarding.goalSubtitle}</p>
+          <div className="mt-7">
+            <GoalFields
+              track={selected}
+              targetScore={targetScore}
+              onTargetScore={setTargetScore}
+              examDate={examDate}
+              onExamDate={setExamDate}
+              dailyMinutes={dailyMinutes}
+              onDailyMinutes={setDailyMinutes}
+              level={level}
+              onLevel={setLevel}
+            />
+          </div>
+          {submitError ? (
+            <Callout variant="error" className="mt-6 px-4 py-3 text-sm">
+              {submitError}
+            </Callout>
+          ) : null}
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Button variant="ghost" onClick={() => setStep("track")} disabled={pending}>
+              {t.onboarding.back}
+            </Button>
+            <div className="flex-1" />
+            <Button variant="outline" onClick={() => submit(false)} disabled={pending}>
+              {t.onboarding.skipGoal}
+            </Button>
+            <Button onClick={() => submit(true)} disabled={pending} size="lg" className="px-8">
+              {pending ? t.common.loading : t.onboarding.confirm}
+            </Button>
+          </div>
+        </>
+      ) : null}
     </div>
   );
 }

@@ -1,27 +1,21 @@
+import { LanguageToggle } from "@/components/layout/LanguageToggle";
+import { Wordmark } from "@/components/layout/Wordmark";
 import { OnboardingFlow } from "@/components/onboarding/OnboardingFlow";
-import { EntryHeader } from "@/components/typography/EntryHeader";
-import { SectionLabel } from "@/components/typography/SectionLabel";
 import { getSession } from "@/lib/auth/session";
-import { getDict, localeRedirect } from "@/lib/i18n";
+import { localeRedirect } from "@/lib/i18n";
 
 export default async function OnboardingPage() {
   const session = await getSession();
   if (!session) return localeRedirect("/login");
-  const t = await getDict();
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-6 py-12">
-        <SectionLabel as="p" className="mb-4 text-cinnabar">
-          {t.common.appName}
-        </SectionLabel>
-        <EntryHeader
-          title={t.onboarding.title}
-          ipa={t.entry.onboardingIpa}
-          pos={t.entry.onboardingPos}
-          gloss={t.onboarding.subtitle}
-          className="mb-10"
-        />
+    <div className="min-h-dvh bg-background">
+      <header className="mx-auto flex max-w-[72.5rem] items-center gap-3 px-4 py-5 sm:px-8 lg:px-12">
+        <Wordmark />
+        <div className="flex-1" />
+        <LanguageToggle />
+      </header>
+      <main id="main-content" className="mx-auto max-w-[40rem] px-4 pt-4 pb-16 sm:px-8 sm:pt-10">
         <OnboardingFlow />
       </main>
     </div>
