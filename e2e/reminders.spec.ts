@@ -6,19 +6,24 @@ test.describe("study reminders", () => {
   test("fresh users see no nudge; the toggle flips and persists", async ({ page }) => {
     await registerAndOnboard(page);
 
-    // Fresh account: nothing due, no streak — the nudge stays hidden.
-    await expect(page.getByText(t.dashboard.reminderDueTitle)).toHaveCount(0);
+    // Fresh account: no streak — the at-risk note stays hidden.
     await expect(page.getByText(t.dashboard.reminderStreakTitle)).toHaveCount(0);
 
+    // The toggle lives in Settings.
+    await page.goto("/settings");
     // Default is on; turning it off survives a reload (persisted setting).
-    await page.getByRole("button", { name: t.dashboard.reminderToggleOn }).click();
-    const offButton = page.getByRole("button", { name: t.dashboard.reminderToggleOff });
+    // The reminder toggle comes first on the page (the security section
+    // below reuses the same on/off labels for its own toggle).
+    await page.getByRole("button", { name: t.dashboard.reminderToggleOn }).first().click();
+    const offButton = page.getByRole("button", { name: t.dashboard.reminderToggleOff }).first();
     // The label flips optimistically and the button stays disabled until the
     // server action commits — wait for enabled, or the reload races the write.
     await expect(offButton).toBeVisible();
     await expect(offButton).toBeEnabled();
     await page.reload();
-    await expect(page.getByRole("button", { name: t.dashboard.reminderToggleOff })).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: t.dashboard.reminderToggleOff }).first(),
+    ).toBeVisible();
   });
 
   test("PATCH /api/v1/me/settings flips remindersEnabled", async ({ request }) => {

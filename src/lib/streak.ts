@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { db, type DbExecutor } from "./db";
 import { activityDays, userSettings } from "./db/schema";
 import { calendarDay, computeStreak, DEFAULT_TIME_ZONE } from "./streak-core";
@@ -40,20 +40,6 @@ export async function recordActivityWith(
   await executor.insert(activityDays).values({ userId, day }).onConflictDoNothing();
 }
 
-/**
- * Did any learning action land today (learner-local)? Distinguishes "plan
- * complete" (worked today) from "nothing scheduled" (exhausted earlier) on
- * the dashboard — an empty plan alone can't tell the two apart.
- */
-export async function hasActivityToday(userId: string, timeZone: string): Promise<boolean> {
-  const today = calendarDay(new Date(), timeZone);
-  const row = await db.query.activityDays.findFirst({
-    columns: { day: true },
-    where: and(eq(activityDays.userId, userId), eq(activityDays.day, today)),
-  });
-  return row !== undefined;
-}
-
 export async function getStreak(userId: string, knownTimeZone?: string): Promise<number> {
   const [timeZone, rows] = await Promise.all([
     knownTimeZone ? Promise.resolve(knownTimeZone) : getUserTimeZone(userId),
@@ -65,4 +51,20 @@ export async function getStreak(userId: string, knownTimeZone?: string): Promise
       .limit(366),
   ]);
   return computeStreak(new Set(rows.map((r) => r.day)), new Date(), timeZone);
+}
+
+/** The streak and whether today is already checked in, in one read. */
+export async function getStreakSummary(
+  userId: string,
+  timeZone: string,
+): Promise<{ streak: number; checkedInToday: boolean }> {
+  const rows = await db
+    .select({ day: activityDays.day })
+    .from(activityDays)
+    .where(eq(activityDays.userId, userId))
+    .orderBy(desc(activityDays.day))
+    .limit(366);
+  const days = new Set(rows.map((r) => r.day));
+  const today = calendarDay(new Date(), timeZone);
+  return { streak: computeStreak(days, today), checkedInToday: days.has(today) };
 }

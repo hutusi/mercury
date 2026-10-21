@@ -1,54 +1,53 @@
 "use client";
 
-import { Check, ChevronDown, ChevronRight, X } from "lucide-react";
-import { useId, useState, useTransition } from "react";
-import { QuestionsForm } from "@/components/exercise/QuestionsForm";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { useEffect, useId, useRef, useState, useTransition } from "react";
+import { Callout } from "@/components/ui/callout";
 import { retestMistake, type RetestResult } from "@/lib/actions/mistakes";
-import { formatLearnerDate } from "@/lib/format-date";
-import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
+import { fill } from "@/lib/i18n/fill";
+import { useT } from "@/lib/i18n/LocaleProvider";
 import type { McqMistakeVM } from "@/lib/mistakes";
+import { AnswerOption, OPTION_GRID, type OptionState } from "@/components/exercise/AnswerOption";
+import { MistakeCardShell, RetestButton, RetestOutcome, type CardMeta } from "./RetestParts";
 
 const LETTERS = ["A", "B", "C", "D"];
 
 /**
- * One wrong MCQ (reading/listening/exam): expandable, re-answerable. The
- * answer key arrives only in the retest response — a wrong re-test reveals
- * the correct answer + explanation and offers another try; a correct one
- * clears the mistake (persisted server-side).
+ * One wrong MCQ (reading/listening/exam/book quiz), re-answered in place.
+ * Tapping an option grades it — the answer key only arrives in that retest
+ * response. A wrong retest reveals the key and the explanation and offers
+ * another try; a correct one clears the mistake (persisted server-side) and
+ * "continue" moves the card to the cleared list.
  */
 export function MistakeItem({
   mistake,
-  timeZone,
+  meta,
   onCleared,
+  onDismiss,
 }: {
   mistake: McqMistakeVM;
-  timeZone: string;
-  onCleared?: () => void;
+  meta: CardMeta;
+  onCleared: () => void;
+  onDismiss: () => void;
 }) {
   const t = useT();
-  const locale = useLocale();
-  const detailsId = useId();
   const contextId = useId();
-  const [expanded, setExpanded] = useState(false);
+  const [open, setOpen] = useState(false);
   const [showContext, setShowContext] = useState(false);
-  const [chosen, setChosen] = useState<number | undefined>(undefined);
+  const [chosen, setChosen] = useState<number | null>(null);
   const [graded, setGraded] = useState<RetestResult | null>(null);
-  const [clearedNow, setClearedNow] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  const optionsRef = useRef<HTMLDivElement>(null);
 
-  const cleared = mistake.cleared || clearedNow;
-  // Learner timezone, explicitly — SSR (UTC in prod) and the browser must
-  // agree on the day or React reports a hydration mismatch every evening.
-  const date = formatLearnerDate(new Date(mistake.lastWrongAt), locale, timeZone, {
-    month: "short",
-    day: "numeric",
-  });
+  // Opening (or retrying) moves focus to the first option, so keyboard users
+  // land where the next action is.
+  useEffect(() => {
+    if (open && !graded) optionsRef.current?.querySelector("button")?.focus();
+  }, [open, graded]);
 
-  function submit() {
-    if (chosen === undefined || pending) return;
+  function pick(index: number) {
+    if (pending || graded) return;
+    setChosen(index);
     setError(null);
     startTransition(async () => {
       try {
@@ -56,163 +55,113 @@ export function MistakeItem({
           kind: mistake.kind,
           refId: mistake.refId,
           questionId: mistake.questionId,
-          chosenIndex: chosen,
+          chosenIndex: index,
         });
         setGraded(result);
-        if (result.correct) {
-          setClearedNow(true);
-          onCleared?.();
-        }
+        if (result.correct) onCleared();
       } catch {
+        setChosen(null);
         setError(t.common.submitRetry);
       }
     });
   }
 
-  function tryAgain() {
-    setChosen(undefined);
+  function retry() {
+    setChosen(null);
     setGraded(null);
   }
 
+  function optionState(i: number): OptionState {
+    if (!graded) return chosen === i ? "picked" : "idle";
+    if (i === graded.correctIndex) return "correct";
+    return i === chosen ? "wrong" : "muted";
+  }
+
+  const { question, context } = mistake;
   return (
-    <li className="border-b border-border last:border-0">
-      <button
-        type="button"
-        onClick={() => setExpanded((e) => !e)}
-        aria-expanded={expanded}
-        aria-controls={detailsId}
-        className="flex w-full items-start gap-3 py-3 text-left transition-colors hover:bg-muted/50"
-      >
-        <span aria-hidden className="mt-0.5 shrink-0">
-          {cleared ? <Check className="size-4" /> : <X className="size-4 text-cinnabar" />}
-        </span>
-        <span className="min-w-0 flex-1">
-          <span
-            className={`block truncate text-sm font-medium ${cleared ? "text-muted-foreground" : ""}`}
+    <MistakeCardShell kind={mistake.kind} meta={meta} highlighted={graded?.correct}>
+      <p className="mt-2 text-[0.9375rem] leading-normal font-medium text-pretty">
+        {question.stem}
+      </p>
+
+      {context ? (
+        <div className="mt-2">
+          <button
+            type="button"
+            onClick={() => setShowContext((s) => !s)}
+            aria-expanded={showContext}
+            aria-controls={contextId}
+            className="rounded-sm py-1 text-[0.8125rem] font-medium text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
           >
-            {mistake.question.stem}
-          </span>
-          <span className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-            <Badge variant="outline">{mistake.sourceTitleZh}</Badge>
-            <span className="font-mono tabular-nums">
-              {t.mistakes.wrongLabel} ×{mistake.wrongCount}
-            </span>
-            <span>
-              {t.mistakes.lastWrong} {date}
-            </span>
-          </span>
-        </span>
-        <span aria-hidden className="mt-0.5 shrink-0 text-muted-foreground">
-          {expanded ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}
-        </span>
-      </button>
+            {showContext ? t.mistakes.hideContext : t.mistakes.showContext}
+          </button>
+          {showContext ? (
+            <div
+              id={contextId}
+              className="mt-2 max-h-80 overflow-y-auto rounded-md bg-muted px-4 py-3 text-sm leading-relaxed text-soft-3"
+            >
+              {context.passage ? (
+                <p className="font-serif text-[0.9375rem] whitespace-pre-line">{context.passage}</p>
+              ) : null}
+              {context.script ? (
+                <div className="flex flex-col gap-1.5">
+                  {context.script.map((line, i) => (
+                    <p key={i}>
+                      {line.speaker !== "narrator" ? (
+                        <span className="mr-2 text-xs font-semibold text-muted-foreground">
+                          {line.speaker}
+                        </span>
+                      ) : null}
+                      {line.text}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
 
-      {expanded && (
-        <div id={detailsId} className="space-y-4 pb-5 pl-7">
-          {mistake.context && (
-            <div>
-              <button
-                type="button"
-                onClick={() => setShowContext((s) => !s)}
-                aria-expanded={showContext}
-                aria-controls={contextId}
-                className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+      {open ? (
+        <>
+          <div
+            ref={optionsRef}
+            role="group"
+            aria-label={question.stem}
+            className={`mt-3.5 ${OPTION_GRID}`}
+          >
+            {question.options.map((option, i) => (
+              <AnswerOption
+                key={i}
+                letter={LETTERS[i]}
+                state={optionState(i)}
+                disabled={pending || Boolean(graded)}
+                onClick={() => pick(i)}
               >
-                {showContext ? t.mistakes.hideContext : t.mistakes.showContext}
-              </button>
-              {showContext && (
-                <div
-                  id={contextId}
-                  className="mt-2 border-l-2 border-border pl-4 text-sm text-foreground/80"
-                >
-                  {mistake.context.passage && (
-                    <p className="font-serif whitespace-pre-line">{mistake.context.passage}</p>
-                  )}
-                  {mistake.context.script && (
-                    <div className="space-y-1">
-                      {mistake.context.script.map((line, i) => (
-                        <p key={i}>
-                          <span className="font-mono text-xs text-muted-foreground">
-                            {line.speaker}
-                          </span>{" "}
-                          {line.text}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          )}
-
-          {cleared && !graded ? null : graded ? (
-            <div className="space-y-3">
-              <div className="space-y-1.5 text-sm">
-                {mistake.question.options.map((option, i) => {
-                  const isCorrect = i === graded.correctIndex;
-                  const isChosen = i === chosen;
-                  return (
-                    <div
-                      key={i}
-                      className={`flex items-start gap-2 px-3 py-1.5 ${
-                        isCorrect
-                          ? "bg-muted font-medium text-foreground"
-                          : isChosen
-                            ? "bg-cinnabar/10 text-cinnabar line-through"
-                            : "text-muted-foreground"
-                      }`}
-                    >
-                      <span className="font-mono font-medium">{LETTERS[i]}.</span>
-                      <span>{option}</span>
-                      {isCorrect && (
-                        <Check className="mt-0.5 ml-auto size-4 shrink-0" aria-hidden />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="bg-muted p-3 text-sm text-foreground/80">
-                <span className="font-semibold text-foreground">{t.reading.explanationLabel}</span>
-                {graded.explanationZh}
-              </div>
-              {graded.correct ? (
-                <p className="flex items-center gap-1.5 text-sm font-medium">
-                  <Check className="size-4" aria-hidden />
-                  {t.mistakes.retestCorrect}
-                </p>
-              ) : (
-                <div className="flex items-center gap-3">
-                  <p className="flex items-center gap-1.5 text-sm font-medium text-cinnabar">
-                    <X className="size-4" aria-hidden />
-                    {t.mistakes.retestWrong}
-                  </p>
-                  <Button variant="outline" size="sm" onClick={tryAgain}>
-                    {t.common.tryAgain}
-                  </Button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="space-y-3">
-              <QuestionsForm
-                questions={[mistake.question]}
-                answers={chosen === undefined ? {} : { [mistake.question.id]: chosen }}
-                onAnswer={(_, optionIndex) => setChosen(optionIndex)}
-                disabled={pending}
-                numbered={false}
-              />
-              <Button onClick={submit} disabled={chosen === undefined || pending}>
-                {t.common.submit}
-              </Button>
-              {error && (
-                <p role="alert" className="text-sm font-medium text-destructive">
-                  {error}
-                </p>
-              )}
-            </div>
-          )}
+                {option}
+              </AnswerOption>
+            ))}
+          </div>
+          {graded ? (
+            <RetestOutcome
+              correct={graded.correct}
+              explanation={graded.explanationZh}
+              askHref={`/tutor?ask=${encodeURIComponent(fill(t.mistakes.askPrompt, { q: question.stem }))}`}
+              onRetry={retry}
+              onContinue={onDismiss}
+            />
+          ) : null}
+        </>
+      ) : (
+        <div className="mt-3">
+          <RetestButton onClick={() => setOpen(true)} />
         </div>
       )}
-    </li>
+      {error ? (
+        <Callout variant="error" className="mt-3 px-3 py-2 text-sm">
+          {error}
+        </Callout>
+      ) : null}
+    </MistakeCardShell>
   );
 }

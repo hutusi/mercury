@@ -80,7 +80,7 @@ test("personal collections are unfiltered: cross-track mistakes surface, no chip
   await page.goto("/mistakes");
   await expect(page.getByRole("heading", { name: t.nav.mistakes })).toBeVisible();
   await expect(page.getByRole("navigation", { name: t.filters.byTrack })).toHaveCount(0);
-  await expect(page.getByText(t.mistakes.lastWrong).first()).toBeVisible();
+  await expect(page.locator('li[data-mistake-kind="reading"]').first()).toBeVisible();
 
   // Vocabulary overview and study session carry no filter nav either.
   await page.goto("/vocabulary");

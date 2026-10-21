@@ -1,90 +1,86 @@
-import { Settings2 } from "lucide-react";
 import { getDict } from "@/lib/i18n";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import type { ShellMetas } from "@/lib/queries/shell";
+import { BottomTabs } from "./BottomTabs";
 import { LanguageToggle } from "./LanguageToggle";
-import { NavLinks } from "./NavLinks";
-import { SignOutButton } from "./SignOutButton";
+import { ProfileMenu } from "./ProfileMenu";
+import { SideNav } from "./SideNav";
 import { SkipLink } from "./SkipLink";
-import { ThemeToggle } from "./ThemeToggle";
+import { Wordmark } from "./Wordmark";
 
-export function Wordmark({ compact = false }: { compact?: boolean }) {
-  return (
-    <span className="flex items-center gap-2.5">
-      {/* Square cinnabar seal (印章) — deliberately the only filled-red surface. */}
-      <span
-        className={`flex items-center justify-center bg-cinnabar font-serif font-semibold text-cinnabar-foreground ${
-          compact ? "size-7 text-sm" : "size-8"
-        }`}
-        aria-hidden
-      >
-        M
-      </span>
-      <span className="font-serif text-lg font-semibold tracking-tight">Mercury</span>
-    </span>
-  );
-}
-
+/**
+ * The hub-page shell. Desktop: a 248px sidebar (wordmark, grouped nav, the
+ * plan card slot, the avatar menu and 中/EN). Phones: a 58px top bar and four
+ * bottom tabs. `--chrome-top` tells sticky page elements how much fixed chrome
+ * sits above them; `--bottom-nav-h` how much sits below (the phone tabs).
+ */
 export async function AppShell({
   userName,
   isAdmin = false,
+  metas,
+  planCard,
   banner,
   children,
 }: {
   userName: string;
   isAdmin?: boolean;
-  /** Persistent notice under the header (e.g. the unverified-email nudge). */
+  /** Live nav numbers, streamed — never awaited by the shell. */
+  metas: Promise<ShellMetas>;
+  /** The sidebar's mini "today's plan" card (desktop only). */
+  planCard?: React.ReactNode;
+  /** Persistent notice above the page (e.g. the unverified-email nudge). */
   banner?: React.ReactNode;
   children: React.ReactNode;
 }) {
   const t = await getDict();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-dvh bg-background [--bottom-nav-h:calc(4rem+env(safe-area-inset-bottom))] [--chrome-top:3.625rem] md:flex md:[--bottom-nav-h:0px] md:[--chrome-top:0px]">
       <SkipLink label={t.a11y.skipToContent} />
-      {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-20 hidden w-60 flex-col border-r border-sidebar-border bg-sidebar px-4 py-6 md:flex">
-        <Link href="/dashboard" className="px-2" aria-label={t.common.appName}>
+
+      <aside className="sticky top-0 hidden h-dvh w-62 shrink-0 flex-col gap-4 overflow-x-hidden overflow-y-auto border-r border-border px-3.5 pt-[1.125rem] pb-3.5 md:flex">
+        <Link
+          href="/dashboard"
+          aria-label={t.common.appName}
+          className="w-fit rounded-md px-2.5 py-1 outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+        >
           <Wordmark />
         </Link>
-        <nav className="mt-8 flex flex-col gap-1">
-          <NavLinks orientation="vertical" isAdmin={isAdmin} />
-        </nav>
+        <SideNav metas={metas} />
+        {planCard}
+        <div className="flex-1" />
+        <div className="flex items-center gap-2.5 px-1.5">
+          <ProfileMenu name={userName} isAdmin={isAdmin} metas={metas} variant="sidebar" />
+          <LanguageToggle />
+        </div>
       </aside>
 
-      <div className="md:pl-60">
-        {/* Top bar */}
-        <header className="sticky top-0 z-10 border-b bg-background">
-          <div className="flex h-14 items-center justify-between gap-3 px-4 sm:px-6">
-            <Link href="/dashboard" className="md:hidden" aria-label={t.common.appName}>
-              <Wordmark compact />
-            </Link>
-            <div className="flex flex-1 items-center justify-end gap-2">
-              <LanguageToggle />
-              <ThemeToggle />
-              <Link
-                href="/settings"
-                aria-label={t.nav.settings}
-                className="inline-flex size-9 items-center justify-center text-foreground outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <Settings2 className="size-4" aria-hidden />
-              </Link>
-              <span className="hidden max-w-32 truncate text-sm font-medium text-muted-foreground sm:block">
-                {userName}
-              </span>
-              <SignOutButton label={t.common.signOut} />
-            </div>
-          </div>
-          {/* Mobile nav strip */}
-          <nav className="flex gap-1 overflow-x-auto px-4 pb-2 md:hidden">
-            <NavLinks orientation="horizontal" isAdmin={isAdmin} />
-          </nav>
+      <div className="flex min-w-0 flex-1 flex-col">
+        <header className="sticky top-0 z-20 flex h-[3.625rem] items-center gap-2.5 border-b border-border bg-background px-4 md:hidden">
+          <Link
+            href="/dashboard"
+            aria-label={t.common.appName}
+            className="rounded-md outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Wordmark compact />
+          </Link>
+          <div className="flex-1" />
+          <LanguageToggle />
+          <ProfileMenu name={userName} isAdmin={isAdmin} metas={metas} variant="compact" />
         </header>
 
-        {banner && <div className="mx-auto max-w-5xl px-4 pt-6 sm:px-6">{banner}</div>}
+        {banner ? (
+          <div className="mx-auto w-full max-w-[68.75rem] px-4 pt-6 sm:px-8 lg:px-12">{banner}</div>
+        ) : null}
 
-        <main id="main-content" className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+        <main
+          id="main-content"
+          className="mx-auto w-full max-w-[68.75rem] flex-1 px-4 pt-6 pb-28 sm:px-8 md:pt-12 md:pb-16 lg:px-12"
+        >
           {children}
         </main>
+
+        <BottomTabs metas={metas} />
       </div>
     </div>
   );

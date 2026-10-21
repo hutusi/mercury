@@ -1,5 +1,12 @@
 import { describe, expect, test } from "bun:test";
-import { calendarDay, computeStreak, isIanaTimeZone, shiftCalendarDay } from "./streak-core";
+import {
+  calendarDay,
+  computeStreak,
+  isIanaTimeZone,
+  shiftCalendarDay,
+  weekDots,
+  learnerDayRange,
+} from "./streak-core";
 
 // Noon avoids any DST-edge weirdness when walking days backwards.
 const day = (iso: string) => new Date(`${iso}T12:00:00`);
@@ -68,5 +75,57 @@ describe("computeStreak", () => {
     // Nothing today; streak = yesterday + the day before.
     const days = new Set(["2026-07-01", "2026-06-30"]);
     expect(computeStreak(days, day("2026-07-02"))).toBe(2);
+  });
+});
+
+describe("learnerDayRange", () => {
+  const hours = (r: { start: Date; end: Date }) =>
+    (r.end.getTime() - r.start.getTime()) / 3_600_000;
+
+  test("maps a Shanghai day to its UTC window", () => {
+    const r = learnerDayRange("2026-10-21", "Asia/Shanghai");
+    expect(r.start.toISOString()).toBe("2026-10-20T16:00:00.000Z");
+    expect(r.end.toISOString()).toBe("2026-10-21T16:00:00.000Z");
+  });
+
+  test("handles DST: 23-hour spring-forward and 25-hour fall-back days", () => {
+    const spring = learnerDayRange("2026-03-08", "America/New_York");
+    expect(spring.start.toISOString()).toBe("2026-03-08T05:00:00.000Z");
+    expect(hours(spring)).toBe(23);
+    const fall = learnerDayRange("2026-11-01", "America/New_York");
+    expect(fall.start.toISOString()).toBe("2026-11-01T04:00:00.000Z");
+    expect(hours(fall)).toBe(25);
+  });
+
+  test("agrees with calendarDay at both edges", () => {
+    const r = learnerDayRange("2026-07-01", "Europe/London");
+    expect(calendarDay(r.start, "Europe/London")).toBe("2026-07-01");
+    expect(calendarDay(new Date(r.end.getTime() - 1), "Europe/London")).toBe("2026-07-01");
+    expect(calendarDay(r.end, "Europe/London")).toBe("2026-07-02");
+  });
+});
+
+describe("weekDots", () => {
+  test("lays out Monday to Sunday around today with activity marks", () => {
+    // 2026-10-21 is a Wednesday.
+    const dots = weekDots(new Set(["2026-10-19", "2026-10-21", "2026-10-25"]), "2026-10-21");
+    expect(dots.map((d) => d.day)).toEqual([
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-24",
+      "2026-10-25",
+    ]);
+    expect(dots.map((d) => d.active)).toEqual([true, false, true, false, false, false, true]);
+    expect(dots[2]).toMatchObject({ isToday: true, isFuture: false });
+    expect(dots[3].isFuture).toBe(true);
+  });
+
+  test("a Sunday is the last dot of its week", () => {
+    const dots = weekDots(new Set(), "2026-10-25");
+    expect(dots[0].day).toBe("2026-10-19");
+    expect(dots[6]).toMatchObject({ day: "2026-10-25", isToday: true });
   });
 });

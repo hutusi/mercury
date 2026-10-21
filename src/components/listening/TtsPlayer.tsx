@@ -6,6 +6,7 @@ import { Callout } from "@/components/ui/callout";
 import type { ScriptLine } from "@/content/types";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createScriptSpeaker, ttsSupported, type ScriptSpeaker } from "@/lib/speech";
+import { cn } from "@/lib/utils";
 
 /**
  * Plays pre-generated neural audio when the exercise has it (ADR 0021) and
@@ -18,10 +19,12 @@ export function TtsPlayer({
   script,
   audioUrl,
   maxPlays,
+  className,
 }: {
   script: ScriptLine[];
   audioUrl?: string | null;
   maxPlays?: number;
+  className?: string;
 }) {
   const t = useT();
   const [mounted, setMounted] = useState(false);
@@ -65,7 +68,7 @@ export function TtsPlayer({
 
   if (!audioMode && !ttsSupported()) {
     return (
-      <Callout variant="error" className="p-4 text-sm">
+      <Callout variant="error" className={cn("p-4 text-sm", className)}>
         {t.listening.ttsUnsupported}
       </Callout>
     );
@@ -162,7 +165,7 @@ export function TtsPlayer({
   const exhausted = !playing && !resumable && maxPlays !== undefined && playCount >= maxPlays;
 
   return (
-    <div className="border border-border p-5">
+    <div className={cn("rounded-xl border border-border bg-card p-5 shadow-raised", className)}>
       {audioMode && (
         <audio
           ref={attachAudio}
@@ -190,21 +193,24 @@ export function TtsPlayer({
         <button
           onClick={playing ? (audioMode ? pauseAudio : stopTts) : audioMode ? playAudio : playTts}
           disabled={exhausted}
-          className={`flex h-12 w-12 shrink-0 items-center justify-center outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-            playing
-              ? "bg-cinnabar text-cinnabar-foreground hover:bg-cinnabar/90"
-              : exhausted
-                ? "bg-muted text-muted-foreground"
-                : "bg-primary text-primary-foreground hover:bg-primary/85"
-          }`}
+          className={cn(
+            "flex size-14 shrink-0 items-center justify-center rounded-full outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            exhausted
+              ? "bg-muted text-muted-foreground"
+              : "bg-brand text-brand-foreground hover:bg-brand/90",
+          )}
           aria-label={playing ? t.listening.pause : t.listening.play}
         >
           <span aria-hidden>
-            {playing ? <Pause className="size-5" /> : <Play className="size-5" />}
+            {playing ? (
+              <Pause className="size-6" fill="currentColor" />
+            ) : (
+              <Play className="ml-0.5 size-6" fill="currentColor" />
+            )}
           </span>
         </button>
-        <div className="flex-1">
-          <p className="text-sm font-medium text-foreground/80">
+        <div className="min-w-0 flex-1">
+          <p className="text-[0.9375rem] font-medium">
             {playing
               ? t.listening.playing
               : exhausted
@@ -215,12 +221,12 @@ export function TtsPlayer({
                     ? t.listening.replay
                     : t.listening.play}
           </p>
-          <div className="mt-2 h-1 overflow-hidden bg-muted">
-            <div className="h-full bg-primary" style={{ width: `${progress}%` }} />
+          <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-track">
+            <div className="h-full rounded-full bg-brand" style={{ width: `${progress}%` }} />
           </div>
         </div>
       </div>
-      <p className="mt-3 text-xs text-muted-foreground/70">
+      <p className="mt-3.5 text-xs text-muted-foreground">
         {t.listening.listenFirst}
         {audioFailed && <> · {t.listening.usingBrowserTts}</>}
       </p>

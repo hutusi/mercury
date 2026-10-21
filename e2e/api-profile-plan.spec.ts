@@ -1,5 +1,17 @@
 import { expect, test } from "@playwright/test";
+import { and, eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
+import { srsCards, user as userTable } from "../src/lib/db/schema";
 import { apiSignUpAndOnboard } from "./api-helpers";
+import { e2eDatabaseUrl } from "./db-url";
+
+const pool = new Pool({ connectionString: e2eDatabaseUrl(), max: 2 });
+const testDb = drizzle(pool);
+
+test.afterAll(async () => {
+  await pool.end();
+});
 
 test.describe("API learner profile + daily plan", () => {
   test("defaults → PATCH goals → practice signal moves an estimate → plan follows", async ({
@@ -163,5 +175,125 @@ test.describe("API learner profile + daily plan", () => {
     expect(reset.goalTrack).toBe("toeic");
     expect(reset.targetScore).toBeNull();
     expect(reset.examDate).toBeNull();
+  });
+});
+
+test.describe("API persistent daily route (ADR 0033)", () => {
+  type Stop = { key: string; kind: string; refId?: string; status: string };
+
+  test("finished stops stay on the route; skips round-trip; a goal edit regenerates the tail", async ({
+    request,
+  }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const get = async () =>
+      (await request.get("/api/v1/plan", { headers: user.authHeaders })).json();
+
+    const first = await get();
+    expect(first.stops.length).toBeGreaterThan(0);
+    expect(first.stops[0].status).toBe("current");
+    expect(first.summary.done).toBe(0);
+    // The day is frozen: a second read is the same snapshot.
+    expect((await get()).stops.map((s: Stop) => s.key)).toEqual(
+      first.stops.map((s: Stop) => s.key),
+    );
+
+    // Finish the planned reading exercise: it stays on the route as done
+    // (the pre-route plan dropped it and suggested another one).
+    const reading = first.stops.find((s: Stop) => s.kind === "reading");
+    expect(reading).toBeTruthy();
+    const detail = await (
+      await request.get(`/api/v1/reading/${reading.refId}`, { headers: user.authHeaders })
+    ).json();
+    const answers: Record<string, number> = {};
+    for (const q of detail.questions) answers[q.id] = 0;
+    const attempt = await request.post(`/api/v1/exercises/reading/${reading.refId}/attempts`, {
+      headers: user.authHeaders,
+      data: { requestId: crypto.randomUUID(), answers, durationSeconds: 30 },
+    });
+    expect(attempt.status()).toBe(200);
+    const afterReading = await get();
+    const doneStop = afterReading.stops.find((s: Stop) => s.key === reading.key);
+    expect(doneStop.status).toBe("done");
+    expect(doneStop.progress).toMatchObject({ type: "score", total: detail.questions.length });
+    expect(afterReading.summary.done).toBe(1);
+    // `items` keeps its old meaning: what is still left.
+    expect(afterReading.items.some((i: Stop) => i.refId === reading.refId)).toBe(false);
+
+    // Skip the current stop, then bring it back.
+    const current = afterReading.stops.find((s: Stop) => s.status === "current");
+    const skipRes = await request.post("/api/v1/plan/skips", {
+      headers: user.authHeaders,
+      data: { day: afterReading.generatedFor, key: current.key, skipped: true },
+    });
+    expect(skipRes.status()).toBe(200);
+    const skipped = await skipRes.json();
+    expect(skipped.stops.find((s: Stop) => s.key === current.key).status).toBe("skipped");
+    // Every write bumps the revision, so a regeneration racing a skip loses
+    // its optimistic swap instead of erasing the skip.
+    expect(skipped.revision).toBe(afterReading.revision + 1);
+    const unskip = await (
+      await request.post("/api/v1/plan/skips", {
+        headers: user.authHeaders,
+        data: { day: afterReading.generatedFor, key: current.key, skipped: false },
+      })
+    ).json();
+    expect(unskip.stops.find((s: Stop) => s.key === current.key).status).toBe("current");
+
+    // A stale day (a screen left open past midnight) is a 409; an unknown stop a 404.
+    const stale = await request.post("/api/v1/plan/skips", {
+      headers: user.authHeaders,
+      data: { day: "2001-01-01", key: current.key, skipped: true },
+    });
+    expect(stale.status()).toBe(409);
+    expect((await stale.json()).error.code).toBe("plan_day_changed");
+    const unknown = await request.post("/api/v1/plan/skips", {
+      headers: user.authHeaders,
+      data: { day: afterReading.generatedFor, key: "reading:nope", skipped: true },
+    });
+    expect(unknown.status()).toBe(404);
+
+    // Editing a plan-shaping goal regenerates the untouched tail but keeps
+    // what was already done.
+    const patch = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { dailyMinutes: 60 },
+    });
+    expect(patch.status()).toBe(200);
+    const regenerated = await get();
+    expect(regenerated.revision).toBeGreaterThan(unskip.revision);
+    expect(regenerated.dailyMinutes).toBe(60);
+    expect(regenerated.stops.find((s: Stop) => s.key === reading.key)?.status).toBe("done");
+  });
+
+  test("a word learned today and due again never becomes an unreachable review target", async ({
+    request,
+  }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const { cards } = await (
+      await request.get("/api/v1/vocab/study-queue", { headers: user.authHeaders })
+    ).json();
+    const wordId = cards[0].wordId;
+    const again = await request.post("/api/v1/vocab/grade", {
+      headers: user.authHeaders,
+      data: { wordId, grade: 1, requestId: crypto.randomUUID() },
+    });
+    expect(again.status()).toBe(200);
+
+    // "Again" brings the card back in ten minutes; skip the wait.
+    const [account] = await testDb
+      .select({ id: userTable.id })
+      .from(userTable)
+      .where(eq(userTable.email, user.email));
+    await testDb
+      .update(srsCards)
+      .set({ dueAt: new Date(Date.now() - 60_000) })
+      .where(and(eq(srsCards.userId, account.id), eq(srsCards.wordId, wordId)));
+
+    // Today's plan is built now, with that card due. Its reviews count as
+    // new-word progress, so it must not set a review target they can't meet.
+    const plan = await (await request.get("/api/v1/plan", { headers: user.authHeaders })).json();
+    const kinds = plan.stops.map((s: Stop) => s.kind);
+    expect(kinds).not.toContain("vocab_review");
+    expect(kinds).toContain("vocab_new");
   });
 });

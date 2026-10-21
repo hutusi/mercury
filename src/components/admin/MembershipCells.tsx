@@ -60,15 +60,15 @@ export function MembershipCells({
 
   return (
     <>
-      <td className="px-3 py-2">
+      <td className="px-4 py-3">
         <Badge variant={membership.tier === "premium" ? "accent" : "outline"}>
           {membership.tier === "premium" ? t.admin.tierPremium : t.admin.tierFree}
         </Badge>
       </td>
-      <td className="px-3 py-2 text-muted-foreground">
+      <td className="px-4 py-3 text-muted-foreground">
         {membership.tier === "premium" ? (membership.expiresAt ?? t.common.noExpiry) : "—"}
       </td>
-      <td className="px-3 py-2">
+      <td className="px-4 py-3">
         <div className="flex items-center gap-2">
           {membership.tier === "free" ? (
             <>
@@ -105,7 +105,7 @@ export function MembershipCells({
           {error ? (
             // role="alert": the failure lands after an async action with no
             // focus move, so screen readers need the live region to hear it.
-            <span role="alert" className="text-xs text-cinnabar">
+            <span role="alert" className="text-xs text-destructive">
               {error === "invalid_input" ? t.admin.invalidExpiry : t.admin.actionFailed}
             </span>
           ) : null}

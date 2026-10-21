@@ -1,164 +1,148 @@
 "use client";
 
-import { Lock } from "lucide-react";
-import { useEffect, useRef, useState, useTransition } from "react";
-import { QuestionsForm } from "@/components/exercise/QuestionsForm";
-import { NextStepFooter } from "@/components/exercise/NextStepFooter";
-import { ResultSummary } from "@/components/exercise/ResultSummary";
-import { SectionLabel } from "@/components/typography/SectionLabel";
+import { ArrowRight, Lock } from "lucide-react";
+import { useState } from "react";
+import {
+  ExercisePanel,
+  ExerciseSplit,
+  type ExerciseTab,
+} from "@/components/exercise/ExerciseParts";
+import { useExerciseAttempt } from "@/components/exercise/useExerciseAttempt";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Callout } from "@/components/ui/callout";
 import type { SanitizedQuestion, ScriptLine } from "@/content/types";
-import { submitExerciseAttempt, type GradedExercise } from "@/lib/actions/attempts";
-import { useAnswerDraft } from "@/components/exercise/useAnswerDraft";
-import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
+import { fill } from "@/lib/i18n/fill";
 import { useT } from "@/lib/i18n/LocaleProvider";
+import { cn } from "@/lib/utils";
 import { TtsPlayer } from "./TtsPlayer";
 
+/**
+ * A listening exercise: the player, then the questions. The transcript stays
+ * locked until the answers are in — reading along would turn it into a
+ * reading exercise — and unlocks beside the explanations afterwards.
+ */
 export function ListeningRunner({
   exerciseId,
+  title,
+  titleZh,
+  style,
   script,
   audioUrl,
   questions,
-  crossPromo,
+  nextStop,
   nextHref,
+  crossPromo,
 }: {
   exerciseId: string;
+  title: string;
+  titleZh: string;
+  style: string;
   script: ScriptLine[];
   audioUrl?: string | null;
   questions: SanitizedQuestion[];
-  crossPromo?: React.ReactNode;
+  /** Server-rendered next-stop CTA when this exercise is a plan stop. */
+  nextStop?: React.ReactNode;
   /** First unattempted sibling exercise, resolved server-side. */
   nextHref?: string | null;
+  crossPromo?: React.ReactNode;
 }) {
   const t = useT();
-  const [answers, setAnswers] = useState<Record<string, number>>({});
-  const [result, setResult] = useState<GradedExercise | null>(null);
-  const [usedSeconds, setUsedSeconds] = useState<number | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [pending, startTransition] = useTransition();
-  const startedAt = useRef(0);
-  const requestRef = useRef<LogicalRequestId | null>(null);
-  const draft = useAnswerDraft({
+  const [tab, setTab] = useState<ExerciseTab>("material");
+  const attempt = useExerciseAttempt({
     kind: "listening",
-    id: exerciseId,
+    exerciseId,
     questions,
-    answers,
-    enabled: !result && !pending,
-    onRestore: setAnswers,
+    onGraded: () => setTab("questions"),
   });
+  const { answeredCount, result } = attempt;
 
-  useEffect(() => {
-    startedAt.current = Date.now();
-  }, []);
-
-  function submit() {
-    setError(null);
-    const duration = Math.round((Date.now() - startedAt.current) / 1000);
-    startTransition(async () => {
-      try {
-        // A retry after a lost response reuses the same id (answers unchanged),
-        // so the server replays instead of writing a second attempt.
-        const request = requestIdForInput(requestRef.current, JSON.stringify(answers));
-        requestRef.current = request;
-        const graded = await submitExerciseAttempt({
-          requestId: request.requestId,
-          kind: "listening",
-          refId: exerciseId,
-          answers,
-          durationSeconds: duration,
-        });
-        requestRef.current = null;
-        draft.clear();
-        setUsedSeconds(duration);
-        setResult(graded);
-        window.scrollTo({ top: 0 });
-      } catch {
-        setError(t.common.submitRetry);
-      }
-    });
-  }
-
-  const answeredCount = Object.keys(answers).length;
-
-  if (result) {
-    return (
-      <div className="space-y-6">
-        <ResultSummary
-          questions={questions}
-          answers={answers}
-          graded={result.perQuestion}
-          score={result.score}
-          total={result.total}
-          durationSeconds={usedSeconds ?? undefined}
-        />
-        {/* Transcript unlocks only after submission */}
-        <div className="border-y border-border py-6">
-          <SectionLabel as="h2" className="mb-4">
-            {t.listening.transcript}
-          </SectionLabel>
-          <div className="space-y-3">
-            {script.map((line, i) => (
-              <p key={i} className="text-sm leading-relaxed text-foreground/80">
-                {line.speaker !== "narrator" && (
-                  <span
-                    className={`mr-2 inline-flex h-5 w-5 items-center justify-center rounded-sm font-mono text-xs font-medium ${
-                      line.speaker === "A"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-foreground"
-                    }`}
-                  >
-                    {line.speaker}
-                  </span>
-                )}
-                {line.text}
-              </p>
-            ))}
-          </div>
-        </div>
-        {crossPromo}
-        <NextStepFooter
-          nextHref={nextHref}
-          wrongCount={result.perQuestion.filter((q) => !q.correct).length}
-          backHref="/listening"
-          backLabel={t.reading.backToList}
-        />
-      </div>
-    );
+  function toQuestions() {
+    setTab("questions");
+    window.scrollTo({ top: 0 });
   }
 
   return (
-    <div className="space-y-6">
-      <TtsPlayer script={script} audioUrl={audioUrl} />
-      <div className="border border-dashed border-border p-3 text-center text-xs text-muted-foreground">
-        <span aria-hidden>
-          <Lock className="inline size-4" />
-        </span>{" "}
-        {t.listening.transcriptLocked}
-      </div>
-      <QuestionsForm
-        questions={questions}
-        answers={answers}
-        onAnswer={(id, i) => setAnswers((a) => ({ ...a, [id]: i }))}
-        // Locked while the submit is in flight: a changed pick mid-request
-        // would mint a new idempotency key and could record a second attempt.
-        disabled={pending}
-      />
-      {error && (
-        <Callout variant="error" className="p-3 text-center text-sm">
-          {error}
-        </Callout>
-      )}
-      <Button
-        onClick={submit}
-        disabled={pending || answeredCount < questions.length}
-        size="lg"
-        className="h-11 w-full disabled:cursor-not-allowed"
-      >
-        {pending
-          ? t.common.loading
-          : `${t.listening.submitAnswers} (${answeredCount}/${questions.length})`}
-      </Button>
-    </div>
+    <ExerciseSplit
+      tab={tab}
+      onTab={setTab}
+      materialLabel={t.listening.material}
+      questionsLabel={
+        result
+          ? t.reading.questionsTab
+          : `${t.reading.questionsTab} · ${answeredCount}/${questions.length}`
+      }
+      sticky={!result}
+      material={
+        <div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge>{style}</Badge>
+            <span className="text-[0.8125rem] text-muted-foreground">
+              {fill(t.listening.meta, { n: questions.length })}
+            </span>
+          </div>
+          <h1 className="mt-4 font-serif text-[1.75rem] leading-tight font-medium text-balance sm:text-4xl">
+            {title}
+          </h1>
+          <p className="mt-2 font-serif text-base text-muted-foreground">{titleZh}</p>
+          <TtsPlayer script={script} audioUrl={audioUrl} className="mt-6" />
+          {result ? (
+            <section aria-labelledby="listening-transcript" className="mt-8">
+              <h2 id="listening-transcript" className="text-[0.9375rem] font-semibold">
+                {t.listening.transcript}
+              </h2>
+              <ol className="mt-4 flex flex-col gap-3.5">
+                {script.map((line, i) => (
+                  <li key={i} className="flex gap-3 text-[0.9375rem] leading-[1.7]">
+                    {line.speaker !== "narrator" ? (
+                      <span
+                        className={cn(
+                          "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold",
+                          line.speaker === "A"
+                            ? "bg-brand-soft text-brand-ink"
+                            : "bg-track text-soft-2",
+                        )}
+                      >
+                        <span aria-hidden>{line.speaker}</span>
+                        <span className="sr-only">
+                          {fill(t.listening.speaker, { s: line.speaker })}
+                        </span>
+                      </span>
+                    ) : null}
+                    <p className={cn("text-pretty", line.speaker === "narrator" && "text-soft")}>
+                      {line.text}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ) : (
+            <>
+              <p className="mt-4 flex items-center justify-center gap-2 rounded-lg border border-dashed border-input px-4 py-3 text-center text-[0.8125rem] text-muted-foreground">
+                <Lock className="size-3.5 shrink-0" aria-hidden />
+                {t.listening.transcriptLocked}
+              </p>
+              <Button size="lg" className="mt-8 w-full md:hidden" onClick={toQuestions}>
+                {t.listening.toQuestions}
+                <ArrowRight aria-hidden />
+              </Button>
+            </>
+          )}
+        </div>
+      }
+      panel={
+        <ExercisePanel
+          headingId="listening-questions"
+          heading={t.reading.questions}
+          questions={questions}
+          attempt={attempt}
+          submitLabel={t.listening.submitAnswers}
+          nextStop={nextStop}
+          nextHref={nextHref}
+          backHref="/listening"
+          backLabel={t.reading.backToList}
+          after={crossPromo}
+        />
+      }
+    />
   );
 }

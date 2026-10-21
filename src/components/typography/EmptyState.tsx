@@ -13,12 +13,12 @@ export function EmptyState({
   return (
     <div
       className={cn(
-        "border-y border-border py-12 text-center text-sm text-muted-foreground",
+        "rounded-2xl border border-dashed border-input px-5 py-10 text-center text-muted-foreground",
         className,
       )}
     >
       {children}
-      {action && <div className="mt-4">{action}</div>}
+      {action && <div className="mt-5 flex justify-center">{action}</div>}
     </div>
   );
 }

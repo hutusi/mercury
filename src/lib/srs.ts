@@ -5,6 +5,11 @@
 
 export type ReviewGrade = 1 | 3 | 4 | 5; // Again / Hard / Good / Easy
 
+/** One study session serves at most this many due cards… */
+export const MAX_DUE_PER_SESSION = 30;
+/** …and tops up with at most this many unseen words. */
+export const MAX_NEW_PER_SESSION = 10;
+
 export interface SrsState {
   easeFactor: number; // starts at 2.5, floored at 1.3
   intervalDays: number; // 0 while learning
@@ -70,4 +75,59 @@ export function scheduleReview(
     lapses: state.lapses,
     dueAt: new Date(now.getTime() + intervalDays * DAY_MS),
   };
+}
+
+/**
+ * The timestamp for a review applied under the card lock: the wall clock,
+ * nudged just past the card's previous review when it isn't later. Review
+ * order must be the order grades were applied — a grade that waited on the
+ * lock, or ran on a server whose clock lags, still sorts after the review it
+ * waited for — because undo's "latest review" check (ADR 0031) relies on it.
+ */
+export function reviewTimestamp(clock: Date, lastReviewedAt: Date | null): Date {
+  if (lastReviewedAt && clock.getTime() <= lastReviewedAt.getTime()) {
+    return new Date(lastReviewedAt.getTime() + 1);
+  }
+  return clock;
+}
+
+/** A grade can be undone for this long after it was given. */
+export const UNDO_WINDOW_MS = 10 * 60 * 1000;
+
+export type UndoDecision = "ok" | "expired" | "superseded" | "unavailable";
+
+/**
+ * Whether a logged review may be reverted: only the card's latest review
+ * (a later grade has built on it otherwise), only within the undo window,
+ * and only if the log carries the pre-review snapshot (rows written before
+ * ADR 0031 don't).
+ */
+export function undoDecision(
+  log: { id: string; reviewedAt: Date; hasSnapshot: boolean },
+  latestLogIdForCard: string | null,
+  now: Date,
+): UndoDecision {
+  if (!log.hasSnapshot) return "unavailable";
+  if (latestLogIdForCard !== log.id) return "superseded";
+  if (now.getTime() - log.reviewedAt.getTime() > UNDO_WINDOW_MS) return "expired";
+  return "ok";
+}
+
+export type NextReview =
+  | { unit: "minutes"; n: number }
+  | { unit: "tomorrow" }
+  | { unit: "days"; n: number }
+  | { unit: "months"; n: number };
+
+/**
+ * When a card would come back after this grade — shown on each grade button
+ * ("10 分钟后", "明天", "6 天后") so the choice has visible consequences.
+ * Pure: the same scheduleReview the server applies.
+ */
+export function previewNextReview(state: SrsState, grade: ReviewGrade): NextReview {
+  if (grade < 3) return { unit: "minutes", n: AGAIN_DELAY_MS / 60_000 };
+  const { intervalDays } = scheduleReview(state, grade);
+  if (intervalDays <= 1) return { unit: "tomorrow" };
+  if (intervalDays < 45) return { unit: "days", n: intervalDays };
+  return { unit: "months", n: Math.round(intervalDays / 30) };
 }

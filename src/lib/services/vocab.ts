@@ -1,11 +1,17 @@
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "../db";
 import { isUniqueViolation } from "../db/pg-errors";
 import { reviewLogs, srsCards, vocabWords } from "../db/schema";
-import { scheduleReview, type ReviewGrade, type SrsState } from "../srs";
+import {
+  reviewTimestamp,
+  scheduleReview,
+  undoDecision,
+  type ReviewGrade,
+  type SrsState,
+} from "../srs";
 import { recordActivityWith } from "../streak";
-import { ConflictError, NotFoundError } from "./errors";
+import { ConflictError, ExpiredError, NotFoundError } from "./errors";
 
 export const GradeCardSchema = z.object({
   wordId: z.string(),
@@ -130,8 +136,6 @@ async function gradeInTransaction(
   grade: ReviewGrade,
   requestId: string | undefined,
 ): Promise<GradeCardResult> {
-  const now = new Date();
-
   // A first review creates the card lazily. Upsert-then-reselect (rather than
   // read-then-insert) so two concurrent first-reviews of the same word can't
   // both insert and trip the unique(userId, wordId) index. The upsert, the
@@ -144,7 +148,7 @@ async function gradeInTransaction(
   return db.transaction(async (tx) => {
     const created = await tx
       .insert(srsCards)
-      .values({ userId, wordId, dueAt: now })
+      .values({ userId, wordId, dueAt: new Date() })
       .onConflictDoNothing()
       .returning({ id: srsCards.id });
 
@@ -171,6 +175,9 @@ async function gradeInTransaction(
       }
     }
 
+    // Read under the lock and kept past the previous review, so concurrent
+    // grades of one card are timestamped in the order they were applied.
+    const now = reviewTimestamp(new Date(), card.lastReviewedAt);
     const scheduled = scheduleReview(
       {
         easeFactor: card.easeFactor,
@@ -231,5 +238,93 @@ async function gradeInTransaction(
         lapses: scheduled.lapses,
       },
     };
+  });
+}
+
+export const UndoGradeSchema = z.object({ reviewId: z.string().min(1) });
+
+export interface UndoGradeResult {
+  wordId: string;
+  /** The undone review had created the card: the word is new again. */
+  restoredToNew: boolean;
+  /** The card's restored scheduler state (null when it was deleted). */
+  srs: SrsState | null;
+}
+
+/**
+ * Undo a grade (ADR 0031): restore the card to its pre-review snapshot and
+ * delete the review log — or, if that review lazily created the card, delete
+ * the card so the word is unseen again. Only the card's latest review, only
+ * within the undo window. activity_days is left alone: the learner did study
+ * today, and the streak should not flicker with an undo.
+ */
+export async function undoGradeForUser(userId: string, input: unknown): Promise<UndoGradeResult> {
+  const { reviewId } = UndoGradeSchema.parse(input);
+  return db.transaction(async (tx) => {
+    const [log] = await tx
+      .select()
+      .from(reviewLogs)
+      .where(and(eq(reviewLogs.id, reviewId), eq(reviewLogs.userId, userId)))
+      .for("update")
+      .limit(1);
+    if (!log) throw new NotFoundError(`Unknown review: ${reviewId}`);
+
+    const [card] = await tx
+      .select()
+      .from(srsCards)
+      .where(and(eq(srsCards.id, log.cardId), eq(srsCards.userId, userId)))
+      .for("update")
+      .limit(1);
+    if (!card) throw new NotFoundError(`Unknown review: ${reviewId}`);
+
+    const [latest] = await tx
+      .select({ id: reviewLogs.id })
+      .from(reviewLogs)
+      .where(eq(reviewLogs.cardId, card.id))
+      .orderBy(desc(reviewLogs.reviewedAt), desc(reviewLogs.id))
+      .limit(1);
+
+    const hasSnapshot =
+      log.prevEaseFactor !== null &&
+      log.prevRepetitions !== null &&
+      log.prevLapses !== null &&
+      log.prevDueAt !== null;
+    const decision = undoDecision(
+      { id: log.id, reviewedAt: log.reviewedAt, hasSnapshot },
+      latest?.id ?? null,
+      new Date(),
+    );
+    if (decision === "expired") {
+      throw new ExpiredError("The undo window has passed", "undo_expired");
+    }
+    if (decision === "superseded") {
+      throw new ConflictError("A later review has built on this one", "undo_superseded");
+    }
+    if (decision === "unavailable") {
+      throw new ConflictError("This review predates undo support", "undo_unavailable");
+    }
+
+    if (log.createdCard) {
+      // Cascades to the review log.
+      await tx.delete(srsCards).where(eq(srsCards.id, card.id));
+      return { wordId: card.wordId, restoredToNew: true, srs: null };
+    }
+
+    const restored: SrsState = {
+      easeFactor: log.prevEaseFactor!,
+      intervalDays: log.previousIntervalDays,
+      repetitions: log.prevRepetitions!,
+      lapses: log.prevLapses!,
+    };
+    await tx
+      .update(srsCards)
+      .set({
+        ...restored,
+        dueAt: log.prevDueAt!,
+        lastReviewedAt: log.prevLastReviewedAt,
+      })
+      .where(eq(srsCards.id, card.id));
+    await tx.delete(reviewLogs).where(eq(reviewLogs.id, log.id));
+    return { wordId: card.wordId, restoredToNew: false, srs: restored };
   });
 }

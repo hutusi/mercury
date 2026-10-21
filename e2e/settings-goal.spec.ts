@@ -1,11 +1,12 @@
 import { expect, test } from "@playwright/test";
-import { registerAndOnboard, t } from "./helpers";
+import { openAccountMenu, registerAndOnboard, t } from "./helpers";
 
 test("goal edit on /settings redirects feature defaults to the new track", async ({ page }) => {
   await registerAndOnboard(page, "toeic");
 
-  // Header entry point → settings.
-  await page.getByRole("link", { name: t.nav.settings }).click();
+  // Account menu entry point → settings.
+  await openAccountMenu(page);
+  await page.getByRole("menuitem", { name: t.nav.settings }).click();
   await page.waitForURL("**/settings");
   // exact: "设置" is a substring of the "偏好设置" section label.
   await expect(page.getByRole("heading", { name: t.nav.settings, exact: true })).toBeVisible();
@@ -16,7 +17,7 @@ test("goal edit on /settings redirects feature defaults to the new track", async
   await expect(page.getByText(t.settings.saved)).toBeVisible();
 
   // Any further edit invalidates the saved indicator.
-  await page.getByRole("button", { name: `45 ${t.onboarding.minutesUnit}` }).click();
+  await page.getByRole("radio", { name: `45 ${t.onboarding.minutesUnit}` }).click();
   await expect(page.getByText(t.settings.saved)).toHaveCount(0);
   await page.getByRole("button", { name: t.settings.save, exact: true }).click();
   await expect(page.getByText(t.settings.saved)).toBeVisible();

@@ -1,9 +1,22 @@
 import { expect, test } from "@playwright/test";
+import { eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
+import * as dbSchema from "../src/lib/db/schema";
+import { dailyPlans, user } from "../src/lib/db/schema";
 import { apiSignUp } from "./api-helpers";
+import { e2eDatabaseUrl } from "./db-url";
 import { answerAllQuestions, registerAndOnboard, t } from "./helpers";
 
+const pool = new Pool({ connectionString: e2eDatabaseUrl(), max: 2 });
+const testDb = drizzle(pool, { schema: dbSchema });
+
+test.afterAll(async () => {
+  await pool.end();
+});
+
 test("book reading: library → detail, chapter lock, check-in reveal", async ({ page }) => {
-  await registerAndOnboard(page);
+  const { email } = await registerAndOnboard(page);
 
   // Library: track-agnostic list with the seeded book.
   await page.goto("/books");
@@ -59,17 +72,24 @@ test("book reading: library → detail, chapter lock, check-in reveal", async ({
     "/zh/books/book-oz/chapters/oz-ch-02",
   );
   await page.goto("/books/book-oz");
-  await expect(page.getByText(new RegExp(`${t.reading.bestScore}:`)).first()).toBeVisible();
+  await expect(
+    page.getByText(new RegExp(`${t.reading.bestScore} \\d+/\\d+`)).first(),
+  ).toBeVisible();
   // Two links now target chapter 2 (header continue button + its row) —
   // the unlock is what matters, not which link.
   await expect(page.locator('a[href="/zh/books/book-oz/chapters/oz-ch-02"]').first()).toBeVisible();
 
-  // Missed quiz questions land in the notebook under the books group.
+  // Missed quiz questions land in the notebook as book-quiz cards.
   await page.goto("/mistakes");
-  await expect(page.getByRole("heading", { name: t.nav.books })).toBeVisible();
+  await expect(page.locator('li[data-mistake-kind="book_quiz"]').first()).toBeVisible();
 
   // With a book in progress, the daily plan offers to continue it,
-  // deep-linking to the now-current chapter 2.
+  // deep-linking to the now-current chapter 2. Today's route was frozen at
+  // the first dashboard visit, before the book was started (ADR 0033); the
+  // next learner-day builds a fresh one — simulate it by dropping today's
+  // snapshot.
+  const [account] = await testDb.select({ id: user.id }).from(user).where(eq(user.email, email));
+  await testDb.delete(dailyPlans).where(eq(dailyPlans.userId, account.id));
   await page.goto("/dashboard");
   const planBookItem = page.getByRole("link", { name: new RegExp(t.plan.itemBookChapter) });
   await expect(planBookItem).toBeVisible();

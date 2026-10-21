@@ -19,12 +19,12 @@ const AI_ROUTES = [
   "src/app/api/v1/speaking/submissions/[submissionId]/retry-feedback/route.ts",
   "src/app/api/v1/writing/submissions/[submissionId]/retry-feedback/route.ts",
   "src/app/api/v1/books/[bookId]/chat/messages/route.ts",
-  "src/app/[locale]/(app)/writing/[promptId]/page.tsx",
-  "src/app/[locale]/(app)/writing/submissions/[submissionId]/page.tsx",
-  "src/app/[locale]/(app)/speaking/[promptId]/page.tsx",
-  "src/app/[locale]/(app)/speaking/submissions/[submissionId]/page.tsx",
-  "src/app/[locale]/(app)/tutor/page.tsx",
-  "src/app/[locale]/(app)/books/[bookId]/chapters/[chapterId]/page.tsx",
+  "src/app/[locale]/(app)/(flow)/writing/[promptId]/page.tsx",
+  "src/app/[locale]/(app)/(flow)/writing/submissions/[submissionId]/page.tsx",
+  "src/app/[locale]/(app)/(flow)/speaking/[promptId]/page.tsx",
+  "src/app/[locale]/(app)/(flow)/speaking/submissions/[submissionId]/page.tsx",
+  "src/app/[locale]/(app)/(shell)/tutor/page.tsx",
+  "src/app/[locale]/(app)/(flow)/books/[bookId]/chapters/[chapterId]/page.tsx",
 ];
 
 describe("AI wall-clock budget", () => {

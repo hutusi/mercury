@@ -53,9 +53,22 @@ export async function registerAndOnboard(
  */
 export async function answerAllQuestions(page: Page) {
   const firstOptions = page.locator("li > div > button:first-child");
+  // count() doesn't wait: right after a navigation the page may still be on
+  // its loading skeleton.
+  await firstOptions.first().waitFor();
   const count = await firstOptions.count();
   expect(count).toBeGreaterThan(0);
   for (let i = 0; i < count; i++) {
     await firstOptions.nth(i).click();
   }
+}
+
+/**
+ * Open the account (avatar) menu — settings, premium, admin, theme, and sign
+ * out live there. Only the trigger for the current layout is visible
+ * (sidebar on desktop, top bar on phones), so getByRole finds exactly one.
+ */
+export async function openAccountMenu(page: Page) {
+  await page.getByRole("button", { name: t.menu.account }).click();
+  await expect(page.getByRole("menu")).toBeVisible();
 }

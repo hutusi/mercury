@@ -4,8 +4,8 @@ import { Ban, Mic, RotateCcw, Square } from "lucide-react";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { PremiumCta } from "@/components/premium/PremiumCta";
-import { SectionLabel } from "@/components/typography/SectionLabel";
-import { Stat } from "@/components/typography/Stat";
+import { SelfAssessNotice, SelfCheck } from "@/components/feedback/FeedbackParts";
+import { StationNode } from "@/components/layout/Wordmark";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
@@ -17,6 +17,7 @@ import { useBeforeUnloadGuard, useDraft } from "@/lib/use-draft";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { createRecognizer, sttSupported, type Recognizer } from "@/lib/speech";
 import { SpeakingFeedbackPanel } from "./SpeakingFeedbackPanel";
+import { useFlowExit } from "@/lib/flow-store";
 
 type Phase = "idle" | "prep" | "recording" | "review" | "done";
 
@@ -44,6 +45,7 @@ export function SpeakingRunner({
   checklist,
   aiEnabled,
   showPremiumCta = false,
+  nextStop,
 }: {
   promptId: string;
   prepSeconds: number;
@@ -53,6 +55,8 @@ export function SpeakingRunner({
   aiEnabled: boolean;
   /** Quota walls upsell only non-premium learners. */
   showPremiumCta?: boolean;
+  /** Server-rendered next-stop CTA when this prompt is a plan stop. */
+  nextStop?: React.ReactNode;
 }) {
   const t = useT();
   const [mounted, setMounted] = useState(false);
@@ -103,8 +107,10 @@ export function SpeakingRunner({
       setPhase("review");
     },
   });
-  // Leaving mid-recording loses the take; ask first.
+  // Leaving mid-recording loses the take; ask first. A finished take's
+  // transcript is a draft, so leaving the review step is safe.
   useBeforeUnloadGuard(phase === "recording" || phase === "prep" || pending);
+  useFlowExit(phase === "recording" || phase === "prep" ? "confirm" : "saved", phase === "review");
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR mounted-gate: speech APIs only exist client-side
@@ -205,7 +211,7 @@ export function SpeakingRunner({
         setResult(r);
         setPhase("done");
         window.scrollTo({ top: 0 });
-        // Focus follows the view swap (see ResultSummary).
+        // Focus follows the view swap: the recorder it replaces is gone.
         requestAnimationFrame(() => doneRef.current?.focus());
       } catch {
         // Stay in review so the recording can be resubmitted.
@@ -244,229 +250,213 @@ export function SpeakingRunner({
 
   if (!sttSupported()) {
     return (
-      <div className="space-y-6">
-        <Callout variant="error" className="p-5 text-sm">
-          <span aria-hidden>
-            <Ban className="inline size-4" />
-          </span>{" "}
+      <div className="flex flex-col gap-8">
+        <Callout variant="error" className="flex items-start gap-2.5 px-5 py-4 text-sm">
+          <Ban className="mt-0.5 size-4 shrink-0" aria-hidden />
           {t.speaking.unsupported}
         </Callout>
-        <SelfAssessBlock modelAnswer={modelAnswer} checklist={checklist} />
+        <SelfCheck
+          idPrefix="speak"
+          checklist={checklist}
+          checklistLabel={t.speaking.checklist}
+          modelAnswer={modelAnswer}
+          modelAnswerLabel={t.speaking.modelAnswer}
+        />
       </div>
     );
   }
 
   if (phase === "done" && result) {
+    const selfCheck = (
+      <SelfCheck
+        idPrefix="speak"
+        checklist={checklist}
+        checklistLabel={t.speaking.checklist}
+        modelAnswer={modelAnswer}
+        modelAnswerLabel={t.speaking.modelAnswer}
+      />
+    );
     return (
-      <div ref={doneRef} tabIndex={-1} className="space-y-6 outline-hidden">
-        <section className="border-y border-border py-5">
-          <SectionLabel as="h2" className="mb-2">
-            {t.speaking.transcript}
-          </SectionLabel>
-          <p className="text-sm leading-relaxed text-foreground/80">{finalText}</p>
-        </section>
+      <div ref={doneRef} tabIndex={-1} className="flex flex-col gap-8 outline-hidden">
         {result.status === "ai_scored" && result.feedback ? (
           <SpeakingFeedbackPanel feedback={result.feedback} />
         ) : result.degradeReason === "quota" ? (
           // The daily grading quota forced self-assessment — retrying today
           // would just be refused, so the notice says "tomorrow" and the only
           // door to more capacity is premium.
-          <SelfAssessBlock
-            modelAnswer={modelAnswer}
-            checklist={checklist}
-            showHint
-            title={t.speaking.aiQuotaTitle}
-            hint={t.speaking.aiQuotaHint}
-            retry={showPremiumCta ? <PremiumCta /> : undefined}
-          />
+          <>
+            <SelfAssessNotice
+              title={t.speaking.aiQuotaTitle}
+              hint={t.speaking.aiQuotaHint}
+              retry={showPremiumCta ? <PremiumCta /> : undefined}
+            />
+            {selfCheck}
+          </>
         ) : (
-          <SelfAssessBlock
-            modelAnswer={modelAnswer}
-            checklist={checklist}
-            showHint
-            canRetry={aiEnabled}
-            retry={
-              aiEnabled ? (
-                <div>
-                  <Button variant="accent" size="sm" disabled={retrying} onClick={retryFeedback}>
-                    <RotateCcw className="size-4" aria-hidden />
-                    {retrying ? t.speaking.submitting : t.speaking.retryFeedback}
-                  </Button>
-                  {retryError && <p className="mt-2 text-sm text-destructive">{retryError}</p>}
-                </div>
-              ) : undefined
-            }
-          />
+          <>
+            <SelfAssessNotice
+              title={aiEnabled ? t.speaking.aiUnavailableTitle : t.speaking.selfAssessTitle}
+              hint={aiEnabled ? t.speaking.aiUnavailableHint : t.speaking.selfAssessHint}
+              retry={
+                aiEnabled ? (
+                  <>
+                    <Button disabled={retrying} onClick={retryFeedback}>
+                      <RotateCcw aria-hidden />
+                      {retrying ? t.speaking.submitting : t.speaking.retryFeedback}
+                    </Button>
+                    {retryError ? (
+                      <p role="alert" className="text-sm text-destructive">
+                        {retryError}
+                      </p>
+                    ) : null}
+                  </>
+                ) : undefined
+              }
+            />
+            {selfCheck}
+          </>
         )}
-        <Link
-          href="/speaking"
-          className="inline-block text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          ← {t.common.back}
-        </Link>
+        <TranscriptCard text={finalText} seconds={spokenSeconds} />
+        <div className="flex flex-col gap-2.5">
+          {nextStop}
+          <div className="flex gap-2.5">
+            <Button variant="outline" className="flex-1" onClick={beginPrep}>
+              <RotateCcw aria-hidden />
+              {t.speaking.again}
+            </Button>
+            <Button asChild variant="outline" className="flex-1">
+              <Link href="/speaking">{t.reading.backToList}</Link>
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
-      {micError && (
-        <Callout variant="accent" className="p-3 text-sm">
+    <div className="flex flex-col gap-4">
+      {micError ? (
+        <Callout variant="accent" className="px-4 py-3 text-sm">
           {micError}
         </Callout>
-      )}
+      ) : null}
 
-      {phase === "idle" && (
-        <div className="border border-border p-8 text-center">
-          <p className="font-mono text-sm text-muted-foreground tabular-nums">
-            {t.speaking.prep}: {prepSeconds}
-            {t.common.seconds} · {t.speaking.speak}: {speakSeconds}
-            {t.common.seconds}
-          </p>
-          <div className="mt-5 flex justify-center gap-3">
-            <Button onClick={beginPrep} size="lg" className="h-11 px-6">
-              <Mic className="size-4" aria-hidden /> {t.speaking.startPrep}
-            </Button>
-          </div>
+      {phase === "idle" ? (
+        <div className="flex flex-col items-center rounded-xl border border-border bg-card px-6 py-9 text-center">
+          <button
+            type="button"
+            onClick={beginPrep}
+            className="flex size-[4.5rem] items-center justify-center rounded-full bg-brand text-brand-foreground outline-hidden transition-colors duration-200 hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            <Mic className="size-7" aria-hidden />
+            <span className="sr-only">{t.speaking.startPrep}</span>
+          </button>
+          <p className="mt-4 text-[0.9375rem] font-medium">{t.speaking.startPrep}</p>
+          <p className="mt-1 text-[0.8125rem] text-muted-foreground">{t.speaking.readyHint}</p>
         </div>
-      )}
+      ) : null}
 
-      {phase === "prep" && (
-        <div className="border border-cinnabar/40 bg-cinnabar/5 p-8 text-center">
-          <SectionLabel as="p" className="text-cinnabar">
-            {t.speaking.prep}
-          </SectionLabel>
-          <Stat value={secondsLeft} size="lg" accent align="center" className="mt-2" />
-          <Button onClick={beginRecording} variant="accent" className="mt-5">
+      {phase === "prep" ? (
+        <div className="flex flex-col items-center rounded-xl bg-muted px-6 py-9 text-center">
+          <p className="text-[0.8125rem] font-semibold text-soft-2">{t.speaking.prep}</p>
+          <Countdown seconds={secondsLeft} />
+          <Button onClick={beginRecording} variant="outline" className="mt-5">
             {t.speaking.skipPrep}
           </Button>
         </div>
-      )}
+      ) : null}
 
-      {phase === "recording" && (
-        <div className="border border-cinnabar/40 p-8 text-center">
-          <p className="flex items-center justify-center gap-2 text-sm font-medium text-cinnabar">
-            <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-cinnabar motion-reduce:animate-none" />
+      {phase === "recording" ? (
+        <div className="flex flex-col items-center rounded-xl border border-brand-border bg-card px-6 py-9 text-center">
+          <p className="flex items-center gap-2 text-[0.8125rem] font-semibold text-brand-ink">
+            <span className="size-2.5 animate-pulse rounded-full bg-brand motion-reduce:animate-none" />
             {t.speaking.recording}
           </p>
-          <Stat value={secondsLeft} size="lg" align="center" className="mt-2" />
-          <div className="mx-auto mt-4 min-h-16 max-w-xl bg-muted p-3 text-left text-sm text-foreground/80">
+          <Countdown seconds={secondsLeft} />
+          <div className="mt-5 min-h-20 w-full max-w-xl rounded-lg bg-muted px-4 py-3 text-left text-[0.9375rem] leading-relaxed">
             {finalText}
-            <span className="text-muted-foreground/70">{interimText ? ` ${interimText}` : ""}</span>
+            <span className="text-muted-foreground">{interimText ? ` ${interimText}` : ""}</span>
           </div>
-          <Button onClick={stopRecording} variant="accent" className="mt-5 px-6">
-            <Square className="size-4" aria-hidden /> {t.speaking.stop}
+          <Button onClick={stopRecording} className="mt-5">
+            <Square className="fill-current" aria-hidden />
+            {t.speaking.stop}
           </Button>
         </div>
-      )}
+      ) : null}
 
-      {phase === "review" && (
-        <div className="space-y-4">
-          <section className="border-y border-border py-5">
-            <SectionLabel as="h2" className="mb-2">
-              {t.speaking.transcript}
-            </SectionLabel>
-            {finalText ? (
-              <p className="text-sm leading-relaxed text-foreground/80">{finalText}</p>
-            ) : (
-              <p className="text-sm text-muted-foreground/70">{t.speaking.emptyTranscript}</p>
-            )}
-          </section>
-          <div className="flex gap-3">
-            <Button
-              onClick={beginPrep}
-              disabled={pending}
-              variant="outline"
-              size="lg"
-              className="h-11 flex-1"
-            >
-              <RotateCcw className="size-4" aria-hidden /> {t.common.tryAgain}
+      {phase === "review" ? (
+        <div className="flex flex-col gap-4">
+          <TranscriptCard text={finalText} seconds={spokenSeconds} />
+          <div className="flex gap-2.5">
+            <Button onClick={beginPrep} disabled={pending} variant="outline" className="flex-1">
+              <RotateCcw aria-hidden />
+              {t.speaking.again}
             </Button>
             <Button
               onClick={submit}
               disabled={pending || finalText.trim().length < 10}
-              size="lg"
-              className="h-11 flex-1 disabled:cursor-not-allowed"
+              className="flex-1"
             >
               {pending ? t.speaking.submitting : t.speaking.submitForFeedback}
             </Button>
           </div>
-          {pending && (
-            <div className="border border-border bg-muted p-3 text-center text-sm text-muted-foreground">
+          {pending ? (
+            <Callout
+              variant="accent"
+              role="status"
+              className="flex items-center gap-3 px-4 py-3 text-sm"
+            >
+              <StationNode className="size-6 shrink-0" />
               {t.speaking.submitting}
-            </div>
-          )}
-          {submitError && (
-            <Callout variant="error" className="p-3 text-center text-sm">
+            </Callout>
+          ) : null}
+          {submitError ? (
+            <Callout variant="error" className="px-4 py-3 text-sm">
               {submitError}
             </Callout>
-          )}
+          ) : null}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
 
-function SelfAssessBlock({
-  modelAnswer,
-  checklist,
-  showHint,
-  canRetry = false,
-  retry,
-  title,
-  hint,
-}: {
-  modelAnswer: string;
-  checklist: Bilingual[];
-  showHint?: boolean;
-  canRetry?: boolean;
-  retry?: React.ReactNode;
-  /** Override the notice (e.g. quota exhaustion instead of AI failure). */
-  title?: string;
-  hint?: string;
-}) {
+/** The big serif seconds counter for prep and recording. */
+function Countdown({ seconds }: { seconds: number }) {
   const t = useT();
   return (
-    <div className="space-y-4">
-      {showHint && (
-        <Callout variant="accent" className="p-4 text-sm">
-          <p className="font-medium">
-            {title ?? (canRetry ? t.speaking.aiUnavailableTitle : t.speaking.selfAssessTitle)}
-          </p>
-          <p className="mt-1 text-muted-foreground">
-            {hint ?? (canRetry ? t.speaking.aiUnavailableHint : t.speaking.selfAssessHint)}
-          </p>
-          {retry ? <div className="mt-3">{retry}</div> : null}
-        </Callout>
-      )}
-      <section className="border-y border-border py-6">
-        <SectionLabel as="h2" className="mb-3">
-          {t.speaking.checklist}
-        </SectionLabel>
-        <ul className="space-y-3">
-          {checklist.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-sm">
-              <input
-                type="checkbox"
-                id={`speak-check-${i}`}
-                className="mt-0.5 h-4 w-4 rounded-sm border-border accent-cinnabar"
-              />
-              <label htmlFor={`speak-check-${i}`} className="cursor-pointer">
-                <span className="font-medium">{item.zh}</span>
-                <span className="block text-muted-foreground">{item.en}</span>
-              </label>
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section className="border-y border-border py-6">
-        <SectionLabel as="h2" className="mb-3">
-          {t.speaking.modelAnswer}
-        </SectionLabel>
-        <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/80">
-          {modelAnswer}
+    <p className="mt-2 font-serif text-6xl leading-none font-medium tabular-nums">
+      {seconds}
+      <span className="ml-1 font-sans text-base font-normal text-muted-foreground">
+        {t.speaking.secondsUnit}
+      </span>
+    </p>
+  );
+}
+
+/** What the recognizer heard — what gets graded. */
+function TranscriptCard({ text, seconds }: { text: string; seconds: number }) {
+  const t = useT();
+  return (
+    <section aria-labelledby="speak-transcript">
+      <h2 id="speak-transcript" className="text-[0.9375rem] font-semibold">
+        {t.speaking.transcript}
+        {seconds > 0 ? (
+          <span className="ml-2 font-normal text-muted-foreground tabular-nums">
+            {seconds}
+            {t.common.seconds}
+          </span>
+        ) : null}
+      </h2>
+      {text ? (
+        <p className="mt-3 rounded-lg border border-border bg-card px-5 py-4 text-[0.9375rem] leading-[1.75]">
+          {text}
         </p>
-      </section>
-    </div>
+      ) : (
+        <p className="mt-3 rounded-lg border border-dashed border-input px-5 py-4 text-sm text-muted-foreground">
+          {t.speaking.emptyTranscript}
+        </p>
+      )}
+    </section>
   );
 }

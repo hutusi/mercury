@@ -2,7 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useMemo, useRef, useState, useTransition } from "react";
+import { StationNode } from "@/components/layout/Wordmark";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import { submitWriting } from "@/lib/actions/writing";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { DAY_MS } from "@/lib/drafts";
@@ -10,6 +12,9 @@ import { retryWhileInProgress } from "@/lib/in-progress-retry";
 import { useDraft } from "@/lib/use-draft";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
+import { useFlowExit } from "@/lib/flow-store";
+import { fill } from "@/lib/i18n/fill";
+import { cn } from "@/lib/utils";
 
 const isText = (value: unknown): value is string => typeof value === "string";
 const isBlank = (value: string) => value.trim().length === 0;
@@ -43,6 +48,8 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
       setRestored(true);
     },
   });
+
+  useFlowExit("saved", text.trim().length > 0);
 
   const wordCount = useMemo(() => text.trim().split(/\s+/).filter(Boolean).length, [text]);
   const enough = wordCount >= minWords;
@@ -78,63 +85,79 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
     });
   }
 
+  const progress = Math.min(1, wordCount / minWords);
+
   return (
-    <div className="space-y-3">
-      <label htmlFor="writing-response" className="sr-only">
-        {t.writing.responseLabel}
-      </label>
-      <textarea
-        id="writing-response"
-        value={text}
-        onChange={(e) => {
-          setText(e.target.value);
-          setRestored(false);
-        }}
-        placeholder={t.writing.placeholder}
-        rows={14}
-        disabled={pending}
-        aria-describedby={`writing-word-count${error ? " writing-error" : ""}`}
-        aria-invalid={error !== null}
-        className="w-full border border-input bg-background p-4 font-serif text-sm leading-relaxed transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/25 focus-visible:outline-hidden disabled:bg-muted"
-      />
-      <div className="flex items-center justify-between">
-        <p
-          id="writing-word-count"
-          className={`font-mono text-sm font-medium tabular-nums ${
-            enough ? "text-foreground" : "text-muted-foreground"
-          }`}
-        >
-          {t.writing.wordCount}: {wordCount} / {minWords}
-          {!enough && wordCount > 0 && (
-            <span className="ml-2 font-sans text-cinnabar">{t.writing.tooShort}</span>
-          )}
-        </p>
-        <Button
-          onClick={submit}
-          disabled={pending || !enough}
-          className="disabled:cursor-not-allowed"
-        >
-          {pending ? t.writing.submitting : t.writing.submitForFeedback}
-        </Button>
+    <div className="flex flex-col gap-3">
+      <div className="overflow-hidden rounded-xl border border-input bg-card transition-colors focus-within:border-ring">
+        <label htmlFor="writing-response" className="sr-only">
+          {t.writing.responseLabel}
+        </label>
+        <textarea
+          id="writing-response"
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+            setRestored(false);
+          }}
+          placeholder={t.writing.placeholder}
+          rows={14}
+          disabled={pending}
+          spellCheck={false}
+          aria-describedby={`writing-word-count${error ? " writing-error" : ""}`}
+          aria-invalid={error !== null}
+          className="block min-h-72 w-full resize-y bg-transparent px-5 py-4 font-serif text-[1.0625rem] leading-[1.75] outline-hidden placeholder:font-sans placeholder:text-[0.9375rem] placeholder:text-muted-foreground disabled:opacity-60"
+        />
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-border px-4 py-3">
+          <div className="flex min-w-40 flex-1 items-center gap-3">
+            <span aria-hidden className="h-1.5 w-24 shrink-0 overflow-hidden rounded-full bg-track">
+              <span
+                className={cn(
+                  "block h-full rounded-full transition-[width] duration-300 motion-reduce:transition-none",
+                  enough ? "bg-brand" : "bg-soft-2",
+                )}
+                style={{ width: `${progress * 100}%` }}
+              />
+            </span>
+            <p
+              id="writing-word-count"
+              className="text-[0.8125rem] text-muted-foreground tabular-nums"
+            >
+              <span className={enough ? "font-medium text-brand-ink" : undefined}>
+                {fill(t.writing.words, { c: wordCount, n: minWords })}
+              </span>
+              {!enough && wordCount > 0 ? (
+                <span className="ml-2">
+                  {fill(t.writing.needMore, { n: minWords - wordCount })}
+                </span>
+              ) : null}
+            </p>
+          </div>
+          <Button onClick={submit} disabled={pending || !enough}>
+            {pending ? t.writing.submitting : t.writing.submitForFeedback}
+          </Button>
+        </div>
       </div>
-      {restored && (
+      {restored ? (
         <p role="status" className="text-sm text-muted-foreground">
           {t.common.draftRestored}
         </p>
-      )}
-      {error && (
-        <p id="writing-error" role="alert" className="text-sm text-destructive">
+      ) : null}
+      {error ? (
+        <Callout id="writing-error" variant="error" className="px-4 py-3 text-sm">
           {error}
-        </p>
-      )}
-      {pending && (
-        <div
+        </Callout>
+      ) : null}
+      {pending ? (
+        <Callout
+          variant="accent"
           role="status"
-          className="border border-border bg-muted p-3 text-center text-sm text-muted-foreground"
+          className="flex items-center gap-3 px-4 py-3 text-sm"
         >
+          <StationNode className="size-6 shrink-0" />
           {waiting ? t.common.stillGrading : t.writing.submitting}
-        </div>
-      )}
+        </Callout>
+      ) : null}
     </div>
   );
 }

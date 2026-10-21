@@ -1,5 +1,6 @@
 import type { Track } from "../content/types";
 import { daysUntil, SKILL_KEYS, type SkillEstimates, type SkillKey } from "./learner-model-core";
+import { MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION } from "./srs";
 
 /**
  * Pure daily-plan engine (今日计划): decides what the learner should do today
@@ -38,6 +39,13 @@ export interface PlanItem {
   href: string;
   estMinutes: number;
   reasonKey: PlanReasonKey;
+  /**
+   * How many make the stop done, for count kinds: cards to review / learn,
+   * mistakes to clear. Absent for one-shot kinds (an exercise, a chapter).
+   */
+  target?: number;
+  /** book_chapter only: the book, so status queries hit the full index. */
+  bookId?: string;
 }
 
 export interface PlanInput {
@@ -69,6 +77,8 @@ export interface PlanInput {
 }
 
 const MAX_ITEMS = 5;
+/** "Clear 3 mistakes" — the daily notebook goal, whatever the backlog. */
+export const MISTAKES_DAILY_TARGET = 3;
 const CADENCE_DAYS = 3;
 /** Mock-exam checkpoint spacing: every 3 days in the final month, else weekly. */
 const EXAM_RAMP_DAYS = 28;
@@ -98,11 +108,14 @@ export function buildDailyPlan(input: PlanInput): PlanItem[] {
   // 1. Vocab: due reviews first (retention decays fastest); new words when
   //    the queue is clear — this also guarantees fresh accounts get an item.
   if (input.dueCount > 0) {
+    // One study session serves at most MAX_DUE_PER_SESSION due cards.
+    const target = Math.min(input.dueCount, MAX_DUE_PER_SESSION);
     candidates.push({
       kind: "vocab_review",
       href: "/vocabulary/study",
-      estMinutes: Math.min(Math.max(Math.ceil(input.dueCount * 0.5), 3), 15),
+      estMinutes: Math.min(Math.max(Math.ceil(target * 0.5), 3), 15),
       reasonKey: "dueVocab",
+      target,
     });
   } else if (input.freshCount > 0) {
     candidates.push({
@@ -110,16 +123,21 @@ export function buildDailyPlan(input: PlanInput): PlanItem[] {
       href: "/vocabulary/study",
       estMinutes: 10,
       reasonKey: "newWords",
+      target: Math.min(input.freshCount, MAX_NEW_PER_SESSION),
     });
   }
 
   // 2. Error-driven learning: clear the mistakes notebook before new input.
   if (input.activeMistakes > 0) {
+    // A bounded daily goal ("clear 3"), not the whole backlog — so the stop
+    // can actually be finished today.
+    const target = Math.min(input.activeMistakes, MISTAKES_DAILY_TARGET);
     candidates.push({
       kind: "mistakes",
       href: "/mistakes",
-      estMinutes: Math.min(Math.max(input.activeMistakes, 3), 10),
+      estMinutes: target + 2,
       reasonKey: "clearMistakes",
+      target,
     });
   }
 
@@ -131,6 +149,7 @@ export function buildDailyPlan(input: PlanInput): PlanItem[] {
     candidates.push({
       kind: "book_chapter",
       refId: book.chapterId,
+      bookId: book.bookId,
       href: `/books/${book.bookId}/chapters/${book.chapterId}`,
       estMinutes: book.estMinutes,
       reasonKey: "continueBook",

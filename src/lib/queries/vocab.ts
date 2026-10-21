@@ -1,19 +1,22 @@
-import { and, asc, count, eq, lte, notExists, sql } from "drizzle-orm";
+import { and, asc, count, eq, gte, lt, lte, notExists, sql } from "drizzle-orm";
+import { cache } from "react";
 import type { Track } from "../../content/types";
 import { composeAudioUrl } from "../audio-url";
 import { db } from "../db";
-import { srsCards, vocabWords } from "../db/schema";
-import { NEW_CARD_STATE } from "../srs";
+import { reviewLogs, srsCards, vocabWords } from "../db/schema";
+import type { GlossEntry } from "../gloss-core";
+import { calendarDay, learnerDayRange } from "../streak-core";
+import { MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION, NEW_CARD_STATE } from "../srs";
 
-export const MAX_DUE_PER_SESSION = 30;
-export const MAX_NEW_PER_SESSION = 10;
+export { MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION } from "../srs";
 
 /**
  * Due/fresh counts only — the daily plan needs two integers, not 575
  * detoasted content rows (the overview query below stays full-row for the
- * pinned v1 contract).
+ * pinned v1 contract). cache(): the shell's nav badge and the plan both ask
+ * in the same render.
  */
-export async function getVocabCounts(userId: string) {
+export const getVocabCounts = cache(async (userId: string) => {
   const [[words], [cards]] = await Promise.all([
     db.select({ total: count() }).from(vocabWords),
     db
@@ -24,7 +27,31 @@ export async function getVocabCounts(userId: string) {
       .from(srsCards)
       .where(eq(srsCards.userId, userId)),
   ]);
-  return { dueCount: cards.due, freshCount: words.total - cards.started };
+  return {
+    dueCount: cards.due,
+    freshCount: words.total - cards.started,
+    learnedCount: cards.started,
+  };
+});
+
+/**
+ * Due cards first learned before `dayStart` — the daily plan's review target
+ * (ADR 0033). A card learned today and due again after an "Again" belongs to
+ * today's new-word stop: the plan's progress counts its reviews there
+ * (getPlanFacts), so including it here would set a target no review can meet.
+ */
+export async function countDueReviewCards(userId: string, dayStart: Date): Promise<number> {
+  const [row] = await db
+    .select({ due: count() })
+    .from(srsCards)
+    .where(
+      and(
+        eq(srsCards.userId, userId),
+        sql`${srsCards.dueAt} <= now()`,
+        lt(srsCards.createdAt, dayStart),
+      ),
+    );
+  return row?.due ?? 0;
 }
 
 /** Word list (one track, or all when null) plus per-user SRS aggregates for the overview. */
@@ -136,3 +163,34 @@ export async function getStudyQueue(
     })),
   ];
 }
+
+/**
+ * Words the learner reviewed today (learner-local day), for the dotted
+ * "you just met this word" highlight in reading passages and book chapters.
+ * Bounded: a day's reviews, capped well above any real session.
+ */
+export const getReviewedGlossesToday = cache(
+  async (userId: string, timeZone: string): Promise<GlossEntry[]> => {
+    const { start, end } = learnerDayRange(calendarDay(new Date(), timeZone), timeZone);
+    return db
+      .selectDistinctOn([vocabWords.id], {
+        wordId: vocabWords.id,
+        headword: vocabWords.headword,
+        translationZh: vocabWords.translationZh,
+        ipa: vocabWords.ipa,
+        pos: vocabWords.pos,
+      })
+      .from(reviewLogs)
+      .innerJoin(srsCards, eq(srsCards.id, reviewLogs.cardId))
+      .innerJoin(vocabWords, eq(vocabWords.id, srsCards.wordId))
+      .where(
+        and(
+          eq(reviewLogs.userId, userId),
+          gte(reviewLogs.reviewedAt, start),
+          lt(reviewLogs.reviewedAt, end),
+        ),
+      )
+      .orderBy(vocabWords.id)
+      .limit(200);
+  },
+);

@@ -1,9 +1,14 @@
 "use server";
 
 import { requireUser } from "../auth/session";
-import { ConflictError, ExpiredError } from "../services/errors";
+import { ConflictError, ExpiredError, NotFoundError } from "../services/errors";
 import { answerQuizSessionForUser, type QuizAnswerResult } from "../services/vocab-quiz";
-import { gradeCardForUser, type GradeCardResult } from "../services/vocab";
+import {
+  gradeCardForUser,
+  undoGradeForUser,
+  type GradeCardResult,
+  type UndoGradeResult,
+} from "../services/vocab";
 import type { ReviewGrade } from "../srs";
 
 export async function gradeCard(input: {
@@ -19,6 +24,26 @@ export async function gradeCard(input: {
     return { ok: true, ...(await gradeCardForUser(user.id, input)) };
   } catch (err) {
     if (err instanceof ConflictError) return { ok: false, reason: "conflict" };
+    throw err;
+  }
+}
+
+/**
+ * Undo the last grade. Typed failures: "gone" — the review was already undone
+ * (a retried request) or never existed; "stale" — expired, superseded, or a
+ * legacy row. Either way the client simply keeps its current state.
+ */
+export async function undoGrade(input: {
+  reviewId: string;
+}): Promise<({ ok: true } & UndoGradeResult) | { ok: false; reason: "gone" | "stale" }> {
+  const user = await requireUser();
+  try {
+    return { ok: true, ...(await undoGradeForUser(user.id, input)) };
+  } catch (err) {
+    if (err instanceof NotFoundError) return { ok: false, reason: "gone" };
+    if (err instanceof ConflictError || err instanceof ExpiredError) {
+      return { ok: false, reason: "stale" };
+    }
     throw err;
   }
 }

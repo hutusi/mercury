@@ -6,8 +6,8 @@ test.describe("AI tutor chat", () => {
   test("keyless: tab renders a disabled state instead of a broken chat", async ({ page }) => {
     await registerAndOnboard(page);
 
-    // Nav shows the tutor entry (sidebar + dashboard quick links both link it).
-    await page.getByRole("link", { name: t.nav.tutor }).first().click();
+    // The sidebar's Tutor destination.
+    await page.getByRole("link", { name: t.nav.tutorTab, exact: true }).click();
     await page.waitForURL("**/tutor");
 
     await expect(page.getByRole("heading", { name: t.nav.tutor })).toBeVisible();
@@ -17,9 +17,19 @@ test.describe("AI tutor chat", () => {
     await expect(page.getByPlaceholder(t.tutor.placeholder)).toBeDisabled();
     await expect(page.getByRole("button", { name: t.tutor.send })).toBeDisabled();
     // The quota counter shows remaining against the limit, not a bare number.
-    await expect(
-      page.getByText(new RegExp(`${t.tutor.remainingLabel}: \\d+ / \\d+`)),
-    ).toBeVisible();
+    await expect(page.getByText(new RegExp(`${t.tutor.remainingLabel} \\d+ / \\d+`))).toBeVisible();
+  });
+
+  test("?ask= prefills the composer and never sends", async ({ page }) => {
+    await registerAndOnboard(page);
+    const question = "这道题我为什么会错？";
+    await page.goto(`/tutor?ask=${encodeURIComponent(question)}`);
+    // Keyless, the composer is disabled — but the handed-over question is
+    // still there to read, and nothing was sent (the thread stays empty).
+    await expect(page.getByPlaceholder(t.tutor.placeholder)).toHaveValue(question);
+    await expect(page.getByText(t.tutor.emptyHint)).toBeVisible();
+    // The query is dropped from the URL so a reload doesn't paste it again.
+    await expect.poll(() => new URL(page.url()).search).toBe("");
   });
 
   test("API: GET reports enabled=false, POST degrades with 503 envelope", async ({ request }) => {

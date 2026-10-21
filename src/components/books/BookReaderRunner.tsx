@@ -1,12 +1,13 @@
 "use client";
 
+import { ArrowRight, NotebookPen } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import type { BookChatMessageVM } from "@/components/books/BookTutorDock";
 import { QuestionsForm } from "@/components/exercise/QuestionsForm";
-import { ResultSummary } from "@/components/exercise/ResultSummary";
-import { SectionLabel } from "@/components/typography/SectionLabel";
+import { SubmitBar } from "@/components/exercise/ExerciseParts";
+import { ScoreCard } from "@/components/exercise/ScoreCard";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import type { SanitizedQuestion } from "@/content/types";
@@ -15,6 +16,7 @@ import { useAnswerDraft } from "@/components/exercise/useAnswerDraft";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { useFlowCounter, useFlowExit } from "@/lib/flow-store";
 
 // Loaded on demand: the tutor prop exists only for premium users with AI
 // enabled, so free/keyless readers never download the dock chunk.
@@ -49,6 +51,7 @@ export function BookReaderRunner({
   quiz,
   nextChapterId,
   tutor,
+  nextStop,
   children,
 }: {
   bookId: string;
@@ -56,6 +59,8 @@ export function BookReaderRunner({
   quiz: SanitizedQuestion[];
   nextChapterId: string | null;
   tutor?: BookTutorProps;
+  /** Server-rendered next-stop CTA when this chapter is a plan stop. */
+  nextStop?: React.ReactNode;
   children: React.ReactNode;
 }) {
   const t = useT();
@@ -74,6 +79,10 @@ export function BookReaderRunner({
     setAnswers(saved);
     setMode("quiz");
   }, []);
+  useFlowExit("saved", mode === "quiz" && !result && Object.keys(answers).length > 0);
+  useFlowCounter(
+    mode === "quiz" && !result ? `${Object.keys(answers).length} / ${quiz.length}` : null,
+  );
   const draft = useAnswerDraft({
     kind: "book_quiz",
     id: chapterId,
@@ -119,39 +128,55 @@ export function BookReaderRunner({
   }
 
   if (result) {
+    const wrongCount = result.perQuestion.filter((q) => !q.correct).length;
     return (
-      <ResultSummary
-        questions={quiz}
-        answers={answers}
-        graded={result.perQuestion}
-        score={result.score}
-        total={result.total}
-      >
-        <div className="flex items-center justify-between gap-4">
-          <Link
-            href={`/books/${bookId}`}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ← {t.books.backToBook}
-          </Link>
-          {nextChapterId && (
-            <Button asChild size="lg" className="h-11">
+      <div className="flex flex-col gap-3.5">
+        <ScoreCard score={result.score} total={result.total} />
+        <QuestionsForm questions={quiz} answers={answers} graded={result.perQuestion} />
+        <div className="mt-2 flex flex-col gap-2.5">
+          {nextStop}
+          {!nextStop && nextChapterId ? (
+            <Button asChild size="lg">
               <Link href={`/books/${bookId}/chapters/${nextChapterId}`}>
-                {t.books.nextChapter} →
+                {t.books.nextChapter}
+                <ArrowRight aria-hidden />
               </Link>
             </Button>
-          )}
+          ) : null}
+          {wrongCount > 0 ? (
+            <Button asChild variant="ghost" className="text-coral-ink hover:text-coral-ink">
+              <Link href="/mistakes">
+                <NotebookPen aria-hidden />
+                {t.common.reviewWrongCta} · {wrongCount}
+              </Link>
+            </Button>
+          ) : null}
+          <div className="flex gap-2.5">
+            {nextStop && nextChapterId ? (
+              <Button asChild variant="outline" className="flex-1">
+                <Link href={`/books/${bookId}/chapters/${nextChapterId}`}>
+                  {t.books.nextChapter}
+                </Link>
+              </Button>
+            ) : null}
+            <Button asChild variant="outline" className="flex-1">
+              <Link href={`/books/${bookId}`}>{t.books.backToBook}</Link>
+            </Button>
+          </div>
         </div>
-      </ResultSummary>
+      </div>
     );
   }
 
   if (mode === "quiz") {
     const answeredCount = Object.keys(answers).length;
     return (
-      <div className="space-y-6">
-        <div className="border-y border-border py-4">
-          <SectionLabel as="h2">{t.books.chapterQuiz}</SectionLabel>
+      <section aria-labelledby="book-quiz" className="flex flex-col gap-3.5">
+        <div>
+          <h2 id="book-quiz" className="font-serif text-2xl font-medium">
+            {t.books.chapterQuiz}
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">{t.books.quizIntro}</p>
         </div>
         <QuestionsForm
           questions={quiz}
@@ -161,38 +186,42 @@ export function BookReaderRunner({
           // would mint a new idempotency key and could record a second attempt.
           disabled={pending}
         />
-        {error && (
-          <Callout variant="error" className="p-3 text-center text-sm">
+        {error ? (
+          <Callout variant="error" className="px-4 py-3 text-center text-sm">
             {t.common.submitRetry}
           </Callout>
-        )}
-        <Button
-          onClick={submit}
-          disabled={pending || answeredCount < quiz.length}
-          size="lg"
-          className="h-11 w-full disabled:cursor-not-allowed"
-        >
-          {pending ? t.common.loading : `${t.common.submit} (${answeredCount}/${quiz.length})`}
-        </Button>
-      </div>
+        ) : null}
+        <SubmitBar
+          answered={answeredCount}
+          total={quiz.length}
+          pending={pending}
+          onSubmit={submit}
+          label={t.common.submit}
+        />
+      </section>
     );
   }
 
   return (
-    <div className="space-y-10">
-      <div ref={proseRef} className="space-y-10">
+    <div className="flex flex-col gap-10">
+      <div ref={proseRef} className="flex flex-col gap-10">
         {children}
       </div>
-      <section className="border-y border-border py-6 text-center">
-        <SectionLabel as="h2">{t.books.chapterQuiz}</SectionLabel>
-        <p className="mt-3 text-sm text-muted-foreground">{t.books.quizIntro}</p>
-        <Button size="lg" className="mt-4 h-11" onClick={startQuiz}>
+      <section
+        aria-labelledby="book-quiz-cta"
+        className="flex flex-col items-center rounded-xl bg-muted px-6 py-8 text-center"
+      >
+        <h2 id="book-quiz-cta" className="font-serif text-xl font-medium">
+          {t.books.chapterQuiz}
+        </h2>
+        <p className="mt-1.5 text-sm text-soft-3">{t.books.quizIntro}</p>
+        <Button size="lg" className="mt-5" onClick={startQuiz}>
           {t.books.startQuiz}
         </Button>
       </section>
-      {tutor && (
+      {tutor ? (
         <BookTutorDock bookId={bookId} chapterId={chapterId} proseRef={proseRef} {...tutor} />
-      )}
+      ) : null}
     </div>
   );
 }

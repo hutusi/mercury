@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 import { answerAllQuestions, registerAndOnboard, t } from "./helpers";
 
 /**
@@ -32,74 +32,63 @@ test("mistakes notebook: seed wrong answers, retest until cleared", async ({ pag
   await page.goto("/vocabulary/quiz");
   for (let i = 0; i < 10; i++) {
     await expect(page.locator("#main-content").getByText(`${i + 1} / 10`)).toBeVisible();
-    await page.locator("#main-content button").first().click();
+    await page.locator("[data-quiz-option]").first().click();
     await page.getByRole("button", { name: i === 9 ? t.common.finish : t.common.next }).click();
   }
   await expect(page.getByRole("heading", { name: t.vocab.quizDone })).toBeVisible();
 
-  // The notebook lists both groups.
+  // The notebook lists both kinds as cards.
   await page.goto("/mistakes");
-  await expect(page.getByRole("heading", { name: t.nav.reading })).toBeVisible();
-  await expect(page.getByRole("heading", { name: t.vocab.quiz })).toBeVisible();
+  const readingCards = page.locator('li[data-mistake-kind="reading"]');
+  const vocabCards = page.locator('li[data-mistake-kind="vocab_quiz"]');
+  await expect(readingCards.first()).toBeVisible();
+  await expect(vocabCards.first()).toBeVisible();
   await expect(page.getByText(t.mistakes.empty)).not.toBeVisible();
+  const readingBefore = await readingCards.count();
 
-  // Expand the first reading mistake and answer until correct.
-  const firstItem = page.locator("li", { has: page.getByText(t.mistakes.lastWrong) }).first();
-  await firstItem.getByRole("button").first().click();
-  await clearByTrying(page, firstItem);
-  await expect(firstItem.getByText(t.mistakes.retestCorrect)).toBeVisible();
+  // Re-answer a reading mistake until correct: tapping an option grades it,
+  // and a wrong pick reveals the key, so the retry is deterministic.
+  const firstItem = readingCards.first();
+  await firstItem.getByRole("button", { name: t.mistakes.retest }).click();
+  await clearByRetrying(firstItem);
+  // "Continue" moves the cleared card out of the active list.
+  await firstItem.getByRole("button", { name: t.mistakes.next }).click();
+  await expect(readingCards).toHaveCount(readingBefore - 1);
 
-  // Clear a vocab mistake: options grade immediately; a wrong pick reveals
-  // the correct option, so retry with the revealed answer.
-  const vocabItem = page
-    .locator("li", { has: page.locator(`text=${t.vocab.quiz}`) })
-    .filter({ has: page.getByText(t.mistakes.lastWrong) })
-    .first();
-  // First click creates the opaque one-question session; the next picks an
-  // option. The answer key is revealed only in the grading response.
+  // Same for a vocab mistake — its retry draws a fresh one-question session.
+  const vocabItem = vocabCards.first();
   await vocabItem.getByRole("button", { name: t.mistakes.retest }).click();
-  await vocabItem.locator("button").first().click();
-  const vocabOutcome = await Promise.race([
-    vocabItem
+  await clearByRetrying(vocabItem);
+
+  // The cleared tab now holds both.
+  await page.getByRole("radio", { name: new RegExp(t.mistakes.clearedLabel) }).click();
+  await expect(page.locator("li[data-mistake-cleared]")).toHaveCount(2);
+});
+
+/**
+ * Pick the first option; on a miss, read the revealed key, retry, and pick
+ * it (matched by text — a vocab retry reshuffles the options).
+ */
+async function clearByRetrying(item: Locator) {
+  const options = item.locator("[data-option-state]");
+  await options.first().click();
+  const outcome = await Promise.race([
+    item
       .getByText(t.mistakes.retestCorrect)
       .waitFor()
       .then(() => "correct" as const),
-    vocabItem
+    item
       .getByText(t.mistakes.retestWrong)
       .waitFor()
       .then(() => "wrong" as const),
   ]);
-  if (vocabOutcome === "wrong") {
-    const correctText = (await vocabItem.locator("button.border-foreground").textContent())!;
-    await vocabItem.getByRole("button", { name: t.common.tryAgain }).click();
-    await expect(vocabItem.getByRole("button", { name: correctText.trim() })).toBeVisible();
-    await vocabItem.getByRole("button", { name: correctText.trim() }).click();
+  if (outcome === "wrong") {
+    // The option text is the last span (MCQ options lead with a letter badge).
+    const key = (
+      await item.locator('[data-option-state="correct"] span').last().innerText()
+    ).trim();
+    await item.getByRole("button", { name: t.mistakes.retestAgain }).click();
+    await item.locator('[data-option-state="idle"]', { hasText: key }).first().click();
   }
-  await expect(vocabItem.getByText(t.mistakes.retestCorrect)).toBeVisible();
-
-  // The cleared view now holds the cleared items.
-  await page.getByRole("button", { name: t.mistakes.showCleared }).click();
-  await expect(page.getByText(t.mistakes.emptyCleared)).not.toBeVisible();
-});
-
-/** Try options A→D; a wrong grade offers tryAgain, a correct one clears. */
-async function clearByTrying(page: Page, item: ReturnType<Page["locator"]>) {
-  for (let option = 0; option < 4; option++) {
-    // QuestionsForm DOM contract: li > div > button per option.
-    await item.locator("li > div > button").nth(option).click();
-    await item.getByRole("button", { name: t.common.submit }).click();
-    const outcome = await Promise.race([
-      item
-        .getByText(t.mistakes.retestCorrect)
-        .waitFor()
-        .then(() => "correct" as const),
-      item
-        .getByText(t.mistakes.retestWrong)
-        .waitFor()
-        .then(() => "wrong" as const),
-    ]);
-    if (outcome === "correct") return;
-    await item.getByRole("button", { name: t.common.tryAgain }).click();
-  }
-  throw new Error("no option cleared the mistake");
+  await expect(item.getByText(t.mistakes.retestCorrect)).toBeVisible();
 }

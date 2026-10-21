@@ -97,10 +97,19 @@ future work and intentionally not in the OpenAPI contract yet.
   never branch on null.
 - **`targetScore` encoding**: TOEIC is the raw 10–990 score; **IELTS is band×10** (`65` = band
   6.5) because the column is an integer — divide by 10 for display when `goalTrack === "ielts"`.
-- `GET /api/v1/plan` — the deterministic daily plan (今日计划: due vocab → mistakes → continue
-  the current book → weakest skill → writing/speaking cadence → mock-exam checkpoint), fitted to
-  `dailyMinutes`. `href` values are unlocalized web paths; native clients should map
-  `kind`/`refId` to their own screens.
+- `GET /api/v1/plan` — today's route (今日计划: due vocab → mistakes → continue the current book
+  → weakest skill → writing/speaking cadence → mock-exam checkpoint), fitted to `dailyMinutes`
+  and frozen for the learner-local day ([ADR 0033](adr/0033-persistent-daily-route.md)).
+  `stops` lists every stop with `status` (`done` / `current` / `open` / `skipped`), `progress`
+  (`count` — e.g. 2/5 cards, `score` — e.g. 2/3 correct, or `exam` — section 2/3) and
+  `started`; `summary` gives done/total and remaining minutes. `items` keeps its original
+  meaning — what is still left today — so older clients keep working. Only work on the stop's
+  exact item counts (free practice elsewhere doesn't). Editing the goal regenerates the stops not
+  yet done, skipped, or begun (`revision` increments). `href` values are unlocalized web paths;
+  native clients should map `kind`/`refId` to their own screens.
+- `POST /api/v1/plan/skips` `{day, key, skipped}` skips or restores a stop and returns the plan;
+  `day` is the plan's `generatedFor` — once the learner's day has rolled over it's
+  `409 plan_day_changed` (reload the plan).
 
 ## Book reading
 
@@ -147,8 +156,8 @@ One rolling thread per (user, book) — the premium in-reader coach
 
 - `GET /api/v1/vocab/study-queue` cards include `srs` (`easeFactor`, `intervalDays`,
   `repetitions`, `lapses`) so clients that want to surface scheduler state can do so with
-  the same deterministic SM-2 rules (new cards carry the fresh-card state). The web UI
-  deliberately shows no interval previews — grade labels only.
+  the same deterministic SM-2 rules (new cards carry the fresh-card state) — the web UI
+  previews each grade's next interval this way.
 - `POST /api/v1/vocab/grade` returns `{reviewId, grade, replayed, intervalDays, srs}` — the
   post-review state, so a lapsed ("Forgot") card re-shown in the same session has accurate
   state without refetching the queue. Send an optional `requestId` (UUID) per card
@@ -156,6 +165,10 @@ One rolling thread per (user, book) — the premium in-reader coach
   response replays the stored review (`replayed: true`, `grade` = the original grade, which
   is the one to act on) instead of advancing the card twice; reusing an id for another word
   is `409 grade_request_conflict`.
+- `POST /api/v1/vocab/reviews/{reviewId}/undo` reverts a grade: the card returns to its
+  pre-review state (or, if that review created it, the word becomes unseen again). Only the
+  card's latest review, within 10 minutes — otherwise `409 undo_superseded`, `410 undo_expired`,
+  or `409 undo_unavailable` for reviews logged before snapshots existed. The streak is untouched.
 
 ## Vocabulary quiz integrity
 

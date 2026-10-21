@@ -18,13 +18,13 @@ function PasswordInput({ className, ...props }: Omit<React.ComponentProps<"input
 
   return (
     <div className="relative">
-      <Input type={visible ? "text" : "password"} className={cn("pr-9", className)} {...props} />
+      <Input type={visible ? "text" : "password"} className={cn("pr-11", className)} {...props} />
       <button
         type="button"
         onClick={() => setVisible((v) => !v)}
         aria-pressed={visible}
         aria-label={visible ? t.auth.hidePassword : t.auth.showPassword}
-        className="absolute top-0 right-0 flex h-8 w-9 items-center justify-center text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="absolute top-0 right-0 flex size-11 items-center justify-center rounded-full text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
       >
         <span aria-hidden>
           {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}

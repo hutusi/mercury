@@ -145,6 +145,82 @@ test.describe("API vocab/SRS", () => {
     expect(overview.learnedCount).toBe(1);
   });
 
+  test("undo reverts the latest grade exactly, once", async ({ request }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const { cards } = await (
+      await request.get("/api/v1/vocab/study-queue", { headers: user.authHeaders })
+    ).json();
+    const wordId = cards[0].wordId;
+    const grade = async (g: number) =>
+      (
+        await request.post("/api/v1/vocab/grade", {
+          headers: user.authHeaders,
+          data: { wordId, grade: g, requestId: crypto.randomUUID() },
+        })
+      ).json();
+    const undo = (reviewId: string) =>
+      request.post(`/api/v1/vocab/reviews/${reviewId}/undo`, { headers: user.authHeaders });
+    const learned = async () =>
+      (await (await request.get("/api/v1/vocab/overview", { headers: user.authHeaders })).json())
+        .learnedCount;
+
+    // Undoing a first review makes the word unseen again.
+    const first = await grade(5);
+    expect(await learned()).toBe(1);
+    const undone = await undo(first.reviewId);
+    expect(undone.status()).toBe(200);
+    expect(await undone.json()).toMatchObject({ wordId, restoredToNew: true, srs: null });
+    expect(await learned()).toBe(0);
+    // A retried undo finds nothing to undo.
+    expect((await undo(first.reviewId)).status()).toBe(404);
+
+    // Undoing a later review restores the state the earlier one left.
+    const again = await grade(5);
+    const second = await grade(5);
+    expect(second.srs.repetitions).toBe(2);
+    // Only the latest review can be undone.
+    const superseded = await undo(again.reviewId);
+    expect(superseded.status()).toBe(409);
+    expect((await superseded.json()).error.code).toBe("undo_superseded");
+    const restored = await (await undo(second.reviewId)).json();
+    expect(restored).toMatchObject({ restoredToNew: false, srs: again.srs });
+    expect(await learned()).toBe(1);
+  });
+
+  test("concurrent grades of one word undo in the order they were applied", async ({ request }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const { cards } = await (
+      await request.get("/api/v1/vocab/study-queue", { headers: user.authHeaders })
+    ).json();
+    const wordId = cards[0].wordId;
+    const undo = (reviewId: string) =>
+      request.post(`/api/v1/vocab/reviews/${reviewId}/undo`, { headers: user.authHeaders });
+
+    // The card lock applies the two grades one after the other, whichever
+    // read its clock first: the response with two repetitions landed second.
+    const results = await Promise.all(
+      [0, 1].map(async () =>
+        (
+          await request.post("/api/v1/vocab/grade", {
+            headers: user.authHeaders,
+            data: { wordId, grade: 5, requestId: crypto.randomUUID() },
+          })
+        ).json(),
+      ),
+    );
+    const first = results.find((r) => r.srs.repetitions === 1);
+    const second = results.find((r) => r.srs.repetitions === 2);
+    expect(first && second).toBeTruthy();
+
+    // Undoing the first must not delete the card the second built on.
+    const early = await undo(first.reviewId);
+    expect(early.status()).toBe(409);
+    expect((await early.json()).error.code).toBe("undo_superseded");
+    const late = await undo(second.reviewId);
+    expect(late.status()).toBe(200);
+    expect(await late.json()).toMatchObject({ restoredToNew: false, srs: first.srs });
+  });
+
   test("a requestId raced across two words resolves to one grade and one 409", async ({
     request,
   }) => {

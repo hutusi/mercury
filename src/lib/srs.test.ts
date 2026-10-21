@@ -1,5 +1,11 @@
 import { describe, expect, test } from "bun:test";
-import { NEW_CARD_STATE, scheduleReview } from "./srs";
+import {
+  NEW_CARD_STATE,
+  previewNextReview,
+  reviewTimestamp,
+  scheduleReview,
+  undoDecision,
+} from "./srs";
 
 const NOW = new Date("2026-01-01T08:00:00Z");
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -56,5 +62,61 @@ describe("scheduleReview (SM-2)", () => {
     const next = scheduleReview(state, 5, NOW);
     expect(next.easeFactor).toBeCloseTo(2.6);
     expect(next.intervalDays).toBe(Math.round(10 * 2.6) + 1);
+  });
+});
+
+describe("reviewTimestamp", () => {
+  const last = new Date("2026-10-21T10:00:00.000Z");
+
+  test("uses the clock when it is past the previous review", () => {
+    const clock = new Date("2026-10-21T10:00:05.000Z");
+    expect(reviewTimestamp(clock, last)).toEqual(clock);
+    expect(reviewTimestamp(clock, null)).toEqual(clock);
+  });
+
+  test("sorts after the previous review when the clock read is not later", () => {
+    // A grade whose clock was read before a concurrent grade took the lock,
+    // or on a lagging server: it still lands after the review it waited for.
+    expect(reviewTimestamp(new Date("2026-10-21T09:59:59.999Z"), last)).toEqual(
+      new Date("2026-10-21T10:00:00.001Z"),
+    );
+    expect(reviewTimestamp(last, last)).toEqual(new Date("2026-10-21T10:00:00.001Z"));
+  });
+});
+
+describe("undoDecision", () => {
+  const now = new Date("2026-10-21T10:00:00Z");
+  const log = { id: "r1", reviewedAt: new Date("2026-10-21T09:55:00Z"), hasSnapshot: true };
+
+  test("allows undoing the card's latest review within the window", () => {
+    expect(undoDecision(log, "r1", now)).toBe("ok");
+  });
+
+  test("refuses a review a later grade has built on", () => {
+    expect(undoDecision(log, "r2", now)).toBe("superseded");
+  });
+
+  test("refuses after the window", () => {
+    expect(undoDecision({ ...log, reviewedAt: new Date("2026-10-21T09:49:59Z") }, "r1", now)).toBe(
+      "expired",
+    );
+  });
+
+  test("refuses legacy rows without a snapshot", () => {
+    expect(undoDecision({ ...log, hasSnapshot: false }, "r1", now)).toBe("unavailable");
+  });
+});
+
+describe("previewNextReview", () => {
+  test("a new card: again in minutes, good tomorrow", () => {
+    expect(previewNextReview(NEW_CARD_STATE, 1)).toEqual({ unit: "minutes", n: 10 });
+    expect(previewNextReview(NEW_CARD_STATE, 4)).toEqual({ unit: "tomorrow" });
+  });
+
+  test("a mature card shows days, then months", () => {
+    const second = { easeFactor: 2.5, intervalDays: 1, repetitions: 1, lapses: 0 };
+    expect(previewNextReview(second, 4)).toEqual({ unit: "days", n: 6 });
+    const mature = { easeFactor: 2.6, intervalDays: 40, repetitions: 5, lapses: 0 };
+    expect(previewNextReview(mature, 5)).toMatchObject({ unit: "months" });
   });
 });

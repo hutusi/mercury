@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState, useTransition } from "react";
-import { MessageCircleQuestion, Quote, Send, X } from "lucide-react";
+import { ArrowUp, MessageCircleQuestion, Quote, X } from "lucide-react";
 import { SelectionQuoteButton } from "@/components/books/SelectionQuoteButton";
-import { SectionLabel } from "@/components/typography/SectionLabel";
+import { StationNode } from "@/components/layout/Wordmark";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
-import { Textarea } from "@/components/ui/textarea";
 import { sendBookChatMessage } from "@/lib/actions/book-chat";
 import { mapSendErrorToPanelState } from "@/lib/book-chat-core";
 import { restoreUnsent } from "@/lib/drafts";
 import { useT } from "@/lib/i18n/LocaleProvider";
+import { cn } from "@/lib/utils";
 
 export interface BookChatMessageVM {
   id: string;
@@ -164,93 +164,110 @@ export function BookTutorDock({
         }}
       />
 
-      <Button
+      <button
         ref={toggleRef}
-        variant="outline"
-        size="icon-lg"
-        className="fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6"
+        type="button"
+        className="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-40 flex size-13 items-center justify-center rounded-full bg-brand text-brand-foreground shadow-float outline-hidden transition-colors duration-200 hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:right-6 sm:bottom-6"
         aria-label={t.bookChat.openLabel}
         aria-expanded={open}
         aria-controls={open ? "book-tutor-panel" : undefined}
         onClick={() => (open ? close() : setOpen(true))}
       >
-        <MessageCircleQuestion aria-hidden />
-      </Button>
+        {open ? (
+          <X className="size-[1.375rem]" aria-hidden />
+        ) : (
+          <MessageCircleQuestion className="size-[1.375rem]" aria-hidden />
+        )}
+      </button>
 
       {open && (
         <div
           id="book-tutor-panel"
           role="dialog"
           aria-labelledby="book-tutor-title"
-          className="fixed inset-x-0 bottom-0 z-40 flex max-h-[70dvh] flex-col border border-border bg-background sm:inset-x-auto sm:right-6 sm:bottom-20 sm:h-[520px] sm:max-h-[calc(100dvh-7rem)] sm:w-[380px]"
+          className="fixed inset-x-0 bottom-0 z-40 flex max-h-[75dvh] flex-col rounded-t-2xl border border-border bg-background pb-[env(safe-area-inset-bottom)] shadow-float sm:inset-x-auto sm:right-6 sm:bottom-22 sm:h-[32.5rem] sm:max-h-[calc(100dvh-8rem)] sm:w-[23.75rem] sm:rounded-2xl sm:pb-0"
         >
-          <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-2.5">
-            <SectionLabel as="h2" id="book-tutor-title">
-              {t.bookChat.title}
-            </SectionLabel>
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3 border-b border-border px-4 py-3">
+            <StationNode className="size-7" />
+            <div className="min-w-0 flex-1">
+              <h2 id="book-tutor-title" className="text-[0.9375rem] font-semibold">
+                {t.bookChat.title}
+              </h2>
               <p
                 id="book-tutor-message-meta"
-                className="font-mono text-xs text-muted-foreground tabular-nums"
+                className="text-xs text-muted-foreground tabular-nums"
               >
-                {t.tutor.remainingLabel}: {remaining} / {dailyLimit}
+                {t.tutor.remainingLabel} {remaining} / {dailyLimit}
               </p>
-              <Button variant="ghost" size="icon-sm" aria-label={t.bookChat.close} onClick={close}>
-                <X aria-hidden />
-              </Button>
             </div>
+            <Button variant="ghost" size="icon-sm" aria-label={t.bookChat.close} onClick={close}>
+              <X aria-hidden />
+            </Button>
           </div>
 
           <div
             ref={listRef}
-            className="flex-1 space-y-4 overflow-y-auto px-4 py-4"
+            className="flex flex-1 flex-col gap-3.5 overflow-y-auto px-4 py-4"
             aria-live="polite"
             aria-relevant="additions text"
           >
-            {messages.length === 0 && !pending && (
-              <p className="text-sm text-muted-foreground">{t.bookChat.emptyHint}</p>
+            {messages.length === 0 && !pending ? (
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {t.bookChat.emptyHint}
+              </p>
+            ) : null}
+            {messages.map((m) =>
+              m.role === "user" ? (
+                <div key={m.id} className="flex justify-end">
+                  <p className="sr-only">{t.tutor.youLabel}</p>
+                  <div className="max-w-[88%] rounded-xl rounded-br-sm bg-brand-soft px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap">
+                    {m.content}
+                  </div>
+                </div>
+              ) : (
+                <div key={m.id} className="flex">
+                  <p className="sr-only">{t.tutor.coachLabel}</p>
+                  <div className="max-w-[88%] rounded-xl rounded-tl-sm border border-border bg-card px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap">
+                    {m.content}
+                  </div>
+                </div>
+              ),
             )}
-            {messages.map((m) => (
-              <div key={m.id} className={m.role === "user" ? "border-l-2 border-border pl-3" : ""}>
-                <SectionLabel as="p" className="mb-1">
-                  {m.role === "user" ? t.tutor.youLabel : t.tutor.coachLabel}
-                </SectionLabel>
-                <p className="text-sm leading-relaxed whitespace-pre-wrap">{m.content}</p>
-              </div>
-            ))}
-            {pending && (
+            {pending ? (
               <p role="status" className="text-sm text-muted-foreground">
                 {t.tutor.thinking}
               </p>
-            )}
+            ) : null}
           </div>
 
-          {error === "unavailable" && (
-            <Callout variant="accent" role="alert" className="mx-4 mb-3 p-3 text-xs">
+          {error === "unavailable" ? (
+            <Callout variant="accent" role="alert" className="mx-4 mb-3 px-3 py-2.5 text-xs">
               {t.tutor.unavailable}
             </Callout>
-          )}
-          {error === "limit" && (
-            <Callout variant="accent" role="alert" className="mx-4 mb-3 p-3 text-xs">
+          ) : null}
+          {error === "limit" ? (
+            <Callout variant="accent" role="alert" className="mx-4 mb-3 px-3 py-2.5 text-xs">
               {t.tutor.limitReached}
             </Callout>
-          )}
-          {error === "in_progress" && (
-            <Callout variant="accent" role="status" className="mx-4 mb-3 p-3 text-xs">
+          ) : null}
+          {error === "in_progress" ? (
+            <Callout variant="accent" role="status" className="mx-4 mb-3 px-3 py-2.5 text-xs">
               {t.tutor.inProgress}
             </Callout>
-          )}
-          {error === "failed" && (
-            <Callout variant="error" className="mx-4 mb-3 p-3 text-xs">
+          ) : null}
+          {error === "failed" ? (
+            <Callout variant="error" className="mx-4 mb-3 px-3 py-2.5 text-xs">
               {t.tutor.sendFailed}
             </Callout>
-          )}
+          ) : null}
 
-          <div className="space-y-2 border-t border-border p-3">
-            {quote && (
-              <div className="flex items-start gap-2 border border-border bg-muted px-2.5 py-1.5 text-xs text-muted-foreground">
+          <div className="flex flex-col gap-2 border-t border-border p-3">
+            {quote ? (
+              <div className="flex items-start gap-2 rounded-md bg-muted px-3 py-2 text-xs text-soft-3">
                 <Quote className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-                <span className="line-clamp-2 min-w-0 flex-1">{quote}</span>
+                <span className="line-clamp-2 min-w-0 flex-1 font-serif text-[0.8125rem]">
+                  {quote}
+                </span>
                 <Button
                   variant="ghost"
                   size="icon-xs"
@@ -261,32 +278,44 @@ export function BookTutorDock({
                   <X aria-hidden />
                 </Button>
               </div>
-            )}
-            <label htmlFor="book-tutor-message" className="sr-only">
-              {t.tutor.messageLabel}
-            </label>
-            <Textarea
-              ref={textareaRef}
-              id="book-tutor-message"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
-                  e.preventDefault();
-                  send();
-                }
-              }}
-              placeholder={t.bookChat.placeholder}
-              rows={2}
-              maxLength={3600}
-              disabled={remaining <= 0 || error === "unavailable"}
-              aria-describedby="book-tutor-message-meta"
-            />
-            <div className="flex justify-end">
-              <Button size="sm" onClick={send} disabled={!canSend}>
-                <Send aria-hidden />
-                {t.tutor.send}
-              </Button>
+            ) : null}
+            <div className="flex items-end gap-2 rounded-xl border border-input bg-card py-1 pr-1 pl-3.5 has-focus-visible:ring-2 has-focus-visible:ring-ring">
+              <label htmlFor="book-tutor-message" className="sr-only">
+                {t.tutor.messageLabel}
+              </label>
+              <textarea
+                ref={textareaRef}
+                id="book-tutor-message"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  // Enter sends, Shift+Enter breaks the line — never mid-IME.
+                  if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+                    e.preventDefault();
+                    send();
+                  }
+                }}
+                placeholder={t.bookChat.placeholder}
+                rows={1}
+                maxLength={3600}
+                disabled={remaining <= 0 || error === "unavailable"}
+                aria-describedby="book-tutor-message-meta"
+                className="field-sizing-content max-h-32 min-h-10 min-w-0 flex-1 resize-none bg-transparent py-2 text-sm leading-normal outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-60"
+              />
+              <button
+                type="button"
+                onClick={send}
+                disabled={!canSend}
+                aria-label={t.tutor.send}
+                className={cn(
+                  "flex size-10 shrink-0 items-center justify-center rounded-full outline-hidden transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-ring",
+                  canSend
+                    ? "bg-primary text-primary-foreground hover:bg-primary-hover"
+                    : "bg-input text-primary-foreground",
+                )}
+              >
+                <ArrowUp className="size-4" aria-hidden />
+              </button>
             </div>
           </div>
         </div>

@@ -58,3 +58,72 @@ export function computeStreak(
   }
   return streak;
 }
+
+/** Offset (ms) of `timeZone` from UTC at a given instant, to the second. */
+function zoneOffsetMs(instant: number, timeZone: string): number {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    hourCycle: "h23",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).formatToParts(new Date(instant));
+  const get = (type: Intl.DateTimeFormatPartTypes) =>
+    Number(parts.find((part) => part.type === type)?.value);
+  const asUtc = Date.UTC(
+    get("year"),
+    get("month") - 1,
+    get("day"),
+    get("hour"),
+    get("minute"),
+    get("second"),
+  );
+  return asUtc - Math.floor(instant / 1000) * 1000;
+}
+
+/** The UTC instant of local midnight starting `day` in `timeZone`. */
+function zonedMidnight(day: string, timeZone: string): Date {
+  const [year, month, date] = day.split("-").map(Number);
+  const wallMidnight = Date.UTC(year, month - 1, date);
+  // Two refinements settle the offset even when midnight sits next to a DST
+  // transition (the offset at the first guess may be the other side's).
+  let instant = wallMidnight;
+  for (let i = 0; i < 2; i++) instant = wallMidnight - zoneOffsetMs(instant, timeZone);
+  return new Date(instant);
+}
+
+/**
+ * The learner-local day as a half-open UTC range [start, end): what "today"
+ * means for plan completion. DST-safe — a 23- or 25-hour day is just a
+ * shorter or longer range.
+ */
+export function learnerDayRange(
+  day: string,
+  timeZone: string = DEFAULT_TIME_ZONE,
+): { start: Date; end: Date } {
+  return {
+    start: zonedMidnight(day, timeZone),
+    end: zonedMidnight(shiftCalendarDay(day, 1), timeZone),
+  };
+}
+
+export interface WeekDot {
+  day: string;
+  active: boolean;
+  isToday: boolean;
+  isFuture: boolean;
+}
+
+/** Monday→Sunday of the learner's current week, with each day's activity. */
+export function weekDots(days: ReadonlySet<string>, today: string): WeekDot[] {
+  const [year, month, date] = today.split("-").map(Number);
+  const weekday = new Date(Date.UTC(year, month - 1, date)).getUTCDay(); // 0 = Sunday
+  const monday = shiftCalendarDay(today, -((weekday + 6) % 7));
+  return Array.from({ length: 7 }, (_, i) => {
+    const day = shiftCalendarDay(monday, i);
+    return { day, active: days.has(day), isToday: day === today, isFuture: day > today };
+  });
+}

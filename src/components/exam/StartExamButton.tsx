@@ -53,14 +53,8 @@ export function StartExamButton({
   }
 
   return (
-    <div className="space-y-3">
-      <Button
-        onClick={start}
-        disabled={pending}
-        variant="accent"
-        size="lg"
-        className="h-12 w-full px-6 text-base sm:w-auto"
-      >
+    <div className="flex flex-col items-stretch gap-3 sm:items-start">
+      <Button onClick={start} disabled={pending} size="lg" className="sm:px-8">
         {pending ? t.common.loading : inProgressAttemptId ? t.exams.resumeExam : t.exams.startExam}
       </Button>
       {inProgressAttemptId &&
@@ -76,15 +70,20 @@ export function StartExamButton({
           </div>
         ) : (
           <Button
-            variant="outline"
+            variant="ghost"
             size="sm"
+            className="self-start text-muted-foreground"
             onClick={() => setConfirmingAbandon(true)}
             disabled={pending}
           >
             {t.exams.abandonExam}
           </Button>
         ))}
-      {error && <p className="text-sm text-destructive">{error}</p>}
+      {error ? (
+        <p role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }

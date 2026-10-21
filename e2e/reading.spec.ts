@@ -12,7 +12,7 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
   // plus any title containing "文章" would trip getByText's strict mode.
   await page.locator('a[href^="/zh/reading/"]').first().click();
   await page.waitForURL(/\/zh\/reading\/[^/]+$/);
-  await expect(page.getByText(t.reading.passage)).toBeVisible();
+  await expect(page.getByRole("heading", { name: t.reading.passage, exact: true })).toBeAttached();
 
   // Submit stays disabled until every question is answered.
   const submit = page.getByRole("button", { name: new RegExp(t.reading.submitAnswers) });
@@ -25,16 +25,14 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
   // Result: score header + per-question explanations now revealed.
   await expect(page.getByText(t.common.accuracy, { exact: false })).toBeVisible();
 
-  // The result screen routes forward: a next unattempted exercise (not this
-  // one) and the review link for the mistakes this attempt just wrote
-  // (first-option answers guarantee at least one wrong).
-  const currentPath = new URL(page.url()).pathname;
-  const nextLink = page.getByRole("link", { name: t.common.nextExercise });
-  await expect(nextLink).toBeVisible();
-  const nextHref = await nextLink.getAttribute("href");
-  expect(nextHref).not.toBe(currentPath);
-  // Not just "somewhere else" — it must be a sibling reading exercise.
-  expect(nextHref).toMatch(/\/reading\/[\w-]+$/);
+  // A new learner's first unattempted exercise is today's reading stop, so
+  // the result routes to the next stop on the plan (or back to Today).
+  await expect(
+    page.getByRole("link", {
+      name: new RegExp(`^(${t.flow.nextStop.split("{")[0]}|${t.flow.backToday})`),
+    }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: t.common.nextExercise })).toHaveCount(0);
   await expect(page.getByText(t.common.reviewWrongCta, { exact: false })).toBeVisible();
   await expect(page.getByText(t.reading.explanationLabel).first()).toBeVisible();
 
@@ -46,5 +44,36 @@ test("reading exercise: answer all, submit, review explanations", async ({ page 
     page.getByRole("link", { name: new RegExp(t.reading.backToList) }).first(),
   ).toHaveAttribute("href", "/zh/reading");
   await page.goto("/reading");
-  await expect(page.getByText(new RegExp(`${t.reading.bestScore}:`)).first()).toBeVisible();
+  await expect(
+    page.getByText(new RegExp(`${t.reading.bestScore} \\d+/\\d+`)).first(),
+  ).toBeVisible();
+});
+
+test("off-plan reading result offers the next unattempted exercise", async ({ page }) => {
+  await registerAndOnboard(page, "toeic");
+
+  // The last exercise in the list is never today's stop (the plan takes the
+  // first unattempted one), so this is free practice.
+  await page.goto("/reading");
+  await page.locator('a[href^="/zh/reading/"]').last().click();
+  await page.waitForURL(/\/zh\/reading\/[^/]+$/);
+  await expect(page.getByText(t.flow.free)).toBeVisible();
+
+  await answerAllQuestions(page);
+  await page.getByRole("button", { name: new RegExp(t.reading.submitAnswers) }).click();
+  await expect(page.getByText(t.common.accuracy, { exact: false })).toBeVisible();
+
+  // Forward to a sibling reading exercise — not this one.
+  const currentPath = new URL(page.url()).pathname;
+  const nextLink = page.getByRole("link", { name: t.common.nextExercise });
+  await expect(nextLink).toBeVisible();
+  const nextHref = await nextLink.getAttribute("href");
+  expect(nextHref).not.toBe(currentPath);
+  expect(nextHref).toMatch(/\/reading\/[\w-]+$/);
+
+  // Retry starts over in place: answers cleared, submit locked again.
+  await page.getByRole("button", { name: t.reading.tryAgain }).click();
+  await expect(
+    page.getByRole("button", { name: new RegExp(t.reading.submitAnswers) }),
+  ).toBeDisabled();
 });

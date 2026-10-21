@@ -1,138 +1,97 @@
-import { and, desc, eq } from "drizzle-orm";
+import { cache } from "react";
 import type { Track } from "../../content/types";
-import { db } from "../db";
-import { mockExamAttempts, mockExams, speakingSubmissions, writingSubmissions } from "../db/schema";
-import { countActiveMistakes } from "../mistakes";
-import { buildDailyPlan, type PlanItem } from "../plan-core";
-import { calendarDay, getUserTimeZone } from "../streak";
-import { getContinueReading } from "./books";
-import { getLearnerProfile } from "./profile";
-import { listListeningExercises } from "./listening";
-import { listReadingExercises } from "./reading";
-import { listSpeakingPrompts } from "./speaking";
-import { getVocabCounts } from "./vocab";
-import { listWritingPrompts } from "./writing";
+import {
+  derivePlanStops,
+  locateStop,
+  summarizeRoute,
+  type PlanStop,
+  type RouteSummary,
+  type StopMatch,
+} from "../plan-status-core";
+import { materializeDailyPlan, peekDailyPlan, type DailyPlanRow } from "../services/plan";
+import { learnerDayRange } from "../streak-core";
+import { getPlanFacts } from "./plan-facts";
 
-export interface DailyPlan {
-  items: PlanItem[];
+/** Today's route: the frozen plan with each stop's derived status. */
+export interface TodayRoute {
+  /** Learner-local day (YYYY-MM-DD). */
+  day: string;
   dailyMinutes: number;
-  /** Local day the plan was computed for (YYYY-MM-DD). */
-  generatedFor: string;
+  revision: number;
+  stops: PlanStop[];
+  summary: RouteSummary;
 }
 
-/** Gather every plan-core input in one parallel round and build 今日计划. */
-export async function getDailyPlan(
-  userId: string,
-  track: Track,
-  knownTimeZone?: string,
-): Promise<DailyPlan> {
-  const today = new Date();
-  // Threaded from the already-loaded settings on the web path; looked up only
-  // when a caller (e.g. the API route) doesn't have it.
-  const timeZone = knownTimeZone ?? (await getUserTimeZone(userId));
-  const generatedFor = calendarDay(today, timeZone);
-  const planToday = new Date(`${generatedFor}T12:00:00.000Z`);
-  const learnerDate = (date: Date | null | undefined) =>
-    date ? new Date(`${calendarDay(date, timeZone)}T12:00:00.000Z`) : null;
-
-  const [
-    profile,
-    vocab,
-    activeMistakes,
-    bookChapter,
-    reading,
-    listening,
-    writing,
-    speaking,
-    exam,
-    lastWriting,
-    lastSpeaking,
-    lastExam,
-  ] = await Promise.all([
-    getLearnerProfile(userId),
-    // Personal collections are unfiltered (ADR 0029): the plan's review and
-    // mistake items must count what the study queue and notebook actually
-    // serve — a goal-track count would say "learn new words" while due
-    // cross-pack reviews sit hidden. Content suggestions below stay
-    // goal-filtered; null also matches the dashboard's calls, so the
-    // cache() dedupe on countActiveMistakes actually hits.
-    getVocabCounts(userId),
-    countActiveMistakes(userId, null),
-    getContinueReading(userId),
-    listReadingExercises(userId, track),
-    listListeningExercises(userId, track),
-    listWritingPrompts(userId, track),
-    listSpeakingPrompts(userId, track),
-    track === "business"
-      ? Promise.resolve(null)
-      : db.query.mockExams.findFirst({
-          where: eq(mockExams.track, track as "toeic" | "ielts"),
-          orderBy: mockExams.id,
-          columns: { id: true },
-        }),
-    db.query.writingSubmissions.findFirst({
-      where: eq(writingSubmissions.userId, userId),
-      orderBy: desc(writingSubmissions.createdAt),
-      columns: { createdAt: true },
-    }),
-    db.query.speakingSubmissions.findFirst({
-      where: eq(speakingSubmissions.userId, userId),
-      orderBy: desc(speakingSubmissions.createdAt),
-      columns: { createdAt: true },
-    }),
-    db.query.mockExamAttempts.findFirst({
-      where: and(eq(mockExamAttempts.userId, userId), eq(mockExamAttempts.status, "completed")),
-      orderBy: desc(mockExamAttempts.completedAt),
-      columns: { completedAt: true },
-    }),
-  ]);
-
-  const nextWriting =
-    writing.prompts.find((p) => !writing.submissionCountByPrompt.has(p.id)) ?? writing.prompts[0];
-  const nextSpeaking =
-    speaking.prompts.find((p) => !speaking.submissionCountByPrompt.has(p.id)) ??
-    speaking.prompts[0];
-
-  const items = buildDailyPlan({
-    profile: profile
-      ? {
-          dailyMinutes: profile.dailyMinutes,
-          examDate: profile.examDate,
-          skillEstimates: profile.skillEstimates,
-        }
-      : null,
-    track,
-    dueCount: vocab.dueCount,
-    freshCount: vocab.freshCount,
-    activeMistakes,
-    recent: {
-      lastWritingAt: learnerDate(lastWriting?.createdAt),
-      lastSpeakingAt: learnerDate(lastSpeaking?.createdAt),
-      lastExamAt: learnerDate(lastExam?.completedAt),
-    },
-    available: {
-      reading: reading.exercises.map((e) => ({
-        id: e.id,
-        suggestedMinutes: e.suggestedMinutes,
-        attempted: reading.bestByExercise.has(e.id),
-      })),
-      listening: listening.exercises.map((e) => ({
-        id: e.id,
-        attempted: listening.bestByExercise.has(e.id),
-      })),
-      writing: nextWriting
-        ? { id: nextWriting.id, suggestedMinutes: nextWriting.suggestedMinutes }
-        : null,
-      speaking: nextSpeaking ? { id: nextSpeaking.id } : null,
-      examId: exam?.id ?? null,
-      bookChapter,
-    },
-    today: planToday,
-  });
-
+async function routeFor(row: DailyPlanRow, userId: string, timeZone: string): Promise<TodayRoute> {
+  const facts = await getPlanFacts(userId, row.items, learnerDayRange(row.day, timeZone));
+  const stops = derivePlanStops(row.items, facts, new Set(row.skippedKeys));
   return {
-    items,
-    dailyMinutes: profile?.dailyMinutes ?? 20,
-    generatedFor,
+    day: row.day,
+    dailyMinutes: row.dailyMinutes,
+    revision: row.revision,
+    stops,
+    summary: summarizeRoute(stops),
+  };
+}
+
+/**
+ * Today's route, materializing the day's plan on first read (ADR 0033).
+ * Two waves at most: the plan row, then the day's facts. cache(): the shell's
+ * plan card and the Today page share one computation per request.
+ */
+export const getTodayRoute = cache(
+  async (userId: string, track: Track, timeZone: string): Promise<TodayRoute> => {
+    const row = await materializeDailyPlan(userId, track, timeZone);
+    return routeFor(row, userId, timeZone);
+  },
+);
+
+/** Read-only variant for session pages: null when today has no plan yet. */
+export const peekTodayRoute = cache(
+  async (userId: string, timeZone: string): Promise<TodayRoute | null> => {
+    const row = await peekDailyPlan(userId, timeZone);
+    return row ? routeFor(row, userId, timeZone) : null;
+  },
+);
+
+export type FlowContext =
+  | {
+      mode: "plan";
+      day: string;
+      /** 0-based position of this session's stop. */
+      index: number;
+      total: number;
+      stop: PlanStop;
+      segments: { weight: number; status: PlanStop["status"] }[];
+      next: PlanStop | null;
+    }
+  | { mode: "free" };
+
+/**
+ * Where a session page sits in today's route ("stop 2 of 4" and the next
+ * stop), or free practice. Never creates a plan. Primitive arguments so the
+ * cache() key is stable.
+ */
+export async function getFlowContext(
+  userId: string,
+  timeZone: string,
+  kind: StopMatch["kind"],
+  refId?: string,
+): Promise<FlowContext> {
+  const route = await peekTodayRoute(userId, timeZone);
+  if (!route) return { mode: "free" };
+  const match = (
+    kind === "vocab" || kind === "mistakes" ? { kind } : { kind, refId: refId ?? "" }
+  ) as StopMatch;
+  const located = locateStop(route.stops, match);
+  if (!located) return { mode: "free" };
+  return {
+    mode: "plan",
+    day: route.day,
+    index: located.index,
+    total: route.stops.length,
+    stop: located.stop,
+    segments: route.stops.map((s) => ({ weight: s.estMinutes, status: s.status })),
+    next: located.next,
   };
 }
