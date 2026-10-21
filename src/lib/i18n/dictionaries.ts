@@ -1,6 +1,7 @@
-export type Locale = "zh" | "en";
+import type { Locale } from "./locale";
 
-export const LOCALE_COOKIE = "mercury_locale";
+export { LOCALE_COOKIE } from "./locale";
+export type { Locale } from "./locale";
 
 /**
  * UI chrome strings only. Learning content is inherently bilingual inside

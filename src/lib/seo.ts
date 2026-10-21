@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { Locale } from "@/lib/i18n/dictionaries";
+import type { Locale } from "@/lib/i18n/locale";
 import { dictionaries } from "@/lib/i18n";
 
 // The Open Graph `locale` tag (underscored region form) — distinct from the

@@ -98,7 +98,7 @@ Roles come from the better-auth `admin()` plugin ([ADR 0025](adr/0025-membership
 
 ## i18n
 
-Homegrown, cookie-based (see [ADR 0004](adr/0004-homegrown-i18n-over-next-intl.md)). The `Dictionary` type is derived from the zh dictionary (`DeepString<typeof zh>`), so the en dictionary cannot drift at compile time; `src/lib/i18n/dictionaries.test.ts` re-checks parity at runtime. Server components call `getDict()` (reads the `mercury_locale` cookie); client components use `useT()` from `LocaleProvider`. The first paint always derives from the cookie server-side — never `navigator.language` — to avoid hydration mismatches.
+Homegrown, cookie-based (see [ADR 0004](adr/0004-homegrown-i18n-over-next-intl.md)). The `Dictionary` type is derived from the zh dictionary (`DeepString<typeof zh>`), so the en dictionary cannot drift at compile time; `src/lib/i18n/dictionaries.test.ts` re-checks parity at runtime. Server components call `getDict()` (reads the `mercury_locale` cookie); client components use `useT()` from `LocaleProvider`, which receives the **active** dictionary as a prop from the `[locale]` layout — client code never imports `dictionaries.ts` at runtime (locale primitives live in `i18n/locale.ts`; `client-bundle.test.ts` enforces it), so only one locale ships to the browser, once. The first paint always derives from the cookie server-side — never `navigator.language` — to avoid hydration mismatches.
 
 Learning content bypasses this layer entirely: every content record carries both languages as data (that _is_ the product).
 

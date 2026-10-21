@@ -1,6 +1,6 @@
 import { getSessionCookie } from "better-auth/cookies";
 import { NextResponse, type NextRequest } from "next/server";
-import { LOCALE_COOKIE } from "@/lib/i18n/dictionaries";
+import { LOCALE_COOKIE } from "@/lib/i18n/locale";
 import { DEFAULT_LOCALE, isLocale, splitLocalePath } from "@/lib/i18n/routing";
 import { PROTECTED_PATHS } from "@/lib/routes";
 
