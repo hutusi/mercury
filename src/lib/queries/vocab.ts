@@ -1,9 +1,11 @@
-import { and, asc, count, eq, lte, notExists, sql } from "drizzle-orm";
+import { and, asc, count, eq, gte, lt, lte, notExists, sql } from "drizzle-orm";
 import { cache } from "react";
 import type { Track } from "../../content/types";
 import { composeAudioUrl } from "../audio-url";
 import { db } from "../db";
-import { srsCards, vocabWords } from "../db/schema";
+import { reviewLogs, srsCards, vocabWords } from "../db/schema";
+import type { GlossEntry } from "../gloss-core";
+import { calendarDay, learnerDayRange } from "../streak-core";
 import { MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION, NEW_CARD_STATE } from "../srs";
 
 export { MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION } from "../srs";
@@ -141,3 +143,34 @@ export async function getStudyQueue(
     })),
   ];
 }
+
+/**
+ * Words the learner reviewed today (learner-local day), for the dotted
+ * "you just met this word" highlight in reading passages and book chapters.
+ * Bounded: a day's reviews, capped well above any real session.
+ */
+export const getReviewedGlossesToday = cache(
+  async (userId: string, timeZone: string): Promise<GlossEntry[]> => {
+    const { start, end } = learnerDayRange(calendarDay(new Date(), timeZone), timeZone);
+    return db
+      .selectDistinctOn([vocabWords.id], {
+        wordId: vocabWords.id,
+        headword: vocabWords.headword,
+        translationZh: vocabWords.translationZh,
+        ipa: vocabWords.ipa,
+        pos: vocabWords.pos,
+      })
+      .from(reviewLogs)
+      .innerJoin(srsCards, eq(srsCards.id, reviewLogs.cardId))
+      .innerJoin(vocabWords, eq(vocabWords.id, srsCards.wordId))
+      .where(
+        and(
+          eq(reviewLogs.userId, userId),
+          gte(reviewLogs.reviewedAt, start),
+          lt(reviewLogs.reviewedAt, end),
+        ),
+      )
+      .orderBy(vocabWords.id)
+      .limit(200);
+  },
+);
