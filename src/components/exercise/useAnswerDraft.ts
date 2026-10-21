@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import type { SanitizedQuestion } from "@/content/types";
-import { DAY_MS, draftKey, isAnswerMap, type DraftKind } from "@/lib/drafts";
+import { DAY_MS, isAnswerMap, type DraftKind } from "@/lib/drafts";
 import { useDraft } from "@/lib/use-draft";
 
 const isEmptyAnswers = (answers: Record<string, number>) => Object.keys(answers).length === 0;
@@ -37,7 +37,8 @@ export function useAnswerDraft({
     [questions, onRestore],
   );
   return useDraft({
-    key: draftKey(kind, id),
+    kind,
+    id,
     value: answers,
     enabled,
     area: "session",

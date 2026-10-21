@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import { decodeDraft, encodeDraft } from "./drafts";
+import { useDraftOwner } from "./draft-owner";
+import { decodeDraft, draftKey, encodeDraft, type DraftKind } from "./drafts";
 
 type Area = "local" | "session";
 
@@ -16,7 +17,8 @@ function storageFor(area: Area): Storage | null {
 }
 
 /**
- * Keep a local copy of unsent learner work (see drafts.ts).
+ * Keep a local copy of unsent learner work (see drafts.ts), keyed to the
+ * signed-in account (DraftOwnerProvider) plus the draft's kind and content id.
  *
  * - On mount, a valid stored draft is handed to `onRestore` exactly once.
  * - Afterwards `value` is saved (debounced) whenever it changes while
@@ -31,7 +33,8 @@ function storageFor(area: Area): Storage | null {
  * after hydration.
  */
 export function useDraft<T>({
-  key,
+  kind,
+  id,
   value,
   enabled = true,
   area = "local",
@@ -41,7 +44,8 @@ export function useDraft<T>({
   onRestore,
   debounceMs = 400,
 }: {
-  key: string;
+  kind: DraftKind;
+  id: string;
   value: T;
   enabled?: boolean;
   area?: Area;
@@ -51,6 +55,8 @@ export function useDraft<T>({
   onRestore: (value: T) => void;
   debounceMs?: number;
 }): { clear: () => void } {
+  const owner = useDraftOwner();
+  const key = owner ? draftKey(owner, kind, id) : null;
   // The value last scheduled for storage. Seeded with the mount value, which
   // is never written: it would overwrite the stored draft before the restore
   // below has handed it over.
@@ -66,8 +72,8 @@ export function useDraft<T>({
   });
 
   useEffect(() => {
-    const storage = storageFor(area);
-    if (!storage) return;
+    const storage = key ? storageFor(area) : null;
+    if (!key || !storage) return;
     let raw: string | null = null;
     try {
       raw = storage.getItem(key);
@@ -94,7 +100,7 @@ export function useDraft<T>({
   }, []);
 
   useEffect(() => {
-    if (!enabled || Object.is(value, savedValueRef.current)) return;
+    if (!key || !enabled || Object.is(value, savedValueRef.current)) return;
     savedValueRef.current = value;
     pendingWriteRef.current = () => {
       const storage = storageFor(area);
@@ -128,6 +134,7 @@ export function useDraft<T>({
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = null;
     pendingWriteRef.current = null;
+    if (!key) return;
     const storage = storageFor(area);
     try {
       storage?.removeItem(key);

@@ -44,3 +44,31 @@ test("picked reading answers survive a reload", async ({ page }) => {
     page.getByRole("button", { name: new RegExp(t.reading.submitAnswers) }),
   ).toBeDisabled();
 });
+
+test("an expired session's draft is never handed to the next account", async ({ page }) => {
+  await registerAndOnboard(page, "toeic");
+  await page.goto("/writing");
+  await page.locator('a[href^="/zh/writing/"]').first().click();
+  await page.waitForURL(/\/zh\/writing\/[^/]+$/);
+  const promptUrl = page.url();
+
+  const editor = page.getByRole("textbox", { name: t.writing.responseLabel });
+  await editor.fill("A private draft that belongs to the first learner.");
+  await page.waitForTimeout(800);
+
+  // The session lapses without a sign-out, so nothing wipes local drafts;
+  // the next person on this browser signs up and opens the same prompt.
+  await page.context().clearCookies();
+  await registerAndOnboard(page, "toeic");
+  await page.goto(promptUrl);
+
+  await expect(editor).toHaveValue("");
+  await expect(page.getByText(t.common.draftRestored)).toHaveCount(0);
+  // The first learner's draft is still on the device, under their own key.
+  const writingDrafts = await page.evaluate(() =>
+    Object.keys(localStorage).filter(
+      (k) => k.startsWith("mercury.draft.") && k.includes(".writing."),
+    ),
+  );
+  expect(writingDrafts).toHaveLength(1);
+});

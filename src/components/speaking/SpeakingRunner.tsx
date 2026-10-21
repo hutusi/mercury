@@ -11,7 +11,7 @@ import { Callout } from "@/components/ui/callout";
 import type { Bilingual } from "@/content/types";
 import { retrySpeakingFeedback, submitSpeaking, type SpeakingResult } from "@/lib/actions/speaking";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
-import { DAY_MS, draftKey } from "@/lib/drafts";
+import { DAY_MS } from "@/lib/drafts";
 import { retryWhileInProgress } from "@/lib/in-progress-retry";
 import { useBeforeUnloadGuard, useDraft } from "@/lib/use-draft";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -89,7 +89,8 @@ export function SpeakingRunner({
     [phase, finalText, spokenSeconds],
   );
   const draft = useDraft({
-    key: draftKey("speaking", promptId),
+    kind: "speaking",
+    id: promptId,
     value: draftValue,
     enabled: phase === "review" && !pending,
     maxAgeMs: 2 * DAY_MS,

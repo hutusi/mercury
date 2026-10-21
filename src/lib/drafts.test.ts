@@ -29,7 +29,10 @@ describe("drafts", () => {
   });
 
   it("namespaces keys and lists only draft keys", () => {
-    expect(draftKey("writing", "w-1")).toBe("mercury.draft.v1.writing.w-1");
+    expect(draftKey("u-1", "writing", "w-1")).toBe("mercury.draft.v2.u-1.writing.w-1");
+    // Another account on the same browser gets a different key for the same
+    // content, so an expired session never hands its draft to the next user.
+    expect(draftKey("u-2", "writing", "w-1")).not.toBe(draftKey("u-1", "writing", "w-1"));
     const entries = [
       "mercury.draft.v1.writing.a",
       "mercury.vocab.autoSpeak",

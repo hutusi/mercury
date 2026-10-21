@@ -8,13 +8,21 @@
  * fails to parse or validate is treated as absent.
  */
 
-/** Bump when a draft payload's shape changes; old entries then read as absent. */
-const DRAFT_PREFIX = "mercury.draft.v1.";
+/**
+ * Bump when a draft payload's shape or key layout changes; old entries then
+ * read as absent (and are still swept on sign-out). v2 scopes keys by account.
+ */
+const DRAFT_PREFIX = "mercury.draft.v2.";
 
 export type DraftKind = "writing" | "speaking" | "reading" | "listening" | "book_quiz";
 
-export function draftKey(kind: DraftKind, id: string): string {
-  return `${DRAFT_PREFIX}${kind}.${id}`;
+/**
+ * Keys carry the owning account. Sign-out wipes drafts, but a session that
+ * merely expires does not — and whoever signs in next on that browser must
+ * never be handed the previous learner's work.
+ */
+export function draftKey(owner: string, kind: DraftKind, id: string): string {
+  return `${DRAFT_PREFIX}${owner}.${kind}.${id}`;
 }
 
 export function encodeDraft(value: unknown, now: number = Date.now()): string {

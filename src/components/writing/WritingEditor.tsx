@@ -5,7 +5,7 @@ import { useMemo, useRef, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { submitWriting } from "@/lib/actions/writing";
 import { requestIdForInput, type LogicalRequestId } from "@/lib/client-request-id";
-import { DAY_MS, draftKey } from "@/lib/drafts";
+import { DAY_MS } from "@/lib/drafts";
 import { retryWhileInProgress } from "@/lib/in-progress-retry";
 import { useDraft } from "@/lib/use-draft";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
@@ -28,7 +28,8 @@ export function WritingEditor({ promptId, minWords }: { promptId: string; minWor
   // The essay lives only here until it is submitted: keep a local copy so a
   // reload, a crash, or a stray navigation never loses the learner's work.
   const draft = useDraft({
-    key: draftKey("writing", promptId),
+    kind: "writing",
+    id: promptId,
     value: text,
     enabled: !pending,
     maxAgeMs: 30 * DAY_MS,

@@ -2,6 +2,7 @@ import { VerifyEmailBanner } from "@/components/auth/VerifyEmailBanner";
 import { AppShell } from "@/components/layout/AppShell";
 import { getSession } from "@/lib/auth/session";
 import { isEmailEnabled } from "@/lib/email/enabled";
+import { DraftOwnerProvider } from "@/lib/draft-owner";
 import { localeRedirect } from "@/lib/i18n";
 import { getOnboardedState } from "@/lib/settings";
 
@@ -18,12 +19,14 @@ export default async function AppLayout({ children }: Readonly<{ children: React
   const showVerifyBanner = isEmailEnabled(process.env) && !session.user.emailVerified;
 
   return (
-    <AppShell
-      userName={session.user.name || session.user.email}
-      isAdmin={session.user.role === "admin"}
-      banner={showVerifyBanner ? <VerifyEmailBanner email={session.user.email} /> : undefined}
-    >
-      {children}
-    </AppShell>
+    <DraftOwnerProvider owner={session.user.id}>
+      <AppShell
+        userName={session.user.name || session.user.email}
+        isAdmin={session.user.role === "admin"}
+        banner={showVerifyBanner ? <VerifyEmailBanner email={session.user.email} /> : undefined}
+      >
+        {children}
+      </AppShell>
+    </DraftOwnerProvider>
   );
 }
