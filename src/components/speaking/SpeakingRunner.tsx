@@ -211,7 +211,7 @@ export function SpeakingRunner({
         setResult(r);
         setPhase("done");
         window.scrollTo({ top: 0 });
-        // Focus follows the view swap (see ResultSummary).
+        // Focus follows the view swap: the recorder it replaces is gone.
         requestAnimationFrame(() => doneRef.current?.focus());
       } catch {
         // Stay in review so the recording can be resubmitted.

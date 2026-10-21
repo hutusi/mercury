@@ -7,15 +7,8 @@ import { fill } from "@/lib/i18n/fill";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import type { VocabMistakeVM } from "@/lib/mistakes";
 import type { QuizQuestion } from "@/lib/vocab-quiz-core";
-import {
-  MistakeCardShell,
-  OPTION_GRID,
-  RetestButton,
-  RetestOption,
-  RetestOutcome,
-  type CardMeta,
-  type OptionState,
-} from "./RetestParts";
+import { AnswerOption, OPTION_GRID, type OptionState } from "@/components/exercise/AnswerOption";
+import { MistakeCardShell, RetestButton, RetestOutcome, type CardMeta } from "./RetestParts";
 
 /**
  * One wrong vocab word, re-tested through a one-question server-owned quiz
@@ -115,14 +108,14 @@ export function VocabMistakeItem({
             className={`mt-3.5 ${OPTION_GRID}`}
           >
             {quiz.options.map((option) => (
-              <RetestOption
+              <AnswerOption
                 key={option.id}
                 state={optionState(option.id)}
                 disabled={pending || Boolean(outcome)}
                 onClick={() => pick(option.id)}
               >
                 {option.text}
-              </RetestOption>
+              </AnswerOption>
             ))}
           </div>
           {outcome ? (

@@ -2,10 +2,11 @@
 
 import { Check, X } from "lucide-react";
 import { useState, useTransition } from "react";
-import { SectionLabel } from "@/components/typography/SectionLabel";
+import { AnswerOption, OPTION_GRID, type OptionState } from "@/components/exercise/AnswerOption";
 import type { SanitizedQuestion } from "@/content/types";
 import { answerBookCheckIn, type CheckInResult } from "@/lib/actions/books";
 import { useT } from "@/lib/i18n/LocaleProvider";
+import { cn } from "@/lib/utils";
 
 const LETTERS = ["A", "B", "C", "D"];
 
@@ -50,15 +51,25 @@ export function CheckInCard({
     });
   }
 
+  function stateOf(i: number): OptionState {
+    if (!result) return chosen === i ? "picked" : "idle";
+    if (i === result.correctIndex) return "correct";
+    return i === chosen ? "wrong" : "muted";
+  }
+
   return (
-    <aside className="border border-border p-4 sm:p-5" aria-label={t.books.checkInLabel}>
-      <div className="flex items-baseline justify-between gap-3">
-        <SectionLabel as="h3">{t.books.checkInLabel}</SectionLabel>
-        {result && (
+    <aside
+      className="rounded-xl border border-border bg-card px-5 py-[1.125rem] font-sans"
+      aria-label={t.books.checkInLabel}
+    >
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="text-[0.8125rem] font-semibold text-soft-2">{t.books.checkInLabel}</h3>
+        {result ? (
           <span
-            className={`inline-flex items-center gap-1 font-mono text-xs font-medium ${
-              result.correct ? "text-foreground" : "text-cinnabar"
-            }`}
+            className={cn(
+              "inline-flex items-center gap-1 text-[0.8125rem] font-medium",
+              result.correct ? "text-brand-ink" : "text-coral-ink",
+            )}
           >
             {result.correct ? (
               <Check className="size-3.5" aria-hidden />
@@ -67,50 +78,35 @@ export function CheckInCard({
             )}
             {result.correct ? t.books.checkInCorrect : t.books.checkInIncorrect}
           </span>
-        )}
+        ) : null}
       </div>
-      <p className="mt-3 text-sm font-medium">{question.stem}</p>
-      <div className="mt-3 space-y-1.5" role="group" aria-label={question.stem}>
-        {question.options.map((option, i) => {
-          const isChosen = chosen === i;
-          const isCorrect = result !== null && i === result.correctIndex;
-          return (
-            <button
-              key={i}
-              type="button"
-              disabled={result !== null || pending}
-              onClick={() => choose(i)}
-              aria-pressed={isChosen}
-              className={`flex w-full items-start gap-2.5 border px-3 py-2 text-left text-sm outline-hidden transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-default ${
-                isCorrect
-                  ? "border-foreground bg-muted font-medium text-foreground"
-                  : isChosen && result && !result.correct
-                    ? "border-cinnabar/40 bg-cinnabar/10 text-cinnabar"
-                    : isChosen
-                      ? "border-foreground bg-muted font-medium text-foreground"
-                      : result
-                        ? "border-border text-muted-foreground"
-                        : "border-border text-foreground/80 hover:border-input hover:bg-muted/50"
-              }`}
-            >
-              <span className="font-mono text-xs font-medium">{LETTERS[i]}.</span>
-              <span>{option}</span>
-              {isCorrect && <Check className="mt-0.5 ml-auto size-4 shrink-0" aria-hidden />}
-            </button>
-          );
-        })}
+      <p className="mt-2 text-[0.9375rem] leading-normal font-medium text-pretty">
+        {question.stem}
+      </p>
+      <div className={`mt-3 ${OPTION_GRID}`} role="group" aria-label={question.stem}>
+        {question.options.map((option, i) => (
+          <AnswerOption
+            key={i}
+            letter={LETTERS[i]}
+            state={stateOf(i)}
+            disabled={result !== null || pending}
+            onClick={() => choose(i)}
+          >
+            {option}
+          </AnswerOption>
+        ))}
       </div>
-      {result && (
-        <div className="mt-3 bg-muted p-3 text-sm text-foreground/80">
+      {result ? (
+        <div className="mt-3 rounded-md bg-muted px-3.5 py-3 text-sm leading-[1.75] text-soft-3">
           <span className="font-semibold text-foreground">{t.reading.explanationLabel}</span>
           {result.explanationZh}
         </div>
-      )}
-      {error && (
-        <p role="alert" className="mt-3 text-xs font-medium text-cinnabar">
+      ) : null}
+      {error ? (
+        <p role="alert" className="mt-3 text-sm text-destructive">
           {t.common.submitRetry}
         </p>
-      )}
+      ) : null}
     </aside>
   );
 }

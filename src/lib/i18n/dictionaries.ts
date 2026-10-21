@@ -497,6 +497,8 @@ const zh = {
     bandB2: "进阶读物",
     bandC1: "高阶读物",
     bandC2: "原著无碍",
+    chapterOf: "第 {i} 章 · 共 {n} 章",
+    progress: "已读 {d} / {n} 章",
   },
   bookChat: {
     openLabel: "问私教",
@@ -1240,6 +1242,8 @@ const en: Dictionary = {
     bandB2: "Stepping up",
     bandC1: "Advanced reading",
     bandC2: "Reading without limits",
+    chapterOf: "Chapter {i} of {n}",
+    progress: "{d} / {n} chapters read",
   },
   bookChat: {
     openLabel: "Ask the tutor",

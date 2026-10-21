@@ -72,14 +72,16 @@ test("book reading: library → detail, chapter lock, check-in reveal", async ({
     "/zh/books/book-oz/chapters/oz-ch-02",
   );
   await page.goto("/books/book-oz");
-  await expect(page.getByText(new RegExp(`${t.reading.bestScore}:`)).first()).toBeVisible();
+  await expect(
+    page.getByText(new RegExp(`${t.reading.bestScore} \\d+/\\d+`)).first(),
+  ).toBeVisible();
   // Two links now target chapter 2 (header continue button + its row) —
   // the unlock is what matters, not which link.
   await expect(page.locator('a[href="/zh/books/book-oz/chapters/oz-ch-02"]').first()).toBeVisible();
 
-  // Missed quiz questions land in the notebook under the books group.
+  // Missed quiz questions land in the notebook as book-quiz cards.
   await page.goto("/mistakes");
-  await expect(page.getByRole("heading", { name: t.nav.books })).toBeVisible();
+  await expect(page.locator('li[data-mistake-kind="book_quiz"]').first()).toBeVisible();
 
   // With a book in progress, the daily plan offers to continue it,
   // deep-linking to the now-current chapter 2. Today's route was frozen at

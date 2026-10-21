@@ -91,7 +91,7 @@ export function SelectionQuoteButton({
     <button
       type="button"
       style={{ top: state.top, left: state.left }}
-      className="fixed z-40 inline-flex -translate-x-1/2 items-center gap-1.5 border border-border bg-background px-2.5 py-1.5 text-xs font-medium transition-colors hover:bg-muted"
+      className="fixed z-40 inline-flex min-h-9 -translate-x-1/2 items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-[0.8125rem] font-medium text-primary-foreground shadow-pop transition-colors hover:bg-primary-hover"
       // Keep the click from collapsing the selection before the handler runs.
       onMouseDown={(e) => e.preventDefault()}
       onClick={() => {

@@ -6,15 +6,8 @@ import { retestMistake, type RetestResult } from "@/lib/actions/mistakes";
 import { fill } from "@/lib/i18n/fill";
 import { useT } from "@/lib/i18n/LocaleProvider";
 import type { McqMistakeVM } from "@/lib/mistakes";
-import {
-  MistakeCardShell,
-  OPTION_GRID,
-  RetestButton,
-  RetestOption,
-  RetestOutcome,
-  type CardMeta,
-  type OptionState,
-} from "./RetestParts";
+import { AnswerOption, OPTION_GRID, type OptionState } from "@/components/exercise/AnswerOption";
+import { MistakeCardShell, RetestButton, RetestOutcome, type CardMeta } from "./RetestParts";
 
 const LETTERS = ["A", "B", "C", "D"];
 
@@ -138,7 +131,7 @@ export function MistakeItem({
             className={`mt-3.5 ${OPTION_GRID}`}
           >
             {question.options.map((option, i) => (
-              <RetestOption
+              <AnswerOption
                 key={i}
                 letter={LETTERS[i]}
                 state={optionState(i)}
@@ -146,7 +139,7 @@ export function MistakeItem({
                 onClick={() => pick(i)}
               >
                 {option}
-              </RetestOption>
+              </AnswerOption>
             ))}
           </div>
           {graded ? (
