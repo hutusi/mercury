@@ -1,6 +1,5 @@
 import { cache } from "react";
 import type { Track } from "../../content/types";
-import type { PlanItem } from "../plan-core";
 import {
   derivePlanStops,
   locateStop,
@@ -10,7 +9,6 @@ import {
   type StopMatch,
 } from "../plan-status-core";
 import { materializeDailyPlan, peekDailyPlan, type DailyPlanRow } from "../services/plan";
-import { getUserTimeZone } from "../streak";
 import { learnerDayRange } from "../streak-core";
 import { getPlanFacts } from "./plan-facts";
 
@@ -96,28 +94,4 @@ export async function getFlowContext(
     segments: route.stops.map((s) => ({ weight: s.estMinutes, status: s.status })),
     next: located.next,
   };
-}
-
-/** The legacy plan shape (still the v1 API's `items`): stops not yet done or skipped. */
-export interface DailyPlan {
-  items: PlanItem[];
-  dailyMinutes: number;
-  /** Local day the plan was computed for (YYYY-MM-DD). */
-  generatedFor: string;
-}
-
-export async function getDailyPlan(
-  userId: string,
-  track: Track,
-  knownTimeZone?: string,
-): Promise<DailyPlan & { route: TodayRoute }> {
-  // Threaded from the already-loaded settings on the web path; looked up only
-  // when a caller (e.g. the API route) doesn't have it.
-  const timeZone = knownTimeZone ?? (await getUserTimeZone(userId));
-  const route = await getTodayRoute(userId, track, timeZone);
-  const items = route.stops
-    .filter((s) => s.status === "current" || s.status === "open")
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- strip derived fields
-    .map(({ key, status, progress, started, ...item }) => item);
-  return { items, dailyMinutes: route.dailyMinutes, generatedFor: route.day, route };
 }

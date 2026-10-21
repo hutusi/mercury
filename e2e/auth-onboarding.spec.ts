@@ -9,13 +9,13 @@ test("register → forced onboarding → dashboard", async ({ page }) => {
 
   await pickTrack(page, "toeic");
 
-  // Dashboard renders greeting + core cards, led by a non-empty 今日计划
-  // (the plan engine's fresh-account fallback guarantees at least one item).
-  await expect(page.getByText(t.dashboard.streak)).toBeVisible();
-  await expect(page.getByText(t.dashboard.examBanner)).toBeVisible();
-  await expect(page.getByText(t.dashboard.quickStart)).toBeVisible();
+  // Today renders the route, led by a non-empty 今日计划 whose first stop is
+  // the raised current card (the plan engine's fresh-account fallback
+  // guarantees at least one item), with the streak in the margin.
   await expect(page.getByRole("heading", { name: t.plan.title })).toBeVisible();
-  await expect(page.getByText(t.plan.itemVocabNew)).toBeVisible();
+  await expect(page.getByText(t.today.upNext)).toBeVisible();
+  await expect(page.getByRole("heading", { name: t.plan.itemVocabNew })).toBeVisible();
+  await expect(page.getByText(t.dashboard.streak)).toBeVisible();
 
   // Keyless regression: every e2e user is unverified — the verify banner must
   // be gated on email being enabled or it would leak onto every app page.

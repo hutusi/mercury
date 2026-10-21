@@ -109,3 +109,21 @@ export function learnerDayRange(
     end: zonedMidnight(shiftCalendarDay(day, 1), timeZone),
   };
 }
+
+export interface WeekDot {
+  day: string;
+  active: boolean;
+  isToday: boolean;
+  isFuture: boolean;
+}
+
+/** Monday→Sunday of the learner's current week, with each day's activity. */
+export function weekDots(days: ReadonlySet<string>, today: string): WeekDot[] {
+  const [year, month, date] = today.split("-").map(Number);
+  const weekday = new Date(Date.UTC(year, month - 1, date)).getUTCDay(); // 0 = Sunday
+  const monday = shiftCalendarDay(today, -((weekday + 6) % 7));
+  return Array.from({ length: 7 }, (_, i) => {
+    const day = shiftCalendarDay(monday, i);
+    return { day, active: days.has(day), isToday: day === today, isFuture: day > today };
+  });
+}

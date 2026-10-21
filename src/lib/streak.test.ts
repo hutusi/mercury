@@ -4,6 +4,7 @@ import {
   computeStreak,
   isIanaTimeZone,
   shiftCalendarDay,
+  weekDots,
   learnerDayRange,
 } from "./streak-core";
 
@@ -101,5 +102,30 @@ describe("learnerDayRange", () => {
     expect(calendarDay(r.start, "Europe/London")).toBe("2026-07-01");
     expect(calendarDay(new Date(r.end.getTime() - 1), "Europe/London")).toBe("2026-07-01");
     expect(calendarDay(r.end, "Europe/London")).toBe("2026-07-02");
+  });
+});
+
+describe("weekDots", () => {
+  test("lays out Monday to Sunday around today with activity marks", () => {
+    // 2026-10-21 is a Wednesday.
+    const dots = weekDots(new Set(["2026-10-19", "2026-10-21", "2026-10-25"]), "2026-10-21");
+    expect(dots.map((d) => d.day)).toEqual([
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-24",
+      "2026-10-25",
+    ]);
+    expect(dots.map((d) => d.active)).toEqual([true, false, true, false, false, false, true]);
+    expect(dots[2]).toMatchObject({ isToday: true, isFuture: false });
+    expect(dots[3].isFuture).toBe(true);
+  });
+
+  test("a Sunday is the last dot of its week", () => {
+    const dots = weekDots(new Set(), "2026-10-25");
+    expect(dots[0].day).toBe("2026-10-19");
+    expect(dots[6]).toMatchObject({ day: "2026-10-25", isToday: true });
   });
 });
