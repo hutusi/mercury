@@ -12,7 +12,7 @@ import { Wordmark } from "./Wordmark";
  * The hub-page shell. Desktop: a 248px sidebar (wordmark, grouped nav, the
  * plan card slot, the avatar menu and 中/EN). Phones: a 58px top bar and four
  * bottom tabs. `--chrome-top` tells sticky page elements how much fixed chrome
- * sits above them.
+ * sits above them; `--bottom-nav-h` how much sits below (the phone tabs).
  */
 export async function AppShell({
   userName,
@@ -35,7 +35,7 @@ export async function AppShell({
   const t = await getDict();
 
   return (
-    <div className="min-h-dvh bg-background [--chrome-top:3.625rem] md:flex md:[--chrome-top:0px]">
+    <div className="min-h-dvh bg-background [--bottom-nav-h:calc(4rem+env(safe-area-inset-bottom))] [--chrome-top:3.625rem] md:flex md:[--bottom-nav-h:0px] md:[--chrome-top:0px]">
       <SkipLink label={t.a11y.skipToContent} />
 
       <aside className="sticky top-0 hidden h-dvh w-62 shrink-0 flex-col gap-4 overflow-x-hidden overflow-y-auto border-r border-border px-3.5 pt-[1.125rem] pb-3.5 md:flex">

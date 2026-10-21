@@ -651,6 +651,12 @@ const zh = {
     inProgress: "上一条消息仍在处理中，请稍后再试。",
     sendFailed: "回复失败，请稍后重试。",
     emptyHint: "从一个问题开始：语法、选词、翻译、面试表达，或让私教点评你的句子。",
+    memo: "私教记得：",
+    suggestionsLabel: "试试这样问",
+    suggestion1: "帮我改这句：I am agree with you.",
+    suggestion2: "present 和 gift 有什么区别？",
+    suggestion3: "面试时怎么介绍自己做过的项目？",
+    composerHint: "Enter 发送，Shift + Enter 换行",
   },
   mistakes: {
     subtitle: "收集所有答错的题目 —— 重做一次答对即可清除",
@@ -1369,6 +1375,12 @@ const en: Dictionary = {
     sendFailed: "Reply failed, please try again later.",
     emptyHint:
       "Start with any question: grammar, word choice, translation, interview phrasing, or ask the coach to review your sentence.",
+    memo: "Your tutor remembers: ",
+    suggestionsLabel: "Try asking",
+    suggestion1: "Fix this sentence: I am agree with you.",
+    suggestion2: "What's the difference between present and gift?",
+    suggestion3: "How do I describe a past project in an interview?",
+    composerHint: "Enter to send, Shift + Enter for a new line",
   },
   mistakes: {
     subtitle: "Every question you missed — answer it correctly once to clear it",
