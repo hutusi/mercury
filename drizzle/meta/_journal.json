@@ -246,6 +246,13 @@
       "when": 1792544426263,
       "tag": "0034_huge_lilandra",
       "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "7",
+      "when": 1792544632871,
+      "tag": "0035_massive_professor_monster",
+      "breakpoints": true
     }
   ]
 }

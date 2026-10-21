@@ -3,15 +3,24 @@
 import { requireUser } from "../auth/session";
 import { ConflictError, ExpiredError } from "../services/errors";
 import { answerQuizSessionForUser, type QuizAnswerResult } from "../services/vocab-quiz";
-import { gradeCardForUser } from "../services/vocab";
-import type { ReviewGrade, SrsState } from "../srs";
+import { gradeCardForUser, type GradeCardResult } from "../services/vocab";
+import type { ReviewGrade } from "../srs";
 
 export async function gradeCard(input: {
   wordId: string;
   grade: ReviewGrade;
-}): Promise<{ intervalDays: number; srs: SrsState }> {
+  requestId: string;
+}): Promise<({ ok: true } & GradeCardResult) | { ok: false; reason: "conflict" }> {
   const user = await requireUser();
-  return gradeCardForUser(user.id, input);
+  // Typed "conflict" (a request id reused for another word) instead of a
+  // throw: server-action errors are masked in prod and would read as a
+  // network failure the learner could only retry into the same conflict.
+  try {
+    return { ok: true, ...(await gradeCardForUser(user.id, input)) };
+  } catch (err) {
+    if (err instanceof ConflictError) return { ok: false, reason: "conflict" };
+    throw err;
+  }
 }
 
 export async function answerQuiz(input: {
