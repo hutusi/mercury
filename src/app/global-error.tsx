@@ -24,12 +24,12 @@ export default function GlobalError({
       <body className="bg-background text-foreground">
         <main className="mx-auto flex min-h-screen max-w-xl flex-col justify-center gap-6 px-6 py-12">
           <div>
-            <h1 className="font-serif text-4xl font-medium tracking-tight">Something went wrong</h1>
+            <h1 className="font-serif text-4xl font-medium">Something went wrong</h1>
             <p className="mt-3 text-muted-foreground">出错了 —— The app hit an unexpected error.</p>
           </div>
           <button
             onClick={reset}
-            className="inline-flex w-fit items-center rounded-sm bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
+            className="inline-flex min-h-11 w-fit items-center rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
           >
             Try again · 重试
           </button>

@@ -18,8 +18,10 @@ import { getLearnerProfile } from "@/lib/queries/profile";
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function SettingsPage() {
-  const { user, goalTrack, remindersEnabled } = await requireOnboarded();
-  const t = await getDict();
+  const [{ user, goalTrack, remindersEnabled }, t] = await Promise.all([
+    requireOnboarded(),
+    getDict(),
+  ]);
   // Cached — the guard already fetched this row in the same render.
   const [profile, membership, accounts] = await Promise.all([
     getLearnerProfile(user.id),
@@ -32,7 +34,7 @@ export default async function SettingsPage() {
   const emailEnabled = isEmailEnabled(process.env);
 
   return (
-    <div className="max-w-2xl space-y-10">
+    <div className="mx-auto flex max-w-[45rem] flex-col gap-8">
       <EntryHeader
         title={t.nav.settings}
         ipa={t.entry.settingsIpa}
@@ -40,10 +42,7 @@ export default async function SettingsPage() {
         gloss={t.settings.subtitle}
       />
 
-      <section>
-        <SectionLabel as="h2" className="mb-4">
-          {t.settings.goalSection}
-        </SectionLabel>
+      <SettingsCard title={t.settings.goalSection}>
         <GoalEditor
           initial={{
             goalTrack,
@@ -52,22 +51,16 @@ export default async function SettingsPage() {
             dailyMinutes: profile?.dailyMinutes ?? 20,
           }}
         />
-      </section>
+      </SettingsCard>
 
-      <section>
-        <SectionLabel as="h2" className="mb-4">
-          {t.settings.prefsSection}
-        </SectionLabel>
+      <SettingsCard title={t.settings.prefsSection}>
         <ReminderToggle enabled={remindersEnabled} />
-      </section>
+      </SettingsCard>
 
-      <section>
-        <SectionLabel as="h2" className="mb-4">
-          {t.settings.membershipSection}
-        </SectionLabel>
+      <SettingsCard title={t.settings.membershipSection}>
         {/* Only premium wears a badge — a "free" label would frame the base
             experience as lesser; free users just see what premium adds. */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           {tier === "premium" && <Badge variant="accent">{t.settings.membershipPremium}</Badge>}
           <span className="text-sm text-muted-foreground">
             {tier === "premium"
@@ -78,14 +71,11 @@ export default async function SettingsPage() {
           </span>
           <PremiumCta />
         </div>
-      </section>
+      </SettingsCard>
 
       {(hasCredential || emailEnabled || providers.length > 0) && (
-        <section>
-          <SectionLabel as="h2" className="mb-4">
-            {t.settings.securitySection}
-          </SectionLabel>
-          <div className="space-y-6">
+        <SettingsCard title={t.settings.securitySection}>
+          <div className="flex flex-col gap-6">
             {hasCredential ? (
               <ChangePasswordForm />
             ) : emailEnabled ? (
@@ -95,7 +85,7 @@ export default async function SettingsPage() {
                 {t.settings.oauthOnlyHint}{" "}
                 <Link
                   href="/forgot-password"
-                  className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+                  className="font-medium text-brand-ink underline-offset-4 transition-colors hover:underline"
                 >
                   {t.settings.setPassword}
                 </Link>
@@ -113,8 +103,18 @@ export default async function SettingsPage() {
               />
             )}
           </div>
-        </section>
+        </SettingsCard>
       )}
     </div>
+  );
+}
+
+/** A titled settings group on one card. */
+function SettingsCard({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="flex flex-col gap-3">
+      <SectionLabel as="h2">{title}</SectionLabel>
+      <div className="rounded-xl border border-border bg-card p-5 sm:p-6">{children}</div>
+    </section>
   );
 }

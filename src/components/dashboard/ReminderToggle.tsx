@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { SectionLabel } from "@/components/typography/SectionLabel";
 import { Button } from "@/components/ui/button";
 import { setRemindersEnabled } from "@/lib/actions/settings";
 import { useT } from "@/lib/i18n/LocaleProvider";
@@ -33,9 +32,9 @@ export function ReminderToggle({ enabled }: { enabled: boolean }) {
   }
 
   return (
-    <div className="border-t border-border pt-4">
+    <div>
       <div className="flex items-center justify-between gap-3">
-        <SectionLabel as="h2">{t.dashboard.reminderToggleLabel}</SectionLabel>
+        <p className="text-[0.9375rem] font-medium">{t.dashboard.reminderToggleLabel}</p>
         <Button
           variant="outline"
           size="sm"
@@ -46,7 +45,9 @@ export function ReminderToggle({ enabled }: { enabled: boolean }) {
           {optimistic ? t.dashboard.reminderToggleOn : t.dashboard.reminderToggleOff}
         </Button>
       </div>
-      <p className="mt-2 text-xs text-muted-foreground">{t.dashboard.reminderToggleHint}</p>
+      <p className="mt-1 text-[0.8125rem] text-muted-foreground">
+        {t.dashboard.reminderToggleHint}
+      </p>
     </div>
   );
 }

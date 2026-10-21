@@ -13,7 +13,7 @@ export default async function AdminPage() {
   const now = new Date();
 
   return (
-    <div className="space-y-10">
+    <div className="flex flex-col gap-8">
       <EntryHeader
         title={t.nav.admin}
         ipa={t.entry.adminIpa}
@@ -21,20 +21,28 @@ export default async function AdminPage() {
         gloss={t.admin.subtitle}
       />
 
-      <section>
-        <SectionLabel as="h2" className="mb-4">
-          {t.admin.usersSection}
-        </SectionLabel>
-        <div className="overflow-x-auto border border-border">
+      <section className="flex flex-col gap-3">
+        <SectionLabel as="h2">{t.admin.usersSection}</SectionLabel>
+        <div className="overflow-x-auto rounded-xl border border-border bg-card">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border text-left">
-                <th className="px-3 py-2 font-medium text-muted-foreground">{t.admin.colName}</th>
-                <th className="px-3 py-2 font-medium text-muted-foreground">{t.admin.colEmail}</th>
-                <th className="px-3 py-2 font-medium text-muted-foreground">{t.admin.colRole}</th>
-                <th className="px-3 py-2 font-medium text-muted-foreground">{t.admin.colTier}</th>
-                <th className="px-3 py-2 font-medium text-muted-foreground">{t.admin.colExpiry}</th>
-                <th className="px-3 py-2 font-medium text-muted-foreground">
+                <th className="px-4 py-3 text-[0.8125rem] font-medium whitespace-nowrap text-muted-foreground">
+                  {t.admin.colName}
+                </th>
+                <th className="px-4 py-3 text-[0.8125rem] font-medium whitespace-nowrap text-muted-foreground">
+                  {t.admin.colEmail}
+                </th>
+                <th className="px-4 py-3 text-[0.8125rem] font-medium whitespace-nowrap text-muted-foreground">
+                  {t.admin.colRole}
+                </th>
+                <th className="px-4 py-3 text-[0.8125rem] font-medium whitespace-nowrap text-muted-foreground">
+                  {t.admin.colTier}
+                </th>
+                <th className="px-4 py-3 text-[0.8125rem] font-medium whitespace-nowrap text-muted-foreground">
+                  {t.admin.colExpiry}
+                </th>
+                <th className="px-4 py-3 text-[0.8125rem] font-medium whitespace-nowrap text-muted-foreground">
                   {t.admin.colActions}
                 </th>
               </tr>
@@ -50,12 +58,12 @@ export default async function AdminPage() {
                 const expiresAt = row.membershipExpiresAt?.toISOString().slice(0, 10) ?? null;
                 return (
                   <tr key={row.id} className="border-b border-border last:border-b-0">
-                    <td className="max-w-40 truncate px-3 py-2">{row.name}</td>
-                    <td className="max-w-56 truncate px-3 py-2 text-muted-foreground">
+                    <td className="max-w-40 truncate px-4 py-3">{row.name}</td>
+                    <td className="max-w-56 truncate px-4 py-3 text-muted-foreground">
                       {row.email}
                     </td>
-                    <td className="px-3 py-2">
-                      <Badge variant={row.role === "admin" ? "accent" : "outline"}>
+                    <td className="px-4 py-3">
+                      <Badge variant={row.role === "admin" ? "accent" : "default"}>
                         {row.role === "admin" ? t.admin.roleAdmin : t.admin.roleUser}
                       </Badge>
                     </td>
@@ -75,7 +83,7 @@ export default async function AdminPage() {
           </table>
         </div>
         {rows.length >= ADMIN_USER_LIST_LIMIT ? (
-          <p className="mt-2 text-xs text-muted-foreground">{t.admin.capNote}</p>
+          <p className="text-xs text-muted-foreground">{t.admin.capNote}</p>
         ) : null}
       </section>
     </div>

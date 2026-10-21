@@ -87,7 +87,7 @@ export default function LoginPage() {
             {emailAuthEnabled && (
               <Link
                 href="/forgot-password"
-                className="text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+                className="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
               >
                 {t.auth.forgotPassword}
               </Link>
@@ -114,7 +114,7 @@ export default function LoginPage() {
         {t.auth.noAccount}{" "}
         <Link
           href="/register"
-          className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+          className="font-medium text-brand-ink underline-offset-4 transition-colors hover:underline"
         >
           {t.auth.registerLink}
         </Link>

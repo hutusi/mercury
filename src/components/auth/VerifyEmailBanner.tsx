@@ -52,7 +52,7 @@ export function VerifyEmailBanner({ email }: { email: string }) {
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="flex items-center gap-2 text-sm font-medium">
-            <MailWarning className="size-4 shrink-0 text-cinnabar" aria-hidden />
+            <MailWarning className="size-4 shrink-0 text-brand" aria-hidden />
             {t.auth.verifyBannerTitle}
           </p>
           <p className="mt-1.5 text-sm text-muted-foreground">

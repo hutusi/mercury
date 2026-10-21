@@ -10,8 +10,7 @@ import { getMembershipForUser, hasPremiumInterest } from "@/lib/queries/membersh
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function PremiumPage() {
-  const { user } = await requireOnboarded();
-  const t = await getDict();
+  const [{ user }, t] = await Promise.all([requireOnboarded(), getDict()]);
   const [membership, interested] = await Promise.all([
     getMembershipForUser(user.id),
     hasPremiumInterest(user.id),
@@ -43,65 +42,68 @@ export default async function PremiumPage() {
   ];
 
   return (
-    <div className="max-w-2xl space-y-8">
-      <Link
-        href="/settings"
-        className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <ArrowLeft className="size-4" aria-hidden />
-        {t.nav.settings}
-      </Link>
-      <EntryHeader
-        title={t.settings.membershipPremium}
-        ipa={t.entry.premiumIpa}
-        pos={t.entry.premiumPos}
-        gloss={t.premium.gloss}
-      />
+    <div className="mx-auto flex max-w-[45rem] flex-col gap-8">
+      <div>
+        <Link
+          href="/settings"
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-sm text-sm font-medium text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <ArrowLeft className="size-4" aria-hidden />
+          {t.nav.settings}
+        </Link>
+        <EntryHeader
+          className="mt-4"
+          title={t.settings.membershipPremium}
+          ipa={t.entry.premiumIpa}
+          pos={t.entry.premiumPos}
+          gloss={t.premium.gloss}
+        />
+      </div>
 
-      <section>
-        <SectionLabel as="h2" className="mb-3">
-          {t.premium.limitsSection}
-        </SectionLabel>
-        <table className="w-full border-y border-border text-sm">
-          <thead>
-            <tr className="border-b border-border text-left">
-              <td className="py-2.5 pr-4" />
-              <th
-                scope="col"
-                className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-muted-foreground uppercase"
-              >
-                {t.premium.currentLabel}
-              </th>
-              <th
-                scope="col"
-                className="px-4 py-2.5 font-mono text-2xs font-medium tracking-label text-foreground uppercase"
-              >
-                {t.settings.membershipPremium}
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-border">
-            {rows.map((row) => (
-              <tr key={row.label}>
-                <th scope="row" className="py-3 pr-4 text-left font-normal">
-                  {row.label}
+      <section className="flex flex-col gap-3">
+        <SectionLabel as="h2">{t.premium.limitsSection}</SectionLabel>
+        <div className="overflow-hidden rounded-xl border border-border bg-card">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-border text-left">
+                <td className="px-5 py-3" />
+                <th
+                  scope="col"
+                  className="px-4 py-3 text-[0.8125rem] font-medium text-muted-foreground"
+                >
+                  {t.premium.currentLabel}
                 </th>
-                <td className="px-4 py-3 font-mono text-muted-foreground tabular-nums">
-                  {row.current}
-                </td>
-                <td className="px-4 py-3 font-mono font-medium tabular-nums">{row.premium}</td>
+                <th
+                  scope="col"
+                  className="bg-brand-soft px-4 py-3 text-[0.8125rem] font-semibold text-brand-ink"
+                >
+                  {t.settings.membershipPremium}
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-border">
+              {rows.map((row) => (
+                <tr key={row.label}>
+                  <th scope="row" className="px-5 py-3.5 text-left font-normal">
+                    {row.label}
+                  </th>
+                  <td className="px-4 py-3.5 text-muted-foreground tabular-nums">{row.current}</td>
+                  <td className="bg-brand-soft/50 px-4 py-3.5 font-semibold tabular-nums">
+                    {row.premium}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="flex flex-col items-start gap-3">
         {tier === "premium" ? (
           <Badge variant="accent">{t.premium.alreadyPremium}</Badge>
         ) : (
           <>
-            <p className="text-sm text-muted-foreground">{t.premium.comingSoon}</p>
+            <p className="text-sm text-soft-3">{t.premium.comingSoon}</p>
             <InterestButton initialInterested={interested} />
           </>
         )}

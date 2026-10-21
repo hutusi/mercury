@@ -82,7 +82,7 @@ export function VerifyEmailError({ code }: { code: string }) {
       <p className="text-center text-sm text-muted-foreground">
         <Link
           href="/login"
-          className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+          className="font-medium text-brand-ink underline-offset-4 transition-colors hover:underline"
         >
           {t.auth.verifiedGoLogin}
         </Link>

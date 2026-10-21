@@ -17,9 +17,7 @@ export default function RootNotFound() {
     <html lang="zh-CN" suppressHydrationWarning>
       <body className="bg-background text-foreground">
         <main className="mx-auto flex min-h-screen max-w-xl flex-col justify-center px-6 py-12">
-          <h1 className="font-serif text-4xl font-medium tracking-tight">
-            {zh.errors.notFoundTitle}
-          </h1>
+          <h1 className="font-serif text-4xl font-medium">{zh.errors.notFoundTitle}</h1>
           <p className="mt-2 font-serif text-2xl text-muted-foreground" lang="en">
             {en.errors.notFoundTitle}
           </p>
@@ -33,7 +31,7 @@ export default function RootNotFound() {
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- see above */}
             <a
               href="/zh"
-              className="inline-flex w-fit items-center rounded-sm bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
+              className="inline-flex min-h-11 w-fit items-center rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
             >
               {zh.errors.goHome}
             </a>
@@ -41,7 +39,7 @@ export default function RootNotFound() {
             <a
               href="/en"
               lang="en"
-              className="inline-flex w-fit items-center rounded-sm border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+              className="inline-flex min-h-11 w-fit items-center rounded-full border border-input px-5 py-2 text-sm font-medium transition-colors hover:bg-muted"
             >
               {en.errors.goHome}
             </a>

@@ -36,7 +36,7 @@ export default async function QuizPage({
               action={
                 <Link
                   href="/vocabulary/study"
-                  className="text-sm font-medium text-foreground underline underline-offset-4 transition-colors hover:text-cinnabar"
+                  className="text-sm font-medium text-brand-ink underline-offset-4 transition-colors hover:underline"
                 >
                   {t.vocab.startStudy}
                 </Link>

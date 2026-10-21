@@ -401,7 +401,7 @@ const zh = {
     reminderToggleLabel: "学习提醒",
     reminderToggleOn: "已开启",
     reminderToggleOff: "已关闭",
-    reminderToggleHint: "在仪表盘提示到期单词与打卡进度",
+    reminderToggleHint: "在「今日」页提示到期单词与打卡进度",
     welcomeTitle: "欢迎来到 Mercury",
     welcomeBody:
       "先来一场限时模拟考试，快速定位你的水平；再用记忆卡每天积累词汇。每天完成一项练习，从今天坚持下去。",
@@ -1160,7 +1160,7 @@ const en: Dictionary = {
     reminderToggleLabel: "Study reminders",
     reminderToggleOn: "On",
     reminderToggleOff: "Off",
-    reminderToggleHint: "Dashboard nudges for waiting words and daily check-ins",
+    reminderToggleHint: "Nudges on Today for waiting words and your daily check-in",
     welcomeTitle: "Welcome to Mercury",
     welcomeBody:
       "Begin with a timed practice exam to benchmark your level, then build vocabulary a little every day. Every exercise you finish counts from day one.",
