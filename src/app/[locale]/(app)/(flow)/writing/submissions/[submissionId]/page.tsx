@@ -65,10 +65,10 @@ export default async function WritingSubmissionPage({
                 // Content-aware: a premium user's quota degrade with AI disabled
                 // would otherwise render an empty wrapper (phantom spacing).
                 isAiEnabled() || (submission.degradeReason === "quota" && tier !== "premium") ? (
-                  <div className="flex flex-col items-start gap-3">
+                  <>
                     {isAiEnabled() && <RetryWritingFeedback submissionId={submission.id} />}
                     {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}
-                  </div>
+                  </>
                 ) : undefined
               }
             />

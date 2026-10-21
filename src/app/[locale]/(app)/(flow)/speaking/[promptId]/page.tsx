@@ -1,15 +1,18 @@
 import { FlowBody } from "@/components/flow/FlowBody";
 import { FlowHeader } from "@/components/flow/FlowHeader";
 import { getFlowContext } from "@/lib/queries/plan";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
+import { NextStopButton } from "@/components/flow/NextStopButton";
+import { EntryList, EntryRow } from "@/components/typography/EntryList";
 import { SectionLabel } from "@/components/typography/SectionLabel";
+import { Badge } from "@/components/ui/badge";
 import { SpeakingRunner } from "@/components/speaking/SpeakingRunner";
 import { isAiEnabled } from "@/lib/ai/client";
 import { getTierForUser } from "@/lib/queries/membership";
 import { formatLearnerDate } from "@/lib/format-date";
 import { requireOnboarded } from "@/lib/settings";
 import { getDict, getLocale } from "@/lib/i18n";
+import { fill } from "@/lib/i18n/fill";
 import { getSpeakingPromptWithHistory } from "@/lib/queries/speaking";
 
 // Makes a runtime AI call (directly or via server actions): the provider
@@ -38,21 +41,32 @@ export default async function SpeakingPromptPage({
     <>
       <FlowHeader context={flow} hubHref="/speaking" confirmMessage={t.flow.recordingLost} />
       <FlowBody>
-        <div className="space-y-6">
-          <div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight">{prompt.title}</h1>
-            <p className="text-muted-foreground">{prompt.titleZh}</p>
-          </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge>{t.speakingParts[prompt.partType]}</Badge>
+          <span className="text-[0.8125rem] text-muted-foreground">
+            {prompt.prepSeconds > 0
+              ? fill(t.speaking.meta, { p: prompt.prepSeconds, s: prompt.speakSeconds })
+              : fill(t.speaking.metaNoPrep, { s: prompt.speakSeconds })}
+          </span>
+        </div>
+        <h1 className="mt-4 font-serif text-[1.75rem] leading-tight font-medium text-balance sm:text-4xl">
+          {prompt.title}
+        </h1>
+        <p className="mt-2 font-serif text-base text-muted-foreground">{prompt.titleZh}</p>
 
-          <div className="border-y border-border py-6">
-            <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/90">
-              {prompt.promptEn}
-            </p>
-            <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
-              {prompt.promptZh}
-            </p>
-          </div>
+        <section aria-labelledby="speak-prompt" className="mt-6 rounded-xl bg-muted px-5 py-4">
+          <h2 id="speak-prompt" className="text-[0.8125rem] font-semibold">
+            {t.speaking.promptLabel}
+          </h2>
+          <p className="mt-2 font-serif text-[1.0625rem] leading-[1.7] whitespace-pre-line">
+            {prompt.promptEn}
+          </p>
+          <p className="mt-3 border-t border-border pt-3 text-sm leading-relaxed whitespace-pre-line text-soft-3">
+            {prompt.promptZh}
+          </p>
+        </section>
 
+        <div className="mt-6">
           <SpeakingRunner
             promptId={prompt.id}
             prepSeconds={prompt.prepSeconds}
@@ -61,47 +75,41 @@ export default async function SpeakingPromptPage({
             checklist={prompt.checklist}
             aiEnabled={isAiEnabled()}
             showPremiumCta={tier !== "premium"}
+            nextStop={
+              flow.mode === "plan" ? <NextStopButton context={flow} className="w-full" /> : null
+            }
           />
-
-          {past.length > 0 && (
-            <section>
-              <SectionLabel as="h2" className="mb-3">
-                {t.speaking.pastSubmissions}
-              </SectionLabel>
-              <ul className="divide-y divide-border border-y border-border">
-                {past.map((s) => (
-                  <li key={s.id}>
-                    <Link
-                      href={`/speaking/submissions/${s.id}`}
-                      className="flex items-center justify-between gap-4 py-3 text-sm transition-colors hover:bg-muted/50"
-                    >
-                      <span className="font-mono text-xs text-muted-foreground">
-                        {formatLearnerDate(s.createdAt, locale, timeZone, {
-                          year: "numeric",
-                          month: "numeric",
-                          day: "numeric",
-                          hour: "numeric",
-                          minute: "2-digit",
-                        })}{" "}
-                        · {s.durationSeconds}
-                        {t.common.seconds}
-                      </span>
-                      <span
-                        className={`font-medium ${
-                          s.status === "ai_scored" ? "text-foreground" : "text-muted-foreground"
-                        }`}
-                      >
-                        {s.status === "ai_scored" && s.feedback
-                          ? s.feedback.scoreLabel
-                          : t.speaking.selfAssessTitle}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
         </div>
+
+        {past.length > 0 ? (
+          <section className="mt-10">
+            <SectionLabel as="h2">{t.speaking.pastSubmissions}</SectionLabel>
+            <EntryList className="mt-3">
+              {past.map((s) => (
+                <EntryRow
+                  key={s.id}
+                  href={`/speaking/submissions/${s.id}`}
+                  title={formatLearnerDate(s.createdAt, locale, timeZone, {
+                    month: "short",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                  })}
+                  subtitle={`${s.durationSeconds}${t.common.seconds}`}
+                  right={
+                    s.status === "ai_scored" && s.feedback ? (
+                      <span className="font-medium text-brand-ink tabular-nums">
+                        {s.feedback.scoreLabel}
+                      </span>
+                    ) : (
+                      <span className="text-muted-foreground">{t.speaking.selfAssessTitle}</span>
+                    )
+                  }
+                />
+              ))}
+            </EntryList>
+          </section>
+        ) : null}
       </FlowBody>
     </>
   );

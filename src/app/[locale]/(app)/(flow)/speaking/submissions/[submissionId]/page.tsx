@@ -2,7 +2,9 @@ import { FlowBody } from "@/components/flow/FlowBody";
 import { FlowHeader } from "@/components/flow/FlowHeader";
 import { getFlowContext } from "@/lib/queries/plan";
 import { notFound } from "next/navigation";
-import { SectionLabel } from "@/components/typography/SectionLabel";
+import { NextStopButton } from "@/components/flow/NextStopButton";
+import { Button } from "@/components/ui/button";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { PremiumCta } from "@/components/premium/PremiumCta";
 import { RetrySpeakingFeedback } from "@/components/speaking/RetrySpeakingFeedback";
 import { SelfAssessPanel } from "@/components/speaking/SelfAssessPanel";
@@ -38,21 +40,14 @@ export default async function SpeakingSubmissionPage({
     <>
       <FlowHeader context={flow} hubHref="/speaking" />
       <FlowBody>
-        <div className="space-y-6">
-          <div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight">
-              {t.speaking.feedbackTitle}
-            </h1>
-          </div>
+        <p className="text-[0.8125rem] text-muted-foreground">
+          {t.speakingParts[prompt.partType]} · {prompt.titleZh}
+        </p>
+        <h1 className="mt-2 font-serif text-[1.75rem] leading-tight font-medium sm:text-4xl">
+          {t.speaking.feedbackTitle}
+        </h1>
 
-          <section className="border-y border-border py-6">
-            <SectionLabel as="h2" className="mb-3">
-              {t.speaking.transcript} · {submission.durationSeconds}
-              {t.common.seconds}
-            </SectionLabel>
-            <p className="text-sm leading-relaxed text-foreground/80">{submission.transcript}</p>
-          </section>
-
+        <div className="mt-6">
           {submission.status === "ai_scored" && submission.feedback ? (
             <SpeakingFeedbackPanel feedback={submission.feedback} />
           ) : (
@@ -70,14 +65,39 @@ export default async function SpeakingSubmissionPage({
                 // Content-aware: a premium user's quota degrade with AI disabled
                 // would otherwise render an empty wrapper (phantom spacing).
                 isAiEnabled() || (submission.degradeReason === "quota" && tier !== "premium") ? (
-                  <div className="space-y-3">
+                  <>
                     {isAiEnabled() && <RetrySpeakingFeedback submissionId={submission.id} />}
                     {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}
-                  </div>
+                  </>
                 ) : undefined
               }
             />
           )}
+        </div>
+
+        <section aria-labelledby="speak-yours" className="mt-8">
+          <h2 id="speak-yours" className="text-[0.9375rem] font-semibold">
+            {t.speaking.transcript}
+            <span className="ml-2 font-normal text-muted-foreground tabular-nums">
+              {submission.durationSeconds}
+              {t.common.seconds}
+            </span>
+          </h2>
+          <p className="mt-3 rounded-lg border border-border bg-card px-5 py-4 text-[0.9375rem] leading-[1.75]">
+            {submission.transcript}
+          </p>
+        </section>
+
+        <div className="mt-8 flex flex-col gap-2.5">
+          {flow.mode === "plan" ? <NextStopButton context={flow} className="w-full" /> : null}
+          <div className="flex gap-2.5">
+            <Button asChild variant="outline" className="flex-1">
+              <Link href={`/speaking/${prompt.id}`}>{t.speaking.again}</Link>
+            </Button>
+            <Button asChild variant="outline" className="flex-1">
+              <Link href="/speaking">{t.reading.backToList}</Link>
+            </Button>
+          </div>
         </div>
       </FlowBody>
     </>

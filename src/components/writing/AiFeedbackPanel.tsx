@@ -1,4 +1,5 @@
 import { Check, PenLine } from "lucide-react";
+import { FeedbackSection, FixCard, ScoreHero } from "@/components/feedback/FeedbackParts";
 import type { WritingFeedback } from "@/lib/ai/schemas";
 import { getDict } from "@/lib/i18n";
 
@@ -12,44 +13,41 @@ export async function AiFeedbackPanel({ feedback }: { feedback: WritingFeedback 
 
   return (
     <div className="flex flex-col gap-8">
-      <section className="rounded-xl border border-border bg-card p-6 shadow-raised">
-        <p className="text-[0.8125rem] text-muted-foreground">{t.writing.yourScore}</p>
-        <p className="mt-1 font-serif text-4xl font-medium tabular-nums">{feedback.scoreLabel}</p>
-        <p className="mt-3 text-sm leading-[1.75] text-pretty text-soft-3">{feedback.summaryZh}</p>
-      </section>
+      <ScoreHero
+        label={t.writing.yourScore}
+        score={feedback.scoreLabel}
+        summary={feedback.summaryZh}
+      />
 
       {feedback.issues.length > 0 ? (
-        <section aria-labelledby="writing-issues">
-          <h2
-            id="writing-issues"
-            className="flex items-center gap-2 text-[0.9375rem] font-semibold"
-          >
-            <PenLine className="size-4 text-coral" aria-hidden />
-            {t.writing.issues}
-          </h2>
-          <ul className="mt-3 flex flex-col gap-3">
+        <FeedbackSection
+          id="writing-issues"
+          title={t.writing.issues}
+          icon={<PenLine className="size-4 text-coral" aria-hidden />}
+        >
+          <ul className="flex flex-col gap-3">
             {feedback.issues.map((issue, i) => (
-              <li key={i} className="rounded-lg border border-border bg-card px-4 py-3.5 text-sm">
-                <p className="font-serif text-[0.9375rem] text-coral-ink line-through decoration-coral">
-                  “{issue.quote}”
-                </p>
-                <p className="mt-1.5 leading-relaxed text-soft-3">{issue.problemZh}</p>
-                <p className="mt-2 leading-relaxed">
-                  <span className="text-muted-foreground">{t.writing.suggestion}：</span>
-                  <span className="font-medium text-brand-ink">{issue.suggestionEn}</span>
-                </p>
-              </li>
+              <FixCard
+                key={i}
+                original={issue.quote}
+                note={issue.problemZh}
+                improved={
+                  <>
+                    <span className="font-normal text-muted-foreground">
+                      {t.writing.suggestion}：
+                    </span>
+                    {issue.suggestionEn}
+                  </>
+                }
+              />
             ))}
           </ul>
-        </section>
+        </FeedbackSection>
       ) : null}
 
       {feedback.strengths.length > 0 ? (
-        <section aria-labelledby="writing-strengths">
-          <h2 id="writing-strengths" className="text-[0.9375rem] font-semibold">
-            {t.writing.strengths}
-          </h2>
-          <ul className="mt-3 flex flex-col gap-2.5">
+        <FeedbackSection id="writing-strengths" title={t.writing.strengths}>
+          <ul className="flex flex-col gap-2.5">
             {feedback.strengths.map((s, i) => (
               <li key={i} className="flex gap-2.5 text-sm leading-relaxed">
                 <Check className="mt-0.5 size-4 shrink-0 text-brand" aria-hidden />
@@ -60,14 +58,11 @@ export async function AiFeedbackPanel({ feedback }: { feedback: WritingFeedback 
               </li>
             ))}
           </ul>
-        </section>
+        </FeedbackSection>
       ) : null}
 
-      <section aria-labelledby="writing-criteria">
-        <h2 id="writing-criteria" className="text-[0.9375rem] font-semibold">
-          {t.writing.criteria}
-        </h2>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+      <FeedbackSection id="writing-criteria" title={t.writing.criteria}>
+        <div className="grid gap-3 sm:grid-cols-2">
           {feedback.criteria.map((c) => (
             <div key={c.name} className="rounded-lg bg-muted px-4 py-3.5">
               <div className="flex items-baseline justify-between gap-3">
@@ -79,17 +74,14 @@ export async function AiFeedbackPanel({ feedback }: { feedback: WritingFeedback 
             </div>
           ))}
         </div>
-      </section>
+      </FeedbackSection>
 
       {feedback.rewrittenSample ? (
-        <section aria-labelledby="writing-rewritten">
-          <h2 id="writing-rewritten" className="text-[0.9375rem] font-semibold">
-            {t.writing.rewritten}
-          </h2>
-          <p className="mt-3 rounded-lg bg-muted px-5 py-4 font-serif text-base leading-[1.75] whitespace-pre-line">
+        <FeedbackSection id="writing-rewritten" title={t.writing.rewritten}>
+          <p className="rounded-lg bg-muted px-5 py-4 font-serif text-base leading-[1.75] whitespace-pre-line">
             {feedback.rewrittenSample}
           </p>
-        </section>
+        </FeedbackSection>
       ) : null}
     </div>
   );
