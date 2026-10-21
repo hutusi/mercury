@@ -578,6 +578,7 @@ const zh = {
   errors: {
     boundaryTitle: "出错了",
     boundaryBody: "页面加载时出现问题。可以重试，或返回首页。",
+    sectionFailed: "这部分内容没能加载出来。",
     notFoundTitle: "页面未找到",
     notFoundBody: "你访问的页面不存在或已被移动。",
     goHome: "返回首页",
@@ -1167,6 +1168,7 @@ const en: Dictionary = {
   errors: {
     boundaryTitle: "Something went wrong",
     boundaryBody: "This page ran into a problem. You can retry, or head back home.",
+    sectionFailed: "This section didn't load.",
     notFoundTitle: "Page not found",
     notFoundBody: "The page you're looking for doesn't exist or has moved.",
     goHome: "Back home",

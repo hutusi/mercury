@@ -20,6 +20,7 @@ import { ReminderNudge } from "@/components/dashboard/ReminderNudge";
 import { ReminderToggle } from "@/components/dashboard/ReminderToggle";
 import { StreakCard } from "@/components/dashboard/StreakCard";
 import { WelcomeCard } from "@/components/dashboard/WelcomeCard";
+import { SectionErrorBoundary } from "@/components/layout/SectionErrorBoundary";
 import { EntryHeader } from "@/components/typography/EntryHeader";
 import { SectionLabel } from "@/components/typography/SectionLabel";
 import { getDict } from "@/lib/i18n";
@@ -38,8 +39,8 @@ export default async function DashboardPage() {
   // Observe rejections immediately: if the plan query fails before the summary
   // await resolves, nothing is attached to planPromise yet, so Node would report
   // an unhandledRejection. DailyPlanSection still awaits planPromise, so the real
-  // error reaches the Suspense/error boundary — this only silences the premature
-  // warning without swallowing it.
+  // error reaches the section's own error boundary (the rest of the dashboard
+  // stays up) — this only silences the premature warning without swallowing it.
   void planPromise.catch(() => {});
   const {
     streak,
@@ -115,9 +116,11 @@ export default async function DashboardPage() {
         <div className="space-y-10">
           {isNewUser && <WelcomeCard />}
           {remindersEnabled && <ReminderNudge reminder={reminder} />}
-          <Suspense fallback={<DailyPlanSkeleton />}>
-            <DailyPlanSection plan={planPromise} userId={user.id} timeZone={timeZone} />
-          </Suspense>
+          <SectionErrorBoundary>
+            <Suspense fallback={<DailyPlanSkeleton />}>
+              <DailyPlanSection plan={planPromise} userId={user.id} timeZone={timeZone} />
+            </Suspense>
+          </SectionErrorBoundary>
           <ExamBanner
             lastEstimate={lastExam?.estimate ?? null}
             resumeExamId={inProgressExam?.examId ?? null}
