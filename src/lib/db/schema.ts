@@ -805,6 +805,13 @@ export const mistakeStates = pgTable(
   (t) => [
     primaryKey({ columns: [t.userId, t.kind, t.refId, t.questionId] }),
     index("mistake_states_user_track_idx").on(t.userId, t.track, t.lastWrongAt),
+    // Every correct answer leaves a wrong_count = 0 tombstone, so the hot
+    // notebook reads (active count on every dashboard/plan, the notebook
+    // list) would otherwise scan a learner's lifetime of answers. Partial on
+    // wrong rows only: cost tracks mistakes, not history; ordered for the list.
+    index("mistake_states_user_wrong_idx")
+      .on(t.userId, t.lastWrongAt.desc())
+      .where(sql`${t.wrongCount} > 0`),
     // See mistake_clears_vocab_word_idx — same sweep path.
     index("mistake_states_vocab_word_idx")
       .on(t.questionId)

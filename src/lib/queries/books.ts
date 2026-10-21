@@ -132,7 +132,13 @@ export async function isChapterUnlockedForUser(
   if (!previous) return true;
   const attempt = await db.query.bookQuizAttempts.findFirst({
     columns: { id: true },
-    where: and(eq(bookQuizAttempts.userId, userId), eq(bookQuizAttempts.chapterId, previous.id)),
+    // bookId is known — filtering on it lets the full (user, book, chapter)
+    // index answer the lookup instead of only its user prefix.
+    where: and(
+      eq(bookQuizAttempts.userId, userId),
+      eq(bookQuizAttempts.bookId, chapter.bookId),
+      eq(bookQuizAttempts.chapterId, previous.id),
+    ),
   });
   return attempt !== undefined;
 }
@@ -187,6 +193,7 @@ export async function getBookChapterForReader(
         columns: { id: true },
         where: and(
           eq(bookQuizAttempts.userId, userId),
+          eq(bookQuizAttempts.bookId, bookId),
           eq(bookQuizAttempts.chapterId, previous.id),
         ),
       });
