@@ -5,6 +5,11 @@
 
 export type ReviewGrade = 1 | 3 | 4 | 5; // Again / Hard / Good / Easy
 
+/** One study session serves at most this many due cards… */
+export const MAX_DUE_PER_SESSION = 30;
+/** …and tops up with at most this many unseen words. */
+export const MAX_NEW_PER_SESSION = 10;
+
 export interface SrsState {
   easeFactor: number; // starts at 2.5, floored at 1.3
   intervalDays: number; // 0 while learning

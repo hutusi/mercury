@@ -165,3 +165,88 @@ test.describe("API learner profile + daily plan", () => {
     expect(reset.examDate).toBeNull();
   });
 });
+
+test.describe("API persistent daily route (ADR 0033)", () => {
+  type Stop = { key: string; kind: string; refId?: string; status: string };
+
+  test("finished stops stay on the route; skips round-trip; a goal edit regenerates the tail", async ({
+    request,
+  }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const get = async () =>
+      (await request.get("/api/v1/plan", { headers: user.authHeaders })).json();
+
+    const first = await get();
+    expect(first.stops.length).toBeGreaterThan(0);
+    expect(first.stops[0].status).toBe("current");
+    expect(first.summary.done).toBe(0);
+    // The day is frozen: a second read is the same snapshot.
+    expect((await get()).stops.map((s: Stop) => s.key)).toEqual(
+      first.stops.map((s: Stop) => s.key),
+    );
+
+    // Finish the planned reading exercise: it stays on the route as done
+    // (the pre-route plan dropped it and suggested another one).
+    const reading = first.stops.find((s: Stop) => s.kind === "reading");
+    expect(reading).toBeTruthy();
+    const detail = await (
+      await request.get(`/api/v1/reading/${reading.refId}`, { headers: user.authHeaders })
+    ).json();
+    const answers: Record<string, number> = {};
+    for (const q of detail.questions) answers[q.id] = 0;
+    const attempt = await request.post(`/api/v1/exercises/reading/${reading.refId}/attempts`, {
+      headers: user.authHeaders,
+      data: { requestId: crypto.randomUUID(), answers, durationSeconds: 30 },
+    });
+    expect(attempt.status()).toBe(200);
+    const afterReading = await get();
+    const doneStop = afterReading.stops.find((s: Stop) => s.key === reading.key);
+    expect(doneStop.status).toBe("done");
+    expect(doneStop.progress).toMatchObject({ type: "score", total: detail.questions.length });
+    expect(afterReading.summary.done).toBe(1);
+    // `items` keeps its old meaning: what is still left.
+    expect(afterReading.items.some((i: Stop) => i.refId === reading.refId)).toBe(false);
+
+    // Skip the current stop, then bring it back.
+    const current = afterReading.stops.find((s: Stop) => s.status === "current");
+    const skipRes = await request.post("/api/v1/plan/skips", {
+      headers: user.authHeaders,
+      data: { day: afterReading.generatedFor, key: current.key, skipped: true },
+    });
+    expect(skipRes.status()).toBe(200);
+    const skipped = await skipRes.json();
+    expect(skipped.stops.find((s: Stop) => s.key === current.key).status).toBe("skipped");
+    const unskip = await (
+      await request.post("/api/v1/plan/skips", {
+        headers: user.authHeaders,
+        data: { day: afterReading.generatedFor, key: current.key, skipped: false },
+      })
+    ).json();
+    expect(unskip.stops.find((s: Stop) => s.key === current.key).status).toBe("current");
+
+    // A stale day (a screen left open past midnight) is a 409; an unknown stop a 404.
+    const stale = await request.post("/api/v1/plan/skips", {
+      headers: user.authHeaders,
+      data: { day: "2001-01-01", key: current.key, skipped: true },
+    });
+    expect(stale.status()).toBe(409);
+    expect((await stale.json()).error.code).toBe("plan_day_changed");
+    const unknown = await request.post("/api/v1/plan/skips", {
+      headers: user.authHeaders,
+      data: { day: afterReading.generatedFor, key: "reading:nope", skipped: true },
+    });
+    expect(unknown.status()).toBe(404);
+
+    // Editing a plan-shaping goal regenerates the untouched tail but keeps
+    // what was already done.
+    const patch = await request.patch("/api/v1/me/profile", {
+      headers: user.authHeaders,
+      data: { dailyMinutes: 60 },
+    });
+    expect(patch.status()).toBe(200);
+    const regenerated = await get();
+    expect(regenerated.revision).toBe(afterReading.revision + 1);
+    expect(regenerated.dailyMinutes).toBe(60);
+    expect(regenerated.stops.find((s: Stop) => s.key === reading.key)?.status).toBe("done");
+  });
+});

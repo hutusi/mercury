@@ -4,10 +4,9 @@ import type { Track } from "../../content/types";
 import { composeAudioUrl } from "../audio-url";
 import { db } from "../db";
 import { srsCards, vocabWords } from "../db/schema";
-import { NEW_CARD_STATE } from "../srs";
+import { MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION, NEW_CARD_STATE } from "../srs";
 
-export const MAX_DUE_PER_SESSION = 30;
-export const MAX_NEW_PER_SESSION = 10;
+export { MAX_DUE_PER_SESSION, MAX_NEW_PER_SESSION } from "../srs";
 
 /**
  * Due/fresh counts only — the daily plan needs two integers, not 575

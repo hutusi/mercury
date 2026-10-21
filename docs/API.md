@@ -97,10 +97,19 @@ future work and intentionally not in the OpenAPI contract yet.
   never branch on null.
 - **`targetScore` encoding**: TOEIC is the raw 10–990 score; **IELTS is band×10** (`65` = band
   6.5) because the column is an integer — divide by 10 for display when `goalTrack === "ielts"`.
-- `GET /api/v1/plan` — the deterministic daily plan (今日计划: due vocab → mistakes → continue
-  the current book → weakest skill → writing/speaking cadence → mock-exam checkpoint), fitted to
-  `dailyMinutes`. `href` values are unlocalized web paths; native clients should map
-  `kind`/`refId` to their own screens.
+- `GET /api/v1/plan` — today's route (今日计划: due vocab → mistakes → continue the current book
+  → weakest skill → writing/speaking cadence → mock-exam checkpoint), fitted to `dailyMinutes`
+  and frozen for the learner-local day ([ADR 0033](adr/0033-persistent-daily-route.md)).
+  `stops` lists every stop with `status` (`done` / `current` / `open` / `skipped`), `progress`
+  (`count` — e.g. 2/5 cards, `score` — e.g. 2/3 correct, or `exam` — section 2/3) and
+  `started`; `summary` gives done/total and remaining minutes. `items` keeps its original
+  meaning — what is still left today — so older clients keep working. Only work on the stop's
+  exact item counts (free practice elsewhere doesn't). Editing the goal regenerates the stops not
+  yet done, skipped, or begun (`revision` increments). `href` values are unlocalized web paths;
+  native clients should map `kind`/`refId` to their own screens.
+- `POST /api/v1/plan/skips` `{day, key, skipped}` skips or restores a stop and returns the plan;
+  `day` is the plan's `generatedFor` — once the learner's day has rolled over it's
+  `409 plan_day_changed` (reload the plan).
 
 ## Book reading
 

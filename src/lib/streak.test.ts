@@ -1,5 +1,11 @@
 import { describe, expect, test } from "bun:test";
-import { calendarDay, computeStreak, isIanaTimeZone, shiftCalendarDay } from "./streak-core";
+import {
+  calendarDay,
+  computeStreak,
+  isIanaTimeZone,
+  shiftCalendarDay,
+  learnerDayRange,
+} from "./streak-core";
 
 // Noon avoids any DST-edge weirdness when walking days backwards.
 const day = (iso: string) => new Date(`${iso}T12:00:00`);
@@ -68,5 +74,32 @@ describe("computeStreak", () => {
     // Nothing today; streak = yesterday + the day before.
     const days = new Set(["2026-07-01", "2026-06-30"]);
     expect(computeStreak(days, day("2026-07-02"))).toBe(2);
+  });
+});
+
+describe("learnerDayRange", () => {
+  const hours = (r: { start: Date; end: Date }) =>
+    (r.end.getTime() - r.start.getTime()) / 3_600_000;
+
+  test("maps a Shanghai day to its UTC window", () => {
+    const r = learnerDayRange("2026-10-21", "Asia/Shanghai");
+    expect(r.start.toISOString()).toBe("2026-10-20T16:00:00.000Z");
+    expect(r.end.toISOString()).toBe("2026-10-21T16:00:00.000Z");
+  });
+
+  test("handles DST: 23-hour spring-forward and 25-hour fall-back days", () => {
+    const spring = learnerDayRange("2026-03-08", "America/New_York");
+    expect(spring.start.toISOString()).toBe("2026-03-08T05:00:00.000Z");
+    expect(hours(spring)).toBe(23);
+    const fall = learnerDayRange("2026-11-01", "America/New_York");
+    expect(fall.start.toISOString()).toBe("2026-11-01T04:00:00.000Z");
+    expect(hours(fall)).toBe(25);
+  });
+
+  test("agrees with calendarDay at both edges", () => {
+    const r = learnerDayRange("2026-07-01", "Europe/London");
+    expect(calendarDay(r.start, "Europe/London")).toBe("2026-07-01");
+    expect(calendarDay(new Date(r.end.getTime() - 1), "Europe/London")).toBe("2026-07-01");
+    expect(calendarDay(r.end, "Europe/London")).toBe("2026-07-02");
   });
 });

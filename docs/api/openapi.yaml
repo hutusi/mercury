@@ -310,31 +310,57 @@ paths:
   # ── dashboard ─────────────────────────────────────────────────────────────
   /api/v1/plan:
     get:
-      summary: Today's study plan (今日计划)
+      summary: Today's study route (今日计划)
       description: >
-        Deterministic, server-computed daily plan — due vocab, mistakes,
+        The learner-day's plan (ADR 0033): computed deterministically at the
+        first read of the learner-local day — due vocab, mistakes,
         weakest-skill practice, writing/speaking cadence, and a mock-exam
-        checkpoint ramping toward the exam date, fitted to the learner's
-        dailyMinutes. href values are unlocalized web paths; native clients
-        map kind/refId to their own screens.
+        checkpoint, fitted to dailyMinutes — then frozen for the day. `stops`
+        lists every stop with its status derived from the day's activity;
+        `items` keeps its original meaning (what is still left today: current
+        and open stops) for older clients. Editing the goal (track, daily
+        minutes, exam date, self-rated level) regenerates the stops not yet
+        done, skipped, or begun. href values are unlocalized web paths; native
+        clients map kind/refId to their own screens.
       tags: [dashboard]
       responses:
         "200":
           description: OK
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  items:
-                    type: array
-                    items: { $ref: "#/components/schemas/PlanItem" }
-                  dailyMinutes: { type: integer }
-                  generatedFor:
-                    type: string
-                    description: Local day the plan was computed for (YYYY-MM-DD).
+              schema: { $ref: "#/components/schemas/PlanResponse" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "403": { $ref: "#/components/responses/OnboardingRequired" }
+  /api/v1/plan/skips:
+    post:
+      summary: Skip or un-skip a stop in today's plan
+      description: >
+        `day` must be the learner's current local day (a screen left open past
+        midnight gets 409 plan_day_changed and should reload). Finishing a
+        skipped stop still marks it done.
+      tags: [dashboard]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [day, key, skipped]
+              properties:
+                day: { type: string, description: "Plan day, YYYY-MM-DD (generatedFor)." }
+                key: { type: string, description: "The stop's key from `stops`." }
+                skipped: { type: boolean }
+      responses:
+        "200":
+          description: The updated plan.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PlanResponse" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/OnboardingRequired" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
   /api/v1/dashboard:
     get:
       summary: Streak, due counts, and recent scores
@@ -1356,8 +1382,8 @@ components:
         Request conflicts with persisted state — the specific code is in the
         envelope (quiz_answer_conflict, attempt_not_abandonable,
         exercise_request_conflict, grade_request_conflict,
-        grading_request_conflict, grading_in_progress, or
-        grading_claim_superseded).
+        grading_request_conflict, grading_in_progress,
+        grading_claim_superseded, or plan_day_changed).
       content:
         application/json:
           schema: { $ref: "#/components/schemas/ErrorEnvelope" }
@@ -1454,6 +1480,12 @@ components:
             book_chapter; absent for vocab/mistakes.
         href: { type: string, description: Unlocalized web path for this item. }
         estMinutes: { type: integer }
+        target:
+          type: integer
+          description: >-
+            Count kinds only (vocab_review, vocab_new, mistakes): how many make
+            the stop done.
+        bookId: { type: string, description: book_chapter only. }
         reasonKey:
           type: string
           enum:
@@ -1467,6 +1499,67 @@ components:
               speakingCadence,
               examCheckpoint,
             ]
+    PlanStop:
+      allOf:
+        - { $ref: "#/components/schemas/PlanItem" }
+        - type: object
+          required: [key, status, started]
+          properties:
+            key: { type: string, description: "Stable within the day: kind:refId." }
+            status:
+              type: string
+              enum: [done, current, open, skipped]
+              description: >-
+                done > skipped > current/open. Exactly one stop is current
+                while any stop is unfinished and not skipped.
+            started: { type: boolean, description: Begun but not finished. }
+            progress:
+              oneOf:
+                - type: "null"
+                - type: object
+                  required: [type, done, target]
+                  properties:
+                    type: { type: string, enum: [count] }
+                    done: { type: integer }
+                    target: { type: integer }
+                - type: object
+                  required: [type, score, total]
+                  properties:
+                    type: { type: string, enum: [score] }
+                    score: { type: integer }
+                    total: { type: integer }
+                - type: object
+                  required: [type, section, sections]
+                  properties:
+                    type: { type: string, enum: [exam] }
+                    section: { type: integer, description: 1-based section in progress. }
+                    sections: { type: integer }
+    PlanResponse:
+      type: object
+      required: [items, stops, summary, dailyMinutes, generatedFor, revision]
+      properties:
+        items:
+          type: array
+          description: Stops still to do today (current and open), in order.
+          items: { $ref: "#/components/schemas/PlanItem" }
+        stops:
+          type: array
+          items: { $ref: "#/components/schemas/PlanStop" }
+        summary:
+          type: object
+          required: [done, total, allDone, remainingMinutes, totalMinutes]
+          properties:
+            done: { type: integer }
+            total: { type: integer, description: Stops counted toward the day (skipped excluded). }
+            currentKey: { oneOf: [{ type: string }, { type: "null" }] }
+            allDone: { type: boolean }
+            remainingMinutes: { type: integer }
+            totalMinutes: { type: integer }
+        dailyMinutes: { type: integer }
+        generatedFor:
+          type: string
+          description: The plan's learner-local day (YYYY-MM-DD).
+        revision: { type: integer, description: Bumped when a goal edit regenerates the plan. }
     SkillEstimate:
       type: object
       description: Server-computed ability estimate; evolves from practice/exam/AI signals.

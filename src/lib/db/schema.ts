@@ -28,6 +28,7 @@ import type { SpeakingFeedback, WritingFeedback } from "../ai/schemas";
 import type { SeededExamSection } from "../exam-utils";
 import type { CoachMemo, SelfRatedLevel, SkillEstimates } from "../learner-model-core";
 import type { MistakeKind } from "../mistakes-core";
+import type { PlanItem } from "../plan-core";
 import type { StoredQuizQuestion } from "../vocab-quiz-core";
 import { user } from "./auth-schema";
 
@@ -1010,5 +1011,43 @@ export const activityDays = pgTable(
   (t) => [
     primaryKey({ columns: [t.userId, t.day] }),
     check("activity_days_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+  ],
+);
+
+/**
+ * The persistent daily route (ADR 0033): today's plan, snapshotted at the
+ * first read of the learner-local day so it stays put while the learner works
+ * through it. Status (done / current / skipped) is derived from the day's
+ * facts at read time, never stored — only the learner's explicit skips are.
+ * `stale` marks a goal edit; the next read regenerates the untouched tail.
+ */
+export const dailyPlans = pgTable(
+  "daily_plans",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    /** Learner-local YYYY-MM-DD, same convention as activity_days.day. */
+    day: text("day").notNull(),
+    items: jsonb("items").$type<PlanItem[]>().notNull(),
+    dailyMinutes: integer("daily_minutes").notNull(),
+    /** planItemKey()s the learner chose to skip today. */
+    skippedKeys: jsonb("skipped_keys").$type<string[]>().notNull().default([]),
+    stale: boolean("stale").notNull().default(false),
+    /** Optimistic concurrency for regeneration. */
+    revision: integer("revision").notNull().default(1),
+    createdAt: ts("created_at").notNull().$defaultFn(now),
+    updatedAt: ts("updated_at").notNull().$defaultFn(now),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.day] }),
+    check("daily_plans_day_check", sql`${t.day} ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'`),
+    check(
+      "daily_plans_items_check",
+      sql`jsonb_typeof(${t.items}) = 'array' and jsonb_array_length(${t.items}) <= 6`,
+    ),
+    check("daily_plans_skipped_check", sql`jsonb_typeof(${t.skippedKeys}) = 'array'`),
+    check("daily_plans_minutes_check", sql`${t.dailyMinutes} between 5 and 180`),
+    check("daily_plans_revision_check", sql`${t.revision} >= 1`),
   ],
 );

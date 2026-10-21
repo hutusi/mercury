@@ -13,6 +13,7 @@ import {
   type MemoUpdate,
   type SkillSignal,
 } from "../learner-model-core";
+import { markDailyPlanStaleWith } from "./plan";
 
 /**
  * Learner-profile mutations. Goals are client-writable; skillEstimates and
@@ -107,6 +108,16 @@ export async function upsertLearnerProfileWith(
     .set(set)
     .where(eq(learnerProfiles.userId, userId))
     .returning();
+
+  // A goal that shapes the plan changed: today's route regenerates its
+  // untouched tail on the next read (ADR 0033). Same transaction, so the
+  // plan can never be rebuilt from the old goal after the edit commits.
+  const planShaping =
+    profile.goalTrack !== existing.goalTrack ||
+    profile.dailyMinutes !== existing.dailyMinutes ||
+    profile.examDate !== existing.examDate ||
+    profile.selfRatedLevel !== existing.selfRatedLevel;
+  if (planShaping) await markDailyPlanStaleWith(executor, userId, nowDate);
   return profile;
 }
 
