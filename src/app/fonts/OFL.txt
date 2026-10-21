@@ -1,4 +1,3 @@
-Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)
 Copyright 2020 The Newsreader Project Authors (http://github.com/productiontype/Newsreader)
 Copyright © 2017 IBM Corp. with Reserved Font Name "Plex"
 

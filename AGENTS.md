@@ -42,10 +42,10 @@ bun run content:book-audit     # advisory book-scaffolding stats: answer-positio
 
 ## Design system
 
-UI follows the Lexicon design system (docs/DESIGN.md), enforced by `src/lib/design-guard.test.ts`:
+UI follows the Daybreak design system (docs/DESIGN.md, ADR 0032), enforced by `src/lib/design-guard.test.ts`:
 
-- Compose `src/components/typography/*` (EntryHeader, SectionLabel, Stat, EntryList) and `ui/*` primitives; feature components live under `src/components/<feature>/`.
-- Color only via semantic tokens — red only via `cinnabar`, never mapped onto shadcn's `--accent`. No shadows, gradients, raw palette classes, or new animation.
+- Compose `src/components/typography/*` and `ui/*` primitives; feature components live under `src/components/<feature>/`. Hub pages live in the `(shell)` route group (sidebar / bottom tabs), learning sessions in `(flow)` (nav-free frame).
+- Colour only via semantic tokens, light and dark: **dusk blue (`brand`) marks progress and selection only; coral marks mistakes and the streak only**; shadcn's `--accent` stays a neutral hover tint. Elevation only through the `shadow-raised|pop|float|tab|lift` tokens; no gradients, raw palette classes, or arbitrary colours; motion is short feedback, gated by `motion-reduce`.
 
 ## Gotchas
 
@@ -69,5 +69,5 @@ UI follows the Lexicon design system (docs/DESIGN.md), enforced by `src/lib/desi
 - [docs/API.md](docs/API.md) — the v1 HTTP API for native clients: bearer auth flow, error envelope, exam timing model, degradation contract; spec in [docs/api/openapi.yaml](docs/api/openapi.yaml)
 - [docs/CONTENT.md](docs/CONTENT.md) — content model, id conventions, authoring rules per kind, validation, seed workflow
 - [docs/DESIGN.md](docs/DESIGN.md) — the Lexicon design system: palette & cinnabar rules, type, components, motion, a11y floor
-- [docs/adr/](docs/adr/) — decision records (Bun+Node split, SQLite+Drizzle, SM-2, homegrown i18n, server-issued deadlines, AI degradation, Postgres/Neon for serverless, versioned migrations, YAML content authoring, HTTP API v1 + bearer auth, multi-provider AI, learner model + AI memory, tutor chat, track as goal + content filter, pre-generated listening audio, audio on Vercel Blob, exam + headword audio, membership roles + tiers, social sign-in, transactional email + verification, soft email verification, personal collections unfiltered, premium book tutor chat)
+- [docs/adr/](docs/adr/) — decision records (Bun+Node split, SQLite+Drizzle, SM-2, homegrown i18n, server-issued deadlines, AI degradation, Postgres/Neon for serverless, versioned migrations, YAML content authoring, HTTP API v1 + bearer auth, multi-provider AI, learner model + AI memory, tutor chat, track as goal + content filter, pre-generated listening audio, audio on Vercel Blob, exam + headword audio, membership roles + tiers, social sign-in, transactional email + verification, soft email verification, personal collections unfiltered, premium book tutor chat, idempotent flashcard grades, Daybreak design system)
 - [CONTRIBUTING.md](CONTRIBUTING.md) — prerequisites, setup, scripts table, testing guide

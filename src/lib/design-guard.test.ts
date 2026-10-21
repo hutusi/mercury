@@ -3,8 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 /**
- * The Lexicon design guard (docs/DESIGN.md). AGENTS.md and DESIGN.md both state
- * the system is "enforced by src/lib/design-guard.test.ts" as part of
+ * The Daybreak design guard (docs/DESIGN.md). AGENTS.md and DESIGN.md both
+ * state the system is "enforced by src/lib/design-guard.test.ts" as part of
  * `bun run test`; this file makes that claim true.
  *
  * It scans component and page source as text for the primitives the Lexicon
@@ -43,7 +43,9 @@ function offenders(re: RegExp): string[] {
 const RAW_PALETTE =
   /\b(?:bg|text|border|ring|from|via|to|fill|stroke|outline|decoration|divide|caret|accent|placeholder|ring-offset)-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d{2,3}\b/;
 
-const SHADOW = /\bshadow-(?:2xs|xs|sm|md|lg|xl|2xl|inner)\b|\bdrop-shadow\b/;
+// Elevation is a closed set of tokens (globals.css: shadow-raised, -pop,
+// -float, -tab, -lift); the stock scale and arbitrary shadows are banned.
+const SHADOW = /\bshadow-(?:2xs|xs|sm|md|lg|xl|2xl|inner)\b|\bshadow-\[|\bdrop-shadow\b/;
 const GRADIENT = /\bbg-(?:gradient|linear|radial|conic)\b/;
 const BACKDROP = /\bbackdrop-blur\b/;
 const TRANSITION_ALL = /\btransition-all\b/;
@@ -54,7 +56,17 @@ const SMOOTH_SCROLL = /behavior:\s*["']smooth["']/;
 // deliberately outside these ranges.
 const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{FE0F}]/u;
 
-describe("Lexicon design guard", () => {
+const GLOBALS_CSS = fs.readFileSync(path.join(process.cwd(), "src/app/globals.css"), "utf8");
+
+/** Custom properties declared in the first `selector { … }` block. */
+function declaredVars(selector: string): Set<string> {
+  const start = GLOBALS_CSS.indexOf(`${selector} {`);
+  if (start < 0) return new Set();
+  const body = GLOBALS_CSS.slice(start, GLOBALS_CSS.indexOf("}", start));
+  return new Set([...body.matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]));
+}
+
+describe("Daybreak design guard", () => {
   it("scans a non-trivial number of source files", () => {
     // Guards against a broken glob silently passing every check.
     expect(FILES.length).toBeGreaterThan(40);
@@ -64,8 +76,20 @@ describe("Lexicon design guard", () => {
     expect(offenders(RAW_PALETTE)).toEqual([]);
   });
 
-  it("has no shadows", () => {
+  it("uses only the elevation tokens for shadows", () => {
     expect(offenders(SHADOW)).toEqual([]);
+  });
+
+  it("defines every colour token for both light and dark", () => {
+    const light = declaredVars(":root");
+    const dark = declaredVars(".dark");
+    expect(light.size).toBeGreaterThan(30);
+    expect([...light].filter((v) => !dark.has(v))).toEqual([]);
+    expect([...dark].filter((v) => !light.has(v))).toEqual([]);
+  });
+
+  it("keeps the global stylesheet off Google Fonts", () => {
+    expect(GLOBALS_CSS).not.toMatch(/fonts\.googleapis/);
   });
 
   it("has no gradients", () => {

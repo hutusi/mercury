@@ -6,19 +6,23 @@ import { dictionaries } from "@/lib/i18n";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { DEFAULT_LOCALE, htmlLang, isLocale, LOCALES } from "@/lib/i18n/routing";
 import { openGraphFor } from "@/lib/seo";
+import { BRAND_COLORS } from "@/lib/brand-colors";
 import { siteUrl } from "@/lib/site-url";
 import "../globals.css";
 
-// Latin glyphs only — zh renders through the CJK system faces in --font-sans /
+// Latin glyphs only: zh body text renders through the platform CJK faces in
+// --font-sans, zh headings through the self-hosted Noto Serif SC slices in
 // --font-serif (see globals.css).
-const inter = localFont({
-  src: "../fonts/inter-latin-variable.woff2",
-  weight: "100 900",
-  style: "normal",
+const plexSans = localFont({
+  src: [
+    { path: "../fonts/ibm-plex-sans-latin-400.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/ibm-plex-sans-latin-500.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/ibm-plex-sans-latin-600.woff2", weight: "600", style: "normal" },
+  ],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-plex-sans",
 });
-// Display serif for headwords; italics carry IPA transcriptions.
+// Headings, headwords, and passages; italics carry IPA transcriptions.
 const newsreader = localFont({
   src: [
     {
@@ -35,29 +39,21 @@ const newsreader = localFont({
   display: "swap",
   variable: "--font-newsreader",
 });
-// Data face: timers, scores, counts, micro-labels.
-const plexMono = localFont({
-  src: [
-    { path: "../fonts/ibm-plex-mono-latin-400.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/ibm-plex-mono-latin-500.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/ibm-plex-mono-latin-600.woff2", weight: "600", style: "normal" },
-  ],
-  display: "swap",
-  variable: "--font-plex-mono",
-});
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
 // Tint mobile browser chrome to match the page background (the --background
-// token) in each scheme, so the address bar blends with paper / near-black
-// instead of flashing the browser's default.
+// token) in each scheme, so the address bar blends with the paper instead of
+// flashing the browser's default. viewportFit: cover lets the phone tab bar
+// and toasts pad themselves with env(safe-area-inset-bottom).
 export const viewport: Viewport = {
   colorScheme: "light dark",
+  viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f6f1" },
-    { media: "(prefers-color-scheme: dark)", color: "#191712" },
+    { media: "(prefers-color-scheme: light)", color: BRAND_COLORS.paper },
+    { media: "(prefers-color-scheme: dark)", color: BRAND_COLORS.paperDark },
   ],
 };
 
@@ -103,7 +99,7 @@ export default async function RootLayout({
     // before hydration.
     <html
       lang={htmlLang(locale)}
-      className={`${inter.variable} ${newsreader.variable} ${plexMono.variable}`}
+      className={`${plexSans.variable} ${newsreader.variable}`}
       suppressHydrationWarning
     >
       <body>

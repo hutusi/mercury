@@ -1,20 +1,32 @@
 @import "tailwindcss";
 @import "shadcn/tailwind.css";
+/* Noto Serif SC, headings only, as unicode-range slices: a page downloads just
+   the glyph slices its Chinese headings use. zh body text stays on the
+   platform sans (PingFang / YaHei / Noto Sans CJK) — see ADR 0032. */
+@import "@fontsource/noto-serif-sc/500.css";
+@import "@fontsource/noto-serif-sc/600.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Inter for Latin text; CJK falls through to the platform's best zh face —
-     a zh webfont would cost megabytes per weight for no visual win. */
   --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Roboto",
-    "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  /* Newsreader carries headwords and display type; zh display falls through to the
-     platform serif so bilingual entries read as one dictionary page. */
-  --font-serif: var(--font-newsreader), "Songti SC", "Noto Serif SC", "SimSun", Georgia, serif;
-  --font-mono:
-    var(--font-plex-mono), ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
-  /* Micro-label scale: 11px mono uppercase with wide tracking (SectionLabel, badges). */
+    var(--font-plex-sans), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
+    "Noto Sans CJK SC", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Newsreader for Latin; CJK falls through to the self-hosted Noto Serif SC so
+     zh headings look the same on every OS. */
+  --font-serif: var(--font-newsreader), "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+
+  /* Daybreak radii: 8 / 12 / 16 / 20 / 24 — chips, fields, cards, panels, sheets.
+     Pills use rounded-full. */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+
+  /* Lexicon compatibility (micro-label scale) — removed once every screen is
+     migrated; Daybreak sets no uppercase tracked labels. */
   --text-2xs: 0.6875rem;
   --text-2xs--line-height: 1rem;
   --tracking-label: 0.14em;
@@ -22,132 +34,202 @@
 
 @theme inline {
   --font-heading: var(--font-serif);
-  --color-cinnabar: var(--cinnabar);
-  --color-cinnabar-foreground: var(--cinnabar-foreground);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --color-foreground: var(--foreground);
+
   --color-background: var(--background);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-track: var(--track);
+  --color-soft: var(--soft);
+  --color-soft-2: var(--soft-2);
+  --color-soft-3: var(--soft-3);
+
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-mid: var(--brand-mid);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-ink-2: var(--brand-ink-2);
+  --color-brand-border: var(--brand-border);
+
+  --color-coral: var(--coral);
+  --color-coral-foreground: var(--coral-foreground);
+  --color-coral-soft: var(--coral-soft);
+  --color-coral-ink: var(--coral-ink);
+  --color-coral-ink-2: var(--coral-ink-2);
+
+  --color-feature: var(--feature);
+  --color-feature-foreground: var(--feature-foreground);
+  --color-feature-muted: var(--feature-muted);
+  --color-feature-accent: var(--feature-accent);
+
+  --color-avatar: var(--avatar);
+  --color-avatar-foreground: var(--avatar-foreground);
+  --color-badge: var(--badge);
+  --color-kbd: var(--kbd);
+  --color-kbd-foreground: var(--kbd-foreground);
+  --color-toast-dot: var(--toast-dot);
+
+  /* Lexicon compatibility aliases — removed once every screen is migrated. */
+  --color-cinnabar: var(--coral);
+  --color-cinnabar-foreground: var(--coral-foreground);
+  --color-sidebar: var(--background);
+  --color-sidebar-border: var(--border);
+
+  /* Elevation: only raised cards (the current stop, flashcard, landing preview),
+     menus/popovers, and toasts lift off the paper. */
+  --shadow-raised: 0 1px 2px oklch(var(--shc) / 0.04), 0 20px 40px -28px oklch(var(--shc) / 0.25);
+  --shadow-pop: 0 24px 48px -16px oklch(var(--shc) / 0.28);
+  --shadow-float: 0 12px 32px -12px oklch(var(--shc) / 0.45);
+  --shadow-tab: 0 1px 2px oklch(var(--shc) / 0.12);
+  --shadow-lift: 0 16px 32px -24px oklch(var(--shc) / 0.3);
 }
 
-/* The Lexicon: warm paper + ink near-monochrome, one cinnabar accent (seal red).
-   --accent stays neutral — shadcn menus use it for hover/focus tints; all signature
-   red goes through --cinnabar so `grep cinnabar` lists every accent moment. */
+/* Daybreak 晨光: warm paper and ink; dusk blue marks progress and selection
+   only; coral marks mistakes and the streak only. */
 :root {
-  --background: oklch(0.972 0.006 90); /* paper */
-  --foreground: oklch(0.235 0.012 90); /* ink */
-  --card: oklch(0.972 0.006 90);
-  --card-foreground: oklch(0.235 0.012 90);
-  --popover: oklch(0.99 0.004 90);
-  --popover-foreground: oklch(0.235 0.012 90);
-  --primary: oklch(0.235 0.012 90); /* ink buttons */
-  --primary-foreground: oklch(0.972 0.006 90);
-  --secondary: oklch(0.925 0.008 90);
-  --secondary-foreground: oklch(0.235 0.012 90);
-  --muted: oklch(0.925 0.008 90);
-  --muted-foreground: oklch(0.5 0.012 90); /* ≥4.5:1 on paper and on muted */
-  --accent: oklch(0.925 0.008 90);
-  --accent-foreground: oklch(0.235 0.012 90);
+  --background: oklch(0.968 0.008 80); /* paper */
+  --foreground: oklch(0.25 0.02 260); /* ink */
+  --card: oklch(0.988 0.004 80); /* surface */
+  --card-foreground: oklch(0.25 0.02 260);
+  --popover: oklch(0.988 0.004 80);
+  --popover-foreground: oklch(0.25 0.02 260);
+  --primary: oklch(0.25 0.02 260); /* ink pill buttons */
+  --primary-foreground: oklch(0.975 0.006 80);
+  --primary-hover: oklch(0.36 0.04 258);
+  --secondary: oklch(0.945 0.009 80); /* sunken */
+  --secondary-foreground: oklch(0.25 0.02 260);
+  --muted: oklch(0.945 0.009 80);
+  --muted-foreground: oklch(0.48 0.02 260); /* ink-2: meta text, AA on paper */
+  --accent: oklch(0.94 0.012 80); /* neutral hover tint (shadcn slot) */
+  --accent-foreground: oklch(0.25 0.02 260);
   --destructive: oklch(0.5 0.19 27);
-  --border: oklch(0.88 0.008 90); /* hairline */
-  --input: oklch(0.84 0.01 90);
-  --ring: oklch(0.52 0.17 32); /* cinnabar focus */
-  --cinnabar: oklch(0.52 0.17 32); /* 朱砂 */
-  --cinnabar-foreground: oklch(0.985 0.004 90);
-  --chart-1: oklch(0.235 0.012 90);
-  --chart-2: oklch(0.52 0.17 32);
-  --chart-3: oklch(0.55 0.012 90);
-  --chart-4: oklch(0.72 0.01 90);
-  --chart-5: oklch(0.4 0.012 90);
-  --radius: 0.125rem;
-  --sidebar: oklch(0.972 0.006 90);
-  --sidebar-foreground: oklch(0.5 0.012 90);
-  --sidebar-primary: oklch(0.52 0.17 32);
-  --sidebar-primary-foreground: oklch(0.985 0.004 90);
-  --sidebar-accent: oklch(0.925 0.008 90);
-  --sidebar-accent-foreground: oklch(0.235 0.012 90);
-  --sidebar-border: oklch(0.88 0.008 90);
-  --sidebar-ring: oklch(0.52 0.17 32);
+  --border: oklch(0.9 0.01 80); /* line */
+  --input: oklch(0.84 0.012 80); /* line-2: fields, outline buttons */
+  --ring: oklch(0.5 0.13 255);
+  --track: oklch(0.935 0.01 80); /* segmented-control track */
+  --soft: oklch(0.42 0.02 260); /* secondary prose */
+  --soft-2: oklch(0.38 0.02 260);
+  --soft-3: oklch(0.35 0.02 260);
+
+  --brand: oklch(0.5 0.13 255); /* dusk blue */
+  --brand-foreground: oklch(0.975 0.006 80);
+  --brand-soft: oklch(0.94 0.03 255);
+  --brand-mid: oklch(0.8 0.07 255);
+  --brand-ink: oklch(0.42 0.13 255);
+  --brand-ink-2: oklch(0.38 0.1 255);
+  --brand-border: oklch(0.8 0.03 255);
+  --selection: oklch(0.88 0.06 255);
+
+  --coral: oklch(0.55 0.14 38);
+  --coral-foreground: oklch(0.975 0.006 80);
+  --coral-soft: oklch(0.95 0.03 38);
+  --coral-ink: oklch(0.48 0.13 38);
+  --coral-ink-2: oklch(0.4 0.12 38);
+
+  --feature: oklch(0.27 0.03 258); /* the one dark surface: mock exam */
+  --feature-foreground: oklch(0.96 0.008 80);
+  --feature-muted: oklch(0.82 0.015 80);
+  --feature-accent: oklch(0.82 0.08 255);
+
+  --avatar: oklch(0.9 0.03 255);
+  --avatar-foreground: oklch(0.38 0.1 255);
+  --badge: oklch(0.92 0.02 255);
+  --kbd: oklch(0.36 0.03 260);
+  --kbd-foreground: oklch(0.9 0.01 80);
+  --toast-dot: oklch(0.78 0.1 255);
+  --shc: 0.25 0.02 260; /* shadow colour channels */
 }
 
 .dark {
-  --background: oklch(0.205 0.01 90); /* warm near-black page */
-  --foreground: oklch(0.93 0.008 88); /* paper-toned text */
-  --card: oklch(0.205 0.01 90);
-  --card-foreground: oklch(0.93 0.008 88);
-  --popover: oklch(0.245 0.01 90);
-  --popover-foreground: oklch(0.93 0.008 88);
-  --primary: oklch(0.93 0.008 88); /* inverted ink button */
-  --primary-foreground: oklch(0.205 0.01 90);
-  --secondary: oklch(0.275 0.01 90);
-  --secondary-foreground: oklch(0.93 0.008 88);
-  --muted: oklch(0.275 0.01 90);
-  --muted-foreground: oklch(0.71 0.01 90);
-  --accent: oklch(0.275 0.01 90);
-  --accent-foreground: oklch(0.93 0.008 88);
+  --background: oklch(0.185 0.012 262);
+  --foreground: oklch(0.935 0.008 80);
+  --card: oklch(0.225 0.014 262);
+  --card-foreground: oklch(0.935 0.008 80);
+  --popover: oklch(0.225 0.014 262);
+  --popover-foreground: oklch(0.935 0.008 80);
+  --primary: oklch(0.935 0.008 80);
+  --primary-foreground: oklch(0.185 0.012 262);
+  --primary-hover: oklch(0.82 0.012 80);
+  --secondary: oklch(0.17 0.012 262);
+  --secondary-foreground: oklch(0.935 0.008 80);
+  --muted: oklch(0.17 0.012 262);
+  --muted-foreground: oklch(0.74 0.014 262);
+  --accent: oklch(0.26 0.015 262);
+  --accent-foreground: oklch(0.935 0.008 80);
   --destructive: oklch(0.66 0.17 25);
-  --border: oklch(0.32 0.012 90); /* solid — alpha hairlines go gray on warm pages */
-  --input: oklch(0.36 0.012 90);
-  --ring: oklch(0.68 0.15 32);
-  --cinnabar: oklch(0.68 0.15 32);
-  --cinnabar-foreground: oklch(0.205 0.01 90); /* white on bright cinnabar fails AA */
-  --chart-1: oklch(0.93 0.008 88);
-  --chart-2: oklch(0.68 0.15 32);
-  --chart-3: oklch(0.71 0.01 90);
-  --chart-4: oklch(0.5 0.012 90);
-  --chart-5: oklch(0.84 0.008 88);
-  --sidebar: oklch(0.205 0.01 90);
-  --sidebar-foreground: oklch(0.71 0.01 90);
-  --sidebar-primary: oklch(0.68 0.15 32);
-  --sidebar-primary-foreground: oklch(0.205 0.01 90);
-  --sidebar-accent: oklch(0.275 0.01 90);
-  --sidebar-accent-foreground: oklch(0.93 0.008 88);
-  --sidebar-border: oklch(0.32 0.012 90);
-  --sidebar-ring: oklch(0.68 0.15 32);
+  --border: oklch(0.3 0.015 262);
+  --input: oklch(0.4 0.016 262);
+  --ring: oklch(0.72 0.11 255);
+  --track: oklch(0.155 0.012 262);
+  --soft: oklch(0.84 0.01 80);
+  --soft-2: oklch(0.86 0.01 80);
+  --soft-3: oklch(0.88 0.01 80);
+
+  --brand: oklch(0.72 0.11 255);
+  --brand-foreground: oklch(0.185 0.012 262);
+  --brand-soft: oklch(0.3 0.045 255);
+  --brand-mid: oklch(0.47 0.08 255);
+  --brand-ink: oklch(0.8 0.09 255);
+  --brand-ink-2: oklch(0.84 0.07 255);
+  --brand-border: oklch(0.52 0.06 255);
+  --selection: oklch(0.42 0.08 255);
+
+  --coral: oklch(0.72 0.12 40);
+  --coral-foreground: oklch(0.185 0.012 262);
+  --coral-soft: oklch(0.3 0.05 38);
+  --coral-ink: oklch(0.8 0.09 40);
+  --coral-ink-2: oklch(0.82 0.08 40);
+
+  --feature: oklch(0.3 0.05 258);
+  --feature-foreground: oklch(0.96 0.008 80);
+  --feature-muted: oklch(0.82 0.015 80);
+  --feature-accent: oklch(0.82 0.08 255);
+
+  --avatar: oklch(0.33 0.05 255);
+  --avatar-foreground: oklch(0.84 0.07 255);
+  --badge: oklch(0.31 0.04 255);
+  --kbd: oklch(0.8 0.01 80);
+  --kbd-foreground: oklch(0.185 0.012 262);
+  --toast-dot: oklch(0.52 0.12 255);
+  --shc: 0.06 0.01 262;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground antialiased;
-  }
   html {
     @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: 0.9375rem; /* 15px — Daybreak's interface size */
+    line-height: 1.55;
+  }
+  ::selection {
+    background: var(--selection);
+  }
+  /* Thin, paper-toned scrollbars wherever an inner region scrolls. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--input) transparent;
   }
 }
