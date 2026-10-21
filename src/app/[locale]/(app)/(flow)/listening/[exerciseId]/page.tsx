@@ -3,6 +3,7 @@ import { FlowHeader } from "@/components/flow/FlowHeader";
 import { getFlowContext } from "@/lib/queries/plan";
 import { notFound } from "next/navigation";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
+import { NextStopButton } from "@/components/flow/NextStopButton";
 import { ListeningRunner } from "@/components/listening/ListeningRunner";
 import { getListeningExerciseSanitized, listListeningExercises } from "@/lib/queries/listening";
 import { requireOnboarded } from "@/lib/settings";
@@ -35,23 +36,21 @@ export default async function ListeningExercisePage({
   return (
     <>
       <FlowHeader context={flow} hubHref="/listening" />
-      <FlowBody>
-        <div className="space-y-6">
-          <div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight">{exercise.title}</h1>
-            <p className="text-muted-foreground">
-              {exercise.titleZh} · {exercise.style}
-            </p>
-          </div>
-          <ListeningRunner
-            exerciseId={exercise.id}
-            script={exercise.script}
-            audioUrl={exercise.audioUrl}
-            questions={exercise.questions}
-            crossPromo={<CrossPromoCard track={goalTrack} />}
-            nextHref={next ? `/listening/${next.id}` : null}
-          />
-        </div>
+      <FlowBody width="wide">
+        <ListeningRunner
+          exerciseId={exercise.id}
+          title={exercise.title}
+          titleZh={exercise.titleZh}
+          style={exercise.style}
+          script={exercise.script}
+          audioUrl={exercise.audioUrl}
+          questions={exercise.questions}
+          nextStop={
+            flow.mode === "plan" ? <NextStopButton context={flow} className="w-full" /> : null
+          }
+          nextHref={next ? `/listening/${next.id}` : null}
+          crossPromo={<CrossPromoCard track={goalTrack} />}
+        />
       </FlowBody>
     </>
   );

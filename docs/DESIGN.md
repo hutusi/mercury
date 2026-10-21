@@ -48,6 +48,7 @@ Long-form learner prose — reading passages, book chapters, exam passages — i
 
 - **Shell** (`(shell)` route group): a 248px sidebar on desktop (wordmark; Today; Practice with its skills nested beneath; Tutor; Mistakes with a coral count; the mini "today's plan" card; the avatar menu and 中/EN toggle), a 58px top bar plus four bottom tabs on phones (Today · Practice · Tutor · Mistakes). Content is centred, max ~1100px, generous padding.
 - **Flow** (`(flow)` route group): learning sessions hide navigation. A 62px top bar holds an exit (×), "今日计划 · 第 2 站，共 4 站" (or "自由练习 · 不计入今日计划") above the segmented route, and a counter. Sticky elements offset by the `--chrome-top` variable.
+- **Exercises** (reading, listening): the material beside the questions on wide screens, the question column sticky while answering; Material / Questions tabs on phones. The result stays on the page — a score ring, every answer marked (correct in dusk blue, a wrong pick struck through in coral), the Chinese explanation, "已加入错题本", a "问私教" link — and ends on the next stop (plan mode) or the next exercise (`exercise/ExerciseParts`, `useExerciseAttempt`).
 - Every tap target is at least 44px tall; answer options and grade buttons are 46–64px.
 
 ## Components

@@ -3,9 +3,10 @@ import { FlowHeader } from "@/components/flow/FlowHeader";
 import { getFlowContext } from "@/lib/queries/plan";
 import { notFound } from "next/navigation";
 import { CrossPromoCard } from "@/components/dashboard/CrossPromoCard";
+import { NextStopButton } from "@/components/flow/NextStopButton";
 import { ReadingRunner } from "@/components/reading/ReadingRunner";
-import { getDict } from "@/lib/i18n";
 import { getReadingExerciseSanitized, listReadingExercises } from "@/lib/queries/reading";
+import { getReviewedGlossesToday } from "@/lib/queries/vocab";
 import { requireOnboarded } from "@/lib/settings";
 
 export default async function ReadingExercisePage({
@@ -13,20 +14,20 @@ export default async function ReadingExercisePage({
 }: {
   params: Promise<{ exerciseId: string }>;
 }) {
-  const [{ user, goalTrack, timeZone }, { exerciseId }, t] = await Promise.all([
+  const [{ user, goalTrack, timeZone }, { exerciseId }] = await Promise.all([
     requireOnboarded(),
     params,
-    getDict(),
   ]);
 
   // The query strips answers — nothing here can leak the key while answering.
   // The sibling list (it drives the result screen's "next exercise") is
   // fetched speculatively for the goal track in the same wave; only an
   // off-goal exercise pays a second round-trip.
-  const [exercise, goalSiblings, flow] = await Promise.all([
+  const [exercise, goalSiblings, flow, glosses] = await Promise.all([
     getReadingExerciseSanitized(exerciseId),
     listReadingExercises(user.id, goalTrack),
     getFlowContext(user.id, timeZone, "reading", exerciseId),
+    getReviewedGlossesToday(user.id, timeZone),
   ]);
   if (!exercise) notFound();
   const { exercises, bestByExercise } =
@@ -38,23 +39,24 @@ export default async function ReadingExercisePage({
   return (
     <>
       <FlowHeader context={flow} hubHref="/reading" />
-      <FlowBody>
-        <div className="space-y-6">
-          <div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight">{exercise.title}</h1>
-            <p className="text-muted-foreground">
-              {exercise.titleZh} · {exercise.genre} · {t.reading.suggestedTime}{" "}
-              {exercise.suggestedMinutes} {t.common.minutes}
-            </p>
-          </div>
-          <ReadingRunner
-            exerciseId={exercise.id}
-            passage={exercise.passage}
-            questions={exercise.questions}
-            crossPromo={<CrossPromoCard track={goalTrack} />}
-            nextHref={next ? `/reading/${next.id}` : null}
-          />
-        </div>
+      <FlowBody width="wide">
+        <ReadingRunner
+          exerciseId={exercise.id}
+          title={exercise.title}
+          titleZh={exercise.titleZh}
+          genre={exercise.genre}
+          suggestedMinutes={exercise.suggestedMinutes}
+          passage={exercise.passage}
+          questions={exercise.questions}
+          glosses={glosses}
+          // An element is truthy even when it renders nothing, so off-plan
+          // passes none and the result falls back to "next exercise".
+          nextStop={
+            flow.mode === "plan" ? <NextStopButton context={flow} className="w-full" /> : null
+          }
+          nextHref={next ? `/reading/${next.id}` : null}
+          crossPromo={<CrossPromoCard track={goalTrack} />}
+        />
       </FlowBody>
     </>
   );
