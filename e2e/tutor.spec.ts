@@ -6,8 +6,8 @@ test.describe("AI tutor chat", () => {
   test("keyless: tab renders a disabled state instead of a broken chat", async ({ page }) => {
     await registerAndOnboard(page);
 
-    // Nav shows the tutor entry (sidebar + dashboard quick links both link it).
-    await page.getByRole("link", { name: t.nav.tutor }).first().click();
+    // The sidebar's Tutor destination.
+    await page.getByRole("link", { name: t.nav.tutorTab, exact: true }).click();
     await page.waitForURL("**/tutor");
 
     await expect(page.getByRole("heading", { name: t.nav.tutor })).toBeVisible();

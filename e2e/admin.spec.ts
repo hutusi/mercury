@@ -2,7 +2,7 @@ import { execSync } from "node:child_process";
 import { expect, test } from "@playwright/test";
 import { apiSignUpAndOnboard } from "./api-helpers";
 import { e2eDatabaseUrl } from "./db-url";
-import { registerAndOnboard, t } from "./helpers";
+import { openAccountMenu, registerAndOnboard, t } from "./helpers";
 
 /**
  * The full membership operating loop: a fresh user has no admin surface; the
@@ -16,7 +16,9 @@ test("admin promotion, premium grant, and revoke thread end-to-end", async ({ pa
 
   // A regular user sees no admin nav and gets a 404 on the admin page.
   const admin = await registerAndOnboard(page);
-  await expect(page.getByRole("link", { name: t.nav.admin })).toHaveCount(0);
+  await openAccountMenu(page);
+  await expect(page.getByRole("menuitem", { name: t.nav.admin })).toHaveCount(0);
+  await page.keyboard.press("Escape");
   await page.goto("/zh/admin");
   await expect(page.getByText(t.errors.notFoundTitle)).toBeVisible();
 
@@ -42,7 +44,8 @@ test("admin promotion, premium grant, and revoke thread end-to-end", async ({ pa
 
   // Role is read fresh from Postgres per request — a reload is enough.
   await page.goto("/zh/dashboard");
-  await page.getByRole("link", { name: t.nav.admin }).click();
+  await openAccountMenu(page);
+  await page.getByRole("menuitem", { name: t.nav.admin }).click();
   await page.waitForURL("**/admin");
   const adminRow = page.locator("tr", { hasText: admin.email });
   await expect(adminRow.getByText(t.admin.roleAdmin)).toBeVisible();

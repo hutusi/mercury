@@ -7,6 +7,7 @@
  */
 export const PROTECTED_PATHS = [
   "/dashboard",
+  "/practice",
   "/onboarding",
   "/vocabulary",
   "/reading",

@@ -59,3 +59,13 @@ export async function answerAllQuestions(page: Page) {
     await firstOptions.nth(i).click();
   }
 }
+
+/**
+ * Open the account (avatar) menu — settings, premium, admin, theme, and sign
+ * out live there. Only the trigger for the current layout is visible
+ * (sidebar on desktop, top bar on phones), so getByRole finds exactly one.
+ */
+export async function openAccountMenu(page: Page) {
+  await page.getByRole("button", { name: t.menu.account }).click();
+  await expect(page.getByRole("menu")).toBeVisible();
+}

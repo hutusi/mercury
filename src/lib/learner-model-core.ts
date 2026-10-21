@@ -1,5 +1,6 @@
 import type { Track } from "../content/types";
 import { sanitizeUntrusted } from "./ai/sanitize";
+import { formatTargetScore } from "./target-score";
 
 /**
  * Pure learner-model logic, kept free of DB imports so it can be unit-tested
@@ -195,9 +196,9 @@ export interface LearnerContextInput {
 
 /** Human-readable target, e.g. "TOEIC 800" / "IELTS 6.5". */
 export function formatTarget(track: Track, targetScore: number): string | null {
-  if (track === "toeic") return `TOEIC ${targetScore}`;
-  if (track === "ielts") return `IELTS ${(targetScore / 10).toFixed(1)}`;
-  return null;
+  const score = formatTargetScore(track, targetScore);
+  if (score === null) return null;
+  return `${track === "toeic" ? "TOEIC" : "IELTS"} ${score}`;
 }
 
 /** Whole days from `today` to a local YYYY-MM-DD date (negative if past). */

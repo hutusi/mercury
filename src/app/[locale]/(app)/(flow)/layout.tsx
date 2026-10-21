@@ -1,27 +1,18 @@
-import { VerifyEmailBanner } from "@/components/auth/VerifyEmailBanner";
-import { AppShell } from "@/components/layout/AppShell";
-import { getSession } from "@/lib/auth/session";
-import { isEmailEnabled } from "@/lib/email/enabled";
-import { localeRedirect } from "@/lib/i18n";
+import { SkipLink } from "@/components/layout/SkipLink";
+import { getDict } from "@/lib/i18n";
 
-/** Learning sessions. */
+/**
+ * Learning sessions: no navigation chrome. Each session page renders its own
+ * FlowHeader (exit, route progress, counter), so the frame only provides the
+ * skip link, the main landmark, and the --chrome-top offset sticky elements
+ * use to clear the 62px session bar.
+ */
 export default async function FlowLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  // Deduped with the (app) gate by React cache() — no second lookup.
-  const session = await getSession();
-  if (!session) return localeRedirect("/login");
-
-  // Soft verification (ADR 0028): the env gate is mandatory — keyless
-  // environments can't send the email, and every keyless e2e user is
-  // unverified, so an ungated banner would leak onto every page.
-  const showVerifyBanner = isEmailEnabled(process.env) && !session.user.emailVerified;
-
+  const t = await getDict();
   return (
-    <AppShell
-      userName={session.user.name || session.user.email}
-      isAdmin={session.user.role === "admin"}
-      banner={showVerifyBanner ? <VerifyEmailBanner email={session.user.email} /> : undefined}
-    >
-      {children}
-    </AppShell>
+    <div className="min-h-dvh bg-background [--chrome-top:3.875rem]">
+      <SkipLink label={t.a11y.skipToContent} />
+      <main id="main-content">{children}</main>
+    </div>
   );
 }
