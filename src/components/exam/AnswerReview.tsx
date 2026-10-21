@@ -1,15 +1,17 @@
 "use client";
 
-import { Check, X } from "lucide-react";
 import { useState } from "react";
-import { SectionLabel } from "@/components/typography/SectionLabel";
-import { Button } from "@/components/ui/button";
+import { QuestionsForm } from "@/components/exercise/QuestionsForm";
+import { SegmentedControl } from "@/components/ui/segmented-control";
 import type { ExamSection } from "@/content/types";
 import type { AnswerMap } from "@/lib/db/schema";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
-const LETTERS = ["A", "B", "C", "D"];
-
+/**
+ * The finished exam, question by question, in the same graded cards as the
+ * exercises (the attempt is over, so the keys may ship). Wrong ones first —
+ * that's where the learning is — with the full paper a tap away.
+ */
 export function AnswerReview({
   sections,
   answers,
@@ -18,68 +20,50 @@ export function AnswerReview({
   answers: AnswerMap;
 }) {
   const t = useT();
-  const [wrongOnly, setWrongOnly] = useState(true);
+  const [filter, setFilter] = useState<"wrong" | "all">("wrong");
 
   return (
-    <section className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="font-serif text-xl font-medium">{t.exams.reviewTitle}</h2>
-        <Button variant="outline" size="sm" onClick={() => setWrongOnly((w) => !w)}>
-          {wrongOnly ? t.exams.showAll : t.exams.showWrongOnly}
-        </Button>
+    <section aria-labelledby="exam-review" className="flex flex-col gap-5">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 id="exam-review" className="font-serif text-xl font-medium">
+          {t.exams.reviewTitle}
+        </h2>
+        <SegmentedControl
+          label={t.exams.reviewTitle}
+          size="sm"
+          value={filter}
+          onChange={setFilter}
+          options={[
+            { value: "wrong", label: t.exams.showWrongOnly },
+            { value: "all", label: t.exams.showAll },
+          ]}
+        />
       </div>
 
       {sections.map((section) => {
-        let number = 0;
-        const items = section.groups.flatMap((group) =>
-          group.questions.map((q) => {
-            number += 1;
-            return { q, number };
-          }),
+        const questions = section.groups.flatMap((g) => g.questions);
+        const numbers = Object.fromEntries(questions.map((q, i) => [q.id, i + 1]));
+        const visible = questions.filter(
+          (q) => filter === "all" || answers[q.id] !== q.correctIndex,
         );
-        const visible = items.filter(({ q }) => !wrongOnly || answers[q.id] !== q.correctIndex);
         if (visible.length === 0) return null;
         return (
-          <div key={section.id} className="space-y-3">
-            <SectionLabel as="h3">
-              {section.kind === "listening" ? t.exams.listeningSection : t.exams.readingSection} ·{" "}
-              {section.titleZh}
-            </SectionLabel>
-            <div className="divide-y divide-border border-y border-border">
-              {visible.map(({ q, number: n }) => {
-                const chosen = answers[q.id];
-                const correct = chosen === q.correctIndex;
-                return (
-                  <div key={q.id} className="py-5">
-                    <p className="font-medium">
-                      <span aria-hidden>
-                        {correct ? (
-                          <Check className="inline size-4" />
-                        ) : (
-                          <X className="inline size-4 text-cinnabar" />
-                        )}
-                      </span>{" "}
-                      {n}. {q.stem}
-                    </p>
-                    <div className="mt-2 space-y-1 text-sm">
-                      <p className="font-medium text-foreground">
-                        {t.exams.correctAnswer}: {LETTERS[q.correctIndex]}.{" "}
-                        {q.options[q.correctIndex]}
-                      </p>
-                      <p className={correct ? "text-muted-foreground" : "text-cinnabar"}>
-                        {t.exams.yourAnswer}:{" "}
-                        {chosen !== undefined
-                          ? `${LETTERS[chosen]}. ${q.options[chosen]}`
-                          : t.exams.notAnswered}
-                      </p>
-                    </div>
-                    <div className="mt-3 bg-muted p-3 text-sm text-foreground/80">
-                      {q.explanationZh}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+          <div key={section.id} className="flex flex-col gap-3">
+            <h3 className="text-[0.9375rem] font-semibold">
+              {section.kind === "listening" ? t.exams.listeningSection : t.exams.readingSection}
+              <span className="ml-2 font-normal text-muted-foreground">{section.titleZh}</span>
+            </h3>
+            <QuestionsForm
+              questions={visible.map(({ id, stem, options }) => ({ id, stem, options }))}
+              answers={answers}
+              numbers={numbers}
+              graded={visible.map((q) => ({
+                questionId: q.id,
+                correctIndex: q.correctIndex,
+                explanationZh: q.explanationZh,
+                correct: answers[q.id] === q.correctIndex,
+              }))}
+            />
           </div>
         );
       })}

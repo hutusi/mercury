@@ -1,86 +1,95 @@
-import { ArrowLeft, ClipboardList } from "lucide-react";
-import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
+import { ArrowLeft, Headphones, BookOpenText } from "lucide-react";
 import { notFound } from "next/navigation";
 import { StartExamButton } from "@/components/exam/StartExamButton";
-import { SectionLabel } from "@/components/typography/SectionLabel";
 import { requireUser } from "@/lib/auth/session";
 import { getDict } from "@/lib/i18n";
+import { fill } from "@/lib/i18n/fill";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { getExamIntro } from "@/lib/queries/exams";
 
 export default async function ExamIntroPage({ params }: { params: Promise<{ examId: string }> }) {
-  const user = await requireUser();
-  const { examId } = await params;
-  const t = await getDict();
-
+  const [user, { examId }, t] = await Promise.all([requireUser(), params, getDict()]);
   const data = await getExamIntro(user.id, examId);
   if (!data) notFound();
   const { exam, inProgress } = data;
 
   const rules = [t.exams.rule1, t.exams.rule2, t.exams.rule3];
+  const minutes = Math.round(exam.sections.reduce((s, x) => s + x.durationSeconds, 0) / 60);
 
   return (
-    <div className="mx-auto max-w-2xl space-y-8">
+    <div className="mx-auto flex max-w-[45rem] flex-col gap-8">
       <div>
         <Link
           href="/exams"
-          className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-sm text-sm font-medium text-muted-foreground outline-hidden transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
         >
           <ArrowLeft className="size-4" aria-hidden />
           {t.nav.exams}
         </Link>
-        <header className="mt-4 border-b border-border pb-6">
-          <h1 className="font-serif text-3xl font-medium tracking-tight sm:text-4xl">
+        <header className="mt-4">
+          <p className="text-[0.8125rem] text-muted-foreground tabular-nums">
+            {fill(t.practice.examMeta, { n: exam.totalQuestions, m: minutes })}
+          </p>
+          <h1 className="mt-2 font-serif text-[1.875rem] leading-tight font-medium text-balance sm:text-[2.625rem]">
             {exam.titleZh}
           </h1>
-          <p className="mt-1 font-serif text-lg text-muted-foreground italic">{exam.title}</p>
-          <p className="mt-3 text-muted-foreground">{exam.descriptionZh}</p>
+          <p className="mt-1 font-serif text-lg text-muted-foreground">{exam.title}</p>
+          <p className="mt-3 leading-relaxed text-soft-3">{exam.descriptionZh}</p>
         </header>
       </div>
 
-      <section>
-        <SectionLabel as="h2" className="mb-4">
+      <section aria-labelledby="exam-sections">
+        <h2 id="exam-sections" className="text-[0.9375rem] font-semibold">
           {t.exams.sections}
-        </SectionLabel>
-        <ul className="divide-y divide-border border-y border-border">
+        </h2>
+        <ol className="mt-3 divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
           {exam.sections.map((section, i) => {
             const count = section.groups.reduce((n, g) => n + g.questions.length, 0);
+            const Icon = section.kind === "listening" ? Headphones : BookOpenText;
             return (
-              <li key={section.id} className="flex items-center justify-between gap-4 py-3 text-sm">
-                <span className="font-medium">
-                  <span className="mr-2 font-mono text-xs text-muted-foreground">{i + 1}.</span>
-                  {section.kind === "listening"
-                    ? t.exams.listeningSection
-                    : t.exams.readingSection}{" "}
-                  · {section.titleZh}
+              <li key={section.id} className="flex items-center gap-3.5 px-5 py-4">
+                <span
+                  aria-hidden
+                  className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-soft-2"
+                >
+                  <Icon className="size-[1.125rem]" />
                 </span>
-                <span className="font-mono text-xs text-muted-foreground tabular-nums">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[0.9375rem] font-medium">
+                    {i + 1}.{" "}
+                    {section.kind === "listening"
+                      ? t.exams.listeningSection
+                      : t.exams.readingSection}
+                  </p>
+                  <p className="truncate text-[0.8125rem] text-muted-foreground">
+                    {section.titleZh}
+                  </p>
+                </div>
+                <span className="shrink-0 text-[0.8125rem] text-muted-foreground tabular-nums">
                   {count} {t.common.questions} · {Math.round(section.durationSeconds / 60)}{" "}
                   {t.common.minutes}
                 </span>
               </li>
             );
           })}
-        </ul>
+        </ol>
       </section>
 
-      <section className="border border-cinnabar/40 bg-cinnabar/5 p-6">
-        <SectionLabel as="h2" className="mb-3 flex items-center gap-1.5 text-cinnabar">
-          <ClipboardList className="size-4" aria-hidden />
+      <section aria-labelledby="exam-rules" className="rounded-xl bg-muted px-5 py-4">
+        <h2 id="exam-rules" className="text-[0.9375rem] font-semibold">
           {t.exams.rules}
-        </SectionLabel>
-        <ul className="space-y-2 text-sm text-foreground/80">
+        </h2>
+        <ol className="mt-3 flex flex-col gap-2 text-sm leading-relaxed text-soft-3">
           {rules.map((rule, i) => (
-            <li key={i} className="flex gap-2">
-              <span className="font-mono font-medium text-cinnabar">{i + 1}.</span>
+            <li key={i} className="flex gap-2.5">
+              <span className="font-serif font-medium text-brand-ink italic">{i + 1}</span>
               {rule}
             </li>
           ))}
-        </ul>
+        </ol>
       </section>
 
-      <div>
-        <StartExamButton examId={exam.id} inProgressAttemptId={inProgress?.id ?? null} />
-      </div>
+      <StartExamButton examId={exam.id} inProgressAttemptId={inProgress?.id ?? null} />
     </div>
   );
 }

@@ -15,6 +15,7 @@ import { examRemainingMs, type SanitizedExamSection } from "@/lib/exam-utils";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
 import { useFlowExit } from "@/lib/flow-store";
+import { cn } from "@/lib/utils";
 
 const AUTOSAVE_MS = 30_000;
 
@@ -299,11 +300,11 @@ export function ExamRunner({
   const questionNumberById = new Map(sectionQuestions.map((q, i) => [q.id, i + 1]));
 
   return (
-    <div className="space-y-6">
-      {/* Sticky header: section info + timer + palette */}
-      <div className="sticky top-(--chrome-top) z-10 -mx-4 border-b border-border bg-background px-4 py-3 sm:-mx-6 sm:px-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
+    <div className="flex flex-col gap-6">
+      {/* Sticky header: section, timer, autosave state, question palette */}
+      <div className="sticky top-(--chrome-top) z-10 -mx-4 border-b border-border bg-background px-4 py-3 sm:-mx-8 sm:px-8">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+          <div className="min-w-0">
             <p
               ref={sectionHeadingRef}
               tabIndex={-1}
@@ -312,39 +313,43 @@ export function ExamRunner({
               {sectionIndex + 1}/{sections.length} ·{" "}
               {section.kind === "listening" ? t.exams.listeningSection : t.exams.readingSection}
             </p>
-            <p className="text-xs text-muted-foreground">{section.titleZh}</p>
+            <p className="truncate text-xs text-muted-foreground">{section.titleZh}</p>
           </div>
-          <div
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-lg font-semibold tabular-nums ${
-              lowTime
-                ? "animate-pulse bg-cinnabar/10 text-cinnabar motion-reduce:animate-none"
-                : "bg-muted text-foreground/80"
-            }`}
-            role="timer"
-            aria-label={t.exams.timeLeft}
-          >
-            <Timer className="size-4" aria-hidden />
-            {remainingMs === null ? "--:--" : formatClock(remainingMs)}
+          <div className="flex items-center gap-3">
+            {saveState !== "idle" ? (
+              <p
+                role={saveState === "failed" ? "alert" : "status"}
+                className={cn(
+                  "text-xs",
+                  saveState === "failed" ? "text-destructive" : "text-muted-foreground",
+                )}
+              >
+                {saveState === "saving"
+                  ? t.exams.autosaveSaving
+                  : saveState === "saved"
+                    ? t.exams.autosaveSaved
+                    : t.exams.autosaveFailed}
+              </p>
+            ) : null}
+            <div
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-base font-semibold tabular-nums",
+                // Under a minute the clock inverts: urgent without borrowing coral,
+                // which means "mistake" in this palette.
+                lowTime ? "bg-primary text-primary-foreground" : "bg-muted text-foreground",
+              )}
+              role="timer"
+              aria-label={t.exams.timeLeft}
+            >
+              <Timer className="size-4" aria-hidden />
+              {remainingMs === null ? "--:--" : formatClock(remainingMs)}
+            </div>
           </div>
           <p aria-live="polite" role="status" className="sr-only">
             {timeAnnouncement}
           </p>
-          {saveState !== "idle" && (
-            <p
-              role={saveState === "failed" ? "alert" : "status"}
-              className={`basis-full text-xs ${
-                saveState === "failed" ? "text-destructive" : "text-muted-foreground"
-              }`}
-            >
-              {saveState === "saving"
-                ? t.exams.autosaveSaving
-                : saveState === "saved"
-                  ? t.exams.autosaveSaved
-                  : t.exams.autosaveFailed}
-            </p>
-          )}
         </div>
-        <nav aria-label={t.exams.palette} className="mt-2 flex flex-wrap gap-1.5">
+        <nav aria-label={t.exams.palette} className="mt-2.5 flex flex-wrap gap-1.5">
           {sectionQuestions.map((q, i) => {
             const answered = sectionAnswers[q.id] !== undefined;
             return (
@@ -352,11 +357,12 @@ export function ExamRunner({
                 key={q.id}
                 href={`#q-${q.id}`}
                 aria-label={`${i + 1}${answered ? "" : ` · ${t.exams.unanswered}`}`}
-                className={`flex h-7 w-7 items-center justify-center rounded-sm font-mono text-xs font-medium transition-colors ${
+                className={cn(
+                  "flex size-7 items-center justify-center rounded-md text-xs font-semibold tabular-nums outline-hidden transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-ring",
                   answered
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-muted/70"
-                }`}
+                    ? "bg-brand text-brand-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-track",
+                )}
               >
                 <span aria-hidden>{i + 1}</span>
               </a>
@@ -365,26 +371,24 @@ export function ExamRunner({
         </nav>
       </div>
 
-      {section.kind === "listening" && (
-        <Callout variant="accent" className="p-3 text-sm">
-          <span className="text-cinnabar" aria-hidden>
-            <Headphones className="inline size-4" />
-          </span>{" "}
+      {section.kind === "listening" ? (
+        <Callout variant="accent" className="flex items-center gap-2.5 px-4 py-3 text-sm">
+          <Headphones className="size-4 shrink-0 text-brand" aria-hidden />
           {t.exams.audioOnce}
         </Callout>
-      )}
+      ) : null}
 
       {section.groups.map((group) => (
-        <div key={group.id} className="space-y-4">
-          {group.script && (
+        <div key={group.id} className="flex flex-col gap-4">
+          {group.script ? (
             <TtsPlayer script={group.script} audioUrl={group.audioUrl} maxPlays={1} />
-          )}
-          {group.passage && (
-            <article className="border-y border-border py-6">
+          ) : null}
+          {group.passage ? (
+            <article className="rounded-xl border border-border bg-card px-5 py-5 sm:px-6">
               <PassageText>{group.passage}</PassageText>
             </article>
-          )}
-          <ol className="space-y-4">
+          ) : null}
+          <ol className="flex flex-col gap-3.5">
             {group.questions.map((q) => {
               const number = questionNumberById.get(q.id) ?? 0;
               return (
@@ -403,19 +407,19 @@ export function ExamRunner({
         </div>
       ))}
 
-      <div className="border-t border-border pt-5">
-        {submitError && (
-          <Callout variant="error" className="mb-3 p-3 text-center text-sm">
+      <div className="flex flex-col gap-3 border-t border-border pt-5">
+        {submitError ? (
+          <Callout variant="error" className="px-4 py-3 text-center text-sm">
             {submitError}
           </Callout>
-        )}
+        ) : null}
         {confirming ? (
-          <div className="space-y-3 text-center">
-            <p className="text-sm font-medium text-foreground/80">{t.exams.confirmSubmitSection}</p>
-            <p className="font-mono text-xs text-muted-foreground tabular-nums">
+          <div className="rounded-xl border border-border bg-card px-5 py-4 text-center">
+            <p className="text-sm font-medium">{t.exams.confirmSubmitSection}</p>
+            <p className="mt-1 text-xs text-muted-foreground tabular-nums">
               {t.exams.answered} {answeredCount}/{sectionQuestions.length}
             </p>
-            <div className="flex justify-center gap-3">
+            <div className="mt-3.5 flex justify-center gap-2.5">
               <Button variant="outline" onClick={() => setConfirming(false)}>
                 {t.common.cancel}
               </Button>
@@ -429,12 +433,7 @@ export function ExamRunner({
             </div>
           </div>
         ) : (
-          <Button
-            onClick={() => setConfirming(true)}
-            disabled={submitting}
-            size="lg"
-            className="h-11 w-full"
-          >
+          <Button onClick={() => setConfirming(true)} disabled={submitting} size="lg">
             {t.exams.submitSection} ({answeredCount}/{sectionQuestions.length})
           </Button>
         )}

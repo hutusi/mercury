@@ -29,6 +29,7 @@ export function QuestionsForm({
   onAnswer,
   disabled,
   numbered = true,
+  numbers,
   graded,
   askTutor = true,
 }: {
@@ -38,6 +39,8 @@ export function QuestionsForm({
   disabled?: boolean;
   /** Set false when the caller already embeds numbering in the stem. */
   numbered?: boolean;
+  /** Question id → displayed number, when the list is a filtered slice. */
+  numbers?: Record<string, number>;
   /** Review mode: per-question key and explanation. */
   graded?: GradedQuestion[];
   /** Offer "ask the tutor" under each explanation. */
@@ -58,7 +61,7 @@ export function QuestionsForm({
             <p className="flex gap-2.5">
               {numbered ? (
                 <span className="shrink-0 font-serif text-[0.9375rem] leading-normal text-brand-ink italic">
-                  {qIndex + 1}
+                  {numbers?.[q.id] ?? qIndex + 1}
                 </span>
               ) : null}
               <span className="text-[0.9375rem] leading-normal font-medium text-pretty">
