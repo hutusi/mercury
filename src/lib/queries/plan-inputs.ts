@@ -4,13 +4,13 @@ import { db } from "../db";
 import { mockExamAttempts, mockExams, speakingSubmissions, writingSubmissions } from "../db/schema";
 import { countActiveMistakes } from "../mistakes";
 import { buildDailyPlan, type PlanItem } from "../plan-core";
-import { calendarDay } from "../streak-core";
+import { calendarDay, learnerDayRange } from "../streak-core";
 import { getContinueReading } from "./books";
 import { listListeningExercises } from "./listening";
 import { getLearnerProfile } from "./profile";
 import { listReadingExercises } from "./reading";
 import { listSpeakingPrompts } from "./speaking";
-import { getVocabCounts } from "./vocab";
+import { countDueReviewCards, getVocabCounts } from "./vocab";
 import { listWritingPrompts } from "./writing";
 
 /** Gather every plan-core input in one parallel round and build a fresh plan. */
@@ -28,6 +28,7 @@ export async function buildFreshPlan(
   const [
     profile,
     vocab,
+    dueReviewCount,
     activeMistakes,
     bookChapter,
     reading,
@@ -47,6 +48,7 @@ export async function buildFreshPlan(
     // goal-filtered; null also matches the dashboard's calls, so the
     // cache() dedupe on countActiveMistakes actually hits.
     getVocabCounts(userId),
+    countDueReviewCards(userId, learnerDayRange(generatedFor, timeZone).start),
     countActiveMistakes(userId, null),
     getContinueReading(userId),
     listReadingExercises(userId, track),
@@ -92,7 +94,7 @@ export async function buildFreshPlan(
         }
       : null,
     track,
-    dueCount: vocab.dueCount,
+    dueCount: dueReviewCount,
     freshCount: vocab.freshCount,
     activeMistakes,
     recent: {

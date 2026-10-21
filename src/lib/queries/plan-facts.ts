@@ -28,6 +28,8 @@ export async function getPlanFacts(
   const none = Promise.resolve(null);
 
   const [vocab, mistakes, exercises, writing, speaking, books, exams] = await Promise.all([
+    // Split by when the card was first learned, matching the review target
+    // (countDueReviewCards): reviews of a card learned today count as new.
     needs.vocab
       ? db
           .select({

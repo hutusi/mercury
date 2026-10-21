@@ -77,6 +77,20 @@ export function scheduleReview(
   };
 }
 
+/**
+ * The timestamp for a review applied under the card lock: the wall clock,
+ * nudged just past the card's previous review when it isn't later. Review
+ * order must be the order grades were applied — a grade that waited on the
+ * lock, or ran on a server whose clock lags, still sorts after the review it
+ * waited for — because undo's "latest review" check (ADR 0031) relies on it.
+ */
+export function reviewTimestamp(clock: Date, lastReviewedAt: Date | null): Date {
+  if (lastReviewedAt && clock.getTime() <= lastReviewedAt.getTime()) {
+    return new Date(lastReviewedAt.getTime() + 1);
+  }
+  return clock;
+}
+
 /** A grade can be undone for this long after it was given. */
 export const UNDO_WINDOW_MS = 10 * 60 * 1000;
 

@@ -157,6 +157,38 @@ describe("locateStop", () => {
     expect(last?.next?.key).toBe("vocab_review:");
     expect(locateStop(stops, { kind: "reading", refId: "elsewhere" })).toBeNull();
   });
+
+  test("with a finished review and new words both on the route, the study page is the open stop", () => {
+    // A regenerated plan kept the done vocab review and added new words;
+    // both are served by /vocabulary/study.
+    const newWords: PlanItem = {
+      kind: "vocab_new",
+      href: "/vocabulary/study",
+      estMinutes: 10,
+      reasonKey: "newWords",
+      target: 10,
+    };
+    const stops = derivePlanStops(
+      [vocab, reading, newWords],
+      facts({ vocabReviewedExisting: 5 }),
+      none,
+    );
+    const found = locateStop(stops, { kind: "vocab" });
+    expect(found?.stop.key).toBe("vocab_new:");
+    expect(found?.index).toBe(2);
+    // Next is never the other vocab stop, which would lead back to this page.
+    expect(found?.next?.key).toBe("reading:r-1");
+
+    const readingDone = derivePlanStops(
+      [vocab, reading, newWords],
+      facts({
+        vocabReviewedExisting: 5,
+        exercises: new Map([["reading:r-1", { score: 3, total: 4 }]]),
+      }),
+      none,
+    );
+    expect(locateStop(readingDone, { kind: "vocab" })?.next).toBeNull();
+  });
 });
 
 describe("mergeRegeneratedItems", () => {

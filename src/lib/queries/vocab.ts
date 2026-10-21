@@ -34,6 +34,26 @@ export const getVocabCounts = cache(async (userId: string) => {
   };
 });
 
+/**
+ * Due cards first learned before `dayStart` — the daily plan's review target
+ * (ADR 0033). A card learned today and due again after an "Again" belongs to
+ * today's new-word stop: the plan's progress counts its reviews there
+ * (getPlanFacts), so including it here would set a target no review can meet.
+ */
+export async function countDueReviewCards(userId: string, dayStart: Date): Promise<number> {
+  const [row] = await db
+    .select({ due: count() })
+    .from(srsCards)
+    .where(
+      and(
+        eq(srsCards.userId, userId),
+        sql`${srsCards.dueAt} <= now()`,
+        lt(srsCards.createdAt, dayStart),
+      ),
+    );
+  return row?.due ?? 0;
+}
+
 /** Word list (one track, or all when null) plus per-user SRS aggregates for the overview. */
 export async function getVocabOverview(userId: string, track: Track | null) {
   const [words, cards] = await Promise.all([

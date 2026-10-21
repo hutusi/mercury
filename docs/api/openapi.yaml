@@ -1595,7 +1595,9 @@ components:
         generatedFor:
           type: string
           description: The plan's learner-local day (YYYY-MM-DD).
-        revision: { type: integer, description: Bumped when a goal edit regenerates the plan. }
+        revision:
+          type: integer
+          description: "Bumped by every write to today's plan: a skip, a goal edit, or the regeneration that follows it."
     SkillEstimate:
       type: object
       description: Server-computed ability estimate; evolves from practice/exam/AI signals.

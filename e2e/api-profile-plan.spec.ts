@@ -1,5 +1,17 @@
 import { expect, test } from "@playwright/test";
+import { and, eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
+import { srsCards, user as userTable } from "../src/lib/db/schema";
 import { apiSignUpAndOnboard } from "./api-helpers";
+import { e2eDatabaseUrl } from "./db-url";
+
+const pool = new Pool({ connectionString: e2eDatabaseUrl(), max: 2 });
+const testDb = drizzle(pool);
+
+test.afterAll(async () => {
+  await pool.end();
+});
 
 test.describe("API learner profile + daily plan", () => {
   test("defaults → PATCH goals → practice signal moves an estimate → plan follows", async ({
@@ -216,6 +228,9 @@ test.describe("API persistent daily route (ADR 0033)", () => {
     expect(skipRes.status()).toBe(200);
     const skipped = await skipRes.json();
     expect(skipped.stops.find((s: Stop) => s.key === current.key).status).toBe("skipped");
+    // Every write bumps the revision, so a regeneration racing a skip loses
+    // its optimistic swap instead of erasing the skip.
+    expect(skipped.revision).toBe(afterReading.revision + 1);
     const unskip = await (
       await request.post("/api/v1/plan/skips", {
         headers: user.authHeaders,
@@ -245,8 +260,40 @@ test.describe("API persistent daily route (ADR 0033)", () => {
     });
     expect(patch.status()).toBe(200);
     const regenerated = await get();
-    expect(regenerated.revision).toBe(afterReading.revision + 1);
+    expect(regenerated.revision).toBeGreaterThan(unskip.revision);
     expect(regenerated.dailyMinutes).toBe(60);
     expect(regenerated.stops.find((s: Stop) => s.key === reading.key)?.status).toBe("done");
+  });
+
+  test("a word learned today and due again never becomes an unreachable review target", async ({
+    request,
+  }) => {
+    const user = await apiSignUpAndOnboard(request, "toeic");
+    const { cards } = await (
+      await request.get("/api/v1/vocab/study-queue", { headers: user.authHeaders })
+    ).json();
+    const wordId = cards[0].wordId;
+    const again = await request.post("/api/v1/vocab/grade", {
+      headers: user.authHeaders,
+      data: { wordId, grade: 1, requestId: crypto.randomUUID() },
+    });
+    expect(again.status()).toBe(200);
+
+    // "Again" brings the card back in ten minutes; skip the wait.
+    const [account] = await testDb
+      .select({ id: userTable.id })
+      .from(userTable)
+      .where(eq(userTable.email, user.email));
+    await testDb
+      .update(srsCards)
+      .set({ dueAt: new Date(Date.now() - 60_000) })
+      .where(and(eq(srsCards.userId, account.id), eq(srsCards.wordId, wordId)));
+
+    // Today's plan is built now, with that card due. Its reviews count as
+    // new-word progress, so it must not set a review target they can't meet.
+    const plan = await (await request.get("/api/v1/plan", { headers: user.authHeaders })).json();
+    const kinds = plan.stops.map((s: Stop) => s.kind);
+    expect(kinds).not.toContain("vocab_review");
+    expect(kinds).toContain("vocab_new");
   });
 });

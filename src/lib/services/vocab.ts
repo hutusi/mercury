@@ -3,7 +3,13 @@ import { z } from "zod";
 import { db } from "../db";
 import { isUniqueViolation } from "../db/pg-errors";
 import { reviewLogs, srsCards, vocabWords } from "../db/schema";
-import { scheduleReview, undoDecision, type ReviewGrade, type SrsState } from "../srs";
+import {
+  reviewTimestamp,
+  scheduleReview,
+  undoDecision,
+  type ReviewGrade,
+  type SrsState,
+} from "../srs";
 import { recordActivityWith } from "../streak";
 import { ConflictError, ExpiredError, NotFoundError } from "./errors";
 
@@ -130,8 +136,6 @@ async function gradeInTransaction(
   grade: ReviewGrade,
   requestId: string | undefined,
 ): Promise<GradeCardResult> {
-  const now = new Date();
-
   // A first review creates the card lazily. Upsert-then-reselect (rather than
   // read-then-insert) so two concurrent first-reviews of the same word can't
   // both insert and trip the unique(userId, wordId) index. The upsert, the
@@ -144,7 +148,7 @@ async function gradeInTransaction(
   return db.transaction(async (tx) => {
     const created = await tx
       .insert(srsCards)
-      .values({ userId, wordId, dueAt: now })
+      .values({ userId, wordId, dueAt: new Date() })
       .onConflictDoNothing()
       .returning({ id: srsCards.id });
 
@@ -171,6 +175,9 @@ async function gradeInTransaction(
       }
     }
 
+    // Read under the lock and kept past the previous review, so concurrent
+    // grades of one card are timestamped in the order they were applied.
+    const now = reviewTimestamp(new Date(), card.lastReviewedAt);
     const scheduled = scheduleReview(
       {
         easeFactor: card.easeFactor,

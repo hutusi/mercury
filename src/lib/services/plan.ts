@@ -43,8 +43,11 @@ export async function materializeDailyPlan(
   }
 
   // Stale: keep what the learner already did, skipped, or began; refill the
-  // rest from the new goal. Optimistic on revision — a concurrent regenerate
-  // that lands first simply wins.
+  // rest from the new goal. Optimistic on revision, which every write to the
+  // row bumps: a skip or a newer goal edit that lands mid-regeneration fails
+  // the swap, and the row it left (still stale) is served as-is — the next
+  // read regenerates from current data. Retrying here would not help: this
+  // request's profile read is cache()d, so it would rebuild the same plan.
   const facts = await getPlanFacts(userId, existing.items, learnerDayRange(day, timeZone));
   const stops = derivePlanStops(existing.items, facts, new Set(existing.skippedKeys));
   const items = mergeRegeneratedItems(stops, fresh.items);
@@ -124,7 +127,11 @@ export async function setPlanItemSkippedForUser(
     else next.delete(key);
     await tx
       .update(dailyPlans)
-      .set({ skippedKeys: [...next], updatedAt: now })
+      .set({
+        skippedKeys: [...next],
+        revision: sql`${dailyPlans.revision} + 1`,
+        updatedAt: now,
+      })
       .where(and(eq(dailyPlans.userId, userId), eq(dailyPlans.day, day)));
   });
 }
@@ -133,9 +140,11 @@ export async function setPlanItemSkippedForUser(
  * Called when the learner edits a goal that shapes the plan (track, daily
  * minutes, exam date, self-rated level), in the same transaction as the edit.
  * Recent rows are marked stale (from yesterday in UTC, which covers today in
- * every timezone); the next read regenerates them. Skill-estimate and memo
- * updates never come through here — the plan must not rotate while the
- * learner works through it.
+ * every timezone); the next read regenerates them. The revision bumps even
+ * on a row that is already stale, so a regeneration still building from the
+ * previous goal can't land over this one. Skill-estimate and memo updates
+ * never come through here — the plan must not rotate while the learner works
+ * through it.
  */
 export async function markDailyPlanStaleWith(
   executor: DbExecutor,
@@ -144,12 +153,11 @@ export async function markDailyPlanStaleWith(
 ): Promise<void> {
   await executor
     .update(dailyPlans)
-    .set({ stale: true, updatedAt: now })
+    .set({ stale: true, revision: sql`${dailyPlans.revision} + 1`, updatedAt: now })
     .where(
       and(
         eq(dailyPlans.userId, userId),
         gte(dailyPlans.day, shiftCalendarDay(calendarDay(now, "UTC"), -1)),
-        sql`${dailyPlans.stale} = false`,
       ),
     );
 }

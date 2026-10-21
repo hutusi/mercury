@@ -187,19 +187,23 @@ function matches(stop: PlanStop, match: StopMatch): boolean {
 /**
  * Locate a session in today's route: its 0-based index and the stop to send
  * the learner to next — the first unfinished stop after it, else the first
- * unfinished one before it, else none (the day is done).
+ * unfinished one before it, else none (the day is done). One session can
+ * match two stops (a regenerated plan may keep a finished vocab review and
+ * add new words, both served by the study page): the unfinished one is this
+ * session's stop, and neither is ever "next", which would lead back here.
  */
 export function locateStop(
   stops: readonly PlanStop[],
   match: StopMatch,
 ): { index: number; stop: PlanStop; next: PlanStop | null } | null {
-  const index = stops.findIndex((s) => matches(s, match));
+  const isOpen = (s: PlanStop) => s.status === "current" || s.status === "open";
+  const openIndex = stops.findIndex((s) => matches(s, match) && isOpen(s));
+  const index = openIndex >= 0 ? openIndex : stops.findIndex((s) => matches(s, match));
   if (index < 0) return null;
-  const unfinished = (s: PlanStop, i: number) =>
-    i !== index && (s.status === "current" || s.status === "open");
+  const elsewhere = (s: PlanStop) => isOpen(s) && !matches(s, match);
   const next =
-    stops.find((s, i) => i > index && unfinished(s, i)) ??
-    stops.find((s, i) => i < index && unfinished(s, i)) ??
+    stops.find((s, i) => i > index && elsewhere(s)) ??
+    stops.find((s, i) => i < index && elsewhere(s)) ??
     null;
   return { index, stop: stops[index], next };
 }

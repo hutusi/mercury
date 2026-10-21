@@ -1,5 +1,11 @@
 import { describe, expect, test } from "bun:test";
-import { NEW_CARD_STATE, previewNextReview, scheduleReview, undoDecision } from "./srs";
+import {
+  NEW_CARD_STATE,
+  previewNextReview,
+  reviewTimestamp,
+  scheduleReview,
+  undoDecision,
+} from "./srs";
 
 const NOW = new Date("2026-01-01T08:00:00Z");
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -56,6 +62,25 @@ describe("scheduleReview (SM-2)", () => {
     const next = scheduleReview(state, 5, NOW);
     expect(next.easeFactor).toBeCloseTo(2.6);
     expect(next.intervalDays).toBe(Math.round(10 * 2.6) + 1);
+  });
+});
+
+describe("reviewTimestamp", () => {
+  const last = new Date("2026-10-21T10:00:00.000Z");
+
+  test("uses the clock when it is past the previous review", () => {
+    const clock = new Date("2026-10-21T10:00:05.000Z");
+    expect(reviewTimestamp(clock, last)).toEqual(clock);
+    expect(reviewTimestamp(clock, null)).toEqual(clock);
+  });
+
+  test("sorts after the previous review when the clock read is not later", () => {
+    // A grade whose clock was read before a concurrent grade took the lock,
+    // or on a lagging server: it still lands after the review it waited for.
+    expect(reviewTimestamp(new Date("2026-10-21T09:59:59.999Z"), last)).toEqual(
+      new Date("2026-10-21T10:00:00.001Z"),
+    );
+    expect(reviewTimestamp(last, last)).toEqual(new Date("2026-10-21T10:00:00.001Z"));
   });
 });
 
