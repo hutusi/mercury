@@ -19,12 +19,15 @@ export default async function WritingPromptPage({
 }: {
   params: Promise<{ promptId: string }>;
 }) {
-  const user = await requireUser();
-  const timeZone = (await getSettings(user.id))?.timeZone ?? "Asia/Shanghai";
-  const { promptId } = await params;
-  const [t, locale] = await Promise.all([getDict(), getLocale()]);
-
-  const data = await getWritingPromptWithHistory(user.id, promptId);
+  const [user, { promptId }] = await Promise.all([requireUser(), params]);
+  // One wave: none of these depend on each other once the user is known.
+  const [settings, t, locale, data] = await Promise.all([
+    getSettings(user.id),
+    getDict(),
+    getLocale(),
+    getWritingPromptWithHistory(user.id, promptId),
+  ]);
+  const timeZone = settings?.timeZone ?? "Asia/Shanghai";
   if (!data) notFound();
   const { prompt, past } = data;
 

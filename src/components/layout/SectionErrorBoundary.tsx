@@ -14,10 +14,7 @@ import { useT } from "@/lib/i18n/LocaleProvider";
  * with an error screen. The fallback keeps the rest of the page usable and
  * offers a retry that re-renders the server tree.
  */
-export class SectionErrorBoundary extends Component<
-  { children: ReactNode },
-  { failed: boolean }
-> {
+export class SectionErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   state = { failed: false };
 
   static getDerivedStateFromError() {

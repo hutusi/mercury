@@ -21,13 +21,16 @@ export default async function SpeakingPromptPage({
 }: {
   params: Promise<{ promptId: string }>;
 }) {
-  const user = await requireUser();
-  const timeZone = (await getSettings(user.id))?.timeZone ?? "Asia/Shanghai";
-  const tier = await getTierForUser(user.id);
-  const { promptId } = await params;
-  const [t, locale] = await Promise.all([getDict(), getLocale()]);
-
-  const data = await getSpeakingPromptWithHistory(user.id, promptId);
+  const [user, { promptId }] = await Promise.all([requireUser(), params]);
+  // One wave: none of these depend on each other once the user is known.
+  const [settings, tier, t, locale, data] = await Promise.all([
+    getSettings(user.id),
+    getTierForUser(user.id),
+    getDict(),
+    getLocale(),
+    getSpeakingPromptWithHistory(user.id, promptId),
+  ]);
+  const timeZone = settings?.timeZone ?? "Asia/Shanghai";
   if (!data) notFound();
   const { prompt, past } = data;
 

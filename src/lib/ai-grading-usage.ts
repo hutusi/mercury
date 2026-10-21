@@ -37,9 +37,13 @@ function isActiveScopeConflict(error: unknown): boolean {
  */
 export async function claimGradingRequest(input: ClaimInput): Promise<GradingClaim> {
   const now = input.now ?? new Date();
-  const day = await getCalendarDayForUser(input.userId, now);
-  // Tier-dependent (ADR 0025); read before the transaction, never under the lock.
-  const limit = (await getEntitlementsForUser(input.userId, now)).aiGradingDailyLimit;
+  // Both read before the transaction, never under the lock; the limit is
+  // tier-dependent (ADR 0025). Independent, so one wave.
+  const [day, entitlements] = await Promise.all([
+    getCalendarDayForUser(input.userId, now),
+    getEntitlementsForUser(input.userId, now),
+  ]);
+  const limit = entitlements.aiGradingDailyLimit;
 
   return db.transaction(async (tx) => {
     await tx

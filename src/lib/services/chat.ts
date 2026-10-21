@@ -107,16 +107,18 @@ export async function sendChatMessageForUser(userId: string, input: unknown): Pr
   const day = await getCalendarDayForUser(userId);
   const claim = await claimChatTurnForUser(userId, day);
   try {
-    // Recent turns, chronological (query newest-first, then reverse).
-    const recent = await db.query.chatMessages.findMany({
-      where: eq(chatMessages.userId, userId),
-      orderBy: desc(chatMessages.sequence),
-      limit: 20,
-      columns: { role: true, content: true },
-    });
+    // Recent turns (queried newest-first, reversed to chronological) and the
+    // guarded learner context are independent: one wave before the call.
+    const [recent, learnerContext] = await Promise.all([
+      db.query.chatMessages.findMany({
+        where: eq(chatMessages.userId, userId),
+        orderBy: desc(chatMessages.sequence),
+        limit: 20,
+        columns: { role: true, content: true },
+      }),
+      tutorLearnerContext(userId),
+    ]);
     const window = buildChatWindow(recent.reverse(), content);
-
-    const learnerContext = await tutorLearnerContext(userId);
     const reply = await getTutorReply({ learnerContext, messages: window });
 
     const now = new Date();

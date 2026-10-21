@@ -12,17 +12,25 @@ export default async function ReadingExercisePage({
 }: {
   params: Promise<{ exerciseId: string }>;
 }) {
-  const { user, goalTrack } = await requireOnboarded();
-  const { exerciseId } = await params;
-  const t = await getDict();
+  const [{ user, goalTrack }, { exerciseId }, t] = await Promise.all([
+    requireOnboarded(),
+    params,
+    getDict(),
+  ]);
 
   // The query strips answers — nothing here can leak the key while answering.
-  const exercise = await getReadingExerciseSanitized(exerciseId);
+  // The sibling list (it drives the result screen's "next exercise") is
+  // fetched speculatively for the goal track in the same wave; only an
+  // off-goal exercise pays a second round-trip.
+  const [exercise, goalSiblings] = await Promise.all([
+    getReadingExerciseSanitized(exerciseId),
+    listReadingExercises(user.id, goalTrack),
+  ]);
   if (!exercise) notFound();
-
-  // Resolved at render: the first unattempted sibling drives the result
-  // screen's "next exercise" action (metadata-only query).
-  const { exercises, bestByExercise } = await listReadingExercises(user.id, exercise.track);
+  const { exercises, bestByExercise } =
+    exercise.track === goalTrack
+      ? goalSiblings
+      : await listReadingExercises(user.id, exercise.track);
   const next = exercises.find((e) => e.id !== exercise.id && !bestByExercise.has(e.id));
 
   return (

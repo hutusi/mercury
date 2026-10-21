@@ -42,16 +42,17 @@ export async function listWritingPrompts(userId: string, track: Track | null) {
 
 /** One prompt with the user's recent submissions to it. */
 export async function getWritingPromptWithHistory(userId: string, promptId: string) {
-  const prompt = await db.query.writingPrompts.findFirst({
-    where: eq(writingPrompts.id, promptId),
-  });
+  // Independent reads — the history query is cheap and empty for an
+  // unknown prompt, so run both in one wave.
+  const [prompt, past] = await Promise.all([
+    db.query.writingPrompts.findFirst({ where: eq(writingPrompts.id, promptId) }),
+    db.query.writingSubmissions.findMany({
+      where: and(eq(writingSubmissions.userId, userId), eq(writingSubmissions.promptId, promptId)),
+      orderBy: desc(writingSubmissions.createdAt),
+      limit: 10,
+    }),
+  ]);
   if (!prompt) return null;
-
-  const past = await db.query.writingSubmissions.findMany({
-    where: and(eq(writingSubmissions.userId, userId), eq(writingSubmissions.promptId, promptId)),
-    orderBy: desc(writingSubmissions.createdAt),
-    limit: 10,
-  });
 
   return { prompt, past };
 }
