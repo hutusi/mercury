@@ -50,7 +50,15 @@ export default defineConfig({
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
-      testIgnore: /email-auth\.spec\.ts/,
+      testIgnore: [/email-auth\.spec\.ts/, /mobile-.*\.spec\.ts/],
+    },
+    {
+      // Phone layout (bottom tabs, Passage/Questions tabs, the flow bar):
+      // only the mobile-*.spec.ts smoke runs here — the desktop suite covers
+      // behaviour, this covers the phone chrome.
+      name: "chromium-mobile",
+      use: { ...devices["Pixel 7"] },
+      testMatch: /mobile-.*\.spec\.ts/,
     },
     {
       name: "chromium-email",
