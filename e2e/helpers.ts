@@ -53,6 +53,9 @@ export async function registerAndOnboard(
  */
 export async function answerAllQuestions(page: Page) {
   const firstOptions = page.locator("li > div > button:first-child");
+  // count() doesn't wait: right after a navigation the page may still be on
+  // its loading skeleton.
+  await firstOptions.first().waitFor();
   const count = await firstOptions.count();
   expect(count).toBeGreaterThan(0);
   for (let i = 0; i < count; i++) {

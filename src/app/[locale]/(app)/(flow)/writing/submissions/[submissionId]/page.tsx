@@ -2,7 +2,9 @@ import { FlowBody } from "@/components/flow/FlowBody";
 import { FlowHeader } from "@/components/flow/FlowHeader";
 import { getFlowContext } from "@/lib/queries/plan";
 import { notFound } from "next/navigation";
-import { SectionLabel } from "@/components/typography/SectionLabel";
+import { NextStopButton } from "@/components/flow/NextStopButton";
+import { Button } from "@/components/ui/button";
+import { LocalizedLink as Link } from "@/lib/i18n/LocalizedLink";
 import { AiFeedbackPanel } from "@/components/writing/AiFeedbackPanel";
 import { PremiumCta } from "@/components/premium/PremiumCta";
 import { RetryWritingFeedback } from "@/components/writing/RetryWritingFeedback";
@@ -38,22 +40,14 @@ export default async function WritingSubmissionPage({
     <>
       <FlowHeader context={flow} hubHref="/writing" />
       <FlowBody>
-        <div className="space-y-6">
-          <div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight">
-              {t.writing.feedbackTitle}
-            </h1>
-          </div>
+        <p className="text-[0.8125rem] text-muted-foreground">
+          {t.writingTasks[prompt.taskType]} · {prompt.titleZh}
+        </p>
+        <h1 className="mt-2 font-serif text-[1.75rem] leading-tight font-medium sm:text-4xl">
+          {t.writing.feedbackTitle}
+        </h1>
 
-          <section className="border-y border-border py-6">
-            <SectionLabel as="h2" className="mb-3">
-              {t.writing.yourText} · {submission.wordCount} {t.common.words}
-            </SectionLabel>
-            <p className="font-serif text-sm leading-relaxed whitespace-pre-line text-foreground/90">
-              {submission.text}
-            </p>
-          </section>
-
+        <div className="mt-6">
           {submission.status === "ai_scored" && submission.feedback ? (
             <AiFeedbackPanel feedback={submission.feedback} />
           ) : (
@@ -71,7 +65,7 @@ export default async function WritingSubmissionPage({
                 // Content-aware: a premium user's quota degrade with AI disabled
                 // would otherwise render an empty wrapper (phantom spacing).
                 isAiEnabled() || (submission.degradeReason === "quota" && tier !== "premium") ? (
-                  <div className="space-y-3">
+                  <div className="flex flex-col items-start gap-3">
                     {isAiEnabled() && <RetryWritingFeedback submissionId={submission.id} />}
                     {submission.degradeReason === "quota" && tier !== "premium" && <PremiumCta />}
                   </div>
@@ -79,6 +73,30 @@ export default async function WritingSubmissionPage({
               }
             />
           )}
+        </div>
+
+        <section aria-labelledby="writing-yours" className="mt-8">
+          <h2 id="writing-yours" className="text-[0.9375rem] font-semibold">
+            {t.writing.yourText}
+            <span className="ml-2 font-normal text-muted-foreground tabular-nums">
+              {submission.wordCount} {t.common.words}
+            </span>
+          </h2>
+          <p className="mt-3 rounded-lg border border-border bg-card px-5 py-4 font-serif text-base leading-[1.75] whitespace-pre-line">
+            {submission.text}
+          </p>
+        </section>
+
+        <div className="mt-8 flex flex-col gap-2.5">
+          {flow.mode === "plan" ? <NextStopButton context={flow} className="w-full" /> : null}
+          <div className="flex gap-2.5">
+            <Button asChild variant="outline" className="flex-1">
+              <Link href={`/writing/${prompt.id}`}>{t.writing.rewrite}</Link>
+            </Button>
+            <Button asChild variant="outline" className="flex-1">
+              <Link href="/writing">{t.reading.backToList}</Link>
+            </Button>
+          </div>
         </div>
       </FlowBody>
     </>

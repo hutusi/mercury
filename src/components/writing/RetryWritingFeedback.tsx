@@ -23,8 +23,6 @@ export function RetryWritingFeedback({ submissionId }: { submissionId: string })
   return (
     <div>
       <Button
-        variant="accent"
-        size="sm"
         disabled={pending}
         onClick={() => {
           setError(null);
@@ -56,7 +54,11 @@ export function RetryWritingFeedback({ submissionId }: { submissionId: string })
         <RotateCcw className="size-4" aria-hidden />
         {pending ? t.writing.submitting : t.writing.retryFeedback}
       </Button>
-      {error && <p className="mt-2 text-destructive">{error}</p>}
+      {error ? (
+        <p role="alert" className="mt-2 text-sm text-destructive">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }
