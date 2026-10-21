@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { saveExamProgress, submitExamSection } from "@/lib/actions/exams";
 import type { AnswerMap, SectionDeadline } from "@/lib/db/schema";
+import { clearExamMirror, examMirrorKey, examRetryDelayMs } from "@/lib/exam-mirror";
 import { examRemainingMs, type SanitizedExamSection } from "@/lib/exam-utils";
 import { useLocale, useT } from "@/lib/i18n/LocaleProvider";
 import { localePath } from "@/lib/i18n/routing";
@@ -42,7 +43,7 @@ export function ExamRunner({
   const t = useT();
   const locale = useLocale();
   const router = useRouter();
-  const storageKey = `mercury-exam-${attemptId}`;
+  const storageKey = examMirrorKey(attemptId);
 
   const [sectionIndex, setSectionIndex] = useState(initialSectionIndex);
   const [deadlines, setDeadlines] = useState(initialDeadlines);
@@ -57,6 +58,18 @@ export function ExamRunner({
   const [confirming, setConfirming] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  // Autosave is visible: a learner on a flaky connection should know their
+  // answers are only on this device until the next save lands.
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "failed">("idle");
+  const lastSavedJson = useRef(JSON.stringify(initialAnswers));
+  const saveRetryTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const saveFailures = useRef(0);
+  const autoSubmitRetries = useRef(0);
+  // Retry timers must call the latest callbacks, not the ones they closed over.
+  const doSubmitSectionRef = useRef<
+    (sectionId: string, options?: { auto?: boolean }) => Promise<void>
+  >(async () => {});
+  const flushAutosaveRef = useRef<() => void>(() => {});
 
   const submittedSections = useRef(new Set<string>());
   // Focus target after a section advance — without it, focus dies on the
@@ -119,7 +132,7 @@ export function ExamRunner({
   }, [answers, storageKey]);
 
   const doSubmitSection = useCallback(
-    async (sectionId: string) => {
+    async (sectionId: string, { auto = false }: { auto?: boolean } = {}) => {
       if (submittedSections.current.has(sectionId)) return;
       submittedSections.current.add(sectionId);
       setSubmitting(true);
@@ -138,12 +151,11 @@ export function ExamRunner({
         // processing time (which can be seconds under lock contention) as
         // skew and shorten the next section's timer.
         clockSkewMs.current = result.serverTime - Date.now();
+        autoSubmitRetries.current = 0;
+        // The submit carried every answer: nothing is left for autosave.
+        lastSavedJson.current = JSON.stringify(answersRef.current);
         if (result.done) {
-          try {
-            localStorage.removeItem(storageKey);
-          } catch {
-            // Best-effort cleanup.
-          }
+          clearExamMirror(attemptId);
           router.push(localePath(locale, `/exams/attempts/${attemptId}`));
           return;
         }
@@ -159,13 +171,26 @@ export function ExamRunner({
         // Un-mark so the user can retry — the server clamps late answers,
         // so retrying after expiry is safe and still completes the attempt.
         submittedSections.current.delete(sectionId);
-        setSubmitError(t.exams.submitFailed);
+        if (auto && autoSubmitRetries.current < 6) {
+          // The deadline already fired and its timer is gone: nothing would
+          // submit this section again until the learner noticed. Keep trying
+          // on our own, backing off, while the error stays visible.
+          const delay = examRetryDelayMs(autoSubmitRetries.current);
+          autoSubmitRetries.current += 1;
+          setSubmitError(t.exams.autoSubmitRetrying);
+          setTimeout(() => void doSubmitSectionRef.current(sectionId, { auto: true }), delay);
+        } else {
+          setSubmitError(t.exams.submitFailed);
+        }
       } finally {
         setSubmitting(false);
       }
     },
-    [attemptId, locale, router, storageKey, t],
+    [attemptId, locale, router, t],
   );
+  useEffect(() => {
+    doSubmitSectionRef.current = doSubmitSection;
+  }, [doSubmitSection]);
 
   // The clock: remaining time derives from the server-issued deadline
   // (skew-corrected), never a local decrementing counter, so tab throttling
@@ -189,39 +214,64 @@ export function ExamRunner({
       }
       if (remaining <= 0) {
         clearInterval(tick);
-        void doSubmitSection(deadline.sectionId);
+        void doSubmitSection(deadline.sectionId, { auto: true });
       }
     }, 500);
     return () => clearInterval(tick);
   }, [deadline, doSubmitSection, t]);
 
+  // One server autosave of the current answers, serialized behind any save
+  // still in flight so click order is preserved even when a request outlasts
+  // the interval (the server also serializes merges with section submit).
+  // Skipped when nothing changed since the last save that landed. A failure
+  // is shown and retried on a backoff instead of waiting for the next tick;
+  // the chain always settles, so a failed save is never an unhandled
+  // rejection.
+  const flushAutosave = useCallback(() => {
+    const snapshot = { ...answersRef.current };
+    const json = JSON.stringify(snapshot);
+    if (json === lastSavedJson.current) return;
+    if (saveRetryTimer.current) clearTimeout(saveRetryTimer.current);
+    setSaveState("saving");
+    autosaveChain.current = autosaveChain.current.then(() =>
+      saveExamProgress({ attemptId, answers: snapshot }).then(
+        () => {
+          lastSavedJson.current = json;
+          saveFailures.current = 0;
+          setSaveState("saved");
+        },
+        () => {
+          setSaveState("failed");
+          const delay = examRetryDelayMs(saveFailures.current);
+          saveFailures.current += 1;
+          saveRetryTimer.current = setTimeout(() => flushAutosaveRef.current(), delay);
+        },
+      ),
+    );
+  }, [attemptId]);
+  useEffect(() => {
+    flushAutosaveRef.current = flushAutosave;
+  }, [flushAutosave]);
+
   // Periodic server autosave of the current section's answers.
   useEffect(() => {
-    const timer = setInterval(() => {
-      const snapshot = { ...answersRef.current };
-      // Preserve click order even when a request takes longer than the save
-      // interval; the server also serializes these merges with section submit.
-      autosaveChain.current = autosaveChain.current
-        .catch(() => undefined)
-        .then(() => saveExamProgress({ attemptId, answers: snapshot }));
-    }, AUTOSAVE_MS);
-    return () => clearInterval(timer);
-  }, [attemptId]);
+    const timer = setInterval(flushAutosave, AUTOSAVE_MS);
+    return () => {
+      clearInterval(timer);
+      if (saveRetryTimer.current) clearTimeout(saveRetryTimer.current);
+    };
+  }, [flushAutosave]);
 
   // Backgrounded tabs throttle intervals to ~1/min, so up to a minute of
   // clicks could sit past the last autosave when the deadline lapses —
   // flush once more the moment the tab hides.
   useEffect(() => {
     function onVisibilityChange() {
-      if (document.visibilityState !== "hidden") return;
-      const snapshot = { ...answersRef.current };
-      autosaveChain.current = autosaveChain.current
-        .catch(() => undefined)
-        .then(() => saveExamProgress({ attemptId, answers: snapshot }));
+      if (document.visibilityState === "hidden") flushAutosave();
     }
     document.addEventListener("visibilitychange", onVisibilityChange);
     return () => document.removeEventListener("visibilitychange", onVisibilityChange);
-  }, [attemptId]);
+  }, [flushAutosave]);
 
   if (!section || !deadline) return null;
 
@@ -260,6 +310,20 @@ export function ExamRunner({
           <p aria-live="polite" role="status" className="sr-only">
             {timeAnnouncement}
           </p>
+          {saveState !== "idle" && (
+            <p
+              role={saveState === "failed" ? "alert" : "status"}
+              className={`basis-full text-xs ${
+                saveState === "failed" ? "text-destructive" : "text-muted-foreground"
+              }`}
+            >
+              {saveState === "saving"
+                ? t.exams.autosaveSaving
+                : saveState === "saved"
+                  ? t.exams.autosaveSaved
+                  : t.exams.autosaveFailed}
+            </p>
+          )}
         </div>
         <nav aria-label={t.exams.palette} className="mt-2 flex flex-wrap gap-1.5">
           {sectionQuestions.map((q, i) => {
