@@ -19,6 +19,6 @@ The upcoming Daybreak redesign also adds **undo the last grade**, which needs to
 ## Consequences
 
 - A lost response can no longer double-advance a card or inflate review counts; the study session can retry freely.
-- The snapshot makes an exact undo possible (to be built on top: revert only the card's latest review, delete a lazily-created card, never touch `activity_days`).
+- The snapshot makes an exact undo possible: `POST /api/v1/vocab/reviews/{reviewId}/undo` (and the `undoGrade` action) reverts only the card's latest review, within 10 minutes, restoring the snapshot or deleting a lazily-created card; `activity_days` is never touched, so the streak doesn't flicker.
 - `requestId` stays optional, so existing native clients are unaffected but also unprotected until they send one.
 - Each review log row is a few columns wider; review logs are already per-review, so this is linear in reviews, not a new growth axis.

@@ -490,6 +490,42 @@ paths:
         "404": { $ref: "#/components/responses/NotFound" }
         "409": { $ref: "#/components/responses/Conflict" }
         "422": { $ref: "#/components/responses/ValidationFailed" }
+  /api/v1/vocab/reviews/{reviewId}/undo:
+    post:
+      summary: Undo a flashcard grade
+      description: >-
+        Restores the card to its pre-review state and deletes the review
+        (ADR 0031); if that review created the card, the card is deleted and
+        the word is unseen again. Only the card's latest review, within 10
+        minutes of grading. Study activity (the streak) is not reverted.
+      tags: [vocab]
+      parameters:
+        - { name: reviewId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: The card's restored state.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [wordId, restoredToNew, srs]
+                properties:
+                  wordId: { type: string }
+                  restoredToNew: { type: boolean }
+                  srs:
+                    oneOf: [{ $ref: "#/components/schemas/SrsState" }, { type: "null" }]
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409":
+          description: undo_superseded (a later review exists) or undo_unavailable (legacy review).
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+        "410":
+          description: undo_expired — more than 10 minutes since the grade.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
   /api/v1/vocab/quiz:
     post:
       summary: Create a 30-minute server-owned quiz session

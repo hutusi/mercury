@@ -165,6 +165,10 @@ One rolling thread per (user, book) — the premium in-reader coach
   response replays the stored review (`replayed: true`, `grade` = the original grade, which
   is the one to act on) instead of advancing the card twice; reusing an id for another word
   is `409 grade_request_conflict`.
+- `POST /api/v1/vocab/reviews/{reviewId}/undo` reverts a grade: the card returns to its
+  pre-review state (or, if that review created it, the word becomes unseen again). Only the
+  card's latest review, within 10 minutes — otherwise `409 undo_superseded`, `410 undo_expired`,
+  or `409 undo_unavailable` for reviews logged before snapshots existed. The streak is untouched.
 
 ## Vocabulary quiz integrity
 

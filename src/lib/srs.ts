@@ -76,3 +76,25 @@ export function scheduleReview(
     dueAt: new Date(now.getTime() + intervalDays * DAY_MS),
   };
 }
+
+/** A grade can be undone for this long after it was given. */
+export const UNDO_WINDOW_MS = 10 * 60 * 1000;
+
+export type UndoDecision = "ok" | "expired" | "superseded" | "unavailable";
+
+/**
+ * Whether a logged review may be reverted: only the card's latest review
+ * (a later grade has built on it otherwise), only within the undo window,
+ * and only if the log carries the pre-review snapshot (rows written before
+ * ADR 0031 don't).
+ */
+export function undoDecision(
+  log: { id: string; reviewedAt: Date; hasSnapshot: boolean },
+  latestLogIdForCard: string | null,
+  now: Date,
+): UndoDecision {
+  if (!log.hasSnapshot) return "unavailable";
+  if (latestLogIdForCard !== log.id) return "superseded";
+  if (now.getTime() - log.reviewedAt.getTime() > UNDO_WINDOW_MS) return "expired";
+  return "ok";
+}
