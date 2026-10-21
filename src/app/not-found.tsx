@@ -28,12 +28,16 @@ export default function RootNotFound() {
             {en.errors.notFoundBody}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
+            {/* Plain anchors: the router context isn't mounted above the
+                [locale] layout, where this boundary renders. */}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- see above */}
             <a
               href="/zh"
               className="inline-flex w-fit items-center rounded-sm bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
             >
               {zh.errors.goHome}
             </a>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- see above */}
             <a
               href="/en"
               lang="en"
